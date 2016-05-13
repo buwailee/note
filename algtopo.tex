@@ -1,0 +1,47 @@
+%!TEX program = xelatex
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsfonts,amsthm,amsmath,bm,mathrsfs,noteheader}
+
+\theoremstyle{plain}
+\newtheorem{pro}{Proposition}
+\newtheorem{theo}{Theorem}
+\newtheorem{defi}{Definition}
+\newtheorem{lem}{Lemmma}
+\newtheorem{cor}{Corollary}
+
+\include{defs}
+\newcommand{\cc}{\mathcal{C}}
+
+\begin{document}
+Suppose all topological spaces are Hausdorff in our discussion. A path is a continuous map $p:[0,1]\to U$, a loop is a path that $p(0)=p(1)$.
+
+A topological space with its one point $(X,x_0)$ form the pointed topological space catagory, where a morphism between $(X,x_0)$ and $(Y,y_0)$ is a continuous map $f$ s.t. $f(x_0)=y_0$.
+
+If $U$ and $V$ are topological spaces and $\varphi$, $\psi:U\to V$ are continuous maps, a homotopy $h : \varphi \simeq\psi$ is a continuous map $h : U × [0,1] \to V$ such that $h(u,0) = \varphi(u)$ and $h(u,1) = \psi(1)$. To simplify the notation, we will denote
+$h(u, t)$ as $h_t(u)$ in a homotopy. Two maps $\varphi$ and $\psi$ are called homotopic if there exists a homotopy $\varphi \simeq\psi$. Homotopy is an equivalence relation.
+
+If $p$ and $q$ are paths, $h$ is a homtopy $h: p \simeq q$ and $h_t(0)=p(0)=q(0)$, $h_t(1)=p(1)=q(1)$ are valid for any $t\in[0,1]$, we call $h$ a path-homotopy, and we write $p \approx q$ if a path-homotopy exists.If $f:[0,1]\to[0,1]$ is a continuous function s.t. $f(0)=0$ and $f(1)=1$, then $p\approx p\circ f$ since there exists $h_t(u)=p\bigl(tf(u)+(1-t)u\bigr)$. We call $p\circ f$ is a reparametrization of $p$.
+
+A topological space $U$ is contractible if the identity map $\id_U:U\to U$ is homotopic to a constant map $\varphi:U\to \{x\}$. A space
+$U$ is path-connected if for all $x, y \in U$ there exists a path $p : [0,1] \to U$ such that $p(0) = x$ and $p(1) = y$.
+Suppose that $p : [0,1] \to U$ and $q : [0,1] \to U$ are two paths in the space $U$ such that the right endpoint of $p$ coincides with the left endpoint of $q$; that is, $p(1) = q(0)$. Then we can concatenate the paths to form the path $p\cdot q$ by
+\[
+	(p\cdot q)(t)=
+	\begin{cases}
+		p(2t) &0 \leq t\leq 1/2,\\
+		q(2t-1)&1/2 \leq t\leq 1.\\
+	\end{cases}
+\]
+It is not difficult to check that $(p\cdot q)\cdot r \approx p\cdot (q\cdot r)$ since these paths differ by a reparametrization. We can also define $\bar{p}$ as inverse path of $p$ by $\bar{p}(t)=p(-t)$.
+
+The space $U$ is simply connected if it is path-connected and given any
+closed path (that is, any $p : [0,1] \to U$ such that $p(0) = p(1)$), there exists a path-homotopy $f : p \approx p_0$, where $p_0$ is a trivial loop mapping $[0,1]$ onto a single point. Visually, the space is simply connected if every closed path can be shrunk to a point. It may be convenient to fix a base point $x_0 \in U$. In this case, to check whether U is simply-connected or not, it is sufficient to consider
+loops $p : [0,1] \to U$ such that $p(0) = p(1) = x_0$.
+
+\begin{defi}
+	The fundamental group $\pi_1(M,x_0)$ consists of the set of homotopy classes of loops in M with left and right endpoints equal to $x_0$. The multiplication in $\pi_1(M,x_0)$ is concatenation, and the inverse operation is path-reversal. 
+\end{defi}
+
+Clearly, $\pi_1(M,x_0)$ = 1 if and only if $M$ is simply connected. Changing the base point replaces $\pi_1(M,x_0)$ by an isomorphic group, but not canonically so. Thus, $\pi_1(M,x_0)$ is a functor from the category of pointed spaces to the category of groups—not a functor on the category of topological spaces. If M happens to be a topological group, we will always take the base point to be the identity element.
+
+\end{document}
