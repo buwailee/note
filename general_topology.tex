@@ -1,0 +1,269 @@
+%!TEX program = xelatex
+\documentclass[10pt]{book}
+\usepackage{amssymb,amsfonts,amsthm,amsmath,bm}
+\usepackage{ctex}
+%\usepackage[adobefonts]{ctex}%ubuntu用
+%\usepackage{extarrows}
+\usepackage[left=21mm,text={148mm,200mm},paperwidth=185mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{titletoc}%使用目录
+	\theoremstyle{plain}%定理环境样式
+	\newtheorem{pro}{Proposition}[section]% 定义命题环境
+	\newtheorem{theo}{Theorem}% 定义定理环境
+	%\newtheorem{lem}{Lemma}[section]% 定义引理环境
+	\newtheorem*{rem}{Remark}% 定义注记环境
+	\newtheorem{que}{Question}[section]% 定义问题环境
+	\newtheorem{defi}{Definition}% 定义定义环境
+	\newtheorem{exa}{Example}[section]% 定义例子环境
+	%\newtheorem{exe}{Exercise}[section]% 定义习题环境
+\newcommand{\dd}{{\mathrm{d}}}%微分号
+\newcommand{\no}[1]{{$(#1)$}}%编号
+\begin{document}
+\title{一些基础拓扑什么的}
+\author{理不歪}
+\date{\today}
+\maketitle %标题
+基础拓扑的性质决定了这个笔记老多老多的定义，估摸着可以用来当字典查2333.本笔记是GTM 202的笔记。
+\begin{defi}
+现设有集合$X$，其上的一个拓扑(topology)是他的一个子集族$\mathcal{J}$，子集族中的元素称为开集，我们说某个集$U$是开集就是说$U \in \mathcal{J}$。子集族，或者这里说开集族，满足下面的性质：
+
+\no{1}全集和空集都是开集：$X\in \mathcal{J}$以及$\varnothing\in \mathcal{J}$.
+
+\no{2}开集的有限交是开集：假如$U_1,\dots,U_n \in \mathcal{J}$，那么$U_1\cap\dots\cap U_n\in \mathcal{J}$.
+
+\no{3}开集的任意并是开集：任意的（有限或无限的）开集族$\{U_\alpha\}$的并$\cup_\alpha U_\alpha \in \mathcal{J}$.\\
+有一个拓扑的集合我们称为拓扑空间。
+\end{defi}
+
+空间中的元素通常被称呼为一个点，虽然这是$\mathbb{R}^3$来的几何直观，但是拓扑空间的元素可以是很随意的东西，比如一条直线，但是我们还是称呼其为一个点。一个点的一个邻域就是包含这个点的一个开集。
+
+上面的定义在操作上并不是那么实用的，所以下面的拓扑基(basis)在很多时候更加常用一些。
+\begin{defi}
+假设$X$是任意集合，所谓的拓扑基$\mathcal{B}$是他上的子集族，满足下列条件：
+
+\no{1}集合上的任意点都在拓扑基的某一个元素里，即任取$p \in X$，那么存在$B \in \mathcal{B}$使得$p \in B$.这就是说$\cup_{B \in \mathcal{B}} B = X$.
+
+\no{2}如果$B_1,B_2\in \mathcal{B}$，而且$x \in B_1 \cap B_2$，那么存在$B_3 \in \mathcal{B}$，使得$x \in B_2 \subset B_1 \cap B_2$.
+\end{defi}
+
+\begin{theo}
+如果集合$X$有一个拓扑基$\mathcal{B}$，那么令$\mathcal{J}$为所有$\mathcal{B}$中元素的任意并的集族，则$\mathcal{J}$是$X$的一个拓扑。此时$\mathcal{J}$被称$\mathcal{B}$生成的拓扑。
+\end{theo}
+
+一个集合$U$被称为满足基的判别法则就是说，如果对于任意一点$x\in U$都存在一个集$B\in \mathcal{B}$使得$x \in W$且$W\subset U$.
+
+\begin{theo}
+如果集合$X$有一个拓扑基$\mathcal{B}$，那么其生成的拓扑$\mathcal{J}$为$X$中所以满足基的判别法则的集合构成的集族。简单来说，就是满足基的判别法则的集合是开集。
+\end{theo}
+
+上面的定理给出了判别一个集合是开集的实用方法。下面的定理则类似基生成拓扑的逆定理。
+\begin{theo}
+如果$X$是一个拓扑空间，$\mathcal{B}$是其所有开集的集族。如果$X$的每一个开集都对$\mathcal{B}$满足基的判别法则，然后$\mathcal{B}$是$X$这个拓扑的拓扑基。
+\end{theo}
+
+拓扑结构的引入，允许我们谈论一些分析上的基本概念，比如收敛和连续。当然，这就要涉及映射，涉及映射就要涉及两个拓扑空间。
+
+\begin{defi}
+拓扑空间$X$上面的点序列$\{q_n\}$称有极限$q \in X$的，就是对于$q$的任意邻域$U$，都存在$N$，当$n>N$的时候，所有的$q_n$都属于$U$.极限一般记做$\lim_{n\to \infty} q_n=q$.
+\end{defi}
+
+\begin{defi}
+我们说映射$f:X\to Y$是连续的，就是对于任意开集$U \in Y$，他的原象集$f^{-1}(U) \in X$也是开的。
+\end{defi}
+下面的定理给出了整体连续和局部连续之间的关系。
+
+\begin{theo}
+一个函数$f:X\to Y$是连续的，当且仅当他在每一点$x \in X$都存在一个邻域$U_x$，在这个邻域上的限制$f|_{U_x}$也是连续的。
+\end{theo}
+
+两个拓扑空间$X,Y$被称为同胚的，就是说存在连续双射$f:X\to Y$，其逆也是连续的。同胚是拓扑空间范畴的同构，也就是说两个拓扑空间存在同胚映射的话，两个空间有相同的拓扑性质。连续函数的复合也是连续的，所以同胚的复合还是同胚的，那么同胚的拓扑空间就构成一个等价类。直观上，两个空间是同胚的，就是说我们可以连续变形之使两者相同。
+
+很简单可以证明，$\mathbb{R}^n$中的单位开球和$\mathbb{R}^n$同胚。所以说“有界”并不是拓扑性质。同样，单位开立方体也同胚于单位开球，所以有没有棱角也不是拓扑性质。但是怎么变，一个洞也不会连续变没了，所以有没有洞才是拓扑性质。当然还有其他拓扑性质。拓扑学就是研究这些性质的。   
+
+\begin{defi}
+一个集是闭集当他补集是开集。
+\end{defi}
+用集合论熟知的并的补和交的补的公式，我们很自然可以得到，任意闭集的交是闭集，有限闭集的并是开集。此外，连续函数也可以改写成闭集版。
+\begin{theo}
+映射$f:X\to Y$是连续的，当且仅当就是对于任意闭集$U \in Y$，他的原象集$f^{-1}(U) \in X$也是闭的。
+\end{theo}
+\begin{defi}
+一个集$A$的闭包$\overline{A}$为包含他的最小闭集，一个集的开核（或内部）$\mathrm{Int} A$为他包含的最大开集。
+\end{defi}
+这样我们就可以定义一个集的拓扑边界了。
+\begin{defi}
+一个集$A \in X$的拓扑边界$\partial A$定义为：$\partial A=\overline{A}-\mathrm{Int} A$.
+\end{defi}
+
+\begin{defi}
+一个集$A \in X$的外部$\mathrm{Ext} A$定义为：$\mathrm{Ext}A=X-\overline{A}$.
+\end{defi}
+
+很容易看出$\mathrm{Ext}A$是一个开集，因为他是$\overline{A}$的补集，而且$\mathrm{Int} A$也是开集。所以这就给出了判别一个点是不是在内部或者外部的方式，即是否存在一个邻域含于$\mathrm{Ext}A$或$\mathrm{Int} A$，如果都不是，那么就是在$\partial A$上了，因为$X=\mathrm{Int} A\cup \partial A\cup \mathrm{Ext}A$.
+
+\begin{defi}
+一个拓扑空间被称为Hausdorff的，就是说，对于任意两个不相同的点，存在其两个不相交的邻域。这样的空间被称为Hausdorff空间。
+\end{defi}
+这个定义看上去有些突兀，不过确实存在非Hausdorff空间的拓扑空间。比如集$\{1,2,3\}$，上面的一个拓扑为$\{\varnothing,\{1\},\{2,3\},\{1,2,3\}\}$，虽然2和3是不想同的点，但是他们却不存在不相交的邻域。
+
+Hausdorff性一般被理解为分离性，但他也保证了拓扑空间有足够多的开集，在上面的例子里面，就是邻域不够用才出现不存在不相交的邻域。
+
+Hausdorff空间内的单点集是闭集。非Hausdorff空间这个结论不一定成立，比如上面的$\{2\}$，他的补不是开集。
+
+一般来说，一个非Hausdorff空间我们是不感兴趣的。 因为这个时候，一个收敛的点序列可能有着两个极限。比如在上面的例子里面，一个全是2的序列，他可能的极限为2还有3.
+
+Hausdorff性说开集不能太少，那么可数性就限制开集不能太多。
+\begin{defi}
+一个拓扑空间，如果在每一点的邻域，拓扑基是可数的，那么这个拓扑空间被称为第一可数的。如果一个拓扑空间的拓扑基是可数的，那么这个拓扑空间被称为第二可数的。
+\end{defi}
+第二可数比第一可数限制更强一些。
+\begin{defi}
+一个第二可数的Hausdorff空间，如果对他的任意一点，都存在一个邻域，这个邻域同胚于$\mathbb{R}^n$，那么这个空间被称为一个$n$维拓扑流形，或者简称流形。
+\end{defi}
+
+现在转向从老空间构造新空间。先说从大到小的。
+
+从子集$A\subset X$到原集$X$有一个自然的映射$\iota: A \hookrightarrow X$满足$\iota(x)=x$.子集作为一个集合，自然可以有着子集的拓扑。一方面，我们自然希望$\iota: A \hookrightarrow X$是一个连续函数，那么任意在$X$上连续的函数$f$，都有$f\circ \iota$在$A$上是连续的。另一方面，我们自然也希望映到$X$上的连续函数也要是一个映到$A$上的函数。前者要求$A$要有足够多的开集，后者要求这样的开集不能太多。下面要定义的拓扑，则是一个同时满足上面两点的拓扑，所以他享有子空间拓扑这样的名字。
+
+\begin{defi}
+子空间拓扑：对于拓扑空间$X$的子集$A$，$\mathcal{J}_A=\{U\subset A: U=A \cap V \text{对于某个开集}V\subset X\}$被称为子空间拓扑。赋予了子空间拓扑的$A$被称为子空间。
+\end{defi}
+上面定义的合理性要证明$\mathcal{J}_A$确实是一个拓扑。
+\begin{theo}
+假设$A\subset X$是一个子空间，对于任意的拓扑空间$Y$，一个映射$f:Y \rightarrow A$ 是连续的当且仅当$Y \xrightarrow{f} A \stackrel{\iota}{\hookrightarrow} X$是连续的。
+\end{theo}
+这个定理很本质地刻画了子空间拓扑，下面的唯一性定理直接表明了这点。
+\begin{theo}
+假设$A\subset X$是一个子集，$A$上的子空间拓扑是唯一的拓扑使得上面的定理成立。
+\end{theo}
+
+现在转向从小到大的拓扑，积拓扑。假设$X_1,\dots,X_n$为$n$个拓扑空间，则积拓扑是集合$X_1\times\cdots\times X_n$上的拓扑。
+
+\begin{defi}
+积拓扑的基：定义$X_1\times\cdots\times X_n$上的集族$\mathcal{B}=\{U_1\times \cdots \times U_n : U_1 \text{在}   X_i\text{是开集},\,i=1,\dots,n\}$称为积拓扑的基。由这组基生成的拓扑就是积拓扑。赋予了积拓扑的$X_1\times\cdots\times X_n$被称为积空间。
+\end{defi}
+积空间上也自然有一个映射$\pi_i:X \to X_i$，我们当然希望这个映射是连续的。和上面的子空间拓扑一样，也有一个定理本质地刻画了积拓扑。
+\begin{theo}
+假设$X_1\times\cdots\times X_n$是一个积空间。对于任意的拓扑空间$B$，一个映射$f:B\to X_1\times\cdots\times X_n$是连续的当且仅当任意的$f_i=\pi_i\circ f$是连续的：
+\[
+   \xymatrix{
+    &  X_1\times\cdots\times X_n \ar[dd]^{\pi_i} \\
+    &&\\
+   B \ar[uur]^{f}  \ar[r]_{f_i}  &X_i.
+    }
+\]
+\end{theo}
+正因为和子空间的相似性，我们也有理由相信积拓扑也成立唯一性定理。
+
+现在转向商拓扑，这个拓扑依然是从大到小的一个拓扑。商拓扑的名字来自类似于商群，经常用来粘合等价类，所以很容易可以看到应该是从大到小的。
+
+\begin{defi}
+令$X$是一个拓扑空间，$Y	$是一个集合。称满射$\pi$给予了$Y$商拓扑就是说对于任意的集合$U$是开的当且仅当原象集$\pi^{-1}(U)$是开的。该满射被称为商映射。
+\end{defi}
+
+因为确定等价类的映射都是满射，类似于$\pi:p\mapsto [p]$这种映射，所以等价类构成的空间$X/\sim$的拓扑由$\pi$引入。一个点的原象$\pi^{-1}(p)$有个特殊的名字，称为在$p$点的纤维。
+
+\begin{theo}
+假设$\pi:X\to Y$是商映射，对于任意拓扑空间$B$，映射$f:Y \to B$是连续的当且仅当$f \circ \pi$是连续的。
+\[
+   \xymatrix{
+   X\ar[dd]_\pi \ar[ddrr]^{f\circ\pi}&&\\
+   &&\\
+   Y\ar[rr]_f&&B.
+    }
+\]
+\end{theo}
+\begin{theo}
+对于任意满射$\pi:X\to Y$，满足上面定理的就是商映射。
+\end{theo}
+一个集合$E\subset X$的开覆盖就是说存在$X$中的开集族$\mathcal{B}=\{B_v\}$（这里指标不是说这是可数的），使得$E \subset \cup_v B_v$.所谓子覆盖就是说，一个$\mathcal{B}$的子族也是$E$的开覆盖。一个开覆盖如果是有限的，那么就称呼其为有限开覆盖。一个集合是紧的，就是当他的所有开覆盖都有有限子开覆盖。
+
+紧集就是拓扑意义下的有限集，一个集合如果是紧的，那么这个集合有着很多类似于有限集的优良性质。
+\begin{theo}
+设$X,Y$都是拓扑空间，而$f:X\to Y$是连续函数。对于$X$中的紧集$E$，$f(E)$是$Y$中的紧集。
+\end{theo}
+紧集的闭子集也是紧的。Hausdorff空间的紧集是闭的（注意Hausdorff空间的有限集是闭的）。所以在紧Hausdorff空间下，紧集和闭集是等价的。当然，紧空间的有限积和商都是紧的。
+\begin{defi}
+令$X$是一个拓扑空间，当他的每一个无穷子集都有一个极限点的时候，他被称为极限点紧致的。当他的任意点列都存在收敛到他的元素的子列的时候，他被称为列紧的。
+\end{defi}
+可以很简单看出，紧性包含着极限点紧。
+\begin{theo}
+如果拓扑空间是第一可数的Hausdorff空间，那么极限点紧包含着列紧。
+\end{theo}
+\begin{theo}
+如果拓扑空间是第二可数的列紧空间，则他是紧的。
+\end{theo}
+上面的几个定理使得下面一个推论成立：
+\begin{theo}
+如果拓扑空间是第二可数的Hausdorff空间，则极限点紧、列紧和紧性等价。
+\end{theo}
+所以说，在流形上，我们不必区分这三种紧性。我们知道，度量空间是第一可数而且是Hausdorff的，此外列紧的度量空间是第二可数的，那么从上面的推论可以得到：在度量空间上，三种紧性等价。
+\begin{theo}
+闭映射引理：设$F$是闭映射且连续。那么如果$F$是单的，那么这是一个拓扑嵌入。如果$F$是满的，那么这是一个商映射。如果是双射，那么$F$是一个同胚。
+\end{theo}
+\begin{theo}
+如果$F$是从一个紧空间到Hausdorff空间的连续映射，那么$F$是闭映射。
+\end{theo}
+上面说了，紧是很强的条件，可是实际上，我们有时候并没有那么强的条件，可是一些紧的性质确实可以保留下来。所谓的局部紧空间就是如此。如果空间任意一点的都存在一个邻域，他被包含于这个空间中的一个紧集，那么这个空间就被称为局部紧的。
+
+显然紧可以推出局部紧，这是因为每一个邻域的闭包都是紧的。如果当一个集合的闭包是紧的，那么这个集合就被称为预紧的。下面一个定理更为常用一些。
+
+\begin{theo}
+在Hausdorff空间上，局部紧和每一点都存在一个预紧邻域等价。
+\end{theo}
+下面这个引理挺常见的。
+\begin{theo}
+收缩引理：设$X$是一个局部紧的Hausdorff空间。如果$x\in X$的一个邻域为$U$，那么存在一个$x$的预紧邻域$V$使得$\overline{V}\subset U$.
+\end{theo}
+比紧空间性质还好一些的是，局部紧空间的任何开集或者闭集都是局部紧的。
+\begin{theo}
+如果$f:X\to Y$是两个局部紧空间间的连续函数，如果他的每一个紧集的原象也是紧的（称为proper的），那么他是闭映射。
+\end{theo}
+这使得我们可以使用闭映射引理。
+\begin{defi}
+抽象单纯复形(simplicial complex)是抽象单形(simplex)的集合。单形就是有限集。单纯复形要求每一个他的单形的非空子集也是它的单形。
+\end{defi}
+单形的元素被称为顶点(vertex)，任何一个单形的非空子集被称为单形的面(face)。对于顶点的面，我们还称为顶点。
+
+单形的维度定义为集合的$\mathrm{order}-1$，比如集合有$k+1$个元素，则被称为
+$k$维的。
+单纯复形的维度定义为其所有单形维度的上确界，当然可能是无限的。
+
+单纯复形被称为有限的，如果他是有限集。单纯复形称为局部有限的，如果他的每一个顶点都只包含于有限个单形中。
+
+如果单纯复形的子集也是单纯复形，则被称为子复形。我们称单纯复形的$k$-骨架(skeleton)为单纯复形的所有维度小于等于$k$的单形的集合，是一个$k$维子复形。0-骨架就是所有顶点的集合。
+
+两个单纯复形之间的映射被称为单形映射(simplicial map)如果他将单形映射到单形且将顶点映射到顶点。$f(\{v_0,\dots,v_k\})=\{f_0(v_0),\dots,f_0(v_n)\}$，其中$f_0$是0-骨架到0-骨架的映射，称为顶点映射。
+
+对于任意的欧几里得单纯复形，可以令一个抽象单纯复形为这个欧几里得单纯复形的0-骨架的任意有限子集的集族，这个抽象单纯复形被称为顶点系(vertex scheme)。
+
+不是所有抽象单纯复形都是一个欧几里得单纯复形的顶点系，欧几里得单纯复形要求局部有限且有限维的。
+
+对于任意有限集，我们可以定义自由模(free module)。为每一个抽象单形$\{v_0,\dots,v_k\}$定义一个$\mathbb{R}$上的自由模，当然这样就成了一个矢量空间$\mathbb{R}\langle v_0,\dots,v_k\rangle$。
+每一个$\mathbb{R}\langle v_0,\dots,v_k\rangle$中的元素都可以写作
+$t=t_iv^i$，其中$v^i:\{v_0,\dots,v_k\}\to\mathbb{R}$，满足$v^i(v_j)=\delta_j^i$.
+其中我们定义抽象单形$\{v_0,\dots,v_k\}$的几何实现为$\langle v_0,\dots,v_k\rangle\subset \mathbb{R}\langle v_0,\dots,v_k\rangle$，几何实现为所有使得$0\leq t_i\leq 1$且$\sum_{i=0}^kt_i=1$的$t=t_iv^i$的集合。单形$\sigma$的几何实现一般记做$|\sigma|$。
+
+然后定义复形的几何实现，复形$\mathcal{K}$的几何实现$|\mathcal{K}|$定义为他的所有单形的几何实现的并。现在我们对$|\mathcal{K}|$引入拓扑。这个是从所有单形的几何实现的不交并的商拓扑引入的。商映射如下：
+\[\pi:\coprod_{\sigma\in\mathcal{K}}|\sigma|\to|\mathcal{K}|.\] 
+这就是说，$|\mathcal{K}|$中的开集当且仅当他交每一个$|\sigma|$的时候也是开集。
+任意的单形映射$f:\mathcal{K}\to \mathcal{L}$都引入了他们几何实现之间的映射$​|f|​:|\mathcal{K}|\to|\mathcal{L}|$，如果$\mathcal{K}$是一个欧几里得单纯复形$K$的顶点系，那么$|\mathcal{K}|$就同胚于$|K|$。
+
+任何一个同胚于单纯复形几何实现的拓扑空间被称为多面体(polyhedron)。这样的同胚映射被称为三角剖分(triangulation)，可以三角剖分的拓扑空间（即任意多面体）被称为可三角剖分的。
+
+我们称呼图为带有三角剖分的1维多面体。
+
+\begin{theo}
+任意的一维流形都被一个一维单纯复形三角剖分。
+\end{theo}
+这个定理在二维三维也正确，但是四维就是不正确的了，更高维的性质尚未探索清楚。
+
+下面是一维流形的分类。
+
+\begin{theo}
+任意连通的一维流形，如果他是紧的，则同胚于单位圆，如果不是，则同胚于实直线。
+\end{theo}
+被三角剖分之后，如果是周期的就是圆，不是就是实直线。
+
+\end{document}

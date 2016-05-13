@@ -1,0 +1,224 @@
+\chapter{附录}
+\section{Lie群和Lie代数}
+Lie群是一个可微群，即是他一方面有着群的结构，而另一方面还是一个可微流形，其中群的运算乘法和逆是可微的。因为Lie群有着可微结构，那么我们就可以对其局部线性化，特别地，单位元附近的局部线性化就构成了Lie代数的内容。
+
+\begin{defi}
+一个Lie群$G$的Lie代数$\lag$就是其单位元处的切空间。
+\end{defi}
+下面还将要陈述另外两个Lie代数的等价形式，从不同的等价形式，可以比较轻松地得到Lie代数的不同性质。
+\begin{defi}
+现在有一个Lie群$G$，我们称可微同态$\phi:\rr\to G$是$G$的一个单参子群，其中$\rr$当做加法群。
+\end{defi}
+注意和单参（可微）变换群的区别。此外，$\phi(0)=e$.
+\begin{defi}记左平移$L_a:x\mapsto ax$，如果矢量场$X_x$满足$(L_a)_*X_a=X_{ax}$，则称$X_a$是一个左不变矢量场。
+\end{defi}
+令$X$是一个左不变矢量场，对于每一个群元$x$，我们都有$X_x=(L_x)_*X_e$.反过来，我们一定有$X_e=(L_{x^{-1}})_*X_x=(L_x)^{-1}_*X_x$，这样我们就建立了单位元处的切矢量$X_e$和左不变矢量场之间的一一对应。
+\begin{pro}
+Lie代数$\lag$和$G$上面的左不变矢量场构成的矢量空间之间存在着线性同构。
+\end{pro}
+
+设$f:G\to G$是一个微分同胚，那么从
+\[
+	[X,Y]=\lim_{t\to 0}\frac{1}{t}\left(Y-(\varphi_t)_*Y\right),
+\]
+其中$\varphi_t$由矢量场$X$生成，即对于变换。
+可以得到
+\[
+	f_*[X,Y]=\lim_{t\to 0}\frac{1}{t}\left(f_*Y-f_*(\varphi_t)_*(f_*)^{-1}f_*Y\right)=\lim_{t\to 0}\frac{1}{t}\left(f_*Y-(f\circ\varphi_t\circ f^{-1})_*f_*Y\right),
+\]
+而$f\circ\varphi_t\circ f^{-1}$由$f_*X$生成，所以
+\[
+	f_*[X,Y]=[f_*X,f_*Y].
+\]
+若$f=L_a$，那么我们立刻就得到了左不变矢量场的对易子也是左不变的。所以对于Lie代数来说，他容许一个二元线性运算$[\bullet,\bullet]:\lag\times \lag\to \lag$，故Lie代数确实是一个代数。
+\begin{pro}
+Lie代数上还满足：
+
+\no{1} $[X,Y]=-[Y,X]$,
+
+\no{2} $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$.
+\end{pro}
+第一条反对称性从矢量场的$[X,Y]=X\circ Y-Y\circ X$来看是显然的。而第二条称为Jacobi恒等式，直接计算即可验证。可以如下记忆Jacobi恒等式，$X,Y,Z$的三种右手方向构成的置换和为$0$，或者说，$[X_i,[X_j,X_k]]$中$ijk$是$123$的偶置换。
+
+适当改写Jacobi恒等式，我们可以得到
+\[
+[X,[Y,Z]]=[[X,Y],Z]+[Y,[X,Z]],
+\]
+如果记$A(X):Y\mapsto [X,Y]$,于是
+\[
+A(X)[Y,Z]=[A(X)Y,Z]+[Y,A(X)Z],
+\]
+因此$A(X)$就是一个Lie代数上面的导子。
+
+应用一阶微分方程解的存在和唯一性定理，则过每一点$x$存在唯一的积分曲线，他的速度矢量都属于$X$.令$\phi:\rr\to G$是$X$的积分曲线且$\phi(0)=e$.使用$X$的左不变性可以得到$l_a\circ \phi:t\mapsto a\,\phi(t)$是$X$的积分曲线且$a$是其起点。因此$
+\phi(s)\phi(t)=\phi(s+t)$，$\phi$是$G$的一个单参子群。这样，我们建立了单参子群和左不变矢量场之间的联系。由于左不变矢量场和Lie代数之间的同构，我们也建立了单参子群和Lie代数之间的联系。
+
+\begin{defi}
+对任意的$X\in \lag$，令$\exp(X)=e^X=\phi_X(1)$，其中$\phi_X$是唯一的以$X$为初始速度矢量的单参子群。映射$\exp:\lag\to G$被称为$G$的指数映射。
+\end{defi}
+可以看到$\exp(tX)=\phi_{tX}(1)=\phi_{X}(t)$.因此
+\[
+\exp(tX)\exp(sX)=\phi_{X}(t)\phi_{X}(s)=\phi_{X}(t+s)=\exp((t+s)X).
+\]
+就和一般的指数表现得那样。但如果$[X,Y]\neq 0$，一般来说\[
+\exp(X)\exp(Y)\neq \exp(X+Y).
+\]
+
+\begin{theo}
+对于$A\in\mathfrak{gl}(n,\rr)$，指数映射有如下级数展开
+\[
+	e^A=1+\sum_{n=1}^\infty \frac{A^n}{n!}=\sum_{n=0}^\infty \frac{A^n}{n!},
+\]
+对于任意的矩阵$A$都是收敛的。
+\end{theo}
+
+这个关系可以猜出来猜出这个关系，我们考虑$e^{tA}$,将其在$t=0$附近展开，有
+\[
+e^{tA}=I+tA+O(t^2),
+\]
+然后对于任意的正整数$n$和固定的$t$我们有
+\[
+e^{tA}=\left(e^{tA/n}\right)^n=\left(I+\frac{t}{n}A+O\left(\frac{1}{n^2}\right)\right)^n,
+\]
+然后令$n\to\infty$，就有
+\[
+e^{tA}=\lim_{n\to\infty}\left(I+\frac{t}{n}A\right)^n.
+\]
+使用二项式展开，就可以得到其级数展开
+\[
+	e^{tA}=1+\sum_{n=1}^\infty \frac{(tA)^n}{n!}=\sum_{n=0}^\infty \frac{(tA)^n}{n!},
+\]
+最后$t=1$即可。
+
+上面的过程可能不怎么严谨，在矩阵的情况下，直接用级数定义指数映射反而可能更加简单。
+
+Lie群$G$的切丛$TG$倒是相当有趣，因为我们可以定义$(L_{a^{-1}})_*$把$T_aG$始终映射到$T_eG=\lag$来考虑，所以切丛就被平凡化了。与这相关的概念即Maurer-Cartan形式。
+\begin{defi}
+$G$是一个Lie群，他的切丛记做$TG$，形式$\theta:v\mapsto (L_{g^{-1}})_*v$被称为Maurer-Cartan形式。
+\end{defi}
+可以看到$\theta:TG\to \lag$，因此Maurer-Cartan形式可以看做一个$\lag$值形式。且对于任意的$L_h^*$，我们都有
+\[
+(L_h^*\theta)v=\theta((L_h)_*v)=(L_{(hg)^{-1}})_*(L_h)_*v=(L_{(g)^{-1}})_*v=\theta(v).
+\]
+所以Maurer-Cartan形式是左不变的。
+
+现在来看具体的例子，设所有$n\times n$的实（复）矩阵构成的集合为$\mathrm{M}(n,\rr)$（$\mathrm{M}(n,\cc)$），其中$\det A\neq 0$的矩阵按矩阵乘法构成一个群$\mathrm{GL}(n,\rr)$（$\mathrm{GL}(n,\cc)$），我们称为一般线性群，单位元是$I$。一般线性群是一个Lie群，矩阵群上的微分定义使得我们可以直接计算一般线性群的Lie代数。在一般线性群$G$上
+\[
+	(L_g)_{*a}v=\lim_{t\to 0}\frac{1}{t}(L_g(a+tv)-L_g(a))=\lim_{t\to 0}\frac{1}{t}(L_g(tv))=L_g(v)=gv.
+\]
+其中$v\in T_aG$.
+
+所以一般线性群上面的Maurer-Cartan形式即为
+\[
+	\theta(v)=L_{g^{-1}}(v)=g^{-1}v.
+\]
+其中$g$和$v$都是矩阵，矩阵乘矩阵还是矩阵，所以Lie代数也是矩阵的形式。设$\dd g=(\dd x_{ij})$，那么$v$就可以写成$\dd g(v)$，因为$\dd x_{ij}(v)=v_{ij}$，则
+\[
+	\theta=g^{-1}\dd g.
+\]
+
+由于$\mathrm{GL}(n,\rr)$有自然继承于$\rr^{n^2}$的微分结构，我们可以直接计算其Lie代数$\mathfrak{gl}(n,\rr)$上的交换子形式。设$A\in\mathfrak{gl}(n,\rr)$而$g\in\mathrm{GL}(n,\rr)$，容易验证$A_g=gA$是左不变矢量场，因为
+\[
+	(L_h)_{*}A_g=(L_h)_{*}gA=hgA=A_{hg}.
+\]
+
+记$g=(x_{ij})$，考虑与$A=(a_{ij})$和$B=(b_{ij})$相关的左不变矢量场为
+\[
+A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\partial_{ik},
+\]
+于是
+\[
+[A_g,B_g]=\left[\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\sum_{i,j,k}x_{ij}b_{jk}\partial_{ik}\right]=\sum_{i,k}\left(\sum_{j}x_{ij}\sum_{r}(a_{jr}b_{rk}-b_{jr}a_{rk})\right)\partial_{ik},
+\]
+或者
+\[
+[A_g,B_g]=(AB-BA)_g.
+\]
+所以$\mathfrak{gl}(n,\rr)$上的对易子为
+\[
+[A,B]=AB-BA.
+\]
+
+既然Lie代数$\lag$是线性空间，那么我们就可以谈论Lie群在$\lag$上的表示。这需要从伴随作用开始。
+
+Lie群$G$的伴随和他的Lie代数$\lag$的联系来自于伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_*:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$。我们将$\mathrm{Ad}:G\to \mathrm{GL}(\lag)$称为Lie群的伴随表示。
+
+\begin{pro}对于伴随，我们有
+
+\no{1} $\mathrm{Ad}_g:\lag\to \lag$是一个Lie代数间的同构，而$\mathrm{Ad}:G\to \mathrm{GL}(\lag)$是一个Lie群间的同态。
+
+\no{2} 如果$X$是$G$上的左不变矢量场，那么$\mathrm{Ad}_gX$对于任意$g\in G$也是。
+
+\no{3} 记右作用为$R$，那么$R_g^*\theta=\mathrm{Ad}(g^{-1})\theta$.
+\end{pro}
+
+第一个是显然的。第二个首先注意到左作用和右作用是可交换的，因此他们的导数也是可以交换的，那么：
+\[
+	(L_h)_*(\mathrm{Ad}_gX)=(L_h)_*(L_g)_*(R_{g^{-1}})_*X=(R_{g^{-1}})_*X=(R_{g^{-1}})_*(L_g)_*X=\mathrm{Ad}_gX.
+\]
+
+第三个设$v\in T_hG$,因此$(R_g)_*v\in T_{hg}G$，于是
+\[
+	(R_g)^*\theta(v)=\theta((R_g)_*v)=(L_{{hg}^{-1}})_*(R_g)_*
+	=(L_{{g}^{-1}})_*(R_g)_*(L_{{h}^{-1}})_*v=\mathrm{Ad}(g^{-1})\theta.
+\]
+
+\begin{defi}
+设$\lag$是一个Lie代数，那么
+
+\no{1} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)=\{T\in \mathrm{GL}(\lag)\,|\,T[u,v]=[Tu,Tv],\,\forall u,v\in\lag\}$
+
+\no{2} $\mathfrak{gl}_{\mathrm{Lie}}(\lag)=\{T\in \mathfrak{gl}(\lag)\,|\,T[u,v]=[Tu,v]+[u,Tv],\,\forall u,v\in\lag\}$
+\end{defi}
+
+\begin{pro}如下陈述成立：
+
+\no{1} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)$是一个Lie群。
+
+\no{2} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)$的Lie代数是$\mathfrak{gl}_{\mathrm{Lie}}(\lag)$.
+
+\no{3} 令$G$的Lie代数为$\lag$，那么$\ad(u)v=[u,v]$是$\mathrm{Ad}:G\to \mathrm{GL}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}$.
+\end{pro}
+
+在第三点中，我们看到了曾经在Jacobi恒等式那边指出的导子，可以看到，这确确实实就是一个导数。
+
+拿一般线性群举个例子，前面已经计算过了$(L_g)_*=L_g$，那么同样$(R_g)_*=R_g$，所以
+\[
+	\mathrm{Ad}_g=(L_g)_*(R_{g^{-1}})_*=L_gR_{g^{-1}}.
+\]
+那么
+\[
+	\mathrm{Ad}_g(v)=(L_g)_*(R_{g^{-1}})_*v=L_gR_{g^{-1}}v=gvg^{-1}.
+\]
+现在求他的Lie代数，考虑$u,v\in \lag$，令$u(t)$是一个以$u$为初速度的单参子群，那么我们有
+\[
+\frac{\dd}{\dd t}(\mathrm{Ad}_{u(t)}(v))=u'(t)vu^{-1}(t)+u(t)v(u^{-1}(t))'=u'(t)vu^{-1}(t)-u(t)vu^{-1}(t)u'(t)u^{-1}(t).
+\]
+然后令$t=0$，那么$u(0)=u^{-1}(0)=I$，而$u'(0)=u$，那么就得到了单位元处的切矢量，也就是Lie代数
+\[
+\ad(u)v=uv-vu=[u,v].
+\]
+
+类似的手段譬如
+\[
+T(t)[u,v]=[T(t)u,T(t)v],
+\]
+求个导，然后在$t=0$处的值为
+\[
+T'(0)[u,v]=[T'(0)u,T(0)v]+[T(0)u,T'(0)v],
+\]
+注意到$T(0)$是恒等变换，而$T'(0)$就是我们需要的Lie代数$B$，他需要满足的关系就是
+\[
+B[u,v]=[Bu,v]+[u,Bv],
+\]
+其显然是Lie代数上面的一个导子。
+
+\begin{defi}
+令$\lag$是一个Lie代数，那么他的有限维表示$(\rho,V)$就是一个映射$\rho:\lag\to\mathfrak{gl}(V)$.
+\end{defi}
+
+所以说$\ad$就是一个Lie代数的表示。一个Lie群的表示可以引出他的Lie上面的一个表示如下：
+\[
+	\rho_*(X)=\left.\frac{\dd}{\dd t}\rho(\exp(tX))\right|_{t=0},
+\]
+因此$\rho(\exp(tX))=\exp(\rho_*(X))$。

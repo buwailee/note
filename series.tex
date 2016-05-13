@@ -1,0 +1,1242 @@
+%!TEX program = xelatex
+\documentclass[10pt]{book}
+\usepackage{amssymb,amsfonts,amsthm,amsmath,bm}
+\usepackage{ctex}
+%\usepackage{extarrows}
+\usepackage[left=21mm,text={148mm,200mm},paperwidth=185mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{titletoc}%使用目录
+	\theoremstyle{plain}%定理环境样式
+	\newtheorem{pro}{Proposition}[chapter]% 定义命题环境
+	\newtheorem{defi}{Definition}[chapter]% 定义命题环境
+	\newtheorem{theo}{Theorem}[chapter]% 定义定理环境
+
+%定义你的命令
+\include{defs}
+
+\begin{document}
+\title{复变函数拾遗}
+\author{Buwai.Lee}
+\date{\today}
+\maketitle %标题
+
+\chapter{Complex Analysis}
+这一章主要参考的是沙巴特的《复分析导论（第一卷）》（可以看做其笔记），基本上都可以在上面找到证明。基本可以看成其笔记，所以不是自补自足的，相当简略。我在这里尝试的是去理顺主线，虽然这条主线书上本来就有。
+
+\begin{pro}
+考虑函数$f(z)=(z-z_0)^n$，然后以$z_0$为圆心，做半径为$r$的圆$\gamma$，可以计算得\[
+\int_{\gamma}f(z)\mathrm{d}z=\begin{cases}
+	2\pi i, &\text{ if }n=-1;\\
+	0,&\text{ if }n\neq-1.
+\end{cases}
+\]
+\end{pro}
+\begin{theo}
+	Cauchy积分定理：如果函数$f \in \mathcal{O}(D)$，就是说$f$在D内全纯，那么对D内的任意任意两条同伦的道路$\gamma_1$和$\gamma_2$，他们或者有着相同的端点，或者都是闭合的，那么
+	\[
+		\int_{\gamma_1}f(z)\mathrm{d}z=\int_{\gamma_2}f(z)\mathrm{d}z.
+	\]
+\end{theo}
+Cauchy积分定理有一个很简单的推论：当回路同伦于0，则积分为0.希望在多联通区域使用积分定理时，一般需要加强条件，要求区域的闭包是紧的，$f$在闭包上全纯，区域的边界为有限条连续曲线。积分定理这时候表明沿着定向边界$\partial D$的积分为0.
+
+他有某种程度上的逆定理。
+\begin{theo}
+	Morera：如果函数$f $在区域$D$上连续，且沿着区域$D$内的任意三角形（他的闭包要求是$D$的紧子集）积分都为$0$，那么的$f \in \mathcal{O}(D)$.
+\end{theo}
+考虑一个单联通区域满足上面要求，但区域内有一个奇点。我们使用Cauchy积分定理，以奇点为圆心做一个小圆，那么在这个圆外但区域内是全纯的，那么这个小圆和区域的边界是同伦的，代表着绕着这两个回路的积分是相同的，小圆的半径不是本质的，无论多小，他和边界都是同伦的。现在考虑一个很简单的函数$f(z)/(z-z_0)$，$f$在$D$上全纯。则我们有下面的定理。
+
+\begin{theo}
+	Cauchy积分公式：如果函数$f$区域$D$的紧闭包内全纯的，且$\partial D$为有限条连续曲线，那么对任意$z\in D$，我们都有
+	\[
+		f(z)=\frac{1}{2\pi i}\int_{\partial D}\frac{f(\zeta)}{\zeta -z}\mathrm{d}\zeta.
+	\]
+\end{theo}
+
+这个只要缩小小圆的半径，然后靠$f(z)$的连续性和$1/(\zeta -z)$的积分为$2\pi i$就可以得证。
+\begin{theo}
+	Taylor级数：如果函数$f \in \mathcal{O}(D)$，就是说$f$在D内全纯，那么对D内的任意一点$z_0$我们可以在$z_0$的圆盘邻域$U=\{|z-z_0|<r\}\subset D$中该函数都可以表示为收敛幂级数和的形式：
+	\[
+		f(z)=\sum_{n=0}^\infty c_n(z-z_0)^n,
+	\]
+其中
+	\[
+		c_n=\frac{1}{2\pi i}\int_{\gamma_r}\frac{f(\zeta)}{(\zeta -z_0)^{n+1}}\mathrm{d}\zeta
+	\]
+\end{theo}
+
+\begin{theo}
+	Cauchy不等式：设$f$在闭圆盘$\bar{U}=\{|z-z_0|\leq r\}$中全纯，且他的模在圆$\partial U$上不超过$M$，于是以$z_0$为圆心的$f$的Taylor展开的系数满足
+	\[|c_n|\leq \frac{M}{r^n}\]
+\end{theo}
+证明只要对上面的积分表达式进行估值就可以。所以如果$f$在全平面$\mathbb{C}$上全纯且有界的话，对任意一点展开，然后使用上面的不等式就可以得到$f$是一个常数。这个结论称为Liouville定理。
+
+\begin{theo}
+	Abel：如果幂级数
+	\[ \sum_{n=0}^\infty c_n (z-a)^n\]
+	在某点$z_0$收敛，那么幂级数在圆盘$U=\{z:|z-a|<|z_0-a|\}$收敛，他$U$的每一个紧子集上绝对且一致收敛。 
+\end{theo}
+可以看到幂级数的收敛一般是在一个圆盘里面，在圆盘外是不收敛的，在圆盘内是收敛的，而在圆盘边界上就不知道了，这样的圆盘叫做幂级数的收敛圆盘，半径称为收敛半径。我们约定圆盘半径为0就是他不收敛，圆盘半径为$\infty$就是说他在$\mathbb{C}$上都收敛。下面的公式给出了一个很实用的计算收敛半径的方法。
+\begin{theo}
+	Cauchy-Hadamard公式：幂级数
+	\[ \sum_{n=0}^\infty c_n (z-a)^n\]
+收敛半径$0\leq R \leq \infty$由下列公式确定：\[\varlimsup_{n\to \infty} \sqrt[n]{|c_n|}=\frac{1}{R}.\]
+\end{theo}
+\begin{theo}
+	幂级数在收敛圆盘的幂级数和是一个全纯函数。
+\end{theo}
+我们形式地写出$\sum_{n=0}^\infty c_n (z-a)^n$的导数（假设可以逐项微分之）\[\varphi(z)=\sum_{n=1}^\infty nc_n (z-a)^{n-1},\]然后$\varlimsup_{n\to \infty} \sqrt[n]{n|c_n|}=\varlimsup_{n\to \infty} \sqrt[n]{|c_n|}$所以收敛半径相同，由于在任意紧子集上一致收敛，所以$\varphi(z)$在收敛圆盘内里面连续。此外连续和一致收敛，所以我们可以将$\varphi(z)$逐项积分。由Cauchy积分定理，我们可以知道级数和对任意闭合回路的积分都是0.现在以$a$为原点，做到任意$z$点的直线$[a,z]$的积分，同上的理由可以逐项积分得到
+\[
+f_0(z)=\int_{[a,z]}\varphi(\zeta)\mathrm{d}\zeta=\sum_{n=1}^\infty\int_{[a,z]} nc_n (\zeta-a)^{n-1}\zeta=\sum_{n=1}^\infty c_n (z-a)^n=f-c_0.
+\]
+所以$f-c_0$在每一点都可微，且导数为$\varphi(z)$，所以$f(z)=c_0+f_0(z)$也在每一点都有导数$\varphi(z)$。最后我们推论，任意全纯函数的导数也全纯。使用归纳法，也就是说全纯函数有着任意阶的导数，且导数也都全纯。此外，我们可以看到，幂级数可以逐项微分。
+\begin{theo}
+	收敛幂级数是他的和函数的Taylor级数。换句话说，幂级数\[f(z)=\sum_{n=0}^\infty c_n (z-z_0)^n\]在圆盘$\{|z-z_0|<R\}$收敛，他的系数由
+	\[
+		c_n=\frac{f^{(n)}(z_0)}{n!}
+	\]
+	确定。
+\end{theo}
+证明只要去计算$f(z)$在$z_0$的任意阶导数就可以了。从这个定理可以看出，幂级数展开的系数是唯一的。这就是说，我们可以使用任何方式展开幂级数，只要方式合理，那么最后得到的幂级数的系数都是相同的。
+
+对比上面的Taylor级数展开的系数，我们容易得到\[f^{(n)}(z)=\frac{n!}{2\pi i}\int_{\gamma_r}\frac{f(\zeta)}{(\zeta -z)^{n+1}}\mathrm{d}\zeta.\]从某种角度看来，我们甚至可以认为全纯函数的导数都是“用积分来表示的”。
+
+从上面的讨论可以看出，全纯函数的幂级数是可以逐项微分的，那么对于任意的函数项级数，什么条件下函数项级数使可以逐项微分的？由于全纯函数的导数都是“用积分来表示的”，而逐项积分只要一致收敛就可以了，我们有理由相信对于微分，我们也不用实分析下那么强的条件（级数的收敛性及导数级数的一致收敛性），而只要一致收敛即可。
+
+\begin{theo}
+	Weierstrass：如果函数项级数\[f(z)=\sum_{n=0}^\infty f_n(z)\]在区域$D$上收敛，每一项$f_n$都在$D$上全纯，且级数在$D$的任意紧子集上一致收敛，则$f(z)$全纯，而且可以逐项微分任意次。
+\end{theo}
+证明真的就是逐项积分。
+
+一个奇点是孤立的，就是说他存在一个邻域，在这个邻域里面不存在其他奇点。当函数趋向于孤立奇点的时候，没有极限的奇点称为本性奇点，有无穷极限的奇点称为极点，有有限极限的奇点称为可去奇点。
+
+现在我们考虑在一个孤立奇点附近的展开。因为$f$在圆盘内不全纯了，但是在圆盘内全纯，所以我们有定理。
+\begin{theo}
+	Laurant级数：任意在圆环$r<|z-a|<R$上全纯的函数$f$能在圆环上展开为收敛级数\[f(z)=\sum_{n=-\infty}^\infty c_n(z-a)^n,\]设$\gamma_\rho=\{|z-a|=\rho\}$其中$r<\rho<R$，系数由下式确定
+	\[
+	c_n=\frac{1}{2\pi i}\int_{\gamma_\rho}\frac{f(\zeta)}{(\zeta -a)^{n+1}}\mathrm{d}\zeta.
+	\]
+\end{theo}
+由于这个级数可以对正幂和负幂拆成两个幂级数，根据Cauchy-Hadamard公式，我们可以计算得$1/R=\varlimsup_{n\to \infty} \sqrt[n]{|c_n|}$以及$r=\varlimsup_{n\to \infty} \sqrt[n]{|c_{-n}|}$.同Taylor级数，Laurant级数的展开也是唯一的。Cauchy不等式也有着相同的形式$|c_n|\leq M/\rho^n$.
+
+如果我们可以以原点为中心打开Laurant级数\[f(z)=\sum_{n=-\infty}^\infty c_nz^n,\]而且单位圆在我们的圆盘里面，那么$z=e^{it}$，则\[\varphi(t)=f(e^{it})=\sum_{n=-\infty}^\infty c_ne^{int},\]系数为
+	\[
+	c_n=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{\zeta^{n+1}}\mathrm{d}\zeta=\frac{1}{2\pi}\int_0^{2\pi}f(t)e^{-int}\mathrm{d}t.
+	\]
+这就是经典的Fourier级数。
+	
+	一个函数$f$在某个孤立奇点$a$的留数$\mathrm{res}_af$定义为\[\mathrm{res}_af=\frac{1}{2\pi i}\int_{\gamma}f\mathrm{d}z,\]其中$\gamma$为绕着孤立奇点的小圆。当这个奇点为无穷远点的时候，我们在复球面上来看，这个小圆依旧是逆时针的，但是变到复平面上，却应该是一个足够大的顺时针的圆。
+	
+	可以直接计算得到，若$a$不是无穷远点，那么在$a$点的留数为以$a$点为中心的Laurant级数展开的$-1$次幂的系数$c_{-1}$.在无穷远点的留数定义为Laurant级数展开$-1$次幂的系数的相反数$-c_{-1}$.
+	
+\begin{theo}
+	Cauchy留数定理：设$f$在区域$D$上除了有限个孤立奇点外处处全纯，又设区域$G$的紧闭包在$D$内，且$\partial G$不含有奇点，那么\[\int_{\partial G}f\mathrm{d}z=2\pi i \sum_\nu \mathrm{res}_{a_\nu}f.\]其中求和是在$G$内所有的奇点进行的。
+\end{theo}
+证明就是去掉那些围绕奇点的小圆然后在边界上的积分为0，而小圆的积分则变成留数的计算。此外可以计算得到，如果函数$f$在复平面上只有有限个奇点，那么\[\mathrm{res}_{\infty}f+\sum_\nu \mathrm{res}_{a_\nu}f=0.\]
+
+留数经常被用来计算一些实积分，但就应用上，计算机的数值计算是更加方便的事情。这里有一个经常被用来使用的引理。
+
+\begin{theo}
+	Jordan引理：设$f$在上边平面上除了孤立奇点外处处全纯，并且在半圆弧$\gamma_R=\{|z|=R,\mathrm{Im}z\geq 0\}$上当$R\to \infty$时$M(R)=\max |f(z)| \to 0$（这里的趋向无穷只要能挑出一个不含奇点的子序列趋向就可以了），于是对任意的$\lambda>0$,\[\lim_{R\to \infty}\int_{\gamma_R}f(z)e^{i\lambda z}\mathrm{d}z=0.\]
+\end{theo}
+从Laurant级数可以看出奇点的分类。
+\begin{theo}
+当奇点不是无穷远点的时候，Laurant级数的负次幂的个数为$0$的时候，奇点是可去奇点。个数有限时为极点，个数无限的时候为本性奇点。当奇点是无穷远点的时候，当正次幂的个数为$0$的时候，是可去奇点，当正次幂的个数有限的时候为极点，无限的时候为本性奇点。
+\end{theo}
+无穷远点的性质可以变到$f(1/z)$在$z=0$的性质研究，所以上面从负次幂变到正次幂是可以理解的。因为非无穷远点的奇点上负次幂们的重要性，所以负次幂们被称为Laurant级数的主部。相应的，无穷远点的主部就是正次幂们。
+
+Laurant级数在$n$阶分支点的推广叫做Puiseux级数。
+\begin{theo}
+	Puiseux级数：在$n$阶分支点的一个有孔邻域$V=\{0<|z-a|<R\}$中的解析函数可以展开为\[\sum_{k=-\infty}^\infty c_k(z-a)^{k/n}.\]
+\end{theo}
+先提及几个几何方面的定理：
+\begin{theo}
+幅角原理：函数$f$在区域$G$内的零点个数$N$与极点个数$P$的差等于这个函数绕区域的定向边界一周时他的幅角增量除以$2\pi$.
+\[
+N-P=\frac{1}{2\pi}\Delta_{\partial G}\mathrm{arg}f=\frac{1}{2\pi i}\int_{\partial G}\frac{f'(z)}{f(z)}\mathrm{d}z.
+\]
+\end{theo}
+证明在于计算最后一个积分，最后一个积分等于$N-P$来自于留数定理。等于第二项来自于原函数$\ln f(z)$的Newton-Leibniz公式和他的几何直观。
+
+\begin{theo}
+Rouche定理：设函数$f$和$g$在闭区域$\bar{G}$上全纯，且边界为连续曲线，又设对于所有$z\in \partial G$有$|f(z)|>|g(z)|$.于是，函数$f$和$f+g$在$G$内有相同个数的零点。
+\end{theo}
+定理的证明在于复数乘法的几何意义：两数相乘幅角相加。因为$f+g=f(1+g/f)$，对于幅角就是$\Delta_{\partial G}\mathrm{arg}(f+g)=\Delta_{\partial G}\mathrm{arg}f+\Delta_{\partial G}\mathrm{arg}(1+g/f)$，对于第二项来说，因为$|g(z)/f(z)|<1$，所以绕一圈幅角没有增量（比如考虑绕一个圆心在$z=1$但是半径只有$1/2$的圆），那么就有$\Delta_{\partial G}\mathrm{arg}(f+g)=\Delta_{\partial G}\mathrm{arg}f$，然后毫无疑问，全纯函数没有极点，所以幅角原理给出两者零点数目相同。
+
+考虑绕原点的足够大的圆，我们令$f$是$n$次多项式，首项为$g=ax^n$，那么$f$和$f-g$满足Rouche定理的条件，所以$f$有和$g$一样多的零点$n$个。此即代数基本定理。
+\begin{theo}
+保区域原理：如果$f$在$D$上全纯且不为常函数，则$f(D)$也是一个区域。
+\end{theo}
+\begin{theo}
+最大模原理：区域$D$上的全纯函数的模在$D$内取到（局部）极大值，那么$f$是一个常数。
+\end{theo}
+考虑如果全纯函数还在$D$的闭包上连续，那么我们可以断言，全纯函数的模的极大值出现在边界上。
+
+全纯函数的微分的模方在几何上是这个函数的微分对应的平面变换的Jacobian的平方。根据反函数定理，如果全纯函数的微分不为0，那么我们就可以局部反演之，换句话说就是局部可逆，局部单叶的。但如果为0，在实分析条件下我们就无法断言其性态（比如$x^3$在$x=0$附近）。在复分析上，这个判断有着更加强的形式。
+\begin{theo}
+$f'(z)\neq 0$是全纯函数f在点z为局部单叶的充分必要条件。
+\end{theo}
+当然和实分析的时候一样，局部单叶不能推导出整体单叶。解析方法给我们提供了局部写出逆函数的表示的方法。现在设全纯函数在$z_0$附近是局部单叶的，所以局部有逆$g$满足$g\circ f (z) =z$以及$f\circ g (u) =u$.我们在$u_0$附近写出Cauchy积分公式
+\[
+z=g(u)=\frac{1}{2\pi i}\int_{\gamma'} \frac{f^{-1}(\zeta)}{\zeta-u}\mathrm{d}\zeta,
+\]
+其中$\gamma'$是一个包含$u_0$的小圆。然后变回到$z$所在的平面，对应的小圆是$\gamma$,而$z_0$在里面。
+\[z=\frac{1}{2\pi i}\int_{\gamma'} \frac{f^{-1}(\zeta)}{\zeta-u}f'(\xi)\mathrm{d}\xi=\frac{1}{2\pi i}\int_\gamma \frac{\xi f'(\xi)}{f(\xi)-u}\mathrm{d}\xi,\]
+现在
+\[\frac{1}{f(\xi)-u}=\frac{1}{f(\xi)-u_0}\frac{1}{1-(u-u_0)/(f(\xi)-u_0)}=\frac{1}{f(\xi)-u_0}\sum_{n=0}^\infty \left(\frac{u-u_0}{f(\xi)-u_0}\right)^n,\]
+然后代回我们的$z$的表达式并逐项积分
+\[z=g(u)=\frac{1}{2\pi i}\sum_{n=0}^\infty (u-u_0)^n\int_\gamma \frac{\xi f'(\xi)}{\left(f(\xi)-u_0\right)^{n+1}}\mathrm{d}\xi=\frac{1}{2\pi i}\sum_{n=0}^\infty d_n(u-u_0)^n,\]
+其中\[d_n=\frac{1}{2\pi i}\int_\gamma \frac{\xi f'(\xi)}{\left(f(\xi)-u_0\right)^{n+1}}\mathrm{d}\xi,\]分部积分计算之\[d_n=\frac{1}{2\pi ni}\int_\gamma \frac{1}{\left(f(\xi)-u_0\right)^n}\mathrm{d}\xi.\]
+
+显然的是$d_0=z_0$.至于一般的$d_n$，我们把$\gamma$选成绕$z_0$的一个小圆（由Cauchy积分定理确保这两个积分相同），这就是一个留数的问题。由于$z=z_0$时，
+$\left(f(z)-u_0\right)^n$是$n$阶零点。将其展开成Laurant级数，则负次幂有最高$n$次，所以然后为了求$c_{-1}$的值，我们乘以$(z-z_0)^n$，然后求$n-1$次导数就可以得到零次幂为$(n-1)!c_{-1}$，这时候令$z\to z_0$，其他次幂的项都变成了0,我们就提取出了$c_{-1}$.那么也得到了绕小圆积分的值。那么这样子用公式表示就是
+\[
+d_0=z_0,d_n=\frac{1}{n!}\lim_{z\to z_0}\frac{\mathrm{d}^{n-1}}{\mathrm{d}z^{n-1}}\left(\frac{z-z_0}{f(z)-u_0}\right)^n.
+\]
+这个级数展开最开始的研究归于Burmann和Lagrange.所以这样子的级数称为Burmann-Lagrange级数。
+
+我们将在整个复平面$\mathbb{C}$上全纯的函数称为整函数，只有极点的函数称为亚纯函数。我们接着考虑亚纯函数的分解。先看看整函数的一些简单性质。
+
+由于前面已经提及的Liouville定理，在整个复平面$\mathbb{C}$上全纯且有界的函数是常数，就是说有界整函数为常数。那么不平凡的整函数要求无穷远点是他的极点或者本性奇点。如果是极点，那么趋向于无穷元时候的正次幂（主部）必然是有限个的。我们构造一个新的函数，将原来的函数减去其主部，那么这个函数是整函数且有界，所以根据Liouville定理是常数。因此，以无穷远点为极点的整函数为多项式。
+
+如果亚纯函数的极点们不以无穷远点为极限点，那么极点个数是有限的（因为如果是无限的，那么这些极点必然在一个足够大半径的闭圆盘里面，有界闭圆盘是紧集。而紧集内的无穷列必然有着极限点，这是不可能的，因为极点们都是孤立奇点）。由于极点的Laurant级数主部的个数是有限的，我们可以构造原来的亚纯函数减去所有极点展开的主部。那么这个新的函数就是整函数。如果这个亚纯函数的无穷远点为极点或者可去奇点，那么构造的整函数在全平面要么为多项式要么为有界的（也就是说是常数，或者零次多项式）。所以亚纯函数就可以分解为一个正次幂的多项式和负次幂的多项式的和，或者我们称之为有理函数。
+
+非平凡的整函数和亚纯函数有下面的定理。
+\begin{theo}
+Picard小定理：非平凡的整函数（亚纯函数），除去一个（两个）可能的值外，取遍$\mathbb{C}\cup\{\infty\}$的所有值。
+\end{theo}
+我们称亚纯函数构成的级数在集合$M$内收敛或一致收敛，就是说如果只有他的有限项在$M$中有极点，并且在去掉这些项的时候，该级数在这个集合上收敛或者（一致收敛）。
+
+上面我们以及讨论过无穷原点不是极点的极限点的情况下（但无穷远点是可去奇点或者极点），亚纯函数将是一个有理函数。下面的定理是无穷远点为极点的极限点的情况，亚纯函数的分解一般不再只是有限项了，而是一个级数。
+\begin{theo}
+Mittag-Leffler\footnote{这是一个人，不是两个人。}分解：对于取值于$\mathbb{C}$中的任何满足$\lim_{n \to \infty} a_n = \infty$的点列$\{a_n\}$以及函数序列\[g_n(z)=\sum_{\nu=1}^{p_n}\frac{c^{(n)}_{-\nu}}{(z-a_n)^\nu},\]存在一个亚纯函数$f$,它在所有的$a_n$也只有这些点上是极点，并且$f$在每一个极点$a_n$上的主部为$g_n$.
+\end{theo}
+推论可能更直接一些：任何一个亚纯函数$f$可以展开为级数
+\[
+f=h+\sum_{n=1}^\infty(g_n-P_n),
+\]
+其中$h$为整函数，而$g_n$为$f$的负次幂们，$P_n$为原点为中心展开$g_n$的Taylor多项式（项数不知，可以为0项）。
+
+Mittag-Leffler问题可以推广到Riemann面上的复函数，对于问题的陈述几乎不变，只不过点列是Riemann面上的离散点列罢了。局部来看，Mittag-Leffler问题始终是有解的，即在每个点的邻域给定的主部就是这个问题的解。但是全局来看，这个解答就是不一定的了，局部过渡到全局理所当然会出现一大堆问题。这个问题可能导致了层论和Cech上同调的产生。Mittag-Leffler问题在Riemann面$M$上可解等价于Cech第一上同调$H^1(M,\mathcal{F})=0$，而Cech上同调又和奇异上同调同构。这就将分析问题和拓扑问题结合到了一起\footnote{可以参考马天的《流形拓扑学》的3.3。}。
+
+作为例子，我们展开$1/\sin^2(z)$，由于$\sin z$只在 $z=n\pi$上有一阶零点，所以$1/\sin^2(z)$在每一个 $z=n\pi$上有二阶极点，主部为$g_n(z)=1/(z-n\pi)^2$.我们直接计算级数
+\[
+g(z)=\sum_{n=-\infty}^\infty g_n(z)=\sum_{n=-\infty}^\infty \frac{1}{(z-n\pi)^2}.
+\]
+由于在任意有界圆盘上被收敛级数$1/(R-n\pi)^2$控制，所以级数在有界闭圆盘（所以也是紧的）一致收敛（亚纯函数意义上的）。我们直接计算
+\[
+h(z)=\frac{1}{\sin^2(z)}-g(z)=\frac{1}{\sin^2(z)}-\sum_{n=-\infty}^\infty \frac{1}{(z-n\pi)^2},
+\]
+这是周期函数和整函数，而且在一个周期内有界，所以在全平面有界，也就是说他是一个常数，算一算为0.所以
+\[
+\frac{1}{\sin^2(z)}=\sum_{n=-\infty}^\infty \frac{1}{(z-n\pi)^2}.
+\]
+我们这里没有用到多项式，是因为亚纯函数的级数已经收敛。如果不收敛，那么我们就减去几项然后再进行上面的步骤即可。
+
+关于这样的步骤，我们有下面的定理。
+\begin{theo}
+Cauchy方法：设有一系列圆$\gamma_n=\{|z|=r_n\}$，$\{r_n\}$是递增数列且趋向于无穷。如果在这一系列圆上，亚纯函数$f$增长得不比$z^m$快，即存在常数$A$使得对于所有$z\in \gamma_n$上有$|f(z)|\leq A|z|^m$，则在Mittag-Leffler分解中，作为$P_n$和$h$可以取次数不超过$m$的多项式。
+\end{theo}
+作为例子我们展开$f(z)=\cot z$,由于其在每一个$z=n \pi$上有一阶极点，主部为$1/(z-n\pi)$.我们考察一下一系列圆$\{|z|=\pi(n+1/2)\}$，很容易由$\cot z$的周期性看出他们有着同样的上界$A$，那么$m=0$.所以我们需要的是$f(z)=\cot z$在非零极点出的0阶泰勒多项式多项式$P_0=-1/(n\pi)$，则考察
+\[
+\sum_{\stackrel{n=-\infty}{n\neq 0}}^\infty \left(\frac{1}{z-n\pi}+\frac{1}{n\pi}\right)=\sum_{\stackrel{n=-\infty}{n\neq 0}}^\infty \frac{z}{n\pi(z-n\pi)}
+\]
+毫无疑问是收敛的。最后我们加上作为极点的0，算一下$h$作为0阶多项式是一个常数为0，最后可以得到
+\[
+\cot z =\frac{1}{z}+\sum_{\stackrel{n=-\infty}{n\neq 0}}^\infty \left(\frac{1}{z-n\pi}+\frac{1}{n\pi}\right).
+\]
+
+尽管没有写分解存在性的证明，但是从例子中也可以猜到是将每一个主部减去一些项后构造了一个级数，然后检验级数和的性质。
+
+对于整函数的分解，遵从Weierstrass，我们从零点着手，这深刻地和上面亚纯函数考虑极点联系在了一起，这个后面再说。首先看看全纯函数在零点附近的性质。在零点附近做Taylor展开，$c_0=0$，但不可能对所有的$n$都有$c_n=0$都为，否则在零点附近的邻域里，这个全纯函数恒为0，这就是说对于$f(z_0)=0$的函数，存在正整数$n$使得\[f(z)=\sum_{k=0}^\infty c_{n+k}(z-z_0)^{n+k}=(z-z_0)^n \sum_{k=0}^\infty c_{n+k}(z-z_0)^k=(z-z_0)^n \varphi(z),\]其中$\varphi(z)$是在$z$点不为0的全纯函数。
+
+如果在区域里面全纯$f$的零点集有极限点$a$，由$f$的连续性，我们可以得知，零点集的极限点也是一个零点，然后对这个零点我们使用上面的分解，如果存在$n$使得分解成立，那么在足够小的邻域内不可能会有其他零点，这和极限点的性质相悖，所以在$a$附近的邻域内$f$恒为0.
+
+现在我们取零点集的内点集，他是一个开集，根据刚刚说的，他含有$a$.
+假设$b$是这个内点集的极限点，那么在点$b$附近的领域内$f$恒为0 ，所以$b$也在这个内点集里面。因此内点集是一个闭集。内点集又开又闭且非空，由区域的连通性，我们可以得到这个内点集就是整个区域。所以$f$在区域内恒为0.
+
+根据上面证明的，如果一个整函数在全平面上存在非无穷远点的零点的极限点，那么这个整函数恒为0.很前面证明过，如果整函数的无穷远点为极点，那么整函数就是一个多项式，零点数有限。最后，我们只能要求整函数在无穷远点为本性极点，这样我们就有可能存在一个零点序列，他以无穷远点为极限点（比如$\sin z $以$\{n\pi \}$）。
+
+Weierstrass关于整函数分解的思路建立在多项式（特殊的整函数）的根分解上。根据前面证明过的代数基本定理，我们可以对多项式分解为
+\[
+P(z)=az^m\prod_{n=1}^l(z-a_n)=Az^m\prod_{n=1}^l\left(1-\frac{z}{a_n}\right).
+\]
+一般来说，非多项式非平凡的整函数存在无穷多零点，所以就面临着要处理无穷乘积
+\[
+\prod_{n=1}^\infty\left(1-\frac{z}{a_n}\right).
+\]
+对上式求对数，那么我们就需要处理级数
+\[
+\sum_{n=1}^\infty\ln \left(1-\frac{z}{a_n}\right).
+\]
+这俩的收敛性是等价的。
+
+对应于亚纯函数的Mittag-Leffler分解，我们这里就有整函数的Weierstrass分解。下面的定理几乎与上面描述过的一模一样，就是亚纯函数变成了整函数，而极点变成了零点。
+
+在此之前我们也一样定义，我们称全纯函数构成的无穷乘积在集合$M$内收敛，就是说如果只有他的有限项在$M$中有零点，并且在去掉这些项的时候，该无穷乘积在$M$上收敛。
+\begin{theo}
+Weierstrass分解：对于取值于$\mathbb{C}$中的任何满足$\lim_{n \to \infty} a_n = \infty$的点列$\{a_n\}$,存在一个整函数$f$，他以且仅以$\{a_n\}$作为其零点，并且$f$在零点$a_n$的阶就等于序列中$a_n$出现的次数。
+\end{theo}
+这里的思路就是\[
+\ln \left(1-\frac{z}{a_n}\right)=-\frac{z}{a_n}-\frac{1}{2}\left(\frac{z}{a_n}\right)^2-\cdots-\frac{1}{k}\left(\frac{z}{a_n}\right)^k-\cdots
+\]
+们构成的级数可能发散，主要就是$1/a_n\to 0$太慢。和上面的思路一样，我们就干脆减去几项之后再求和，考虑函数
+\[
+\ln g_n(z)=\ln \left(1-\frac{z}{a_n}\right)+\frac{z}{a_n}+\frac{1}{2}\left(\frac{z}{a_n}\right)^2+\cdots+\frac{1}{p_n}\left(\frac{z}{a_n}\right)^p=-\sum_{k=p_n+1}^\infty\frac{1}{k}\left(\frac{z}{a_n}\right)^k
+\]
+其中$p_n$是我们选取的正整数。
+
+固定一个$0<q<1$，我们考虑闭圆盘$K_n=\{|z|\leq q|a_n|\}$，对于$z \in K_n$，我们考虑$\ln 1 =0$的分支，从而
+\[
+|\ln g_n(z)|\leq \left|\frac{z}{a_n}\right|^{p_n+1}\sum_{k=0}^\infty\frac{q^k}{p_0+1+k}\leq \frac{1}{1-q}\left|\frac{z}{a_n}\right|^{p_n+1}
+\]
+
+现在我们只要选$p_n$使得
+\[
+\sum_{n=1}^\infty\left(\frac{z}{a_n}\right)^{p_n+1}
+\]
+在任意闭圆盘$\{|z|\leq R\}$上绝对和一致收敛。比如选取$p_n+1=n$。
+
+对于任意的紧集$K$，我们总可以找到一个$N$，使得比$N$大的$n$都成立$K \subset K_n$，所以
+\[
+\left|\sum_{n=N}^\infty\ln g_n(z)\right|\leq \sum_{n=N}^\infty|\ln g_n(z)|\leq \frac{1}{1-q}\sum_{n=N}^\infty\left|\frac{z}{a_n}\right|^{p_n+1}
+\]
+也就推出了
+\[
+f_N(z)=\prod_{n=N}^\infty  g_n(z)=\prod_{n=N}^\infty  \left(1-\frac{z}{a_n}\right)\exp\left(\sum_{k=1}^{p_n}\frac{1}{k}\left(\frac{z}{a_n}\right)^k\right)
+\]
+的收敛性。
+
+显然$f_N$在$K$上全纯，并且在$K$上不为0，所以
+\[
+f(z)=\prod_{n=1}^\infty  \left(1-\frac{z}{a_n}\right)\exp\left(\sum_{k=1}^{p_n}\frac{1}{k}\left(\frac{z}{a_n}\right)^k\right)
+\]
+与$f_N(z)$相差有限个因式，因而在$K$上收敛且全纯，并且只在属于$K$的那些零点为0.由于$K$的任意性，所以$f$就是我们想要的整函数。
+
+推论：任意的整函数都可以分解为
+\[
+f(z)=z^me^{g(z)}\prod_{n=1}^\infty  \left(1-\frac{z}{a_n}\right)\exp\left(\sum_{k=1}^{p_n}\frac{1}{k}\left(\frac{z}{a_n}\right)^k\right),
+\]
+其中$g(z)$是一个整函数，$m$是一个自然数。
+
+上面给出了全平面上的Mittag-Leffler分解和Weierstrass分解，下面的定理将他们推广到了任意区域上面。
+
+定义区域上的亚纯函数就是没有极点以外的奇点而其余地方全纯的函数。
+\begin{theo}
+对于任何在区域$D$内没有极限点的序列$\{a_n\}$，以及形如\[g_n(z)=\sum_{\nu=1}^{p_n}\frac{c^{(n)}_{-\nu}}{(z-a_n)^\nu},\]的函数序列，存在$D$中的亚纯函数$f$，他在也仅在$\{a_n\}$的所有点上为极点，并且在每一个点$a_n$的主部都为$g_n$.
+\end{theo}
+整函数应该推广到区域上的全纯函数。
+\begin{theo}
+对于任何在区域$D$内没有极限点的序列$\{a_n\}$，存在$D$中的全纯函数$f$，他在也仅在$\{a_n\}$的所有点上为零点。
+\end{theo}
+
+因为整函数可以分解为关于那些和零点联系到一起的因子的无穷乘积，而亚纯函数可以分解为就是关于极点主部的级数。我们从下面一个很简单的例子可以看到因子的乘积是怎么和主部的和联系在一起的。考虑函数$1/(z^2-1)$,对于分母我们有这样的一个分解$z^2-1=(z-1)(z+1)$，对于整个分式，我们有这样的分解，\[\frac{1}{z^2-1}=\frac{1}{(z-1)(z+1)}=\frac{1}{2}\left(\frac{1}{z-1}-\frac{1}{z+1}\right)\]这就是上面两个分解的经典对应！
+
+下面一个定理给出了亚纯函数和全纯函数的联系。
+\begin{theo}
+Weierstrass：任意在区域$D$内的亚纯函数$f$都可以表示为两个在$D$内全纯函数的比。（特别地，如果$D=\mathbb{C}$，那么就是两个整函数的比。）
+\end{theo}
+
+假设一亚纯函数$f$以$\{a_n\}$为极点，而$\{a_n\}$没有极限点（有就极限点不是孤立奇点了），那么构造以$\{a_n\}$为零点的全纯函数$\varphi$，那么$f\cdot \varphi$在$D$内全纯，定理即得证。定理反过来当然是显然正确的。所以亚纯函数还能有另外一个定义：两个全纯函数的比。
+
+下面继续整函数的讨论，我们讨论的是整函数的增长性。
+
+根据最大模原理，整函数的模的最大值在圆盘$\{|z|\leq r\}$的边界上取到，将$|f|$在边界上的最大值记做$M_f(r)$，这个函数是递增的。假如他随着$r$的增长不快于$r^m$，也就是说$M_f(r)\leq Ar^m$，其中$A$和$m$都是常数，后者是正整数。于是根据Cauchy不等式，我们得到他Taylor展开系数的估计有
+\[
+|c_n|\leq \frac{M_f(r)}{r^n} \leq A r^{m-n}
+\]
+对于$n>m$，左边不依赖于$r$，右边在$r\to \infty $的极限为0，所以$c_n=0$.也就是说这样的整函数是幂不超过$m$的多项式。这个结论可以看做Liouville定理的推广。
+
+我们现在对这种平凡的情况不感兴趣，由于$e^r$的增长速度比任意的$r^n$都要快，我们用此，或者更加快的$e^{r^\mu}$来和整函数的增长速度相比。
+
+我们称整函数的阶不超过$\rho$就是说，如果可以找到常数$C_1,C_2$使得对于任意的$r\geq 0$有
+\[
+M_f(r)\leq C_1 e^{C_2r^\rho}.
+\]
+这些$\rho$的下阶是我们最感兴趣的，称为整函数$f$的阶$\mathrm{ord} f$。当然$\mathrm{ord} f$可能为无穷。
+\begin{theo}
+整函数$f$的阶可按公式
+\[
+\mathrm{ord} f = \varlimsup_{r\to \infty} \frac{\ln(\ln(M_f(r)))}{\ln r}
+\]
+计算。
+\end{theo}
+
+设右端极限为$\rho$，根据上极限，我们对于足够大的$r>r_0$我们有上方估计$\ln(\ln(M_f(r)))\leq (\rho +\epsilon)\ln r$，然后根据对数函数的单调性有$M_f(r)\leq \exp(r^{\rho +\epsilon})$，因为$M_f(r)$递增，所以存在常数$C=\max(1,M_f(r_0))$满足$M_f(r)\leq C\exp(r^{\rho +\epsilon})$，这就是说$\mathrm{ord} f \leq \rho+ \epsilon$，然后由于$\epsilon$任意，所以$\mathrm{ord} f \leq \rho$.
+
+根据阶的定义，我们有$C_1,C_2$使下列不等式成立。
+\[
+\frac{\ln(\ln(M_f(r)))}{\ln r}\leq \frac{\ln(\ln C_1+C_2 r^{\rho'})}{\ln r},
+\]
+右端极限为$\rho'$，也就是说$\rho \leq \rho'$，因为这对所有$\rho'$都成立，所以也对他们的下确界$\mathrm{ord} f$成立，于是$\rho \leq \mathrm{ord} f$.综上，$\rho = \mathrm{ord} f$.
+
+如果我们对整函数Taylor展开，其收敛半径由Cauchy-Hadamard公式确定，由于是整函数，所以\[\varlimsup_{n\to \infty} \sqrt[n]{|c_n|}=0.\]因为$\sqrt[n]{|c_n|}$都至少比其上极限0大，所以这里的极限可以变成普通的极限：\[\lim_{n\to \infty} \sqrt[n]{|c_n|}=0.\]下面的定理说明了函数的阶和$ \sqrt[n]{|c_n|}$趋向于0的速度有关。
+\begin{theo}
+整函数$f$的阶$\mathrm{ord} f \leq \rho$当且仅当他的Taylor系数对所以的正整数$n$都满足
+\[
+n^{1/\rho}\sqrt[n]{|c_n|}\leq c,
+\]
+其中$c$是一个常数。
+\end{theo}
+上面的定理使得我们可以构造任意阶的整函数，只需要调整他的系数就可以了。
+
+对于不同的$\rho$阶整函数，我们还可以更细致地考虑他的增长。我们称$\rho$阶整函数的型不超过$\sigma$是说，如果存在常数$C$，使得对于所有的$r\geq 0$有
+\[
+M_f(r)\leq C \exp(\sigma r^\rho ),
+\]
+这样的数$\sigma$的下确界就是这个函数的型$\mathrm{typ} f$.整函数的型可以用下面的公式计算
+\[
+\mathrm{typ} f =\varlimsup_{r\to \infty} \frac{\ln M_f(r)}{r^\rho}.
+\]
+
+在Weierstrass分解中已经能够看到整函数的零点和他的性质联系紧密，如此看来，整函数的零点应该也和其增长性有着关系。
+\begin{theo}
+Jensen不等式：如果整函数$f$有$|f(0)|=1$（这个我们可以调整系数和$z^m$得到），并记$n_f(r)$为他在圆盘$\{|z|<r\}$内的零点个数（算上重数），于是
+\[
+\int_{0}^r \frac{n_f(t)}{t}\mathrm{d}t \leq \ln M_f(r).
+\]
+\end{theo}
+他的两个推论可以看到更加直接的信息。
+\begin{theo}
+整函数$f$同上有$|f(0)|=1$，我们有不等式
+\[
+n_f(r)\leq \ln M_f(er).
+\]
+再假设$f$的阶不高于$\rho$，其中$0<\rho<\infty$，则他在圆盘$\{|z|<r\}$中的零点个数没有$r^\rho$增加得快：存在常数$C$，使得对于任意的$r\geq 0$有
+\[
+n_f(r)\leq Cr^\rho.
+\]
+\end{theo}
+对于Mittag-Leffler分解我们提出了Cauchy方法，那么对于Weierstrass分解，整函数的阶和零点个数的联系给了一个实用的方法。
+
+\begin{theo}
+Hadamard：如果$f$且$f(0)\neq 0$为有限阶$\rho$的整函数，$\{a_n\}$为其零点，级数
+\[
+\sum_{n=1}^\infty \frac{1}{|a_n|^{\rho+\epsilon}}
+\]
+对于任意的$\epsilon>0$都收敛。
+\end{theo}
+同样是推论要明确地多，他限制了Weierstrass分解的$p_n$的选取。
+\begin{theo}
+条件同上，对于有限阶$\rho$的整函数，Weierstrass分解的可以选为$p_n=[\rho]$，即不大于$\rho$的整数。
+\end{theo}
+上面提过我们只要选$p_n$使得
+\[
+\sum_{n=1}^\infty\left(\frac{z}{a_n}\right)^{p_n+1}
+\]
+在任意闭圆盘$\{|z|\leq R\}$上绝对和一致收敛。他被级数
+\[
+R^{[\rho]+1}\sum_{n=1}^\infty \frac{1}{|a_n|^{\rho+1}}
+\]
+控制。
+
+Cauchy方法还给出了$h$为一个次数有限的多项式，同样地，对于Weierstrass分解
+\[
+f(z)=z^me^{g(z)}\prod_{n=1}^\infty  \left(1-\frac{z}{a_n}\right)\exp\left(\sum_{k=1}^{p_n}\frac{1}{k}\left(\frac{z}{a_n}\right)^k\right)
+\]
+中的$g$，也有下面的定理。
+\begin{theo}
+Hadamard：在有限阶$\rho$的整函数的Weierstrass分解中函数$g$是一个次数不高于$[\rho]$的多项式。
+\end{theo}
+现在我们计算一下整函数$\sin z$的分解，我们调整$\sin z$构造一个新的整函数使得他在原点的值的模为1，这个只要令$f(z)=\sin z /z$就可以 。
+
+首先计算$\sin z /z$的阶，Taylor展开之
+\[
+\frac{\sin z}{z}= \sum_{n=0}^\infty \frac{(-1)^nz^{2n}}{(2n+1)!}= 1 - \frac{z^2}{3!} + \frac{z^4}{5!} - \frac{z^6}{7!} + \cdots 
+\]
+然后$\sqrt[2n]{|c_{2n}|}=1/\sqrt[2n]{(2n+1)!}$，我们稍加计算就可以得到
+\[
+\lim_{n\to \infty} 2n\sqrt[2n]{|c_{2n}|}=\lim_{n\to \infty} \frac{2n}{\sqrt[2n]{(2n+1)!}}=e
+\]
+所以\[\lim_{n\to \infty} 2n\sqrt[2n]{|c_{2n}|}\]有界，换而言之对所有的$n$（奇数都为0）都有
+\[
+n^{1}\sqrt[n]{|c_n|}\leq c,
+\]
+所以$\mathrm{ord} f\leq 1$，然后稍加计算就知道小于1的$\rho$会让$n^{1/\rho}\sqrt[n]{|c_n|}$发散，所以$\mathrm{ord} f=1$.因此在Weierstrass分解中$g$是线性函数$az+b$且$p_n=1$，所以
+\[
+\frac{\sin z}{z}=e^{az+b}\prod_{\stackrel{n=-\infty}{n\neq 0}}^\infty  \left(1-\frac{z}{n\pi}\right)\exp\left(\frac{z}{n\pi}\right).
+\]
+直接令$z=0$得到$b=0$，由于$\sin z/z$是偶函数，用$z \to -z$得到$a=0$，所以
+\[
+\sin z=z\prod_{\stackrel{n=-\infty}{n\neq 0}}^\infty  \left(1-\frac{z}{n\pi}\right)\exp\left(\frac{z}{n\pi}\right)=z\prod_{n=1}^\infty  \left(1-\frac{z^2}{n^2\pi^2}\right).
+\]
+
+最后提一个Fourier变换相关的定理，稍稍会用到上面提到过的整函数的型。
+\begin{theo}
+如果函数$\hat{f}$只在区间$(-\omega_0,\omega_0)\subset \mathbb{R}$上不为$0$，并且在这个区间上平方可积，则他的Fourier变换
+\[
+f(z)=\frac{1}{\sqrt{2\pi}}\int_{-\omega_0}^{\omega_0} \hat{f}(\omega)e^{i\omega z}\mathrm{d}\omega
+\]
+是一个阶$\rho\leq 1$，且当$\rho =1$时候型不大于$\omega_0$的整函数。
+\end{theo}
+
+下面我们转向渐进估计。
+
+一般的估计着眼于绝对误差的估计，但是渐进估计着眼于相对误差的估计。这大大拓展了渐进估计的应用范围，甚至是一大类发散的函数我们也可以进行估计，挑选出他发散的主部，这是因为绝对误差如果发散得没有主要部分快，那么相对误差就是收敛的了。
+
+在这意义上，我们设$M\subset \mathbb{C}$为位于无穷远处极限点的集合，$f$为定义在$M$上的一个复函数。称呼可能发散的级数$\sum_{n=0}^\infty c_n/z^n$为函数$f$在集合$M$上的渐进展开并记作
+\[
+f(x) \sim \sum_{n=0}^\infty \frac{c_n}{z^n},
+\]
+是说，如果对于任意整数$n\geq 0$有
+\[
+\lim_{\stackrel{z\to \infty}{z\in M}}z^n\left( f(x)-\sum_{k=0}^\infty \frac{c_k}{z^k}\right)=0.
+\]
+可以计算得
+\[
+c_0=\lim f(z), c_n=\lim z^n\left( f(x)-\sum_{k=0}^{n-1} \frac{c_k}{z^k}\right).
+\]
+
+下面转向实函数的积分，Laplace方法给出了
+\[
+F(\lambda)=\int_a^b \varphi(t) e^{\lambda f(t)} \mathrm{d}t
+\]
+在参数较大的时候的渐进估值，这里的区间为$[a,b]\subset \mathbb{R}$.
+
+当参数增大的时候，函数$f$在他的极大点附近的值占据了积分的主要部分，就类似一个$\delta$函数一样。先令$f(t)=t^\alpha$算一下这种情况下的渐进估值。
+
+\begin{theo}
+设\[
+F(\lambda)=\int_0^a \varphi(t) e^{-\lambda t^\alpha} \mathrm{d}t.
+\]
+而$\varphi$可以在某个区间 $\{|t|<2\delta\}$上展开为收敛幂级数
+\[
+\varphi(t)=\sum_{n=0}^\infty c_nt^n
+\]
+表示，并且该积分在某个$\lambda=\lambda_0$处绝对收敛，于是在正半轴成立渐进展开
+\[
+F(\lambda) \sim \sum_{n=1}^\infty \frac{c_n}{\alpha}\Gamma\left(\frac{n+1}{\alpha}\right)\lambda^{-(n+1)/\alpha } ,
+\]
+其中\[\Gamma(x)=\int_{0}^\infty e^{-t}t^{x-1}\mathrm{d}t\]为Euler的$\Gamma$函数。
+\end{theo}
+对于 $\lambda >\lambda_ 0$，当$\lambda \to \infty$有
+\[
+\left|\int_\delta^a \varphi(t) e^{-\lambda t^\alpha} \mathrm{d}t\right|\leq e^{- (\lambda-\lambda_0)\delta^\alpha}\int_\delta^a|\varphi(t)|e^{-\lambda_0t^\alpha}\mathrm{d}t=O(e^{- \lambda\delta^\alpha});
+\]
+这就是说这个积分在$\lambda$足够大的时候很小。然后计算$(0,\delta)$上的积分时可以利用幂级数的一致收敛性逐项积分然后只留前面的几项，从而
+\[
+\int^\delta_0 \varphi(t) e^{-\lambda t^\alpha} \mathrm{d}t=\sum_{k=0}^n\frac{c_k}{\alpha}\lambda^{-(k+1)/\alpha}\int_0^{\lambda\delta^\alpha}\tau^{-(k+1)/\alpha-1}
+e^{-\tau}\mathrm{d}\tau+o(\lambda^{-(k+1)/\alpha})
+\]
+积分的时候已经令$\tau=\lambda t^\alpha$了。最后计算上式的积分，我们把区间拓展到$[0,\infty)$然后估计加上去的区间上的积分的值为$o(e^{-\lambda t^\alpha/2})$，在考虑的精度上我们可以加上这个区间。于是积分积出来就是$\Gamma$函数，最后即得
+\[
+F(\lambda) \sim \sum_{n=1}^\infty \frac{c_n}{\alpha}\Gamma\left(\frac{n+1}{\alpha}\right)\lambda^{-(n+1)/\alpha } .
+\]
+
+最后我们提炼出上面的一些条件，比如积分要在某个$\lambda_0$绝对收敛，然后函数要在区间上有极大值点，在极大值点附近可以对$\varphi$进行Taylor展开且一致收敛。假设这些条件下面都满足。
+
+如果极大值点在区间内部取到。
+\begin{theo}
+如果$f$在点$t_0\in(a,b)$取到极大且$f''(t_0)<0$，则成立渐进展开
+\[
+F(\lambda)=\int_a^b \varphi(t) e^{\lambda f(t)} \mathrm{d}t \sim e^{\lambda f(t_0)}\sum_{n=0}^\infty a_{2n}\Gamma\left(n+\frac{1}{2}\right)\lambda^{-(n+1/2)},
+\]
+其中系数为如下函数的展开
+\[
+\phi(\tau)=\varphi \circ t(\tau)\cdot t'(\tau)=\sum_{n=0}^\infty a_n\tau^n,
+\]
+其中
+\[
+\tau(t)=\sqrt{f(t_0)-f(t)}=(t-t_0)\sqrt{-c_2-c_3(t-t_0)-\cdots}
+\]
+其中$\{c_n\}$为$f$在$t_0$的Taylor系数。
+
+稍稍提一下首项
+\[
+a_0=\varphi(t_0)\sqrt{-\frac{2}{f''(t_0)}},
+\]
+所以
+\[
+\int_a^b \varphi(t) e^{\lambda f(t)} \mathrm{d}t \approx \varphi(t_0)\sqrt{-\frac{2\pi}{f''(t_0)}}\frac{e^{\lambda f(t_0)}}{\sqrt{\lambda}}.
+\]
+\end{theo}
+如果极大值点在区间端点取到。
+\begin{theo}
+如果$f$在点$a$取到极大且$f'(a)\neq 0$，则成立渐进展开
+\[
+F(\lambda)=\int_a^b \varphi(t) e^{\lambda f(t)} \mathrm{d}t \sim e^{\lambda f(a)}\sum_{n=0}^\infty \frac{n!b_n}{\lambda^{n+1}}
+\]
+其中系数为如下函数的展开
+\[
+\phi(\tau)=\varphi \circ t(\tau)\cdot t'(\tau)=\sum_{n=0}^\infty b_n\tau^n,
+\]
+其中
+\[
+\tau(t) =f(a)-f(t)=-c1(t-a)-c_2(t-a)^2-\cdots,
+\]
+其中$\{c_n\}$为$f$在$a$的Taylor系数。
+
+稍稍提一下首项
+\[
+b_0=-\frac{\varphi(a)}{f'(a)},
+\]
+所以
+\[
+\int_a^b \varphi(t) e^{\lambda f(t)} \mathrm{d}t \approx -\frac{\varphi(a)}{f'(a)}\frac{e^{\lambda f(a)}}{\lambda}.
+\]
+\end{theo}
+\chapter{Fourier Series and Fourier Transformation}
+这章是古典的Fourier级数和变换，我想重点不在于严谨化，而在于展示Fourier级数和Fourier变换本身所蕴含的力量，此外还会稍稍提及$\delta$函数。主要参考书是Zorich第二卷和Courant第一卷。
+
+从古典的角度来看，Fourier级数所做的就是函数在函数空间去找其作为矢量空间的基进行展开。譬如，在$[-\pi,\pi]$上我们可以找到基$\{e^{inx}\}$使得
+\[
+	f(x)=\sum_{n=-\infty}^\infty c_ne^{inx},
+\]
+当然，这些记号或等式并不那么严密，甚至不对，但这就是我们的第一出发点。那么，首先我们会做一些通用的工作而不去讨论是否能够这么做，这些问题之后将回过头讨论。
+
+我们讨论的是函数空间，函数的一些运算是直接逐点定义出来的，譬如加法$f+g$其实是通过$(f+g)(x)=f(x)+g(x)$定义出来的。随后为了讨论函数空间内的收敛，我们就要引入拓扑，退一步引入度量也可以，再退一步我们可以引入函数空间的内积。下面我们假设我们的函数空间赋予了内积
+\[
+	(f,g)=\int_X (f\cdot g^*)(x)\dd x.
+\]
+其中$g^*(x)$是$g(x)$的复共轭。所谓的正交就是说$(f,g)=0$.可以看到这样定义的内积对第一个变量线性，对第二个变量反线性，且$(f,g)=(g,f)^*$.有时候定义内积还是带权重的，譬如
+\[
+	(f,g)=\int_X f(x)\rho(x)g^*(x)\dd x,
+\]
+其中$\rho(x)$是一个正函数。
+
+由于这里要处理积分，这里讨论的函数空间的元素就要有所限制，为了暂时不陷入某些细节，我们不仅限制函数们在$X$是可积的，还限制他们的模方在$X$也是可积的。
+
+有了内积就可以定义范数了，这里，范数定义为
+\[
+	\|f\|=\sqrt{(f,f)}.
+\]
+有了范数意味着有了度量，也就是有了拓扑。按照这个拓扑收敛，我们也称为平均收敛的。反之，函数序列在每一点的收敛我们称为逐点收敛。
+\begin{pro}
+内积$(*,*):X\times X\to \cc$是连续的。若$x=\sum_i x_i$，则$(x,y)=\sum_i (x_i,y)$.如果$x$和$y$正交，则$\|x+y\|^2=\|x\|^2+\|y\|^2$，这就是勾股定理。
+\end{pro}
+前者是Cauchy不等式的结果，后者是前者的结果。第三个只要计算$(x+y,x+y)$就可以了。
+
+现在可以计算得$(e^{imx},e^{inx})=2\pi\delta_{mn}$，所以$\{e^{inx}\}$还是一组正交基。因此取出系数就可以这样来
+\[
+	(f,e^{inx})=\sum_{m=-\infty}^\infty c_m(e^{imx},e^{inx})=2\pi c_n,
+\]
+这就是说
+\[
+	c_n=(f,e^{inx})=\frac{1}{2\pi}\int_{-\pi}^\pi f(x)e^{-inx}\dd x.
+\]
+这就是经典的Fourier系数。
+
+这个手续可以一般化，假设我们有一组正交基$\{l_k\}$，那么
+\[
+	a_k=\frac{(f,l_k)}{(l_k,l_k)},
+\]
+特别地，如果我们有一组正交基，我们总可以把他们归一化，即令$\hat{l}_k=l_k/\|l_k\|$，此时对这组基的展开系数就写作
+\[
+	a_k=(f,\hat{l}_k).
+\]
+
+所以正交归一组（由于正交组很容易归一化，所以使用正交归一组）在技术上是很方便的。而一个从线性无关组得到正交归一组的通用技术就是如下的Gram-Schmidt正交化手续。
+\begin{pro}
+Gram-Schmidt正交化手续：如果有一组线性无关的组$\{\psi_i\}$，则我们可以通过如下手续正交归一化
+\[
+	\begin{split}
+		\varphi_1&=\frac{\psi_1}{\|\psi_1\|},\\
+		\varphi_2&=\frac{\psi_2-(\psi_2,\varphi_1)\varphi_1}{\|\psi_2-(\psi_2,\varphi_1)\varphi_1\|},\\
+		&\cdots\\
+		\varphi_n&=\frac{\psi_n-\sum_{k=1}^{n-1}(\psi_n,\varphi_k)\varphi_k}{\left\|\psi_n-\sum_{k=1}^{n-1}(\psi_n,\varphi_k)\varphi_k\right\|},\\
+		&\cdots.
+	\end{split}
+\]
+\end{pro}
+所以，我们后面大部分讨论的就是正交归一组。下面终于可以定义什么叫Fourier级数了
+\begin{defi}
+令$X$是具有内积的矢量空间，而$\{e_i\}$是一组正交基，那么对于任意的$x\in X$，我们定义级数
+\[
+	\sum_{n=1}^\infty \frac{(x,e_n)}{(e_n,e_n)}e_n
+\]
+为$x$的Fourier级数。通常记做
+\[
+	x\sim \sum_{n=1}^\infty \frac{(x,e_n)}{(e_n,e_n)}e_n.
+\]
+\end{defi}
+不用等于号的原因是我们不能断定右边会收敛（收敛性都是问题）到左边，但是在有限维的时候，等于是显然的。如果是正交归一基，那么$x$的Fourier级数就写作一个特别简单的形式
+\[
+	x\sim \sum_{n=1}^\infty (x,e_n)e_n.
+\]
+下面的引理在三维来看就是显然的。
+\begin{pro}
+垂线引理：设$\{l_i\}$是一组相互正交的矢量（有限多或者可数多个），且$x\in X$的Fourier级数收敛于$x_l\in X$.那么$x-x_l$必然正交于$x_l$且正交于$\{l_i\}$生成的矢量空间及其在$X$中的闭包。
+\end{pro}
+证明只要对计算对任意的$i$都有$(x-x_l,l_i)=(x,l_i)-(x_l,l_i)=0$就可以了。现在使用勾股定理可以得到$\|x\|^2=\|x_l\|^2+\|x-x_l\|^2\geq \|x_l\|^2$，后者再用勾股定理就有
+\[
+	\|x_l\|^2=\sum_k \frac{|(x,e_k)|^2}{(e_k,e_k)}\leq \|x\|^2. 
+\]
+这就是Bessel不等式。这里$|*|$是复数的模。对于正交归一的矢量组就长成：
+\[
+	\sum_k |(x,e_k)|^2\leq \|x\|^2. 
+\]
+对于三角系的Fourier级数，我们有
+\[
+	\sum_{-\infty}^\infty |c_k(f)|^2\leq \frac{1}{2\pi}\int_{-\pi}^\pi |f|^2(x) \dd x.
+\]
+
+假设$x\in X$，而$X$是完备的，就是说其中的Cauchy序列都收敛。使用勾股定理，我们有
+\[
+	\| x_me_m+\cdots+x_ne_n\|^2=|x_m|^2+\cdots+|x_n|^2,
+\]
+从Bessel不等式$\sum_k |(x,e_k)|^2\leq \|x\|^2$,我们得到等式右边其实对足够大的$m$和$n$可以小于任意小的正数，所以从$X$的完备性可以得到Fourier级数是收敛的。
+\begin{pro}
+Fourier系数的极值性质：如果矢量$x\in X$关于归一正交系$\{e_i\}$的Fourier级数$\sum_{n=1}^\infty (x,e_n)e_n$收敛于$x_e\in X$，对于对于$e_k$所张成的空间$L$中的任意元素$y$都有
+\[
+	\|x-x_e\|\leq \|x-y\|.
+\]
+这就是说$x_e$是$L$中最近似$x$的。
+\end{pro}
+上面的极值性质经常用在逼近里面，因为我们有时候给定的$\{e_i\}$并不完备，甚至只是有限的，但是极值性质却都是成立的。
+\begin{defi}
+若在矢量空间$X$上定义了范数，那么矢量组$\{x_\alpha|\alpha\in A\}$关于$E \subset x$是完备的（或在$E$中完备），就是说，任意的矢量$x\in E$都能在范数意义下以任意精度有该矢量组中矢量的有限线性组合逼近。
+\end{defi}
+这就是说，对于任意的$y\in E$都可以找到有限的矢量线性组合$y_x=\sum_{n}a_n x_n$使得$\|y_x-y\|$可以小于任意小的正数。
+
+\begin{pro}
+正交系的完备性条件等价于
+\[
+	x=\sum_{n=1}^\infty \frac{(x,e_n)}{(e_n,e_n)}e_n
+\]
+或者
+\[
+	\|x\|^2=\sum_n \frac{|(x,e_n)|^2}{(e_n,e_n)}.
+\]
+最后的等式就是Bessel不等式取等号的时候，被称为Parseval等式。
+\end{pro}
+证明使用Fourier系数的极值性质、垂线引理和勾股定理就可以。矢量组的完备性的必要条件是在这个集合里面没有和这个矢量组都正交的非零矢量，否则用矢量组去逼近这个非零矢量，用勾股定理总可以估计出误差的下界至少为这个非零矢量的范数的平凡。但是如果在完备空间里，这个必要条件还是充分的（完备性是本质的）。这是因为完备性保证了Fourier级数的收敛，而此时与矢量组都正交的矢量只能为0了。
+\begin{defi}
+如果线性赋范空间$X$的矢量组$\{e_i\}$的任意有限子组线性无关且任意的矢量都可以表示为
+\[
+x=\sum_ka_kx_k
+\]的形式，其中$a_k$属于$X$的数域。则这组$\{e_i\}$称为$X$的基。
+\end{defi}
+总算给出基的定义了，虽然前面以及乱用过了。值得一提的是，矢量组完备性和他作为基是不同的概念。譬如，$[-1,1]$上面的连续函数空间上$1,x,x^2,\cdots$是完备的，而这组矢量组的完备性后面有定理能够保障。但是对于任意一个不无穷可微的函数，我们都不能用$1,x,x^2,\cdots$来展开，所以这不是一组基。
+
+除却三角系之外，我们再提一些正交基的例子，在$[-1,1]$上对$1,x,x^2,\cdots$施行正交化能得到Legendre多项式
+\[
+P_0(x)=1,\quad P_n(x)=\frac{1}{2^n n!}\frac{\dd (x^2-1)^n}{\dd x^n}\quad\text{when} \,\,(n\geq 1).
+\]
+在$[-1,1]$上权重函数为$1/\sqrt{1-x^2}$下的Tchebycheff多项式
+\[
+T_n(x)=\frac{1}{2^{n-1}}\cos (n \arccos x)\quad\text{when} \,\,(n\geq 1).
+\]
+在$\rr$上权重函数为$e^{-x^2}$下的Hermite多项式
+\[
+H_n(x)=(-1)^n e^{x^2} \frac{\dd e^{-x^2}}{\dd x^n}\quad\text{when} \,\,(n\geq 1).
+\]
+在$[0,\infty)$上权重函数为$e^{-x}$下的Laguerre多项式
+\[
+L_n(x)=e^{x} \frac{\dd}{\dd x^n}(x^ne^{-x})\quad\text{when} \,\,(n\geq 1).
+\]
+迄今为止，我们没有给出上面的多项式组的完备性的任何判据。前两个有限区间上的完备性由下面这个定理保证，甚至能给出更多的信息。后两个的证明可以参考Courant《数学物理方法》第一卷的2.9.6中由von Neumann给出的证明。
+\begin{theo}
+Weierstrass逼近定理:若复函数$f$在有限区间$[a,b]$上面连续，则存在多项式$P_n:[a,b]\to \cc$构成的序列$\{P_n\}$在$[a,b]$上一致收敛到$f$。如果$f$是实函数，则多项式还可以从实多项式中选取。
+\end{theo}
+证明放在后面。因为逼近定理中的收敛是一致的，所以当$n$足够大的时候，函数和$P_n$在每一个点都靠得足够近，这时他们的差的模方在有限区间上的积分也可以地足够小。
+
+Weierstrass逼近定理很容易推广到多元的形式，使用多元的Weierstrass逼近定理可以证明三角版的逼近定理，就是将上面的区间改成$[-\pi,\pi]$，多项式改成三角多项式。证明这点只要令$\varphi(z)=\varphi(x,y)=\rho f(\theta)$,所以在复平面上$\varphi(z)$可以拿多项式$\{P_n(z)\}$逼近，然后让$\rho=1$，则所有的$z$都是$e^{i\theta}$形式，所以$f(\theta)$可以用$e^{i\theta}$的多项式一致逼近，证闭。
+
+我们上面的很多结论都是关于积分的，积分基本上有着平均化作用，譬如连续函数的变确界积分是可微的。所以平均收敛是比逐点收敛弱很多的条件，譬如平均收敛的函数甚至可以在一个零测集上为任意
+的值，这并不会对积分产生影响。
+
+下面转向$\delta$函数，这里的看法是使用$\delta$型函数族来逼近，局部化思想在这里就显得特别明显，而不去细究$\delta$函数到底是怎么用的一个函数。顺便证明一下Weierstrass逼近定理。
+
+两个函数的卷积定义为
+\[
+	(u*v)(x)=\int_\rr v(y)u(x-y)\dd y,
+\]
+很容易看到$u*v=v*u$.
+
+我们所熟知的$\delta$函数是这样一个“函数”，他在0为无穷，他在其他点为0，而他在点$0\in \rr$的任意一个邻域$U$上的积分都为1。特别地，他的卷积特别好用
+\[
+\int_U f(x)\delta(a-x) \dd x=f(a).
+\]
+
+既然我们需要拿函数族来逼近，那么至少对这个函数族来说，每一个函数的性质都和$\delta$函数大差不差。我们定义
+\begin{defi}
+依赖于参变量$\alpha\in A$的函数$\Delta_\alpha:\rr\to \rr$构成的函数族$\{\Delta_\alpha\}$如果满足：
+
+\no{1}族内每一个函数都非负。
+
+\no{2}族内每一个函数都有
+\[
+\int_\rr \Delta_\alpha(x) \dd x=1.
+\]
+
+\no{3}族内每一个函数在点$0\in \rr$的任意一个邻域$U$上都有
+\[
+\lim_{\alpha} \int_U \Delta_\alpha(x) \dd x=1.
+\]
+那么我们就称这个函数族为$\delta$型函数族。
+\end{defi}
+一个足够经典的例子就是拿面积是$1$的长方形不断缩小宽。
+
+另一个没那么显然的多项式族的例子，
+\begin{equation}
+\label{duoxiangshi}
+	\Delta_n(x)=
+	\begin{cases}
+		\displaystyle{(1-x^2)^n\bigg/\int_{-1}^1(1-x^2)^n\dd x};&|x|\leq 1,\\
+		0;&|x|> 1.
+	\end{cases}
+\end{equation}
+非负性和全直线积分为1是显然的。至于第三点，这其实就是局部化的思想，在$[0,\epsilon]$上的积分在$n\to \infty$的时候变成积分的主体，因为其他的区间有估计
+\[
+0\leq \int_\epsilon^1 (1-x^2)^n\dd x\leq \int_\epsilon^1 (1-\epsilon^2)^n\dd x=(1-\epsilon^2)^n(1-\epsilon)\to 0,
+\]
+同时
+\[
+\int_0^1 (1-x^2)^n>\int_0^1 (1-x)^n=\frac{1}{n+1}\to 0,
+\]
+这就能推出第三点了。
+
+三角多项式族的例子：
+\[
+	\Delta_n(x)=
+	\begin{cases}
+		\displaystyle{(\cos x)^{2n}\bigg/\int_{-\pi/2}^{\pi/2}(\cos x)^{2n}\dd x};&|x|\leq \pi/2,\\
+		0;&|x|> \pi/2.
+	\end{cases}
+\]
+证明和上面差不多。
+\begin{theo}
+设$f:\rr\to\cc$是有界函数，且$\{\Delta_\alpha\}$当$\alpha\to\omega$是$\delta$型函数族。如果对任意的$\alpha\in A$，卷积$f*\Delta_\alpha$都存在且函数$f$在$E\in \rr$上一致连续，则在$E$上面$(f*\Delta_\alpha)(x)$当$\alpha\to\omega$时候一致收敛到$f(x)$.
+\end{theo}
+这就是我们希望的$\delta$函数所有的最美妙的性质。证明倒是不难，就是局部化的思想，我们选一个$0$附近的领域$U$，并且设$|f|$的一个上界为$M$，则
+\[
+\begin{split}
+	&|(f*\Delta_\alpha)(x)-f(x)|\\
+	=&\left|\int_\rr f(x-y)\Delta_\alpha(y)\dd y-f(x)\right|=\left|\int_\rr\left(f(x-y)-f(x)\right)\Delta_\alpha(y)\dd y\right|\\
+	\leq&\int_{\rr-U}\left|\left(f(x-y)-f(x)\right)\Delta_\alpha(y)\right|\dd y+\int_{U}\left|\left(f(x-y)-f(x)\right)\Delta_\alpha(y)\right|\dd y\\
+	<&\epsilon \int_{U}\Delta_\alpha(y)\dd y+2M\int_{\rr-U}\Delta_\alpha(y)\dd y\\
+	\leq&\epsilon+2M\int_{\rr-U}\Delta_\alpha(y)\dd y.
+	\end{split}
+\]
+第二项在$\alpha\to\omega$的时候就趋向于0，那么从某一项开始，对任意的$x$都有
+\[
+|(f*\Delta_\alpha)(x)-f(x)|<\epsilon,
+\]
+一致收敛性得证。
+
+下面用\eqref{duoxiangshi}证明一下多项式的Weierstrass定理。
+
+我们可以把任意一个闭区间等比缩小和平移，此时多项式还是变成多项式，连续性和一致性也没有被破坏，所以不妨假设区间$[a,b]\subset (0,1)$，令$\rho=\min(a,1-b)$.我们现在把函数$f$从$[a,b]$连续延拓到$\rr$上的$F$：在$[a,b]$上和$f$重合，在$(0,1)$全是0，在$[0,a]$上将图像上的点$(0,0)$和点$(a,f(a))$用直线连起来，通用$(1,0)$和点$(b,f(b))$也这么做。
+
+现在用\eqref{duoxiangshi}和$F$的卷积来一致逼近$F$，由于有界闭区间是紧集，在上面的连续都是一致的，则在$[a,b]$上，$F*\Delta_n(x)$可以一致逼近$F|_{[a,b]}=f$。稍稍计算一下$F*\Delta_n(x)$就可以知道他对每个$n$都是多项式。得证。
+
+我们来看看线性微分方程$m\ddot{x}+kx=f$的解是怎么用$\delta$函数得到的，后面的过程会很不严谨，不过思路倒是很好玩的，也是很实用的。
+
+首先可以看到这是一个线性算子
+\[
+A=m\frac{\dd^2}{\dd t^2}+k
+\]
+确定的线性方程$Ax=f$，他的解就是$x=A^{-1}f$。我们记方程$Ax=\delta$的解为$E$，那么$E=A^{-1}\delta$，两边卷积$f$就变成了
+\[
+	\int_\rr E(\tau)f(t-\tau)\dd \tau=\int_\rr (A^{-1}\delta)(\tau)f(t-\tau) \dd \tau
+\]
+如果右边换种记法，记$g(\tau)=f(t-\tau)$，就可以写成内积的形式$(A^{-1}\delta,g)$，则再假设$A$是一个对称算子，那么就有$(A^{-1}\delta,g)=(\delta,A^{-1}g)$，也即是
+\[
+	\int_\rr E(\tau)f(t-\tau)\dd \tau=\int_\rr \delta(\tau)(A^{-1}f)(t-\tau) \dd \tau=(A^{-1}f)(t)=x(t).
+\]
+这就是原本线性方程的一个解了。我们的例子中，对称算子是可以直接验证的。我们称函数$E$为线性算子$A$的Green函数或者基本解。
+
+我们直接来写一下上面例子中的Green函数。$\delta$函数在这里担任的是外力的作用，假设在$t=0$的那一瞬间施加了一个脉冲，动量的改变量就是力对时间积分，力是$\delta$函数，积分为1，所以使得谐振子获得了动量\footnote{记得Arnold说过，Newton第二定律（更广义地说，是力学的观念？）给了我们一种解方程的方式。}$mv=1$。之后因为没有力了，所以就等于初始条件下$x(0)=0$和$\dot{x}(0)=1/m$下$m\ddot{x}+kx=0$的解，这个齐次方程的解为
+\[
+	x(t)=\frac{1}{\sqrt{km}}\sin\sqrt{\frac{k}{m}}t\quad\text{when} \,\,t\geq0,
+\]
+所以Green函数为
+\[
+	E(t)=\frac{H(t)}{\sqrt{km}}\sin\sqrt{\frac{k}{m}}t\quad \text{when} \,\,t\geq0,
+\]
+其中$H(t):\rr\to\{0,1\}$为阶梯函数，当$t<0$的时候为0，其他时候为1。最后，原方程的解为
+\[
+x(t)=\int_\rr E(\tau)f(t-\tau)\dd \tau=\int_\rr \dd \tau\,f(t-\tau)\frac{H(\tau)}{\sqrt{km}}\sin\sqrt{\frac{k}{m}}\tau=\int_0^\infty \dd \tau\,\frac{f(t-\tau)}{\sqrt{km}}\sin\sqrt{\frac{k}{m}}\tau.
+\]
+可以直接验证这个解就是原方程在初始坐标和初始速度都为0的时候的一个特解，通解只要加上齐次方程的通解就可以了。
+
+上面这个例子看到的是，我们拿单位脉冲的叠加来替代连续的力，在数学上就是要去解Green函数。Green函数把微分方程变成了积分方程，这可以用来证明微分方程本征函数的存在性和完备性。
+
+下面转入经典的三角级数。由于平均收敛性上面已经研究过了，这里主要涉及逐点收敛性，也就是
+\[
+	f(x)\sim\sum_{n=-\infty}^\infty a_n e^{inx}
+\]
+取等号的问题。但三角级数的逐点收敛性其实并没有研究得很透彻，这里只给出一些古典的结论。
+
+\begin{theo}
+Riemann引理：如果局部可积函数$f:(\omega_1,\omega_2)\to \rr$在$(\omega_1,\omega_2)$上（至少在反常积分意义下）绝对可积，则当实数$\lambda \to \infty$的时候
+	\[
+		\int_{\omega_1}^{\omega_2}f(x)e^{i\lambda x}\dd x \to 0.
+	\]
+\end{theo}
+分离实部虚部就得到关于三角函数的Riemann引理，这里不再写出。证明的思路是拿阶梯函数来逼近$f$，并且注意到
+	\[
+		\int_a^bAe^{i\lambda x}\dd x=\frac{A}{i\lambda}(e^{i\lambda b}-e^{i\lambda a})
+	\]
+在$\lambda \to \infty$确实是收敛到0的，然后做做细致的积分估计就可以得到证明了。
+
+关注三角级数的前$2n$项部分和，通过计算可以得到
+\[
+	S_n=\sum_{k=-n}^n a_k e^{ikx}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(y)\sum_{k=-n}^n e^{ik(x-y)}\dd y,
+\]
+记$u=x-y$，则
+\[
+	D_n(u)=\sum_{k=-n}^n e^{iku}=\frac{\sin ((n+1/2)u)}{\sin(u/2)},
+\]
+在$u\to 0$的时候，$D_n(u)\to 2n+1$，将这个点补充成$D_n(0)$.现在
+\[
+	S_n=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)D_n(x-t)\dd t.
+\]
+如果$f(t)$还是周期的，那么靠着周期性和$D_n$是偶函数，上式还可以写作
+\[
+	S_n=\frac{1}{2\pi}\int^{\pi}_{0}(f(x-t)+f(x+t))D_n(t)\dd t.
+\]
+使用Riemann引理，就会发现在$n\to \infty$的时候挖掉零点一个邻域的积分
+\[
+	\int^{\pi}_{\epsilon}(f(x-t)+f(x+t))D_n(t)\dd t,
+\]
+可以做的足够小，那么
+\[
+	S_n=\frac{1}{2\pi}\int^{\epsilon}_{0}(f(x-t)+f(x+t))D_n(t)\dd t+o(1).
+\]
+这就构成了下面这个局部化原理。
+\begin{pro}
+设$f$和$g$都是以$2\pi$为周期的函数，他们在$(-\pi,\pi)$上绝对可积（至少是反常积分意义下的），那么如果$f$和$g$在一个点的小邻域内是相等的，那么他们的Fourier级数在那点同时收敛或者发散，若是收敛则收敛到同一个值。
+\end{pro}
+Fourier级数的逐点收敛有著名的Dini条件，有趣的是，此时Fourier级数其实并不收敛到$x$的函数值，而是两侧极限的平均。
+\begin{defi}
+我们称复值函数$f$在$x$的空心邻域上满足Dini条件，如果
+
+\no{1}在$x$存在两个单侧极限
+\[
+	f(x_-)=\lim_{t\to+0}f(x-t),f(x_+)=\lim_{t\to+0}f(x+t).
+\]
+
+\no{2}积分
+\[
+\int_0^\epsilon\frac{f(x-t)-f(x_-)+f(x+t)-f(x_+)}{t}\dd t
+\]
+对某个$\epsilon>0$绝对收敛。
+\end{defi}
+性质比较好的函数一般都满足Dini条件，比如二阶可微函数，甚至有限分段的都是可以的。下面这个定理给出了Fourier级数在一点收敛的充分条件。
+\begin{theo}
+设复值函数$f:\rr\to\cc$是$2\pi$周期函数，且在$[-\pi,\pi]$上绝对可积，如果函数在$x$上满足Dini条件，则他的Fourier级数在$x$收敛，且
+\[
+	\sum_{k=-\infty}^\infty c_k(f)e^{ikx}=\frac{f(x_-)+f(x_+)}{2}.
+\]
+\end{theo}
+
+稍稍提一下可微函数的Fouier级数部分和的收敛速度，一般来说$m$阶连续可微的函数，他的部分和的收敛速度是$1/n^{m-1/2}$形的，就是说越光滑收敛越快。
+
+这里算一下$\delta$函数的Fourier级数：
+\[
+	c_k(\delta)=\frac{1}{2\pi}\int_{-\pi}^\pi\delta(t)e^{-ikt}\dd t=\frac{1}{2\pi}.
+\]
+这就是说
+\[
+	\delta\sim \frac{1}{2\pi}\sum_{k=-\infty}^\infty e^{ikx}.
+\]
+
+下面转入这章的第二部分，Fourier变换。
+
+从Fourier级数得到Fourier变换，可以从两个方向来，第一，我们先通过线性变换，把$[-\pi,\pi]$上的Fourier级数变成$[-l,l]$上的，此时正交函数族为$\{e^{inx\pi/l}\}$，Fourier级数长成
+\[
+	\sum_{n=-\infty}^\infty c_ne^{inx\pi/l}=\sum_{n=-\infty}^\infty \left(c_n\frac{l}{\pi}\right)e^{inx\pi/l}\frac{\pi}{l}=\sum_{n=-\infty}^\infty \bar{c}_ne^{inx\pi/l}\frac{\pi}{l},
+\]
+这里
+\[
+	c_n=\frac{1}{2l}\int_{-l}^l f(t)e^{-int\pi/l}\dd t,
+\]
+\[
+	\bar{c}_n=\frac{1}{2\pi}\int_{-l}^l f(t)e^{-int\pi/l}\dd t,
+\]
+当$l$足够大的时候，离散的$\pi n/l$可以看成连续值了，这里记成$\omega$，则
+\[
+	\bar{c}_n\to c(\omega)=\frac{1}{2\pi}\int_{-\infty}^\infty f(t)e^{-it\omega}\dd t,
+\]
+以及
+\[
+	f(t)=\sum_{n=-\infty}^\infty \bar{c}_ne^{inx\pi/l}\frac{\pi}{l}
+	\to \int_{-\infty}^\infty c(\omega)e^{it\omega}\dd \omega.
+\]
+综上，得到了两个积分，他们是Fourier级数和Fourier系数的对应物：
+\[
+\begin{split}
+	f(t)=&\int_{-\infty}^\infty c(\omega)e^{it\omega}\dd \omega,\\
+	c(\omega)=&\frac{1}{2\pi}\int_{-\infty}^\infty f(t)e^{-i\omega t}\dd t.
+\end{split}
+\]
+或者写成更对称的形式
+\begin{equation}
+\label{fouriertran}
+\begin{split}
+	f(t)=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty c(\omega)e^{it\omega}\dd \omega,\\
+	c(\omega)=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(t)e^{-i\omega t}\dd t.
+\end{split}
+\end{equation}
+最后引入测度$m$使得$\dd m(t)=\dd t/\sqrt{2\pi}$，则
+\[
+\begin{split}
+	f(t)=&\int_\rr c(\omega)e^{it\omega}\dd m(\omega),\\
+	c(\omega)=&\int_\rr f(t)e^{-i\omega t}\dd m(t).
+\end{split}
+\]
+
+第二种转入方式就是避开讨论上面极限过程的合理性，而直接去验证
+\[
+	f(t)=\int_\rr \int_\rr f(u)e^{-iu\omega}\dd m(u)e^{it\omega}\dd m(\omega)=\int_\rr \dd m(\omega) \int_\rr f(u)e^{i(t-u)\omega}\dd m(u)
+\]
+的正确性，后者可能更加简单一些。
+
+\begin{defi}
+我们称
+\[
+\hat{f}(\omega)=\mathfrak{F}(f)(\omega)=\int_{-\infty}^\infty f(t)e^{-i\omega t}\dd m(t)
+\]
+为$f$的Fourier变换，称
+\[
+	f\sim \int_{-\infty}^\infty \hat{f}(\omega)e^{it\omega}\dd m(\omega)
+\]
+是$f$的Fourier积分。
+\end{defi}
+\begin{theo}
+设复值函数$f:\rr\to\cc$在$\rr$的每一个有限区间上绝对可积且分段连续，如果函数在$x$上满足Dini条件，则他的Fourier积分在$x$收敛，且
+\[
+	\int_{-\infty}^\infty \hat{f}(\omega)e^{it\omega}\dd\omega=\frac{f(x_-)+f(x_+)}{2}.
+\]
+\end{theo}
+当$f$不是分段连续而是连续的时候，那么可以看到\eqref{fouriertran}是成立的。
+
+作为例子，算算算，$f(x)=e^{-a^2x^2}$他的Fourier变换为
+\[
+	\hat{f}(\omega)=\frac{1}{\sqrt{2}a}e^{\omega^2/(4a^2)},
+\]
+当$a^2$从$1/2$变到$0$的时候$f(x)$越来越集中，而$\hat{f}(\omega)$却慢慢铺开来，这个观测和物理上的不确定性原理关系密切。
+
+$\delta$函数的Fourier变换也是一个上面的陈述的例子，$\delta$函数就是集中到了一个点上了，但是他的Fourier变换
+\[
+	\hat{\delta}(\omega)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \delta(t)e^{-i\omega t}\dd t=\frac{1}{\sqrt{2\pi}},
+\]
+就是他的Fourier变换是一个常数，彻底铺平了。使用一次逆变换
+\[
+	\delta(t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{i\omega t}\dd \omega=\frac{1}{2\pi}\int_{-\infty}^\infty e^{-i\omega t}\dd \omega,
+\]
+换而言之这就是说常数的Fourier变换为$\hat{1}=\sqrt{2\pi}\delta(\omega)$.这回是铺平的常数变换成了一个集中到了一个点的东西上面去了。值得一提的是，其实积分
+\[
+	\int_{-\infty}^\infty e^{-i\omega t}\dd \omega
+\]
+就目前来看，是实际上毫无意义的东西。
+
+现在来看一些Fourier变换的一些性质，这些性质多半和测度$m$的平移不变性以及对每一个实数$x$，$x\to e^{ixt}$是加法群$\rr$的特征标密切相关的。所谓的特征标就是到模为1的复数乘法群的同态映射。$\rr$中的每一个特征标都可由一个指数函数给出。
+
+\begin{pro}
+设$f$是绝对可积的，$\alpha$是实数且$\lambda>0$，则
+
+\no{1} 如果$g(t)=f(t)e^{i\alpha t}$，则$\hat{g}(\omega)=\hat{f}(\omega-\alpha)$.
+
+\no{2} 如果$g(t)=f(t-\alpha)$，则$\hat{g}(\omega)=\hat{f}(\omega)e^{-i\alpha t}$.
+
+\no{3} 如果$h=f*g$，则$\hat{h}(\omega)=\hat{f}(\omega)\cdot\hat{g}(\omega)$.
+
+\no{4} 如果$g(t)=f(t/\lambda)$，则$\hat{g}(t)=\lambda\hat{f}(\lambda \omega)$.
+
+\no{5} 如果$g(t)=-itf(t)$且$g$绝对可积，则$\hat{f}$是可微的，且$\hat{f}'=\hat{g}$.
+\end{pro}
+
+证明都是直接的，前两个是测度的平移不变性的结论。\no{3}要用Fubini定理，注意这里的测度采用的是上的$m$而不是$\rr$上面的标准测度，换到标准测度应该为$\hat{h}(\omega)=\sqrt{2\pi}\hat{f}(\omega)\cdot\hat{g}(\omega)$.至于\no{5}可以将连续的极限变成点列的极限然后用控制收敛定理。将\no{3}和\no{5}反过来也是有趣的命题：
+
+\no{3'} 如果$h=f\cdot g$，则$\hat{h}(\omega)=\hat{f}(\omega)*\hat{g}(\omega)$.
+
+\no{5'} 如果$g=f'$，则$\hat{g}(\omega)=i\omega\hat{f}(\omega)$.
+
+\begin{pro}
+Parseval恒等性质：
+\[
+	(f_1,f_2)=(\hat{f_1},\hat{f_2}).
+\]
+特别地，$\|f_1\|=\|\hat{f_1}\|$.所以说，Fourier变换是某种函数空间的等距变换。
+\end{pro}
+
+\begin{defi}
+我们称
+\[
+\mathfrak{F}^{-1}(f)(t)=\int_{\infty}^\infty f(t)e^{it \omega}\dd m(\omega)
+\]
+为$f$的Fourier逆变换。
+\end{defi}
+
+上面已经可以看到了，如果限定好条件（譬如性质足够好的函数组成的函数空间），那么$\mathfrak{F}^{-1}(\hat{f})=\mathfrak{F}^{-1}\mathfrak{F}(\hat{f})=f$.此外，在这种情况下，应该还有$\mathfrak{F}\mathfrak{F}^{-1}(f)=f$，这就是说我们希望逆变换是确确实实的逆变换。对Fourier变换的一众性质两边做一次Fourier逆变换，则可以得到Fourier逆变换的性质，这里不再叙述。
+
+虽然我们上面讨论的都是一维Fourier变换，但是确实不难将其推广到高维上去。很多时候只是乘积换成内积而已。
+
+这里用Fourier变换来解方程$m\ddot{x}+kx=f$的一个特解，两边做Fourier变换
+\[
+	-m\omega^2 \hat{x}+k\hat{x}=\hat{f},
+\]
+所以
+\[
+	\hat{x}=\frac{1}{k-m\omega^2}\hat{f},
+\]
+最后用一次逆变换
+\[
+	x=\frac{1}{\sqrt{2\pi}}\int_\rr \frac{e^{i\omega t}}{k-m\omega^2}\hat{f}\dd \omega.
+\]
+
+最后来一个同时用到Fourier三角级数和Fourier三角变换的一个公式作为本章的结尾。
+\begin{theo}
+Poisson求和公式：设$\varphi(x)$关于$x$连续可谓，而
+\[
+\sum_{n=-\infty}^\infty \varphi(2\pi n+t)
+\]
+对$t\in[0,2\pi]$内的所有$t$而言绝对并一致收敛，则成立公式
+\[
+\sum_{n=-\infty}^\infty \varphi(2\pi n+t)=\frac{1}{\sqrt{2\pi}}\sum_{k=-\infty}^\infty \hat{\varphi}(k)e^{ikt}
+\]
+\end{theo}
+
+% \chapter{Linear Ordinary Differential Equation}
+% 这章主要是一阶二阶的线性常微分方程。取材各种杂，主要是Courant第一卷，和一些不知名的书。
+
+% 我们所谓的$n$阶线性常微分方程就是指这样的方程
+% \[
+% Ly=\sum_{k=0}^na_k(t)\left(\frac{\dd}{\dd t}\right)^ky(t)=f(y,t),
+% \]
+% 若$f(y,t)=0$，则称方程为齐次的，否则为非齐次的。
+
+% 对于这样的方程，我们总可以化为一阶方程组：令$z=(y,y',\dots,y^{(n-1)})$，那么原方程就变成了
+% \[
+% 	z'=A(t)z,
+% \]
+% 其中$A(x)$是一个矩阵。如果$A$是常矩阵，那么容易得到这个方程的通解为
+% \[
+% 	z=e^{tA}z_0,
+% \]
+% $z_0=z(0)$是一个常矢量，而
+% \[
+% e^{tA}=\sum_{k=0}^\infty \frac{t^k}{k!}A^k
+% \]
+% 是矩阵幂。
+
+% 所以一阶方程在理论上特别重要，我们再一次将常微分方程的定义表示为一阶矢量形式：
+% \begin{equation}
+% \label{ODE}
+% \frac{\mathrm{d}y}{\mathrm{d}t}=F(t,y),\quad y(t_0)=y_0\in \mathbb{R}^n.
+% \end{equation}
+
+% 下面这个定理是常微分方程解的局部存在定理，虽然后面根本不会用到，不过还是要提一下。
+% \begin{theo}
+% 令$y\in U\subset \rr^n$，$U$是一个开集, 而$I \subset R$ 是一个包含$t_0$的开区间。设 $F$ 在 $I \times U$ 连续且对$t\in I$以及$y_j\in U$满足Lipschitz条件：
+% \[
+% \| F(t,y_1)-F(t,y_2) \| \leq L \| y_1-y_2 \|.
+% \]
+% 此时\eqref{ODE}在某个包含$t_0$的时间区间上存在唯一解。
+% \end{theo}
+% \chapter{Special Function}
+% 这章就几个特殊函数进行一些分析，所用的参考书相当繁杂，这里不再一一点明。先从上面一章提到的Euler的$\Gamma$函数开始。
+% \section{Gamma函数}
+% \begin{defi}
+% 由积分
+% \[
+% 	\Gamma(z)=\int_{0}^\infty e^{-t}t^{z-1}\mathrm{d}t
+% \]
+% 定义的函数为Euler的$\Gamma$函数，或者称第二类Gamma函数。
+% \end{defi}
+
+% 这个定义为了让$t=0$处收敛，必须有$\mathrm{Re}(z)>0$.下面可以看到其他的定义，可以使得$\Gamma$函数定义到全复平面上。
+
+% 当$z=1$的时候，这是一个平凡的积分，计算得$\Gamma(1)=1$。使用分部积分，可以很容易证明递推关系
+% \[
+% 	\Gamma(z+1)=z\Gamma(z),
+% \]
+% 所以当$n$是正整数的时候，有$\Gamma(n+1)=n!$。使用递推关系能使我们推广$\Gamma$函数到$\mathrm{Re}(z)>-n$上去，其中$n$是任意的正整数。
+
+% 将递推关系写成下面的形式
+% \[
+% 	\Gamma(z+n)=(z+n-1)(z+n-2)\cdots(z+1)z\Gamma(z),
+% \]
+% 或者
+% \begin{equation}
+% \label{bc}
+% 	\Gamma(z)=\frac{\Gamma(z+n)}{z(z+1)\cdots (z+n-1)},
+% \end{equation}
+% 对于一个有限的$z$，我们都可以找到一个$n$使得$\Gamma(z+n)$在一个有限区域内是全纯的，那么就可以从\eqref{bc}得到$\Gamma(z)$是亚纯函数，极点为$0,-1,-2,\dots$，他们都是一阶极点。
+
+% 下面这个公式和上面推广的递推关系\eqref{bc}有些相似。
+% \begin{pro}
+% Euler-Gauss公式：
+% \[
+% 	\Gamma(z)=\lim_{n\to \infty} \frac{n^z(n-1)!}{z(z+1)\cdots (z+n-1)}.
+% \]
+% \end{pro}
+% 这个公式可以直接得到著名的余元公式。我们将
+% $\Gamma(z)$和$\Gamma(1-z)$乘起来，
+% \[
+% 	\begin{split}
+% 		\Gamma(z)\Gamma(1-z)&=
+% 		\lim_{n\to \infty} \frac{n^z(n-1)!}{z(z+1)\cdots (z+n-1)}\frac{n^{1-z}(n-1)!}{(1-z)(2-z)\cdots (n-z)}\\
+% 		&=\frac{1}{z}\bigg/\prod_{n=1}^{\infty}\left(1-\frac{z^2}{n^2}\right)\right.
+% 	\end{split}
+% \]
+% 但是第一章在全纯函数的Weierstrass分解中已经得到
+% \[
+% \frac{\sin (\pi z)}{\pi z}=\prod_{n=1}^\infty  \left(1-\frac{z^2}{n^2}\right).
+% \]
+% 所以
+% \[
+% 		\Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin (\pi z)}.
+% \]
+
+% 当$z=1/2$的时候，我们可以用余元公式得到
+% \[
+% 	\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}.
+% \]
+% 这是一个很有名积分的结果，将$z=1/2$代入定义
+% \[
+% 	\sqrt{\pi}=\Gamma\left(\frac{1}{2}\right)=\int_{0}^\infty \frac{e^{-t}}{\sqrt{t}}\mathrm{d}t=2\int_{0}^\infty e^{-x^2}\mathrm{d}x=\int_{-\infty}^\infty e^{-x^2}\mathrm{d}x.
+% \]
+% 这个积分被称为Euler-Poisson积分，在处理分布的积分的时候会经常遇到他。如果不断使用递推关系可以直接得到对任意的自然数$n$我们有
+% \[
+% 	\Gamma\left(n+\frac{1}{2}\right)=\frac{(2n)!\sqrt{\pi}}{n!4^n}. 
+% \]
+
+% 在非极点，$\Gamma$函数的无穷阶可微性是显然的。无视分析上的困难，反正直接对积分号下求导就可以得到下面的公式。
+% \begin{pro}
+% 导数公式：
+% \[
+% 	\Gamma^{(n)}(z)=\int_{0}^\infty e^{-t}t^{z-1}(\ln t)^n\mathrm{d}t.
+% \]
+% \end{pro}
+% 关于$\Gamma$函数的渐进估计（第一章的方法）有著名的Stirling公式：
+% \begin{pro}
+% Stirling公式：我们有估计：
+% \[
+% 	\Gamma(\lambda+1)=\sqrt{2\pi \lambda}\left(\frac{\lambda}{e}\right)^\lambda \left(1+\frac{1}{12}\lambda^{-1}+\frac{1}{288}\lambda^{-2}+\cdots\right).
+% \]
+% \end{pro}
+% 下面转向第一类Gamma函数。
+% \begin{defi}
+% 由积分
+% \[
+% 	\mathrm{B}(\alpha,\beta)=\int_{0}^1 x^{\alpha-1} (1-x)^{\beta-1}\mathrm{d}x
+% \]
+% 定义的函数第一类Gamma函数。
+% \end{defi}
+% 第一类Gamma函数还有这些有用的表示：
+% \[
+% 	\frac{1}{2}\mathrm{B}\left(\frac{\alpha}{2},\frac{\beta}{2}\right)=\int_{0}^{\pi/2} (\sin \varphi)^{\alpha-1} (\cos \varphi)^{\beta-1}\mathrm{d}\varphi,
+% \]
+% \[
+% 	\mathrm{B}(\alpha,\beta)=\int_{0}^\infty \frac{x^{\alpha-1}}{(1+x)^{\alpha+\beta}}\mathrm{d}x.
+% \]
+% \begin{pro}
+% 第一类Gamma函数和$\Gamma$函数的联系：
+% \[
+% 	\mathrm{B}(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}.
+% \]
+% \end{pro}
+% 因为有这一个关系，所以我们不再细致处理第一类Gamma函数。
+
+% \section{正交多项式}
+% 正交多项式是广义的Fourier展开的基，这里我们不会去处理许多分析上的难题而将重点放到具体的正交多项式的计算上面来。
+
+% 我们定义内积如下
+% \[
+% 	(f,g)=\int_I f^*(x)g(x)\dd x,
+% \]
+% 这里的积分区间$I$是需要给定的。所谓的正交就是说$(f,g)=0$.
+\end{document}

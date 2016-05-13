@@ -1,0 +1,2227 @@
+%!TEX program = xelatex
+\documentclass[8pt]{book}
+\usepackage{ctex}
+\usepackage{noteheader,amsthm}
+\usepackage[all]{xy}
+\usepackage{tikz}
+
+\newtheorem{pro}{Proposition}% 定义命题环境
+\newtheorem{defi}{Definition}% 定义命题环境
+\newtheorem{theo}{Theorem}% 定义定理环境
+
+\usepackage[xetex]{hyperref}%使用xetex引擎
+	\hypersetup %一些选项
+{
+	pdftoolbar=true,  % 显示Acrobat工具栏
+	pdfmenubar=true,  % 展开Acrobat目录
+	pdftitle={Electrodynamics},  % pdf题目，自己填
+	pdfauthor={Unsinn},  % pdf作者，自己填
+	bookmarksnumbered=true,%书签中章节编号
+	bookmarksopen=true,%目录层次打开
+	bookmarksopenlevel=1,%目录层次打开的级数，可选数字或者 \maxdimen最大
+	pdfsubject={Physics},  % 主题，自己填
+	pdfkeywords={Electrodynamics}, % 关键字，自己填
+	colorlinks=true,  % 彩色链接 false:边框链接 ; true: 彩色链接
+	linkcolor=blue,  % 内部链接颜色
+	citecolor=green,  % 引用标记颜色
+	filecolor=magenta,  % 文件链接颜色
+	urlcolor=cyan  % URL链接颜色
+}
+\include{defs}
+
+\begin{document}
+\title{电动力学笔记}
+\author{Buwai. Lee@School of Physics, NJU}
+\date{2015秋季学期}
+\maketitle %标题
+\include{va}
+\section*{符号约定}
+本文所指相对论皆狭义相对论。先指出指标在狭义相对论的运用是自然的。
+
+物理上，我们并不能直接观测到数学上所谓的和（惯性）参考系选取无关的矢量，我们测量到的都是分量，然后判别矢量与否需要通过看这些分量是否在参考系变换下符合相应规则。所以狭义相对论里面记矢量一般为$x^\mu$，即其$x$的分量形式，他在不同参考系下的值是不同的。
+
+在Einstein记号上，我们约定，如果使用希腊字母，如$\mu$，则滚动范围是$0$到$3$，如果使用英文字母，如$i$，则滚动范围是$1$到$3$。
+
+约定在使用坐标或者矩阵表示的时候，第四个分量才是第零分量，譬如$(0,0,0,1)$是指第零分量为$1$.此外，度规$\eta_{\mu\nu}$和$\eta^{\mu\nu}$我们都选取$\mathrm{diag}(-1,-1,-1,1)$，这俩还用作提升或者下降指标，譬如
+\[
+\eta_{\mu\nu}a^\nu=a_\mu,\quad \eta^{\mu\nu}A_\mu^{\phantom{\mu}\sigma}=A^{\nu\sigma}.
+\]
+直观地来看，提升或降低一下非第零指标都需要变号，提升或降低一个第零指标数值不变。有时候，我们将四维物理量$x^\mu$写作$(\bm{x},y)$，这表示，$x^\mu$的空间部分为$\bm{x}$，时间部分为$y$.也有时候我们用数学上不写出分量的形式，避免指标过烦，如$\eta_{\mu\nu}x^\mu y^\nu=x_\mu y^\mu$就写作$x\cdot y$，而\[\bm{x}\cdot \bm{y}=-x^i y_i=x^1y^1+x^2y^2+x^3y^3,\]
+其余比如$|p|=\sqrt{p\cdot p}=\sqrt{p_\mu p^\mu}$等也是清楚的。此外，对任意三维矢量$\bm{v}$我们用$\hat{\bm{v}}$来表示$\bm{v}$方向的单位矢量。
+
+需要特别留意的，对一个矢量$u^\mu$求偏导数的算符应看作下标，同理，对一个矢量$u_\mu$求偏导数的算符应看作上标，特别是对坐标的导数我们记
+\[
+	\partial_\mu=\frac{\partial}{\partial x^\mu}=\left(\nabla,\frac{1}{c} \frac{\partial}{\partial t}\right),\quad \partial^\mu=\frac{\partial}{\partial x_\mu}=\left(-\nabla,\frac{1}{c} \frac{\partial}{\partial t}\right).
+\]
+
+对于逆序数符号，我们约定$\epsilon^{123}=1$和$\epsilon_{123}=1$，两个并不是升降指标的关系。当然对于四个指标的，$\epsilon^{0123}=1$.
+
+最后的最后，本笔记最主要的参考书是Landau的经典场论，甚至说是缩写了一遍Landau都不为过。其他的选材，全凭兴趣。
+
+\chapter{狭义相对论与Maxwell方程组}
+\section{狭义相对论基本框架}
+狭义相对论的背景是Minkowski时空，首先他是一个$\mathcal{M}=\rr^{3}\times \rr$，其次，他上面有内积$\langle\star,\star\rangle:\mathcal{M}\times \mathcal{M}\to \rr$，满足
+\[
+	\langle x,y\rangle=x^0y^0-x^1y^1-x^2y^2-x^3y^3,
+\]
+采用Einstein记号，我们通常将其写作$x_\mu y^\mu=\eta_{\mu\nu}x^\mu y^\nu$.
+
+在众多的参考系中，有一类参考系，在这类参考系中观察一个自由粒子，他一定做匀速直线运动。这样的参考系称为惯性参考系。如果我们改用不同的惯性参考系来观测同一个物理量，他在我们看到的值上面诱导一个变换，我们称之为Lorentz变换，即
+\[
+	T:\mathcal{M}\to \mathcal{M},\quad T:u\mapsto T(u).
+\]
+所谓矢量，就是在参考系变换下，值如上式变换的量。
+
+考虑到惯性参考系的性质，对于自由粒子，需要速度恒定\footnote{这就是说，惯性参考系之间的变换在几何上就是将直线变成直线。}$x=(\bm{v}t,ct)$，在变换后$T(x)=x'$应该也有$x'=(\bm{v}'t',ct')$，两边对$t$求导就有
+\begin{equation}
+	T'(x)(\bm{v},c)=(\bm{v}',c)\frac{\dd t'}{\dd t},
+	\label{1}
+\end{equation}
+这限制了变换$T$的形式。
+
+一个粒子运动的整个时空信息表现为一条$\mathcal{M}$上的曲线，我们称之为一条世界线，世界线上的点称为粒子的世界点，或者其四维坐标，物理上来看就是四维矢量$x^\mu=(\bm{x},ct)$，其中$\bm{x}$就是熟悉的三维坐标，$c$是光速。每一个世界点对应一个事件，那么两个世界点之间的距离$|x-y|$就称为两个时间的间隔，这个量的物理意义是很基本的，如果从$x$到$y$是一个光速传播的粒子的两个世界点，由于光速不变原理，在任意一个参考系中都成立
+\[
+	(x-y)\cdot (x-y)=c^2(t_x-t_y)^2-(\bm{x-y})^2=(t_x-t_y)^2(c^2-c^2)=0,
+\]
+接着考察世界线的无穷小线元
+\[
+	\dd s=\sqrt{\dd x^\mu\dd x_\mu}=\sqrt{c^2\dd t^2-\dd \bm{x}^2}=c\dd t \sqrt{1-\frac{\bm{v}^2}{c^2}},
+\]
+若在一个参考系中$\dd s=0$，则在其他参考系中$\dd s'=0$，此外，$\dd s$和$\dd s'$必须是同阶的无穷小，因此两者成正比，写作$\dd s^2=a\dd s'^2$.
+按照均匀性的假设，平移不变导致$a$只和两个参考系的相对坐标有关，而空间各向同性假设表明$a$只能相对坐标大小有关，由于$a$是关于无穷小间隔的系数，所以我们可以等价地说他只和相对速率有关。
+
+现在考虑三个惯性系$K$, $K_1$, $K_2$，分别有
+\[
+	\dd s^2=a(v_1)\dd s_1^2,\quad \dd s^2=a(v_2)\dd s_2^2,
+\]
+但是$K_1$相对$K_2$我们也可以写出
+\[
+	\dd s_1^2=a(v_{12})\dd s_2^2,
+\]
+其中$v_{12}$是$K_1$相对$K_2$的速率，是两个速度矢量$\bm{v}_1$, $\bm{v}_2$的函数，则
+\[
+	a(v_{12})=\frac{a(v_2)}{a(v_1)},
+\]
+左边依赖于$\bm{v}_1$, $\bm{v}_2$之间的夹角，而右边并不，此时$a$只能是一个常函数，所以$a=a/a=1$.综合上面讨论的，我们得到了$\dd s^2=\dd s'^2$，即$\dd s^2$在参考系变换下是一个不变量。那么对于有限间隔，从无穷小间隔积分就可以发现他是一个不变量。
+
+由于参考系诱导了一个Lorentz变换，那么这个应该也要保持有限间隔$s=|x-y|$是一个不变量。假如现在有一个Lorentz变换$T$，则必有
+\begin{equation}
+	|T(x)-T(y)|^2=|x-y|^2,
+	\label{2}
+\end{equation}
+则应该对任意的$x$和$y$都应该成立。现在令$y\to x$，则
+\[
+	c^2\dd t'^2 \left(1-\frac{\bm{v'}^2}{c^2}\right)=\dd s'^2=\dd s^2=c^2\dd t^2 \left(1-\frac{\bm{v}^2}{c^2}\right),
+\]
+则\footnote{开根不妨取正，物理上就是说两个时间方向相同。}
+\[
+	\frac{\dd t'}{\dd t}= \sqrt{\frac{c^2-\bm{v}^2}{c^2-\bm{v'}^2}},
+\]
+现在，将其代入\eqref{1}，则
+\[
+	T'(x)(\bm{v},c)=(\bm{v}',c)\sqrt{\frac{c^2-\bm{v}^2}{c^2-\bm{v'}^2}}
+\]
+对任意的$x$都应该成立，此时只有$T'(x)$是一个常矩阵才能满足，因此他$T$是一个仿射变换。仿射变换由一个平移和一个线性变换构成，不妨将其记作$T(\Lambda,a)$，则
+\[
+	T(\Lambda,a)u=\Lambda u+a,
+\]
+其中$(\Lambda u)^\mu=\Lambda^\mu_{\phantom{\mu}\nu}u^\nu$.
+
+将任意的仿射变换代入\eqref{2}中，我们$|\Lambda(x-y)|^2=|x-y|^2$，由于$x$和$y$任意，所以也可以写作$(\Lambda u)\cdot (\Lambda u)=u\cdot u$，写成指标形式
+\[
+\eta_{\mu\nu}\Lambda^\mu_{\phantom{\mu}\rho}\Lambda^\nu_{\phantom{\nu}\sigma}=\eta_{\rho\sigma}.
+\]
+因此不含平移的Lorentz变换构成一种正交群，我们称为Lorentz群。可以直接验证$(\det \Lambda)^2=1$，这只要对上面求行列式就可以了。此外可以直接计算得$(\Lambda^{-1})^\rho_{\phantom{\rho}\nu}=\Lambda_\nu^{\phantom{\nu}\rho}$.
+
+上面确定了不含平移的Lorentz变换需要满足的形式，反之，对于任意两个矢量的内积$x\cdot y$，我们可以检验他是不变量。所以在不含平移的Lorentz变换下不变的量称为标量，也有时候我们会把在所有Lorentz变换下不变的量称为标量。值得注意的是，体积元$\dd^4 x=\dd x^0 \dd x^1 \dd x^2 \dd x^3$也是一个不变量，因为
+\[
+	\dd x'^0 \dd x'^1 \dd x'^2 \dd x'^3=|\det (\Lambda)|\dd x^0 \dd x^1 \dd x^2 \dd x^3=\dd x^0 \dd x^1 \dd x^2 \dd x^3,
+\]
+其中$|\det (\Lambda)|=1$上面已经求过了。
+
+注意$\Lambda$作为坐标变换和参考系变换的意义是不同的，这两者不是对应关系，坐标变换是作用在矢量的分量上面的，或者说反变矢量上面的，而参考系变换是作用在矢量的基上面的，或者说协变矢量上面的。所以当参考系变换为$\Lambda^{-1}$的时候，坐标变换为$\Lambda$.或者反过来，当参考系变换为$\Lambda$的时候，坐标变换为$\Lambda^{-1}$,在这个意义上，矢量$p^\mu$在参考系经过两次变换$\Lambda_1\Lambda_2$后就是
+\[
+	\bigl(\Lambda_1^{-1}\bigr)^\mu_{\phantom{\mu}\rho}\bigl(\Lambda_2^{-1}\bigr)^\rho_{\phantom{\rho}\nu}p^\nu=\bigl((\Lambda_2\Lambda_1)^{-1}\bigr)^\mu_{\phantom{\mu}\nu}p^\nu,
+\]
+这就是所谓的反变矢量。指标在下面的就是协变矢量，对应的是基，所以一般所说的矢量就是反变矢量。
+
+一个尤其重要的Lorentz变换如下：假设我们在$O$系看到了一个物体沿着$x^3$方向以速度$v$匀速运动，则$O$系看到的四维矢量$u^\mu$和固定在物体上的$\bar{O}$系中看到的矢量$\bar{u}^\mu$有如下关系：
+\[
+	\begin{pmatrix}
+		u^1\\
+		u^2\\
+		u^3\\
+		u^0	
+	\end{pmatrix}
+	=\begin{pmatrix}
+		1&0&0&0\\
+		0&1&0&0\\
+		0&0&1/\gamma&\beta/\gamma\\
+		0&0&\beta/\gamma&1/\gamma\\
+	\end{pmatrix}
+	\begin{pmatrix}
+		\bar{u}^1\\
+		\bar{u}^2\\
+		\bar{u}^3\\
+		\bar{u}^0	
+	\end{pmatrix},
+\]
+其中$\beta=v/c$, $\gamma=\sqrt{1-\beta^2}$。显然，该矩阵的行列式为$1$.更有趣的是，$v\to -v$即完成了逆变换，物理上来看，$O$系看$O'$系的速度是$v$，则$O'$系中看$O$系的速度为$-v$.
+
+下面我们要转向动力学，首先，如果按照通常方法定义速度$v^\mu=\dd x^\mu/\dd t$，他不是四维矢量，因为$\dd t$不是标量，取而代之的，我们选取标量$\dd s$来定义$u^\mu=\dd x^\mu/\dd s$，这是一个四维矢量，称为四维速度。此时
+\[
+	u^\mu=\frac{\dd x^\mu}{\dd s}=\frac{1}{c}\left(1-\frac{\bm{v}^2}{c^2}\right)^{-1/2}\frac{\dd x^\mu}{\dd t},
+\]
+所以
+\[
+	u^\mu=\left(\frac{\bm{v}}{c}\left(1-\frac{\bm{v}^2}{c^2}\right)^{-1/2},\left(1-\frac{\bm{v}^2}{c^2}\right)^{-1/2}\right)
+\]
+因此，
+\begin{equation}
+u\cdot u=c^2(u^0)^2-\bm{u}^2=\left(1-\frac{\bm{v}^2}{c^2}\right)^{-1}-\left(1-\frac{\bm{v}^2}{c^2}\right)^{-1}\frac{\bm{v}^2}{c^2}=1.
+\label{3}
+\end{equation}
+可以看到，四维速度其实四个分量不是相互独立的。几何上，这代表着$u^\mu$是与世界线相切的一个四维单位矢量。此外，对他求导就可以发现
+\[
+	u_\mu \frac{\dd u^\mu}{\dd s}=0.
+\]
+
+\section{相对论力学}
+作用量原理依然可以用来抽象相对论力学。对于一个自由粒子，他的作用量需要当他匀速运动（即世界线是直线）的时候取极值，而世界线的线长正是如此的一个泛函，所以不妨猜测自由粒子的世界线具有如下形式
+\[
+	S=-\alpha \int_a^b \dd s=-\int_{t_a}^{t_b}\dd t \,\alpha c\sqrt{1-\frac{\bm{v}^2}{c^2}},
+\]
+所以Lagrangian形式\footnote{强调他是一个1-形式，主要是因为这是和选取坐标无关的，将来有可能换成其他的变量，比如$x^\mu$和$u^\mu$.如果需要我们常说的Lagrangian，使用$L_t$表示，此时$L=L_t\dd t$。}为
+\[
+L=-\alpha c\sqrt{1-\frac{\bm{v}^2}{c^2}}\dd t ,
+\]
+当$\bm{v}^2$远比$c^2$小的时候，对其展开有
+\[
+	L\approx -\alpha c\dd t +\frac{\alpha\bm{v}^2}{2c}\dd t .
+\]
+除去恰当形式项$-\alpha c\dd t$，第二项应该就是经典力学的动能项$m\bm{v}^2\dd t\,/2$，所以$\alpha=mc$，因此自由粒子的Lagrangian形式为
+\[
+	L=- mc^2\sqrt{1-\frac{\bm{v}^2}{c^2}} \dd t,
+\]
+作用量为
+\[
+	S=-mc\int_a^b \dd s.
+\]
+
+先固定端点对$S$求变分，并按照作用量原理，易得
+\[
+	0=\delta S=-mc\int_a^b \frac{\dd x_\mu}{\dd s}\dd(\delta x^\mu)=mc\int_a^b \delta x^\mu \frac{\dd u_\mu}{\dd s}\dd s,
+\]
+于是，自由粒子运动有$\dd u_\mu/\dd s=0$，即四维速度恒定。
+
+反之，为了确定动力学量，假设粒子运动在真实轨道上，而放松一个端点，此时
+\[
+	\delta S=-mc\int^s \frac{\dd x_\mu}{\dd s}\dd(\delta x^\mu)=-mcu_\mu\delta x^\mu
+\]
+所以$\partial_\mu S=-mcu_\mu$，在经典力学中已经知道，作用量关于空间坐标的偏导数就是动量，于是
+\[
+	p^i=\eta^{i\mu}\partial_\mu S=mcu^i,
+\]
+作用量关于时间的偏导数的相反数就是能量，
+\[
+	E=-c\partial_0 S=mc^2u_0=mc^2u^0,
+\]
+综合起来即
+\[
+	p^\mu=(p^1,p^2,p^3,E/c)=(\bm{p},E/c)=mcu^\mu=-\partial^\mu S,
+\]
+这就是四维动量。他正比于四维速度，正好类似于空间动量正比于空间速度。利用\eqref{3}，可以得到相对论下的动量-能量关系：
+\[
+	p^\mu p_\mu=m^2c^2u^\mu u_\mu=m^2 c^2,
+\]
+具体写成三维形式即
+\[
+	\frac{E^2}{c^2}-\bm{p}^2=m^2 c^2.
+\]
+利用动量能量关系就可以得到
+\begin{equation}
+	\partial^\mu S \partial_\mu S=m^2 c^2,
+	\label{hj}
+\end{equation}
+这就是相对论下的Hamilton-Jacobi方程。
+
+回到熟悉的三维形式，我们这里求一下对应着$\bm{v}$的广义动量
+\[
+	\frac{\partial L_t}{\partial \bm{v}}=\frac{m\bm{v}}{\sqrt{1-\bm{v}^2/c^2}}
+	=mc\bm{u}=\bm{p},
+\]
+可以看到此处的广义动量即三维动量，因此刚刚对于四维动量的定义是比较合适的。
+
+现在动力学量只剩下角动量了，假设坐标有一个无穷小变换
+\[
+	\Lambda^\mu_{\phantom{\mu}\nu}=\delta^\mu_{\phantom{\mu}\nu}+(\delta\theta)^{\mu}_{\phantom{\mu}\nu}
+\]
+利用$\Lambda$的正交性（保内积），容易计算得$(\delta\theta)_{\mu\nu}=-(\delta\theta)_{\nu\mu}$.
+
+考虑作用量的改变
+\[
+	\delta S\bigr|_a^b=-p_\mu \delta x^\mu\bigr|_a^b=-p_\mu(\delta\theta)^{\mu}_{\phantom{\mu}\nu}x^\nu\bigr|_a^b=-(\delta\theta)_{\mu\nu}p^\mu x^\nu\bigr|_a^b,
+\]
+由于$\omega_{\mu\nu}$反对称，于是求和中$p^\mu x^\nu$的对称部分求和为0，那么
+\[
+	\delta S\bigr|_a^b=-\frac{1}{2}(\delta\theta)_{\mu\nu}(p^\mu x^\nu- x^\mu p^\nu)\bigr|_a^b,
+\]
+因此$\delta S|_a^b=0$就是说
+\[
+	(p^\mu x^\nu- x^\mu p^\nu)_a=(p^\mu x^\nu- x^\mu p^\nu)_b
+\]
+是一个守恒量，定义四维角动量张量为
+\[
+	M^{\mu\nu}=x^\mu p^\nu-p^\mu x^\nu.
+\]
+他是一个反对称张量。对应到三维角动量$\bm{M}=\bm{r}\times\bm{p}$有
+\[
+	M^{23}=M_x,\quad M^{13}=-M_y,\quad M^{12}=M_z.
+\]
+
+\vspace{3ex}
+
+现在，如果希望用$L=-mc \dd s$用来求运动方程和广义动量，可以发现$L_s=-mc$是一个常数，运动方程和广义动量似乎都是0，这是怎么一回事呢？这是因为四维速度的四个分量不是独立的，它满足$u^\mu u_\mu=1$。所以，为了看起来独立，我们需要在$L_s$加上如下乘子，构造新的Lagrangian
+\[
+	L^*_s=L_s+\lambda(x,u,s) (u^\mu u_\mu-1),
+\]
+为使下面的讨论对一般的Lagrangian都成立，设
+\[
+L_s=L_{0,s}+L_{1,s}=-mc+L_{1,s},
+\]
+此时的Lagrange方程写作
+\begin{equation}
+	\frac{\partial L^*_s}{\partial x^\mu}-\frac{\dd}{\dd s}\frac{\partial L^*_s}{\partial u^\mu}=\frac{\partial L_s}{\partial x^\mu}-\frac{\dd}{\dd s}\frac{\partial L_s}{\partial u^\mu}+\frac{\partial}{\partial x^\mu}[\lambda (u^\mu u_\mu-1)]-\frac{\dd}{\dd s}\frac{\partial}{\partial u^\mu}[\lambda(u^\mu u_\mu-1)]=0.
+\label{lagra}
+\end{equation}
+代入约束和$L$的具体形式
+\[
+	\frac{\partial L_{1,s}}{\partial x^\mu}-\frac{\dd}{\dd s}\frac{\partial L_{1,s}}{\partial u^\mu}=\frac{\dd}{\dd s}\left(2\lambda u_\mu\right)=2u_\mu\frac{\dd \lambda }{\dd s}+2\lambda \frac{\dd u_\mu}{\dd s}
+\]
+两边对左边不妨记作$l_\mu$，对于自由粒子的话，$l_\mu=0$，那么显然$2\lambda u_\mu$为常数，乘一个$u^\mu$，就可以发现$\lambda$是常数，因此$u_\mu$是常数，这个结论前面我们已经知道了。
+
+如果$l_\mu$任意，右边是两个正交矢量$u_\mu$和$\dd u^\mu/\dd s$的叠加，提取$\dd \lambda/\dd s$的系数，那么
+% \[
+% 	l_\mu \frac{\dd u^\mu}{\dd s}=2u_\mu\frac{\dd \lambda }{\dd s}\frac{\dd u^\mu}{\dd s}+2\lambda \frac{\dd u_\mu}{\dd s}\frac{\dd u^\mu}{\dd s}=2\lambda \frac{\dd u_\mu}{\dd s}\frac{\dd u^\mu}{\dd s}
+% \]
+\[
+	l_\mu u^\mu =2u_\mu u^\mu\frac{\dd \lambda }{\dd s}+2\lambda \frac{\dd u_\mu}{\dd s}u^\mu=2\frac{\dd \lambda }{\dd s},
+\]
+如果我们有$l_\mu u^\mu=0$，这个时候，$\dd \lambda /\dd s=0$，这意味着$\lambda$是一个常数。不妨选取$\lambda = -mc/2$，则
+\[
+	L=-mc\dd s-\frac{mc}{2}(u^\mu u_\mu-1)\dd s+L_1=-\frac{mc}{2}\dd s-\frac{mc}{2}u^\mu u_\mu\dd s+L_1,
+\]
+或者等价地去掉一个恰当形式项，把
+\begin{equation}
+	L=-\frac{mc}{2}u^\mu u_\mu\dd s+L_1
+	\label{freeparticle}
+\end{equation}
+看作$u^\mu$自由时候的Lagrangian形式。广义动量即
+\[
+	-P_\mu=\frac{\partial L_s}{\partial u^\mu}=-\frac{mc}{2}\frac{\partial (u^\nu u_\nu)}{\partial u^\mu}+\frac{\partial L_{1,s}}{\partial u^\mu}=-p_\mu+\frac{\partial L_{1,s}}{\partial u^\mu},
+\]
+在自由粒子的情况下，广义动量即$-p_\mu$，符合上面的定义，尤其是空间部分，可以看到就是$\bm{p}$，因此$\lambda = -mc/2$的选取是合理的。
+
+同时，写运动方程也没什么好顾虑的，直接对$L$写出
+\[
+	0=\partial_{\mu} L_{1,s}+\frac{\dd P_\mu}{\dd s}=\partial_{\mu} L_{1,s}+\frac{\dd p_\mu}{\dd s}-\frac{\dd }{\dd s}\frac{\partial L_{1,s}}{\partial u_\mu}=l_\mu+\frac{\dd p_\mu}{\dd s},
+\]
+即
+\begin{equation}
+	l_\mu=-\frac{\dd p_\mu}{\dd s},
+	\label{leq1}
+\end{equation}
+或者用上面的
+\[
+	l_\mu=2u_\mu\frac{\dd \lambda }{\dd s}+2\lambda \frac{\dd u_\mu}{\dd s}=-\frac{\dd p_\mu}{\dd s}.
+\]
+
+
+% \no{2} $l_\mu \dd u^\mu/\dd s=0$.
+
+% 此时如果$\lambda=0$，那么运动方程为$l_\mu=0$.反之，如果
+% \[
+% 	\frac{\dd u_\mu}{\dd s}\frac{\dd u^\mu}{\dd s}=0
+% \]
+% 对任意的$s$都成立，或者
+% \[
+% 	\frac{\bm{f}^2}{c^2-\bm{v}^2}\left(1-\frac{\bm{v}^2\cos(\theta)^2}{c^2}\right)=0,
+% \]
+% 其中$\bm{f}=\dd \bm{p}/\dd t$就是通常所谓的三维力，只有$\bm{f}=0$才有可能，此时三维动量守恒。
+
+\section{电磁场中的电荷}
+相对论中不存在刚体的概念，所以在相对论中不能认为粒子有有限的尺寸而只能认为一个粒子是一个几何点。
+
+既然引入了电荷，那么在作用量中又要引入相关于电荷的一项，一般来说，添加的作用量的形式\footnote{尽管只在形式上，作用量中似乎还可以加上一个\[\int \dd s\, B(x,u),\]其中$B$是标量函数。取文章中这种形式的原因，一方面物理上被认为是实验结果，另一方面是数学上的，后面将看到，如果没有$B$这项就可以满足$l_\mu u^\mu=0$，此时Lagrangian可以形式地看作一个自由粒子Lagrangian和一个势的和，否则，Lagrangian中的乘子，将看作变成自由粒子Lagrangian和势的一个耦合。方程变复杂，美感上也说不过去。}为
+\[
+	S_{\mathrm{mf}}=-e\int_a^b A_\mu\dd x^\mu,
+\]
+这是物质(matter)和场(field)作用的作用量。其中$A_\mu$是场，目前只认为坐标的函数，而$e$是电荷量，不一定指电子电荷量。值得注意的是，$A_\mu$不是唯一确定的，比如，我们做如下变换$A_\mu\to A_\mu+\partial_\mu f$，其中$f$是一个光滑实函数，那么作用量积分就变成
+\[
+	S_{\mathrm{mf}}\to S_{\mathrm{mf}}-e\int_a^b \partial_\mu f \dd x^\mu=S_{\mathrm{mf}}-ef|_a^b,
+\]
+可是作用量多了一个常数$-ef|_a^b$对运动方程是不会有半点影响的。所以，只有在$A_\mu\to A_\mu+\partial_\mu f$下不变的量，才有实际的物理意义，特别是，所有方程在$A_\mu\to A_\mu+\partial_\mu f$应该不变，这种不变性称之为规范不变性。
+
+回到作用量，结合自由粒子的作用量和粒子受场作用的作用量，总作用量写作
+\[
+	S=-mc\int_a^b \dd s-e\int_a^b A_\mu\dd x^\mu,
+\]
+如果记$A^\mu=(\bm{A},\varphi/c)$，那么
+\[
+	S=\int_{t_a}^{t_b} \dd t\,\biggl(-mc^2\sqrt{1-\frac{\bm{v}^2}{c^2}}+e \bm{A}\cdot\bm{v}-e\varphi\biggr),
+\]
+此时Lagrangian写作
+\[
+	L_t=-mc^2\sqrt{1-\frac{\bm{v}^2}{c^2}}+e \bm{A}\cdot\bm{v}-e\varphi,
+\]
+对应着$\bm{v}$的广义动量为
+\[
+	\bm{P}=\frac{\partial L_t}{\partial \bm{v}}=\bm{p}+e \bm{A},
+\]
+应用Lagrange方程，就有运动方程如下：
+\[
+	\dot{\bm{P}}=\frac{\dd}{\dd t}\frac{\partial L_t}{\partial \bm{v}}=\frac{\partial L_t}{\partial \bm{r}}=\nabla L_t=e\nabla(\bm{A}\cdot\bm{v}-\varphi)=e\nabla(\bm{A}\cdot\bm{v})-e\nabla\varphi.
+\]
+
+我们在幼儿园\footnote{Weinberg的著名梗。}已经熟知以下矢量公式
+\[
+	\nabla(\bm{A}\cdot\bm{v})=(\bm{A}\cdot\nabla)\bm{v}+(\bm{v}\cdot\nabla)\bm{A}+\bm{A}\times (\nabla \times \bm{v})+\bm{v}\times (\nabla \times \bm{A}),
+\]
+由之可以计算得
+\[
+	\frac{\dd}{\dd t}(\bm{p}+e \bm{A})=e(\bm{v}\cdot\nabla)\bm{A}+e\bm{v}\times (\nabla \times \bm{A})-e\nabla\varphi,
+\]
+但是$\bm{A}$对时间的全微分可以分成本身随时间变化的一部分和位置矢量随时间变化的一部分：
+\[
+	\dot{\bm{A}}=\frac{\partial \bm{A}}{\partial t}+(\bm{v}\cdot\nabla)\bm{A},
+\]
+所以结合上面一大堆公式，最后可以得到
+\[
+	\frac{\dd \bm{p}}{\dd t}=-e\frac{\partial \bm{A}}{\partial t}+e\bm{v}\times (\nabla \times \bm{A})-e\nabla\varphi,
+\]
+这就是著名的Lorentz力公式。
+
+定义
+\[
+	\bm{E}=-\frac{\partial \bm{A}}{\partial t}-\nabla\varphi,\quad \bm{B}=\nabla \times \bm{A},
+\]
+前者称为电场强度，后者称为磁感应强度。在此定义下，Lorentz力公式可以改成我们熟悉的形式
+\begin{equation}
+	\dot{\bm{p}}=e(\bm{E}+\bm{v}\times\bm{B}).
+	\label{lorentzforce}
+\end{equation}
+
+\section{电磁场张量}
+这节就是用指标的语言重新写一遍上一节的内容，指标的优点显然是将任意惯性参考系之间的转变都变得相当清晰。而且，我们将会看到，在这种情况下，自由粒子部分的Lagrangian依然可以写作我们希望的那种形式\eqref{freeparticle}。先写出作用量
+\[
+	S=S_{\mathrm{m}}+S_{\mathrm{mf}}=\int_a^b L(x^\mu,u^\mu)=\int_a^b \bigl(L_{\mathrm{m}}(x^\mu,u^\mu)+L_{\mathrm{mf}}(x^\mu,u^\mu)\bigr)
+\]
+其中
+\[
+	L_{\mathrm{mf}}(x^\mu,u^\mu)=-eA_\mu \dd x^\mu=-eA_\mu u^\mu\dd s
+\]
+所以
+\begin{equation}
+	l_\mu=\frac{\partial L_{\mathrm{mf},s}}{\partial x^\mu}-\frac{\dd}{\dd s}\frac{\partial L_{\mathrm{mf},s}}{\partial u^\mu}=-e \left(u^\nu\partial_\mu A_\nu-\frac{\dd A_\mu}{\dd s}\right)=-e u^\nu\left(\partial_\mu A_\nu-\partial_\nu A_\mu \right),
+\label{5}
+\end{equation}
+我们可以检验$l_\mu u^\mu=0$，这个只要直接计算$u^\nu u^\mu\left(\partial_\mu A_\nu-\partial_\nu A_\mu \right)$为零即可，而因为这是一个对称张量和反对称张量求和。当$l_\mu u^\mu=0$，在相对论力学里面讨论过，运动方程写作\eqref{leq1}，这种情况下即
+\[
+	e u^\nu\left(\partial_\mu A_\nu-\partial_\nu A_\mu \right)=\frac{\dd p_\mu}{\dd s}.
+\]
+引入符号
+\[
+	F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+\]
+其中$F_{\mu\nu}$就是这节的主角，电磁场张量。这时候运动方程写作
+\[
+	\frac{\dd p_\mu}{\dd s}=eF_{\mu\nu}u^\nu.
+\]
+这就是四维形式的电荷运动方程，注意到$p^\mu=mcu^\mu$，电荷运动方程可以改写成下面两种形式
+\[
+	mc\frac{\dd p_\mu}{\dd s}=eF_{\mu\nu}p^\nu, \quad mc\frac{\dd u_\mu}{\dd s}=eF_{\mu\nu}u^\nu.
+\]
+
+将$A^\mu=(\bm{A},\varphi/c)$或者$A_\mu=(-\bm{A},\varphi/c)$代入$F_{\mu\nu}$的表达式中，可以写出矩阵
+\[
+	(F_{\mu\nu})=
+	\begin{pmatrix}
+	0&-B_z&B_y&-E_x/c\\
+	B_z&0&-B_x&-E_y/c\\
+	-B_y&B_x&0&-E_z/c\\
+	E_x/c&E_y/c&E_z/c&0
+	\end{pmatrix},
+\]
+或者简记为$F_{\mu\nu}=(\bm{B},\bm{E}/c)$，容易证明$F^{\mu\nu}=(\bm{B},-\bm{E}/c)$.
+
+观测两个运动方程，可以发现，我们通常所说的Lorentz力方程\eqref{lorentzforce}只有三个分量，而四维形式的电荷运动方程实际上有四个分量，所以似乎就多出来一个方程：
+\[
+	mc\frac{\dd p_0}{\dd s}=eF_{0\nu}p^\nu=\frac{e}{c}\bm{E}\cdot \bm{p},
+\]
+把他换到三维形式即
+\begin{equation}
+	\frac{\dd E}{\dd t}=e\bm{E}\cdot \bm{v},
+	\label{7}
+\end{equation}
+这就是粒子动能的变化，其中没有出现$\bm{B}$说明磁场并不改变其中带电粒子的动能。既然\eqref{7}阐述了内能随时间的变化，这个多出来的方程似乎很重要。
+
+实则不然，这个方程并不独立于其他三个方程，由于$u^\mu \dd u_\mu/\dd s=0$，所以将四维形式的电荷运动方程和$u^\mu$做内积就有
+\[
+	0=mcu^\mu\frac{\dd u_\mu}{\dd s}=eF_{\mu\nu}u^\mu u^\nu,
+\]
+右边为零是一个反对称张量和一个对称张量求和的自然结果。
+
+这里来求四维广义动量，
+\[
+	P_\mu=-\partial_\mu L_s=p_\mu-\frac{\partial L_{\mathrm{mf},s}}{\partial u^\mu}=p_\mu+eA_\mu,
+\]
+也就是$P^\mu=p^\mu+eA^\mu=\left(\bm{p}+e\bm{A},(E+e\varphi)/c\right)$.
+
+\section{场的变换}
+这节聚焦在场在Lorentz变换下的表现，尤其是在那个$O$系观测沿$z=x^3$轴以速度$v$运动的$O'$的变换，我们称为z-变换，首先矢势是一个矢量，则变换规则为
+\[
+	A^\mu\to \Lambda^\mu_{\phantom{\mu}\nu} A^\nu,
+\]
+在z-变换下，
+\[
+	\begin{pmatrix}
+		A^1\\
+		A^2\\
+		A^3\\
+		A^0	
+	\end{pmatrix}
+	=\begin{pmatrix}
+		1&0&0&0\\
+		0&1&0&0\\
+		0&0&1/\gamma&\beta/\gamma\\
+		0&0&\beta/\gamma&1/\gamma\\
+	\end{pmatrix}
+	\begin{pmatrix}
+		A'^1\\
+		A'^2\\
+		A'^3\\
+		A'^0	
+	\end{pmatrix},
+\]
+其中$\beta=v/c$, $\gamma=\sqrt{1-\beta^2}$.
+
+对于张量的变化，
+\[
+	F^{\mu\nu}\to \Lambda^\mu_{\phantom{\mu}\rho}\Lambda^\nu_{\phantom{\nu}\sigma} F^{\rho\sigma},
+\]
+为了方便计算，我们将其改成
+\[
+	F^{\mu}_{\phantom{\mu}\nu}\to \Lambda^\mu_{\phantom{\mu}\rho} F^{\rho}_{\phantom{\rho}\sigma}\Lambda^{\phantom{\nu}\sigma}_\nu=\Lambda^\mu_{\phantom{\mu}\rho} F^{\rho}_{\phantom{\rho}\sigma}\bigl(\Lambda^{-1}\bigr)^{\sigma}_{\phantom{\sigma}\nu}\phantom{\nu},
+\]
+这就是三个矩阵复合，如果是z-变换，则
+\[
+\begin{split}
+\Lambda^\mu_{\phantom{\mu}\rho} &F^{\rho}_{\phantom{\rho}\sigma}(\Lambda^{-1})^{\sigma}_{\phantom{\sigma}\nu}\phantom{\nu}\\
+	&=
+	\begin{pmatrix}
+		1&0&0&0\\
+		0&1&0&0\\
+		0&0&1/\gamma&\beta/\gamma\\
+		0&0&\beta/\gamma&1/\gamma\\
+	\end{pmatrix}
+	\begin{pmatrix}
+	0&B_z&-B_y&E_x/c\\
+	-B_z&0&B_x&E_y/c\\
+	B_y&-B_x&0&E_z/c\\
+	E_x/c&E_y/c&E_z/c&0
+	\end{pmatrix}
+	\begin{pmatrix}
+		1&0&0&0\\
+		0&1&0&0\\
+		0&0&1/\gamma&-\beta/\gamma\\
+		0&0&-\beta/\gamma&1/\gamma\\
+	\end{pmatrix}\\
+	&=\begin{pmatrix}
+		0&B_z&-B_y/\gamma-E_x\beta/c\gamma&B_y\beta/\gamma+E_x/c\gamma\\
+		-B_z&0&B_x/\gamma-E_y\beta/c\gamma&-B_x\beta/\gamma+E_y/c\gamma\\
+		B_y/\gamma+E_x\beta/c\gamma&-B_x/\gamma+E_y\beta/c\gamma&0&E_z/c\\
+		\beta B_y/\gamma+E_x/c\gamma&-B_x\beta/\gamma+E_y/c\gamma&E_z/c&0
+	\end{pmatrix},
+\end{split}
+\]
+所以
+\[
+F_{\mu\nu}\to\begin{pmatrix}
+		0&-B_z&B_y/\gamma+E_x\beta/c\gamma&-B_y\beta/\gamma-E_x/c\gamma\\
+		B_z&0&-B_x/\gamma+E_y\beta/c\gamma&B_x\beta/\gamma-E_y/c\gamma\\
+		-B_y/\gamma-E_x\beta/c\gamma&B_x/\gamma-E_y\beta/c\gamma&0&-E_z/c\\
+		\beta B_y/\gamma+E_x/c\gamma&-B_x\beta/\gamma+E_y/c\gamma&E_z/c&0
+	\end{pmatrix},
+\]
+那么从$(\bm{B}',\bm{E}')$到$(\bm{B},\bm{E})$的变换公式也已经给出了：
+\[
+\bm{B}=\left(\frac{B'_x-E'_y\beta/c}{\sqrt{1-\beta^2}},\frac{B'_y+E'_x\beta/c}{\sqrt{1-\beta^2}},B'_z\right),
+\]
+以及
+\[
+\bm{E}=\left(
+\frac{E'_x+\beta cB'_y}{\sqrt{1-\beta^2}},\frac{E'_y-\beta cB'_x}{\sqrt{1-\beta^2}},E'_z\right).
+\]
+
+可以看到，即使是足够简单的z-变换，我们也计算得如此辛苦，所以通常我们会去寻找标量，即在任何参考系下都相同的量。显然，从四维指标形式来看，
+\[
+	F_{\mu\nu}F^{\mu\nu},\quad \epsilon^{\mu\nu \rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+\]
+将是两个标量，对应到三维，
+\[
+	\bm{E}^2-c^2\bm{B}^2,\quad \bm{E}\cdot \bm{B}
+\]
+是两个标量。
+
+有了这两个不变量，对于匀强电磁场，可以做这样的断言：如果在某个参考系，$\bm{E}\cdot \bm{B}=0$，那么在任意的惯性参考系，我们都将发现$\bm{E}$和$\bm{B}$垂直，特别地，可以找到一个参考系，在其中只有纯电场或者纯磁场，由于$\bm{E}^2-c^2\bm{B}^2$是不变量，所以当$\bm{E}^2-c^2\bm{B}^2>0$的时候，我们能发现纯电场，反之，能发现纯磁场。
+
+\section{Maxwell方程组}
+回到定义，
+\[
+	\bm{E}=-\frac{\partial \bm{A}}{\partial t}-\nabla\varphi,\quad \bm{B}=\nabla \times \bm{A},
+\]
+对$\bm{E}$求旋度，对$\bm{B}$求散度就得到了第一对Maxwell方程：
+\[
+	\nabla\times \bm{E}=-\frac{\partial \bm{B}}{\partial t},\quad \nabla\cdot\bm{B}=0.
+\]
+这两个方程写成四维矢量形式即
+\[
+	\partial_{[\mu}F_{\nu\rho]}=\partial_{\mu}F_{\nu\rho}-\partial_{\nu}F_{\mu\rho}+\partial_{\rho}F_{\mu\nu}=0.
+\]
+
+狭义相对论的几个假设的改变是很基本的，在经典力学中，所谓的场的作用是瞬时的，可是到了相对论下自然是不对的，粒子激发了场，场再作用粒子，而场的传播速度是不可能超过光速的。因此，场不再只是一个数学模型，而可能具有物理实体的意义。下面我们就来谈论场的作用量，最后写出物质、场以及物质和场作用的作用量之和，并给出完整的场方程，即Maxwell方程组。
+
+我们希望得到$S_{\mathrm{f}}$是场本身的作用量，即场在没有电荷时候的作用量。由于没有电荷，这一项并不对运动在场内的粒子有影响，反之，若是想要寻找确定场的方程，这一项显然是必须的。为了求出作用量的形式，我们参考实验事实，场是可以叠加的，所以场方程必然是线性方程，所以$S_{\mathrm{f}}$这项肯定是场的二次式，但是势又不能包含在$S_{\mathrm{f}}$内，因为势没有被确定下来。因此$S_{\mathrm{f}}$应当是$F_{\mu\nu}$的函数的积分。作用量是标量，所以可能是一个标量的积分。综合上面所有的条件，我们有理由相信，作用量$S_{\mathrm{f}}$只能正比于$F_{\mu\nu}F^{\mu\nu}$的积分。所以，
+\[
+	S_{\mathrm{f}}=-a\int \dd^4 x\,F_{\mu\nu}F^{\mu\nu},
+\]
+系数$a$决定单位，以后我们再说，那么总的作用量就可以写作
+\[
+	S=S_{\mathrm{m}}+S_{\mathrm{f}}+S_{\mathrm{mf}}=-mc\int \dd s-\int e \dd x^\mu\,A_\mu-a\int \dd^4 x\,F_{\mu\nu}F^{\mu\nu},
+ \]
+这个作用量在规范变化下，对运动方程没有影响。更一般地，我们经常考察多粒子系统，这种时候
+\[
+	S=S_{\mathrm{m}}+S_{\mathrm{f}}+S_{\mathrm{mf}}=-\sum mc\int \dd s-\sum e\int \dd x^\mu\,A_\mu-a\int \dd^4 x\,F_{\mu\nu}F^{\mu\nu}.
+\]
+
+为了数学上面的方便，我们不把电荷当点看，而经常是看作连续分布的，这种时候需要谈及所谓的电荷密度$\rho$，电荷密度$\rho$关于体积的积分即这块体积内的电荷量，
+\[
+	e=\int \rho\dd V.
+\]
+对于离散的点电荷，密度取成$\delta$函数形，即
+\[
+	\rho=\sum_a e_a \delta^3(\bm{r}-\bm{r}_a).
+\]
+
+电荷是一个标量，但是$\rho$却不一定是标量，为了电荷是一个标量，我们只需要$\rho\dd V$是个标量就可以了。在$\rho\dd V$两边乘以$\dd x^\mu$，那么
+\[
+	\rho\dd V\dd x^\mu=\rho \dd V\dd x^0\frac{\dd x^\mu}{\dd x^0}=\rho\frac{\dd x^\mu}{\dd x^0} \dd^4 x,
+\]
+左边是一个四维矢量，右边也是，而$\dd^4 x$是标量，因此
+\[
+	j^\mu=c\rho\frac{\dd x^\mu}{\dd x^0}
+\]
+是一个四维矢量，称为四维电流密度矢量。其空间部分有$\bm{j}=\rho \bm{v}$，而时间部分为$c\rho$，因此$j^\mu=(\bm{j},c\rho)=(\rho \bm{v},c\rho)$.
+
+如果对电荷密度全空间积分，那么就得到了全空间内的电荷量
+\[
+	\int_V\rho\dd V=\frac{1}{c}\int j^0 \dd S_0=\frac{1}{c}\int j^\mu \dd S_\mu,
+\]
+其中积分在整个与$x^0$轴垂直的四维空间的超平面上，其中$\dd S_\mu$是四维空间中的三维面元，类似于三维空间中的二维面元，$\dd V=\dd S_0$是其中的一个元素，方向与$x^0$轴相同，因此在被积分曲面上，$j^0 \dd S_0=j^\mu \dd S_\mu$，故而最后一个等式成立。
+
+有了电流密度矢量，可以改写$S_{\mathrm{mf}}$如下
+\[
+	S_{\mathrm{mf}}=-\int\dd V \rho\int \dd x^\mu\,A_\mu=-\int \dd^4 x\, \rho A_\mu\frac{\dd x^\mu}{\dd x^0}=-\frac{1}{c}\int \dd^4 x\, A_\mu j^\mu.
+\]
+最后，作用量为
+\[
+	S=S_{\mathrm{m}}+S_{\mathrm{f}}+S_{\mathrm{mf}}=-\sum mc\int \dd s-\frac{1}{c}\int \dd^4 x\, A_\mu j^\mu-a\int \dd^4 x\,F_{\mu\nu}F^{\mu\nu}.
+\]
+
+考察一个体积内电荷对时间的变化，即考察$\partial_t\int \rho \dd V$.另一方面，单位时间内电荷的变化等于单位时间内离开这个体积而走到外面去的电荷量，或者反过来进来的电荷量，在单位时间内经过包围该体积的曲面的面元$\dd \bm{f}$的电荷等于$\rho \bm{v}\cdot \dd \bm{\sigma}$，此处的$\bm{v}$是该处面元所在的空间点的速度。$\dd \bm{\sigma}$方向是外法向，假若电荷离开，则$\rho \bm{v}\cdot \dd \bm{\sigma}>0$，假若进来，则为负。因此，单位时间离开体积的总电荷就是$\rho \bm{v}\cdot \dd \bm{\sigma}$对曲面的积分，所以
+\[
+	\partial_t\int \rho \dd V=-\int_{\partial V}\rho \bm{v}\cdot \dd \bm{\sigma}=-\int_{\partial V}\bm{j}\cdot \dd \bm{\sigma}=-\int_{V}\dd V\,\nabla\cdot\bm{j},
+\]
+所以
+\[	
+	\partial_t \rho+\nabla\cdot\bm{j}=\partial_0 (c\rho)+\nabla\cdot\bm{j}=\partial_\mu j^\mu=0,
+\]
+这就是电荷连续性方程。我们已经知道，沿着某一个超平面，总电荷可以表达成
+\[
+\frac{1}{c}\int j^\mu \dd S_\mu,
+\]
+那么对任意的，包含整个三维空间的超曲面，他和这个超平面构成一个闭合曲面$S$，沿着这个闭合曲面积分，我们按照电荷连续性方程和Stokes公式
+\[
+	\frac{1}{c}\int_{\partial \Omega} j^\mu \dd S_\mu=\frac{1}{c}\int_{\Omega} \partial_\mu j^\mu \dd^4 x=0,
+\]
+所以$j^\mu/c$在两个超曲面上积分都是全空间的总电荷。
+
+现在考察电荷守恒和规范不变性的联系，如果做变换$A_\mu\to A_\mu+\partial_\mu f$，那么$S_{\mathrm{mf}}$满足
+\[
+	S_{\mathrm{mf}}\to S_{\mathrm{mf}}-\frac{1}{c} \int \dd^4 x \partial_\mu f j^\mu=S_{\mathrm{mf}}+\frac{1}{c} \int \dd^4 x \,f \partial_\mu j^\mu,
+\]
+按照电荷连续性方程（电荷守恒），后面一个积分项为0，保证了运动方程的不变。所以电荷守恒可以理解成规范变换的需求，或者在逻辑上反过来，真是因为有电荷守恒，所以电磁场和物质的作用量项才可以有$\int \dd^4 x\,A_\mu j^\mu$的形式。
+
+现在推导第二对Maxwell方程，首先，我们认为电荷的运动是已知的，所以并不需要变分粒子的坐标，转而要变分势（势就类似于场的坐标）。这正好比在求粒子的运动方程的时候，我们只变分粒子的坐标，而认为场是已知的。
+
+写出作用量
+\[
+	S=S_{\mathrm{f}}+S_{\mathrm{mf}}=-\int \dd^4 x\, \left(\frac{1}{c}A_\mu j^\mu+aF_{\mu\nu}F^{\mu\nu}\right),
+\]
+其中$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$。Larangian密度为
+\[
+	\mathcal{L}(A_\mu,\partial_\nu A_\mu)=-\frac{1}{c}A_\mu j^\mu-aF_{\mu\nu}F^{\mu\nu}.
+\]
+
+为以后的方便，我们这里先考虑一般的$\mathcal{L}$下的场方程。对$S=\int \dd^4 x\, \mathcal{L}$固定边界求变分有，
+\[
+\begin{split}
+	0=\delta S&=\int \dd^4 x \,\left(\frac{\partial \mathcal{L}}{\partial A_\mu}\delta A_\mu+\frac{\partial \mathcal{L}}{\partial \partial_\nu A_\mu}\delta \partial_\nu A_\mu\right)\\
+	&=\int \dd^4 x \,\left(\frac{\partial \mathcal{L}}{\partial A_\mu}\delta A_\mu+\partial_\nu\left(\frac{\partial \mathcal{L}}{\partial \partial_\nu A_\mu}\delta  A_\mu\right)-\partial_\nu\frac{\partial \mathcal{L}}{\partial \partial_\nu A_\mu}\delta  A_\mu\right)\\
+	&=\int \dd^4 x \,\left(\frac{\partial \mathcal{L}}{\partial A_\mu}-\partial_\nu\frac{\partial \mathcal{L}}{\partial \partial_\nu A_\mu}\right)\delta  A_\mu,
+\end{split}
+\]
+因此，Larangian密度应该满足方程
+\begin{equation}
+\label{feq}
+	\frac{\partial \mathcal{L}}{\partial A_\mu}-\partial_\nu\frac{\partial \mathcal{L}}{\partial \partial_\nu A_\mu}=0.
+\end{equation}
+
+代入电磁场的Larangian密度，可以计算有
+\[
+\begin{split}
+	0&=\frac{\partial \mathcal{L}}{\partial A_\mu}-\partial_\nu\frac{\partial \mathcal{L}}{\partial \partial_\nu A_\mu}\\
+	&=-\frac{1}{c}j^\mu-\partial_\nu\left(-2a F^{\rho\sigma}\frac{\partial F_{\rho\sigma}}{\partial \partial_\nu A_\mu}\right)\\
+	&=-\frac{1}{c}j^\mu+2a\partial_\nu \left[F^{\rho\sigma}\left(\delta^{\nu}_{\rho} \delta^{\mu}_{\sigma}-\delta^\nu_\sigma\delta^\mu_\rho\right)\right]\\
+	&=-\frac{1}{c}j^\mu+2a\partial_\nu [F^{\nu\mu}-F^{\mu\nu}]\\
+	&=-\frac{1}{c}j^\mu+4a\partial_\nu F^{\nu\mu},\\
+\end{split}
+\]
+所以我们要求的场方程即
+\[
+	\partial_\nu F^{\nu\mu}=\frac{1}{4ac}j^\mu.
+\]
+
+令$\mu=1$，
+\[
+	\frac{\partial F^{11}}{\partial x}+\frac{\partial F^{12}}{\partial y}+\frac{\partial F^{13}}{\partial z}+\frac{1}{c}\frac{\partial F^{10}}{\partial t}=-\frac{1}{4ac}j^1,
+\]
+即\[
+	-\frac{\partial B_z}{\partial y}+\frac{\partial B_y}{\partial z}+\frac{1}{c^2}\frac{\partial E_x}{\partial t}=-\frac{1}{4ac}j^1,
+\]
+连同$\mu=2,3$可以给出方程
+\[
+	\nabla\times \bm{B}=\frac{1}{c^2}\frac{\partial \bm{E}}{\partial t}+\frac{1}{4ac}\bm{j}.
+\]
+
+剩下的只有$\mu=0$了，即
+\[
+	\frac{\partial F^{01}}{\partial x}+\frac{\partial F^{02}}{\partial y}+\frac{\partial F^{03}}{\partial z}+\frac{1}{c}\frac{\partial F^{00}}{\partial t}=-\frac{1}{4ac}j^0,
+\]
+也就是
+\[
+	-\frac{1}{c}\frac{\partial E_x}{\partial x}-\frac{1}{c}\frac{\partial E_y}{\partial y}-\frac{1}{c}\frac{\partial E_z}{\partial z}=-\frac{1}{4ac}c\rho,
+\]
+或者
+\[
+	\nabla\cdot \bm{E}=\frac{c}{4a}\rho.
+\]
+
+前面说过$a$有关于单位制，对于SI制，$a=c\epsilon_0/4$，其中$\epsilon_0$是真空电容率或真空介电常数，此时
+\[
+	\nabla\cdot \bm{E}=\frac{\rho}{\epsilon_0},\quad \nabla\times \bm{B}=\frac{1}{c^2}\frac{\partial \bm{E}}{\partial t}+\frac{1}{c^2\epsilon_0}\bm{j},
+\]
+通常我们还会定义$\mu_0$使得$\mu_0\epsilon_0=1/c^2$，则
+\[
+	\nabla\cdot \bm{E}=\frac{\rho}{\epsilon_0},\quad \nabla\times \bm{B}=\frac{1}{c^2}\frac{\partial \bm{E}}{\partial t}+\mu_0\bm{j},
+\]
+这就是我们通常在SI制下看到的第二组Maxwell方程。
+
+以后我们并不采用SI制，而采用Gauss制，此时$a=c/16\pi$，那么的第二组Maxwell方程写作
+\[
+	\nabla\cdot \bm{E}=4\pi\rho,\quad \nabla\times \bm{B}=\frac{1}{c^2}\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right).
+\]
+
+单位转换并不复杂，只要注意量纲即可，比如$e\bm{E}$就是$\mathrm{Energy/Length}^2$的量纲，假设基本力学量的量纲不变，只要$\bm{E}$改变量纲，就会引起$e$反着变。知道了$\bm{E}$，那么只要知道$c\bm{E}$和$\bm{B}$同量纲，那么$\bm{B}$也清楚了。
+
+现在把已知的两组方程在Gauss制下写出来：
+\begin{equation}
+\left\{
+\begin{array}{lcl}
+	\nabla\times \bm{E}&=&-\displaystyle{\frac{\partial \bm{B}}{\partial t}},\\
+	\nabla\cdot \bm{B}&=&0,\\
+	\nabla\cdot \bm{E}&=&4\pi\rho,\\
+	\nabla\times \bm{B}&=&\displaystyle{\frac{1}{c^2}\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right)},
+\end{array}
+\right.
+\label{maxwelld}
+\end{equation}
+这就是大名鼎鼎的Maxwell方程组。
+
+Landau在他的第二卷采用了另一个物理量$\bm{H}=c\bm{B}$来表示磁场，他有着和$\bm{E}$一样的量纲，此时Maxwell方程组写作
+\[
+\left\{
+\begin{array}{lcl}
+	\nabla\times \bm{E}&=&-\displaystyle{\frac{1}{c}\frac{\partial \bm{H}}{\partial t}},\\
+	\nabla\cdot \bm{H}&=&0,\\
+	\nabla\cdot \bm{E}&=&4\pi\rho,\\
+	\nabla\times \bm{H}&=&\displaystyle{\frac{1}{c}\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right)}.
+\end{array}
+\right.
+\]
+
+% 积分形式是容易写出的，应用Stokes公式到\eqref{maxwelld}中就有
+% \begin{equation}
+% \begin{split}
+% 	\int_{\partial S}\dd \bm{l}\cdot \bm{E}&=\int_S\dd \bm{\sigma}\cdot \nabla\times \bm{E}=-\int_S\dd \sigma\cdot\frac{\partial \bm{B}}{\partial t}=-\frac{\partial }{\partial t}\int_S\dd \sigma\cdot\bm{B},\\
+% 	\int_{\partial V}\dd \bm{\sigma}\cdot \bm{B}&=\int_V\dd V\,\nabla\cdot\bm{B}=0,\\
+% 	\int_{\partial V}\dd \bm{\sigma}\cdot \bm{E}&=\int_V\dd V\,\nabla\cdot\bm{E}=\int_V\dd V\,4\pi\rho=4\pi e,\\
+% 	\int_{\partial S}\dd \bm{l}\cdot \bm{B}&=\int_S\dd \bm{\sigma}\cdot \nabla\times \bm{B}=\frac{1}{c^2}\int_S\dd \sigma\cdot\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right),
+% \end{split}
+% \label{maxwelli}
+% \end{equation}
+% 其中$e$是$V$内的总电荷量。
+
+四维形式的方程则写作
+\begin{equation}
+\left\{
+\begin{array}{lcl}
+	\partial_{[\mu}F_{\nu\rho]}&=&0,\\
+	\partial_\nu F^{\nu\mu}&=&4\pi j^\mu/c^2.
+\end{array}
+\right.
+\label{maxwellf}
+\end{equation}
+
+\section{能量动量张量}
+场作为物理实体，我们已知了其本身的Larangian密度，也应该讨论其能量和动量。
+
+对于场而言，势才是“坐标”，那么类比经典力学，此时$x^\mu$应该是做为“时间”用的才对，所以类比于能量关于时间的守恒，我们可以考虑$\mathcal{L}$关于坐标的守恒。为此，考察其导数
+\[
+	\partial_\mu\mathcal{L}=\frac{\partial\mathcal{L}}{\partial A^\nu}\partial_\mu A^\nu+\frac{\partial\mathcal{L}}{\partial \partial_\rho A^\nu}\partial_\mu \partial_\rho A^\nu,
+\]
+利用场方程\eqref{feq}，
+\[
+	\partial_\mu\mathcal{L}=\partial_\rho\frac{\partial \mathcal{L}}{\partial \partial_\rho A^\nu}\partial_\mu A^\nu+\frac{\partial\mathcal{L}}{\partial \partial_\rho A^\nu}\partial_\mu \partial_\rho A^\nu=\partial_\rho\left(\frac{\partial \mathcal{L}}{\partial \partial_\rho A^\nu}\partial_\mu A^\nu\right),
+\]
+或者改写成
+\[
+	\partial_\rho\left(\frac{\partial \mathcal{L}}{\partial \partial_\rho A^\nu}\partial_\mu A^\nu-\delta^\rho_\mu \mathcal{L}\right)=0,
+\]
+定义
+\[
+	T_{\phantom{\nu}\mu}^\nu=\frac{\partial \mathcal{L}}{\partial \partial_\nu A^\rho}\partial_\mu A^\rho-\delta^\nu_\mu \mathcal{L},
+\]
+或者
+\begin{equation}
+	T^{\mu\nu}=\frac{\partial \mathcal{L}}{\partial \partial_\mu A^\rho}\partial^\nu A^\rho-\eta^{\mu\nu} \mathcal{L},
+\end{equation}
+称之为能量动量张量（简称能动张量）。它满足守恒方程$\partial_\mu T^{\mu\nu}=0$。注意$T^{\mu\nu}$不一定是唯一的，他始终可以加上一个$f^{\mu\nu}$，其满足$\partial_\mu f^{\mu\nu}=0$，则保持$\partial_\mu T^{\mu\nu}=0$不变。
+
+将$\partial_\mu T^{\mu\nu}=0$对某个四维体积积分（包含整个三维空间）有
+\[
+	0=\int_V \dd^4 x\,\partial_\mu T^{\mu\nu}=\int_{\partial V}\dd S_\mu \, T^{\mu\nu},
+\]
+这就是说
+\[
+	P^\nu=a\int_{\partial V}\dd S_\mu \, T^{\mu\nu}
+\]
+对任意包含整个三维空间的超曲面$S$都相等，其中$a$是一个常数。换句话说，$P^\mu$是守恒量。而且，从定义中可以直接看到，尽管$T^{\mu\nu}$不是唯一确定的，但$P^\mu$是唯一确定。
+
+$P^\mu$将被理解成这个体系的四维动量矢量，特别地，$P^0$应该等于这个体系的能量除以$c$，为此，我们将积分选取在$x^0$为常数的超平面上，就有
+\[
+	P^0=a\int\,\dd S_\nu T^{\nu\mu}=a\int\dd V\,T^{00},
+\]
+而$T^{00}$可以被计算出来为
+\[
+	T^{00}=\dot{A}^\mu \frac{\partial \mathcal{L}}{\partial \dot{A}^\mu}-\mathcal{L},
+\]
+$A$既然被认为是场的“坐标”，那么$\dot{A}$就自然被理解成场的“速度”，所以$T^{00}$不是别的，就是场的“能量密度”，为了考察他和真实能量之间的关系，我们只要看$\mathcal{L}$的量纲就好了，因此$\mathcal{L}\dd^4 x= L_t\dd t$，而$L_t$的量纲就是能量，所以$c\mathcal{L}\dd V$的量纲才是真实能量，而$c\mathcal{L}$是能量密度的量纲。因此，这里的能量密度是$cT^{00}$。综合上面的量纲分析，我们最后得到$a$应该取$1$，那么
+\[
+	P^\mu=\int_{S}\dd S_\nu \, T^{\nu\mu}.
+\]
+
+因为能量动量张量不是唯一确定的，我们可以找一个条件来确定他，这就是体系的角动量守恒。类比
+\[
+	M^{\mu\nu}=\sum (x^\mu p^\nu-p^\mu x^\nu)=C,
+\]
+我们写出体系的角动量守恒方程，主要注意把动量换掉，并把离散体系换成连续体系，即
+\[
+	C=M^{\mu\nu}=\int_S (x^\mu \dd P^\nu-x^\nu\dd P^\mu)=\int_S\dd S_\rho\, (x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu}).
+\]
+为了守恒，只有被积式子的散度为0，即
+\[
+	0=\partial_\rho(x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu})=T^{\mu\nu}-T^{\nu\mu},
+\]
+这样确定的$T^{\mu\nu}$是一个对称张量。虽然一般来说，$T^{\mu\nu}$并不对称，但是我们可以找到一个项$f^{\mu\nu}$，使得$T^{\mu\nu}+f^{\mu\nu}$对称，并且变换后依然满足方程$\partial_\nu T^{\mu\nu}=0$.
+
+假设我们确定了$T^{\mu\nu}$使得他是一个对称张量。接着我们来确定他的分量，前面已经算过$cT^{00}=w$是能量密度，依然在$x^0$为常数的超平面上积分，则
+\[
+	P^\mu=\int \dd V\,T^{0 \mu},
+\]
+左边是动量，那么右边的被积分的自然就是动量密度的三个分量$\left(T^{01},T^{02},T^{03}\right)$.
+
+为了明白$T^{\mu\nu}$其他分量的意义，将守恒方程$\partial_\mu T^{\mu\nu}=0$分成空间和时间部分：
+\[
+	\frac{1}{c^2}\partial_t w+\partial_i T^{0i}=0,\quad \frac{1}{c}\partial_t T^{0i}+\partial_j T^{ji}=0.
+\]
+第一个方程在空间的一个体积$V$内积分
+\[
+	\partial_t\int_V \dd V\,w=-c^2\int_{V}\dd V\,\partial_i T^{i0} =-c^2\int_{\partial V}\dd\bm{\sigma}_i\,T^{i0},
+\]
+其中$\dd\bm{\sigma}_i$是三维空间标准的面元。上式左边是体积内能量的改变量，右边是穿过界面体积的能量，类比电荷守恒方程，其中电流矢量的类比物即矢量$\bm{S}=(c^2T^{10},c^2T^{20},c^2T^{30})$，我们称之为能流密度，是单位时间内穿过单位面积的能量。由于$T^{\mu\nu}$对称，所以能流密度等于动量密度乘以$c^2$.
+
+对第二个方程，我们同样在空间的一个体积$V$内积分
+\[
+	\partial_t\int_V \dd V\,T^{0i}=-c\int_{\partial V}\dd\bm{\sigma}_j\,T^{ji},
+\]
+因为$T^{0i}$是动量密度，类比能流密度，右边定义的张量$T^{ji}$应该被称为动量流密度，将之记作$-\sigma^{ji}$，称为应力张量。综上，可以写出$T^{\mu\nu}$矩阵
+\[
+	(T^{\mu\nu})=\frac{1}{c}
+	\begin{pmatrix}
+	-\sigma_{xx}&-\sigma_{xy}&-\sigma_{xz}&S_x/c\\
+	-\sigma_{yx}&-\sigma_{yy}&-\sigma_{yz}&S_y/c\\
+	-\sigma_{zx}&-\sigma_{zy}&-\sigma_{zz}&S_z/c\\
+	S_x/c&S_y/c&S_z/c&w
+	\end{pmatrix}.
+\]
+
+迄今为止，我们未用到$\mathcal{L}$的具体形式，所以对于任意的$\mathcal{L}$其实都成立，只不过一般情况下变量不是$A^\mu$而是$q^a$而已，其中$q$按$a$要求和。具体到电磁场，可以计算
+\[
+	T^{\mu\nu}=\frac{\partial \mathcal{L}}{\partial \partial_\mu A^\rho}\partial^\nu A^\rho-\eta^{\mu\nu} \mathcal{L},
+\]
+其中
+\[
+	\mathcal{L}(A_\mu,\partial_\nu A_\mu)=-\frac{c}{16\pi}F_{\mu\nu}F^{\mu\nu}.
+\]
+而因为是场本身的$\mathcal{L}$，所以此时Maxwell方程组\eqref{maxwellf}中的源$j^\mu=0$，Maxwell方程组写作
+\[
+\left\{
+\begin{array}{lcl}
+	\partial_{[\mu}F_{\nu\rho]}&=&0,\\
+	\partial_\nu F^{\nu\mu}&=&0.
+\end{array}
+\right.
+\]
+
+现在开始计算：
+\[
+	T^{\mu\nu}=-\frac{c}{8\pi}F^{\mu'\nu'}\frac{\partial F_{\mu'\nu'}}{\partial \partial_\mu A_\rho}\partial^\nu A_\rho-\eta^{\mu\nu} \mathcal{L}=-\frac{c}{4\pi}F^{\mu\rho}\partial^\nu A_\rho+ \frac{c}{16\pi}\eta^{\mu\nu} F_{\rho\sigma}F^{\rho\sigma}.
+\]
+这个能动张量并不对称，我们要将之调整为对称的保证角动量守恒，为此做变换
+\[
+\begin{split}
+	T^{\mu\nu}\to T^{\mu\nu}+\frac{c}{4\pi}F^{\mu\rho}\partial_\rho A^\nu&=-\frac{c}{4\pi}F^{\mu\rho}\partial^\nu A_\rho+\frac{c}{4\pi}F^{\mu\rho}\partial_\rho A^\nu+ \frac{c}{16\pi}\eta^{\mu\nu} F_{\rho\sigma}F^{\rho\sigma}\\
+	&=-\frac{c}{4\pi}F^{\mu\rho}(\partial^\nu A_\rho-\partial_\rho A^\nu)+ \frac{c}{16\pi}\eta^{\mu\nu} F_{\rho\sigma}F^{\rho\sigma}\\
+	&=-\frac{c}{4\pi}\eta^{\nu\sigma}F^{\mu\rho}F_{\sigma\rho}+ \frac{c}{16\pi}\eta^{\mu\nu} F_{\rho\sigma}F^{\rho\sigma},
+\end{split}
+\]
+可以检验他是对称的，剩下的只要检验添上的一项满足守恒方程即可：
+\[
+	\partial_\nu (F^{\nu\rho}\partial_\rho A^\mu)=F^{\nu\rho}\partial_\nu \partial_\rho A^\mu+\partial_\rho A^\mu\partial_\nu F^{\nu\rho}=0,
+\]
+第一项为零是$F^{\nu\rho}$的反对称性，第二项为零是$F^{\nu\rho}$满足的Maxwell方程。检验完毕。
+
+现在，变换后的能动张量
+\[
+	T^{\mu\nu}=-\frac{c}{4\pi}\eta^{\mu\sigma}F^{\nu\rho}F_{\sigma\rho}+ \frac{c}{16\pi}\eta^{\mu\nu} F_{\rho\sigma}F^{\rho\sigma}
+\]
+是对称的了。现在，我们来求他的分量，首先
+\[
+	F_{\rho\sigma}F^{\rho\sigma}=2\bm{B}^2-\frac{2}{c^2}\bm{E}^2,
+\]
+而$C^{\mu\nu}=-\eta^{\nu\sigma}F^{\mu\rho}F_{\sigma\rho}$分成三部分为：
+\[
+	C^{ij}=-\frac{E_iE_j}{c^2}-B_iB_j+\delta_{ij}\bm{B}^2,\quad C^{0i}=\frac{1}{c}(\bm{E}\times \bm{B})_i,\quad C^{00}=\frac{\bm{E}^2}{c^2}.
+\]
+
+综上
+\[
+	T^{ij}=\frac{c}{4\pi}C^{ij}-\frac{c}{8\pi}\delta_{ij}\left(\bm{B}^2-\frac{1}{c^2}\bm{E}^2\right)=\frac{c}{8\pi}\left(-2\frac{E_iE_j}{c^2}-2B_iB_j+\delta_{ij}\bm{B}^2+\frac{\delta_{ij}}{c^2}\bm{E}^2\right),
+\]
+应力张量有
+\[
+	\sigma_{ij}=cT^{ij}=\frac{c^2}{4\pi}\left(B_iB_j+\frac{E_iE_j}{c^2}\right)-\frac{c^2}{8\pi}\left(\bm{B}^2+\frac{1}{c^2}\bm{E}^2\right)\delta_{ij}.
+\]
+能流密度$\bm{S}=(c^2T^{01},c^2T^{02},c^2T^{03})$，
+\[
+	(\bm{S})_i=c^2T^{0i}=\frac{c^3}{4\pi}C^{0i}=\frac{c^2}{4\pi}(\bm{E}\times \bm{B})_i,
+\]
+即
+\[
+	\bm{S}=\frac{c^2}{4\pi}\bm{E}\times \bm{B}.
+\]
+能量密度
+\[
+	w=cT^{00}=\frac{c^2}{4\pi}C^{00}+\frac{c^2}{8\pi}\left(\bm{B}^2-\frac{1}{c^2}\bm{E}^2\right)=\frac{c^2}{8\pi}\left(\bm{B}^2+\frac{1}{c^2}\bm{E}^2\right).
+\]
+
+经过上述计算，我们还可以得到电磁场能动张量的另一个性质$T^{\phantom{\mu}\mu}_\mu=0$，计算如下
+\[
+\begin{split}
+	T^{\phantom{\mu}\mu}_\mu=T^{\phantom{0}0}_0+T^{\phantom{i}i}_i&=T^{00}-\sum_i T^{ii}\\
+	&=\frac{c^2}{8\pi}\left(\bm{B}^2+\frac{1}{c^2}\bm{E}^2\right)+\frac{c^2}{8\pi}\sum_i\left(2\frac{E_i^2}{c^2}+2B_i^2-\bm{B}^2-\frac{1}{c^2}\bm{E}^2\right)\\
+	&=\frac{c^2}{8\pi}\left(\bm{B}^2+\frac{1}{c^2}\bm{E}^2\right)-\frac{c^2}{8\pi}\left(\bm{B}^2+\frac{1}{c^2}\bm{E}^2\right)=0.\\
+\end{split}
+\]
+
+我们上面对场的能量密度、能流密度有了定义，这是建立在场和粒子之间没有相互作用上的。现在，我们引入粒子，考察能量守恒定律。为此，我们对电磁场本身能量求时间的导数
+\[
+	\partial_t \int_{V} w\dd V=\frac{c^2}{4\pi}\int_{V}\dd V\,\left(\bm{B}\cdot \partial_t \bm{B}+\frac{1}{c^2}\bm{E}\cdot \partial_t \bm{E}\right),
+\]
+这里使用含源的Maxwell方程组\eqref{maxwelld}替换掉场对时间的偏导数，
+\[
+	\partial_t \int_{V} w\dd V=\frac{c^2}{4\pi}\int_{V}\dd V\,\left(-\bm{B}\cdot (\nabla\times \bm{E})+\bm{E}\cdot (\nabla\times \bm{B})-\frac{4\pi}{c^2}\bm{E}\cdot \bm{j}\right),
+\]
+使用我们幼儿园就熟知的矢量分析公式
+\[
+	\nabla\cdot(\bm{E}\times\bm{B})=\bm{B}\cdot (\nabla\times \bm{E})-\bm{E}\cdot (\nabla\times \bm{B})
+\]
+以及能流密度$\bm{S}=c^2\bm{E}\times \bm{B}/4\pi$，则
+\[
+	\partial_t \int_{V} w\dd V=-\int_{V}\dd V\,\nabla\cdot\bm{S}-\int_{V}\dd V\,\bm{E}\cdot \bm{j}=-\int_{\partial V}\dd \bm{\sigma}\cdot\bm{S}-\int_{V}\dd V\,\bm{E}\cdot \bm{j},
+\]
+如果源满足$\bm{j}=0$，则又回到我们前面见过的形式，现在多了最后一项，肯定和粒子有关。单独考察这一项，化连续为离散，改写为
+\[
+	-\sum e\bm{E}\cdot \bm{v},
+\]
+回忆\eqref{7}，我们就会发现，这项就是所有带电粒子构成的系统的能量（动能）的导数之和$-\sum\dd E/\dd t$.所以
+\[
+	\partial_t \int_{V} w\dd V=-\int_{\partial V}\dd \bm{\sigma}\cdot\bm{S}-\frac{\dd}{\dd t}\sum E,
+\]
+也即
+\begin{equation}
+	\partial_t \int_{V} w\dd V+\frac{\dd}{\dd t}\sum E=-\int_{\partial V}\dd \bm{\sigma}\cdot\bm{S}.
+	\label{8}
+\end{equation}
+
+选定一个空间封闭曲面，假设在我们关心的时刻，带电粒子本身不穿过这个封闭曲面，此时\eqref{8}可以写作
+\[
+	\partial_t \left(\int_{V} w\dd V+\sum E\right)=-\int_{\partial V}\dd \bm{\sigma}\cdot\bm{S},
+\]
+左边括号里面的项是整个系统所具有的总能量，即粒子和场所具有的总能量。如果右边积分为0，比如$V$取做整个三维空间，再比如能流密度为0，那么左边为0就是在说在这个封闭曲面内的系统能量恒定。如果带电粒子本身在我们关心的那个时刻穿过这个封闭曲面，则此时右边应该添加一项粒子输运的项，粒子和场总系统的能量不仅由场带来带去，也由由粒子本身带走或者带来了。
+
+对于含源的能量动量张量的考察，本质上只要对含源的$\mathcal{L}$重复一次上面的分析即可，同样，上面关于能量守恒的考察也自然地会出现在守恒方程中。我们不再重复，却有理由相信，系统的能量是粒子的动能和电磁场的能量之和，系统的动量也是粒子的动量和电磁场的动量之和。在电磁场中的粒子虽不一定动量、能量守恒，但是只要和电磁场一起考虑，则动量、能量守恒依然成立。
+
+\section{Noether定理}
+经典场论是对一般的$\mathcal{L}$处理作用量
+\[
+	S=\int \dd^4x \,\mathcal{L}(\phi^a,\partial_\mu \phi^a)
+\]
+的，其中$a$是场分量的编号，不一定只有三个或者四个。关于这种作用量，我们前面已经求过他的Lagrange方程：
+\begin{equation}
+	\frac{\partial \mathcal{L}}{\partial \phi^a}-\partial_\nu\frac{\partial \mathcal{L}}{\partial \partial_\nu \phi^a}=0.
+\end{equation}
+
+此外，我们对一般的$\mathcal{L}$，定义了能量动量张量：
+\begin{equation}
+	\label{ept}
+	T^{\mu\nu}=\frac{\partial \mathcal{L}}{\partial \partial_\mu \phi^a}\partial^\nu \phi^a-\eta^{\mu\nu} \mathcal{L},
+\end{equation}
+它满足守恒方程：
+\begin{equation}
+	\label{epteq}
+	\partial_\mu T^{\mu\nu}=0,
+\end{equation}
+同时也用能量动量张量定义了场的四维动量和角动量张量：
+\begin{equation}
+\label{pm}
+	P^\mu=\int\dd S_\nu \, T^{\nu\mu},\quad M^{\mu\nu}=\int\dd S_\rho\, (x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu}).
+\end{equation}
+
+现在我们讨论所谓的Noether定理，他建立了对称性和守恒律的联系。为方便起见，下面我们设$\phi^a$中的指标只能取一个值，也就是只有单变量$\phi$.
+
+假设对场$\phi$，我们有无穷小变换
+\begin{equation}
+	\phi(x)\to \phi(x)+\alpha(x)\Delta\phi(x),
+	\label{9}
+\end{equation}
+那么他就会诱导$\mathcal{L}$产生变换
+\[
+	\mathcal{L}\to \mathcal{L}+\Delta\mathcal{L}=\mathcal{L}+\frac{\partial \mathcal{L}}{\partial \phi}\alpha(x)\Delta\phi(x)+\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\partial_\nu[\alpha(x)\Delta\phi(x)].
+\]
+如果
+\[
+	\int\dd^4x\,\Delta\mathcal{L}=0,
+\]
+那么这个时候作用量是不变的
+
+假设$\alpha(x)=\alpha$是一个常数，此时
+\[
+	\Delta\mathcal{L}=\alpha\left(\frac{\partial \mathcal{L}}{\partial \phi}\Delta\phi(x)+\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\partial_\nu[\Delta\phi(x)]\right)=\alpha\Delta\phi(x)\left(\frac{\partial \mathcal{L}}{\partial \phi}-\partial_\nu\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\right)+\alpha\partial_\nu\left(\Delta\phi(x)\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\right),
+\]
+如果我们的场满足Lagrange方程，则第一项自然为$0$，第二项作为散度项，对全空间的积分可以化作无穷远处曲面上的积分，如果场在无穷远处消失了，则
+\[
+	\int\dd^4x\,\Delta\mathcal{L}=0
+\]
+此时是自然满足的。因此，若是我们的场满足Lagrange方程，那么\eqref{9}对应的$\alpha(x)$是一个常数的变换保持作用量不变。这样的变换称为全局变换，而上面的话可以重新表述为：如果场满足Lagrange方程，全局变换保持作用量不变。全局变换诱导的对称性通常被称为全局对称性。与全局对称性联系的是有限参数决定的Lie群，反之，局部对称性依赖于时间和空间的函数。
+
+所以我们关注的是更一般的情况，即就算场不满足Lagrange方程，场的变换却依然保持作用量不变，这样的变换称之为对称变换。此时，场的变化诱导的作用量变化的一般形式为
+\begin{equation}
+	\Delta S=\int\dd^4x\,J^\mu\partial_\mu \alpha(x)=-\int\dd^4x\,\alpha(x)\partial_\mu J^\mu,
+	\label{dS}
+\end{equation}
+其中分部积分后散度项的消失是场在足够远处消失的要求，这里的$J$被称为守恒荷。如果为了保证变换是一种对称变换，即$\Delta S=0$，就必须
+\[
+	\partial_\mu J^\mu=0,
+\]
+这个方程称为守恒方程，他诱导了一个守恒量
+\[
+	F=\int_{V} J^0 \dd V.
+\]
+为了看出他是守恒的，直接将他对时间求导
+\[
+	\dot{F}=c\int_{V} \partial_0J^0 \dd V=-c\int_{V} \partial_iJ^i \dd V=-c\int_{\partial V}J^i \dd \sigma_i
+\]
+$J$在无穷远消失的话，则$F$守恒。因此，Noether定理告诉我们，对称性诱导了守恒律。
+
+很多时候，对称变换不只保持作用量不变，而且当\eqref{9}中的$\alpha$为常数时还保持Lagrangian密度$\mathcal{L}$不变，即
+\[
+	\frac{\partial \mathcal{L}}{\partial \phi}\Delta\phi(x)+\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\partial_\nu[\Delta\phi(x)]=0,
+\]
+那么
+\[
+	\Delta\mathcal{L}=\frac{\partial \mathcal{L}}{\partial \phi}\alpha(x)\Delta\phi(x)+\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\partial_\nu[\alpha(x)\Delta\phi(x)]=\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\Delta\phi(x)\partial_\nu\alpha(x),
+\]
+或者
+\[
+	\Delta S=\int\dd^4 x\,\frac{\partial \mathcal{L}}{\partial \partial_\nu\phi}\Delta\phi(x)\partial_\nu\alpha(x),
+\]
+对比一般的表达式，我们就有
+\[
+	J^\mu=\frac{\partial \mathcal{L}}{\partial \partial_\mu\phi}\Delta\phi(x).
+\]
+
+作为例子，考察电磁场的平移变换
+\[
+	A^\mu(x)\to A^\mu(x+\epsilon(x))=A^\mu+\epsilon^\nu(x)\partial_\nu A^\mu(x),
+\]
+所以
+\[
+	(\Delta A^\mu)_\nu=\partial_\nu A^\mu(x),
+\]
+然后考察作用量的变化\footnote{这是一个很好的算例，从始至终，没有使用Lagrange方程，就是说，即使$\mathcal{L}$不满足Lagrange方程，$\mathcal{L}$本身也不是不变的，作用量的改变量却还是有\eqref{dS}的形式。}
+\[
+\begin{split}
+	\Delta S=&\int \dd^4 x\,\left(\frac{\partial \mathcal{L}}{\partial A^\mu}\epsilon^\nu(x)\partial_\nu A^\mu(x)+\frac{\partial \mathcal{L}}{\partial \partial_\rho A^\mu}\partial_\rho[\epsilon^\nu(x)\partial_\nu A^\mu(x)]\right)\\
+	=&\int \dd^4 x\,\left(\frac{\partial \mathcal{L}}{\partial A^\mu}\partial_\nu A^\mu(x)+\frac{\partial \mathcal{L}}{\partial \partial_\rho A^\mu}\partial_\rho\partial_\nu A^\mu(x)\right)\epsilon^\nu(x)+\int \dd^4 x\,\frac{\partial \mathcal{L}}{\partial \partial_\rho A^\mu}\partial_\rho\epsilon^\nu(x)\partial_\nu A^\mu(x)\\
+	=&\int \dd^4 x\,\left(\epsilon^\nu(x)\partial_\nu \mathcal{L}+\frac{\partial \mathcal{L}}{\partial \partial_\rho A^\mu}\partial_\nu A^\mu(x)\partial_\rho\epsilon^\nu(x)\right)\\
+	=&\int \dd^4 x\,\left(\delta^\mu_\nu\epsilon^\nu(x)\partial_\mu \mathcal{L}+\frac{\partial \mathcal{L}}{\partial \partial_\mu A^\rho}\partial_\nu A^\rho(x)\partial_\mu\epsilon^\nu(x)\right)\\
+	=&\int \dd^4 x\,\left(-\delta^\mu_\nu  \mathcal{L}+\frac{\partial \mathcal{L}}{\partial \partial_\mu A^\rho}\partial_\nu A^\rho(x)\right)\partial_\mu\epsilon^\nu(x),\\
+\end{split}
+\]
+所以守恒荷为
+\[
+	T^{\mu}_{\phantom{\mu}\nu}=\frac{\partial \mathcal{L}}{\partial \partial_\mu A^\rho}\partial_\nu A^\rho(x)-\delta^\mu_\nu  \mathcal{L}
+\]
+满足守恒方程
+\[
+	\partial_\mu T^{\mu}_{\phantom{\mu}\nu}=0.
+\]
+这个其实就是能动张量。
+
+相对论场论，很重要的变换就是Lorentz变换，对应着无穷小变换$\Lambda^{\mu}_{\phantom{\mu}\nu}=\delta^{\mu}_{\nu}+\omega^{\mu}_{\phantom{\mu}\nu}$，其中$\omega
+_{\mu\nu}=-\omega_{\nu\mu}$，如果作用量有Lorentz不变性，则自然有着对应的守恒荷$M^{\rho\mu\nu}$，当然对应着角动量，通过对这个守恒荷的计算和分析，我们就有希望建立一个对称的能量动量张量，这里不再计算，具体可以查看Weinberg的QFT V1中的section 7.4。
+
+\section{微分形式语言描述的Maxwell方程组}
+这节来稍稍讲讲微分形式语言描述的Maxwell方程组，假定读者有足够的微分几何知识。现在开始，我们讨论的背景定为$n$维定向伪Riemann流形上。此外，在这节里面不妨令$c=1$，则此时，Gauss制下的Maxwell方程写作：
+\begin{equation}
+\begin{cases}
+	\nabla\times \bm{E}&=-\displaystyle{\frac{\partial \bm{B}}{\partial t}},\\
+	\nabla\cdot \bm{B}&=0,\\
+	\nabla\cdot \bm{E}&=4\pi\rho,\\
+	\nabla\times \bm{B}&=\displaystyle{\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}},
+\end{cases}
+\end{equation}
+和
+\begin{equation}
+\begin{cases}
+	\partial_{[\mu}F_{\nu\rho]}&=0,\\
+	\partial_\nu F^{\nu\mu}&=-4\pi j^\mu,\\
+\end{cases}
+\end{equation}
+此时
+\[
+	F^{\mu\nu}F_{\mu\nu}=2(\bm{B}^2-\bm{E}^2).
+\]
+
+\begin{defi}
+	在$p$阶形式空间$\Omega^p(M)$和$\Omega^{n-p}(M)$定义一个线性算符$\star:\Omega^p(M)\to \Omega^{n-p}(M)$使得，对任意的$\omega,\mu\in\Omega^p(M)$成立
+	\[
+		\omega\wedge(\star \mu)=\langle \omega,\mu\rangle \mathrm{vol},
+	\]
+	其中$\langle *,*\rangle$是两个$p$形式之间的内积\footnote{假设$e^i$和$f^i$都是1-形式，对于$p$-形式$e^1\wedge\cdots \wedge e^p$和$f^1\wedge\cdots \wedge f^p$，他们的内积定义为
+	\[
+		\langle e^1\wedge\cdots \wedge e^p,f^1\wedge\cdots \wedge f^p\rangle =\det(g^{-1}(e^i,f^j)),
+	\]
+	其中$g^{-1}$是余切空间中由切空间中的度规$g$诱导的度规，他的矩阵$g^{ij}$是切空间度规矩阵$g_{ij}$的逆，即$g^{ij}g_{jk}=\delta_k^i$。因为内积对函数线性，所以内积就对任意两个$p$-形式都有了定义。}，而$\mathrm{vol}$是$M$上的体积形式，在$\rr^{s+(n-s)}$即$\mathrm{vol}=\dd x^1\wedge\cdots\wedge \dd x^n$。这样定义的$\star$被称为Hodge星算子。
+\end{defi}
+
+\begin{pro}
+在$\rr^{s+(n-s)}$上，在$p$-形式上成立恒等式
+	\[\star\star=(-1)^{s+p(n-p)}.\]
+\end{pro}
+\begin{proof}
+	直接计算
+	\[
+		\dd x^{i_1}\wedge \cdots \wedge \dd x^{i_p}\wedge (\star \dd x^{i_1}\wedge \cdots \wedge \dd x^{i_p})=g_{i_1i_1}\cdots g_{i_pi_p}\mathrm{sign}(\sigma)\dd x^{i_1}\wedge \cdots \wedge \dd x^{i_n},
+	\]
+其中$\sigma(1,\cdots,n)=(i_1,\cdots,i_n)$.所以
+		\[
+		\star \dd x^{i_1}\wedge \cdots \wedge \dd x^{i_p}=g_{i_1i_1}\cdots g_{i_pi_p}\mathrm{sign}(\sigma)\dd x^{i_{p+1}}\wedge \cdots \wedge \dd x^{i_n},
+	\]
+同样
+	\[
+	\begin{split}
+			\dd x^{i_{p+1}}&\wedge \cdots \wedge \dd x^{i_n}\wedge (\star \dd x^{i_{p+1}}\wedge \cdots \wedge \dd x^{i_n})\\
+			&=g_{i_{p+1}i_{p+1}}\cdots g_{i_ni_n}\mathrm{sign}(\sigma)\dd x^{i_1}\wedge \cdots \wedge \dd x^{i_p}\wedge \dd x^{i_{p+1}}\wedge \cdots \wedge \dd x^{i_n}\\
+			&=(-1)^{p(n-p)}g_{i_{p+1}i_{p+1}}\cdots g_{i_ni_n}\mathrm{sign}(\sigma)\dd x^{i_{p+1}}\wedge \cdots \wedge \dd x^{i_n}\wedge \dd x^{i_1}\wedge \cdots \wedge \dd x^{i_p}.\\
+	\end{split}
+	\]
+因此
+\[
+	\star \dd x^{i_{p+1}}\wedge \cdots \wedge \dd x^{i_n}=(-1)^{p(n-p)}g_{i_{p+1}i_{p+1}}\cdots g_{i_ni_n}\mathrm{sign}(\sigma) \dd x^{i_1}\wedge \cdots \wedge \dd x^{i_p},
+\]
+最后
+\[
+	\star\star=(-1)^{p(n-p)}g_{i_{1}i_{1}}\cdots g_{i_ni_n}\mathrm{sign}(\sigma)^2=(-1)^{s+p(n-p)}.
+\]
+
+对于我们熟悉的$3+1$度规，此时$\star\star=(-1)^{3+p(4-p)}=(-1)^{p^2-1}$.
+\end{proof}
+
+现在我们扯回Maxwell方程，在三维空间上，我们定义\footnote{下面定义的形式虽然是粗体，但不是斜体，粗斜体还是交给我们熟悉的三维矢量。}电场强度$\mathbf{E}$是一个1-形式$\mathbf{E}=E_i\dd x^i$，磁感应强度$\mathbf{B}$是一个2-形式
+\[
+	\mathbf{B}=\frac{1}{2}\sum_{k}B_k\epsilon_{kij}\dd x^i\wedge \dd x^j=B_1\dd x^2\wedge \dd x^3-B_2\dd x^1\wedge \dd x^3+B_3\dd x^1\wedge \dd x^2.
+\]
+假如在$\rr^{3+1}$上定义$2$-形式
+\[
+	\mathbf{F}=-\mathbf{B}-\mathbf{E}\wedge \dd x^0,
+\]
+我们可以将其写成分量形式，即$\mathbf{F}=F_{\mu\nu}\dd x^\mu\wedge \dd x^\nu/2$，一般来说$F_{\mu\nu}$并不唯一确定，但是由于$\dd x^\mu\wedge \dd x^\nu$是反对称的，因此我们规定$F_{\mu\nu}$也是反对称的，对比上面的式子$\mathbf{F}=-\mathbf{B}-\mathbf{E}\wedge \dd x^0$，可以得到矩阵$(F_{\mu\nu})$为
+\[
+	(F_{\mu\nu})=
+	\begin{pmatrix}
+	0&-B_3&B_2&-E_1\\
+	B_3&0&-B_1&-E_2\\
+	-B_2&B_1&0&-E_3\\
+	E_1&E_2&E_3&0
+	\end{pmatrix},
+\]
+这就是我们熟悉的电磁场张量。
+
+可以计算
+\[
+	\mathbf{F}\wedge\star\mathbf{F}=\langle \mathbf{B}+\mathbf{E}\wedge \dd x^0,\mathbf{B}+\mathbf{E}\wedge \dd x^0\rangle\mathrm{vol}=(\bm{B}^2-\bm{E}^2)\mathrm{vol}=\frac{1}{2}F^{\mu\nu}F_{\mu\nu}\mathrm{vol}.
+\]
+因此$\mathbf{F}\wedge\star\mathbf{F}$正比于场的Lagrangian密度，而以前也说明，正比的系数只决定我们所选取的单位制，就理论而言，并不重要。将来若是要改写Lagrangian密度到一个坐标无关且适合任意流形的形式，则$\mathbf{F}\wedge\star\mathbf{F}$是要比$F^{\mu\nu}F_{\mu\nu}/2$合适一些。
+
+作为2-形式，$\mathbf{F}$被Hodge星算子作用后的$\star\mathbf{F}$也是2-形式，即
+\[
+	\star\mathbf{F}=-\star\mathbf{B}-\star(\mathbf{E}\wedge \dd x^0),
+\]
+利用我们的度规，则
+\[
+	\star \dd x^i\wedge \dd x^j=\sum_k\epsilon^{ijk}\dd x^k\wedge \dd x^0,\quad \star \dd x^i\wedge \dd x^0=-\frac{1}{2}\sum_{jk}\epsilon^{ijk}\dd x^j\wedge \dd x^k.
+\]
+于是我们可以写出矩阵
+\[
+	(\star F_{\mu\nu})=
+	\begin{pmatrix}
+	0&E_3&-E_2&-B_1\\
+	-E_3&0&E_1&-B_2\\
+	E_2&-E_1&0&-B_3\\
+	B_1&B_2&B_3&0
+	\end{pmatrix},
+\]
+即做了如下变换
+\[
+	\bm{E} \to \bm{B},\quad \bm{B}\to -\bm{E}.
+\]
+
+现在我们计算$\mathbf{F}$的外微分
+\begin{equation}
+\begin{split}
+	\dd\mathbf{F}&=-\dd\mathbf{B}-(\dd\mathbf{E})\wedge \dd x^0\\
+	&=-\nabla\cdot \bm{B} \dd x^1\wedge\dd x^2\wedge\dd x^3-\partial_0 \mathbf{B}\wedge\dd x^0
+	 -\partial_i E_j \dd x^i\wedge \dd x^j\wedge \dd x^0\\
+	&=-\nabla\cdot \bm{B} \dd x^1\wedge\dd x^2\wedge\dd x^3-\biggl(\partial_i E_j+\frac{1}{2}\sum_k\partial_0 B_k \epsilon_{kij}\biggr)\dd x^i\wedge \dd x^j\wedge \dd x^0,
+\end{split}
+\label{17}
+\end{equation}
+磁感应强度的散度自然为0，第二项括号里面的项由Maxwell方程$\nabla\times \bm{E}+\partial_0\bm{B}=0$也可以知道为0，所以由第一组Maxwell方程可知$\dd\mathbf{F}=0$，反之，如果$\dd\mathbf{F}=0$成立，则第一组Maxwell方程成立。所以第一组Maxwell方程等价于说$\mathbf{F}$是一个闭形式。
+
+剩下的自然是第二组Maxwell方程，第二组含源，所以我们再引入一个电流矢量
+\[
+	j=\rho \partial_0+j^i\partial_i,
+\]
+利用度规转化为电流1-形式
+\[
+	\mathbf{j}=\rho\dd x^0-\sum_ij^i\dd x^i,
+\]
+我们下面证明，第二组Maxwell方程写作
+\[
+	\star\dd \star \mathbf{F}=-4\pi\mathbf{j}.
+\]
+
+首先计算$\dd \star \mathbf{F}$，利用变换$\bm{E} \to \bm{B}$, $\bm{B}\to -\bm{E}$和\eqref{17}可以直接得到
+\[
+	\dd\star\mathbf{F}=\nabla\cdot \bm{E} \dd x^1\wedge\dd x^2\wedge\dd x^3-\biggl(\partial_i B_j-\sum_k\partial_0 E_k \epsilon_{kij}\biggr)\dd x^i\wedge \dd x^j\wedge \dd x^0,
+\]
+所以
+\[
+	\star\dd \star \mathbf{F}=-\nabla\cdot \bm{E} \dd x^0+\sum_l\biggl(\partial_i B_j-\frac{1}{2}\sum_k\partial_0 E_k \epsilon_{kij}\biggr)\epsilon^{lij}\dd x^l,
+\]
+因此，$\star\dd \star \mathbf{F}=-4\pi\mathbf{j}$等价于
+\[
+	\nabla\cdot \bm{E}=4\pi\rho,\quad \nabla\times \bm{B}=\partial_0 \bm{E}+4\pi\bm{j}.
+\]
+这就是第二组Maxwell方程。
+
+如果我们的空间是可缩的，此时第一组Maxwell方程的闭形式则等价为恰当形式，即存在1-形式$\mathbf{A}$使得$\dd \mathbf{A}=\mathbf{F}$，此时结合第二组方程则写作
+\[
+	-4\pi\mathbf{j}=\star\dd \star \mathbf{F}=\star\dd \star \dd \mathbf{A},
+\]
+这就是势$\mathbf{A}$所需要满足的方程。
+
+将$\star\dd \star \mathbf{F}=-4\pi\mathbf{j}$改写成$\dd \star \mathbf{F}=\pm4\pi\star\mathbf{j}$，两边取外微分有
+\[
+	0=\pm4\pi\dd\star\mathbf{j},
+\]
+则$\dd\star\mathbf{j}=0$其实就是我们的电荷守恒方程。
+
+现在假设是无缘的，则两个方程写作
+\[
+	\dd\mathbf{F}=0,\quad\dd \star \mathbf{F}=0.
+\]
+所以$\mathbf{F}\to \star \mathbf{F}$保持方程不变。我们现在就讨论这种变换，由于$\star$是线性算子，故可以考察其本征值。因为在$\rr^{3+1}$下，对于2-形式有$\star\star=(-1)^3=-1$，所以，我们大概可以相信$\star$的本征值为$\pm i$，对应的本征矢量为$\mathbf{F}_{\pm}$，其余的矢量可以写作
+\[
+	\mathbf{F}=\mathbf{F}_{+}+\mathbf{F}_{-},
+\]
+其中
+\[
+	\star\mathbf{F}_{\pm}=\pm i\mathbf{F}_{\pm}.
+\]
+对于$\mathbf{F}_{\pm}$而言，$\dd\mathbf{F}=0$就可以推出
+\[
+	0=\pm i\dd\mathbf{F}_{\pm}=\dd\star\mathbf{F}_{\pm}.
+\]
+
+这节的最后，我们改写电磁场的作用量为
+\[
+	S=-\int_M \mathbf{A}\wedge\star\mathbf{j}-\frac{1}{8\pi}\int_M \mathbf{F}\wedge\star\mathbf{F}.
+\]
+
+\include{chapter2}
+
+\chapter{电磁波}
+上一章我们主要讨论了狭义相对论下力学的可能性，重点在于运动方程、力学量等等，却几乎没有实际求解过运动方程或是分析具体的电磁场。因此，接着的这几章的目的，就是给出这样的应用。而作为开始，我们就谈谈Maxwell理论力量的体现，也即是Maxwell本人的伟大预言，电磁波。
+
+\section{波动方程}
+无源的Maxwell方程组写作：
+\begin{equation}
+\begin{cases}
+	\partial_{[\mu}F_{\nu\rho]}&=0,\\
+	\partial_\nu F^{\nu\mu}&=0,\\
+\end{cases}
+\end{equation}
+对第二对Maxwell方程中的$F^{\mu\nu}$应用定义写成$A^\mu$的形式，
+\[
+	\partial_\nu \partial^\mu A^\nu-\partial_\nu \partial^\nu A^\mu=0,
+\]
+因为$A$不是唯一确定的，我们定下一个规范$\partial_\mu A^\mu=0$，这个规范称为Lorenz规范\footnote{这个Lorenz是Ludvig Valentin Lorenz(1829--1891)，是个丹麦人，和他名字差不多的，也就是前面说的Lorentz变换的Lorentz是Hendrik Antoon Lorentz(1853--1928)，是一个荷兰人。}，因此第二对Maxwell方程写作
+\[
+	\partial_\nu \partial^\nu A^\mu=0,
+\]
+或写作
+\[
+	\frac{1}{c^2}\frac{\partial^2 \varphi}{\partial t^2}-\nabla^2 \varphi=0 \quad ,\frac{1}{c^2}\frac{\partial^2 \bm{A}}{\partial t^2}-\nabla^2 \bm{A}=0.
+\]
+这就是波动方程，波速为$c$.下面我们要去求解这个方程。第一个方程我们可以固定规范，使得$\varphi=0$，所以我们暂时不需要考虑他，而此时Lorenz规范写作$\nabla\cdot \bm{A}=0$.这种规范有时候被称为Coulomb规范。
+
+首先考虑平面波的情况，即对于$A$的任意分量，他们空间坐标中只依赖于$x^1=x$，此时波动方程写作
+\[
+	\frac{1}{c^2}\frac{\partial^2 \bm{A}}{\partial t^2}-\frac{\partial^2 \bm{A}}{\partial x^2}=0,
+\]
+他的通解写作
+\[
+	\bm{A}=\bm{f}(ct-x)+\bm{g}(ct+x),
+\]
+前者表示沿着$x$正方向运动的波，后者表示沿着$x$轴负方向运动的波。
+
+现在只考虑向$x$正方向运动的波$\bm{A}=\bm{f}(ct-x)$，
+\[
+\begin{split}
+	\bm{B}&=\nabla\times \bm{A}=-\partial_1 f^3(ct-x)\bm{\hat{y}}+\partial_1 f^2(ct-x)\bm{\hat{z}}=-\bm{\hat{x}}\times \frac{\partial \bm{f}}{\partial \tau}(ct-x)=\dot{\bm{A}}\times \bm{\hat{x}},\\
+	\bm{E}&=-\frac{\partial \bm{A}}{\partial t}=-\partial_t \bm{f}(ct-x)=-c\frac{\partial \bm{f}}{\partial \tau} (ct-x)=-c\dot{\bm{A}},
+\end{split}
+\]
+其中头上戴帽的矢量为该方向的单位矢量，所以对于平面波，有$\bm{B}=\bm{\hat{x}}\times\bm{E}/c$，更一般地，对于任意的单方向平面波，有
+\begin{equation}
+	\bm{B}=\frac{1}{c}\bm{\hat{n}}\times\bm{E},
+	\label{c3:1}
+\end{equation}
+其中$\bm{\hat{n}}$是运动方向的单位矢量。
+
+对于可以允许的平面波解，一般而言$\bm{\hat{n}}\cdot \bm{E}\neq 0$，这是因为其中存在非电磁波项。为此，考察Lorenz规范$\nabla\cdot \bm{A}=0$，对单方向平面波即$\partial_1A^1=0$，所以对该分量，波动方程写作
+\[
+	\frac{\partial^2 A^1}{\partial t^2}=0,
+\]
+即$E_1$是一个和时间无关的电场，他不是电磁波的一部分，由叠加原理，我们可以从全部的电场中去掉它，只留下电磁波项，此时$\bm{\hat{n}}\cdot \bm{E}=0$.结合\eqref{c3:1}，对于平面波就有
+\begin{equation}
+	\bm{E}=c\bm{B}\times \bm{\hat{n}}.
+	\label{c3:2}
+\end{equation}
+
+考虑单方向平面波的能流密度
+\[
+	\bm{S}=\frac{c^2}{4\pi}\bm{E}\times \bm{B}=\frac{c}{4\pi}\bm{E}\times(\bm{\hat{n}} \times\bm{E})=\frac{c}{4\pi}\bm{E}^2 \bm{\hat{n}}-\frac{c}{4\pi}(\bm{\hat{n}} \cdot\bm{E})\bm{E},
+\]
+可以看到有依赖于$\bm{\hat{n}} \cdot\bm{E}$的一项，去掉非电磁波项，此时
+$\bm{E}$与$\bm{\hat{n}}$垂直，即$\bm{\hat{n}} \cdot\bm{E}=0$，所以
+\[
+	\bm{S}=\frac{c}{4\pi}\bm{E}^2 \bm{\hat{n}}.
+\]
+与此同时，因为$\bm{E}$与$\bm{\hat{n}}$垂直，所以$|\bm{\hat{n}}\times\bm{E}|=|\bm{E}|$，所以
+\[
+	\bm{B}^2=\frac{1}{c^2}\bm{E}^2,
+\]
+因此，能量密度写作
+\[
+	w=\frac{c^2}{8\pi}\left(\bm{B}^2+\frac{1}{c^2}\bm{E}^2\right)=\frac{c^2}{8\pi}\frac{2}{c^2}\bm{E}^2=\frac{\bm{E}^2}{4\pi}=\frac{|\bm{S}|}{c},
+\]
+或者
+\[
+	\bm{S}=cw\bm{\hat{n}}.
+\]
+上面说明了两点，第一，对平面波而言，磁场和电场具有的能量是相同的，其次，对平面波而言，动量密度的大小成立
+\[
+	w-\frac{\bm{S}^2}{c^2}=0,
+\]
+这和零质量粒子的动量能量关系一模一样，即
+\[
+	\frac{E^2}{c^2}-\bm{p}^2=0,
+\]
+这暗示了光的电磁波诠释和光子诠释的统一性。
+
+本节的最后，演示使用三维Mawell方程推出电场和磁场的波动方程，首先无源方程写作
+\begin{equation}
+\begin{cases}
+	\nabla\times \bm{E}&=-\displaystyle{\frac{\partial \bm{B}}{\partial t}},\\
+	\nabla\cdot \bm{B}&=0,\\
+	\nabla\cdot \bm{E}&=0,\\
+	\nabla\times \bm{B}&=\displaystyle{\frac{1}{c^2}\frac{\partial \bm{E}}{\partial t}},
+\end{cases}
+\end{equation}
+首先
+\[
+	\nabla \times \left(\nabla \times \bm{E}\right) = \nabla \times \left(-\frac{\partial \bm{B}}{\partial t} \right),
+\]
+左边有
+\[
+	 \nabla \times \left(\nabla \times \bm{E} \right) = \nabla\left(\nabla \cdot \bm{E} \right) - \nabla^2 \bm{E} = - \nabla^2 \bm{E},
+\]
+右边有
+\[
+	\nabla \times \left(-\frac{\partial \bm{B}}{\partial t} \right) = -\frac{\partial}{\partial t} \left( \nabla \times \bm{B} \right) = -\frac{1}{c^2} \frac{\partial^2 \bm{E}}{\partial t^2},
+\]
+所以
+\[
+\nabla^2 \bm{E} - \frac{1}{c^2} \frac{\partial^2 \bm{E}}{\partial t^2}=0.
+\]
+磁场同理
+\[
+\nabla^2 \bm{B} - \frac{1}{c^2} \frac{\partial^2 \bm{B}}{\partial t^2}=0.
+\]
+
+\section{单色波}
+单色波就是指频率恒定的波，即满足$\partial^2_t \bm{A}=-\omega^2 \bm{A}$，其中$\omega$是常数。波动方程于是可以改为
+\[
+	\nabla^2 \bm{A}+\frac{\omega^2}{c^2}\bm{A}=0,
+\]
+这个方程一般人叫他Helmholtz方程。考虑单色平面单方向波，此时方程写作
+\[
+	\frac{\partial^2 A^1}{\partial x^2}+\frac{\omega^2}{c^2}A^1=0,
+\]
+解为
+\[
+	A^1=B \cos\left(-\frac{\omega}{c}(ct-x)\right)
+\]
+或者在任意的方向$\bm{\hat{n}}$，并将其改写成指数函数的实部
+\[
+	\bm{A}=\mathrm{Re}\left[\bm{A}_0\exp\left(-i\frac{\omega}{c}(ct-\bm{\hat{n}} \cdot\bm{r})\right)\right],
+\]
+以后，只要进行线性运算，我们都可以把$\mathrm{Re}$省去，定义波矢$\bm{k}=\bm{\hat{n}}\omega/c$，最后，我们将解写作
+\[
+	\bm{A}=\bm{A}_0\exp\left(i(\bm{k} \cdot\bm{r}-\omega t)\right),
+\]
+如果再定义四维波矢$k^\mu=(\bm{k},\omega/c)$，那么
+\[
+	k^\mu x_\mu=\omega t-\bm{k} \cdot\bm{r},
+\]
+所以解还可以写作
+\[
+	\bm{A}=\bm{A}_0\exp\left(-ik^\mu x_\mu\right).
+\]
+对于四维波矢，可以注意到的是恒等式
+\[
+	k^\mu k_\mu=\frac{\omega^2}{c^2}-\bm{k}^2=\frac{\omega^2}{c^2}-\frac{\omega^2}{c^2}=0,
+\]
+而能动张量写作
+\[
+T^{\mu\nu}=\frac{wc^2}{\omega^2}k^\mu k^\nu.
+\]
+
+
+接着求
+\[
+\begin{split}
+	\bm{B}&=\nabla\times \bm{A}=\nabla\times(\bm{A}_0\exp\left(i(\bm{k} \cdot\bm{r}-\omega t)\right))=i\bm{k}\times\bm{A},\\
+	\bm{E}&=-ik\bm{A},
+\end{split}
+\]
+这里，我们要更细致地讨论单色波场的方向，比如电场
+\[
+	\bm{E}=\mathrm{Re}(\bm{E}_0\exp\left(-ik^\mu x_\mu\right)),
+\]
+一般来说，$\bm{E}_0$是一个复矢量，而$\bm{E}_0^2$是一个复数，设其幅角为$-2\alpha$，定义一个复矢量$\bm{b}$使得$\bm{b}^2=|\bm{E}_0^2|$是$\bm{E}_0^2$的模长，这时候
+\[
+	\bm{E}=\mathrm{Re}(\bm{b}\exp\left(-ik^\mu x_\mu-i\alpha\right)),
+\]
+将$\bm{b}$分成两个实矢量之和$\bm{b}=\bm{b}_1+i\bm{b}_2$，那么，因为他的平方是实的，在必然有$\bm{b}_1\cdot \bm{b}_2=0$，两者正交，于是，选$\bm{b}_1$的方向为$y$轴，$\bm{b}_2$的方向为$z$轴，那么
+\[
+\begin{split}
+	E_y&=b_1\cos\left(k^\mu x_\mu+\alpha\right)\\
+	E_z&=\pm b_2\sin\left(k^\mu x_\mu+\alpha\right),
+\end{split}
+\]
+其中的$\pm$号说明是沿着$z$正货负反向，此时分量满足
+\[
+	\frac{E_y^2}{b_1^2}+\frac{E_z^2}{b_2^2}=1.
+\]
+由此我们看到，在空间每一点，电场强度在垂直于波传播方向的一个平面内转动，端点绘出一个椭圆，这样的波被称为椭圆偏振波，如果$\pm$取正，则称其为右旋偏振，反之则左旋。
+
+我们之所以谈论单色波，是因为我们希望对于任意的波，将其分解为不同频率的单色波的叠加。特别地，对于离散的谱，有周期的波，自然我们可以分解成单色波的Fourier级数：
+\[
+	f(t)=\sum_{n=-\infty}^\infty f_n e^{-in\omega_0 t},
+\]
+其中$f$是任意表征波的量。他的分量由
+\[
+	f_n=\frac{1}{T}\int_{-T/2}^{T/2} f(t)e^{in\omega_0 t}\dd t
+\]
+确定，由于$f(t)$是实数，所以系数有关系$f_{-n}=f^*_n$.按照完全性关系，有
+\[
+	\bar{f^2}=\sum_{n=-\infty}^\infty |f_n|^2.
+\]
+
+另外的一类场可以展开为含连续分布的不同频率的Fourier积分，
+\[
+	f(t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty a(\omega)e^{i\omega t}\dd \omega,
+\]
+他的系数有
+\[
+	a(\omega)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(t)e^{-i\omega t}\dd t.
+\]
+如果$f(t)$是实数，则$a(-\omega)=a(\omega)^*$.类似地，完全性关系给出
+\[
+	\int_{-\infty}^\infty |f(t)|^2 \dd t=\int_{-\infty}^\infty |a(\omega)|^2 \dd \omega.
+\]
+
+\section{场的本征振动}
+
+我们来考虑空间一个有限体积内的电磁场，不妨假设是一个长方体，边长为$L_x$, $L_y$, $L_z$，此时我们可以把场展开成Fourier级数
+\[
+	\bm{A}=\sum_{\bm{k}}\bm{A}_{\bm{k}}\exp(i\bm{k}\cdot \bm{r}),
+\]
+其中
+\[
+	\bm{k}=\left(\frac{2\pi n_x}{L_x},\frac{2\pi n_y}{L_y},\frac{2\pi n_z}{L_z}\right)
+\]
+而$n_x$, $n_y$, $n_z$都是整数。
+
+因为$\bm{A}$是实的，所以$\bm{A}_{-\bm{k}}=\bm{A}_{\bm{k}}^*$，从$\nabla\cdot \bm{A}=0$的规范，则
+\[
+	\bm{k}\cdot\bm{A}_{\bm{k}}=0,
+\]
+这就是说$\bm{A}_{\bm{k}}$和$\bm{k}$相互垂直。将分解代入波动方程，则可以得到分量的方程
+\[
+	\ddot{\bm{A}}_{\bm{k}}+c^2\bm{k}^2\bm{A}_{\bm{k}}=0.
+\]
+
+若边长足够大，则对于$\bm{k}$的小改变量，我们都可以考察他$\bm{n}$的改变量（即$\bm{k}$的小改变量内的可能值$\bm{n}$的数目），因此，
+\[
+	\Delta \bm{n}=\frac{1}{2\pi}\bm{L}\cdot \Delta\bm{k}
+\]
+于是在$\Delta\bm{k}$内的$\bm{k}$的可能值的总数为
+\[
+	\Delta n=\Delta n_1\Delta n_2\Delta n_3=\frac{V}{(2\pi)^3}\Delta k_1\Delta k_2\Delta k_3,
+\]
+将右边的$\Delta k_1\Delta k_2\Delta k_3$变到球坐标
+\[
+	\Delta k_1\Delta k_2\Delta k_3=\bm{k}^2\Delta k \Delta o,
+\]
+其中$\Delta k=|\Delta \bm{k}|$，而$\Delta o$为立体角元，对于任意方向，则以$4\pi$代之，那么在$\Delta k$内而方向任意的$\Delta \bm{k}$的总数就是
+\[
+	\Delta n=\frac{V}{4\pi^2}\bm{k}^2\Delta k.
+\]
+
+来看看Lagrangian，
+\[
+	L_t=-\frac{c^2}{16\pi}\int \dd V\, F_{\mu\nu}F^{\mu\nu}=\frac{c^2}{8\pi}\int \dd V\,\left(\frac{\bm{E}^2}{c^2}-\bm{B}^2\right),
+\]
+选取规范$\varphi=0$, $\nabla\cdot \bm{A}=0$，则
+\[
+	L_t=\frac{1}{8\pi}\int \dd V\,\left(\left(\partial_t \bm{A}\right)^2-c^2(\nabla\times \bm{A})^2\right),
+\]
+带入$\bm{A}$的Fourier展开
+\[
+	L_t=\frac{1}{8\pi}\sum_{\bm{k},\bm{k}'}\int \dd V\,e^{i(\bm{k}+\bm{k}')\cdot \bm{r}}\left(\dot{\bm{A}}_{\bm{k}}\cdot\dot{\bm{A}}_{\bm{k}'}+c^2(\bm{k}\times \bm{A}_{\bm{k}})\cdot(\bm{k}'\times \bm{A}_{\bm{k}'})\right),
+\]
+注意到$\int \dd V\, \exp(i(\bm{k}+\bm{k}')=V\delta_{\bm{k},-\bm{k}'}$，所以
+\[
+	L_t=\frac{1}{8\pi}\sum_{\bm{k}}\left(\dot{\bm{A}}_{\bm{k}}\cdot\dot{\bm{A}}_{-\bm{k}}-c^2(\bm{k}\times \bm{A}_{\bm{k}})\cdot(\bm{k}\times \bm{A}_{-\bm{k}})\right),
+\]
+注意到$\bm{A}_{-\bm{k}}=\bm{A}_{\bm{k}}^*$，并打开三重积就可以得到
+\[
+	L_t=\frac{1}{8\pi}\sum_{\bm{k}}\left(\left|\dot{\bm{A}}_{\bm{k}}\right|^2-c^2\left(\bm{k}^2 \left|\bm{A}_{\bm{k}}\right|^2-\left|\bm{k}\cdot \bm{A}_{\bm{k}}\right|^2\right)\right).
+\]
+如若$\bm{A}_{\bm{k}}$还是实的，则Lagrangian可以写作
+\[
+	L_t=\frac{1}{8\pi}\sum_{\bm{k}}\left(\dot{\bm{A}}_{\bm{k}}^2-\lambda_{\bm{k}}\bm{A}_{\bm{k}}^2\right)=\frac{1}{8\pi}\sum_{\bm{k}}\sum_{i=1}^3\left(\dot{A}_{\bm{k}i}^2-\lambda_{\bm{k}}A_{\bm{k}i}^2\right),
+\]
+将$A_{\bm{k}i}$看作广义坐标，可以看到这正是谐振子的Lagrangian，此时Lagrange方程就给出了分量所需要满足的演化方程。
+
+
+\section{部分偏振波}
+每一个单色波都是偏振的，实际上，我们平时遇到的都是近似的单色波，即频率范围很小的波，假设$\omega$是一个中间频率，那么电场可以写作
+\[
+	\bm{E}_0(t)e^{-i\omega t},
+\]
+这里的复振幅$\bm{E}_0(t)$一个时间的缓变函数，如果是单色波，则就是常数了。$\bm{E}_0(t)$决定波的偏振，因此偏振也将随时间变化，这样的波被称为部分偏振波。
+
+\section{光线}
+平面波那里已经提到过了，电磁波和零质量粒子的力学关系式是类似的，这里更是会强化这一点。
+
+光的传播用光线处理，可以看作波长趋向于0的情况，或者说波数很大。如果我们把场的形式写作$a\exp(i\psi)$，这就是说相位$\psi$就很大。我们在局部用单色波代替$a\exp(i\psi)$，对足够小的时空间隔（把一个端点取做零点），把相位展开到一阶：
+\[\psi=\psi_0+ \partial_i\psi \,x^i+\partial_t\psi \,t,\]
+对比单色波的相位$k_\mu x^\mu$，于是得到$\partial_\mu \psi =-k_\mu$，对于电磁波的波数，
+\[
+0=k^\mu k_\mu=\partial_\mu\psi \partial^\mu \psi,
+\]
+这就是程函方程。
+
+这些材料就足够我们类比经典力学了，作用量$S$和动量的关系$\partial_\mu S=-p_\mu$以及动量之间的联系$\partial_\mu S\partial^\mu S=p_\mu p^\mu=m^2c^2$，如果是零质量的粒子就有$\partial_\mu S\partial^\mu S=0$，这就是说，我们可以做出这样的类比$\psi\sim S$以及$k\sim p$。
+
+回到程函方程，对固定频率的波，程函写作$\psi=\omega t+\psi_0(r)$，此时的程函方程为
+$|\nabla\psi_0|^2=\omega^2/c^2$.因为光线在每一点都垂直于相应的波面，所以光线的方向由$\nabla\psi_0$确定，换言之，由$k$的空间分量完全确定。
+
+对固定频率的波，由于类比$k\sim p$，对应于能量守恒的体系，则我们有Maupertuis原理，
+\[\delta S=\delta \int \mathrm{d}l\cdot p=0,\]
+于是对于几何光学，我们有
+\[\delta \psi=\delta \int \mathrm{d}l\cdot k=\delta \int \mathrm{d}l\cdot n \omega/c =\frac{\omega}{c}\delta \int \mathrm{d}l=0.\]
+这就是Fermat原理。
+\chapter{恒定电磁场}
+再写一遍Maxwell方程组
+\[
+\begin{cases}
+	\nabla\times \bm{E} &=-\displaystyle{\frac{\partial \bm{B}}{\partial t}},\\
+	\nabla\cdot  \bm{B} &=0,\\
+	\nabla\cdot  \bm{E} &=4\pi\rho,\\
+	\nabla\times \bm{B} &=\displaystyle{\frac{1}{c^2}\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right)},
+\end{cases}
+\]
+上一章处理的是$\rho=0$, $\bm{j}=0$的情况，这章近似可以认为处理的是两个时间偏导数为0的情况，这就是所谓的恒定电磁场（不随时间变化的电磁场），方程写作
+\begin{equation}
+\begin{cases}
+	\nabla \times \bm{E} &=0,\\
+	\nabla \cdot  \bm{B} &=0,\\
+	\nabla \cdot  \bm{E} &=4\pi\rho,\\
+	\nabla \times \bm{B} &=\displaystyle{\frac{4\pi \bm{j}}{c^2}}.
+\end{cases}
+\label{static}
+\end{equation}
+由于大家很熟悉SI制度，我们指出Gauss制往SI制度转化的一种方法：在SI制下观察式子的量纲，在缺少真空电容率$\epsilon_0$量纲\footnote{就是$\mathrm{A^2\cdot s^4 \cdot kg^{-1}\cdot m^{-3}}$，其中$\mathrm{A}$是电流的单位Ampere。}处乘以一个$4\pi\epsilon_0$即可。
+
+\section{Coulomb定律}
+这节暂时假设$\bm{A}=0$，也就是$\bm{B}=0$，此时只留下两个方程
+\begin{equation}
+\begin{cases}
+	\nabla \times \bm{E} &=0,\\
+	\nabla \cdot  \bm{E} &=4\pi\rho,
+\end{cases}
+\label{staticele}
+\end{equation}
+注意我们的定义，$E=-\nabla \varphi$，则第一个方程自然满足，第二个方程写作
+\[
+	\Delta \varphi=\nabla^2 \varphi = -4\pi \rho.
+\]
+
+如果是无源的静电场，$\Delta \varphi =0$，因此从这个方程可以看出，电场的势能在任何地方都不能有极大值或者极小值，否则$\varphi$各方向的一阶导数为0，而他们的二阶导数有着相同的符号，于是$\Delta \varphi\neq 0$.
+
+我们现在来解方程$\Delta \varphi = -4\pi \rho$，为此只要解出齐次方程的通解$\Delta \varphi = 0$和一般方程的一个特解即可。而为了解特解，我们只要解出一个基本解就好，即方程
+\begin{equation}
+	\Delta \varphi=-4\pi e \delta^3(\bm{r})
+	\label{jiben}
+\end{equation}
+的特解就好，其中$\delta^3(\bm{x})$是三维Dirac函数，而$e$是总电荷量。假如我们得到了一个基本解$\psi(\bm{r})$，此时
+\[
+\begin{split}
+	-4\pi\rho(x)
+	&=-\int \dd V'\,4\pi\rho(\bm{r}')\delta^3(\bm{r}'-\bm{r})\\
+	&=\frac{1}{e}\int \dd V'\,\rho(\bm{r}')\Delta' \psi(\bm{r}'-\bm{r})\\
+	&=\frac{1}{e}\int \dd V'\,\rho(\bm{r}')\Delta \psi(\bm{r}'-\bm{r})\\
+	&=\frac{1}{e}\Delta \int \dd V'\,\rho(\bm{r}')\psi(\bm{r}'-\bm{r}),
+\end{split}
+\]
+其中$\Delta'$是指求导对象为$\bm{r}'$，而$\Delta' \psi(\bm{r}'-\bm{r})=\Delta \psi(\bm{r}'-\bm{r})$是直接计算即可得到的。这样我们就找到了原方程$\Delta \varphi = -4\pi \rho$的一个特解
+\[
+	\varphi(\bm{r})=\frac{1}{e}\int \dd V'\,\rho(\bm{r}')\psi(\bm{r}'-\bm{r}).
+\]
+
+因此我们来看基本解满足的方程\eqref{jiben}，这个方程的解就是熟知的
+\[
+	\varphi=\frac{e}{|\bm{r}|}=\frac{e}{r}=\frac{e}{\sqrt{x^2+y^2+z^2}}.
+\]
+物理上这就是点电荷的电势，电荷量为$e$，如果点电荷位于$\bm{r}_0$处，则势写作
+\[
+	\varphi(\bm{r})=\frac{e}{|\bm{r}-\bm{r}_0|}.
+\]
+求个导数，就得到了电场的表达式
+\[
+	\bm{E}=e\frac{\bm{r}-\bm{r}_0}{|\bm{r}-\bm{r}_0|^3}.
+\]
+对于由离散的点电荷构成的系统，他们的电势写作
+\[
+	\varphi(\bm{r})=\sum_i\frac{e_i}{|\bm{r}-\bm{r}_i|}.
+\]
+
+下面考察静电场的能量，由前已知，电磁场的能量密度为
+\[
+	w=\frac{c^2}{8\pi}\left(\bm{B}^2+\frac{1}{c^2}\bm{E}^2\right),
+\]
+第一项为0因为我们考察的是纯静电场，然后将$\bm{E}$改成$-\nabla \varphi$，此时
+\[
+\begin{split}
+	U&=-\frac{1}{8\pi}\int\dd V\,\bm{E}\cdot \nabla \varphi\\
+	&=-\frac{1}{8\pi}\int\dd V\,\nabla \cdot (\varphi\bm{E})+\frac{1}{8\pi}\int\dd V\, \varphi \nabla\cdot \bm{E},\\
+	&=\frac{1}{2}\int\dd V\, \varphi \rho.
+\end{split}
+\]
+对于离散情况
+\[
+	U=\frac{1}{2}\sum_a e_a\varphi_a.
+\]
+其中$\varphi_a$是指全部电荷所产生的电势在$e_a$所处位置的值。这样，电场的能量从纯电场的表示写成了势能和电荷表示。
+
+若我们把这个公式应用到点电荷，此时能量写作$e\varphi /2$，这个能量被理解为一种自能，这个电势$\varphi$是这个电荷自己产生的。可是，注意到点电荷的电势为$e/r$，当$r\to 0$的时候，这个自能将要趋向于无穷，能量就是质量，所以也就有无穷大质量。你说这怎么可能，你一个电子怎么就有了无穷大质量呢？所以我们认为呐，这个是经典电动力学框架的漏洞。为了让这个漏洞不存在于这个理论框架种种，我们可以限制这个理论的最小尺度，这个时候自能大约是$mc^2$的量级，即
+\[
+	R\sim \frac{e^2}{mc^2}.	
+\]
+
+现在把自能从能量中去掉
+\[
+	U'=\frac{1}{2}\sum_a e_a\varphi'_a,
+\]
+其中
+\[
+	\varphi'_a=\sum_{b\neq a}\frac{e_b}{
+	|\bm{r}_a-\bm{r}_b|}=\sum_{b\neq a}\frac{e_b}{r_{ab}}.
+\]
+所以
+\[
+	U'=\frac{1}{2}\sum_{b\neq a}\frac{e_ae_b}{r_{ab}}=\frac{1}{2}\sum_{b\neq a}U'_{ab},
+\]
+其中$U'_{ab}=e_ae_b/r_{ab}$是两个点电荷的相互作用能量。
+
+\section{匀速运动的电荷产生的场}
+因为我们知道四维势能满足Lorentz变换，所以只要我们在那个$O$系观测沿$z=x^3$轴以速度$v$运动的$O'$内的静电场，按照一般的方法，任意的四维矢量$A^\mu$按照如下变换：
+\[
+	\begin{pmatrix}
+		A^1\\
+		A^2\\
+		A^3\\
+		A^0	
+	\end{pmatrix}
+	=\begin{pmatrix}
+		1&0&0&0\\
+		0&1&0&0\\
+		0&0&1/\gamma&\beta/\gamma\\
+		0&0&\beta/\gamma&1/\gamma\\
+	\end{pmatrix}
+	\begin{pmatrix}
+		A'^1\\
+		A'^2\\
+		A'^3\\
+		A'^0	
+	\end{pmatrix},
+\]
+其中$\beta=v/c$, $\gamma=\sqrt{1-\beta^2}$.特别地，空间坐标有
+\[
+	x=x',\quad y=y',\quad z=\frac{z'+\beta c t'}{\sqrt{1-\beta^2}}=\frac{z'+vt'}{\sqrt{1-\beta^2}},
+\]
+四维势有
+\[
+	A^1=A^2=0,\quad A^3=\frac{v\varphi'/c^2}{\sqrt{1-\beta^2}},\quad\varphi=\frac{\varphi'}{\sqrt{1-\beta^2}}.
+\]
+或者对任意方向的$\bm{v}$，此时
+\[
+	\bm{A}=\frac{\varphi'\bm{v}}{c^2\sqrt{1-\beta^2}}.
+\]
+
+由空间坐标的变换
+\[
+	r^2=x'^2+y'^2+\frac{(z'+vt')^2}{1-\beta^2},
+\]
+令$v\to -v$就得到了
+\[
+	r'^2=x^2+y^2+\frac{(z-vt)^2}{1-\beta^2},
+\]
+所以在$O'$系中点电荷静电场有
+\[
+	\varphi'=\frac{e}{r'},
+\]
+变到$O$系中
+\[
+	\varphi=\frac{\varphi'}{\sqrt{1-\beta^2}}=\frac{e}{r'\sqrt{1-\beta^2}}=\frac{e}{r_*},
+\]
+其中
+\[
+	r_*=r'\sqrt{1-\beta^2}=\sqrt{(x^2+y^2)(1-\beta^2)+(z-vt)^2}.
+\]
+
+
+当然我们前面也算过
+\[
+\begin{split}
+\bm{E}&=\left(
+\frac{E'_x+\beta cB'_y}{\sqrt{1-\beta^2}},\frac{E'_y-\beta cB'_x}{\sqrt{1-\beta^2}},E'_z\right),\\
+\bm{B}&=\left(\frac{B'_x-E'_y\beta/c}{\sqrt{1-\beta^2}},\frac{B'_y+E'_x\beta/c}{\sqrt{1-\beta^2}},B'_z\right),
+\end{split}
+\]
+由于在$O'$系中$\bm{B}'=0$，所以
+\[
+\begin{split}
+\bm{E}&=\left(
+\frac{E'_x}{\sqrt{1-\beta^2}},\frac{E'_y}{\sqrt{1-\beta^2}},E'_z\right),\\
+\bm{B}&=\left(\frac{-E'_y\beta/c}{\sqrt{1-\beta^2}},\frac{E'_x\beta/c}{\sqrt{1-\beta^2}},0\right),
+\end{split}
+\]
+代入$\bm{E}'=e\bm{r}'/r'^3$，就得到了
+\[
+	\bm{E}=(1-\beta^2)\frac{e\bm{r}}{r^{3}_*},
+\]
+其中$\bm{r}$其实是指离运动电荷$\bm{r}$处的坐标，是以点电荷为中心来看的，在$O$系中来看应该是$\bm{r}-\bm{v}t$.而容易验证
+\[
+	\bm{B}=\frac{1}{c^2}\bm{v}\times \bm{E},
+\]
+因此，我们下面更关注$\bm{E}$.
+
+如果对任意的$\bm{v}$来求$\bm{E}$，将$r_*$改写成坐标无关的形式更为方便
+\[
+	r_*=\sqrt{\bm{r}^2-\beta^2(\bm{r}^2-(\bm{r}\cdot \hat{\bm{v}})^2)}=|\bm{r}|\sqrt{1-\beta^2(1-(\hat{\bm{r}}\cdot \hat{\bm{v}})^2)},
+\]
+其中$\beta^2=\bm{v}^2/c^2$.这时
+\[
+	\bm{E}=(1-\beta^2)\frac{e\bm{r}}{r^{3}_*}
+\]
+就对任意的$\bm{v}$都成立了。
+
+现在如果$\bm{r}$垂直于$\bm{v}$，则$\hat{\bm{r}}\cdot \hat{\bm{v}}=0$。此时垂直于运动方向的电场分量为
+\[
+	E_{\perp}=\frac{1}{\sqrt{1-\beta^2}}\frac{e}{|\bm{r}|^2},
+\]
+如果$\bm{r}$平行于$\bm{v}$，则$(\hat{\bm{r}}\cdot \hat{\bm{v}})^2=1$，此时平行于运动方向的电场分量为
+\[
+	E_\parallel=(1-\beta^2)\frac{e}{|\bm{r}|^2}.
+\]
+可以看到，当速度增加时，$1-\beta^2\to 0$，所以$E_{\perp}$增大，而$E_\parallel$减小，则点电荷电场从静止的一个正球到匀速运动时在运动方向被压扁了。
+
+在速度不大的时候，用$\bm{E}=e\bm{r}/|\bm{r}|^3$代替真实电场，则
+\[
+	\bm{B}=\frac{1}{c^2}\frac{e}{|\bm{r}|^3}\bm{v}\times \bm{r}.
+\]
+
+\section{Biot-Savart定律}
+这节处理剩下两个方程，此时先假设$\bm{E}=0$，方程写作
+\begin{equation}
+\left\{
+\begin{array}{lcl}
+	\nabla \cdot  \bm{B}&=&0,\\
+	\nabla \times \bm{B}&=&4\pi \bm{j}/c^2.
+\end{array}
+\right.
+\end{equation}
+$\bm{E}=0$其实是个很愚蠢的假设，因为如果有电流密度，就意味着有运动的电荷，有运动电荷就不可能每时每刻每个地方都有$\bm{E}=0$，可是，后面我们将看到，在一类很广义的情况下，磁感应强度的平均值也满足这两个方程，则数学上，他们有相同的解。无论如何，即使是沉迷于解方程的恶趣味，讨论物理问题前解决这两个方程至少在数学上是有意义的，等到解完方程后，我们再回到物理上来。
+
+设$\bm{B}=\nabla\times\bm{A}$，则第一个方程是自然的，那么结合第二个方程，就得到了
+\[
+	\nabla\times(\nabla\times\bm{A})=\nabla(\nabla\cdot \bm{A})-\Delta \bm{A}=\frac{4\pi \bm{j}}{c^2},
+\]
+选取规范使得$\nabla\cdot \bm{A}=0$，此时
+\[
+	\Delta \bm{A}=-\frac{4\pi \bm{j}}{c^2}.
+\]
+
+前面我们已经看到$\Delta \varphi = -4\pi \rho$的解（将点电荷的基本解带到一般势能的解中）是
+\[
+	\varphi(\bm{r})=\int \dd V'\,\frac{\rho(\bm{r}')}{|\bm{r}'-\bm{r}|},
+\]
+因为三维矢势各个分量（直角坐标内）依然满足这个方程，所以就得到了
+\[
+	\bm{A}(\bm{r})=\frac{1}{c^2}\int \dd V'\,\frac{\bm{j}(\bm{r}')}{|\bm{r}'-\bm{r}|}.
+\]
+对于离散电荷体系，我们有
+\[
+	\bm{A}(\bm{r})=\frac{1}{c^2}\sum_a \frac{e_a\bm{v}_a}{|\bm{r}-\bm{r}_a|}.
+\]
+
+下面我们求磁感应强度
+\[
+	\bm{B}=\nabla\times \bm{A}=\frac{1}{c^2}\int \dd V'\,\nabla\times \frac{\bm{j}(\bm{r}')}{|\bm{r}'-\bm{r}|}=\frac{1}{c^2}\int \dd V'\,\nabla\left(\frac{1}{|\bm{r}'-\bm{r}|}\right)\times \bm{j}(\bm{r}'),
+\]
+计算出那个散度，最后就得到了
+\[
+	\bm{B}=-\frac{1}{c^2}\int \dd V'\,\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}\times \bm{j}(\bm{r}')=\frac{1}{c^2}\int \dd V'\,\bm{j}(\bm{r}')\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3} ,
+\]
+这就是俗称的Biot-Savart定律。
+
+前面指出过，因为存在运动电荷，所以不可能成立$\bm{E}=0$甚至$\partial_t \bm{E}=0$，所以磁场所满足的方程只能是
+\[
+\left\{
+\begin{array}{lcl}
+	\nabla\cdot  \bm{B} &=&0,\\
+	\nabla\times \bm{B} &=&\displaystyle{\frac{1}{c^2}\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right)},
+\end{array}
+\right.
+\]
+将两边求时间平均，则
+\[
+\left\{
+\begin{array}{lcl}
+	\nabla\cdot  \overline{\bm{B}} &=&0,\\
+	\nabla\times \overline{\bm{B}} &=&\displaystyle{\frac{1}{c^2}\left(\overline{\frac{\partial \bm{E}}{\partial t}}+4\pi \overline{\bm{j}}\right)},
+\end{array}
+\right.
+\]
+退而求次，现在我们只要让
+\[
+	\overline{\frac{\partial \bm{E}}{\partial t}}=0,
+\]
+就对$\overline{\bm{B}}$得到类似的方程了。将时间平均写出来
+\[
+	\overline{\frac{\partial \bm{E}}{\partial t}}=\frac{1}{2T}
+	\int_{-T}^{T}\dd t\,\frac{\partial \bm{E}}{\partial t}=\frac{1}{2T}(\bm{E}(T)-\bm{E}(-T)),
+\]
+如果场$\bm{E}$是有界的，则随着$T\to \infty$，则自然得到了上面希望的$\overline{\partial_t \bm{E}}=0$.这是一类很广义的情况，而且$\overline{\bm{B}}$是一个物理上可测量的量。最后，真正的Biot-Savart定律应该写作：
+\[
+	\overline{\bm{B}}=\frac{1}{c^2}\int \dd V'\,\overline{\bm{j}(\bm{r}')}\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}.
+\]
+
+\section{多极矩}
+实际过程中，我们遇到的不是点电荷，而是一个电荷体系，比如带电物体，当离他们足够远的时候，可以将其看做一个点电荷。这节，我们希望将这个问题做得更加精确，得到他的场更精确的近似解。
+
+首先，对离散电荷体系，将坐标零点设在电荷体系中，势能写作
+\[
+	\varphi=\sum_a \frac{e_a}{|\bm{r}-\bm{r}_a|},
+\]
+当$|\bm{r}|$足够大的时候，任意的光滑函数$f(\bm{r}-\bm{r}_a)$有近似
+\[
+	f(\bm{r}-\bm{r}_a)=f(\bm{r})-(\bm{r}_a\cdot \nabla)f(\bm{r}),
+\]
+所以
+\[
+	\varphi=\frac{1}{|\bm{r}|}\sum_a e_a-\sum_a e_a \bm{r}_a\cdot \nabla\frac{1}{|\bm{r}|},
+\]
+此时第一项是点电荷项，等价于一个总电荷为整个体系电荷量的点电荷的势，第二项是更精确的项，设
+\[
+	\bm{d}=\sum_a e_a \bm{r}_a,
+\]
+我们称$\bm{d}$为这个体系的偶极矩，$\bm{d}$的值和选取的坐标有关，设我们选了一个新的零点，则所有的位置矢量都加上了一个常矢量$\bm{a}$，即
+\[
+	\bm{d}'=\sum_a e_a (\bm{r}_a+\bm{a})=\bm{d}+\bm{a}\sum_a e_a,
+\]
+在一种极其特殊的情况下，即系统的总电荷为$0$的时候，此时这个体系的偶极矩的值和我们选取的坐标无关。
+
+此外，如果有一个轴对称的电荷分布，那么偶极矩为$0$，这点可以从
+\[
+	\bm{d}=\sum_a e_a \bm{r}_a=-\sum_a e_a \bm{r}_a
+\]
+看出。
+
+只考虑偶极矩项的势能
+\[
+	\varphi=\bm{d}\cdot \nabla\frac{1}{|\bm{r}|},
+\]
+求其负梯度
+\[
+	\bm{E}=-\nabla\left(\bm{d}\cdot \nabla\frac{1}{|\bm{r}|}\right)=\frac{3(\hat{\bm{r}}\cdot \bm{d})\hat{\bm{r}}-\bm{d}}{|\bm{r}|^3},
+\]
+这个场围绕$\bm{d}$的方向具有轴对称性。
+
+现在，我们试图利用Taylor公式来展开势能成更精确的形式
+\[
+	f(\bm{r}-\bm{r}_a)=\sum_{k=0}^n (-\bm{r}_a\cdot \nabla)^kf(\bm{r}),
+\]
+这当然是可以的。但是，在球谐函数理论中我们知道著名的公式
+\[
+	\frac{1}{|\bm{r}-\bm{r}_a|}=\sum_{l=0}^\infty \frac{|\bm{r}_a|^l}{|\bm{r}|^{l+1}}\mathrm{P}_l\left(\hat{\bm{r}}_a\cdot \hat{\bm{r}}\right),
+\]
+其中$|\bm{r}|>|\bm{r}_a|$而$\mathrm{P}_l$是$l$阶Legendre多项式，全部累加起来
+\[
+	\varphi=\sum_a \frac{e_a}{|\bm{r}-\bm{r}_a|}=\sum_{l=0}^\infty \frac{1}{|\bm{r}|^{l+1}} \sum_a e_a |\bm{r}_a|^l\mathrm{P}_l\left(\hat{\bm{r}}_a\cdot \hat{\bm{r}}\right),
+\]
+如果是连续电荷体系
+\[
+	\varphi=\sum_{l=0}^\infty \frac{1}{|\bm{r}|^{l+1}} \int\dd V'\, \rho(\bm{x}') |\bm{r}'|^l\mathrm{P}_l\left(\hat{\bm{r}}'\cdot \hat{\bm{r}}\right).
+\]
+对于$l$级展开，称之为$2^l$极矩。
+
+\section{磁矩}
+类似于考察电多极矩，这节我们考察离开一个稳定运动的电荷体系很远处的平均磁场。
+
+已知矢势有
+\[
+	\overline{\bm{A}}(\bm{r})=\frac{1}{c^2}\sum_a \overline{\frac{e_a\bm{v}_a}{|\bm{r}-\bm{r}_a|}},
+\]
+然后展开到一阶
+\[
+	\overline{\bm{A}}(\bm{r})=\frac{1}{c^2 |\bm{r}|}\sum_a e_a\overline{\bm{v}_a}-\frac{1}{c^2}\sum_a e_a\overline{\bm{v}_a\left(\bm{r}_a\cdot \nabla \frac{1}{|\bm{r}|}\right)},
+\]
+因为$\overline{\bm{v}_a}$是一个关于时间导数的量的平均，而有限运动使得位置矢量有界，因此$\overline{\bm{v}_a}=0$，也就是第一项消失，此时
+\[
+	\overline{\bm{A}}(\bm{r})=-\frac{1}{c^2}\sum_a e_a \overline{\bm{v}_a\left(\bm{r}_a \cdot \nabla \frac{1}{|\bm{r}|}\right)}=\frac{1}{c^2|\bm{r}|^3}\sum_a e_a\overline{\bm{v_a} (\bm{r_a}\cdot \bm{r})},
+\]
+注意到（特别留意，$\bm{r}$现在固定，是一个常量）
+\[
+	e_a \bm{v_a} (\bm{r_a}\cdot \bm{r})=\frac{\dd}{\dd t}(e_a \bm{r_a} (\bm{r_a}\cdot \bm{r}))-e_a \bm{r_a}\frac{\dd}{\dd t}(\bm{r_a}\cdot \bm{r}),
+\]
+在时间平均后
+\[
+	\overline{\bm{v_a} (\bm{r_a}\cdot \bm{r})}=-\overline{\bm{r_a}(\bm{v_a}\cdot \bm{r})},
+\]
+为了后面的方便，我们改写上式为
+\[
+	\overline{\bm{v_a} (\bm{r_a}\cdot \bm{r})}=\frac{1}{2}\left(\overline{ \bm{v_a} (\bm{r_a}\cdot \bm{r})-\bm{r_a}(\bm{v_a}\cdot \bm{r})}\right)=\frac{1}{2}\overline{(\bm{r_a}\times \bm{v_a})}\times \bm{r},
+\]
+这样就将矢势写作了
+\[
+	\overline{\bm{A}}(\bm{r})=\frac{1}{2c^2|\bm{r}|^3}\sum_a e_a\overline{(\bm{r_a}\times \bm{v_a})}\times \bm{r}.
+\]
+
+定义
+\[
+	\bm{m}=\frac{1}{2}\sum_a e_a \bm{r_a}\times \bm{v_a},
+\]
+称为磁矩，利用磁矩，可以将一级近似的矢势写作
+\[
+	\overline{\bm{A}}(\bm{r})=\frac{1}{c^2}\overline{\bm{m}}\times\frac{\bm{r}}{|\bm{r}|^3}=\frac{1}{c^2}\nabla\frac{1}{|\bm{r}|}\times \overline{\bm{m}}.
+\]
+知道了矢势，就容易求得磁感应强度
+\[
+	\overline{\bm{B}}(\bm{r})=\nabla\times \overline{\bm{A}}(\bm{r})=\frac{1}{c^2}\nabla\times\left(\nabla\frac{1}{|\bm{r}|}\times \overline{\bm{m}}\right)=\frac{1}{c^2}(\overline{\bm{m}}\cdot \nabla)\nabla\frac{1}{|\bm{r}|}+\frac{4\pi}{c^2}\delta^3(\bm{r})\overline{\bm{m}},
+\]
+因为讨论的是足够远处的磁场，所以第二项可以去掉，第一项具体写作
+\[
+	\overline{\bm{B}}(\bm{r})=\frac{1}{c^2}(\overline{\bm{m}}\cdot \nabla)\nabla\frac{1}{|\bm{r}|}=\frac{1}{c^2}\frac{3(\hat{\bm{r}}\cdot \overline{\bm{m}})\hat{\bm{r}}-\overline{\bm{m}}}{|\bm{r}|^3},
+\]
+和电偶极子的公式几乎一模一样。
+
+注意到，考察足够远处的磁场，他的第零阶近似始终为0，而第一阶近似和电偶极子的电场一模一样。那么我们是否可以根据偶极子和磁矩的相似性做出如下猜想：磁场也存在类似于电荷的磁荷，但是他是一正一负成对出现的，这样才使得第零阶近似始终为0。
+
+这样的猜想是有理由的，对错先不说，甚至在实用上，认为存在磁荷的模型在求解一些物理问题时候也相当有用，当然这样做的根据是公式上的相似性，而不涉及本质上的相似性。
+
+作为补充，这里求一下处于一个平面上的均匀电流环的磁矩，为此首先将磁矩改成连续体系的形式
+\[
+	\bm{m}=\frac{1}{2}\int \dd V' \bm{r}'\times \bm{j}(\bm{r}').
+\]
+电流是一个标量，即在空间中考虑一个曲面$S$，定义通过他的电流强度（简称电流）为
+\[
+	I(S)=\int_S \dd \bm{\sigma}\cdot \bm{j}(\bm{r}).
+\]
+对于一个环面，在每一个$\varphi$确定的截面，都可以定义一个$I$，如果$I(\varphi)$是一个常数，那么就称呼其为恒定电流的。在生活中，我们遇到的恒定电流系统，往往可能截面面积极小，比如电线，此时$\dd V'\bm{j}(\bm{r}')$近似于$I\dd \bm{l}'$，在截面面积趋向于0的时候
+\[
+	\bm{m}=\frac{I}{2}\int_{\partial S} \bm{r}'\times \dd \bm{l}'.
+\]
+考虑$S$是平面上的均匀电流环的面积矢量，则
+\[
+	\bm{m}=-\frac{I}{2}\int_{\partial S} \dd \bm{l}'\times \bm{r}'=-\frac{I}{2}\int_{S} (\dd \bm{\sigma}'\times \nabla')\times \bm{r}'=-\frac{I}{2}\int_{S} \dd \sigma'(\bm{k}\times \nabla')\times \bm{r}',
+\]
+其中$\bm{k}$是面积矢量方向的单位矢量，不妨取做第三根轴，很容易计算那个积分为$-2\bm{S}$，所以
+\[
+	\bm{m}=I\bm{S}.
+\]
+
+\section{外场中的电荷体系}
+假设给定的外场是$\bm{E}(\bm{r})$和$\bm{B}(\bm{r})$，那么对一个离散电荷体系来说，由Lorentz力公式，
+\[
+	\bm{F}=\sum_ae_a\bm{E}(\bm{r}_a)+\sum_ae_a\bm{v}_a\times \bm{B}(\bm{r}_a),
+\]
+对于连续体系
+\[
+	\bm{F}=\int \dd V'\rho(\bm{r}')\bm{E}(\bm{r}')+\int \dd V'\bm{j}(\bm{r}')\times \bm{B}(\bm{r}').
+\]
+\chapter{辐射}
+\section{推迟势}
+含源电磁场的方程为
+\[
+	\partial_\nu \partial^\nu A^\mu-\partial^\mu \partial_\nu A^\nu=\partial_\nu F^{\nu\mu}=\frac{4\pi}{c^2} j^\mu，
+\]
+在Lorenz规范$\partial_\nu A^\nu=0$下，得到了方程
+\[
+	\frac{1}{c^2}\frac{\partial^2 A^\mu}{\partial t^2}-\nabla^2 A^\mu=\partial_\nu \partial^\nu A^\mu=\frac{4\pi}{c^2} j^\mu,
+\]
+这是一个非齐次方程。对于非齐次方程，他的通解是由非齐次方程本身的一个特解和他对应的齐次方程的通解叠加而成，而他对应的齐次方程就是前面我们看到的电磁波方程。
+
+为了求得特解，我们采用基本解方法，去解方程
+\[
+	\frac{1}{c^2}\frac{\partial^2 \psi}{\partial t^2}-\nabla^2 \psi=\frac{4\pi}{c} \delta(t)\delta^3(\bm{r}),
+\]
+或者
+\[
+	\frac{\partial^2 \psi}{\partial \tau^2}-\nabla^2 \psi=4\pi \delta(\tau)\delta^3(\bm{r}),
+\]
+其中$\tau=ct$。两边对$\tau$做Fourier变换，设$\tau$的共轭变量是$\omega$，则
+\[
+	\omega^2\hat{\psi}+\nabla^2 \hat{\psi}=-2\sqrt{2\pi}\delta^3(\bm{r}),
+\]
+其中$\hat{\psi}$是变换后的函数。
+
+对于我们的真空无界情形，必然是球对称的，所以我们也去求球对称的特解。于是对$\nabla^2$展开只剩下了径部，
+\[
+	\omega^2\hat{\psi}+\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial \hat{\psi}}{\partial r}\right)=-2\sqrt{2\pi}\delta^3(\bm{r}),
+\]
+在$r\neq 0$的地方，这个方程就是普通的
+\[
+	r^2\omega^2\hat{\psi}+\frac{\partial}{\partial r}\left(r^2\frac{\partial \hat{\psi}}{\partial r}\right)=0,
+\]
+令$\hat{\psi}=\chi/r$，则$\partial^2 \chi/\partial r^2+\omega^2\chi=0$，该方程的解写作$\chi=A\exp(i \omega r)+B\exp(-i \omega r)$，所以
+\[
+	\hat{\psi}=A\frac{\exp(i \omega r)}{r}+B\frac{\exp(-i \omega r)}{r}.
+\]
+
+现在将方程
+\[
+	\omega^2\hat{\psi}+\nabla^2 \hat{\psi}=-2\sqrt{2\pi}\delta^3(\bm{r}),
+\]
+两边在半径为$R$的球内积分，则
+\[
+	\omega^2\int_V \dd V\,\hat{\psi}+\int_V \dd V\,\nabla^2 \hat{\psi}=-2\sqrt{2\pi},
+\]
+第一个积分写作
+\[
+	\int_V \dd V\,\hat{\psi}=4\pi \int_0^R \dd r \,r\bigl(A\exp(i \omega r)+B\exp(-i \omega r)\bigr),
+\]
+所以在$R\to 0$的时候，积分也趋向于$0$，所以在渐进过程中，我们可以略去它。剩下的第二个积分使用Stokes定理
+\[
+	\int_{\partial V} \dd \bm{\sigma}\cdot\nabla \hat{\psi}=4\pi R^2 \frac{\partial \hat{\psi}}{\partial r}(R),
+\]
+在$R\to 0$的时候，代入已知的$\hat{\psi}$形式，可以计算得
+\[
+	\lim_{R\to 0}\int_{\partial V} \dd \bm{\sigma}\cdot\nabla \hat{\psi}=-4\pi\left(A+B\right)=-2\sqrt{2\pi},
+\]
+可以解出$A+B=1/\sqrt{2\pi}$。因此可以看见，$\hat{\psi}=\left(A\exp(i \omega r)+B\exp(-i \omega r)\right)/r$是在$r=0$处也成立的解，所以他就是我们希望得到的球对称特解，我们将其写作
+\[
+	\hat{\psi}=C\frac{\exp(i \omega r)}{\sqrt{2\pi}r}+(1-C)\frac{\exp(-i \omega r)}{\sqrt{2\pi}r}.
+\]
+其中$C$是待定常数。最后Fourier逆变换，则基本解写作
+\[
+	\psi=C\frac{\delta(r+\tau)}{r}+(1-C)\frac{\delta(r-\tau)}{r}.
+\]
+
+回到原方程，
+\begin{align*}
+	\frac{4\pi}{c^2}j^\mu(\bm{r},t)&=\frac{4\pi}{c^2}\int \dd V'\dd \tau' \,j^\mu(\bm{r}',\tau'/c) \delta(\tau'-\tau)\delta^3(\bm{r}'-\bm{r})\\
+	&=\frac{1}{c^2}\int \dd V'\dd \tau' \,j^\mu(\bm{r}',\tau'/c)\left(\frac{\partial^2 \psi}{\partial (\tau')^2}-(\nabla')^2 \psi\right)(\tau'-\tau,\bm{r}'-\bm{r}) \\
+	&=\frac{1}{c^2}\int \dd V'\dd \tau' \,j^\mu(\bm{r}',\tau'/c)\left(\frac{\partial^2 \psi}{\partial \tau^2}-\nabla^2 \psi\right)(\tau'-\tau,\bm{r}'-\bm{r}) \\
+	&=\left(\frac{\partial^2 }{\partial \tau^2}-\nabla^2 \right)\frac{1}{c^2}\int \dd V'\dd \tau' \,j^\mu(\bm{r}',\tau'/c)\psi(\tau'-\tau,\bm{r}'-\bm{r}),
+\end{align*}
+所以
+\begin{align*}
+	A^\mu&=\frac{1}{c^2}\int \dd V'\dd \tau' \,j^\mu(\bm{r}',\tau'/c)\psi(\tau'-\tau,\bm{r}'-\bm{r})\\
+	&=\frac{1}{c^2}\int \dd V'\dd \tau' \,j^\mu(\bm{r}',\tau'/c)\left(C\frac{\delta(|\bm{r}'-\bm{r}|+\tau'-\tau)}{|\bm{r}'-\bm{r}|}+(1-C)\frac{\delta(|\bm{r}'-\bm{r}|-\tau'+\tau)}{|\bm{r}'-\bm{r}|}\right)\\
+	&=\frac{1}{c^2}\int \dd V' \,\left(C\frac{j^\mu(\bm{r}',t-|\bm{r}'-\bm{r}|/c)}{|\bm{r}'-\bm{r}|}+(1-C)\frac{j^\mu(\bm{r}',t+|\bm{r}'-\bm{r}|/c)}{|\bm{r}'-\bm{r}|}\right),
+\end{align*}
+记$\bm{R}=\bm{r}-\bm{r}'$以及对任意的函数$f(t\pm R/c)$，将其记作$f_{t\pm R/c}$，则
+\[
+	A^\mu(\bm{r},t)=\frac{C}{c^2}\int \dd V' \,\frac{j^\mu_{t-R/c}(\bm{r}')}{R}+\frac{1-C}{c^2}\int \dd V' \,\frac{j^\mu_{t+R/c}(\bm{r}')}{R}.
+\]
+剩下的，就是我们要确定常数$C$。
+
+一般来说，电磁波的解写作
+\[
+	A^\mu(\bm{r},t)=A^\mu_0+\frac{C}{c^2}\int \dd V' \,\frac{j^\mu_{t-R/c}(\bm{r}')}{R}+\frac{1-C}{c^2}\int \dd V' \,\frac{j^\mu_{t+R/c}(\bm{r}')}{R},
+\]
+为了确定$A^\mu_0$和$C$，我们只要知道一个初值就可以了。但实际上，我们并不处理这样的初始条件，作为代替，我们常常给出与电荷体系离得很远处在所有时刻的条件，就是说，辐射是从系统外入射到系统上的。与此对应，辐射与系统相互作用后建立的场和外场的差别只是系统发出的辐射，即$A=A_0+A_1$，其中$A_0$是外场而$A_1$是系统发出的辐射。这个辐射在远处看是波的形式，由系统向外（即$R$增加）传播。因此我们只能取$t-R/c$的那个部分，此时$C=1$，否则$A^\mu$在$t$时候的值将由在未来的分布$j^\mu_{t+R/c}$确定，而这与随时间正向演化的传播过程显然是不符的，在这种情况下
+\begin{equation}
+	A^\mu(\bm{r},t)=A^\mu_0+\frac{1}{c^2}\int \dd V' \,\frac{j^\mu_{t-R/c}(\bm{r}')}{R}=A^\mu_0+A^\mu_{t-R/c},
+	\label{c6:1}
+\end{equation}
+其中$A^\mu_0$是外场，而$A^\mu_{t-R/c}$被称为推迟势。这意味着对应一个电流/电荷分布，他需要时间$R/c$才能够对场有所影响，譬如，在真空中突然放入一个电荷，经过时间$t$后，电荷所产生的电场在$R>ct$处依然为$0$，这和经典情况的超距作用是不同的，他严格地遵守着相对论的基本原理，作用的传递速度是不可能超过光速。
+
+\section{Lienard-Wiechert势}
+Lienard-Wiechert势是一个运动电荷所产生的势能。对于这样一个运动电荷，如果假设我们能够观察到这个粒子，下面需要一个断言，即他的世界线和以我们作为观测者的下半光锥（由$x_\mu x^\mu=0$且$x^0<0$的矢量构成的曲面）一定有唯一交点。
+
+交点的存在性来自于在过去我们能够观察到这个粒子，因此他的世界线的一部分就在下半光锥内，而当$t'=0$的时候，他的世界点要么在$\bm{r}(0)\neq 0$时处于在光锥外，要么在光锥上，所以世界线的连续性保证了他的世界线一定和下半光锥相交。
+
+剩下的唯一性来自于粒子的速度不大于光速，如果有多次相交，那么找两个$\bm{r}(t)^2-c^2t^2$的相邻零点$t_0<0$和$t_1<0$，那么肯定在其中的一点处，$\bm{r}(t)^2-c^2t^2=0$的导数值为负，不妨设为$t_0$，此时
+\[
+	\bm{r}(t_0)\cdot \bm{v}(t_0)<c^2t_0,
+\]
+但是
+\[
+	|ct_0||\bm{v}(t_0)|=|\bm{r}(t_0)||\bm{v}(t_0)|\geq |\bm{r}(t_0)\cdot \bm{v}(t_0)|>c^2|t_0|,
+\]
+所以$|\bm{v}(t_0)|>c$，这就造成了矛盾。
+
+现在来正式推导Lienard-Wiechert势，如果电荷的轨迹为$\bm{r}_0(t)$，那么他的电荷密度写作$j^0(\bm{r},t)=ec\delta^3(\bm{r}-\bm{r}_0(t))$，根据上节给出的基本解，推迟势写作
+\[
+	A^0=\frac{1}{c^2}\int \dd V'\dd \tau' \,j^0(\bm{r}',\tau'/c)\frac{\delta(|\bm{r}'-\bm{r}|+\tau'-\tau)}{|\bm{r}'-\bm{r}|},
+\]
+所以电势有
+\[
+	\varphi=e\int \dd V'\dd t' \,\delta^3(\bm{r}'-\bm{r}_0(t'))\frac{\delta(|\bm{r}'-\bm{r}|/c+t'-t)}{|\bm{r}'-\bm{r}|}=e\int\dd t' \,\frac{\delta(|\bm{r}-\bm{r}_0(t')|/c+t'-t)}{|\bm{r}_0(t')-\bm{r}|}.
+\]
+注意到公式
+\[
+	\delta(f(t))=\frac{\delta(t-t_0)}{|f'(t_0)|},
+\]
+其中$t_0$是$f(t)$的零点，如果是多重零点，则需要对诸零点求和。那么
+\[
+	\frac{\delta(|\bm{r}-\bm{r}_0(t')|/c+t'-t)}{|\bm{r}_0(t')-\bm{r}|}=\frac{\delta(t'-t_0)}{|\bm{r}-\bm{r}_0(t_0)|-(\bm{r}-\bm{r}_0(t_0))\cdot \bm{v}_0(t_0)/c},
+\]
+其中$t_0$是$|\bm{r}-\bm{r}_0(t')|/c+t'-t=0$的唯一零点\footnote{不妨设$\bm{r}=0$和$t=0$，这在数学上即平移原点。这样方程变为$|\bm{r}_0(t')|+ct'=0$，他的根一定是$\bm{r}_0(t')^2-(ct')^2=(|\bm{r}_0(t')|+ct')(|\bm{r}_0(t')|-ct')=0$在$t'<0$时的根。而$\bm{r}_0(t')^2-(ct')^2=0$如果有解$t_0<0$，那么就意味着$(\bm{r}_0(t_0),ct_0)$在下半光锥上，而也就是说$(\bm{r}_0(t'),ct')$作为粒子的世界线就和下半光锥有交点。而这点的存在唯一性已经证明过了。}，记$\bm{R}=\bm{r}-\bm{r}_0(t_0)$，则
+\[
+	\varphi=\frac{e}{R-\bm{R}\cdot \bm{v}_0/c}.
+\]
+利用$\bm{j}=\bm{v}_0\rho=e\bm{v}_0\delta^3(\bm{r}-\bm{r}_0(t))$，可以类似地推出
+\[
+	\bm{A}=\frac{1}{c^2}\frac{e\bm{v}_0}{R-\bm{R}\cdot \bm{v}_0/c},
+\]
+这些势能被称为Lienard-Wiechert势。
+
+\section{电荷体系在远处所产生的场}
+这节来考虑一个运动电荷体系在距离远大于该体系尺度的地方所产生的场。选择电荷体系内的任意一点为坐标原点，用$\bm{r}$表示想要求场强位置的位矢。设$\bm{r}'$是电荷体系内电荷的位矢，记$\bm{R}=\bm{r}-\bm{r}'$.
+
+如果电荷体系离开很远，则
+\[
+	R=|\bm{r}-\bm{r}'|=r-\bm{r}'\cdot \hat{\bm{r}},
+\]
+将这个代入推迟势的公式\eqref{c6:1}，则
+\[
+	A^\mu_{t-R/c}=\frac{1}{c^2}\int \dd V' \,\frac{j^\mu_{t-R/c}(\bm{r}')}{R}=\frac{1}{c^2}\int \dd V' \,\frac{j^\mu_{t-r/c-\bm{r}'\cdot \hat{\bm{r}}/c}(\bm{r}')}{r-\bm{r}'\cdot \hat{\bm{r}}},
+\]
+一般来说，分母可以直接写作$r$，因为$\bm{r}'\cdot \hat{\bm{r}}$比起$r$来说小太多，而在$t-R/c$中却不可忽略：是否可以略去这些项，并不决定于$\bm{r}'\cdot \hat{\bm{r}}/c$和$r/c$的相对大小，而是$j^\mu$在时间$\bm{r}'\cdot \hat{\bm{r}}/c$内变化的多少。结合上面两点，所以
+\begin{equation}
+	A^\mu_{t-R/c}=\frac{1}{c^2r}\int \dd V' \,j^\mu_{t-r/c-\bm{r}'\cdot \hat{\bm{r}}/c}(\bm{r}').
+	\label{c6:2}
+\end{equation}
+
+在足够远处，场在一个不大的空间区域内可以当做平面波。为此，距离不仅必须比体系的尺度大很多，而且还要比体系所辐射的电磁波波长大很多，这样的一个区域被称为“波区”。
+
+在平面波内，电磁场之间的关系有\eqref{c3:2}，即$\bm{E}=c \bm{B}\times \hat{\bm{r}}$，因为$\bm{B}=\nabla\times \bm{A}$，所以为了决定波区中的场，只要求出$\bm{A}$就好了。使用\eqref{c6:2}，并去掉$1/r$的高阶项，就有
+\[
+	\bm{B}=\nabla\times \bm{A}=\frac{1}{c}\dot{\bm{A}}\times \hat{\bm{r}},\quad \bm{E}=(\dot{\bm{A}}\times \hat{\bm{r}})\times \hat{\bm{r}}.
+\]
+
+\include{gauge}
+\end{document}

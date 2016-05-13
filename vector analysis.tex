@@ -1,0 +1,126 @@
+%!TEX program = xelatex
+\documentclass[11pt,a4paper]{article}
+\usepackage{amssymb,amsfonts,amsmath,bm,multirow}
+\usepackage[adobefonts]{ctex}%ubuntu用
+\usepackage[left=21mm,text={148mm,210mm},paperwidth=185mm,
+paperheight=260mm,includehead,vmarginratio=1:1]{geometry}
+\begin{document}
+\begin{center}
+\Large{Table of Formulas in Vector Analysis}\\
+\footnotesize{LXX@Shanghai Nan Yang Model High School}
+\end{center}
+\noindent Definition:\\
+All operators are linear. $\mathrm{d}$ is exterior derivative, and 
+
+$\omega_{A_1\times A_2}^2:=\omega_{A_1}^1\wedge \omega_{A_2}^1$
+
+$\omega_{A\cdot B}^3:=\omega_{A}^1\wedge \omega_{B}^2$
+
+$\omega_{\nabla f}^1:=\mathrm{d}\omega_{f}^0$
+
+$\omega_{\nabla \times A}^2:=\mathrm{d}\omega_{A}^1$
+
+$\omega_{\nabla \cdot B}^3:=\mathrm{d}\omega_{B}^2$\\
+\\
+ On grad:
+ 
+$\nabla(fg)=f\nabla g+g\nabla f$
+
+$\nabla(A\cdot B)=(A\cdot \nabla)B+(B\cdot \nabla)A+A\times (\nabla \times B)+B\times (\nabla \times A)$
+
+$\displaystyle{\nabla \left(\frac{1}{|r-r'|} \right) = -\frac{r-r'}{|r-r'|^3}}$\\
+\\
+ On div:
+ 
+$\nabla\cdot(fA) = (\nabla f) \cdot A + f\nabla\cdot A $
+
+$\nabla\cdot(A \times B) = B\cdot (\nabla \times A)-A\cdot (\nabla \times B)$
+
+$\displaystyle{\nabla\cdot \left(\frac{r-r'}{|r-r'|^3} \right) = 4\pi \delta^3(r-r')}$\\
+\\
+ On rot:
+
+$\nabla\times(fA)=f\nabla \times A + \nabla f \times A $
+
+$\nabla\times(A\times B)=(B\cdot \nabla)A-(A\cdot \nabla)B+(\nabla\cdot B)A-(\nabla\cdot A)B$
+
+$\nabla\times(\nabla\times A)=\nabla(\nabla\cdot A)-\nabla \cdot (\nabla A)=\nabla(\nabla\cdot A)-\nabla^2 A$
+
+$\hat{n}\cdot (\nabla\times \hat{n})=0$  ($\hat{n}$ is the normal vector of a surface)\\
+\\
+ On $\nabla^2$:
+
+$\nabla^2(fg)=g\nabla^2 f+2\nabla f\cdot \nabla g+f\nabla^2 g$
+
+$\nabla \cdot (f\nabla g)=f\nabla^2 g+\nabla f\cdot \nabla g$
+
+$\nabla \cdot (f\nabla g-g\nabla f)=f\nabla^2 g-g\nabla^2 f$
+
+$\nabla \cdot (\nabla^2 f)=\nabla^2(\nabla \cdot f)$
+
+$\displaystyle{\nabla^2\left(\frac{1}{|r-r'|} \right) =-4\pi \delta^3(r-r')}$\\
+\\
+On Integral:
+
+$\displaystyle{\int_S \mathrm{d}\omega=\int_{\partial S}\omega}$  (Stokes Theorem)
+
+$\displaystyle{\int_V \mathrm{d}V(\nabla*f)=\int_{\partial V}\mathrm{d}\sigma *f }$  (When $*=\cdot$, it is the famous Gauss Formula.)
+
+$\displaystyle{\int_V \mathrm{d}V(A\cdot \nabla)B =\int_{\partial V}A\cdot\mathrm{d}\sigma}B$   (if $\nabla \cdot A=0$)
+
+$\displaystyle{\int_S \mathrm{d}\sigma \cdot (\nabla \times A)=\int_{\partial S}\mathrm{d}l\cdot A }$  (the traditional Stokes Formula)
+
+$\displaystyle{\int_S (\mathrm{d}\sigma \times \nabla)\times A=\int_{\partial S}\mathrm{d}l \times A}$
+
+$\displaystyle{\int_S \mathrm{d}\sigma \times \nabla f=\int_{\partial S}\mathrm{d}l f }$\\
+
+\noindent Orthogonal coordinates:
+
+Generally for any curvilinear coordinates in $\mathbb{R}^3$, we should have $\mathrm{d}l^2=g_{ij}(t)\mathrm{d}t^i\mathrm{d}t^j$ and 
+$\mathrm{d}V=\sqrt{\det g_{ij}}(t)\mathrm{d}t^1 \wedge \mathrm{d}t^2\wedge \mathrm{d}t^3$. However, for orthogonal coordinates, $g$ becomes diagonal, i.e.  $g=\mathrm{diag}(H_1^2,H^2_2,H^2_3)$, and $\mathrm{d}V=H_1H_2H_3\mathrm{d}t^1 \wedge \mathrm{d}t^2\wedge \mathrm{d}t^3$.
+
+Here're the most useful orthogonal coordinates:
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &$H_1$ & $H_2$ & $H_3$&$H=H_1H_2H_3$\\
+\hline
+$(x,y,z)$ & 1 & 1 & 1 &1\\
+\hline
+$(r,\theta,z)$ & 1 & $r$ & 1 &$r$\\
+\hline
+$(\rho,\theta,\phi)$ &1 & $\rho$ & $\rho \sin \theta$ &$\rho^2 \sin \theta$ \\
+\hline
+\end{tabular}
+\end{table}
+
+$A\cdot \mathrm{d}l:=\omega_{A}^1=A_1H_1\mathrm{d}t_1+A_2H_2\mathrm{d}t_2+A_3H_3\mathrm{d}t_3$
+
+$\displaystyle{B\cdot \mathrm{d}\sigma}:=\omega_{B}^2=H\left( \frac{B_1}{H_1}\mathrm{d}t_2 \wedge \mathrm{d}t_3-\frac{B_2}{H_2}\mathrm{d}t_1 \wedge \mathrm{d}t_3+\frac{B_3}{H_3}\mathrm{d}t_1 \wedge \mathrm{d}t_2\right)$
+
+$\displaystyle{f \mathrm{d}V:=\omega_{f}^3=f H\mathrm{d}t_1 \wedge \mathrm{d}t_2\wedge \mathrm{d}t_3}$
+\\
+where
+\\
+\indent $\displaystyle{\nabla f = \frac{1}{H_{1}} \frac{\partial f}{\partial t_{1}}\hat{e}_{1} +\frac{1}{H_{2}} \frac{\partial f}{\partial t_{2}}\hat{e}_{2} +\frac{1}{H_{3}} \frac{\partial f}{\partial t_{3}}\hat{e}_{3}}$
+\\
+
+\indent $\displaystyle{\nabla \times A =\frac{1}{H} 
+\begin{vmatrix} 
+\partial_{t_1}  & \partial_{t_2} & \partial_{t_3}\\
+H_1A_1 & H_2A_2 & H_3A_3\\
+H_1\hat{e}_{1} & H_2\hat{e}_{2} & H_3\hat{e}_{3}
+ \end{vmatrix}
+}$
+\\
+
+$\displaystyle{\nabla \cdot A = \frac{1}{H} 
+\left[\frac{\partial}{\partial t_1}(A_1 H_2 H_3)+\frac{\partial}{\partial t_2}(A_2 H_3 H_1) + \frac{\partial}{\partial t_3}(A_3 H_1 H_2) \right]}$
+
+$\displaystyle{\nabla^{2} f = \frac{1}{H} \left[
+\frac{\partial}{\partial t_{1}} \left( \frac{H_{2} H_{3}}{H_{1}} \frac{\partial f}{\partial t_{1}} \right) +
+\frac{\partial}{\partial t_{2}} \left( \frac{H_{3} H_{1}}{H_{2}} \frac{\partial f}{\partial t_{2}} \right) +
+\frac{\partial}{\partial t_{3}} \left(\frac{H_{1} H_{2}}{H_{3}} \frac{\partial f}{\partial t_{3}} \right)
+\right]}$
+\end{document}

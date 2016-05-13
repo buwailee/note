@@ -1,0 +1,56 @@
+\chapter{The Cluster Decomposition Principle}
+这章要讨论Hamiltonian的具体结构，我们可以通过给出他所有的矩阵元来定义，或者等价的，任意的算子都可以表示为关于产生单粒子和湮灭单粒子的算符的函数（通过给出所有的矩阵元）。产生和湮灭算符历史上是在电磁场以及其他场的正则量子化时引入量子力学的，他们提供了一个对无质量粒子产生和湮灭的自然的理论框架。
+\re{However, there is a deeper reason for constructing the Hamiltonian out of creation and annihilation operators, which goes beyond the need to quantize any pre-existing field theory like electrodynamics, and has nothing to do with whether particles can actually be produced or destroyed. The great advantage of this formalism is that if we express the Hamiltonian as a sum of products of creation and annihilation operators, with suitable non-singular coefficients, the the $S$-matrix will automatically satisfy a crucial physical requirement, the cluster decomposition principle, which says in effect that distant experiments yield uncorrelated results.}
+\section{Bosons and Fermions}
+
+\section{Creation and Annihilation Operators}
+生成算子$a^\dag(q)$被定义为在态矢量$\Phi_{q_1 \cdots q_N}$前加上一个量子数的算子
+\[
+	a^\dag(q)\Phi_{q_1 \cdots q_N}=\Phi_{qq_1 \cdots q_N}.
+\]
+于是任何一个态矢量都可以写作
+\[
+	\Phi_{q_1 \cdots q_N}=a^\dag(q_1)\cdots a^\dag(q_N)\Phi_0,
+\]
+其中$\Phi_0$为真空态。湮灭算子$a(q)$是$a^\dag(q)$的共轭算子，当$q_1,\cdots,q_N$都是玻色子和费米子的时候，$a^\dag(q)$可以定义为
+\[
+	a(q)\Phi_{q_1\cdots q_N}=\sum_{r=1}^N(\pm)^{r+1}\delta(q-q_r)\Phi_{q_1\cdots q_{r-1}q_{r+1}\cdots q_N},
+\]
+其中$+$是对玻色子，$-$是对费米子。对于真空态，无论是费米的还是玻色的，我们都有
+\[
+	a(q)\Phi_0=\Phi_0.
+\]
+通过直接计算，很容易验证对易关系
+\[
+\begin{split}
+	[a(q'),a^\dag(q)]_\mp=&a(q')a^\dag(q)\mp a^\dag(q)a(q')=\delta(q'-q),\\
+	[a(q'),a(q)]_\mp=&a(q')a(q)\mp a(q)a(q')=0,\\
+	[a^\dag(q'),a^\dag(q)]_\mp=&a^\dag(q')a^\dag(q)\mp a^\dag(q)a^\dag(q')=0,\\
+\end{split}
+\]
+其中$-$是对玻色子，$+$是对费米子。
+我们现在考虑这两个算子在	Lorentz下面的表现，首先
+\[
+U_0(\Lambda,\alpha)\Psi_{p,\sigma,n}=e^{-i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)}_{\bar{\sigma}\sigma}(W(\Lambda,p))\Psi_{\Lambda p,\bar{\sigma},n},
+\]
+上式等价于
+\[
+U_0(\Lambda,\alpha)a^\dag(\mathbf{p},\sigma,n)\Psi_0=e^{-i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)}_{\bar{\sigma}\sigma}(W(\Lambda,p))a^\dag(\mathbf{p}_\Lambda,\bar{\sigma},n)\Psi_0,
+\]
+其中$\mathbf{p}_\Lambda$是$\Lambda p$的空间部分，由于$U^{-1}_0(\Lambda,\alpha)\Psi_0=\Psi_0$，所以
+\[
+	U_0(\Lambda,\alpha)a^\dag(\mathbf{p},\sigma,n)U^{-1}_0(\Lambda,\alpha)\Psi_0=e^{-i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)}_{\bar{\sigma}\sigma}(W(\Lambda,p))a^\dag(\mathbf{p}_\Lambda,\bar{\sigma},n)\Psi_0,
+\]
+最后我们可以得到
+\[
+\begin{split}
+	U_0(\Lambda,\alpha)a^\dag(\mathbf{p},\sigma,n)U_0^{-1}(\Lambda,\alpha)&=e^{-i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)a^\dag(\mathbf{p}_\Lambda,\bar{\sigma},n),\\
+	U_0(\Lambda,\alpha)a(\mathbf{p},\sigma,n)U_0^{-1}(\Lambda,\alpha)&=e^{i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)*}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)a(\mathbf{p}_\Lambda,\bar{\sigma},n).
+\end{split}
+\]
+
+
+\section{Cluster Decomposition and Connected Amplitudes}
+
+
+

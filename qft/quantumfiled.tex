@@ -1,0 +1,374 @@
+\documentclass[8pt]{book}
+\usepackage{noteheader}
+\include{defs}
+
+\begin{document}
+Notation: $\eta_{ij}=\mathrm{diag}(1,1,1,-1)$, so $p^2=-m^2$ and $p^0=\sqrt{\bm{p}^2+m^2}$.
+
+A useful Lorentz Transformation: $L(\bm{p})=R(\hat{\bm{p}})B(|\bm{p}|)R^{-1}(\hat{\bm{p}})$, 
+\[
+	R(\hat{\bm{p}})=\exp(-i\varphi J^3)\exp(-i\theta J^2),
+\]
+and 
+\[
+	B(|\bm{p}|)=
+	\begin{pmatrix}
+		1&&&\\
+		&1&&\\
+		&&\sqrt{1+(|\bm{p}|/m)^2}&|\bm{p}|/m\\
+		&&|\bm{p}|/m&\sqrt{1+(|\bm{p}|/m)^2}
+	 \end{pmatrix}.
+\]
+
+Lorentz-invariance of a quantum field $\varphi_l$:
+\[
+	U_0(\Lambda,a)\varphi_l(x)U_0^{-1}(\Lambda,a)=\sum_{l'}D_{ll'}(\Lambda^{-1})\varphi_{l'}(\Lambda x+a),
+\]
+where $D$ furnish a representation of the homogeneous Lorentz group.
+
+For space-inversion, charge-conjugation and time-inversion operator,
+\begin{align*}
+	\mathrm{P}a(\bm{p})\mathrm{P}^{-1}&=\eta^*a(-\bm{p}),\\
+	\mathrm{C}a(\bm{p})\mathrm{C}^{-1}&=\xi^*a^c(\bm{p}),\\
+	\mathrm{T}a(\bm{p})\mathrm{T}^{-1}&=\zeta^*a(-\bm{p}).
+\end{align*}
+
+\section{Causal Scalar Field}
+It is the case that $D=1$, a general scalar field is spin-zero field and can be written as
+\[
+	\phi(x)=\phi^+(x)+\phi^{c+\dag}(x),
+\]
+where
+\[
+	\phi^+(x)=\frac{1}{(2\pi)^{3/2}}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}a(\bm{p}),
+\]
+and
+\[
+	\phi^{c+}(x)=\frac{1}{(2\pi)^{3/2}}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}a^c(\bm{p}).
+\]
+
+What's more,
+\[
+	[\varphi(x),\varphi^\dag(y)]=\Delta(x-y)=\Delta_+(x-y)-\Delta_+(y-x),
+\]
+where
+\[
+	\Delta_+(x)=\frac{1}{(2\pi)^3}\int  \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}=\frac{m}{(2\pi)^2\sqrt{x^2}}\int_0^\infty  \frac{u\dd u}{\sqrt{u^2+1}}\sin(m\sqrt{x^2}u).
+\]
+It is obviously even when $x^2>0$, i.e. $x$ is space-like.
+
+Propagator:
+\[
+	\Delta(x,y)=\frac{1}{(2\pi)^4}\int \dd^4q \frac{e^{iq\cdot (x-y)}}{q^2+m^2-i\epsilon}.
+\]
+
+For internal symmetry, $\eta^c=\eta^*$, $\xi^c=\xi^*$ and $\zeta^c=\zeta^*$,
+\[
+\begin{split}
+	\mathrm{P}\phi(x)\mathrm{P}^{-1}&=\eta^*\phi(\mathscr{P}x),\\
+	\mathrm{C}\phi(x)\mathrm{C}^{-1}&=\xi^*\phi^{\dag}(x),\\
+	\mathrm{T}\phi(x)\mathrm{T}^{-1}&=\zeta^*\phi(-\mathscr{P}x).
+\end{split}
+\]
+
+\section{Causal Vector Field}
+It is the case that $D(\Lambda)=\Lambda$. A general vector field can be spin zero and spin one, so it is a boson. If spin zero, it is just the derivative of scalar field, $\psi^\mu(x)=\partial^\mu \phi(x)$.
+
+Spin one: Define
+\[
+\begin{split}
+	e^\mu(0,\pm 1)&=-\frac{\sqrt{2}}{2}(1,\pm i,0,0),\\
+	e^\mu(0,0)&=(0,0,1,0)
+\end{split}
+\]
+and $e^\mu(\bm{p},\sigma)=L^\mu_{\phantom{\mu}\nu}(\bm{p})e^\mu(\bm{p},0)$, then the field is written as 
+\[
+	v^\mu(x)=\phi^{+\mu}+\phi^{+c\mu\dag},
+\]
+where
+\[
+	\phi^{+\mu}=\frac{1}{(2\pi)^{3/2}}\sum_{\sigma}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}e^\mu(\bm{p},\sigma)a(\bm{p},\sigma),
+\]
+and
+\[
+	\phi^{+c\mu}=\frac{1}{(2\pi)^{3/2}}\sum_{\sigma}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}e^\mu(\bm{p},\sigma)a^c(\bm{p},\sigma).
+\]
+This may be useful
+\[
+	\sum_{\sigma} e^\mu(\bm{p},\sigma)e^{\nu*}(\bm{p},\sigma)=\eta^{\mu\nu}+\frac{p^\mu p^\nu}{m^2},
+\]
+and then
+\[
+	[v^\mu(x),v^{\nu\dag}(y)]=\left(\eta^{\mu\nu}-\frac{\partial^\mu \partial^\nu}{m^2}\right)\Delta(x-y).
+\]
+
+Propagator:
+\[
+	\Delta_{\mu\nu}(x,y)=\frac{1}{(2\pi)^4}\int \dd^4q \frac{e^{iq\cdot (x-y)}P_{\mu\nu}(q)}{q^2+m^2-i\epsilon}+m^{-2}\delta^4(x-y)\delta^0_\mu \delta^0_\nu,
+\]
+where $P_{\mu\nu}(q)=\eta_{\mu\nu}+m^{-2}q_\mu q_\nu$.
+
+For internal symmetry, $\eta^c=\eta^*$, $\xi^c=\xi^*$ and $\zeta^c=\zeta^*$,
+\[
+\begin{split}
+	\mathrm{P}v^\nu(x)\mathrm{P}^{-1}&=-\eta^*\mathscr{P}^\mu_{\phantom{\mu}\nu}v^\nu(\mathscr{P}x),\\
+	\mathrm{C}v^\nu(x)\mathrm{C}^{-1}&=\xi^*v^{\nu\dag}(x),\\
+	\mathrm{T}v^\nu(x)\mathrm{T}^{-1}&=\zeta^*\mathscr{P}^\mu_{\phantom{\mu}\nu}v^\nu(-\mathscr{P}x).
+\end{split}
+\]
+
+\section{Causal Dirac Field}
+It is the case that $D$ is the spin representation. If $\Lambda^\mu_{\phantom{\mu}\nu}=\delta^\mu_{\phantom{\mu}\nu}+\omega^\mu_{\phantom{\mu}\nu}$ is an infinitesimal tranformation, then
+\[
+	D(\Lambda)=1+\frac{i}{2}\omega_{\mu\nu} \mathscr{J}^{\mu\nu},
+\]
+and the commutation relations of $\mathscr{J}$ is
+\[
+	i\left[\mathscr{J}^{\mu\nu},\mathscr{J}^{\rho \sigma}\right]=
+	\eta^{\nu\rho}\mathscr{J}^{\mu \sigma}-
+	\eta^{\mu \rho}\mathscr{J}^{\nu \sigma}-
+	\eta^{\sigma\mu}\mathscr{J}^{\rho \nu}+
+	\eta^{\sigma\nu}\mathscr{J}^{\rho \mu}.
+\]
+To find such a set of matrices, suppose we first construct matrics $\gamma^\mu$ that satisfy the anticommutation relations
+\[
+	\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},
+\]
+and tentatively define
+\[
+	\mathscr{J}^{\mu\nu}=-\frac{i}{4}[\gamma^\mu,\gamma^\nu],
+\]
+so then using
+\[
+	[\mathscr{J}^{\mu\nu},\gamma^\rho]=-i\gamma^\mu \eta^{\nu\rho}+i\gamma^\nu \eta^{\mu\rho},
+\]
+it is not difficult to vertify the commutation relations of $\mathscr{J}$.
+
+Some useful relations:\\
+\no{1} $\gamma$ is a vector:
+\[
+	D(\Lambda)\gamma^\rho D^{-1}(\Lambda)=(\Lambda^{-1})^\rho_{\phantom{\rho}\sigma}\gamma^\sigma.
+\]
+\no{2} $\mathscr{J}$ is an anticommutatic tensor:
+\[
+	D(\Lambda)\mathscr{J}^{\rho\sigma} D^{-1}(\Lambda)=(\Lambda^{-1})^\rho_{\phantom{\rho}\mu}(\Lambda^{-1})^\sigma_{\phantom{\sigma}\nu}\mathscr{J}^{\mu\nu}.
+\]
+\no{3} Define $\beta=i\gamma^0$, then $\beta$ is the space-inversion operator, i.e.
+\[
+	\beta \gamma^\mu \beta^{-1}=\mathscr{P}^\mu_{\phantom{\mu}\nu}\gamma^\nu,
+\]
+\[
+	\beta \mathscr{J}^{ij} \beta^{-1}=\mathscr{J}^{ij}, \quad \beta \mathscr{J}^{0i} \beta^{-1}=-\mathscr{J}^{0i}.
+\]
+
+Define
+\[
+	v_1\wedge \cdots \wedge v_n=\sum_{\sigma\in S^n}(-1)^{\mathrm{sign}(\sigma)}v_{\sigma_1}\cdots v_{\sigma_n},
+\]
+where $S^n$ is the symmetry group, so that $[v_1,v_2]=v_1\wedge v_2$. If $v_i=v_j$ in $v_1\wedge \cdots \wedge v_n$, then $v_1\wedge \cdots \wedge v_n=0$.
+
+Suppose $\{\gamma^\mu: 0 \leq \mu \leq n-1\}$ is a basis of a $\cc$-vector space $V$, define $\Lambda^kV$ the space which spanned by $\{\gamma^{i_1}\wedge \cdots \wedge \gamma^{i_k}\}$ and $\Lambda^0V:=\cc$, then its dimension is $\tbinom{n}{k}$. Denote that $\Lambda V=\oplus_{k=0}^n \Lambda^kV$, its dimension is $\sum_{k=0}^{n}\tbinom{n}{k}=2^{n}$.
+
+When $n=4$, then $\dim \Lambda V=2^4=16$. If we want to construct matrices $\gamma^\mu$ to furnish this representation, since the dimension of the space of $N\times N$ matrices is $N^2$, it is clear that the minimal $N$ is $\sqrt{16}=4$.
+
+One very convenient choice (it is not unique) of $\gamma^\mu$ is that
+\[
+	\gamma^0=-i\begin{pmatrix}
+		0&1\\
+		1&0
+	\end{pmatrix},\quad
+	\bm{\gamma}=-i\begin{pmatrix}
+		0&\bm{\sigma}\\
+		-\bm{\sigma}&0
+	\end{pmatrix},
+\]
+where $1$ is the unit $2\times 2$ matrix, and $\bm{\sigma}$ are the Pauli matrices
+\[
+	\sigma_1=\begin{pmatrix}
+		0&1\\
+		1&0
+	\end{pmatrix},\quad
+	\sigma_2=\begin{pmatrix}
+		0&-i\\
+		i&0
+	\end{pmatrix},\quad
+	\sigma_3=\begin{pmatrix}
+		1&0\\
+		0&-1
+	\end{pmatrix},
+\]
+which have the relations that $[\sigma_i,\sigma_j]=2i\sum_k\epsilon_{ijk}\sigma_k,$ and $(\sigma_i)^{-1}=\sigma_i$. So, 
+\[
+	\mathscr{J}^{ij}=\frac{1}{2}\sum_k\epsilon_{ijk}\begin{pmatrix}
+		\sigma_k&0\\
+		0&\sigma_k
+	\end{pmatrix},\quad
+	\mathscr{J}^{i0}=\frac{i}{2}\begin{pmatrix}
+		\sigma_i&0\\
+		0&-\sigma_i
+	\end{pmatrix}.
+\]
+This matrix representation is not irreducible.
+
+Define $\gamma_5=-i\gamma^0\gamma^1\gamma^2\gamma^3$ and $\beta=i\gamma^0$, so that
+\[
+	\gamma_5=\begin{pmatrix}
+		1&0\\
+		0&-1
+	\end{pmatrix},\quad
+	\beta=\begin{pmatrix}
+		0&1\\
+		1&0
+	\end{pmatrix}.
+\]
+Another choice of $\gamma^\mu$ is $\gamma^0\mapsto \gamma_5$, $\gamma^i\mapsto i\gamma^i$, where $\eta_{\mu\nu}=\mathrm{diag}(-1,-1,-1,1)$.
+
+Some useful relations:
+\[
+\begin{split}
+	&(\gamma^{\mu})^{-1}=\gamma^{\mu},\quad (\gamma^\mu)^T=(-1)^\mu \gamma^\mu, \quad \gamma_5^2=1,\quad \beta=\beta^{-1}=\beta^T,\\
+	&\{\gamma_5,\gamma^\mu\}=0,\quad [\gamma_5,\mathscr{J}^{\mu\nu}]=0,\quad [\gamma_5,D(\Lambda)]=0,\\
+	&\{\beta,\gamma^i\}=0,\quad\beta \gamma^{\mu\dag}\beta=-\gamma^{\mu},\quad \beta \mathscr{J}^{\mu\nu\dag}\beta=\mathscr{J}^{\mu\nu},\\
+	&\beta D(\Lambda)^\dag \beta=D(\Lambda)^{-1}, \quad \beta (\gamma_5\gamma^{\mu})^\dag\beta=-\gamma_5\gamma^{\mu}.
+\end{split}
+\]
+Define 
+\[
+	\mathscr{C}:=\gamma_2\beta=-i \begin{pmatrix}
+		\sigma_2&0\\
+		0&-\sigma_2
+	\end{pmatrix},
+\]
+then 
+\[
+\begin{split}
+	&\mathscr{C}^T=-\mathscr{C}=\mathscr{C}^{-1},\quad (\beta\mathscr{C})^{-1}=\beta\mathscr{C}=-\mathscr{C}\beta,\\
+	&\gamma_\mu^T=-\mathscr{C}\gamma_\mu \mathscr{C}^{-1},\\
+	&\gamma_5^T=\mathscr{C}\gamma_5 \mathscr{C}^{-1},\quad (\gamma_5\gamma_\mu)^T=\mathscr{C}\gamma_5\gamma_\mu \mathscr{C}^{-1}.
+\end{split}
+\]
+Using the relation that $A^*=(A^T)^\dag=(A^\dag)^T$, then 
+\[
+\begin{split}
+	\gamma_\mu^*&=\beta\mathscr{C}\gamma_\mu \mathscr{C}^{-1} \beta,\\
+	\mathscr{J}_{\mu\nu}^*&=-\beta\mathscr{C}\mathscr{J}_{\mu\nu} \mathscr{C}^{-1} \beta,\\
+	\gamma_5^*&=-\beta\mathscr{C}\gamma_5 \mathscr{C}^{-1}\beta,\\
+	(\gamma_5\gamma_\mu)^*&=-\beta\mathscr{C}\gamma_5\gamma_\mu \mathscr{C}^{-1}\beta.
+\end{split}
+\]
+
+The Dirac field describes spin-$1/2$ particles, they are fermions. A general Dirac field is written as
+\[
+	\psi_l(x)=\psi^+_l(x)+\psi^{-c}_l(x),
+\]
+where
+\[
+	\psi^+_l(x)=\frac{1}{(2\pi)^{3/2}}\sum_\sigma\int \dd^3\bm{p}\,u_l(\bm{p},\sigma)e^{ip\cdot x}a(\bm{p},\sigma),
+\]
+and
+\[
+	\psi^{-c}_l(x)=\frac{1}{(2\pi)^{3/2}}\sum_\sigma\int \dd^3\bm{p}\,v_l(\bm{p},\sigma)e^{ip\cdot x}a^{c\dag}(\bm{p},\sigma).
+\]
+The coefficient $u$ and $v$ is defined by
+\begin{align*}
+	u(\bm{p},\sigma)&=\sqrt{\frac{m}{p^0}}D(L(p))u(0,\sigma),\\
+	v(\bm{p},\sigma)&=\sqrt{\frac{m}{p^0}}D(L(p))v(0,\sigma),
+\end{align*}
+where
+\begin{align*}
+	u(0,1/2)&=\frac{1}{\sqrt{2}}(1,0,1,0),\\
+	u(0,-1/2)&=\frac{1}{\sqrt{2}}(0,1,0,1),\\
+	v(0,1/2)&=\frac{1}{\sqrt{2}}(0,1,0,-1),\\
+	v(0,-1/2)&=\frac{-1}{\sqrt{2}}(1,0,-1,0).
+\end{align*}
+
+Some useful relations:
+\[
+\begin{split}
+	&D(L(p))\beta D(L(p))^{-1}=-i\frac{p_\mu \gamma^\mu}{m}：=-i\frac{\notl{p}}{m},\\
+	&M(\bm{p})_{ll'}=\sum_{\sigma}u_l(\bm{p},\sigma)u_{l'}(\bm{p},\sigma)=\left(\frac{1}{2p^0}(-i\notl{p}+m)\beta\right)_{ll'},\\
+	&N(\bm{p})_{ll'}=\sum_{\sigma}v_l(\bm{p},\sigma)v_{l'}(\bm{p},\sigma)=\left(\frac{1}{2p^0}(-i\notl{p}-m)\beta\right)_{ll'},
+\end{split}
+\]
+so
+\[
+	\{\psi_l(x),\psi_{l'}^\dag (y)\}=\left((-\notl{\partial}+m)\beta\right)_{ll'}\Delta(x-y).
+\]
+
+Propagator:
+\[
+	\Delta(x,y)=\frac{1}{(2\pi)^4}\int \dd^4q \frac{e^{iq\cdot (x-y)}(-i\notl{q}+m)\beta}{q^2+m^2-i\epsilon}.
+\]
+
+For internal symmetry, $\eta^c=-\eta^*$, $\xi^c=\xi^*$ and $\zeta^c=\zeta^*$,
+\[
+\begin{split}
+	\mathrm{P}\psi(x)\mathrm{P}^{-1}&=\eta^*\beta\psi(\mathscr{P}x),\\
+	\mathrm{C}\psi(x)\mathrm{C}^{-1}&=-\xi^*\beta\mathscr{C}\psi^*(x),\\
+	\mathrm{T}\psi(x)\mathrm{T}^{-1}&=-\zeta^*\gamma_5\mathscr{C}\psi(-\mathscr{P}x).
+\end{split}
+\]
+Define $\bar{\psi}:=\psi^{\dag}\beta$, then $\bar{\psi}(x)M \psi(x)$ has the Lorentz transformation property, i.e.
+\[
+	U_0(\Lambda)[\bar{\psi}(x)M \psi(x)]U_0^{-1}(\Lambda)=\bar{\psi}(\Lambda x)D(\Lambda) M D^{-1}(\Lambda)\psi(\Lambda x),
+\]
+and under a space inversion
+\[
+	\mathrm{P}[\bar{\psi}(x)M \psi(x)]\mathrm{P}^{-1}=\bar{\psi}(\mathscr{P}x)\beta M\beta \psi(\mathscr{P}x).
+\]
+Taking $M=1$, $\gamma^\mu$, $\mathscr{J}^{\mu\nu}$, $\gamma_5\gamma^\mu$, $\gamma_5$, yield a bilinear $\bar{\psi}M \psi$ transforms as a scalar, vector, tensor, axial vector, and pseudoscalar, respectively.
+
+Define 
+\[
+	L=\frac{1+\gamma_5}{2},\quad R=\frac{1-\gamma_5}{2},
+\]
+then $L^2=L$, $R^2=L$, $LR=RL=0$ and $R+L=1$, so they are projective operators. Since $[L,U(\Lambda)]=0$ and $[R,U(\Lambda)]=0$, then
+\[
+	LU_0(\Lambda,a)\psi(x)U_0^{-1}(\Lambda,a)=LD(\Lambda^{-1})\psi(\Lambda x)=D(\Lambda^{-1})L\psi(\Lambda x)=U_0(\Lambda,a)L\psi(x)U_0^{-1}(\Lambda,a)
+\]
+and
+\[
+	RU_0(\Lambda,a)\psi(x)U_0^{-1}(\Lambda,a)=U_0(\Lambda,a)R\psi(x)U_0^{-1}(\Lambda,a).
+\]
+
+If a field $\psi$ satisfied $L\psi=\psi$ ($R\psi=\psi$), it is called left-chiral (right-chiral) field. A left-chiral (right-chiral) field will still be left-chiral (right-chiral) after a Lorentz transformation. Any field can be decomposed into left-chiral field and right-chiral field such that
+\[
+	\psi=L\psi+R\psi=\psi_L+\psi_R.
+\]
+
+Since
+\[
+	U_0(\Lambda,a)\psi_L(x)U_0^{-1}(\Lambda,a)=D(\Lambda^{-1})L\psi_L(\Lambda x)=LD(\Lambda^{-1})\psi_L(\Lambda x),
+\]
+where $D_L(\Lambda):=LD(\Lambda)$ is another representation because
+\[
+	D_L(\Lambda_1)D_L(\Lambda_2)=LD(\Lambda_1)LD(\Lambda_2)=L^2D(\Lambda_1)D(\Lambda_2)=D_L(\Lambda_1\Lambda_2),
+\]
+so $\psi_L$ furnish the left-chiral spin representation. Similarly for $\psi_R$. Thus any spin representation can be decomposed that
+\[
+	D(\Lambda)=D_L(\Lambda)+D_R(\Lambda),
+\]
+i.e. $D=D_L\oplus D_R$. The representation $D_L$ is usually denoted by $(1/2,0)$ representation, and $D_R$ is denoted by $(0,1/2)$, thus the Dirac spin representaion is denoted by $(1/2,0)\oplus (0,1/2)$.
+
+Using the matrix representation,
+\[
+	L=\frac{1+\gamma_5}{2}=\begin{pmatrix}
+		1&0\\
+		0&0
+	\end{pmatrix},\quad R=\frac{1-\gamma_5}{2}=\begin{pmatrix}
+		0&0\\
+		0&1
+	\end{pmatrix},
+\]
+so
+\[
+	D_L\bigl(J^{ij}\bigr)=\frac{1}{2}\sum_k\epsilon_{ijk}\sigma_k,\quad D_L\bigl(J^{i0}\bigr)=\frac{i}{2}\sigma_i,
+\]
+and
+\[
+	D_R\bigl(J^{ij}\bigr)=\frac{1}{2}\sum_k\epsilon_{ijk}\sigma_k,\quad D_R\bigl(J^{i0}\bigr)=-\frac{i}{2}\sigma_i.
+\]
+It is easy to see that $D_L$ or $D_R$ contains a spin-$1/2$ representation of $\mathfrak{su}(2)$.
+
+The Lie algebra representation $D_L\otimes D_R:=D_L\otimes \id+\id \otimes D_R$ is denoted by $(1/2,1/2)$. In fact, $D_L\otimes D_R$ is a Lie algebra isomorphism, so it is just the vector representation. To prove this, since $D_L\otimes D_R$ has been a Lie algebra morphism, we only need to show that it is an isomorphism between vector spaces, and it is because that $\{(D_L\otimes D_R)(J^{\mu\nu})\}$ are linearly independent (this can be vertified by directly calculation). 
+\end{document}

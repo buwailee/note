@@ -1,0 +1,554 @@
+%!TEX program = xelatex
+\documentclass[8pt]{book}
+\usepackage{ctex,amsthm}
+\usepackage{noteheader}
+\CTEXoptions[today=old]%使日期变成鸟语
+\usepackage{tikz}
+\usepackage{titletoc}%使用目录
+	\theoremstyle{plain}%定理环境样式
+	\newtheorem{pro}{Proposition}[section]% 定义命题环境
+	\newtheorem{theo}{Theorem}[section]% 定义定理环境
+	\newtheorem*{rem}{Remark}% 定义注记环境
+	\newtheorem{defi}{Definition}[section]% 定义定义环境
+	\newtheorem{exa}{Example}[section]% 定义例子环境
+
+\usepackage[xetex]{hyperref}%使用xetex引擎
+	\hypersetup %一些选项
+{
+	pdftoolbar=true,  % 显示Acrobat工具栏
+	pdfmenubar=true,  % 展开Acrobat目录
+	pdftitle={QFT},  % pdf题目，自己填z
+	pdfauthor={Unsinn},  % pdf作者，自己填
+	bookmarksnumbered=true,%书签中章节编号
+	bookmarksopen=true,%目录层次打开
+	bookmarksopenlevel=1,%目录层次打开的级数，可选数字或者 \maxdimen最大
+	pdfsubject={Physics},  % 主题，自己填
+	pdfkeywords={QFT}, % 关键字，自己填
+	colorlinks=true,  % 彩色链接 false:边框链接 ; true: 彩色链接
+	linkcolor=blue,  % 内部链接颜色
+	citecolor=green,  % 引用标记颜色
+	filecolor=magenta,  % 文件链接颜色
+	urlcolor=cyan  % URL链接颜色
+}
+
+%定义你的命令
+\include{defs}
+\newcommand{\re}[1]
+	{\begin{center}
+		\colorbox{shadecolor}{
+	
+		\begin{minipage}{135mm}
+				\emph{''#1''}
+			\end{minipage}}
+	\end{center}}
+
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\begin{flushright}
+{\Huge\bfseries Quantum Field Theory}\\[\baselineskip]
+{{\scshape translate\:}\Large {\itshape from} {\scshape Weinberg}} \par
+{by DaDouBi@NJU}\par
+\today
+\end{flushright}
+\vfill
+{\Large\itshape Just for fun}
+\clearpage
+这其实就是抄书（Steven Weinberg的The Quantum Theory of Fields），看不大懂所以抄起来了2333，@小平邦彦。
+\clearpage
+\mainmatter
+\include{qft_c123}
+\include{qft_c456}
+\chapter{Quantum Fields and Antiparticles}
+（这章的构造实在漂亮。）
+\section{Free Fields}
+我们已经在第三章看到$S$矩阵是Lorentz不变的，如果相互作用能够写作
+\[
+	V(t)=\int \dd^3 x\,\mathscr{H}(\mathbf{x},t),
+\]
+其中$\mathscr{H}(\mathbf{x},t)$是满足Lorentz不变性的标量，即
+\[
+	U_0(\Lambda,a)\mathscr{H}(x)U_0^{-1}(\Lambda,a)=\mathscr{H}(\Lambda x+a),
+\]
+以及当$x_1-x_2$不是类时的时候要满足
+\[
+	[\mathscr{H}(x_1),\mathscr{H}(x_2)]=0.
+\]
+从第四章，为了方便满足集团分解原理，我们将用生成和湮灭算子来构造$\mathscr{H}(x)$，此时，生成和湮灭算子在Lorentz变换下满足
+\[
+\begin{split}
+	U_0(\Lambda,\alpha)a^\dag(\mathbf{p},\sigma,n)U_0^{-1}(\Lambda,\alpha)&=e^{-i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)a^\dag(\mathbf{p}_\Lambda,\bar{\sigma},n),\\
+	U_0(\Lambda,\alpha)a(\mathbf{p},\sigma,n)U_0^{-1}(\Lambda,\alpha)&=e^{i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)*}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)a(\mathbf{p}_\Lambda,\bar{\sigma},n),
+\end{split}
+\]
+其中$\mathbf{p}_\Lambda$是$\Lambda p$的空间部分。可以看到，在Lorentz变换下，生成和湮灭算子都将乘以一个矩阵，依赖于算子本身携带的动量。但是，怎么从生成和湮灭算子来构造出一个标量呢？答案是，我们用积分以及求和来积掉动量以及自旋和粒子种类，即用场来构造$\mathscr{H}(x)$，更准确地说，用湮灭场和生成场
+\begin{equation}
+\begin{split}
+	\psi_l^{+}(x)&=\sum_{\sigma,n}\int \dd^3 p\, u_l(x;\mathbf{p},\bar{\sigma},n)a(\mathbf{p},\bar{\sigma},n),\\
+	\psi_l^{-}(x)&=\sum_{\sigma,n}\int \dd^3 p\, v_l(x;\mathbf{p},\bar{\sigma},n)a^\dag(\mathbf{p},\bar{\sigma},n)
+\end{split}
+\label{chang}
+\end{equation}
+来构造$\mathscr{H}(x)$，其中$u,v$是系数，他们需要被选得使得这两个场在Lorentz变换下满足：
+\[
+\begin{split}
+	U_0(\Lambda,\alpha)\psi_l^{+}(x)U_0^{-1}(\Lambda,\alpha)&=\sum_{m}D_{lm}(\Lambda^{-1})\psi_m^{+}(\Lambda x+\alpha),\\
+	U_0(\Lambda,\alpha)\psi_l^{-}(x)U_0^{-1}(\Lambda,\alpha)&=\sum_{m}D_{lm}(\Lambda^{-1})\psi_m^{-}(\Lambda x+\alpha),
+\end{split}
+\]
+其中$D(\Lambda)$是Lorentz群的一个表示\footnote{一般地，对于湮灭场和生成场，对应的应该是两个不同的表示$D^\pm$.但是，Schur引理保证了当这两个为同维的不可约表示时，他们其实是相同的。而可约表示又可以可以分解到不可约表示，所以不妨就直接假设他们是相同的。}，可以是标量表示$D(\Lambda)=1$，可以是矢量表示$D(\Lambda)^{\mu}_{\phantom{\mu}\nu}=\Lambda^{\mu}_{\phantom{\mu}\nu}$，可以是张量或者旋量表示。
+
+最后我们就可以构造$\mathscr{H}(x)$如下：
+\[
+\mathscr{H}(x)=\sum_{N,M}\sum_{l'_1,\cdots,l'_N}
+\sum_{l_1,\cdots,l_M}g_{l'_1,\cdots,l'_N;l_1,\cdots,l_M}\psi_{l'_1}^{-}(x)\cdots \psi_{l'_N}^{-}(x)\psi_{l_1}^{+}(x)\cdots \psi_{l_M}^{+}(x),
+\]
+为了让他称为满足Lorentz不变性的标量，则系数$g_{l'_1,\cdots,l'_N;l_1,\cdots,l_M}$应该选得满足（采用多重指标记法）
+\[
+	g_{\bar{l}';\bar{l}}=\sum_{l,l'}D_{l'\bar{l}'}(\Lambda^{-1})D_{l\bar{l}}(\Lambda^{-1})g_{l';l}.
+\]
+
+现在可以计算$U_0(\Lambda,b)\psi_l^{+}(x)U_0^{-1}(\Lambda,b)$和$U_0(\Lambda,b)\psi_l^{-}(x)U_0^{-1}(\Lambda,b)$来求得其系数$u,v$应该满足的关系：
+\begin{equation}
+	\begin{split}
+		\sum_{\bar{\sigma}}u_{\bar{l}}(\Lambda x+b;\mathbf{p}_\Lambda,\bar{\sigma},n)D^{(j_n)}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)&=\sqrt{\frac{p^0}{(\Lambda p)^0}}\sum_{l} D_{\bar{l}l}(\Lambda)e^{i(\Lambda p)\cdot b}u_{l}(x;\mathbf{p},\sigma,n),\\
+		\sum_{\bar{\sigma}}v_{\bar{l}}(\Lambda x+b;\mathbf{p}_\Lambda,\bar{\sigma},n)D^{(j_n)*}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)&=\sqrt{\frac{p^0}{(\Lambda p)^0}}\sum_{l} D_{\bar{l}l}(\Lambda)e^{-i(\Lambda p)\cdot b}v_{l}(x;\mathbf{p},\sigma,n),
+	\end{split}
+\label{xishu}
+\end{equation}
+下面分三步来简化这个关系。
+\subsection*{Translations}
+首先考察$\Lambda=1$的时候，即对应$b$任意的纯平移情况，此时$D^{(j_n)}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)=\delta_{\bar{\sigma}\sigma}$以及$D_{\bar{l}l}(\Lambda)=\delta_{\bar{l}l}$，所以\eqref{xishu}就变成了
+\[
+	\begin{split}
+		u_{l}(x+b;\mathbf{p},\sigma,n)&=e^{i p\cdot b}u_{l}(x;\mathbf{p},\sigma,n),\\
+		v_{l}(x+b;\mathbf{p},\sigma,n)&=e^{-i p\cdot b}v_{l}(x;\mathbf{p},\sigma,n),
+	\end{split}
+\]
+令$u_{l}(\mathbf{p},\sigma,n)=(2\pi)^{3/2}u_{l}(0;\mathbf{p},\sigma,n)$和$v_{l}(\mathbf{p},\sigma,n)=(2\pi)^{3/2}v_{l}(0;\mathbf{p},\sigma,n)$，此时
+\[
+	\begin{split}
+		u_{l}(x;\mathbf{p},\sigma,n)&=(2\pi)^{-3/2}e^{i p\cdot x}u_{l}(\mathbf{p},\sigma,n),\\
+		v_{l}(x;\mathbf{p},\sigma,n)&=(2\pi)^{-3/2}e^{-ip\cdot x}v_{l}(\mathbf{p},\sigma,n),
+	\end{split}
+\]
+引入$(2\pi)^{-3/2}$这个因子是因为此时
+\[
+\begin{split}
+	\psi_l^{+}(x)&=\sum_{\sigma,n}\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \dd^3 p\, e^{ip\cdot x}u_{l}(\mathbf{p},\sigma,n)a(\mathbf{p},\bar{\sigma},n),\\
+	\psi_l^{-}(x)&=\sum_{\sigma,n}\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \dd^3 p\, e^{-ip\cdot x}v_{l}(\mathbf{p},\sigma,n)a^\dag(\mathbf{p},\bar{\sigma},n)
+\end{split}
+\]
+就是Fourier变换。去掉平移后，可以得到和\eqref{xishu}等价的
+\begin{equation}
+	\begin{split}
+		\sum_{\bar{\sigma}}u_{\bar{l}}(\mathbf{p}_\Lambda,\bar{\sigma},n)D^{(j_n)}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)&=\sqrt{\frac{p^0}{(\Lambda p)^0}}\sum_{l} D_{\bar{l}l}(\Lambda)u_{l}(\mathbf{p},\sigma,n),\\
+		\sum_{\bar{\sigma}}v_{\bar{l}}(\mathbf{p}_\Lambda,\bar{\sigma},n)D^{(j_n)*}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)&=\sqrt{\frac{p^0}{(\Lambda p)^0}}\sum_{l} D_{\bar{l}l}(\Lambda)v_{l}(\mathbf{p},\sigma,n).
+	\end{split}
+	\label{xishu2}
+\end{equation}
+\subsection*{Boosts}
+其次，令$\mathbf{p}=0$，让$\Lambda$为把静止质量为$m$的粒子变到四动量为$q^\mu$的标准Lorentz变换$L(q)$，此时$L(p)=1$，于是
+\[
+	W(\Lambda,p)=L^{-1}(\Lambda p)\Lambda L(p)=L^{-1}(q)L(q)=1.
+\]
+所以我们就可以把\eqref{xishu2}变成
+\[
+	\begin{split}
+		u_{\bar{l}}(\mathbf{q},\sigma,n)&=\sqrt{\frac{m}{q^0}}\sum_{l} D_{\bar{l}l}(L(q))u_{l}(0,\sigma,n),\\
+		v_{\bar{l}}(\mathbf{q},\sigma,n)&=\sqrt{\frac{m}{q^0}}\sum_{l} D_{\bar{l}l}(L(q))v_{l}(0,\sigma,n).
+	\end{split}
+\]
+因此，只要知道了表示$D$和静止时的$u_{l}(0,\sigma,n)$以及$v_{l}(0,\sigma,n)$，我们就可以得到一般的系数。
+\subsection*{Rotations}
+最后，让$\mathbf{p}=0$，而$\Lambda$使得$\mathbf{p}_\Lambda=0$，就是说$\Lambda$是一个旋转$\mathscr{R}$，于是$W(\mathscr{R},p)=\mathscr{R}$.此时我们就可以把\eqref{xishu2}变成
+\[
+	\begin{split}
+		\sum_{\bar{\sigma}}u_{\bar{l}}(0,\bar{\sigma},n)D^{(j_n)}_{\bar{\sigma}\sigma}\left(\mathscr{R}\right) & =\sum_{l} D_{\bar{l}l}(\mathscr{R})u_{l}(0,\sigma,n),\\
+		\sum_{\bar{\sigma}}v_{\bar{l}}(0,\bar{\sigma},n)D^{(j_n)*}_{\bar{\sigma}\sigma}\left(\mathscr{R}\right) & =\sum_{l} D_{\bar{l}l}(\mathscr{R})v_{l}(0,\sigma,n),
+	\end{split}
+\]
+这样，我们就得到$u_{l}(0,\sigma,n)$以及$v_{l}(0,\sigma,n)$需要满足的条件。
+
+从$D^{(j)}_{\bar{\sigma}\sigma}\left(\mathscr{R}\right)$来看，这是标准的自旋$j$的不可约表示。任何Lorentz群的表示$D(\Lambda)$限制在旋转群就得到了旋转群的表示，上面两个式子告诉我们，如果场$\psi^\pm_l(x)$描述了自旋$j$的粒子，那么表示$D(\mathscr{R})$必须包含自旋$j$的不可约表示$D^{(j)}\left(\mathscr{R}\right)$，其中系数$u_{l}(0,\sigma,n)$和$v_{l}(0,\sigma,n)$描述了自旋$j$表示是如何嵌入到$D(\mathscr{R})$中的。
+
+把所有的一切都往$V(t)$里面套，得到了（使用多重指标记法）
+\[
+	V=\sum_{NM}\int \dd^3 p'\dd^3 p \sum_{\sigma',\sigma,n',n}a^\dag(\mathbf{p}',\sigma',n')a(\mathbf{p},\sigma,n)\mathscr{V}_{NM}(\mathbf{p}',\sigma',n';\mathbf{p},\sigma,n),
+\]
+其中，$\sigma'=\{\sigma'_1,\cdots,\sigma'_N\}$, $n'=\{n'_1,\cdots,n'_N\}$, $\sigma=\{\sigma_1,\cdots,\sigma_M\}$, $n=\{n_1,\cdots,n_M\}$.以及
+\[
+	\mathscr{V}_{NM}(\mathbf{p}',\sigma',n';\mathbf{p},\sigma,n)=\delta(\mathbf{p}'-\mathbf{p})\bar{\mathscr{V}}_{NM}(\mathbf{p}',\sigma',n';\mathbf{p},\sigma,n),
+\]
+其中
+\[
+	\bar{\mathscr{V}}_{NM}(\mathbf{p}',\sigma',n';\mathbf{p},\sigma,n)=(2\pi)^{3-3(N+M)/2}\sum_{l',l}g_{l';l}v_{l'}(\mathbf{p}',\sigma',n')u_l(\mathbf{p},\sigma,n).
+\]
+这自然满足集团分解原理。
+\re{The cluster decomposition principle together with Lorentz invariance thus makes it natural that the interaction density should be constructed out of the annihilation and creation fields.}
+
+最后，我们需要检查作用密度之间的对易关系，使得他们可以在$x-y$是非类时的时候消失，作用密度是生成场和湮灭场的多项式，这就是说，我们需要检查
+\[
+	[\psi_l^+(x),\psi_{l'}^-(x)]_{\mp}=\frac{1}{(2\pi)^3}\sum_{\sigma,n}\int\dd^3 p\, u_{l}(\mathbf{p},\sigma,n)v_{l'}(\mathbf{p},\sigma,n)e^{ip\cdot (x-y)}
+\]
+是否在$x-y$非类时的时候为零。可是，事与愿违，一般来说，上式右边的积分并不能满足要求。这就是说，一般来说不能只用生成和湮灭场来构造场，我们只能去考虑他们的线性组合，如果线性组合满足对易关系，那么我们用他们的线性组合来构造多项式的时候也自然是满足的。设
+$\psi_l(x)=\kappa_l\psi_l^+(x)+\lambda_l\psi_l^-(x)$，我们需要的关系就是
+\[
+	[\psi_l(x),\psi_{l'}(x)]_{\mp}=[\psi_l(x),\psi^\dag_{l'}(x)]_{\mp}=0
+\]
+在$x-y$非类时的时候成立。
+
+上述关系往往被称为因果性关系，因为这是作用密度在类空的时候不能相互影响的假设下所希望满足的关系，但一般来说，存在无关因果性的情况，我们依然需要这个关系。所以我们只将其视作希望$S$矩阵满足Lorentz不变性的需要。
+
+但是，在上述构造中，我们还是可能遇到问题。当粒子被生成或者被湮灭的时候，他带有一个或多个非零的守恒量子数比如荷（电荷什么的）。比如，如果种类为$n$的粒子带有$q(n)$的荷，荷算符为$Q$，那么
+\[
+	a(\mathbf{p},\sigma,n)Q\Psi=Qa(\mathbf{p},\sigma,n)\Psi+q(n)a(\mathbf{p},\sigma,n)\Psi,
+\]
+这是因为湮灭掉了一个$q(n)$的粒子，态的总荷数减少了$q(n)$，生成类似。用对易关系表示即
+\[
+\begin{split}
+	[Q,a(\mathbf{p},\sigma,n)]&=-q(n)a(\mathbf{p},\sigma,n),\\
+	[Q,a^\dag(\mathbf{p},\sigma,n)]&=+q(n)a^\dag(\mathbf{p},\sigma,n).
+\end{split}
+\]
+为了使$\mathscr{H}$和$Q$对易，也就是为了荷守恒，我们可以把场构造地满足
+\[
+\begin{split}
+	[Q,\psi_l(x)]=-q_l\psi_l(x),\\
+	[Q,\psi^\dag_l(x)]=+q_l\psi^\dag_l(x),
+\end{split}
+\]
+这样，作用密度作为$\psi_l(x)$和$\psi^\dag_l(x)$的多项式$\psi^\dag_l(x)\psi_{l'}(x)$（使用了多重指标记法），自然需要让其满足
+\[
+	q_{l}-q_{l'}=0.
+\]
+
+现在假设湮灭场和生成场\eqref{chang}中关于粒子种类的下标只有一个，分别为$n$和$\bar{n}$，此时
+\[
+\begin{split}
+	[Q,\psi^+_l(x)]=-q(n)\psi^+_l(x),\\
+	[Q,\psi^-_l(x)]=+q(\bar{n})\psi^-_l(x),
+\end{split}
+\]
+对其线性组合，有
+\[
+	[Q,\psi_l(x)]=-q(n)\kappa_l\psi_l^+(x)+q(\bar{n})\lambda_l\psi_l^-(x),
+\]
+显然当且仅当$q(\bar{n})=-q(n)$的时候才能成立
+\[
+	[Q,\psi_l(x)]=-q(n)\psi_l(x),
+\]
+
+% 上面的对易关系对于湮灭场$\psi^+_l(x)$成立当且仅当所有种类为$n$的粒子被携带着相同荷的$q(n)=q_l$的场所湮灭，反之对于生成场$\psi^-_l(x)$成立当且仅当所有种类为$\bar{n}$的粒子被携带着相同荷的$q(\bar{n})=-q_l$的场所生成。
+
+已经看到，为了构造一个量子数守恒（比如电荷守恒）的理论，必须有两种种类的粒子带有这种量子数：如果湮灭场湮灭掉了一个种类为$n$的粒子，那么就要用生成场生成一个有着相反的量子数的种类为$\bar{n}$的粒子（被称为反粒子）。这就是反粒子存在的原因。
+
+因为一个可约表示可以分成几个不可约表示，因此，我们只要考虑不可约表示就可以了，此外，在Lorentz变换下，粒子种类不变，因此，我们不妨考虑单粒子种类的情况（去掉下标$n$），我们下面将具体构造几个场，确定系数$u,v$，以及求出满足条件的场算符。
+
+稍稍谈及一下场方程，将$\psi_l(x)=\kappa_l\psi_l^+(x)+\lambda_l\psi_l^-(x)$和方程
+\[
+\begin{split}
+	\psi_l^{+}(x)&=\sum_{\sigma,n}\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \dd^3 p\, e^{ip\cdot x}u_{l}(\mathbf{p},\sigma,n)a(\mathbf{p},\bar{\sigma},n),\\
+	\psi_l^{-}(x)&=\sum_{\sigma,n}\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \dd^3 p\, e^{-ip\cdot x}v_{l}(\mathbf{p},\sigma,n)a^\dag(\mathbf{p},\bar{\sigma},n)
+\end{split}
+\]
+一起考虑，可以得到
+\[
+\begin{split}
+\square\psi_l^{+}=\partial_i\partial^i\psi_l^{+}&=\sum_{\sigma,n}\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \dd^3 p\,(\partial_i\partial^i e^{ip\cdot x})u_{l}(\mathbf{p},\sigma,n)a(\mathbf{p},\bar{\sigma},n)\\
+&=-\sum_{\sigma,n}\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \dd^3 p\,p^ip_i e^{ip\cdot x}u_{l}(\mathbf{p},\sigma,n)a(\mathbf{p},\bar{\sigma},n),
+\end{split}
+\]
+但是$p^ip_i=p^2=-m^2$，于是
+\[
+\square\psi_l^{+}=m^2\psi_l^{+},
+\]
+同理$\square\psi_l^{-}=m^2\psi_l^{-}$，所以我们的场$\psi_l(x)$就满足所谓的Kelin-Gordon场方程
+\[
+	(\square-m^2)\psi_l(x)=0.
+\]
+可以看到这个场方程只不过是我们构造的副产品。
+
+\section{Causal Scalar Fields}
+我们首先考虑最简单的标量表示$D(\Lambda)=1$，此时
+\[
+	\begin{split}
+		\sum_{\bar{\sigma}}u_{l}(0,\bar{\sigma})D^{(j)}_{\bar{\sigma}\sigma}\left(\mathscr{R}\right)&=u_{l}(0,\sigma),\\
+		\sum_{\bar{\sigma}}v_{l}(0,\bar{\sigma})D^{(j)*}_{\bar{\sigma}\sigma}\left(\mathscr{R}\right)&=v_{l}(0,\sigma),
+	\end{split}
+\]
+这种情况下，只能有$D^{(j)}_{\bar{\sigma}\sigma}=\delta_{\bar{\sigma}\sigma}$，因此，这对应着$j=0$的不可约表示，于是$\sigma=0$，我们下面去掉指标$\sigma$和$l$，取
+\[
+	u(0)=v(0)=\frac{1}{\sqrt{2m}},
+\]
+因此
+\[
+	u(\mathbf{p})=v(\mathbf{p})=\frac{1}{\sqrt{2p^0}},
+\]
+湮灭场此时就是
+\[
+	\phi_l^{+}(x)=\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \frac{\dd^3 p}{\sqrt{2p^0}}\, e^{ip\cdot x}a(\mathbf{p}),
+\]
+对应的生产场满足$\phi_l^{-}(x)=(\phi_l^{+}(x))^\dag$.
+
+为了满足因果性条件，我们做计算
+\[
+	[\phi^{+}(x),\phi^{-}(y)]_{\mp}=\frac{1}{(2\pi)^{3}}\int\frac{\dd^3 p\,\dd^3 p'}{\sqrt{2p^0}\sqrt{2p'^0}}\,e^{ip\cdot x-p'\cdot y}\delta(\mathbf{p}-\mathbf{p'})=\Delta_+(x-y),
+\]
+其中
+\[
+\Delta_+(x)=\frac{1}{(2\pi)^{3}}\int\frac{\dd^3 p}{2p^0}\,e^{ip\cdot x}=\frac{m}{4\pi^2\sqrt{x^2}}\int_0^\infty\frac{u\dd u}{\sqrt{u^2+1}}\sin (m\sqrt{x^2} u).
+\]
+$\Delta_+(x)$显然是Lorentz不变的，但他不为0，因此
+$[\phi^{+}(x),\phi^{-}(y)]_{\mp}=0$并不能满足需求。
+
+按照一般的方法，我们做线性组合$\phi(x)=\kappa\phi^+(x)+\lambda\phi^-(x)$，注意到当$x^2>0$（即类空的时候），$\Delta_+(x)$是一个偶函数，然后当$x^2>0$时
+\[
+\begin{split}
+	[\phi(x),\phi^\dag(y)]_{\mp}&=(|\kappa|^2\mp |\lambda|^2)\Delta_+(x-y),\\
+	[\phi(x),\phi(y)]_{\mp}&=\kappa\lambda(1\mp 1)\Delta_+(x-y).
+\end{split}	
+\]
+于是从后一个等式可以看到，零自旋的粒子只能是玻色子，应该取负号，再看第一个等式就可以得到$|\kappa|^2-|\lambda|^2=0$，适当调整生成和湮灭算子的相位\footnote{这是可以做到的，虽然定义相位同时改变生成和湮灭算子的相位，但是因为他们是共轭的，所以一个加一个减。}，我们可以得到$\kappa=\lambda=k$，然后把常数$k$并入场算符，那么可以让$\kappa=\lambda=1$，于是
+\[
+	\phi(x)=\phi^+(x)+\phi^-(x)=\phi^\dag(x),
+\]
+就是我们要求的场算符，具体写开来就是
+\[
+	\phi(x)=\left(\frac{1}{\sqrt{2\pi}}\right)^{3}\int \frac{\dd^3 p}{\sqrt{2p^0}}\, (e^{ip\cdot x}a(\mathbf{p})+e^{-ip\cdot x}a^\dag(\mathbf{p})).
+\]
+
+如果有荷守恒的要求，那么，直接构造
+\[
+	\phi(x)=\kappa\phi^+(x)+\lambda\phi^{c-}(x),
+\]
+且$[Q,\phi^+]=-q\phi^+$和$[Q,\phi^{c+}]=q\phi^{c+}$，那么自然满足$[Q,\phi]=-q\phi$。其中$\phi^{c-}$是我们为了保证荷守恒而不得不新引入的生成场，他生成的粒子具有$-q$的荷，即这个场其实是反粒子的生成场。剩下的就是重复上面的推导，一样可以知道，粒子是玻色子，而系数可以取作$\kappa=\lambda=1$.
+\section{Causal Vector Fields}
+随后是矢量表示，$D(\Lambda)^\mu_{\phantom{\mu}\nu}=\Lambda^\mu_{\phantom{\mu}\nu}$.
+\section{The Dirac Formalism}
+
+\section{Causal Dirac Fields}
+
+\section{General Irreducible Representation of the Homogeneous Lorentz Group}
+
+\section{General Causal Fields}
+
+\section{The CPT Theorem}
+
+\section{Massless Particle Fields}
+\addtocounter{chapter}{1}
+\chapter{The Canonical Formalism}
+Lagrange形式化使得我们可以比较容易分析对称性（不仅仅是Lorentz不变性）：一个有着Lorentz不变性的Lagrange密度通过正则量子化将导致一个Lorentz不变的量子理论。就是说，这个理论允许合适的量子力学算子构造使得满足Poincar\'{e}代数，而这将导出Lorentz不变的$S$矩阵。
+
+当然这不是那么平凡的，我们常常要给作用密度加上一个修正项（为了消去传播子的非协变项），而有着标量Lagrange密度的正则量子化手段将自动提供这一修正项。
+
+\section{Cononical Variables}
+\re{The purpose of the present section is to identity the canonical fields and their conjugates in various field theories, to tell us how to separate the free--field terms in the Lagrangian, and incidentally to reassure us that the conanical formalism is indeed applicable to physically realistic theories.}
+
+我们将看到第五章里面构造的自由场将自动提供量子算符$q^n(\mathbf{x},t)$和$p_n(\mathbf{x},t)$满足熟悉的正则对易关系
+\[
+	\begin{split}
+		[q^n(\mathbf{x},t),q^m(\mathbf{x},t)]_{\mp}&=0,\\
+		[p_n(\mathbf{x},t),p_m(\mathbf{x},t)]_{\mp}&=0,\\
+		[q^n(\mathbf{x},t),p_m(\mathbf{x},t)]_{\mp}&=i\delta^3(\mathbf{x}-\mathbf{y})\delta^n_m.\\
+	\end{split}
+\]
+其中$-$对应Bose子，而$+$对应Fermi子，可以看到$q$和$p$调换也是一组正则变量。
+
+对于零自旋的自共轭（反粒子是自己）标量场$\phi(x)$，则
+\[
+	[\phi(x),\phi(y)]_-=\Delta(x-y),
+\]
+其中
+\[
+	\Delta(x)=\int\frac{\dd^3 k}{2k^0 (2\pi)^3}(e^{ik\cdot x}-e^{-ik\cdot x}),
+\]
+那么，$q(\mathbf{x},t)=\phi(\mathbf{x},t)$和$p=\dot{\phi}(\mathbf{x},t)$将给正则对易关系。
+
+对于自旋为1的实矢量场$v^\mu(x)$，我们有
+\[
+	[v^\mu(x),v^\nu(y)]_-=\left(\eta^{\mu\nu}-\frac{\partial^\mu\partial^\nu}{m^2}\right)\Delta(x-y),
+\]
+那么
+\[
+	\begin{split}
+	q^i(\mathbf{x},t)&=v^i(\mathbf{x},t),\\
+	p_i(\mathbf{x},t)&=\dot{v}^i(\mathbf{x},t)+\frac{\partial v^0(\mathbf{x},t)}{\partial x^i}
+	\end{split}
+\]
+将给正则对易关系。
+
+对于关于非Majorana的自旋$1/2$粒子的Dirac场$\psi_n(x)$，那么
+\[
+	\begin{split}
+	q^n(x)&=\psi_n(x),\\
+	p_n(x)&=i\psi^\dag_n(x)
+	\end{split}
+\]
+将给出正则对易关系。
+
+我们下面定义量子力学的变分算符，对于任意bosonic泛函$F[q(t),p(t)]$，在固定的$t$定义对于$q^n(\mathbf{x},t)$和$p_n(\mathbf{x},t)$的变分如下：
+\[
+	\begin{split}
+	\frac{\delta F[q(t),p(t)]}{\delta q^n(\mathbf{x},t)}&=i\left[p_n(\mathbf{x},t),F[q(t),p(t)]\right],\\
+	\frac{\delta F[q(t),p(t)]}{\delta p_n(\mathbf{x},t)}&=i\left[F[q(t),p(t)],q^n(\mathbf{x},t)\right],
+	\end{split}
+\]
+所以对于全变分，我们有
+\[
+	\delta F[q(t),p(t)]=\int \dd^3 x\sum_n\left(\delta q^n(\mathbf{x},t)\frac{\delta F[q(t),p(t)]}{\delta q^n(\mathbf{x},t)}+\frac{\delta F[q(t),p(t)]}{\delta p_n(\mathbf{x},t)}\delta p_n(\mathbf{x},t)\right).
+\]
+
+特别地，我们考虑伴随作用，$H_0$作为自由粒子的时间生成元，我们有
+\[
+\begin{split}
+	q^n(\mathbf{x},t)&=e^{iH_0t}q^n(\mathbf{x},0)e^{-iH_0t},\\
+	p_n(\mathbf{x},t)&=e^{iH_0t}p_n(\mathbf{x},0)e^{-iH_0t},
+\end{split}
+\]
+求一下导数就有
+\[
+\begin{split}
+	\dot{q}^n(\mathbf{x},t)&=i[H_0,q^n(\mathbf{x},t)]=\frac{\delta H_0}{\delta p_n(\mathbf{x},t)},\\
+	\dot{p}_n(\mathbf{x},t)&=-i[p_n(\mathbf{x},t),H_0]=-\frac{\delta H_0}{\delta q^n(\mathbf{x},t)},
+\end{split}
+\]
+这就是让人熟悉的正则方程。
+
+自由粒子的Hamilton量为
+\[
+	H_0=\sum_{n,\sigma}\int \dd^3 k\,\,a^\dag(\mathbf{k},\sigma,n)a(\mathbf{k},\sigma,n)\sqrt{\mathbf{k}^2+m^2},
+\]
+对于实的标量场，相差一个常数项，我们可以将其写成
+\[
+	H_0=\int \dd^3 x\,\,\left(\frac{1}{2}p^2+\frac{m^2}{2}q^2+\frac{1}{2}(\nabla q)^2\right),
+\]
+一般的教科书会将前者看成后者的推论。但对于我们来说是反过来的，如果Hamilton量不和前者差一个常数项，则将不会给出正确的Lagrange量。
+
+使用Legendre变换，我们可以得到自由粒子的Lagrange量
+\[
+	L_0[q(t),\dot{q}(t)]=\sum_n \int \dd^3 x\,\,p_n(\mathbf{x},t) \dot{q}^n(\mathbf{x},t)-H_0,
+\]
+对于实的标量场，我们可以将其改写成
+\[
+	L_0=-\int \dd^3 x\,\,\left(\frac{1}{2}\partial_\mu\phi\,\partial^\mu\phi+\frac{m^2}{2}\phi^2\right).
+\]
+
+现在，我们考虑带有相互作用的情况，此时$H$将作为时间生成元，定义
+\[
+	\begin{split}
+	Q^n(\mathbf{x},t)&=e^{iHt}q^n(\mathbf{x},0)e^{-iHt},\\
+	P_n(\mathbf{x},t)&=e^{iHt}p_n(\mathbf{x},0)e^{-iHt},
+	\end{split}
+\]
+由于这是一个相似变换，那么对易关系依旧成立
+\[
+	\begin{split}
+		[Q^n(\mathbf{x},t),Q^m(\mathbf{x},t)]_{\mp}&=0,\\
+		[P_n(\mathbf{x},t),P_m(\mathbf{x},t)]_{\mp}&=0,\\
+		[Q^n(\mathbf{x},t),P_m(\mathbf{x},t)]_{\mp}&=i\delta^3(\mathbf{x}-\mathbf{y})\delta^n_m.\\
+	\end{split}
+\]
+此外$H$和$e^{-iHt}$对易所以
+\[
+H[Q,P]=e^{iHt}H[q,p]e^{-iHt}=H[q,p].
+\]
+此时的正则方程写作
+\[
+\begin{split}
+	\dot{Q}^n(\mathbf{x},t)&=i[H,Q^n(\mathbf{x},t)]=\frac{\delta H}{\delta P_n(\mathbf{x},t)},\\
+	\dot{P}_n(\mathbf{x},t)&=-i[P_n(\mathbf{x},t),H]=-\frac{\delta H}{\delta Q^n(\mathbf{x},t)}.
+\end{split}
+\]
+\section{The Lagrangian Formalism}
+从经典场论开始，一般来说，Lagrange量$L[\Psi(t),\dot{\Psi}(t)]$是一个关于$\Psi(\mathbf{x},t)$和$\dot{\Psi}(\mathbf{x},t)$的泛函，那么他的共轭场$\Pi(\mathbf{x},t)$被定义为Lagrange量的变分
+\[
+	\Pi(\mathbf{x},t)=\frac{\delta L[\Psi(t),\dot{\Psi}(t)]}{\delta \dot{\Psi}(\mathbf{x},t)},
+\]
+运动方程写成
+\[
+	\dot{\Pi}(\mathbf{x},t)=\frac{\dd}{\dd t}\frac{\delta L[\Psi(t),\dot{\Psi}(t)]}{\delta \dot{\Psi}(\mathbf{x},t)}=\frac{\delta L[\Psi(t),\dot{\Psi}(t)]}{\delta \Psi(\mathbf{x},t)}.
+\]
+
+我们常常使用作用量原理将其改写，我们称
+\[
+	I[\Psi]=\int_{-\infty}^\infty \dd t\,\, L[\Psi(t),\dot{\Psi}(t)]
+\]
+为作用量，作用量原理即作用量变分为0，也就是
+\[
+	0=\delta I[\Psi]=\int \dd^4x\,\left(\frac{\delta L}{\delta \Psi(\mathbf{x},t)}\delta \Psi(t)+\frac{\delta L}{\delta \dot{\Psi}(\mathbf{x},t)}\delta\dot{\Psi}(t)\right),
+\]
+假设在无穷远的边界为0，此时分部积分得到
+\[
+	0=\delta I[\Psi]=\int \dd^4x\,\left(\frac{\delta L}{\delta \Psi(\mathbf{x},t)}-\frac{\dd}{\dd t}\frac{\delta L}{\delta \dot{\Psi}(\mathbf{x},t)}\right)\delta \Psi(t),
+\]
+这就是我们的运动方程了。
+
+从作用量原理出发，我们可以看到，如果Lagrange量存在一个全导数的增量$\partial_\mu \mathscr{F}^\mu$或者关于时间的全导数项$\dd F/\dd t$，我们的方程并没有什么影响。前者是因为无穷远为0的自然边界条件，后者并不那么显然，可以参考原书以及Landau第一卷。
+
+由于场方程完全由泛函$I[\Psi]$确定，那么我们自然尝试去构造一个Lorentz不变理论使得$I[\Psi]$是一个标量，特别地，因为$I[\Psi]$是$L[\Psi(t),\dot{\Psi}(t)]$对时间的积分，我们自然尝试让$L$本身就是一个关于$\Psi$和$\Psi$一阶导数的标量函数$\mathscr{L}$对三维坐标的积分，
+\[
+	I[\Psi]=\int \dd^4x\,\, \mathscr{L}\left(\Psi(x),\{\partial_\mu \Psi(x)\}\right),
+\]
+其中$\{\partial_\mu \Psi(x)\}$代表一族由一阶偏导数构成的矢量，这样的$\mathscr{L}$被称为Lagrange密度。直接像上面一样，求一下变分然后分部积分就得到了场方程的形式
+\[
+	\frac{\partial}{\partial x^\mu}\frac{\partial \mathscr{L}}{\partial \left(\partial_\mu \Psi\right)}=\frac{\partial \mathscr{L}}{\partial \Psi},
+\]
+左边是标量积，右边又是和参考系无关的标量，所以这就是一个Lorentz不变的方程。
+
+由于复标量总可以拆成实部和虚部的实标量，所以下面我们只考虑作用量是实的情况。使用Legendre变换，我们就可以从Lagrange量得到Hamilton量
+\[
+	H=\sum_l \int \dd^3 x \,\, \Pi_l(\mathbf{x},t)\dot{\Psi}^l(\mathbf{x},t)-L[\Psi(t),\dot{\Psi}(t)],
+\]
+这样独立变量就变成了$\Pi_l$和$\Psi^l$，很容易计算得到正则方程
+\[
+\begin{split}
+	\dot{\Psi}^l(\mathbf{x},t)&=\frac{\delta H}{\delta \Pi_l(\mathbf{x},t)},\\
+	\dot{\Pi}_l(\mathbf{x},t)&=-\frac{\delta H}{\delta \Psi^l(\mathbf{x},t)}.
+\end{split}
+\]
+
+现在考虑Lagrange密度
+\[
+	\mathscr{L}=-\frac{1}{2}\partial_\mu\Psi\,\partial^\mu\Psi-\frac{m^2}{2}\Psi^2-\mathscr{H}(\Psi),
+\]
+带入场方程，我们有
+\[
+	\frac{\partial}{\partial x^\mu}\frac{\partial \mathscr{L}}{\partial \left(\partial_\mu \Psi\right)}=-\partial_\mu\partial^\mu\Psi=\frac{\partial \mathscr{L}}{\partial \Psi}=-m^2\Psi-\mathscr{H}'(\Psi),
+\]
+或者
+\[
+	(\square-m^2)\Psi=(\partial_\mu\partial^\mu-m^2)\Psi=\mathscr{H}'(\Psi).
+\]
+此时的对偶场为
+\[
+	\Pi=\frac{\partial \mathscr{L}}{\partial \dot{\Psi}}=\dot{\Psi},
+\]
+所以Hamilton量写作
+\[
+	H_0=\int \dd^3 x\,\,(\Pi\dot{\Psi}-\mathscr{L})=\int \dd^3 x\,\,\left(\frac{1}{2}\Pi^2+\frac{m^2}{2}\Psi^2+\frac{1}{2}(\nabla \Psi)^2+\mathscr{H}(\Psi)\right),
+\]
+量子化为标量场的方程，只要直接替换$\Pi$为$Q$，$\Psi$为$P$就是了。
+
+但事情不是总像标量场那么简单，比如对于关于非Majorana的自旋$1/2$粒子的Dirac场$\psi_n(x)$，我们已经知道
+\[
+	\begin{split}
+	q^n(x)&=i\psi^\dag_n(x),\\
+	p_n(x)&=\psi_n(x),
+	\end{split}
+\]
+我们并不能直接找到$q^n$的共轭变量，因为Lagrange量并不显含$\psi^\dag_n(x)$对时间的导数，对他求变分只能为0。
+
+回到Lagrange形式化，我们要假设部分Lagrange量并不显含部分变量$\dot{\Psi}^l$，我们将这些变量记做$C^r$，其他的记做$Q^n$，那么$Q^n$有共轭变量
+\[
+	P_n(\mathbf{x},t)=\frac{\delta L[Q(t),\dot{Q}(t),C(t)]}{\delta \dot{Q}^n(\mathbf{x},t)},
+\]
+使用Legendre变换，我们就可以从Lagrange量得到Hamilton量
+\[
+	H=\sum_n \int \dd^3 x \,\, P_n\dot{Q}^n-L[Q(t),\dot{Q}(t),C(t)],
+\]
+但因为我们的独立变量是$P$和$Q$，所以我们还要把$C^r$和$\dot{Q}^n$用$P$和$Q$来表示，此时关于$C^r$的运动方程写作
+\[
+	\frac{\delta}{\delta C^r(\mathbf{x},t)}L[Q(t),\dot{Q}(t),C(t)]=0.
+\]
+\end{document}

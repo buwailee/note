@@ -1,0 +1,266 @@
+%!TEX program = xelatex
+\documentclass[10pt]{book}
+\usepackage{amssymb,amsfonts,amsthm,amsmath,bm,ctex}
+\usepackage[left=21mm,text={148mm,200mm},paperwidth=185mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{titletoc}%使用目录
+	\theoremstyle{plain}%定理环境样式
+	\newtheorem{pro}{Proposition}[section]% 定义命题环境
+	%\newtheorem{theo}{Theorem}[section]% 定义定理环境
+	%\newtheorem{lem}{Lemma}[section]% 定义引理环境
+	\newtheorem*{rem}{Remark}% 定义注记环境
+	\newtheorem{defi}{Definition}[section]% 定义定义环境
+	%\newtheorem{exe}{Exercise}[section]% 定义习题环境
+\begin{document}
+\chapter{Thermodynamics}
+\section{}
+首先在统计力学中有许多约定的说法：
+
+{\kaishu1.所谓的功仅仅指机械功。
+
+2.所谓的不可逆是指我们在宏观现象中观测到的一旦边界条件确定，我们常常有一种且只有一种终态的现象。这联系着我们对于“永远不可能(never)”的用法也是习惯性的，精确来说，当系统尺度无穷增加时，返回原态的概率也趋向于0.这就是所谓的热力学极限。
+
+3.比如准静态、绝热壁、完全传热壁的存在都是理论上的。
+
+4.热力学量一般分为两大类：温度、压强等为intensive变量，而内能、熵等为entensive变量。后者在热力学极限下是可加的。}
+
+热力学的几大定律都是所谓的no-go原理（第一性原理），我们不会去考虑比这还要基本的问题。
+
+此外我们做一些符号约定：所有系统的空间就形式地记为\textit{Sys}，$\mathcal{M}(A)$代表系统$A$的态空间，$\mathcal{F(M)}$代表态空间上的函数空间。态空间是重要的，我们要考虑上面的路径的积分，沿着路径，我们默认态的变化过程是准静态的。
+
+{\kaishu 第零定律}：现在假设我们有两个系统$A$和$B$，对应的态为$a \in \mathcal{M}(A)$和$b \in \mathcal{M}(B)$，我们说两个系统是热平衡的即是说存在这样的一个函数：
+\[
+F_{AB}(a,b)=0.
+\]
+此外，热力学平衡还是一个等价类$(\textit{Sys},\sim)$。就是说，要满足自反性：
+\[
+A\sim A \Rightarrow A\sim A,
+\]
+交换性：
+\[
+A\sim B \Rightarrow B\sim A,
+\]
+以及传递性：
+\[
+A\sim B,B\sim C \Rightarrow A\sim C.
+\]
+
+第一个要求给出$F_{AA}\equiv 0$，可以证明$F$只可能有形式
+\[
+F_{AB}(a,b)=f_A(a)-f_B(b)
+\]
+其中$f_A(a)$仅仅依赖于$A$的态，同理于$B$.所以第零定律就是说存在一个关于系统的函数$t_A:=f_A(a)$，当两个系统处于热平衡时$t_A=t_B$.这就是温度，当然，温度的函数形式可以不同，只要能完成上面所说要求的一切函数都可称为温度，不同的温度函数我们称之为采用了不同的温标。习惯上的温标采用Kelvin温标$T$.
+
+{\kaishu 第一定律}：对于固定物质的量的系统，系统只能对外界做功（当然包括做负功）和与外界交换热量。前者被描述为$\mathcal{M}$上的1-形式$\delta L$，后者被描述为1-形式$\delta Q$，热力学第一定律就是在说$\delta Q-\delta L$是一个恰当形式，即存在一个$E \in \mathcal{F(M)}$满足$\delta Q-\delta L=\mathrm{d}E$.这个态函数$E$被称为内能。如果当$\delta Q=\delta L=0$，即对应于热学平衡和力学平衡下，我们有$\mathrm{d}E=0$，$E$是个常数，即内能守恒。
+
+假如现在我们的系统与外界交换物质，那么这也会引发内能的变化。那么我们还需要在第一定律里面引入一个1-形式$\mu \mathrm{d}N$，$N$描述系统的物质的量。此外，做功一般可以表示为$\delta L=p\mathrm{d}V$,其中$p$是压强而$V$是体积。那么第一定律改写为
+\begin{equation}
+\label{first}
+\mathrm{d}E=\delta Q-p\mathrm{d}V+\mu \mathrm{d}N.
+\end{equation}
+
+{\kaishu 第二定律}：考虑$\mathcal{M}$上的任意闭合路径$\Omega$，热力学第二定律就是说
+\[
+\oint_{\Omega}\frac{\delta Q}{T}\leq 0,
+\]
+其中等号在可逆过程上取到，此时$\delta Q/T$是一个恰当形式，而$1/T$就是对1-形式$\delta Q$的积分因子。因此我们可以定义态函数$S$：
+\[
+S(a)-S(a')=\int_{a'}^a \frac{\delta Q}{T},
+\]
+其中$a,a'\in \mathcal{M}$，而路径是任何连接$a$和$a'$的可逆过程，这个态函数称为熵。很容易看到，这个函数的定义可以差一个任意常数\footnote{按照Landau的观点，在量子统计就可以精确定义，而经典情况下仅仅只能定义到这里。}。那么，对无穷小可逆过程，我们就有
+\[
+\mathrm{d}S=\frac{\delta Q}{T}.
+\]
+
+注意我们定义的是一个态函数，所以是定义到态空间上面的，对于可逆过程，他会退化到$\mathrm{d}S=\delta Q/T$,但是对于不可逆过程，即任意的回路，我们有
+\[
+\oint_{\Omega}\left(\mathrm{d}S-\frac{\delta Q}{T}\right)=-\oint_{\Omega}\frac{\delta Q}{T}\geq 0
+\]
+对任意闭合回路$\Omega$都成立，所以
+\begin{equation}
+\label{second}
+\mathrm{d}S \geq \frac{\delta Q}{T}.
+\end{equation}
+如果我们要求得两个状态之间的熵的差，因为熵是定义清楚的函数，他只依赖于状态，找一个可逆过程连接这俩个状态，然后顺着这个路径积分就可以得到$\Delta S$。
+
+这里稍稍提一下另一种熵的定义方式，可能抽象一点，他的核心思想就是：（可逆过程的）第二定律其实说的是1-形式$\delta Q$是可积的。这种定义方式的具体表述为：态空间任一点的任意邻域都存在一个点，使得这两个点之间的任意可逆路径上都有$\delta Q \neq 0$.
+
+根据微分几何上的知识，这样的1-形式$\delta Q$就是可积的\footnote{关于1-形式的可积性还有Frobenius定理：一个1-形式$\omega$是可积的当且仅当$\omega \wedge \mathrm{d}\omega = 0$.}，即$\delta Q=\tau\mathrm{d}\sigma$，那么现在$\tau$就是抽象的温度，适当做一点变量替换，我们可以定义绝对温度$T$然后得到$\delta Q=\tau\mathrm{d}\sigma=T\mathrm{d}S$，这样我们就定义了熵$S$。可以验证，这样定义的熵满足我们需要的所有要求。具体的过程可以参考其他教本，这里不做累述。
+
+{\kaishu 第三定律}：通过有限步骤我们无法达到$T=0$.一个零温系统没有热力学行为。
+\subsection{}
+作为第一定律\eqref{first}和第二定律\eqref{second}的直接结果，我们可以得到，对无穷小可逆过程
+\[
+\mathrm{d}E\leq T\mathrm{d}S-p\mathrm{d}V+\mu\mathrm{d}N,
+\]
+如果是可逆过程，则
+\begin{equation}
+\label{first2}
+\mathrm{d}E=T\mathrm{d}S-p\mathrm{d}V+\mu\mathrm{d}N.
+\end{equation}
+这就是说$E$可以看做extensive变量$S,V,N$（他们都是可加的）的函数$E(S,V,N)$，这就是说，我们通过\eqref{first2}可以知道
+\[
+\left(\frac{\partial E}{\partial S}\right)_{V,N}=T,\quad \left(\frac{\partial E}{\partial V}\right)_{S,N}=-p,\quad \left(\frac{\partial E}{\partial N}\right)_{S,V}=\mu.
+\]
+$E$作为extensive量，我们还需要$E$是他三个变量的齐一次函数（满足的称为齐次系统），这就是说，
+\[
+	E(\lambda S,\lambda V, \lambda N)=\lambda E(S,V,N).
+\]
+上式的物理意义是鲜明的。
+
+我们不仅可以考虑$E$是齐次的，还可以考虑$S(E,V,N)$是齐次的，改写一下\eqref{first2}即有
+\[
+\mathrm{d}S=\frac{1}{T}\mathrm{d}E+\frac{p}{T}\mathrm{d}V-\frac{\mu}{T}\mathrm{d}N.
+\]
+为了保证$E$等的齐次性，我们还需要保证$T,p,\mu$是齐零次的，这就是说\[
+T=T(S,V,N)\equiv T(S/N,V/N).
+\]
+同理，我们也可以改写$E$和$S$
+\[
+E=NE(S/N,V/N,1)=Ne;S=NS(E/N,V/N,1)=Ns.
+\]
+所以可以形式地定义摩尔粒子体积：$v=V/N$，摩尔粒子能量：$e=E/N=e(s,v)$，摩尔粒子熵：$s=S/N=s(e,v)$.（之所以说是形式地，因为这并不是任何一个摩尔粒子的体积，内能或者熵。由于和系统尺度无关，所以这种体积、内能和熵又被称为是specific的.）
+
+现在使用几何语言适当描述一下态空间$\mathcal{M}$，从上面可知，我们可以选取$S,V,N$来作为$\mathcal{M}$的局部坐标，就是说我们选取了$\mathcal{M}$的一个chart，然后$\mathcal{M}$可以被认为是一个三维流形。为了方便起见，以后我们谈论$\mathcal{M}$的时候，都可以直接认为他是$\mathbb{R}^3$里的一个开集。此外，我们约定，谈论$\mathcal{M}$上的路径是针对可逆过程的，对于不可逆过程，我们只讨论回路。根据实验事实，我们的基本方程$E(S,V,N)$（即使他不能，也存在其他的能）可以完全确定热力学现象，这表现在数学上就是说$\mathcal{M}$是单联通的。
+
+正如上面看到的，我们也可以选取$S(E,V,N)$作为基本方程，此时$E,V,N$是其局部坐标。那么，现在我们有extensive量$E,V,N,S$和intensive量$T,p,\mu$，是否我们可以任取三个量作为局部坐标呢？答案是不可以的，$E,V,N,S$的齐一次性隐含着这些坐标并不完全独立。根据Euler的齐次函数定理，我们有
+\begin{align*}
+E=&S\left(\frac{\partial E}{\partial S}\right)+V\left(\frac{\partial E}{\partial V}\right)+N\left(\frac{\partial E}{\partial N}\right)\\
+=&TS-pV+\mu N,
+\end{align*}
+微分之，
+\[
+\mathrm{d}E=T\mathrm{d}S-p\mathrm{d}V+\mu \mathrm{d}N+S\mathrm{d}T-V\mathrm{d}p+N\mathrm{d}\mu=\mathrm{d}E+S\mathrm{d}T-V\mathrm{d}p+N\mathrm{d}\mu,
+\]
+所以$S\mathrm{d}T-V\mathrm{d}p+N\mathrm{d}\mu=0$,或者
+\[
+\mathrm{d}\mu=v\mathrm{d}p-s\mathrm{d}T.
+\]
+所以我们不能只选取intensive量来作为局部坐标，因为他们并不独立。而对于描述系统状态的基本方程，必须要有至少一个extensive量。
+\subsection{}
+上面谈论了局部坐标间的关系，现在我们就用Legendre变换来变换局部坐标。这样做不仅仅是为了方便，更多时候，$S,V,N$并不可以完全描述系统，但是却存在另外三组坐标可以描述，此时的基本方程当然就不再是$E(S,V,N)$.此外还将导出Maxwell关系。因为经常要反解变量，为了避开一切数学上的麻烦，我们可以假设反函数定理的条件自动满足。这节很重要的方程是$\mathrm{d}^2\equiv 0$.
+
+首先计算一下我们能选的全部组合数，Legendre变换是把积分因子和微分量之间的变换，所以是2种，而现在有三个独立变量，则我们至多有$2\times2\times2=8$种组合。
+
+{\kaishu (1).局部坐标为$S,V,N$，基本方程$E(S,V,N)$}：
+
+这里已经有关系
+\[
+\mathrm{d}E\leq T\mathrm{d}S-p\mathrm{d}V+\mu\mathrm{d}N,
+\]
+从现在起我们只考虑可逆过程。那么
+\[
+\mathrm{d}E= T\mathrm{d}S-p\mathrm{d}V+\mu\mathrm{d}N.
+\]
+两边取外微分，由于$\mathrm{d}^2\equiv 0$，则
+\[
+\mathrm{d}T\wedge \mathrm{d}S-\mathrm{d}p\wedge\mathrm{d}V+\mathrm{d}\mu\wedge\mathrm{d}N=0,
+\]
+直接计算得
+\[
+\begin{split}
+0=&\left(\left(\frac{\partial T}{\partial V}\right)_{S,N}+\left(\frac{\partial p}{\partial S}\right)_{V,N}\right)\mathrm{d}V\wedge \mathrm{d}S
++\left(\left(\frac{\partial T}{\partial N}\right)_{S,V}-\left(\frac{\partial \mu}{\partial S}\right)_{V,N}\right)\mathrm{d}N\wedge \mathrm{d}S\\
+-&\left(\left(\frac{\partial p}{\partial N}\right)_{S,V}+\left(\frac{\partial \mu}{\partial V}\right)_{S,N}\right)\mathrm{d}N\wedge \mathrm{d}V,
+\end{split}
+\]
+三个系数各自应该为0，这就是这组局部坐标下的Maxwell关系。
+
+{\kaishu (2).局部坐标为$T,V,N$，基本方程$F(S,V,N)$}：
+\[
+\mathrm{d}E \leq T\mathrm{d}S-p\mathrm{d}V+\mu\mathrm{d}N=\mathrm{d}(TS)-S\mathrm{d}T-p\mathrm{d}V+\mu\mathrm{d}N,
+\]
+那么
+\[
+\mathrm{d}(E-TS)\leq -S\mathrm{d}T-p\mathrm{d}V+\mu\mathrm{d}N,
+\]
+这样就将局部坐标变成了$T,V,N$，现在设$F=E-TS$,我们称之为Helmoltz自由能。同样，当可逆过程时，我们有
+\[
+\mathrm{d}F= -S\mathrm{d}T-p\mathrm{d}V+\mu\mathrm{d}N,
+\]
+所以
+\[
+	S=-\left(\frac{\partial F}{\partial T}\right)_{V,N},
+	p=-\left(\frac{\partial F}{\partial V}\right)_{T,N},
+	\mu=-\left(\frac{\partial F}{\partial N}\right)_{T,V}.
+\]
+还有$\mathrm{d}^2F=0$可以导出这组坐标下的Maxwell关系。
+
+{\kaishu (3).局部坐标为$S,p,N$，基本方程$H(S,p,N)$}：
+
+同上，换$p\mathrm{d}V=pV-V\mathrm{d}p$，那么就得到了
+\[
+\mathrm{d}H \leq T\mathrm{d}S+V\mathrm{d}p+\mu \mathrm{d}N,
+\]
+$H=E+pV$被称为焓。同上，可逆时候的等式可以推到出这组坐标下的Maxwell关系。
+
+{\kaishu (4).局部坐标为$T,p,N$，基本方程$G(T,p,N)$}：
+
+换$p\mathrm{d}V=pV-V\mathrm{d}p$和$S\mathrm{d}T=ST-T\mathrm{d}S$，那么就得到了
+\[
+\mathrm{d}G \leq -S\mathrm{d}T+V\mathrm{d}p+\mu \mathrm{d}N,
+\]
+$G=E-TS+pV$被称为Gibbs自由能。同上，可逆时候的等式可以推到出这组坐标下的Maxwell关系。
+
+从上面可以看到
+\[
+\mu=\left(\frac{\partial G}{\partial N}\right)_{p,T}
+\]
+此外，很容易看出$F,H,G$都是齐一次的，所以
+\[
+F=Nf(T,v),H=Nh(p,s),G=Ng(T,p)
+\]
+所以
+\[
+g(T,p)=\left(\frac{\partial G}{\partial N}\right)_{p,T}
+\]
+于是$\mu(T,p)\equiv g(T,p)$.迄今为止，我们都没有给$\mu$名字，现在我们称呼其为化学势，可以看到化学势就是每摩尔的Gibbs自由能。
+
+{\kaishu (5).局部坐标为$S,V,\mu$，基本方程$(E-\mu N)(S,V,\mu)$}.
+
+{\kaishu (6).局部坐标为$T,V,\mu$，基本方程$(F-\mu N)(T,V,\mu)$}.
+
+这有一个特殊的名字，$\Omega=F-\mu N$称为巨热力学势。使用$E=TS-pV+\mu N$，则可以改写为$\Omega(T,V,\mu)=-p(T,\mu)V$，但$\Omega$也应该对$V$是齐一次的，所以$p=-\Omega/V=-\omega(T,\mu)$.
+
+{\kaishu (7).局部坐标为$T,p,\mu$，基本方程$(G-\mu N)(T,p,\mu)$}.
+
+{\kaishu (8).局部坐标为$S,p,\mu$，基本方程$(H-\mu N)(S,p,\mu)$}.
+
+使用Jacobian的一些知识，我们可以改写一下Maxwell关系。比如局部坐标为$S,N,V$下的Maxwell关系之一
+\[
+\left(\frac{\partial p}{\partial N}\right)_{S,V}=-\left(\frac{\partial \mu}{\partial V}\right)_{S,N}
+\]
+由于
+\[
+\left(\frac{\partial p}{\partial N}\right)_{S,V}=\frac{\partial(p,S,V)}{\partial (N,S,V)},\quad\left(\frac{\partial \mu}{\partial V}\right)_{S,N}=\frac{\partial (\mu,S,N)}{\partial(V,S,N)},
+\]
+那么
+\[
+\frac{\partial(p,S,V)}{\partial (N,S,V)}=-\frac{\partial (\mu,S,N)}{\partial(V,S,N)}=\frac{\partial (\mu,S,N)}{\partial(N,S,V)},
+\]
+所以
+\[
+\frac{\partial(p,S,V)}{\partial (\mu,S,N)}=1.
+\]
+所有的Maxwell关系都可以如下改写：
+\[
+\begin{matrix}
+\displaystyle{\frac{\partial(p,S,V)}{\partial (\mu,S,N)}=1;}&\displaystyle{\frac{\partial(p,T,V)}{\partial (\mu,T,N)}=1;}&\displaystyle{\frac{\partial(p,V,N)}{\partial (T,S,N)}=1;}\\
+\displaystyle{\frac{\partial(T,S,p)}{\partial (N,\mu,p)}=1;}&\displaystyle{\frac{\partial(T,S,V)}{\partial (N,\mu,V)}=1;}&\displaystyle{\frac{\partial(T,S,\mu)}{\partial (p,V,\mu)}=1.}
+\end{matrix}
+\]
+
+两个系统的平衡条件由他们的合熵取极值确定，那么对
+\[
+S=S_A+S_B=S_A(E_A,V_A,N_A)+S_B(E-E_A,V-V_A,N-N_A)
+\]
+中的$N_A,V_A,E_A$各自求导为0后我们就可以得到
+\[
+T_A=T_B,p_A=p_B,\mu_A=\mu_B.
+\]
+这就是两个系统的平衡的必要条件。
+
+第二定律有着平衡时熵取极大值的性质，那么二阶导就有着新的物理内涵，这里先略去不谈。
+
+\end{document}

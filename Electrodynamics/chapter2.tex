@@ -1,0 +1,481 @@
+
+\chapter{Hamilton形式化}
+前面一章主要讨论了经典场论的Lagrange形式化，正如在Noether定理那里看到的一样，在Lagrange形式化下，对称性是比较容易分析的。这章我们来讨论Hamilton形式化，当我们想要量子化一个经典场，Hamilton形式化就会更加实用，一方面因为Hamilton算子在量子力学里面是自然的，另一方面，Possion括号和对易子存在方便的对应。这章假设$c=1$。
+\section{正则方程和Possion括号}
+从经典力学中已经得知，对于$L_t$，运动方程即Lagrange方程写作
+\[
+	\frac{\dd}{\dd t}\frac{\partial L_t}{\partial \dot{q}^a}-\frac{\partial L_t}{\partial q^a}=0.
+\]
+广义坐标$q^a$对应的广义动量定义为
+\[
+	p_a=\frac{\partial L_t}{\partial \dot{q}^a}.
+\]
+而Hamiltonian定义为
+\[
+	H(p_a,q^a)=p_a \dot{q}^a-L_t,
+\]
+其中所有的量都应该写成$p_a$和$q^a$的函数。此时运动方程，即Hamilton方程写作
+\[
+	\dot{p}_a=-\frac{\partial H}{\partial q^a},\quad \dot{q}^a=\frac{\partial H}{\partial p_a}.
+\]
+这些都是大家熟悉的。
+
+Possion括号$[\star,\star]_{\mathrm{P}}$定义如下\footnote{量子化时，$\hbar [\star,\star]_{\mathrm{P}}\to [\star,\star]/i$，后者是算符之间的对易子。}
+\[
+	[F,G]_{\mathrm{P}}=\frac{\partial F}{\partial q^a}\frac{\partial G}{\partial p_a}-\frac{\partial F}{\partial p_a}\frac{\partial G}{\partial q^a},
+\]
+所以$[p_a,q^b]_{\mathrm{P}}=-\delta_a^b$以及
+\[
+	\dot{f}(t,p,q)=\frac{\partial f}{\partial t}-[H,f]_{\mathrm{P}},
+\]
+此时运动方程写作
+\[
+	\dot{p}_a=[p_a,H]_{\mathrm{P}},\quad \dot{q}^a=[q^a,H]_{\mathrm{P}}.
+\]
+
+用一个例子，我们来演示如何将这套用在场论里。假设有$N$个质点，他们处于一条直线上且相距为$a$，之间有劲度系数相同的轻弹簧相连,静止时总长为$L$。对于这样一个系统，选取每个质点离开原点的的位移量$x_n$作为广义坐标，此时的Lagrangian写作
+\[
+	L_t=\sum_{i=1}^N \frac{m}{2}\dot{x}_i^2-\sum_{i=1}^{N-1}\frac{m\omega^2}{2}(x_{i+1}-x_i-a)^2,
+\]
+设$x_i=(i-1)a+\phi_i$，这就是说$\phi_i$是第$i$个质点偏离其初始位置的位移，此时Lagrangian写作
+\[
+	L_t=\sum_{i=1}^N \frac{m}{2}\dot{\phi}_i^2-\sum_{i=1}^{N-1}\frac{m\omega^2}{2}(\phi_{i+1}-\phi_i)^2.
+\]
+现在假设$N$很大，做变换
+\[
+	\phi_n\to \sqrt{a}\phi(x)\bigr|_{x=na},\quad \phi_{n+1}-\phi_n\to a^{3/2}\partial_x \phi(x)\bigr|_{x=na},\quad \sum_{i}\to \frac{1}{a}\int_0^L \dd x,
+\]
+则系统的Lagrangian可以近似写作
+\[
+	L_t=\int_0^L \dd x\left(\frac{m}{2}\dot{\phi}^2-\frac{m\omega^2a^2}{2}\bigl(\partial_x \phi\bigr)^2\right),
+\]
+即
+\begin{equation}
+	\mathcal{L}=\frac{m}{2}\dot{\phi}^2-\frac{m\omega^2a^2}{2}\bigl(\partial_x \phi\bigr)^2.
+	\label{c2:1}
+\end{equation}
+
+计算原来系统的广义动量
+\begin{equation}
+	\pi_n=\frac{\partial L_t}{\partial \phi_n}=m\dot{\phi}_n,
+	\label{c2:2}
+\end{equation}
+所以Hamilton写作
+\[
+	H=\sum_{i=1}^N\frac{\pi_i^2}{2m}+\sum_{i=1}^{N-1}\frac{m\omega^2}{2}(\phi_{i+1}-\phi_i)^2,
+\]
+一样得，在大$N$下作变换可以得到近似
+\begin{equation}
+	H=\int_0^L \dd x\left(\frac{\pi^2}{2m}+\frac{m\omega^2a^2}{2}\bigl(\partial_x \phi\bigr)^2\right).
+	\label{c2:3}
+\end{equation}
+从\eqref{c2:2}来看，在大$N$下，有$\pi(x)=m\dot{\phi}(x)$，广义坐标们变成了场$\phi(x)$而广义动量则变成了另一个场$\pi(x)$，从\eqref{c2:1}中容易读出
+\begin{equation}
+	\pi=\frac{\partial \mathcal{L}}{\partial \dot{\phi}}
+	\label{c2:3'}
+\end{equation}
+以及从\eqref{c2:3}中读出
+\[
+	H=\int_0^L \dd x \,\pi \dot{\phi}-L_t.
+\]
+
+可见，到了场论，为了完成Hamilton形式化，就必须利用\eqref{c2:3'}去寻找$\phi$的对偶场$\pi$，这就如同在经典力学里面去寻找广义动量一样。找到对偶场之后，将原本的场关于时间的导数反解出来，就写出了Hamiltonian.
+
+上面这个例子挺有趣的，他用经典理论建立了一个简单的一维固体的模型，可以看作将场论引入凝聚态中的一个最简单的例子。继续他的求解只要写出场方程（是声波的波动方程）即可，这里略去。下面转而使用变分法给出场的Hamilton形式化的推导。
+
+对于任何场$Q^a(\bm{x},t)$的泛函$F\bigl[Q^a(t)\bigr]$，通过
+\[
+	\delta F\bigl[Q^a(t)\bigr]=\int \dd^3 \bm{x}\, \frac{\delta F\bigl[Q^a(t)\bigr]}{\delta Q^a(\bm{x},t)}\delta Q^a(\bm{x},t)
+\]
+可以定义变分算符
+\begin{equation}
+	\frac{\delta F\bigl[Q^a(t)\bigr]}{\delta Q^a(\bm{x},t)},
+	\label{c2:1'}
+\end{equation}
+对于固定的$\bm{x}$，那么$Q^a(\bm{x},t)$也是一种泛函\footnote{或者写作
+\[
+	Q^a(\bm{x},t)=\int \dd^3 \bm{x}'\,Q^a(\bm{x}',t)\delta^3(\bm{x}'-\bm{x}),
+\]
+所以对于固定的$\bm{x}$，$Q^a(\bm{x},t)$是一个泛函。}，所以很容易从定义中得到
+\[
+	\frac{\delta Q^a(\bm{x}',t)}{\delta Q^b(\bm{x},t)}=\delta^a_b\delta^3(\bm{x}'-\bm{x}).
+\]
+如果有不止一个可以独立变分的场（比如Lagrangian中的$\dot{Q}^a$），那么\eqref{c2:1'}中就有对其他可以独立变分的场的项。
+
+下面开始正式推导。首先作用量是场的泛函
+\[
+	S[Q^a,\dot{Q}^a]=\int \dd t \,L_t\bigl[Q^a(t),\dot{Q}^a(t)\bigr],
+\]
+做变分应该有
+\[
+	\delta S=\int \dd t \int \dd^3 \bm{x}\,\left(\frac{\delta L_t}{\delta Q^a(\bm{x},t)}\delta Q^a(\bm{x},t)+\frac{\delta L_t}{\delta \dot{Q}^a(\bm{x},t)}\delta \dot{Q}^a(\bm{x},t)\right),
+\]
+使用分部积分，然后去掉边界项，就得到了
+\[
+	\delta S=\int \dd^4 x\,\left(\frac{\delta L_t}{\delta Q^a(\bm{x},t)}-\frac{\dd}{\dd t}\frac{\delta L_t}{\delta \dot{Q}^a(\bm{x},t)}\right)\delta Q^a(\bm{x},t),
+\]
+作用量原理告诉我们，场方程写作
+\begin{equation}
+	\frac{\delta L_t}{\delta Q^a(\bm{x},t)}-\frac{\dd}{\dd t}\frac{\delta L_t}{\delta \dot{Q}^a(\bm{x},t)}=0.
+	\label{c2:6}
+\end{equation}
+
+按照一般的假设，$x=(\bm{x},t)$和
+\[
+	L_t=\int \dd^3 \bm{x} \,\mathcal{L}\bigl[Q^a(x),\nabla Q^a(x),\dot{Q}^a(x)\bigr],
+\]
+对他变分
+\[
+	\delta L_t=\int \dd^3 \bm{x} \left(\frac{\partial \mathcal{L}}{\partial Q^a}\delta Q^a+\frac{\partial \mathcal{L}}{\partial \partial_iQ^a}\delta\partial_iQ^a+\frac{\partial \mathcal{L}}{\partial \dot{Q}^a}\delta\dot{Q}^a\right),
+\]
+分部积分并去掉边界项
+\[
+	\delta L_t=\int \dd^3 \bm{x} \left[\left(\frac{\partial \mathcal{L}}{\partial Q^a}-\partial_i\frac{\partial \mathcal{L}}{\partial \partial_iQ^a}\right)\delta Q^a+\frac{\partial \mathcal{L}}{\partial \dot{Q}^a}\delta\dot{Q}^a\right],
+\]
+所以
+\begin{equation}
+	\frac{\delta L_t}{\delta Q^a}=\frac{\partial \mathcal{L}}{\partial Q^a}-\partial_i\frac{\partial \mathcal{L}}{\partial \partial_iQ^a},\quad \frac{\delta L_t}{\delta \dot{Q}^a}=\frac{\partial \mathcal{L}}{\partial \dot{Q}^a}.
+	\label{c2:5}
+\end{equation}
+观察\eqref{c2:5}的第二项为
+\[
+	\frac{\delta L_t}{\delta \dot{Q}^a(x)}=\frac{\partial \mathcal{L}}{\partial \dot{Q}^a}(x)=P_a(x).
+\]
+至此，利用变分算符，我们重新改写了对偶场的定义。从\eqref{c2:5}和对偶场的定义可以看到，粒子的Lagrange描述到场的Lagrange描述，只需要将偏导数算符转为变分算符就可以了。如果利用\eqref{c2:5}，代入场方程\eqref{c2:6}就得到了熟知的场方程
+\[
+	\frac{\partial \mathcal{L}}{\partial Q^a}-\partial_\nu\frac{\partial \mathcal{L}}{\partial \partial_\nu Q^a}=0.
+\]
+
+利用变分算符，对于场论的Hamilton形式化就可以如下进行，首先寻找对偶场
+\[
+	\frac{\delta L_t}{\delta \dot{Q}^a(x)}=P_a(x),
+\]
+然后使用$P_a$和$Q^a$反解出$\dot{Q}^a$，构造Hamiltonian
+\[
+	H\bigl[Q^a(t),P_a(t)\bigr]=\int \dd^3 \bm{x}\,P_a(x)\dot{Q}^a(x)-L_t\bigl[Q^a(t),\dot{Q}^a(t)\bigr],
+\]
+此时正则方程写作
+\[
+	\dot{P}_a(x)=-\frac{\delta H}{\delta Q^a(x)},\quad \dot{Q}^a(x)=\frac{\delta H}{\delta P_a(x)}.
+\]
+
+我们还可以如下定义场论的Possion符号
+\[
+	\bigl[F[Q^a(t),P_a(t)],G[Q^a(t),P_a(t)]\bigr]_{\mathrm{P}}=\int\dd^3 \bm{x} \,\left(\frac{\delta F}{\delta Q^a(\bm{x},t)}\frac{\delta G}{\delta P_a(\bm{x},t)}-\frac{\delta F}{\delta P_a(\bm{x},t)}\frac{\delta G}{\delta Q^a(\bm{x},t)}\right),
+\]
+此时
+\[
+	\bigl[F,P_a(\bm{x},t)\bigr]=\frac{\delta F}{\delta Q^a(\bm{x},t)},\quad \bigl[Q^a(\bm{x},t),F\bigr]=\frac{\delta F}{\delta P_a(\bm{x},t)}.
+\]
+
+\section{Hamilton形式化的困难：约束系统}
+\subsection*{强匀强磁场中的电荷}
+前面已经知道，电磁场中的电荷的Lagrangian写作
+\[
+	L_t=-mc^2\sqrt{1-\frac{\bm{v}^2}{c^2}}+e \bm{A}\cdot\bm{v}-e\varphi,
+\]
+如果磁场足够大，那么就可以无视掉动能项，只留下
+\[
+	L_t=e \bm{A}\cdot\bm{v}-e\varphi,
+\]
+假设磁场是匀强，且方向为$\hat{\bm{z}}$，设
+\[
+	\bm{A}=\frac{B_0}{2}(x\hat{\bm{y}}-y\hat{\bm{x}})-e\varphi,
+\]
+所以
+\[
+	L_t=\frac{eB_0}{2} (x\dot{y}-y\dot{x})-e\varphi.
+\]
+假设$\varphi$不显含$z$坐标，这样就可以顺便无视掉$\hat{\bm{z}}$方向的匀速运动。我们考察这样一个二维系统。
+
+首先Lagrange方程写作
+\[
+	B_0 \dot{y}=\partial_x \varphi,\quad B_0 \dot{x}=-\partial_y \varphi.
+\]
+这就是正确的运动方程。
+
+按照标准的Legendre变换，先计算正则动量
+\[
+	p_x=\partial_{\dot{x}}L_t=-\frac{eB_0}{2}y,\quad p_y=\partial_{\dot{y}}L_t=\frac{eB_0}{2}x.
+\]
+然后
+\[
+	H=p_x\dot{x}+p_y\dot{y}-L_t=\frac{eB_0}{2}(x\dot{y}-\dot{x}y)-L_t=e\varphi(x,y).
+\]
+不用继续做下去了，首先$\dot{x}$和$\dot{y}$不能用$p_x$和$p_y$反解出来，此外，即使写出了Hamiltonian，因为他不显含正则动量，利用正则方程得到的运动方程是$\dot{x}=0$和$\dot{y}=0$，显然这和上面使用Lagrange方程确定的正则方程是不同的。
+
+重新审视正则动量$p_x=-eB_0y/2$和$p_y=eB_0x/2$，他所有的变量不是正则坐标就是正则动量，所以这两个方程
+\begin{align*}
+	f_1(x,y,p_x,p_y)&=p_x+\frac{eB_0}{2}y=0,\\
+	f_2(x,y,p_x,p_y)&=p_y-\frac{eB_0}{2}x=0,
+\end{align*}
+在相空间确定了一个曲面，而Hamiltonian是在这个曲面上写成$e\varphi(x,y)$.因此，在整个相空间上，Hamiltonian具有形式
+\[
+	H=e\varphi+\eta_1 f_1+\eta_2 f_2.
+\]
+这样去写正则方程，给出
+\begin{align*}
+	\dot{p}_x&=-\partial_x H=-e\partial_x \varphi-f_1\partial_x\eta_1-f_2\partial_x\eta_2+\frac{eB_0}{2}\eta_2,\\
+	\dot{x}&=\partial_{p_x} H=f_1\partial_{p_x}\eta_1+f_2\partial_{p_x}\eta_2+\eta_1,
+\end{align*}
+代入约束$f_1=0, f_2=0$，那么给出第一组正则方程为
+\[
+	\dot{p}_x=-e\partial_x \varphi+\frac{eB_0}{2}\eta_2,\quad \dot{x}=\eta_1,
+\]
+同理可以给出第二组曲面上的正则方程
+\[
+	\dot{p}_y=-e\partial_x \varphi-\frac{eB_0}{2}\eta_1,\quad \dot{y}=\eta_2.
+\]
+再利用约束$p_x=-eB_0y/2$和$p_y=eB_0x/2$，就得到了
+\begin{align*}
+	-\frac{eB_0}{2}\dot{y}&=-e\partial_x \varphi+\frac{eB_0}{2}\dot{y},\\
+	\frac{eB_0}{2}\dot{x}&=-e\partial_y \varphi-\frac{eB_0}{2}\dot{x},
+\end{align*}
+这正是正确的运动方程。
+\subsection*{电磁场}
+也许上面一个系统是因为我们无视掉了二次的动能项而导致的约束，那么电磁场的约束更加本质而且难以避免，即$F^{00}=0$。
+
+写出电磁场的Lagrangian密度
+\[
+	\mathcal{L}(A_\mu,\partial_\nu A_\mu)=-\frac{1}{16\pi}F_{\mu\nu}F^{\mu\nu}-1A_\mu J^\mu,
+\]
+求其对偶场
+\[
+	\Pi^\mu=\frac{\partial \mathcal{L}}{\partial \dot A_\mu}=\frac{\partial \mathcal{L}}{\partial \partial_0A_\mu}=-\frac{1}{8\pi}F^{\rho\nu}\frac{\partial}{\partial \partial_0A_\mu}F_{\rho\nu}=-\frac{1}{4\pi}F^{0\mu},
+\]
+所以有自然的约束$\Pi^\mu=0$.这就意味着接下来如果用
+\[
+	H=\int\dd^4 \bm{x}\, \left(\Pi^\mu\dot{A}_\mu-\mathcal{L}\right)
+\]
+来写出Hamiltonian时，无法用$\Pi^\mu$和$A_\mu$解出全部的$\dot{A}_\mu$.
+
+\section{Dirac括号}
+假设一些数学上可能出现的问题这里都不会出现，再假设系统的Hamiltonian不含时，即这是一个能量守恒系统。对于经典力学而言，广义动量和广义坐标之间的约束就是确定了一个相空间之中的曲面，如果（至少在局部）能够选取新的广义动量和广义坐标，那么我们就又得到了一个无约束系统，他的运动方程直接由新坐标和动量的正则方程确定，这样、就解决了约束问题。这节的主要内容基于Toshihide Maskawa和Hideo Nakajima的论文\emph{Singular Lagrangian and the Dirac-Faddeev Method---
+Existence Theorem of Constraints in 'Standard Form'}.
+
+为描述Hamilton力学，辛几何是方便的。辛几何默认存在了一个闭的非退化2-形式
+\begin{equation}
+	\Omega=-\sum_{i=1}^n\dd p^i\wedge \dd q^i,
+\end{equation}
+通过这个2-形式，可以定义一个从光滑函数到矢量场的映射$f\mapsto X_f$通过
+\begin{equation}
+	\Omega(X_f,Y)=\dd f(Y)=Yf,
+	\label{s2:1}
+\end{equation}
+其中$Y$是任意矢量场，而$f$是一个光滑函数。
+
+在局部，选取一个坐标卡，2-形式$\Omega$写作
+\[
+	\Omega=\frac{1}{2}\Omega_{ij} \dd x^i\wedge \dd x^j,
+\]
+其中$\Omega_{ij}=[x^i,x^j]$，不妨再通过$\Omega^{ij}\Omega_{jk}=-\delta^i_k$定义$\Omega^{ij}$，这样$X_f$就写作
+\[
+	X_f=\Omega^{ij}\partial_j f\partial_i.
+\]
+对于这样一个矢量场，可以通过
+\[
+	\left.\frac{\dd }{\dd t}\right|_{t=0}g_f^t(x)=X_f(x)
+\]
+给出他的相流（单参同胚映射）$g_f^t$.
+
+通过2-形式$\Omega$，Possion括号就可以写成坐标无关的形式
+\begin{equation}
+	[f,g]_{\mathrm{P}}=\Omega(X_f,X_g)=-X_fg.
+	\label{s2:2}
+\end{equation}
+使用Possion括号，则
+\[
+	\Omega^{ij}=\bigl[x^i,x^j\bigr]_{\mathrm{P}},\quad X_f=-[f,x^i]\partial_i,
+\]
+且Possion括号和矢量场之间的Lie括号的关系为
+\begin{equation}
+	[X_f,X_g]=-X_{[f,g]_{\mathrm{P}}}.
+\end{equation}
+
+靠着相流的语言，可以证明
+\[
+	[F,G]_{\mathrm{P}}(x)=\left.\frac{\dd }{\dd t}\right|_{t=0}F\bigl(g_G^t(x)\bigr),
+\]
+如果$[F,G]_{\mathrm{P}}=0$，则称$F$和$G$相互对合。从相流方面来看，$F$和$G$相互对合就是指$F$是$G$的相流的首次积分，这个很容易从上面式子的右侧看出来，同时，因为$[G,F]_{\mathrm{P}}=-[F,G]_{\mathrm{P}}=0$，所以$G$也是$F$的相流的首次积分，因此称为相互。
+
+% 如果我们一个$2n$维的相空间和有$r$个相空间的约束$\{f^i\}$，粒子的状态被限制在了这族约束确定的曲面上，这种时候，约束应该是状态的相流的首次积分，即相点永远在这个曲面上运动，所以首先应该有$[H,f^i]_{\mathrm{P}}=0$对任意的$i$都成立。
+
+现在有$N$个约束$\{f^i\}$，他决定了一个曲面$M=M(f)$，我们只考虑矩阵$[f^i,f^j]_{\mathrm{P}}$在$M$上的限制$[f^i,f^j]_{\mathrm{P}}|_M$常秩的情况，设他的秩为$m$。适当对约束进行线性组合，不妨将$[f^i,f^j]_{\mathrm{P}}|_M$看作块对角矩阵，除去右下角的$m\times m$矩阵之外的矩阵元都是0，他的行列式不为0，但因为他是反对称的，所以$m$必须是偶数，记$m=2s$以及$r=N-2s$，此时我们称这个约束$M$是$(r,s)$型约束。其中$r$指的是第一类约束，对应于$[f^i,\eta]_{\mathrm{P}}|_M=0$的情况，其中$\eta=a_if^i$，$a_i$是任意函数。而$s$指的是第二类约束，即除了第一类约束的约束。
+
+现在假设有$(r,s)$型约束$\{\phi^i,\psi^\alpha\}$，其中$\{\phi^i\}$是第一类约束，而$\{\psi^\alpha\}$是第二类约束，定义
+\[
+	V=\bigl\{c_i\phi^i+d_\alpha \psi^\alpha: c_i,\,d_\alpha\text{ are arbitrary functions.}\bigr\},
+\]
+那么
+\[
+	A=\bigl\{g: [g,V]_{\mathrm{P}}\subseteq V\bigr\}
+\]
+是那些满足$[g,V]_{\mathrm{P}}|_M=0$的函数的集合，他构成一个代数，加法乘法显然，至于Possion括号来自于Jacobi恒等式。可以看到，第一类约束属于$V_0=A\cap V$.他是$A$的子代数且满足$AV_0\subseteq V_0$和$[A,V_0]_{\mathrm{P}}\subseteq V_0$，所以$V_0$是$A$的理想，可以顺便搞一个商代数$A^*=A/V_0$.值得一提的是，在$V_0$中还能有第二类约束的高阶项。
+
+设第一类约束$\phi^i$以及$f\in A$，则$[f,\phi^i]_{\mathrm{P}}|_M=0$。反过来，如果有一个函数$g$满足$g|_M=f|_M$且对所有的第一类约束都有$[g,\phi^i]_{\mathrm{P}}|_M=0$，可以计算有
+\[
+	[g,\psi^\alpha]_{\mathrm{P}}|_M=[g,\psi^\mu]_{\mathrm{P}}|_M\delta^{\alpha}_{\mu},
+\]
+定义矩阵$D_{\mu\nu}$是矩阵$[\psi^\mu,\psi^\nu]_{\mathrm{P}}$的逆矩阵，即满足$D_{\mu\nu}[\psi^\nu,\psi^\alpha]_{\mathrm{P}}=\delta_{\mu}^{\alpha}$，那么
+\[
+	[g,\psi^\alpha]_{\mathrm{P}}|_M=\bigl([g,\psi^\mu]_{\mathrm{P}}D_{\mu\nu}[\psi^\nu,\psi^\alpha]_{\mathrm{P}}\bigr)|_M,
+\]
+构造
+\[
+	g^*=g-[g,\psi^\mu]_{\mathrm{P}}D_{\mu\nu}\psi^\nu,
+\]
+容易验证$[g^*,\psi^\mu]_{\mathrm{P}}|_M=0$，即$g^*\in A$，以及$g^*|_M=g|_M=f_M$，所以$g^*$和$f$最多只是差了一个$V_0$中的元素，而在$A^*$是唯一确定的。这样我们就看到，所有满足$[g,\phi^i]_{\mathrm{P}}|_M=0$中的函数$g$都唯一确定了$A^*$中的元素$g^*$。
+
+下面首先要消除所有的第一类约束。
+\begin{theo}
+	如果$M$是$(r,s)$型约束，那么存在一套正则坐标使得
+	\[
+		M=M(q^1,\cdots,q^{r+s};p^{r+1},\cdots,p^{r+s}).
+	\]
+	即$M$由方程$q^1=0,\cdots,q^{r+s}=0$和$p^{r+1}=0,\cdots,p^{r+s}=0$确定。
+\end{theo}
+这个定理在原则上将一大类约束简化到了某些正则坐标为0的情况。对于原本的约束$M=M(\phi^1,\cdots,\phi^{r};\psi^{1},\cdots,\psi^{2s})$，应该有
+\[
+	\phi^i=\sum_{j=1}^rA^i_jq^j+\sum_{k=1}^{2s}B^i_k\xi^k,
+\]
+其中$\{\xi^k\}=\{q^{r+1},\cdots,q^{r+s},p^{r+1},\cdots,p^{r+s}\}$，以及$B^i_k\in A$且$\det(A^i_j)\neq 0$.
+
+如果函数$f$（当然最重要的就是$H$）满足$[f,\phi^i]_{\mathrm{P}}|_M=0$，那么
+\[
+	[f,\phi^i]_{\mathrm{P}}|_M=\sum_{j=1}^rA^i_j|_M[f,q^j]_{\mathrm{P}}|_M=-\sum_{j=1}^rA^i_j|_M\left.\frac{\partial f}{\partial p^j}\right|_M,
+\]
+所以
+\[
+	\left.\frac{\partial f}{\partial p^j}\right|_M=0.
+\]
+对所有$j\leq r$成立，而$p^j$不是约束，那么
+\[
+	\frac{\partial f|_M}{\partial p^j}=\left.\frac{\partial f}{\partial p^j}\right|_M=0,
+\]
+这就是说$f|_M$不显含$p^j$，所以我们可以对$j\leq r$取$p^j=0$.设对$j\leq r$选定$p^j=0$构成的约束为$M'$，那么系统就应该在约束$M_0=M'\cap M=M_0(q^1,\cdots,q^{r+s};p^1,\cdots,p^{r+s})$内，这是一个$(0,r+s)$型约束。这样我们就通过添加几个约束消去了全部的第一类约束。对任意的$g$都可以通过
+\[
+	g^*=g-[g,\psi^\mu]_{\mathrm{P}}D_{\mu\nu}\psi^\nu
+\]
+构造一个$A^*$中的元素$g^*$。他对$i\leq r+s$成立
+\begin{equation}
+	g^*|_{M_0}=g|_{M_0},\quad \left.\frac{\partial g^*}{\partial q^i}\right|_{M_0}=\left.\frac{\partial g^*}{\partial p^i}\right|_{M_0}=0.
+	\label{s2:3}
+\end{equation}
+所以$g^*$就可以看成形式上无约束系统的物理量。
+
+更一般地，如果系统已经选定了一套坐标$\{\chi^1,\cdots,\chi^r,\eta^{r+1},\cdots,\eta^{2n}\}$，如果在$M$只有$[\chi^i,\phi^j]_{\mathrm{P}}$可能不为零，那么按照上面的思路
+\[
+	[f,\phi^i]_{\mathrm{P}}|_M=\sum_{j=1}^r\left.\frac{\partial f}{\partial \chi^j}\right|_M[\chi^j,\phi^i]_{\mathrm{P}}|_M=0,
+\]
+如果附加条件$\det\bigl([\chi^j,\phi^i]_{\mathrm{P}}\bigr)|_M\neq 0$，那么自然就有
+\[
+	\frac{\partial f|_M}{\partial \chi^j}=\left.\frac{\partial f}{\partial \chi^j}\right|_M=0,
+\]
+于是可以选定$\chi^j=0$.此时$(0,r+s)$型约束写作$M_0\bigl(\psi^{1},\cdots,\psi^{2(r+s)}\bigr)$。这种约束最常见的是某个正则坐标为常数的情况，对于这种约束，直接将他的对偶坐标取作零即可。
+
+运动方程的确定靠Possion括号，正如前面知道的，在没有约束的时候，运动方程写作$\dot{p}=[p,H]_{\mathrm{P}}$。因为现在处理是约束系统，对物理量而言，需要改成形式上没有约束的物理量，这样我们应该处理的是$[f^*,g^*]_{\mathrm{P}}|_{M_0}$，直接计算易得
+\[
+	[f^*,g^*]_{\mathrm{P}}|_{M_0}=\bigl([f,g]_{\mathrm{P}}-[f,\psi^\mu]_{\mathrm{P}}D_{\mu\nu}[\psi^\nu,g]_{\mathrm{P}}\bigr)|_{M_0},
+\]
+定义所谓的Dirac括号$[*,*]_{\mathrm{D}}$如下
+\begin{equation}
+	[f,g]_{\mathrm{D}}=[f,g]_{\mathrm{P}}-[f,\psi^\mu]_{\mathrm{P}}D_{\mu\nu}[\psi^\nu,g]_{\mathrm{P}},
+	\label{s2:4}
+\end{equation}
+他满足
+\[
+	[f,g]_{\mathrm{D}}|_{M_0}=[f^*,g^*]_{\mathrm{P}}|_{M_0}.
+\]
+如果采用约束的标准形式$M_0(q^1,\cdots,q^{r+s};p^1,\cdots,p^{r+s})$，此时Dirac括号$[*,*]_{\mathrm{D}}$写作
+\begin{equation}
+	[f,g]_{\mathrm{D}}|_{M_0}=\sum_{i=r+s+1}^{n}\left(\frac{\partial f|_{M_0}}{\partial q^i}\frac{\partial g|_{M_0}}{\partial p^i}-\frac{\partial f|_{M_0}}{\partial p^i}\frac{\partial g|_{M_0}}{\partial q^i}\right),
+	\label{s2:5}
+\end{equation}
+可以看到这就是对于后$n-(r+s)$组正则变量的Possion括号。
+结合\eqref{s2:3}和\eqref{s2:5}，我们所做的就是对约束系统选取了一套正则坐标，使得他形式上变成了没有最后几组正则坐标的无约束系统一样。
+
+总结一下Hamilton形式化一个约束系统的步骤，首先写出所有约束，然后加进几个新的约束去掉所有的第一类约束，最后计算出Dirac括号就可以得到正确的运动方程。
+
+回到强匀强磁场中的电荷的例子，两个约束分别为
+\begin{align*}
+	f_1&=p_x+\frac{eB_0}{2}y,\\
+	f_2&=p_y-\frac{eB_0}{2}x,
+\end{align*}
+因为$[f_1,f_2]_{\mathrm{P}}=eB_0\neq 0$，所以他们都是第二类约束，直接的计算就得到了
+\[
+	D=\frac{1}{eB_0}\begin{pmatrix}
+	&-1\\
+	1&
+	\end{pmatrix}
+\]
+然后运动方程应该为
+\begin{align*}
+	\dot{p}_x&=[p_x,H]_{\mathrm{D}}\\
+	&=[p_x,H]_{\mathrm{P}}-[p_x,f_1]_{\mathrm{P}}D_{12}[f_2,H]_{\mathrm{P}}-[p_x,f_2]_{\mathrm{P}}D_{21}[f_1,H]_{\mathrm{P}}\\
+	&=-\frac{e}{2}\partial_x \varphi,
+\end{align*}
+代入约束$p_x=-eB_0y/2$就得到一个运动方程
+\[
+	B_0\dot{y}=\partial_x \varphi.
+\]
+剩下一个运动方程同理由$\dot{p}_y=[p_y,H]_{\mathrm{D}}$给出。
+
+% 最后的例子是相对论粒子的运动，他的Lagrangian写作$L_s=-mc-\varphi$, 他的约束是$p^\mup_\mu-m^2c^2=0$. 首先计算正则动量
+% \[
+% 	P_\mu=\partial_\mu L_s=-\varphi
+% \]
+
+尽管这节的全部内容都是在经典力学框架内的，但是通过导数到变分算符的转变，可以将其完全形式地移动到场论中去。对于约束系统场的量子化，Possion括号与对易子的转变这里应该改成Dirac括号与对易子的改变。
+% \begin{pro}
+% 对于$r$个独立的函数$\{f^i\}$，且满足$[f^i,f^j]_{\mathrm{P}}=C^{ij}(f)$，其中$C^{ij}$只是约束$\{f^i\}$的函数，那么存在局部坐标$\{x^1,\cdots,x^{2n}\}$使得$[x^i,f^j]_{\mathrm{P}}=0$对$i>r$都成立。
+% \end{pro}
+% \begin{proof}
+% 	下面用$X^i$代替$X_{f^i}$，可以计算得
+% 	\[
+% 		[X^i,X^j]=-X_{C^{ij}}=-\frac{\partial C^{ij}}{\partial f^k}X^k,
+% 	\]
+% 	这就是矢量场的Frobenius条件，利用Frobenius' theorem\footnote{可以参考陈省身的《微分几何讲义》的1.4节和3.2节。}，存在局部坐标系$\{x^i\}$使得$\{\partial_1,\cdots,\partial_r\}$张成$\{X^i\}$张成的空间，此时对于$i>r$成立$\dd x^i=0$，特别地
+% 	\[
+% 	0=\dd x^i(X^j)=\Omega\bigl(X_{x^i},X^j\bigr)=[x^i,f^j]_{\mathrm{P}},
+% 	\]
+% 	对任意的$i>r$成立，其中第一个等号用了\eqref{s2:1}，第二个等号用了\eqref{s2:2}.
+% \end{proof}
+	
+% 一族坐标$\{x^i\}$被称为$2r+m$维子正则坐标，如果$1\leq i \leq 2r+m\leq 2n$且满足
+% \[
+% \begin{cases}
+% 	[x^i,x^{j+r}]_{\mathrm{P}}=\delta^{ij},& i,j=1,\cdots,r;\\
+% 	[x^i,x^j]_{\mathrm{P}}=0,& j>2r.
+% \end{cases}
+% \]
+% \begin{pro}
+% 如果存在$2r+m$维子正则坐标$\{x^i\}$，那么存在一个局部坐标$\{y^i\}$使得当$1\leq i \leq 2r+m$有$x^i=y^i$，当$i>2r+m$有$[y^i,x^j]=0$.
+% \end{pro}
+% 	从上一个命题，存在一个局部坐标$\{y^i_0\}$使得$[y_0^i,x^j]_{\mathrm{P}}=0$在$i>2r+m，j\leq 2r+m$的时候成立。从$\{y^1_0,\cdots,y^{2r+m}_0\}$中选$m$个函数，从$\{y^1_{2r+m+1},\cdots,y^{2n}_0\}$中选$2(n-r-m)$个函数，使得把他们和$\{x^i\}$合并起来构成的$\{y^i\}$的个数是$2n$且$\{\dd y^i\}$处处线性无关，这样就是我们所需要的局部坐标了。
+
+% 	证明$\{y^i\}$是独立的，为此只要去计算
+% 	\[
+% 		\det \left(\frac{\partial y}{\partial y_0}\right)\neq 0
+% 	\]
+% 	就可以了，这里略去。
+% \begin{pro}
+% 如果存在$2r+m$维子正则坐标$\{x^i\}$，那么存在正则坐标$\{q,p\}$包含他。
+% \end{pro}
+
+% \begin{pro}
+% 如果存在$s+t$个独立的函数$(\xi^i;\eta^\alpha)$，其中$1\leq i \leq s$和$1 \leq \alpha \leq t$，而$M=M(\xi^i;\eta^\alpha)$是由方程$\xi^i=0,\eta^\alpha=0$确定的曲面，如果满足
+% \[
+% 	[\xi^i,\xi^j]=0,\quad [\xi^i,\eta^\alpha]|_M=0,
+% \]
+% 则存在一组正则坐标和$t$个独立的函数$\hat{\eta}^\alpha$满足
+% \[
+% 	q^i=\xi^i,\quad [p^i,\hat{\eta}^\alpha]=[q^i,\hat{\eta}^\alpha]=0
+% \]
+% 对任意的$1\leq i \leq s$和$1 \leq \alpha \leq t$都成立，且
+% \[
+% 	M(\xi^i;\eta^\alpha)=M(\xi^i;\hat{\eta}^\alpha).
+% \]
+% \end{pro}
+
+\section{带电粒子的运动}
+这节开始

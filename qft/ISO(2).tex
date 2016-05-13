@@ -1,0 +1,168 @@
+%!TEX program = xelatex
+\documentclass[11pt]{article}
+\usepackage{amssymb,amsfonts,amsthm,amsmath,bm,microtype}
+\usepackage[left=21mm,text={148mm,200mm},paperwidth=185mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
+\usepackage[all]{xy}
+\begin{document}
+\title{The physics under the symmetry of $SO\left(2,1\right)$}
+\author{Buwai Lee@Physics School, Nanjing University}
+\maketitle
+\begin{abstract}
+	We study the physics under the symmetry of $SO\left(2,1\right)$ as our solution of a exercise of Weinberg V1 Chapter 2. All things happen like the case of $SO\left(3,1\right)$, but simpler. The notations used in this paper are almost in accordance with the Weinberg except the space metric $\eta_{\mu \nu}$ that $\eta_{00}=-1$, $\eta_{11}=\eta_{22}=1$.
+\end{abstract}
+
+The key question of the symmetry is to work out the topology and the representions of the group of the transformation according to this symmetry, usually a Lie group, with its infinitesimal generator, i.e. its Lie algebra. The group here is $SO\left(2,1\right)$. We don't work out the whole Poincar\'{e} group of $(2+1)$ spacetime because the represention of the translataions is $U(1,a)\Psi_{p,\sigma}=e^{-ip\cdot a}\Psi_{p,\sigma}$ which is not different from the one in any dimensions.
+
+If we denote $\left(J^{\mu\nu}\right)$ as
+\begin{equation}
+\left(J^{\mu\nu}\right)=
+\bordermatrix{
+	   &1      &2     &0\cr
+	1  &0      &J     &-K_1\cr
+	2  &-J     &0     &-K_2\cr
+	0  &K_1    &K_2   &0
+},
+\end{equation}
+using the general structures of Lie algebra of Poincar\'{e} group (2.4.12) in \cite{1}
+\[
+	i\left[J^{\mu\nu},J^{\rho \sigma}\right]=
+	\eta^{\mu\nu}J^{\mu \sigma}-
+	\eta^{\mu \rho}J^{\nu \sigma}-
+	\eta^{\sigma\mu}J^{\rho \nu}+
+	\eta^{\sigma\nu}J^{\rho \mu},
+\]
+we can find
+\begin{align}
+	\left[K_1,K_2\right]&=-iJ,\\
+	\left[J,K_1\right]&=iK_2,\\
+	\left[J,K_2\right]&=-iK_1
+\end{align}
+in our case. And we should have
+\begin{align}
+	&J\Psi_{p,\sigma}=\sigma\Psi_{p,\sigma}.
+\end{align}
+
+When dealing with the representation of the group, we can reduce it to the problem of finding the representations of the little group apart from the questions of normalization, which we call it the method of induced representations.\cite{2} In our case, we can find the little group has the forms shown in Table 1.
+\begin{table}[ht]
+\centering
+\begin{tabular}{l c c}
+&Standard $k^\mu$ & Little Group\\
+\hline \\
+(a) $p^2=-M^2,p^0>0$ & $(0,0,M)$ & $SO\left(2\right)$\\
+\\
+(b) $p^2=0,p^0>0$ & $(0,\kappa,\kappa)$ & $ISO\left(1\right)$\\
+\\
+(c) $p^\mu=0$ & $(0,0,0)$ & $SO\left(2,1\right)$\\
+\\
+\hline
+\end{tabular}
+\caption{Little Group}
+\end{table}
+
+Situation (a) describes the positive mass partical, (b) describes the zero mass partical, and (c) describes the vacuum. It seems that there's no need to say more on (c).
+
+\section{The Topology of $SO(2,1)$}
+Firstly, we should say something about the topology of $SO(2,1)$. $SO(2,1)$ is a subgroup of $SO(3,1)$, and $SO(3,1)$ is doubly connected. As the same reason, we should have  $SO(2,1)$ also doubly connected.
+
+If we write a vector $V$ in spacetime by a Hermitian $2\times 2$ matrix
+\[
+	v=\begin{pmatrix}
+		V^0&V^1-iV^2\\
+		V^1+iV^2&V^0
+	\end{pmatrix},
+\]
+then $\det v=(V^0)^2-(V^1)^2-(V^2)^2=-V_\mu V^\mu$.
+
+The property of Hermiticity will be preserved under the transformation
+\[
+	v \mapsto \lambda^\dag v \lambda
+\]
+with $\lambda$ an arbitrary complex matrix. Futhermore, the determinant is preserved by the transformation above provided that
+\[
+\left|\det \lambda\right|=1.
+\]
+The transformation is preserved by the change of the global phase of $\lambda$(which means we can define an equivalent class of $\lambda$), so it is convenient for us to choose $\det \lambda=1$ and $\lambda \in SL(2,\mathbb{C})$.
+
+Such transformation define a real linear transformtion $\Lambda(\lambda)$ by $V\mapsto \Lambda(\lambda)V$ with $v\mapsto  \lambda^\dag v \lambda$. Since it keeps $V_\mu V^\mu$ unchanged, it is a Lortenz transformation.
+
+\section{The Representions of Little Group}
+\subsection{Mass positive-Definite}
+The little group of this situation is $SO\left(2\right)$ which is a Abelian group. According to the Schur's lemma, its irreducible representations are  all one dimensional.
+
+As usual notion, we can describe the elements of $SO\left(2\right)$ by matrix
+\begin{equation}
+	g\left(\theta\right)=
+	\begin{pmatrix}
+		\cos \theta& -\sin \theta&0\\
+		\sin \theta& \cos \theta&0\\
+		0&0&1
+	\end{pmatrix},
+\end{equation}
+and the representations of its Lie algebra are spanned by $J$, which is also one dimensional. Then its representations acting on state vectors is
+\begin{equation}
+	U(g(\theta))\Psi_{k,\sigma}=e^{i\theta J}\Psi_{k,\sigma}=e^{i\theta \sigma}\Psi_{k,\sigma}.
+\end{equation}
+The $\sigma$ above should be discrete because of the topocial reason that $SO(2,1)$ is doubly connected. Thus
+\[
+U(W)\Psi_{k,\sigma}=\sum_{\sigma'} D_{\sigma'\sigma}(W)\Psi_{k,\sigma'}.
+\]
+thus
+\begin{equation}
+	D_{\sigma'\sigma}\left(g\left(\theta\right)\right)=e^{i\theta \sigma}\delta_{\sigma'\sigma}.
+\end{equation}
+\subsection{Mass Zero}
+The key question in this case is to determine the elements in $ISO\left(1\right)$. On one hand, $ISO\left(1\right) \subset SO\left(2,1\right)$, on the other hand the elements in $ISO\left(1\right)$ keep $\left(k^\nu \right)=\left(0,\kappa,\kappa\right)$ invariant. These two conditions are described by
+\begin{align}
+	&\eta_{\mu\nu}\Lambda^{\mu}_{\phantom{\mu}\rho}\Lambda^{\nu}_{\phantom{\nu}\sigma}=\eta_{\rho\sigma},\\
+	&\Lambda^{\mu}_{\phantom{\mu}\nu} k^\nu=k^\mu.
+\end{align}
+After a direct but laborious calculation, we can find the form of $\Lambda^{\mu}_{\phantom{\mu}\nu}$ described by
+\begin{equation}
+\label{ISO(1)}
+	\left(\Lambda^{\mu}_{\phantom{\mu}\nu}\right)\left(\varphi\right)=
+	\begin{pmatrix}
+		1 & -\sqrt{2}\varphi &\sqrt{2}\varphi\\
+		\sqrt{2}\varphi &1-\varphi^2 &\varphi^2\\
+		\sqrt{2}\varphi &-\varphi^2 &1+\varphi^2
+	\end{pmatrix}.
+\end{equation}
+It is again an abelian group, and its Lie algebra is spanned by $\left(A^{\mu}_{\phantom{\mu}\nu}\right)$ with
+\[
+	\sqrt{2}\left(A^{\mu}_{\phantom{\mu}\nu}\right)=
+	\left.\frac{\mathrm{d}}{\mathrm{d}\varphi}\left(\Lambda^{\mu}_{\phantom{\mu}\nu}\right)\left(\varphi\right)\right|_{\varphi=0}
+	=\sqrt{2}
+	\begin{pmatrix}
+		0 &-1 &1\\
+		1 &0  &0\\
+		1 &0  &0
+	\end{pmatrix},
+\]
+or
+\[
+	\left(A^{\mu\nu}\right)
+	=
+	\begin{pmatrix}
+		0 &-1 &-1\\
+		1 &0  &0\\
+		1 &0  &0
+	\end{pmatrix},
+\]
+or even
+\begin{equation}
+	U\left(A\right)=J-K_1.
+\end{equation}
+Thus
+\begin{equation}
+	U\left(\Lambda\left(\varphi\right)\right)\Psi_{k,\sigma}=e^{i\varphi\left(J-K_1\right)}\Psi_{k,\sigma},
+\end{equation}
+where $\varphi$ is a continuous degree.
+
+However, just like the case of $ISO \left(2\right)$, we should believe that there's no such a continuous degree $\varphi$ can be observed by experiment, which means that $U\left(\Lambda\left(\varphi\right)\right)=1$ or $U\left(\Lambda\left(\varphi\right)\right)\Psi_{k,\sigma}=\Psi_{k,\sigma}$. Therefore,
+\begin{equation}
+	D_{\sigma'\sigma}\left(\Lambda\left(\varphi\right)\right)=\delta_{\sigma'\sigma}.
+\end{equation}
+\begin{thebibliography}{99}
+\bibitem[1]{1}Weinberg, S.. The Quantum Theory of Fields Volume 1[M]. England:University of Cambridge, 1995. 60
+\bibitem[2]{2}Weinberg, S.. The Quantum Theory of Fields Volume 1[M]. England:University of Cambridge, 1995. 62-67
+\end{thebibliography}
+\end{document}

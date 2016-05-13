@@ -1,0 +1,54 @@
+\noindent \begin{large}Table of Formulas in 3D Vector Analysis\end{large}
+\vspace{3ex}
+\\
+On grad:
+ 
+$\nabla(fg)=f\nabla g+g\nabla f$
+
+$\nabla(A\cdot B)=(A\cdot \nabla)B+(B\cdot \nabla)A+A\times (\nabla \times B)+B\times (\nabla \times A)$
+
+$\displaystyle{\nabla \left(\frac{1}{|r-r'|} \right) = -\frac{r-r'}{|r-r'|^3}}$\\
+\\
+On div:
+ 
+$\nabla\cdot(fA) = (\nabla f) \cdot A + f\nabla\cdot A $
+
+$\nabla\cdot(A \times B) = B\cdot (\nabla \times A)-A\cdot (\nabla \times B)$
+
+$\displaystyle{\nabla\cdot \left(\frac{r-r'}{|r-r'|^3} \right) = 4\pi \delta^3(r-r')}$\\
+\\
+On rot:
+
+$\nabla\times(fA)=f\nabla \times A + \nabla f \times A $
+
+$\nabla\times(A\times B)=(B\cdot \nabla)A-(A\cdot \nabla)B+(\nabla\cdot B)A-(\nabla\cdot A)B$
+
+$\nabla\times(\nabla\times A)=\nabla(\nabla\cdot A)-\nabla \cdot (\nabla A)=\nabla(\nabla\cdot A)-\nabla^2 A$
+
+$\hat{n}\cdot (\nabla\times \hat{n})=0$  ($\hat{n}$ is the normal vector of a surface)\\
+\\
+On $\nabla^2$:
+
+$\nabla^2(fg)=g\nabla^2 f+2\nabla f\cdot \nabla g+f\nabla^2 g$
+
+$\nabla \cdot (f\nabla g)=f\nabla^2 g+\nabla f\cdot \nabla g$
+
+$\nabla \cdot (f\nabla g-g\nabla f)=f\nabla^2 g-g\nabla^2 f$
+
+$\nabla \cdot (\nabla^2 f)=\nabla^2(\nabla \cdot f)$
+
+$\displaystyle{\nabla^2\left(\frac{1}{|r-r'|} \right) =-4\pi \delta^3(r-r')}$\\
+\\
+On Integral:
+
+$\displaystyle{\int_S \mathrm{d}\omega=\int_{\partial S}\omega}$  (Stokes Theorem)
+
+$\displaystyle{\int_V \mathrm{d}V(\nabla*f)=\int_{\partial V}\mathrm{d}\sigma *f }$  (When $*=\cdot$, it is the famous Gauss Formula.)
+
+$\displaystyle{\int_V \mathrm{d}V(A\cdot \nabla)B =\int_{\partial V}A\cdot\mathrm{d}\sigma}B$   (if $\nabla \cdot A=0$)
+
+$\displaystyle{\int_S \mathrm{d}\sigma \cdot (\nabla \times A)=\int_{\partial S}\mathrm{d}l\cdot A }$  (the traditional Stokes Formula)
+
+$\displaystyle{\int_S (\mathrm{d}\sigma \times \nabla)\times A=\int_{\partial S}\mathrm{d}l \times A}$
+
+$\displaystyle{\int_S \mathrm{d}\sigma \times \nabla f=\int_{\partial S}\mathrm{d}l\, f }$\\
