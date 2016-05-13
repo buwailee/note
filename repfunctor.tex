@@ -1,0 +1,193 @@
+%!TEX program = xelatex
+\documentclass[10pt]{article}
+\synctex=1
+\usepackage{amssymb,amsfonts,amsthm,amsmath,bm,mathrsfs}
+%\usepackage{extarrows}
+\usepackage[left=21mm,text={148mm,200mm},paperwidth=185mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{titletoc}
+	\theoremstyle{plain}
+	\newtheorem{pro}{Proposition}
+	\newtheorem{theo}{Theorem}
+	\newtheorem{defi}{Definition}
+	\newtheorem{lem}{Lemmma}
+	\newtheorem{cor}{Corollary}
+\usepackage{microtype}
+
+\include{defs}
+\newcommand{\cc}{\mathcal{C}}
+
+\begin{document}
+
+\no{1}. Suppose $\cc$ is a category, $\cc^\circ$ is its dual category. Thus any contravariant functor $\varphi:\cc\to D$ is a (covariant) functor $\varphi:\cc^\circ\to \mathcal{D}$.
+
+\no{2}. Suppose $\cc$ and $\mathcal{D}$ are categories. We can construct a category of functors form $\cc$ to $\mathcal{D}$ by the follow steps. Firstly, the objects in \textit{Funct}$(\cc,\mathcal{D})$ are functors form $\cc$ to $\mathcal{D}$. Then, a morphism $f$ of functors from $F$ to $G$ (notation $f:F\to G$) is a family of morphisms in $\mathcal{D}$ that
+\[
+	f(X):F(X)\to G(X),
+\]
+one for each $X\in \cc$, satisfying the following condition: for all morphism $\varphi$ in $\cc$ the following diagram
+\[
+\begin{xy}
+	\xymatrix
+	{
+		F(X)\ar[rr]^{f(X)} \ar[d]_{F(\varphi)}&&G(X) \ar[d]^{G(\varphi)}\\
+		F(Y)\ar[rr]^{f(Y)}&&G(Y)
+	}
+\end{xy}
+\]
+is commutative.
+
+If $F$ is isomorphic to $G$ (notation $F\cong G$), we should have morphisms $f$ and $g$ such that $f(X)\circ g(X)=\id_{G(X)}$ and $g(X)\circ f(X)=\id_{F(X)}$ for all $X\in \cc$.
+
+\no{3}. Suppose $\hat{\cc}=\textit{Funct}(\cc^\circ,\textit{Set})$, $\forall X\in \cc$, we can associate a $\hat{X}\in \hat{\cc}$ by $\hat{X}(Y)=\Hom_\cc(Y,X)$ and $\hat{Z}(\varphi)f=f\circ \varphi$ for $\varphi \in \Hom_\cc(Y,X)$ and $f\in \Hom_\cc(X,Z)$. Then $\hat{Z}(\varphi):\hat{Z}(X)\to \hat{Z}(Y)$.
+
+\begin{pro}
+	Suppose $X$ is a set in the category \textit{Set}, it can be identified with the set $\hat{X}(e)=\Hom_{\textit{Set}}(e,X)$, where $e$ is a one-point set.
+\end{pro}
+\begin{proof}
+	Obviously.
+\end{proof}
+
+Indeed, in an arbitrary category $\cc$ an analogue of one-point set does not necessarily exist. However, by considering $\Hom_{\cc}(Y,X)$ for all $Y\in \cc$ simultaneously, we can recover complete information about an object $X\in \cc$. This is the idea of representation theory.
+
+\begin{defi}
+	A functor $F\in \hat{\cc}$ is said to be representable if $F\cong \hat{X}$ for some $X\in \cc$. One says also that the object $X$ represents the functor $F$.
+\end{defi}
+
+\begin{theo}
+$\Hom_\cc (X,Y)\cong \Hom_{\hat{\cc}} (\hat{X},\hat{Y})$.
+\end{theo}
+\begin{proof}
+	Let $\varphi:X\to Y$ be a morphism in $\cc$. We associate with $\varphi$ the morphism of functors $\hat{\varphi}:\hat{X}\to \hat{Y}$ by
+	\[
+		\hat{\varphi}(Z):\theta\mapsto\varphi\circ\theta\in \hat{Y}(Z),
+	\]
+	where $\theta\in \hat{X}(Z)$ and $X$, $Y$, $Z\in \cc$. It is clear that $\hat{\varphi}\circ \hat{\phi}=\widehat{\varphi\circ\phi}$.
+
+	Conversely, suppose $f\in \Hom_{\hat{\cc}} (\hat{X},\hat{Y})$, define map $i:\Hom_{\hat{\cc}} (\hat{X},\hat{Y})\to \Hom_\cc (X,Y)$ by 
+	\[
+		i:f\mapsto f(X)(\id_X),
+	\]
+	where $\id_X\in \Hom_\cc(X,X)=\hat{X}(X)$ and $f(\id_X)\in \hat{Y}(X)$. Then 
+	\[
+		i(\hat{\varphi})=\hat{\varphi}(X)(\id_X)=\varphi\circ \id_X=\varphi.
+	\]
+
+	On the other hand, we should show $\widehat{i(f)}=f$ when $f\in \Hom_{\hat{\cc}} (\hat{X},\hat{Y})$, and it's equivalent to show $\widehat{i(f)}(Z)=f(Z)$ for all $Z\in\cc$.
+
+	Now suppose a morphism $\varphi:Z\to X$,
+	\[
+		i(f)\circ\varphi=\widehat{i(f)}(Z)(\varphi)=f(Z)(\varphi).
+	\]
+	Using the commutativity of the diagram,
+	\[
+	\begin{xy}
+		\xymatrix{
+			\hat{X}(X)\ar[rr]^{f(X)} \ar[d]_{\hat{X}(\varphi)}&&\hat{Y}(X) \ar[d]^{\hat{Y}(\varphi)}\\
+			\hat{X}(Z)\ar[rr]^{f(Z)}&&\hat{Y}(Z)
+		}
+	\end{xy}
+	\]
+
+	\noindent then
+	\[
+		f(Z)\circ\hat{X}(\varphi)(\id_X)=\hat{Y}(\varphi)\circ f(X)(\id_X)=\hat{Y}(\varphi)(i(f))=i(f)\circ \varphi
+	\]
+	and
+	\[
+		f(Z)\circ\hat{X}(\varphi)(\id_X)=f(Z)(\id_X\circ\varphi)=f(Z)(\varphi).
+	\]
+	Thus $i$ is an isomorphism that $i:\Hom_{\hat{\cc}} (\hat{X},\hat{Y})\cong \Hom_\cc (X,Y)$.
+\end{proof}
+
+If $X$ represents the functor $F$, $\Hom_{\hat{\cc}}(\hat{Y},F)\cong \Hom_{\hat{\cc}}(\hat{Y},\hat{X})\cong\Hom_\cc(Y,X)$. If $Y$ also represents $F$, then there exists an isomorphism $\varphi:\hat{Y}\cong F$, then $i(\varphi)$ is the according isomorphism between $X$ and $Y$. Thus, the representing object of a representable functor is defined uniquely up to a isomorphism.
+
+\begin{defi}
+	Suppose $X$, $Y\in\cc$, the direct product $X\times Y$ is (upto an isomorphism) the object $Z$ representing the functor (if such functor is representable, or if such $Z$ exists)
+	\[
+		W\mapsto \hat{X}(W)\times\hat{Y}(W),
+	\]
+	where $\hat{X}(W)\times\hat{Y}(W)$ is the direct product of \textit{Set} which has been constructed directly.
+\end{defi}
+\begin{defi}
+	Suppose $X$, $Y$, $S\in\textit{Set}$, $f:X\to S$ and $g:Y\to S$, the pullback of $f$ and $g$ or the fibre product of $X$ and $Y$ is
+	\[
+		X\times_S Y=\{(x,y)\in X\times Y:f(x)=g(y)\}.
+	\]
+	In a general category $\cc$, $X\times_SY$ is defined as the object $Z$ representing the functor
+	\[
+		W\mapsto \hat{X}(W)\times_{\hat{S}(W)}\hat{Y}(W).
+	\]
+\end{defi}
+When $f=g$ are constant morphisms, $X\times_S Y\cong X\times Y$. When $f$ and $g$ are embedding, $X\times_S Y\cong X\cap Y$.
+
+The universal property can be directly vertified. Since $Z$ represents the functor $W\mapsto \hat{X}(W)\times\hat{Y}(W)$, then $\hat{Z}(W)=\hat{X}(W)\times\hat{Y}(W)$. Let $W=Z$, the image of $\id_Z\in \hat{Z}(Z)$ is that $\id_Z=(\pi_X,\pi_Y)$, where $\pi_X\in \hat{Y}(Z)$ and $\pi_Y\in \hat{Y}(Z)$. This can be writen as
+$X\xleftarrow{\pi_X} Z \xrightarrow{\pi_Y}Y$.
+
+Now suppose $p_X:W\to X$ and $p_Y:W\to Y$, then there exist $\eta=(p_X,p_Y)\in \hat{X}(W)\times\hat{Y}(W)= \hat{Z}(W)$. The last thing we should to show is that $p_X=\pi_X\circ \eta$ and $p_Y=\pi_Y\circ \eta$. Indeed, for all $z\in Z$,
+\[
+	(\pi_X,\pi_Y)((p_X,p_Y)(z))=\id_Z((p_X,p_Y)(z))=(p_X,p_Y)(z).
+\]
+
+The uniqueness of $X\times Y$ up to an isomorphism can be drived from the above theorem or universal property directly. 
+
+Because of some psychological reasons, we usually use a commutative diagram to visualize the universal property described above:
+\[
+\begin{xy}
+	\xymatrix
+	{
+		X &&\ar[ll]_{\pi_X}Z\ar[rr]^{\pi_Y}&&Y \\
+		&&\ar[urr]_{p_X}W\ar@{-->}[u]^{\eta}\ar[ull]^{p_Y}&&
+	}
+\end{xy}
+\]
+Similarly, the universal property of fibre product can be written as a commutative diagram:
+\[
+\begin{xy}
+	\xymatrix{
+		W \ar@/_/[ddr]_y \ar@{.>}[dr]|{\varphi} \ar@/^/[drr]^x \\  
+	 	& X \times_S Y \ar[d]^q \ar[r]_p & X \ar[d]_f \\
+	 	& Y \ar[r]^g & S
+	}
+\end{xy}
+\]
+
+$(A_\alpha,A_{\alpha\beta},\rho_{\alpha})$
+\[
+\begin{xy}
+	\xymatrix{
+		A \ar@/_/[ddr]_{f_\alpha} \ar@{.>}[dr]|{f} \ar@/^/[drr]^{f_\beta} \\  
+	 	& \calf(U) \ar[d]^{\rho_\alpha} \ar[r]_{\rho_\beta} & \calf(U_\beta) \ar[d]_{\rho_{\beta\alpha}} \\
+	 	& \calf(U_\alpha) \ar[r]^{\rho_{\alpha\beta}} & \calf(U_{\alpha}\cap U_\beta)
+	}
+\end{xy}
+\]
+
+Given any categorical construction, we can create the dual construction by inverting all arrows in the original construction. In such a way one can obtain the coporduct $X\coprod_S Y$ by
+\[
+\begin{xy}
+	\xymatrix{
+		W\\  
+	 	& X \coprod_S Y \ar@{.>}[lu]|{\varphi} & X \ar[l]^p\ar@/_/[ull]_x  \\
+	 	& Y \ar@/^/[uul]^y  \ar[u]_q& S\ar[u]^f\ar[l]_g
+	}
+\end{xy}
+\]
+
+
+We fix a category $\mathcal{J}$, and define the diagonal functor $\Delta:\cc\to \textit{Funct}(\mathcal{J},\cc)$ as follow:
+\begin{itemize}
+\item On objects: $\Delta X$ is the set of constant functors with the value $X$. In other words, $\Delta X(j)=X$ for all $j\in\mathcal{J}$, $\Delta X(\varphi)=\id_X$ for all morphism $\varphi$ in $\mathcal{J}$.
+\item On morphisms: Suppose $\psi:X\to Y$ is a morphism in $\cc$, $\Delta\psi:\Delta X\to \Delta Y$ is defined as follows: $\Delta\psi(j):X=\Delta X(j)\to Y=\Delta Y(j)$ for all $j\in \mathcal{J}$.
+\end{itemize}
+It is clear that $\Delta(\varphi\circ\psi)=\Delta\varphi\circ\Delta\psi$, so $\Delta$ is indeed a functor.
+
+\begin{defi}
+	Suppose $F:\mathcal{J}\to \cc$ is a functor, the (projective or inverse) limit of $F$ in the category $\cc$ according to $\mathcal{J}$ is an object $X\in\cc$ representing the functor
+	\[
+		Y\mapsto \Hom_{\textit{Funct}(\mathcal{J},\cc)}(\Delta Y,F):\cc^\circ\to \textit{Set}.
+	\]
+	The limit of $F$ is denoted by $X=\varprojlim F$.
+\end{defi}
+\end{document}

@@ -1,0 +1,232 @@
+\documentclass[8pt]{article}
+\usepackage{amssymb,amsfonts,amsthm,amsmath,bm,mathrsfs}
+%\usepackage{extarrows}
+\usepackage[left=21mm,text={148mm,200mm},paperwidth=185mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{titletoc}
+	\theoremstyle{plain}
+	\newtheorem{pro}{Proposition}
+	\newtheorem{theo}{Theorem}
+	\newtheorem{defi}{Definition}
+	\newtheorem{lem}{Lemmma}
+	\newtheorem{cor}{Corollary}
+
+\include{defs}
+
+\begin{document}
+
+A topological space $X$ can be seen as a category if we take open sets as its objects and inclusion maps as its morphisms, i.e. 
+\[
+	\Hom_{X}(U,V)=\begin{cases}
+	\bigl\{i_{UV}:U\hookrightarrow V\bigr\},& \text{if }U\osub V\osub X\text{;}\\
+	\varnothing,&\text{otherwise}.
+	\end{cases}
+\]
+
+\begin{defi}
+	A presheaf is a functor $\calf:X^\circ\to \textit{AG}$, where $X^\circ$ is the dual category of a topological space $X$ and \textit{AG} is the category of abelian groups. In other words, $\calf:X\to \textit{AG}$ is a contravariant functor. The elements $s\in \calf(U)$ are called the sections on $U$. Denote that $\rho_{UV}:=\calf(i_{UV}):\calf(V)\to\calf(U)$ and $\rho_{UV}(s)=s|_V$ for $s \in \calf(U)$.
+\end{defi}
+
+The morphisms $\varphi$ between two presheaf $\calf$ and $\calg$ is just the morphisms between two functors, that is, there exist a family of morphisms $\varphi(U):\calf(U)\to \calg(U)$ such that the following diagram is commutative.
+\[
+	\begin{xy}
+	\xymatrix{
+		\calf(U)\ar[rr]^{\varphi(U)} \ar[d]_{\rho_{UV}}&&\calg(U) \ar[d]^{\rho'_{UV}}\\
+		\calf(V)\ar[rr]^{\varphi(V)}&&\calg(V)
+	}
+	\end{xy}
+\]
+\begin{defi}
+	If $\calf$ is a presheaf on $X$, and if $p$ is a point on $X$, we define the stalk $\calf_p\in \textit{AG}$ of $\calf$ at $p$ to be the direct limit\footnote{$X$ is equiped with an order that $U>V$ if $U\subset V$. Since $\calf(U)$ are abelian groups, as $\zz$-modules, the direct limit always exists.} of the group $\calf(U)$ for all $U \osub X$ containing $p$, via the restriction maps $\rho$.
+\end{defi}
+
+We can directly construct $\calf_p=\varinjlim_{U\ni p}\calf(U)$ that 
+\[
+	\calf_p=\bigl\{\langle U,s\rangle: p\in U\osub X, s\in \calf(U)\bigr\}/\sim,
+\]
+where $\sim$ is defined as follows: Suppose $s\in\calf(U)$ and $t\in\calf(V)$, if there exists a $W\osub U\cap V\neq \varnothing$ such that $s|_W=t|_W$, then $\langle U,s\rangle=\langle V,t\rangle$ or $s\sim t$. $\calf_p$ is indeed a group since the addition can be defined by $\langle U,s\rangle+\langle V,t\rangle=\langle W,s|_W+t|_W\rangle$. 
+
+Here $\calf(U)\ni s\mapsto \langle U,s\rangle=s_p$ defines a family of morphisms $\rho_{Up}:\calf(U)\to \calf_p$ for any $U\osub X$. We can then vertify the universal property of direct product that
+\[
+\begin{xy}
+	\xymatrix{
+	&&\ar[dl]^{\rho_{Up}}\calf(U)\ar[dd]^{\rho_{UV}}\ar@/_/[lld]_{\varphi_{Vp}} \\
+	W&\ar@{-->}[l]_(0.4){\theta}\calf_p&\\
+	&&\ar[ul]_{\rho_{Up}}\calf(V)\ar@/^/[llu]^{\varphi_{Vp}}
+	}
+\end{xy}
+\]
+
+Now, suppose $\varphi:\calf \to \calg$ is a functor. The universal property of direct product 
+\[
+	\begin{xy}
+	\xymatrix{
+		&&\ar[dl]^{\rho_{Up}}\calf(U)\ar[dd]^{\rho_{UV}}\ar@/_/[lld]_{\rho'_{Up}\circ\varphi(U)} \\
+		\calg_p&\ar@{-->}[l]_(0.4){\varphi_p}\calf_p&\\
+		&&\ar[ul]_{\rho_{Vp}}\calf(V)\ar@/^/[llu]^{\rho'_{Vp}\circ\varphi(V)}
+	}
+	\end{xy}
+\]
+gives the existence of the morphism $\varphi_p:\calf_p\to \calg_p$, and the diagram
+\begin{figure}[h]
+\[
+\begin{xy}
+	\xymatrix{
+		\calf(U)\ar[rr]^{\varphi(U)} \ar[d]_{\rho_{Up}}&&\calg(U) \ar[d]^{\rho'_{Up}}\\
+		\calf_p\ar@{-->}[rr]^{\varphi_p}&&\calg_p
+	}
+\end{xy}
+\]
+\caption{The existence of $\varphi_p$}
+\label{fig1}
+\end{figure}
+
+\noindent is commutative.
+\begin{defi}
+	A sheaf is a presheaf that for any open set $U\subset X$, the complex 
+\[
+	0\rightarrow \calf(U) \xrightarrow{d_0}\prod_{i\in I}\calf(U_i) \xrightarrow{d_1}\prod_{i,j\in I}\calf(U_i\cap U_j)
+\]
+is exact for any open cover $\{U_i\}$ of $U$, where
+\[
+\begin{array}{cccl}
+	d_0:&s&\mapsto& \displaystyle{\prod_{i\in I}s|_{U_i}},\\
+	d_1:&\displaystyle{\prod_{i\in I}s_i}&\mapsto& \displaystyle{\prod_{i,j\in I}\bigl(s_i|_{U_i\cap U_j}-s_j|_{U_i\cap U_j}\bigr)}.
+\end{array}
+\]
+\end{defi}
+
+The definition can be rewritten as: For any open cover $\{U_i\}$ of any open set $U\subset X$,
+\begin{itemize}
+\item If $\forall i\in I$, $s|_{U_i}=0$, then $s=0$.
+
+\item If $\forall i,j\in I$, $s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}$, then there's a section $s\in\calf(U)$ such that $s|_{U_i}=s_i$.
+\end{itemize}
+It is not so difficult to vertify that this definition is equivalent to the old one.
+
+The following proposition (which would be false for presheves) illustrates the local nature of a sheaf.
+\begin{pro}
+	Suppose $\varphi:\calf\to\calg$ is a morphism of sheaves on a topological space $X$. Then $\varphi$ is a isomorphism if and only if the induced map on the stalk $\varphi_p:\calf_p\to \calg_p$ is an isomorphism for every $p\in X$.
+	\label{pro:1}
+\end{pro}
+\begin{proof}
+	p.63 on Hartshorne.
+\end{proof}
+\begin{defi}
+	Let $\varphi:\calf\to\calg$ be a morphism of presheaves. We define the presheaf kernel of $\varphi$, presheaf of cokernel of $\varphi$, and presheaf image of $\varphi$ to be the presheaves given by $U\mapsto \ker(\varphi(U))$, $U\to \coker(\varphi(U))$, and $U\mapsto \im(\varphi(U))$ respectively.
+\end{defi}
+\begin{pro}
+If $\varphi:\calf\to\calg$ is a morphism of sheaves, then the presheaf $U\mapsto \ker(\varphi(U))$ is a sheaf.
+\end{pro}
+\begin{proof}
+	Let $\{U_i\}$ be an open cover of $U$, and $s_i$ is local section on $U_i$. 
+
+	\begin{itemize}
+		\item Suppose $s\in \ker(\varphi(U))$ and $s|_{U_i}=0$, since $\calf$ is a sheaf, $s=0$.
+
+		\item Suppose $s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}$, we need to show that there exists a global section $s\in \ker(\varphi(U))$ such that $s|_{U_i}=s_i$. Since $\calf$ is a sheaf, it's nature that there's $s\in \calf(U)$ such that $s|_{U_i}=s_i$. The last thing to vetify is $\varphi(U)(s)=0$. Restrict $\varphi(U)(s)$ on $U_i$, then
+		\[
+			\rho'_{UU_i}\circ \varphi(U)(s)=\varphi(U_i)(\rho_{UU_i}s)=\varphi(U_i)(s_i)=0,
+		\]
+		so $\varphi(U)(s)\in \calg(U)$ vanishes locally. Since $\calg$ is a sheaf, it also 	vanishes globally, i.e. $\varphi(U)(s)=0$.
+	\end{itemize}
+	Thus $U\mapsto \ker(\varphi(U))$ is a sheaf.
+\end{proof}
+However, the presheaves $\coker(\varphi)$ and $\im(\varphi)$ need not to be sheaves. Actually, the key point in the proof above is that $\ker$ is compatible with the sheaf property of $\calg$. Then we come to an important notion of a sheaf associated to a presheaf, i.e. sheafification.
+
+Roughly speaking, the sheafification of a presheaf $\calf$ is the "smallest" sheaf with the same stalks as $\calf$. Because of the "smallest", sheafification should have the universal property.
+
+\begin{pro}
+	Given a presheaf $\calf$, there is a sheaf $\calf^+$ and a morphism $\theta$ make the diagram
+	\begin{center}
+	\leavevmode
+		\xymatrix{
+			\calf \ar[rr]^\theta\ar[d]_\varphi&& \calf^+\ar@{-->}[lld]^{\psi}\\
+			\calg&&
+		}
+	\end{center}
+	commutative for any sheaf $\calg$. $\calf^+$ is called the sheaf associated to the preshead $\calf$ or the sheafification of $\calf$.
+\end{pro}
+\begin{proof}
+	We construct the sheaf $\calf^+$ as follows. For any open set $U$, let $\calf^+(U)$ be the set of functions $s:U\to \cup_{p\in U}\calf_p$, such that
+	\begin{itemize}
+		\item for each $p\in U$, $s(p)\in \calf_p$, and
+
+		\item for each $p\in U$, there is a neighborhood $V\osub U$ of $P$, and an element $t\in\calf(V)$, such that $\forall q\in V$, $s(q)=t_q:=t^+(q)$.
+	\end{itemize}
+
+	The addition on $\calf^+(U)$ is that $(s+t)(p)=s(p)+t(p)$, so $\calf^+(U)$ is indeed a group. If $V\osub U$, there's a nature map (function restriction) $i_{UV}:\calf^+(U)\to \calf^+(V)$ such that $i_{UV}(s)=s|_V$, so $\calf^+$ is a presheaf. Let $\{U_i\}$ be a open cover of $U$ and $s_i\in \calf^+(U_i)$ be local sections. If $s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}$, we can define a function $s:U\to \cup_{p\in U}\calf_p$ by setting $s|_{U_i}=s_i$. If $s|_{U_i}=0$ for all $i\in I$, then $s=0$ since it is a function. Thus $\calf^+$ is a sheaf.
+
+	For each $s\in \calf(U)$, we can associate it a section $s^+\in \calf^+(U)$ by $s^+(p)=s_p$, then there's a morphism $\theta(U):s\mapsto s^+$. $\forall s\in \calf(U)$, since
+	\[
+		i_{UV}\bigl(\theta(U)(s)\bigr)=i_{UV}(s^+)=s^+|_{V}
+	\]
+	and
+	\[
+		\theta(V)\bigl(\rho_{UV}(s)\bigr)=\theta(V)(s|_V)=s^+|_{V}.
+	\]
+	$\theta$ is a morphism.
+
+	Let $\bar{s}\in \calf^+(U)$, because of the construction of $\calf^+$, we can find an open cover $\{U_i\}$ of $U$ such that $\bar{s}|_{U_i}=\bar{s}^+_i$, where $\bar{s}_i\in \calf(U_i)$. Firstly define $\psi(U_i):\bar{s}|_{U_i}\mapsto \varphi(U_i)(\bar{s}_i)$, and we can use the sheaf condition of $\calg$ to get a global section $s'$ on $U$ such that $s'|_{U_i}=\varphi(U_i)(\bar{s}_i)$. Then, define $\psi(U):\bar{s}\mapsto s'$, and $\psi$ will become the morphism $\psi:\calf^+\to \calg$. Finally, because of the construction of $\psi$, for any $s^+\in \calf^+(U)$, $\psi(U)(s^+)=\varphi(U)(s)$, so that
+	\[
+		\psi(U)(\theta(s))=\psi(U)(s^+)=\varphi(U)(s)
+	\]
+	makes the diagram commutative. 
+\end{proof}
+\begin{pro}
+	$\calf_p\cong \calf^+_p$, so if $\calf$ is a sheaf, then $\calf\cong \calf^+$.
+	\label{pro:4}
+\end{pro}
+\begin{proof}
+	According to the Figure \ref{fig1}, there's a morphism $\theta_p:\calf_p\to \calf^+_p$, such that $\theta_p(\langle U,s\rangle)=\langle U,s^+\rangle$.
+	\begin{itemize}
+	\item It is injective. If $\theta_p(\langle U,s\rangle)=\langle V,0\rangle$, then $s^+|_V=0$, and $s_p=s^+(p)=0$.
+
+	\item It is surjective. $\forall \langle U,\bar{s}\rangle\in \calf^+_p$, there exists an open subset $V$ and $t\in \calf(V)$ such that $\langle U,\bar{s}\rangle=\langle V,t^+\rangle$, then $\theta_p(\langle V,t\rangle)=\langle U,\bar{s}\rangle$.
+	\end{itemize}
+\end{proof}
+\begin{defi}
+	If $\varphi:\calf\to\calg$ is a morphism of sheaves, we define the kernel(repsectively cokernel, image) of $\varphi$, denoted $\ker \varphi$(repsectively $\coker \varphi$, $\im \varphi$), to be the sheaf associated to the presheaf of kernel(respectively, coker, image) of $\varphi$.
+\end{defi}
+\begin{defi}
+	We say that a morphism of sheaves $\varphi:\calf\to\calg$ is injective(respectively, surjective) if $\ker\varphi=0$(respectively, $\im\varphi\cong\calg$).
+\end{defi}
+\begin{pro}
+	For any morphism of sheaves $\varphi:\calf\to\calg$, $(\ker \varphi)_p=\ker(\varphi_p)$ and $(\im \varphi)_p=\im(\varphi_p)$ for each $p$.
+	\label{pro:5}
+\end{pro}
+\begin{proof}
+We will show the following statements.
+	\begin{itemize}
+		\item $\ker(\varphi_p)\subset (\ker \varphi)_p$: Suppose $s_p=\langle U,s\rangle\in \ker(\varphi_p)$, then $\varphi_p\langle U,s\rangle=\langle U,\varphi(U)s\rangle=0$, so there exists $W\osub U$ such that 
+		\[
+			(\varphi(U)s)|_W=\varphi(W)(s|_W)=0,
+		\]
+		thus $s|_W\in \ker(\varphi(W))$ and $s_p=\langle W,s|_W\rangle\in (\ker \varphi)_p$.
+
+		\item $(\ker \varphi)_p\subset\ker(\varphi_p)$: Suppose $\langle U,s\rangle\in (\ker \varphi)_p$, then $\varphi_p\langle U,s\rangle=\langle U,\varphi(U)s\rangle=\langle U,0\rangle=0\in \calg_p$, thus $\langle U,s\rangle\in \ker(\varphi_p)$.
+
+		\item $\im(\varphi_p)\subset (\im \varphi)_p$: Suppose $t=\varphi_ps_p\in\im (\varphi_p)$ and $s_p=\langle U,s\rangle$, then $t=\varphi_ps_p=\varphi_p\langle U,s\rangle=\langle U,\varphi(U)s\rangle\in (\im \varphi)_p$.
+
+		\item $(\im \varphi)_p\subset \im(\varphi_p)$: Suppose $t=\langle U,\varphi(U)s\rangle\in (\im \varphi)_p$, then $t=\rho'_{Up}\circ\varphi(U)s=\varphi_p s_p \in \im(\varphi_p)$.
+	\end{itemize}
+\end{proof}
+\begin{cor}
+	For any morphism of sheaves $\varphi:\calf\to\calg$, it is injective(respectively, surjective) if and only if $\varphi_p$ is injective(respectively, surjective) for all $p$.
+	\label{cor:1}
+\end{cor}
+\begin{proof}
+	According to Proposition \ref{pro:1} and Proposition \ref{pro:5}, $\ker \varphi=0$ if and only if $(\ker \varphi)_p=\ker(\varphi_p)=0$. Similarly, $\im \varphi\cong \calg$ if and only if $(\im \varphi)_p=\im(\varphi_p)\cong \calg_g$.
+\end{proof}
+\begin{cor}
+	A morphism of sheaves is an isomorphism if and only if it is injective and surjective.
+\end{cor}
+\begin{proof}
+	A morphism of sheaves $\varphi$ is an isomorphism if and only if $\varphi_p$ is an isomorphism for all $p$. As a morphism of groups, $\varphi_p$ is an isomorphism for all $p$ if and only if it is injective and surjective for all $p$, and according to Corollay \ref{cor:1}, if and only if $\varphi$ is injective and surjective.
+\end{proof}
+\begin{defi}
+	Let $f:X\to Y$ be a continuous map of topological spoaces. For any sheaf $\calf$ on $X$, we define the direct image sheaf $f_*\calf$ on $Y$ by $(f_*\calf)(U)=\calf(f^{-1}(U))$ for any open set $U\subset Y$. For any sheaf $\calg$ on $Y$, we define the inverse image sheaf $f^{-1}\calg$ on $X$ to be the sheaf associated to the presheaf $U\mapsto \varinjlim_{V \supset f(U)}\calg(V)$, where $U$ is any open set in $X$, and the limit is taken over all open sets $V\subset Y$ containing $f(U)$. 
+\end{defi}
+Especially, if $f(U)$ is an open set, then $\varinjlim_{V \supset f(U)}\calg(V)=\calg\bigl(f(U)\bigr)$.
+\end{document}
