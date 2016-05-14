@@ -9,7 +9,7 @@
 - series
 	中文，大半，将来不会写
 - vector analysis
-	英文，矢量分析公示表，基本不会有打的改动。
+	英文，矢量分析公示表，基本不会有大的改动。
 - manifold
 	中文，进行中
 - field, sheaf, repfunctor
