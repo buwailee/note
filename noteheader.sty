@@ -1,4 +1,6 @@
-\usepackage{amssymb,amsfonts,amsmath,amsthm,bm,mathrsfs}
+\ProvidesPackage{noteheader}
+
+\usepackage{amssymb,amsfonts,amsmath,amsthm,bm,mathrsfs,indentfirst}
 \usepackage[left=19mm,text={148mm,200mm},paperwidth=186mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
 \usepackage[all]{xy}
 \usepackage{tikz,titletoc}
@@ -18,7 +20,6 @@
 	\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
 
 	% \renewcommand\thechapter{\Roman{chapter}} 
-	% \renewcommand\thesection{\S\arabic{section}} 
 
 	\newcommand{\ssection}[1]{%
 	  \section[#1]{\centering\normalfont\scshape #1}}
@@ -27,3 +28,11 @@
 	%\newcommand{\ssubsection}[1]{%
 	%  \subsection[#1]{\raggedright\normalfont\itshape #1}}
 	\newcommand{\ssubsection}{\subsection}
+
+	\DeclareOption{article}{\renewcommand\thesection{\arabic{section}}}
+	\DeclareOption{book}{}
+	\ExecuteOptions{book}
+
+	\ProcessOptions\relax
+
+\endinput
