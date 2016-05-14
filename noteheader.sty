@@ -30,15 +30,15 @@
 	%  \subsection[#1]{\raggedright\normalfont\itshape #1}}
 	\newcommand{\ssubsection}{\subsection}
 
-	\DeclareOption{article}{\renewcommand\thesection{\arabic{section}}}
-	\DeclareOption{book}{}
-	\DeclareOption{cn}
-	{
-		\let\@afterindentfalse\@afterindenttrue
-		\@afterindenttrue
-	}
-	\DeclareOption{en}{}
-	\ExecuteOptions{book,cn}
-	\ProcessOptions\relax
+\DeclareOption{article}{\renewcommand\thesection{\arabic{section}}}
+\DeclareOption{book}{}
+\DeclareOption{zh}
+{
+	\let\@afterindentfalse\@afterindenttrue
+	\@afterindenttrue
+}
+\DeclareOption{en}{}
+\ExecuteOptions{book,zh}
+\ProcessOptions\relax
 
 \endinput

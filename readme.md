@@ -27,11 +27,15 @@
 
 --------------
 
-关于noteheader宏包，默认载入`amssymb`, `amsfonts`, `amsmath`, `amsthm`, `bm`, `mathrsfs`, `xy`这些数学用宏包，以及`geometry`,`tikz`, `titletoc`, `fancyhdr`负责版式设计等。
+关于noteheader宏包，我笔记的自用宏包，默认载入`amssymb`, `amsfonts`, `amsmath`, `amsthm`, `bm`, `mathrsfs`, `xy`这些数学用宏包，以及`geometry`,`tikz`, `titletoc`, `fancyhdr`负责版式设计等。
 
 目前提供四个选项：
 
 - `book` 选项：这个选项主要负责存在chapter计数器的情况。默认选项。
 - `article` 选项：这个选项主要负责最大计数器为section的情况。
-- `cn` 选项：负责section开始后第一行不缩进，符合中文习惯。默认选项。
+- `zh` 选项：负责section开始后第一行不缩进，符合中文习惯，实现方式同`indentfirst`宏包。默认选项。
 - `en` 选项：section开始后第一行不缩进，符合英文习惯。
+
+该宏包不负责公式环境的具体设置（尽管默认载入`amsthm`宏包）。普通的公式环境可以直接新建具体公式环境，对于对于ega式的风格，可以参考`manifold.tex`，主要思路就是新建了一个计数器来负责重要段落，然后其他的公式环境由他实现。
+
+该宏包也不默认超链接以及目录的使用，需要的可以使用`hyperref`宏包。
