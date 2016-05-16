@@ -14,8 +14,8 @@
 	英文，矢量分析公示表，基本不会有大的改动。
 - manifold
 	中文，进行中
-- field,  sheaf, repfunctor
-	中英文，小东西，将来会整理
+- field
+	中文，小东西，将来会整理
 - algtopo
 	英文，进行中
 - Hartshorne
