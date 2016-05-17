@@ -154,6 +154,8 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 由于$v(f_p)$可以看做$f$沿着$v$方向在$p$点的方向导数，以及等式$\dd_pf(v)=v(f_p)$，所以$\dd_pf(v)$也理解为$f$沿着$v$方向在$p$点的方向导数。
 
+\para 正如我们前面提到的，切矢量的几何直观可以靠曲线的切矢量来想象，那么余切矢量呢？为了做出适当的想象，不妨回到欧式空间里面，固定一个切矢量，方向导数$\dd_pf(v)$可以写作$v\cdot \nabla f(p)$，所以（在欧式空间的内积结构下）我们可以认为$\dd_pf$就是$\nabla f(p)$。现在改变$p$，我们得到了一个矢量场$\nabla f$，这是$\{f=\text{const}\}$确定的等能面的法矢量场，法矢量场和等能面一一联系。所以为了避免引入内积结构，我们可以认为$\dd_pf$就是局部的一族等能面。
+
 \section{Submanifold}
 
 \para $\varphi:M\to N$是一个光滑映射，\no{a}. 称$\varphi$是一个浸入，如果$\varphi_{*p}$处处非退化。\no{b}. 称$(M,\varphi)$是一个子流形，如果$\varphi$是单的。不是所有浸入都是子流形，比如圆周的参数表示$(\cos t,\sin t)$是一个浸入，但不是单的。
@@ -221,6 +223,28 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 他的初值为$\sigma(0)=p$。微分方程的（光滑）解在局部存在且唯一，所以我们得到了：
 
 \para 在$p$附近，对$X$存在唯一的积分曲线$\sigma:(-\epsilon,\epsilon)\to U$.
+
+\lem 设$X$是$U$上的光滑矢量场，如果$X_p\neq 0$，则存在一个$p$的邻域$V$，在$V$上存在一组坐标使得$X$可以写作$\partial_1$.
+
+\proof
+	完全是局部的结果，我们就在欧式空间里面证明，即找一组新的坐标来把$X=X^i\partial_i$变成$\partial'_1$. 
+
+	如果能够证明可以写作$a \partial_1$，那么再令$x'$是$\partial x^1/\partial x'^1=a$的解（这个解积个分就出来了），那么自然就有$\partial'_1=a\partial_1$.
+
+	不妨假设$X^1$在$p$的某个邻域不为零，现在我们来解常微分方程组
+	\[
+		\frac{\dd x^i}{\dd x^1}=\frac{X^n(x^1,\cdots,x^n)}{X^1(x^1,\cdots,x^n)},
+	\]
+	给定初值为$\{\varphi^i(0;v^2,\cdots,v^n)=v^i:2\leq i \leq n\}$，我们知道解$\{x^i=\varphi^i(x^1;v^2,\cdots,v^n)\}_{2\leq i \leq n}$局部存在且光滑依赖于初值$\{v^2,\cdots,v^n\}$以及$x^1$，所以我们选取新坐标$\{v^1,v^2,\cdots,v^n\}$使得
+	\[
+		\{x^1,x^2,\cdots,x^n\}=\{v^1,\varphi^2(v^1,\cdots,v^n),\cdots,\varphi^n(v^1,\cdots,v^n)\},
+	\]
+	容易计算他在$v^1=0$处的Jacobian行列式$\det(\partial x/\partial v)=1$，所以这是一个合理的坐标选取。
+
+	最后，注意到$X^i=X^1 \dd x^i/\dd x^1=X^1 \dd x^i/\dd v^1$，所以
+	\[
+		X=X^i\partial_i=X^1 \frac{\dd x^i}{\dd v^1}\frac{\partial}{\partial x^i}=X^1\partial'_1.
+	\]\qed
 
 设$X$是$U$上的光滑矢量场，对$U$上的每一点$p$，都可以在$p$附近找到他的一条光滑积分曲线$\sigma_p$，上面的点$\sigma_p(t)$我们也记作$\sigma_t(p)$，这样我们就得到了一个新的一族映射$\{\sigma_t:U\to U\}$，当$t=0$的时候，$\sigma_0=\id$.这样的一族映射$\{\sigma_t\}$被称为矢量场$X$的流。如果需要明确是那个矢量场的时候写作$\{\sigma^X_t\}$. 由微分方程解的唯一性可以发现$\sigma_t\circ \sigma_s=\sigma_{s+t}$.
 
