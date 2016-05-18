@@ -1,19 +1,22 @@
-%!TEX program = xelatex
+% author: buwailee@nmhs
 \documentclass[10pt]{book}
-\usepackage{amssymb,amsfonts,amsthm,amsmath,bm}
-\usepackage{ctex}
-%\usepackage{extarrows}
-\usepackage[left=21mm,text={148mm,200mm},paperwidth=185mm,paperheight=250mm,includehead,vmarginratio=1:1]{geometry}
-\usepackage[all]{xy}
-\usepackage{tikz}
+\usepackage{noteheader}
+\usepackage[winfonts]{ctex}
 \usepackage{titletoc}%使用目录
 	\theoremstyle{plain}%定理环境样式
 	\newtheorem{pro}{Proposition}[chapter]% 定义命题环境
 	\newtheorem{defi}{Definition}[chapter]% 定义命题环境
 	\newtheorem{theo}{Theorem}[chapter]% 定义定理环境
 
-%定义你的命令
+\usepackage[xetex]{hyperref}%使用xetex引擎
+	\hypersetup %一些选项
+	{
+		bookmarksnumbered=true,%书签中章节编号
+		colorlinks=true,  % 彩色链接 false:边框链接 ; true: 彩色链接
+	}
+
 \include{defs}
+\newcommand{\cc}{\mathbb{C}}
 
 \begin{document}
 \title{复变函数拾遗}
