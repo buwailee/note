@@ -218,3 +218,21 @@ pip-log.txt
 # pdfs
 *.pdf
 *.djvu
+
+# tex compile fies
+*.fls
+*.aux
+*.dvi
+*.lis
+*.blg
+*.bbl
+*.toc
+*.idx
+*.ind
+*.ilg
+*.thm
+*.out
+*.fdb_latexmk
+*.nav
+*.snm
+*.synctex.gz
