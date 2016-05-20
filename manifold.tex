@@ -663,9 +663,11 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 \qed
 
-\para 我们将$\dd \omega=0$的形式$\omega$称为闭形式，将$\omega=\dd \eta$的形式$\omega$称为恰当形式，则这一命题告诉我们，恰当形式一定是闭形式，反之不一定。我们定义$H^k(M)=\ker(d_k)/\im(d_{k-1})$为流形$M$的第$k$个上同调群，其中模的运算是看做加法群的商群运算，这个$H^k(M)$即表征了闭的$k$-形式在除去一个恰当形式后的等价类。
+\para 我们将$\dd \omega=0$的形式$\omega$称为闭形式，将$\omega=\dd \eta$的形式$\omega$称为恰当形式，则这一命题告诉我们，恰当形式一定是闭形式，反之不一定。我们定义$H^k(M)=\ker(d_k)/\im(d_{k-1})$为流形$M$的第$k$个上同调群，其中模的运算是看做加法群的商群运算，这个$H^k(M)$即表征了闭的$k$-形式在除去一个恰当形式后的等价类。此外约定当$k<0$的时候，$H^k(U)=0$.
 
-虽然以后可能不再会遇到了，这里稍稍提一下，上同调群是流形拓扑的表征，他是一个拓扑范畴到交换群范畴的反变函子，对于同伦等价的拓扑空间，有着同构的上同调群。所以这是一个拓扑不变量，如果我们可以把两个拓扑空间的上同调群计算出来得到他们不同构，则这两个拓扑空间必然不同伦。流形的上同调群也被称为de Rham上同调，他是上同调群的一个典型，这里$\dd$是自然的边缘算子的对偶，而楔积是自然的cup product（比起同调，上同调里的cup product是比“对偶”部分多出来的东西）。
+当$k=0$的时候，$H^0(U)$就是$\mathrm{ker}\left(\dd:\calf(U)\to\Omega^1(U)\right)$.如果$U$是连通的，$\dd f=0$就昭示着$f$在恒为常数，$H^0(U)$就是这些函数构成的矢量空间。那么如果有着不同的连通分支，那么$H^0(U)$就是在在各个连通分支上为常数（整体不一定是一样的）的那些函数构成的矢量空间。而他的维度就是连通分支的个数。
+
+下一节将会提到一点，上同调群是流形拓扑的表征，他是一个拓扑范畴到交换群范畴的反变函子，对于同伦等价的拓扑空间，有着同构的上同调群。所以这是一个拓扑不变量，如果我们可以把两个拓扑空间的上同调群计算出来得到他们不同构，则这两个拓扑空间必然不同伦。流形的上同调群也被称为de Rham上同调，他是上同调群的一个典型，这里$\dd$是自然的边缘算子的对偶，而楔积是自然的cup product（比起同调，上同调里的cup product是比“对偶”部分多出来的东西）。
 
 \para 正如\eqref{eq:1.3}我们看到的，对$1$-形式$\omega$，我们有
 \[
@@ -711,6 +713,271 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 
 因为$f^*$将恰当形式映射成恰当形式，即$f^*(\im d_N)\subset \im d_M$，所以他诱导了两个流形上同调群之间的同态$f^*:H^k(N)\to H^k(M)$.
+
+\section{Introduciton to de Rham Cohomology}
+
+我们这节将目标放在$\rr^n$中的de Rham上同调。
+
+\para 一系列矢量空间和上面的线性映射$A\xrightarrow{f}B\xrightarrow{g}C$称为正和列，就是说$\ker g=\mathrm{Im} f$.而$0\to A\xrightarrow{f}B$
+就是说$f$是单射，而$B\xrightarrow{g}C\to 0$就是说$g$是满射。而正和列
+\[
+0\to A\xrightarrow{f}B\xrightarrow{g}C\to 0
+\]
+称为短正合列。
+
+\para 一个矢量空间和线性映射链$A^*=\{A_i,\dd_i\}$
+\[
+\cdots\to A^{i-1}\xrightarrow{\dd^{i-1}}A^i\xrightarrow{\dd^i}A^{i+1}\to \cdots
+\]
+称为链复形，如果对于任意的$i$都有$\dd^i \circ \dd^{i+1}=0$.当对任意的$i$都有$\ker \dd^i=\mathrm{Im}\, \dd^{i-1}$,则这个链复形称为正和的。
+
+\para 很容易看到，$\Omega^*(M)$和外微分算子$\dd$构成一个链复形。那么同样，对于任意的链复形都可以定义上同调群$H^p(A^*)=\ker (\dd^p)/\mathrm{Im} (\dd^{p-1})$，其中的元素同样用等价类符号$[a]$记。
+
+\para 如果在两条链的每一个对应链的对象之间，譬如说$A_i$和$B_i$之间，存在线性映射$f^i$，那么自然就在两条链之间引入了一个映射$f:A^*\to B^*$，需要交换图如下：
+	\[
+	\xymatrix{
+		\cdots\ar[r]&A^{p-1}\ar[r]^{\dd_A^{p-1}}\ar[d]^{f^{p-1}}&A^p\ar[r]^{\dd_A^p}\ar[d]^{f^{p}}&A^{p+1}\ar[r]\ar[d]^{f^{p+1}}&\cdots\\
+		\cdots\ar[r]&B^{p-1}\ar[r]^{\dd_B^{p-1}}&B^p\ar[r]^{\dd_B^p}&B^{p+1}\ar[r]&\cdots
+	}
+	\]
+从交换图可以看到，应该满足$\dd^{p}_B\circ f^p=f^{p+1}\circ \dd^{p}_A$.既然在链复形之间引入了映射，则他诱导了上同调群之间的映射。通过$f^*([a])=[f^p(a)]$，我们诱导了$f^*=H^p(f):H^p(A^*)\to H^p(B^*)$.
+
+\para 链复形也可以构成一个链，尤其重要的是短正合列$0\to A^*\xrightarrow{f}B^*\xrightarrow{g}C^*\to 0$.链的短正和列就是当对任意的$p$都有短正合列$0\to A^p\xrightarrow{f^p}B^p\xrightarrow{g^p}C^p\to 0$.
+
+\pro 链复形的短正合列$0\to A^*\xrightarrow{f}B^*\xrightarrow{g}C^*\to 0$引入了上同调群的正合列
+\[
+H^p(A^*)\xrightarrow{f^*}H^p(B^*)\xrightarrow{g^*}H^p(C^*).
+\]
+
+\proof 其实就是证明$\ker g^*=\mathrm{Im}\, f^*$.首先证明$\mathrm{Im}\, f^* \subset \ker g^*$，任取$[a]\in H^p(A^*)$，我们有
+\[
+g^*\circ f^*([a])=[g^p\circ f^p(a)]=[0]=0.
+\]
+这是从正合列$A^p\xrightarrow{f^p}B^p\xrightarrow{g^p}C^p$中得知的。
+
+然后证明$\ker g^*\subset \mathrm{Im}\, f^*$.这就是说，任意的$g^*[b]=0$的$[b]$都可以找到$[a]$使得$f^*[a]=[b]$.
+
+因为对任意的$p$有$0=g^*[b]=[g^p(b)]$，因此存在一个$c$使得$g^p(b)=\dd^{p-1}_C(c)$，而$g^{p-1}$又是满射，所以可以找到$b'$使得$g^{p-1}(b')=c$,因此用交换图变换
+\[
+g^p(\dd^{p-1}_B(b'))=d^{p-1}_C(g^{p-1}(b'))=g^p(b).
+\]
+
+所以$g^p(b-\dd^{p-1}_B(b'))=0$，所以存在$a$使得$f^p(a)=b-\dd^{p-1}_B(b')$。现在只要证明这个$a$确实在$\ker \dd^p_A$里面就可以了。为此只要证明$\dd^p_A a=0$就可以，但是因为$f^{p+1}$是单射，所以也等价于证明$f^{p+1}\circ \dd^p_A (a)=0$.用交换图变换
+\[
+f^{p+1}\circ \dd^p_A (a)=\dd^p_B\circ f^p (a)=\dd^p_B(b-\dd^{p-1}_B(b'))=\dd^p_B(b)=0.
+\]
+因为$a$确实在$\ker \dd^p_A$里面，所以他在$H^p(A^*)$里面对应了一个等价类$[a]$，成立$f^*[a]=[b]$.\qed
+
+\para 链复形的短正和列还引入了其他两个正合列。对于链复形的短正合列$
+0\to A^*\xrightarrow{f}B^*\xrightarrow{g}C^*\to 0$，定义$\partial^*:H^p(C^*)\to H^{p+1}(A^*)$为线性映射
+\[
+	\partial^*([c])=\left[(f^{p+1})^{-1}\left(\dd^p_B\left((g^p)^{-1}(c)\right)\right)\right].
+\]
+
+$\partial^p$即交换图
+	\[
+		\xymatrix{
+			&0\ar[d]&0\ar[d]&0\ar[d]&\\
+			\cdots\ar[r]&A^{p-1}\ar[r]^{\dd_A^{p-1}}\ar[d]^{f^{p-1}}&A^p\ar[r]^{\dd_A^p}\ar[d]^{f^{p}}&A^{p+1}\ar[r]\ar[d]^{f^{p+1}}&\cdots\\
+			\cdots\ar[r]&B^{p-1}\ar[r]^{\dd_B^{p-1}}\ar[d]^{g^{p-1}}&B^p\ar[r]^{\dd_B^p}\ar[d]^{g^{p}}&B^{p+1}\ar[r]\ar[d]^{g^{p+1}}&\cdots\\
+			\cdots\ar[r]&C^{p-1}\ar[r]^{\dd_B^{p-1}}\ar[d]&C^p\ar[r]^{\dd_B^p}\ar[d]\ar[ruu]&C^{p+1}\ar[r]\ar[d]&\cdots\\
+			&0&0&0&
+		}
+	\]
+中的斜线。这里就不证明这是良定义的了。
+
+\para 链复形的短正合列$0\to A^*\xrightarrow{f}B^*\xrightarrow{g}C^*\to 0$诱导了上同调群的正合列
+\[
+\begin{split}
+&H^p(B^*)\xrightarrow{g^*}H^p(C^*)\xrightarrow{\partial^*}H^{p+1}(A^*),\\
+&H^p(C^*)\xrightarrow{\partial^*}H^{p+1}(A^*)\xrightarrow{f^*}H^{p+1}(B^*).
+\end{split}
+\]
+
+\theo \label{longexact}
+链复形的短正合列$0\to A^*\xrightarrow{f}B^*\xrightarrow{g}C^*\to 0$引入了上同调群的正合列
+\[
+\cdots\to H^p(A^*)\xrightarrow{f^*}H^p(B^*)\xrightarrow{g^*}H^p(C^*)\xrightarrow{\partial^*}H^{p+1}(A^*)\xrightarrow{f^*}H^{p+1}(B^*)\to\cdots.
+\]
+
+\pro \label{directsum} 链复形可以谈论直和，即是对链中每一个矢量空间进行直和。那么从$\ker$和$\mathrm{Im}$对于直和的显然性质，我们有$H^p(A^*\oplus B^*)=H^p(A^*)\oplus H^p(B^*)$.
+
+$\Omega^*(U)$和外微分算子$\dd$构成一个链复形，下面的定理给出了有关于欧氏空间两个开集和他们的并与交的短正合列。
+
+\theo 设$U_1$和$U_2$是$\rr^n$中的开集，记$i_\nu:U_\nu \to U_1 \cup U_2$和$j_\nu:U_1\cap U_2 \to U_\nu$是嵌入，则有如下的短正合列：
+\[
+0\to \Omega^p(U_1\cup U_2)\xrightarrow{I^p}\Omega^p(U_1)\oplus\Omega^p(U_2)\xrightarrow{J^p}\Omega^p(U_1\cap U_2)\to 0.
+\]
+其中$I^p(\omega)=(i_1^*(\omega),i_2^*(\omega))$,$J^p(\omega_1,\omega_2)=j_1^*(\omega_1)-j_2^*(\omega_2)$.
+
+\proof 先证明$I^*$是单射，这就是说除了$I^*(\omega)=0$只有解$\omega=0$.
+
+设$\varphi$是$\rr^n$中的开集的嵌入，则对于任意的$p$-形式$\dd x_I=\dd x_{i_1}\wedge\dots\wedge\dd x_{i_p}$都有$\varphi^* \dd x_I =\dd x_I$，因此
+\[
+\varphi^*\omega=\varphi^*\sum_If_I\dd x_I=\sum_If_I\circ\varphi \dd x_I.
+\]
+
+现在证明$J^*$是一个满射。将单位分解应用到$U_1$和$U_2$上面取，存在$p_\nu$为定义在$U_1\cup U_2$上的光滑函数，而他的非零点集包含于$U_\nu$，且$p_1(x)+p_2(x)=1$.
+
+设$f$定义在$U_1\cap U_2$上。定义$U_1$上的光滑函数$f_1$，他在$U_1\cap U_2$上的限制为$f(x)p_2(x)$和$U_2$上的光滑函数$f_2(x)$，他在$U_1\cap U_2$上的限制为$-f(x)p_1(x)$.那么在$U_1\cap U_2$上$f_1(x)-f_2(x)=f(x)$.
+
+所以任选一个$U_1\cap U_2$上的$p$-形式$\omega$，系数$f_I$都可以定义出$f_{1,I}$和$f_{2,I}$，并且在$U_1\cap U_2$上满足$f_{1,I}-f_{2,I}=f$,因此也定义了两个$\omega_1$和$\omega_2$得到$J^p(\omega_1,\omega_2)=\omega$.
+
+那么$I^*(\omega)=0$就是说$i_1^*(\omega)=i_2^*(\omega)=0$，这就是说$f_I\circ i_1=f_I\circ i_2=0$，但是由于$U_1$和$U_2$是$U_1\cup U_2$的一个开覆盖，所以这就等价于$f_I=0$，所以$\omega=0$.
+
+然后证明$\ker J^p=\mathrm{Im}\, I^p$.分两个包含。
+
+\no{1} $\mathrm{Im}\, I^p\subset \ker J^p$
+\[
+J^p\circ I^p(\omega)=j_2^*\circ i_2^*(\omega)-j_1^*\circ i_1^*(\omega)
+\]
+但其实$i_2\circ j_2=i_1\circ j_1$,所以$J^p\circ I^p(\omega)=0$.
+
+\no{2} $\ker J^p\subset \mathrm{Im}\, I^p$
+
+设$\omega_1=\sum_I f_I \dd x_I\in \Omega^p(U_1)$和$\omega_2=\sum_I g_I \dd x_I\in \Omega^p(U_2)$，从$J^p(\omega_1,\omega_2)=0$我们有$j_1^*(\omega_1)=j_2^*(\omega_2)$，这就是说$f\circ j_1=g\circ j_2$，或者说$f$和$g$在$U_1\cap U_2$恒等。我们可以构成一个光滑函数$h_I$，他在$U_1$上的限制恒等于$f_I$，而$U_2$上恒等于$g_I$.那么
+\[
+I^p\left(\sum_Ih_I\dd x_I\right)=(\omega_1,\omega_2).
+\]\qed
+
+将Theorem \pararef{longexact} 和 Proposition \pararef{directsum} 应用到上面这个定理。就得到下面这个定理。
+
+\theo Mayer-Vietoris列：
+设$U_1$和$U_2$是$\rr^n$中的开集，则有如下的正合列：
+\[
+\cdots\to H^p(U_1\cup U_2)\xrightarrow{I^*}H^p(U_1)\oplus H^p(U_2)\xrightarrow{J^*}H^p(U_1\cap U_2)\xrightarrow{\partial^*}H^{p+1}(U_1\cup U_2)
+\to \cdots
+\]
+其中$I^*([\omega])=(i_1^*([\omega]),i_2^*([\omega]))$,$J^*([\omega_1],[\omega_2])=j_1^*([\omega_1])-j_2^*([\omega_2])$.
+
+如果$U_1\cap U_2=\varnothing$，那么$H^p(U_1\cap U_2)=0$.所以
+\[
+0\xrightarrow{\partial^*} H^p(U_1\cup U_2)\xrightarrow{I^*}H^p(U_1)\oplus H^p(U_2)\xrightarrow{J^*}0,
+\]
+那么$I^*$既单又满，故而是个同构。
+
+如果我们已知$U_1$和$U_2$的上同调群，那么通过Mayer-Vietoris列我们就有可能计算他们的并或者交的上同调群。
+
+\para 两个连续函数$f$, $g:X\to Y$被称为同伦的，就是说存在一个连续函数$H:X\times [0,1]\to Y$使得$H(0,x)=f(x)$以及$H(1,x)=g(x)$.同伦是等价关系，就是说，如果还有$h$和$f$同伦，则$g$和$h$也同伦。一个空间$X$是可缩的，如果$\id_X$同伦于映到自身的常值映射。
+
+两个集合$X$和$Y$称为同伦等价的，如果存在$f:X\to Y$和$g:Y\to X$满足$f\circ g$和$\id_Y$同伦以及$g\circ f$和$\id_X$同伦。下面我们尝试说明，上同调群是同伦不变量。即在同伦意义下，上同调群是同构的。
+
+\lem 光滑函数的同伦的一个技术性引理：在欧氏空间背景下，任何一个连续映射都同伦于一个光滑映射。如果两个光滑函数$f_1$, $f_2:U\to V$是同伦的，则存在光滑函数$F:U\times [0,1]\to V$满足$F(x,0)=f_1(x)$和$F(x,1)=f_2(x)$.
+
+\pro 两条链复形和两个映射$f$, $g:A^*\to B^*$如果对每一个$p$都存在线性映射$s^p:A^p \to B^{p-1}$满足
+\[
+\dd_B^{p-1}s^p+s^{p+1}\dd_A^p=f^p-g^p:A^p\to B^p.
+\]
+则$f^*=g^*$.这样的两个映射被称为链同伦的。
+
+\proof 对任意的$[a]\in H^p(A^*)$，我们有$\dd_A^p(a)=0$，所以
+\[
+(f^*-g^*)[a]=[(f^p-g^p)a]=[\dd^{p-1}_Bs^p(a)+s^{p+1}\dd_A^p(a)]=[\dd^{p-1}_Bs^p(a)],
+\]
+而$\dd^{p-1}_Bs(a)$显然被等价为0，所以$f^*=g^*$.\qed
+
+\pro 如果两个光滑函数$f$, $g:U\to V$是同伦的，则$
+f^*$, $g^*:\Omega^*(V)\to \Omega^*(U)$是链同伦的，即$f^*=g^*$。
+
+\proof 利用我们的技术性引理，由于$f$, $g:U\to V$是同伦的，所以存在光滑函数$F:U\times [0,1] \to V$使得$F(x,0)=f(x)$和$F(x,1)=g(x)$.
+
+注意到任意的$U\times [0,1]$上的$p$-形式可以写作
+\[
+\omega=\sum_If_I(x,t)\dd x_I+\sum_J g_J(x,t)\dd t\wedge \dd x_J.
+\]
+让$\varphi_0:x\mapsto (x,0)$和$\varphi_1:x\mapsto (x,1)$，则$F\circ \varphi_0=f$和$F\circ \varphi_1=g$，且将上面的形式分别拉回到
+\[
+\varphi_0^*\omega=\sum_I f_I(x,0)\dd x_I,\quad
+\varphi_1^*\omega=\sum_I f_I(x,1)\dd x_I.
+\]
+
+现在我们需要构造一个$S^p:\Omega^p(U\times [0,1])\to \Omega^{p-1}(U)$使得
+\[
+(\dd \circ S^p+S^{p+1}\circ \dd)(\omega)=(\varphi_1^*-\varphi_0^*)(\omega),
+\]
+如果这样，对于任意$U$中的形式我们有
+\[
+(\dd \circ S^p+S^{p+1}\circ \dd)(F^*\omega)=(\varphi_1^*-\varphi_0^*)(F^*\omega)=((F\circ \varphi_1)^*-(F\circ \varphi_0)^*)(\omega)=(g^*-f^*)(\omega),
+\]
+而最左边又有
+\[
+(\dd \circ S^p\circ F^*+S^{p+1}\circ F^* \circ \dd)(\omega)
+\]
+所以只要定义$s^p=S^p\circ F^*$,这就是链同伦。
+
+为此定义
+\[
+S^p(\omega)=\sum_J\left(\int_0^1g_J(x,t)\dd t\right)\dd x_J.
+\]\qed
+
+利用这个命题，我们可以知道，同伦等价对应到上同调群就有了上同调群的同构，因此上同调群只依赖于同伦型。
+
+\para 由于对于可缩开子集$0^*=\id^*$，所以如果$U\subset \rr^n$可缩，那么$U$上的闭形式是恰当形式。这被称为Poincaré引理，通过他，我们知道可缩开集$U$的上同调群如下，$H^0(U)=\rr$，而对于$p>0$，则为$H^p(U)=0$.
+
+\para 用Mayer-Vietoris列计算$H^{p}(\rr^2-\{0\})$.
+
+设$U_1$为去掉正实轴（包括原点）的平面，$U_2$为去掉负实轴（包括原点）的平面，因此$U_1\cup U_2=\rr^2-\{0\}$.两者都是可缩的，所以由Poincaré引理可以知道，$H^0(U_1)=H^0(U_2)=\rr$以及如果$p>0$有$H^p(U_1)=H^p(U_2)=0$.
+
+注意到$U_1\cap U_2$为去掉实轴的平面$I_1\cup I_2$，两个部分无交且各自可缩，所以
+\[
+H^p(U_1\cap U_2)=H^p(I_1\cup I_2) \cong H^p(I_1)\oplus H^p(I_2) =\begin{cases}
+\rr\oplus\rr&,p=0;\\
+0&,p>0.
+\end{cases}
+\]
+而$\rr^2-\{0\}$是连通的，所以$H^0(\rr^2-\{0\})=\rr$.
+
+当$p>0$的时候，代入Mayer-Vietoris列
+\[
+H^p(U_1\cap U_2)\xrightarrow{\partial^*}H^{p+1}(U_1\cup U_2)\xrightarrow{I^*}H^{p+1}(U_1)\oplus H^{p+1}(U_2)\xrightarrow{J^*}H^{p+1}(U_1\cap U_2),
+\]
+头尾通过计算都为$0$，所以
+\[
+H^{p+1}(\rr^2-\{0\})=H^{p+1}(U_1\cup U_2)\cong H^{p+1}(U_1)\oplus H^{p+1}(U_2)=0.
+\]
+这就是说，平面挖一个洞的$2$阶以上的上同调群为$0$.
+
+现在考察一阶$\rr^2-\{0\}$的上同调群，由于负阶都为$0$，所以
+ \[
+0\to H^0(U_1\cup U_2)\xrightarrow{I^*}H^0(U_1)\oplus H^0(U_2)\xrightarrow{J^*}H^0(U_1\cap U_2)\xrightarrow{\partial^*}H^{1}(U_1\cup U_2)\to 0
+\]
+或者
+ \[
+0\to \rr\xrightarrow{f}\rr\oplus\rr\xrightarrow{g}\rr\oplus\rr\xrightarrow{h}H^{1}(\rr^2-\{0\})\to 0.
+\]
+由于$f$是单射而且正和性给出$\ker g = \mathrm{Im}\,f$，所以$\ker g =\rr$，而由线性代数基本定理，有$\mathrm{Im}\,g \cong \rr$，因此正合列给出$\ker h \cong \rr$，而因为$h$是满射，所以根据同构基本定理$H^{1}(\rr^2-\{0\})\cong(\rr\oplus\rr)/\ker h \cong \rr$.
+
+综上，\[H^{p}(\rr^2-\{0\})\cong
+\begin{cases}
+\rr&,p=0,1;\\
+0&,p>1.
+\end{cases}\]
+
+\para  同样是Mayer-Vietoris列的算例。将$\rr^n$看做$\rr^{n+1}$的子空间，设$A$是$\rr^n$中的闭子集，则
+\[
+\begin{cases}
+H^{p+1}(\rr^{n+1}-A)\cong H^p(\rr^n-A),&\text{when}\,p>1,\\
+H^{1}(\rr^{n+1}-A)\cong H^0(\rr^n-A)/\rr,&\\
+H^{0}(\rr^{n+1}-A)\cong \rr.&
+\end{cases}
+\]
+
+通过归纳法可以得到
+\[H^{p}(\rr^n-\{0\})\cong
+\begin{cases}
+\rr&,p=0,n-1;\\
+0&,\text{otherwise}.
+\end{cases}\]
+这个结论可以用来证明$\rr^m$和$\rr^n$之间不存在同胚，如果存在，将同胚调整为$0$映射到$0$，而由于同胚将产生上同调群间的同构，所以$H^{p}(\rr^n-{0})$与$H^{p}(\rr^m-{0})$对于任意$p$都是同构的，但这不可能。
+
+由于当$n>0$的时候，$S^{n-1}$和$\rr^n-\{0\}$同胚（当然也自然同伦等价），所以我们也计算出了球面的上同调群为
+\[H^{p}(S^{n})\cong
+\begin{cases}
+\rr&,p=0,n;\\
+0&,\text{otherwise}.
+\end{cases}\]
+
+上面一些计算出的上同调群可以产生许多有名经典的拓扑结论，比如Jordan-Brouwer分割定理，Brouwer不动点定理等。最简单的，比如$S^n$和$S^m$在$n\neq m$时候不同胚。
 
 \section{Integration}
 
