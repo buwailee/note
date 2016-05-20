@@ -103,9 +103,9 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 设$f:M\to N$是一个光滑映射，他诱导了一个线性映射\footnote{这里我们滥用一下记号。}$f^*_p:T_{f(p)}^*N\to T_p^*M$.
 
-\para 对于复合，$(f\circ g)^*_p=g^*_p\circ f^*_{g(p)}$.很容易看到$\id^*_p=\id_{T_p^*M}$，所以如果$f:M\to N$是同胚，则$f_p^*:T_{f(p)}^*N\to T_p^*M$是同构。
+\para 对于复合，显然$(f\circ g)^*=f^*\circ g^*$，以及在一点处，$(f\circ g)^*_p=g^*_p\circ f^*_{g(p)}$.很容易看到$\id^*_p=\id_{T_p^*M}$，所以如果$f:M\to N$是同胚，则$f_p^*:T_{f(p)}^*N\to T_p^*M$是同构。
 
-\para 利用复合公式，设$f:M\to N$是光滑映射，则$f^*_p\bigl(\dd_{f(p)}g\bigr)=\dd_{p}(f^*g)=\dd_p(g\circ f)$.
+\para \label{f*d=df*}利用复合公式，设$f:M\to N$是光滑映射，则$f^*_p\bigl(\dd_{f(p)}g\bigr)=\dd_{p}(f^*g)=\dd_p(g\circ f)$.
 
 \para 设$p\in M$，$M$是$n$维光滑流形，则{\kaishu 切空间}$T_pM$被定义为余切空间$T_p^*M$的对偶空间。切空间的元素被称为{\kaishu 切矢量}。由于余切空间是有限维的，他的对偶空间也和他有着相同的维度，即$n$维。
 
@@ -524,6 +524,10 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 对任意的矢量场$X$, $Y$都成立。
 
+\para 设$f:M\to N$，我们前面已经谈到了，这个$f$在0-形式，即光滑函数之间诱导了一个$f^*$（被称为一个拉回），即$f^*g=g\circ f$. 对于$1$-形式，由\pararef{f*d=df*}，我们知道了$f^*\dd g=\dd (f^* g)$，对比矢量场之间$f_*$的定义还需要$f$是单射，这里1-形式之间的$f^*$则没有这个限制。现在我们通过$f^*(\omega\wedge \eta)=(f^*\omega)\wedge (f^*\eta)$来定义$k$-形式之间的$f^*$.
+
+这样定义的$f^*$在一点诱导出的$f^*_p$可以验证和$1$-形式间已经存在的$f^*_p$用张量积诱导出来的映射是相同的，但是我们这里不采取这样每一点拼起来的方式。
+
 \section{Exterior Derivative}
 
 \para 函数$f$的支集$\supp(f)$被定义为$\{x\in M:f(x)\neq 0\}$的闭包。
@@ -663,6 +667,10 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 \qed
 
+\para 我们将$\dd \omega=0$的形式$\omega$称为闭形式，将$\omega=\dd \eta$的形式$\omega$称为恰当形式，则这一命题告诉我们，恰当形式一定是闭形式，反之不一定。我们定义$H^k(M)=\ker(d_k)/\im(d_{k-1})$为流形$M$的第$k$个上同调群，其中模的运算是看做加法群的商群运算，这个$H^k(M)$即表征了闭的$k$-形式在除去一个恰当形式后的等价类。
+
+虽然以后可能不再会遇到了，这里稍稍提一下，上同调群是流形拓扑的表征，他是一个拓扑范畴到交换群范畴的反变函子，对于同伦等价的拓扑空间，有着同构的上同调群。所以这是一个拓扑不变量，如果我们可以把两个拓扑空间的上同调群计算出来得到他们不同构，则这两个拓扑空间必然不同伦。流形的上同调群也被称为de Rham上同调，他是上同调群的一个典型，这里$\dd$是自然的边缘算子的对偶，而楔积是自然的cup product（比起同调，上同调里的cup product是比“对偶”部分多出来的东西）。
+
 \para 正如\eqref{eq:1.3}我们看到的，对$1$-形式$\omega$，我们有
 \[
 	\dd(\omega)(X,Y)=X(\omega(Y))-Y(\omega(X))-\omega([X,Y]),
@@ -671,7 +679,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \[
 \begin{split}
 	\dd(\omega)(X_1,\cdots,X_{k+1})=&\sum_{i=1}^{k+1}(-1)^{i+1}X_i\bigl(\omega(X_1,\cdots,\hat{X_i},\cdots,X_{k+1})\bigr)\\
-	&+\sum_{1\leq i<j\leq k+1}(-1)^{i+j}\omega\bigl([X_i,X_j],X_1,\cdots,\hat{X_i},\cdots,\hat{X_j},\cdots,X_{k+1})\bigr),
+	&+\sum_{1\leq i<j\leq k+1}(-1)^{i+j}\omega\bigl([X_i,X_j],X_1,\cdots,\hat{X_i},\cdots,\hat{X_j},\cdots,X_{k+1}\bigr),
 \end{split}
 \]
 其中
@@ -681,12 +689,18 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 以及
 \[
 \begin{split}
-	\omega\bigl([X_i,X_j],X_1,\cdots,\hat{X_i},\cdots,&\hat{X_j},\cdots,X_{k+1})\bigr)=\\
-	&\omega\bigl([X_i,X_j],X_1,\cdots,X_{i-1},X_{i+1},\cdots,X_{j-1},X_{j+1},\cdots,X_{k+1})\bigr),
+	\omega\bigl([X_i,X_j],X_1,\cdots,\hat{X_i},\cdots,&\hat{X_j},\cdots,X_{k+1}\bigr)=\\
+	&\omega\bigl([X_i,X_j],X_1,\cdots,X_{i-1},X_{i+1},\cdots,X_{j-1},X_{j+1},\cdots,X_{k+1}\bigr),
 \end{split}
 \]
 就是说，头上带帽等于把他去掉。
 
+\para 设$f:M\to N$，则$f^*(\dd \omega)=\dd (f^*\omega)$.实际上，我们只要局部对单项式证明即可，设$\omega=a\dd x^{1}\wedge\cdots\wedge \dd x^{k}$，则$\dd \omega=\dd a\wedge \dd x^{1}\wedge\cdots\wedge \dd x^{k}$，以及
+\[
+	f^*(\dd \omega)=(f^*\dd a)\wedge f^*(\dd x^{1}\wedge\cdots\wedge \dd x^{k})=\dd (f^*a)\wedge \dd f^*(x^{1})\wedge\cdots\wedge \dd f^*(x^{k})=\dd (f^*\omega).
+\]
+
+因为$f^*$将恰当形式映射成恰当形式，即$f^*(\im d_N)\subset \im d_M$，所以他诱导了两个流形上同调群之间的同态$f^*:H^k(N)\to H^k(M)$.
 
 \section{Integration}
 
