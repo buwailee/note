@@ -23,7 +23,7 @@
 \input{defs}
 
 \begin{document}
-\chapter{Manifold}
+\chapter{Calculus}
 \section{Foundation}
 
 \para 一个局部$n$维欧几里得空间是一个Hausdorff空间$M$满足，对每一个点$p\in M$，存在一个$p$的邻域$U\osub M$和一个同胚$\varphi:U\to V$,其中$V$是一个$\rr^n$中的开集。这个同胚有时候被称为一个坐标、坐标映射等，而资料$(U,\varphi)$被称为一个{\kaishu 坐标卡}。
@@ -524,10 +524,6 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 对任意的矢量场$X$, $Y$都成立。
 
-\para 设$f:M\to N$，我们前面已经谈到了，这个$f$在0-形式，即光滑函数之间诱导了一个$f^*$（被称为一个拉回），即$f^*g=g\circ f$. 对于$1$-形式，由\pararef{f*d=df*}，我们知道了$f^*\dd g=\dd (f^* g)$，对比矢量场之间$f_*$的定义还需要$f$是单射，这里1-形式之间的$f^*$则没有这个限制。现在我们通过$f^*(\omega\wedge \eta)=(f^*\omega)\wedge (f^*\eta)$来定义$k$-形式之间的$f^*$.
-
-这样定义的$f^*$在一点诱导出的$f^*_p$可以验证和$1$-形式间已经存在的$f^*_p$用张量积诱导出来的映射是相同的，但是我们这里不采取这样每一点拼起来的方式。
-
 \section{Exterior Derivative}
 
 \para 函数$f$的支集$\supp(f)$被定义为$\{x\in M:f(x)\neq 0\}$的闭包。
@@ -546,7 +542,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \lem 流形$M$上的每一个开覆盖都存在从属于他的单位分解。
 
-这个引理的证明可以参见任何一本微分流形的教材。
+这个引理的证明看附录。
 
 \para \label{unit} 设$V\subset U$，且$\bar{V}\subset U$，则$M-\bar{V}$和$U$构成$M$的一个开覆盖，我们可以找到$h$, $g\in \calf(M)$使得$h+g=1$处处成立，且$h|_{M-U}=0$以及$g|_{\bar{V}}=0$，因此$h|_{\bar{V}}=1$.
 
@@ -562,11 +558,11 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \no{2} 任取光滑函数$f$，$\dd^2 f=\dd (\dd f)=0$，这来自于\pararef{dd=0}，也是暗示$\dd$作用在1-形式上应该和$D$差不多。
 
-\no{3} 作为微分算符的Leibniz法则：设$\omega$是$r$-形式，则
+\no{3} 作为微分算符的Leibniz法则：设$\omega$是$k$-形式，则
 \[
-	\dd(\omega\wedge \eta)=\dd \omega \wedge \eta +(-1)^r \omega\wedge \dd\eta,
+	\dd(\omega\wedge \eta)=\dd \omega \wedge \eta +(-1)^k \omega\wedge \dd\eta,
 \]
-其中$(-1)^r$的出现来自楔积的交换。这个Leibniz法则我们已经在计算$D(f\dd g)$和$\dd(fg)$的时候遇到过了。
+其中$(-1)^k$的出现来自楔积的交换。这个Leibniz法则我们已经在计算$D(f\dd g)$和$\dd(fg)$的时候遇到过了。
 
 \para \label{localform}先假设$\dd$在$U$上是存在的。若$\omega$是$V\osub U$上的$k$-形式，设$W$是$U$的一个开子集且$V$真包含$\overline{W}$.那么正如\pararef{unit}说的，可以找一个单位分解$h$，使得$h|_{\overline{W}}=1$以及$h|_{U-W}=0$，利用他就可以定义一个$U$上的光滑$k$-形式$h\omega$（他在$V$外为零，在$W$内等同于$\omega|_W$）。
 
@@ -574,7 +570,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 实际上这就是分离公理之一，正则性的直接推论。流形$M$是局部紧的Hausdorff空间，所以他是正则的。而对于正则空间内的每一个点$p$，已知邻域$V$，我们可以找到一个邻域$W_p\subset V$使得$\overline{W_p}\subset V$.然后遍历$p$，就找到了开覆盖$\{W_p\}_{p\in V}$.
 
-\para \label{localpro}设$V\osub U$，如果$\omega|_V=0$，则$(\dd \omega)|_V=0$.
+\para \label{localpro}设$V\osub U$，如果$\omega|_V=0$，则$(\dd \omega)|_V=0$，即$\dd$是一个局部算符。
 
 利用\pararef{regular}找一个$V$的开覆盖，我们只要证明对开覆盖中的一个开集$W$，$(\dd \omega)|_{W}=0$即可。同\pararef{localform}利用单位分解找一个光滑函数$h$，则$h\omega$在$U$上恒为零，所以
 \[
@@ -651,9 +647,9 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \[
 	\dd(\omega|_U)=\sum_{i_1,\cdots ,i_k} \dd a_{i_1\cdots i_k}\wedge\dd x^{i_{1}}\wedge\cdots\wedge x^{i_{k}},
 \]
-不难检验外微分的性质都可以得到满足。这样我们就在局部证明了外微分的存在性。\qed
+不难检验外微分的性质都可以得到满足。这样我们就在局部证明了外微分的存在性。
 
-最后，由于$(\dd(\omega|_U))|_{U\cap V}=\dd(\omega|_U|_{U\cap V})=\dd(\omega|_V|_{U\cap V})=(\dd(\omega|_V))|_{U\cap V}$，所以我们可以将局部定义的外微分算子粘起来得到流形$M$上的一个外微分算子。由于外微分算子的局部唯一性，所以也就得到了他的整体唯一性。
+最后，由于$(\dd(\omega|_U))|_{U\cap V}=\dd(\omega|_U|_{U\cap V})=\dd(\omega|_V|_{U\cap V})=(\dd(\omega|_V))|_{U\cap V}$，所以我们可以将局部定义的外微分算子粘起来得到流形$M$上的一个外微分算子。由于外微分算子的局部唯一性，所以也就得到了他的整体唯一性。\qed
 
 \pro 虽然是一个很简单的命题，但是很重要：$\dd^2=0$.
 
@@ -695,6 +691,20 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 就是说，头上带帽等于把他去掉。
 
+\para 设$f:M\to N$，我们前面已经谈到了，这个$f$在0-形式，即光滑函数之间诱导了一个$f^*$（被称为一个拉回），即$f^*g=g\circ f$. 对于$1$-形式，由\pararef{f*d=df*}，我们知道了$f^*\dd g=\dd (f^* g)$，对比矢量场之间$f_*$的定义还需要$f$是单射，这里1-形式之间的$f^*$则没有这个限制。现在我们通过$f^*(\omega\wedge \eta)=(f^*\omega)\wedge (f^*\eta)$来定义$k$-形式之间的$f^*$.
+
+这个定义可能会遇到一些技术性问题，比如一个$k$-形式大范围来说是否一定能写成一些比较低阶的形式楔积并线性组合而成？如果不，怎么通过上式定义？这个问题的回答是，类似\pararef{localpro}，拉回是一个局部算符，即如果$\omega$在局部为零，则$f^*\omega$也在局部为零，所以我们可以不从大范围考虑这个问题。
+
+\para 假设$f^*$存在，则$f^*$是一个局部算符。
+
+首先注意到$f^*(h\omega)=(f^*h)(f^*\omega)$。设$\omega$在$U$上为零，利用\pararef{regular}，我们可以找一个$U$开覆盖。然后在每个开覆盖中的开集$W$上，同\pararef{localform}利用单位分解找一个光滑函数$h_W$，则按照上式$f^*(h_W\omega)$只可能在$\overline{W}$内不为零，因此，如果$\omega$在$U$上为零，则$h_W\omega$就恒为零，所以$(f^*h_W)(f^*\omega)=f^*(h_W\omega)=0$. 由于$f^*h_W=h_W\circ f$在$f^{-1}(W)$内等于$1$，所以$(f^*\omega)|_{f^{-1}(W)}=0$，遍历开覆盖，我们就得到了$(f^*\omega)|_{f^{-1}(U)}=0$.
+
+特别地，如果$\omega_1$和$\omega_2$在$U$上相同，则$0=(f^*(\omega_1-\omega_2))|_{f^{-1}(U)}=(f^*\omega_1)|_{f^{-1}(U)}-(f^*\omega_2)|_{f^{-1}(U)}$，这就意味着$f^*\omega_1$和$f^*\omega_2$在局部相同，此即黏合条件。
+
+我们这里不再重复类似$\dd_U$诱导出$\dd_V$的过程，以及这些$f^*_U$什么的和限制映射之间的关系，统统直接记做$f^*$，则$f^*(\omega_{U})=(f^* \omega)_{f^{-1}(U)}$。因为局部来说$k$-形式确实可以写成一些比较低阶的形式楔积并线性组合而成，以及我们已经对$0$-形式和$1$-形式定义了拉回，则局部的$k$-形式的拉回可以使用我们的定义递归地定义出来，那么剩下的只要拼起来就好，而这正需要黏合条件。
+
+最后，这样定义的$f^*$在一点诱导出的$f^*_p$（类似$\dd$到$\dd_p$）可以验证和$1$-形式间已经存在的$f^*_p$用张量积诱导出来的映射是相同的。
+
 \para 设$f:M\to N$，则$f^*(\dd \omega)=\dd (f^*\omega)$.实际上，我们只要局部对单项式证明即可，设$\omega=a\dd x^{1}\wedge\cdots\wedge \dd x^{k}$，则$\dd \omega=\dd a\wedge \dd x^{1}\wedge\cdots\wedge \dd x^{k}$，以及
 \[
 	f^*(\dd \omega)=(f^*\dd a)\wedge f^*(\dd x^{1}\wedge\cdots\wedge \dd x^{k})=\dd (f^*a)\wedge \dd f^*(x^{1})\wedge\cdots\wedge \dd f^*(x^{k})=\dd (f^*\omega).
@@ -704,15 +714,99 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \section{Integration}
 
-\para 对于$p\geq 0$，以及$\rr^{p+1}$中的$p+1$个矢量$\{v_i:0\leq i\leq p\}$满足$\{v_i-v_0:1\leq i\leq p\}$是一个线性无关组，我们定义仿射$p$-单形为
+\para 对于$p\geq 0$，以及$\rr^{p+1}$中的$p+1$个矢量$\{v_i:0\leq i\leq p\}$满足$\{v_i-v_0:1\leq i\leq p\}$是一个线性无关组，我们定义$p$-单形为
 \[
-	\Delta^p=\left\{\sum_{i=0}^p a_iv_i\in \rr^{p+1}:\sum_{i=1}^p a_i=1,\text{and each } a_i\leq 0\right\},
+	[v_0,\cdots,v_p]=\left\{\sum_{i=0}^p a_iv_i\in \rr^{p+1}:\sum_{i=1}^p a_i=1,\text{and each } a_i\leq 0\right\}.
 \]
-而流形$M$上的一个（光滑）$p$-单形是指一个（光滑）映射$\sigma:\Delta^p\to M$。
+一个标准$p$-单形为$[e_0,\cdots,e_p]$，其中$\{e_i\}_{0\leq i \leq p}$是$\rr^{p+1}$的标准基，可以看到，每一个$p$单形都和标准$p$-单形同胚。但是，流形$M$上的一个（光滑）$p$-单形是指一个（光滑）映射$\sigma:[v_0,\cdots,v_p]\to M$，这是光滑曲线的自然推广，因为流形上的光滑曲线就是一个1-单形。我们常说沿着某条曲线积分，这里我们就将推广到沿着某个单形积分。
 
-一个标准0-单形是一个点$1$，一个标准1-单形是一个线段$(t,1-t)$，端点为$(0,1)$和$(1,0)$，一个标准2-单形是一个三角形$(s,t,1-s-t)$，他的三个顶点位于$(0,0,1)$, $(0,1,0)$和$(1,0,0)$。记$M$上全部$p$-单形生成的自由Abel群为$C_p(M)$。
+一个0-单形是一个点$1$，一个1-单形$[v_0,v_1]$是一个线段，端点为$v_0$和$v_1$，一个2-单形是一个三角形，他的三个顶点位于$v_0$, $v_1$和$v_2$，一个3-单形位于四维空间，不太好想，但是从上面的类比，他应该是一个四面体，顶点位于$v_0$, $v_1$, $v_2$和$v_3$.记$M$上全部$p$-单形生成的自由Abel群（或者称$\zz$-模）为$C_p(M)$，当然，这里两个单形之间的加法的定义意义似乎还不太明朗。我们将$C_p(M)$中的元素称为$p$-链，显然，一个$p$-单形就是一个$p$-链。
 
-\para 一个标准$p$-单形的某个$(p-1)$-边界是指某个$a_i=0$的情况，一个$(p-1)$边界是自然的$(p-1)$-单形。一个p-单形$\sigma$的某个$(p-1)$-边界是指某个$a_i=0$的情况。
+\para 一个$p$-单形内的每一个点都可以写作$\sum_{i=0}^p a_iv_i$的形式，我们称某个$(p-1)$-边界是指某个$a_i=0$的情况，一个$(p-1)$边界是自然的$(p-1)$-单形，记做$[v_0,\cdots,\hat{v}_i,\cdots,v_p]$。显然，一个$p$-单形有$p+1$个边界，比如一个三角形，是一个2-单形，有三条边。
+
+对于流形$M$上的一个$p$-单形$\sigma:[v_0,\cdots,v_p]\to M$，定义他的第$(i+1)$个边缘为一个$(p-1)$-链$\sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,v_p]}$。
+
+\para 在流形$M$上，定义边缘算子$\partial:C_p(M)\to C_{p+1}(M)$：对单项式，
+\[
+	\partial \sigma=\sum_{i=0}^p (-1)^i\sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,v_p]}.
+\]
+对一般的$\sigma=\sum_i n_i \sigma_i$，定义$\partial \sigma =\sum_i n_i \partial \sigma_i$.
+
+\para 我们有$\partial^2=0$.
+
+\proof 直接对单项式计算
+\[
+\begin{split}
+	\partial^2 \sigma&=\sum_{i=0}^p (-1)^i\partial\sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,v_p]}\\
+	&=\sum_{0\leq i<j\leq n}^p (-1)^{i+j-1}\bigl(\sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,\hat{v}_j,\cdots,v_p]}-\sigma|_{[v_0,\cdots,\hat{v}_i,\cdots,\hat{v}_j,\cdots,v_p]}\bigr)=0.
+\end{split}
+\]\qed
+
+$\partial^2=0$和$\dd^2=0$是如此的相似！实际上，我们可以定义$H_k(M)=\ker\partial/\im\partial$，这就是流形$M$的第$k$个奇异同调群。这里不展开，我们暂时的目标还是积分。
+
+\para 由于每一个$[v_0,\cdots,v_p]$都同胚与标准$p$-单形，所以，在同胚意义下，以标准$p$-单形为定义域的流形上的$p$-单形与定义域为花式的$[v_0,\cdots,v_p]$的流形上的$p$-单形应该是一样多的。所以我们可以限定，流形上的$p$-单形的定义域为标准$p$-单形。
+
+\para 除去一个平移，$[v_0,\cdots,v_p]$完全处于$\rr^p$里面。
+
+由于$[v_0,\cdots,v_p]$里面的点写作$\sum_i a_i v_i$，注意到$\sum_i a_i=1$，我们可以将其改写为
+\[
+	\sum_{i=0}^pa_iv_i=\left(1-\sum_{i=1}^pa_i\right)v_0+\sum_{i=1}^pa_iv_i=v_0+\sum_{i=1}^pa_i(v_i-v_0),
+\]
+所以，除去一个平移$v_0$，我们完全可以由$\sum_{i=1}^pa_i(v_i-v_0)$确定一个$p$-单形。显然，他们是光滑同胚的。所以对于$M$上的$p$-单形，我们在微分同胚意义下，还可以假设定义域为
+\[
+	\Delta^p=\left\{(a_1,\cdots,a_p):a_i\geq 0\text{ and }\sum_i a_i\leq 1\right\},
+\]
+这时候，$\sigma:\Delta^p\to M$常常会写作$\sigma(a_1,\cdots,a_p)$.
+
+此时，对于边缘算子，这种约定下，符号要变得复杂一下
+\[
+	\partial\sigma(a_1,\cdots,a_{p-1})=\sigma\left(1-\sum_{i=1}^{p-1}a_i,\cdots,a_{p-1}\right)+\sum_{i=1}^p(-1)^i \sigma(a_1,\cdots,a_{i-1},0,a_{i+1},\cdots,a_{p-1}),
+\]
+不难检验，$\partial^2=0$还是成立的。
+
+以后我们就采用这种符号约定。
+
+\para 设$\omega$是$\rr^n$中的$n$-形式，写作$f\dd x^1\wedge\cdots\wedge \dd x^n$，则我们定义他在区域$A$上的积分算符为线性函数
+\[
+	\int_A \omega=\int_A f \dd x^1\cdots\dd x^n,
+\]
+由这个式子，我们可以重写积分变量替换公式为
+\[
+	\int_{\varphi(A)}\omega=\pm\int_A \varphi^*\omega,
+\]
+其中当$\det(\varphi_*)>0$的时候取正，反之取负。
+
+\para 设$\sigma:\Delta^p\to M$是一个$M$上的一个$p$-单形，这里$p>0$，那么$\sigma$诱导了一个拉回映射$\sigma^*$，我们定义一个$p$-形式$\omega$在$\sigma$上的积分如下：
+\[
+	\int_\sigma \omega=\int_{\Delta^p} \sigma^*\omega,
+\]
+注意到等式右边就是一个$\rr^{p}$内对$p$-形式的积分，这个积分上面我们以及定义了。
+
+当我们在一条链上积分的时候，比如$c=\sum_{i} n_i \sigma_i$，我们定义
+\[
+	\int_c \omega=\sum_i n_i \int_{\sigma_i} \omega.
+\]
+此时，单形之间加起来成链在积分的意义下清楚了不少。
+
+如果$\sigma$是一个$M$上的0-单形，即一个点$\sigma(0)\in M$，定义在$\sigma$上的积分为
+\[
+	\int_\sigma \omega=\omega(\sigma(0)).
+\]
+
+\theo 微积分基本定理：设$c$是$M$上的一个1-链，而$f$是$M$上的一个光滑函数，则
+\[
+	\int_{\partial c} f=\int_c \dd f.
+\]
+对于$c$是一个1-单形的时候，这个定理翻译成我们熟知的语言即$\int_a^b \dd f=f(b)-f(a)$，而两边对于$c$都是线性的，所以上述定理对链依然成立。
+
+\theo 著名的Stocks定理（还能叫微积分基本定理）：设$c$是$M$上的一个$p$-链，而$\omega$是$M$上的一个$(p-1)$-单形，则
+\[
+	\int_{\partial c} \omega=\int_c \dd \omega.
+\]
+
+这是两个（一个）极伟大的定理，尽管证明他并不是特别困难。他的重要性无需强调，每一个做过定积分（包括曲面积分等）计算的人都知道他多么有用。
+
+为了证明他，我们只要对一个单形去证明就可以了。尽管如此，由于可以拉到欧式空间里面，证明几乎就可以在欧式空间里面进行。
 
 \chapter{Appendix: Exterior Algebra}
 
@@ -846,4 +940,5 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 	由于$v_i \wedge v_j$是$\Omega^2(V)$的一组基，所以$\alpha_{ij}=0$当$j>r$，且$\alpha_{ij}=\alpha_{ji}$当$j\leq r$.\qed
 
 % \lem 设$\{v_i:1\leq i \leq r\}$是$V^*$中的一族线性无关的矢量，设$w$是一个$V$上的$p$-形式，则存在$\{\psi_i\in \Omega^{k-1}(V):1\leq i \leq r\}$使得$w=\sum_{i=1}^rv_j\wedge \psi_i$，当且仅当$v_1\wedge\cdots\wedge v_r\wedge w=0$.
+\chapter{Appendix: Partition of Unity}
 \end{document}
