@@ -21,6 +21,7 @@
 	}
 
 \input{defs}
+\DeclareMathOperator{\Int}{int}
 
 \begin{document}
 \chapter{Calculus}
@@ -40,7 +41,7 @@
 
 这样，光滑流形就构成了一个范畴，其中态射是流形间的光滑映射。他是拓扑空间范畴的子范畴。
 
-从此以后，我们对一个固定的流形$(M,\mathscr{F})$，常常会略去他的微分结构，只写作$M$。对于一个光滑流形$M$的非空开子集$U$，显然，他有继承自$M$的一个拓扑结构和微分结构，所以$U$也是一个光滑流形。很容易看到，$\rr^n$是一个光滑流形，按照上面的结论，我们可以得到一类光滑流形，$\rr^n$的开子集。比如把$n\times n$矩阵放入$\rr^{n^2}$内，那么行列式不为零的那些矩阵就构成一个光滑流形，记作$\mathrm{GL}(n,\rr)$，称作一般线性群。
+从此以后，我们对一个固定的流形$(M,\mathscr{F})$，常常会略去他的微分结构，只写作$M$。对于一个光滑流形$M$的非空开子集$U$，显然，他有继承自$M$的一个拓扑结构和微分结构，所以$U$也是一个光滑流形。很容易看到，$\rr^n$是一个光滑流形，按照上面的结论，我们可以得到一类光滑流形，$\rr^n$的开子集。比如把$n\times n$矩阵放入$\rr^B{n^2}$内，那么行列式不为零的那些矩阵就构成一个光滑流形，记作$\mathrm{GL}(n,\rr)$，称作一般线性群。
 
 特别地，$\rr$也是一个光滑流形。我们称光滑映射$f:M\to \rr$是一个$M$上的光滑函数。光滑函数$f$限制在$U\osub M$上也是一个光滑函数$f|_U$.
 
@@ -1016,40 +1017,48 @@ $\partial^2=0$和$\dd^2=0$是如此的相似！实际上，我们可以定义$H_
 \]
 这时候，$\sigma:\Delta^p\to M$常常会写作$\sigma(a_1,\cdots,a_p)$.
 
-此时，对于边缘算子，这种约定下，符号要变得复杂一下
+此时，对于边缘算子，这种约定下，符号要变得复杂一些，记
 \[
-	\partial\sigma(a_1,\cdots,a_{p-1})=\sigma\left(1-\sum_{i=1}^{p-1}a_i,\cdots,a_{p-1}\right)+\sum_{i=1}^p(-1)^i \sigma(a_1,\cdots,a_{i-1},0,a_{i+1},\cdots,a_{p-1}),
+	k^p_0(a_1,\cdots,a_{p})=\left(1-\sum_{i=1}^{p-1}a_i,\cdots,a_{p}\right),
 \]
-不难检验，$\partial^2=0$还是成立的。
-
-以后我们就采用这种符号约定。
+当$i>0$时，
+\[
+	k^p_i(a_1,\cdots,a_{p})=(a_1,\cdots,a_{i-1},0,a_{i+1},\cdots,a_{p}),
+\]
+以及$\sigma^i=\sigma\circ k^p_i$，则
+\[
+	\partial\sigma=\sum_{i=0}^p(-1)^i \sigma^i,
+\]
+不难检验，$\partial^2=0$还是成立的，以后我们就采用这种符号约定。
 
 \para 设$\omega$是$\rr^n$中的$n$-形式，写作$f\dd x^1\wedge\cdots\wedge \dd x^n$，则我们定义他在区域$A$上的积分算符为线性函数
 \[
 	\int_A \omega=\int_A f \dd x^1\cdots\dd x^n,
 \]
-由这个式子，我们可以重写积分变量替换公式为
+有时候为了省空间，我们以$\Int_A$来记$\int_A$. 并且，反过来，我们也将欧式空间里的$n$-重积分写作对微分形式积分的样子
+\[
+	\int_A f \dd x^1\cdots\dd x^n=\int_A f\dd x^1\wedge\cdots\wedge \dd x^n.
+\]
+
+有了这个定义，我们可以重写积分变量替换公式为
 \[
 	\int_{\varphi(A)}\omega=\pm\int_A \varphi^*\omega,
 \]
 其中当$\det(\varphi_*)>0$的时候取正，反之取负。
 
-\para 设$\sigma:\Delta^p\to M$是一个$M$上的一个$p$-单形，这里$p>0$，那么$\sigma$诱导了一个拉回映射$\sigma^*$，我们定义一个$p$-形式$\omega$在$\sigma$上的积分如下：
+\para 设$\sigma$是一个$M$上的0-单形，即一个点$\sigma(0)\in M$，定义在$\sigma$上的积分为$\Int_\sigma \omega=\omega(\sigma(0))$.
+
+\para 对于$p\leq 1$的情况，设$\sigma:\Delta^p\to M$是一个$M$上的一个$p$-单形，这里$p>0$，那么$\sigma$诱导了一个拉回映射$\sigma^*$，我们定义一个$p$-形式$\omega$在$\sigma$上的积分如下：
 \[
 	\int_\sigma \omega=\int_{\Delta^p} \sigma^*\omega,
 \]
-注意到等式右边就是一个$\rr^{p}$内对$p$-形式的积分，这个积分上面我们以及定义了。
+注意到等式右边就是一个$\rr^{p}$内对$p$-形式的积分，这个积分上面我们已经定义了。
 
 当我们在一条链上积分的时候，比如$c=\sum_{i} n_i \sigma_i$，我们定义
 \[
 	\int_c \omega=\sum_i n_i \int_{\sigma_i} \omega.
 \]
 此时，单形之间加起来成链在积分的意义下清楚了不少。
-
-如果$\sigma$是一个$M$上的0-单形，即一个点$\sigma(0)\in M$，定义在$\sigma$上的积分为
-\[
-	\int_\sigma \omega=\omega(\sigma(0)).
-\]
 
 \theo 微积分基本定理：设$c$是$M$上的一个1-链，而$f$是$M$上的一个光滑函数，则
 \[
@@ -1059,12 +1068,78 @@ $\partial^2=0$和$\dd^2=0$是如此的相似！实际上，我们可以定义$H_
 
 \theo 著名的Stocks定理（还能叫微积分基本定理）：设$c$是$M$上的一个$p$-链，而$\omega$是$M$上的一个$(p-1)$-单形，则
 \[
-	\int_{\partial c} \omega=\int_c \dd \omega.
+	\int_c \dd \omega=\int_{\partial c} \omega.
 \]
 
 这是两个（一个）极伟大的定理，尽管证明他并不是特别困难。他的重要性无需强调，每一个做过定积分（包括曲面积分等）计算的人都知道他多么有用。
 
-为了证明他，我们只要对一个单形去证明就可以了。尽管如此，由于可以拉到欧式空间里面，证明几乎就可以在欧式空间里面进行。
+\proof 对于$p=1$的情况，这就是微积分基本定理，所以我们下面假设$p\leq 2$.由于积分对链是线性的，所以我们只要对一个单形去证明就可以了，即
+\[
+	\int_{\sigma} \dd \omega=\int_{\partial \sigma} \omega,
+\]
+利用积分的定义，我们把单形拉回到欧式空间里面，证明几乎就可以在欧式空间里面进行，即
+\[
+	\int_{\Delta^p} \sigma^*(\dd \omega)=\sum_{i=0}^p(-1)^i\int_{\Delta^{p-1}} (\sigma^i)^*\omega=\sum_{i=0}^p(-1)^i\int_{\Delta^{p-1}} (k^p_i)^*\circ \sigma^*(\omega).
+\]
+
+我们假设
+\[
+	\sigma^*\omega=\sum_{i=1}^pa_i\dd x^1\wedge\cdots\wedge\widehat{\dd x^i}\wedge\cdots \dd x^p,
+\]
+所以等式左边写作
+\[
+\begin{split}
+	\int_{\Delta^p} \sigma^*(\dd \omega)=\int_{\Delta^p} \dd(\sigma^* \omega)&=\sum_{i=1}^p\int_{\Delta^{p}} \dd a_i\wedge \dd x^1\wedge\cdots\wedge\widehat{\dd x^i}\wedge\cdots\wedge\dd x^p\\
+	&=\sum_{i=1}^p\int_{\Delta^{p}} (-1)^{i-1}\partial_i a_i\dd x^1\wedge\cdots \wedge\dd x^p.
+\end{split}
+\]
+
+现在来看右边，由于
+\[(k^p_0)^*(x^j)=
+\begin{cases}
+	1-\sum_{i=1}^{p-1}x^i,& j =1;\\
+	x^{j-1},& j>1,
+\end{cases}\quad 
+(k^p_i)^*(x^j)=
+\begin{cases}
+	x^j,& 1\leq j \leq i-1;\\
+	0,& j=i;\\
+	x^{j-1},& i+1\leq j \leq p.
+\end{cases}
+\]
+所以
+\[
+\begin{split}
+	\sum_{i=0}^p(-1)^i\int_{\Delta^{p-1}}& (k^p_i)^*(a_j\dd x^1\wedge\cdots\wedge\widehat{\dd x^j}\wedge\cdots \dd x^p)\\
+	&=(-1)^{j-1}\int_{\Delta^{p-1}} (a_j\circ k^p_0)\dd x^1\wedge\cdots \wedge\dd x^{p-1}+(-1)^j\int_{\Delta^{p-1}} (a_j\circ k_j^p)\dd x^1\wedge\cdots \wedge\dd x^{p-1},
+\end{split}
+\]
+对右侧第一项做一个适当的变量替换$\varphi^i$如下
+\[
+	\varphi^i(x)=
+	\begin{cases}
+	x,& i=1;\\
+	(1-\sum_{i=1}^{p-1}x^i,x^2,\cdots,x^{p-1}),& i=2;\\
+	(x^2,\cdots,x^{i-1},1-\sum_{i=1}^{p-1}x^i,x^{i+1},\cdots,x^{p-1}),& 2<i\leq p.
+\end{cases}
+\]
+容易证明$\varphi^i(\Delta^{p-1})=\Delta^{p-1}$以及$\det ((\varphi^i)_*)=1$，所以，由重积分变量替换公式，我们得到
+\[
+\begin{split}
+	\sum_{i=0}^p&(-1)^i\int_{\Delta^{p-1}} (k^p_i)^*(a_j\dd x^1\wedge\cdots\wedge\widehat{\dd x^j}\wedge\cdots \dd x^p)\\
+	=&(-1)^{j-1}\int_{\Delta^{p-1}} a_j\left(x^1,\cdots,x^{j-1},1-\sum_{i=1}^{p-1}x^i,x^{j},\cdots,x^p\right)\dd x^1\wedge\cdots \wedge\dd x^{p-1}+\\
+	&(-1)^{j}\int_{\Delta^{p-1}}a_j(x^1,\cdots,x^{j-1},0,x^{j},\cdots,x^p)\dd x^1\wedge\cdots \wedge\dd x^{p-1},
+\end{split}
+\]
+所以最后我们只需要证明
+\[
+\begin{split}
+	\int_{\Delta^{p}}\partial_i a_i\dd x^1\wedge\cdots \wedge\dd x^p=
+	&\int_{\Delta^{p-1}} a_j\left(x^1,\cdots,x^{j-1},1-\sum_{i=1}^{p-1}x^i,x^{j},\cdots,x^p\right)\dd x^1\wedge\cdots \wedge\dd x^{p-1}\\
+	&-\int_{\Delta^{p-1}}a_j(x^1,\cdots,x^{j-1},0,x^{j},\cdots,x^p)\dd x^1\wedge\cdots \wedge\dd x^{p-1},
+\end{split}
+\]
+注意这其实是重积分，利用一元的微积分基本定理即得。\qed
 
 %\input{connection}
 
