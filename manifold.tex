@@ -569,7 +569,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \[
 	0=\dd (h\omega)=\dd h \wedge \omega +h\dd \omega
 \]
-限制在$W$上，$h|_{W}=1$且$(\dd h)|_{W}=0$（利用$\dd h$是一个微分这一个事实），所以$(\dd \omega)|_{W}=0$. 
+限制在$W$上，$h|_{W}=1$且$(\dd h)|_{W}=0$（利用$\dd h$是一个微分这一个事实），所以$(\dd \omega)|_{W}=0$.
 
 \pro \label{localdef}利用\pararef{localpro}，设$V\osub U$，如果$U$上存在外微分形式$\dd$，则他诱导出了$V$上的一个外微分形式$\dd_V$。并且，再设$W\osub W$，则$\dd$在$W$上诱导的$\dd_W$和$\dd_V$在$W$诱导的$\dd_{VW}$是相同的。此外$(\dd_V \omega)|_W=\dd_W (\omega|_W)$对任意的$V$上的$k$-形式$\omega$成立。
 
@@ -589,7 +589,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 设$W\subset V$是$U$中的开集，以及$\rho^k_{VW}$和$\rho^{k+1}_{VW}$分别是$k$-形式和$(k+1)$-形式的限制映射。设$\omega$是$V$上的任意$k$-形式，由于$\rho^{k+1}_{VW}\circ \dd_V (\omega)=(\dd_V \omega)|_W=\dd_W (\omega|_W)=\dd_W \circ \rho^k_{VW}(\omega)$，所以我们有
 \[
-\dd_W\circ \rho^k_{VW}=\rho^{k+1}_{VW}\circ \dd_V.	
+\dd_W\circ \rho^k_{VW}=\rho^{k+1}_{VW}\circ \dd_V.
 \]
 换句话说，$\dd$诱导了预层$U\mapsto \Gamma(\Omega^k,U)$和预层$U\mapsto \Gamma(\Omega^{k+1},U)$间的自然变换（或者叫做函子间的态射）。
 
@@ -1099,7 +1099,7 @@ $\partial^2=0$和$\dd^2=0$是如此的相似！实际上，我们可以定义$H_
 \begin{cases}
 	1-\sum_{i=1}^{p-1}x^i,& j =1;\\
 	x^{j-1},& j>1,
-\end{cases}\quad 
+\end{cases}\quad
 (k^p_i)^*(x^j)=
 \begin{cases}
 	x^j,& 1\leq j \leq i-1;\\
@@ -1140,6 +1140,14 @@ $\partial^2=0$和$\dd^2=0$是如此的相似！实际上，我们可以定义$H_
 \end{split}
 \]
 注意这其实是重积分，利用一元的微积分基本定理即得。\qed
+
+\para 回到积分曲面的问题，我们谈过，积分曲面的存在性就在于曲边四边形的可拼合与否。这里，利用沿着曲线（1-单形）的积分，我们再来演示一次$\dd\omega$决定了他是否可积。
+
+我们和以前一样考虑两条路径，他们分别沿着$X$方向走过$\epsilon$时间，再沿着$Y$方向走过$\epsilon$时间，或者次序反过来，他们的终点分布记做$P$和$Q$，那么取一条光滑曲线连接$PQ$，则我们就做成了一个回路。此时，取一个$\omega$使得$X$, $Y\in \ker(\omega)$，那么利用微积分基本定理，就可以把$\omega$沿着回路的积分化到曲面上关于$\dd \omega$的积分。
+
+现在开始估计积分，从起点开始，每走$\epsilon$，高度就增加阶为$\epsilon^2$，那么如果有错开，他错开的垂直部分面积就应该至多是$\epsilon\cdot \epsilon^2=\epsilon^3$的阶，否则积分曲面就不存在。而$\dd \omega$关于回路围成的曲面的积分就是垂直错开部分的面积，即一个三阶小量。
+
+利用微积分基本定理，我们就得到了，$\omega$沿着一条路径（先$X$和后$Y$或者反过来），与沿着另一条路径的积分，就应该至多相差一个三阶小量。因此，积分曲面存在当且仅当$\dd \omega|_{\omega=0}=0$.
 
 %\input{connection}
 
