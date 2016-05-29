@@ -43,10 +43,9 @@
 其中$g_{ij}$在$V$上光滑，以后我们就将那个偏微分记作$\partial_i f(p)$.
 
 
-\para 设$p\in M$，$p$处的茎为$\calf_p$，他的极大理想为$\mm_p$，此时$p$处的 余切空间被定义为自然的矢量空间$T_p^*M:=\mm_p/\mm_p^2$。余切空间的元素被称为余切矢量。
+\para 设$p\in M$，$p$处的茎为$\calf_p$，他的极大理想为$\mm_p$，此时$p$处的{\kaishu 余切空间}被定义为自然的矢量空间$T_p^*M:=\mm_p/\mm_p^2$。余切空间的元素被称为{\kaishu 余切矢量}。
 
-$\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-模，然后任取$a\in \mm_p$，由于$a\mm_p/\mm_p^2=0$，所以$\mm_p/\mm_p^2$是一个$\calf_p/\mm_p$-模，即$\rr$-矢量空间。这样定义的余切空间，可以看到，是所有的那些一阶小量构成的集合，即其中的元素为“微分”。
-
+$\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-模，然后任取$a\in \mm_p$，由于$a\mm_p/\mm_p^2=0$，所以$\mm_p/\mm_p^2$是一个$\calf_p/\mm_p$-模，即$\rr$-矢量空间。这样定义的余切空间，可以看到，是所有的那些一阶小量构成的集合，即其中的元素为“{微分\kaishu}”。
 
 \para 设$p\in M$，$M$是一个$n$维流形，则$T_p^*M:=\mm_p/\mm_p^2$是$n$维的。
 
@@ -172,7 +171,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 设$f:M\to N$是一个光滑映射，则$\rank_p f$被定义为$\rank_p f_{*p}$.取$p$和$f(p)$附近的坐标$\varphi$和$\psi$且使得$\varphi(p)=0$，则$f$在点$p$的秩就是Jacobian矩阵$(\psi\circ f \circ \varphi^{-1})_{*0}$的秩。
 
-选取$f(p)$附近的坐标$\psi$，则$\psi\circ f:M\to \rr^n$，不妨将其写作$(f_1,\cdots,f_n)$，则$\rank_p f$就是${\dd_pf_1,\cdots,\dd_pf_n}$张成的线性空间的维度。实际上，因为这是局部结果，所以可以直接假设$N=\rr^n$，而此时$f_{*p}=(\dd_pf_1,\cdots,\dd_pf_n)$。
+选取$f(p)$附近的坐标$\psi$，则$\psi\circ f:M\to \rr^n$，不妨将其写作$(f_1,\cdots,f_n)$，则$\rank_p f$就是${\dd_pf_1,\cdots,\dd_pf_n}$张成的线性空间的维度。实际上，因为这是局部结果，所以可以假设$N=\rr^n$，此时$f_{*p}=(\dd_pf_1,\cdots,\dd_pf_n)$。
 
 \theo 设$M$是一个$m$维流形且$f:M\to N$是一个光滑映射，如果存在常数$l$使得$\rank_p f$处处等于$l$，那么对于$q\in N$，$f^{-1}(q)$要么是空集，要么是$M$的一个正则子流形，维度为$m-l$。
 
@@ -181,7 +180,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \section{Vector Field}
 和我们以前的直观一样，所谓的矢量场(vector field)就是每一点赋予一个矢量。
 
-\para 设$U\osub M$，$U$上的映射$X:p\mapsto X(p)\in T_pM$被称为$U$上的（切）矢量场。因为在$U$的每一个局部$V$（至少一个坐标卡内），矢量场$X$都可以写作$X=X^i\partial_i$，其中$X^i$是$V$上的实值函数，而$\partial_i$在不同的点分属不同的切空间。如果$\{X^i\}$在点$p$是光滑函数，则称$X$在$p$处光滑。如果$X$在$U$处处光滑，则称$X$是$U$上的一个光滑矢量场。
+\para 设$U\osub M$，$U$上的映射$X:p\mapsto X(p)\in T_pM$被称为$U$上的{\kaishu （切）矢量场}。因为在$U$的每一个局部$V$（至少一个坐标卡内），矢量场$X$都可以写作$X=X^i\partial_i$，其中$X^i$是$V$上的实值函数，而$\partial_i$在不同的点分属不同的切空间。如果$\{X^i\}$在点$p$是光滑函数，则称$X$在$p$处光滑。如果$X$在$U$处处光滑，则称$X$是$U$上的一个光滑矢量场。
 
 对矢量场而言，他可以作用在光滑函数上得到一个函数，在局部的作用效果即$Xf=X^i\partial_if$. 显然，如果$X$是要给光滑矢量场，则$Xf$是一个光滑函数。反过来，如果$X^i\partial_if$对任意的光滑函数都光滑，则$X^i$自然也是光滑的，所以有下面一个结论。
 
@@ -191,7 +190,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 下面我们用（光滑）纤维丛的语言来抽象地定义场。
 
-\para 设$E$, $B$, $F$是三个光滑流形，$\pi:E\to B$是一个光滑映射，若在每一点$p\in B$，都存在一个邻域$U$和光滑同胚$\varphi$使得$\pi^{-1}(U)$同胚于$U \times F$，且如下交换图成立。则称$(E, B, \pi, F)$是一个以$B$为底，以$F$为纤维的纤维丛(fiber bundle)。
+\para 设$E$, $B$, $F$是三个光滑流形，$\pi:E\to B$是一个光滑映射，若在每一点$p\in B$，都存在一个邻域$U$和光滑同胚$\varphi$使得$\pi^{-1}(U)$同胚于$U \times F$，且如下交换图成立。则称$(E, B, \pi, F)$是一个以$B$为底，以$F$为纤维的{\kaishu 纤维丛}(fiber bundle)。
 	\[
 		\xymatrix{
 			\pi^{-1}\left(U\right)\ar[rr]^\varphi \ar[dr]_\pi&&U\times F \ar[dl]^{\mathrm{proj}_1}\\
@@ -199,7 +198,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 			}
 	\]
 
-一般称呼$B\times F$为平凡丛。如果$F$是一个矢量空间，则$(E, B, \pi, F)$被称为一个矢量丛。显然，$\calf(M)$是以$M$为底$\rr$为纤维的纤维丛。
+一般称呼$B\times F$为平凡丛。如果$F$是一个矢量空间，则$(E, B, \pi, F)$被称为一个{\kaishu 矢量丛}。显然，$\calf(M)$是以$M$为底$\rr$为纤维的纤维丛。
 
 \para 设$(E, B, \pi, F)$是一个纤维丛，设$U\subset B$是一个开集，则$U$上的光滑截面(section)定义为一个光滑映射$s:B\to E$满足$\pi\circ s=\id_U$.
 
@@ -270,7 +269,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 		X=X^i\partial_i=X^1 \frac{\dd x^i}{\dd v^1}\frac{\partial}{\partial x^i}=X^1\partial'_1.
 	\]\qed
 
-设$X$是$U$上的光滑矢量场，对$U$上的每一点$p$，都可以在$p$附近找到他的一条光滑积分曲线$\sigma_p$，上面的点$\sigma_p(t)$我们也记作$\sigma_t(p)$，这样我们就得到了一个新的一族映射$\{\sigma_t:U\to U\}$，当$t=0$的时候，$\sigma_0=\id$.这样的一族映射$\{\sigma_t\}$被称为矢量场$X$的流。如果需要明确是那个矢量场的时候写作$\{\sigma^X_t\}$. 由微分方程解的唯一性可以发现$\sigma_t\circ \sigma_s=\sigma_{s+t}$.
+设$X$是$U$上的光滑矢量场，对$U$上的每一点$p$，都可以在$p$附近找到他的一条光滑积分曲线$\sigma_p$，上面的点$\sigma_p(t)$我们也记作$\sigma_t(p)$，这样我们就得到了一个新的一族映射$\{\sigma_t:U\to U\}$，当$t=0$的时候，$\sigma_0=\id$.这样的一族映射$\{\sigma_t\}$被称为矢量场$X$的{\kaishu 流}。如果需要明确是那个矢量场的时候写作$\{\sigma^X_t\}$. 由微分方程解的唯一性可以发现$\sigma_t\circ \sigma_s=\sigma_{s+t}$.
 
 对于一个矢量场，整体流的存在性是不能保证的，比如对$t=1$的时候，是否对每一个$p$变换$\sigma_1$都有意义？但是，至少在局部，我们可以保证在一定范围内的参数都是有意义的，对于局部的问题，这个存在性已经基本够使了。
 
@@ -436,7 +435,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \[
 	\dd f(X)\dd g(Y)-\dd f(Y)\dd g(X)=\dd f\otimes \dd g(X,Y)-\dd g\otimes \dd f(X,Y)=(\dd f\otimes \dd g-\dd g\otimes \dd f)(X,Y).
 \]
-记$\dd f\wedge \dd g=\dd f\otimes \dd g-\dd g\otimes \dd f$，其中的$\wedge$被称为楔积，记$D(f\dd g)=\dd f\wedge \dd g$，则式(\theequation)变成了
+记$\dd f\wedge \dd g=\dd f\otimes \dd g-\dd g\otimes \dd f$，其中的$\wedge$被称为{\kaishu 楔积}，记$D(f\dd g)=\dd f\wedge \dd g$，则式(\theequation)变成了
 \[
 	D(f\dd g)(X,Y)=X(\omega(Y))-Y(\omega(X))-\omega([X,Y]).
 \]
@@ -825,7 +824,7 @@ I^p\left(\sum_Ih_I\dd x_I\right)=(\omega_1,\omega_2).
 
 如果我们已知$U_1$和$U_2$的上同调群，那么通过Mayer-Vietoris列我们就有可能计算他们的并或者交的上同调群。
 
-\para 两个连续函数$f$, $g:X\to Y$被称为同伦的，就是说存在一个连续函数$H:X\times [0,1]\to Y$使得$H(0,x)=f(x)$以及$H(1,x)=g(x)$.同伦是等价关系，就是说，如果还有$h$和$f$同伦，则$g$和$h$也同伦。一个空间$X$是可缩的，如果$\id_X$同伦于映到自身的常值映射。比如$\rr^n$或者与他同胚的开实心球$D^n$都是可缩的。
+\para 两个连续函数$f$, $g:X\to Y$被称为{\kaishu 同伦}的，就是说存在一个连续函数$H:X\times [0,1]\to Y$使得$H(0,x)=f(x)$以及$H(1,x)=g(x)$.同伦是等价关系，就是说，如果还有$h$和$f$同伦，则$g$和$h$也同伦。一个空间$X$是可缩的，如果$\id_X$同伦于映到自身的常值映射。比如$\rr^n$或者与他同胚的开实心球$D^n$都是可缩的。
 
 两个集合$X$和$Y$称为同伦等价的，如果存在$f:X\to Y$和$g:Y\to X$满足$f\circ g$和$\id_Y$同伦以及$g\circ f$和$\id_X$同伦。下面我们尝试说明，上同调群是同伦不变量。即在同伦意义下，上同调群是同构的。
 

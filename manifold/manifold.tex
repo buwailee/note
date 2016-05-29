@@ -4,6 +4,7 @@
 \usepackage[winfonts]{ctex}
 
 \newtheorem{para}{}[section]
+\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
 \newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}}
 	\renewcommand{\para}{\paracount{}}
 	\newcommand{\theo}{\paracount{Theorem}}
@@ -13,7 +14,7 @@
 
 \newcommand{\pararef}[1]{(\ref{#1})}
 
-\usepackage[xetex]{hyperref}%使用xetex引擎
+\usepackage[xetex]{hyperref}
 	\hypersetup{bookmarksnumbered=true}
 
 \input{../defs}
