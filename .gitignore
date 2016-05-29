@@ -236,3 +236,6 @@ pip-log.txt
 *.nav
 *.snm
 *.synctex.gz
+
+# visual studio code file
+.vscode/
