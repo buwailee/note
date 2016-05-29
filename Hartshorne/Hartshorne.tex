@@ -1,8 +1,7 @@
 %!TEX program = xelatex
-\documentclass[8pt]{book}
-\usepackage{ctex,noteheader,amsthm}
-\usepackage[all]{xy}
-\usepackage{tikz}
+\documentclass[9pt]{extbook}
+\usepackage{../noteheader}
+\usepackage{ctex}
 
 \theoremstyle{plain}%定理环境样式
 \newtheorem{defi}{Definition}[section]% 定义定义环境
@@ -27,7 +26,7 @@
 	filecolor=magenta,  % 文件链接颜色
 	urlcolor=cyan  % URL链接颜色
 }
-\include{defs}
+\input{../defs}
 
 \begin{document}
 \title{代数几何（一）笔记}

@@ -1,9 +1,7 @@
 %!TEX program = xelatex
-\documentclass[8pt]{book}
+\documentclass[8pt]{extbook}
 \usepackage{ctex}
-\usepackage{noteheader,amsthm}
-\usepackage[all]{xy}
-\usepackage{tikz}
+\usepackage{../noteheader}
 
 \newtheorem{pro}{Proposition}% 定义命题环境
 \newtheorem{defi}{Definition}% 定义命题环境
@@ -27,14 +25,14 @@
 	filecolor=magenta,  % 文件链接颜色
 	urlcolor=cyan  % URL链接颜色
 }
-\include{defs}
+\input{../defs}
 
 \begin{document}
 \title{电动力学笔记}
 \author{Buwai. Lee@School of Physics, NJU}
 \date{2015秋季学期}
 \maketitle %标题
-\include{va}
+\input{va}
 \section*{符号约定}
 本文所指相对论皆狭义相对论。先指出指标在狭义相对论的运用是自然的。
 
@@ -1312,7 +1310,7 @@ _{\mu\nu}=-\omega_{\nu\mu}$，如果作用量有Lorentz不变性，则自然有�
 	S=-\int_M \mathbf{A}\wedge\star\mathbf{j}-\frac{1}{8\pi}\int_M \mathbf{F}\wedge\star\mathbf{F}.
 \]
 
-\include{chapter2}
+\input{chapter2}
 
 \chapter{电磁波}
 上一章我们主要讨论了狭义相对论下力学的可能性，重点在于运动方程、力学量等等，却几乎没有实际求解过运动方程或是分析具体的电磁场。因此，接着的这几章的目的，就是给出这样的应用。而作为开始，我们就谈谈Maxwell理论力量的体现，也即是Maxwell本人的伟大预言，电磁波。
@@ -2223,5 +2221,5 @@ Lienard-Wiechert势是一个运动电荷所产生的势能。对于这样一个�
 	\bm{B}=\nabla\times \bm{A}=\frac{1}{c}\dot{\bm{A}}\times \hat{\bm{r}},\quad \bm{E}=(\dot{\bm{A}}\times \hat{\bm{r}})\times \hat{\bm{r}}.
 \]
 
-\include{gauge}
+\input{gauge}
 \end{document}
