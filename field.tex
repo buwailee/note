@@ -1,6 +1,7 @@
+%!TEX program = xelatex
 % author: buwailee@nmhs
 \documentclass[9pt]{extbook} 
-\usepackage[article]{noteheader}
+\usepackage[article,zh]{noteheader}
 \usepackage[winfonts]{ctex}
 
 \newtheorem{para}{}[section]
@@ -17,9 +18,10 @@
 \begin{document}
 下面出现的环都是交换含幺环。
 \section{Field extensions}
+
 设有两个环$A$, $B$和一个环同态$f:A\to B$，再设$a\in A$, $b\in B$，我们可以通过$f$定义他们的乘法为$a\cdot b=f(a)b\in B$，这样环$B$就被赋予了一个$A$-模结构。
 
-\defi 	环$B$若被赋予一个$A$-模结构，则称$B$是一个$A$-代数。
+\defi 环$B$若被赋予一个$A$-模结构，则称$B$是一个$A$-代数。
 
 设$B$是$A$-代数，有$f:A\to B$，设$C$也是$A$-代数，有$g:A\to C$，那么$A$-代数之间的同态$h:B\to C$，首先是$B$和$C$之间的环同态，还要和$A$-模结构相容，即$g=h\circ f$.
 
