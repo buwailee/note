@@ -131,3 +131,19 @@
 
 % \lem 设$\{v_i:1\leq i \leq r\}$是$V^*$中的一族线性无关的矢量，设$w$是一个$V$上的$p$-形式，则存在$\{\psi_i\in \Omega^{k-1}(V):1\leq i \leq r\}$使得$w=\sum_{i=1}^rv_j\wedge \psi_i$，当且仅当$v_1\wedge\cdots\wedge v_r\wedge w=0$.
 \section{Partition of Unity}
+
+函数$f$的支集$\supp(f)$被定义为$\{x\in M:f(x)\neq 0\}$的闭包。
+
+\para \label{POUdef} 单位分解：设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在可数个光滑函数$g_i\in \cal(M)$满足：
+
+\no{1} 对于任意的$x\in M$和$i\in I$，都有$0\leq g_i(x)\leq 1$.
+
+\no{2} 对每个$g_i$，都存在一个${\alpha_i}$使得$\supp(g_i)\subset U_{\alpha_i}$.
+
+\no{3} 集族$\{\supp(g_i)\}$局部有限，即任取$p\in M$，存在$p$的邻域$U$使得$U$只和集族$\{\supp(g_i)\}$中的有限个集合相交非空。
+
+\no{4} 因为上一个性质，所以在一点累加$g_i$时，只有有限项非零。我们最后的要求就是$\sum_i g_i=1$.
+
+则称$\{g_i\}$是从属于开覆盖$\{U_\alpha\}_{\alpha\in I}$的一个单位分解。
+
+\lem \label{POU}流形$M$上的每一个开覆盖都存在从属于他的单位分解。
