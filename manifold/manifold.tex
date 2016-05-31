@@ -2,7 +2,7 @@
 \documentclass[9pt]{extbook}
 \usepackage[book,zh]{../noteheader}
 \usepackage[winfonts]{ctex}
-
+	\CTEXoptions[today=old]
 \newtheorem{para}{}[section]
 \renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
 \newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}}
@@ -18,10 +18,27 @@
 	\hypersetup{bookmarksnumbered=true}
 
 \input{../defs}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\lag}{{\mathfrak{g}}}
+\newcommand{\ad}{{\mathrm{ad}}}
 \DeclareMathOperator{\Int}{int}
 
 \begin{document}
+\frontmatter
+\thispagestyle{empty}
+\begin{flushright}
+{\Huge\bfseries Manifold}\\[\baselineskip]
+% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
+{by Buwai Lee@Shanghai Nanyang Model High School}\par
+\today
+\end{flushright}
+\vfill
+{\Large\itshape Just for fun}
+\clearpage
+\mainmatter
 	\input{calculus}
+	\input{lie_group}
 	\input{connection}
 	\input{appendix}
+	\input{reference}
 \end{document}
