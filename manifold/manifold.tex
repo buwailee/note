@@ -3,47 +3,39 @@
 \usepackage[book,zh]{../noteheader}
 \usepackage[winfonts]{ctex}
 	\CTEXoptions[today=old]
-
-\newtheorem{para}{}[section]
-\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
-\newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}}
-	\renewcommand{\para}{\paracount{}}
-	\newcommand{\theo}{\paracount{Theorem}}
-	\newcommand{\pro}{\paracount{Proposition}}
-	\newcommand{\lem}{\paracount{Lemma}}
-	\renewcommand{\proof}{\textbf{Proof:}\hspace{0.5em}}
-
-\newcommand{\pararef}[1]{(\ref{#1})}
-\newcommand{\lemref}[1]{Lemma \pararef{#1}}
-\newcommand{\proref}[1]{Proposition \pararef{#1}}
-\newcommand{\theoref}[1]{Theorem \pararef{#1}}
+	\CTEXoptions[contentsname=Table of Contents]
+\usepackage{../egastyle,titletoc}
+\usepackage[titletoc,title]{appendix}
+	\renewcommand{\appendixname}{Appendix}
 
 \usepackage[xetex]{hyperref}
 	\hypersetup{bookmarksnumbered=true}
 
 \input{../defs}
-\newcommand{\cc}{\mathbb{C}}
-\newcommand{\lag}{{\mathfrak{g}}}
-\newcommand{\ad}{{\mathrm{ad}}}
-\DeclareMathOperator{\Int}{int}
+	\newcommand{\cc}{\mathbb{C}}
+	\newcommand{\lag}{{\mathfrak{g}}}
+	\newcommand{\ad}{{\mathrm{ad}}}
+	\DeclareMathOperator{\Int}{int}
 
 \begin{document}
-\frontmatter
 \thispagestyle{empty}
-\begin{flushright}
-{\Huge\bfseries Manifold}\\[\baselineskip]
-% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
-{by Buwai Lee@Shanghai Nanyang Model High School}\par
-\today
-\end{flushright}
-\vfill
-{\Large\itshape Just for fun}
+	\begin{flushright}
+	{\Huge\bfseries Manifold}\\[\baselineskip]
+	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
+	{by Buwai Lee@Shanghai Nanyang Model High School}\par
+	\today
+	\end{flushright}
+	\vfill
+	{\Large\itshape Just for fun}
 \clearpage
 \thispagestyle{empty}
+\frontmatter
+\tableofcontents
 \mainmatter
 	\input{calculus}
 	\input{lie_group}
 	\input{connection}
 	\input{appendix}
+\backmatter
 	\input{references}
 \end{document}

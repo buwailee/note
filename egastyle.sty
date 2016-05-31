@@ -1,0 +1,13 @@
+\newtheorem{para}{}[section]
+\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
+\newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}}
+	\renewcommand{\para}{\paracount{}}
+	\newcommand{\theo}{\paracount{Theorem}}
+	\newcommand{\pro}{\paracount{Proposition}}
+	\newcommand{\lem}{\paracount{Lemma}}
+	\renewcommand{\proof}{\textbf{Proof:}\hspace{0.5em}}
+
+\newcommand{\pararef}[1]{(\ref{#1})}
+\newcommand{\lemref}[1]{Lemma \pararef{#1}}
+\newcommand{\proref}[1]{Proposition \pararef{#1}}
+\newcommand{\theoref}[1]{Theorem \pararef{#1}}

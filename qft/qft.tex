@@ -1,9 +1,9 @@
 %!TEX program = xelatex
-\documentclass[8pt]{book}
-\usepackage{ctex,amsthm}
-\usepackage{noteheader}
+\documentclass[9pt]{extbook}
+\usepackage{ctex}
 \CTEXoptions[today=old]%使日期变成鸟语
-\usepackage{tikz}
+\usepackage[zh,book]{../noteheader}
+
 \usepackage{titletoc}%使用目录
 	\theoremstyle{plain}%定理环境样式
 	\newtheorem{pro}{Proposition}[section]% 定义命题环境
@@ -24,15 +24,10 @@
 	bookmarksopenlevel=1,%目录层次打开的级数，可选数字或者 \maxdimen最大
 	pdfsubject={Physics},  % 主题，自己填
 	pdfkeywords={QFT}, % 关键字，自己填
-	colorlinks=true,  % 彩色链接 false:边框链接 ; true: 彩色链接
-	linkcolor=blue,  % 内部链接颜色
-	citecolor=green,  % 引用标记颜色
-	filecolor=magenta,  % 文件链接颜色
-	urlcolor=cyan  % URL链接颜色
 }
 
 %定义你的命令
-\include{defs}
+\input{../defs}
 \newcommand{\re}[1]
 	{\begin{center}
 		\colorbox{shadecolor}{
@@ -48,7 +43,7 @@
 \begin{flushright}
 {\Huge\bfseries Quantum Field Theory}\\[\baselineskip]
 {{\scshape translate\:}\Large {\itshape from} {\scshape Weinberg}} \par
-{by DaDouBi@NJU}\par
+{by DaDouBi@Shanghai Nanyang Model High School}\par
 \today
 \end{flushright}
 \vfill
@@ -57,8 +52,8 @@
 这其实就是抄书（Steven Weinberg的The Quantum Theory of Fields），看不大懂所以抄起来了2333，@小平邦彦。
 \clearpage
 \mainmatter
-\include{qft_c123}
-\include{qft_c456}
+\input{qft_c123}
+\input{qft_c456}
 \chapter{Quantum Fields and Antiparticles}
 （这章的构造实在漂亮。）
 \section{Free Fields}

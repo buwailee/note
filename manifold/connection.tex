@@ -110,7 +110,7 @@ $g^{il}$是$g_{il}$的逆，更准确地说就是$g^{il}g_{lm}=\delta^i_m$.
 	l_i=-mck_i=-\frac{mc}{2}\left(2(u_i)'-\partial_ig_{mn}u^mu^n\right).
 \]
 
-\section{Vector Bundle and Connection}
+\section{Connection}
 
 联络的出现，代数上实现了对矢量场的方向导数，几何上实现了所谓的平行移动。讨论联络的基本背景是矢量场和主丛，他们都是纤维丛的一个特例。
 
@@ -118,10 +118,7 @@ $g^{il}$是$g_{il}$的逆，更准确地说就是$g^{il}g_{lm}=\delta^i_m$.
 
 因为在每一点，$s(p)\in \pi^{-1}(p)\cong F$，所以$s(p)$可以看成是$F$中的元素。就是说，一个光滑截面，在流形$M$的每一点都赋予一个$s(p)\in F$，这就是我们熟知的场的概念的推广。
 
-矢量场是矢量丛的截面，特别地，度规是2-形式场（形式是余切矢量），局部来看就是
-\[
-	g=g_{ij}(x)\dd x^i\otimes \dd x^j.
-\]
+矢量场是矢量丛的截面，特别地，度规是2-形式场（形式是余切矢量），局部来看就是$g=g_{ij}(x)\dd x^i\otimes \dd x^j$.
 
 矢量丛上的联络的首先目的是为了对矢量场进行求导的。按照一般的思路，将矢量场$s$参数化，假设他在曲线$\gamma(t)$上，$\gamma(0)=x_0$，而$\gamma'(0)=Y$，则似乎他沿$Y$方向的导数应该定义成
 \[
@@ -485,7 +482,8 @@ D_{\dot{c}}s(c(t))=\left(\dot{s}^j\mu_j+\dot{c}^i s^j\Gamma^k_{\phantom{k}ij}\mu
 	\dd A^{k}_{\phantom{k}i}=-\Omega^{k}_{\phantom{k}i}-A^{k}_{\phantom{k}j}\wedge A^{j}_{\phantom{j}i}.
 \]
 
-从一般的曲率张量本身可以构造几个特殊的曲率，比如
+从一般的曲率张量本身可以构造几个特殊的曲率，比如：
+
 \para $\Pi$为切空间$T_pM$的二维子空间，取他的一组基$X$, $Y$，定义$\Pi$的截面曲率为
 \[
 	K(\Pi)=\frac{\langle R(X,Y)X,Y\rangle}{\langle X,X\rangle\langle Y,Y \rangle-\langle X,Y \rangle^2}.
@@ -617,6 +615,7 @@ Hodge星算子的定义和第一章里面的一样
 
 \section{Principal Bundle and Connection}
 主丛是另一种纤维丛，他在规范理论里面处于基本的地位。
+
 \para 设有纤维丛$(P,\pi,M,G)$，他被称为一个主$G$-丛如果
 
 	\no{1} $G$是一个Lie群。
