@@ -134,7 +134,7 @@
 
 函数$f$的支集$\supp(f)$被定义为$\{x\in M:f(x)\neq 0\}$的闭包。
 
-\para \label{POUdef} 单位分解：设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在可数个光滑函数$g_i\in \cal(M)$满足：
+\para \label{POUdef} 单位分解：设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在至多可数个光滑函数$g_i\in \cal(M)$满足：
 
 \no{1} 对于任意的$x\in M$和$i\in I$，都有$0\leq g_i(x)\leq 1$.
 
@@ -147,3 +147,126 @@
 则称$\{g_i\}$是从属于开覆盖$\{U_\alpha\}_{\alpha\in I}$的一个单位分解。
 
 \lem \label{POU}流形$M$上的每一个开覆盖都存在从属于他的单位分解。
+
+\para （$\rr$上的截断函数）在$\rr$上存在光滑函数$h:\rr\to\rr$，使得
+\[
+	h(x)=
+		\begin{cases}
+		0,&|x|\geq 1;\\
+		1,&|x|\leq 1/2.
+		\end{cases}
+\]
+他的图像大概就是在$0$附件鼓起来一块，然后其他地方全都为零，所以有时候也叫他鼓包函数。单位分解中的任意一个函数都长得和他差不多。
+
+构造这样的函数，我们可以只构造$x<0$的部分，然后将其偶函数拓展到$\rr$上，因为在$0$附近是常值函数，所以这样构造出的函数是$\rr$上的光滑函数。剩下的关键在于找一个$\rr$上的光滑函数，他在一段区间上可以光滑连接两个阶梯$0$和$1$。
+
+可以证明
+\[
+	\varphi(x)=
+		\begin{cases}
+			\exp(-1/x),&x> 0;\\
+			0,&x\leq 0,
+		\end{cases}
+\]
+是一个光滑函数，正半轴的图像大概是在原点为0，在无穷远为1，中间光滑连接。那么光滑函数
+\[
+	g(x)=\frac{\varphi(x)}{\varphi(x)+\varphi(1-x)},
+\]
+就是在$[0,1]$上连接两个阶梯的光滑函数。实际上，他在$x<0$的时候是0，而在$x>1$的时候是1，中间光滑连接。
+
+那么我们所需的$h$就可以如下构造：在$x<0$的时候，$h(x)=g(2x+2)$，仍然扩充为$\rr$上的偶函数。
+
+\para （$\rr^n$上的截断函数）由于$\rr^n$上的范数、或者标准内积是光滑的，则$\rr^n$上存在光滑函数$f(x)=h(\|x\|)$，使得
+\[
+	f(x)=
+		\begin{cases}
+		0,&\|x\|\geq 1;\\
+		1,&\|x\|\leq 1/2.
+		\end{cases}
+\]
+
+\para 设$M$是一个局部紧的第二可数空间，则存在一列开集$\{G_i\}$，使得每个$\bar{G}_i$都是紧集，$\bar{G}_i\subset G_{i+1}$，且$\cup_iG_i=M$.这样的一列开集被称为$M$上的一个穷竭。
+
+\proof 任取$x\in M$，由于$M$是局部紧的，所以我们可以找一个邻域$V_x$使得$\bar{V}_x$是紧集。由于$M$第二可数，有可数基，所以我们可以找至多可数个$x$使得$V_x$构成$M$的一个开覆盖，由于至多可数，所以我们可以利用正数将其编号。随便选定一个编号就好，我们令$G_1=V_1$，然后假设在$0<i<n$的时候$G_i$都已经定义，那么考虑紧集$\cup_{i<n}\bar{G}_i$，开覆盖$\{V_j\}$中可以找到一个有限子覆盖，对应着有限指标集$I$，使得$\cup_{j\in I}V_j$也是$\cup_{i<n}\bar{G}_i$的开覆盖，取$k=\sup(I)$，则
+\[
+	\bigcup_{i<n}\bar{G}_i\subset \bigcup_{j\leq k}V_j,
+\]
+那么定义$G_n=\cup_{j\leq k}V_j$，我们就归纳地找到了$M$上的一个穷竭。\qed
+
+由于任意的微分流形都是局部紧且第二可数的，所以任意的微分流形上都存在穷竭。现在，我们来证明\lemref{POU}：
+
+\proof 设$\{U_{\alpha}\}$是流形$M$的一个开覆盖。在$M$上找一个穷竭$\{G_i:i>0\}$，并令$G_0=\varnothing$，现在取$A_i=\bar{G}_i-G_{i-1}$，则显然$\{A_i:i>1\}$是一组闭集，而流形Hausdorff性告诉我们，因为$A_i$是紧集$\bar{G}_i$的闭子集，所以他也是紧的。
+
+此外，$\{A_i:i>1\}$是$M$的一个覆盖。这是因为，如果集合$U\cap A_i=\varnothing$，则$U\subset G_{i-1}\cup (M-\bar{G}_{i})$。如果对每一个$i$都成立的话，则$U$属于$\{G_{i-1}\cup (M-\bar{G}_{i})\}_i$的交，但按照穷竭的定义，这是一个空集。
+
+固定一个$A_i$，取$x\in A_i$，找一个坐标卡$(U_x,\varphi_x)$，使得$\varphi_x(U_x)$是欧式空间中半径为$2$的开球，$U_x$位于某个开覆盖$U_{\alpha(x)}$之中，且$U_x\cap A_j=\varnothing$当$|j-i|>1$。
+
+前面两点是显然的，关于第三点，由于处理$A_i\cap A_{i-1}= \bar{G}_{i-1}-G_{i-1}$以及平凡的$A_i\cap A_i=A_i$，其他的$A_i\cap A_j=\varnothing$，所以对于$|j-i|>1$的$A_j$，我们有$A_i\subset M-A_j$，而$M-A_j$是一个开集，所以只要把$U_x$选得足够小，使得$U_x\subset M-A_j$，我们就有$U_x\cap A_j=\varnothing$当$|j-i|>1$成立。或者稍微弱一点的说法，$U_x$只与有限个$A_j$相交。
+
+设$h$是$\rr^n$上的截断函数，那么我们定义
+\[
+	h_x(p)=\begin{cases}h\circ \varphi_x(p),& p\in U_x,\\
+	0,&\text{otherwise},
+	\end{cases}
+\]
+显然$h_x$是$M$上的光滑函数，实际上，同胚意义下，在半径为2的开球内，在半径大于1的时候以及是常值函数0了，所以在外面拼上0就构成了$M$上的光滑函数。
+
+令开球内半径为$r$的闭球为$B_r$，那么$B_{1/2}$着截断函数恒为1的部分，$B_{1}$对应着截断函数非零的部分，以及开集$V_x=\varphi_x^{-1}(B_{1/2})$，则$h_x|_{V_x}=1$.显然，$\supp(h_{x})=\overline{\varphi_x^{-1}(B_1)}$，因为$\varphi_x$是一个同胚，所以$\supp(h_{x})=\varphi_x^{-1}(\bar{B}_1)\subset U_x$是一个紧闭集。
+
+由于$A_i$是紧的，所以存在有限个点$\{x_{ij}\in A_i:1\leq j\leq k_i\}$使得
+\[
+	A_i\subset \bigcup_{j=1}^{k_i}V_{x_{ij}}.
+\]
+这样选取的$\{\supp(h_{x_{ij}})\}$局部有限，这是因为对固定的$i>1$和$j$，$\supp(h_{x_{ij}})\subset U_{x_{ij}}\subset A_{i-1}\cup A_i\cup A_{i+1}$，然后任取$p\in M$，我们都有$U_p$只和有限个$A_i$相交，而对每一个$i$，$j$都是有限的，所以$U_p$最多只和有限个$\supp(h_{x_{ij}})$相交\footnote{这里用了一个直观：设$A\subset B$，则只有当$C\cap B$非空的时候才有可能$C\cap A$非空。}。
+
+设$\varphi(p)=\sum_{i,j}h_{x_{ij}}(p)$，由于在每一点$U_p$至多只和有限个$\supp(h_{x_{ij}})$相交，所以这个求和有意义。此外，因为$U_p$总和某个$A_i$相交，那么也总和某个$V_{x_{ij}}$相交，而$h_{x_{ij}}$在$V_{x_{ij}}$非零。所以$\varphi(p)\geq h_{x_{ij}}(p)>0$.
+
+最后，我们验证$\{h_{x_{ij}}/\varphi\}_{i,1\leq j\leq k_i}$就是$M$上从属于开覆盖$\{U_\alpha\}$的单位分解。首先，他是至多可数的，然后任取$p\in M$，由于$\varphi$的定义，
+\[
+	\sum_{i,j}h_{x_{ij}}(p)/\varphi(p)=1
+\]
+显然成立。并且$\supp(h_{x_{ij}}/\varphi)=\supp(h_{x_{ij}})\subset U_{x_{ij}}$，因为选坐标的时候$U_{x_{ij}}$选在某一个开覆盖$U_{\alpha(x_{ij})}$里面，所以上面的一切就告诉我们$\{h_{x_{ij}}/\varphi\}_{i,1\leq j\leq k_i}$就是$M$上从属于开覆盖$\{U_\alpha\}$的单位分解。\qed
+
+其实我们构造地得比单位分解引理要求还要多一点。在这里，我们找到了开覆盖$U_{\alpha}$的一个局部有限开加细$\{V_{ij}\}$，设我们找到的单位分解为$h_{ij}$，令$\Gamma=\{\alpha(x_{ij}):i,1\leq j\leq k_i\}$（我们是可能存在$\beta$不包含任意一个$U_{x_{ij}}$的，就是说，$\beta\notin \Gamma$），以及
+\[
+	h_{\alpha}=\sum_{\alpha(x_{ij})=\alpha}h_{ij},
+\]
+如果再令$h_{\alpha}=0$当$\alpha\notin \Gamma$，则$\{h_{\alpha}\}$是$M$上的光滑函数族，$0\leq h_\alpha\leq 1$，$\sum_{\alpha}h_\alpha=1$且$\supp(h_\alpha)\subset U_{\alpha}$. 当然，前面$\supp(h_{ij})$还是紧的，这里$\supp(h_\alpha)$就不一定是紧的了。
+
+\lem 设$A\subset U$，其中$U$是$M$中的开集，而$A$是闭集。再设$f:M\to V$是一个连续映射，其中$V$是一个$\rr^n$中的开集，并且$f|_{U}$是光滑的，那么对任意$M$上的正连续函数$\epsilon(x)$，则存在光滑函数$g:M\to W$使得$f|_A=g|_A$且$\|f(x)-g(x)\|\leq \epsilon(x)$.
+
+\proof
+	先对$U=\varnothing$的情况证明。如果$V\neq \rr^n$，那么我们可以定义
+	\[
+		\epsilon'(x)=\min\left(\epsilon(x),\frac{1}{2}\inf\bigl(\|h(x)-y\|,y\in \rr^n-V\bigr)\right),
+	\]
+	如果使用$\epsilon'(x)$代替$\epsilon(x)$且存在$g$，则我们自然会有$g(M)\subset V$.所以我们不妨设$V=\rr^n$.
+
+	由$f$和$\epsilon$的连续性，任意的$x\in M$都存在开邻域$U_x$使得对任意的$y\in U_x$都成立$\epsilon(y)\leq \epsilon(x)/2$以及$\|f(y)-f(x)\|\leq \epsilon(x)/2$，找从属于$\{U_x\}$的一个单位分解$\{h_i\}$，则对于每一个$i$，取$x_i\in M$使得$\supp h_i\subset U_{x_i}$。我们定义$g(x)=\sum_i h_i(x)f(x_i)$，则
+	\[
+	\begin{split}
+		\|g(x)-f(x)\|&=\left\|\sum_i h_i(x)(f(x_i)-f(x))\right\|\leq \sum_i h_i(x)\|f(x_i)-f(x)\|\\
+		&=\sum_{h_i(x)\neq 0} h_i(x)\|f(x_i)-f(x)\|\leq  \sum_{h_i(x)\neq 0} h_i(x)\epsilon(x_i)/2\\
+		&\leq  \sum_{h_i(x)\neq 0} h_i(x)\epsilon(x)=\epsilon(x).
+	\end{split}
+	\]
+	这样我们就证明完了特殊情况。
+
+	现在对于$M$的开子流形$M-A$，我们可以应用这个特殊情况，在$M-A$对$\epsilon|_{M-A}$可以找到一个函数$M-A$上的光滑函数$g:M-A\to U$，使得在$M-A$上成立$\|f|_{M-A}(x)-g(x)\|\leq \epsilon|_{M-A}(x)$.
+
+	然后对$U$和$M-A$应用单位分解，找到两个光滑函数$h_1$和$h_2$，$h_1$在$A$上恒为1，在$U$外恒为0，$h_2$则正好相反，因为$h_1+h_2=1$.那么$h_1f+h_2g$就是一个$M$上的光滑函数，而且满足所有我们需要的条件。
+\qed
+
+\para 设$U$是$\rr^n$中的开集，如果$f:M\to U$是一个连续函数，则在$M$的每一点$x$，我们连续地找一个$\epsilon(x)>0$使得以$f(x)$为球心的，$\epsilon(x)$为半径的开球完全处于$U$内，那么按上面的引理，我们可以找到$M$上的一个光滑函数$g$使得$\|g(x)-f(x)\|<\epsilon(x)$对$x\in M$恒成立，则我们定义$H(x,t)=tf(x)+(1-t)g(x)$，由于
+\[
+	\|H(x,t)-f(x)\|=(1-t)\|f(x)-g(x)\|\leq \epsilon(x),
+\]
+所以$H(x,t)\in U$，这样$H(x,t):M\times [0,1]\to U$就是$f$和$g$的一个同伦映射。
+
+\pro 设$f:M\to U$是一个连续映射，$U$是$\rr^n$中的开集，则他同伦于一个光滑映射$g:M\to U$.
+
+\lem 设光滑映射$f:M\to U$和$g:M\to U$同伦，其中$U$是$\rr^n$中的开集，则我们可以找到一个光滑的同伦映射$H:M\times \rr\to U$满足$F(x,0)=f_1(x)$和$F(x,1)=f_2(x)$.
+
+\proof 令$\varphi:R\to [0,1]$为这样一个光滑函数，他在$t\leq 1/3$的时候恒为0，他在$t\geq 2/3$的时候恒为1，中间光滑连接。因为$f$和$g$是同伦的，必然存在连续的同伦映射$F:M\times [0,1]\to N$，令$G(x,t)$为$F(x,\varphi(t))$，则这样我们定义了连续函数$G:M\times \rr \to N$，他在$M\times (-\infty,1/3)\cup M\times (2/3,\infty)$上光滑。因为，$M\times \{0,1\}$是他的一个闭子集，所以根据上面的引理，我们可以找一个$M\times \rr$上的光滑函数$H$使得$G$和$H$在$M\times \{0,1\}$上相同。\qed
+
+虽然我们没有证明，但实际上，每一个光滑流形都可以嵌入欧式空间内。所以这些命题也就推出了看上去更广义的命题：光滑流形间的一个连续映射可以同伦于一个光滑映射；流形间同伦的光滑映射之间有光滑的同伦映射。所以按照这俩命题，两个光滑流形间的同伦类只要对光滑的情况讨论就好。
