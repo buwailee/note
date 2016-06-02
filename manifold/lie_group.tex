@@ -262,90 +262,88 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 
 \para 上面的定理我们不证明，同时也不证明如下命题：如果$G$是紧Lie群，则我们存在双不变（既左不变也右不变）测度$\mu$，且$\mu(G)$有限。
 
-\pro 紧Lie群上存在幺正表示。
+\pro 紧Lie群上存在幺正表示，所以紧Lie群的有限维表示总是完全可约的。 
 
 \para 换而言之，我们可以找到内积$(\bullet,\bullet)$使得$(gx,gy)=(x,y)$。假设原本存在内积$\langle \bullet,\bullet \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
 \[
-	(x,y)=\int_G \langle gx,gy \rangle \dd g
+	\langle x,y\rangle'=\int_G \langle gx,gy \rangle \dd g
 \]
-就满足了要求。
+就满足了要求。下面我们谈论紧Lie群的表示的时候，总使用幺正表示。
 
-\para 对于$A\in \Hom(V,W)$，我们可以定义群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$如下
+此外，对于Lie群$G$上的复值光滑函数$f$和$g$，我们也可以定义内积为
 \[
-	\pi_1^*\otimes\pi_2(g)A=\pi_2(g)A\pi_1(g)^{-1},
+	(f,g)=\int_G f(h)g^*(h)\dd h,
 \]
-之所以写作这种形式还是很容易猜出来的，譬如，我们找一个矢量$v\in V$，则
-\[
-	\pi_2(g)(Av)=(\pi_2(g)A\pi_1(g)^{-1})(\pi_1(g)v).
-\]
+其中$*$代表的是复共轭。
 
-如果$A$是$\varphi(g)$的不动点，那么就一定有$A\pi_1(g)=\pi_2(g)A$.此时$A$就是一个缠结映射。假如$\pi_1,\pi_2$都是不可约的且不等价的，则Schur引理可以改写为：群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$的不动点集为零。
+\para 对于矢量空间$V$和$W$，$\Hom(V,W)$也有自然的矢量空间结构，所以如果已知$V$上有群表示$\pi_1$，以及$W$上有群表示$\pi_2$，则对于$A\in \Hom(V,W)$，我们可以定义群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$如下
+\[
+	\pi_1^*\otimes\pi_2(g)A=\pi_2(g)A\pi_1(g)^{-1}.
+\]
+很容易验证$\pi_1^*\otimes\pi_2(g)\pi_1^*\otimes\pi_2(h)=\pi_1^*\otimes\pi_2(gh)$，所以这是一个群表示。为了省略空间，我们经常也直接记做$gA$.
 
-现在我们考虑紧Lie群上的平均
-\[
-	\int_G \pi_1^*\otimes\pi_2(g)A \dd g,
-\]
-显然，他是一个不动点，因此
-\[
-	\int_G \pi_1^*\otimes\pi_2(g)A \dd g=\int_G \pi_2(g)A\pi_1(g)^{-1}\dd g=0.
-\]
+对每一个群元$g$，表示诱导了映射$g:A\mapsto gA$，现在如果$A$是该映射的不动点$gA=A$，则有$A\pi_1(g)=\pi_2(g)A$。如果对每一个$g$，$A$都是其不动点，那么我们就称$A$是表示$\pi_1^*\otimes\pi_2$的不动点。那么对于群表示$(\pi_1,V)$和$(\pi_2,W)$，$A$就是一个缠结映射。
 
-特别地，如果$A=E_{ab}$且$\pi_1$是幺正表示，记$(\pi_2(g))_{ij}=\pi_2(g)_{ij}E_{ij},\left(\pi_1(g)^{-1}\right)_{kl}=\pi_1(g)^{-1}_{kl}E_{kl}$，则
-\[
-0=\int_G (\pi_2(g))_{ij}E_{ab}\left(\pi_1(g)^{-1}\right)_{kl}\dd g=\int_G \pi_2(g)_{ia}\pi_1(g)^{\dag}_{bk}\dd g,
-\]
-对任意的$i,a,b,k$都满足。
+\para 利用Schur引理，假若$\pi_1$, $\pi_2$都是不可约的且不等价的，则群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$的不动点集平凡（即只有$A=0$这一个不动点）。
 
-现在如果$\pi_1,\pi_2$等价，此时不妨就直接记$\pi=\pi_1=\pi_2$，那么由Schur引理
+假如$\pi$, $\rho$都是不可约的且不等价的，现在我们考虑线性映射$A\in \Hom(V,W)$在紧Lie群上的平均\footnote{在有限群上也有平均，所以下面一套对有限群也成立。}$\bar{A}=\int_G \pi^*\otimes\rho(g)A \dd g$，显然$\bar{A}$是一个不动点，因此由Schur引理，
 \[
-	\int_G \pi(g)A\pi(g)^{-1}\dd g=\lambda_A I.
+	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g=0
 \]
-两边求迹，就有
+对任意的线性映射$A\in \Hom(V,W)$都成立。
+
+同样，如果$\pi$, $\rho$等价，此时不妨就直接记$\pi=\rho$.因为$\bar{A}$是一个缠结映射，那么由Schur引理，$\bar{A}=\lambda_{\bar{A}} I$，所以
 \[
-	\int_G \tr(A)\dd g=\tr(A)=\lambda_A \dim V.
+	\int_G \pi(g)A\pi(g)^{-1}\dd g=\lambda_{\bar{A}} I
 \]
-类似地，如果$A=E_{ab}$，我们也有
+对任意的线性映射$A\in \Hom(V,V)$都成立，但是由于$\lambda_{\bar{A}}$并不已知，所以这公式用着不是很方便。为了求出$\lambda_{\bar{A}}$，两边求迹，就有$\tr(A)=\lambda_{\bar{A}} \dim V$，即$\lambda_{\bar{A}}=\tr(A)/\dim V$，所以我们也可以将上式写作更实用的形式
 \[
-	\int_G \pi(g)_{ia}\pi(g)^{\dag}_{bk}\dd g=\delta_{ik}\lambda_{E_{ab}} I=\delta_{ik}\frac{\tr(E_{ab})}{\dim V}I=\frac{\delta_{ik}\delta_{ab}}{\dim V}I.
+	\bar{A}=\int_G \pi(g)A\pi(g)^{-1}\dd g=\frac{\tr(A)}{\dim V}I.
 \]
 
-\para 令$\phi:G\to \mathrm{GL}(V)$是一个$G$的复表示，那么复值函数
+\para 我们对$A$是矩阵来看，设$E_{ij}$为只在$(a,b)$位置为1，其他位置为0的矩阵，那么可以计算得到$E_{ij}AE_{kl}=A_{jk}E_{il}$.现在对
 \[
-	\chi_\phi:G\xrightarrow{\phi}\mathrm{GL}(V)\xrightarrow{\tr}\cc:g\mapsto \tr(\phi(g))
+	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g
 \]
-被称为$\phi$的特征标。
+左乘$E_{ij}$，右乘$E_{kl}$，并令$A=E_{ab}$，可以得到
+\[
+	\int_G E_{ij}\rho(g)E_{ab}\pi(g)^{-1}E_{kl}\dd g=\int_G \rho(g)_{ja}E_{ib}\pi(g)^{-1}E_{kl}\dd g=\int_G (\rho(g))_{ja}\left(\pi(g)^{-1}\right)_{bk}E_{il}\dd g,
+\]
+由于$\pi$是幺正表示，所以$\left(\pi(g)^{-1}\right)_{bk}=\left(\pi(g)^{\dag}\right)_{bk}=\pi(g)_{kb}^*$，并记$\pi_{ia}:g\to \pi(g)_{ia}$为分量函数，则利用复函数内积的写法，上式可以写作
+\[
+	E_{ij}\overline{E_{ab}}E_{kl}=\left(\rho_{ja},\pi_{kb}\right)E_{il}.
+\]
 
-\para 直接计算特征标就可以得到，对于紧Lie群的不可约幺正表示，我们有$(\chi_\pi, \chi_\pi^*)=1$，对于两个不可约的不等价表示，我们有$(\chi_\pi, \chi_\rho^*)=1$，其中上标$*$表示复共轭。
+\para 设$\rho$和$\pi$都是不可约的，对于$\rho$和$\pi$不等价的情况，我们有$\overline{E_{ab}}=0$，所以$\left(\rho_{ja},\pi_{kb}\right)=0$.类似地，对于$\rho=\pi$的情况，我们有$\overline{E_{ab}}=\tr(E_{ab})I/\dim V=\delta_{ab}I/\dim V$，所以
+\[
+	\left(\pi_{ja},\pi_{kb}\right)E_{il}=E_{ij}\overline{E_{ab}}E_{kl}=\frac{\delta_{ab}}{\dim V}E_{ij}IE_{kl}=\frac{\delta_{ab}\delta_{jk}}{\dim V}E_{il},
+\]
+或者
+\[
+	\left(\pi_{ja},\pi_{kb}\right)=\frac{\delta_{ab}\delta_{jk}}{\dim V}.
+\]
 
-令$\hat{G}$是紧Lie群$G$的复不可约表示的等价类，那么由于是紧Lie群，有限维表示必然是完全可约的，就是说任何一个有限维表示能写作
+\para 令$\phi:G\to \mathrm{GL}(V)$是一个$G$的复表示，那么复值函数$\chi_\phi:G\xrightarrow{\phi}\mathrm{GL}(V)\xrightarrow{\tr}\cc:g\mapsto \tr(\phi(g))$被称为$\phi$的特征标。
+
+对于紧Lie群的不可约幺正表示，我们有
 \[
-	\rho=\bigoplus_{\pi\in\hat{G}}m(\rho,\pi)\pi,
+(\chi_\pi, \chi_\pi)=\sum_{i,j}(\pi_{ii},\pi_{jj})=\sum_{i,j}\frac{\delta_{ij}^2}{\dim V}=\sum_{i}\frac{1}{\dim V}=1,
 \]
-其中$m(\rho;\pi)$是乘数，就是说分解出来的等价的$\pi$各数。直接计算就可以得到$m(\rho,\pi)=(\chi_\rho,\chi_\pi^*)$,以及
+对于两个不可约的不等价表示，我们有$(\chi_\pi, \chi_\rho)=0$.
+
+令$\hat{G}$是紧Lie群$G$的复不可约表示的等价类，那么由于是紧Lie群，有限维表示必然是完全可约的，就是说任何一个有限维表示能写作$\rho=\sum_{\pi\in\hat{G}}m(\rho,\pi)\pi$，其中$m(\rho,\pi)$是乘数，是一个自然数，就是说分解出来的等价的$\pi$各数。直接计算就可以得到$m(\rho,\pi)=(\chi_\rho,\chi_\pi)$,以及
 \[
-	(\chi_{\rho_1},\chi_{\rho_2}^*)=\sum_{\pi\in\hat{G}}m(\rho_1,\pi)m(\rho_2,\pi).
+	(\chi_{\rho_1},\chi_{\rho_2})=\sum_{\pi\in\hat{G}}m(\rho_1,\pi)m(\rho_2,\pi).
 \]
+
+前面说过，紧Lie群的一个不可约的复有限维表示$\pi$满足$(\chi_\pi, \chi_\pi)=1$，反过来，如果$(\chi_\pi, \chi_\pi)=1$，则$(\chi_{\pi},\chi_{\pi})=\sum_{\rho\in\hat{G}}m(\rho,\pi)^2=1$，因此存在一个$\rho\in\hat{G}$使得$m(\rho,\pi)=1$,而其他的$\pi\in\hat{G}$都有$m(\rho,\psi)=0$.这样我们就得到了：
+
+\para 一个复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi})=1$.
 
 \pro 如果$G$是一个紧Lie群，那么两个表示$\pi_1,\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
 
-\proof 从左到右是简单的，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
-$A\pi_1(g)=\pi_2(g)A$，于是
-\[
-	\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g)).
-\]
-从右到左，如果两个表示$\rho_1$, $\rho_2$特征标相等，则
-\[
-	m(\rho_1,\pi)=(\chi_{\rho_1},\chi_\pi^*)=(\chi_{\rho_2},\chi_\pi^*)=m(\rho_2,\pi),
-\]
-对任意的$\pi\in\hat{G}$都成立，因此$\rho_1,\rho_2$等价。\qed
-
-\pro 一个复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi}^*)=1$.
-
-从左到右前面已经算过了，从右到左是因为
-\[
-	(\chi_{\pi},\chi_{\pi}^*)=\sum_{\pi\in\hat{G}}m(\rho,\pi)^2=1,
-\]
-因此存在一个$\psi\in\hat{G}$使得$m(\rho,\psi)=1$,而其他的$\pi\in\hat{G}$都有$m(\rho,\psi)=0$.
+实际上，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
+$A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。
 
 \section{Morphisms of Lie Group}
 
