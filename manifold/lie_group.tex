@@ -6,7 +6,7 @@
 
 \section{Foundation}
 
-\para 设$G$为群，单位元记做$e$，群运算记做$\mu:G\times G\to G$，如果$G$是一个光滑流形，且$\mu$是一个光滑映射，则称$G$是一个光滑Lie群。记$l_g$是左作用算符，即$l_g=\mu(g,\cdot)$，或者写作$l_gh=gh$，同样，右作用算符记做$r_g$，即$r_gh=hg$.显然这些都是光滑映射。
+\para 设$G$为群，单位元记做$e$，群运算记做$\mu:G\times G\to G$，如果$G$是一个光滑流形，且$\mu$是一个光滑映射，则称$G$是一个光滑Lie群。当然可以谈论不怎么光滑的Lie群，但是下面所指的Lie群都是光滑的。记$l_g$是左作用算符，即$l_g=\mu(g,\cdot)$，或者写作$l_gh=gh$，同样，右作用算符记做$r_g$，即$r_gh=hg$.显然这些都是光滑映射。
 
 现在考虑方程$\mu(x,y)=e$，由于$(l_e)_{*e}$是一个恒同映射，所以在$e$附近，按隐函数定理，方程$\mu(x,y)=e$在$e$附近有光滑解，即$y=\nu(x)=x^{-1}$中的逆函数$\nu$在$e$附近光滑，由于$(\nu\circ l_g)(h)=h^{-1}g^{-1}=(r_{g^{-1}}\circ \nu)(h)$，所以逆函数$\nu$处处光滑。
 
@@ -155,7 +155,7 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 
 但是对于$\mathrm{GL}(n,\rr)$的子群来说，正交群就是极大的紧子群了。
 
-\pro $\mathrm{GL}(n,\rr)$的子群$G$如果是紧的，那么存在可逆矩阵$A$使得$AGA^{-1}\subset \mathrm{O}(n)$.
+\pro 一般线性群$\mathrm{GL}(n,\rr)$的子群$G$如果是紧的，那么存在可逆矩阵$A$使得$AGA^{-1}\subset \mathrm{O}(n)$.
 
 \proof 设$A\in G$，则序列$A,A^2,\cdots,A^n,\cdots$都在$G$里面。如果$|\det A|>1$，那么$|\det A^n|=|\det A|^n$就可以任意大，和紧性对应的有界性相悖。如果$|\det A|<1$，那么由$G$的紧性，其$A^n$这个序列收敛到$G$内，但$|\det A^n|=|\det A|^n$却又小于任意的正数，所以$A$不可逆但在$G$内，则和$G$作为一般线性群的子群相悖。所以$|\det A|=1$.
 
@@ -185,25 +185,17 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 
 上节谈了Lie群的“内部线性化”，即Lie代数的内容。这节我们来谈论群表示，他使得我们可以把群进行“外部线性化”，粗略地来说就是我们把群元素看做了一个线性变换。
 
-\para 令$V$是一个域$k$上的有限维矢量空间，群$G$的一个表示$U$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{Gl}(V)$，使得
+\para 令$V$是一个域$k$（后面我们只会考虑$\rr$和$\cc$的情况）上的有限维矢量空间，群$G$的一个表示$U$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{Gl}(V)$，使得
 \[
 	\pi(g)\pi(g')=\pi(gg'),\quad \pi(g^{-1})=\pi(g)^{-1},\quad \pi(e_G)=e_{\mathrm{Gl}(V)}
 \]
 成立。表示$\pi$的维度被定义为$V$的维度。
 
-如果没什么会混淆的话，就直接略去$\pi$，写$gx$来表达$\pi(g)x$.如果要用不会混淆的说法来表达群表示的话，就应该用$(\pi,V)$二元组，$\pi$代表的是$\pi(g)$，$V$是被作用的空间。
+如果没什么会混淆的话，就直接略去$\pi$，写$gx$来表达$\pi(g)x$，当然还有用$Gx$来表达$\pi{G}x=\{\pi(g)x:g\in G\}$。如果要用不会混淆的说法来表达群表示的话，就应该用$(\pi,V)$二元组，$\pi$是群同态，$V$是被作用的空间。
 
-如果$\pi$是一个一对一的同态，那么我们称这个表示为忠实表示。
+如果$\pi$是一个单同态，那么我们称这个表示为忠实表示。
 
-\para 设$G$是一个群，$(\pi,V)$是他的一个表示，$W\subset V$是一个子空间，如果
-\[
-\pi(G)W=\{\pi(g)v\,|\,g\in G,v\in W\}\subset W
-\]
-则$W$称为不变子空间。
-
-显然，$\{0\}$和$V$是两个不变子空间，略去这两个平凡不变子空间，如果没有其他不变子空间了，则$V$被称为是不可约的，此时表示被称为不可约表示。
-
-\para 同一个群$G$的两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$可以：
+\para 同一个群$G$的两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$可以构造出新的表示：
 
 \no{1} 直和：$(\pi_1\oplus \pi_2,V_1\oplus V_2)$即满足
 \[
@@ -217,29 +209,31 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 \]
 或者简单地写作$g(x\otimes y)=(gx)\otimes(gy)$.
 
+\para 设$G$是一个群，$(\pi,V)$是他的一个表示，$W\subset V$是一个子空间，如果$\pi(G)W\subset W$则$W$称为不变子空间。显然，$\{0\}$和$V$是两个不变子空间，略去这两个平凡不变子空间，如果没有其他不变子空间了，则$V$被称为是不可约的，此时表示被称为不可约表示。
+
 \para 如果一个表示能被分解成几个不可约表示的直和，则称该表示为完全可约的。
 
 下面的一系列定义涉及表示的等价，当然还有很重要的Schur引理。
 
-\para 设$G$有两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$，如果存在线性映射$T:V_1\to V_2$，对任意的$g\in G$都满足$\pi_2(g)\circ T=T\circ \pi_1(g)$. 这样的$T$被称为缠结映射。当缠结映射是双射的时候，两个表示被称为是等价的。
+\para 设$G$有两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$，如果存在线性映射$T:V_1\to V_2$，对任意的$g\in G$都满足$\pi_2(g)\circ T=T\circ \pi_1(g)$. 这样的$T$被称为缠结映射。当缠结映射是同构的时候，两个表示被称为是等价的。显然，这是一个等价关系。自反对称显然，而传递性自然来自两个同构复合还是同构。
 
-\para 如果$\pi_1$和$\pi_2$之间存在缠结映射$T$，那么$\ker T$是$\pi_1$的不变子空间，而$\im T$是$\pi_2$的不变子空间。
+\lem 如果$\pi_1$和$\pi_2$之间存在缠结映射$T$，那么$\ker T$是$\pi_1$的不变子空间，而$\im T$是$\pi_2$的不变子空间。
 
-因为$T(\pi_1(g)x)=\pi_2(g)Tx$对于任何$x$使得$Tx=0$的，都有$\pi_1(g)x$使得$T(\pi_1(g)x)=0$，所以前半句话证明完了。对于$\im T$中的元素$y$可以找到原象$x$，由于$\pi_2(g)y=\pi_2(g)Tx=T(\pi_1(g)x)$，则$\pi_2(g)y$也在$\im T$中，后半句话证完。
+\proof 因为$T(\pi_1(g)x)=\pi_2(g)Tx$对于任何$x$使得$Tx=0$的，都有$\pi_1(g)x$使得$T(\pi_1(g)x)=0$，所以前半句话证明完了。对于$\im T$中的元素$y$可以找到原象$x$，由于$\pi_2(g)y=\pi_2(g)Tx=T(\pi_1(g)x)$，则$\pi_2(g)y$也在$\im T$中，后半句话证完。\qed
 
-\lem Schur引理：假设在复数域上讨论，如果$(\pi_1,V_1)$和$(\pi_2,V_2)$都是不可约表示，且两者之间存在缠结映射$T$：
+\lem 相当有名的Schur引理：如果$(\pi_1,V_1)$和$(\pi_2,V_2)$是不等价的不可约表示，若存在缠结映射$T$，则$T=0$.换句话说，不等价的表示没有非平凡的缠结映射。
 
-\no{1} 如果$(\pi_1,V_1)$和$(\pi_2,V_2)$不等价，则$T=0$.
+\proof 如果两个表示不等价，则$T$不是双射，所以$\ker T\neq \{0\}$，而他是不变子空间，由不可约性，则$\ker T= V_2$，同理$\im  T= \{0\}$，这就是说$T=0$。\qed
 
-\no{2} 如果$V_1=V_2=V$和$\pi_1=\pi_2=\pi$，则$T=\lambda I$，其中$\lambda$是一个常数。
+\para 反之，在复表示情况下，我们考虑不可约表示$(\pi_1,V_1)=(\pi_2,V_2)$的情况下。此时如果存在一个非平凡的双的缠结映射$T\neq I$使得$T\circ \pi(g)=\pi(g)\circ T$.
 
-\proof 如果两个表示不等价，则$T$不是双射，所以$\ker T\neq \{0\}$，而他是不变子空间，由不可约性，则$\ker T= V_2$，同理$\im  T= \{0\}$，这就是说$T=0$。
+在复数域上，$T$一定存在一个本征值$\lambda$，令$E_\lambda$是$\lambda$的本征空间，任取$v\in E_\lambda$，我们有$T(\pi(g)(v))=\pi(g)\circ T(v)=\lambda\pi(g)(v)$，所以$\pi(G)E_\lambda\subset E_\lambda$，由$\pi$的不可约性，所以他要么是零空间，要么是全空间。而本征值的存在性说明了零空间不可能，所以本征空间就是全空间，这也就是说$T=\lambda I$.
 
-由于在复数域上，所以$T$一定存在一个本征值$\lambda$，令$E_\lambda$是$\lambda$的本征空间，他在$\pi$的作用下不变，由不可约性，所以他要么是零空间，要么是全空间。而本征值的存在性说明了零空间不可能，所以本征空间就是全空间，这也就是说$T=\lambda I$.\qed
+\para 如果我们遇到的群是Abel群，那么他的不可约群表示也是可交换的，同时其本身就构成了一个缠结映射，即$T=\pi(g)$对任意的$h$成立$T\circ \pi(h)=\pi(h)\circ T$，所以通过上面的定理我们就可以知道，$\pi(g)=T=\lambda I$。
 
-\para 如果我们遇到的群是Abel群，那么他的群表示也是可交换的，同时其本身就构成了一个缠结映射，于是我们可以得到：凡Abel群的不可约表示都是一维的。
+如果$V$是大于$1$维的，那么任意的$V$的子空间都是$\pi$的不变子空间，但不可约性否决了这点，所以我们得到了：凡Abel群的不可约复表示都是一维的。
 
-\para 如果$(\bullet,\bullet)$是$V$上的一个内积，如果对任意的$g\in G$,$u,v\in V$有$(u,v)=(gu,gv)$，则我们称呼这个表示为幺正表示。对于有限群我们总可以找到幺正表示，因为我们可以重新构造内积
+\para 如果$(\bullet,\bullet)$是$V$上的一个内积，如果对任意的$g\in G$,$u,v\in V$有$(u,v)=(gu,gv)$，则我们称呼这个表示为幺正表示，幺正表示也可以写作$\pi(g)^{-1}=\pi(g)^\dag$。对于有限群我们总可以找到幺正表示，因为我们可以重新构造内积
 \[
 	(u,v)'=\frac{1}{|G|}\sum_{g\in G}(gu,gv),
 \]
@@ -248,9 +242,9 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 	(hu,hv)'=\frac{1}{|G|}\sum_{g\in G}(hgu,hgv)=\frac{1}{|G|}\sum_{hg\in G}(hgu,hgv)=\frac{1}{|G|}\sum_{k\in G}(ku,kv)=(u,v)'.
 \]
 
-幺正表示的好处是，一个不变子空间的正交空间也是不变的。对于一个有限维的幺正表示，如果不是完全可约的，那么就分解出一个不变子空间，他是不可约的，然后对这个不变子空间的正交空间，我们又得到了一个可约或不可约的不变子空间，靠着有限归纳（因为有限维），我们就得到了如果群存在一个有限维幺正表示，则这个表示一定是完全可约的。结合上面所说的，下面的结论是显然的。
+幺正表示的好处是，一个不变子空间的正交空间也是不变的。对于一个有限维的幺正表示，如果不是完全可约的，那么就分解出一个不变子空间，他是不可约的，然后对这个不变子空间的正交空间，我们又得到了一个可约或不可约的不变子空间，靠着有限归纳（因为有限维），我们就得到了如果群存在一个有限维幺正表示，则这个表示一定是完全可约的。
 
-\theo Maschke定理：有限群的有限维表示总是完全可约的。 
+\theo 结合上面所说的，我们就得到了Maschke定理：有限群的有限维表示总是完全可约的。 
 
 \theo 在局部紧的拓扑群上存在Haar测度$\mu$，他是一个正则的左不变的Borel测度。所谓的左不变就是指对于一个集合$S$，通过左作用$L_g$，我们有$\mu(S)=\mu(L_gS)$，当然还有右作用和右不变的概念。
 
@@ -264,13 +258,13 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 
 \pro 紧Lie群上存在幺正表示，所以紧Lie群的有限维表示总是完全可约的。 
 
-\para 换而言之，我们可以找到内积$(\bullet,\bullet)$使得$(gx,gy)=(x,y)$。假设原本存在内积$\langle \bullet,\bullet \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
+换而言之，我们可以找到内积$\langle \bullet,\bullet\rangle$使得$\langle gx,gy\rangle=\langle x,y\rangle$。假设原本存在内积$\langle \bullet,\bullet \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
 \[
 	\langle x,y\rangle'=\int_G \langle gx,gy \rangle \dd g
 \]
 就满足了要求。下面我们谈论紧Lie群的表示的时候，总使用幺正表示。
 
-此外，对于Lie群$G$上的复值光滑函数$f$和$g$，我们也可以定义内积为
+\para 对于Lie群$G$上的复值光滑函数$f$和$g$，我们可以定义内积为
 \[
 	(f,g)=\int_G f(h)g^*(h)\dd h,
 \]
@@ -301,7 +295,7 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 	\bar{A}=\int_G \pi(g)A\pi(g)^{-1}\dd g=\frac{\tr(A)}{\dim V}I.
 \]
 
-\para 我们对$A$是矩阵来看，设$E_{ij}$为只在$(a,b)$位置为1，其他位置为0的矩阵，那么可以计算得到$E_{ij}AE_{kl}=A_{jk}E_{il}$.现在对
+\para 现在，为了做一点小小的计算，我们将固定矢量空间的基，此时任意的线性算子都可以看做矩阵。记$E_{ij}$为只在$(a,b)$位置为1，其他位置为0的矩阵。很容易可以计算得到$E_{ij}AE_{kl}=A_{jk}E_{il}$.现在对
 \[
 	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g
 \]
@@ -340,12 +334,40 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 
 \para 一个复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi})=1$.
 
-\pro 如果$G$是一个紧Lie群，那么两个表示$\pi_1,\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
+\pro 如果$G$是一个紧Lie群，那么两个表示$\pi_1$, $\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
 
 实际上，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
 $A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。
 
 \section{Morphisms of Lie Group}
+
+Lie群很容易构成一个范畴，两个Lie群的态射只要定义成光滑的群同态就好了。比如对一般线性群而言，行列式就是一个显然的Lie群同态。这样子做之后，Lie群既是光滑流形范畴的子范畴，也是群范畴的子范畴。
+
+Lie群因为本身就是一个群，所以他的很多整体性质都来自于单位元附近。对于拓扑性质，由于左乘是一个同胚，所以如果$U$是一个开集，那么$gU=\{gh:h\in U\}$也是一个开集。
+
+\para 对于连通Lie群，设$U$是单位元的任意一个邻域，则$G=\bigcup_{n\geq 1}U^n$，其中$U^k=\{g_1\cdots g_k:g_i\in U,\, 1\leq i \leq k\}$是开集。
+
+令$V=U\cap U^{-1}$，其中$U^{-1}=\{g^{-1}:g\in U\}$，显然$V=V^{-1}\subset U$以及$H=\bigcup_{n\geq 1}V^n\subset \bigcup_{n\geq 1}U^n$，而且$H$还是一个子群。下面我们只要证明$H=\bigcup_{n\geq 1}V^n$既是开的也是闭的，那么连通性自然给出了结论。
+
+他是开的，如果$\sigma\in V^k$，那么$\sigma V\in V^{k+1}\subset H$就是他的一个开邻域。他是闭的，因为每一个$\sigma H$都是开的，于是$H=G-\bigcup_{\sigma\notin H}\sigma H$是一个闭集。
+
+\para 设$\varphi:G\to H$是一个Lie群同态，因为$\varphi\circ l_g=l_{\varphi(g)}\circ \varphi$，所以在点$e$的切映射满足$\varphi_{*g}\circ (l_g)_{*e}=(l_{\varphi(g)})_{*e}\circ \varphi_{*e}$，因为左移是同胚，所以$\rank_e \varphi=\rank_g \varphi$.
+
+上面意味着Lie群同态的秩都是常数，此时我们可以对$\ker \varphi=\varphi^{-1}(e)$利用\theoref{ranktheo}，因为他一定非空，所以$\ker \varphi$是$G$的一个正则子流形，维度等于$\dim G-\rank \varphi$.
+
+\para 因此单的Lie群同态必定为浸入，Lie群同构必为同胚，其逆也光滑。
+
+\para 设$\varphi:H\to G$是Lie群同态，如果$\varphi$是单的，则$H$被称为$G$的Lie子群，如果$\varphi$是嵌入，则$H$被称为$G$的闭Lie子群。显然，上面谈论的Lie群同态的核是一个闭Lie子群。
+
+闭Lie子群作为集合是闭集，这里就略去证明了。
+
+\para 如果$\varphi:G\to H$是Lie群同态，且$\varphi_{*e}$是满射，由于Lie群同态常秩，所以$\varphi_{*g}$在每一个$g$上都是满射。由反函数定理，他在每一个局部都可以写作投影，投影将开集映射成开集，所以此时$\varphi$也将开集映射到开集，即$\varphi$是一个开映射，
+
+特别地，如果$H$还是连通的，那么因为$\varphi$是一个开映射，所以存在一个$e_H$的邻域$V\subset H$使得$V\subset \varphi(H)$，那么$H=\bigcup_{n\geq 1}V^n\subset \varphi(G)$，因此$\varphi$就是一个满射。所以，对Lie群而言，局部满就可以说明整体满。
+
+\para 设$M$是底空间为$B$的一个纤维丛，他的纤维被赋予离散拓扑，此时，$M$被称为$B$的一个覆叠空间，投影$\pi$现在被称为覆叠映射。一般来说，我们要求覆叠空间是连通的，如果覆叠空间还是单连通的，则被称为万有覆叠空间。
+
+\para Lie群的覆叠空间有很自然的Lie群结构。
 
 \section{Relation between Lie Group and Lie Algebra}
 
@@ -441,7 +463,7 @@ f([a,b]_1)=[fa,fb]_2.
 
 Lie群$G$的伴随和他的Lie代数$\lag$的联系来自于伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_*:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$。我们将$\mathrm{Ad}:G\to \mathrm{GL}(\lag)$称为Lie群的伴随表示。
 
-\pro 对于伴随，我们有
+\para 对于伴随，我们有
 
 \no{1} $\mathrm{Ad}_g:\lag\to \lag$是一个Lie代数间的同构，而$\mathrm{Ad}:G\to \mathrm{GL}(\lag)$是一个Lie群间的同态。
 
@@ -461,24 +483,19 @@ Lie群$G$的伴随和他的Lie代数$\lag$的联系来自于伴随$\mathbf{Ad}(g
 	=(l_{{g}^{-1}})_*(r_g)_*(l_{{h}^{-1}})_*v=\mathrm{Ad}(g^{-1})\omega_G.
 \]
 
-
-\para
-设$\lag$是一个Lie代数，那么
+\para 设$\lag$是一个Lie代数，那么
 
 \no{1} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)=\{T\in \mathrm{GL}(\lag)\,|\,T[u,v]=[Tu,Tv],\,\forall u,v\in\lag\}$
 
 \no{2} $\mathfrak{gl}_{\mathrm{Lie}}(\lag)=\{T\in \mathfrak{gl}(\lag)\,|\,T[u,v]=[Tu,v]+[u,Tv],\,\forall u,v\in\lag\}$
 
-
-
-\pro 如下陈述成立：
+\para 如下陈述成立：
 
 \no{1} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)$是一个Lie群。
 
 \no{2} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)$的Lie代数是$\mathfrak{gl}_{\mathrm{Lie}}(\lag)$.
 
 \no{3} 令$G$的Lie代数为$\lag$，那么$\ad(u)v=[u,v]$是$\mathrm{Ad}:G\to \mathrm{GL}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}$.
-
 
 在第三点中，我们看到了曾经在Jacobi恒等式那边指出的导子，可以看到，这确确实实就是一个导数。
 
@@ -513,12 +530,7 @@ B[u,v]=[Bu,v]+[u,Bv],
 \]
 其显然是Lie代数上面的一个导子。
 
-
-\para
-令$\lag$是一个Lie代数，那么他的有限维表示$(\pi,V)$就是一个映射$\pi:\lag\to\mathfrak{gl}(V)$.
-
-
-所以说$\ad$就是一个Lie代数的表示。
+\para 令$\lag$是一个Lie代数，那么他的有限维表示$(\pi,V)$就是一个映射$\pi:\lag\to\mathfrak{gl}(V)$.所以说$\ad$就是一个Lie代数的表示。
 
 一个Lie群的表示可以引出他的Lie上面的一个表示如下：
 \[
@@ -539,14 +551,11 @@ B[u,v]=[Bu,v]+[u,Bv],
 
 迄今为止，我们都只谈论了实数域上面的Lie代数，当然，我们可以直接拓展到复数域上面去，但是复化的手段也是常用的。
 
-
-\para
-如果$V$是有限维实的矢量空间，那么所有$v_1+iv_2$所构成的空间被称为他的复化，记做$V_\cc$，其中$v_1,v_2\in V$.如果我们再定义
+\para 如果$V$是有限维实的矢量空间，那么所有$v_1+iv_2$所构成的空间被称为他的复化，记做$V_\cc$，其中$v_1,v_2\in V$.如果我们再定义
 \[
 i(v_1+iv_2)=-v_2+iv_1,
 \]
 那么$V_\cc$就是有限维的复矢量空间。
-
 
 由于Lie代数也是矢量空间，我们可以对其复化，显然，我们希望复化后对易子满足
 \[
@@ -567,19 +576,15 @@ i(v_1+iv_2)=-v_2+iv_1,
 
 上面的直积直和的Lie代数结构的验证，尤其是Jacobi恒等式的验证就略去了。谈了直积和直和，我们就可以谈论Lie代数的分类和分解。
 
-
-\para
-令$\lag$是一个实（复）Lie代数，如果他的实（复）子代数$\mathfrak{h}$满足对所有的$X\in \lag,H \in \mathfrak{h}$都有$[X,H]\in \mathfrak{h}$，则称$\mathfrak{h}$是$\lag$的一个理想。\footnote{可以搜一搜ring和ideal的笑话。}
+\para 令$\lag$是一个实（复）Lie代数，如果他的实（复）子代数$\mathfrak{h}$满足对所有的$X\in \lag,H \in \mathfrak{h}$都有$[X,H]\in \mathfrak{h}$，则称$\mathfrak{h}$是$\lag$的一个理想。\footnote{可以搜一搜ring和ideal的笑话。}
 
 一个代数$\lag$显然有两个理想，一个是$0$一个是$\lag$，我们称这两个为平凡理想。
 
-\para
-一个实（复）Lie代数$\lag$如果没有非平凡理想，则称其为不可分解的。如果一个Lie代数的维度大于$1$且是不可分解的，则称其为单的。
+\para 一个实（复）Lie代数$\lag$如果没有非平凡理想，则称其为不可分解的。如果一个Lie代数的维度大于$1$且是不可分解的，则称其为单的。
 
 从定义来看，不可分解但非单的Lie代数只可能是一维的。对于一维Lie代数来说，他没有非平凡的子代数，其中任意两个元素的交换子为0，从而可以看到他是不可分解的。
 
 我们可以将有限群和有限维Lie代数类比。Lie代数的子代数就对应有限群的子群，Lie代数的理想就对应有限群的正规子群，一维Lie代数就对应素数阶的循环群（他是没有子群的，这个很简单就可以证明，使用Lagrange公式还可以得知素数阶的有限群一定是循环群）。
-
 
 \para 一个实（复）Lie代数$\lag$如果同构于不可分解Lie代数的直和，那么称呼其为可约的。如果其同构于单Lie代数的直和，就称呼其为半单的。
 
@@ -615,21 +620,12 @@ Cartan子代数的维度称为半单Lie代数的秩。
 
 \section{Matrix Group}
 这一节限制在矩阵群上面，这节将给出很多可计算的例子，先来求一些矩阵群的Lie代数。
-\begin{theo}
-任意的矩阵$M\in\mathrm{GL}(n,\cc)$都可以写作$e^X$的形式，其中$X\in\mathrm{M}(n,\cc)$。
-\end{theo}
-这个直接从矩阵幂那一套证明并不那么方便，但是直接从Lie代数作为单位元附近的Lie群与单参子群的对应关系，这个结论就是比清晰的了。
 
-这个定理也可以用来说明，一般线性群的Lie代数就是整个方阵构成的集合。
+\theo 任意的矩阵$M\in\mathrm{GL}(n,\cc)$都可以写作$e^X$的形式，其中$X\in\mathrm{M}(n,\cc)$。
 
-\pro
-	$e^{DAD^{-1}}=De^{A}D^{-1}$.
+这个直接从矩阵幂那一套证明并不那么方便，但是直接从Lie代数作为单位元附近的Lie群与单参子群的对应关系，这个结论就是比清晰的了。这个定理也可以用来说明，一般线性群的Lie代数就是整个方阵构成的集合。
 
-这个结论我们已经证明过了，前面写作
-\[
-	\mathrm{Ad}_D(A)=DAD^{-1}.
-\]
-当然也可以直接用矩阵指数映射的展开来证明。
+\para 利用$\mathrm{Ad}_D(A)=DAD^{-1}$，我们有$e^{DAD^{-1}}=De^{A}D^{-1}$.这当然也可以直接用矩阵指数映射的展开来证明。
 
 \pro $\det e^A=e^{\tr(A)}$.
 
@@ -1342,85 +1338,3 @@ $[a_\alpha,a_\beta]$也是在某个根子空间里面的，为了求他的根，
 			0&0&0\\
 		\end{pmatrix}.
 \]
-
-% \section{Orbital Geometry of the Adjoint Action}
-% 上面看过了Lie代数的伴随表示，现在来看看Lie群的伴随作用，其中担任有趣的角色的就是极大交换子群，类似于Cartan子代数是极大交换子代数。
-
-% 由于我们考虑是紧Lie群$G$，那么我们总可以得到他的Lie代数$\lag$上伴随作用下不变的内积，因此我们就可以定义$\lag$上面的一组正交基，选定正交基之后我们拓展到对应的左不变矢量场上，我们就得到了一个标架场，也就是确定了$G$上唯一的Riemann结构使得那些左不变矢量场在每一个点都相互正交。
-
-% 这样定义的Riemann结构，由于标架场是左不变矢量场，所以左平移$(l_a)_*$是等距同构，而伴随作用因为我们定义的内积也是等距同构，那么右平移作为左平移和伴随作用的复合，也是等距同构。
-
-% 伴随作用的轨道确定了Lie群的共轭类，而又因为伴随作用是等距同构，这就是说共轭类在几何结构上大致是相同的。这节中重要的定理即明确了这个事实。
-
-% \para 一个紧Lie群的环子群是一个紧的连通交换Lie子群。一个极大环子群就是说这个环子群不能真包含在其他的环子群里面。
-
-% $\mathrm{SO}(2)$是$\mathrm{SO}(3)$的极大环子群，$\mathrm{SO}(2)\times \mathrm{SO}(2)$是$\mathrm{SO}(4)$的极大环子群，环面$\mathrm{T}^n=\{\mathrm{diag}(e^{i\theta_1},\dots,e^{i\theta_n}):0\leq\theta_i<2\pi\}$是$U(n)$的极大环子群。由于$\mathrm{SO}(2)$同构于环$\mathrm{S}^1$，而$\mathrm{T}^n$同构于$\mathrm{S}^1\times\cdots\times\mathrm{S}^1$，所以环子群的名字是十分形象的。
-
-% \pro
-% 令$T$是$G$的环子群以及$F(T,\lag)$或$F(T,G)$是$T$在$\lag$或者$G$上的伴随作用的不动点集，那么$T$是极大环子群当且仅当$\dim F(T,\lag)=\dim T$或者$F(T,G)$包含$T$作为其中之一的连通分支。
-
-% 让$\mathfrak{t}$是$T$的Lie代数，那么每一个$t\in T$都满足$\mathrm{Ad}_t\mathfrak{t}=\mathfrak{t}$，这是Abel群的自然结果，所以
-% \[
-% 	\mathfrak{t}\subset F(T,\lag).
-% \]
-% 如果$T$不是极大的，那么存在一个$T_1$使得$T\subset T_1$，且他的Lie代数满足$\mathfrak{t}_1\subset F(T_1,\lag)$.所以
-% \[
-% 	\dim T=\dim \mathfrak{t}<\dim \mathfrak{t}_1\leq \dim F(T,\lag).
-% \]
-
-% 反过来，如果$\dim  F(T,\lag)>\dim T$，那么存在$X\in F(T,\lag)-\mathfrak{t}$使得分布$\{X,\mathfrak{t}\}$是$\lag$的一个Lie子代数，且上面的交换子都为$0$。于是存在一个Abel子群$H$其Lie代数为$\{X,\mathfrak{t}\}$，我们现在考虑$H$的闭包，他是一个紧集中的闭集，所以也是紧的（Hausdorff性是流形保证的），所以他是一个真包含$T$的环子群，这和$T$是极大环子群相悖。
-
-% 至于剩下的关于Lie群的结论，显然来自于其Lie代数和Lie群的联系。
-
-% 下面这个定理就是这节的主要内容。
-
-% \theo 令$T$是紧Lie群$G$的极大环子群，那么每个$g\in G$共轭于某个$T$的元素。
-
-% 因此所有的极大环子群都是相互共轭的。
-
-% 令$\varphi$是Lie群$G$的伴随表示在$T$上的限制$\varphi=\mathrm{Ad}|_T$，且$\mathfrak{t}$是$T$的Lie代数。因为$T$是极大环子群，所以从上一个命题可以推知$F(T,\lag)=\mathfrak{t}$，注意到极大环子群是Abel群，所以他的每一个复的不可约有限维表示都是一维的，则实的不可约有限维表示都是二维的，因此
-% \[
-% \varphi=\dim \mathfrak{t}\cdot 1\oplus \varphi_1\oplus\cdots \oplus \varphi_l.
-% \]
-% 其中$1$表示为一维平凡表示，$\varphi_i$是一维非平凡不可约表示，由于$\varphi_i$都可以表示为一个幺正表示，也即$e^{i\theta}$，那么$\varphi_i$也可以看成一个非平凡的从$T$到$\mathrm{SO}(2)$的群同态，那么$\varphi_i$的核是余维度为1的闭Lie子群，他们的并$\cup\ker(\varphi_i)$的补集是$T$的一个开子流形，我们记做$W$.
-
-% 令$t_0\in W$，则每一个$\varphi_i(t_0)$都是一个不平凡的旋转，因此$F(\varphi(t_0),\lag)=\mathfrak{t}$，令$G_{t_0}=\{g\in G:gt_0g^{-1}=t_0\}$是$t_0$的中心化子，以及$e^{sX}$是$G_{t_0}$的任意的单参子群，于是
-% \[
-% 	e^{sX}=t_0e^{sX}t_0^{-1}=e^{s\mathrm{Ad}(t_0)X}
-% \]
-% 对任意的$s\in\rr$都成立，于是$X\in F(\varphi(t_0),\lag)=\mathfrak{t}$.所以$G_{t_0}$的Lie代数就是$\mathfrak{t}$，那么他带单位元的连通分支就是$T$，因此$\dim G(t_0)=\dim G -\dim G_{t_0}=\dim G -\dim T$，其中$G(t_0)$是$t_0$的共轭作用的轨道，或者说是$t_0$的共轭类。我们下面要证明$G(t_0)$是$T$在$t_0$处的正交补。
-
-% 注意到两个$t_0,t\in T$是可交换的，因此$\sigma_t:x\mapsto txt^{-1}$和$l_{t_0}$对任意的$x\in G$都是可以交换的。因此$(l_{t_0})_*$是$\lag$和$T_{t_0}G$对于伴随作用等价的映射，即$(l_{t_0})_*(\sigma_t)_*=(\sigma_t)_*(l_{t_0})_*$,这样$(l_{t_0})_*$就类似一个缠结映射。
-
-% 因为
-% \[
-% \lag=\mathfrak{t}\oplus\mathfrak{t}^\bot,
-% \]
-% 所以有
-% \[
-% \varphi|_\mathfrak{t}=\dim \mathfrak{t}\cdot 1,\quad \varphi|_{\mathfrak{t}^\bot}=\varphi_1\oplus\cdots \oplus \varphi_l.
-% \]
-% 因为$(l_{t_0})_*\mathfrak{t}$就是$T$在$t_0$处的切空间，为了证明$G(t_0)$在$t_0$处的切空间就是$T$在$t_0$处的切空间的正交补，我们可以去证明$T$的伴随作用诱导在切空间上的作用不包含任意固定的方向。
-
-
-% \pro 令$H$是$G$的紧Lie子群，他们的Lie代数分别为$\mathfrak{h}$和$\lag$，则$\lag=\mathfrak{h}\oplus\mathfrak{h}^\bot$。那么在$G/H$基点处的切空间$T_0(G/H)$诱导的H作用等价于$H$的伴随作用在$\mathfrak{h}^\bot$上的限制。
-
-% 设$p(x)=xH\in G/H$是正则投影，那么
-% \[
-% p\circ \sigma_h(x)=p(hxh^{-1})=hxh^{-1}\cdot H=hx\cdot H=l_h(x\cdot H)=l_h\circ p(x),
-% \]
-% 对所有$h\in H$都成立。那么
-% \[
-% p_{*e}:\lag=\mathfrak{h}\oplus\mathfrak{h}^\bot\to T_0(G/H)
-% \]
-% 是$\mathfrak{h}^\bot$和$T_0(G/H)$（作为$H$-线性空间）间的一个同构映射。
-
-% 注意到作为群作用的共轭类，该作用的轨道就是共轭类，而给定元素的定点子群就是该元素的中心化子。所以$t_0$的轨道就是$G$和$t_0$的中心化子的商群，即$G(t_0)=G/G_{t_0}$，那么我们就得到了$\mathfrak{t}^\bot$和$T_0(G/G_{t_0})$之间的同构，而这和$(l_{t_0})_*\mathfrak{t}$的正交是显然的。
-
-% \theo $G$上的两个有限维表示$\psi_1,\psi_2$是等价的，当且仅当他们在极大环子群上的限制是等价的。
-
-% $\psi_1,\psi_2$等价和$\chi_{\psi_1}=\chi_{\psi_2}$是一个意思，那么因为每一个$g\in G$都共轭于某个$T$的元素，而共轭对迹没影响，所以$\chi_{\psi_1}=\chi_{\psi_2}$和$\chi_{\psi_1}|_T=\chi_{\psi_2}|_T$是一个意思，而$\chi_{\psi_1}|_T=\chi_{\psi_2}|_T$又和$\psi_1|_T,\psi_2|_T$等价是一个意思，所以$\psi_1,\psi_2$等价和$\psi_1|_T,\psi_2|_T$等价是一个意思。
-
-% 注意到极大环子群是Abel群，所以他的有限维不可约表示都是一维的，而紧Lie群保证了完全可约性，那么我们只要确定了这些一维不可约表示，也就确定了整个Lie群上面的表示。
-
-% \para 群$W(G)=N_G(T)/T$被称为$G$的Weyl群，其中$N_G(T)$是$T$的正规化子，就是说是所有和$T$可交换的元素构成的群。

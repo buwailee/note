@@ -638,6 +638,7 @@ Hodge星算子的定义和第一章里面的一样
 所以转移函数的取值构成一个群，他是$G$的子群$H$，这样，就称呼$H$是主丛$P\to M$的结构群。
 
 要在主丛上定义联络，Ehresmann联络就很方便。
+
 \para 丛上的联络是指在主丛的切丛上光滑地指派一个子丛$H$，他在每一点都是垂直子空间的补空间，并且对于$R_g$诱导的切空间的映射满足$H_{p\cdot g}=(R_g)_*H_p$.
 
 
@@ -874,3 +875,84 @@ $P$上的一个联络被称为一个规范场，正如上面看到的，给出�
 \[
 	\star D\star F_A=-j.
 \]
+
+\section{Orbital Geometry of the Adjoint Action}
+
+上面看过了Lie代数的伴随表示，现在来看看Lie群的伴随作用，其中担任有趣的角色的就是极大交换子群，类似于Cartan子代数是极大交换子代数。
+
+由于我们考虑是紧Lie群$G$，那么我们总可以得到他的Lie代数$\lag$上伴随作用下不变的内积，因此我们就可以定义$\lag$上面的一组正交基，选定正交基之后我们拓展到对应的左不变矢量场上，我们就得到了一个标架场，也就是确定了$G$上唯一的Riemann结构使得那些左不变矢量场在每一个点都相互正交。
+
+这样定义的Riemann结构，由于标架场是左不变矢量场，所以左平移$(l_a)_*$是等距同构，而伴随作用因为我们定义的内积也是等距同构，那么右平移作为左平移和伴随作用的复合，也是等距同构。
+
+伴随作用的轨道确定了Lie群的共轭类，而又因为伴随作用是等距同构，这就是说共轭类在几何结构上大致是相同的。这节中重要的定理即明确了这个事实。
+
+\para 一个紧Lie群的环子群是一个紧的连通交换Lie子群。一个极大环子群就是说这个环子群不能真包含在其他的环子群里面。
+
+$\mathrm{SO}(2)$是$\mathrm{SO}(3)$的极大环子群，$\mathrm{SO}(2)\times \mathrm{SO}(2)$是$\mathrm{SO}(4)$的极大环子群，环面$\mathrm{T}^n=\{\mathrm{diag}(e^{i\theta_1},\dots,e^{i\theta_n}):0\leq\theta_i<2\pi\}$是$U(n)$的极大环子群。由于$\mathrm{SO}(2)$同构于环$\mathrm{S}^1$，而$\mathrm{T}^n$同构于$\mathrm{S}^1\times\cdots\times\mathrm{S}^1$，所以环子群的名字是十分形象的。
+
+\pro 令$T$是$G$的环子群以及$F(T,\lag)$或$F(T,G)$是$T$在$\lag$或者$G$上的伴随作用的不动点集，那么$T$是极大环子群当且仅当$\dim F(T,\lag)=\dim T$或者$F(T,G)$包含$T$作为其中之一的连通分支。
+
+让$\mathfrak{t}$是$T$的Lie代数，那么每一个$t\in T$都满足$\mathrm{Ad}_t\mathfrak{t}=\mathfrak{t}$，这是Abel群的自然结果，所以
+\[
+	\mathfrak{t}\subset F(T,\lag).
+\]
+如果$T$不是极大的，那么存在一个$T_1$使得$T\subset T_1$，且他的Lie代数满足$\mathfrak{t}_1\subset F(T_1,\lag)$.所以
+\[
+	\dim T=\dim \mathfrak{t}<\dim \mathfrak{t}_1\leq \dim F(T,\lag).
+\]
+
+反过来，如果$\dim  F(T,\lag)>\dim T$，那么存在$X\in F(T,\lag)-\mathfrak{t}$使得分布$\{X,\mathfrak{t}\}$是$\lag$的一个Lie子代数，且上面的交换子都为$0$。于是存在一个Abel子群$H$其Lie代数为$\{X,\mathfrak{t}\}$，我们现在考虑$H$的闭包，他是一个紧集中的闭集，所以也是紧的（Hausdorff性是流形保证的），所以他是一个真包含$T$的环子群，这和$T$是极大环子群相悖。
+
+至于剩下的关于Lie群的结论，显然来自于其Lie代数和Lie群的联系。
+
+下面这个定理就是这节的主要内容。
+
+\theo 令$T$是紧Lie群$G$的极大环子群，那么每个$g\in G$共轭于某个$T$的元素。
+
+因此所有的极大环子群都是相互共轭的。
+
+令$\varphi$是Lie群$G$的伴随表示在$T$上的限制$\varphi=\mathrm{Ad}|_T$，且$\mathfrak{t}$是$T$的Lie代数。因为$T$是极大环子群，所以从上一个命题可以推知$F(T,\lag)=\mathfrak{t}$，注意到极大环子群是Abel群，所以他的每一个复的不可约有限维表示都是一维的，则实的不可约有限维表示都是二维的，因此
+\[
+\varphi=\dim \mathfrak{t}\cdot 1\oplus \varphi_1\oplus\cdots \oplus \varphi_l.
+\]
+其中$1$表示为一维平凡表示，$\varphi_i$是一维非平凡不可约表示，由于$\varphi_i$都可以表示为一个幺正表示，也即$e^{i\theta}$，那么$\varphi_i$也可以看成一个非平凡的从$T$到$\mathrm{SO}(2)$的群同态，那么$\varphi_i$的核是余维度为1的闭Lie子群，他们的并$\cup\ker(\varphi_i)$的补集是$T$的一个开子流形，我们记做$W$.
+
+令$t_0\in W$，则每一个$\varphi_i(t_0)$都是一个不平凡的旋转，因此$F(\varphi(t_0),\lag)=\mathfrak{t}$，令$G_{t_0}=\{g\in G:gt_0g^{-1}=t_0\}$是$t_0$的中心化子，以及$e^{sX}$是$G_{t_0}$的任意的单参子群，于是
+\[
+	e^{sX}=t_0e^{sX}t_0^{-1}=e^{s\mathrm{Ad}(t_0)X}
+\]
+对任意的$s\in\rr$都成立，于是$X\in F(\varphi(t_0),\lag)=\mathfrak{t}$.所以$G_{t_0}$的Lie代数就是$\mathfrak{t}$，那么他带单位元的连通分支就是$T$，因此$\dim G(t_0)=\dim G -\dim G_{t_0}=\dim G -\dim T$，其中$G(t_0)$是$t_0$的共轭作用的轨道，或者说是$t_0$的共轭类。我们下面要证明$G(t_0)$是$T$在$t_0$处的正交补。
+
+注意到两个$t_0,t\in T$是可交换的，因此$\sigma_t:x\mapsto txt^{-1}$和$l_{t_0}$对任意的$x\in G$都是可以交换的。因此$(l_{t_0})_*$是$\lag$和$T_{t_0}G$对于伴随作用等价的映射，即$(l_{t_0})_*(\sigma_t)_*=(\sigma_t)_*(l_{t_0})_*$,这样$(l_{t_0})_*$就类似一个缠结映射。
+
+因为
+\[
+\lag=\mathfrak{t}\oplus\mathfrak{t}^\bot,
+\]
+所以有
+\[
+\varphi|_\mathfrak{t}=\dim \mathfrak{t}\cdot 1,\quad \varphi|_{\mathfrak{t}^\bot}=\varphi_1\oplus\cdots \oplus \varphi_l.
+\]
+因为$(l_{t_0})_*\mathfrak{t}$就是$T$在$t_0$处的切空间，为了证明$G(t_0)$在$t_0$处的切空间就是$T$在$t_0$处的切空间的正交补，我们可以去证明$T$的伴随作用诱导在切空间上的作用不包含任意固定的方向。
+
+\pro 令$H$是$G$的紧Lie子群，他们的Lie代数分别为$\mathfrak{h}$和$\lag$，则$\lag=\mathfrak{h}\oplus\mathfrak{h}^\bot$。那么在$G/H$基点处的切空间$T_0(G/H)$诱导的H作用等价于$H$的伴随作用在$\mathfrak{h}^\bot$上的限制。
+
+设$p(x)=xH\in G/H$是正则投影，那么
+\[
+p\circ \sigma_h(x)=p(hxh^{-1})=hxh^{-1}\cdot H=hx\cdot H=l_h(x\cdot H)=l_h\circ p(x),
+\]
+对所有$h\in H$都成立。那么
+\[
+p_{*e}:\lag=\mathfrak{h}\oplus\mathfrak{h}^\bot\to T_0(G/H)
+\]
+是$\mathfrak{h}^\bot$和$T_0(G/H)$（作为$H$-线性空间）间的一个同构映射。
+
+注意到作为群作用的共轭类，该作用的轨道就是共轭类，而给定元素的定点子群就是该元素的中心化子。所以$t_0$的轨道就是$G$和$t_0$的中心化子的商群，即$G(t_0)=G/G_{t_0}$，那么我们就得到了$\mathfrak{t}^\bot$和$T_0(G/G_{t_0})$之间的同构，而这和$(l_{t_0})_*\mathfrak{t}$的正交是显然的。
+
+\theo $G$上的两个有限维表示$\psi_1,\psi_2$是等价的，当且仅当他们在极大环子群上的限制是等价的。
+
+$\psi_1,\psi_2$等价和$\chi_{\psi_1}=\chi_{\psi_2}$是一个意思，那么因为每一个$g\in G$都共轭于某个$T$的元素，而共轭对迹没影响，所以$\chi_{\psi_1}=\chi_{\psi_2}$和$\chi_{\psi_1}|_T=\chi_{\psi_2}|_T$是一个意思，而$\chi_{\psi_1}|_T=\chi_{\psi_2}|_T$又和$\psi_1|_T,\psi_2|_T$等价是一个意思，所以$\psi_1,\psi_2$等价和$\psi_1|_T,\psi_2|_T$等价是一个意思。
+
+注意到极大环子群是Abel群，所以他的有限维不可约表示都是一维的，而紧Lie群保证了完全可约性，那么我们只要确定了这些一维不可约表示，也就确定了整个Lie群上面的表示。
+
+\para 群$W(G)=N_G(T)/T$被称为$G$的Weyl群，其中$N_G(T)$是$T$的正规化子，就是说是所有和$T$可交换的元素构成的群。
