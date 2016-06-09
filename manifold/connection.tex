@@ -1,7 +1,9 @@
 \chapter{Connection}
 \newcommand{\gl}{\mathfrak{gl}}
 
-我们已经知道，在惯性参考系中，间隔写作$\dd s^2=c^2 \dd t^2-\dd x^2-\dd y^2-\dd z^2$，如果采用保持惯性参考系的变换，即Lorentz变换，那么间隔不变。可是，如果我们变到了非惯性系，那么间隔一般来说不再能够写作$\dd s^2=c^2 \dd t^2-\dd x^2-\dd y^2-\dd z^2$，比如有一个变换$A$，他不是仿射的，那么$x_2=A(x_1)$后（指标规则依然如同狭义相对论）
+先复习一个物理，作为伪Riemann几何的引入。并且，下面我们假设使用Einstein指标规则，即存在一上一下存在重复指标的时候就对这个指标求和，比如$x^iy_i=\sum_{i}x^iy_i$等。
+
+在惯性参考系中，间隔写作$\dd s^2=c^2 \dd t^2-\dd x^2-\dd y^2-\dd z^2$，如果采用保持惯性参考系的变换，即Lorentz变换，那么间隔不变。可是，如果我们变到了非惯性系，那么间隔一般来说不再能够写作$\dd s^2=c^2 \dd t^2-\dd x^2-\dd y^2-\dd z^2$，比如有一个变换$A$，他不是仿射的，那么$x_2=A(x_1)$后（指标规则依然如同狭义相对论）
 \[
 	\dd x_2^\mu=\frac{\partial A^\mu}{\partial x_1^\nu}(x_1)\dd x_1^\nu
 \]
@@ -17,28 +19,19 @@
 
 Einstein认为，非惯性参考系中产生的动力学效应可以等价为一个力场的作用（当然，这个力场和真的力场还是有些许不同的），从上面可以看到，这个力场应当完全由时空的几何结构（度规）决定。此外，Einstein认为，真实存在的重力场也应该是时空的几何结构的改变，同样被度规决定。所以，时空的几何结构不再是时空的固有性质，不再是一切物理现象的背景，而本身参与到物理过程中，本身是一种物理对象。
 
-这就是史上第一个非Abel场论，即广义相对论的一些基本想法。已经看到，前面所谈论的狭义相对论的基本背景是平直空间，比如$\rr^4$或者$\rr^{3+1}$，但现在我们必须扩展到流形上，为此伪Riemann几何是必须的，假设大家已经知道了一些流形上的微积分。
-
-下面的讨论建立在伪Riemann流形（Semi-Riemannian Manifold）上，首先给出他的定义。
+这就是史上第一个非Abel场论，即广义相对论的一些基本想法。狭义相对论的基本背景是平直空间，比如$\rr^4$或者$\rr^{3+1}$，但现在我们必须扩展到流形上，为此伪Riemann几何是必须的。
 
 \para 假设$M$是一个可微流形，且在他每一点的切空间$T_pM$都存在度规，即一个非退化\footnote{即如果$\langle a,a\rangle=0$，则$a=0$.}的对称二重线性映射$\langle\star,\star\rangle_p:T_pM\times T_pM\to \rr$.
 
-由于二重线性映射可以看作一个2-形式$g_p:T_pM\times T_pM\to \rr$，因此度规可以看出一个2-形式场$g$。局部来看
-\[
-	g_p(u,v)=u^iv^jg(e_i,e_j)=u^iv^jg_{ij},
-\]
-最后的要求，$(g_{ij})$的负本征值的个数不变\footnote{根据惯性定理，负本征值的个数和选取的基无关。}，即如果在一点为$I$个，其他点都是$I$个。这样的$(M,g)$就被称为一个伪Riemann流形。当$I=0$时候，就变成Riemann流形。
+由于二重线性映射可以看作一个张量$g_p:T_pM\times T_pM\to \rr$，因此度规可以看出一个张量场$g$。局部来看$g_p(u,v)=u^iv^jg(e_i,e_j)=u^iv^jg_{ij}$，最后的要求，$(g_{ij})$的负本征值的个数不变\footnote{根据惯性定理，负本征值的个数和选取的基无关。}，即如果在一点为$I$个，其他点都是$I$个。这样的$(M,g)$就被称为一个伪Riemann流形。当$I=0$时候，就变成Riemann流形。
 
 因为$(g_{ij})$对实对称矩阵，所以可以对角化成实对角矩阵，所以非退化条件等价于没有零本征值或者
 $\det (g_{ij})\neq 0$。
 
 前面我们已经在$\rr^4$上选取了度规$\eta$使得$\rr^4$变成了一个伪Riemann流形$\rr^{3+1}$，但是这样的说法还是有些模糊。之所以我们能说是在$\rr^4$上选取了度规，是因为$\rr^4$在每一点的切空间$T_p\rr^4$都同构于$\rr^4$，并且，在每一点定义的内积，都可以看作全局定义的在$\rr^4$上定义的度规。但是到了可微流形上，就必须强调这些区别。
 
-指标规则基本不变，但以后不再用英文字母表示空间部分，而是指任意需要累加的指标。
+记$g^{il}$是$g_{il}$的逆，更准确地说就是$g^{il}g_{lm}=\delta^i_m$.抬升和下降指标依然由度规$g$完成，即$x_i=g_{ij}x^j$和$x^i=g^{ij}x_j$，需要注意的是，现在求导和提升或者下降指标不再对易，因为$g$是可以改变的。
 
-$g^{il}$是$g_{il}$的逆，更准确地说就是$g^{il}g_{lm}=\delta^i_m$.
-
-抬升和下降指标依然由度规$g$完成，即$x_i=g_{ij}x^j$和$x^i=g^{ij}x_j$，需要注意的是，现在求导和提升或者下降指标不再对易，因为$g$是可以改变的。
 \section{Geodesic}
 在伪Riemann流形上可以使用度规来定义可微曲线$\gamma:[a,b]\to M$的长度
 \[
@@ -68,7 +61,7 @@ $g^{il}$是$g_{il}$的逆，更准确地说就是$g^{il}g_{lm}=\delta^i_m$.
 \]
 就可以了，其中要用到上面的Lagrange方程。这个结论可以理解成测地线的切矢量的模长$\langle\gamma',\gamma'\rangle$是一个常数。
 
-测地线局部的存在唯一性靠着二阶常微分方程的理论就可以得到，从局部到整个空间，我们可以一个一个坐标卡延拓过去，但是否可行这里不做讨论。
+测地线局部的存在唯一性靠着二阶常微分方程的理论就可以得到，从局部到整个空间，我们可以一个一个坐标卡延拓过去，但是否可行这里不做讨论。但类似积分曲线，紧的流形（紧是有限性条件）上这总是可以做到的。
 
 在参数化过程中，选取一个有意义的参数有利于我们观察问题，这里，如同狭义相对论里面一样，可以采用线元来参数化我们的曲线，这个时候
 \[
@@ -83,44 +76,57 @@ $g^{il}$是$g_{il}$的逆，更准确地说就是$g^{il}g_{lm}=\delta^i_m$.
 	p^ip_i=g_{ij}p^i p^j=m^2c^2.
 \]
 
-反过来，假如粒子的运动轨迹是测地线，此时在线元参数化下$\langle u,u\rangle=u^iu_i=1$构成一个约束，我们可以检查作用量依然可以写作
+反过来，假如粒子的运动轨迹是测地线，此时在线元参数化下$\langle u,u\rangle=u^iu_i=1$构成一个约束，我们可以检查作用量实际上可以写作
 \[
 	S=-mc \int \dd s
 \]
-的形式，检查的过程和相对论力学那节中的几乎一模一样。但是第一要注意在$u^i u_i=g_{ij}(x) u^i u^j$不再不显含$x$了，此外
-\[
-	0=\frac{\dd}{\dd s}\left(g_{ij}u^iu^j\right)=u^j\frac{\dd}{\dd s}\left(g_{ij}u^i\right)+g_{ij}u^i(u^j)'=u^i(u_i)'+u_i(u^i)',
-\]
-所以我们不能草率地说$u$和$\dd u /\dd s$是相互正交的矢量。
+的形式。
 
-只要注意上面两点，运动方程写作
+因为约束的存在，我们需要在$L_s=-mc$加上如下乘子，构造新的Lagrangian
 \[
-	l_i=(2(u_i)'-\partial_ig_{mn}u^mu^n)\lambda+2u_i \lambda',
+	L^*_s=L_s+\lambda(x,u,s) (u^i u_i-1),
 \]
-记$2k_i=2(u_i)'-\partial_ig_{mn}u^mu^n$，只要存在一个和$k_i$正交但不和$u_i$正交的矢量$v^i$，这样
+为使下面的讨论对一般的Lagrangian都成立，设$L_s=L_{0,s}+L_{1,s}=-mc+L_{1,s}$，此时的Lagrange方程写作
+\[
+\frac{\partial L^*_s}{\partial x^i}-\frac{\dd}{\dd s}\frac{\partial L^*_s}{\partial u^i}=\frac{\partial L_s}{\partial x^i}-\frac{\dd}{\dd s}\frac{\partial L_s}{\partial u^i}+\frac{\partial}{\partial x^i}[\lambda (u^i u_i-1)]-\frac{\dd}{\dd s}\frac{\partial}{\partial u^i}[\lambda(u^i u_i-1)]=0.
+\]
+代入约束和$L$的具体形式
+\[
+	\frac{\partial L_{1,s}}{\partial x^i}-\frac{\dd}{\dd s}\frac{\partial L_{1,s}}{\partial u^i}=(2(u_i)'-\partial_ig_{mn}u^mu^n)\lambda+2u_i \lambda',
+\]
+两边对左边不妨记作$l_i$，同时记$2k_i=2(u_i)'-\partial_ig_{mn}u^mu^n$，只要存在一个和$k_i$正交但不和$u_i$正交的矢量$v^i$，这样
 \[
 	l_iv^i=2v^iu_i \lambda',
 \]
-只要满足$l_iv^i=0$就自然有$\lambda'=0$.这是我们最感兴趣的情况，因为这种情况下，作用量的自由粒子部分可以看作
+只要满足$l_iv^i=0$就自然有$\lambda'=0$.这是我们最感兴趣的情况，这时选取$\lambda = -mc/2$，则
+\[
+	L=-mc\dd s-\frac{mc}{2}(u^\mu u_\mu-1)\dd s+L_1=-\frac{mc}{2}\dd s-\frac{mc}{2}u^\mu u_\mu\dd s+L_1,
+\]
+或者等价地去掉一个恰当形式项，我们可以把
+\begin{equation}
+	L=-\frac{mc}{2}u^i u_i\dd s+L_1
+	\label{freeparticle}
+\end{equation}
+看作$u^i$自由时候的Lagrangian形式。广义动量即
+\[
+	-P_i=\frac{\partial L_s}{\partial u^i}=-\frac{mc}{2}\frac{\partial (u^\nu u_\nu)}{\partial u^i}+\frac{\partial L_{1,s}}{\partial u^i}=-p_i+\frac{\partial L_{1,s}}{\partial u^i},
+\]
+在自由粒子的情况下，广义动量即$-p_i$，符合上面的定义，尤其是空间部分，可以看到就是$\bm{p}$，因此$\lambda = -mc/2$的选取是合理的。
+
+所以在这种情况下，作用量的自由粒子部分可以看作
 \[
 	S=-\frac{mc}{2}\int_a^b g_{ij}u^i u^j \dd s.
 \]
-而整个运动方程就写成
+而整个运动方程（测地线方程）就写成
 \[
 	l_i=-mck_i=-\frac{mc}{2}\left(2(u_i)'-\partial_ig_{mn}u^mu^n\right).
 \]
 
 \section{Connection}
 
-联络的出现，代数上实现了对矢量场的方向导数，几何上实现了所谓的平行移动。讨论联络的基本背景是矢量场和主丛，他们都是纤维丛的一个特例。
+联络的出现，代数上实现了对矢量场的方向导数，几何上实现了所谓的平行移动。
 
-\para 如果一个丛的纤维是矢量空间\footnote{当然一个实数域上的$n$维矢量空间都同构于$\rr^n$，看作$\rr^n$不失一般性。}，这个丛就被称为矢量丛，所以纤维是张量空间，就被称为张量丛。
-
-因为在每一点，$s(p)\in \pi^{-1}(p)\cong F$，所以$s(p)$可以看成是$F$中的元素。就是说，一个光滑截面，在流形$M$的每一点都赋予一个$s(p)\in F$，这就是我们熟知的场的概念的推广。
-
-矢量场是矢量丛的截面，特别地，度规是2-形式场（形式是余切矢量），局部来看就是$g=g_{ij}(x)\dd x^i\otimes \dd x^j$.
-
-矢量丛上的联络的首先目的是为了对矢量场进行求导的。按照一般的思路，将矢量场$s$参数化，假设他在曲线$\gamma(t)$上，$\gamma(0)=x_0$，而$\gamma'(0)=Y$，则似乎他沿$Y$方向的导数应该定义成
+\para 矢量丛上的联络的首先目的是为了对矢量场进行求导的。按照一般的思路，将矢量场$s$参数化，假设他在曲线$\gamma(t)$上，$\gamma(0)=x_0$，而$\gamma'(0)=Y$，则似乎他沿$Y$方向的导数应该定义成
 \[
 	\lim_{t\to 0}\frac{s(\gamma(t))-s(x_0)}{t},
 \]
@@ -294,10 +300,7 @@ $T\rr^n$的截面可以写作$s(x)=x^i(x)e_i$，其中$e_i$是$\rr^n$的标准�
 \end{align*}
 所以作用在矢量值0-形式上，$D^2=A\wedge A+\dd A$，这个量，我们另外给个名字。
 
-\para 一个联络$D$的曲率为
-\[
-	F:=D^2:\Omega^0(E)\to \Omega^2(E).
-\]
+\para 一个联络$D$的曲率为$F:=D^2:\Omega^0(E)\to \Omega^2(E)$.
 
 根据上面求的，局部曲率算符有$F=A\wedge A+\dd A$，他一般来说不为0，如果曲率算符为0，则称这个联络是平坦的。
 
@@ -313,9 +316,7 @@ $T\rr^n$的截面可以写作$s(x)=x^i(x)e_i$，其中$e_i$是$\rr^n$的标准�
 \]
 观察这个式子是很有趣的，前面在电磁学里面定义了电磁场张量$F_{ij}=\partial_{[i}A_{j]}$，其中$A_i$是四维势。如果四维势对应联络形式，那么电磁场张量对应着曲率。曲率中多出来的$[A_i,A_j]$在电磁学中是自然消失的。
 
-直接的计算可以给出：
-
-\pro Bianchi等式：$DF=0$.
+\para 直接的计算可以给出Bianchi等式：$DF=0$.
 
 使用$A_\alpha=\varphi_{\beta\alpha}^{-1}\dd\varphi_{\beta\alpha}+\varphi_{\beta\alpha}^{-1}A_\beta \varphi_{\beta\alpha}$，我们考察$F$在坐标变换下的改变
 \begin{align*}
@@ -426,6 +427,7 @@ D_{\dot{c}}s(c(t))=\left(\dot{s}^j\mu_j+\dot{c}^i s^j\Gamma^k_{\phantom{k}ij}\mu
 \[
 	l_i=-mc(\nabla_{u}u)_i=-(\nabla_{u}p)_i.
 \]
+这就是鼎鼎大名的牛顿第二定律。
 
 本节的最后来谈谈活动标架法，活动标架法利用的是局部基和对偶基来计算联络和曲率。从直接的计算开始，可以得到：
 
