@@ -371,21 +371,88 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 \para Lie群的覆叠空间有很自然的Lie群结构。
 
-\section{Relation between Lie Group and Lie Algebra}
+\section{Lie Algebra}
 
-下面陈述Lie群和Lie代数的联系，首先给出一般的Lie代数定义。
+本节主要在于Lie代数本身的代数结构。
 
-\para 设有一个实数域上面的矢量空间$V$，他上面赋予了一个双线性映射$[\bullet,\bullet]:V\times V\to V$，且满足
-
-\no{1} $[X,Y]=-[Y,X]$,
-
-\no{2} $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$.
-
-则此时$V$以及上面的双线性映射构成一个代数，即Lie代数。
+\para 设有一个实数域上面的矢量空间$V$，他上面赋予了一个反对称的双线性映射$[\bullet,\bullet]:V\times V\to V$，且满足Jacobi恒等式
+\[
+[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0,
+\]
+则此时$V$以及上面的双线性映射构成一个$\rr$-代数，称为Lie代数。这个代数不是结合的，即不一定满足结合律。
 
 一个古典的例子，$(\rr^3,\times)$构成一个Lie代数，其中$\times$是矢量的叉乘。
 
 \para 如果对于$V$的一个子集$H$，成立$[H,H]\subset H$，则$H$就被称为Lie代数的子代数。
+
+因为Lie代数是矢量空间，所以作为矢量空间，两个Lie代数可以直积，如果有两个Lie代数$\lag_1$和$\lag_2$，我们在$\lag_1\otimes\lag_2$如下定义交换子：
+\[
+	[a_1\otimes b_1,a_2\otimes b_2]=[a_1,b_1]\otimes [a_2,b_2],
+\]
+那么很容易看到$\lag_1\otimes\lag_2$也变成了Lie代数。
+
+同样，两个Lie代数也可以直和。如果有两个Lie代数$\lag_1$和$\lag_2$，那么直和的$\lag_1\oplus\lag_2$上的交换子写作
+\[
+	[(X_1,X_2),(Y_1,Y_2)]=([X_1,Y_1],[X_2,Y_2]).
+\]
+
+迄今为止，我们都只谈论了实数域上面的Lie代数，当然，我们可以直接拓展到复数域上面去，但是复化的手段也是常用的。
+
+\para 如果$V$是有限维实的矢量空间，那么所有$v_1+iv_2$所构成的空间被称为他的复化，记做$V_\cc$，其中$v_1,v_2\in V$.如果我们再定义$i(v_1+iv_2)=-v_2+iv_1$，那么$V_\cc$就是有限维的复矢量空间。
+
+由于Lie代数也是矢量空间，我们可以对其复化，显然，我们希望复化后对易子满足
+\[
+[X_1+iX_2,Y_1+iY_2]=([X_1,Y_1]-[X_2,Y_2])+i([X_1,Y_2]+[X_2,Y_1]),
+\]
+也就是说对易子对$i$也是线性的。可以直接验证，我们这样定义的确实是对易子且是唯一的。
+
+谈了直积和直和，我们就可以谈论Lie代数的分类和分解。
+
+\para 令$\lag$是一个实（复）Lie代数，如果他的实（复）子代数$\mathfrak{h}$满足对所有的$X\in \lag,H \in \mathfrak{h}$都有$[X,H]\in \mathfrak{h}$，则称$\mathfrak{h}$是$\lag$的一个理想。\footnote{可以搜一搜ring和ideal的笑话。}
+
+一个代数$\lag$显然有两个理想，一个是$0$一个是$\lag$，我们称这两个为平凡理想。
+
+\para 一个实（复）Lie代数$\lag$如果没有非平凡理想，则称其为不可分解的。如果一个Lie代数的维度大于$1$且是不可分解的，则称其为单的。
+
+从定义来看，不可分解但非单的Lie代数只可能是一维的。对于一维Lie代数来说，他没有非平凡的子代数，其中任意两个元素的交换子为0，从而可以看到他是不可分解的。
+
+我们可以将有限群和有限维Lie代数类比。Lie代数的子代数就对应有限群的子群，Lie代数的理想就对应有限群的正规子群，一维Lie代数就对应素数阶的循环群（他是没有子群的，这个很简单就可以证明，使用Lagrange公式还可以得知素数阶的有限群一定是循环群）。
+
+\para 一个实（复）Lie代数$\lag$如果同构于不可分解Lie代数的直和，那么称呼其为可约的。如果其同构于单Lie代数的直和，就称呼其为半单的。
+
+下面的定理连接了紧矩阵Lie群以及半单Lie代数。
+
+\theo 一个复Lie代数是半单的当且仅当他同构于一个单连通的紧矩阵Lie群的Lie代数的复化。
+
+我们已经做过了从实Lie代数复化得到一个复Lie代数，那么自然地，我们可以问反问题，对一个复Lie代数是否可以寻找一个实Lie代数，那个实Lie代数的复化就是原本的复Lie代数。
+
+\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的紧实形式（compact real form）是$\lag$的一个子代数$\mathfrak{l}$使得对任意的$X\in\lag$都可以找到两个$X_1,X_2\in\mathfrak{l}$满足$X=X_1+iX_2$.因此，存在一个单连通的紧矩阵Lie群$K_1$使得$K_1$的Lie代数同构于$\lag$的紧实形式。
+
+上面一个定理告诉我们上面这个反问题在半单Lie代数的情况下始终是有解的。
+
+\pro 如果$\lag$是一个实的Lie代数，那么他是半单的当且仅当他的复化$\lag_\cc$是半单的。
+
+从这个可以推知，紧的单连通矩阵Lie群的实Lie代数是半单的。当然，反过来，不是任何半单实Lie代数都可以找到紧的单连通矩阵Lie群。
+
+\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的一个子空间$\mathfrak{h}$被称为$\lag$的Cartan子代数，如果满足：
+
+\no{1} 对于任意的两个元素$H_1,H_2\in\mathfrak{h}$，都有$[H_1,H_2]=0$;
+
+\no{2} 对于任意的$X\in \lag$，如果有$[X,H]=0$对全部$H\in\mathfrak{h}$都成立，则$X\in \mathfrak{h}$.
+
+\no{3} 对于全部$H\in \mathfrak{h}$，$\ad(H)$作为Lie代数的表示是完全可约的。
+
+Cartan子代数的维度称为半单Lie代数的秩。
+
+条件1说明了Cartan子代数是交换子代数，然后条件2就说明这个极大的交换子代数。
+
+\pro 令$\lag$是一个复的半单Lie代数，令$\mathfrak{l}$是$\lag$的紧实形式，再令$\mathfrak{t}$是$\mathfrak{l}$任意的极大交换子代数，定义$\mathfrak{h}\in\lag$为$\mathfrak{h}=\mathfrak{t}+i\mathfrak{t}$.然后，$\mathfrak{h}$就是$\lag$的Cartan子代数。
+
+我们以后下面要谈论Lie群和Lie代数的表示，但是却只限制在紧Lie群，特别是紧的矩阵群上面，从而根据上面的定理，我们也只要去研究半单Lie代数就可以了。
+
+\section{Relation between Lie Group and Lie Algebra}
+
+下面陈述Lie群和Lie代数的联系。
 
 \theo 设$H$是$G$的Lie子群，那么$\mathfrak{h}$是$\lag$的Lie子代数。
 
@@ -457,15 +524,13 @@ f([a,b]_1)=[fa,fb]_2.
 
 由于这个方程是微分过的结果，可以看成是微分方程，他确定了Lie群的局部结构。虽然我们的证明是选取了两个左不变矢量场，但是每一个矢量场在在局部都可以变成左不变矢量场的限制，所以我们的方程总是成立的。如果群是Abel群，那么方程的第二项为0，即$\dd \omega_G=0$.
 
-\section{More on Algebraic Structure}
+\section{Adjoint Representation}
 
-这节稍稍谈谈Lie代数的代数构造，很重要的一点就是其为矢量空间，这样我们就可以谈直和直积复化什么的。
+这节回到表示，群表示以及Lie代数的表示，我们这里感兴趣的是表示是一种矢量空间为$\lag$的表示。这需要从伴随作用开始。
 
-我们这里感兴趣的是群表示是一种矢量空间为$\lag$的表示。这需要从伴随作用开始。
+\para Lie群$G$的伴随和他的Lie代数$\lag$的联系来自于伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_*:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$。我们将$\mathrm{Ad}:G\to \mathrm{GL}(\lag)$称为Lie群的伴随表示。
 
-Lie群$G$的伴随和他的Lie代数$\lag$的联系来自于伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_*:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$。我们将$\mathrm{Ad}:G\to \mathrm{GL}(\lag)$称为Lie群的伴随表示。
-
-\para 对于伴随，我们有
+对于伴随，我们有
 
 \no{1} $\mathrm{Ad}_g:\lag\to \lag$是一个Lie代数间的同构，而$\mathrm{Ad}:G\to \mathrm{GL}(\lag)$是一个Lie群间的同态。
 
@@ -493,13 +558,11 @@ Lie群$G$的伴随和他的Lie代数$\lag$的联系来自于伴随$\mathbf{Ad}(g
 
 \para 如下陈述成立：
 
-\no{1} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)$是一个Lie群。
+\no{1} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)$是一个Lie群，他的Lie代数是$\mathfrak{gl}_{\mathrm{Lie}}(\lag)$.
 
-\no{2} $\mathrm{Aut}_{\mathrm{Lie}}(\lag)$的Lie代数是$\mathfrak{gl}_{\mathrm{Lie}}(\lag)$.
+\no{2} 令$G$的Lie代数为$\lag$，那么$\ad(u)v=[u,v]$是$\mathrm{Ad}:G\to \mathrm{GL}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}$.
 
-\no{3} 令$G$的Lie代数为$\lag$，那么$\ad(u)v=[u,v]$是$\mathrm{Ad}:G\to \mathrm{GL}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}$.
-
-在第三点中，我们看到了曾经在Jacobi恒等式那边指出的导子，可以看到，这确确实实就是一个导数。
+在第二点中，我们看到了曾经在Jacobi恒等式那边指出的导子，可以看到，这确确实实就是一个导数。
 
 我们拿一般线性群举个例子，前面已经计算过了$(l_g)_*=l_g$，那么同样$(r_g)_*=r_g$，所以
 \[
@@ -513,16 +576,9 @@ Lie群$G$的伴随和他的Lie代数$\lag$的联系来自于伴随$\mathbf{Ad}(g
 \[
 \frac{\dd}{\dd t}(\mathrm{Ad}_{u(t)}(v))=u'(t)vu^{-1}(t)+u(t)v(u^{-1}(t))'=u'(t)vu^{-1}(t)-u(t)vu^{-1}(t)u'(t)u^{-1}(t).
 \]
-然后令$t=0$，那么$u(0)=u^{-1}(0)=I$，而$u'(0)=u$，那么就得到了单位元处的切矢量，也就是Lie代数
-\[
-\ad(u)v=uv-vu=[u,v].
-\]
+然后令$t=0$，那么$u(0)=u^{-1}(0)=I$，而$u'(0)=u$，那么就得到了单位元处的切矢量，也就是Lie代数$\ad(u)v=uv-vu=[u,v]$.
 
-类似的手段譬如
-\[
-T(t)[u,v]=[T(t)u,T(t)v],
-\]
-求个导，然后在$t=0$处的值为
+类似的手段譬如对$T(t)[u,v]=[T(t)u,T(t)v]$求个导，然后在$t=0$处的值为
 \[
 T'(0)[u,v]=[T'(0)u,T(0)v]+[T(0)u,T'(0)v],
 \]
@@ -538,10 +594,7 @@ B[u,v]=[Bu,v]+[u,Bv],
 \[
 	\pi_*(X)=\left.\frac{\dd}{\dd t}\pi(e^{tX})\right|_{t=0},
 \]
-或者
-\[
-	\pi(e^{tX})=e^{\pi_*(X)}.
-\]
+或者$\pi(\exp(tX))=\exp(\pi_*(X))$.
 
 \pro $\pi$是不可约的当且仅当$\pi_*$是不可约的；$\pi$是完全可约的当且仅当$\pi_*$是完全可约的；两个$\pi$和$\eta$是等价的当且仅当$\pi_*$和$\eta_*$是等价的。
 
@@ -550,75 +603,6 @@ B[u,v]=[Bu,v]+[u,Bv],
 	\left.\frac{\dd}{\dd t}(\pi(g)\otimes \eta(g))\right|_{t=0}=\pi_*(g)\otimes I+I\otimes \eta_*(g)=(\pi_*\otimes I+I\otimes \eta_*)(g),
 \]
 我们就将其作为Lie代数表示直积的定义。
-
-迄今为止，我们都只谈论了实数域上面的Lie代数，当然，我们可以直接拓展到复数域上面去，但是复化的手段也是常用的。
-
-\para 如果$V$是有限维实的矢量空间，那么所有$v_1+iv_2$所构成的空间被称为他的复化，记做$V_\cc$，其中$v_1,v_2\in V$.如果我们再定义
-\[
-i(v_1+iv_2)=-v_2+iv_1,
-\]
-那么$V_\cc$就是有限维的复矢量空间。
-
-由于Lie代数也是矢量空间，我们可以对其复化，显然，我们希望复化后对易子满足
-\[
-[X_1+iX_2,Y_1+iY_2]=([X_1,Y_1]-[X_2,Y_2])+i([X_1,Y_2]+[X_2,Y_1]),
-\]
-也就是说对易子对$i$也是线性的。可以直接验证，我们这样定义的确实是对易子且是唯一的。
-
-因为Lie代数是矢量空间，所以作为矢量空间，两个Lie代数可以直积，如果有两个Lie代数$\lag_1$和$\lag_2$，我们在$\lag_1\otimes\lag_2$如下定义交换子：
-\[
-[a_1\otimes b_1,a_2\otimes b_2]=[a_1,b_1]\otimes [a_2,b_2],
-\]
-那么很容易看到$\lag_1\otimes\lag_2$也变成了Lie代数。
-
-同样，两个Lie代数也可以直和。如果有两个Lie代数$\lag_1$和$\lag_2$，那么直和的$\lag_1\oplus\lag_2$上的交换子写作
-\[
-	[(X_1,X_2),(Y_1,Y_2)]=([X_1,Y_1],[X_2,Y_2]).
-\]
-
-上面的直积直和的Lie代数结构的验证，尤其是Jacobi恒等式的验证就略去了。谈了直积和直和，我们就可以谈论Lie代数的分类和分解。
-
-\para 令$\lag$是一个实（复）Lie代数，如果他的实（复）子代数$\mathfrak{h}$满足对所有的$X\in \lag,H \in \mathfrak{h}$都有$[X,H]\in \mathfrak{h}$，则称$\mathfrak{h}$是$\lag$的一个理想。\footnote{可以搜一搜ring和ideal的笑话。}
-
-一个代数$\lag$显然有两个理想，一个是$0$一个是$\lag$，我们称这两个为平凡理想。
-
-\para 一个实（复）Lie代数$\lag$如果没有非平凡理想，则称其为不可分解的。如果一个Lie代数的维度大于$1$且是不可分解的，则称其为单的。
-
-从定义来看，不可分解但非单的Lie代数只可能是一维的。对于一维Lie代数来说，他没有非平凡的子代数，其中任意两个元素的交换子为0，从而可以看到他是不可分解的。
-
-我们可以将有限群和有限维Lie代数类比。Lie代数的子代数就对应有限群的子群，Lie代数的理想就对应有限群的正规子群，一维Lie代数就对应素数阶的循环群（他是没有子群的，这个很简单就可以证明，使用Lagrange公式还可以得知素数阶的有限群一定是循环群）。
-
-\para 一个实（复）Lie代数$\lag$如果同构于不可分解Lie代数的直和，那么称呼其为可约的。如果其同构于单Lie代数的直和，就称呼其为半单的。
-
-下面的定理连接了紧矩阵Lie群以及半单Lie代数。
-
-\theo 一个复Lie代数是半单的当且仅当他同构于一个单连通的紧矩阵Lie群的Lie代数的复化。
-
-我们已经做过了从实Lie代数复化得到一个复Lie代数，那么自然地，我们可以问反问题，对一个复Lie代数是否可以寻找一个实Lie代数，那个实Lie代数的复化就是原本的复Lie代数。
-
-\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的紧实形式（compact real form）是$\lag$的一个子代数$\mathfrak{l}$使得对任意的$X\in\lag$都可以找到两个$X_1,X_2\in\mathfrak{l}$满足$X=X_1+iX_2$.因此，存在一个单连通的紧矩阵Lie群$K_1$使得$K_1$的Lie代数同构于$\lag$的紧实形式。
-
-上面一个定理告诉我们上面这个反问题在半单Lie代数的情况下始终是有解的。
-
-\pro 如果$\lag$是一个实的Lie代数，那么他是半单的当且仅当他的复化$\lag_\cc$是半单的。
-
-从这个可以推知，紧的单连通矩阵Lie群的实Lie代数是半单的。当然，反过来，不是任何半单实Lie代数都可以找到紧的单连通矩阵Lie群。
-
-\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的一个子空间$\mathfrak{h}$被称为$\lag$的Cartan子代数，如果满足：
-
-\no{1} 对于任意的两个元素$H_1,H_2\in\mathfrak{h}$，都有$[H_1,H_2]=0$;
-
-\no{2} 对于任意的$X\in \lag$，如果有$[X,H]=0$对全部$H\in\mathfrak{h}$都成立，则$X\in \mathfrak{h}$.
-
-\no{3} 对于全部$H\in \mathfrak{h}$，$\ad(H)$作为Lie代数的表示是完全可约的。
-
-Cartan子代数的维度称为半单Lie代数的秩。
-
-条件1说明了Cartan子代数是交换子代数，然后条件2就说明这个极大的交换子代数。
-
-\pro 令$\lag$是一个复的半单Lie代数，令$\mathfrak{l}$是$\lag$的紧实形式，再令$\mathfrak{t}$是$\mathfrak{l}$任意的极大交换子代数，定义$\mathfrak{h}\in\lag$为$\mathfrak{h}=\mathfrak{t}+i\mathfrak{t}$.然后，$\mathfrak{h}$就是$\lag$的Cartan子代数。
-
-我们以后下面要谈论Lie群和Lie代数的表示，但是却只限制在紧Lie群，特别是紧的矩阵群上面，从而根据上面的定理，我们也只要去研究半单Lie代数就可以了。
 
 \section{Matrix Group}
 这一节限制在矩阵群上面，这节将给出很多可计算的例子，先来求一些矩阵群的Lie代数。

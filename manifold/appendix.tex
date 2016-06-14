@@ -1,27 +1,81 @@
 \appendix
 \renewcommand{\thepara}{\Alph{chapter}.\arabic{para}}
 
-\chapter{Exterior Algebra}
-\para 这里复习一下外代数的内容。设$V$是一个$n$维矢量空间，记$\Omega^k(V)$为所有反对称线性函数
+\chapter{Tensors and Exterior Algebra}
+
+张量抽象了多线性函数，尤其是双线性函数。
+
+\para 设$A$是右$R$-模，$B$是左$R$-模，那么我们称$f:A\times B\to G$，其中$G$是一个交换群，为一个双线性函数，如果他满足
+\[
+	f(a+b,a')=f(a,a')+f(b,a'),\quad f(a,a'+b')=f(a,a')+f(a,b'),
+\]
+以及对$r\in R$满足$f(ar,b)=f(a,rb)$.
+
+特别地，如果我们存在一个双线性函数$\varphi$，以及一个交换群$G$，使得每一个$A\times B$上的双线性函数$f:A\times B\to H$都可以唯一分解为
+\[
+	f:A\times B\xrightarrow{\varphi} G\xrightarrow{h_f}H,
+\]
+其中$h_f$对每一个双线性函数$f$存在且唯一，则称呼$G$为$A$与$B$的张量积，记做$A\otimes_R B$，而$\varphi(a,b)$记做$a\otimes_R b$，如果下标$R$不重要，那么我们可以省略他。
+
+\lem 在模范畴内，张量积存在。而且由上面的泛性质，他确定到一个同构。
+
+\proof 对于唯一性，我们考虑两个张量积$(G,\varphi)$和$(G',\varphi')$，那么根据张量积的性质，有分解
+\[
+	\varphi:A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G,\quad \varphi':A\times B\xrightarrow{\varphi} G\xrightarrow{h_{\varphi'}}G',
+\]
+所以只要验证$h_\varphi\circ h_{\varphi'}=\id_{G}$和$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$就好了，这样我们就得到了$G$和$G'$之间的同构。而上述等式来自于分解的唯一性，显然，我们有分解
+\[
+	A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G\xrightarrow{h_{\varphi'}}G',\quad A\times B\xrightarrow{\varphi'} G'\xrightarrow{\id_{G'}}G',
+\]
+显然，所以由唯一性得到了$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$，同理有另一个等式。
+
+对于存在性，我们可以直接构造，首先，我们知道在交换群范畴有直和存在，那么我们可以构造自由交换群$F=\bigoplus_{(a,b)\in A\times B} \zz\langle (a,b)\rangle$.令$1_{a,b}$是$\zz\langle (a,b)\rangle$中的$1$，我们令$H$是由
+\[
+	1_{a,b}+1_{a',b}-1_{a+a',b},\quad 1_{a,b}+1_{a,b'}-1_{a,b+b'},\quad 1_{ar,b}-1_{a,rb}
+\]
+生成的子群，那么我们$A\otimes B$就可以构造为$F/H$，令$\varphi(a,b)=a\otimes b=[1_{a,b}]$，即$1_{a,b}$的陪集。这确实是张量积，具体的检验这里就不进行了。\qed
+
+设$R$是交换环，$A$和$B$都是双边模，那么$A\otimes_R B$显然有一个$R$-模结构，比如$r(a\otimes b)$可以定义为$(ra)\otimes b$.特别地，如果交换环$T$是一个$R$-代数\footnote{设$f:R\to T$是一个环同态，那么我们可以通过$r\cdot t=f(r)t$在$T$上定义一个$R$-模结构，此时称$T$是一个$R$-代数。此外，$R$-代数同态是一个环同态，同时也是一个$R$-模同态。}，设$A$是一个$R$-模，则$A\otimes_R T$就是一个$T$-模。这是因为，我们可以通过$t(a\otimes b)=a\otimes (tb)$来定义标量乘法。
+
+由于矢量空间是域上的模，那么矢量空间之间也存在张量积，两个矢量空间的张量积还是一个矢量空间。设$V$和$W$都是$\rr$上的矢量空间，那么$V\otimes W$也是$\rr$上的矢量空间。如果他们都是有限维的，且$\{v_i\}_{i\in I}$和$\{w_j\}_{i \in J}$分别是他们的基，则可以检验$\{v_i\times w_j\}_{(i,j)\in I\times J}$构成$V\otimes W$的一组基，所以如果$V$是$m$维的，$W$是$n$维的，则$V\otimes W$是$mn$维的。
+
+\para 有同构$A\otimes\bigoplus_i B_i\cong \bigoplus_i (A\otimes B_i)$，$R\otimes A\cong A$以及$(R/I)\otimes B\cong B/IB$，其中$I$是$R$的一个理想。这俩的证明完全是利用泛性质，这里就不说了。
+
+\para 有了两个模的张量积，我们自然也可以拓展为三个模的张量积，我们可以通过模仿两个模的张量积的泛性质\footnote{即三线性的函数可以唯一分解。}，定义一个新的三个模之间的张量积$A\otimes B\otimes C$，然后可以检验$(A\otimes B)\otimes C$和$A\otimes (B\otimes C)$同时也满足泛性质，所以他们之间是同构的。在这层意义上，我们可以认为张量积满足结合律，因此我们自然也有了有限个模的张量积。
+
+将一个矢量空间$V$自己张量自己$k$次得到的空间$V\otimes \cdots \otimes V$记做$V^k$.
+
+\para 设我们有$n$维度矢量空间$V$，那么我们多线性函数（即对每个变元都线性）
 \[
 	f:\underbrace{V\times\cdots\times V}_{k\text{个}}\to \rr
 \]
-的集合。这个集合有一个显然的线性结构。此外再约定$\Omega^1(V)=V^*$和$\Omega^0(V)=\rr$.我们将$\Omega^k(V)$称为$V$的$k$-次外代数。
+所构成的矢量空间自然同构于$(V\otimes \cdots \otimes V)^*=(V^k)^*$，这是因为对多线性函数我们有唯一分解$f=h_f\circ\varphi$，其中$h_f\in (V^k)^*$，令$\alpha:f\mapsto h_f$，显然这是双射，剩下只要检验这是线性的就好了。因为$af+bg$同时有两个分解$h_{af+bg}\circ \varphi$和$ah_f+bh_g$，那么由分解的唯一性，我们就得到了$h_{af+bg}=ah_f+bh_g$，故而同构。以后我们就直接认为$(V^k)^*$是多线性函数构成的矢量空间。
+
+因为这个等同，所以多线性函数通常直接写成$f:V^k\to \rr$.
+
+\para 类似于$V^k$，我们可以将$V$的对偶空间和自己张量$k$次，即$V_k=V^*\otimes \cdots \otimes V^*$构成一个新的矢量空间，他和$(V^k)^*$是自然同构的。
+
+显然他们的维数相同，剩下只要找两个空间之间的一个单或者满线性映射就可以了。设$f_1\otimes \cdots\otimes f_k\in V_k$，那么$f_1(v_1)f_2(v_2)\cdots f_k(v_k)$自然定义了$F\in (V^k)^*$.而且由构造，这是一个单射，所以同构成立。这样，我们以后也不区分$(V_k)^*$和$V_k$.
+
+特别地，利用上面这种等同，我们有$V_m\otimes V_n=V_{m+n}$。对于两个多线性函数$f\in V_m$和$g\in V_n$，张量积$f\otimes g\in V_{m+n}$具体写出来即
+\[
+	f \otimes g(v_1,\cdots,v_m,v_{m+1},\cdots,v_{m+n})
+	=f(v_1,\cdots,v_m)g(v_{m+1},\cdots,v_{m+n}).
+\]
+
+\para 设$S^k$是对称群，我们可以将其线性地作用在$(V^k)^*$的元素上，设$\sigma\in S^k$，而$f\in (V^k)^*$是一个多线性函数，那么我们可以定义一个新的多线性函数$\sigma(f)$通过$\sigma(f)(v_1,\cdots,v_k)=f(v_{\sigma(1)},\cdots,v_{\sigma(k)})$.
+
+一个多线性函数如果有$\sigma(f)=(-1)^{\sign(\sigma)}f$，则被称为是反对称的，特别地，对于交换一对元素，反对称多线性函数变号。因为任意一个置换都可以由交换一对元素复合而来，所以上面这个性质也完全描述了反对称多线性函数。
+
+类似的，对称多线性函数即满足$\sigma(f)=f$的函数。
+
+\para 这里复习一下外代数的内容。设$V$是一个$n$维矢量空间，记$\Omega^k(V)$为所有反对称多线性函数$f\in V_k$的集合。这个集合有一个显然的线性结构，构成$V_k$的一个子空间。此外再约定$\Omega^1(V)=V^*$和$\Omega^0(V)=\rr$.我们将$\Omega^k(V)$称为$V$的$k$-次外代数。
 
 \para 	设$\xi \in \Omega^m(V)$和$\eta \in \Omega^n(V)$，定义$\xi$和$\eta$的外积$\xi \wedge \eta \in \Omega^{m+n}(V)$为
 	\[
-		\xi \wedge \eta=\frac{1}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\mathrm{sign}(\sigma)}\sigma (\xi \otimes \eta).
+		\xi \wedge \eta=\frac{1}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\sign(\sigma)}\sigma (\xi \otimes \eta),
 	\]
-	其中$\sigma$属于$m+n$阶置换群且$\sigma (\xi \otimes \eta)$被定义为
-	\[
-		\sigma (\xi \otimes \eta)(v_1,\dots,v_{m+n})=(\xi \otimes \eta)(v_{\sigma(1)},\dots,v_{\sigma(m+n)}).
-	\]
-	而$\xi \otimes \eta$（称为张量积）被定义为双线性的运算
-	\[
-		\xi \otimes \eta(v_1,\dots,v_m,v_{m+1},\dots,v_{m+n})
-		=\xi(v_1,\dots,v_m)\eta(v_{m+1},\dots,v_{m+n}).
-	\]
-	容易验证张量积满足结合律。
+	其中$\sigma$属于$m+n$阶置换群。
 
 \pro 设$\xi$, $\xi_1$, $\xi_2 \in \Omega^m(V)$和$\eta$, $\eta_1$, $\eta_2\in \Omega^n(V)$还有一个$\zeta\in \Omega^h(V)$，有
 
@@ -47,30 +101,34 @@
 			1+n& \cdots & m+n & 1 &\cdots &n
 		\end{pmatrix},
 	\]
-	容易证明$(-1)^{\mathrm{sign}(\tau)}=(-1)^{mn}$.
+	容易证明$(-1)^{\sign(\tau)}=(-1)^{mn}$.
 
 	由线性性，我们只要对一个分量证明就可以了。按基打开直接写出
 	\[
 		\begin{split}
-			\xi \wedge \eta&=\frac{\xi^{i_1\dots i_m}\eta^{j_1 \dots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\mathrm{sign}(\sigma)}\sigma(v_{i_1}\otimes \cdots \otimes v_{i_m}\otimes v_{j_1}\otimes \cdots \otimes v_{j_n})\\
-			\eta \wedge \xi&=\frac{\xi^{i_1\dots i_m}\eta^{j_1 \dots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\mathrm{sign}(\sigma)}\sigma(v_{j_1}\otimes \cdots \otimes v_{j_n}\otimes v_{i_1}\otimes \cdots \otimes v_{i_m})
+			\xi \wedge \eta&=\frac{\xi^{i_1\dots i_m}\eta^{j_1 \dots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\sign(\sigma)}\sigma(v_{i_1}\otimes \cdots \otimes v_{i_m}\otimes v_{j_1}\otimes \cdots \otimes v_{j_n})\\
+			\eta \wedge \xi&=\frac{\xi^{i_1\dots i_m}\eta^{j_1 \dots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\sign(\sigma)}\sigma(v_{j_1}\otimes \cdots \otimes v_{j_n}\otimes v_{i_1}\otimes \cdots \otimes v_{i_m})
 		\end{split}
 	\]
 	注意到$\sigma$跑遍所有置换，那么$\sigma$和$\tau$的复合$\sigma'=\sigma\circ\tau$也跑遍所有置换，且
-	\[(-1)^{\mathrm{sign}(\sigma')}=(-1)^{\mathrm{sign}(\sigma)}(-1)^{\mathrm{sign}(\tau)},\]所以
+	\[(-1)^{\sign(\sigma')}=(-1)^{\sign(\sigma)}(-1)^{\sign(\tau)},\]所以
 	\[
 		\begin{split}
-			\eta \wedge \xi&=\frac{\xi^{i_1\cdots i_m}\eta^{j_1 \cdots j_n}}{m!n!}\sum_{\sigma'\in S^{m+n}}(-1)^{\mathrm{sign}(\sigma')}\sigma'(v_{j_1}\otimes \cdots \otimes v_{j_n}\otimes v_{i_1}\otimes \cdots \otimes v_{i_m})\\
-			&=\frac{\xi^{i_1\cdots i_m}\eta^{j_1 \cdots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\mathrm{sign}(\sigma)}(-1)^{\mathrm{sign}(\tau)}\sigma(v_{i_1}\otimes \cdots \otimes v_{i_m}\otimes v_{j_1}\otimes \cdots \otimes v_{j_n})\\
-			&=(-1)^{\mathrm{sign}(\tau)}\frac{\xi^{i_1\cdots i_m}\eta^{j_1 \cdots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\mathrm{sign}(\sigma)}\sigma(v_{i_1}\otimes \cdots \otimes v_{i_m}\otimes v_{j_1}\otimes \cdots \otimes v_{j_n})\\
-			&=(-1)^{\mathrm{sign}(\tau)} \xi \wedge \eta.
+			\eta \wedge \xi&=\frac{\xi^{i_1\cdots i_m}\eta^{j_1 \cdots j_n}}{m!n!}\sum_{\sigma'\in S^{m+n}}(-1)^{\sign(\sigma')}\sigma'(v_{j_1}\otimes \cdots \otimes v_{j_n}\otimes v_{i_1}\otimes \cdots \otimes v_{i_m})\\
+			&=\frac{\xi^{i_1\cdots i_m}\eta^{j_1 \cdots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\sign(\sigma)}(-1)^{\sign(\tau)}\sigma(v_{i_1}\otimes \cdots \otimes v_{i_m}\otimes v_{j_1}\otimes \cdots \otimes v_{j_n})\\
+			&=(-1)^{\sign(\tau)}\frac{\xi^{i_1\cdots i_m}\eta^{j_1 \cdots j_n}}{m!n!}\sum_{\sigma\in S^{m+n}}(-1)^{\sign(\sigma)}\sigma(v_{i_1}\otimes \cdots \otimes v_{i_m}\otimes v_{j_1}\otimes \cdots \otimes v_{j_n})\\
+			&=(-1)^{\sign(\tau)} \xi \wedge \eta.
 		\end{split}
 	\]
-	代入$(-1)^{\mathrm{sign}(\tau)}=(-1)^{mn}$即得证\no{2}.
+	代入$(-1)^{\sign(\tau)}=(-1)^{mn}$即得证\no{2}.
 
-	第三个性质，也就是结合律的证明就是死算，略去计算最后得到：
+	第三个性质，也就是结合律的证明可以类比张量积结合律的证明，定义
 	\[
-		(\xi \wedge \eta) \wedge \zeta=\frac{1}{m!n!h!}\sum_{\sigma\in S^{m+n+h}}(-1)^{\mathrm{sign}(\sigma)}\sigma(\xi \otimes \eta \otimes \zeta)=\xi \wedge (\eta \wedge \zeta).
+		\xi \wedge \eta\wedge \zeta=\frac{1}{m!n!h!}\sum_{\sigma\in S^{m+n+h}}(-1)^{\sign(\sigma)}\sigma(\xi \otimes \eta \otimes \zeta),
+	\]
+	然后就是直接的计算
+	\[
+		(\xi \wedge \eta) \wedge \zeta=\xi \wedge \eta\wedge \zeta=\xi \wedge (\eta \wedge \zeta).
 	\]
 	\qed
 
