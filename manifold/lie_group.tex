@@ -28,7 +28,7 @@
 
 \para 设$X$是左不变矢量场，因为$X$是完备的，所以他诱导的单参数变换群$\{\sigma^X_t\}$在整个Lie群上是有定义的，特别地，在单位元上，我们定义$\exp(t,X):=\sigma^X_t(e)$，其中$X$是左不变矢量场，因为左不变矢量场一一对应着Lie代数，所以也可以说$X\in \lag$.同样，对固定的$X$，映射$\exp(t,X)$对改变的$t$就构成了$G$的一个子群，这被称为单参子群。由积分曲线的存在唯一性，我们也得到了单参子群与Lie代数的一一对应关系。
 
-\pro 设$f:G\to G$是一个微分同胚，我们有$f_*[X,Y]=[f_*X,f_*Y]$，若$f=l_a$，那么我们立刻就得到了左不变矢量场的对易子也是左不变的。因此对于Lie代数来说，他继承了切矢量场的Lie括号$[\bullet,\bullet]:\lag\times \lag\to \lag$，这是一个二元线性运算，所以Lie代数确实是一个代数。
+\pro 设$f:G\to G$是一个微分同胚，我们有$f_*[X,Y]=[f_*X,f_*Y]$，若$f=l_a$，那么我们立刻就得到了左不变矢量场的对易子也是左不变的。因此对于Lie代数来说，他继承了切矢量场的Lie括号$[\star,\star]:\lag\times \lag\to \lag$，这是一个二元线性运算，所以Lie代数确实是一个代数。
 
 通过直接的计算，Lie代数上满足：
 
@@ -235,7 +235,7 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 
 如果$V$是大于$1$维的，那么任意的$V$的子空间都是$\pi$的不变子空间，但不可约性否决了这点，所以我们得到了：凡Abel群的不可约复表示都是一维的。
 
-\para 如果$(\bullet,\bullet)$是$V$上的一个内积，如果对任意的$g\in G$,$u,v\in V$有$(u,v)=(gu,gv)$，则我们称呼这个表示为幺正表示，幺正表示也可以写作$\pi(g)^{-1}=\pi(g)^\dag$。对于有限群我们总可以找到幺正表示，因为我们可以重新构造内积
+\para 如果$(\star,\star)$是$V$上的一个内积，如果对任意的$g\in G$,$u,v\in V$有$(u,v)=(gu,gv)$，则我们称呼这个表示为幺正表示，幺正表示也可以写作$\pi(g)^{-1}=\pi(g)^\dag$。对于有限群我们总可以找到幺正表示，因为我们可以重新构造内积
 \[
 	(u,v)'=\frac{1}{|G|}\sum_{g\in G}(gu,gv),
 \]
@@ -260,7 +260,7 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 
 \pro 紧Lie群上存在幺正表示，所以紧Lie群的有限维表示总是完全可约的。 
 
-换而言之，我们可以找到内积$\langle \bullet,\bullet\rangle$使得$\langle gx,gy\rangle=\langle x,y\rangle$。假设原本存在内积$\langle \bullet,\bullet \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
+换而言之，我们可以找到内积$\langle \star,\star\rangle$使得$\langle gx,gy\rangle=\langle x,y\rangle$。假设原本存在内积$\langle \star,\star \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
 \[
 	\langle x,y\rangle'=\int_G \langle gx,gy \rangle \dd g
 \]
@@ -375,50 +375,95 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 本节主要在于Lie代数本身的代数结构。
 
-\para 设有一个实数域上面的矢量空间$V$，他上面赋予了一个反对称的双线性映射$[\bullet,\bullet]:V\times V\to V$，且满足Jacobi恒等式
+\para 设有一个域$k$上面的矢量空间$V$，他上面赋予了一个反对称的双线性映射$[\star,\star]:V\times V\to V$，且满足Jacobi恒等式
 \[
 [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0,
 \]
-则此时$V$以及上面的双线性映射构成一个$\rr$-代数，称为Lie代数。这个代数不是结合的，即不一定满足结合律。
+则此时$V$以及上面的双线性映射构成一个$k$-代数，称为Lie代数。$\rr$上的Lie代数被称为实的Lie代数，$\cc$上的Lie代数被称为复的Lie代数。这个代数不是结合的，即不一定满足结合律。
 
-一个古典的例子，$(\rr^3,\times)$构成一个Lie代数，其中$\times$是矢量的叉乘。
+一个古典的例子，$(\rr^3,\times)$构成一个实Lie代数，其中$\times$是矢量的叉乘。
 
-\para 如果对于$V$的一个子集$H$，成立$[H,H]\subset H$，则$H$就被称为Lie代数的子代数。
+\para 如果对于Lie代数$\lag$的一个子集$\mathfrak{h}$，如果成立$[\mathfrak{h},\mathfrak{h}]\subset \mathfrak{h}$，则$\mathfrak{h}$就被称为Lie代数的子代数。如果子代数$\mathfrak{h}$还满足$[\lag,\mathfrak{h}]\subset \mathfrak{h}$，则称$\mathfrak{h}$是$\lag$的一个{\kaishu 理想}\footnote{可以搜一搜ring和ideal的笑话。}。
 
-因为Lie代数是矢量空间，所以作为矢量空间，两个Lie代数可以直积，如果有两个Lie代数$\lag_1$和$\lag_2$，我们在$\lag_1\otimes\lag_2$如下定义交换子：
+一个代数$\lag$显然有两个理想（当然也是子代数），一个是$0$一个是$\lag$，我们称这两个为平凡理想。
+
+% \para 因为Lie代数是矢量空间，所以作为矢量空间，两个Lie代数可以直积，如果有两个Lie代数$\lag_1$和$\lag_2$，我们在$\lag_1\otimes\lag_2$如下定义交换子：
+% \[
+% 	[a_1\otimes b_1,a_2\otimes b_2]=[a_1,b_1]\otimes [a_2,b_2],
+% \]
+% 那么很容易看到$\lag_1\otimes\lag_2$也变成了Lie代数，只要检验Jacobi恒等式就可以了。
+
+% 同样，两个Lie代数也可以直和。如果有两个Lie代数$\lag_1$和$\lag_2$，那么直和的$\lag_1\oplus\lag_2$上的交换子写作
+% \[
+% 	[(X_1,X_2),(Y_1,Y_2)]=\bigl([X_1,Y_1],[X_2,Y_2]\bigr).
+% \]
+
+\para 设$\lag_1$是域$k$上的Lie代数，他和Lie代数$\lag_2$间的同态$f$首先是一个$k$-线性映射，其次满足$f([a,b]_1)=[fa,fb]_2$.Lie同构就是当$f$还是一个线性空间同构的时候。
+
+迄今为止，我们都只谈论了实数域上面的Lie代数，当然，我们可以直接拓展到复数域上面去，但是复化的手段也是常用的。复化是所谓的标量扩充或者base change的特例，所以我们直接来谈模（交换环上的双边模）的标量扩充。
+
+\para 关于模的张量基，可以参看附录。如果$M$是$R$-模，$S$是$R$-代数，那么$M_S=S\otimes_R M$就是一个$S$-模，通过$s(t\otimes a)=(st)\otimes a$，我们称这个$S$-模$M_S$为$M$经过标量扩充而来的。
+
+\lem 有以下同构
+
+\no{1} $M_S\otimes_S N_S\cong (M\otimes_R N)_S$.
+
+\no{2} 设$N$是一个$S$-模，有同构$\Hom_R(M,N)\cong \Hom_S(M_S,N)$
+
+\proof 第一个同构。实际上，$(s_1\otimes_R a,s_2\otimes_R b)\mapsto s_1s_2\otimes_R(a\otimes_R b)$是一个双线性映射，所以他唯一诱导了$\varphi:M_S\otimes_S N_S\to (M\otimes_R N)_S$.
+
+反过来，映射$(s,a\otimes_R b)\mapsto (s\otimes_R a)\otimes_S (1\otimes_R b)=(1\otimes_R a)\otimes_S (a\otimes_R b)$也是一个双线性映射，所以他唯一诱导了$\psi:(M\otimes_R N)_S\to M_S\otimes_S N_S$.容易验证他们互逆。
+
+第二个同构。设$\phi\in \Hom_R(M,N)$，我们可以通过$\Phi(s\otimes a)=s\phi(a)$定义$\Phi\in \Hom_S(M_S,N)$，反过来，已知$\Phi\in \Hom_S(M_S,N)$，我们可以通过$\phi(a)=\Phi(1\otimes a)$来定义$\phi\in \Hom_R(M,N)$.不难检验，这是一个同构。 \qed
+
+对有限个$\{M_i\}_{i\in I}$，那么反复利用\no{1}我们就得到了同构
 \[
-	[a_1\otimes b_1,a_2\otimes b_2]=[a_1,b_1]\otimes [a_2,b_2],
+\bigotimes_{i\in I} \left(S\otimes_RM_i\right)\cong S\otimes_R\bigotimes_{i\in I} M_i.
 \]
-那么很容易看到$\lag_1\otimes\lag_2$也变成了Lie代数。
 
-同样，两个Lie代数也可以直和。如果有两个Lie代数$\lag_1$和$\lag_2$，那么直和的$\lag_1\oplus\lag_2$上的交换子写作
+\para 设$V$是一个$\rr$上的$n$维矢量空间，那么$V\cong \rr\oplus \cdots \oplus \rr$，所以$V_{\cc}\cong \rr_{\cc}\oplus \cdots \oplus \rr_{\cc}$，由于$\rr_{\cc}=\cc\otimes \rr=\cc$，所以$V_{\cc}\cong \cc\oplus \cdots \oplus \cc$，因此$V_{\cc}$这就被称为$V$的复化，同时因为$v\mapsto 1\otimes v$是单射，所以我们把$V$看成$V_\cc$的实的子空间，即$1\otimes V=V$.
+
+\lem 复化扩张引理：
+
+\no{1}设$V$是一个实矢量空间，$W$是一个复矢量空间，$f:V\to W$是实线性映射，则他可以唯一扩张为一个复线性映射$V_\cc\to W$.
+
+\no{2}设$V$和$W$都是实矢量空间，$f:V\to W$是实线性映射，则他可以唯一扩张为一个复线性映射$V_\cc\to W_\cc$.
+
+\no{3}设$V$和$W$都是实矢量空间，$f:V\times\cdots\times V\to W$是实多线性映射，则他可以唯一扩张为一个复多线性映射$V_\cc\times V_\cc\to W_\cc$.
+
+\proof 
+	因为$\Hom_\rr(V,W)\cong \Hom_\cc(V_\cc,W)$，所以\no{1}得证。对于\no{2}，我们有$i:W\hookrightarrow W_\cc$，那么$i\circ f:V\to W_\cc$就满足\no{1}题设，由\no{1}自然得证。对于\no{3}，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由\no{2}，可以唯一扩张为$(V^k)_\cc\to W_\cc$，因为$(V^k)_\cc=V_\cc\otimes_\cc \cdots\otimes_\cc V_\cc$，引理得证。
+\qed
+
+对于\no{1}中的映射$f$，如果他被扩张为$f_\cc$，藏在同构里的对应为$f_\cc(c\otimes v)=cf(v)$.那么$f_\cc(1\otimes v+i\otimes w)=f_\cc(1\otimes v)+f_\cc(i\otimes w)=f(v)+if(w)$.
+
+而且，如果$f_\cc$限制在$V$是零，那么$f_\cc$本身就是零。这是因为$f_\cc(c\otimes v)=cf(v)=0$对任意的$c\in \cc$和$v\in V$都成立，然后$V_\cc$中的元素都是$c\otimes v$们的线性组合，所以$f_\cc(w)=0$对任意$w\in V_\cc$都成立。同样，\no{2}和\no{3}中的扩张，也满足在没扩张的空间上限制为零则他本身为零。
+
+\para 由于Lie代数也是矢量空间，我们可以对其复化，由于对易子$[\star,\star]:\lag\times \lag\to \lag$是一个双线性映射，由复化扩张引理，我们可以唯一扩张为双复线性映射$[\star,\star]:\lag_\cc\times \lag_\cc\to \lag_\cc$.至于Jacobi恒等式，他的左边是三线性映射$\lag_\cc\times \lag_\cc\times \lag_\cc\to\rr$，因为他限制在$\lag\times \lag\times \lag$是零，所以在整个$\lag_\cc\times \lag_\cc\times \lag_\cc$也是零。故实Lie代数复化后是一个复Lie代数。
+
+\para 利用复化扩张引理，如果$\lag$是一个实的Lie代数，而$\mathfrak{h}$是一个复Lie代数，那么Lie代数同态$f:\lag\to \mathfrak{h}$可以唯一被扩张为线性映射$f_\cc:\lag_\cc\to \mathfrak{h}$.他还是一个Lie代数同态，因为$[f_\cc(v),f_\cc(w)]$和$f_\cc([v,w])$是复双线性映射$\lag_\cc\times \lag_\cc\to\mathfrak{h}$当$v$和$w$限制在$\lag$上的时候是相同的，所以当$v$和$w$在$\lag_\cc$上时候也相同。
+
+设$f:\lag\to\mathfrak{h}$还是单的Lie代数同态，且$\mathfrak{h}=f(\lag)\oplus if(\lag)$，那么自然$f_\cc$是满射，因为任取$f(v)+if(w)$，他都可以写作$f_\cc(1\otimes v+i\otimes w)$，而且$f_\cc$还是一个单射，因为如果$f_\cc(1\otimes v+i\otimes w)=0$，则$f(v)+if(w)=0$，则$f(v)=f(w)=0$，因为$f$是单的，所以$v=w=0$，因此$1\otimes v+i\otimes w=0$.故$f_\cc$是一个矢量空间的同构，也是Lie代数的同构，即$\lag_\cc\cong \mathfrak{h}$. 
+
+这就意味这，如果一个复Lie代数$\mathfrak{h}$能够分解成$\mathfrak{h}=\lag\oplus i\lag$，其中$\lag$是一个实Lie代数，那么$\mathfrak{h}$就是$\lag$的复化。
+
+反过来，对于复化，我们直接将$1\otimes v+i\otimes w$记做$v+iw$，则复化中的每一个元素都可以唯一写成$v+iw$的形式。此时将$\lag\oplus \lag$中的元素$(v,w)$记做$v+iw$，则$\lag\oplus \lag$就是我们的复化，下面可以通过$f_\cc(v+iw)=f(v)+if(w)$以及
 \[
-	[(X_1,X_2),(Y_1,Y_2)]=([X_1,Y_1],[X_2,Y_2]).
+	[v_1+iv_2,w_1+iw_2]=([v_1,w_1]-[v_2,w_2])+i([v_1,w_2]+[v_2,w_1]),
 \]
+来定义线性映射和交换子。这个式子当然要比复化扩张引理实在很多，比如我们可以直接计算Jacobi恒等式成立。
 
-迄今为止，我们都只谈论了实数域上面的Lie代数，当然，我们可以直接拓展到复数域上面去，但是复化的手段也是常用的。
+\para 设$\lag_1$和$\lag_2$，我们可以定义通过$[(a,b),(c,d)]=\left([a,c],[b,d]\right)$来定义$\lag_1\oplus \lag_2$上的交换子，可以验证，他是一个Lie代数。这被称为Lie代数的直和。
 
-\para 如果$V$是有限维实的矢量空间，那么所有$v_1+iv_2$所构成的空间被称为他的复化，记做$V_\cc$，其中$v_1,v_2\in V$.如果我们再定义$i(v_1+iv_2)=-v_2+iv_1$，那么$V_\cc$就是有限维的复矢量空间。
+有了直和，我们就可以谈论Lie代数的分类和分解。
 
-由于Lie代数也是矢量空间，我们可以对其复化，显然，我们希望复化后对易子满足
-\[
-[X_1+iX_2,Y_1+iY_2]=([X_1,Y_1]-[X_2,Y_2])+i([X_1,Y_2]+[X_2,Y_1]),
-\]
-也就是说对易子对$i$也是线性的。可以直接验证，我们这样定义的确实是对易子且是唯一的。
-
-谈了直积和直和，我们就可以谈论Lie代数的分类和分解。
-
-\para 令$\lag$是一个实（复）Lie代数，如果他的实（复）子代数$\mathfrak{h}$满足对所有的$X\in \lag,H \in \mathfrak{h}$都有$[X,H]\in \mathfrak{h}$，则称$\mathfrak{h}$是$\lag$的一个理想。\footnote{可以搜一搜ring和ideal的笑话。}
-
-一个代数$\lag$显然有两个理想，一个是$0$一个是$\lag$，我们称这两个为平凡理想。
-
-\para 一个实（复）Lie代数$\lag$如果没有非平凡理想，则称其为不可分解的。如果一个Lie代数的维度大于$1$且是不可分解的，则称其为单的。
+\para 一个Lie代数$\lag$如果没有非平凡理想，则称其为不可分解的。如果一个Lie代数的维度大于$1$且是不可分解的，则称其为单的。
 
 从定义来看，不可分解但非单的Lie代数只可能是一维的。对于一维Lie代数来说，他没有非平凡的子代数，其中任意两个元素的交换子为0，从而可以看到他是不可分解的。
 
 我们可以将有限群和有限维Lie代数类比。Lie代数的子代数就对应有限群的子群，Lie代数的理想就对应有限群的正规子群，一维Lie代数就对应素数阶的循环群（他是没有子群的，这个很简单就可以证明，使用Lagrange公式还可以得知素数阶的有限群一定是循环群）。
 
-\para 一个实（复）Lie代数$\lag$如果同构于不可分解Lie代数的直和，那么称呼其为可约的。如果其同构于单Lie代数的直和，就称呼其为半单的。
+\para 一个Lie代数$\lag$如果同构于不可分解Lie代数的直和，那么称呼其为可约的。如果其同构于单Lie代数的直和，就称呼其为半单的。
 
 下面的定理连接了紧矩阵Lie群以及半单Lie代数。
 
@@ -461,11 +506,6 @@ Cartan子代数的维度称为半单Lie代数的秩。
 \theo 任何$\rr$上的有限维Lie代数总可以同构于$\mathfrak{gl}(n,\rr)$的一个子代数，$n$为一个足够大的整数。
 
 考虑了子代数，现在来看看两个Lie群和Lie代数的联系。
-
-\para 两个Lie代数$\lag_1$和$\lag_2$间的同态$f$首先是一个线性映射，其次满足
-\[
-f([a,b]_1)=[fa,fb]_2.
-\]
 
 \pro 设$\varphi:G_1\to G_2$是Lie群间的群同态（同构），则其诱导了Lie代数间的同态（同构）$\varphi_{*e}:\lag_1\to \lag_2$.
 
@@ -753,7 +793,7 @@ e^{X+Y}=\begin{pmatrix}
 \log\left(e^Xe^Y\right)=X+Y+\frac{1}{2}[A,B]+\frac{1}{12}[A,[A,B]]-\frac{1}{12}[B,[A,B]]+\cdots.
 \]
 
-级数展开不是上面公式的重点，重点是展开后全是对易子$[\bullet,\bullet]$的形式，直接来自于积分里面的$\ad$.所以使用这个公式可以证明矩阵Lie群和Lie代数关系中的映射关系，因为Lie代数同态是可以分配进对易子的但是对于一般的$X$和$Y$的线性组合却是不可以的。
+级数展开不是上面公式的重点，重点是展开后全是对易子$[\star,\star]$的形式，直接来自于积分里面的$\ad$.所以使用这个公式可以证明矩阵Lie群和Lie代数关系中的映射关系，因为Lie代数同态是可以分配进对易子的但是对于一般的$X$和$Y$的线性组合却是不可以的。
 
 我们现在来对Lie代数进行展开，设Lie代数的基为$\{a_i\}$，那么
 \[
@@ -803,7 +843,7 @@ e^{X+Y}=\begin{pmatrix}
 	[\eta_1,\eta_2]=\eta_3,\quad [\eta_1,\eta_3]=-\eta_2,\quad [\eta_2,\eta_3]=\eta_1.
 \]
 
-如果建立映射$\eta_i\mapsto e_i$，其中$e_i$就是$\rr^3$的标准基，而映射将$[\bullet,\bullet]$映射为叉乘，那么这就是一个Lie代数同构。
+如果建立映射$\eta_i\mapsto e_i$，其中$e_i$就是$\rr^3$的标准基，而映射将$[\star,\star]$映射为叉乘，那么这就是一个Lie代数同构。
 
 那么我们也可以计算得伴随表示为
 \[
@@ -888,7 +928,7 @@ Killing形式是双线性的，且
 对于任意的$x,y,z$有$([x,y],z)_K=(x,[y,z])_K$，
 
 \no{3}
-如果$\mathfrak{h}$是$\lag$的理想，那么在$\mathfrak{h}$上的Killing形式$(\bullet,\bullet)_{K_\mathfrak{h}}$和原本的Killing形式$(\bullet,\bullet)_{K}$对于所有$x,y\in \mathfrak{h}$满足$(x,y)_{K_\mathfrak{h}}=(x,y)_K$.
+如果$\mathfrak{h}$是$\lag$的理想，那么在$\mathfrak{h}$上的Killing形式$(\star,\star)_{K_\mathfrak{h}}$和原本的Killing形式$(\star,\star)_{K}$对于所有$x,y\in \mathfrak{h}$满足$(x,y)_{K_\mathfrak{h}}=(x,y)_K$.
 \end{theo}
 
 对于第二点，注意到$\ad([x,y])=\ad(x)\ad(y)-\ad(y)\ad(x)$,
@@ -1087,7 +1127,7 @@ $\mathfrak{sl}(2,\mathbb{C})$的$m+1$维不可约表示中$\pi(h)$的本征值�
 \[
 	(e^{t\ad(h)}x,e^{t\ad(h)}y)=(x,y).
 \]
-其中$x,y\in\mathfrak{h}$，可以把这个内积推广到$\lag$内取复值的内积，让我们还是使用符号$(\bullet,\bullet)$来标记他，那么求导就有
+其中$x,y\in\mathfrak{h}$，可以把这个内积推广到$\lag$内取复值的内积，让我们还是使用符号$(\star,\star)$来标记他，那么求导就有
 \[
 	(\ad(h)x,y)+(x,\ad(h)y)=0.
 \]
@@ -1163,7 +1203,7 @@ $[a_\alpha,a_\beta]$也是在某个根子空间里面的，为了求他的根，
 \]
 因为Killing形式是对称的，所以$(h_\alpha,h_\beta)_K$可以推知$\alpha(h_\beta)=\beta(h_\alpha)$.
 
-\para 我们定义$\langle \bullet,\bullet \rangle$如下：
+\para 我们定义$\langle \star,\star \rangle$如下：
 \[
 	\langle \alpha,\beta \rangle=(h_\alpha,h_\beta)_K.
 \]
@@ -1229,7 +1269,7 @@ $[a_\alpha,a_\beta]$也是在某个根子空间里面的，为了求他的根，
 
 \pro 对任意的$\alpha,\beta\in \Delta$，$2\langle \alpha,\beta \rangle/\langle \alpha,\alpha \rangle$是一个整数。
 
-这个是因为$2\langle \alpha,\beta \rangle/\langle \alpha,\alpha \rangle$是$\ad(H_\beta)$的本征值，而$\mathfrak{sl}(2)$的有限维不可约表示的本征值只能是整数。如果把$\langle \bullet,\bullet \rangle$当成内积，那么$\langle \alpha,\beta \rangle/\langle \alpha,\alpha \rangle$就是$\beta$往$\alpha$方向的投影，可以看到投影只能是整数和半整数。
+这个是因为$2\langle \alpha,\beta \rangle/\langle \alpha,\alpha \rangle$是$\ad(H_\beta)$的本征值，而$\mathfrak{sl}(2)$的有限维不可约表示的本征值只能是整数。如果把$\langle \star,\star \rangle$当成内积，那么$\langle \alpha,\beta \rangle/\langle \alpha,\alpha \rangle$就是$\beta$往$\alpha$方向的投影，可以看到投影只能是整数和半整数。
 
 我们继续做一些计算
 \[
