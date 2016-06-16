@@ -1,8 +1,9 @@
 %!TEX program = xelatex
 \documentclass[9pt]{extbook}
 \usepackage{ctex}
-\CTEXoptions[today=old]%使日期变成鸟语
-\usepackage[zh,book]{../noteheader}
+	\CTEXoptions[today=old]
+	\CTEXoptions[contentsname=Table of Contents]
+\usepackage[aptex,zh,book]{noteheader}
 
 \usepackage{titletoc}%使用目录
 	\theoremstyle{plain}%定理环境样式
@@ -12,7 +13,7 @@
 	\newtheorem{defi}{Definition}[section]% 定义定义环境
 	\newtheorem{exa}{Example}[section]% 定义例子环境
 
-\usepackage[xetex]{hyperref}%使用xetex引擎
+\usepackage{hyperref}%使用xetex引擎
 	\hypersetup %一些选项
 {
 	pdftoolbar=true,  % 显示Acrobat工具栏
@@ -51,6 +52,7 @@
 \clearpage
 这其实就是抄书（Steven Weinberg的The Quantum Theory of Fields），看不大懂所以抄起来了2333，@小平邦彦。
 \clearpage
+\tableofcontents
 \mainmatter
 \input{qft_c123}
 \input{qft_c456}

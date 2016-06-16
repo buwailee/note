@@ -1,13 +1,13 @@
 %!TEX program = xelatex
 \documentclass[9pt]{extbook}
 \usepackage{ctex}
-\usepackage{../noteheader}
+\usepackage[aptex,book,zh]{noteheader}
 
 \newtheorem{pro}{Proposition}% 定义命题环境
 \newtheorem{defi}{Definition}% 定义命题环境
 \newtheorem{theo}{Theorem}% 定义定理环境
 
-\usepackage[xetex]{hyperref}%使用xetex引擎
+\usepackage{hyperref}%使用xetex引擎
 	\hypersetup %一些选项
 {
 	pdftoolbar=true,  % 显示Acrobat工具栏
@@ -32,7 +32,10 @@
 \author{Buwai. Lee@School of Physics, NJU}
 \date{2015秋季学期}
 \maketitle %标题
+\frontmatter
 \input{va}
+\tableofcontents
+\clearpage
 \section*{符号约定}
 本文所指相对论皆狭义相对论。先指出指标在狭义相对论的运用是自然的。
 
@@ -56,6 +59,7 @@
 
 最后的最后，本笔记最主要的参考书是Landau的经典场论，甚至说是缩写了一遍Landau都不为过。其他的选材，全凭兴趣。
 
+\mainmatter
 \chapter{狭义相对论与Maxwell方程组}
 \section{狭义相对论基本框架}
 狭义相对论的背景是Minkowski时空，首先他是一个$\mathcal{M}=\rr^{3}\times \rr$，其次，他上面有内积$\langle\star,\star\rangle:\mathcal{M}\times \mathcal{M}\to \rr$，满足
@@ -2062,7 +2066,7 @@ $\bm{E}=0$其实是个很愚蠢的假设，因为如果有电流密度，就意�
 \section{推迟势}
 含源电磁场的方程为
 \[
-	\partial_\nu \partial^\nu A^\mu-\partial^\mu \partial_\nu A^\nu=\partial_\nu F^{\nu\mu}=\frac{4\pi}{c^2} j^\mu，
+	\partial_\nu \partial^\nu A^\mu-\partial^\mu \partial_\nu A^\nu=\partial_\nu F^{\nu\mu}=\frac{4\pi}{c^2} j^\mu,
 \]
 在Lorenz规范$\partial_\nu A^\nu=0$下，得到了方程
 \[
