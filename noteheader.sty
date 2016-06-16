@@ -1,8 +1,9 @@
 % author: buwailee@nmhs
 % \ProvidesPackage{noteheader}[2016/05/26 Noteheader Package]
 
-\RequirePackage{geometry, amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs}
-
+%% Package
+\RequirePackage{amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs}
+\RequirePackage[b5paper, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
 \def\pgfsysdriver{pgfsys-dvipdfm.def}
 \RequirePackage{tikz}
 \RequirePackage[all]{xy}
@@ -26,7 +27,9 @@
 	% \newcommand{\ssubsection}[1]{%
 	%   \subsection[#1]{\raggedright\normalfont\itshape #1}}
 	% \newcommand{\ssubsection}{\subsection}
+%%
 
+%% Option
 \DeclareOption{article}{
 	\fancyhead[L]{\sf \rightmark}
 	\fancyhead[R]{\sf \thepage}
@@ -35,27 +38,35 @@
 	\fancyhead[LO,RE]{\sf \rightmark}   % [LO, RE]
 	\fancyhead[RO,LE]{\sf \thepage}
 }
-\DeclareOption{en}{}
-\DeclareOption{zh}{\let\@afterindentfalse\@afterindenttrue\@afterindenttrue}
+
+\newif\if@zh\@zhfalse
+\DeclareOption{en}{\@zhfalse}
+\DeclareOption{zh}{\@zhtrue}
 
 \newif\if@aptex\@aptexfalse
 \DeclareOption{aptex}{\@aptextrue}
 \DeclareOption{xetex}{\@aptexfalse}
 
 \ExecuteOptions{article, en, xetex}
+%%
 
+%% Relax
 \ProcessOptions\relax
 
+\if@zh
+	\RequirePackage{indentfirst}
+\fi
+
 \if@aptex
-	% b5paper={paperwidth=176mm, paperheight=250mm}
+	\geometry{top=36mm}
+	% b5paper=176mm*250mm
 	\pdfpagewidth=176truemm
 	\pdfpageheight=250truemm
-	\geometry{top=39mm,text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1}
 	\oddsidemargin=16truemm
 	\evensidemargin=16truemm
-	\addtolength{\headwidth}{-8truemm}
 \else
-	\geometry{b5paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded}
-	% marginratio=1:1={vmarmarginratio=1:1, hmarginratio=1:1
+	\geometry{top=10mm}
 \fi
+%%
+
 \endinput

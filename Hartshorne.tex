@@ -1,6 +1,6 @@
 %!TEX program = xelatex
 \documentclass[9pt]{extbook}
-\usepackage{noteheader}
+\usepackage[aptex]{noteheader}
 \usepackage{ctex}
 
 \theoremstyle{plain}%定理环境样式
@@ -11,7 +11,7 @@
 \newtheorem*{rem}{Remark}% 定义注记环境
 \newtheorem{exe}{Exercise}[section]% 定义例子环境
 
-\usepackage[xetex]{hyperref}%使用xetex引擎
+\usepackage{hyperref}%使用xetex引擎
 	\hypersetup %一些选项
 {
 	pdftoolbar=true,  % 显示Acrobat工具栏
@@ -1127,7 +1127,7 @@ $\varphi_i$是$U_i$和$\bba^n_k$在两边各自的Zariski拓扑下的同胚。
 \]
 其中$U$和$V$都是有限集。其他的开集都是这样开集的并，特别地，$\bba^1\times \bba^1-\{(0,0)\}$如果是开集，那么应该是某些$0\in U$和$0\in V$所对应的开集的并，令$U=\{0\}\cup U'$和$V=\{0\}\cup U'$，这样的开集写作
 \[
-	\bba^1\times\bba^1-\{0\}\times\bba^1-U'\times\bba^1-\bba^1\times \{0\}-\bba^1\times V'，
+	\bba^1\times\bba^1-\{0\}\times\bba^1-U'\times\bba^1-\bba^1\times \{0\}-\bba^1\times V',
 \]
 所以，所有这样的开集都包含于$W=\bba^1\times\bba^1-\{0\}\times\bba^1-\bba^1\times \{0\}$，他们的任意并也包含于$W$，但$W\subsetneq\bba^1\times\bba^1-\{(0,0)\}$，所以这就可以推出$\bba^1\times\bba^1-\{(0,0)\}$不能写成那些开集的并，所以不是开集。
 
