@@ -1,11 +1,10 @@
 % author: buwailee@nmhs
 % \ProvidesPackage{noteheader}[2016/05/26 Noteheader Package]
 
-\RequirePackage{geometry, amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs, tikz}
-\geometry{b5paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded}
-% b5paper={paperwidth=176mm, paperheight=250mm}
-% marginratio=1:1={vmarmarginratio=1:1, hmarginratio=1:1}
+\RequirePackage{geometry, amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs}
 
+\def\pgfsysdriver{pgfsys-dvipdfm.def}
+\RequirePackage{tikz}
 \RequirePackage[all]{xy}
 
 % fancy headers & footers
@@ -39,6 +38,24 @@
 \DeclareOption{en}{}
 \DeclareOption{zh}{\let\@afterindentfalse\@afterindenttrue\@afterindenttrue}
 
-\ExecuteOptions{article,en}
+\newif\if@aptex\@aptexfalse
+\DeclareOption{aptex}{\@aptextrue}
+\DeclareOption{xetex}{\@aptexfalse}
+
+\ExecuteOptions{article, en, xetex}
+
 \ProcessOptions\relax
+
+\if@aptex
+	% b5paper={paperwidth=176mm, paperheight=250mm}
+	\pdfpagewidth=176truemm
+	\pdfpageheight=250truemm
+	\geometry{top=39mm,text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1}
+	\oddsidemargin=16truemm
+	\evensidemargin=16truemm
+	\addtolength{\headwidth}{-8truemm}
+\else
+	\geometry{b5paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded}
+	% marginratio=1:1={vmarmarginratio=1:1, hmarginratio=1:1
+\fi
 \endinput
