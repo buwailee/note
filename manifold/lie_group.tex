@@ -371,6 +371,91 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 \para Lie群的覆叠空间有很自然的Lie群结构。
 
+\section{Relation between Lie Group and Lie Algebra}
+
+下面陈述Lie群和Lie代数的联系。
+
+\theo 设$H$是$G$的Lie子群，那么$\mathfrak{h}$是$\lag$的Lie子代数。
+
+下面这个定理来自Ado，就像流形中的Whitney嵌入定理一样，告诉我们，对于有限维Lie代数，其实我们只需要考虑$\mathfrak{gl}(n,\rr)$的子代数就可以了。（记得Arnold用Whitney嵌入定理来说“根本没有抽象的流形”。）
+
+\theo 任何$\rr$上的有限维Lie代数总可以同构于$\mathfrak{gl}(n,\rr)$的一个子代数，$n$为一个足够大的整数。
+
+考虑了子代数，现在来看看两个Lie群和Lie代数的联系。
+
+\pro 设$\varphi:G_1\to G_2$是Lie群间的群同态（同构），则其诱导了Lie代数间的同态（同构）$\varphi_{*e}:\lag_1\to \lag_2$.
+
+上面对于微分同胚我们已经证明了$\varphi_{*e}[u,v]=[\varphi_{*e}u,\varphi_{*e}v]$，但Lie群之间的群同态使得我们可以做得更好。
+
+让$u,v\in\lag_1$，那么我们拓展到$G_1$上的对应的左不变矢量场$X,Y$上。因为$\varphi$是一个群同态，故$\varphi\circ l_g=l_{\varphi(g)}\circ \varphi$.使用这个关系，
+\[
+	\varphi_{*}(X_g)=\varphi_{*}((l_g)_*u)=(l_{\varphi(g)})_*(\varphi_{*}(u))=(\varphi_{*}X)_{\varphi(g)}.
+\]
+设$f$是$G_2$上任意的可微实函数，那么
+\[
+\varphi_{*}(X_g)f=X_g(f\circ \varphi),
+\]
+或者使用$\varphi_{*g}(X_g)=(\varphi_{*}X)_{\varphi(g)}$写作
+\[
+(\varphi_{*}(X)f)\circ \varphi=X(f\circ \varphi),
+\]
+同理有$(\varphi_{*}(Y)f)\circ \varphi=Y(f\circ \varphi)$.所以
+\[
+	\begin{split}
+		([\varphi_*(X),\varphi_*(Y)]f)\circ \varphi&=((\varphi_*(X)\circ\varphi_*(Y)-\varphi_*(Y)\circ\varphi_*(X))f)\circ \varphi\\
+		&=X((\varphi_*(Y)f)\circ \varphi)-Y((\varphi_*(X)f)\circ \varphi)\\
+		&=X(Y(f\circ \varphi))-Y(X(f\circ \varphi))\\
+		&=[X,Y](f\circ \varphi).
+	\end{split}
+\]
+这就是说对任意的$g$都有
+\[
+	\varphi_{*g}([X,Y]_g)=[\varphi_{*g}(X_g),\varphi_{*g}(Y_g)]
+\]
+特别地$g=e$，则
+\[
+	\varphi_{*e}[u,v]=[\varphi_{*e}u,\varphi_{*e}v].
+\]
+
+\para 由于Lie群的表示即一个Lie群同态$G\to \mathrm{GL}(V)$，那么自然我们就有了Lie代数的表示的概念。令$\lag$是一个Lie代数，那么他的有限维表示$(\pi,V)$就是一个映射$\pi:\lag\to\mathfrak{gl}(V)$.
+
+一个Lie群的表示引出他的Lie上面的一个表示如下：
+\[
+	\pi_*(X)=\left.\frac{\dd}{\dd t}\pi(e^{tX})\right|_{t=0},
+\]
+或者$\pi(\exp(tX))=\exp(\pi_*(X))$.
+
+对两个Lie群的表示的直积求导，就得到了Lie代数表示的直积形式应该满足：
+\[
+	\left.\frac{\dd}{\dd t}(\pi(g)\otimes \eta(g))\right|_{t=0}=\pi_*(g)\otimes I+I\otimes \eta_*(g)=(\pi_*\otimes I+I\otimes \eta_*)(g),
+\]
+我们就将其作为Lie代数表示直积的定义。类似的还有直和$(\pi\oplus \eta)_*=\pi_*\oplus \eta_*$，这可以看成Lie代数表示的直和的定义。
+
+\pro 关于表示的性质：$\pi$是不可约的当且仅当$\pi_*$是不可约的；$\pi$是完全可约的当且仅当$\pi_*$是完全可约的；两个$\pi$和$\eta$是等价的当且仅当$\pi_*$和$\eta_*$是等价的。
+
+上面基本都是从Lie群去得到Lie代数，而且是唯一确定的。那么反过来，我们是否可以从Lie代数得到Lie群，如果可以得到，又能确定到哪种程度？这些内容是下面两个定理的内容。
+
+\theo 我们有一个任意的有限维Lie代数$\lag$，那么在同构意义下有唯一的单连通Lie群$G$，他的Lie代数就是$\lag$.
+
+如果两个Lie群有着相同的有限维Lie代数，我们虽然不能判断他们是同构的，但是我们可以找到同构的单连通Lie群。而下面的定义告诉我们，这个单连通Lie群就是原Lie群的万有覆叠空间。
+
+\theo 一个连通Lie群$G$，记$G'$为其万有覆叠空间，覆叠映射为$\pi:G'\to G$.对于任意的选择$e'\in \pi^{-1}(e)$，总有唯一的$G'$上的Lie群结构使得$e'$是单位元且$\pi$是群同态。
+
+本节的最后，讲一下Lie群的结构方程，我们将Maurer-Cartan形式求一下外微分，可以得到
+\[
+\dd \omega_G(X,Y)=X(\omega_G(Y))-Y(\omega_G(X))-\omega_G([X,Y]).
+\]
+假设，$X$和$Y$是左不变矢量场，则$\omega_G(Y)$和$\omega_G(X)$都是常数，那么得到
+\[
+\dd \omega_G(X,Y)+\omega_G([X,Y])=0.
+\]
+因为$[X,Y]$在点$e$的值是在$\lag$里面的，所以这一项也等于$\omega_G([X,Y])=[\omega_G(X),\omega_G(Y)]$，最后就得到了Lie群的结构方程
+\[
+\dd \omega_G(X,Y)+[\omega_G(X),\omega_G(Y)]=0.
+\]
+
+由于这个方程是微分过的结果，可以看成是微分方程，他确定了Lie群的局部结构。虽然我们的证明是选取了两个左不变矢量场，但是每一个矢量场在在局部都可以变成左不变矢量场的限制，所以我们的方程总是成立的。如果群是Abel群，那么方程的第二项为0，即$\dd \omega_G=0$.
+
 \section{Lie Algebra}
 
 本节主要在于Lie代数本身的代数结构。
@@ -429,7 +514,7 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 \no{2}设$V$和$W$都是实矢量空间，$f:V\to W$是实线性映射，则他可以唯一扩张为一个复线性映射$V_\cc\to W_\cc$.
 
-\no{3}设$V$和$W$都是实矢量空间，$f:V\times\cdots\times V\to W$是实多线性映射，则他可以唯一扩张为一个复多线性映射$V_\cc\times V_\cc\to W_\cc$.
+\no{3}设$V$和$W$都是实矢量空间，$f:V\times\cdots\times V\to W$是实多线性映射，则他可以唯一扩张为一个复多线性映射$V_\cc\times\cdots\times V_\cc\to W_\cc$.
 
 \proof 
 	因为$\Hom_\rr(V,W)\cong \Hom_\cc(V_\cc,W)$，所以\no{1}得证。对于\no{2}，我们有$i:W\hookrightarrow W_\cc$，那么$i\circ f:V\to W_\cc$就满足\no{1}题设，由\no{1}自然得证。对于\no{3}，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由\no{2}，可以唯一扩张为$(V^k)_\cc\to W_\cc$，因为$(V^k)_\cc=V_\cc\otimes_\cc \cdots\otimes_\cc V_\cc$，引理得证。
@@ -465,104 +550,17 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 \para 一个Lie代数$\lag$如果同构于不可分解Lie代数的直和，那么称呼其为可约的。如果其同构于单Lie代数的直和，就称呼其为半单的。
 
-下面的定理连接了紧矩阵Lie群以及半单Lie代数。
+\para 设$A$是一个结合代数，那么我们定义$[a,b]=ab-ba$，那么自然$A$就构成了一个Lie代数，我们将其记做$\lie(A)$.
 
-\theo 一个复Lie代数是半单的当且仅当他同构于一个单连通的紧矩阵Lie群的Lie代数的复化。
+设$f:A\to B$是两个$k$-结合代数同态，则$f([a,b])=f(ab-ba)=f(a)f(b)-f(b)f(a)=[f(a),f(b)]$，所以$f:\lie(A)\to \lie(B)$也是Lie代数同态，为了明确，有时候我们会记做$\lie(f)$. 
 
-我们已经做过了从实Lie代数复化得到一个复Lie代数，那么自然地，我们可以问反问题，对一个复Lie代数是否可以寻找一个实Lie代数，那个实Lie代数的复化就是原本的复Lie代数。
+\lem 设$\lag$是一个域$k$上的Lie代数，那么存在一个结合$k$-代数$U(\lag)$和Lie代数同态$i:\lag\to \lie(U(\lag))$，使得对任意的结合$k$-代数$A$，Lie代数同态$\varphi:\lag\to \lie(A)$都可以唯一分解为$\varphi:\lag \xrightarrow{i} \lie(U(\lag))\xrightarrow{\lie(f)}\lie(A)$，其中$f:U(\lag)\to A$是一个$k$-代数同态。
 
-\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的紧实形式（compact real form）是$\lag$的一个子代数$\mathfrak{l}$使得对任意的$X\in\lag$都可以找到两个$X_1,X_2\in\mathfrak{l}$满足$X=X_1+iX_2$.因此，存在一个单连通的紧矩阵Lie群$K_1$使得$K_1$的Lie代数同构于$\lag$的紧实形式。
-
-上面一个定理告诉我们上面这个反问题在半单Lie代数的情况下始终是有解的。
-
-\pro 如果$\lag$是一个实的Lie代数，那么他是半单的当且仅当他的复化$\lag_\cc$是半单的。
-
-从这个可以推知，紧的单连通矩阵Lie群的实Lie代数是半单的。当然，反过来，不是任何半单实Lie代数都可以找到紧的单连通矩阵Lie群。
-
-\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的一个子空间$\mathfrak{h}$被称为$\lag$的Cartan子代数，如果满足：
-
-\no{1} 对于任意的两个元素$H_1,H_2\in\mathfrak{h}$，都有$[H_1,H_2]=0$;
-
-\no{2} 对于任意的$X\in \lag$，如果有$[X,H]=0$对全部$H\in\mathfrak{h}$都成立，则$X\in \mathfrak{h}$.
-
-\no{3} 对于全部$H\in \mathfrak{h}$，$\ad(H)$作为Lie代数的表示是完全可约的。
-
-Cartan子代数的维度称为半单Lie代数的秩。
-
-条件1说明了Cartan子代数是交换子代数，然后条件2就说明这个极大的交换子代数。
-
-\pro 令$\lag$是一个复的半单Lie代数，令$\mathfrak{l}$是$\lag$的紧实形式，再令$\mathfrak{t}$是$\mathfrak{l}$任意的极大交换子代数，定义$\mathfrak{h}\in\lag$为$\mathfrak{h}=\mathfrak{t}+i\mathfrak{t}$.然后，$\mathfrak{h}$就是$\lag$的Cartan子代数。
-
-我们以后下面要谈论Lie群和Lie代数的表示，但是却只限制在紧Lie群，特别是紧的矩阵群上面，从而根据上面的定理，我们也只要去研究半单Lie代数就可以了。
-
-\section{Relation between Lie Group and Lie Algebra}
-
-下面陈述Lie群和Lie代数的联系。
-
-\theo 设$H$是$G$的Lie子群，那么$\mathfrak{h}$是$\lag$的Lie子代数。
-
-下面这个定理来自Ado，就像流形中的Whitney嵌入定理一样，告诉我们，对于有限维Lie代数，其实我们只需要考虑$\mathfrak{gl}(n,\rr)$的子代数就可以了。（记得Arnold用Whitney嵌入定理来说“根本没有抽象的流形”。）
-
-\theo 任何$\rr$上的有限维Lie代数总可以同构于$\mathfrak{gl}(n,\rr)$的一个子代数，$n$为一个足够大的整数。
-
-考虑了子代数，现在来看看两个Lie群和Lie代数的联系。
-
-\pro 设$\varphi:G_1\to G_2$是Lie群间的群同态（同构），则其诱导了Lie代数间的同态（同构）$\varphi_{*e}:\lag_1\to \lag_2$.
-
-上面对于微分同胚我们已经证明了$\varphi_{*e}[u,v]=[\varphi_{*e}u,\varphi_{*e}v]$，但Lie群之间的群同态使得我们可以做得更好。
-
-让$u,v\in\lag_1$，那么我们拓展到$G_1$上的对应的左不变矢量场$X,Y$上。因为$\varphi$是一个群同态，故$\varphi\circ l_g=l_{\varphi(g)}\circ \varphi$.使用这个关系，
+因为这是一个泛性质，所以$U(\lag)$决定到一个$k$-代数同构上。其存在性我们通过张量代数直接构造$U(\lag)=\bigotimes \lag/I$，其中$I$由$[x,y]-(x\otimes y-y\otimes x)$生成。设$\varphi:\lag\to \lie(A)$是一个Lie代数同态，是一个$k$-线性映射，那么我们可以提升成一个$k$-代数同态$\Phi:\bigotimes\lag\to \lie(A)$，剩下的只要检验$\Phi(I)=0$即可，这样，我们就可以定义出一个$k$-代数同态$\Phi:U(\lag)=\bigotimes \lag/I\to \lie(A)$.而
 \[
-	\varphi_{*}(X_g)=\varphi_{*}((l_g)_*u)=(l_{\varphi(g)})_*(\varphi_{*}(u))=(\varphi_{*}X)_{\varphi(g)}.
+	\Phi([x,y]-(x\otimes y-y\otimes x))=\bigl(\varphi([x,y])-\varphi(x)\varphi(y)-\varphi(y)\varphi(x)\bigr)=0,
 \]
-设$f$是$G_2$上任意的可微实函数，那么
-\[
-\varphi_{*}(X_g)f=X_g(f\circ \varphi),
-\]
-或者使用$\varphi_{*g}(X_g)=(\varphi_{*}X)_{\varphi(g)}$写作
-\[
-(\varphi_{*}(X)f)\circ \varphi=X(f\circ \varphi),
-\]
-同理有$(\varphi_{*}(Y)f)\circ \varphi=Y(f\circ \varphi)$.所以
-\[
-	\begin{split}
-		([\varphi_*(X),\varphi_*(Y)]f)\circ \varphi&=((\varphi_*(X)\circ\varphi_*(Y)-\varphi_*(Y)\circ\varphi_*(X))f)\circ \varphi\\
-		&=X((\varphi_*(Y)f)\circ \varphi)-Y((\varphi_*(X)f)\circ \varphi)\\
-		&=X(Y(f\circ \varphi))-Y(X(f\circ \varphi))\\
-		&=[X,Y](f\circ \varphi).
-	\end{split}
-\]
-这就是说对任意的$g$都有
-\[
-	\varphi_{*g}([X,Y]_g)=[\varphi_{*g}(X_g),\varphi_{*g}(Y_g)]
-\]
-特别地$g=e$，则
-\[
-	\varphi_{*e}[u,v]=[\varphi_{*e}u,\varphi_{*e}v].
-\]
-
-上面基本都是从Lie群去得到Lie代数，而且是唯一确定的。那么反过来，我们是否可以从Lie代数得到Lie群，如果可以得到，又能确定到哪种程度？这些内容是下面两个定理的内容。
-
-\theo 我们有一个任意的有限维Lie代数$\lag$，那么在同构意义下有唯一的单连通Lie群$G$，他的Lie代数就是$\lag$.
-
-如果两个Lie群有着相同的有限维Lie代数，我们虽然不能判断他们是同构的，但是我们可以找到同构的单连通Lie群。而下面的定义告诉我们，这个单连通Lie群就是原Lie群的万有覆叠空间。
-
-\theo 一个连通Lie群$G$，记$G'$为其万有覆叠空间，覆叠映射为$\pi:G'\to G$.对于任意的选择$e'\in \pi^{-1}(e)$，总有唯一的$G'$上的Lie群结构使得$e'$是单位元且$\pi$是群同态。
-
-本节的最后，讲一下Lie群的结构方程，我们将Maurer-Cartan形式求一下外微分，可以得到
-\[
-\dd \omega_G(X,Y)=X(\omega_G(Y))-Y(\omega_G(X))-\omega_G([X,Y]).
-\]
-假设，$X$和$Y$是左不变矢量场，则$\omega_G(Y)$和$\omega_G(X)$都是常数，那么得到
-\[
-\dd \omega_G(X,Y)+\omega_G([X,Y])=0.
-\]
-因为$[X,Y]$在点$e$的值是在$\lag$里面的，所以这一项也等于$\omega_G([X,Y])=[\omega_G(X),\omega_G(Y)]$，最后就得到了Lie群的结构方程
-\[
-\dd \omega_G(X,Y)+[\omega_G(X),\omega_G(Y)]=0.
-\]
-
-由于这个方程是微分过的结果，可以看成是微分方程，他确定了Lie群的局部结构。虽然我们的证明是选取了两个左不变矢量场，但是每一个矢量场在在局部都可以变成左不变矢量场的限制，所以我们的方程总是成立的。如果群是Abel群，那么方程的第二项为0，即$\dd \omega_G=0$.
+所以得证。
 
 \section{Adjoint Representation}
 
@@ -628,21 +626,35 @@ B[u,v]=[Bu,v]+[u,Bv],
 \]
 其显然是Lie代数上面的一个导子。
 
-\para 令$\lag$是一个Lie代数，那么他的有限维表示$(\pi,V)$就是一个映射$\pi:\lag\to\mathfrak{gl}(V)$.所以说$\ad$就是一个Lie代数的表示。
+下面的定理连接了紧矩阵Lie群以及半单Lie代数。
 
-一个Lie群的表示可以引出他的Lie上面的一个表示如下：
-\[
-	\pi_*(X)=\left.\frac{\dd}{\dd t}\pi(e^{tX})\right|_{t=0},
-\]
-或者$\pi(\exp(tX))=\exp(\pi_*(X))$.
+\theo 一个复Lie代数是半单的当且仅当他同构于一个单连通的紧矩阵Lie群的Lie代数的复化。
 
-\pro $\pi$是不可约的当且仅当$\pi_*$是不可约的；$\pi$是完全可约的当且仅当$\pi_*$是完全可约的；两个$\pi$和$\eta$是等价的当且仅当$\pi_*$和$\eta_*$是等价的。
+我们已经做过了从实Lie代数复化得到一个复Lie代数，那么自然地，我们可以问反问题，对一个复Lie代数是否可以寻找一个实Lie代数，那个实Lie代数的复化就是原本的复Lie代数。
 
-对两个Lie群的表示的直积求导，就得到了Lie代数表示的直积形式应该满足：
-\[
-	\left.\frac{\dd}{\dd t}(\pi(g)\otimes \eta(g))\right|_{t=0}=\pi_*(g)\otimes I+I\otimes \eta_*(g)=(\pi_*\otimes I+I\otimes \eta_*)(g),
-\]
-我们就将其作为Lie代数表示直积的定义。
+\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的紧实形式（compact real form）是$\lag$的一个子代数$\mathfrak{l}$使得对任意的$X\in\lag$都可以找到两个$X_1,X_2\in\mathfrak{l}$满足$X=X_1+iX_2$.因此，存在一个单连通的紧矩阵Lie群$K_1$使得$K_1$的Lie代数同构于$\lag$的紧实形式。
+
+上面一个定理告诉我们上面这个反问题在半单Lie代数的情况下始终是有解的。
+
+\pro 如果$\lag$是一个实的Lie代数，那么他是半单的当且仅当他的复化$\lag_\cc$是半单的。
+
+从这个可以推知，紧的单连通矩阵Lie群的实Lie代数是半单的。当然，反过来，不是任何半单实Lie代数都可以找到紧的单连通矩阵Lie群。
+
+\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的一个子空间$\mathfrak{h}$被称为$\lag$的Cartan子代数，如果满足：
+
+\no{1} 对于任意的两个元素$H_1,H_2\in\mathfrak{h}$，都有$[H_1,H_2]=0$;
+
+\no{2} 对于任意的$X\in \lag$，如果有$[X,H]=0$对全部$H\in\mathfrak{h}$都成立，则$X\in \mathfrak{h}$.
+
+\no{3} 对于全部$H\in \mathfrak{h}$，$\ad(H)$作为Lie代数的表示是完全可约的。
+
+Cartan子代数的维度称为半单Lie代数的秩。
+
+条件1说明了Cartan子代数是交换子代数，然后条件2就说明这个极大的交换子代数。
+
+\pro 令$\lag$是一个复的半单Lie代数，令$\mathfrak{l}$是$\lag$的紧实形式，再令$\mathfrak{t}$是$\mathfrak{l}$任意的极大交换子代数，定义$\mathfrak{h}\in\lag$为$\mathfrak{h}=\mathfrak{t}+i\mathfrak{t}$.然后，$\mathfrak{h}$就是$\lag$的Cartan子代数。
+
+我们以后下面要谈论Lie群和Lie代数的表示，但是却只限制在紧Lie群，特别是紧的矩阵群上面，从而根据上面的定理，我们也只要去研究半单Lie代数就可以了。
 
 \section{Matrix Group}
 这一节限制在矩阵群上面，这节将给出很多可计算的例子，先来求一些矩阵群的Lie代数。

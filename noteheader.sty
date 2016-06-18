@@ -1,9 +1,13 @@
 % author: buwailee@nmhs
-\ProvidesPackage{noteheader}[2016/06/17 Noteheader Package]
+\ProvidesPackage{noteheader}[2016/06/18 Noteheader Package]
+
+%% b5paper
+\pdfpagewidth=176truemm
+\pdfpageheight=250truemm
 
 %% Package
 \RequirePackage{amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs}
-\RequirePackage[b5paper, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\RequirePackage[b5paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
 \def\pgfsysdriver{pgfsys-dvipdfm.def}
 \RequirePackage{tikz}
 \RequirePackage[all]{xy}
@@ -43,11 +47,7 @@
 \DeclareOption{en}{\@zhfalse}
 \DeclareOption{zh}{\@zhtrue}
 
-\newif\if@aptex\@aptexfalse
-\DeclareOption{aptex}{\@aptextrue}
-\DeclareOption{xetex}{\@aptexfalse}
-
-\ExecuteOptions{article, en, xetex}
+\ExecuteOptions{article, en}
 %%
 
 %% Relax
@@ -56,17 +56,5 @@
 \if@zh
 	\RequirePackage{indentfirst}
 \fi
-
-\if@aptex
-	\geometry{top=36mm}
-	% b5paper=176mm*250mm
-	\pdfpagewidth=176truemm
-	\pdfpageheight=250truemm
-	\oddsidemargin=16truemm
-	\evensidemargin=16truemm
-\else
-	\geometry{top=10mm}
-\fi
-%%
 
 \endinput

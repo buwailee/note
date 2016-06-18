@@ -63,6 +63,10 @@
 	=f(v_1,\cdots,v_m)g(v_{m+1},\cdots,v_{m+n}).
 \]
 
+\para 设$V$是$k$-矢量空间，记$V^0=k$，那么$\bigoplus_{n\leq 0} V^k$就构成了一个结合代数，记做$\bigotimes V$.我们称为张量代数。
+
+设$f:V\to W$是一个线性映射，其中$W$是一个$k$-代数，那么通过$F(v_1\otimes \cdots \otimes v_n)=f(v_1)\cdots f(v_n)$我们可以定义出一个$k$-代数同态$F:\bigotimes V\to W$，他满足泛性质：记$i:V\to \bigotimes V$是自然的$k$-线性映射，那么对于任意的$\phi:V\to W$，其中$W$是$k$-代数，我们都存在唯一的$k$-代数同态$\Phi:\bigotimes V\to W$使得分解$\phi:V\xrightarrow{i}\bigotimes V \xrightarrow{\Phi}W$成立。
+
 \para 设$S^k$是对称群，我们可以将其线性地作用在$(V^k)^*$的元素上，设$\sigma\in S^k$，而$f\in (V^k)^*$是一个多线性函数，那么我们可以定义一个新的多线性函数$\sigma(f)$通过$\sigma(f)(v_1,\cdots,v_k)=f(v_{\sigma(1)},\cdots,v_{\sigma(k)})$.
 
 一个多线性函数如果有$\sigma(f)=(-1)^{\sign(\sigma)}f$，则被称为是反对称的，特别地，对于交换一对元素，反对称多线性函数变号。因为任意一个置换都可以由交换一对元素复合而来，所以上面这个性质也完全描述了反对称多线性函数。
