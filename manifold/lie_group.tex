@@ -187,13 +187,13 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 
 上节谈了Lie群的“内部线性化”，即Lie代数的内容。这节我们来谈论群表示，他使得我们可以把群进行“外部线性化”，粗略地来说就是我们把群元素看做了一个线性变换。
 
-\para 令$V$是一个域$k$（后面我们只会考虑$\rr$和$\cc$的情况）上的有限维矢量空间，群$G$的一个表示$U$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{Gl}(V)$，使得
+\para 令$V$是一个域$k$（后面我们只会考虑$\rr$和$\cc$的情况）上的有限维矢量空间，群$G$的一个表示$(\pi, V)$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{Gl}(V)$，使得
 \[
 	\pi(g)\pi(g')=\pi(gg'),\quad \pi(g^{-1})=\pi(g)^{-1},\quad \pi(e_G)=e_{\mathrm{Gl}(V)}
 \]
-成立。表示$\pi$的维度被定义为$V$的维度。
+成立。表示$(\pi, V)$的维度被定义为$V$的维度。
 
-如果没什么会混淆的话，就直接略去$\pi$，写$gx$来表达$\pi(g)x$，当然还有用$Gx$来表达$\pi{G}x=\{\pi(g)x:g\in G\}$。如果要用不会混淆的说法来表达群表示的话，就应该用$(\pi,V)$二元组，$\pi$是群同态，$V$是被作用的空间。
+如果没什么会混淆的话，就直接略去$\pi$，写$gx$来表达$\pi(g)x$，当然还有用$Gx$来表达$\pi{G}x=\{\pi(g)x:g\in G\}$。
 
 如果$\pi$是一个单同态，那么我们称这个表示为忠实表示。
 
@@ -345,13 +345,7 @@ $A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$
 
 Lie群很容易构成一个范畴，两个Lie群的态射只要定义成光滑的群同态就好了。比如对一般线性群而言，行列式就是一个显然的Lie群同态。这样子做之后，Lie群既是光滑流形范畴的子范畴，也是群范畴的子范畴。
 
-Lie群因为本身就是一个群，所以他的很多整体性质都来自于单位元附近。对于拓扑性质，由于左乘是一个同胚，所以如果$U$是一个开集，那么$gU=\{gh:h\in U\}$也是一个开集。
-
-\para 对于连通Lie群，设$U$是单位元的任意一个邻域，则$G=\bigcup_{n\geq 1}U^n$，其中$U^k=\{g_1\cdots g_k:g_i\in U,\, 1\leq i \leq k\}$是开集。
-
-令$V=U\cap U^{-1}$，其中$U^{-1}=\{g^{-1}:g\in U\}$，显然$V=V^{-1}\subset U$以及$H=\bigcup_{n\geq 1}V^n\subset \bigcup_{n\geq 1}U^n$，而且$H$还是一个子群。下面我们只要证明$H=\bigcup_{n\geq 1}V^n$既是开的也是闭的，那么连通性自然给出了结论。
-
-他是开的，如果$\sigma\in V^k$，那么$\sigma V\in V^{k+1}\subset H$就是他的一个开邻域。他是闭的，因为每一个$\sigma H$都是开的，于是$H=G-\bigcup_{\sigma\notin H}\sigma H$是一个闭集。
+Lie群因为本身就是一个群，所以他的很多整体性质都来自于单位元附近。对于拓扑性质，由于左乘是一个同胚，所以如果$U$是一个开集，那么$gU=\{gh:h\in U\}$也是一个开集。因为Lie群也是拓扑群，所以附录中关于拓扑群的结论都可以用到这里。
 
 \para 设$\varphi:G\to H$是一个Lie群同态，因为$\varphi\circ l_g=l_{\varphi(g)}\circ \varphi$，所以在点$e$的切映射满足$\varphi_{*g}\circ (l_g)_{*e}=(l_{\varphi(g)})_{*e}\circ \varphi_{*e}$，因为左移是同胚，所以$\rank_e \varphi=\rank_g \varphi$.
 
@@ -369,7 +363,7 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 \para \label{covering_space}设$M$是底空间为$B$的一个纤维丛，他的纤维被赋予离散拓扑，此时，$M$被称为$B$的一个覆叠空间，投影$\pi$现在被称为覆叠映射。一般来说，我们要求覆叠空间是连通的，如果覆叠空间还是单连通的，则被称为万有覆叠空间。关于覆叠空间的更多内容，可以参看附录。
 
-\para Lie群的覆叠空间有很自然的Lie群结构。
+\para 很容易看到，Lie群的万有覆叠空间有很自然的Lie群结构。附录中已经对拓扑群证明了这一点，有必要的话，利用一些附录中的技术性引理，我们就得到了光滑性，当然也就得到了Lie群的结论。
 
 \section{Relation between Lie Group and Lie Algebra}
 
@@ -809,7 +803,7 @@ e^{X+Y}=\begin{pmatrix}
 
 我们现在来对Lie代数进行展开，设Lie代数的基为$\{a_i\}$，那么
 \[
-[x,y]=\sum_{i,j}x_iy_j[a_i,a_j].
+	[x,y]=\sum_{i,j}x_iy_j[a_i,a_j].
 \]
 但是因为交换子是封闭的，所以
 \[
@@ -1324,14 +1318,12 @@ $[a_\alpha,a_\beta]$也是在某个根子空间里面的，为了求他的根，
 
 首先复习一下$\mathrm{SO}(3)$的一些更细的结构，$\mathrm{SO}(3)$是三维旋转群，不包括反射。
 
-
 \pro
 绕着固定单位矢量$\mathbf{a}$右手螺旋的逆时针方向旋转$\theta$后的$\mathbf{x}$表示为
 \[
 \mathrm{Rot}(\mathbf{a},\theta)\mathbf{x}=\mathbf{x}+(1-\cos\theta)\mathbf{a}\times(\mathbf{a}\times\mathbf{x})+
 \sin\theta\,\mathbf{a}\times\mathbf{x}.
 \]
-
 
 为了证明他，首先注意到当$\mathbf{a}$和$\mathbf{x}$垂直的时候显然有
 \[
@@ -1357,22 +1349,19 @@ $[a_\alpha,a_\beta]$也是在某个根子空间里面的，为了求他的根，
 \]
 选$\mathbf{a}=\mathbf{e}_i$，得到Lie代数的三个基为
 \[
-	\eta_1=
-		\begin{pmatrix}
-			0&0&0\\
-			0&0&-1\\
-			0&1&0\\
-		\end{pmatrix},\quad
-	\eta_2=
-		\begin{pmatrix}
-			0&0&1\\
-			0&0&0\\
-			-1&0&0\\
-		\end{pmatrix},\quad
-	\eta_3=
-		\begin{pmatrix}
-			0&-1&0\\
-			1&0&0\\
-			0&0&0\\
-		\end{pmatrix}.
+	\eta_1=\begin{pmatrix}
+		0&0&0\\
+		0&0&-1\\
+		0&1&0\\
+	\end{pmatrix},\quad
+	\eta_2=\begin{pmatrix}
+		0&0&1\\
+		0&0&0\\
+		-1&0&0\\
+	\end{pmatrix},\quad
+	\eta_3=\begin{pmatrix}
+		0&-1&0\\
+		1&0&0\\
+		0&0&0\\
+	\end{pmatrix}.
 \]
