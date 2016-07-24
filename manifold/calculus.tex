@@ -239,6 +239,12 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 所以$U$上的光滑切矢量场就是$TM$的$U$上的一个光滑截面。
 
+光滑切矢量场，局部依赖坐标$(U,\varphi)$，我们有$\varphi_*(X|_U)$在$\varphi(U)$上写作$Y^i \frac{\partial}{\partial x^i}$，那么通过逆映射$\varphi_*^{-1}$，我们就知道$X|_U$局部写作$X^i\partial_i$的形式。
+
+现在我们自然提出反问题，设$v\in T_pM$是在$p$处的一个切矢量，我们是否可以（至少在局部）找到一个切矢量场$X$，使得$X_p=v$.
+
+答案自然是有的，在局部，切矢量写作$X^i(p)(\partial_i)_p$，我们令$X^i$是常值的，则$x\mapsto X^i(x)(\partial_i)_x$就是一个我们所需的局部切矢量场。
+
 \para 设$X$是一个$U$上的光滑矢量场，如果一条光滑曲线$\sigma:(-\epsilon,\epsilon)\to U$且$\sigma(0)=p$，满足$X(\sigma(t))=\dot{\sigma}(t)$，则称$\sigma$是$X$在$p$附近的一条积分曲线。
 
 将矢量场局部写出来，$X(\sigma(t))=X^i(\sigma(t))\partial_t$，所以问题归结到了求解微分方程
@@ -281,7 +287,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 可以直接想象一下怎么处理这样的问题，直观来看，积分曲面可以由积分曲线拼成，即在$p$附近，$X$的一条一条积分曲线和$Y$的一条积分曲线编成一张网，这张网其实应该就在积分曲面上。因此积分曲面存在与否当且仅当这张网足够光滑，不能突然错开。此时的错开，就是说，从网格的一个端点处，沿着两条路径走到的终点处于积分曲面的两侧。
 
-为简单见，我们看看这样一个曲边四边形。从$p$出发，沿着$X$的积分曲线走$s$，走到了$\sigma^X_s(p)$，再从这点出发，沿着$Y$的积分曲线走$t$，走到$\sigma^Y_t\circ\sigma^X_s(p)$.同样，从$p$出发，沿着$Y$的积分曲线走$t$，走到了$\sigma^Y_t(p)$，再从这点出发，沿着$X$的积分曲线走$s$，走到$\sigma^X_s\circ\sigma^Y_t(p)$。
+为简单见，我们看看这样一个曲边四边形。从$p$出发\footnote{这就意味着我们现在考虑的是局部问题，最后的解也应该被认为是局部的}，沿着$X$的积分曲线走$s$，走到了$\sigma^X_s(p)$，再从这点出发，沿着$Y$的积分曲线走$t$，走到$\sigma^Y_t\circ\sigma^X_s(p)$.同样，从$p$出发，沿着$Y$的积分曲线走$t$，走到了$\sigma^Y_t(p)$，再从这点出发，沿着$X$的积分曲线走$s$，走到$\sigma^X_s\circ\sigma^Y_t(p)$。
 
 这样我们就得到了弯曲的四边形，$p$是其中一个端点，但是一般来说，沿着两条路径并不会有相同的终点，即$p$的对角线方向的另一端点不存在，此时两条路径并不能闭合成一个弯曲的四边形。甚至，即使积分曲面存在，我们也不能得到一个闭合的四边形（网格），但是，如果沿着两条路径的终点是错开的，则积分曲面依然不存在。
 
@@ -295,9 +301,9 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 因为$g$是光滑函数，我们在$(0,0)$局部展开他，求导就可以得到系数。显然，他到二阶为止的导数都为$0$，并且$\partial_s^2g(0,0)=\partial_t^2g(0,0)=0$，所以他最低阶不为零的只可能是$\partial_s\partial_t g(0,0)$，这就是说，我们要求$\lim_{s,t\to 0}g(s,t)/st$.
 
 \para 在$t$很小的时候，$f(\sigma_t^X p)=f(p)+tXf(p)+o(t^2)$.为了证明他，只要求$p$处的导数就行了，设$\sigma^X(t)$是$\sigma^X(0)=p$的$X$的积分曲线，则
-	\[
-		\frac{\dd}{\dd t}\biggr|_{t=0}f(\sigma_t^X p)=\frac{\dd}{\dd t}\biggr|_{t=0}f\circ \sigma^X (t)=f_{* p}X=Xf(p).
-	\]
+\[
+	\frac{\dd}{\dd t}\biggr|_{t=0}f(\sigma_t^X p)=\frac{\dd}{\dd t}\biggr|_{t=0}f\circ \sigma^X (t)=f_{* p}X=Xf(p).
+\]
 
 所以（暂时在记号上略去高阶项）
 \[
@@ -320,28 +326,26 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \para 定义两个矢量场$X$, $Y$的Lie括号为$[X,Y]$，他满足$[X,Y](f)=X(Y(f))-Y(X(f))$。
 
 如果采用局部表示$X=X^i\partial_i$和$X=Y^i\partial_j$，则我们可以计算出
-	\begin{align*}
+\begin{align*}
 	[X,Y](f)&=X^i\partial_i(Y^j\partial_j f)-Y^i\partial_i(X^j\partial_j f)\\
 	&=X^i\partial_iY^j\partial_j f-Y^i\partial_i X^j\partial_j f\\
 	&=(X^i\partial_iY^j-Y^i\partial_i X^j)\partial_jf.
-	\end{align*}
-	因此，尽管形式上是二阶的，但$[X,Y]$还是一个切矢量场，局部写作$[X,Y]=(X^i\partial_iY^j-Y^i\partial_i X^j)\partial_j=(X(Y^j)-Y(X^j))\partial_j$.
+\end{align*}
+因此，尽管形式上是二阶的，但$[X,Y]$还是一个切矢量场，局部写作$[X,Y]=(X^i\partial_iY^j-Y^i\partial_i X^j)\partial_j=(X(Y^j)-Y(X^j))\partial_j$.同时，我们可以将$[X,Y]_p$定义为$[X_p,Y_p]$，反过来，因为$X_p$和$Y_p$都可以扩张为局部的光滑切矢量场，所以对于任意的切矢量，我们都定义了一个双线性映射$[*,*]:T_pM\times T_pM\to T_pM$，他也被称为Lie括号。
 
-
-\para 设$X_1$, $\cdots$, $X_k$是一族切矢量场，记
+\para 设$X_1$, $\cdots$, $X_k$是一族$U$上的切矢量场，记
 	\[
-		D=\{f_1X_1+\cdots+f_kX_k:\forall 1\leq i \leq k,\,\, f_i\in \calf(M)\},
+		D=\bigl\{f_1X_1+\cdots+f_kX_k:\forall 1\leq i \leq k,\,\, f_i\in \calf(U)\bigr\},
 	\]
-	称他为流形$M$上的一个被$\{X_i\}$张成的分布。
+	称他为$U$上的一个由$\{X_i\}$张成的分布。同样，我们也可以考虑一点处的分布，只要将上面的切矢量场改成切矢量，$\calf(U)$改成$\calf_p$即可。
 
-\para 设$X$和$Y$张成一个分布$D$，则局部积分曲面存在当且仅当在$[X,Y]\in D$.
+\para 设点$p$附近有两个切矢量$X$和$Y$张成一个分布$D$，则局部积分曲面存在当且仅当$[X,Y]\in D$.
 
 如果局部积分曲面存在，那么曲边四边形完全处于积分曲面上面，尽管沿着两条路径得到的终点可能不同，但是这两个点的连线（或者他的切矢量）应该在$s\to 0$, $t\to 0$的时候确定了一个切矢量（由于$X$和$Y$的光滑性，所以这个切矢量并不依赖于连线的选取），他处于积分曲面的切子空间（由$X_p$和$Y_p$张成）里面，且正比于$[X,Y]_p$，所以$[X,Y]_p=a(p)X_p+b(p)Y_p$.而$a$和$b$的光滑性是显然的。
 
 如果不存在，就是说两个端点分处$X_p$和$Y_p$张成的切子空间两侧，所以两个点的连线确定的那个切矢量应该不在和$X_p$和$Y_p$张成的切子空间里，即$[X,Y]_p\neq aX_p+bY_p$.
 
-
-\para 问题可以问得更广一点，设$X_1$, $\cdots$, $X_k$是一族切矢量场，他们是否（至少在局部）有积分“曲面”存在？回答是Frobenius定理：设$X_1$, $\cdots$, $X_k$在点$p$张成的分布为$D$，则局部存在积分“曲面”当且仅当对任意的$i$和$j$成立$[X_i,X_j]\in D$。
+\para 问题可以问得更广一点，设$X_1$, $\cdots$, $X_k$是一族切矢量场，他们是否（至少在局部）有积分“曲面”存在？回答是Frobenius定理：设$X_1$, $\cdots$, $X_k$在点$p$附近张成的分布为$D$，则局部存在积分“曲面”当且仅当对任意的$i$和$j$成立$[X_i,X_j]\in D$。
 
 当然，这个结论可以更加形式地证明他，如果不信任上面的直观想法，则可以参看任何一本微分流形的教材，我这里就略去了。
 
@@ -349,7 +353,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 设在$p$处的切矢量为$X_p$，经过$p$的$X$的积分曲线为$\sigma(t)$，使用变换$\varphi$，变成了$q=\varphi(p)$，$q$处的切矢量$\varphi_{*p}X_p=(\varphi_*X)_q$以及积分曲线$\varphi(\sigma(t))=\varphi(\sigma_t q)=\varphi\circ\sigma_t\circ \varphi^{-1}(p)$.此即结论。
 
-\para 所以，$\varphi_*X=X$当且仅当$\varphi\circ \sigma^X_t=\sigma^X_t\circ \varphi$成立。
+所以，$\varphi_*X=X$当且仅当$\varphi\circ \sigma^X_t=\sigma^X_t\circ \varphi$成立。
 
 \para 直接的计算，我们有：
 	\[
@@ -358,7 +362,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 所以，如果$\sigma_t^X$和$\sigma_s^Y$可交换，即$\sigma_t^X\circ \sigma_s^Y=\sigma_s^Y\circ \sigma_t^X$，则$(\sigma_t^X)_*Y=Y$以及$[X,Y]=0$.
 
-设$\varphi:M\to N$是一个光滑映射，$X$和$Y$分布是$M$和$N$上的光滑函数，称他们是$\varphi$相关的，如果$\varphi_*X(f)=Y(f)\circ \varphi$对任意光滑函数$f$成立。局部来看，$X_p(f\circ \varphi)=Y_{\varphi(p)}(f)$.
+\para 设$\varphi:M\to N$是一个光滑映射，$X$和$Y$分布是$M$和$N$上的光滑函数，称他们是$\varphi$相关的，如果$\varphi_*X(f)=Y(f)\circ \varphi$对任意光滑函数$f$成立。局部来看，$X_p(f\circ \varphi)=Y_{\varphi(p)}(f)$.
 
 若$X_1$与$Y_1$是$\varphi$相关的，$X_2$与$Y_2$是$\varphi$相关的，则$[X_1,X_2]$和$[Y_1,Y_2]$是$\varphi$相关的，因为
 \begin{align*}

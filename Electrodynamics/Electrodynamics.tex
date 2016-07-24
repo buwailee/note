@@ -1,7 +1,7 @@
 %!TEX program = xelatex
 \documentclass[9pt]{extbook}
 \usepackage{ctex}
-\usepackage[aptex,book,zh]{noteheader}
+\usepackage[book,zh]{noteheader}
 
 \newtheorem{pro}{Proposition}% 定义命题环境
 \newtheorem{defi}{Definition}% 定义命题环境
@@ -300,7 +300,7 @@ L_s=L_{0,s}+L_{1,s}=-mc+L_{1,s},
 \[
 	\frac{\partial L_{1,s}}{\partial x^\mu}-\frac{\dd}{\dd s}\frac{\partial L_{1,s}}{\partial u^\mu}=\frac{\dd}{\dd s}\left(2\lambda u_\mu\right)=2u_\mu\frac{\dd \lambda }{\dd s}+2\lambda \frac{\dd u_\mu}{\dd s}
 \]
-两边对左边不妨记作$l_\mu$，对于自由粒子的话，$l_\mu=0$，那么显然$2\lambda u_\mu$为常数，乘一个$u^\mu$，就可以发现$\lambda$是常数，因此$u_\mu$是常数，这个结论前面我们已经知道了。
+左边不妨记作$l_\mu$，对于自由粒子，$l_\mu=0$，那么显然$2\lambda u_\mu$为常数，乘一个$u^\mu$，就可以发现$\lambda$是常数，因此$u_\mu$是常数，这个结论前面我们已经知道了。
 
 如果$l_\mu$任意，右边是两个正交矢量$u_\mu$和$\dd u^\mu/\dd s$的叠加，提取$\dd \lambda/\dd s$的系数，那么
 % \[
@@ -775,10 +775,10 @@ Landau在他的第二卷采用了另一个物理量$\bm{H}=c\bm{B}$来表示磁�
 % 积分形式是容易写出的，应用Stokes公式到\eqref{maxwelld}中就有
 % \begin{equation}
 % \begin{split}
-% 	\int_{\partial S}\dd \bm{l}\cdot \bm{E}&=\int_S\dd \bm{\sigma}\cdot \nabla\times \bm{E}=-\int_S\dd \sigma\cdot\frac{\partial \bm{B}}{\partial t}=-\frac{\partial }{\partial t}\int_S\dd \sigma\cdot\bm{B},\\
+% 	\int_{\partial S}\dd \bm{l}\cdot \bm{E}&=\int_S\dd \bm{\sigma}\cdot \nabla\times \bm{E}=-\int_S\dd \bm{\sigma}\cdot\frac{\partial \bm{B}}{\partial t}=-\frac{\partial }{\partial t}\int_S\dd \bm{\sigma}\cdot\bm{B},\\
 % 	\int_{\partial V}\dd \bm{\sigma}\cdot \bm{B}&=\int_V\dd V\,\nabla\cdot\bm{B}=0,\\
 % 	\int_{\partial V}\dd \bm{\sigma}\cdot \bm{E}&=\int_V\dd V\,\nabla\cdot\bm{E}=\int_V\dd V\,4\pi\rho=4\pi e,\\
-% 	\int_{\partial S}\dd \bm{l}\cdot \bm{B}&=\int_S\dd \bm{\sigma}\cdot \nabla\times \bm{B}=\frac{1}{c^2}\int_S\dd \sigma\cdot\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right),
+% 	\int_{\partial S}\dd \bm{l}\cdot \bm{B}&=\int_S\dd \bm{\sigma}\cdot \nabla\times \bm{B}=\frac{1}{c^2}\int_S\dd \bm{\sigma}\cdot\left(\frac{\partial \bm{E}}{\partial t}+4\pi \bm{j}\right),
 % \end{split}
 % \label{maxwelli}
 % \end{equation}
@@ -869,13 +869,13 @@ $A$既然被认为是场的“坐标”，那么$\dot{A}$就自然被理解成�
 \]
 第一个方程在空间的一个体积$V$内积分
 \[
-	\partial_t\int_V \dd V\,w=-c^2\int_{V}\dd V\,\partial_i T^{i0} =-c^2\int_{\partial V}\dd\bm{\sigma}_i\,T^{i0},
+	\partial_t\int_V \dd V\,w=-c^2\int_{V}\dd V\,\partial_i T^{i0} =-c^2\int_{\partial V}\dd\sigma_i\,T^{i0},
 \]
-其中$\dd\bm{\sigma}_i$是三维空间标准的面元。上式左边是体积内能量的改变量，右边是穿过界面体积的能量，类比电荷守恒方程，其中电流矢量的类比物即矢量$\bm{S}=(c^2T^{10},c^2T^{20},c^2T^{30})$，我们称之为能流密度，是单位时间内穿过单位面积的能量。由于$T^{\mu\nu}$对称，所以能流密度等于动量密度乘以$c^2$.
+其中$\dd\sigma_i$是三维空间标准的面元。上式左边是体积内能量的改变量，右边是穿过界面体积的能量，类比电荷守恒方程，其中电流矢量的类比物即矢量$\bm{S}=(c^2T^{10},c^2T^{20},c^2T^{30})$，我们称之为能流密度，是单位时间内穿过单位面积的能量。由于$T^{\mu\nu}$对称，所以能流密度等于动量密度乘以$c^2$.
 
 对第二个方程，我们同样在空间的一个体积$V$内积分
 \[
-	\partial_t\int_V \dd V\,T^{0i}=-c\int_{\partial V}\dd\bm{\sigma}_j\,T^{ji},
+	\partial_t\int_V \dd V\,T^{0i}=-c\int_{\partial V}\dd\sigma_j\,T^{ji},
 \]
 因为$T^{0i}$是动量密度，类比能流密度，右边定义的张量$T^{ji}$应该被称为动量流密度，将之记作$-\sigma^{ji}$，称为应力张量。综上，可以写出$T^{\mu\nu}$矩阵
 \[
@@ -1073,7 +1073,7 @@ $A$既然被认为是场的“坐标”，那么$\dot{A}$就自然被理解成�
 \]
 为了看出他是守恒的，直接将他对时间求导
 \[
-	\dot{F}=c\int_{V} \partial_0J^0 \dd V=-c\int_{V} \partial_iJ^i \dd V=-c\int_{\partial V}J^i \dd \sigma_i
+	\dot{F}=c\int_{V} \partial_0J^0 \dd V=-c\int_{V} \partial_iJ^i \dd V=-c\int_{\partial V}J^i \dd \bm{\sigma}_i
 \]
 $J$在无穷远消失的话，则$F$守恒。因此，Noether定理告诉我们，对称性诱导了守恒律。
 
@@ -2046,7 +2046,7 @@ $\bm{E}=0$其实是个很愚蠢的假设，因为如果有电流密度，就意�
 \]
 考虑$S$是平面上的均匀电流环的面积矢量，则
 \[
-	\bm{m}=-\frac{I}{2}\int_{\partial S} \dd \bm{l}'\times \bm{r}'=-\frac{I}{2}\int_{S} (\dd \bm{\sigma}'\times \nabla')\times \bm{r}'=-\frac{I}{2}\int_{S} \dd \sigma'(\bm{k}\times \nabla')\times \bm{r}',
+	\bm{m}=-\frac{I}{2}\int_{\partial S} \dd \bm{l}'\times \bm{r}'=-\frac{I}{2}\int_{S} (\dd \bm{\sigma}'\times \nabla')\times \bm{r}'=-\frac{I}{2}\int_{S} \dd \bm{\sigma}'(\bm{k}\times \nabla')\times \bm{r}',
 \]
 其中$\bm{k}$是面积矢量方向的单位矢量，不妨取做第三根轴，很容易计算那个积分为$-2\bm{S}$，所以
 \[
