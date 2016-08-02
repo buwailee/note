@@ -1,7 +1,7 @@
 \newtheorem{para}{}[section]
 \renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
-\newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}}
-	\renewcommand{\para}{\paracount{}}
+\newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}\hspace{0.5em}}
+	\renewcommand{\para}{\refstepcounter{para}\textbf{(\thepara)}\hspace{0.5em}}
 	\newcommand{\theo}{\paracount{Theorem}}
 	\newcommand{\pro}{\paracount{Proposition}}
 	\newcommand{\lem}{\paracount{Lemma}}

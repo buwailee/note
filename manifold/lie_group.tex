@@ -343,6 +343,99 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 实际上，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
 $A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。
 
+\section{Adjoint Representation}
+
+这节继续表示，我们这里感兴趣的是表示是一种矢量空间为$\lag$的表示。这需要从伴随作用开始。先说几个记号，设$l_g:h\mapsto gh$以及$r_g:h\mapsto hg$分别是左平移与右平移，他们都是群的自同构。
+
+\para 设$\lag$是一个Lie代数，那么不难看出$\lag$的自同构群
+\[\mathrm{Aut}_{\mathrm{Lie}}(\lag)=\{T\in \mathrm{GL}(\lag)\,:\,T[u,v]=[Tu,Tv],\,\forall u,\,v\in\lag\}\]
+构成一个Lie群，他的Lie代数是
+\[\mathfrak{gl}_{\mathrm{Lie}}(\lag)=\{T\in \mathfrak{gl}(\lag)\,:\,T[u,v]=[Tu,v]+[u,Tv],\,\forall u,\,v\in\lag\}.\]
+由于$[X,*]:Y\mapsto [X,Y]\in \lag$，且根据Jacobi恒等式，我们可以得知$[X,*]\in \mathfrak{gl}_{\mathrm{Lie}}(\lag)$.
+
+\para 设$G$是一个Lie群，他的Lie代数是$\lag$。Lie代数的伴随来自于Lie群的伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$或者$\mathbf{Ad}(g)=r_{g^{-1}}\circ l_g=l_g\circ r_{g^{-1}}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_{*e}:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g:\lag\to \lag$。
+
+因为$\mathbf{Ad}(g)$是Lie群的一个自同构，所以$\mathrm{Ad}_g:\lag\to\lag$是线性空间的同构，即$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$.
+
+一般而言，我们也可以通过左不变矢量场来描述Lie代数，这时候最好把$\mathrm{Ad}_g$理解成$(l_g)_*\circ (r_{g^{-1}})_*$，此时我们有如下断言：
+
+\para 如果$X$是$G$上的左不变矢量场，那么$\mathrm{Ad}_gX$对于任意$g\in G$也是左不变矢量场。
+
+注意到左作用和右作用是可交换的，因此他们的导数也是可以交换的，那么
+\[
+	(l_h)_*(\mathrm{Ad}_gX)=(l_h)_*\circ (l_g)_*\circ (r_{g^{-1}})_*(X)=(r_{g^{-1}})_*(X)=(r_{g^{-1}})_*\circ (l_g)_*(X)=\mathrm{Ad}_gX.
+\]
+
+\para 实际上$\mathrm{Ad}_g$还是Lie代数$\lag$的一个自同构。线性空间同构已经是清楚的了，下面只要证明他是Lie代数同态即可，为此只要检验$\mathrm{Ad}_g([X,Y])=[\mathrm{Ad}_gX,\mathrm{Ad}_gY]$，其中$X$和$Y$都是左不变矢量场。
+
+由于$\mathrm{Ad}_g=(l_g)_*\circ (r_{g^{-1}})_*$，且$l_g$与$r_{g^{-1}}$作为Lie群的自同构，有$(l_g)_*[X,Y]=[(l_g)_*X,(l_g)_*Y]$和$r_{g^{-1}}[X,Y]=[r_{g^{-1}}X,r_{g^{-1}}Y]$成立，于是$\mathrm{Ad}_g([X,Y])=[\mathrm{Ad}_gX,\mathrm{Ad}_gY]$自然得证。
+
+到目前为止，我们看到$\mathrm{Ad}_g\in \mathrm{Aut}_{\mathrm{Lie}}(\lag)$，所以我们可以构造映射$\mathrm{Ad}:g\mapsto \mathrm{Ad}_g$.
+
+\para 可以检验$\mathrm{Ad}:G\to \mathrm{Aut}(\lag)$是一个Lie群同态，称为Lie群的伴随表示。
+
+同态来自于$\mathrm{Ad}_g\circ \mathrm{Ad}_h=(l_g)_*\circ (r_{g^{-1}})_*\circ (l_h)_*\circ (r_{h^{-1}})_*=(l_g)_*\circ (l_h)_*\circ (r_{g^{-1}})_*\circ (r_{h^{-1}})_*=(l_{gh})_*\circ (r_{(hg)^{-1}})_*=\mathrm{Ad}_{gh}$.
+
+% 第三个设$v\in T_hG$,因此$(r_g)_*v\in T_{hg}G$，于是
+% \[
+% 	(r_g)^*\omega_G(v)=\omega_G((r_g)_*v)=(l_{{hg}^{-1}})_*(r_g)_*
+% 	=(l_{{g}^{-1}})_*(r_g)_*(l_{{h}^{-1}})_*v=\mathrm{Ad}(g^{-1})\omega_G.
+% \]
+
+\para 令$G$的Lie代数为$\lag$，则$\mathrm{Ad}:G\to \mathrm{Aut}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}(\lag)$就满足$\ad(X)Y=[X,Y]$.
+
+因为$\mathrm{Ad}$是$G$上矢量值的函数，证明就是很直接地要去计算
+\[
+	\ad(X)Y=\left.\frac{\dd}{\dd t}\right|_{t=0}\mathrm{Ad}_{\exp(tX)}Y,
+\]
+找一个$G$上的光滑函数$f$，我们计算其单位元处的导数，注意到
+\[
+	Yf=\left.\frac{\dd}{\dd u}\right|_{u=0}f(\exp(uY)),
+\]
+以及$(\mathrm{Ad}_{g}Y)f=Y(f\circ l_g\circ r_{g^{-1}})$，所以
+\[
+	\ad(X)Yf=\left.\frac{\dd}{\dd t}\right|_{t=0}(\mathrm{Ad}_{\exp(tX)}Y)f=\left.\frac{\dd}{\dd t}\frac{\dd}{\dd u}\right|_{u=t=0}f\bigl(\exp(tX)\exp(uY)\exp(-tX)\bigr),
+\]
+注意到对$t$求导的时候，可以利用多元实函数$F(t_1,t_2)$的求导等式
+\[
+	\left.\frac{\dd}{\dd t}\right|_{t=0}F(t,t)=\frac{\partial F}{\partial t_1}(0,0)+\frac{\partial F}{\partial t_2}(0,0),
+\]
+所以我们得到了
+\[
+\begin{split}
+	&\left.\frac{\dd}{\dd t}\frac{\dd}{\dd u}\right|_{u=t=0}f\bigl(\exp(tX)\exp(uY)\exp(-tX)\bigr)\\
+	=&\left.\frac{\dd}{\dd t_1}\frac{\dd}{\dd u}\right|_{u=t_1=0}f\bigl(\exp(t_1X)\exp(uY)\bigr)-\left.\frac{\dd}{\dd t_2}\frac{\dd}{\dd u}\right|_{u=t_2=0}f\bigl(\exp(uY)\exp(t_2X)\bigr)\\
+	=&(XY-YX)f(e),
+\end{split}
+\]
+所以$\ad(X)Y=[X,Y]$.
+
+如果还记得Lie括号是曾经在Jacobi恒等式那边指出的导子，现在就可以看到，这确确实实就是一个导数，是伴随表示的导数。
+
+\para 对于一般线性群，前面已经计算过了$(l_g)_*=l_g$，那么同样$(r_g)_*=r_g$，所以
+\[
+	\mathrm{Ad}_g=(l_g)_*(r_{g^{-1}})_*=l_gr_{g^{-1}}.
+\]
+那么
+\[
+	\mathrm{Ad}_g(v)=(l_g)_*(r_{g^{-1}})_*v=l_gr_{g^{-1}}v=gvg^{-1}.
+\]
+我们现在求他的Lie代数，考虑$u,v\in \lag$，我们令$u(t)$是一个以$u$为初速度的单参子群，那么我们有
+\[
+	\frac{\dd}{\dd t}\bigl(\mathrm{Ad}_{u(t)}(v)\bigr)=u'(t)vu^{-1}(t)+u(t)v(u^{-1}(t))'=u'(t)vu^{-1}(t)-u(t)vu^{-1}(t)u'(t)u^{-1}(t).
+\]
+然后令$t=0$，那么$u(0)=u^{-1}(0)=I$，而$u'(0)=u$，那么就得到了单位元处的切矢量，也就是Lie代数$\ad(u)v=uv-vu=[u,v]$.
+
+类似的手段譬如对$T(t)[u,v]=[T(t)u,T(t)v]$求个导，然后在$t=0$处的值为
+\[
+	T'(0)[u,v]=[T'(0)u,T(0)v]+[T(0)u,T'(0)v],
+\]
+注意到$T(0)$是恒等变换，而$T'(0)$就是我们需要的Lie代数$B$，他需要满足的关系就是
+\[
+	B[u,v]=[Bu,v]+[u,Bv],
+\]
+其显然是Lie代数上面的一个导子。
+
 \section{Morphisms of Lie Group}
 
 Lie群很容易构成一个范畴，两个Lie群的态射只要定义成光滑的群同态就好了。比如对一般线性群而言，行列式就是一个显然的Lie群同态。这样子做之后，Lie群既是光滑流形范畴的子范畴，也是群范畴的子范畴。
@@ -597,99 +690,6 @@ Cartan子代数的维度称为半单Lie代数的秩。
 \pro 令$\lag$是一个复的半单Lie代数，令$\mathfrak{l}$是$\lag$的紧实形式，再令$\mathfrak{t}$是$\mathfrak{l}$任意的极大交换子代数，定义$\mathfrak{h}\in\lag$为$\mathfrak{h}=\mathfrak{t}+i\mathfrak{t}$.然后，$\mathfrak{h}$就是$\lag$的Cartan子代数。
 
 我们以后下面要谈论Lie群和Lie代数的表示，但是却只限制在紧Lie群，特别是紧的矩阵群上面，从而根据上面的定理，我们也只要去研究半单Lie代数就可以了。
-
-\section{Adjoint Representation}
-
-这节回到表示，群表示以及Lie代数的表示，我们这里感兴趣的是表示是一种矢量空间为$\lag$的表示。这需要从伴随作用开始。先说几个记号，设$l_g:h\mapsto gh$以及$r_g:h\mapsto hg$分别是左平移与右平移，他们都是群的自同构。
-
-\para 设$\lag$是一个Lie代数，那么不难看出$\lag$的自同构群
-\[\mathrm{Aut}_{\mathrm{Lie}}(\lag)=\{T\in \mathrm{GL}(\lag)\,:\,T[u,v]=[Tu,Tv],\,\forall u,\,v\in\lag\}\]
-构成一个Lie群，他的Lie代数是
-\[\mathfrak{gl}_{\mathrm{Lie}}(\lag)=\{T\in \mathfrak{gl}(\lag)\,:\,T[u,v]=[Tu,v]+[u,Tv],\,\forall u,\,v\in\lag\}.\]
-由于$[X,*]:Y\mapsto [X,Y]\in \lag$，且根据Jacobi恒等式，我们可以得知$[X,*]\in \mathfrak{gl}_{\mathrm{Lie}}(\lag)$.
-
-\para 设$G$是一个Lie群，他的Lie代数是$\lag$。Lie代数的伴随来自于Lie群的伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$或者$\mathbf{Ad}(g)=r_{g^{-1}}\circ l_g=l_g\circ r_{g^{-1}}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_{*e}:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g:\lag\to \lag$。
-
-因为$\mathbf{Ad}(g)$是Lie群的一个自同构，所以$\mathrm{Ad}_g:\lag\to\lag$是线性空间的同构，即$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$.
-
-一般而言，我们也可以通过左不变矢量场来描述Lie代数，这时候最好把$\mathrm{Ad}_g$理解成$(l_g)_*\circ (r_{g^{-1}})_*$，此时我们有如下断言：
-
-\para 如果$X$是$G$上的左不变矢量场，那么$\mathrm{Ad}_gX$对于任意$g\in G$也是左不变矢量场。
-
-注意到左作用和右作用是可交换的，因此他们的导数也是可以交换的，那么
-\[
-	(l_h)_*(\mathrm{Ad}_gX)=(l_h)_*\circ (l_g)_*\circ (r_{g^{-1}})_*(X)=(r_{g^{-1}})_*(X)=(r_{g^{-1}})_*\circ (l_g)_*(X)=\mathrm{Ad}_gX.
-\]
-
-\para 实际上$\mathrm{Ad}_g$还是Lie代数$\lag$的一个自同构。线性空间同构已经是清楚的了，下面只要证明他是Lie代数同态即可，为此只要检验$\mathrm{Ad}_g([X,Y])=[\mathrm{Ad}_gX,\mathrm{Ad}_gY]$，其中$X$和$Y$都是左不变矢量场。
-
-由于$\mathrm{Ad}_g=(l_g)_*\circ (r_{g^{-1}})_*$，且$l_g$与$r_{g^{-1}}$作为Lie群的自同构，有$(l_g)_*[X,Y]=[(l_g)_*X,(l_g)_*Y]$和$r_{g^{-1}}[X,Y]=[r_{g^{-1}}X,r_{g^{-1}}Y]$成立，于是$\mathrm{Ad}_g([X,Y])=[\mathrm{Ad}_gX,\mathrm{Ad}_gY]$自然得证。
-
-到目前为止，我们看到$\mathrm{Ad}_g\in \mathrm{Aut}_{\mathrm{Lie}}(\lag)$，所以我们可以构造映射$\mathrm{Ad}:g\mapsto \mathrm{Ad}_g$.
-
-\para 可以检验$\mathrm{Ad}:G\to \mathrm{Aut}(\lag)$是一个Lie群同态，称为Lie群的伴随表示。
-
-同态来自于$\mathrm{Ad}_g\circ \mathrm{Ad}_h=(l_g)_*\circ (r_{g^{-1}})_*\circ (l_h)_*\circ (r_{h^{-1}})_*=(l_g)_*\circ (l_h)_*\circ (r_{g^{-1}})_*\circ (r_{h^{-1}})_*=(l_{gh})_*\circ (r_{(hg)^{-1}})_*=\mathrm{Ad}_{gh}$.
-
-% 第三个设$v\in T_hG$,因此$(r_g)_*v\in T_{hg}G$，于是
-% \[
-% 	(r_g)^*\omega_G(v)=\omega_G((r_g)_*v)=(l_{{hg}^{-1}})_*(r_g)_*
-% 	=(l_{{g}^{-1}})_*(r_g)_*(l_{{h}^{-1}})_*v=\mathrm{Ad}(g^{-1})\omega_G.
-% \]
-
-\para 令$G$的Lie代数为$\lag$，则$\mathrm{Ad}:G\to \mathrm{Aut}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}(\lag)$就满足$\ad(X)Y=[X,Y]$.
-
-因为$\mathrm{Ad}$是$G$上矢量值的函数，证明就是很直接地要去计算
-\[
-	\ad(X)Y=\left.\frac{\dd}{\dd t}\right|_{t=0}\mathrm{Ad}_{\exp(tX)}Y,
-\]
-找一个$G$上的光滑函数$f$，我们计算其单位元处的导数，注意到
-\[
-	Yf=\left.\frac{\dd}{\dd u}\right|_{u=0}f(\exp(uY)),
-\]
-以及$(\mathrm{Ad}_{g}Y)f=Y(f\circ l_g\circ r_{g^{-1}})$，所以
-\[
-	\ad(X)Yf=\left.\frac{\dd}{\dd t}\right|_{t=0}(\mathrm{Ad}_{\exp(tX)}Y)f=\left.\frac{\dd}{\dd t}\frac{\dd}{\dd u}\right|_{u=t=0}f\bigl(\exp(tX)\exp(uY)\exp(-tX)\bigr),
-\]
-注意到对$t$求导的时候，可以利用多元实函数$F(t_1,t_2)$的求导等式
-\[
-	\left.\frac{\dd}{\dd t}\right|_{t=0}F(t,t)=\frac{\partial F}{\partial t_1}(0,0)+\frac{\partial F}{\partial t_2}(0,0),
-\]
-所以我们得到了
-\[
-\begin{split}
-	&\left.\frac{\dd}{\dd t}\frac{\dd}{\dd u}\right|_{u=t=0}f\bigl(\exp(tX)\exp(uY)\exp(-tX)\bigr)\\
-	=&\left.\frac{\dd}{\dd t_1}\frac{\dd}{\dd u}\right|_{u=t_1=0}f\bigl(\exp(t_1X)\exp(uY)\bigr)-\left.\frac{\dd}{\dd t_2}\frac{\dd}{\dd u}\right|_{u=t_2=0}f\bigl(\exp(uY)\exp(-t_2X)\bigr)\\
-	=&(XY-YX)f(e),
-\end{split}
-\]
-所以$\ad(X)Y=[X,Y]$.
-
-如果还记得Lie括号是曾经在Jacobi恒等式那边指出的导子，现在就可以看到，这确确实实就是一个导数，是伴随表示的导数。
-
-\para 对于一般线性群，前面已经计算过了$(l_g)_*=l_g$，那么同样$(r_g)_*=r_g$，所以
-\[
-	\mathrm{Ad}_g=(l_g)_*(r_{g^{-1}})_*=l_gr_{g^{-1}}.
-\]
-那么
-\[
-	\mathrm{Ad}_g(v)=(l_g)_*(r_{g^{-1}})_*v=l_gr_{g^{-1}}v=gvg^{-1}.
-\]
-我们现在求他的Lie代数，考虑$u,v\in \lag$，我们令$u(t)$是一个以$u$为初速度的单参子群，那么我们有
-\[
-\frac{\dd}{\dd t}\bigl(\mathrm{Ad}_{u(t)}(v)\bigr)=u'(t)vu^{-1}(t)+u(t)v(u^{-1}(t))'=u'(t)vu^{-1}(t)-u(t)vu^{-1}(t)u'(t)u^{-1}(t).
-\]
-然后令$t=0$，那么$u(0)=u^{-1}(0)=I$，而$u'(0)=u$，那么就得到了单位元处的切矢量，也就是Lie代数$\ad(u)v=uv-vu=[u,v]$.
-
-类似的手段譬如对$T(t)[u,v]=[T(t)u,T(t)v]$求个导，然后在$t=0$处的值为
-\[
-T'(0)[u,v]=[T'(0)u,T(0)v]+[T(0)u,T'(0)v],
-\]
-注意到$T(0)$是恒等变换，而$T'(0)$就是我们需要的Lie代数$B$，他需要满足的关系就是
-\[
-B[u,v]=[Bu,v]+[u,Bv],
-\]
-其显然是Lie代数上面的一个导子。
 
 \section{Matrix Group}
 这一节限制在矩阵群上面，这节将给出很多可计算的例子，先来求一些矩阵群的Lie代数。
