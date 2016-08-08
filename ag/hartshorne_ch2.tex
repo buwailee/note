@@ -1,5 +1,5 @@
 \documentclass[12pt]{extbook}
-\usepackage[book,zh]{noteheader}
+\usepackage[book]{noteheader}
 \usepackage{../egastyle}
 \include{../defs}
 \newcommand{\cc}{\mathcal{C}}
@@ -10,6 +10,8 @@
 \setcounter{chapter}{1}
 \chapter{Schemes}
 \section{Sheaves}
+Throughout this note the word ``ring'' shall mean a commutative ring with an identity element.
+
 \para A topological space $X$ can be seen as a category if we take open sets as its objects and inclusion maps as its morphisms, i.e. 
 \[
 	\Hom_{X}(U,V)=\begin{cases}
@@ -18,10 +20,9 @@
 	\end{cases}
 \]
 
-\para A presheaf is a functor $\calf:X^\circ\to \textit{AG}$, where $X^\circ$ is the dual category of a topological space $X$ and \textit{AG} is the category of abelian groups. In other words, $\calf:X\to \textit{AG}$ is a contravariant functor. The elements $s\in \calf(U)$ are called the sections on $U$. Denote that $\rho_{UV}:=\calf(i_{UV}):\calf(V)\to\calf(U)$ and $\rho_{UV}(s)=s|_V$ for $s \in \calf(U)$.
+\para A presheaf is a functor $\calf:X^\circ\to K$, where $X^\circ$ is the dual category of a topological space $X$ and $K$ is an arbitrary category. In other words, $\calf:X\to K$ is a contravariant functor. The elements $s\in \calf(U)$ are called the sections on $U$. Denote that $\rho_{UV}:=\calf(i_{UV}):\calf(V)\to\calf(U)$ and $\rho_{UV}(s)=s|_V$ for $s \in \calf(U)$. In our notes, we will assume that $K$ is the category of abelian groups, rings or modules.
 
-
-The morphisms $\varphi$ between two presheaf $\calf$ and $\calg$ is just the morphisms between two functors, that is, there exist a family of morphisms $\varphi(U):\calf(U)\to \calg(U)$ such that the following diagram is commutative.
+The morphism $\varphi$ between two presheaf $\calf$ and $\calg$ is just the morphism between two functors, that is, there exist a family of morphisms $\varphi(U):\calf(U)\to \calg(U)$ such that the following diagram is commutative.
 \[
 	\xymatrix{
 		\calf(U)\ar[rr]^{\varphi(U)} \ar[d]_{\rho_{UV}}&&\calg(U) \ar[d]^{\rho'_{UV}}\\
@@ -29,20 +30,20 @@ The morphisms $\varphi$ between two presheaf $\calf$ and $\calg$ is just the mor
 	}
 \]
 
-\para If $\calf$ is a presheaf on $X$, and if $p$ is a point on $X$, we define the stalk $\calf_p\in \textit{AG}$ of $\calf$ at $p$ to be the direct limit\footnote{$X$ is equiped with an order that $U>V$ if $U\subset V$. Since $\calf(U)$ are abelian groups, as $\zz$-modules, the direct limit always exists.} of the group $\calf(U)$ for all $U \osub X$ containing $p$, via the restriction maps $\rho$.
+\para If $\calf$ is a presheaf on $X$, and if $p$ is a point on $X$, we define the stalk $\calf_p\in K$ of $\calf$ at $p$ to be the direct limit\footnote{$X$ is equiped with an order that $U>V$ if $U\subset V$. Since $\calf(U)$ are abelian groups, as $\zz$-modules, the direct limit always exists.} of the group $\calf(U)$ for all $U \osub X$ containing $p$, via the restriction maps $\rho$.
 
 We can directly construct $\calf_p=\varinjlim_{U\ni p}\calf(U)$ that 
 \[
 	\calf_p=\bigl\{\langle U,s\rangle: p\in U\osub X, s\in \calf(U)\bigr\}/\sim,
 \]
-where $\sim$ is defined as follows: Suppose $s\in\calf(U)$ and $t\in\calf(V)$, if there exists a $W\osub U\cap V\neq \varnothing$ such that $s|_W=t|_W$, then $\langle U,s\rangle=\langle V,t\rangle$ or $s\sim t$. $\calf_p$ is indeed a group since the addition can be defined by $\langle U,s\rangle+\langle V,t\rangle=\langle W,s|_W+t|_W\rangle$. 
+where $\sim$ is defined as follows: Suppose $s\in\calf(U)$ and $t\in\calf(V)$, if there exists a $W\osub U\cap V\neq \varnothing$ such that $s|_W=t|_W$, then $\langle U,s\rangle\sim\langle V,t\rangle$. $\calf_p$ is indeed a group since the addition can be defined by $\langle U,s\rangle+\langle V,t\rangle=\langle W,s|_W+t|_W\rangle$. 
 
 Here $\calf(U)\ni s\mapsto \langle U,s\rangle=s_p$ defines a family of morphisms $\rho_{Up}:\calf(U)\to \calf_p$ for any $U\osub X$. We can then vertify the universal property of direct product that
 \[
 	\xymatrix{
 	&&\ar[dl]^{\rho_{Up}}\calf(U)\ar[dd]^{\rho_{UV}}\ar@/_/[lld]_{\varphi_{Vp}} \\
 	W&\ar@{-->}[l]_(0.4){\theta}\calf_p&\\
-	&&\ar[ul]_{\rho_{Up}}\calf(V)\ar@/^/[llu]^{\varphi_{Vp}}
+	&&\ar[ul]_{\rho_{Vp}}\calf(V)\ar@/^/[llu]^{\varphi_{Vp}}
 	}
 \]
 
@@ -88,13 +89,27 @@ The definition can be rewritten as: For any open cover $\{U_i\}$ of any open set
 \end{itemize}
 It is not so difficult to vertify that this definition is equivalent to the old one.
 
+\para We can also use the following condition to define a sheaf: Suppose $A$ an abelian group, $\calf$ a presheaf of abelian group on $X$, $U$ an arbitrary open subset of $X$, $\{U_\alpha\}$ an arbitrary open cover of $U$ and $\{\varphi_\alpha:A\to \calf(U_\alpha)\}$ morphisms such that
+\[
+	\xymatrix{
+		A\ar[r]^{\varphi_{\alpha}}\ar[d]_{\varphi_{\beta}}&\calf(U_\beta)\ar[d]\\
+		\calf(U_\alpha)\ar[r]&\calf(U_{\alpha}\cap U_{\beta})
+	}
+\]
+then there exist the unique morphism $\varphi:A\to \calf(U)$ make the following diagram commutative.
+\[
+	\xymatrix{
+		A\ar@/_/[ddr]_{\varphi_{\alpha}}\ar@/^/[drr]^{\varphi_{\beta}}\ar@{.>}[dr]|{\varphi}&& \\
+		&\calf(U)\ar[r]\ar[d]&\calf(U_\beta)\ar[d]\\
+		&\calf(U_\alpha)\ar[r]&\calf(U_{\alpha}\cap U_{\beta})
+	}
+\]
+
 The following proposition (which would be false for presheves) illustrates the local nature of a sheaf.
 
 \pro \label{pro:1}Suppose $\varphi:\calf\to\calg$ is a morphism of sheaves on a topological space $X$. Then $\varphi$ is a isomorphism if and only if the induced map on the stalk $\varphi_p:\calf_p\to \calg_p$ is an isomorphism for every $p\in X$.
 
-
 \proof p.63 on Hartshorne.\qed
-
 
 \para Let $\varphi:\calf\to\calg$ be a morphism of presheaves. We define the presheaf kernel of $\varphi$, presheaf of cokernel of $\varphi$, and presheaf image of $\varphi$ to be the presheaves given by $U\mapsto \ker(\varphi(U))$, $U\to \coker(\varphi(U))$, and $U\mapsto \im(\varphi(U))$ respectively.
 

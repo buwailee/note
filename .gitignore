@@ -239,3 +239,6 @@ pip-log.txt
 
 # visual studio code file
 .vscode/
+
+# windows
+*.exe
