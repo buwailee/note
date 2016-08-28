@@ -1,7 +1,7 @@
 \documentclass[12pt]{extbook}
 \usepackage[book]{noteheader}
 \usepackage{../egastyle}
-\include{../defs}
+\input{../defs.tex}
 \newcommand{\cc}{\mathcal{C}}
 
 \linespread{1.05}
@@ -69,6 +69,8 @@ gives the existence of the morphism $\varphi_p:\calf_p\to \calg_p$ which makes t
 
 \noindent is commutative.
 
+\para If we have a topology base $\mathfrak{B}$ of space $X$, and $\forall V\in \mathfrak{B}$ we have defined a presheaf structure, i.e. groups $\calf(V)$ and morphisms $\rho_{UV}:\calf(U)\to \calf(V)$ where $V\subset U$ and $U$, $V\in \mathfrak{B}$. Then we can define a presheaf structure on $X$ by setting $\calf(U)=\varprojlim_{\mathfrak{B}\ni V \subset U} \calf(V)$ and morphisms $\rho_{UV}$ are also induced by inverse limit.
+
 \para A sheaf is a presheaf that for any open set $U\subset X$, the complex 
 \[
 	0\rightarrow \calf(U) \xrightarrow{d_0}\prod_{i\in I}\calf(U_i) \xrightarrow{d_1}\prod_{i,j\in I}\calf(U_i\cap U_j)
@@ -89,6 +91,8 @@ The definition can be rewritten as: For any open cover $\{U_i\}$ of any open set
 \end{itemize}
 It is not so difficult to vertify that this definition is equivalent to the old one.
 
+\para Suppose we define a presheaf on a topology base $\mathfrak$. And sheaf conditions are also valid 
+
 \para We can also use the following condition to define a sheaf: Suppose $A$ an abelian group, $\calf$ a presheaf of abelian group on $X$, $U$ an arbitrary open subset of $X$, $\{U_\alpha\}$ an arbitrary open cover of $U$ and $\{\varphi_\alpha:A\to \calf(U_\alpha)\}$ morphisms such that
 \[
 	\xymatrix{
@@ -104,12 +108,6 @@ then there exist the unique morphism $\varphi:A\to \calf(U)$ make the following 
 		&\calf(U_\alpha)\ar[r]&\calf(U_{\alpha}\cap U_{\beta})
 	}
 \]
-
-The following proposition (which would be false for presheves) illustrates the local nature of a sheaf.
-
-\pro \label{pro:1}Suppose $\varphi:\calf\to\calg$ is a morphism of sheaves on a topological space $X$. Then $\varphi$ is a isomorphism if and only if the induced map on the stalk $\varphi_p:\calf_p\to \calg_p$ is an isomorphism for every $p\in X$.
-
-\proof p.63 on Hartshorne.\qed
 
 \para Let $\varphi:\calf\to\calg$ be a morphism of presheaves. We define the presheaf kernel of $\varphi$, presheaf of cokernel of $\varphi$, and presheaf image of $\varphi$ to be the presheaves given by $U\mapsto \ker(\varphi(U))$, $U\to \coker(\varphi(U))$, and $U\mapsto \im(\varphi(U))$ respectively.
 
@@ -142,7 +140,6 @@ Roughly speaking, the sheafification of a presheaf $\calf$ is the ``smallest'' s
 \end{center}
 commutative for any sheaf $\calg$. $\calf^+$ is called the sheaf associated to the preshead $\calf$ or the sheafification of $\calf$.
 
-
 \proof 
 	We construct the sheaf $\calf^+$ as follows. For any open set $U$, let $\calf^+(U)$ be the set of functions $s:U\to \bigcup_{p\in U}\calf_p$, such that
 	\begin{itemize}
@@ -169,8 +166,7 @@ commutative for any sheaf $\calg$. $\calf^+$ is called the sheaf associated to t
 	\]
 	makes the diagram commutative. \qed
 
-\pro 
-	\label{pro:4} $\calf_p\cong \calf^+_p$, so if $\calf$ is a sheaf, then $\calf\cong \calf^+$.
+\pro \label{pro:4} $\calf_p\cong \calf^+_p$.
 
 \proof According to the Figure \ref{fig1}, there's a morphism $\theta_p:\calf_p\to \calf^+_p$, such that $\theta_p(\langle U,s\rangle)=\langle U,s^+\rangle$.
 
@@ -179,8 +175,6 @@ It is injective. If $\theta_p(\langle U,s\rangle)=\langle V,0\rangle$, then $s^+
 It is surjective. $\forall \langle U,\bar{s}\rangle\in \calf^+_p$, there exists an open subset $V$ and $t\in \calf(V)$ such that $\langle U,\bar{s}\rangle=\langle V,t^+\rangle$, then $\theta_p(\langle V,t\rangle)=\langle U,\bar{s}\rangle$.\qed
 
 \para If $\varphi:\calf\to\calg$ is a morphism of sheaves, we define the kernel (repsectively cokernel, image) of $\varphi$, denoted $\ker \varphi$ (repsectively $\coker \varphi$, $\im \varphi$), to be the sheaf associated to the presheaf of kernel (respectively, coker, image) of $\varphi$.
-
-\para We say that a morphism of sheaves $\varphi:\calf\to\calg$ is injective (respectively, surjective) if $\ker\varphi=0$ (respectively, $\im\varphi\cong\calg$).
 
 \pro  \label{pro:5} For any morphism of sheaves $\varphi:\calf\to\calg$, $(\ker \varphi)_p=\ker(\varphi_p)$ and $(\im \varphi)_p=\im(\varphi_p)$ for each $p$.
 
@@ -199,7 +193,23 @@ It is surjective. $\forall \langle U,\bar{s}\rangle\in \calf^+_p$, there exists 
 		\item $(\im \varphi)_p\subset \im(\varphi_p)$: Suppose $t=\langle U,\varphi(U)s\rangle\in (\im \varphi)_p$, then $t=\rho'_{Up}\circ\varphi(U)s=\varphi_p s_p \in \im(\varphi_p)$.
 	\end{itemize}
 
+The following proposition (which would be false for presheves) illustrates the local nature of a sheaf.
+
+\pro \label{pro:1}Suppose $\varphi:\calf\to\calg$ is a morphism of sheaves on a topological space $X$. Then $\varphi$ is a isomorphism if and only if the induced map on the stalk $\varphi_p:\calf_p\to \calg_p$ is an isomorphism for every $p\in X$.
+
+\proof $(\Rightarrow)$ part is easy. For $(\Leftarrow)$ part, we can show that $\forall U\osub X$, $\varphi(U)$ is an isomorphism.
+
+$\varphi(U)$ is injective or $\ker(\varphi)(U)=\{0\}$ since $\ker(\varphi)_p=\ker(\varphi_p)=\{0\}$ and $\ker(\varphi)$ is a sheaf.
+
+$\varphi(U)$ is subjective.
+
+p.63 on Hartshorne.\qed
+
+\para If $\calf$ is a sheaf, then $\calf\cong \calf^+$ because $\theta_p:\calf_p\to \calf^+_p$ is an isomorphism.
+
 \para  \label{cor:1} For any morphism of sheaves $\varphi:\calf\to\calg$, it is injective (respectively, surjective) if and only if $\varphi_p$ is injective (respectively, surjective) for all $p$.
+
+\para We say that a morphism of sheaves $\varphi:\calf\to\calg$ is injective (respectively, surjective) if $\ker\varphi=0$ (respectively, $\im\varphi\cong\calg$).
 
 \proof According to \proref{pro:1} and \proref{pro:5}, $\ker \varphi=0$ if and only if $(\ker \varphi)_p=\ker(\varphi_p)=0$. Similarly, $\im \varphi\cong \calg$ if and only if $(\im \varphi)_p=\im(\varphi_p)\cong \calg_g$. \qed
 

@@ -175,7 +175,7 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 \]
 $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B^T=0$的矩阵，换而言之，反对称矩阵。
 
-此外，由矩阵恒等式，$AA^{-1}=I$，对其求导我们有$0=\dd A A^{-1}+A\dd(A^{-1})$，所以
+此外，由矩阵恒等式，$AA^{-1}=I$，对其求导我们有$0=(\dd A) A^{-1}+A\dd(A^{-1})$，所以
 \[
 	\dd(A^{-1})=-A^{-1}(\dd A) A^{-1}.
 \]
@@ -353,13 +353,11 @@ $A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$
 \[\mathfrak{gl}_{\mathrm{Lie}}(\lag)=\{T\in \mathfrak{gl}(\lag)\,:\,T[u,v]=[Tu,v]+[u,Tv],\,\forall u,\,v\in\lag\}.\]
 由于$[X,*]:Y\mapsto [X,Y]\in \lag$，且根据Jacobi恒等式，我们可以得知$[X,*]\in \mathfrak{gl}_{\mathrm{Lie}}(\lag)$.
 
-\para 设$G$是一个Lie群，他的Lie代数是$\lag$。Lie代数的伴随来自于Lie群的伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$或者$\mathbf{Ad}(g)=r_{g^{-1}}\circ l_g=l_g\circ r_{g^{-1}}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_{*e}:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g:\lag\to \lag$。
+\para 设$G$是一个Lie群，他的Lie代数是$\lag$。Lie代数的伴随来自于Lie群的伴随$\mathbf{Ad}(g):h\mapsto ghg^{-1}$或者$\mathbf{Ad}(g)=r_{g^{-1}}\circ l_g=l_g\circ r_{g^{-1}}$在单位元上的导数$\mathrm{Ad}_g=\mathbf{Ad}(g)_{*e}:T_eG\to T_eG$，但注意到Lie代数$\lag$就是Lie群在单位元的切空间$T_eG$，所以$\mathrm{Ad}_g:\lag\to \lag$。因为$\mathbf{Ad}(g)$是Lie群的一个自同构，所以$\mathrm{Ad}_g:\lag\to\lag$是线性空间的同构，即$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$.
 
-因为$\mathbf{Ad}(g)$是Lie群的一个自同构，所以$\mathrm{Ad}_g:\lag\to\lag$是线性空间的同构，即$\mathrm{Ad}_g\in \mathrm{GL}(\lag)$.
+利用指数函数，把$\mathrm{Ad}_g$和$\mathbf{Ad}(g)$之间的微分关系联系起来即，$\mathbf{Ad}(g)\exp(X)=\exp(\mathrm{Ad}_gX)$成立。
 
-一般而言，我们也可以通过左不变矢量场来描述Lie代数，这时候最好把$\mathrm{Ad}_g$理解成$(l_g)_*\circ (r_{g^{-1}})_*$，此时我们有如下断言：
-
-\para 如果$X$是$G$上的左不变矢量场，那么$\mathrm{Ad}_gX$对于任意$g\in G$也是左不变矢量场。
+\para 一般而言，我们也可以通过左不变矢量场来描述Lie代数，这时候最好把$\mathrm{Ad}_g$理解成$(l_g)_*\circ (r_{g^{-1}})_*$，此时我们有断言：如果$X$是$G$上的左不变矢量场，那么$\mathrm{Ad}_gX$对于任意$g\in G$也是左不变矢量场。
 
 注意到左作用和右作用是可交换的，因此他们的导数也是可以交换的，那么
 \[
@@ -370,9 +368,7 @@ $A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$
 
 由于$\mathrm{Ad}_g=(l_g)_*\circ (r_{g^{-1}})_*$，且$l_g$与$r_{g^{-1}}$作为Lie群的自同构，有$(l_g)_*[X,Y]=[(l_g)_*X,(l_g)_*Y]$和$r_{g^{-1}}[X,Y]=[r_{g^{-1}}X,r_{g^{-1}}Y]$成立，于是$\mathrm{Ad}_g([X,Y])=[\mathrm{Ad}_gX,\mathrm{Ad}_gY]$自然得证。
 
-到目前为止，我们看到$\mathrm{Ad}_g\in \mathrm{Aut}_{\mathrm{Lie}}(\lag)$，所以我们可以构造映射$\mathrm{Ad}:g\mapsto \mathrm{Ad}_g$.
-
-\para 可以检验$\mathrm{Ad}:G\to \mathrm{Aut}(\lag)$是一个Lie群同态，称为Lie群的伴随表示。
+\para 到目前为止，我们看到$\mathrm{Ad}_g\in \mathrm{Aut}_{\mathrm{Lie}}(\lag)$，所以我们可以构造映射$\mathrm{Ad}:g\mapsto \mathrm{Ad}_g$. 可以检验$\mathrm{Ad}:G\to \mathrm{Aut}(\lag)$是一个Lie群同态，称为Lie群的伴随表示。
 
 同态来自于$\mathrm{Ad}_g\circ \mathrm{Ad}_h=(l_g)_*\circ (r_{g^{-1}})_*\circ (l_h)_*\circ (r_{h^{-1}})_*=(l_g)_*\circ (l_h)_*\circ (r_{g^{-1}})_*\circ (r_{h^{-1}})_*=(l_{gh})_*\circ (r_{(hg)^{-1}})_*=\mathrm{Ad}_{gh}$.
 
@@ -382,7 +378,7 @@ $A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$
 % 	=(l_{{g}^{-1}})_*(r_g)_*(l_{{h}^{-1}})_*v=\mathrm{Ad}(g^{-1})\omega_G.
 % \]
 
-\para 令$G$的Lie代数为$\lag$，则$\mathrm{Ad}:G\to \mathrm{Aut}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}(\lag)$就满足$\ad(X)Y=[X,Y]$.
+\para 令$G$的Lie代数为$\lag$，则$\mathrm{Ad}:G\to \mathrm{Aut}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}(\lag)$满足$\ad(X)Y=[X,Y]$.
 
 因为$\mathrm{Ad}$是$G$上矢量值的函数，证明就是很直接地要去计算
 \[
@@ -700,7 +696,7 @@ Cartan子代数的维度称为半单Lie代数的秩。
 
 \para 利用$\mathrm{Ad}_D(A)=DAD^{-1}$，我们有$\exp(DAD^{-1})=D\exp(A)D^{-1}$.这当然也可以直接用矩阵指数映射的展开来证明。
 
-\pro 指数映射联系了迹与行列式，$\det(\exp(A))=\exp(\tr(A))$.
+\pro 指数映射联系了矩阵的迹与行列式，$\det(\exp(A))=\exp(\tr(A))$.
 
 \proof 将矩阵分解为幂零的和可对角化的两个矩阵的乘积$A=SN$，因为$S$和$N$可交换，所以
 \[
@@ -710,11 +706,11 @@ Cartan子代数的维度称为半单Lie代数的秩。
 \[
 	\exp(S)=\exp(D\Lambda D^{-1})=D\exp(\Lambda) D^{-1},
 \]
-而$\exp(\Lambda)$是可以直接计算的，即$\mathrm{diag}\left(e^{\lambda_1},\dots,e^{\lambda_n}\right)$.那么
+而$\exp(\Lambda)$是可以直接计算的，即$\mathrm{diag}\left(\exp(\lambda_1),\dots,\exp(\lambda_n)\right)$.那么
 \[
 	\det \left(\exp(S)\right)=\det \left(D\exp(\Lambda) D^{-1}\right)=\det \left(\exp(\Lambda)\right)=\exp\left(\sum_i \lambda_i\right)=\exp{\tr(\Lambda)}=exp(\tr(S))
 \]
-对于幂零矩阵来说，容易验证$\det \exp(N)=1$，最后就可以得到任意矩阵都有
+对于幂零矩阵来说，容易验证$\det\circ\exp(N)=1$，最后就可以得到任意矩阵都有
 \[
 	\det(\exp(A))=\exp(\tr(A)).
 \]
@@ -957,8 +953,7 @@ f=\begin{pmatrix}
 		\end{pmatrix}.
 \]
 
-\para
-定义Killing形式为$(x,y)_K$如下
+\para 定义Killing形式为$(x,y)_K$如下
 \[
 	(x,y)_K=\tr(\ad(x)\ad(y)),
 \]
@@ -966,18 +961,15 @@ f=\begin{pmatrix}
 
 在选取基的形式下，我们可以得到矩阵$K_{ij}=(a_i,a_j)_K$.
 
-\begin{theo}
+\begin{pro}
 Killing形式是双线性的，且
 
-\no{1} 
-对于任意的Lie代数自同构$\varphi$我们对任意的$x,y$都有$(\varphi x,\varphi y)_K=(x,y)_K$，
+\no{1} 对于任意的Lie代数自同构$\varphi$我们对任意的$x,y$都有$(\varphi x,\varphi y)_K=(x,y)_K$，
 
-\no{2}
-对于任意的$x,y,z$有$([x,y],z)_K=(x,[y,z])_K$，
+\no{2} 对于任意的$x,y,z$有$([x,y],z)_K=(x,[y,z])_K$，
 
-\no{3}
-如果$\mathfrak{h}$是$\lag$的理想，那么在$\mathfrak{h}$上的Killing形式$(\star,\star)_{K_\mathfrak{h}}$和原本的Killing形式$(\star,\star)_{K}$对于所有$x,y\in \mathfrak{h}$满足$(x,y)_{K_\mathfrak{h}}=(x,y)_K$.
-\end{theo}
+\no{3} 如果$\mathfrak{h}$是$\lag$的理想，那么在$\mathfrak{h}$上的Killing形式$(\star,\star)_{K_\mathfrak{h}}$和原本的Killing形式$(\star,\star)_{K}$对于所有$x,y\in \mathfrak{h}$满足$(x,y)_{K_\mathfrak{h}}=(x,y)_K$.
+\end{pro}
 
 对于第二点，注意到$\ad([x,y])=\ad(x)\ad(y)-\ad(y)\ad(x)$,
 \[
@@ -1031,18 +1023,15 @@ Killing形式是双线性的，且
 \]
 容易验证
 \[
-[\mu_1,\mu_2]=\mu_3,\quad [\mu_1,\mu_3]=-\mu_2,\quad [\mu_2,\mu_3]=\mu_1.
+	[\mu_1,\mu_2]=\mu_3,\quad [\mu_1,\mu_3]=-\mu_2,\quad [\mu_2,\mu_3]=\mu_1.
 \]
 这和$\mathfrak{so}(3)$的对易关系一模一样，于是我们可以引入$\rr$-线性映射建立两者作为实Lie代数的同构，也就是$\mathfrak{so}(3)\cong \mathfrak{su}(2)$.
 
 很容易证明$\mathfrak{sl}(2,\rr)$的复化即$\mathfrak{sl}(2,\cc)$，这就是说$\mathfrak{sl}(2,\rr)_\cc=\mathfrak{sl}(2,\cc)$.为了分析$\mathfrak{sl}(2,\cc)$的结构，我们来看
 $\mathrm{SL}(2,\mathbb{C})$的结构。
 
-任何一个复可逆$2\times 2$矩阵都可以唯一分解（极分解）为
-\[
-\lambda=ue^{h}
-\]
-其中$u$幺正而$h$是Hermite矩阵。现在假如$\det \lambda=1$，则
+任何一个复可逆$2\times 2$矩阵都可以唯一分解（极分解）为$
+\lambda=ue^{h}$，其中$u$幺正而$h$是Hermite矩阵。现在假如$\det \lambda=1$，则
 \[
 \det(u)e^{\tr(h)}=1
 \]
