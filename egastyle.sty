@@ -1,13 +1,36 @@
-\newtheorem{para}{}[section]
-\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
+\newif\if@chapter\@chapterfalse
+\newif\if@section\@sectionfalse
+\newif\if@subsection\@subsectionfalse
+\DeclareOption{chapter}{\@chaptertrue}
+\DeclareOption{section}{\@sectiontrue}
+\DeclareOption{subsection}{\@subsectiontrue}
+
+%% Relax
+\ProcessOptions\relax
+
+\if@chapter
+	\newtheorem{para}{}[chapter]
+	\renewcommand{\thepara}{\arabic{chapter}.\arabic{para}}
+\else\if@section
+	\newtheorem{para}{}[section]
+	\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
+\else\if@subsection
+	\newtheorem{para}{}[subsection]
+	\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{para}}
+\else
+	\newtheorem{para}{}[part]
+	\renewcommand{\thepara}{\arabic{para}}
+\fi\fi\fi
+
 \newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}\hspace{0.5em}}
 	\renewcommand{\para}{\refstepcounter{para}\textbf{(\thepara)}\hspace{0.5em}}
 	\newcommand{\theo}{\paracount{Theorem}}
 	\newcommand{\pro}{\paracount{Proposition}}
 	\newcommand{\lem}{\paracount{Lemma}}
-	\renewcommand{\proof}{\textbf{Proof:}\hspace{0.5em}}
+	\newcommand{\cor}{\paracount{Corollary}}
+	\renewcommand{\proof}{\textit{Proof}:\hspace{0.5em}}
 
-\newcommand{\pararef}[1]{(\ref{#1})}
-\newcommand{\lemref}[1]{Lemma \pararef{#1}}
-\newcommand{\proref}[1]{Proposition \pararef{#1}}
-\newcommand{\theoref}[1]{Theorem \pararef{#1}}
+\renewcommand{\eqref}[1]{(\ref{#1})}
+\newcommand{\lemref}[1]{Lemma \eqref{#1}}
+\newcommand{\proref}[1]{Proposition \eqref{#1}}
+\newcommand{\theoref}[1]{Theorem \eqref{#1}}

@@ -3,24 +3,21 @@
 \chapter{Calculus}
 \section{Foundation}
 
-\para 一个局部$n$维欧几里得空间是一个Hausdorff空间$M$满足，对每一个点$p\in M$，存在一个$p$的邻域$U\osub M$和一个同胚$\varphi:U\to V$,其中$V$是一个$\rr^n$中的开集。这个同胚有时候被称为一个坐标、坐标映射等，而资料$(U,\varphi)$被称为一个{\kaishu 坐标卡}。坐标$\varphi$经常写成分量形式，$\varphi=(x^1,\cdots,x^n)$，其中$x^i:U\to \rr$.
+\para 一个局部$n$维欧几里得空间是一个Hausdorff空间$M$满足，对每一个点$p\in M$，存在一个$p$的邻域$U\osub M$和一个同胚$\varphi:U\to V$,其中$V$是一个$\rr^n$中的开集。这个同胚有时候被称为一个坐标、坐标映射等，而资料$(U,\varphi)$被称为一个\idx{坐标卡}。坐标$\varphi$经常写成分量形式，$\varphi=(x^1,\cdots,x^n)$，其中$x^i:U\to \rr$.
 
 一个局部$n$维欧几里得空间是局部紧的，这是因为他局部同胚于欧式空间, 而欧式空间是局部紧的。
 
-\para 局部欧几里得空间$M$上的一个光滑微分结构$\mathscr{F}$是这样一族坐标卡$(U_\alpha,\varphi_\alpha)$，满足：$\{U_\alpha\}$构成$M$的开覆盖，$\varphi_\alpha\circ\varphi^{-1}_\beta|_{U_\alpha\cap U_\beta}$是光滑映射，后者被称为坐标卡的相容性条件。此外，如果有一个坐标卡$(U,\varphi)$和每一个坐标卡都相容，那么可以推断出他在$\mathscr{F}$中，这样的微分结构被称为极大微分结构。极大微分结构当然不一定是唯一的，不过我们不担心这个，因为我们往往是固定一个微分结构来研究流形的，下面假设出现的微分结构总是极大的。
+\para 局部欧几里得空间$M$上的一个光滑微分结构$\mathscr{F}$是这样一族坐标卡$(U_\alpha,\varphi_\alpha)$，满足：$\{U_\alpha\}$构成$M$的开覆盖，$\varphi_\alpha\circ\varphi^{-1}_\beta|_{U_\alpha\cap U_\beta}$是光滑映射，后者被称为坐标卡的相容性条件。此外，如果有一个坐标卡$(U,\varphi)$和每一个坐标卡都相容，那么可以推断出他在$\mathscr{F}$中，这样的微分结构被称为极大微分结构。极大微分结构当然不一定是唯一的，不过我们不担心这个，因为我们往往是固定一个微分结构来研究流形的几何，下面假设出现的微分结构总是极大的。
 
-\para 一个$n$维光滑流形(smooth manifold)$(M,\mathscr{F})$是一个赋予
-我们想要做一个范畴，现在已经有了对象，那么自然需要态射，态射被如下定义：
+\para 设$(M,\mathscr{F})$和$(N,\mathscr{G})$是两个光滑流形，连续函数$f:M\to N$被称为一个\idx{光滑映射}，如果$\psi\circ f\circ \varphi^{-1}$是一个光滑函数对任意的$\mathscr{F}$中的坐标卡$(U,\varphi)$和$\mathscr{G}$中的坐标卡$(V,\psi)$成立。由于欧式空间之间的光滑函数的复合依然是光滑的，所以光滑的定义是不依赖于坐标卡的选取的。
 
-\para 设$(M,\mathscr{F})$和$(N,\mathscr{G})$是两个光滑流形，连续函数$f:M\to N$被称为一个{\kaishu 光滑映射}，如果$\psi\circ f\circ \varphi^{-1}$是一个光滑函数对任意的$\mathscr{F}$中的坐标卡$(U,\varphi)$和$\mathscr{G}$中的坐标卡$(V,\psi)$成立。
-
-这样，光滑流形就构成了一个范畴，其中态射是流形间的光滑映射。他是拓扑空间范畴的子范畴。
+\para 这样，光滑流形就构成了一个范畴，其中态射是流形间的光滑映射。他是拓扑空间范畴的子范畴。
 
 从此以后，我们对一个固定的流形$(M,\mathscr{F})$，常常会略去他的微分结构，只写作$M$。对于一个光滑流形$M$的非空开子集$U$，显然，他有继承自$M$的一个拓扑结构和微分结构，所以$U$也是一个光滑流形。很容易看到，$\rr^n$是一个光滑流形，按照上面的结论，我们可以得到一类光滑流形，$\rr^n$的开子集。比如把$n\times n$矩阵放入$\rr^{n^2}$内，那么行列式不为零的那些矩阵就构成一个光滑流形，记作$\mathrm{GL}(n,\rr)$，称作一般线性群。
 
 特别地，$\rr$也是一个光滑流形。我们称光滑映射$f:M\to \rr$是一个$M$上的光滑函数。光滑函数$f$限制在$U\osub M$上也是一个光滑函数$f|_U$.
 
-\para 设$M$是一个光滑流形，$U\osub M$上的光滑函数的集合记作$\calf(U)$，$\calf$被称为$M$上的光滑函数{\kaishu 层}。由于可以逐点定义加法和乘法，所以$\calf(U)$拥有$\rr$-代数结构。设$p\in M$，我们定义如下等价关系：设$U$和$V$都是$p$的邻域，以及$f\in \calf(U)$和$g\in \calf(V)$，如果在一个$W\osub U\cap V$上，$f|_W=g|_W$，则$f\sim g$.所有这样的等价类记作$\calf_p$，称为$p$处的光滑函数{\kaishu 茎}，他的代表元素可以写成$f_p=\langle U,f\rangle$，称为{\kaishu 芽}. 显然$\calf_p$有继承自$\calf(U)$的自然的$\rr$-代数结构。上述过程也可以用colimit表示为$\calf_p=\varinjlim_{U\ni p}\calf(U)$，其中$p$的邻域以包含形成归纳系。
+\para 设$M$是一个光滑流形，$U\osub M$上的光滑函数的集合记作$\calf(U)$，$\calf$被称为$M$上的光滑函数\idx{层}。由于可以逐点定义加法和乘法，所以$\calf(U)$拥有$\rr$-代数结构。设$p\in M$，我们定义如下等价关系：设$U$和$V$都是$p$的邻域，以及$f\in \calf(U)$和$g\in \calf(V)$，如果在一个$W\osub U\cap V$上，$f|_W=g|_W$，则$f\sim g$. 所有这样的等价类记作$\calf_p$，称为$p$处的光滑函数\idx{茎}，他的代表元素可以写成$f_p=\langle U,f\rangle$，称为\idx{芽}. 显然$\calf_p$有继承自$\calf(U)$的自然的$\rr$-代数结构。上述过程也可以用colimit表示为$\calf_p=\varinjlim_{U\ni p}\calf(U)$，其中$p$的邻域以包含形成归纳系。
 
 设$p\in M$，茎$\calf_p$是一个局部环。实际上，$\langle U,f\rangle \in \calf_p$且$f(p)= 0$的元素构成了$\calf_p$的一个理想。不在这个理想内的$\langle U,f\rangle$，由于$f(p)\neq 0$，那么适当缩小$U$到$V$，由$f$的连续性，总可以找到$V$使得$f|_V$处处不为零，这样$\langle V,1/f|_V\rangle$便是$\langle U,f\rangle$的一个逆。因此上面这个理想即$\calf_p$唯一的极大理想，我们其记作$\mm_p$。容易看到$\calf_p/\mm_p\cong \rr$，实际上，对每一个芽$f_p\in\calf_p$，都成立$f_p=f_p-f(p)+f(p)$，在$\calf_p/\mm_p$中看，他和$f(p)\in\rr$也就没区别了。
 
@@ -36,14 +33,14 @@
 \]
 可以得到$h_i(0)=\partial_i f(0)$，然后再对$h_i$使用上面的步骤即可得到我们想要的表达式。\qed
 
-\para 使用一个局部坐标$\varphi=(x^1,\cdots,x^n)$且$\varphi(p)=0$，可以将上面的引理翻译到流形上。设设$f:U\to \rr$光滑，则在$p$的一个邻域$V$上对任意的$q\in V$成立
+\para 使用一个局部坐标$\varphi=(x^1,\cdots,x^n)$且$\varphi(p)=0$，可以将上面的引理翻译到流形上。设$f:U\to \rr$光滑，则在$p$的一个邻域$V$上对任意的$q\in V$成立
 \[
 	f(q)=f(p)+\frac{\partial f\circ \varphi^{-1}}{\partial x^i}(p)x^i(q)+\frac{1}{2}g_{ij}(q)x^i(q)x^j(q),
 \]
 其中$g_{ij}$在$V$上光滑，以后我们就将那个偏微分记作$\partial_i f(p)$.
 
 
-\para 设$p\in M$，$p$处的茎为$\calf_p$，他的极大理想为$\mm_p$，此时$p$处的{\kaishu 余切空间}被定义为自然的矢量空间$T_p^*M:=\mm_p/\mm_p^2$。余切空间的元素被称为{\kaishu 余切矢量}。
+\para 设$p\in M$，$p$处的茎为$\calf_p$，他的极大理想为$\mm_p$，此时$p$处的\idx{余切空间}被定义为自然的矢量空间$T_p^*M:=\mm_p/\mm_p^2$。余切空间的元素被称为\idx{余切矢量}。
 
 $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-模，然后任取$a\in \mm_p$，由于$a\mm_p/\mm_p^2=0$，所以$\mm_p/\mm_p^2$是一个$\calf_p/\mm_p$-模，即$\rr$-矢量空间。这样定义的余切空间，可以看到，是所有的那些一阶小量构成的集合，即其中的元素为“{微分\kaishu}”。
 
@@ -62,7 +59,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \end{equation}
 这样所有的$T_p^*M=\mm_p/\mm_p^2$中的元素都可以由$\dd_p(x^i_p)$展开，他们都是非零的，而且容易证明是线性无关的，所以这是$T_p^*M$的一组基，余切空间的维数计算完毕。
 
-以后我们用$\dd_p(f)$乃至$\dd_pf$来记$\dd_p(f_p)$。实际上，我们可以将$\dd_p$定义在$\calf_p$上，设$a$是一个常值芽，补充定义$\dd_pa=0$，可以看到，此时式\eqref{c1:e1}依旧满足。以后我们就这样来看$\dd_p:\calf_p\to T_p^*M$，他被称为{\kaishu 外微分}算子。
+以后我们用$\dd_p(f)$乃至$\dd_pf$来记$\dd_p(f_p)$。实际上，我们可以将$\dd_p$定义在$\calf_p$上，设$a$是一个常值芽，补充定义$\dd_pa=0$，可以看到，此时式\eqref{c1:e1}依旧满足。以后我们就这样来看$\dd_p:\calf_p\to T_p^*M$，他被称为\idx{外微分}算子。
 
 \para 此时\[\dd_p (fg)=\dd_p\bigl(\bigl(f-f(p)\bigr)\bigl(g-g(p)\bigr)+f(p)\bigl(g-g(p)\bigr)+\bigl(f-f(p)\bigr)g(p)\bigr)=f(p)\dd_pg+\dd_pf g(p).\]
 
@@ -72,17 +69,17 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 设$f:M\to N$是一个光滑映射，他诱导了一个线性映射\footnote{这里我们滥用一下记号。}$f^*_p:T_{f(p)}^*N\to T_p^*M$.
 
-\para 对于复合，显然$(f\circ g)^*=f^*\circ g^*$，以及在一点处，$(f\circ g)^*_p=g^*_p\circ f^*_{g(p)}$.很容易看到$\id^*_p=\id_{T_p^*M}$，所以如果$f:M\to N$是同胚，则$f_p^*:T_{f(p)}^*N\to T_p^*M$是同构。
+对于复合，显然$(f\circ g)^*=f^*\circ g^*$，以及在一点处，$(f\circ g)^*_p=g^*_p\circ f^*_{g(p)}$.很容易看到$\id^*_p=\id_{T_p^*M}$，所以如果$f:M\to N$是同胚，则$f_p^*:T_{f(p)}^*N\to T_p^*M$是同构。
 
 \para \label{f*d=df*}利用复合公式，设$f:M\to N$是光滑映射，则$f^*_p\bigl(\dd_{f(p)}g\bigr)=\dd_{p}(f^*g)=\dd_p(g\circ f)$.
 
-\para 设$p\in M$，$M$是$n$维光滑流形，则{\kaishu 切空间}$T_pM$被定义为余切空间$T_p^*M$的对偶空间。切空间的元素被称为{\kaishu 切矢量}。由于余切空间是有限维的，他的对偶空间也和他有着相同的维度，即$n$维。
+\para 设$p\in M$，$M$是$n$维光滑流形，则\idx{切空间}$T_pM$被定义为余切空间$T_p^*M$的对偶空间。切空间的元素被称为\idx{切矢量}。由于余切空间是有限维的，他的对偶空间也和他有着相同的维度，即$n$维。
 
 \para 由于切空间是余切空间的对偶空间，所以他是余切空间上的线性函数构成的空间，反过来，由于是有限维的，所以可以认为对偶空间的对偶空间就是原本的空间，这就是说可以将余切空间的矢量看成切空间矢量的线性函数：设$\dd_p f\in T_p^*M$和$v\in T_pM$，定义$\dd_p f(v):=v(\dd_p f)$.
 
 虽然上面这些个定义都很短也很清楚，不过操作上却没有那么简单。下面，我们将一个切矢量扩张到$\calf_p^*$上面去。
 
-\para 设$f$是在$p$附近的光滑函数，而$v\in T_pM$，可以通过$D_v(f_p):=v(f_p-f(p))$定义线性映射$i_p:v\mapsto i_p(v)=D_v\in \calf_p^*$，他是一个单射。
+设$f$是在$p$附近的光滑函数，而$v\in T_pM$，可以通过$D_v(f_p):=v(f_p-f(p))$定义线性映射$i_p:v\mapsto i_p(v)=D_v\in \calf_p^*$，他是一个单射。
 
 注意到$(fg)_p=f_pg_p$，所以
 \begin{align*}
@@ -180,7 +177,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \section{Vector Field}
 和我们以前的直观一样，所谓的矢量场(vector field)就是每一点赋予一个矢量。
 
-\para 设$U\osub M$，$U$上的映射$X:p\mapsto X(p)\in T_pM$被称为$U$上的{\kaishu （切）矢量场}。因为在$U$的每一个局部$V$（至少一个坐标卡内），矢量场$X$都可以写作$X=X^i\partial_i$，其中$X^i$是$V$上的实值函数，而$\partial_i$在不同的点分属不同的切空间。如果$\{X^i\}$在点$p$是光滑函数，则称$X$在$p$处光滑。如果$X$在$U$处处光滑，则称$X$是$U$上的一个光滑矢量场。
+\para 设$U\osub M$，$U$上的映射$X:p\mapsto X(p)\in T_pM$被称为$U$上的\idx{（切）矢量场}。因为在$U$的每一个局部$V$（至少一个坐标卡内），矢量场$X$都可以写作$X=X^i\partial_i$，其中$X^i$是$V$上的实值函数，而$\partial_i$在不同的点分属不同的切空间。如果$\{X^i\}$在点$p$是光滑函数，则称$X$在$p$处光滑。如果$X$在$U$处处光滑，则称$X$是$U$上的一个光滑矢量场。
 
 对矢量场而言，他可以作用在光滑函数上得到一个函数，在局部的作用效果即$Xf=X^i\partial_if$. 显然，如果$X$是要给光滑矢量场，则$Xf$是一个光滑函数。反过来，如果$X^i\partial_if$对任意的光滑函数都光滑，则$X^i$自然也是光滑的，所以有下面一个结论。
 
@@ -190,7 +187,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 下面我们用（光滑）纤维丛的语言来抽象地定义场。
 
-\para \label{bundle} 设$E$, $B$, $F$是三个光滑流形，$\pi:E\to B$是一个光滑映射，若在每一点$p\in B$，都存在一个邻域$U$和光滑同胚$\varphi$使得$\pi^{-1}(U)$同胚于$U \times F$，且如下交换图成立。则称$(E, B, \pi, F)$是一个以$B$为底，以$F$为纤维的{\kaishu 纤维丛}(fiber bundle)。
+\para \label{bundle} 设$E$, $B$, $F$是三个光滑流形，$\pi:E\to B$是一个光滑映射，若在每一点$p\in B$，都存在一个邻域$U$和光滑同胚$\varphi$使得$\pi^{-1}(U)$同胚于$U \times F$，且如下交换图成立。则称$(E, B, \pi, F)$是一个以$B$为底，以$F$为纤维的\idx{纤维丛}(fiber bundle)。
 	\[
 		\xymatrix{
 			\pi^{-1}\left(U\right)\ar[rr]^\varphi \ar[dr]_\pi&&U\times F \ar[dl]^{\mathrm{proj}_1}\\
@@ -198,7 +195,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 			}
 	\]
 
-一般称呼$B\times F$为平凡丛。如果$F$是一个矢量空间，则$(E, B, \pi, F)$被称为一个{\kaishu 矢量丛}。显然，$\calf(M)$是以$M$为底$\rr$为纤维的纤维丛。
+一般称呼$B\times F$为平凡丛。如果$F$是一个矢量空间，则$(E, B, \pi, F)$被称为一个\idx{矢量丛}。显然，$\calf(M)$是以$M$为底$\rr$为纤维的纤维丛。
 
 \para 设$(E, B, \pi, F)$是一个纤维丛，设$U\subset B$是一个开集，则$U$上的光滑截面(section)定义为一个光滑映射$s:B\to E$满足$\pi\circ s=\id_U$.$E$上所有截面的集合通常记做$\Gamma(E)$.
 
@@ -275,7 +272,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 		X=X^i\partial_i=X^1 \frac{\dd x^i}{\dd v^1}\frac{\partial}{\partial x^i}=X^1\partial'_1.
 	\]\qed
 
-设$X$是$U$上的光滑矢量场，对$U$上的每一点$p$，都可以在$p$附近找到他的一条光滑积分曲线$\sigma_p$，上面的点$\sigma_p(t)$我们也记作$\sigma_t(p)$，这样我们就得到了一个新的一族映射$\{\sigma_t:U\to U\}$，当$t=0$的时候，$\sigma_0=\id$.这样的一族映射$\{\sigma_t\}$被称为矢量场$X$的{\kaishu 流}。如果需要明确是那个矢量场的时候写作$\{\sigma^X_t\}$. 由微分方程解的唯一性可以发现$\sigma_t\circ \sigma_s=\sigma_{s+t}$.
+设$X$是$U$上的光滑矢量场，对$U$上的每一点$p$，都可以在$p$附近找到他的一条光滑积分曲线$\sigma_p$，上面的点$\sigma_p(t)$我们也记作$\sigma_t(p)$，这样我们就得到了一个新的一族映射$\{\sigma_t:U\to U\}$，当$t=0$的时候，$\sigma_0=\id$.这样的一族映射$\{\sigma_t\}$被称为矢量场$X$的\idx{流}。如果需要明确是那个矢量场的时候写作$\{\sigma^X_t\}$. 由微分方程解的唯一性可以发现$\sigma_t\circ \sigma_s=\sigma_{s+t}$.
 
 对于一个矢量场，整体流的存在性是不能保证的，比如对$t=1$的时候，是否对每一个$p$变换$\sigma_1$都有意义？但是，至少在局部，我们可以保证在一定范围内的参数都是有意义的，对于局部的问题，这个存在性已经基本够使了。
 
@@ -439,7 +436,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \[
 	\dd f(X)\dd g(Y)-\dd f(Y)\dd g(X)=\dd f\otimes \dd g(X,Y)-\dd g\otimes \dd f(X,Y)=(\dd f\otimes \dd g-\dd g\otimes \dd f)(X,Y).
 \]
-记$\dd f\wedge \dd g=\dd f\otimes \dd g-\dd g\otimes \dd f$，其中的$\wedge$被称为{\kaishu 楔积}，记$D(f\dd g)=\dd f\wedge \dd g$，则式(\theequation)变成了
+记$\dd f\wedge \dd g=\dd f\otimes \dd g-\dd g\otimes \dd f$，其中的$\wedge$被称为\idx{楔积}，记$D(f\dd g)=\dd f\wedge \dd g$，则式(\theequation)变成了
 \[
 	D(f\dd g)(X,Y)=X(\omega(Y))-Y(\omega(X))-\omega([X,Y]).
 \]
@@ -499,7 +496,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 函数$f$的支集$\supp(f)$被定义为$\{x\in M:f(x)\neq 0\}$的闭包。下面关于单位分解的引理的证明看附录，这里仅摘录定义和引理：
 
-\textbf{\pararef{POUdef}} 单位分解：设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在可数个光滑函数$g_i\in \cal(M)$满足：
+\textbf{\eqref{POUdef}} 单位分解：设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在可数个光滑函数$g_i\in \calf(M)$满足：
 
 \no{1} 对于任意的$x\in M$和$i\in I$，都有$0\leq g_i(x)\leq 1$.
 
@@ -525,7 +522,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \no{1} 对于光滑函数$f$，$\dd f$就是我们前面定义的微分。
 
-\no{2} 任取光滑函数$f$，$\dd^2 f=\dd (\dd f)=0$，这来自于\pararef{dd=0}，也是暗示$\dd$作用在1-形式上应该和$D$差不多。
+\no{2} 任取光滑函数$f$，$\dd^2 f=\dd (\dd f)=0$，这来自于\eqref{dd=0}，也是暗示$\dd$作用在1-形式上应该和$D$差不多。
 
 \no{3} 作为微分算符的Leibniz法则：设$\omega$是$k$-形式，则
 \[
@@ -533,7 +530,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 其中$(-1)^k$的出现来自楔积的交换。这个Leibniz法则我们已经在计算$D(f\dd g)$和$\dd(fg)$的时候遇到过了。
 
-\para \label{localform}先假设$\dd$在$U$上是存在的。若$\omega$是$V\osub U$上的$k$-形式，设$W$是$U$的一个开子集且$V$真包含$\overline{W}$.那么正如\pararef{unit}说的，可以找一个单位分解$h$，使得$h|_{\overline{W}}=1$以及$h|_{U-W}=0$，利用他就可以定义一个$U$上的光滑$k$-形式$h\omega$（他在$V$外为零，在$W$内等同于$\omega|_W$）。
+\para \label{localform}先假设$\dd$在$U$上是存在的。若$\omega$是$V\osub U$上的$k$-形式，设$W$是$U$的一个开子集且$V$真包含$\overline{W}$.那么正如\eqref{unit}说的，可以找一个单位分解$h$，使得$h|_{\overline{W}}=1$以及$h|_{U-W}=0$，利用他就可以定义一个$U$上的光滑$k$-形式$h\omega$（他在$V$外为零，在$W$内等同于$\omega|_W$）。
 
 \para \label{regular}设$U$是流形$M$上的开集且$V\osub U$，则存在$V$的一个开覆盖$\{W_\alpha\}_{\alpha\in I}$使得对每个$\alpha$成立$\overline{W_\alpha}\subset V$.
 
@@ -541,17 +538,17 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para \label{localpro}设$V\osub U$，如果$\omega|_V=0$，则$(\dd \omega)|_V=0$，即$\dd$是一个局部算符。
 
-利用\pararef{regular}找一个$V$的开覆盖，我们只要证明对开覆盖中的一个开集$W$，$(\dd \omega)|_{W}=0$即可。同\pararef{localform}利用单位分解找一个光滑函数$h$，则$h\omega$在$U$上恒为零，所以
+利用\eqref{regular}找一个$V$的开覆盖，我们只要证明对开覆盖中的一个开集$W$，$(\dd \omega)|_{W}=0$即可。同\eqref{localform}利用单位分解找一个光滑函数$h$，则$h\omega$在$U$上恒为零，所以
 \[
 	0=\dd (h\omega)=\dd h \wedge \omega +h\dd \omega
 \]
 限制在$W$上，$h|_{W}=1$且$(\dd h)|_{W}=0$（利用$\dd h$是一个微分这一个事实），所以$(\dd \omega)|_{W}=0$.
 
-\pro \label{localdef}利用\pararef{localpro}，设$V\osub U$，如果$U$上存在外微分形式$\dd$，则他诱导出了$V$上的一个外微分形式$\dd_V$。并且，再设$W\osub W$，则$\dd$在$W$上诱导的$\dd_W$和$\dd_V$在$W$诱导的$\dd_{VW}$是相同的。此外$(\dd_V \omega)|_W=\dd_W (\omega|_W)$对任意的$V$上的$k$-形式$\omega$成立。
+\pro \label{localdef}利用\eqref{localpro}，设$V\osub U$，如果$U$上存在外微分形式$\dd$，则他诱导出了$V$上的一个外微分形式$\dd_V$。并且，再设$W\osub W$，则$\dd$在$W$上诱导的$\dd_W$和$\dd_V$在$W$诱导的$\dd_{VW}$是相同的。此外$(\dd_V \omega)|_W=\dd_W (\omega|_W)$对任意的$V$上的$k$-形式$\omega$成立。
 
-\proof 和上面的想法差不多，利用\pararef{regular}，我们可以找一个开覆盖。然后在每个开覆盖中的开集$W$上，同\pararef{localform}利用单位分解找一个光滑函数$h_W$，使得$h_W\omega$成为$U$上的光滑$k$-形式，定义$(\dd_V \omega)|_{W}=\dd (h_W\omega)|_{W}$.
+\proof 和上面的想法差不多，利用\eqref{regular}，我们可以找一个开覆盖。然后在每个开覆盖中的开集$W$上，同\eqref{localform}利用单位分解找一个光滑函数$h_W$，使得$h_W\omega$成为$U$上的光滑$k$-形式，定义$(\dd_V \omega)|_{W}=\dd (h_W\omega)|_{W}$.
 
-设$W'$是开覆盖中的另外的开集，且$W\cap W'\neq \varnothing$。由于$(h_W\omega)|_{W\cap W'}=(h_{W'}\omega)|_{W\cap W'}$，因为\pararef{localpro}，则
+设$W'$是开覆盖中的另外的开集，且$W\cap W'\neq \varnothing$。由于$(h_W\omega)|_{W\cap W'}=(h_{W'}\omega)|_{W\cap W'}$，因为\eqref{localpro}，则
 \[
 	\dd (h_W\omega)|_{W\cap W'}=\dd (h_{W'}\omega)|_{W\cap W'},
 \]
@@ -561,7 +558,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 保证了$(\dd_V \omega)|_W$在相交的开集上是相同的，这就使得我们可以黏结他们定义出一个$V$上的$(k+1)$-形式$\dd_V \omega$. 容易检验$\dd_V$满足所有外微分的性质。至于$\dd_W=\dd_{VW}$，从构造来看，这是显然的。
 
-最后我们来检验等式$(\dd_V \omega)|_W=\dd_W (\omega|_W)$，对$W$利用\pararef{regular}找个开覆盖，在每一个开集$X$上，把上式左边限制到$X$上即$((\dd_V \omega)|_W)|_X=(\dd_V \omega)|_X=\dd(h_X\omega)$，同样，右边限制到$X$上即$(\dd_W (\omega|_W))|_X=\dd(h_X\omega|_W)=\dd(h_X\omega)$，所以等式成立。\qed
+最后我们来检验等式$(\dd_V \omega)|_W=\dd_W (\omega|_W)$，对$W$利用\eqref{regular}找个开覆盖，在每一个开集$X$上，把上式左边限制到$X$上即$((\dd_V \omega)|_W)|_X=(\dd_V \omega)|_X=\dd(h_X\omega)$，同样，右边限制到$X$上即$(\dd_W (\omega|_W))|_X=\dd(h_X\omega|_W)=\dd(h_X\omega)$，所以等式成立。\qed
 
 \para 设$W\subset V$是$U$中的开集，以及$\rho^k_{VW}$和$\rho^{k+1}_{VW}$分别是$k$-形式和$(k+1)$-形式的限制映射。设$\omega$是$V$上的任意$k$-形式，由于$\rho^{k+1}_{VW}\circ \dd_V (\omega)=(\dd_V \omega)|_W=\dd_W (\omega|_W)=\dd_W \circ \rho^k_{VW}(\omega)$，所以我们有
 \[
@@ -585,7 +582,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \pro 在流形$M$上，外微分算子$\dd$存在且唯一。
 
-\proof 有了上面这些铺垫，我们只要在局部证明其唯一存在即可，然后把他拼起来，就像Proposition \pararef{localdef}做的那样。首先证明局部唯一性，为此当然假设$\dd$是存在的。在局部，我们找一族坐标，对于$k$-形式，他写作
+\proof 有了上面这些铺垫，我们只要在局部证明其唯一存在即可，然后把他拼起来，就像Proposition \eqref{localdef}做的那样。首先证明局部唯一性，为此当然假设$\dd$是存在的。在局部，我们找一族坐标，对于$k$-形式，他写作
 \[
 	\omega=\sum_{i_1,\cdots ,i_k} a_{i_1\cdots i_k}\dd x^{i_{1}}\wedge\cdots\wedge x^{i_{k}},
 \]
@@ -662,17 +659,17 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 就是说，头上带帽等于把他去掉。这个式子可以反过来拿来定义$\dd$，而且确实是一个坐标无关的定义。我们并没有那么做，因为就实际计算而言，更多时候我们并不会把形式作用在所有的光滑切矢量场上。
 
-\para 设$f:M\to N$，我们前面已经谈到了，这个$f$在0-形式，即光滑函数之间诱导了一个$f^*$（被称为一个拉回），即$f^*g=g\circ f$. 对于$1$-形式，由\pararef{f*d=df*}，我们知道了$f^*\dd g=\dd (f^* g)$，对比矢量场之间$f_*$的定义还需要$f$是单射，这里1-形式之间的$f^*$则没有这个限制。
+\para 设$f:M\to N$，我们前面已经谈到了，这个$f$在0-形式，即光滑函数之间诱导了一个$f^*$（被称为一个拉回），即$f^*g=g\circ f$. 对于$1$-形式，由\eqref{f*d=df*}，我们知道了$f^*\dd g=\dd (f^* g)$，对比矢量场之间$f_*$的定义还需要$f$是单射，这里1-形式之间的$f^*$则没有这个限制。
 
 \para 通过$(f^*\omega)_p=\omega_{f(p)}\bigl(f_{*p}(X_1)_p,\cdots,f_{*p}(X_k)_p\bigr)$，我们可以定义出$k$-形式之间的$f^*$.
 
 \para 所以，很容易检验，$f^*(\omega\wedge \eta)=(f^*\omega)\wedge (f^*\eta)$.
 
-实际上，这个式子也可以反过来定义$k$-形式之间的$f^*$.可是这样定义可能会遇到一些技术性问题，比如一个$k$-形式大范围来说是否一定能写成一些比较低阶的形式楔积并线性组合而成？如果不，怎么通过上式定义？这个问题的回答是，类似\pararef{localpro}，拉回是一个局部算符，即如果$\omega$在局部为零，则$f^*\omega$也在局部为零，所以我们可以不从大范围考虑这个问题。
+实际上，这个式子也可以反过来定义$k$-形式之间的$f^*$.可是这样定义可能会遇到一些技术性问题，比如一个$k$-形式大范围来说是否一定能写成一些比较低阶的形式楔积并线性组合而成？如果不，怎么通过上式定义？这个问题的回答是，类似\eqref{localpro}，拉回是一个局部算符，即如果$\omega$在局部为零，则$f^*\omega$也在局部为零，所以我们可以不从大范围考虑这个问题。
 
 \para 按照上面这种定义方式，假设$f^*$存在，则$f^*$是一个局部算符。
 
-首先注意到$f^*(h\omega)=(f^*h)(f^*\omega)$。设$\omega$在$U$上为零，利用\pararef{regular}，我们可以找一个$U$开覆盖。然后在每个开覆盖中的开集$W$上，同\pararef{localform}利用单位分解找一个光滑函数$h_W$，则按照上式$f^*(h_W\omega)$只可能在$\overline{W}$内不为零，因此，如果$\omega$在$U$上为零，则$h_W\omega$就恒为零，所以$(f^*h_W)(f^*\omega)=f^*(h_W\omega)=0$. 由于$f^*h_W=h_W\circ f$在$f^{-1}(W)$内等于$1$，所以$(f^*\omega)|_{f^{-1}(W)}=0$，遍历开覆盖，我们就得到了$(f^*\omega)|_{f^{-1}(U)}=0$.
+首先注意到$f^*(h\omega)=(f^*h)(f^*\omega)$。设$\omega$在$U$上为零，利用\eqref{regular}，我们可以找一个$U$开覆盖。然后在每个开覆盖中的开集$W$上，同\eqref{localform}利用单位分解找一个光滑函数$h_W$，则按照上式$f^*(h_W\omega)$只可能在$\overline{W}$内不为零，因此，如果$\omega$在$U$上为零，则$h_W\omega$就恒为零，所以$(f^*h_W)(f^*\omega)=f^*(h_W\omega)=0$. 由于$f^*h_W=h_W\circ f$在$f^{-1}(W)$内等于$1$，所以$(f^*\omega)|_{f^{-1}(W)}=0$，遍历开覆盖，我们就得到了$(f^*\omega)|_{f^{-1}(U)}=0$.
 
 特别地，如果$\omega_1$和$\omega_2$在$U$上相同，则$0=(f^*(\omega_1-\omega_2))|_{f^{-1}(U)}=(f^*\omega_1)|_{f^{-1}(U)}-(f^*\omega_2)|_{f^{-1}(U)}$，这就意味着$f^*\omega_1$和$f^*\omega_2$在局部相同，此即黏合条件。
 
@@ -808,7 +805,7 @@ J^p\circ I^p(\omega)=j_2^*\circ i_2^*(\omega)-j_1^*\circ i_1^*(\omega)
 I^p\left(\sum_Ih_I\dd x_I\right)=(\omega_1,\omega_2).
 \]\qed
 
-将Theorem \pararef{longexact} 和 Proposition \pararef{directsum} 应用到上面这个定理。就得到下面这个定理。
+将Theorem \eqref{longexact} 和 Proposition \eqref{directsum} 应用到上面这个定理。就得到下面这个定理。
 
 \theo Mayer-Vietoris列：
 设$U_1$和$U_2$是$\rr^n$中的开集，则有如下的正合列：
@@ -826,7 +823,7 @@ I^p\left(\sum_Ih_I\dd x_I\right)=(\omega_1,\omega_2).
 
 如果我们已知$U_1$和$U_2$的上同调群，那么通过Mayer-Vietoris列我们就有可能计算他们的并或者交的上同调群。
 
-\para \label{homotopy}两个连续函数$f$, $g:X\to Y$被称为{\kaishu 同伦}的，就是说存在一个连续函数$H:X\times [0,1]\to Y$使得$H(0,x)=f(x)$以及$H(1,x)=g(x)$.同伦是等价关系，就是说，如果还有$h$和$f$同伦，则$g$和$h$也同伦。一个空间$X$是可缩的，如果$\id_X$同伦于映到自身的常值映射。比如$\rr^n$或者与他同胚的开实心球$D^n$都是可缩的。
+\para \label{homotopy}两个连续函数$f$, $g:X\to Y$被称为\idx{同伦}的，就是说存在一个连续函数$H:X\times [0,1]\to Y$使得$H(0,x)=f(x)$以及$H(1,x)=g(x)$.同伦是等价关系，就是说，如果还有$h$和$f$同伦，则$g$和$h$也同伦。一个空间$X$是可缩的，如果$\id_X$同伦于映到自身的常值映射。比如$\rr^n$或者与他同胚的开实心球$D^n$都是可缩的。
 
 两个集合$X$和$Y$称为同伦等价的，如果存在$f:X\to Y$和$g:Y\to X$满足$f\circ g$和$\id_Y$同伦以及$g\circ f$和$\id_X$同伦。下面我们尝试说明，上同调群是同伦不变量。即在同伦意义下，上同调群是同构的。
 
@@ -880,7 +877,7 @@ S^p(\omega)=\sum_J\left(\int_0^1g_J(x,t)\dd t\right)\dd x_J.
 
 利用这个命题，我们可以知道，同伦等价对应到上同调群就有了上同调群的同构，因此上同调群只依赖于同伦型。
 
-\para 由于对于可缩开子集$0^*=\id^*$，所以如果$U\subset \rr^n$可缩，那么$U$上的闭形式是恰当形式。这被称为Poincaré引理，通过他，我们知道可缩开集$U$的上同调群如下，$H^0(U)=\rr$，而对于$p>0$，则为$H^p(U)=0$.
+\para 由于对于可缩开子集$0^*=\id^*$，所以如果$U\subset \rr^n$可缩，那么$U$上的闭形式是恰当形式。这被称为Poincar\'{e}引理，通过他，我们知道可缩开集$U$的上同调群如下，$H^0(U)=\rr$，而对于$p>0$，则为$H^p(U)=0$.
 
 \para 用Mayer-Vietoris列计算$H^{p}(\rr^2-\{0\})$.
 
@@ -981,13 +978,11 @@ $\partial^2=0$和$\dd^2=0$是如此的相似！实际上，我们可以定义$H_
 
 \para 由于每一个$[v_0,\cdots,v_p]$都同胚与标准$p$-单形，所以，在同胚意义下，以标准$p$-单形为定义域的流形上的$p$-单形与定义域为花式的$[v_0,\cdots,v_p]$的流形上的$p$-单形应该是一样多的。所以我们可以限定，流形上的$p$-单形的定义域为标准$p$-单形。
 
-\para 除去一个平移，$[v_0,\cdots,v_p]$完全处于$\rr^p$里面。
-
-由于$[v_0,\cdots,v_p]$里面的点写作$\sum_i a_i v_i$，注意到$\sum_i a_i=1$，我们可以将其改写为
+\para 由于$[v_0,\cdots,v_p]$里面的点写作$\sum_i a_i v_i$，注意到$\sum_i a_i=1$，我们可以将其改写为
 \[
 	\sum_{i=0}^pa_iv_i=\left(1-\sum_{i=1}^pa_i\right)v_0+\sum_{i=1}^pa_iv_i=v_0+\sum_{i=1}^pa_i(v_i-v_0),
 \]
-所以，除去一个平移$v_0$，我们完全可以由$\sum_{i=1}^pa_i(v_i-v_0)$确定一个$p$-单形。显然，他们是光滑同胚的。所以对于$M$上的$p$-单形，我们在微分同胚意义下，还可以假设定义域为
+所以，除去一个平移$v_0$，我们完全可以由$\sum_{i=1}^pa_i(v_i-v_0)$确定一个$p$-单形。显然，他们是光滑同胚的。所以对于$M$上的$p$-单形，我们在光滑同胚意义下，还可以假设定义域为
 \[
 	\Delta^p=\left\{(a_1,\cdots,a_p):a_i\geq 0\text{ and }\sum_i a_i\leq 1\right\},
 \]
@@ -1098,12 +1093,11 @@ $\partial^2=0$和$\dd^2=0$是如此的相似！实际上，我们可以定义$H_
 \]
 对右侧第一项做一个适当的变量替换$\varphi^i$如下
 \[
-	\varphi^i(x)=
-	\begin{cases}
-	x,& i=1;\\
-	(1-\sum_{i=1}^{p-1}x^i,x^2,\cdots,x^{p-1}),& i=2;\\
-	(x^2,\cdots,x^{i-1},1-\sum_{i=1}^{p-1}x^i,x^{i+1},\cdots,x^{p-1}),& 2<i\leq p.
-\end{cases}
+	\varphi^i(x)=\begin{cases}
+		x,& i=1;\\
+		\bigl(1-\sum_{i=1}^{p-1}x^i,x^2,\cdots,x^{p-1}\bigr),& i=2;\\
+		\bigl(x^2,\cdots,x^{i-1},1-\sum_{i=1}^{p-1}x^i,x^{i+1},\cdots,x^{p-1}\bigr),& 2<i\leq p.
+	\end{cases}
 \]
 容易证明$\varphi^i(\Delta^{p-1})=\Delta^{p-1}$以及$\det ((\varphi^i)_*)=1$，所以，由重积分变量替换公式，我们得到
 \[

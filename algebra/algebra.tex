@@ -6,9 +6,7 @@
 	\CTEXoptions[today=old]
 	\CTEXoptions[contentsname=Table of Contents]
 \usepackage[section]{../egastyle}
-\usepackage{titletoc, makeidx}
-	\makeindex
-	\renewcommand{\indexname}{Index}
+\usepackage{titletoc}
 \usepackage[titletoc,title]{appendix}
 	\renewcommand{\appendixname}{Appendix}
 
@@ -17,16 +15,11 @@
 
 \input{../defs.tex}
 	\newcommand{\cc}{\mathbb{C}}
-	\newcommand{\lag}{{\mathfrak{g}}}
-	\DeclareMathOperator{\ad}{ad}
-	\DeclareMathOperator{\Int}{int}
-	\DeclareMathOperator{\lie}{Lie}
-\newcommand{\idx}[1]{{\kaishu #1\index{#1}}}
 
 \begin{document}
 \thispagestyle{empty}
 	\begin{flushright}
-	{\Huge\bfseries Manifold}\\[\baselineskip]
+	{\Huge\bfseries Algebra}\\[\baselineskip]
 	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
 	{by Buwai Lee@Shanghai Nanyang Model High School}\par
 	\today
@@ -38,11 +31,10 @@
 \frontmatter
 \tableofcontents
 \mainmatter
-	\input{calculus.tex}
-	\input{lie_group.tex}
-	\input{connection.tex}
+	\input{foundation.tex}
+	\input{field.tex}
+	% \input{connection.tex}
 	\input{appendix.tex}
-\backmatter
-	\printindex
-	\input{references.tex}
+% \backmatter
+% 	\input{references.tex}
 \end{document}

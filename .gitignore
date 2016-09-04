@@ -227,6 +227,7 @@ pip-log.txt
 *.blg
 *.bbl
 *.toc
+*.ilg
 *.idx
 *.ind
 *.ilg
