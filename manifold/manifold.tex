@@ -1,7 +1,6 @@
 % author: buwailee@nmhs
-\documentclass[9pt]{extbook}
-\usepackage[book,zh]{noteheader}
-% \usepackage[fontset=windows]{ctex}
+\documentclass[9pt,twoside,openany,svgnames,x11names]{extbook}
+\usepackage[zh,book]{noteheader}
 \usepackage{ctex}
 	\CTEXoptions[today=old]
 	\CTEXoptions[contentsname=Table of Contents]
@@ -34,10 +33,10 @@
 	\vfill
 	{\Large\itshape Just for fun}
 \clearpage
-\thispagestyle{empty}
 \frontmatter
 \tableofcontents
 \mainmatter
+\pagestyle{headings}
 	\input{calculus.tex}
 	\input{lie_group.tex}
 	\input{connection.tex}

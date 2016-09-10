@@ -220,6 +220,7 @@ pip-log.txt
 *.djvu
 
 # tex compile fies
+*.png
 *.fls
 *.aux
 *.dvi
