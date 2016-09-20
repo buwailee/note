@@ -1,20 +1,20 @@
 % !TEX root = main.tex
 \renewcommand\chapterimg{Pictures/7.png}
-\chapter{Basic Definitions}
+\chapter{一些定义}
 
 我们假设本文所出现的环都是含幺交换环，即有一个乘法单位元的交换环，并且，我们所谓的环同态，他将单位元映到单位元。特别地，我们约定，零环即$R=\{0\}$，其中乘法单位元和加法单位元相等，即$0=1$。在环（即我们这里所谓的环）范畴中，零环的地位大致相当于集合范畴中的空集。所以下面我们在提到环的时候，经常是默认该环不是零环。此外，我们下面谈及的模也都是含幺交换环上的模，所以不分左右双边。
 
-\section{Sheafs and Ringed Spaces}
+\section{层与赋环空间}
 
-\para 一个拓扑空间$X$能被看成一个范畴，对象是他的开集，而态射取作
+\para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
 \[
-	\mathrm{Mor}_{X}(U,V)=\begin{cases}
+	\Hom_{X}(U,V)=\begin{cases}
 	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
 	\varnothing&\text{, otherwise}.
 	\end{cases}
 \]
 
-\para 对于任意的范畴$K$，一个拓扑空间$X$，我们称呼一个取值在$K$中的预层$\calf$（简称为$K$-预层）是一个$X\to K$的反变函子，特别地，记态射$\calf(i^U_V)$为$\rho^U_V$. $\calf(U)$中的元素$s$被称为$U$上的一个截面，而$s|_V:=\rho^U_V(s)$被称为截面$s$在$V$上的限制。
+\para 对于任意的范畴$K$，一个拓扑空间$X$，我们称呼一个取值在$K$中的\idx{预层}$\calf$（简称为$K$-预层）是一个$X\to K$的反变函子，特别地，记态射$\calf(i^U_V)$为$\rho^U_V$，称为限制态射。 $\calf(U)$中的元素$s$被称为$U$上的一个\idx{截面}，而$s|_V:=\rho^U_V(s)$被称为截面$s$在$V$上的限制。
 
 \para 设$A\in K$是范畴$K$里面的一个对象，而$\calf$是$X$上的一个预层，$U$是$X$的任意开子集, 而$\{U_\alpha\}_{\alpha\in I}$是$U$的任意开覆盖，如果存在态射族$\{\varphi_\alpha:A\to \calf(U_\alpha)\}_{\alpha\in I}$使得下图交换（画图的时候省去了限制映射）
 \[
@@ -31,9 +31,9 @@
 		&\calf(U_\alpha)\ar[r]&\calf(U_{\alpha}\cap U_{\beta})
 	}
 \]
-预层$\calf$被称为一个层。这些条件被称为层公理。如果需要明确取值的范畴是$K$，则称为$K$-层。
+预层$\calf$被称为一个\idx{层}。这些条件被称为层公理。如果需要明确取值的范畴是$K$，则称为$K$-层。
 
-\para 所有$X$上的预层构成一个范畴，态射就是所谓的函子间态射，或者叫做自然变换：设$\calf$和$\calg$是$X$上的两个预层，设$\varphi(U)$是使得如下交换图交换的一族态射，
+\para 所有$X$上的预层构成一个范畴，态射就是所谓的函子间态射，或者叫做\idx{自然变换}：设$\calf$和$\calg$是$X$上的两个预层，设$\varphi(U)$是使得如下交换图交换的一族态射，
 \[
 	\xymatrix{
 		\calf(U)\ar[rr]^{\varphi(U)} \ar[d]_{\rho^U_V}&&\calg(U) \ar[d]^{\pi^U_V}\\
@@ -48,7 +48,7 @@
 
 另一个例子来自代数簇，设$X$是一个代数簇，他的每一个开集$U$都是一个子代数簇，自然有相应的正则函数环$\calf(U)$，则这是也给预层，$U$上的截面就是$U$上的正则函数。这依然是一个层，因为正则性还是局部概念，可以拼接的理由同上。
 
-\para 设$\calf$是$X$上的一个预层，如果范畴$K$能容纳colimit，那么定义$\calf$在$p\in X$处的纤维$\calf_p$为$\varinjlim \calf(U)$，其中$U$跑遍所有$p$的邻域，这些领域通过包含构成一个显然的direct system。
+\para 设$\calf$是$X$上的一个预层，如果范畴$K$能容纳colimit，那么定义$\calf$在$p\in X$处的\idx{纤维}$\calf_p$为$\varinjlim \calf(U)$，其中$U$跑遍所有$p$的邻域，这些领域通过包含构成一个显然的direct system。
 
 对于交换群范畴，直接写出具体构造还是比较方便的，$\calf_p$中的元素是这样的等价类$\langle U,f\rangle$的全体，其中$f$是$U$上的截面，而$U$是$p$的邻域。等价关系定义为$\langle U,f\rangle\sim \langle V,g\rangle$，当且仅当存在一个$p$的邻域$W\subset U\cap V$使得$f|_W=g|_W$.
 
@@ -73,15 +73,15 @@
 
 \proof 选取包含在某个开覆盖的开集的全体，这是全空间的一个拓扑基，命题中的黏合条件自然地给出层的条件。详细见[EGA, Chap 0, 3.3].\qed
 
-\para 设$\varphi:X\to Y$是拓扑空间之间的连续映射，而$\calf$是$X$上的一个预层，则通过$f_*\calf(U)=\calf(f^{-1}(U))$我们可以定义出$Y$上的一个预层$f_*\calf$，他被称为$\calf$关于$f$的顺像。 由于原象是保持包含关系的，即如果$V\subset U$，则$f^{-1}(V)\subset f^{-1}(U)$，所以$f_*\calf$上的限制映射就很自然地习作f. 不难检验，当$\calf$是$X$上的一个层的时候，$f_*\calf$是$Y$上的一个层。
+\para 设$\varphi:X\to Y$是拓扑空间之间的连续映射，而$\calf$是$X$上的一个预层，则通过$f_*\calf(U)=\calf(f^{-1}(U))$我们可以定义出$Y$上的一个预层$f_*\calf$，他被称为$\calf$关于$f$的\idx{顺像}。 由于原象是保持包含关系的，即如果$V\subset U$，则$f^{-1}(V)\subset f^{-1}(U)$，所以$f_*\calf$上的限制映射就很自然地写作$\pi^U_V=\rho^{f^{-1}(U)}_{f^{-1}(V)}$. 不难检验，当$\calf$是$X$上的一个层的时候，$f_*\calf$是$Y$上的一个层。
 
 设$\varphi:\calf\to\calg$是$X$上两个预层之间的态射，那么，很自然，$f$诱导了一个新的态射$f_*\varphi:f_*\calf\to f_*\calg$，具体写出来就是$(f_*\varphi)(U)=\varphi(f^{-1}(U))$，通过自然变换$\varphi$可以验证$f_*\varphi$是一个自然变换。
 
 考虑两个连续映射的复合，很自然地可以验证$(f\circ g)_*=f_*\circ g_*$，这来自于关于原象的等式$(f\circ g)^{-1}(U)=g^{-1}(f^{-1}(U))$.
 
-\para 所谓的赋环空间(ringed space)，就是一个拓扑空间$X$，和拓扑空间上的环层$\mathcal{O}_X$构成的资料$(X,\mathcal{O}_X)$. 流形和上面的光滑函数构成一个赋环空间，同样，代数簇和上面的正则函数构成一个赋环空间。
+\para 所谓的\idx{赋环空间}(ringed space)，就是一个拓扑空间$X$，和拓扑空间上的环层$\mathcal{O}_X$构成的资料$(X,\mathcal{O}_X)$. 流形和上面的光滑函数构成一个赋环空间，同样，代数簇和上面的正则函数构成一个赋环空间。
 
-所谓的局部赋环空间，就是说任意一点$p\in X$处的纤维$\mathcal{O}_p=\varinjlim \mathcal{O}_X(U)$是局部环。流形的例子是一个局部赋环空间，因为在$p$附近的光滑函数，如果在$p$处不为零，则存在一个邻域是可逆的，故而，在$p$处为零的光滑函数构成的等价类是唯一的极大理想。代数簇的例子还是一个局部赋环空间，因为代数簇局部是仿射的，所以我们可以假设这是一个仿射簇，对于仿射簇而言，$X$中的点$p$（如果是非代数闭的情况，那就是一条Galois轨道）一一对应着坐标环$A(X)$中的一个极大理想$\mm_p$（这来自于Hilbert零点定理），而$\mathcal{O}_p$正好同构于$A(X)$关于$\mm_p$的局部化，所以是一个局部环。
+所谓的\idx{局部赋环空间}，就是说任意一点$p\in X$处的纤维$\mathcal{O}_p=\varinjlim \mathcal{O}_X(U)$是局部环。流形的例子是一个局部赋环空间，因为在$p$附近的光滑函数，如果在$p$处不为零，则存在一个邻域是可逆的，故而，在$p$处为零的光滑函数构成的等价类是唯一的极大理想。代数簇的例子还是一个局部赋环空间，因为代数簇局部是仿射的，所以我们可以假设这是一个仿射簇，对于仿射簇而言，$X$中的点$p$（如果是非代数闭的情况，那就是一条Galois轨道）一一对应着坐标环$A(X)$中的一个极大理想$\mm_p$（这来自于Hilbert零点定理），而$\mathcal{O}_p$正好同构于$A(X)$关于$\mm_p$的局部化，所以是一个局部环。
 
 赋环空间之间的态射如下定义：设有赋环空间$(X,\mathcal{O}_X)$和$(Y,\mathcal{O}_Y)$，以及连续映射$\psi:X\to Y$和$Y$上的层之间的同态$\theta:\mathcal{O}_Y\to \psi_*\mathcal{O}_X$，这样的一个二元组$\Psi=(\psi,\theta)$构成了赋环空间范畴的同态，记做$\Psi:(X,\mathcal{O}_X)\to (Y,\mathcal{O}_Y)$.
 
@@ -91,9 +91,9 @@
 \]
 写成$(\psi'_*\theta)\circ \theta'$的形式。
 
-\para 有了顺像，我们现在考虑逆像，设$\psi:X\to Y$是一个连续映射，而$\calf$是$X$上的一个层，$\calg$是$Y$上的一个预层。预层$\calg$关于$\psi$的逆像首先是这样一个二元组$(\psi^*\calg,\rho_\calg)$，其中$\psi^*\calg$是$X$上的层，而$\rho_\calg$是$\calg$到$\psi_*\psi^*\calg$的典范态射。其次对于任意的态射$u:\calg \to \psi_*\calf$，都可以找到唯一的态射$v:\psi^*\calg \to \calf$使得分解$u:\calg\xrightarrow{\rho_\calg} \psi_*\psi^*\calg \xrightarrow{\psi_*v} \psi_*\calf$成立。换而言之，集合$\Hom_X(\psi^*\calg,\calf)$和$\Hom_Y(\calg,\psi_*\calf)$之间存在双射。$(\psi^*\calg,\rho_\calg)$满足的是一个泛性质，所以逆像确定到一个同构上。当然对于逆像的存在性我们现在还不清楚。
+\para 有了顺像，我们现在考虑逆像，设$\psi:X\to Y$是一个连续映射，而$\calf$是$X$上的一个层，$\calg$是$Y$上的一个预层。预层$\calg$关于$\psi$的\idx{逆像}首先是这样一个二元组$(\psi^*\calg,\rho_\calg)$，其中$\psi^*\calg$是$X$上的层，而$\rho_\calg$是$\calg$到$\psi_*\psi^*\calg$的典范态射。其次对于任意的态射$u:\calg \to \psi_*\calf$，都可以找到唯一的态射$v:\psi^*\calg \to \calf$使得分解$u:\calg\xrightarrow{\rho_\calg} \psi_*\psi^*\calg \xrightarrow{\psi_*v} \psi_*\calf$成立。换而言之，集合$\Hom_X(\psi^*\calg,\calf)$和$\Hom_Y(\calg,\psi_*\calf)$之间存在双射。$(\psi^*\calg,\rho_\calg)$满足的是一个泛性质，所以逆像确定到一个同构上。当然对于逆像的存在性我们现在还不清楚。
 
-特别地，$1_X:X\to X$是恒同映射，对于$X$上的预层$\calf$，如果层$1_X^*\calf$存在，则他称为$\calf$的伴随层，有时候也被记做$\calf^+$. 对于任意的层$\calf'$和态射$u:\calf\to\calf'$，总有唯一分解$u:\calf\xrightarrow{\rho_\calf} \calf^+ \xrightarrow{v} \calf'$成立。这意味着层的伴随层与自己同构。
+特别地，$1_X:X\to X$是恒同映射，对于$X$上的预层$\calf$，如果层$1_X^*\calf$存在，则他称为$\calf$的\idx{伴随层}，有时候也被记做$\calf^+$. 对于任意的层$\calf'$和态射$u:\calf\to\calf'$，总有唯一分解$u:\calf\xrightarrow{\rho_\calf} \calf^+ \xrightarrow{v} \calf'$成立。这意味着层的伴随层与自己同构。
 
 \para 对于一些特殊情况，逆像层总是存在的。考虑一个内含映射的例子，设$U$是$X$的开子集，相应的内含映射为$i:U\hookrightarrow X$。对于$X$上的$K$-层$\calf$，$\calf|_U$即其在$U$上的逆像层$i^*\calf$.
 
@@ -179,14 +179,13 @@
 
 \para 设$w:\calg_1\to \calg_2$是$Y$上的一个$K$-预层同态，如果$\calg_2$和$\calg_2$关于$\psi:X\to Y$的逆像是存在的，则复合$\rho_{\calg_2}\circ w:\calg_1\to \psi_*\psi^*\calg_2$，由逆像的泛性质，我们可以找到一个态射$v:\psi^*\calg_1\to \psi^*\calg_2$来分解上面的复合态射，我们将其记做$\psi^*(w)$，他将$Y$上的$K$-预层同态，变成了$X$上的$K$-层同态。这里不加验证，$\psi^*(w_1)\circ \psi^*(w_2)=\psi^*(w_1\circ w_2)$，所以这是一个协变函子。
 
-\para 设$(X,\mathcal{O}_X)$是一个赋环空间，我们称$\calf$是一个$\mathcal{O}_X$-模层，如果对每一个开集$U$，$\calf(U)$都是一个$\mathcal{O}_X(U)$-模，并且$\calf$和$\mathcal{O}_X$的限制映射是相容的，即：设$V\subset U$是$X$的开子集，记$\calf$的限制映射为$\pi^U_V$，相应地$\mathcal{O}_X$的限制映射为$\rho^U_V$，那么对于标量乘法而成的截面$a\cdot s\in\calf(U)$，则$\pi^U_V(a\cdot s)=\rho^U_V(a)\cdot \pi^U_V(s)$.
-类似地，我们定义什么叫$\mathcal{O}_X$-代数层：环层$\calf$被称为$\mathcal{O}_X$-代数层，如果他是一个$\mathcal{O}_X$-模层。
+\para 设$(X,\mathcal{O}_X)$是一个赋环空间，我们称$\calf$是一个$\mathcal{O}_X$-\idx{模层}，如果对每一个开集$U$，$\calf(U)$都是一个$\mathcal{O}_X(U)$-模，并且$\calf$和$\mathcal{O}_X$的限制映射是相容的，即：设$V\subset U$是$X$的开子集，记$\calf$的限制映射为$\pi^U_V$，相应地$\mathcal{O}_X$的限制映射为$\rho^U_V$，那么对于标量乘法而成的截面$a\cdot s\in\calf(U)$，则$\pi^U_V(a\cdot s)=\rho^U_V(a)\cdot \pi^U_V(s)$. 类似地，我们定义什么叫$\mathcal{O}_X$-\idx{代数层}：环层$\calf$被称为$\mathcal{O}_X$-代数层，如果他是一个$\mathcal{O}_X$-模层。
 
-我们知道$\mathcal{O}_X(U)$自己作为$\mathcal{O}_X(U)$-模的子模就是$\mathcal{O}_X(U)$的理想，所以一个$\mathcal{O}_X$的$\mathcal{O}_X$-子模层，被称为$\mathcal{O}_X$-理想层。
+我们知道$\mathcal{O}_X(U)$自己作为$\mathcal{O}_X(U)$-模的子模就是$\mathcal{O}_X(U)$的理想，所以一个$\mathcal{O}_X$的$\mathcal{O}_X$-子模层，被称为$\mathcal{O}_X$-\idx{理想层}。
 
-\para 考虑任意的指标集$I$，以及一系列$\mathcal{O}_X$-模层$\{\calf_i\}_{i\in I}$，直接用直积（即模范畴的product）的泛性质去检验层需要满足的泛性质\footnote{设$\{U_\alpha\}$是$U$的一个开覆盖。对于每一个$i$，任意的同态$A\to \prod_{i\in I}\calf_i(U_\alpha)$都可以复合典范投影得到同态$A\to \calf_i(U_\alpha)$，然后利用$\calf_i$是个层，我们就得到了同态$A\to \calf_i(U)$，最后利用product的泛性质就得到了同态$A\to \prod_{i\in I}\calf_i(U)$. 其他的同态的交换性不难检验。}，可以看到预层$U\mapsto \prod_{i\in I}\calf_i(U)$依然是一个环层。他被称作直积层，记做$\prod_{i\in I}\calf_i$.
+\para 考虑任意的指标集$I$，以及一系列$\mathcal{O}_X$-模层$\{\calf_i\}_{i\in I}$，直接用直积（即模范畴的product）的泛性质去检验层需要满足的泛性质\footnote{设$\{U_\alpha\}$是$U$的一个开覆盖。对于每一个$i$，任意的同态$A\to \prod_{i\in I}\calf_i(U_\alpha)$都可以复合典范投影得到同态$A\to \calf_i(U_\alpha)$，然后利用$\calf_i$是个层，我们就得到了同态$A\to \calf_i(U)$，最后利用product的泛性质就得到了同态$A\to \prod_{i\in I}\calf_i(U)$. 其他的同态的交换性不难检验。}，可以看到预层$U\mapsto \prod_{i\in I}\calf_i(U)$依然是一个环层。他被称作\idx{直积层}，记做$\prod_{i\in I}\calf_i$.
 
-而对于直和（即模范畴的coproduct），箭头反过来了导致预层$U\mapsto \bigoplus_{i\in I}\calf_i(U)$就不一定是一个层。所以我们定义直和层为上述预层的伴随层，记做$\bigoplus_{i\in I}\calf_i$. 对于有限指标集$I$，直和和直积等价，所以$U\mapsto \bigoplus_{i\in I}\calf_i(U)$此时就是一个层。
+而对于直和（即模范畴的coproduct），箭头反过来了导致预层$U\mapsto \bigoplus_{i\in I}\calf_i(U)$就不一定是一个层。所以我们定义\idx{直和层}为上述预层的伴随层，记做$\bigoplus_{i\in I}\calf_i$. 对于有限指标集$I$，直和和直积等价，所以$U\mapsto \bigoplus_{i\in I}\calf_i(U)$此时就是一个层。
 
 \para 考虑一个$\mathcal{O}_X$-模层同态$u:\mathcal{O}_X\to \calf$，这个同态完全由截面$s=u(X)(1)\in \calf(X)$决定，其他的任意截面$t\in \mathcal{O}_X(U)$，则$u(U)(t)=t\cdot (s|_U)$.
 
@@ -194,11 +193,11 @@
 
 \para 现在，我们来看所谓的有限生成模等概念如何推广到模层上面来。回忆一下，$R$-模$M$称被某个集合$E\subset M$生成，就是说，$M$是所有$s\in E$生成的自由模$R^{(E)}$的商模，即如下正和列成立$R^{(E)}\to M \to 0$. 所谓的有限生成，即是指存在一个有限集$E$生成$M$。
 
-所以一个$\mathcal{O}_X$-模层$\calf$被称作被截面$\{s_i\}_{i\in I}$生成，就是说由截面$\{s_i\}_{i\in I}$定义的同态$\mathcal{O}_X^{(I)}\to \calf$是满射。类似地，$\calf$被称为有限生成$\mathcal{O}_X$-模层，如果存在一族有限截面$\{s_i\}_{i\in I}$生成他。
+所以一个$\mathcal{O}_X$-模层$\calf$被称作被截面$\{s_i\}_{i\in I}$生成，就是说由截面$\{s_i\}_{i\in I}$定义的同态$\mathcal{O}_X^{(I)}\to \calf$是满射。类似地，$\calf$被称为\idx{有限生成}$\mathcal{O}_X$-模层，如果存在一族有限截面$\{s_i\}_{i\in I}$生成他。
 
 \para 设$u:\calf\to \calg$是$\mathcal{O}_X$-模层同态，那么我们定义$U\to \ker(u(U))$, $U\to \im(u(U))$, $U\to \coker(u(U))$的伴随层为相应的$\mathcal{O}_X$-模层$\ker(u)$, $\im(u)$以及$\coker(u)$. $u$被称为满的，就是说$\im(u)=\calg$，$u$被称为单的$\ker(u)=0$. 进而我们可以谈论层之间的正和列。
 
-\para 一个$\mathcal{O}_X$-模层$\calf$被称作拟凝聚的，就是说，对任意的$x\in X$，存在他的一个开邻域$U$使得$\calf|_U$同构于某个形如$\mathcal{O}_X^{(I)}|_U\to \mathcal{O}_X^{(J)}|_U$的同态的余核，此处$I$, $J$是任意的指标集。如果一个$\mathcal{O}_X$-代数层作为$\mathcal{O}_X$-模层是拟凝聚的，则他被称为拟凝聚$\mathcal{O}_X$-代数层。或者说，在每一点附近都有一个开邻域$U$使得如下正和列成立
+\para 一个$\mathcal{O}_X$-模层$\calf$被称作\idx{拟凝聚}的，就是说，对任意的$x\in X$，存在他的一个开邻域$U$使得$\calf|_U$同构于某个形如$\mathcal{O}_X^{(I)}|_U\to \mathcal{O}_X^{(J)}|_U$的同态的余核，此处$I$, $J$是任意的指标集。如果一个$\mathcal{O}_X$-代数层作为$\mathcal{O}_X$-模层是拟凝聚的，则他被称为拟凝聚$\mathcal{O}_X$-代数层。或者说，在每一点附近都有一个开邻域$U$使得如下正和列成立
 \[
 	\mathcal{O}_X^{(I)}|_U\to \mathcal{O}_X^{(J)}|_U\to \calf|_U\to 0.
 \]
@@ -206,7 +205,55 @@
 
 % 后面我们会看到，每一个环都有一个自然的拓扑空间，在这个拓扑空间上有一个环层，这俩构成一个局部赋环空间。对于一个$R$-模$M$，因为$R$已经诱导了一个局部赋环空间，我们在上面还将搞出一个模层，称为$M$的伴随层。所谓的拟凝聚模层就是局部是某个模的伴随层。这点可以类比流形，局部是欧几里得的。
 
-\section{Affine Schemes and Associated Sheaf}
+\section{拓扑空间的复习}
+
+\para 一个拓扑空间$X$被称为\idx{拟紧}的，如果对于他的任意开覆盖$\{U_\alpha\}_{\alpha\in I}$，都存在$I$的某个有限子集$J$使得$\{U_\alpha\}_{\alpha\in J}$也是$X$的开覆盖。或者说简单点，$X$是紧的，如果对于任意$X$的开覆盖都存在有限子覆盖。
+
+% \para 任意集合$X$的幂集$P(X)$上可以用包含关系定义一个偏序：设$U$, $V\in P(X)$，$U\leq V$当且仅当$U\subset V$. 任意幂集的子集可以继承这个偏序。
+
+% 由于偏序集$(X,\leq)$可以通过$x\leq' y$当且仅当$y\leq x$定义一个新的偏序$\leq'$，在新的偏序下，上界变成了下届，极大变成了极小，所以Zorn引理可以改写为极小版本：如果非空偏序集$(X,\leq)$中任意一条链都有下界，则$X$中存在极小元。
+
+\pro 下列命题等价：
+
+\no{1} $X$是拟紧的。
+
+\no{2} 对任意的闭集族$\{V_\alpha\}_{\alpha\in I}$，如果$\bigcap_{\alpha\in I} V_\alpha=\varnothing$，则存在有限子集$J\subset I$使得$\bigcap_{\alpha\in J} V_\alpha=\varnothing$.
+
+\no{3} 对任意的闭集族$\{V_\alpha\}_{\alpha\in I}$，如果对任意有限子集$J\subset I$都有$\bigcap_{\alpha\in J} V_\alpha\neq\varnothing$，则$\bigcap_{\alpha\in I} V_\alpha\neq\varnothing$.
+
+\proof (1)等价(2)因为交和并可以用补集联系，而(2)等价(3)因为他们是逆否命题。\qed
+
+\para 利用第二点，可以知道拟紧空间的闭子集也是拟紧的。利用第三点，我们可以知道，如果$X$是拟紧的，则其中任意递减非空闭集构成的链中所有元素的交非空。
+
+\para 如果偏序集$E$的任意非空子集都有极小元，则称$E$满足极小条件。
+
+\pro 设$E$是一个满足极小条件的偏序集，且$P$是关于$E$中元素的某个性质，假设性质$P$满足：对$a\in E$，若$x< a$时$P(x)$均成立，则$P(a)$也成立。则由这些条件可以推出$P(x)$对所有$x\in E$都成立，这杯称为Noether递归原理。
+
+\proof 考虑那些使得$P(x)$不成立的$x$构成的子集$F$，如果$F$非空，那么他存在一个极小元$a$，于是当$x< a$的时候$P(x)$均成立，所以$P(a)$也成立，矛盾。\qed
+
+\para 一个拓扑空间被称为是Noetherian的，就是说闭集链满足d.c.c.，这其实也等价说，Noether拓扑空间的闭集族满足极小条件。再或者等价地，开集族满足极小条件。对于在模范畴里面，满足a.c.c.的才是Noetherian的，到拓扑空间反过来后面我们会看到这是自然的。如同模范畴里面那样，Noether性是一种有限性条件，如同上面的拟紧性一样。
+
+\para 从定义可以很轻松看出，Noether拓扑空间的子空间也是Noether拓扑空间。反之，如果一个拓扑空间是有限个Noether拓扑空间的并，则其也是Noether拓扑空间。
+
+\para Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
+
+设$\{U_\alpha\}_{\alpha\in I}$是$X$的一个开覆盖，以及$\mathscr{A}$是所有$I$的有限子集构成的族，偏序关系定义为：$J\leq K$当且仅当$U_J\subset U_K$，其中$U_J=\bigcup_{\alpha\in J}U_\alpha$. 由Noether拓扑空间开集族满足极大条件，则$\mathscr{A}$中存在一个极大元$J$，下面使用反证法证明$X=U_J$，而这就说明$J$是我们需要的有限子覆盖。
+
+如果存在某个$x\in X-U_J$，因为$\{U_\alpha\}_{\alpha\in I}$是$X$的开覆盖，所以存在$\beta \in I$使得$x\in U_\beta$，可以构造$K=J\cup \{\beta\}$也是$I$的有限子集，且$U_J\subsetneq U_K$，所以$J$就不是一个极大元。证毕。
+
+\para 现在转而走进\idx{不可约}性，所谓不可约的拓扑空间，就是说该拓扑空间是非空的，且不能表示为两个真闭子集的并。这个定义可以转而描述为，他是非空的且其中任意非空开集的交非空，或者任意非空开集在其中稠密，或者任意开集都连通。从定义可以直接得出，不可约拓扑空间的非空开子集也是不可约的。
+
+\para 如果$X$的一个稠密子集$Y$是不可约的，则$X$是不可约的。
+
+假设$X$是可约的，那么存在$X$的两个非空闭子集，使得他们的并是$X$，这两个闭子集交上$Y$构成两个$Y$中的非空闭子集他们的并是$Y$，因此$Y$可约。逆否即证毕。
+
+利用这个小命题，我们得出，一个拓扑空间$X$的子空间$Y$是不可约的，当且仅当$Y$的闭包$\bar{Y}$是不可约的。反方向并不困难。特别地，单点的闭包$\overline{\{x\}}$总是不可约的。
+
+\para 现设$X$是不可约的，而$x$是$X$中的一个点，如果$\overline{\{x\}}=X$，则$x$称为$X$的一个\idx{一般点}。如果$X$满足一些分离公理，比如$T_0$公理：对于$X$的任意两点$x$和$y$，总存在一个只包含其中一个点的开集，则一般点的存在是唯一的，因为任意开集都包含所有的一般点。
+
+因为任意开集都包含一般点，且不可约空间的开子集都是不可约的，所以那个一般点也是开子集的一般点。
+
+\section{仿射概形与伴随层}
 
 \para 设$R$是一个交换环，所有$R$的素理想构成一个集合，记作$\spec(R)$，称为$R$的素谱。如果$R$是零环，则$R$没有素理想，所以$\spec(R)=\varnothing$，我们一般对此没什么兴趣。所以类似一开始说的一般原则，我们默认$R$不是零环。
 
@@ -226,21 +273,47 @@
 
 \para 定义$D(f):=\{x\in \spec(R)\,:\, f(x)\neq 0\}$，我们下面的目标是让$f(x)$尽可能看上去像一个连续函数，我们要证明$D(f)$满足开集公理。等价地，我们要验证$V(f):=\{x\in \spec(R)\,:\, f(x)=0\}=\{\pp\in \spec(R)\,:\, (f)\subset \pp\}$满足闭集公理，或者更一般地，我们可以验证$V(E):=\{\pp\in \spec(R)\,:\, E\subset \pp\}$满足闭集公理，其中$E$是$R$的任意子集。
 
+可以注意到$V$的一些性质，比如对$R$的任意子集$E$，显然有$V(E)=V((E))$，其中$(E)=ER$是$E$生成的理想，由于$\sqrt{(E)}$是所有包含$(E)$的素理想的交，所以有$V(E)=V((E))=V(\sqrt{(E)})$. 再比如，如果$E\subset F$，则$V(F)\subset V(E)$.
+
 \pro $V(E)$确实满足闭集公理，所以$\spec(R)$以$V(E)$为闭集是一个拓扑空间。
 
 \proof 显然的是$V(1)=\varnothing$以及$V(0)=\spec(R)$，剩下的我们需要检验$\bigcap_{i\in I}V(E_i)=V(\bigcup_{i\in I}E_i)$. 设$\pp \in \bigcap_{i\in I}V(E_i)$，则$\pp\in V(E_i)$对$i\in I$都成立，这等价于$E_i\subset \pp$对$i\in I$都成立，而这又等价于$\bigcup_{i\in I}E_i \subset \pp$，因此得证。\qed
 
 作为推论，我们可以得出$D(f)$是开集，更加神奇的是，他构成了$\spec(R)$的一个拓扑基。设$U$是任意的开集，则其写作$U=\spec(R)-V(E)$的形式，而$\spec(R)-V(E)=\spec(R)-V\bigl(\bigcup_{f\in E} f\bigr)=\spec(R)-\bigcap_{f\in E}V(f)=\bigcup_{f\in E}D(f)$，所以$U=\bigcup_{f\in E}D(f)$.
 
+\para 记$\pp(Y)=\{f\in A\,:\, f(Y)=0\}$，即在$Y$上消失的所有环元构成的理想，利用这个记号，显然的是$\pp(\{x\})=\pp_x$。把$f(Y)=0$的意义详细写出来，则$\pp(Y)=\bigcap_{y\in Y}\pp_y$. 于是，$\pp(V(E))=\sqrt{(E)}$，这来自于$\sqrt{(E)}$是所有包含$(E)$的素理想的交。这是传统的Hilbert零点定理的对应。
+
+不容易看出的是反过来的一点，$V(\pp(Y))=\overline{Y}$. 由于$\pp(Y)=\bigcap_{y\in Y}\pp_y$，所以$\pp(Y) \subset \pp_y$，其中$y\in Y$，所以$Y\subset V(\pp(Y))$. 剩下我们要证明，$V(\pp(Y))$就是包含$Y$的最小闭集。考虑$Y\subset V(E)$，对于任意的$f\in E$以及$y\in Y$，都有$f(y)=0$，从而$E\subset \pp(Y)$，进而$V(\pp(Y))\subset V(E)$. 
+
+\para 设$x\in \spec(A)$，$\overline{\{x\}}=V(\pp(\{x\}))=V(\pp_x)$，则$\{x\}$是闭集的充分必要条件就是$V(\pp_x)=\{x\}=\{\pp_x\}$，或者说$\pp_x$是一个极大理想。所以极大理想对应着素谱中的闭点，类似于坐标环的极大理想对应着仿射簇中的点一样。
+
+\para 环的素谱满足$T_0$分离公理，实际上，设$\pp_x$和$\pp_y$分别是两个素理想，则或者有$\pp_x\not\subset \pp_y$或者有$\pp_y\not\subset \pp_x$，因此有$y\not\in \overline{\{x\}}$或者$x\not\in \overline{\{y\}}$. 用开集描述就是，$y\in \spec(A)-\overline{\{x\}}$或者$x\in \spec(A)-\overline{\{y\}}$，这就使得$T_0$分离公理成立。
+
 \para 设$\varphi:R_1\to R_2$是一个环同态，由于素理想在$\varphi$的原像也是素理想，所以$\varphi$通过$\spec(R_2)\ni x\mapsto \varphi^{-1}(\pp_x)\in \spec(R_1)$诱导了素谱之间的映射$^a\varphi:\spec(R_2)\to \spec(R_1)$. 这是一个连续映射，这个我们只要检验$^a\varphi^{-1}(V(f))$是一个闭集就可以了，事实上，更一般的命题是：$^a\varphi^{-1}(V(E))=V(\varphi(E))$，老实按照定义检验即可。
 
-由于$^a(\varphi\circ \psi)=\,^a\psi \,\circ\,^a\varphi$，所以$\spec$是环范畴到拓扑空间范畴的反变函子。
+由于$^a(\varphi\circ \psi)={^a\psi}\circ{^a\varphi}$，所以$\spec$是环范畴到拓扑空间范畴的反变函子。
 
-\pro 如果环同态$\varphi:A'\to A$满足：对任意的$a\in A$，总存在$a'\in A'$和$A$中的可逆元$h$使得$a=h\varphi(a')$，那么$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。
+\para 局部来看，我们用$\varphi^x$来表示$\varphi$在商环$R_1/\varphi^{-1}(\pp_x)\to R_2/\pp_x$诱导出的同态，以及用同样的符号来表示诱导的域同态$\varphi^x:k({^a}\varphi(x))\to k(x)$.
 
-\proof 只需对每一个$A$的子集$E$，证明总存在$A'$中的一个子集$E'$满足$V(E)=V(\varphi(E'))$即可，因为由$T_0$公理和$^a\varphi^{-1}(V(E))=V(\varphi(E))$可以推知$^a\varphi$是单的，然后再由$^a\varphi^{-1}(V(E))=V(\varphi(E))$可以知道他是同胚。
+根据定义，对任意的$f\in R_1$，以及$x\in \spec(R_2)$，我们有等式
+\[
+	\varphi^x(f({^a}\varphi(x)))=\varphi^x\left(f \text{ mod } \varphi^{-1}(\pp_x)\right)=\varphi(f)\text{ mod } \pp_x=\varphi(f)(x).
+\]
+这个式子的整体形式写作$\overline{{^a}\varphi(V(E))}=V(\varphi^{-1}(E))$. 
 
-对每一个$a\in E$，取一个$a'\in A$和一个可逆元$h$使得$a=h\varphi(a')$，则这些$a'$组成的集合$E'$就满足我们的需求。\qed
+为了证明这个整体形式，由于根式理想的原象还是根式理想，所以我们可以干脆假设$E=\mathfrak{a}$是一个根式理想。然后设$Y=V(\mathfrak{a})$以及$\mathfrak{a}'=\pp({^a}\varphi(Y))$，则$\overline{{^a}\varphi(Y)}=V(\mathfrak{a}')$. 我们先证明$V(\varphi^{-1}(\mathfrak{a}))\subset V(\mathfrak{a}')=\overline{{^a}\varphi(Y)}$. 而这又等价于去证明$\mathfrak{a}'\subset \varphi^{-1}(\mathfrak{a})$. 由定义，$f'\in \mathfrak{a}'$等价于$f'({^a\varphi}(Y))=0$，因此对任意的$y\in Y$成立$\varphi(f')(y)=\varphi^y(f'(y))=0$，所以$\varphi(f')\in \pp(Y)=\pp(V(\mathfrak{a}))=\sqrt{\mathfrak{a}}=\mathfrak{a}$. 于是$f'\in \varphi^{-1}(\mathfrak{a})$.
+
+再证明反过来的包含$\overline{{^a}\varphi(V(E))}\subset V(\varphi^{-1}(E))$。设$\varphi^{-1}(\pp)\in {^a}\varphi(V(E))$，其中$\pp\in V(E)$或者$E\subset \pp$，则$\varphi^{-1}(E)\subset \varphi^{-1}(\pp)$，于是$\varphi^{-1}(\pp)\in V(\varphi^{-1}(E))$或者说${^a}\varphi(V(E))\subset V(\varphi^{-1}(E))$. 由于$V(\varphi^{-1}(E))$是一个闭集，所以$\overline{{^a}\varphi(V(E))}\subset V(\varphi^{-1}(E))$。
+
+\pro 如果环同态$\varphi:A'\to A$满足：对任意的$a\in A$，总存在$a'\in A'$和$A$中的可逆元$h$使得$\varphi(a')=ha$，那么$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。\rule{2mm}{2mm}
+
+\proof 只需对每一个$A$的子集$E$，证明总存在$A'$中的一个子集$E'$满足$V(E)=V(\varphi(E'))={^a\varphi}^{-1}(V(E'))$即可。
+
+因为由$T_0$公理和${^a\varphi}^{-1}(V(E'))=V(\varphi(E'))=V(E)$可以推知${^a\varphi}$是单的，然后再由${^a\varphi}^{-1}(V(E))=V(\varphi(E))$可以知道他是同胚。
+
+对每一个$a\in E$，取一个$a'\in A$和一个可逆元$h$使得$\varphi(a')=ha$，则这些$a'$组成的集合$E'$就满足我们的需求。\qed
+
+% \para 如果$^a\varphi:\spec(R_2)\to \spec(R_1)$是单射，则它也是一个闭映射。这实际上直接来自于等式$^a\varphi(V(E))=V(\varphi^{-1}(E))$.
 
 \para 如果$\varphi$是满射，按照上一个命题，$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。设$\mathfrak{a}$是$R$的一个理想，则商映射$\varphi:R\to R/\mathfrak{a}$诱导的连续映射$^a\varphi:\spec(R/\mathfrak{a})\to \spec(R)$给出了$\spec(R/\mathfrak{a})$与$\spec(R)$的闭子集$V(\mathfrak{a})$之间的同胚。特别地，$\spec(R/\sqrt{0})$和$\spec(R)$同胚。
 
@@ -248,11 +321,11 @@
 
 \para 由于在拓扑空间的一组基上给出层的公理，就可以得到一个层，所以我们通过$D(f)\mapsto R_f$来定义$\spec(R)$的一个预层结构$\mathcal{O}_R$，现在需要去检验层公理，见[EGA, Chap 1, 1.3.7]，所以这是一个环层，称为结构层或者说伴随层。特别地，$\mathcal{O}_R(\spec(R))=R_1=R$. 素谱连同其上的结构层构成一个赋环空间，我们依旧记做$\spec(R)$，如有必要，他的结构层写作$\mathcal{O}_R$。这样一个赋环空间我们称其为一个仿射概形。
 
-由于$x\in \spec(R)$附近的邻域$D(f)$关于包含于是余收尾(cofinal)的，所以纤维$\mathcal{O}_x=R_x$，故而这正符合我们上面对于层结构的需求。故而仿射概形是局部赋环空间。
+由于$x\in \spec(R)$附近的邻域$D(f)$关于包含于是共尾(cofinal)的，所以纤维$\mathcal{O}_x=R_x$，故而这正符合我们上面对于层结构的需求。故而仿射概形是局部赋环空间。
 
 \para 类似地，如果有一个$R$-模$M$，我们可以通过$D(f)\mapsto M_f$来定义出一个$\mathcal{O}_R$-模层$\widetilde{M}$. 因之，有层同构$\widetilde{M_f}=\widetilde{M}|_{D(f)}$.
 
-\section{Schemes}
+\section{概形}
 
 \para 设$(X,\mathcal{O}_X)$是一个赋环空间，如果对于任意的$x\in X$，他都一个开邻域$U$使得$(U,\mathcal{O}_X|_U)$同构于一个仿射概形$\spec{R}$，则称呼$(X,\mathcal{O}_X)$是一个概形。很容易看到任意的概形是局部赋环空间，因为仿射概形是局部赋环空间。
 

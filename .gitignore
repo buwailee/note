@@ -218,9 +218,13 @@ pip-log.txt
 # pdfs
 *.pdf
 *.djvu
+*.html
+
+# pictures
+*.png
+*.jpg
 
 # tex compile fies
-*.png
 *.fls
 *.aux
 *.dvi

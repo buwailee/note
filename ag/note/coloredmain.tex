@@ -1,0 +1,71 @@
+% !TeX program = XeLaTeX
+% author: buwailee@nmhs
+\documentclass[9pt,twoside,openany,svgnames,x11names]{extbook}
+\input{structure.tex}
+% \usepackage[fontset=windows]{ctex}
+\usepackage{ctex}
+	% \CTEXoptions[today=old]
+	% \CTEXoptions[contentsname=Table of Contents]
+\usepackage[section]{../../egastyle}
+\usepackage{titletoc, makeidx}
+	\makeindex
+	% \renewcommand{\indexname}{Index}
+\usepackage[titletoc,title]{appendix}
+	% \renewcommand{\appendixname}{Appendix}
+
+\usepackage{hyperref}
+	\hypersetup{bookmarksnumbered=true}
+
+\input{../../defs.tex}
+	\newcommand{\cc}{\mathbb{C}}
+	\DeclareMathOperator{\spec}{Spec}
+\newcommand{\idx}[1]{{\kaishu #1\index{#1}}}
+
+\begin{document}
+\thispagestyle{empty}
+%% Cover illustration
+	\ThisLLCornerWallPaper{1.1}{Pictures/1.jpg}
+	% Buwai Lee@Shanghai Nanyang Model High School
+	\vspace*{2\baselineskip}
+	\begin{flushright}
+	\includegraphics[scale=0.5]{Pictures/img1.png}
+
+	\vspace*{1.5\baselineskip}
+	{\Huge\bfseries 代数几何笔记}\\[\baselineskip]
+	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
+	{by Buwai Lee@NJU}\par
+	\today
+	\end{flushright}
+	\vfill
+	{\Large\itshape Just for fun}
+
+	\tikz[overlay,remember picture]
+ 	\fill[opacity=.2]
+  	(current page.north west) rectangle 
+  	([xshift=-8.3cm, yshift=-11.5cm] current page.east);
+
+	\tikz[overlay,remember picture]
+ 	\fill[opacity=.7]
+  	(current page.south west) rectangle 
+  	([yshift=1cm] current page.south east);
+	\tikz[remember picture,overlay]%
+	\node[font=\LARGE\bfseries,text=Cornsilk,%
+	minimum width=\paperwidth,minimum height=3em,anchor=south]%
+	 at (current page.south) {解解伟光正出版社};
+\clearpage
+\frontmatter
+\pagestyle{plain}
+\renewcommand\chapterimg{Pictures/0.png}
+\ThisULCornerWallPaper{1}{\chapterimg}
+\tableofcontents
+\mainmatter
+\pagestyle{headings}
+	\input{chap1.tex}
+	% \input{chap2.tex}
+	\input{appendix.tex}
+\backmatter
+	\renewcommand\chapterimg{Pictures/0.png}
+	\ThisULCornerWallPaper{1}{\chapterimg}
+	\printindex
+	% \input{references.tex}
+\end{document}

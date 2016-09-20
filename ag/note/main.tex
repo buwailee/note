@@ -1,15 +1,15 @@
 % !TeX program = XeLaTeX
 % author: buwailee@nmhs
 \documentclass[9pt,twoside,openany,svgnames,x11names]{extbook}
-\input{structure.tex}
-% \usepackage[fontset=windows]{ctex}
-\usepackage{ctex}
-	\CTEXoptions[today=old]
-	\CTEXoptions[contentsname=Table of Contents]
+% \input{structure.tex}
+\usepackage{ctex,wallpaper}
+	% \CTEXoptions[today=old]
+	% \CTEXoptions[contentsname=Table of Contents]
+\usepackage[zh,book]{noteheader}
 \usepackage[section]{../../egastyle}
 \usepackage{titletoc, makeidx}
 	\makeindex
-	\renewcommand{\indexname}{Index}
+	% \renewcommand{\indexname}{Index}
 \usepackage[titletoc,title]{appendix}
 	\renewcommand{\appendixname}{Appendix}
 
@@ -21,29 +21,16 @@
 	\DeclareMathOperator{\spec}{Spec}
 \newcommand{\idx}[1]{{\kaishu #1\index{#1}}}
 
+\newcommand\chapterimg{Pictures/0.png}
+
 \begin{document}
-% \thispagestyle{empty}
-% 	\begin{flushright}
-% 	{\Huge\bfseries The}\\[\baselineskip]
-% 	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
-% 	{by Buwai Lee@Shanghai Nanyang Model High School}\par
-% 	\today
-% 	\end{flushright}
-% 	\vfill
-% 	{\Large\itshape Just for fun}
-% \clearpage
-\frontmatter
-\pagestyle{plain}
-\renewcommand\chapterimg{Pictures/0.png}
-\ThisULCornerWallPaper{1}{\chapterimg}
 \tableofcontents
 \mainmatter
 \pagestyle{headings}
 	\input{chap1.tex}
 	\input{chap2.tex}
+	\input{appendix.tex}
 \backmatter
-	\renewcommand\chapterimg{Pictures/0.png}
-	\ThisULCornerWallPaper{1}{\chapterimg}
 	\printindex
 	% \input{references.tex}
 \end{document}

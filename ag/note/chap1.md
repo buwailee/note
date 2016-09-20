@@ -79,7 +79,7 @@ pro 11 现在我们可以讨论层的黏合。设$\\{U\_\alpha\\}\_{\alpha \in I
 	F(W)\ar[r]^{u(W)}&G(U\cap W)
 }\\]其中$W\subset V$是$X$中的开集，要验证定出来的$v$使得如下交换图成立。\\[\xymatrix{
 	F(V)\ar[r] \ar[d]&F(U\cap V)\ar[r]^{v(U\cap V)}\ar[d]&G(U\cap V) \ar[d]\\\
-	F(W)F(U\cap W)\ar[r]&\ar[r]^{v(U\cap W)}&G(U\cap W)
+	F(W)\ar[r]&F(U\cap W)\ar[r]^{v(U\cap W)}&G(U\cap W)
 }\\]这个并不困难，左边一个矩形的交换性来自于限制映射的复合，这是自然的，右边一个矩形的交换性来自于$v$的定义和上面一个交换图，所以最后要检验的不过是横向的那个分解，即对于任意的开集$V$，分解$u(V):F(V)\to F(U\cap V) \xrightarrow{v(U\cap V)} G(U\cap V)$成立。
 
 现考虑如下交换图，\\[\xymatrix{
