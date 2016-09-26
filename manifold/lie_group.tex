@@ -462,13 +462,20 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 下面陈述Lie群和Lie代数的联系。
 
+\para 如果$H$是Lie群$G$的子群，且$H$本身是一个拓扑群，则称呼$H$是$G$的Lie子群。
+
 \para 设$H$是$G$的Lie子群，那么$\mathfrak{h}$是$\lag$的Lie子代数。
 
-下面这个定理来自Ado，就像流形中的Whitney嵌入定理一样，告诉我们，对于有限维Lie代数，其实我们只需要考虑$\mathfrak{gl}(n,\rr)$的子代数就可以了。（记得Arnold用Whitney嵌入定理来说“根本没有抽象的流形”。）
+线性子空间部分是显然的，而Lie括号的封闭性也基本是显然的，故而整个结论是显然的。考虑了子代数，现在来看看两个Lie群和Lie代数的联系。
 
-\theo 任何$\rr$上的有限维Lie代数总可以同构于$\mathfrak{gl}(n,\rr)$的一个子代数，$n$为一个足够大的整数。
+\pro 反过来，设$\lag$是$G$的Lie代数，而$\mathfrak{h}$是$\lag$的Lie子代数，则在$G$中存在一个Lie子群$H$使得$H$的Lie代数就是$\mathfrak{h}$.
 
-考虑了子代数，现在来看看两个Lie群和Lie代数的联系。
+\proof 用左不变矢量场来表示$\mathfrak{h}$，那么它是一个对合分布，所以存在一个极大积分子流形经过点$e$，我们记为$H$. 下面只要证明这是一个连通子群即可，即任取$h\in H$都有$h^{-1}H=H$，这样$H^{-1}H=H$就告诉我们他是一个连通子群。由于$\mathfrak{h}$是左不变的，所以$h^{-1}H$也是它的一个积分子流形，由定义，$h^{-1}H$经过点$e$，由极大性，$h^{-1}H=H$.\qed
+
+
+% 下面这个定理来自Ado，就像流形中的Whitney嵌入定理一样，告诉我们，对于有限维Lie代数，其实我们只需要考虑$\mathfrak{gl}(n,\rr)$的子代数就可以了。（记得Arnold用Whitney嵌入定理来说“根本没有抽象的流形”。）
+
+% \theo 任何$\rr$上的有限维Lie代数总可以同构于$\mathfrak{gl}(n,\rr)$的一个子代数，$n$为一个足够大的整数。
 
 \para 设$\varphi:G_1\to G_2$是Lie群间的群同态（同构），则其诱导了Lie代数间的同态（同构）$\varphi_{*e}:\lag_1\to \lag_2$.
 
@@ -687,7 +694,26 @@ Cartan子代数的维度称为半单Lie代数的秩。
 
 我们以后下面要谈论Lie群和Lie代数的表示，但是却只限制在紧Lie群，特别是紧的矩阵群上面，从而根据上面的定理，我们也只要去研究半单Lie代数就可以了。
 
+\section{Tori}
+
+\para 交换Lie群的Lie代数是交换的，即对于任意的$X$, $Y\in \lag$都成立$[X,Y]=0$.
+
+\para 如果$G$是Lie群，而且对于$X$, $Y\in \lag$，我们有$\exp(Y)\exp(X)=\exp(X)\exp(Y)$. 这来自于$[X,Y]=0$当且仅当他们的流$\sigma_t^X$和$\sigma_s^Y$可交换。更强的结论来自于计算$\exp(tX)\exp(tY)$在$t=0$的时候的导数，计算出来为$X+Y$，所以$\exp(X+Y)=\exp(X)\exp(Y)$.
+
+所以，对于交换Lie群的Lie代数，$\exp$是一个交换群同态。
+
+\para 所谓的（紧）环群，就是一个紧致连通交换Lie群。一个显然的环群，就是$\mathrm{SO}(2)$，他同构于$\rr/\zz$，当然，这些圆周的直积$(\rr/\zz)^r$也是环群。
+
+\para 对于环群，维数直接刻画了他的全部结构，因为设$r=\dim T$，则$T\cong (\rr/\zz)^r$. 证明思路为：$\exp$是他的Lie代数（作为加法群就是$\rr^r$）到他的交换群同态，利用同态基本定理，我们考察$\Lambda=\ker(\exp)$，由于$\exp$是局部同胚，所以$\Lambda$是$\rr^r$的一个离散加法子群，所以$T\cong (\rr/\zz)^r$.
+
+\para 进而，有Surch引理和经典Fourier分析，我们可以知道$(\rr/\zz)^r$的不可约（非平凡）复表示都是一维的，而且都只具有形式$(x_1,\cdots,x_r)\mapsto \exp(2\pi i \sum_j k_jx_j)$，其中$(k_1,\cdots,k_r)\in \zz^r$.
+
+对于实表示，利用$\mathrm{U}(1)$到$\mathrm{SO}(2)$的同构，我们就可以知道不可约（非平凡）实表示都是二维的且具有旋转矩阵的形式，旋转角是$2\pi \sum_i k_ix_i$.
+
+\para 设$G$是一个紧Lie群，那么他的交换闭子群的含单位元的连通分支是一个环群。Lie群的闭子群是Lie子群。所以这个环群被称为子环群。
+
 \section{Matrix Group}
+
 这一节限制在矩阵群上面，这节将给出很多可计算的例子，先来求一些矩阵群的Lie代数。
 
 \theo 任意的矩阵$M\in\mathrm{GL}(n,\cc)$都可以写作$e^X$的形式，其中$X\in\mathrm{M}(n,\cc)$。
