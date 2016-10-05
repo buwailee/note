@@ -1,0 +1,90 @@
+\documentclass[9pt]{extarticle}
+% \usepackage[article,zh]{noteheader}
+\usepackage{amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs}
+\usepackage[b5paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\usepackage{tikz,ctex}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\title{一维费米子系统的玻色化}
+\author{}
+\begin{document}
+\maketitle
+
+记号上我们使用$\hbar=1$和$4\pi\epsilon_0=1$. 
+
+现在假设我们有一个一维费米子系统，系统长度为$L$，对于无相互作用的情况，容易算出每一个电子容许的波矢为$k=n\pi/L$，对应的能量为$E=k^2/2m=n^2\pi^2/2mL^2$. 在温度为零的情况下，系统应该处于最低的能量，但由于Pauli不相容原理，一个能级至多只能有有限个（如果只有有限个可区分的量子数）费米子，所以这些粒子从低到高占据能级，直到填完这些费米子为止。对应这个截止的能量，我们称为Fermi能，记作$E_F$，对应Fermi能的波矢$k_F$，我们称为Fermi波矢，记作$k_F$. 此时，基态写作
+\[
+	|\Omega\rangle=N\prod_{|k|<k_F,\sigma} a^\dag_{k\sigma}|0\rangle,
+\]
+其中$|0\rangle$是不存在费米子的真空态，而$N$是一个归一化因子。
+
+一般而言，在研究差自由零温费米子系统不多的系统的时候，选取自由零温费米子系统的态作为参考的“真空态”是方便的。此时，我们定义
+\[
+c_{k\sigma}=\begin{cases}
+a_{k\sigma}&k>k_F,\\
+a^\dag_{k\sigma}&k\leq k_F.
+\end{cases},\quad
+c^\dag_{k\sigma}=\begin{cases}
+a^\dag_{k\sigma}&k>k_F,\\
+a_{k\sigma}&k\leq k_F.
+\end{cases}
+\]
+不难验证$[c_i,c_j]_+=[c^\dag_i,c^\dag_j]_+=0$和$[c_i,c^\dag_j]_+=\delta_{ij}$，其中$i$, $j$是任意指标。所以这是一个产生和湮灭算符，满足$c_{k\sigma}|\Omega\rangle=0$，这里$|\Omega\rangle$就表现地像一个“真空态”，他被称作Fermi海。%为了节省记号，我们下面仍以$a^\dag_i$和$a_i$来表示这个构造的新的产生和湮灭算符。
+
+我们将一维费米子系统的Hamiltonian写作（相互作用只有电子-电子静电相互作用）
+\[
+	H=H_0+V_{ee}=\sum_k a_k^\dag \left(\frac{k^2}{2m}-E_F\right)a_k+\frac{1}{2L}\sum_{k,k';q\neq 0}V_{ee}(q)a^\dag_{k-q}a^{\dag}_{k'+q}a_{k'}a_k
+\]
+其中势能部分可以用以下Feynman图表示（由于这是静电力，所以我们略去了自旋的指标），
+\begin{center}
+\feynmandiagram [horizontal=a to b] {
+  i1 [particle=\(k'\)] -- [fermion] b -- [fermion] i2 [particle=\(k'+q\)] ,
+  a -- [photon, edge label=$V_{ee}(q)$] b,
+  f1 [particle=\(k\)]-- [fermion] a -- [fermion] f2 [particle=\(k-q\)],
+};
+\end{center}
+而动能减去$E_F$的目的，是将费米面上的动能修正为$0$.
+
+对于低温近自由的费米子系统而言，动力学过程主要发生在Fermi面附近，因为那些很低能级的粒子，由于不相容原理，要很大的能量才可以跳出Fermi海。一维系统的Fermi面对应的是$k=\{k_F$, $-k_F\}$这两个波矢，将$E(k)=k^2/2m-E_F$曲线在这两个波矢附近做线性化，得到的切线为$E(k)=\pm v_Fk-v_Fk_F$，其中$v_F=k_F/m$是Fermi速度。
+
+我们用两个新的粒子产生算符来代替原本的粒子产生算符，使得他们分别满足$E(k)=v_Fk-v_Fk_F$和$E(k)=-v_Fk-v_Fk_F$，换而言之，就是一个向右匀速运动的（对应$k_F$）的费米子和一个向左匀速运动的（对应$-k_F$）的费米子，前者记作$a^\dag_{R,k_F+q}$，后者记作$a^\dag_{L,k_F+q}$。这样，自由Hamiltonian就可以近似为
+\[
+	H_0=\sum_q v_Fq(a^\dag_{R,q}a_{R,q}-a^\dag_{L,q}a_{L,q}),
+\]
+为了保证这个近似足够良好，一般而言，我们要对$|q|$的上界有所限制，毕竟局部线性化在大范围并不是很好的近似。下面我们用指标$s$来表示$R$或着$L$，以$\bar{s}$记与$s$相反的那个指标，同时记$(-1)^R=1$以及$(-1)^L=-1$，此时他们的能谱函数写作$E_s(k)=(-1)^sv_Fk-v_Fk_F$.
+
+考虑$s$粒子的密度算符$\rho_s(x)=|x\rangle\langle x|$，其中，利用单粒子算符的等式$A=\sum_{ij}\langle i|A|j \rangle a_i^\dag a_j$，我们有
+\[
+	\rho_s(x)=\sum_{k,q}\langle k|x\rangle\langle x|k+q\rangle a_{s,k+q}^\dag a_{s,k},
+\]
+利用明确的关系$\langle k|x\rangle=\langle x|k\rangle^*=Ne^{ikx}$，其中$N$是一个常数。所以
+\[
+	\rho_s(x)=|N|^2\sum_{k,k+q}e^{-ikx}e^{i(k+q)x} a_{s,k+q}^\dag a_{s,k}=|N|^2\sum_{q}e^{iqx}\sum_{k}a_{s,k+q}^\dag a_{s,k}
+\]
+定义算符$\rho_{s}(q)=\sum_k a^\dag_{s,k+q}a_{s,k}$，如上所示，他的Fourier逆变换差一个相乘常数就是$\rho_s(x)$。从其定义来看，$a^\dag_{s,k+q}a_{s,k}$湮灭一个波矢为$k$的粒子，然后产生一个波矢为$k+q$的粒子，湮灭粒子意味着产生一个空穴，所以整个过程就是产生一个空穴-粒子对，他的能量为$E_s(k+q)-E_s(k)=(-1)^s v_F(k+q-k)=(-1)^s v_Fq$，并以相同的速度$(-1)^s v_F$运动。
+
+现在我们研究相互作用
+\[
+	V_{ee}=\frac{1}{2L}\sum_{k,k';q\neq 0}V_{ee}(q)a^\dag_{k-q}a^{\dag}_{k'+q}a_{k'}a_k=\frac{1}{2L}\sum_{q\neq 0}V_{ee}(q)\rho(-q)\rho(q),
+\]
+由于动力学过程主要发生在Fermi面附近，即动量$k$, $k'$都在$\pm k_F$附近，而$q$要么很小，要么就是$\pm 2k_F$左右，这意味着向左向右粒子的相互作用，所以我们可以断言如下三种相互作用才是主要的：首先是$|q|$很小的时候，两个向左或者向右的粒子的散射过程，或者一个向左和一个向右粒子的散射：
+\begin{center}
+\feynmandiagram [horizontal=a to b] {
+  i1 [particle=\(k's\)] -- [fermion] b -- [fermion] i2 [particle=\((k'+q)s\)] ,
+  a -- [photon, edge label=$V_{ee}(q)$] b,
+  f1 [particle=\(ks\)]-- [fermion] a -- [fermion] f2 [particle=\((k-q)s\)],
+};
+\feynmandiagram [horizontal=a to b] {
+  i1 [particle=$k'\bar{s}$] -- [fermion] b -- [fermion] i2 [particle=\((k'+q)\bar{s}\)] ,
+  a -- [photon, edge label=$V_{ee}(q)$] b,
+  f1 [particle=\(ks\)]-- [fermion] a -- [fermion] f2 [particle=\((k-q)s\)],
+};
+\end{center}
+剩下一个自然就是$q$在$2k_F$附近的时候产生的交换作用：
+\begin{center}
+\feynmandiagram [horizontal=a to b] {
+  i1 [particle=\(k'\bar{s}\)] -- [fermion] b -- [fermion] i2 [particle=\((k'-q+2k_F)s\)] ,
+  a -- [photon, edge label=$V_{ee}(q)$] b,
+  f1 [particle=\(ks\)]-- [fermion] a -- [fermion] f2 [particle=\((k+q-2k_F)\bar{s}\)],
+};
+\end{center}
+\end{document}

@@ -10,13 +10,13 @@
 
 \if@chapter
 	\newtheorem{para}{}[chapter]
-	\renewcommand{\thepara}{\arabic{chapter}.\arabic{para}}
+	\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
 \else\if@section
 	\newtheorem{para}{}[section]
-	\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
+	\renewcommand{\thepara}{\arabic{section}.\arabic{para}}
 \else\if@subsection
 	\newtheorem{para}{}[subsection]
-	\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{para}}
+	\renewcommand{\thepara}{\arabic{section}.\arabic{subsection}.\arabic{para}}
 \else
 	\newtheorem{para}{}[part]
 	\renewcommand{\thepara}{\arabic{para}}
