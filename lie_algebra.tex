@@ -23,6 +23,385 @@
 
 \begin{document}
 \maketitle
+\section*{Outline}
+\begin{itemize}
+\item Lie群：具有微分流形结构的群。
+
+因此左右平移是微分同胚，所以局部性质由单位元附近的那些元素决定。对于连通Lie群，则单位元附近的元素可以生成整个群的元素（即任意的群元都可以通过单位元附近的元素相乘组合得到）。
+
+\item Lie群的Lie代数：Lie群单位元附近的局部线性化。
+
+从前面的分析知道，Lie群的大部分性质由单位元附近的元素决定。由分析学的基本思想，在性质不算差的点，线性化后得到的切空间，将几乎完全能够（即两者之间存在微分同胚）反应那点附近的流形的结构。所以Lie代数能够确定Lie群的大部分性质。不过近似总归是近似，从Lie群到Lie代数，我们还是丢掉了不少东西，比如Lie群的拓扑结构。在半单Lie群的假设下，Lie代数和基本群能完全确定一个Lie群。
+
+\item 为什么我们要研究Lie代数？
+
+研究Lie代数的可行性来自于上述的Lie代数能够反应Lie群的许多性质。而研究Lie代数的动机很大程度在于Lie代数的代数结构比Lie群多，使得他比Lie群更方便研究。许多Lie群的性质（非代数的性质）在Lie代数中都表现为一些代数性质，这使得我们更方便操作。
+
+\item 群表示：一个线性空间$V$，上面的可逆变换按复合构成一个群$\mathrm{GL}(V)$。而所谓的群表示，既是将已知的一个群$G$的元素看成某个空间$V$上的可逆的线性变换，并将群乘法变成线性变换的复合。换而言之，就是一个$G\to \mathrm{GL}(V)$群同态。
+
+由于两个微分流形之间的光滑映射将诱导出切空间之间的映射，所以两个Lie群之间的光滑同态，将诱导出Lie代数的同态。而这就得到了Lie代数的表示的定义。
+
+\item 为什么我们需要表示？
+
+物理量的值的对称性，比如Poincare群$G$，取$\Lambda \in G$，动量在$\Lambda$下进行如下变换
+\[
+	q^\mu \to \Lambda^\mu_{\phantom{\mu}\nu}q^\nu,
+\]
+在态矢量所处的空间来看，第一个惯性参考系来看的态矢量为$|q^\mu\rangle$，第二个惯性参考系来看的态矢量为$|\Lambda^\mu_{\phantom{\mu}\nu}q^\nu\rangle$，两者之间应该靠某个算符联系，他依赖于$\Lambda$，记作$U(\Lambda)$，此时
+\[
+	U(\Lambda)|q^\mu\rangle = |\Lambda^\mu_{\phantom{\mu}\nu}q^\nu\rangle.
+\]
+现在来看加上另一个$\bar\Lambda$，他应该将动量为$\Lambda^\mu_{\phantom{\mu}\nu}q^\nu$态的变成动量为$\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}q^\xi$的态，所以
+\[
+	U(\bar\Lambda)U(\Lambda)|q^\mu\rangle = U(\bar\Lambda)|\Lambda^\mu_{\phantom{\mu}\nu}q^\nu\rangle = \exp(i\theta(\Lambda,\bar\Lambda))|\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}q^\xi\rangle.
+\]
+有个相位是因为，相位不影响态，尽管在物理上是等价的，在数学上我们不能直接无视其存在。还好，如果群的性质不太差，或者我们选个性质更好的群来代替他，则关于任意的两个变换，这个相位我们可以全部搞成1。所以我们可以得到
+\[
+	U(\Lambda_1)U(\Lambda_2)=U(\Lambda_1\Lambda_2),
+\]
+此时$U$就是一个表示。因此，值上的对称性能够诱导出态矢量上的对称性，利用的手段就是群表示。
+
+那么，有了这个群表示，我们就有Lie代数的表示，Poincare群的Lie代数，现在就变成了一些态矢量所处的Hilbert空间上的算符，而这些就是动力学算符。这就是说：对称性诱导出了动力学算符，而动力学量的不可约表示完成了单粒子分类。
+
+\item 从Lie代数到Lie群：Ado定理，所有实Lie代数都同构于$\mathfrak{gl}(n,\cc)$的子代数。所以每一个实Lie代数都可以实现为某个Lie群的Lie代数的子代数。同时，对于任意的连通Lie群，他一定存在一个万有覆叠空间（单连通的覆叠空间），他有着Lie群结构，且和原来的Lie群有着相同的Lie代数。
+
+从这里可以看到，Lie代数并不在意Lie群很细致的拓扑结构，这就是他丢失的东西。拓扑结构（作为整体结构）有时候很重要，比如对于无质量粒子，他的自旋（或者helicity）只能取整数或者半整数就来自于表征对称性的群的拓扑结构。
+
+\item 从Lie代数同态到Lie群同态：如果$h$是$\lag_1\to \lag_2$之间的Lie代数同态，且$\lag_1$是一个单连通Lie群$G_1$的Lie代数，$\lag_2$是一个连通Lie群$G_2$的Lie代数，则存在唯一的Lie群同态$\bar{h}:G_1\to G_2$，使得$\bar{h}$诱导的Lie代数同态即$h$.
+
+将其应用到表示，则有Lie代数的表示唯一确定单连通Lie群的表示。
+
+\item 为什么要复表示？
+
+其一，物理上的态所处的Hilbert空间是在复数域上面的，所以我们需要复表示。其二，比如最简单的$U(1)$群，他的非平凡表示，对于实数域上来说，是$2$维的，即$\mathrm{SO}(2)$，而在复数域上是一维的，即他本身。其三，复数域是代数闭的。
+
+\item 为什么要研究半单复Lie代数？
+
+半单性是紧性在代数上的合理推广。对于半单复Lie代数$\lag$，我们可以找到一个紧Lie群的Lie代数$\mathfrak{k}$（这样的Lie代数称为紧Lie代数），使得$\lag\cong \mathfrak{k}\otimes \cc$. 反过来，任意的紧Lie群的Lie代数$\mathfrak{k}$，他的复化$\mathfrak{k}_{\cc}:=\mathfrak{k}\otimes \cc$是一个半单复Lie代数。所以我们一旦完全分类了半单复Lie代数，也就完全分类了紧Lie代数。
+
+前面说了，半单性是紧性在代数上的合理推广。这点的表现比如，对于半单复Lie代数来说，他的任意有限维表示都是完全分解的，即可以分解为不可约表示的直和。代数上，这被称为Weyl定理，整个半单复Lie代数以及半单实Lie代数的分类就是由Weyl完成的。
+
+\item 如何分类半单复Lie代数呢？
+
+靠表示论，Lie代数在自己身上有一个自然的表示，被称为伴随表示。Lie代数极大交换子代数的元素在伴随表示的时候作为线性算符的本征值将完全决定Lie代数的结构。
+
+\item 如何分类半单复Lie代数的表示？
+
+靠分类最高权表示，
+
+\end{itemize}
+
+\section{Foundation}
+
+\para 设$G$为群，单位元记做$e$，群运算记做$\mu:G\times G\to G$，如果$G$是一个光滑流形，且$\mu$是一个光滑映射，则称$G$是一个光滑Lie群。当然可以谈论不怎么光滑的Lie群，但是下面所指的Lie群都是光滑的。记$l_g$是左作用算符，即$l_g=\mu(g,\cdot)$，或者写作$l_gh=gh$，同样，右作用算符记做$r_g$，即$r_gh=hg$.显然这些都是光滑映射。
+
+现在考虑方程$\mu(x,y)=e$，由于$(l_e)_{*e}$是一个恒同映射，所以在$e$附近，按隐函数定理，方程$\mu(x,y)=e$在$e$附近有光滑解，即$y=\nu(x)=x^{-1}$中的逆函数$\nu$在$e$附近光滑，由于$(\nu\circ l_g)(h)=h^{-1}g^{-1}=(r_{g^{-1}}\circ \nu)(h)$，所以逆函数$\nu$处处光滑。
+
+因为Lie群有着光滑流形结构，那么我们就可以对其局部线性化，特别地，单位元附近的局部线性化就构成了Lie代数的内容。
+
+\para 一个Lie群$G$的Lie代数$\lag$就是其单位元处的切空间。
+
+由于$l_g$和$r_g$都是$G\to G$的光滑同胚，所以$(l_g)_*$或者$(r_g)_*$就是将光滑切矢量场映射到光滑切矢量场的双射。如果矢量场$X_x$满足$(l_a)_*X_x=X_{ax}$，则称$X$是一个左不变矢量场。对于左不变矢量场$X$而言，由于$(l_a)_*X:g\mapsto (l_a)_{*a^{-1}g}X_{a^{-1}g}=X_g$，所以$(l_a)_*X=X$.
+
+和任意的矢量场一样，左不变矢量场$X$在$e$处诱导了$\lag$中的元素$X_e$.
+
+反过来，设$X_e\in\lag$，我们可以构造一个左不变矢量场$X_x=(l_{x})_*X_e=(l_x)^{-1}_*X_x$，因此我们就建立了Lie代数和左不变矢量场之间的一一对应。
+
+\para 左不变矢量场都是光滑的且完备的。
+
+实际上，任取$f\in\calf(G)$以及$g\in G$，我们来看$(Xf)(g)=X_gf=(l_g)_{*}X_ef=X_e(f\circ l_g)$. 取一个在$e$处切矢量为$X_e$的曲线$\sigma$，则
+\[
+	Xf(g)=\frac{\dd }{\dd t}\bigg|_{t=0}f(g\sigma(t))=\frac{\dd }{\dd t}\bigg|_{t=0}f\circ \mu(g,\sigma(t)),
+\]
+是一个光滑函数，所以左不变矢量场都是光滑矢量场。至于完备性，设$\sigma$是左不变矢量场$X$的积分曲线，则$l_g\circ \sigma$也是$X$的积分曲线，这就使得我们可以把一条局部积分曲线拼到无穷远，这就是说$X$是完备的。
+
+\para 设$X$是左不变矢量场，因为$X$是完备的，所以他诱导的单参数变换群$\{\sigma^X_t\}$在整个Lie群上是有定义的，特别地，在单位元上，我们定义$\exp(t,X):=\sigma^X_t(e)$，其中$X$是左不变矢量场，因为左不变矢量场一一对应着Lie代数，所以也可以说$X\in \lag$.同样，对固定的$X$，映射$\exp(t,X)$对改变的$t$就构成了$G$的一个子群，这被称为单参子群。由积分曲线的存在唯一性，我们也得到了单参子群与Lie代数的一一对应关系。
+
+\pro 设$f:G\to G$是一个微分同胚，我们有$f_*[X,Y]=[f_*X,f_*Y]$，若$f=l_a$，那么我们立刻就得到了左不变矢量场的对易子也是左不变的。因此对于Lie代数来说，他继承了切矢量场的Lie括号$[\star,\star]:\lag\times \lag\to \lag$，这是一个二元线性运算，所以Lie代数确实是一个代数。
+
+通过直接的计算，Lie代数上满足：
+
+\no{1} $[X,Y]=-[Y,X]$,
+
+\no{2} $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$.
+
+第一条反对称性从矢量场的$[X,Y]=XY-YX$来看是显然的。而第二条称为Jacobi恒等式，直接计算即可验证。可以如下记忆Jacobi恒等式，$X$, $Y$和$Z$的三种右手方向构成的置换和为$0$，或者说，$[X_i,[X_j,X_k]]$中$ijk$是$123$的偶置换。
+
+\para Lie代数上的双线性映射$f$如果满足$f([X,Y])=[f(X),Y]+[X,f(Y)]$，则$f$被称为一个导子。
+
+在Lie代数上我们可以找到一个自然的导子。适当改写Jacobi恒等式，我们可以得到$[X,[Y,Z]]=[[X,Y],Z]+[Y,[X,Z]]$，如果记$\ad(X):Y\mapsto [X,Y]$，于是
+\[
+	\ad(X)([Y,Z])=[\ad(X)Y,Z]+[Y,\ad(X)Z],
+\]
+因此$\ad(X)$就是一个Lie代数上面的导子。
+
+\para 前面我们定义了$\exp:\lag\times \rr\to G$，特别地，我们记$\exp(1,X)$为$\exp(X)$，这样定义的映射$\exp:\lag\to G$他被称为指数映射。
+
+可以看到$\exp(tX)=\sigma^{tX}_1(e)=\sigma^{X}_t(e)=\exp(t,X)$，所以实际上，我们指数映射已经能够完全包含$\exp:\lag\times \rr\to G$的内容了。特别地，
+\[
+	\exp(tX)\exp(sX)=\exp(t,X)\exp(s,X)=\exp(t+s,X)=\exp((t+s)X).
+\]
+就和一般的指数表现得那样。但如果$[X,Y]\neq 0$，一般来说$\exp(X)\exp(Y)\neq \exp(X+Y)$.我们有时候也会通过$e^{X}$来记$\exp(X)$.
+
+\lem \label{exp}我们找一个光滑函数$f:G\to \rr^n$，那么$g(t)=f(xe^{tX})$就是一个$\rr$上的光滑函数，我们来归纳证明他的$n$阶导数为
+\[
+	\frac{\dd^n}{\dd t^n}g(t)=(X^nf)(x e^{tX}).
+\]
+
+\proof $n=0$是显然的，$n=1$需要直接计算验证
+\[
+	(Xf)(x)=\left\{\frac{\dd}{\dd t}f(x e^{tX})\right\}_{t=0},
+\]
+这个的计算只要使用链式法则
+\[
+	\left\{\frac{\dd}{\dd t}f(x e^{tX})\right\}_{t=0}=f_{*x}(e^{tX})_{*0}=f_{*x}X=(Xf)(x).
+\]
+注意最后一个等式要依赖于$f$是矢量值的，某种程度来说这就是$T\rr^n=\rr^n$的结果。由于矩阵也可以看成在欧氏空间$\rr^{n\times n}$里，所以$f$也可以取值为矩阵。
+
+假设$n=k$是成立的，那么因为$X^{k+1}=X\circ X^k$,
+\[
+	(X^{k+1}f)(x e^{tX})=(X(X^{k}f))(x e^{tX})=\left\{\frac{\dd}{\dd s}(X^kf)(x e^{(s+t)X})\right\}_{s=0}=\frac{\dd}{\dd t}(X^kf)(x e^{tX})=\frac{\dd^{k+1}}{\dd t^{k+1}}g(t).
+\]\qed
+
+\para 为了下面的讨论，我们先将实数值的1-形式拓展到矢量值的1-形式。设$V$是一个矢量空间，对于切矢量场的$V$-值函数$\omega:\Gamma(TM)\to V$被称为一个$V$-值1-形式。如果对任意的光滑切矢量场$X$，我们都有$\omega(X)$是$M$上的$V$-值光滑函数，则$\omega$被称为光滑的。
+
+\para Lie群$G$的切丛$TG$倒是相当简单，因为我们可以定义$(l_{a^{-1}})_*$把$T_aG$始终映射到$T_eG=\lag$来考虑，所以切丛就被平凡化了。与这相关的概念即Maurer-Cartan形式。设$G$是一个Lie群，他的切丛记做$TG$，映射$\omega_G:(g,v)\mapsto (l_{g^{-1}})_*v$被称为Maurer-Cartan形式。可以看到$\omega_G:\Gamma(TG)\to \lag$，因此Maurer-Cartan形式可以看做一个$\lag$值1-形式。且对于任意的$l_h^*$，我们都有
+\[
+	(l_h^*\omega_G)v=\omega_G((l_h)_*v)=(l_{(hg)^{-1}})_*(l_h)_*v=(l_{(g)^{-1}})_*v=\omega_G(v).
+\]
+所以Maurer-Cartan形式是左不变的。
+
+\para 现在来看具体的例子，设所有$n\times n$的实（复）矩阵构成的集合为$\mathrm{M}(n,\rr)$（$\mathrm{M}(n,\cc)$），其中$\det A\neq 0$的矩阵按矩阵乘法构成一个群$\mathrm{GL}(n,\rr)$（$\mathrm{GL}(n,\cc)$），我们称为一般线性群，单位元是$I$。由于他可以开嵌入$\rr^{n^2}$内，所以他有自然的光滑流形结构。因此一般线性群是一个Lie群，矩阵群上的微分定义使得我们可以直接计算一般线性群的Lie代数，他的Lie代数为$\mathfrak{gl}(n,\rr)$。在一般线性群$G$上
+\[
+	(l_g)_{*a}v=\frac{1}{t}(l_g(a+tv)-l_g(a))
+	=\frac{1}{t}(l_g(tv))=l_g(v)=gv.
+\]
+其中$v\in T_aG$.
+
+所以一般线性群上面的Maurer-Cartan形式即为$\omega_G(v)=l_{g^{-1}}(v)=g^{-1}v$，其中$g$和$v$都是矩阵，矩阵乘矩阵还是矩阵，所以Lie代数$\mathfrak{gl}(n,\rr)$也是矩阵的形式。设$\dd g=(\dd x_{ij})$，那么$v$就可以写成$\dd g(v)$，因为$\dd x_{ij}(v)=v_{ij}$，则$\omega_G=g^{-1}\dd g$.
+
+由于$\mathrm{GL}(n,\rr)$的微分结构是熟知的，我们可以直接计算其Lie代数$\mathfrak{gl}(n,\rr)$上的交换子形式。设$A\in\mathfrak{gl}(n,\rr)$而$g\in\mathrm{GL}(n,\rr)$，容易验证$A_g=gA$是左不变矢量场，因为$(l_h)_{*}A_g=(l_h)_{*}gA=hgA=A_{hg}$.
+
+记$g=(x_{ij})$，考虑与$A=(a_{ij})$和$B=(b_{ij})$相关的左不变矢量场为
+\[
+A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\partial_{ik},
+\]
+于是
+\[
+[A_g,B_g]=\left[\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\sum_{i,j,k}x_{ij}b_{jk}\partial_{ik}\right]=\sum_{i,k}\left(\sum_{j}x_{ij}\sum_{r}(a_{jr}b_{rk}-b_{jr}a_{rk})\right)\partial_{ik},
+\]
+或者$[A_g,B_g]=(AB-BA)_g$，所以$\mathfrak{gl}(n,\rr)$上的对易子为$[A,B]=AB-BA$，其中的乘法就是矩阵乘法。
+
+\para 对于$A\in\mathfrak{gl}(n,\rr)$，指数映射有如下级数展开
+\[
+	e^A=1+\sum_{n=1}^\infty \frac{A^n}{n!}=\sum_{n=0}^\infty \frac{A^n}{n!},
+\]
+对于任意的矩阵$A$都是收敛的。可以看到其完全类似于实数值指数函数的展开$e^x=\sum_{n=0}^\infty x^n/n!$
+
+\proof 由\lemref{exp}，对一般的Lie群$G$和光滑函数$f:G\to \rr^n$，使用Taylor公式
+\[
+	f(xe^{tX})=\sum_{k=0}^n\frac{(tX)^{k}}{k!}f(x)+O(t^{n+1}),
+\]
+如果可以展开无数项，那么
+\[
+	f(xe^{tX})=\sum_{k=0}^\infty\frac{(tX)^{k}}{k!}f(x).
+\]
+
+现在取$f(A)=A$, $x=I$和$t=0$就可以了。至于收敛性，因为对于任意一个矩阵，$A$的范数都是有界的，那么$e^A$就被$A$的范数的级数控制，因此收敛。\qed
+
+当然可以用其他的方式猜出这个关系，我们考虑$e^{tA}$,将其在$t=0$附近展开，有$e^{tA}=I+tA+O(t^2)$,然后对于任意的正整数$n$和固定的$t$我们有
+\[
+	e^{tA}=\left(e^{tA/n}\right)^n=\left(I+\frac{t}{n}A+O\left(\frac{1}{n^2}\right)\right)^n,
+\]
+然后令$n\to\infty$，就有$e^{tA}=\lim_{n\to\infty}\left(I+\frac{t}{n}A\right)^n$.使用二项式展开，就可以得到其级数展开
+\[
+	e^{tA}=1+\sum_{n=1}^\infty \frac{(tA)^n}{n!}=\sum_{n=0}^\infty \frac{(tA)^n}{n!},
+\]
+最后$t=1$即可。
+
+上面的过程可能不怎么严谨，在矩阵的情况下，直接用级数定义指数映射反而可能更加简单。
+
+\para 设$\mathrm{M}(n,k)$是域$k$上的$n\times n$矩阵全体构成的集合，则以下矩阵构成一般线性群的子群：
+
+\no{1} 特殊线性群：$\mathrm{SL}(n,\rr)=\{A\in \mathrm{M}(n,\rr)|\det A=1\};$
+
+\no{2} 正交群：$\mathrm{O}(n) = \{ Q \in \mathrm{M}(n,\rr) \mid Q^T Q = Q Q^T = I \};$
+
+\no{3} 酉群：$\mathrm{U}(n) = \{ Q \in \mathrm{M}(n,\cc) \mid Q^\dag Q = Q Q^\dag = I \};$
+
+\no{4} 特殊正交群：$\mathrm{SO}(n) =\{ Q \in \mathrm{O}(n) \mid \det Q=1 \};$
+
+\no{5} 特殊酉群：$\mathrm{SU}(n) =\{ Q \in \mathrm{U}(n) \mid \det Q=1 \};$
+
+我们来考虑最简单的一个群$\mathrm{SO}(2)$，他的群元素由矩阵
+\[
+	\begin{pmatrix}
+	\cos \theta&-\sin \theta\\
+	\sin \theta&\cos \theta\\
+	\end{pmatrix}
+\]
+构成。这是一个Abel群，而且可以注意到，他同构于群$\mathrm{S}^1=\{e^{i\theta}:\theta\in\rr\}$，这是一个圆周。
+
+\pro 对于矩阵群构成的空间，我们可以使用Heine-Borel定理断言有界闭子群是紧的。所以正交群是紧的，但是一般线性群不是紧的。
+
+\section{Basic Representation Theory}
+
+上节谈了Lie群的“内部线性化”，即Lie代数的内容。这节我们来谈论群表示，他使得我们可以把群进行“外部线性化”，粗略地来说就是我们把群元素看做了一个线性变换。
+
+\para 令$V$是一个域$k$（后面我们只会考虑$\rr$和$\cc$的情况）上的有限维矢量空间，群$G$的一个表示$(\pi, V)$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{GL}(V)$，使得
+\[
+	\pi(g)\pi(g')=\pi(gg'),\quad \pi(g^{-1})=\pi(g)^{-1},\quad \pi(e_G)=e_{\mathrm{GL}(V)}
+\]
+成立。表示$(\pi, V)$的维度被定义为$V$的维度。
+
+如果没什么会混淆的话，就直接略去$\pi$，写$gx$来表达$\pi(g)x$，当然还有用$Gx$来表达$\pi{G}x=\{\pi(g)x:g\in G\}$。
+
+如果$\pi$是一个单同态，那么我们称这个表示为忠实表示。
+
+\para 同一个群$G$的两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$可以构造出新的表示：
+
+\no{1} 直和：$(\pi_1\oplus \pi_2,V_1\oplus V_2)$即满足
+\[
+	(\pi_1\oplus \pi_2)(g)(x,y)=(\pi_1(g)x,\pi_2(g)y).
+\]
+或者简单地写作$g(x,y)=(gx,gy)$.
+
+\no{2} 张量积：$(\pi_1\otimes \pi_2,V_1\otimes V_2)$即满足
+\[
+	(\pi_1\otimes \pi_2)(g)(x\otimes y)=(\pi_1(g)x)\otimes (\pi_2(g)y).
+\]
+或者简单地写作$g(x\otimes y)=(gx)\otimes(gy)$.
+
+\para 设$G$是一个群，$(\pi,V)$是他的一个表示，$W\subset V$是一个子空间，如果$\pi(G)W\subset W$则$W$称为不变子空间。显然，$\{0\}$和$V$是两个不变子空间，略去这两个平凡不变子空间，如果没有其他不变子空间了，则$V$被称为是不可约的，此时表示被称为不可约表示。
+
+\para 如果一个表示能被分解成几个不可约表示的直和，则称该表示为完全可约的。
+
+下面的一系列定义涉及表示的等价，当然还有很重要的Schur引理。
+
+\para 设$G$有两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$，如果存在线性映射$T:V_1\to V_2$，对任意的$g\in G$都满足$\pi_2(g)\circ T=T\circ \pi_1(g)$. 这样的$T$被称为缠结映射。当缠结映射是同构的时候，两个表示被称为是等价的。显然，这是一个等价关系。自反对称显然，而传递性自然来自两个同构复合还是同构。
+
+\lem 如果$\pi_1$和$\pi_2$之间存在缠结映射$T$，那么$\ker T$是$\pi_1$的不变子空间，而$\im T$是$\pi_2$的不变子空间。
+
+\proof 因为$T(\pi_1(g)x)=\pi_2(g)Tx$对于任何$x$使得$Tx=0$的，都有$\pi_1(g)x$使得$T(\pi_1(g)x)=0$，所以前半句话证明完了。对于$\im T$中的元素$y$可以找到原象$x$，由于$\pi_2(g)y=\pi_2(g)Tx=T(\pi_1(g)x)$，则$\pi_2(g)y$也在$\im T$中，后半句话证完。\qed
+
+\lem 相当有名的Schur引理：如果$(\pi_1,V_1)$和$(\pi_2,V_2)$是不等价的不可约表示，若存在缠结映射$T$，则$T=0$.换句话说，不等价的表示没有非平凡的缠结映射。
+
+\proof 如果两个表示不等价，则$T$不是双射，所以$\ker T\neq \{0\}$，而他是不变子空间，由不可约性，则$\ker T= V_2$，同理$\im  T= \{0\}$，这就是说$T=0$。\qed
+
+\para 反之，在复表示情况下，我们考虑不可约表示$(\pi_1,V_1)=(\pi_2,V_2)$的情况下。此时如果存在一个非平凡的双的缠结映射$T\neq I$使得$T\circ \pi(g)=\pi(g)\circ T$.
+
+在复数域上，$T$一定存在一个本征值$\lambda$，令$E_\lambda$是$\lambda$的本征空间，任取$v\in E_\lambda$，我们有$T(\pi(g)(v))=\pi(g)\circ T(v)=\lambda\pi(g)(v)$，所以$\pi(G)E_\lambda\subset E_\lambda$，由$\pi$的不可约性，所以他要么是零空间，要么是全空间。而本征值的存在性说明了零空间不可能，所以本征空间就是全空间，这也就是说$T=\lambda I$.
+
+\para 如果我们遇到的群是Abel群，那么他的不可约群表示也是可交换的，同时其本身就构成了一个缠结映射，即$T=\pi(g)$对任意的$h$成立$T\circ \pi(h)=\pi(h)\circ T$，所以通过上面的定理我们就可以知道，$\pi(g)=T=\lambda I$。
+
+如果$V$是大于$1$维的，那么任意的$V$的子空间都是$\pi$的不变子空间，但不可约性否决了这点，所以我们得到了：凡Abel群的不可约复表示都是一维的。
+
+\para 如果$(\star,\star)$是$V$上的一个内积，如果对任意的$g\in G$,$u,v\in V$有$(u,v)=(gu,gv)$，则我们称呼这个表示为幺正表示，幺正表示也可以写作$\pi(g)^{-1}=\pi(g)^\dag$。对于有限群我们总可以找到幺正表示，因为我们可以重新构造内积
+\[
+	(u,v)'=\frac{1}{|G|}\sum_{g\in G}(gu,gv),
+\]
+那么
+\[
+	(hu,hv)'=\frac{1}{|G|}\sum_{g\in G}(hgu,hgv)=\frac{1}{|G|}\sum_{hg\in G}(hgu,hgv)=\frac{1}{|G|}\sum_{k\in G}(ku,kv)=(u,v)'.
+\]
+
+幺正表示的好处是，一个不变子空间的正交空间也是不变的。对于一个有限维的幺正表示，如果不是完全可约的，那么就分解出一个不变子空间，他是不可约的，然后对这个不变子空间的正交空间，我们又得到了一个可约或不可约的不变子空间，靠着有限归纳（因为有限维），我们就得到了如果群存在一个有限维幺正表示，则这个表示一定是完全可约的。
+
+\theo 结合上面所说的，我们就得到了Maschke定理：有限群的有限维表示总是完全可约的。 
+
+\theo 在局部紧的拓扑群上存在Haar测度$\mu$，他是一个正则的左不变的Borel测度。所谓的左不变就是指对于一个集合$S$，通过左作用$L_g$，我们有$\mu(S)=\mu(L_gS)$，当然还有右作用和右不变的概念。
+
+对于$G$上的可测函数$f$，上述测度满足
+\[
+	\int_G f(l_h g)\dd \mu(g)=\int_G f(g)\dd \mu(g),
+\]
+可以从中直接看出左不变的意义。以后我们将$\dd \mu(g)$直接写作$\dd g$.
+
+\para 上面的定理我们不证明，同时也不证明如下命题：如果$G$是紧Lie群，则我们存在双不变（既左不变也右不变）测度$\mu$，且$\mu(G)$有限。
+
+\pro 紧Lie群上存在幺正表示，所以紧Lie群的有限维表示总是完全可约的。 
+
+换而言之，我们可以找到内积$\langle \star,\star\rangle$使得$\langle gx,gy\rangle=\langle x,y\rangle$。假设原本存在内积$\langle \star,\star \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
+\[
+	\langle x,y\rangle'=\int_G \langle gx,gy \rangle \dd g
+\]
+就满足了要求。下面我们谈论紧Lie群的表示的时候，总使用幺正表示。
+
+\para 对于Lie群$G$上的复值光滑函数$f$和$g$，我们可以定义内积为
+\[
+	(f,g)=\int_G f(h)g^*(h)\dd h,
+\]
+其中$*$代表的是复共轭。
+
+\para 对于矢量空间$V$和$W$，$\Hom(V,W)$也有自然的矢量空间结构，所以如果已知$V$上有群表示$\pi_1$，以及$W$上有群表示$\pi_2$，则对于$A\in \Hom(V,W)$，我们可以定义群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$如下
+\[
+	\pi_1^*\otimes\pi_2(g)A=\pi_2(g)A\pi_1(g)^{-1}.
+\]
+很容易验证$\pi_1^*\otimes\pi_2(g)\pi_1^*\otimes\pi_2(h)=\pi_1^*\otimes\pi_2(gh)$，所以这是一个群表示。为了省略空间，我们经常也直接记做$gA$.
+
+对每一个群元$g$，表示诱导了映射$g:A\mapsto gA$，现在如果$A$是该映射的不动点$gA=A$，则有$A\pi_1(g)=\pi_2(g)A$。如果对每一个$g$，$A$都是其不动点，那么我们就称$A$是表示$\pi_1^*\otimes\pi_2$的不动点。那么对于群表示$(\pi_1,V)$和$(\pi_2,W)$，$A$就是一个缠结映射。
+
+\para 利用Schur引理，假若$\pi_1$, $\pi_2$都是不可约的且不等价的，则群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$的不动点集平凡（即只有$A=0$这一个不动点）。
+
+假如$\pi$, $\rho$都是不可约的且不等价的，现在我们考虑线性映射$A\in \Hom(V,W)$在紧Lie群上的平均\footnote{在有限群上也有平均，所以下面一套对有限群也成立。}$\bar{A}=\int_G \pi^*\otimes\rho(g)A \dd g$，显然$\bar{A}$是一个不动点，因此由Schur引理，
+\[
+	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g=0
+\]
+对任意的线性映射$A\in \Hom(V,W)$都成立。
+
+同样，如果$\pi$, $\rho$等价，此时不妨就直接记$\pi=\rho$.因为$\bar{A}$是一个缠结映射，那么由Schur引理，$\bar{A}=\lambda_{\bar{A}} I$，所以
+\[
+	\int_G \pi(g)A\pi(g)^{-1}\dd g=\lambda_{\bar{A}} I
+\]
+对任意的线性映射$A\in \Hom(V,V)$都成立，但是由于$\lambda_{\bar{A}}$并不已知，所以这公式用着不是很方便。为了求出$\lambda_{\bar{A}}$，两边求迹，就有$\tr(A)=\lambda_{\bar{A}} \dim V$，即$\lambda_{\bar{A}}=\tr(A)/\dim V$，所以我们也可以将上式写作更实用的形式
+\[
+	\bar{A}=\int_G \pi(g)A\pi(g)^{-1}\dd g=\frac{\tr(A)}{\dim V}I.
+\]
+
+\para 现在，为了做一点小小的计算，我们将固定矢量空间的基，此时任意的线性算子都可以看做矩阵。记$E_{ij}$为只在$(a,b)$位置为1，其他位置为0的矩阵。很容易可以计算得到$E_{ij}AE_{kl}=A_{jk}E_{il}$.现在对
+\[
+	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g
+\]
+左乘$E_{ij}$，右乘$E_{kl}$，并令$A=E_{ab}$，可以得到
+\[
+	\int_G E_{ij}\rho(g)E_{ab}\pi(g)^{-1}E_{kl}\dd g=\int_G \rho(g)_{ja}E_{ib}\pi(g)^{-1}E_{kl}\dd g=\int_G (\rho(g))_{ja}\left(\pi(g)^{-1}\right)_{bk}E_{il}\dd g,
+\]
+由于$\pi$是幺正表示，所以$\left(\pi(g)^{-1}\right)_{bk}=\left(\pi(g)^{\dag}\right)_{bk}=\pi(g)_{kb}^*$，并记$\pi_{ia}:g\to \pi(g)_{ia}$为分量函数，则利用复函数内积的写法，上式可以写作
+\[
+	E_{ij}\overline{E_{ab}}E_{kl}=\left(\rho_{ja},\pi_{kb}\right)E_{il}.
+\]
+
+\para 设$\rho$和$\pi$都是不可约的，对于$\rho$和$\pi$不等价的情况，我们有$\overline{E_{ab}}=0$，所以$\left(\rho_{ja},\pi_{kb}\right)=0$.类似地，对于$\rho=\pi$的情况，我们有$\overline{E_{ab}}=\tr(E_{ab})I/\dim V=\delta_{ab}I/\dim V$，所以
+\[
+	\left(\pi_{ja},\pi_{kb}\right)E_{il}=E_{ij}\overline{E_{ab}}E_{kl}=\frac{\delta_{ab}}{\dim V}E_{ij}IE_{kl}=\frac{\delta_{ab}\delta_{jk}}{\dim V}E_{il},
+\]
+或者
+\[
+	\left(\pi_{ja},\pi_{kb}\right)=\frac{\delta_{ab}\delta_{jk}}{\dim V}.
+\]
+
+\para 令$\phi:G\to \mathrm{GL}(V)$是一个$G$的复表示，那么复值函数$\chi_\phi:G\xrightarrow{\phi}\mathrm{GL}(V)\xrightarrow{\tr}\cc:g\mapsto \tr(\phi(g))$被称为$\phi$的特征标。
+
+对于紧Lie群的不可约幺正表示，我们有
+\[
+(\chi_\pi, \chi_\pi)=\sum_{i,j}(\pi_{ii},\pi_{jj})=\sum_{i,j}\frac{\delta_{ij}^2}{\dim V}=\sum_{i}\frac{1}{\dim V}=1,
+\]
+对于两个不可约的不等价表示，我们有$(\chi_\pi, \chi_\rho)=0$.
+
+令$\hat{G}$是紧Lie群$G$的复不可约表示的等价类，那么由于是紧Lie群，有限维表示必然是完全可约的，就是说任何一个有限维表示能写作$\rho=\sum_{\pi\in\hat{G}}m(\rho,\pi)\pi$，其中$m(\rho,\pi)$是乘数，是一个自然数，就是说分解出来的等价的$\pi$各数。直接计算就可以得到$m(\rho,\pi)=(\chi_\rho,\chi_\pi)$,以及
+\[
+	(\chi_{\rho_1},\chi_{\rho_2})=\sum_{\pi\in\hat{G}}m(\rho_1,\pi)m(\rho_2,\pi).
+\]
+
+前面说过，紧Lie群的一个不可约的复有限维表示$\pi$满足$(\chi_\pi, \chi_\pi)=1$，反过来，如果$(\chi_\pi, \chi_\pi)=1$，则$(\chi_{\pi},\chi_{\pi})=\sum_{\rho\in\hat{G}}m(\rho,\pi)^2=1$，因此存在一个$\rho\in\hat{G}$使得$m(\rho,\pi)=1$,而其他的$\pi\in\hat{G}$都有$m(\rho,\psi)=0$.这样我们就得到了：
+
+\para 一个复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi})=1$.
+
+\pro 如果$G$是一个紧Lie群，那么两个表示$\pi_1$, $\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
+
+实际上，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
+$A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。
+
 \section{伴随表示}
 
 Lie代数本身就是一个矢量空间，我们这里感兴趣的是表示是一种矢量空间为$\lag$的表示。这需要从伴随作用开始。先说几个记号，设$l_g:h\mapsto gh$以及$r_g:h\mapsto hg$分别是左平移与右平移，他们都是群的自同构。
@@ -582,13 +961,27 @@ E|k\rangle=(2k\lambda -k(k-1)) |k-1\rangle\quad (k>0).
 \[
 	\sum_{i=1}^n a_i E_{ii} \text{ ,where } \sum_{i=1}^n  a_i,
 \]
-他的复维度是$n-1$，因为他被$\{E_{11}-E_{ii}\,:\, 2\leq i \leq n\}$生成。
+他的复维度是$n-1$，因为他被$\{E_{ii}-E_{(i+1),(i+1)}\,:\, 1\leq i \leq n-1\}$生成。实际上，他就同构于$\mathfrak{sl}(n,\cc)$.
+
+$\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以及$e_i=E_{ii}-E_{(i+1),(i+1)}$，则前$(n-1)^2$个基的元素可以算出$(n-1)^2\times (n-1)^2$个Killing形式的矩阵的分量为
+\[
+	(E_{ij},E_{kl})_K=\delta_{jk}\delta_{il},
+\]
+这是一个单位矩阵。然后
+\[
+	(E_{ij},E_{kk}-E_{(k+1),(k+1)})_K=\delta_{jk}\delta_{ik}-\delta_{j,(k+1)}\delta_{i,(k+1)}=0,
+\]
+以及
+\[
+	(E_{ii}-E_{(i+1),(i+1)},E_{jj}-E_{(j+1),(j+1)})_K=2\delta_{ij}-\delta_{i,(j+1)}-\delta_{(i+1),j},
+\]
+可以告诉我们Killing形式的矩阵的行列式不为零，所以Killing形式非退化，也即这是一个半单Lie代数。
 
 我们记$\epsilon_i \in \mathfrak{h}_*$为如下的线性函数
 \[
 	 \epsilon_i\left(\sum_{i=1}^n a_i E_{ii}\right)=a_i,
 \]
-则$\epsilon_i-\epsilon_1$构成了$\mathfrak{h}_*$的一组基。
+则$\epsilon_i-\epsilon_{i+1}$构成了$\mathfrak{h}_*$的一组基。
 
 通过计算
 \[
@@ -596,9 +989,9 @@ E|k\rangle=(2k\lambda -k(k-1)) |k-1\rangle\quad (k>0).
 \]
 可以得知$E_{ij}$构成了全部的升降算符，而对应于$E_{ij}$的根就是$\epsilon_i-\epsilon_j$，单根可以选作
 \[
-	\alpha_i= \epsilon_i-\epsilon_{i+1},
+	\alpha_i = \epsilon_i-\epsilon_{i+1},
 \]
-同样是$n-1$个。
+自然是$n-1$个。
 
 考虑任意的一个权$\lambda$，我们对$\alpha_i^\vee$将其展开，得到了Dynkin标记
 \[
@@ -606,13 +999,58 @@ E|k\rangle=(2k\lambda -k(k-1)) |k-1\rangle\quad (k>0).
 \]
 其中$\lambda_i$都是整数。我们考虑另一个整数组$\{l_1,\cdots,l_{n-1}\}$，其中$\lambda_i=\sum_{j=i}^{n-1}\lambda_j$。这两种表示是显然等价的。但是一般来说我们还会略去$\{l_1,\cdots,l_{n-1}\}$中的零。这种简略的表示其实还是等价于Dynkin标记的。
 
+特别地，对于最高权$\lambda$，他的Dynkin标记全是非负的，
 比如对于$\mathfrak{su}(5)_\cc$，我们有
 \[
 	\lambda=(2,0,2,0)=\{4,2,2\},
 \]
-我们将其用如下图表示
+此时我们可以使用如下图表示
 \[
 	\yng(4,2,2)
 \]
 他被称为Young图。
+
+\section{对称群}
+
+\para 考虑集合$=\{1,\cdots,n\}$，以及任意的双射$\sigma : I_n\to I_n$，我们可以直接用表
+\[
+	\begin{pmatrix}
+	1&2&\cdots &n\\
+	\sigma(1)&\sigma(2)&\cdots &\sigma(n)
+	\end{pmatrix}
+\]
+来描述这样一个双射。所有这样的双射按照复合构成一个群，我们称为对称群，记作$S_n$。这是一个有限群，他的元素个数是$n!$个。
+
+现在，固定$\sigma$，考虑任意的$i\in I$，以及集合$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^k(i),\cdots\}$，由于这是一个有限群，所以集合必然也是有限的，即总存在一个$1\leq p\leq n$，使得$\sigma^p(i)=i$. 我们就得到了一个$p$个元素的$I$的子集，这被称为一个cycle，长度为$p$，有时候被称作一个$p$-cycle. 由于$I_n$是有限集，所以我们可以将其分解为不同cycle的并。
+
+将$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^{p-1}(i)\}$直接计算出来，记作$(i,j,k,\cdots,l)$. 由于$\sigma^{k+1}(i)=\sigma(\sigma^k(i))$，所以这组数里面，第$j$个数是第$j-1$个数进行应用$\sigma$后得到的，而第一个数是最后一个数应用$\sigma$后得到的。因此，cycle的名字恰如其分。
+
+由于$I_n$可以分解成这样的集合的并，即
+\[
+	(i_{11},\cdots,i_{1k_1})(i_{21},\cdots,i_{2k_2})\cdots (i_{m1},\cdots,j_{mk_m}),
+\]
+其中每一个$I_n$中的正整数都出现一次。所以如果我们得到了一个分解，则我们也完全确定了$\sigma$.
+
+比如
+\[
+	\sigma\begin{pmatrix}
+	1&2&3&4&5\\
+	2&3&1&4&5
+	\end{pmatrix}
+\]
+我们就可以把$\sigma$分解为
+\[
+	\sigma=(1,2,3)(4)(5).
+\]
+
+\para 考虑一个有限群$G=\{g_1,\cdots,g_n\}$，我们定义一个矢量空间
+\[
+	\cc [G]=\cc\langle g_1\rangle \oplus \cdots \oplus \cc\langle g_n\rangle,
+\]
+通过定义如下的标量乘法
+\[
+	g\sum_{i=1}^n c_i g_i=\sum_{i=1}^n c_i(gg_i),
+\]
+$\cc [G]$自然地成为一个$G$-模，因此这是$G$的一个表示。
+
 \end{document}

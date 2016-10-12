@@ -1,0 +1,37 @@
+% !TeX program = XeLaTeX
+% author: buwailee@nmhs
+\documentclass[10pt,twoside,openany,svgnames,x11names]{extbook}
+% \input{structure.tex}
+\usepackage{wallpaper}
+	% \CTEXoptions[today=old]
+	% \CTEXoptions[contentsname=Table of Contents]
+\usepackage[zh,book]{noteheader}
+\usepackage[chapter]{../../egastyle}
+\usepackage{titletoc, makeidx}
+	\makeindex
+	% \renewcommand{\indexname}{Index}
+% \usepackage[titletoc,title]{appendix}
+% 	\renewcommand{\appendixname}{Appendix}
+
+\usepackage{hyperref}
+	\hypersetup{bookmarksnumbered=true}
+
+\input{../../defs.tex}
+	\newcommand{\cc}{\mathbb{C}}
+	\DeclareMathOperator{\spec}{Spec}
+\newcommand{\idx}[1]{{\kaishu #1\index{#1}}}
+
+\newcommand\chapterimg{Pictures/0.png}
+\linespread{1.05}
+
+\begin{document}
+\tableofcontents
+\mainmatter
+\pagestyle{headings}
+	\input{chap1_eng.tex}
+	% \input{chap2_eng.tex}
+	% \input{appendix_eng.tex}
+\backmatter
+	\printindex
+	% \input{references.tex}
+\end{document}
