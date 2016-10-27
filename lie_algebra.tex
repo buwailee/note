@@ -4,6 +4,7 @@
 % \usepackage{amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs, tikz}
 % \usepackage[b5paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
 \usepackage{ctex, indentfirst}
+	% \setCJKmainfont{方正新书宋简体}
 \usepackage{multido, pstricks, young, youngtab} % for root/weight system and Young tableaux
 \usepackage[section]{egastyle}
 % \usepackage[compat=1.1.0]{tikz-feynman}
@@ -19,16 +20,54 @@
 	\newcommand{\lag}{{\mathfrak{g}}}
 	\DeclareMathOperator{\ad}{ad}
 	\DeclareMathOperator{\Int}{int}
-	\DeclareMathOperator{\lie}{Lie}
+	\DeclareMathOperator{\sgn}{sgn}
 
 \begin{document}
 \maketitle
 \clearpage
 \tableofcontents
 \clearpage
+% \section*{Motivation}
+
+% % \para 大概是无聊的一个定义：有一个非空集合$G$和其上的二元运算$*$，或者记作$(G,*)$，称为一个群，如果满足：
+
+% % \no{1}结合律：对于任意$a$, $b$, $c\in G$，有$(a*b)*c=a*(b*c)$；
+
+% % \no{2}单位元：对于任意的$a\in G$，存在一个元素$e\in G$，使得$e*a=a*e=a$；
+
+% % \no{3}反元素：对于每一个$a\in G$，存在一个元素$b\in G$，使得$b*a=a*b=e$.
+
+% % $a$的反元素通常记作$a^{-1}$. 此外如果不产生歧义，我们可以直接称呼$G$为一个群。显然$(\mathbb{R},+)$是一个群，单位元是0，$a^{-1}=-a$.将$\mathbb{R}$去掉了$0$之后的集合记作$\mathbb{R}-\{0\}$，则$(\mathbb{R}-\{0\},\cdot)$构成一个群，单位元是$1$，$a^{-1}=1/a$.
+
+% % \para 如果有群$(G,*)$，对于任意的$a$, $b\in G$满足$a*b=b*a$，则称$(G,*)$是一个交换群，或者称为Abel群。
+
+% 有些人说，群就是对称性，这并不是一个很好的说法。群在定义上不过是代数结构，群和对称性的联系来自于，保持某些结构的双射们（可逆的变换们）往往构成一个群。
+
+% 实际上，在具体语境中对称性的定义会有不同，这来自于我们想要怎么去表述对称性。粗略来说，对称性大概就是一种在某些/类变换下不变（或者更广义地，按照某种希望的方式变换）的某种性质。所以我们有如下说法：
+
+% 具有群$G$对称性的某物：\emph{指某物的某结构在变换群$G$的作用下不变（或者更广义地，按照某种希望的方式变换）。}
+
+
+% \para 作为第一个例子，我们考虑$\mathrm{O}(n)$和$\mathrm{U}(n)$的定义。
+
+% 设$\rr^n$上面具有一个内积$(v,w)=\sum_{i=1}^n v_i w_i$，而$\cc^n$上有一个内积$\langle v,w\rangle=\sum_{i=1}^n v^*_i w_i$，其中$v_i^*$是$v_i$的复共轭。从几何上面来看，内积给出了一个矢量的长度，以及两个实矢量之间的夹角。
+
+% 考虑一个实矩阵$A:\rr^n \to \rr^n$，他将矢量$v$和$w$变成了$Av$和$Aw$，如果对任意的$v$和$w$都使得$(Av,Aw)=(v,w)$成立，则称$A$是一个正交矩阵。正交矩阵在这里表征的是保持内积的对称性，几何上来看，矢量的长度和两个矢量的夹角不变。下面要验证所有的正交矩阵构成一个群，这个群被记作$\mathrm{O}(n)$，称为正交群。
+
+% 由于
+% \[(v,w)=(Av,Aw)=(A^TAv,w),\]
+% 且内积非退化，所以$A^TA=I$，所以$\det (A^TA)=\det(A)^2=1$，于是$\det(A)\neq 0$，这也就推出$A$是可逆的，所以我们可以把正交矩阵的定义改成：$A^T=A^{-1}$.
+
+% 随后，我们检验正交矩阵$A$和$B$的复合（或者说乘积）也是正交矩阵，$(AB)^T=B^TA^T=B^{-1}A^{-1}=(AB)^{-1}$，同时，由于$(A^{-1})^T=(A^T)^{-1}=(A^{-1})^{-1}=A$，因此$A$的逆也是一个正交矩阵。所以正交矩阵们按照矩阵乘法（或者说线性映射复合）成群。
+
+% 类似地，考虑一个复矩阵$A:\cc^n \to \cc^n$，如果对任意的$v$和$w$都使得$\langle Av,Aw\rangle =\langle v,w\rangle $成立，则称$A$是一个幺正矩阵。同上可以类似验证所有的幺正矩阵构成一个群，这个群被记作$\mathrm{U}(n)$，称为酉群。
+
+% \para 
+
 \section*{Outline}
 \addcontentsline{toc}{section}{Outline}
 \begin{itemize}
+
 \item Lie群：具有微分流形结构的群。
 
 因此左右平移是微分同胚，所以局部性质由单位元附近的那些元素决定。对于连通Lie群，则单位元附近的元素可以生成整个群的元素（即任意的群元都可以通过单位元附近的元素相乘组合得到）。
@@ -47,25 +86,29 @@
 
 \item 为什么我们需要表示？
 
-物理量的值的对称性，比如Poincare群$G$，取$\Lambda \in G$，动量在$\Lambda$下进行如下变换
+举个例子，狭义相对论的背景时空具有保持Minkowski内积的对称性，这个对称性对应的群是Poincar\'e群$G$，取$\Lambda \in G$，动量在$\Lambda$下进行如下变换
 \[
-	q^\mu \to \Lambda^\mu_{\phantom{\mu}\nu}q^\nu,
+	p^\mu \to \Lambda^\mu_{\phantom{\mu}\nu}p^\nu,
 \]
-在态矢量所处的空间来看，第一个惯性参考系来看的态矢量为$|q^\mu\rangle$，第二个惯性参考系来看的态矢量为$|\Lambda^\mu_{\phantom{\mu}\nu}q^\nu\rangle$，两者之间应该靠某个算符联系，他依赖于$\Lambda$，记作$U(\Lambda)$，此时
+在态矢量所处的空间来看，第一个惯性参考系来看的态矢量为$|p^\mu\rangle$，第二个惯性参考系来看的态矢量为$|\Lambda^\mu_{\phantom{\mu}\nu}p^\nu\rangle$，由于概率不依赖于参考系选取，两者之间应该靠某个线性幺正算符联系\footnote{这被称为Wigner定理：保持概率守恒的变换都将诱导出Hilbert空间上的一个幺正线性变换。}，他依赖于$\Lambda$，记作$U(\Lambda)$，此时
 \[
-	U(\Lambda)|q^\mu\rangle = |\Lambda^\mu_{\phantom{\mu}\nu}q^\nu\rangle.
+	U(\Lambda)|p^\mu\rangle = |\Lambda^\mu_{\phantom{\mu}\nu}p^\nu\rangle.
 \]
-现在来看加上另一个$\bar\Lambda$，他应该将动量为$\Lambda^\mu_{\phantom{\mu}\nu}q^\nu$态的变成动量为$\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}q^\xi$的态，所以
+现在再加上另一个$\bar\Lambda$，他应该将动量为$\Lambda^\mu_{\phantom{\mu}\nu}p^\nu$态的变成动量为$\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}p^\xi$的态，所以
 \[
-	U(\bar\Lambda)U(\Lambda)|q^\mu\rangle = U(\bar\Lambda)|\Lambda^\mu_{\phantom{\mu}\nu}q^\nu\rangle = \exp(i\theta(\Lambda,\bar\Lambda))|\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}q^\xi\rangle.
+	U(\bar\Lambda)U(\Lambda)|p^\mu\rangle = U(\bar\Lambda)|\Lambda^\mu_{\phantom{\mu}\nu}p^\nu\rangle = \exp(i\theta(\Lambda,\bar\Lambda))|\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}p^\xi\rangle = \exp(i\theta(\Lambda,\bar\Lambda))U(\bar\Lambda \Lambda)|p^\mu\rangle,
 \]
-有个相位是因为，相位不影响态，尽管在物理上是等价的，在数学上我们不能直接无视其存在。还好，如果群的性质不太差，或者我们选个性质更好的群来代替他，则关于任意的两个变换，这个相位我们可以全部搞成1。所以我们可以得到
+因此，
 \[
-	U(\Lambda_1)U(\Lambda_2)=U(\Lambda_1\Lambda_2),
+	U(\bar\Lambda)U(\Lambda)= \exp(i\theta(\Lambda,\bar\Lambda)) U(\bar\Lambda \Lambda).
 \]
-此时$U$就是一个表示。因此，值上的对称性能够诱导出态矢量上的对称性，利用的手段就是群表示。
+有个相位是因为，相位不影响态。尽管这个相位在物理上是等价的，在数学上我们不能直接无视其存在。还好，如果群的性质不太差，或者我们选个性质更好的群来代替他，则关于任意的两个变换，这个相位我们可以全部搞成1。所以我们可以得到
+\[
+	U(\bar\Lambda)U(\Lambda) = U(\bar\Lambda \Lambda),
+\]
+此时$U$就是一个表示。因此，背景时空对称性能够诱导出态矢量上的对称性，利用的手段就是群表示。
 
-那么，有了这个群表示，我们就有Lie代数的表示，Poincare群的Lie代数，现在就变成了一些态矢量所处的Hilbert空间上的算符，而这些就是动力学算符。这就是说：对称性诱导出了动力学算符，而动力学量的不可约表示完成了单粒子分类。
+那么，有了这个群表示，我们就有Lie代数的表示，Poincar\'e群的Lie代数，现在就变成了一些态矢量所处的Hilbert空间上的算符，而这些就是动力学算符。这就是说：对称性诱导出了动力学算符，而动力学量的不可约表示完成了单粒子分类。
 
 \item 从Lie代数到Lie群：Ado定理，所有实Lie代数都同构于$\mathfrak{gl}(n,\cc)$的子代数。所以每一个实Lie代数都可以实现为某个Lie群的Lie代数的子代数。同时，对于任意的连通Lie群，他一定存在一个万有覆叠空间（单连通的覆叠空间），他有着Lie群结构，且和原来的Lie群有着相同的Lie代数。
 
@@ -95,6 +138,20 @@
 
 \end{itemize}
 
+% \section{群与对称性}
+
+% \para 一个集合$G$，上面有一个运算$*$满足结合率$a*(b*c)=(a*b)*c$，且存在唯一一个元素$e$使得$a*e=e*a=a$对任意的$a\in G$都成立，同时，任取$g\in G$都存在一个元素$h\in G$使得$g*h=h*g=e$. 下面写群运算的时候直接无视掉他的符号，即$g*h$写作$gh$.
+
+% 简单来说，群就是一个集合，上面有一种存在单位元的满足结合律的运算，而且对每一个元素存在逆元。
+
+% \para 考虑一个集合到自身的所有双射（一般我们称为变换），这自然构成一个群。反过来，群的每一个元素都可以通过左乘看作群到群的一个双射，自然这就是一个变换。因此，群也可以理解成变换构成的集合。
+
+% 有人说，群就是对称，这不是很正确的说法。所谓对称，就是说某些变换下不变的某种性质。所以将对称与群联系起来的正确说法是：如果某种结构在群$G$的变换下不变，那么我们就称呼这是一个具有$G$对称性的结构。
+
+% \para 举个例子，三维矢量空间$\rr^n$，上面装备了一个内积$(v,w)=\sum_i v_iw_i$，这样的空间被称为$n$维Euclid空间。有了内积，我们可以通过内积定义出一个矢量的长度，以及两个矢量的夹角。
+
+% 设矩阵$A$使得$(Av,Aw)$不变，那么这个变换使得内积不变。几何上来看，这个变换保持矢量的长度以及两个矢量的夹角。这样的矩阵被称为正交矩阵。不难检验，所有正交矩阵按矩阵乘法构成一个群，称为正交群，记作$\mathrm{O}(n)$. 所以，我们说，$n$维Euclid空间具有$\mathrm{O}(n)$对称性，他表现为$\mathrm{O}(n)$中的变换使得内积不变。
+
 \section{基础}
 
 \para 设$G$为群，单位元记做$e$，群运算记做$\mu:G\times G\to G$，如果$G$是一个光滑流形，且$\mu$是一个光滑映射，则称$G$是一个光滑Lie群。当然可以谈论不怎么光滑的Lie群，但是下面所指的Lie群都是光滑的。记$l_g$是左作用算符，即$l_g=\mu(g,\cdot)$，或者写作$l_gh=gh$，同样，右作用算符记做$r_g$，即$r_gh=hg$.显然这些都是光滑映射。
@@ -105,9 +162,9 @@
 
 \para 一个Lie群$G$的Lie代数$\lag$就是其单位元处的切空间。
 
-由于$l_g$和$r_g$都是$G\to G$的光滑同胚，所以$(l_g)_*$或者$(r_g)_*$就是将光滑切矢量场映射到光滑切矢量场的双射。如果矢量场$X_x$满足$(l_a)_*X_x=X_{ax}$，则称$X$是一个左不变矢量场。对于左不变矢量场$X$而言，由于$(l_a)_*X:g\mapsto (l_a)_{*a^{-1}g}X_{a^{-1}g}=X_g$，所以$(l_a)_*X=X$.
+由于$l_g$和$r_g$都是$G\to G$的光滑同胚，所以$(l_g)_*$或者$(r_g)_*$就是将光滑切矢量场映射到光滑切矢量场的双射。如果矢量场$X_x$满足$(l_a)_*X_x=X_{ax}$，则称$X$是一个左不变矢量场。对于左不变矢量场$X$而言，由于\footnote{设$f:M\to N$是一个光滑单射，而$X$是$M$上的一个光滑矢量场，则$f_*X:p\mapsto f_{*f^{-1}(p)}X_{f^{-1}(p)}$是$N$上的一个矢量场。因为$(f_*X)g=X(g\circ f)$成立，所以这也是一个光滑矢量场。}$(l_a)_*X:g\mapsto (l_a)_{*a^{-1}g}X_{a^{-1}g}=X_g$，所以$(l_a)_*X=X$.
 
-和任意的矢量场一样，左不变矢量场$X$在$e$处诱导了$\lag$中的元素$X_e$. 反过来，设$X_e\in\lag$，我们可以构造一个左不变矢量场$X_x=(l_{x})_*X_e=(l_x)^{-1}_*X_x$，因此我们就建立了Lie代数和左不变矢量场之间的一一对应。
+和任意的矢量场一样，左不变矢量场$X$在$e$处诱导了$\lag$中的元素$X_e$. 反过来，设$X_e\in\lag$，我们可以构造一个左不变矢量场$x\mapsto X_x=(l_{x})_*X_e$，因此我们就建立了Lie代数和左不变矢量场之间的一一对应。
 
 \para 左不变矢量场都是光滑的且完备的。
 
@@ -135,7 +192,7 @@
 \[
 	\ad(X)([Y,Z])=[\ad(X)Y,Z]+[Y,\ad(X)Z],
 \]
-因此$\ad(X)$就是一个Lie代数上面的导子。
+因此$\ad(X)$就是一个Lie代数上面的导子，他被称为内导子。
 
 \para 前面我们定义了$\exp:\lag\times \rr\to G$，特别地，我们记$\exp(1,X)$为$\exp(X)$，这样定义的映射$\exp:\lag\to G$他被称为指数映射。
 
@@ -198,7 +255,7 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 \[
 	e^A=1+\sum_{n=1}^\infty \frac{A^n}{n!}=\sum_{n=0}^\infty \frac{A^n}{n!},
 \]
-对于任意的矩阵$A$都是收敛的。可以看到其完全类似于实数值指数函数的展开$e^x=\sum_{n=0}^\infty x^n/n!$
+对于任意的矩阵$A$都是收敛的。可以看到其完全类似于实数值指数函数的展开$e^x=\sum_{n=0}^\infty x^n/n!$.
 
 \proof 由\lemref{exp}，对一般的Lie群$G$和光滑函数$f:G\to \rr^n$，使用Taylor公式
 \[
@@ -268,7 +325,7 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 
 \para 一个矢量空间$V$，所有线性函数$f:V\to k$也构成一个矢量空间，记作$V^*$。如果$V$是有限维的，他和$V$是同构的，如果存在一个非退化的双线型（比如一个内积），则我们可以建立$V^*$和$V$之间的一个自然同构。
 
-考虑群表示$\rho:G\to \mathcal{GL}(V)$，我们可以构造一个新的表示$\rho^*:G\to \mathcal{GL}(V^*)$通过
+考虑群表示$\rho:G\to \mathrm{GL}(V)$，我们可以构造一个新的表示$\rho^*:G\to \mathrm{GL}(V^*)$通过
 \[
 	\rho^*(g)(f):v\mapsto f(\rho(g)(v)),
 \]
@@ -318,7 +375,7 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 
 \theo 在局部紧的拓扑群上存在Haar测度$\mu$，他是一个正则的左不变的Borel测度。所谓的左不变就是指对于一个集合$S$，通过左作用$L_g$，我们有$\mu(S)=\mu(L_gS)$，当然还有右作用和右不变的概念。
 
-对于$G$上的可测函数$f$，上述测度满足
+对于$G$上的可测函数$f$，上述测度对任意的$h\in G$都满足
 \[
 	\int_G f(l_h g)\dd \mu(g)=\int_G f(g)\dd \mu(g),
 \]
@@ -336,7 +393,7 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 
 从这可见，紧Lie群表示的完全可约性，又是一个紧性作为有限性条件的例证。
 
-\subsection*{Character Theory}
+\subsection*{$\star$ Character Theory}
 
 \para 对于有限群$G$上的复值函数$f$和$g$，我们可以定义内积为
 \[
@@ -406,38 +463,80 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 	\chi_\rho(e)=\tr(I)=\dim(V).
 \]
 
-\para 对于紧Lie群（有限群）的不可约幺正表示，我们有
+\para 对于紧Lie群（有限群）的两个不可约的不等价表示$\rho$和$\pi$，我们有
 \[
-(\chi_\pi, \chi_\pi)=\sum_{i,j}(\pi_{ii},\pi_{jj})=\sum_{i,j}\frac{\delta_{ij}^2}{\dim V}=\sum_{i}\frac{1}{\dim V}=1,
+(\chi_\rho, \chi_\pi)=\sum_{i,j}\left(\rho_{ii},\pi_{jj}\right)=0,
 \]
-对于两个不可约的不等价表示，我们有$(\chi_\pi, \chi_\rho)=0$. 对于有限群，前者我们通常写作
+以及对于一个不可约表示
+\[
+(\chi_\pi, \chi_\pi)=\sum_{i,j}(\pi_{ii},\pi_{jj})=\sum_{i,j}\frac{\delta_{ij}^2}{\dim V}=\sum_{i}\frac{1}{\dim V}=1.
+\]
+对于有限群，后者我们通常写作
 \[
 	\sum_{g\in G} |\chi_\pi(g)|^2=|G|.
 \]
 
-令$\hat{G}$是紧Lie群（有限群）$G$的复不可约表示的等价类。由于是紧Lie群（有限群），有限维表示必然是完全可约的，就是说任何一个有限维表示能写作$\rho=\bigoplus_{\pi\in\hat{G}}m(\rho,\pi)\pi$，其中$m(\rho,\pi)$是乘数，是一个自然数，就是说分解出来的等价的不可约表示$\pi$的个数。直接计算就可以得到$m(\rho,\pi)=(\chi_\rho,\chi_\pi)$,以及
+令$\hat{G}$是紧Lie群（有限群）$G$的复不可约表示的等价类。任取$\rho$, $\pi\in\hat{G}$，前面的推论现在可以总结为$(\chi_\rho,\chi_\pi)=\delta_{\rho\pi}$.
+
+由于是紧Lie群（有限群），有限维表示必然是完全可约的，就是说任何一个有限维表示能写作$\rho=\bigoplus_{\pi\in\hat{G}}m(\rho,\pi)\pi$，其中$m(\rho,\pi)$是乘数，是一个自然数，就是说分解出来的等价的不可约表示$\pi$的个数。直接计算就可以得到$m(\rho,\pi)=(\chi_\rho,\chi_\pi)$,以及
 \begin{equation}
 	(\chi_{\rho_1},\chi_{\rho_2})=\sum_{\pi\in\hat{G}}m(\rho_1,\pi)m(\rho_2,\pi).
 \end{equation}
 
-前面说过，紧Lie群（有限群）的一个不可约的复有限维表示$\pi$满足$(\chi_\pi, \chi_\pi)=1$，反过来，如果$(\chi_\pi, \chi_\pi)=1$，则$(\chi_{\pi},\chi_{\pi})=\sum_{\rho\in\hat{G}}m(\rho,\pi)^2=1$，因此存在一个$\rho\in\hat{G}$使得$m(\rho,\pi)=1$,而其他的$\pi\in\hat{G}$都有$m(\rho,\psi)=0$.这样我们就得到了：
+\pro 一个紧Lie群（有限群）的复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi})=1$. 
 
-\para 一个紧Lie群（有限群）的复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi})=1$.
+\proof 前面说过，紧Lie群（有限群）的一个不可约的复有限维表示$\pi$满足$(\chi_\pi, \chi_\pi)=1$. 反过来，如果$(\chi_\pi, \chi_\pi)=1$，则$(\chi_{\pi},\chi_{\pi})=\sum_{\rho\in\hat{G}}m(\rho,\pi)^2=1$，因此存在一个$\rho\in\hat{G}$使得$m(\rho,\pi)=1$,而其他的$\pi\in\hat{G}$都有$m(\rho,\psi)=0$.\qed
 
 \pro 如果$G$是一个紧Lie群（有限群），那么两个表示$\pi_1$, $\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
 
-实际上，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
-$A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。
+\proof 假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
+$A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。\qed
+
+\para 设$G$是一个群，而$g\in G$，则同态$\mathrm{Ad}(g):h\mapsto ghg^{-1}$被称为共轭作用。共轭作用衡量了一个群的可交换性，这是因为，如果$\mathrm{Ad}(g)(h)=h$，则$gh=hg$.
+
+固定一个$h\in G$，考虑子集$H_h=\mathrm{Ad}(G)(h)$，这样的子集被称为共轭作用的一条轨道（或者在这里叫做共轭类）。两条不同的轨道是不能相交的，这是因为如果$H_h$和$H_g$有一个相交点$k$，分别记作$k=php^{-1}=qgq^{-1}$，则$g=q^{-1}ph(q^{-1}p)^{-1}$，所以$H_h=H_g$.
+
+\para 回到表示，由于$\chi_\rho(h^{-1}gh)= \chi_\rho(g)$，所以$\chi_\rho$可以定义到共轭类的集合上面。对于有限群，所有共轭类集合上的复值函数构成一个复有限维矢量空间，他上面有着从$G$的复值函数那儿继承的内积，显然，他的维度等于共轭类的个数。
+
+由于$(\chi_\rho,\chi_\pi)=\delta_{\rho\pi}$，所以$\{\chi_\rho\,:\, \rho\in \hat{G}\}$构成这个矢量空间的一组正交线性无关组。由于维度是极大的线性无关组的个数，故有限群不可约表示的数目小于等于其共轭类的数目。后面引入所谓的正规表示，我们可以用它证明一个更强的命题：对于有限群，不可约表示的数目等于其共轭类的数目！
 
 \para 对于有限群$G=\{g_1,\cdots,g_n\}$，我们定义一个矢量空间
 \[
 	\cc [G]=\cc\langle g_1\rangle \oplus \cdots \oplus \cc\langle g_n\rangle,
 \]
-通过定义如下的线性映射$R(g):\cc [G]\to \cc [G]$
+这是矢量空间同时拥有幺环的结构，我们通过
+\[
+\sum_{i=1}^n a_i g_i\sum_{j=1}^n b_j g_j=\sum_{i,j=1}^n a_ib_i(g_ig_j)
+\]
+来定义环乘法。
+
+有了乘法，通过
 \[
 	R(g)\sum_{i=1}^n c_i g_i=\sum_{i=1}^n c_i(gg_i),
 \]
-$\cc [G]$自然地成为$G$的一个表示，称为正规表示，他的特征标记作$\chi_R$. 这个表示的特征标比较简单。显然的一点是$\chi_R(e)=\dim (\cc [G])=|G|$，对于$g\neq e$，矩阵分量$g_{hh}$的意义是$g:h\mapsto gh$后对应到$h$的分量，所以$g_{hh}=0$，故而此时$\chi_R(g)=\tr(g:h\mapsto gh)=0$.
+可以定义出线性映射$R(g):G\to \mathrm{GL}(\cc [G])$，此时$(R,\cc [G])$自然地成为$G$的一个表示，称为正规表示，他的特征标记作$\chi_R$. 
+
+实际上，正规表示的值域我们可是适当缩小。注意到环$\cc [G]$可以看成自己的右$\cc [G]$-模，且任取$v$, $w\in \cc [G]$，我们有
+\[
+	R(g)(vw)=gvw=(gv)w=(R(g)v)w.
+\]
+所以$R(g)$还是一个右$\cc [G]$-模同构。
+
+可以验证，$\cc [G]$上所有右$\cc [G]$-模同态也构成一个矢量空间，我们记作$\mathrm{End}(\cc [G])$. 他通过复合也构成了一个含幺环。
+
+\pro 左乘$l_v:w\mapsto vw$建立了矢量空间$\cc [G]$与$\mathrm{End}(\cc [G])$的同构，同时也建立了环之间的同构。
+
+\proof
+	线性性显然。先看看是不是单射，如果$l_v=0$，则$v=ve=l_ve=0$，所以这是单的。然后只要检验是不是满射就行了。设$\theta\in \mathrm{GL}(\cc [G])$，我们考虑$\theta(e)=v\in \cc [G]$，因为
+	\[
+		\theta(g)=\theta(eg)=\theta(e)g=vg=l_vg,
+	\]
+	因此$\theta=R(v)$. 满性证明完毕。于是矢量空间同构自然。
+
+	对于环结构，由于$l_{vw}=l_v\circ l_w$，所以左乘也是一个环同态，而且既单又满故而是一个环同构。
+\qed
+
+\para 正规表示的特征标比较简单。显然的一点是$\chi_R(e)=\dim (\cc [G])=|G|$，对于$g\neq e$，矩阵分量$g_{hh}$的意义是$g:h\mapsto gh$后对应到$h$的分量，所以$g_{hh}=0$，故而此时$\chi_R(g)=\tr(g:h\mapsto gh)=0$.
 
 直接计算就有$(\chi_{R},\chi_{R})=|G|$，利用上面的判据，可以断言这不是一个不可约表示（除非是平凡群）。将其进行分解，
 \[
@@ -453,7 +552,33 @@ $\cc [G]$自然地成为$G$的一个表示，称为正规表示，他的特征�
 \]
 这就使得有限群的表示可能变成一个组合的问题。比如对称群$S_3$，$|S_3|=3!=6=2^2+1^2+1^2$.
 
-\section{伴随表示}
+\para 由于
+\[
+	\cc [G]=\bigoplus_{\pi\in\hat{G}}m(R,\pi)V_\pi=\bigoplus_{\pi\in\hat{G}}\dim(V_\pi)V_\pi,
+\]
+考虑环$\mathrm{End}(\cc [G])$的中心$Z_{\mathrm{End}(\cc [G])}$，即$\{\psi\in \mathrm{End}(\cc [G])\,:\, \forall \phi\in \mathrm{End}(\cc [G]),\, \phi\circ\psi=\psi\circ\phi\}$，显然，这还是一个矢量空间。
+
+不妨将$\mathrm{End}(\cc [G])$看成$\cc [G]$上所有矩阵的全体，任取$C\in Z_{\mathrm{End}(\cc [G])}$，我们利用$CE_{ii}=E_{ii}C$以及$C(E_{ij}+E_{ji})=(E_{ij}+E_{ji})C$，可以断言$Z_{\mathrm{End}(\cc [G])}$中所有矩阵具有$\sum_{\pi\in \hat{G}}c_\pi I_\pi$的形式，其中$I_\pi$是$V_\pi$的单位矩阵而$c_\pi\in\cc$，所以$\dim (Z_{\mathrm{End}(\cc [G])})=|\hat{G}|$.
+
+\theo 对于有限群$G$，其共轭类的个数等于其有限维不可约复表示的个数。
+
+\proof 设$G$的共轭类为$\{K_i\,:\, 1\leq i\leq k\}$. 我们考虑$Z_{\cc [G]}$，任取$a\in Z_{\cc [G]}$，他对任意的$h\in G$成立$hah^{-1}=a$. 
+
+考虑分解$a=\sum_i a_ig_i$，我们有
+\[
+	\sum_i a_ig_i=\sum_i a_ihg_ih^{-1},
+\]
+如果$g_i$和$g_j$处于同一个共轭类里面。由于左边是不变的，而右边总存在$h$使得$hg_ih^{-1}=g_j$，由线性无关性，可以得知$a_i=a_j$，继而可以断言处于同一个共轭类里面的$g_i$的系数都是相同的。令$z_i=\sum_{g\in K_i}g$，所以$a$可以作如下分解
+\[
+	a=\sum_{i=1}^kd_iz_i,
+\]
+其中$d_i\in \cc$. 反之，如上形式的$a$必然处于$Z_{\cc [G]}$之中。所以$\dim (Z_{\cc [G]})=k$.
+
+最后，由于$\cc [G]$与$\mathrm{End}(\cc [G])$的同构，所以$k=\dim (Z_{\cc [G]})=\dim (Z_{\mathrm{End}(\cc [G])})=|\hat{G}|$.\qed
+
+\para 作为推论，对于有限群，$\{\chi_\rho\,:\, \rho\in \hat{G}\}$构成了共轭类上复值函数空间的一组正交归一基。
+
+\section{$\star$ 伴随表示}
 
 Lie代数本身就是一个矢量空间，我们这里感兴趣的是表示是一种矢量空间为$\lag$的表示。这需要从伴随作用开始。先说几个记号，设$l_g:h\mapsto gh$以及$r_g:h\mapsto hg$分别是左平移与右平移，他们都是群的自同构。
 
@@ -584,7 +709,7 @@ Lie代数本身就是一个矢量空间，我们这里感兴趣的是表示是�
 \]
 此时$i\ad(h)$就是Hermit的。根据有限维的谱定理，我们一定可以对角化$i\ad(h)$，也就是说可以对角化$\ad(h)$当$h\in \mathfrak{h}$，而且是对角元是纯虚的。
 
-\lem 一个技术引理：设一个$n\times n$的方阵族$\{A^1,\cdots,A^k\}$满足$[A^i,A^j]=0$对$1\leq i$, $j\leq k$都成立，且每一个$A^i$都是可以对角化的。则$\{A^1,\cdots,A^k\}$可以同时对角化。
+\lem 一个技术引理：设一个$n\times n$的方阵族$\{A^1$, $\cdots$, $A^k\}$满足$[A^i,A^j]=0$对$1\leq i$, $j\leq k$都成立，且每一个$A^i$都是可以对角化的。则$\{A^1$, $\cdots$, $A^k\}$可以同时对角化。
 
 \para 复半单Lie代数$\lag$的极大交换子代数称为他的Cartan子代数，由于$\lag=\mathfrak{h}+i\mathfrak{h}$，所以如果$\mathfrak{l}$是$\mathfrak{h}$的极大交换子代数，则$\lag$的Cartan子代数为$\mathfrak{l}+i\mathfrak{l}$.
 
@@ -616,7 +741,7 @@ Lie代数本身就是一个矢量空间，我们这里感兴趣的是表示是�
 
 \para 对有限维半单复Lie代数$\lag$的一个根$\alpha$，我们将满足方程的
 \[
-	[h,E^\alpha]=\alpha(h)E^\alpha\text{ or } h|\alpha\rangle=\alpha(h)|\alpha\rangle
+	[h,E^\alpha]=\alpha(h)E^\alpha\quad\text{or}\quad h|\alpha\rangle=\alpha(h)|\alpha\rangle
 \]
 阶梯算符$E^\alpha$张成的线性空间称为对应于根$\alpha$的根子空间，记作$\lag_{\alpha}$。于是把有限维半单复Lie代数的分解更加细化为
 \[
@@ -913,7 +1038,7 @@ E|k\rangle=(2k\lambda -k(k-1)) |k-1\rangle\quad (k>0).
 \]
 因为$\alpha_i-\alpha_j$不是一个根，所以$E^{-\alpha_j}|\alpha_i\rangle =0$，这就意味着在
 \[
-	\langle \lambda|\alpha^\vee\rangle =2\frac{\langle\alpha|\lambda\rangle}{\alpha^2}=-(p-q)
+	\langle \lambda|\alpha^\vee\rangle =2\frac{\langle\alpha|\lambda\rangle}{\alpha^2}=q-p
 \]
 中的$q=0$，因此$A_{ij}\leq 0$当$i\neq j$。综上，$A_{ij}=0$, $-1$, $-2$, $-3$，且如果$A_{ij}\neq 0$，则至少有一个$A_{ij}$或者$A_{ij}$中有一个是$-1$，否则$A_{ij}A_{ji}>4$.
 
@@ -923,16 +1048,16 @@ E|k\rangle=(2k\lambda -k(k-1)) |k-1\rangle\quad (k>0).
 % \]
 % 联系，即$a_i=2a_i^\vee/\alpha_i^2$.
 
-\para 现在，我们可以完全描述整个Lie代数了，对每一个单根$\alpha_i$，选取相应的$e^i=E_{\alpha_i}$, $f^{i}=F_{\alpha_i}$以及$h^i=H_{\alpha_i}$，全部的交换关系为
+\para 现在，我们可以完全描述整个Lie代数了，对每一个单根$\alpha_i$，选取相应的$e^i=E_{\alpha_i}$, $f^{i}=F_{\alpha_i}$以及$h^i=2H_{\alpha_i}$，全部的交换关系为
 \[
-	[h^i,h^j]=0,\quad [h^i,e^j]=A_{ji}e^j,\quad [h^i,f^j]=-A_{ji}f^j,\quad [e^i,f^j]=-\delta_{ij}h^j
+	[h^i,h^j]=0,\quad [h^i,e^j]=A_{ji}e^j,\quad [h^i,f^j]=-A_{ji}f^j,\quad [e^i,f^j]=-\delta_{ij}h^j.
 \]
 
 所以Cartran矩阵正表示了全部的对易关系中的系数。我们可以用图示来表示Cartran矩阵，对每一个单根$\alpha_i$，我们赋予一个点$i$，在每一对$i$和$j$之中，我们连接$A_{ij}A_{ji}$根线，所以对于根系的分类，就变成了对于这样一种图的分类，这种图称为Dynkin图。
 
 \para 由于单根张成$\mathfrak{h}^*$，所以我们也可以用它来展开权。类似于所有的根都可以有单根整系数线性组合而成，我们希望找到一组基，他们可以用来整系数线性组合成所有的权，注意到
 \[
-	\langle\lambda|\alpha^\vee\rangle=2\frac{\langle\alpha|\lambda\rangle}{\alpha^2}=-(q-p)
+	\langle\lambda|\alpha^\vee\rangle=2\frac{\langle\alpha|\lambda\rangle}{\alpha^2}=q-p
 \]
 是一个整数，所以我们选取$\{\alpha_i^\vee\}$的对偶基$\{\omega_i\}$来展开，其中$\langle \omega_i|\alpha_j^\vee\rangle=\delta_{ij}$，这样，任意的权$\lambda$都可以如下展开
 \[
@@ -1043,7 +1168,7 @@ $\Omega$在上述偏序下，我们感兴趣的是他的最大元，即那个$\l
 
 反过来，考虑直和表示$(\rho\oplus\pi,V\oplus W)$，设$v$和$w$分别是两个表示的最高权矢量，考虑$V\oplus W$包含$v+w$的最小不变子空间$U$，即类似于上个定理中的构造，在$v+w$上不断使用下降算符。由于$(\rho\oplus\pi,V_\lambda\oplus W_\lambda)$是完全可约的，所以$(\rho\oplus\pi,U)$也是完全可约的，进而是不可约的。然后考虑投影算符$p_V:V\oplus W\to V$以及$p_W:V\oplus W\to W$，显然，$p_i\circ (\rho\oplus\pi)=(\rho\oplus\pi)\circ p_i$，将其限制在$U$上，由Schur引理，推知$p_i$是同构，所以$V\cong U\cong W$. \qed
 
-\para 反问题的研究是重要的。固定了一个不可约表示，我们得到了最高权。那么反过来，我们怎么确定所有的不可约表示，即所有的最高权？
+\para 反问题的研究几乎永远是重要的。固定了一个不可约表示，我们得到了最高权。那么反过来，我们怎么确定所有的不可约表示，即所有的最高权？
 
 来看看最高权有什么性质。对于任意的权$\lambda$都可以如下展开
 \[
@@ -1063,8 +1188,6 @@ $\Omega$在上述偏序下，我们感兴趣的是他的最大元，即那个$\l
 
 这是一个深刻的定理，最简单的方法是引入Verma模，这里就不去证了。Verma模是Daya-Nand Verma博士生论文的工作，留名于此，这辈子大概也不算白走一遭了。
 
-上面两个定理没说明两个不同最高权的不可约表示是否是等价的，事实上，他们确实可能是等价的。
-
 \para 最后我们来谈论一下复半单Lie代数不可约表示的维度的内容。这是Weyl利用特征标理论求出来的，这里并不打算重复了，直接列出一些结果。
 
 定义$\rho=\sum_i \omega_i$，称为Weyl矢量，则不可约表示$(\pi,V)$的维度由下面的公式表示
@@ -1075,9 +1198,9 @@ $\Omega$在上述偏序下，我们感兴趣的是他的最大元，即那个$\l
 
 \para 考虑Dynkin标记
 \[
-	\lambda=(\lambda_1,\cdots,\lambda_{n-1}),
+	\lambda=(\lambda_1,\cdots,\lambda_n),
 \]
-其中$\lambda_i$都是整数。特别地，对于最高权$\lambda$，他的Dynkin标记全是非负的，这时候我们可以考虑另一个整数组$\{l_1,\cdots,l_{n-1}\}$，其中$\lambda_i=\sum_{j=i}^{n-1}\lambda_j$。这两种表示是显然等价的。但是一般来说我们还会略去$\{l_1,\cdots,l_{n-1}\}$中的零。在最高权的情况下，这种简略的表示其实还是等价于Dynkin标记的。
+其中$\lambda_i$都是整数。特别地，对于最高权$\lambda$，他的Dynkin标记全是非负的，这时候我们可以考虑另一个整数组$\{l_1,\cdots,l_n\}$，其中$\lambda_i=\sum_{j=i}^n\lambda_j$。这两种表示是显然等价的。但是一般来说我们还会略去$\{l_1,\cdots,l_n\}$中的零。在最高权的情况下，这种简略的表示其实还是等价于Dynkin标记的。
 
 举个例子，对于$\mathfrak{su}(5)_\cc=\mathfrak{sl}(5,\cc)$，我们有一个最高权
 \[
@@ -1122,17 +1245,15 @@ $\Omega$在上述偏序下，我们感兴趣的是他的最大元，即那个$\l
 \[
 	s_\alpha:v\mapsto v-\langle v|\alpha^\vee\rangle\alpha,
 \]
-其中$v\in \mathfrak{h}$。所有这样的变换构成一个群，我们称为Weyl群。上面所言就是在说，Weyl群把根变成根。
+其中$v\in \mathfrak{h}^*$, $\alpha\in\Delta$，按照上面所言，这个变换把根变成根。
 
-\para Weyl群保持$\mathfrak{h}$上面的内积：
+这样的变换保持$\mathfrak{h}$上面的内积：
 \begin{align*}
 	\langle s_\alpha v|s_\alpha w\rangle &= \langle v-\langle v|\alpha^\vee\rangle\alpha|w-\langle w|\alpha^\vee\rangle\alpha\rangle\\ &=\langle v|w\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle - \langle v|\alpha^\vee\rangle \langle w| \alpha\rangle +\langle v|\alpha^\vee\rangle\langle w|\alpha^\vee\rangle \alpha^2\\
 	&= \langle v|w\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle +2\langle w|\alpha^\vee\rangle\langle v|\alpha\rangle\\
 	&= \langle v|w\rangle,
 \end{align*}
 所以根张成的实线性空间，$s_\alpha$属于他的正交群。几何来看，任意的$s_\alpha$不过就是一个反射，故而肯定属于正交群。
-
-考虑单根$\alpha_i$，我们简记$s_i=s_{\alpha_i}$，可以断言，任意Weyl群的元素都可以分解为$w=s_is_j\cdots s_k$，几何上来看这是比较清楚的（反射能由一些基本的反射生成，可以参考$\mathrm{SO}(3)$的Gauss分解），但是具体证明不算太容易。
 
 \para 类似地可以去计算
 \begin{align*}
@@ -1143,7 +1264,11 @@ $\Omega$在上述偏序下，我们感兴趣的是他的最大元，即那个$\l
 \end{align*}
 所以$s_\alpha^2=1$或者$s_\alpha^{-1}=s_\alpha$.
 
-类似地计算，我们还可以得到：如果$\langle \alpha|\beta\rangle=0$，则$s_\alpha s_\beta=s_\beta s_\alpha$.
+同样可以直接计算得到：如果$\langle \alpha|\beta\rangle=0$，则$s_\alpha s_\beta=s_\beta s_\alpha$.
+
+\para 所以$\{s_\alpha\,:\, \alpha\in \Delta\}$的任意复合构成一个群，单位元$e=s_0$，逆元的存在性来自于$s_\alpha=s_\alpha^{-1}$，这个群我们称为Weyl群。
+
+考虑单根$\alpha_i$，我们简记$s_i=s_{\alpha_i}$，可以断言，任意Weyl群的元素都可以分解为$w=s_is_j\cdots s_k$，几何上来看这是比较清楚的（反射能由一些基本的反射生成，可以参考$\mathrm{SO}(3)$的Gauss分解），但是具体证明不算太容易。
 
 \section{$\mathfrak{su}(n)_\cc$}
 
@@ -1277,6 +1402,7 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 所以可以求得$\langle \omega_i|\omega_i\rangle=2/3$以及$\langle \omega_1|\omega_2\rangle=1/3$. 
 
 这样，我们画出所有的根以及其基本权：图中虚线即Weyl群所需要的反射轴，而阴影部分为$W_1$.
+\vspace{2em}
 \begin{center}
 \begin{pspicture}[showgrid=false](-4,-4)(3.5,3.5)\psset{unit=1.3}
     \psset{linewidth=1.5pt}
@@ -1313,8 +1439,7 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 \[
 	\langle (a,b)|(c,d) \rangle= \frac{2(ac+bd)+(ad+bc)}{3}.
 \]
-
-在以基本权为基的表示里，Weyl矢量为$\rho=\omega_1+\omega_2=(1,1)$，$\alpha_1=(2,-1)$, $\alpha_2=(-1,2)$，所以对于最高权为$(p,q)$的表示，我们可以计算他的维度如下
+由于Weyl矢量为$\rho=\omega_1+\omega_2=(1,1)$，$\alpha_1=(2,-1)$, $\alpha_2=(-1,2)$，所以对于最高权为$(p,q)$的表示，我们可以计算他的维度如下
 \[
 	\dim(V)=\frac{\langle \rho+\lambda,\alpha_1\rangle}{\langle \rho,\alpha_1\rangle}\frac{\langle \rho+\lambda,\alpha_2\rangle}{\langle \rho,\alpha_2\rangle}\frac{\langle \rho+\lambda,\alpha_1+\alpha_2\rangle}{\langle \rho,\alpha_1+\alpha_2\rangle},
 \]
@@ -1329,7 +1454,7 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 
 \para 对于$\mathfrak{sl}(n,\cc)$的最高权$\lambda=(\lambda_1,\cdots \lambda_{n-1})$，在谈论Young图的时候，我们把这个变成了$\{f_1,\cdots,f_{n-1}\}$，其中$f_i=\sum_{k=i}^{n-1}\lambda_k$，再顺便令$f_n=0$，则对于$\mathfrak{sl}(n,\cc)$不可约表示关于这个最高权的维度我们可以通过下式计算：
 \[
-	\dim(V)=\prod_{1\leq i\leq j\leq n}\left(\frac{f_i-f_j}{j-i}+1\right).
+	\dim(V)=\prod_{1\leq i<j\leq n}\left(\frac{f_i-f_j}{j-i}+1\right).
 \]
 
 上面这个公式也可以利用Young图来表示，可以说完全是组合学的技巧，当然似乎也可以利用$S_n$与$\mathrm{GL}(n,\cc)$的不可约表示的对偶。
@@ -1425,6 +1550,8 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 \yng(1)\otimes \yng(1)=\yng(2)\oplus\yng(1,1).
 \]
 
+To be continued.
+
 \section{对称群以及Young图}
 
 对称群的不可约表示和$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示紧密相连，所以这里先考虑对称群。对于对称群不可约表示的结构定理，下面会陈述，但是不做证明，可以参考GTM 203这本小册子。这节主要是Young的工作，是他开启了表示论的大门。
@@ -1438,15 +1565,19 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 \]
 来描述这样一个双射。所有这样的双射按照复合构成一个群，我们称为对称群，记作$S_n$。这是一个有限群，他的元素个数是$n!$个。
 
-现在，固定$\sigma$，考虑任意的$i\in I$，以及集合$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^k(i),\cdots\}$，由于这是一个有限群，所以集合必然也是有限的，即总存在一个$1\leq p\leq n$，使得$\sigma^p(i)=i$. 我们就得到了一个$p$个元素的$I$的子集，这被称为一个cycle，长度为$p$，有时候被称作一个$p$-cycle. 由于$I_n$是有限集，所以我们可以将其分解为不同cycle的并。
+\para 对于对称群$S_n$，对于任意的置换$\sigma\in S_n$，记$\rr^n$的标准基为$e_i$，则置换$\sigma$可以通过$\sigma:e_i\mapsto e_{\sigma(i)}$看成一个可逆线性映射$D(\sigma): \rr^n\to \rr^n$，他的矩阵由$D(\sigma)_{ij}=\delta_{i,\sigma(j)}$给出。经过数次调换行和列，总可以将这个矩阵变换到单位矩阵，于是断言$D(\sigma)$是可逆的且$\det(D(\sigma))=\pm 1$. 记$\sgn(\sigma)=\det(D(\sigma))$，当$\sgn(\sigma)=1$的时候，我们称这个置换是偶置换，反之，则叫他奇置换。实际上，任意的置换都可以分解成数个两两对换，当置换是偶置换的时候，分解出两两置换的数目是偶数，反之是奇数。
+
+上面这个例子构成了两个表示，其中$D:S_n\to \mathrm{GL}(\rr^n)$被称为$S_n$的标准表示，他不一定是不可约的。而$\sgn=\det\circ D:S_n\to \{1,-1\}$又是另一个表示，因为$\pm 1\in \mathrm{GL}(\rr)$，这是一个很简单的一维表示。
+
+\para 现在，固定$\sigma$，考虑任意的$i\in I$，以及集合$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^k(i),\cdots\}$，由于这是一个有限群，所以集合必然也是有限的，即总存在一个$1\leq p\leq n$，使得$\sigma^p(i)=i$. 我们就得到了一个$p$个元素的$I$的子集，这被称为一个cycle，长度为$p$，有时候被称作一个$p$-cycle. 由于$I_n$是有限集，所以我们可以将其分解为不同cycle的并。
 
 将$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^{p-1}(i)\}$直接计算出来，记作$(i,j,k,\cdots,l)$. 由于$\sigma^{k+1}(i)=\sigma(\sigma^k(i))$，所以这组数里面，第$j$个数是第$j-1$个数进行应用$\sigma$后得到的，而第一个数是最后一个数应用$\sigma$后得到的。因此，cycle的名字恰如其分。
 
 由于$I_n$可以分解成这样的集合的并，即
 \[
-	(i_{11},\cdots,i_{1k_1})(i_{21},\cdots,i_{2k_2})\cdots (i_{m1},\cdots,j_{mk_m}),
+	(i_{11},\cdots,i_{1k_1})(i_{21},\cdots,i_{2k_2})\cdots (i_{m1},\cdots,i_{mk_m}),
 \]
-其中每一个$I_n$中的正整数都出现一次。所以如果我们得到了一个分解，则我们也完全确定了$\sigma$.
+其中每一个$I_n$中的正整数都出现一次。所以如果我们得到了一个分解，则我们也完全确定了$\sigma$. 由于每一个$(i_{j1},\cdots,i_{jk_j})$都可以反过来确定一个$\sigma_j$，所以上面的分解又可以看成许多置换的复合，即$\sigma=\sigma_1 \sigma_2\cdots \sigma_m$，其中$\sigma_i\sigma_j=\sigma_j\sigma_i$.
 
 比如
 \[
@@ -1459,6 +1590,40 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 \[
 	\sigma=(1,2,3)(4)(5).
 \]
+其中$(1,2,3)$被称为3-cycle，类似地，$(4)$和$(5)$是1-cycle. 在已知$S_n$的$n$的情况下，我们会在循环的cycle表示里略去所有的1-cycle. 上述的$\sigma=(1,2,3)(4)(5)$就会被记作$\sigma=(1,2,3)$.
+
+\para 设$G$是一个群，而$g\in G$，则同态$\mathrm{Ad}(g):h\mapsto ghg^{-1}$被称为共轭作用。共轭作用衡量了一个群的可交换性，这是因为，如果$\mathrm{Ad}(g)(h)=h$，则$gh=hg$.
+
+固定一个$h\in G$，考虑子集$H_h=\mathrm{Ad}(G)(h)$，这样的子集被称为共轭作用的一条轨道（或者在这里叫做共轭类）。两条不同的轨道是不能相交的，这是因为如果$H_h$和$H_g$有一个相交点$k$，分别记作$k=php^{-1}=qgq^{-1}$，则$g=q^{-1}ph(q^{-1}p)^{-1}$，所以$H_h=H_g$.
+
+对于对称群，通过简单的计算，我们可以断言在伴随作用下，$\sigma (i_1,\cdots,i_k)\sigma^{-1}= (\sigma(i_1),\cdots,\sigma(i_k))$. 
+
+\para 现在来看Young图，对于一个正整数$n$，我们可以将其分解成一个加式$n=\sum_{i=1}^k n_i$，其中$0\leq n_k\leq n_{k-1}\leq \cdots \leq n_1$，这样一个分解可以简单记作$\{n_1,n_2,\cdots,n_k\}$，或用一个Young图表示，第$i$行$n_i$个小方块。比如$8$被分解成$\{5,3\}$或者$\{4,2,2\}$，他们的Young图分别是
+\[\Yvcentermath1
+	\yng(5,3)\quad \yng(4,2,2)
+\]
+
+将循环群和Young图联系起来，即是通过循环的cycle表示，比如$\sigma=(1,2,3)(4)(5)$，他对应于分解为$3+1+1$，即$\{3,1,1\}$，对应的Young图是
+\[
+	\yng(3,1,1)
+\]
+我们可以通过另一个方法来得到$\{3,1,1\}$. 先分别列出$i$-cycle的个数$k_i$，然后计算出$l_i=\sum_{j=i}^nk_j$. 比如$\sigma=(1,2,3)(4)(5)$对应的$i$-cycle的个数序列为$(2,0,1,0,0)$，然后$\{3,1,1\}$中的第$i$个数字由$(2,0,1,0,0)$中的累加第$i$个数字后面所有的数字，我们可以得到$\{3,1,1,0,0\}$然后略去末尾的零就可以了。这点在以前的Lie代数的最高权的Young图表示中提过了。
+
+Young图并不唯一确定置换。这是因为在伴随作用下，$\sigma (i_1,\cdots,i_k)\sigma^{-1}= (\sigma(i_1),\cdots,\sigma(i_k))$，故置换$\pi$和$\sigma\pi\sigma^{-1}$有着相同的Young图。更确切地说，Young图的数目正好等于$S_n$中共轭类的数目。
+
+在有限群那里已经证明了，有限群的有限维不可约复表示的个数等于其共轭类的个数，所以$S_n$的不可约表示的个数正好就是他能有的Young图的个数。
+
+\para 为了通过Young图确定置换，往Young图里面填数字就可以了，比如
+\[\Yvcentermath1
+	\young(123,4,5)\quad \text{or}\quad \young(123,4,5)\quad \text{or}\quad \young(231,4,5)
+\]
+就确定了置换$(1,2,3)(4)(5)$. 在Young图中填入$1$到$n$这些正整数后得到的表被称为Young表。
+
+每一个Young图，都共有$n!$种填表的方式，其中如下的填表方式得到的Young表
+\[\Yvcentermath1
+	\young(12345,678),\quad \young(1234,56,78),
+\]
+被称为标准Young表。
 
 \para 对于有限群$G=\{g_1,\cdots,g_n\}$，前面我们定义一个矢量空间
 \[
@@ -1470,9 +1635,64 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 \]
 这就使得$\cc [G]$成为了一个含幺环。他的单位元记作$e$.
 
-\para 考虑$V^n=V\otimes\cdots \otimes V$，即自己张量自己$n$次。由映射
+\theo $S_n$的不可约表示由总格数为$n$的Young图一一确定。
+
+这个定理比以前数不可约表示个数的命题要强很多，这意味着$S_n$的不可约表示由其共轭类一一确定。
+
+\para 上面定理的证明是直接的构造，来自于Young. 给定一个Young图，给出他的标准Young表，比如
+\[\Yvcentermath1
+	\young(12345,678)
+\]
+记$P_i$为所有保持第$i$行数字不变的置换构成的$S_n$的子群子群（比如上面的Young表中第一行可以变成$(12453)$，但不能变成$(12645)$），以及$Q_j$为所有保持第$j$列数字不变的置换构成的子群，再令
 \[
-	\sigma(e_{i_1}\otimes\cdots\otimes e_{i_n})=e_{i_{\sigma^{-1}(1)}}\otimes\cdots\otimes e_{i_{\sigma^{-1}(n)}}
+	P=\bigcap_i P_i,\quad Q=\bigcap_j Q_j,
+\]
+这是两个$S_n$的子群。我们有如下定理：
+
+\theo 给定$S_n$的一个Young图$\lambda$，我们对应有子群$P_\lambda$和$Q_\lambda$，令$a_\lambda=\sum_{\sigma\in P_\lambda}\sigma$以及$b_\lambda=\sum_{\sigma\in Q_\lambda}\sgn(\sigma)\sigma$，这是两个$\cc[S_n]$中的元素。定义$c_\lambda=a_\lambda b_\lambda$，称为Young图$\lambda$的Young对称化子。则$V_\lambda=\cc[S_n]c_\lambda$以及$\rho_\lambda(g)=l_g$构成$S_n$的一个不可约表示，且每一个$S_n$的不可约表示都可以如此得到。
+
+这我们不加证明了，并且也不证明如下命题：
+
+\pro 对于$S_n$的一个Young图$\lambda=\{\lambda_1,\lambda_2,\cdots,\lambda_k\}$，记$l_i=\lambda_i+k-i$，则
+\[
+	\dim V_\lambda=\frac{n!}{l_1!\cdots l_k!}\prod_{1\leq i< j\leq k}(l_i-l_j)=\frac{n!}{l_1!\cdots l_k!}\begin{vmatrix}
+	1& l_k & l_k^2&\cdots\\
+	\vdots&\vdots&\vdots&\vdots\\
+	1& l_1 & l_1^2&\cdots\\
+	\end{vmatrix},
+\]
+其中的行列式为van der Monde行列式。
+
+\pro 设$\lambda$是$S_n$的一个Young图，则$c_\lambda^2=n_\lambda c_\lambda$，其中$n_\lambda=n!/\dim V_\lambda$. $n_\lambda$被称为hook number，他可以通过Young图直接确定：
+
+给定Young图$\lambda$，记$n_{ij}$为他直着往下的格子数+直着往右的格子数+1，这个数称为hook length. 比如下面的Young图
+\[
+	\young(~~~~,{}***,{}*~,{}*{})
+\]
+中$n_{22}$为有*的格子的数目，所以$n_{22}=5$. 我们的结论是$n_\lambda=\prod_{i,j}n_{ij}$.
+
+比如考虑如下Young图\[\Yvcentermath1
+	\yng(3,2,1)
+\]
+在每一个格子里面填入相应的hook length，得到
+\[
+	\young(531,31,1)
+\]
+所以$n_\lambda= 45$.
+
+\section{$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示的直接构造}
+
+上面讲了太多的一般的理论了，这里来直接构造$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示，这并不是一个简单的事情。直接构造在绝大多数情况下，都是很难很难的事情，乃至于是考验天分的时候。这节的构造来自于Weyl，而揭示了$S_n$与$\mathrm{GL}(n)$不可约表示的联系的，又是一个熟悉的名字，Schur.
+
+\para 考虑$V^n=V\otimes\cdots \otimes V$，即自己张量自己$n$次。设$\varphi\in \mathrm{GL}(V)$，那么我们可以诱导出一个新的线性映射$\Phi:V^n\to V^n$通过
+\[
+	\Phi : e_{i_1}\otimes\cdots\otimes e_{i_n}\mapsto \varphi e_{i_1}\otimes\cdots\otimes \varphi e_{i_n},
+\]
+其中$\{e_i\}$是$V$的一组基，不难检验，上面的诱导并不依赖于基的选取。
+
+\para 由映射
+\[
+	\sigma(v_{i_1}\otimes\cdots\otimes v_{i_n})=v_{i_{\sigma^{-1}(1)}}\otimes\cdots\otimes v_{i_{\sigma^{-1}(n)}}
 \]
 线性扩张，我们可以定义出$\cc [S_n]$在$V^n$上面的作用。不难检验$\sigma(\pi(v))=(\sigma\pi)(v)$，所以这样定义的映射还是一个环同态。
 
@@ -1482,21 +1702,12 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 \]
 其中$v_{ijk}=e_{i}\otimes e_{j}\otimes e_{k}$.
 
-\para 现在来看Young图，对于一个正整数$n$，我们可以将其分解成一个加式$n=\sum_{i=1}^k n_i$，其中$0\leq n_k\leq n_{k-1}\leq \cdots \leq n_1$，这样一个分解可以简单记作$\{n_1,n_2,\cdots,n_k\}$，或用一个Young图表示，第$i$行$n_i$个小方块。比如$8$被分解成$\{5,3\}$或者$\{4,2,2\}$，他们的Young图分别是
+\para 任取$\sigma\in S_n$，以及任意的$\varphi$诱导来的$\Phi$，我们有$\Phi\circ \sigma=\sigma\circ \Phi$，这次定义来看是显然的，因为他们都成立
 \[
-	\yng(5,3),\quad \yng(4,2,2),
+	e_{i_1}\otimes\cdots\otimes e_{i_n}\mapsto \varphi e_{\sigma(i_1)}\otimes\cdots\otimes \varphi e_{\sigma(i_n)}.
 \]
-然后可以填入$1$到$n$这些正整数，得到一张Young表，比如上面两张Young图可以得到
-\[
-	\young(12345,678),\quad \young(1234,56,78),
-\]
-当然可以有其他填的方式，一共$n!$种。其中，每一行从左到右、每一列从上到下的正整数都是从大到小的填法得到的Young表称为标准Young表。上图就是两张标准Young表。
 
-\theo $S_n$的不可约表示由总格数为$n$的Young图一一确定。
-
-
-\section{$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示的直接构造}
-上面讲了太多的一般的理论了，这里来直接构造
+To be continued.
 
 \clearpage
 
@@ -1518,6 +1729,8 @@ $\mathfrak{sl}(n,\cc)$的生成元可以选作$E_{ij}$，其中$i\neq j$，以�
 [7] Quantum Theory of Field V1, Chapter 2, Weinberg,
 
 [8] GTM 203, S. Axler, etc.
+
+[9] GTM 129, William Fulton, etc.
 
 
 \end{document}
