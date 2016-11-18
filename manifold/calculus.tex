@@ -61,13 +61,14 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 以后我们用$\dd_p(f)$乃至$\dd_pf$来记$\dd_p(f_p)$。实际上，我们可以将$\dd_p$定义在$\calf_p$上，设$a$是一个常值芽，补充定义$\dd_pa=0$，可以看到，此时式\eqref{c1:e1}依旧满足。以后我们就这样来看$\dd_p:\calf_p\to T_p^*M$，他被称为\idx{外微分}算子。
 
-\para 此时\[\dd_p (fg)=\dd_p\bigl(\bigl(f-f(p)\bigr)\bigl(g-g(p)\bigr)+f(p)\bigl(g-g(p)\bigr)+\bigl(f-f(p)\bigr)g(p)\bigr)=f(p)\dd_pg+\dd_pf g(p).\]
+此时
+\[
+\dd_p (fg)=\dd_p\bigl(\bigl(f-f(p)\bigr)\bigl(g-g(p)\bigr)+f(p)\bigl(g-g(p)\bigr)+\bigl(f-f(p)\bigr)g(p)\bigr)=f(p)\dd_pg+\dd_pf g(p).
+\]
 
 \para 设$f:M\to N$是一个光滑映射，上面的光滑函数层分别为$\calf$和$\calg$。任取$\varphi\in \calg(V)$，可以通过$f^*\varphi=\varphi\circ f$定义$f^*\varphi\in \calf(f^{-1}(V))$.
 
-下面我们考虑两个流形余切空间之间的映射。设$\langle V,\varphi\rangle\in \calg_{f(p)}$，于是$\langle f^{-1}(V),\varphi\circ f\rangle\in \calf_p$，所以$f^*$诱导了一个$\rr$-代数同态$f^*_p:\calg_{f(p)}\to \calf_p$，特别地，可以看到$f^*_p:\mm_{f(p)}\to \mm_{p}$，于是$f^*_p:\mm^2_{f(p)}\to \mm^2_{p}$.
-
-\para 设$f:M\to N$是一个光滑映射，他诱导了一个线性映射\footnote{这里我们滥用一下记号。}$f^*_p:T_{f(p)}^*N\to T_p^*M$.
+下面我们考虑两个流形余切空间之间的映射。设$\langle V,\varphi\rangle\in \calg_{f(p)}$，于是$\langle f^{-1}(V),\varphi\circ f\rangle\in \calf_p$，所以$f^*$诱导了一个$\rr$-代数同态$f^*_p:\calg_{f(p)}\to \calf_p$，特别地，可以看到$f^*_p:\mm_{f(p)}\to \mm_{p}$，于是$f^*_p:\mm^2_{f(p)}\to \mm^2_{p}$. 即$f^*$诱导了一个线性映射\footnote{这里我们滥用一下记号。}$f^*_p:T_{f(p)}^*N\to T_p^*M$.
 
 对于复合，显然$(f\circ g)^*=f^*\circ g^*$，以及在一点处，$(f\circ g)^*_p=g^*_p\circ f^*_{g(p)}$.很容易看到$\id^*_p=\id_{T_p^*M}$，所以如果$f:M\to N$是同胚，则$f_p^*:T_{f(p)}^*N\to T_p^*M$是同构。
 
@@ -75,7 +76,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 设$p\in M$，$M$是$n$维光滑流形，则\idx{切空间}$T_pM$被定义为余切空间$T_p^*M$的对偶空间。切空间的元素被称为\idx{切矢量}。由于余切空间是有限维的，他的对偶空间也和他有着相同的维度，即$n$维。
 
-\para 由于切空间是余切空间的对偶空间，所以他是余切空间上的线性函数构成的空间，反过来，由于是有限维的，所以可以认为对偶空间的对偶空间就是原本的空间，这就是说可以将余切空间的矢量看成切空间矢量的线性函数：设$\dd_p f\in T_p^*M$和$v\in T_pM$，定义$\dd_p f(v):=v(\dd_p f)$.
+由于切空间是余切空间的对偶空间，所以他是余切空间上的线性函数构成的空间，反过来，由于是有限维的，所以可以认为对偶空间的对偶空间就是原本的空间，这就是说可以将余切空间的矢量看成切空间矢量的线性函数：设$\dd_p f\in T_p^*M$和$v\in T_pM$，定义$\dd_p f(v):=v(\dd_p f)$.
 
 虽然上面这些个定义都很短也很清楚，不过操作上却没有那么简单。下面，我们将一个切矢量扩张到$\calf_p^*$上面去。
 
@@ -124,11 +125,11 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 对于固定的$f$，$\dot{\sigma}(0)(f)$可以看做$f$沿着$\sigma$在点$p$切矢量的方向导数，实际上，在$\rr^n$中，我们通常将上式写作$\dot{\sigma}(0)(f)=v\cdot \nabla f$，其中$v=\dot \sigma^i(0)e_i$.
 
-\para 反过来，给定一个点$p$处的切矢量$v$，我们可以找到一个光滑曲线$\sigma$使得在他点$p$的切矢量就是$v$。这是局部结论，在欧式空间里去证明就可以了。在欧式空间中，$\sigma(t)=p+vt$就是我们需要的光滑曲线。
+反过来，给定一个点$p$处的切矢量$v$，我们可以找到一个光滑曲线$\sigma$使得在他点$p$的切矢量就是$v$。这是局部结论，在欧式空间里去证明就可以了。在欧式空间中，$\sigma(t)=p+vt$就是我们需要的光滑曲线。
 
 \para 由于$v(f_p)$可以看做$f$沿着$v$方向在$p$点的方向导数，以及等式$\dd_pf(v)=v(f_p)$，所以$\dd_pf(v)$也理解为$f$沿着$v$方向在$p$点的方向导数。
 
-\para 正如我们前面提到的，切矢量的几何直观可以靠曲线的切矢量来想象，那么余切矢量呢？为了做出适当的想象，不妨回到欧式空间里面，固定一个切矢量，方向导数$\dd_pf(v)$可以写作$v\cdot \nabla f(p)$，所以（在欧式空间的内积结构下）我们可以认为$\dd_pf$就是$\nabla f(p)$。现在改变$p$，我们得到了一个矢量场$\nabla f$，这是$\{f=\text{const}\}$确定的等能面的法矢量场，法矢量场和等能面一一联系。所以为了避免引入内积结构，我们可以认为$\dd_pf$就是局部的一族等能面。
+正如我们前面提到的，切矢量的几何直观可以靠曲线的切矢量来想象，那么余切矢量呢？为了做出适当的想象，不妨回到欧式空间里面，固定一个切矢量，方向导数$\dd_pf(v)$可以写作$v\cdot \nabla f(p)$，所以（在欧式空间的内积结构下）我们可以认为$\dd_pf$就是$\nabla f(p)$。现在改变$p$，我们得到了一个矢量场$\nabla f$，这是$\{f=\text{const}\}$确定的等能面的法矢量场，法矢量场和等能面一一联系。所以为了避免引入内积结构，我们可以认为$\dd_pf$就是局部的一族等能面。
 
 \section{Submanifold}
 
@@ -698,7 +699,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 称为短正合列。
 
-\para 一个矢量空间和线性映射链$A^*=\{A_i,\dd_i\}$
+一个矢量空间和线性映射链$A^*=\{A_i,\dd_i\}$
 \[
 	\cdots\to A^{i-1}\xrightarrow{\dd^{i-1}}A^i\xrightarrow{\dd^i}A^{i+1}\to \cdots
 \]
@@ -768,7 +769,7 @@ $\partial^p$即交换图
 \cdots\to H^p(A^*)\xrightarrow{f^*}H^p(B^*)\xrightarrow{g^*}H^p(C^*)\xrightarrow{\partial^*}H^{p+1}(A^*)\xrightarrow{f^*}H^{p+1}(B^*)\to\cdots.
 \]
 
-\pro \label{directsum} 链复形可以谈论直和，即是对链中每一个矢量空间进行直和。那么从$\ker$和$\mathrm{Im}$对于直和的显然性质，我们有$H^p(A^*\oplus B^*)=H^p(A^*)\oplus H^p(B^*)$.
+\para \label{directsum} 链复形可以谈论直和，即是对链中每一个矢量空间进行直和。那么从$\ker$和$\mathrm{Im}$对于直和的显然性质，我们有$H^p(A^*\oplus B^*)=H^p(A^*)\oplus H^p(B^*)$.
 
 $\Omega^*(U)$和外微分算子$\dd$构成一个链复形，下面的定理给出了有关于欧氏空间两个开集和他们的并与交的短正合列。
 
