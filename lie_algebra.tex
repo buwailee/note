@@ -7,7 +7,12 @@
 	% \setCJKmainfont{汉仪书宋二简}
 \usepackage{multido, pstricks, young, youngtab} % for root/weight system and Young tableaux
 \usepackage[section]{egastyle}
-% \usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{hyperref}
+	\hypersetup{
+		pdftoolbar=true,  
+		pdfmenubar=true,
+		bookmarksnumbered=true,
+	}
 
 \pagestyle{plain}
 
@@ -21,48 +26,14 @@
 	\DeclareMathOperator{\ad}{ad}
 	\DeclareMathOperator{\Int}{int}
 	\DeclareMathOperator{\sgn}{sgn}
+	\DeclareMathOperator{\sym}{Sym}
+	\DeclareMathOperator{\mult}{mult}
 
 \begin{document}
 \maketitle
 \clearpage
 \tableofcontents
 \clearpage
-% \section*{Motivation}
-
-% % \para 大概是无聊的一个定义：有一个非空集合$G$和其上的二元运算$*$，或者记作$(G,*)$，称为一个群，如果满足：
-
-% % \no{1}结合律：对于任意$a$, $b$, $c\in G$，有$(a*b)*c=a*(b*c)$；
-
-% % \no{2}单位元：对于任意的$a\in G$，存在一个元素$e\in G$，使得$e*a=a*e=a$；
-
-% % \no{3}反元素：对于每一个$a\in G$，存在一个元素$b\in G$，使得$b*a=a*b=e$.
-
-% % $a$的反元素通常记作$a^{-1}$. 此外如果不产生歧义，我们可以直接称呼$G$为一个群。显然$(\mathbb{R},+)$是一个群，单位元是0，$a^{-1}=-a$.将$\mathbb{R}$去掉了$0$之后的集合记作$\mathbb{R}-\{0\}$，则$(\mathbb{R}-\{0\},\cdot)$构成一个群，单位元是$1$，$a^{-1}=1/a$.
-
-% % \para 如果有群$(G,*)$，对于任意的$a$, $b\in G$满足$a*b=b*a$，则称$(G,*)$是一个交换群，或者称为Abel群。
-
-% 有些人说，群就是对称性，这并不是一个很好的说法。群在定义上不过是代数结构，群和对称性的联系来自于，保持某些结构的双射们（可逆的变换们）往往构成一个群。
-
-% 实际上，在具体语境中对称性的定义会有不同，这来自于我们想要怎么去表述对称性。粗略来说，对称性大概就是一种在某些/类变换下不变（或者更广义地，按照某种希望的方式变换）的某种性质。所以我们有如下说法：
-
-% 具有群$G$对称性的某物：\emph{指某物的某结构在变换群$G$的作用下不变（或者更广义地，按照某种希望的方式变换）。}
-
-
-% \para 作为第一个例子，我们考虑$\mathrm{O}(n)$和$\mathrm{U}(n)$的定义。
-
-% 设$\rr^n$上面具有一个内积$(v,w)=\sum_{i=1}^n v_i w_i$，而$\cc^n$上有一个内积$\langle v,w\rangle=\sum_{i=1}^n v^*_i w_i$，其中$v_i^*$是$v_i$的复共轭。从几何上面来看，内积给出了一个矢量的长度，以及两个实矢量之间的夹角。
-
-% 考虑一个实矩阵$A:\rr^n \to \rr^n$，他将矢量$v$和$w$变成了$Av$和$Aw$，如果对任意的$v$和$w$都使得$(Av,Aw)=(v,w)$成立，则称$A$是一个正交矩阵。正交矩阵在这里表征的是保持内积的对称性，几何上来看，矢量的长度和两个矢量的夹角不变。下面要验证所有的正交矩阵构成一个群，这个群被记作$\mathrm{O}(n)$，称为正交群。
-
-% 由于
-% \[(v,w)=(Av,Aw)=(A^TAv,w),\]
-% 且内积非退化，所以$A^TA=I$，所以$\det (A^TA)=\det(A)^2=1$，于是$\det(A)\neq 0$，这也就推出$A$是可逆的，所以我们可以把正交矩阵的定义改成：$A^T=A^{-1}$.
-
-% 随后，我们检验正交矩阵$A$和$B$的复合（或者说乘积）也是正交矩阵，$(AB)^T=B^TA^T=B^{-1}A^{-1}=(AB)^{-1}$，同时，由于$(A^{-1})^T=(A^T)^{-1}=(A^{-1})^{-1}=A$，因此$A$的逆也是一个正交矩阵。所以正交矩阵们按照矩阵乘法（或者说线性映射复合）成群。
-
-% 类似地，考虑一个复矩阵$A:\cc^n \to \cc^n$，如果对任意的$v$和$w$都使得$\langle Av,Aw\rangle =\langle v,w\rangle $成立，则称$A$是一个幺正矩阵。同上可以类似验证所有的幺正矩阵构成一个群，这个群被记作$\mathrm{U}(n)$，称为酉群。
-
-% \para 
 
 \section*{Outline}
 \addcontentsline{toc}{section}{Outline}
@@ -110,9 +81,9 @@
 
 那么，有了这个群表示，我们就有Lie代数的表示，Poincar\'e群的Lie代数，现在就变成了一些态矢量所处的Hilbert空间上的算符，而这些就是动力学算符。这就是说：对称性诱导出了动力学算符，而动力学量的不可约表示完成了单粒子分类。
 
-\item 从Lie代数到Lie群：Ado定理，所有实Lie代数都同构于$\mathfrak{gl}(n,\cc)$的子代数。所以每一个实Lie代数都可以实现为某个Lie群的Lie代数的子代数。同时，对于任意的连通Lie群，他一定存在一个万有覆叠空间（单连通的覆叠空间），他有着Lie群结构，且和原来的Lie群有着相同的Lie代数。
+\item 从Lie代数到Lie群：Ado定理，所有实Lie代数都同构于$\mathfrak{gl}(n,\rr)$的子代数。所以每一个实Lie代数都可以实现为某个Lie群的Lie代数的子代数。同时，对于任意的连通Lie群，他一定存在一个万有覆叠空间（单连通的覆叠空间），他有着Lie群结构，且和原来的Lie群有着相同的Lie代数。
 
-从这里可以看到，Lie代数并不在意Lie群很细致的拓扑结构，这就是他丢失的东西。拓扑结构（作为整体结构）有时候很重要，比如对于无质量粒子，他的自旋（或者helicity）只能取整数或者半整数就来自于表征对称性的群的拓扑结构。
+从这里可以看到，Lie代数并不在意Lie群很细致的拓扑结构，这就是他丢失的东西。拓扑结构（作为整体结构）有时候很重要，比如对于无质量粒子，他的自旋（或者此时应该叫helicity）只能取整数或者半整数就来自于表征对称性的群的拓扑结构。
 
 \item 从Lie代数同态到Lie群同态：如果$h$是$\lag_1\to \lag_2$之间的Lie代数同态，且$\lag_1$是一个单连通Lie群$G_1$的Lie代数，$\lag_2$是一个连通Lie群$G_2$的Lie代数，则存在唯一的Lie群同态$\bar{h}:G_1\to G_2$，使得$\bar{h}$诱导的Lie代数同态即$h$.
 
@@ -138,25 +109,195 @@
 
 \end{itemize}
 
-% \section{群与对称性}
+\section{一些基本的定义}
 
-% \para 一个集合$G$，上面有一个运算$*$满足结合率$a*(b*c)=(a*b)*c$，且存在唯一一个元素$e$使得$a*e=e*a=a$对任意的$a\in G$都成立，同时，任取$g\in G$都存在一个元素$h\in G$使得$g*h=h*g=e$. 下面写群运算的时候直接无视掉他的符号，即$g*h$写作$gh$.
+\subsection*{群的定义}
 
-% 简单来说，群就是一个集合，上面有一种存在单位元的满足结合律的运算，而且对每一个元素存在逆元。
+\para 一个集合$G$，上面有一个运算$*$满足结合率$a*(b*c)=(a*b)*c$，且存在唯一一个元素$e$使得$a*e=e*a=a$对任意的$a\in G$都成立，同时，任取$g\in G$都存在一个元素$h\in G$使得$g*h=h*g=e$，这个元素称为$g$的逆，通常写作$g^{-1}$. 下面写群运算的时候直接无视掉他的符号，即$g*h$写作$gh$. 
 
-% \para 考虑一个集合到自身的所有双射（一般我们称为变换），这自然构成一个群。反过来，群的每一个元素都可以通过左乘看作群到群的一个双射，自然这就是一个变换。因此，群也可以理解成变换构成的集合。
+如果群$G$的一个子集$H$，按照继承于大的群上的运算，满足群的那些公理，则称$H$为群$G$的一个子群。显然，两个子群的交依然是一个子群。
 
-% 有人说，群就是对称，这不是很正确的说法。所谓对称，就是说某些变换下不变的某种性质。所以将对称与群联系起来的正确说法是：如果某种结构在群$G$的变换下不变，那么我们就称呼这是一个具有$G$对称性的结构。
+简单来说，群就是一个集合，上面有一种存在单位元的满足结合律的运算，而且对每一个元素存在逆元。
 
-% \para 举个例子，三维矢量空间$\rr^n$，上面装备了一个内积$(v,w)=\sum_i v_iw_i$，这样的空间被称为$n$维Euclid空间。有了内积，我们可以通过内积定义出一个矢量的长度，以及两个矢量的夹角。
+\para 考虑一个集合到自身的所有双射（一般我们称为变换），这自然构成一个群。反过来，群的每一个元素都可以通过左乘看作群到群的一个双射，自然这就是一个变换。因此，群也可以理解成变换构成的集合。
 
-% 设矩阵$A$使得$(Av,Aw)$不变，那么这个变换使得内积不变。几何上来看，这个变换保持矢量的长度以及两个矢量的夹角。这样的矩阵被称为正交矩阵。不难检验，所有正交矩阵按矩阵乘法构成一个群，称为正交群，记作$\mathrm{O}(n)$. 所以，我们说，$n$维Euclid空间具有$\mathrm{O}(n)$对称性，他表现为$\mathrm{O}(n)$中的变换使得内积不变。
+有人说，群就是对称，这不是很正确的说法。所谓对称，就是说某些变换下不变的某种性质。所以将对称与群联系起来的正确说法是：如果某种结构在群$G$的变换下不变，那么我们就称呼这是一个具有$G$对称性的结构。
+
+\para 作为第一个例子，我们考虑一个矢量空间$V$，所有可逆线性变换（或者说矩阵）$A:V\to V$按照复合（或者说矩阵乘法）构成了一个群，他被记作$\mathrm{GL}(V)$，被称为一般线性群。当$V=\rr^n$的时候，一般线性群记作$\mathrm{GL}(n)$，当$V=\cc^n$的时候，一般线性群记作$\mathrm{GL}(n,\cc)$.
+
+在$\mathrm{GL}(V)$中，那些行列式为$1$的矩阵构成了一个子群$\mathrm{SL}(V)$，因为行列式为1的矩阵的逆以及乘积的行列式都还是1. 从线性代数的几何直观，行列式为1的矩阵保持体积。
+
+\para 现在设$\rr^n$上面具有一个内积$(v,w)=\sum_{i=1}^n v_i w_i$，$\cc^n$上有一个内积$\langle v,w\rangle=\sum_{i=1}^n v^*_i w_i$，其中$v_i^*$是$v_i$的复共轭。从几何上面来看，内积给出了一个矢量的长度，以及两个实矢量之间的夹角。
+
+考虑一个实矩阵$A:\rr^n \to \rr^n$，他将矢量$v$和$w$变成了$Av$和$Aw$，如果对任意的$v$和$w$都使得$(Av,Aw)=(v,w)$成立，则称$A$是一个正交矩阵。正交矩阵在这里表征的是保持内积的对称性，几何上来看，矢量的长度和两个矢量的夹角不变。下面要验证所有的正交矩阵构成一个群，这个群被记作$\mathrm{O}(n)$，称为正交群。
+
+由于
+\[(v,w)=(Av,Aw)=(A^TAv,w),\]
+且内积非退化，所以$A^TA=I$，所以$\det (A^TA)=\det(A)^2=1$，于是$\det(A)\neq 0$，这也就推出$A$是可逆的，所以我们可以把正交矩阵的定义改成：$A^T=A^{-1}$.
+
+随后，我们检验正交矩阵$A$和$B$的复合（或者说乘积）也是正交矩阵，$(AB)^T=B^TA^T=B^{-1}A^{-1}=(AB)^{-1}$，同时，由于$(A^{-1})^T=(A^T)^{-1}=(A^{-1})^{-1}=A$，因此$A$的逆也是一个正交矩阵。所以正交矩阵们按照矩阵乘法（或者说线性映射复合）成群。
+
+类似地，考虑一个复矩阵$A:\cc^n \to \cc^n$，如果对任意的$v$和$w$都使得$\langle Av,Aw\rangle =\langle v,w\rangle $成立，则称$A$是一个幺正矩阵。由于$\langle Av,Aw\rangle=\langle A^{\dag}Av,w\rangle$，所以幺正矩阵也可以定义为满足$A^\dag A=I$的矩阵。同上可以类似验证所有的幺正矩阵构成一个群，这个群被记作$\mathrm{U}(n)$，称为酉群。
+
+\para 已经看到$\mathrm{SL}(n)$，$\mathrm{O}(n)$是$\mathrm{GL}(n)$的子群，$\mathrm{SL}(n,\cc)$和$\mathrm{U}(n)$是$\mathrm{GL}(n,\cc)$的子群，那么
+\[
+	\mathrm{SO}(n)=\mathrm{SL}(n)\cap \mathrm{O}(n),\quad \mathrm{SU}(n)=\mathrm{SL}(n,\cc)\cap \mathrm{U}(n),
+\]
+也分别是$\mathrm{GL}(n)$和$\mathrm{GL}(n,\cc)$的子群。
+
+\para 现在来看$\mathrm{SL}(2,\cc)$. 任何一个复可逆$2\times 2$矩阵都可以唯一分解（极分解）为$
+\lambda=u\exp(h)$，其中$u$幺正而$h$是Hermite矩阵。现在假如$\det \lambda=1$，则
+\[
+\det(u)\exp(\tr(h))=1
+\]
+于是$\det(u)=1$而$\tr(h)=0$. $u$的一般形式为
+\[
+u=
+\begin{pmatrix}
+a+ib&c+id\\
+-c+id&a-ib
+\end{pmatrix},
+\]
+且满足$a^2+b^2+c^2+d^2=1$，因此其拓扑上等价为3-球面$\mathbb{S}^3$. 而$h$的一般形式为
+\[
+h=\begin{pmatrix}
+e&f-ig\\
+f+ig&-e
+\end{pmatrix},
+\]
+拓扑上等价于$\rr^4$，因此$\mathrm{SL}(2,\cc)$在拓扑上等价于$\rr^4\times \mathbb{S}^3$. 
+
+\subsection*{Lie群和Lie代数的定义}
+
+\para 称呼群$G$是一个Lie群，如果他同时具有相容的群结构和微分流形结构，所谓相容的，就是说，群运算是可微的。所谓的微分流形，就是广义的曲面。比如刚刚说的，$\mathrm{SL}(2,\cc)$在拓扑上等价于$\rr^4\times \mathbb{S}^3$，这是一个七维的曲面。
+
+粗略来说，Lie群就是那些在上面可以进行微积分的群$\footnote{严格一点的定义，参见附录。}$，$\mathrm{GL}(n)$和$\mathrm{GL}(n,\cc)$都是Lie群。对于矩阵群来说，上面的求导定义为
+\[
+	\frac{\dd A(t)}{\dd t}=\lim_{t\to 0}\frac{A(t)-A(0)}{t}.
+\]
+求导运算很容易验证满足
+\[
+	\frac{\dd A(t)B(t)}{\dd t}=A'(t)B(t)+A(t)B'(t),
+\]
+或者更一般的，对于一个双线性型$K(*,*)$，成立
+\[
+	\frac{\dd }{\dd t}K(A(t),B(t))=K(A'(t),B(t))+K(A(t),B'(t)).
+\]
+这些都可以从求导的定义来直接检验。
+
+\para 所谓的Lie代数，就是Lie群在单位元处的切空间，是Lie群的局部近似。由于每一个群元左作用都是微分同胚，比如对于$g\in G$，$l_g:h\mapsto gh$是一个同胚，他的逆就是$l_{g^{-1}}$，这样一个映射，将$e$映射成$g$，并且同时，将$e$处的切矢量$v$，映射到了$g$出的一个切矢量$(l_g)_{*g}v$。改变$g$，这样我们就得到了$G$上的一个矢量场，这样的矢量场被称为一个左不变矢量场$V$。显然，一个Lie代数的元素对应一个左不变矢量场。
+
+有了矢量场，我们就可以谈论其的积分曲线，换而言之，找一条曲线，使得他在每一点的切矢量刚好和矢量场在那点的矢量一样。积分曲线可以局部唯一存在，这是常微分方程告诉我们的结论。对于Lie群的左不变矢量场而言，由于每一点的切矢量都是同胚$l_g$复制过去的，所以每一点附近的积分曲线求解都差不多，这就意味着，先在一点附近求解出一条积分曲线，然后在这条积分曲线的接近末端，我们可以再求解一条新的积分曲线，他和原本那条部分重合，合起来就得到了一条更长的积分曲线，然后再慢慢一直延拓下去。
+
+考虑$v$是一个Lie代数的元素，$V$是他的左不变矢量场，记$\exp(t,v)$是$V$的一条在$t=0$时刻经过$e$的一条$V$的积分曲线，由于上段的陈述，我们知道$t$可以从$-\infty$取到$\infty$. 我们可以发现$\exp(t,v)=\exp(1,tv)$，这是因为左不变矢量场每一点的切矢量都是同胚$l_g$复制过去的，所以如果初速度是$v$的$t$倍，那么处处速度是原本速度的$t$倍，因此，原本需要跑$t$时间的路，现在只需要$1$时间了。正规的证明只要用微分方程解的唯一性即可。因此，对于$\exp(t,v)$而言，我们可以将其写作$\exp(tv)$而并不丧失什么信息。
+
+一个不那么显然的等式是$\exp(tv)\exp(sv)=\exp((t+s)v)$，注意到这和复数$\exp$函数的相似性，这也就是为什么我们称呼他为$\exp$函数的原因。这个等式的证明只要考察$\exp(sv)$处开始的一条$V$的积分曲线，然后利用积分曲线的唯一性即可。
+
+利用上面的等式以及$\exp(0v)=e$，我们得到$\exp(v)^{-1}=\exp(-v)$.
+
+\para 对于矩阵群而言，
+\[
+	\exp(tA)=I+\sum_{n=1}^\infty \frac{(tA)^n}{n!}=\sum_{n=0}^\infty \frac{(tA)^n}{n!},
+\]
+
+更严格的证明可以参见附录，这里提供一种思路。我们考虑$\exp(tA)$，将其在$t=0$附近展开，有$\exp(tA)=I+tA+O(t^2)$，然后对于任意的正整数$n$和固定的$t$我们有
+\[
+	\exp(tA)=\left(\exp(tA/n)\right)^n=\left(I+\frac{t}{n}A+O\left(\frac{1}{n^2}\right)\right)^n,
+\]
+然后令$n\to\infty$，就有$\exp(tA)=\lim_{n\to\infty}\left(I+\frac{t}{n}A\right)^n$. 使用二项式展开，就可以得到其级数展开
+\[
+	\exp(tA)=1+\sum_{n=1}^\infty \frac{(tA)^n}{n!}=\sum_{n=0}^\infty \frac{(tA)^n}{n!},
+\]
+最后$t=1$即可。
+
+矩阵的$\exp$函数联系了行列式和迹，具体来说就是
+\[
+	\det(\exp(A))=\exp(\tr(A)),
+\]
+证明参见附录。
+
+\para 上面描述了从Lie代数到Lie群的手段，即利用积分曲线。每一个Lie代数都可以往上得到Lie群里面的元素。反过来，要得到Lie代数的元素只要求导即可。
+
+$\mathrm{GL}(n,\cc)$的Lie代数$\mathfrak{gl}(n,\cc)$就是$\mathrm{M}(\cc^n)$，即$\cc^n\to \cc^n$的所有矩阵全体，因为任取$A\in \mathrm{M}(\cc^n)$，我们都有$\det(\exp(tA))=\exp(t \tr(A))\neq 0$，故$\exp(tA)\in \mathrm{M}(\cc^n)$.
+
+$\mathrm{SL}(n,\cc)$的Lie代数$\mathfrak{sl}(n,\cc)$就是那些满足$\tr(A)$的矩阵，或者说，迹零矩阵构成的矢量空间。$\mathrm{SU}(n,\cc)$的Lie代数$\mathfrak{su}(n)$中的元素首先是迹零矩阵，然后也满足
+\[
+	0=\left.\frac{\dd}{\dd t}\right|_{t=0}\exp(tA)\exp(tA^{\dag})=A^\dag+A,
+\]
+或者引入一个$i$，将其写作$(iA)^\dag=iA$，所以$\mathrm{SU}(n,\cc)$的Lie代数$\mathfrak{su}(n)$就是那些满足$A=A^\dag$的迹零矩阵$A$构成的矢量空间。
+
+对于$\mathrm{O}(n)$的Lie代数$\mathfrak{o}(n)$，利用
+\[
+	0=\left.\frac{\dd}{\dd t}\right|_{t=0}\exp(tA)\exp(tA^{T})=A^T+A,
+\]
+所以$\mathfrak{o}(n)$就是那些反对称的矩阵构成的矢量空间。由于反对称矩阵自然是迹零的，所以$\mathrm{SO}(n)$的Lie代数$\mathfrak{so}(n)$就是$\mathfrak{o}(n)$。
+
+\para 通过将矢量场看成Lie群上光滑函数的导数，我们可以定义Lie代数上的如下算符$[X,Y]=XY-YX$，对于矩阵群的Lie代数来说
+\[
+	[A,B]=AB-BA,
+\]
+其中$A$和$B$之间为矩阵乘法。证明可以参见附录。
+
+通过直接的计算，Lie代数上满足：
+
+\no{1} $[X,Y]=-[Y,X]$,
+
+\no{2} $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$.
+
+第一条反对称性从矢量场的$[X,Y]=XY-YX$来看是显然的。而第二条称为Jacobi恒等式，直接计算即可验证。可以如下记忆Jacobi恒等式，$X$, $Y$和$Z$的三种右手方向构成的置换和为$0$，或者说，$[X_i,[X_j,X_k]]$中$ijk$是$123$的偶置换。
+
+\subsection*{表示的定义}
+
+\para Lie群$G$的有限维表示是一个二元组$(\rho,V)$，其中$V$是一个有限维矢量空间\footnote{我们以后会一直默认有限维，所以就在以后略去有限维，除非特别声明。}，前者$\rho:G\to \mathrm{GL}(V)$是一个群同态，即满足$\rho(gh)=\rho(g)\rho(h)$.
+
+设Lie群$G$的Lie代数是$\lag$，那么他的表示是一个二元组$(\pi,V)$，前者$\pi:\lag \to \mathfrak{gl}(V)=\mathrm{M}(V)$，满足
+\[
+	\pi([A,B])=[\pi(A),\pi(B)].
+\]
+
+粗略来说，表示就是将$G$或者$\lag$里面的元素看成$V$上的线性变换。Lie代数的表示的定义和Lie群的表示的定义是相容的，一旦有一个Lie群的表示，将其求导也就得到了其Lie代数的表示。为了避免微积分，所以我们这里就直接给出Lie代数表示的定义了。
+
+\para 如果对于群$G$一个表示$(\rho,V)$，存在$V$的一个子空间$W$使得$\rho(G)W\subset W$，则$(\rho,W)$也构成一个表示，他被称为$(\rho,V)$的一个子表示。每一个表示都存在两个平凡的子表示，一个是本身，一个是零表示，即$(\rho,\{0\})$. 除去这两个子表示，如果该表示没有其他子表示，则称这个表示为一个不可约表示。类似地，我们可以定义出什么叫Lie代数$\lag$的不可约表示。
+
+\para 对于一个对象的两个表示$(\rho,V)$和$(\pi,W)$，我们可以定义直和表示，通过
+\[
+	(\rho(g),\pi(g))(v,w)=(\rho(g)v,\pi(g)w).
+\]
+如果一个表示可以分解成一些不可约表示的直和，则称该表示是完全可约的。
+
+\para 对于矩阵群$G$，他的Lie代数是$\lag$，考虑如下表示$(\mathrm{Ad},\lag)$
+\[
+	\mathrm{Ad}(U)B=UBU^{-1},
+\]
+他被称为伴随表示，对于一般的Lie群的伴随表示的定义，参见附录。
+
+我们令$U=\exp(tA)$，并将其在$t=0$处求导，得到
+\[
+	\left.\frac{\dd}{\dd t}\right|_{t=0}\mathrm{Ad}(\exp(tA))B=AB-BA=[A,B],
+\]
+我们将其记作$\ad(A)B:=[A,B]$，这是一个Lie代数的表示，满足
+\[
+	\ad([A,B])=[\ad(A),\ad(B)],
+\]
+以及成立
+\[
+	\ad(A)([B,C])=[\ad(A)B,C]+[B,\ad(A)C],
+\]
+这些证明都是直接的。最后两个式子和Jacobi恒等式等价。
+
+\para 由于$\ad$是$\mathrm{Ad}$的导数，所以$\mathrm{Ad}(\exp(tA))$也往往记作$\exp(t \ad(A))$. 对于矩阵群的Lie代数而言，
+\[
+	[\exp(t \ad(A))X,\exp(t \ad(A))Y]=\exp(t \ad(A))([X,Y]),
+\]
+这个可以直接计算检验。对于一般的Lie群的Lie代数，这个也是成立的。
 
 \section{半单Lie代数及其根系}
 
-\para 设$G$是一个Lie群，而$\lag$是他的Lie代数。如果Lie代数上可以配备一个双不变的内积，则$G$是一个Riemann流形，利用Levi-Civita联络可以定义出一个合适的曲率算符$R_{XV}Y=\ad(Y)\circ \ad(X)(V)/4$，接着我们定义一个正比于Ricci曲率的双线性映射$(X,Y)_K=N \tr(\ad(X)\circ \ad(Y))$，他被称为Killing形式。系数$N$是归一化系数，对于固定的Lie代数，只要我们固定确定的归一化系数即可。
+\para 设$G$是一个Lie群，而$\lag$是他的Lie代数。我们定义$\lag$上的一个双线性型，
+\[(X,Y)_K=N \tr(\ad(X)\circ \ad(Y)),\]
+他被称为Killing形式，系数$N$是归一化系数，对于固定的Lie代数，只要我们固定确定的归一化系数即可。Killing形式显然是对称的，因为迹成立$\tr(AB)=\tr(BA)$.
 
-Killing形式显然是对称的，因为迹成立$\tr(AB)=\tr(BA)$.
+几何上，如果Lie代数上可以配备一个双不变的内积，则$G$是一个Riemann流形，利用Levi-Civita联络可以定义出一个合适的曲率算符$R_{XV}Y=\ad(Y)\circ \ad(X)(V)/4$，所以Killing形式实际上就是Lie群的Ricci曲率。
 
 \para 设$\mu$是$\lag$上的一个自同构，则$(\mu X,\mu Y)_K=(X,Y)_K$.
 
@@ -330,27 +471,7 @@ $[a,b]$也是在某个根子空间里面的，为了求他的根，我们用对�
 很容易证明$\mathfrak{sl}(2,\rr)$的复化即$\mathfrak{sl}(2,\cc)$，这就是说$\mathfrak{sl}(2,\rr)_\cc=\mathfrak{sl}(2,\cc)$. 为了分析$\mathfrak{sl}(2,\cc)$的结构，我们可以先看看
 $\mathrm{SL}(2,\mathbb{C})$的结构。
 
-任何一个复可逆$2\times 2$矩阵都可以唯一分解（极分解）为$
-\lambda=u\exp(h)$，其中$u$幺正而$h$是Hermite矩阵。现在假如$\det \lambda=1$，则
-\[
-\det(u)\exp(\tr(h))=1
-\]
-于是$\det(u)=1$而$\tr(h)=0$.前者的一般形式为
-\[
-u=
-\begin{pmatrix}
-a+ib&c+id\\
--c+id&a-ib
-\end{pmatrix},
-\]
-且满足$a^2+b^2+c^2+d^2=1$，因此其拓扑上等价为3-球面$\mathbb{S}^3$.而前者的一般形式为
-\[
-h=\begin{pmatrix}
-e&f-ig\\
-f+ig&-e
-\end{pmatrix},
-\]
-拓扑上等价于$\rr^4$，因此$\mathrm{SL}(2,\cc)$在拓扑上等价于$\rr^4\times \mathbb{S}^3$.当然拓扑上的结论在我们这里暂时没什么用。
+
 
 这样来看$\mathrm{SL}(2,\cc)$的Lie代数$\mathfrak{sl}(2,\mathbb{C})$，在$\mathrm{SL}(2,\cc)$的极分解中，令$b=-ih$，则
 \[
@@ -552,10 +673,14 @@ E|k\rangle=(2k\lambda -k(k-1)) |k-1\rangle\quad (k>0).
 \[
 	\lambda=\sum_i \langle \lambda|\alpha_i^\vee\rangle \omega_i=\sum_i \lambda_i \omega_i,
 \]
-其中每一个$\lambda_i$都是整数，被称为Dynkin标记，而$\omega_i$被称为基本权。Dynkin标记其实是$h^i$对权$|\lambda \rangle$的本征值，即
-\[
+其中每一个$\lambda_i$都是整数，被称为Dynkin标记，而$\omega_i$被称为基本权。
+
+\para Dynkin标记其实是$h^i$对权$|\lambda \rangle$的本征值，即
+\begin{equation}
+\label{dynkin}
 	h^i|\lambda \rangle=\lambda(h^i)|\lambda \rangle=\langle\lambda|\alpha_i^\vee\rangle|\lambda \rangle=\lambda_i|\lambda \rangle.
-\]
+\end{equation}
+这个方程很重要，在我们已知表示的具体构造的时候，就可以用它来计算Dynkin标记。
 
 对于Cartan矩阵，$A_{ij}=\langle \alpha_i|\alpha^\vee_j\rangle$，所以我们有
 \[
@@ -576,11 +701,64 @@ E|k\rangle=(2k\lambda -k(k-1)) |k-1\rangle\quad (k>0).
 	F_{ij}=\frac{1}{2}(A^{-1})_{ij}\alpha_j^2.
 \]
 
+\section{$\star$ Weyl群}
+
+这节来研究$\mathfrak{h}^*$上可能的对称性。
+
+\para 在一列权
+\[
+	\lambda-q\alpha,\lambda-(q-1)\alpha,\cdots,\lambda-\alpha,\lambda,\lambda+\alpha,\cdots,\lambda+(p-1)\alpha,\lambda+p\alpha,
+\]
+中，$q$代表的是最高下降次数，而$p$代表的是最高上升次数。同时我们已知结论
+\[
+	\langle \lambda | \alpha^\vee\rangle = q-p.
+\]
+在这列权之中，正着数（从零开始计数）第$q$个就是$\lambda$，倒着数依然从（从零开始计数）第$q$个应该也在这列权之中，通过
+\[
+	\lambda+p\alpha-(\langle \lambda | \alpha^\vee\rangle+p)\alpha =\lambda-\langle \lambda|\alpha^\vee\rangle\alpha
+\]
+得到，这是一个权。
+
+\para 定义线性变换
+\[
+	s_\alpha:v\mapsto v-\langle v|\alpha^\vee\rangle\alpha,
+\]
+其中$v\in \mathfrak{h}^*$, $\alpha\in\Delta$，按照上面所言，这个变换把权变成权。根是特殊的权，所以这种变换也将根变成根。
+
+这样的变换保持$\mathfrak{h}$上面的内积：
+\begin{align*}
+	\langle s_\alpha v|s_\alpha w\rangle &= \langle v-\langle v|\alpha^\vee\rangle\alpha|w-\langle w|\alpha^\vee\rangle\alpha\rangle\\ &=\langle v|w\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle - \langle v|\alpha^\vee\rangle \langle w| \alpha\rangle +\langle v|\alpha^\vee\rangle\langle w|\alpha^\vee\rangle \alpha^2\\
+	&= \langle v|w\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle +2\langle w|\alpha^\vee\rangle\langle v|\alpha\rangle\\
+	&= \langle v|w\rangle,
+\end{align*}
+所以根张成的实线性空间，$s_\alpha$属于他的正交群。几何来看，任意的$s_\alpha$不过就是按$\alpha$的法超平面反射，故而肯定属于正交群。
+
+\para 类似地可以去计算
+\begin{align*}
+	s_\alpha^2(v)=s_\alpha\left(v-\langle v|\alpha^\vee\rangle\alpha\right)&=v-\langle v|\alpha^\vee\rangle\alpha-\left\langle v-\langle v|\alpha^\vee\rangle\alpha\large|\alpha^\vee\right\rangle\alpha\\
+	&=v-\langle v|\alpha^\vee\rangle\alpha-\left\langle v\large|\alpha^\vee\right\rangle\alpha+\langle v|\alpha^\vee\rangle\langle\alpha|\alpha^\vee\rangle\alpha\\
+	&=v-2\langle v|\alpha^\vee\rangle\alpha+2\langle v|\alpha^\vee\rangle\alpha\\
+	&=v.
+\end{align*}
+所以$s_\alpha^2=1$或者$s_\alpha^{-1}=s_\alpha$.
+
+同样可以直接计算得到：如果$\langle \alpha|\beta\rangle=0$，则$s_\alpha s_\beta=s_\beta s_\alpha$.
+
+\para 所以$\{s_\alpha\,:\, \alpha\in \Delta\}$的任意复合构成一个群，单位元$e=s_0$，逆元的存在性来自于$s_\alpha=s_\alpha^{-1}$，这个群我们称为Weyl群，记作$W$。
+
+考虑单根$\alpha_i$，我们简记$s_i=s_{\alpha_i}$，可以断言，任意Weyl群的元素都可以分解为$w=s_is_j\cdots s_k$，几何上来看这是比较清楚的（反射能由一些基本的反射生成，可以参考$\mathrm{SO}(3)$的Gauss分解），但是具体证明不算太容易。
+
+\para 设$w\in W$，由于$w$保持内积，所以它的行列式为$\pm 1$，我们记$\epsilon(w)=\det(w)$. 又由于$w=s_is_j\cdots s_k$，且$\det s_i=-1$，所以$\epsilon(w)=(-1)^l$，$l$是分解的长度。
+
+\pro Weyl群是有限群。
+
+To be continued.
+
 \section{有限维不可约复表示}
 
-由Weyl定理，复半单Lie代数的任意有限维表示，都可以拆成一些不可约表示的直和，因此我们现在开始考虑复半单Lie代数的任意不可约表示$\rho:\lag\to \mathfrak{gl}(V)$，其中$V$是一个有限维复矢量空间。
+\theo Weyl定理：复半单Lie代数的任意有限维表示，都可以拆成一些不可约表示的直和。
 
-下面先复习一下定义。
+因此我们现在开始考虑复半单Lie代数的任意不可约表示$\rho:\lag\to \mathfrak{gl}(V)$，其中$V$是一个有限维复矢量空间。下面先复习一下定义。
 
 \para 因为$\{H^i\}$是两两可交换的，所以可以找到一个共同的本征矢量$|\lambda\rangle$使得$H^i|\lambda\rangle=\lambda^i|\lambda\rangle$，则矢量$(\lambda^1,\cdots,\lambda^r)$被称为权。通过$\lambda(\mu_iH^i)=\mu_i\lambda^i$，则我们可以将权看做$\mathfrak{h}^*$中的一个线性函数。伴随表示的权就是根。同样可以通过Killing形式，我们把$\mathfrak{h}$等同于$\mathfrak{h}^*$，即通过$(h_\lambda,h)_K=\lambda(h)$，把一个权$\lambda$对应到唯一的$h_\lambda$，因此我们记
 \[
@@ -705,58 +883,59 @@ $\Omega$在上述偏序下，我们感兴趣的是他的最大元，即那个$\l
 
 \para 这节我们最后的任务是，在给出最高权$\lambda$的情况下，找出所有的权。任取一个权$\mu$以及单根$\alpha_i$，我们有$\langle\mu|\alpha^\vee_i\rangle=\mu_i=q_i-p_i$是一个整数，其中$q_i$是最高下降次数，而$p_i$是最高上升次数。所以如果我们依次下降，$\mu-\alpha_i$对应的$q$如果不为零，则这就是一个权。
 
-对于最高权$\lambda$，我们有$\langle\lambda|\alpha^\vee_i\rangle=\lambda_i=q_i$，所以所有
+对于最高权$\lambda$，我们有$\langle\lambda|\alpha^\vee_i\rangle=\lambda_i=q_i$，所以为了求出所有的权，我们先计算出全部的
 \[
-	\lambda-\sum_in_i\alpha_i
+	\lambda-\alpha_i,\,\,\lambda-2\alpha_i,\,\,\cdots,\,\,\lambda-q_i\alpha_i,
 \]
-都是权，其中$n_i$取遍$0$到$\lambda_i$，上式中正整数$\sum_i n_i$被称为这个权的层，我们通常是从最高权开始，将层从低往高去寻找权。
+然后再从这些权往下降，如此迭代，直到Dynkin标记全都为负数。对于任意的权，它都可以从最高权下降得到，而下降的次数被称为这个权的层，我们通常是从最高权开始，将层从低往高去寻找权。
 
-\section{Weyl群}
+\para 虽然可以用上面的方法确定所有的权，但是权的简并是不能确定的，正确的方法是，将最高权矢量按照所有可能的路径计算。为了以后方面，如果表示$(\rho,V)$的最高权为$\lambda$，它可能的一个权是$\mu$，那么对应于$\mu$的权子空间的维度我们记作$\mult_\lambda(\mu)$.
 
-这节来研究$\mathfrak{h}^*$上可能的对称性。
-
-\para 在一列权
+一个好用的结论是，Weyl群并不改变简并度，即任取$w\in W$
 \[
-	\lambda-q\alpha,\lambda-(q-1)\alpha,\cdots,\lambda-\alpha,\lambda,\lambda+\alpha,\cdots,\lambda+(p-1)\alpha,\lambda+p\alpha,
+	\mult_\lambda(w\mu)=\mult_\lambda(\mu).
 \]
-中，$q$代表的是最高下降次数，而$p$代表的是最高上升次数。同时我们已知结论
+所以对称性在确定简并度的时候会很方便。这点下节引入特征标方法后会有证明。
+
+\section{ $\star$ Weyl特征标公式}
+
+\para 群的特征标是表示的迹，准确地说，设$(\rho,V)$是一个表示，则它的特征标$\chi_{\rho}$如下定义：
 \[
-	\langle \lambda | \alpha^\vee\rangle = q-p.
+	\chi_\rho(g)=\tr (\rho(g)),
 \]
-在这列权之中，正着数（从零开始计数）第$q$个就是$\lambda$，倒着数依然从（从零开始计数）第$q$个应该也在这列权之中，通过
+有限群的特征标理论在附录有叙述。一个简单的推论是$\chi_\rho(e)=\dim V$.
+
+考虑半单Lie代数不可约表示的情况，最高权是$\lambda$. 设$\exp(H)$是Lie群里面的元素，$H$是Cartan子代数里面的一个元素，则
 \[
-	\lambda+p\alpha-(\langle \lambda | \alpha^\vee\rangle+p)\alpha =\lambda-\langle \lambda|\alpha^\vee\rangle\alpha
+	\chi_\rho(\exp(H))=\tr (\rho(\exp(H))),
 \]
-得到，这是一个权。
-
-\para 定义线性变换
+由于$\rho(\exp(H))=\exp(\rho(H))$，对于半单Lie代数不可约表示而言，$\rho(H)$是可以对角化的，所以
 \[
-	s_\alpha:v\mapsto v-\langle v|\alpha^\vee\rangle\alpha,
+	\tr (\rho(\exp(H)))=\sum_{\mu\in \Omega}\mult_\lambda(\mu)\exp(\mu(H)),
 \]
-其中$v\in \mathfrak{h}^*$, $\alpha\in\Delta$，按照上面所言，这个变换把权变成权。根是特殊的权，所以这种变换也将根变成根。
+因此我们定义这样一个函数
+\[
+	\chi_\lambda :H\mapsto \sum_{\mu\in \Omega}\mult_\lambda(\mu)\exp(\mu(H)),
+\]
+或者记作
+\[
+	\chi_\lambda=\sum_{\mu\in \Omega}\mult_\lambda(\mu)e^\mu,
+\]
+其中的指数$e^\mu$是一个形式记号，代表的是函数$e^\mu:H\mapsto \exp(\mu(H))$.
 
-这样的变换保持$\mathfrak{h}$上面的内积：
-\begin{align*}
-	\langle s_\alpha v|s_\alpha w\rangle &= \langle v-\langle v|\alpha^\vee\rangle\alpha|w-\langle w|\alpha^\vee\rangle\alpha\rangle\\ &=\langle v|w\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle - \langle v|\alpha^\vee\rangle \langle w| \alpha\rangle +\langle v|\alpha^\vee\rangle\langle w|\alpha^\vee\rangle \alpha^2\\
-	&= \langle v|w\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle - \langle w|\alpha^\vee\rangle \langle v| \alpha\rangle +2\langle w|\alpha^\vee\rangle\langle v|\alpha\rangle\\
-	&= \langle v|w\rangle,
-\end{align*}
-所以根张成的实线性空间，$s_\alpha$属于他的正交群。几何来看，任意的$s_\alpha$不过就是按$\alpha$的法超平面反射，故而肯定属于正交群。
+我们顺便定义
+\[
+	e^\mu e^\nu=e^{\mu+\nu},\quad e^\mu(\nu)=\exp(\langle \mu |\nu\rangle).
+\]
+这里定义的乘法绝不是复合，定义域都对不上，依然只是形式上的。
 
-\para 类似地可以去计算
-\begin{align*}
-	s_\alpha^2(v)=s_\alpha\left(v-\langle v|\alpha^\vee\rangle\alpha\right)&=v-\langle v|\alpha^\vee\rangle\alpha-\left\langle v-\langle v|\alpha^\vee\rangle\alpha\large|\alpha^\vee\right\rangle\alpha\\
-	&=v-\langle v|\alpha^\vee\rangle\alpha-\left\langle v\large|\alpha^\vee\right\rangle\alpha+\langle v|\alpha^\vee\rangle\langle\alpha|\alpha^\vee\rangle\alpha\\
-	&=v-2\langle v|\alpha^\vee\rangle\alpha+2\langle v|\alpha^\vee\rangle\alpha\\
-	&=v.
-\end{align*}
-所以$s_\alpha^2=1$或者$s_\alpha^{-1}=s_\alpha$.
+\theo Weyl特征标公式：
+\[
+	\chi_\lambda=\frac{\sum_{w\in W}\epsilon(w)e^{w(\lambda+\rho)}}{\sum_{w\in W} \epsilon(w)e^{w\rho}},
+\]
+其中$\rho$是Weyl矢量。
 
-同样可以直接计算得到：如果$\langle \alpha|\beta\rangle=0$，则$s_\alpha s_\beta=s_\beta s_\alpha$.
-
-\para 所以$\{s_\alpha\,:\, \alpha\in \Delta\}$的任意复合构成一个群，单位元$e=s_0$，逆元的存在性来自于$s_\alpha=s_\alpha^{-1}$，这个群我们称为Weyl群。
-
-考虑单根$\alpha_i$，我们简记$s_i=s_{\alpha_i}$，可以断言，任意Weyl群的元素都可以分解为$w=s_is_j\cdots s_k$，几何上来看这是比较清楚的（反射能由一些基本的反射生成，可以参考$\mathrm{SO}(3)$的Gauss分解），但是具体证明不算太容易。
+To be continued.
 
 \section{$\mathfrak{su}(N)$及其复化$\mathfrak{sl}(N,\cc)$}
 
@@ -772,7 +951,7 @@ $\Omega$在上述偏序下，我们感兴趣的是他的最大元，即那个$\l
 
 利用这个式子，可以证明
 \begin{equation}
-	\tr(\ad(A)\ad(B))=2n\tr(AB)-2\tr(A)\tr(B).
+	\tr(\ad(A)\ad(B))=2N\tr(AB)-2\tr(A)\tr(B).
 \end{equation}
 详细的证明可以参见附录。
 
@@ -864,25 +1043,6 @@ $\mathfrak{sl}(N,\cc)$的Cartan子代数$\mathfrak{h}$即全部的矩阵
 \]
 换而言之，他将$\gamma_i$和$\gamma_{i+1}$互换了，用循环群的记法就是$(i,i+1)$. 由于指标一共是$N$个，而且循环群总可以通过两两对换生成，所以$s_i$构成循环群$S_n$的生成元，也就是说$\mathfrak{sl}(N,\cc)$的Weyl群是$S_n$.
 
-\para 这里来描述一个Young图技巧，前面已经知道了一个Young图唯一确定了一个最高权。在$\mathfrak{sl}(N,\cc)$的情况下，Young图可以用来确定全部的权。
-
-首先记$\gamma_i=\omega_i-\omega_{i-1}$，并且记$\omega_0=\omega_n=0$. 然后往填Young图里面填从$1$到$N$的正整数，从左到右不减，从上到下递增\footnote{这被称为准标准Young表，所谓标准Young表必须是从左到右也是递增的。}，比如
-\[
-\Yvcentermath1
-	\young(22,3)\quad \text{and}\quad \young(23,3)
-\]
-然后把表里面的数字$i$对应的$\gamma_i$加起来就得到了一个权。事实上，所有的权都可以这么确定。不同的表可能会有相同的权，相同的权对应数量的表将得到权子空间的维度。
-
-举个例子，这回用$\mathfrak{sl}(4,\cc)$，最高权$(2,0,2,0)$对应的Young图为
-\[
-	\yng(4,2,2)
-\]
-我们填入
-\[
-	\young(1224,33,44)
-\]
-然后可以计算有$\gamma_1+2\gamma_2+2\gamma_3+3\gamma_4=-\omega_1-\omega_3=(-1,0,-1,0)$，这是表示的一个权。这个权的权子空间只有一维，因为$1$, $2$, $3$, $4$都不可以互换位置。
-
 \para 比如对于$\mathfrak{sl}(3,\cc)$，我们有
 \[
 	A=\begin{pmatrix}
@@ -961,38 +1121,6 @@ $\mathfrak{sl}(N,\cc)$的Cartan子代数$\mathfrak{h}$即全部的矩阵
 	\dim(V_{pq})=\frac{1+p}{1}\frac{1+q}{1}\frac{p+q+2}{2}=\frac{1}{2}(p+1)(q+1)(p+q+2).
 \]
 
-\para 对于$\mathfrak{sl}(N,\cc)$的最高权$\lambda=(\lambda_1,\cdots \lambda_{N-1})$，在谈论Young图的时候，我们把这个变成了$\{f_1$, $\cdots$, $f_{N-1}\}$，其中$f_i=\sum_{k=i}^{N-1}\lambda_k$，再顺便令$f_N=0$，则对于$\mathfrak{sl}(N,\cc)$不可约表示关于这个最高权的维度我们可以通过下式计算：
-\[
-	\dim(V_\lambda)=\prod_{1\leq i<j\leq N}\left(\frac{f_i-f_j}{j-i}+1\right).
-\]
-
-上面这个公式也可以利用Young图来表示，可以说完全是组合学的技巧，当然似乎也可以利用$S_N$与$\mathrm{GL}(N,\cc)$的不可约表示的对偶。考虑Young图
-\[
-	\yng(2,2)\,,
-\]
-往第$(i,j)$格里面填入他下面以及右边所有格子的总量，再加上$1$，对于上面的Young图就是
-\[
-	\young(32,21)\,,
-\]
-然后定义$h$为里面所有数字之积，即这里是$3\times 2\times 2\times 1=12$.
-
-然后，依旧是那个Young图，往最左上的一个格子里面填上$N$，之后往左就递增1，往下就递减1，得到了
-\begin{center}
-  \begin{tabular}{ | c | c |}
-    \hline
-    $N$ & $N+1$  \\ \hline
-    $N-1$ & $N$\\
-    \hline
-  \end{tabular}
-\end{center}
-然后计算出$F$为里面所有数之积，即这里是$F=(N+1)N^2(N-1)$.
-
-对应于这幅Young图的不可约表示的维度如下确定
-\[
-	F/h=(N+1)N^2(N-1)/12,
-\]
-对于$N=3$的情况，此时维度即$6$. 如果利用公式$(p+1)(q+1)(p+q+2)/2$，这里$p=2$, $q=0$，所以依然可以求得$2\times 1\times 3/2=6$.
-
 \section{不可约表示的张量积}
 
 对于Lie群的表示，$(\rho,V)$和$(\pi,W)$的张量积可以定义为
@@ -1057,243 +1185,614 @@ $\mathfrak{sl}(N,\cc)$的Cartan子代数$\mathfrak{h}$即全部的矩阵
 \yng(1)\otimes \yng(1)=\yng(2)\oplus\yng(1,1).
 \]
 
+\para 下面我们用不可约表示的最高权来代表该表示，用$\Omega_{+}$来记所有的dominant weight的集合，这样，我们应该有分解
+\[
+	\lambda\otimes \mu =\bigoplus_{\nu\in \Omega_{+}}\mathcal{N}_{\lambda\mu}^\nu \nu,
+\]
+其中$\mathcal{N}_{\lambda\mu}^\nu$是一个自然数，代表分解出来对于最高权为$\nu$的不可约表示的重数。
+
+\para 显然的是，比如
+\[
+	\mathcal{N}_{\lambda 0}^\nu=\delta_\lambda^\nu
+\]
+
 To be continued.
 
-\section{对称群以及Young图}
+\section{$\mathrm{sl}(n,\cc)$的不可约表示的直接构造}
 
-对称群的不可约表示和$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示紧密相连，所以这里先考虑对称群。对于对称群不可约表示的结构定理，下面会陈述，但是不做证明。这节主要是Young的工作，是他开启了表示论的大门。
+上面讲了太多的一般的理论了，这里来直接构造$\mathfrak{sl}(n,\cc)$的不可约表示，这并不是一个简单的事情。直接构造在绝大多数情况下，都是很难很难的事情，很考验基本功和天分，乃至于是考验灵感。这节的构造来自于Weyl.%而揭示了$S_n$与$\mathrm{GL}(n)$不可约表示的联系的，又是一个熟悉的名字，Schur.
 
-\para 考虑集合$=\{1,\cdots,n\}$，以及任意的双射$\sigma : I_n\to I_n$，我们可以直接用表
-\[
-	\begin{pmatrix}
-	1&2&\cdots &n\\
-	\sigma(1)&\sigma(2)&\cdots &\sigma(n)
-	\end{pmatrix}
-\]
-来描述这样一个双射。所有这样的双射按照复合构成一个群，我们称为对称群，记作$S_n$。这是一个有限群，他的元素个数是$n!$个。
-
-\para 对于对称群$S_n$，对于任意的置换$\sigma\in S_n$，记$\rr^n$的标准基为$e_i$，则置换$\sigma$可以通过$\sigma:e_i\mapsto e_{\sigma(i)}$看成一个可逆线性映射$D(\sigma): \rr^n\to \rr^n$，他的矩阵由$D(\sigma)_{ij}=\delta_{i,\sigma(j)}$给出。经过数次调换行和列，总可以将这个矩阵变换到单位矩阵，于是断言$D(\sigma)$是可逆的且$\det(D(\sigma))=\pm 1$. 记$\sgn(\sigma)=\det(D(\sigma))$，当$\sgn(\sigma)=1$的时候，我们称这个置换是偶置换，反之，则叫他奇置换。实际上，任意的置换都可以分解成数个两两对换，当置换是偶置换的时候，分解出两两置换的数目是偶数，反之是奇数。
-
-上面这个例子构成了两个表示，其中$D:S_n\to \mathrm{GL}(\rr^n)$被称为$S_n$的标准表示，他不一定是不可约的。而$\sgn=\det\circ D:S_n\to \{1,-1\}$又是另一个表示，因为$\pm 1\in \mathrm{GL}(\rr)$，这是一个很简单的一维表示。
-
-\para 现在，固定$\sigma$，考虑任意的$i\in I$，以及集合$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^k(i),\cdots\}$，由于这是一个有限群，所以集合必然也是有限的，即总存在一个$1\leq p\leq n$，使得$\sigma^p(i)=i$. 我们就得到了一个$p$个元素的$I$的子集，这被称为一个cycle，长度为$p$，有时候被称作一个$p$-cycle. 由于$I_n$是有限集，所以我们可以将其分解为不同cycle的并。
-
-将$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^{p-1}(i)\}$直接计算出来，记作$(i,j,k,\cdots,l)$. 由于$\sigma^{k+1}(i)=\sigma(\sigma^k(i))$，所以这组数里面，第$j$个数是第$j-1$个数进行应用$\sigma$后得到的，而第一个数是最后一个数应用$\sigma$后得到的。因此，cycle的名字恰如其分。
-
-由于$I_n$可以分解成这样的集合的并，即
-\[
-	(i_{11},\cdots,i_{1k_1})(i_{21},\cdots,i_{2k_2})\cdots (i_{m1},\cdots,i_{mk_m}),
-\]
-其中每一个$I_n$中的正整数都出现一次。所以如果我们得到了一个分解，则我们也完全确定了$\sigma$. 由于每一个$(i_{j1},\cdots,i_{jk_j})$都可以反过来确定一个$\sigma_j$，所以上面的分解又可以看成许多置换的复合，即$\sigma=\sigma_1 \sigma_2\cdots \sigma_m$，其中$\sigma_i\sigma_j=\sigma_j\sigma_i$. 
-
-比如
-\[
-	\sigma=\begin{pmatrix}
-	1&2&3&4&5\\
-	2&3&1&4&5
-	\end{pmatrix}
-\]
-我们就可以把$\sigma$分解为
-\[
-	\sigma=(1,2,3)(4)(5).
-\]
-其中$(1,2,3)$被称为3-cycle，类似地，$(4)$和$(5)$是1-cycle. 我们称$k$-cycle比$k'$-cycle高，如果$k>k'$. 在已知$S_n$的$n$的情况下，我们会在循环的cycle表示里略去所有的1-cycle. 上述的$\sigma=(1,2,3)(4)(5)$就会被记作$\sigma=(1,2,3)$.
-
-\pro 形如$(i,j)$的置换被称为两两置换。对于两两置换$\sigma$，显然有$\sigma^{-1}=\sigma$，或者$\sigma^2=e$. 我们断言，对称群中的任意置换都可以写成两两置换的复合。
-
-\proof 对于单位元$e$，这点是自明的，因为$(i,j)^2=e$. 其他的置换都至少存在一个2-cycle. 由于
-\[
-	\sigma=(i_{11},\cdots,i_{1k_1})(i_{21},\cdots,i_{2k_2})\cdots (i_{m1},\cdots,i_{mk_m})=\sigma_1 \cdots \sigma_m,
-\]
-所以，如果一个置换没有比$2$-cycle更高的cycle，则这个置换可以写作两两置换的复合。
-
-考虑置换$\sigma$，他的1-cycle的个数是$k$，即他保持$(1,\cdots,n)$中$k$个数字位置不变，且至少有一个$m$-cycle，其中$m\geq 3$，所以存在一个$i$使得$\sigma^2(i)\neq i$，这样我们就有如下表示
-\[
-	\sigma=\begin{pmatrix}
-	1&2&\cdots&i&\cdots &j&\cdots&n\\
-	\sigma(1)&\sigma(2)&\cdots&j&\cdots &\sigma(j)&\cdots&\sigma(n)\\
-	\end{pmatrix},
-\]
-然后考虑一个两两置换$\pi=(i,j)$，则
-\[
-	\pi\sigma=\begin{pmatrix}
-	1&2&\cdots&i&\cdots &j&\cdots&n\\
-	\sigma(1)&\sigma(2)&\cdots&\sigma(j)&\cdots &j&\cdots&\sigma(n)\\
-	\end{pmatrix}.
-\]
-$\pi\sigma$的1-cycle的个数是$k+1$. 如果此时$\pi\sigma$还有比2-cycle高的cycle，则我们可以这样继续归纳下去，该过程总是可以终止的，因为每这样一次，我们的1-cycle的个数就涨一，当1-cycle的个数涨为$n-2$的时候，这个置换没有比2-cycle高的cycle。
-
-假设进行了$l$步我们得到了$\pi_l\cdots\pi_1 \sigma$，他没有比2-cycle高的cycle了，此时
-\[
-\pi_l\cdots\pi_1 \sigma=(i_{11},i_{12}) \cdots  (i_{r1},i_{r1})=\sigma_1 \cdots  \sigma_r,
-\]
-其中$\sigma_i$都是两两置换，因此$\sigma=\pi_1\cdots\pi_l\sigma_1\cdots \sigma_r$，这个置换就写作了两两置换的复合。
-
-最后，我们得到了结论，任意的置换都可以写成两两置换的复合。即在对称群中，两两置换生成了整个群。\qed
-
-\para 设$G$是一个群，而$g\in G$，则同态$\mathrm{Ad}(g):h\mapsto ghg^{-1}$被称为共轭作用。共轭作用衡量了一个群的可交换性，这是因为，如果$\mathrm{Ad}(g)(h)=h$，则$gh=hg$.
-
-固定一个$h\in G$，考虑子集$H_h=\mathrm{Ad}(G)(h)$，这样的子集被称为共轭作用的一条轨道（或者在这里叫做共轭类）。两条不同的轨道是不能相交的，这是因为如果$H_h$和$H_g$有一个相交点$k$，分别记作$k=php^{-1}=qgq^{-1}$，则$g=q^{-1}ph(q^{-1}p)^{-1}$，所以$H_h=H_g$.
-
-\pro 对于对称群，在伴随作用下，$\sigma (i_1,\cdots,i_k)\sigma^{-1}= (\sigma(i_1),\cdots,\sigma(i_k))$. 
-这就是说，他将一个$k$-cycle变成$k$-cycle.
-
-\proof 如果$i$在$(i_1,\cdots,i_k)$作用下不变，则
-\[\sigma (i_1,\cdots,i_k)\sigma^{-1}:i\mapsto \sigma^{-1}(i)\mapsto \sigma^{-1}(i) \mapsto i,\]
-故他在$\sigma (i_1,\cdots,i_k)\sigma^{-1}$作用下也不变。否则
-\[
-	\sigma (i_1,\cdots,i_k)\sigma^{-1}:\sigma(i_j)\mapsto i_j\mapsto i_{j+1} \mapsto \sigma(i_{j+1}).
-\]
-这就得到了我们的结论。\qed
-
-\para 现在来看Young图，对于一个正整数$n$，我们可以将其分解成一个加式$n=\sum_{i=1}^k n_i$，其中$0\leq n_k\leq n_{k-1}\leq \cdots \leq n_1$，这样一个分解可以简单记作$\{n_1,n_2,\cdots,n_k\}$，或用一个Young图表示，第$i$行$n_i$个小方块。比如$8$被分解成$\{5,3\}$或者$\{4,2,2\}$，他们的Young图分别是
-\[\Yvcentermath1
-	\yng(5,3)\quad \yng(4,2,2)
-\]
-
-将循环群和Young图联系起来，即是通过循环的cycle表示，比如$\sigma=(1,2,3)(4)(5)$，他对应于分解为$3+1+1$，即$\{3,1,1\}$，对应的Young图是
-\[
-	\yng(3,1,1)
-\]
-我们可以通过另一个方法来得到$\{3,1,1\}$. 先分别列出$i$-cycle的个数$k_i$，然后计算出$l_i=\sum_{j=i}^nk_j$. 比如$\sigma=(1,2,3)(4)(5)$对应的$i$-cycle的个数序列为$(2,0,1,0,0)$，然后$\{3,1,1\}$中的第$i$个数字由$(2,0,1,0,0)$中的累加第$i$个数字后面所有的数字，我们可以得到$\{3,1,1,0,0\}$然后略去末尾的零就可以了。这点在以前的Lie代数的最高权的Young图表示中提过了。
-
-Young图并不唯一确定置换。这是因为在伴随作用下，$\sigma (i_1,\cdots,i_k)\sigma^{-1}= (\sigma(i_1),\cdots,\sigma(i_k))$，故置换$\pi$和$\sigma\pi\sigma^{-1}$有着相同的Young图。更确切地说，Young图的数目正好等于$S_n$中共轭类的数目。
-
-在有限群那里已经证明了，有限群的有限维不可约复表示的个数等于其共轭类的个数，所以$S_n$的不可约表示的个数正好就是他能有的Young图的个数。
-
-\para 为了通过Young图确定置换，往Young图里面填数字就可以了，比如
-\[\Yvcentermath1
-	\young(123,4,5)\quad \text{or}\quad \young(123,4,5)\quad \text{or}\quad \young(231,4,5)
-\]
-就确定了置换$(1,2,3)(4)(5)$. 在Young图中填入$1$到$n$这些正整数后得到的表被称为Young表。
-
-每一个Young图，都共有$n!$种填表的方式，其中如下的填表方式得到的Young表
-\[\Yvcentermath1
-	\young(12345,678),\quad \young(1234,56,78),
-\]
-被称为标准Young表。
-
-\para 对于有限群$G=\{g_1,\cdots,g_n\}$，前面我们定义一个矢量空间
-\[
-	\cc [G]=\cc\langle g_1\rangle \oplus \cdots \oplus \cc\langle g_n\rangle,
-\]
-在$\cc [G]$上可以定义乘法如下
-\[
-	\sum_{g\in G} a_g g \sum_{h\in G} b_h h=\sum_{g,h\in G}a_gb_h gh,
-\]
-这就使得$\cc [G]$成为了一个含幺环。他的单位元记作$e$.
-
-\theo $S_n$的不可约表示由总格数为$n$的Young图一一确定。
-
-这个定理比以前数不可约表示个数的命题要强很多，这意味着$S_n$的不可约表示由其共轭类一一确定。
-
-\para 上面定理的证明是直接的构造，来自于Young. 给定一个Young图，给出他的标准Young表，比如
-\[\Yvcentermath1
-	\young(12345,678)
-\]
-记$P_i$为所有保持第$i$行数字不变的置换构成的$S_n$的子群（比如上面的Young表中第一行可以变成$(12453)$，但不能变成$(12645)$），以及$Q_j$为所有保持第$j$列数字不变的置换构成的子群，再令
-\[
-	P=\bigcap_i P_i,\quad Q=\bigcap_j Q_j,
-\]
-这是两个$S_n$的子群。我们有如下定理：
-
-\theo 给定$S_n$的一个Young图$\lambda$，我们对应有子群$P_\lambda$和$Q_\lambda$，令$a_\lambda=\sum_{\sigma\in P_\lambda}\sigma$以及$b_\lambda=\sum_{\sigma\in Q_\lambda}\sgn(\sigma)\sigma$，这是两个$\cc[S_n]$中的元素。定义$c_\lambda=a_\lambda b_\lambda$，称为Young图$\lambda$的Young对称化子。则$V_\lambda=\cc[S_n]c_\lambda$以及$\rho_\lambda(g)=l_g$构成$S_n$的一个不可约表示，且不同Young图对应的不可约表示不等价。因此，$S_n$的不可约表示一一对应着他的Young图（或者说共轭类）。
-
-最后一点是自明，其他的我们不加证明，并且也不证明如下命题：
-
-\pro 对于$S_n$的一个Young图$\lambda=\{\lambda_1,\lambda_2,\cdots,\lambda_k\}$，记$l_i=\lambda_i+k-i$，则
-\[
-	\dim V_\lambda=\frac{n!}{l_1!\cdots l_k!}\prod_{1\leq i< j\leq k}(l_i-l_j)=\frac{n!}{l_1!\cdots l_k!}\begin{vmatrix}
-	1& l_k & l_k^2&\cdots\\
-	\vdots&\vdots&\vdots&\vdots\\
-	1& l_1 & l_1^2&\cdots\\
-	\end{vmatrix},
-\]
-其中的行列式为van der Monde行列式。
-
-\pro 设$\lambda$是$S_n$的一个Young图，则$c_\lambda^2=n_\lambda c_\lambda$，其中$n_\lambda=n!/\dim V_\lambda$. $n_\lambda$被称为hook number，他可以通过Young图直接确定：
-
-给定Young图$\lambda$，记$n_{ij}$为他直着往下的格子数+直着往右的格子数+1，这个数称为hook length. 比如下面的Young图
-\[
-	\young(~~~~,{}***,{}*~,{}*{})
-\]
-中$n_{22}$为有*的格子的数目，所以$n_{22}=5$. 我们的结论是$n_\lambda=\prod_{i,j}n_{ij}$.
-
-比如考虑如下Young图\[\Yvcentermath1
-	\yng(3,2,1)
-\]
-在每一个格子里面填入相应的hook length，得到
-\[
-	\young(531,31,1)
-\]
-所以$n_\lambda= 45$.
-
-\section{$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示的直接构造}
-
-上面讲了太多的一般的理论了，这里来直接构造$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示，这并不是一个简单的事情。直接构造在绝大多数情况下，都是很难很难的事情，很考验基本功和天分，乃至于是考验灵感。这节的构造来自于Weyl，而揭示了$S_n$与$\mathrm{GL}(n)$不可约表示的联系的，又是一个熟悉的名字，Schur.
-
-\para 考虑$V^n=V\otimes\cdots \otimes V$，即自己张量自己$n$次。设$\varphi\in \mathrm{GL}(V)$，那么我们可以诱导出一个新的线性映射$\Phi:V^n\to V^n$通过
+\para 考虑$V^{\otimes n}=V\otimes\cdots \otimes V$，即自己张量自己$n$次。设$\varphi\in \mathrm{GL}(V)$，那么我们可以诱导出一个新的线性映射$\Phi:V^{\otimes n}\to V^{\otimes n}$通过
 \[
 	\Phi : e_{i_1}\otimes\cdots\otimes e_{i_n}\mapsto \varphi e_{i_1}\otimes\cdots\otimes \varphi e_{i_n},
 \]
 其中$\{e_i\}$是$V$的一组基，不难检验，上面的诱导并不依赖于基的选取。
 
-\para 由映射
+考虑表示的情况，设$\varphi=\rho(\exp(tX))$，$X\in \lag$，那么它诱导了一个映射
 \[
-	\sigma(v_{1}\otimes\cdots\otimes v_{n})=v_{{\sigma(1)}}\otimes\cdots\otimes v_{{\sigma(n)}}
+	e_{i_1}\otimes\cdots\otimes e_{i_n}\mapsto \rho(\exp(tX)) e_{i_1}\otimes\cdots\otimes \rho(\exp(tX)) e_{i_n},
 \]
-线性扩张，我们可以定义出$\cc [S_n]$在$V^n$上面的作用。不难检验$\sigma(\pi(v))=(\sigma\pi)(v)$，所以这样定义的映射还是一个环同态。
-
-比如$c=e+4(1,3)$，那么
+然后再对$t$在$t=0$处求导，即得到了$\lag$的一个表示$\pi$，满足
 \[
-	c(v_{123})=v_{123}+4v_{321},
+	\pi(X):e_{i_1}\otimes\cdots\otimes e_{i_n}\mapsto \sum_{k=1}^ne_{i_1}\otimes\cdots \otimes Xe_{i_k}\otimes \cdots\otimes e_{i_n}.
 \]
-其中$v_{ijk}=v_{i}\otimes v_{j}\otimes v_{k}$.
+我们后面构造$\mathrm{sl}(n,\cc)$的表示即是通过这样的张量积来构造。
 
-\para 对于一个$S_n$的Young图$\lambda$，我们有Young对称化子$c_\lambda$，我们记$S_\lambda V= c_\lambda(V^n)=\im(c_\lambda)$. 为了阐明$S_\lambda V$的意义，下面我们考虑$n=2$的情况，以及
-\[\Yvcentermath1
-	\lambda_1=\yng(1,1)
-\]
-他对应的标准Young表为
-\[\Yvcentermath1
-	\young(1,2)
-\]
-所以$P_{\lambda_1}=\{e\}$，以及$Q_{\lambda_1}=\{e,(1,2)\}=S_2$，故$c_{\lambda_1}=a_{\lambda_1} b_{\lambda_1} =e (e- (1,2))=e- (1,2)$.
-
-考虑任意的矢量$v\otimes w\in V^2$，
+\para 设$V$是一个矢量空间，以及有一族矢量$\{v_i\in V\,:\, 1\leq i \leq k\}$，那么我们可以定义这样一个完全对称的运算（即算式里面两两对换因子结果不变）
 \[
-c_{\lambda_1}(v\otimes w)=v\otimes w-w\otimes v=v\wedge w,
+	v_1\cdot v_2\cdots v_{k-1}\cdot v_k,
 \]
-所以$S_{\lambda_1} V$就是那些反对称的张量构成的矢量空间。
-
-我们接着考虑
-\[\Yvcentermath1
-	\lambda_2=\yng(2)
-\]
-他对应的标准Young表为
-\[\Yvcentermath1
-	\young(12)
-\]
-所以$P_{\lambda_2}=\{e,(1,2)\}=S_2$，以及$Q_{\lambda_2}=\{e\}$，故$c_{\lambda_2}=a_{\lambda_2} b_{\lambda_2} =(e+(1,2))e =e+(1,2)$.
-
-考虑任意的矢量$v\otimes w\in V^2$，
+它对每一个$v_i$都线性。比如对于$k=2$的情况，可以构造为
 \[
-c_{\lambda_2}(v\otimes w)=v\otimes w+w\otimes v,
+	v\cdot w= \frac{1}{2}\left(v\otimes w+w\otimes v\right).
 \]
-所以$S_{\lambda_2} V$就是那些对称的张量构成的矢量空间。
+至于更高的$k$，也可以通过张量积来定义。后面我们略去这个运算的符号。
 
-更广义地，对于Young图
-\[\Yvcentermath1
-	\lambda=\yng(5,3,2)
-\]
-$S_{\lambda} V$就是那些按列反对称、按行全对称的张量张成的矢量空间。
-
-\para 任取$\sigma\in S_n$，以及任意的$\varphi$诱导来的$\Phi$，我们有$\Phi\circ \sigma=\sigma\circ \Phi$，这次定义来看是显然的，因为他们都成立
+设$V$的一组基为$\{e_1,\cdots,e_n\}$，那么所有
 \[
-	e_{i_1}\otimes\cdots\otimes e_{i_n}\mapsto \varphi e_{\sigma(i_1)}\otimes\cdots\otimes \varphi e_{\sigma(i_n)}.
+	e_{i_1}e_{i_2}\cdots e_{i_{k-1}}e_{i_k}
+\]
+就张成了一个线性空间，记作$\sym^k(V)$. 这个空间的维数是
+\[
+	\dim (\sym^{k}(V))={\binom {n+k-1}{k}}
 \]
 
-To be continued.
+\para 类似地，我们可以定义出一个完全反对称的运算（即算式里面每次两两对换因子结果都会多个负号）
+\[
+	v_1\wedge v_2\wedge \cdots \wedge v_k,
+\]
+它对每一个$v_i$都线性，比如对于$k=2$的情况，可以构造为
+\[
+	v\wedge w= \frac{1}{2}\left(v\otimes w-w\otimes v\right).
+\]
+至于更高的$k$，也可以通过张量积来定义。
+
+设$V$的一组基为$\{e_1,\cdots,e_n\}$，那么所有
+\[
+	e_{i_1}\wedge \cdots \wedge e_{i_k}
+\]
+就张成了一个线性空间，记作$\Lambda^k(V)$. 注意到，当$k>n$的时候，上式中肯定存在某个重复的$e_{i_j}$，由于
+\[
+	e_{i_1}\wedge e_{i_1}=- e_{i_1}\wedge e_{i_1},
+\]
+所以自然为零。因此如果$k>n$，$\Lambda^k(V)=0$.
+
+对于$k\leq n$的情况，这个空间的维数是
+\[
+	\dim (\Lambda^{k}(V))={\binom {n}{k}},
+\]
+所以$\dim (\Lambda^{k}(V))=\dim (\Lambda^{n-k}(V))$.
+
+\para 由于不管$\sym^k(V)$还是$\Lambda^{k}(V)$，他们都可以通过张量积来定义，于是Lie代数在$V$上的表示类似诱导了
+\[
+	\pi(X):e_{i_1}\cdots e_{i_k}\mapsto \sum_{k=1}^ne_{i_1}\cdots  Xe_{i_k} \cdots e_{i_k},
+\]
+\[
+	\pi(X):e_{i_1}\wedge\cdots\wedge e_{i_k}\mapsto \sum_{k=1}^ne_{i_1}\wedge\cdots \wedge Xe_{i_k}\wedge \cdots\wedge e_{i_k}.
+\]
+
+\para 上一节我们已经看到了，对于$\mathfrak{sl}(N,\cc)$，基可以选取为
+\[
+	\begin{cases}
+		H_{ij}=E_{ii}-E_{jj},\\
+		E_{ij}=E_{ij},\\
+		F_{ij}=E_{ji},
+	\end{cases}
+\]
+以及他们的对易关系
+\[
+	[H_{ij},E_{ij}]=2 E_{ij},\quad [H_{ij},F_{ij}]=-2 F_{ij},\quad [E_{ij},F_{ij}]=H_{ij}.
+\]
+其中，对应于单根$\alpha_i$的$h^i=H_{i,i+1}$.
+
+\para 考虑$N=2$的情况，此时
+\[
+	H=\begin{pmatrix}
+	1&0\\
+	0&-1
+	\end{pmatrix},\quad E=\begin{pmatrix}
+	0&1\\
+	0&0
+	\end{pmatrix},\quad F=\begin{pmatrix}
+	0&0\\
+	1&0
+	\end{pmatrix}
+\]
+设$\cc^2$的基为$x=(1,0)^T$和$y=(0,1)^T$，则
+\[
+	\begin{cases}
+	Hx=x,\\
+	Hy=-y,
+	\end{cases}\quad 
+	\begin{cases}
+	Ex=0,\\
+	Ey=x,
+	\end{cases}\quad 
+	\begin{cases}
+	Fx=y,\\
+	Fy=0.
+	\end{cases}
+\]
+这个表示被称为标准表示（即定义$\mathfrak{sl}(2,\cc)$的表示）。
+
+所以在$\sym^n(\cc^2)$里
+\[
+	H(x^ky^{n-k})=kx^ky^{n-k}-(n-k)x^ky^{n-k}=(n-2k)x^ky^{n-k},
+\]
+换而言之，$\sym^n(\cc^2)$张成了对应$H$最高本征值\footnote{物理上惯常用的是$H/2$，所以本征值为一半。}为$n$的那个不可约表示，维度很容易计算，是$n+1$.
+
+\para 考虑$N=3$的情况，依然是考虑标准表示。由于$H_{ij}$本来就是对角化的，所以此时的权矢量就是$\cc^3$的基，$x=(1,0,0)^T$, $y=(0,1,0)^T$和$y=(0,0,1)^T$. 考虑$h^1=e_1$以及$h^2=e_2$，我们有
+\[
+	\begin{cases}
+	h^1x=x,\\
+	h^1y=-y,\\
+	h^1z=0,
+	\end{cases}\quad 
+	\begin{cases}
+	e^1x=0,\\
+	e^1y=x,\\
+	e^1z=0,
+	\end{cases}\quad 
+	\begin{cases}
+	f^1x=y,\\
+	f^1y=0,\\
+	f^1z=0.
+	\end{cases}
+\]
+\[
+	\begin{cases}
+	h^2x=0,\\
+	h^2y=y,\\
+	h^2z=-z,
+	\end{cases}\quad 
+	\begin{cases}
+	e^2x=0,\\
+	e^2y=0,\\
+	e^2z=y,
+	\end{cases}\quad 
+	\begin{cases}
+	f^2x=0,\\
+	f^2y=z,\\
+	f^2z=0.
+	\end{cases}
+\]
+
+记$x=|\lambda_1\rangle$, $y = |\lambda_2 \rangle$, $z = |\lambda_3 \rangle$，由于
+\[
+	h^1|\lambda_1\rangle=|\lambda_1\rangle,\quad h^2|\lambda_1\rangle=0,
+\]
+所以由式\eqref{dynkin}，我们就计算出$\lambda_1$的Dynkin指标为$\lambda_1=(1,0)=\omega_1$，类似地，可以计算出
+\[
+	\lambda_2=(-1,1)=\omega_2-\omega_1,\quad \lambda_3=(0,-1)=-\omega_2.
+\]
+它对应于最高权为$(1,0)$的那个不可约表示。作图如下：
+
+\begin{center}
+\begin{pspicture}[showgrid=false](-4,-4)(3.5,3.5)\psset{unit=1.3}
+    \psset{linewidth=1.5pt}
+        \psline[linestyle=dotted,linewidth=1pt](0,-2)(0,2)
+        \psline[linestyle=dotted,linewidth=1pt](-2.1,-1.3)(2.1,1.3)
+        \psline[linestyle=dotted,linewidth=1pt](2.1,-1.3)(-2.1,1.3)
+
+        \uput[225](1.3,0.6){$\omega_1$}
+        \uput[225](-1.0,0.7){$\omega_2-\omega_1$}
+        \uput[225](-0.1,-1){$-\omega_2$}
+
+        \psline[linewidth=1pt]{->}(0,0)(0,-1)
+        \psline[linewidth=1pt]{->}(0,0)(0.866,0.5)
+        \psline[linewidth=1pt]{->}(0,0)(-0.866,0.5)
+        \psline[linestyle=dotted,linewidth=1.5pt](0,-1)(0.866,0.5)
+        \psline[linestyle=dotted,linewidth=1.5pt](0,-1)(-0.866,0.5)
+        \psline[linestyle=dotted,linewidth=1.5pt](0.866,0.5)(-0.866,0.5)
+\end{pspicture}
+\end{center}
+
+这就是标准表示的三个权，其中最高权为$(1,0)$，物理上有时候会叫他夸克表示，因为是三维的，有时候也记作$3$。类似$\mathfrak{sl}(2)$的情况，表示$\sym^a(\cc^3)$包含权$(a,0)$，而且这个权无简并，注意到，此时$\sym^a(\cc^3)$不一定是不可约的。由于$\cc^3=\Lambda^1(\cc^3)$，所以$\sym^a(\cc^3)=\sym^a(\Lambda^1(\cc^3))$.
+
+\para 接着我们考虑$\mathfrak{sl}(3,\cc)$在$\Lambda^2(\cc^3)$上面的表示，注意到，此时$\dim (\Lambda^2(\cc^3))=3$，和标准表示的维度一样，但是这个表示和标准表示并不一样。
+
+记$\bar{x}=y\wedge z$，$\bar{y}=x\wedge z$和$\bar{z}=x\wedge y$，于是
+\[
+	h^1\bar{x}=(h^1y)\wedge z+y\wedge (h^1z)=-y\wedge z=-\bar{x},
+\]
+类似容易计算得
+\[
+	\begin{cases}
+	h^1\bar{x}=-\bar{x},\\
+	h^1\bar{y}=\bar{y},\\
+	h^1\bar{z}=0,
+	\end{cases}\quad 
+	\begin{cases}
+	e^1\bar{x}=\bar{y},\\
+	e^1\bar{y}=0,\\
+	e^1\bar{z}=0,
+	\end{cases}\quad 
+	\begin{cases}
+	f^1\bar{x}=0,\\
+	f^1\bar{y}=\bar{x},\\
+	f^1\bar{z}=0.
+	\end{cases}
+\]
+\[
+	\begin{cases}
+	h^2\bar{x}=0,\\
+	h^2\bar{y}=-\bar{y},\\
+	h^2\bar{z}=\bar{z},
+	\end{cases}\quad 
+	\begin{cases}
+	e^2\bar{x}=0,\\
+	e^2\bar{y}=\bar{z},\\
+	e^2\bar{z}=0,
+	\end{cases}\quad 
+	\begin{cases}
+	f^2\bar{x}=0,\\
+	f^2\bar{y}=0,\\
+	f^2\bar{z}=\bar{y}.
+	\end{cases}
+\]
+
+记$\bar{x}=|\lambda_1\rangle$, $\bar{y} = |\lambda_2 \rangle$, $\bar{z} = |\lambda_3 \rangle$，由于
+\[
+	h^1|\lambda_1\rangle=-|\lambda_1\rangle,\quad h^2|\lambda_1\rangle=0,
+\]
+所以由式\eqref{dynkin}，我们就计算出$\lambda_1$的Dynkin指标为$\lambda_1=(-1,0)=-\omega_1$，类似地，可以计算出
+\[
+	\lambda_2=(1,-1)=\omega_1-\omega_2,\quad \lambda_3=(0,1)=\omega_2.
+\]
+它对应于最高权为$(0,1)$的那个不可约表示。作图如下：
+
+\begin{center}
+\begin{pspicture}[showgrid=false](-4,-4)(3.5,3.5)\psset{unit=1.3}
+    \psset{linewidth=1.5pt}
+        \psline[linestyle=dotted,linewidth=1pt](0,-2)(0,2)
+        \psline[linestyle=dotted,linewidth=1pt](-2.1,-1.3)(2.1,1.3)
+        \psline[linestyle=dotted,linewidth=1pt](2.1,-1.3)(-2.1,1.3)
+
+        \uput[225](-0.9,-0.5){$-\omega_1$}
+        \uput[225](1.7,-0.5){$\omega_1-\omega_2$}
+        \uput[225](0.1,1.3){$\omega_2$}
+
+        \psline[linewidth=1pt]{->}(0,0)(0,1)
+        \psline[linewidth=1pt]{->}(0,0)(-0.866,-0.5)
+        \psline[linewidth=1pt]{->}(0,0)(0.866,-0.5)
+        \psline[linestyle=dotted,linewidth=1.5pt](0,1)(-0.866,-0.5)
+        \psline[linestyle=dotted,linewidth=1.5pt](0,1)(0.866,-0.5)
+        \psline[linestyle=dotted,linewidth=1.5pt](-0.866,-0.5)(0.866,-0.5)
+\end{pspicture}
+\end{center}
+
+这被称为标准表示的伴随表示，最高权为$(0,1)$，物理上有时候会叫他反夸克表示，它是三维的但是要区别标准标识，有时候也记作$\bar{3}$。
+
+类似标准表示的情况，表示$\sym^b(\Lambda^2(\cc^3))$中包含权$(0,b)$，且无简并。
+
+\para 综上，对于$\mathfrak{sl}(3,\cc)$而言，表示
+\[
+	W_{(a,b)}=\sym^a(\Lambda^1(\cc^3))\otimes\sym^b(\Lambda^2(\cc^3)).
+\]
+中存在我们希望的权$(a,b)$，并且无简并。所以$(a,b)$对应的不可约表示$V_{(a,b)}$应该是上面这个表示$W_{(a,b)}$的子表示。
+
+\para 类似地，为了构造出$\mathfrak{sl}(N,\cc)$的以$(\lambda_1,\cdots,\lambda_{N-1})$为最高权的不可约表示，我们需要构造出最高权为$(0,0,\cdots,1,\cdots,0)$的不可约表示，然后通过对称化得到包含权$(0,0,\cdots,\lambda_i,\cdots,0)$的表示。
+
+容易验证，对应于最高权$(0,0,\cdots,1,\cdots,0)$的不可约表示就是$\Lambda^i\bigl(\cc^N\bigr)$，它由
+\[
+	v_{n_1}\wedge \cdots \wedge v_{n_i}
+\]
+张成，其中$\{v_i\,:\, 1\leq i \leq N\}$是$\cc^N$的标准基。可以假设$\{n_k\}$是递增的，这组基也构成了$\{h^i\}$的共同本征矢量。由于
+\[
+	e^i:v_{j+1}\to 
+	\begin{cases}
+		\delta_{ij}v_j,& j>0;\\
+		0,& j=0.
+	\end{cases}
+\]
+所以
+\[
+	e^j(v_{n_1}\wedge \cdots \wedge v_{n_i})=\sum_{k=1}^i\delta_{n_k+1,j}v_{n_1}\wedge \cdots \wedge v_{n_k-1}\wedge\cdots \wedge v_{n_i},
+\]
+上式求和中最多只能存在一项，因为$\{n_i\}$两两不相同。如果$v_{n_1}\wedge \cdots \wedge v_{n_i}$对任意的$\{e_j\,:\, 1\leq j\leq i\}$都成立
+\[
+	e^j(v_{n_1}\wedge \cdots \wedge v_{n_i})=0,
+\]
+于是只可能$n_{k}=k$，即$v_{1}\wedge \cdots \wedge v_{i}$是单项式中唯一那个权矢量使得任意的上升算符$e_i$作用在上面都为$0$.
+
+对于多项式的情况，由于在$e^i$作用下每一项都产生变化，原本不同的不可能变成相同的，所以并不会出现在所有上升算符$e_i$作用在上面都为$0$. 因此$v_{1}\wedge \cdots \wedge v_{i}$是唯一的最高权。因此是一个不可约表示，维数是${\binom {n}{i}}$.
+
+于是，包含权$(0,0,\cdots,\lambda_i,\cdots,0)$的表示就是
+\[
+	\sym^{\lambda_i}\left(\Lambda^i\bigl(\cc^N\bigr)\right),
+\]
+最后，包含最高权$(\lambda_1,\cdots,\lambda_{N-1})$的一个表示就是
+\[
+\begin{split}
+	W_{(\lambda_1,\cdots,\lambda_{N-1})}&=\sym^{\lambda_1}\left(\Lambda^1\bigl(\cc^N\bigr)\right)\otimes \cdots \otimes \sym^{\lambda_i}\left(\Lambda^i\bigl(\cc^N\bigr)\right)\otimes \cdots \otimes \sym^{\lambda_{N-1}}\left(\Lambda^{N-1}\bigl(\cc^N\bigr)\right)\\
+	&=\bigotimes_{i=1}^{N-1}\sym^{\lambda_i}\left(\Lambda^i\bigl(\cc^N\bigr)\right).
+\end{split}
+\]
+我们需要的不可约表示$V_{(\lambda_1,\cdots,\lambda_{N-1})}$是$W_{(\lambda_1,\cdots,\lambda_{N-1})}$的一个子表示。
+
+$W_{(\lambda_1,\cdots,\lambda_{N-1})}$的维度是可以直接计算的
+\[
+	\dim\left(V_{(\lambda_1,\cdots,\lambda_{N-1})}\right)=\prod_{i=1}^{N-1}{\binom {\binom{N}{i}+\lambda_i-1}{\lambda_i}}.
+\]
+因为这个表示不是不可约的，所以维度要比不可约表示的维度要大。
+
+\para 往Young图中填数字可以用来确定权矢量。比如对于最高权为$(2,0,2)$的$\mathfrak{sl}(4,\cc)$的表示，
+\[
+	W_{(2,0,2)}=\sym^{2}\left(\Lambda^1\bigl(\cc^4\bigr)\right)\otimes \sym^{2}\left(\Lambda^3\bigl(\cc^4\bigr)\right),
+\]
+它对应的Young图为
+\[
+	\yng(4,2,2)
+\]
+注意到，三行的两列，一行的有两列，前者对应于$\sym^{2}\left(\Lambda^3\bigl(\cc^4\bigr)\right)$，后者对应于$\sym^{2}\left(\Lambda^1\bigl(\cc^4\bigr)\right)$. 对每一列往里面填入数字我们对应于一个$\Lambda^3\bigl(\cc^4\bigr)$里面的权矢量，比如
+\[
+\Yvcentermath1
+	\young(i,j,k)\quad \mapsto \quad v_i\wedge v_j \wedge v_k,
+\]
+由于$i$, $j$和$k$互换位置只差个负号，所以我们还能假设$i<j<k$. 那么比如
+\[
+\Yvcentermath1
+	\young(1224,33,44) \quad \mapsto \quad (v_1\wedge v_3 \wedge v_4)(v_2\wedge v_3 \wedge v_4)\otimes (v_2 v_4),
+\]
+就确定了一个权矢量。按照我们的习惯，填数字的时候，每一列的数字都是递增的，如果一列中出现了两个相同的数字，那么这个权矢量就是$0$. 但注意到，我们并没有对每一行的数字进行限制，如果出现两列行数相同的情况，则该两列互调对权矢量并不产生影响，那么可以任意选定一个顺序，比如字典序，来固定一个数字填法。
+
+Young图填数字得到的表称为Young表。
+
+\para 既然每一个Young表确定了一个权矢量，那么我们如何从这个Young表中得到权呢？或者问的更广一些，怎么定义Young表的运算呢？
+
+注意到，Young表每一个小方块与其他小方块都是通过张量积来进行连接的，所以任何一个Lie代数里面的元素作用在Young表上，都表现为分别作用在每一个小方块上，然后加起来。
+
+以$h^i$为例，我们来计算给定Young表的权。依然还是使用式\eqref{dynkin}，我们就是要计算
+\[
+\Yvcentermath1
+	h^i \,\young(1224,33,44)= \lambda^i \,\young(1224,33,44),
+\]
+中的$\lambda^i$，由于$\Yvcentermath1 h^i\young(j)=\delta_{ij}-\delta_{i+1,j}$，所以
+\[
+	\lambda_i = \# i - \# (i+1),
+\]
+其中$\# i$表示表中数字$i$出现的个数，所以
+\[
+	\lambda= \sum_{i=1}^{N-1} \lambda_i \omega_i =\sum_{i=1}^{N-1} \left(\# i - \# (i+1)\right)\omega_i,
+\]
+补充定义$\omega_0=\omega_N=0$之后，上式可以改写为
+\[
+	\lambda=\sum_{i=1}^{N-1} (\# i)\omega_i - \sum_{i=2}^N(\# i)\omega_{i-1}=\sum_{i=1}^{N} (\# i)\left(\omega_i - \omega_{i-1}\right),
+\]
+记$\gamma_i=\omega_i - \omega_{i-1}$，则上式最后就写成$\lambda=\sum_{i=1}^{N} (\# i)\gamma_i$，即每一个$\Yvcentermath1 \young(i)$赋予一个$\gamma_i$，最后再全部加起来即可。
+
+所以
+\[
+\Yvcentermath1
+	\young(1224,33,44)
+\]
+对应的权$\lambda = \gamma_1+2\gamma_2+2\gamma_3+3\gamma_4=-\omega_1-\omega_3=(-1,0,-1)$.
+
+\para 反过来，如何从一个权来构造一个Young表呢？考虑最高权$\lambda=(\lambda_1$ ,$\cdots$ ,$\lambda_{N-1})=\{l_1$ ,$\cdots$ ,$l_{N-1}\}$，我们有如下的方程
+\[
+	\lambda_i=\# i - \# (i+1),
+\]
+所以
+\[
+	\# (i+1)=\# i-\lambda_i=\#(i-1)-(\lambda_i+\lambda_{i-1})=\cdots=\# 1-\sum_{n=1}^{i}\lambda_n,
+\]
+所以在补充定义$l_N=0$的情况下，可以写作
+\[
+	\# i = \# 1-\sum_{n=1}^{i-1}\lambda_n=\# 1 - l_1 + l_i.
+\]
+
+此外，由于所有的格子数正好等于$\sum_{i=1}^{N-1}l_i=\sum_{i=1}^{N}l_i$，同时也正好等于所有的数字个数之和，故
+\[
+	\sum_{i=1}^{N}l_i = \sum_{i=1}^N \#i,
+\]
+或者
+\[
+	 \sum_{i=1}^{N}l_i = \sum _{i=1}^N (\# 1 - l_1 + l_i)=N(\# 1 - l_1)+\sum_{i=1}^{N}l_i,
+\]
+所以$\# 1=l_1$，然后
+\[
+	\# i = \# 1 - l_1 + l_i= l_i,
+\]
+这就解出了最高权的Young表中所有数字出现的个数，$\Yvcentermath1 \young(i)$出现的次数刚好就是第$i$行的格子数。由于每一列的数字都是递增的假设，我们可以断言，最高权的Young表，第$i$行全都是$\Yvcentermath1 \young(i)$. 比如最高权为$(2,0,2)$的Young表为
+\[
+\Yvcentermath1
+	\young(1111,22,33)
+\]
+所以，我们也就再次得到了，在我们的构造中，最高权不可能是简并的。
+
+对于非最高权$\lambda=\{l_1,\cdots,l_{N-1}\}$的情况，设最高权为$\lambda_m=\{l'_1,\cdots,l'_{N-1}\}$，则类似地可以得到方程
+\[
+	 \sum_{i=1}^{N}l'_i = \sum _{i=1}^N (\# 1 - l_1 + l_i)=N(\# 1 - l_1)+\sum_{i=1}^{N}l_i,
+\]
+所以
+\[
+	\# 1=l_1+\frac{1}{N}\sum_{n=1}^N(l'_n-l_n),
+\]
+以及
+\[
+	\# i = l_i + \frac{1}{N}\sum_{n=1}^N(l'_n-l_n).
+\]
+
+\para 即使确定了每一个$\Yvcentermath1 \young(i)$出现的次数，Young表的填写方式也可能是千奇百怪的，比如在$\mathfrak{sl}(3,\cc)$在最高权为$(1,1)$的表示中，权矢量
+\[
+\Yvcentermath1
+	\young(12,3)\quad \text{,}\quad \young(13,2) \quad \text{and}\quad \young(21,3)
+\]
+确定的权是相同的。这就可能出现简并的情况。
+
+更糟糕的是，对一个权$\lambda$，我们构造的表示$W_\lambda$不一定是不可约的，它是一些不可约表示的直和，我们只想要其中对应最高权$\lambda$的那个不可约表示$V_\lambda$。但是在求权矢量的时候，其他不可约表示的部分也参杂了进来。这就意味着，我们随便画一个Young表，它可能不是我们想要的不可约表示$V_\lambda$的一个权矢量。乃至，我们为了构造一个合适的权矢量，只能适当线性组合那些Young表。
+
+比如考虑矢量
+\begin{equation}
+\Yvcentermath1
+	v=\young(21,3)\,+\,\young(13,2)\,-\,\young(12,3)
+\end{equation}
+容易计算$e^1v=e^2v=0$，因此$v$应该是某个不可约表示的最高权。它的权容易计算是$(0,0)$，所以这是一个平凡表示的最高权。
+
+因此，对应于最高权为$(1,1)$表示的$(0,0)$权矢量应该被构造成
+\[
+\Yvcentermath1
+	\young(13,2)\,+\,\young(12,3)\quad \text{and}\quad \young(21,3)\,+\,\young(12,3)
+\]
+这才是正确的情况。此时$(0,0)$是双重简并的。
+
+\para 构造权矢量最安全的方式还是从最高权矢量开始使用$\{f^i\}$往下降得到，毕竟最高权矢量的Young表我们是已经知道了的。举个例子，考虑最高权对应的Young表
+\[
+\Yvcentermath1
+	\young(11,2)
+\]
+$\{f^i\}$的作用为
+\[
+	f^i:v_{j}\to 
+	\begin{cases}
+		\delta_{ij}v_{j+1},& j>0;\\
+		0,& j=N.
+	\end{cases}
+\]
+为了得到权$(0,0)$，我们需要数字$1$, $2$, $3$各一个，一种方式可以这样：
+\[
+\Yvcentermath1
+	\young(11,2)\,\xrightarrow{f^2}\,\young(11,3)\,\xrightarrow{f^1}\,\young(12,3)\,+\,\young(21,3)
+\]
+另一条路线可以这样选择
+\[
+\Yvcentermath1
+	\young(11,2)\,\xrightarrow{f^1}\,\young(12,2)\,\xrightarrow{f^2}\,\young(12,3)\,+\,\young(13,2)
+\]
+所以$(0,0)$是双重简并的。
+
+\theo 在Young表中，每一行不减，每一列递增的Young表被称作准标准Young表。在$\mathfrak{sl}(N,\cc)$不可约表示中，对应于权$\lambda$的权子空间的个数正好等于权为$\lambda$的准标准Young表的个数。
+
+注意，这里的准标准Young表对应的权矢量不一定是我们不可约表示的权矢量，这是一个组合学意义上的命题。但是，一种特例下，我们是可以知道权矢量的，就是权子空间无简并，此时准标准Young表正好确定了那个权矢量。
+
+\para 举个例子，$\mathfrak{sl}(4,\cc)$对应最高权$(2,0,2)$的不可约表示$V_{(2,0,2)}$，它的一个准标准Young表是
+\[
+	\young(1224,33,44)
+\]
+它的权前面计算过是$\gamma_1+2\gamma_2+2\gamma_3+3\gamma_4=-\omega_1-\omega_3=(-1,0,-1)$，而且由于每一行都是不减的，所以$(-1,0,-1)$是不可约表示$V_{(2,0,2)}$的一个权。他与
+\[
+	\young(1234,23,44)
+\]
+构成可能的两个准标准Young表，所以权$(-1,0,-1)$的简并为$2$.
+
+\para 为了正确构造$\mathfrak{sl}(n,\cc)$的不可约表示，我们需要类似于式(\theequation)的矢量从我们的构造中消去，为此，我们引入如下运算
+\[
+	(v_1\wedge \cdots \wedge v_p)\cdot (w_1\wedge\cdots \wedge w_q)=\sum_{i=1}^p(v_1\wedge\cdots \wedge v_{i-1}\wedge w_1 \wedge v_{i+1}\wedge \cdots \wedge v_p)\cdot (v_i\wedge w_2\wedge\cdots \wedge w_q),
+\]
+这个式子要假设对任意的$p$和$q$都成立，用Young表来表述的话，上面的式子就是在说
+\[
+  \begin{tabular}{ | c | c |}
+    \hline
+    {\small $v_1$} \\ \hline
+    {\small $v_2$} \\ \hline
+    {\small $\vdots$} \\ \hline
+    {\small $v_p$} \\ \hline
+  \end{tabular}
+  \cdot
+  \begin{tabular}{ | c | c |}
+    \hline
+    {\small $w_1$} \\ \hline
+    {\small $w_2$} \\ \hline
+    {\small $\vdots$} \\ \hline
+    {\small $w_q$} \\ \hline
+  \end{tabular}=
+  \sum_{i=1}^p \begin{tabular}{ | c | c |}
+    \hline
+    {\small $v_1$} \\ \hline
+    {\small $v_2$} \\ \hline
+    {\small $\vdots$} \\ \hline
+    {\small $v_{i-1}$} \\ \hline
+    {\small $w_1$} \\ \hline
+    {\small $v_{i+1}$} \\ \hline
+    {\small $\vdots$} \\ \hline
+    {\small $v_p$} \\ \hline
+  \end{tabular}
+  \cdot
+  \begin{tabular}{ | c | c |}
+    \hline
+    {\small $v_i$} \\ \hline
+    {\small $w_2$} \\ \hline
+    {\small $\vdots$} \\ \hline
+    {\small $w_q$} \\ \hline
+  \end{tabular}
+\]
+就是将第二列中的$w_1$和第二列中的$v_i$互换，然后将所有这种可能性求和。
+
+举个例子，比如
+\[
+\Yvcentermath1
+	\young(2,3)\cdot \young(1) \,=\, \young(1,3)\cdot \young(2)\,+\,\young(2,1)\cdot \young(3) \,=\, \young(1,3)\cdot \young(2)\,-\,\young(1,2)\cdot \young(3)
+\]
+上面的运算中用到了任意的一列都是反对称的。利用这个式子，我们建立等同
+\[
+\Yvcentermath1
+	\young(21,3) \,=\, \young(12,3) \,-\, \young(13,2)
+\]
+注意到式(\theequation)现在在这种等同下有
+\[
+\Yvcentermath1
+	v=\young(21,3)\,+\,\young(13,2)\,-\,\young(12,3)= \young(12,3) \,-\, \young(13,2)\,+\,\young(13,2)\,-\,\young(12,3)=0,
+\]
+这正是我们需要的。
+
+耐心的计算可以证明，所有的非准标准Young表都可以利用上面那种等同，变成一些准标准Young表的线性组合。更进一步地，可以直接计算得到，那些准标准Young表在等同下还是线性无关的。所以按照上面的定理，准标准Young表的个数等于不可约表示的维度，我们也就得到了下面这个定理。
+
+\theo 在上面那种等同下，对于$\mathfrak{sl}(N,\cc)$的任意dominant weight $\lambda=(\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_{N-1})$，所有准标准Young表构成了不可约表示$V_\lambda$的一组基。
+
+用数学一点的语言，就是说在
+\[
+	W_{(\lambda_1,\cdots,\lambda_{N-1})}=\bigotimes_{i=1}^{N-1}\sym^{\lambda_i}\left(\Lambda^i\bigl(\cc^N\bigr)\right).
+\]
+模掉所有
+\[
+	(v_1\wedge \cdots \wedge v_p)\otimes (w_1\wedge\cdots \wedge w_q)-\sum_{i=1}^p(v_1\wedge\cdots \wedge v_{i-1}\wedge w_1 \wedge v_{i+1}\wedge \cdots \wedge v_p)\otimes (v_i\wedge w_2\wedge\cdots \wedge w_q)
+\]
+生成的理想$I$，就得到了$V_{(\lambda_1,\cdots,\lambda_{N-1})}$，即
+\[
+	V_{(\lambda_1,\cdots,\lambda_{N-1})}=W_{(\lambda_1,\cdots,\lambda_{N-1})}/I.
+\]
+
+注意到当$p=q$的时候，在$I\cap \sym^{\lambda_p}\left(\Lambda^p\bigl(\cc^N\bigr)\right)$实际上由那些
+\[
+	(v_1\wedge \cdots \wedge v_p) (w_1\wedge\cdots \wedge w_p)-\sum_{i=1}^p(v_1\wedge\cdots \wedge v_{i-1}\wedge w_1 \wedge v_{i+1}\wedge \cdots \wedge v_p) (v_i\wedge w_2\wedge\cdots \wedge w_p)
+\]
+生成。
+
+\para 从上面的构造，可以看到所有算符作用在Young表上的形式都不变。所以在实际的计算（比如上升和下降算符的作用）中，从准标准Young表出发，一路进行运算，只要将最后的结果中的那些非准标准Young表利用等同将其变成准标准的，我们就得到了最后的结果。
+
+$\mathfrak{sl}(N,\cc)$不可约表示的另一个构造利用了对称群，利用了Young对称化子，这个在附录中予以了阐述。
+
+\para 通过数可能的准标准Young表可以得到不可约表示的维度，或者使用Weyl特征标公式，也可以得到维度。对于$\mathfrak{sl}(N,\cc)$的最高权$\lambda=(\lambda_1,\cdots \lambda_{N-1})$，在谈论Young图的时候，我们把这个变成了$\{l_1$, $\cdots$, $l_{N-1}\}$，其中$l_i=\sum_{k=i}^{N-1}\lambda_k$，再顺便令$l_N=0$，则对于$\mathfrak{sl}(N,\cc)$不可约表示关于这个最高权的维度我们可以通过下式计算：
+\[
+	\dim(V_\lambda)=\prod_{1\leq i<j\leq N}\left(\frac{l_i-l_j}{j-i}+1\right).
+\]
+
+上面这个公式也可以利用Young图来表示，可以说完全是组合学的技巧，当然似乎也可以利用$S_N$与$\mathrm{GL}(N,\cc)$的不可约表示的对偶。考虑Young图
+\[
+	\yng(2,2)\,,
+\]
+往第$(i,j)$格里面填入他下面以及右边所有格子的总量，再加上$1$，对于上面的Young图就是
+\[
+	\young(32,21)\,,
+\]
+然后定义$h$为里面所有数字之积，即这里是$3\times 2\times 2\times 1=12$.
+
+然后，依旧是那个Young图，往最左上的一个格子里面填上$N$，之后往左就递增1，往下就递减1，得到了
+\begin{center}
+  \begin{tabular}{ | c | c |}
+    \hline
+    $N$ & $N+1$  \\ \hline
+    $N-1$ & $N$\\
+    \hline
+  \end{tabular}
+\end{center}
+然后计算出$F$为里面所有数之积，即这里是$F=(N+1)N^2(N-1)$.
+
+对应于这幅Young图的不可约表示的维度如下确定
+\[
+	F/h=(N+1)N^2(N-1)/12,
+\]
+对于$N=3$的情况，此时维度即$6$. 如果利用公式$(p+1)(q+1)(p+q+2)/2$，这里$p=2$, $q=0$，所以依然可以求得$2\times 1\times 3/2=6$.
 
 \clearpage
 \appendix
@@ -1302,7 +1801,7 @@ To be continued.
 \cftaddtitleline{toc}{section}{Appendix}{}
 \renewcommand{\thepara}{\Alph{section}.\arabic{para}}
 
-\section{基础}
+\section{Lie群基础}
 
 \para 设$G$为群，单位元记做$e$，群运算记做$\mu:G\times G\to G$，如果$G$是一个光滑流形，且$\mu$是一个光滑映射，则称$G$是一个光滑Lie群。当然可以谈论不怎么光滑的Lie群，但是下面所指的Lie群都是光滑的。记$l_g$是左作用算符，即$l_g=\mu(g,\cdot)$，或者写作$l_gh=gh$，同样，右作用算符记做$r_g$，即$r_gh=hg$.显然这些都是光滑映射。
 
@@ -1387,9 +1886,9 @@ To be continued.
 \]
 其中$v\in T_aG$.
 
-所以一般线性群上面的Maurer-Cartan形式即为$\omega_G(v)=l_{g^{-1}}(v)=g^{-1}v$，其中$g$和$v$都是矩阵，矩阵乘矩阵还是矩阵，所以Lie代数$\mathfrak{gl}(n,\rr)$也是矩阵的形式。设$\dd g=(\dd x_{ij})$，那么$v$就可以写成$\dd g(v)$，因为$\dd x_{ij}(v)=v_{ij}$，则$\omega_G=g^{-1}\dd g$.
+% 所以一般线性群上面的Maurer-Cartan形式即为$\omega_G(v)=l_{g^{-1}}(v)=g^{-1}v$，其中$g$和$v$都是矩阵，矩阵乘矩阵还是矩阵，所以Lie代数$\mathfrak{gl}(n,\rr)$也是矩阵的形式。设$\dd g=(\dd x_{ij})$，那么$v$就可以写成$\dd g(v)$，因为$\dd x_{ij}(v)=v_{ij}$，则$\omega_G=g^{-1}\dd g$.
 
-% 由于$\mathrm{GL}(n,\rr)$的微分结构是熟知的，我们可以直接计算其Lie代数$\mathfrak{gl}(n,\rr)$上的交换子形式。设$A\in\mathfrak{gl}(n,\rr)$而$g\in\mathrm{GL}(n,\rr)$，容易验证$A_g=gA$是左不变矢量场，因为$(l_h)_{*}A_g=(l_h)_{*}gA=hgA=A_{hg}$.
+由于$\mathrm{GL}(n,\rr)$的微分结构是熟知的，我们可以直接计算其Lie代数$\mathfrak{gl}(n,\rr)$上的交换子形式。设$A\in\mathfrak{gl}(n,\rr)$而$g\in\mathrm{GL}(n,\rr)$，容易验证$A_g=gA$是左不变矢量场，因为$(l_h)_{*}A_g=(l_h)_{*}gA=hgA=A_{hg}$.
 
 记$g=(x_{ij})$，考虑与$A=(a_{ij})$和$B=(b_{ij})$相关的左不变矢量场为
 \[
@@ -1417,18 +1916,6 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 \]
 
 现在取$f(A)=A$, $x=I$和$t=0$就可以了。至于收敛性，因为对于任意一个矩阵，$A$的范数都是有界的，那么$e^A$就被$A$的范数的级数控制，因此收敛。\qed
-
-当然可以用其他的方式猜出这个关系，我们考虑$e^{tA}$,将其在$t=0$附近展开，有$e^{tA}=I+tA+O(t^2)$,然后对于任意的正整数$n$和固定的$t$我们有
-\[
-	e^{tA}=\left(e^{tA/n}\right)^n=\left(I+\frac{t}{n}A+O\left(\frac{1}{n^2}\right)\right)^n,
-\]
-然后令$n\to\infty$，就有$e^{tA}=\lim_{n\to\infty}\left(I+\frac{t}{n}A\right)^n$.使用二项式展开，就可以得到其级数展开
-\[
-	e^{tA}=1+\sum_{n=1}^\infty \frac{(tA)^n}{n!}=\sum_{n=0}^\infty \frac{(tA)^n}{n!},
-\]
-最后$t=1$即可。
-
-上面的过程可能不怎么严谨，在矩阵的情况下，直接用级数定义指数映射反而可能更加简单。
 
 \para 以下矩阵群构成一般线性群的子群：
 
@@ -1479,7 +1966,7 @@ A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\par
 
 考虑群表示$\rho:G\to \mathrm{GL}(V)$，我们可以构造一个新的表示$\rho^*:G\to \mathrm{GL}(V^*)$通过
 \[
-	\rho^*(g)(f):v\mapsto f(\rho(g)(v)),
+	\rho^*(g)(f):v\mapsto f(\rho(g^{-1})(v)),
 \]
 很容易检验这是一个群表示。他被称为对偶表示。
 
@@ -1818,7 +2305,67 @@ Lie代数本身就是一个矢量空间，我们这里感兴趣的是表示是�
 % 其显然是Lie代数上面的一个导子。
 \newpage
 
-\section{一个矩阵恒等式}
+\section{一些矩阵恒等式}
+
+矩阵幂被定义为
+\[
+	\exp(A)=\sum_{n=0}^\infty \frac{1}{n!}A^n,
+\]
+其中定义$A^0=I$. 这个级数对任意的$A$都收敛，因为固定一个$A$，他总是有界的，设$a$是他的一个上界，而$\exp(a)$总是收敛的，所以$\exp(A)$也是收敛的。
+
+对于对角矩阵$\Lambda=\mathrm{diag}(\lambda_1$, $\cdots$, $\lambda_n)$，他的矩阵幂容易通过定义证明为$\exp(\Lambda)=\mathrm{diag}(\exp(\lambda_1)$, $\cdots$, $\exp(\lambda_n))$. 利用$DA^nD^{-1}=\bigl(DAD^{-1}\bigr)^n$，我们有$\exp(DAD^{-1})=D\exp(A)D^{-1}$. 所以我们可以计算出在$A$是可对角化的时候的矩阵幂。
+
+如果$A$是幂零的，比如$A^k=0$，此时
+\[
+	\exp(A)=\sum_{n=0}^{k-1} \frac{1}{n!}A^n,
+\]
+也是可以计算的。
+
+\lem 如果$A$是可逆矩阵而$B$是幂零矩阵且$AB=BA$，则$\det(A+tB)=\det(A)$，其中$t$是一个任意常数。
+
+\proof 现在
+\[
+	\det(A+tB)=\det(A)\det(I+tA^{-1}B),
+\]
+由于$AB=BA$或者$A^{-1}B=BA^{-1}$，所以$(A^{-1}B)=(A^{-1})^n B^n$，这就推出$A^{-1}B$也是幂零的。从Jordan标准型，幂零矩阵$A^{-1}B$相似于一个对角元素全是$0$上三角矩阵，因此$\det(I+tA^{-1}B)=1$，这也就推出了
+\[
+	\det(A+tB)=\det(A),
+\]
+因此$A+tB$也是可逆的。\qed
+
+\lem 如果$A$是幂零矩阵，则$\det(\exp(A))=1$.
+
+\proof 应用上面的引理，$\det(I+A)=\det(I)=1$，再应用一次
+\[
+	\det(I+A+A^2/2)=\det(I+A)=\det(I)=1,
+\]
+如果$A^n=0$，则反复应用$n$次就得到了结论。\qed
+
+\pro 指数映射联系了矩阵的迹与行列式，$\det(\exp(A))=\exp(\tr(A))$.
+
+\proof 从Jordan标准型，我们只要考虑如下矩阵即可
+\[
+	A=\begin{pmatrix}
+	\lambda &1&&&\\
+	&\lambda&1&&\\
+	&&\ddots&\ddots&\\
+	&&&\lambda&1\\
+	&&&&\lambda
+	\end{pmatrix}=\lambda I+ B,
+\]
+其中$B$是一个幂零矩阵，因为$[\lambda I,B]=0$，所以
+\[
+	\exp(A)=\exp(\lambda I)\exp(B),
+\]
+以及
+\[
+	\det \left(\exp(A)\right)=\det\left(\exp(\lambda I)\right)\det\left(\exp(B)\right).
+\]
+利用上面的引理，$\det\left(\exp(B)\right)=1$，所以
+\[
+\det \left(\exp(A)\right)=\det\left(\exp(\lambda I)\right)=\exp(n\lambda)=\exp(\tr A).
+\]
+\qed
 
 \pro 当$A$和$B$属于矩阵群的Lie代数的时候，$\tr(\ad(A)\ad(B))=2n \tr(AB) -2\tr(A)\tr(B)$.
 
@@ -1874,7 +2421,7 @@ $\mathfrak{su}(N)$的一组常用的基选作
 \begin{equation}
 \label{1}
 \begin{split}
-	\frac{1}{2}\sum_{1\leq i < j\leq N}&(E_{ij}+E_{ji})_{ab}(E_{ij}+E_{ji})_{cd}\\
+	\frac{1}{4}\sum_{1\leq i < j\leq N}&(E_{ij}+E_{ji})_{ab}(E_{ij}+E_{ji})_{cd}\\
 	&=\frac{1}{8}\left(\sum_{1\leq i,j\leq N}(E_{ij}+E_{ji})_{ab}(E_{ij}+E_{ji})_{cd}-\sum_{i=1}^N(E_{ii}+E_{ii})_{ab}(E_{ii}+E_{ii})_{cd}\right)\\
 	&=\frac{1}{8}\left(\sum_{1\leq i,j\leq N}\bigl([ia][bj]+[ja][ib]\bigr)\bigl([ic][dj]+[jc][id]\bigr)-4\sum_{i=1}^N[ia][ib][ic][id]\right)\\
 	&=\frac{1}{8}\left(2\bigl([ac][bd]+[ad][bc]\bigr)-4[ab][ac][ad]\right)\\
@@ -1885,7 +2432,7 @@ $\mathfrak{su}(N)$的一组常用的基选作
 \begin{equation}
 \label{2}
 \begin{split}
-	-\frac{1}{2}\sum_{1\leq i < j\leq N}&(E_{ij}-E_{ji})_{ab}(E_{ij}-E_{ji})_{cd}\\
+	-\frac{1}{4}\sum_{1\leq i < j\leq N}&(E_{ij}-E_{ji})_{ab}(E_{ij}-E_{ji})_{cd}\\
 	&=\frac{-1}{8}\left(\sum_{1\leq i,j\leq N}(E_{ij}-E_{ji})_{ab}(E_{ij}-E_{ji})_{cd}-\sum_{i=1}^N(E_{ii}-E_{ii})_{ab}(E_{ii}-E_{ii})_{cd}\right)\\
 	&=\frac{-1}{8}\left(\sum_{1\leq i,j\leq N}\bigl([ia][bj]-[ja][ib]\bigr)\bigl([ic][dj]-[jc][id]\bigr)\right)\\
 	&=\frac{1}{4}\bigl([ad][bc]-[ac][bd]\bigr),
@@ -2009,6 +2556,250 @@ B^T&C
 \]
 
 现在问题就归结到了证明$\det A\neq 0$上面了。注意到分量$A_{ij;kl}=\delta_{jk}\delta_{il}$，对固定的$(i,j)$，即固定的一行，只有当$(k,l)=(j,i)$时候才不为零。因此，这个矩阵，每一行只有一个$1$，因为他是对称矩阵，所以每一列也只有一个$1$，这就是一个置换矩阵，他的行列式为$\pm 1\neq 0$. \qed
+\clearpage
+
+\section{对称群以及Young图}
+
+对称群的不可约表示和$\mathrm{GL}(n)$以及$\mathrm{SL}(n)$的不可约表示紧密相连，所以这里考虑对称群。对于对称群不可约表示的结构定理，下面会陈述，但是不做证明。这节主要是Young的工作，是他开启了表示论的大门。
+
+\para 考虑集合$=\{1,\cdots,n\}$，以及任意的双射$\sigma : I_n\to I_n$，我们可以直接用表
+\[
+	\begin{pmatrix}
+	1&2&\cdots &n\\
+	\sigma(1)&\sigma(2)&\cdots &\sigma(n)
+	\end{pmatrix}
+\]
+来描述这样一个双射。所有这样的双射按照复合构成一个群，我们称为对称群，记作$S_n$。这是一个有限群，他的元素个数是$n!$个。
+
+\para 对于对称群$S_n$，对于任意的置换$\sigma\in S_n$，记$\rr^n$的标准基为$e_i$，则置换$\sigma$可以通过$\sigma:e_i\mapsto e_{\sigma(i)}$看成一个可逆线性映射$D(\sigma): \rr^n\to \rr^n$，他的矩阵由$D(\sigma)_{ij}=\delta_{i,\sigma(j)}$给出。经过数次调换行和列，总可以将这个矩阵变换到单位矩阵，于是断言$D(\sigma)$是可逆的且$\det(D(\sigma))=\pm 1$. 记$\sgn(\sigma)=\det(D(\sigma))$，当$\sgn(\sigma)=1$的时候，我们称这个置换是偶置换，反之，则叫他奇置换。实际上，任意的置换都可以分解成数个两两对换，当置换是偶置换的时候，分解出两两置换的数目是偶数，反之是奇数。
+
+上面这个例子构成了两个表示，其中$D:S_n\to \mathrm{GL}(\rr^n)$被称为$S_n$的标准表示，他不一定是不可约的。而$\sgn=\det\circ D:S_n\to \{1,-1\}$又是另一个表示，因为$\pm 1\in \mathrm{GL}(\rr)$，这是一个很简单的一维表示。
+
+\para 现在，固定$\sigma$，考虑任意的$i\in I$，以及集合$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^k(i),\cdots\}$，由于这是一个有限群，所以集合必然也是有限的，即总存在一个$1\leq p\leq n$，使得$\sigma^p(i)=i$. 我们就得到了一个$p$个元素的$I$的子集，这被称为一个cycle，长度为$p$，有时候被称作一个$p$-cycle. 由于$I_n$是有限集，所以我们可以将其分解为不同cycle的并。
+
+将$\{i,\sigma(i),\sigma^2(i),\cdots,\sigma^{p-1}(i)\}$直接计算出来，记作$(i,j,k,\cdots,l)$. 由于$\sigma^{k+1}(i)=\sigma(\sigma^k(i))$，所以这组数里面，第$j$个数是第$j-1$个数进行应用$\sigma$后得到的，而第一个数是最后一个数应用$\sigma$后得到的。因此，cycle的名字恰如其分。
+
+由于$I_n$可以分解成这样的集合的并，即
+\[
+	(i_{11},\cdots,i_{1k_1})(i_{21},\cdots,i_{2k_2})\cdots (i_{m1},\cdots,i_{mk_m}),
+\]
+其中每一个$I_n$中的正整数都出现一次。所以如果我们得到了一个分解，则我们也完全确定了$\sigma$. 由于每一个$(i_{j1},\cdots,i_{jk_j})$都可以反过来确定一个$\sigma_j$，所以上面的分解又可以看成许多置换的复合，即$\sigma=\sigma_1 \sigma_2\cdots \sigma_m$，其中$\sigma_i\sigma_j=\sigma_j\sigma_i$. 
+
+比如
+\[
+	\sigma=\begin{pmatrix}
+	1&2&3&4&5\\
+	2&3&1&4&5
+	\end{pmatrix}
+\]
+我们就可以把$\sigma$分解为
+\[
+	\sigma=(1,2,3)(4)(5).
+\]
+其中$(1,2,3)$被称为3-cycle，类似地，$(4)$和$(5)$是1-cycle. 我们称$k$-cycle比$k'$-cycle高，如果$k>k'$. 在已知$S_n$的$n$的情况下，我们会在循环的cycle表示里略去所有的1-cycle. 上述的$\sigma=(1,2,3)(4)(5)$就会被记作$\sigma=(1,2,3)$.
+
+\pro 形如$(i,j)$的置换被称为两两置换。对于两两置换$\sigma$，显然有$\sigma^{-1}=\sigma$，或者$\sigma^2=e$. 我们断言，对称群中的任意置换都可以写成两两置换的复合。
+
+\proof 对于单位元$e$，这点是自明的，因为$(i,j)^2=e$. 其他的置换都至少存在一个2-cycle. 由于
+\[
+	\sigma=(i_{11},\cdots,i_{1k_1})(i_{21},\cdots,i_{2k_2})\cdots (i_{m1},\cdots,i_{mk_m})=\sigma_1 \cdots \sigma_m,
+\]
+所以，如果一个置换没有比$2$-cycle更高的cycle，则这个置换可以写作两两置换的复合。
+
+考虑置换$\sigma$，他的1-cycle的个数是$k$，即他保持$(1,\cdots,n)$中$k$个数字位置不变，且至少有一个$m$-cycle，其中$m\geq 3$，所以存在一个$i$使得$\sigma^2(i)\neq i$，这样我们就有如下表示
+\[
+	\sigma=\begin{pmatrix}
+	1&2&\cdots&i&\cdots &j&\cdots&n\\
+	\sigma(1)&\sigma(2)&\cdots&j&\cdots &\sigma(j)&\cdots&\sigma(n)\\
+	\end{pmatrix},
+\]
+然后考虑一个两两置换$\pi=(i,j)$，则
+\[
+	\pi\sigma=\begin{pmatrix}
+	1&2&\cdots&i&\cdots &j&\cdots&n\\
+	\sigma(1)&\sigma(2)&\cdots&\sigma(j)&\cdots &j&\cdots&\sigma(n)\\
+	\end{pmatrix}.
+\]
+$\pi\sigma$的1-cycle的个数是$k+1$. 如果此时$\pi\sigma$还有比2-cycle高的cycle，则我们可以这样继续归纳下去，该过程总是可以终止的，因为每这样一次，我们的1-cycle的个数就涨一，当1-cycle的个数涨为$n-2$的时候，这个置换没有比2-cycle高的cycle。
+
+假设进行了$l$步我们得到了$\pi_l\cdots\pi_1 \sigma$，他没有比2-cycle高的cycle了，此时
+\[
+\pi_l\cdots\pi_1 \sigma=(i_{11},i_{12}) \cdots  (i_{r1},i_{r1})=\sigma_1 \cdots  \sigma_r,
+\]
+其中$\sigma_i$都是两两置换，因此$\sigma=\pi_1\cdots\pi_l\sigma_1\cdots \sigma_r$，这个置换就写作了两两置换的复合。
+
+最后，我们得到了结论，任意的置换都可以写成两两置换的复合。即在对称群中，两两置换生成了整个群。\qed
+
+\para 设$G$是一个群，而$g\in G$，则同态$\mathrm{Ad}(g):h\mapsto ghg^{-1}$被称为共轭作用。共轭作用衡量了一个群的可交换性，这是因为，如果$\mathrm{Ad}(g)(h)=h$，则$gh=hg$.
+
+固定一个$h\in G$，考虑子集$H_h=\mathrm{Ad}(G)(h)$，这样的子集被称为共轭作用的一条轨道（或者在这里叫做共轭类）。两条不同的轨道是不能相交的，这是因为如果$H_h$和$H_g$有一个相交点$k$，分别记作$k=php^{-1}=qgq^{-1}$，则$g=q^{-1}ph(q^{-1}p)^{-1}$，所以$H_h=H_g$.
+
+\pro 对于对称群，在伴随作用下，$\sigma (i_1,\cdots,i_k)\sigma^{-1}= (\sigma(i_1),\cdots,\sigma(i_k))$. 
+这就是说，他将一个$k$-cycle变成$k$-cycle.
+
+\proof 如果$i$在$(i_1,\cdots,i_k)$作用下不变，则
+\[\sigma (i_1,\cdots,i_k)\sigma^{-1}:i\mapsto \sigma^{-1}(i)\mapsto \sigma^{-1}(i) \mapsto i,\]
+故他在$\sigma (i_1,\cdots,i_k)\sigma^{-1}$作用下也不变。否则
+\[
+	\sigma (i_1,\cdots,i_k)\sigma^{-1}:\sigma(i_j)\mapsto i_j\mapsto i_{j+1} \mapsto \sigma(i_{j+1}).
+\]
+这就得到了我们的结论。\qed
+
+\para 现在来看Young图，对于一个正整数$n$，我们可以将其分解成一个加式$n=\sum_{i=1}^k n_i$，其中$0\leq n_k\leq n_{k-1}\leq \cdots \leq n_1$，这样一个分解可以简单记作$\{n_1,n_2,\cdots,n_k\}$，或用一个Young图表示，第$i$行$n_i$个小方块。比如$8$被分解成$\{5,3\}$或者$\{4,2,2\}$，他们的Young图分别是
+\[\Yvcentermath1
+	\yng(5,3)\quad \yng(4,2,2)
+\]
+
+将循环群和Young图联系起来，即是通过循环的cycle表示，比如$\sigma=(1,2,3)(4)(5)$，他对应于分解为$3+1+1$，即$\{3,1,1\}$，对应的Young图是
+\[
+	\yng(3,1,1)
+\]
+我们可以通过另一个方法来得到$\{3,1,1\}$. 先分别列出$i$-cycle的个数$k_i$，然后计算出$l_i=\sum_{j=i}^nk_j$. 比如$\sigma=(1,2,3)(4)(5)$对应的$i$-cycle的个数序列为$(2,0,1,0,0)$，然后$\{3,1,1\}$中的第$i$个数字由$(2,0,1,0,0)$中的累加第$i$个数字后面所有的数字，我们可以得到$\{3,1,1,0,0\}$然后略去末尾的零就可以了。这点在以前的Lie代数的最高权的Young图表示中提过了。
+
+Young图并不唯一确定置换。这是因为在伴随作用下，$\sigma (i_1,\cdots,i_k)\sigma^{-1}= (\sigma(i_1),\cdots,\sigma(i_k))$，故置换$\pi$和$\sigma\pi\sigma^{-1}$有着相同的Young图。更确切地说，Young图的数目正好等于$S_n$中共轭类的数目。
+
+在有限群那里已经证明了，有限群的有限维不可约复表示的个数等于其共轭类的个数，所以$S_n$的不可约表示的个数正好就是他能有的Young图的个数。
+
+\para 为了通过Young图确定置换，往Young图里面填数字就可以了，比如
+\[\Yvcentermath1
+	\young(123,4,5)\quad \text{or}\quad \young(123,4,5)\quad \text{or}\quad \young(231,4,5)
+\]
+就确定了置换$(1,2,3)(4)(5)$. 在Young图中填入$1$到$n$这些正整数后得到的表被称为Young表。
+
+每一个Young图，都共有$n!$种填表的方式，其中如下的填表方式得到的Young表
+\[\Yvcentermath1
+	\young(12345,678),\quad \young(1234,56,78),
+\]
+被称为标准Young表。
+
+\para 对于有限群$G=\{g_1,\cdots,g_n\}$，前面我们定义一个矢量空间
+\[
+	\cc [G]=\cc\langle g_1\rangle \oplus \cdots \oplus \cc\langle g_n\rangle,
+\]
+在$\cc [G]$上可以定义乘法如下
+\[
+	\sum_{g\in G} a_g g \sum_{h\in G} b_h h=\sum_{g,h\in G}a_gb_h gh,
+\]
+这就使得$\cc [G]$成为了一个含幺环。他的单位元记作$e$.
+
+\theo $S_n$的不可约表示由总格数为$n$的Young图一一确定。
+
+这个定理比以前数不可约表示个数的命题要强很多，这意味着$S_n$的不可约表示由其共轭类一一确定。
+
+\para 上面定理的证明是直接的构造，来自于Young. 给定一个Young图，给出他的标准Young表，比如
+\[\Yvcentermath1
+	\young(12345,678)
+\]
+记$P_i$为所有保持第$i$行数字不变的置换构成的$S_n$的子群（比如上面的Young表中第一行可以变成$(12453)$，但不能变成$(12645)$），以及$Q_j$为所有保持第$j$列数字不变的置换构成的子群，再令
+\[
+	P=\bigcap_i P_i,\quad Q=\bigcap_j Q_j,
+\]
+这是两个$S_n$的子群。我们有如下定理：
+
+\theo 给定$S_n$的一个Young图$\lambda$，我们对应有子群$P_\lambda$和$Q_\lambda$，令$a_\lambda=\sum_{\sigma\in P_\lambda}\sigma$以及$b_\lambda=\sum_{\sigma\in Q_\lambda}\sgn(\sigma)\sigma$，这是两个$\cc[S_n]$中的元素。定义$c_\lambda=a_\lambda b_\lambda$，称为Young图$\lambda$的Young对称化子。则$V_\lambda=\cc[S_n]c_\lambda$以及$\rho_\lambda(g)=l_g$构成$S_n$的一个不可约表示，且不同Young图对应的不可约表示不等价。因此，$S_n$的不可约表示一一对应着他的Young图（或者说共轭类）。
+
+最后一点是自明，其他的我们不加证明，并且也不证明如下命题：
+
+\pro 对于$S_n$的一个Young图$\lambda=\{\lambda_1,\lambda_2,\cdots,\lambda_k\}$，记$l_i=\lambda_i+k-i$，则
+\[
+	\dim V_\lambda=\frac{n!}{l_1!\cdots l_k!}\prod_{1\leq i< j\leq k}(l_i-l_j)=\frac{n!}{l_1!\cdots l_k!}\begin{vmatrix}
+	1& l_k & l_k^2&\cdots\\
+	\vdots&\vdots&\vdots&\vdots\\
+	1& l_1 & l_1^2&\cdots\\
+	\end{vmatrix},
+\]
+其中的行列式为van der Monde行列式。
+
+\pro 设$\lambda$是$S_n$的一个Young图，则$c_\lambda^2=n_\lambda c_\lambda$，其中$n_\lambda=n!/\dim V_\lambda$. $n_\lambda$被称为hook number，他可以通过Young图直接确定：
+
+给定Young图$\lambda$，记$n_{ij}$为他直着往下的格子数+直着往右的格子数+1，这个数称为hook length. 比如下面的Young图
+\[
+	\young(~~~~,~***,~*~,~*)
+\]
+中$n_{22}$为有*的格子的数目，所以$n_{22}=5$. 我们的结论是$n_\lambda=\prod_{i,j}n_{ij}$.
+
+比如考虑如下Young图\[\Yvcentermath1
+	\yng(3,2,1)
+\]
+在每一个格子里面填入相应的hook length，得到
+\[
+	\young(531,31,1)
+\]
+所以$n_\lambda= 45$.
+
+\para 由映射
+\[
+	(v_{1}\otimes\cdots\otimes v_{n})\sigma=v_{{\sigma(1)}}\otimes\cdots\otimes v_{{\sigma(n)}}
+\]
+线性扩张，我们可以定义出$\cc[S_n]$在$V^{\otimes n}$上面的右作用.
+
+比如$c=e+4(1,3)$，那么
+\[
+	(v_{i_1i_2i_3})c=v_{i_1i_2i_3}+4v_{i_3i_2i_1},
+\]
+其中$v_{ijk}=v_{i}\otimes v_{j}\otimes v_{k}$.
+
+\para 对于一个$S_n$的Young图$\lambda$，我们有Young对称化子$c_\lambda$，我们记$S_\lambda V= (V^{\otimes n})c_\lambda=\im(c_\lambda)$. 为了阐明$S_\lambda V$的意义，下面我们考虑$n=2$的情况，以及
+\[\Yvcentermath1
+	\lambda_1=\yng(1,1)
+\]
+他对应的标准Young表为
+\[\Yvcentermath1
+	\young(1,2)
+\]
+所以$P_{\lambda_1}=\{e\}$，以及$Q_{\lambda_1}=\{e,(1,2)\}=S_2$，故$c_{\lambda_1}=a_{\lambda_1} b_{\lambda_1} =e (e- (1,2))=e- (1,2)$.
+
+考虑任意的矢量$v\otimes w\in V^2$，
+\[
+c_{\lambda_1}(v\otimes w)=v\otimes w-w\otimes v=v\wedge w,
+\]
+所以$S_{\lambda_1} V$就是那些反对称的张量构成的矢量空间。
+
+我们接着考虑
+\[\Yvcentermath1
+	\lambda_2=\yng(2)
+\]
+他对应的标准Young表为
+\[\Yvcentermath1
+	\young(12)
+\]
+所以$P_{\lambda_2}=\{e,(1,2)\}=S_2$，以及$Q_{\lambda_2}=\{e\}$，故$c_{\lambda_2}=a_{\lambda_2} b_{\lambda_2} =(e+(1,2))e =e+(1,2)$.
+
+考虑任意的矢量$v\otimes w\in V^2$，
+\[
+(v\otimes w)c_{\lambda_2}=v\otimes w+w\otimes v,
+\]
+所以$S_{\lambda_2} V$就是那些对称的张量构成的矢量空间。
+
+更广义地，对于Young图
+\[\Yvcentermath1
+	\lambda=\yng(5,3,2)
+\]
+$S_{\lambda} V$就是那些按列反对称、按行全对称的张量张成的矢量空间。
+
+\para 任取$\sigma\in S_n$，以及任意的$\varphi$诱导来的$\Phi$，我们有$\Phi\circ \sigma=\sigma\circ \Phi$，这次定义来看是显然的，因为他们都成立
+\[
+	e_{i_1}\otimes\cdots\otimes e_{i_n}\mapsto \varphi e_{\sigma(i_1)}\otimes\cdots\otimes \varphi e_{\sigma(i_n)}.
+\]
+
+\para 注意到$\Lambda^i\bigl(\cc^N\bigr)\subset (\cc^N)^{\otimes i}$以及$\sym^a(V)\subset V^{\otimes a}$，所以
+\[
+	V_{(\lambda_1,\cdots,\lambda_{N-1})}\subset \bigotimes_{i=1}^{N-1}\sym^{\lambda_i}\left((\cc^N)^{\otimes i}\right)\subset  \bigotimes_{i=1}^{N-1}(\cc^N)^{\otimes i\lambda_i}=(\cc^N)^{\otimes d},
+\]
+其中$d=\sum_{i=1}^{N-1}i\lambda_i$. 
+
+让我们回忆一下Young图，对应于$\lambda=(\lambda_1,\cdots, \lambda_{N-1})$，我们采用另一个记法
+\[
+	\lambda=\{l_1,\cdots,l_{N-1}\},
+\]
+其中$l_i$是第$i$行的格子数，$l_i=\sum_{k=i}^{N-1}\lambda_k$，所以
+\[
+	d=\sum_{i=1}^{N-1}i\lambda_i=\sum_{i=1}^{N-1}l_i
+\]
+正是Young图的格子数。
+
+\theo $\mathfrak{sl}(n,\cc)$最高权为$\lambda=\{l_1,\cdots,l_{N-1}\}$的不可约表示正是由$S_N$的Young图$\lambda'=\{l_1,\cdots,l_{N-1},0\}$确定的$S_{\lambda'} (\cc^N)$.
+
 \clearpage
 
 \section*{Reference}
