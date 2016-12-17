@@ -1,0 +1,176 @@
+%!TEX program = xelatex
+\documentclass[9pt]{extbook}
+\usepackage[book,zh]{noteheader}
+\usepackage[fontset = fandol]{ctex}
+\usepackage[chapter]{../egastyle}
+\usepackage{hyperref}
+	\hypersetup{
+		pdftoolbar=true,  
+		pdfmenubar=true,  
+	}
+
+\input{../defs}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\cc}{\mathbb{C}}
+
+\begin{document}
+\title{分析学笔记}
+\author{Buwai. Lee@School of Physics, NJU}
+\date{2016秋季学期}
+\maketitle %标题
+\frontmatter
+\tableofcontents
+
+\mainmatter
+\chapter{测度与拓扑矢量空间}
+\section{Hilbert空间}
+
+
+\chapter{haha}
+\section{Hilbert空间}
+
+设$\mathcal{H}$是复数域上的矢量空间。假设$x$, $y\in \mathcal{H}$，有一个二元运算写作$(x,y)$，需要满足如下性质
+\begin{itemize}
+\item $(x,y)=(y,x)^*,$
+
+这里用$a^*$表示$a$的复共轭。
+
+\item 对第二个变量线性
+\[
+(x,\xi_1y_1+\xi_2y_2)=\xi_1(x,y_1)+\xi_2(x,y_2),
+\]
+结合上面两个性质，很容易证明内积对第一个变量反线性，即
+\[
+(\eta_1x_1+\eta_2x_2,y)=\eta_1^*(x_1,y)+\eta_2^*(x_2,y).
+\]
+\item 对任意的$x\in \mathcal{H}$，$(x,x)\geq 0$，等号当且仅当$x=0$的时候取到。
+\end{itemize}
+
+则称这个二元运算是一个内积，而$\mathcal{H}$被称为一个内积空间。在内积空间上可以定义一个矢量的长度
+\[
+	|x|=\sqrt{(x,x)},
+\]
+注意到，我们重用了绝对值符号。在具体语境下，含义基本还是可以分辨的，否则我们会具体指出。从内积的定义，长度为零的矢量只有零。
+
+\para 两个矢量$y$和$x$被称为正交的，如果$(y,x)=0$. 于是我们就有勾股定理，如果$y$和$x$正交，则
+\[
+	|x+y|^2=|x|^2+|y|^2+(x,y)+(y,x)=|x|^2+|y|^2.
+\]
+
+\pro Cauchy-Schwarz不等式：$|(x,y)|\leq |x||y|$.
+
+\proof 等式对$x=0$的情况是显然成立的，下面设$x\neq 0$. 令$\alpha=(x,y)$，考虑
+	\[
+		0\leq |\lambda x+y|^2=|\lambda|^2|x|^2+|y|^2+\lambda^* \alpha+\lambda \alpha^*.
+	\]
+	在这之中，令$\lambda=-\alpha/|x|^2$，则上述不等式变为
+	\[
+		0\leq |\lambda x+y|^2=|y|^2-\frac{|\alpha|^2}{|x|^2},
+	\]
+	这就是我们的需要的不等式。\qed
+
+\pro $|y|\leq |\lambda x+y|$对每一个$\lambda \in \cc$成立当且仅当$(x,y)=0$.
+
+\proof 对于$(x,y)=0$，由勾股定理
+\[
+	|\lambda x+y|^2=|\lambda x|^2+ |y|^2\geq |y|^2.
+\]
+反过来，如果$(x,y)\neq 0$，只要找一个$\lambda$使得$|y|^2>|\lambda x+y|^2$即可。同上一个命题取$\lambda=-\alpha/|x|^2$，则
+\[
+	|\lambda x+y|^2=|y|^2-\frac{|\alpha|^2}{|x|^2},
+\]
+在$(x,y)\neq 0$时$|y|^2>|\lambda x+y|^2$. \qed
+
+此时，我们可以检验$|*|$构成了一个范数，因为
+\[
+	|x|\geq 0,\quad |\lambda x|=|\lambda||x|,
+\]
+以及最重要的
+\[
+	|x+y|^2=|x|^2+|y|^2+(x,y)+(y,x)\leq |x|^2+|y|^2+2|x||y|=(|x|+|y|)^2,
+\]
+这就是三角不等式$|x+y|\leq |x|+|y|$.
+
+\para 有了范数，就自然有了一个度量$d(x,y)=|x-y|$，于是内积空间就是一个度量空间。有了度量，就很容易定义出拓扑，由于是矢量空间，是加法群，所以在单位元$0$附近定义拓扑即可，剩下的可以通过平移移过去。选取所有$|x|<r$的$x$的集合作为单位元处的开集基，这样我们就定义出了$\mathcal{H}$上的一个拓扑。
+
+固定$x$，$(x,y)$对$y$是一个连续函数，因为
+\[
+	|(x,y+\Delta y)-(x,y)|=|(x,\Delta y)|\leq |x||\Delta y|,
+\]
+对选定的$\delta$，都可以选取$\epsilon=\delta/|x|$使得$\Delta y<\epsilon$时有$|(x,y+\Delta y)-(x,y)|<\delta$. 反过来，固定$y$，$(x,y)$对$x$也是一个连续函数。
+
+利用这点，我们可以说明$x$的正交补空间$N(x)=\{y\in\mathcal{H}\,:\, (x,y)=0\}$是一个闭集，因为$N(x)$是$\Lambda_x(y)=(x,y)$关于$\{0\}$的原像。
+
+\para 如果我们的内积空间$\mathcal{H}$在这个范数下是完备的（即Cauchy列收敛），则称$\mathcal{H}$是一个Hilbert空间。由于Cauchy列收敛，所以Hilbert空间的非空闭凸子集$E$\footnote{所谓凸集就是说，如果$x$和$y$都在该集合内，则对任意的$t\in [0,1]$都有$tx+(1-t)y$也在该集合内。}必然有着唯一的范数最小的元素。
+
+\proof 考虑$E$中所有元素范数的下界$d$，然后找一个序列$\{x_i\}$使得$|x_i|\to d$，由于$(x_m+x_n)/2\in E$，故$|(x_m+x_n)/2|\geq d$，考虑恒等式
+\[
+	0\leq |x_m-x_n|^2=2|x_m|^2+2|x_n|^2-|x_m+x_n|^2\leq 2(|x_m|^2+|x_n|^2)-4d^2,
+\]
+或者
+\[
+	|x_m-x_n|^2\leq 2(|x_m|^2-d^2)+2(|x_m|^2-d^2)\leq 2\bigl||x_m|^2-d^2\bigr|+2\bigl||x_m|^2-d^2\bigr|,
+\]
+因此$\{x_i\}$是一个Cauchy列，故而收敛到某个$x\in H$使得$|x|=d$. 由于$x$是$E$的极限点，而$E$是闭集，所以$x\in E$. 至于唯一性，如果$|y|=d$，考虑$\{x$, $y$, $x$, $y$, $\cdots\}$的极限即可。\qed
+
+\pro 对于Hilbert空间$\mathcal{H}$以及他的任意一个子空间$M$，$M$的正交补$M^\bot=\{y\in H\,:\, \forall x\in M,\, (x,y)=0\}$是一个闭子空间。如果$M$还是闭的，则成立直和分解$\mathcal{H}=M\oplus M^\bot$.
+
+\proof 由于
+\[
+	M^\bot=\bigcap_{x\in M}N(x),
+\]
+而$N(x)$是闭集，所以$M^\bot$自然是闭集。由于$(x,y)$关于$y$线性，所以$M^\bot$也是一个子空间。
+
+现在假设$M$是闭的。剩下的就是要证明$M\cap M^\bot=\{0\}$，以及任意的$x\in \mathcal{H}$都可以分解为$x=x_1+x_2$，其中$x_1\in M$, $x_2\in M^\bot$. 对于前者，假设$x\in M\cap M^\bot$，因此$(x,x)=0$就推出了$x=0$. 
+
+对后者，设$x\in \mathcal{H}$，考虑集合$x-M$，这是$\mathcal{H}$的一个闭凸子集，闭来自于他是$M$的一个平移，而凸来自于$M$是一个子空间。所以$x-M$中必然有唯一的$x_1$使得$|x-x_1|$最小。令$x_2=x-x_1$，则对于所有的$y\in M$都成立$|x_2|\leq |x_2+y|$，特别地，对于任意的$\lambda\in \cc$有$|x_2|\leq |x_2+\lambda x_1|$，因此$(x_1,x_2)=0$. 综上，任取$x\in \mathcal{H}$，成立分解$x=x_1+x_2$，$x_1\in M$，而$x_2\in M^\bot$.\qed
+
+\para Hilbert空间$\mathcal{H}$的对偶空间$\mathcal{H}^*$是由$\mathcal{H}$上所有线性函数张成的矢量空间，上面可以如下赋予范数
+\[
+	|T|=\sup\bigl\{|Tx|\,:\,x\in \mathcal{H},\,|x|\leq 1\bigr\},
+\]
+很容易检验这是一个范数，比如三角不等式：
+\[
+	|(T+S)x|=|Tx|+|Sx|\leq |T|+|S|,
+\]
+对任意的$|x|\leq 1$都成立，所以$|T+S|\leq |T|+|S|$.
+
+关于这个范数还有一个有用的不等式$|Tx|\leq |T||x|$：显然，$|x/|x||=1$，所以由
+\[
+	\left|T\frac{x}{|x|}\right|\leq |T|
+\]
+可以推知$|Tx|\leq |T||x|$. 
+
+\para 使用内积，可以在$\mathcal{H}$和$\mathcal{H}^*$之间建立一个线性映射：通过$\Lambda_y(x)=(y,x)$可以定义出一个线性函数$\Lambda_y\in \mathcal{H}^*$，这样我们就得到一个线性映射$\Lambda:\mathcal{H}\to \mathcal{H}^*$，他将$y$变为$\Lambda_{y}$.
+
+\theo Riesz表示定理：设$\mathcal{H}$是一个Hilbert空间，则$\Lambda:\mathcal{H}\to \mathcal{H}^*$是一个同构，且$|\Lambda_y|=|y|$.
+
+\proof
+	注意到，$|\Lambda_y|\geq |y|$就可以推出$\Lambda$是一个单射。因为如果$|\Lambda_y|=0$，则$|y|=0$可以推出$y=0$. 所以我们先推$|\Lambda_y|=|y|$，这样单射就是显然的了。
+
+	由Cauchy-Schwarz不等式，在$|x|\leq 1$时，$|\Lambda_y(x)|\leq |y||x|\leq |y|$，所以$\Lambda_y|\leq |y|$. 反过来，由于
+	\[
+		|y|^2=\Lambda_y(y)=|\Lambda_y(y)|\leq |\Lambda_y||y|,
+	\]
+	所以$|y|\leq |\Lambda_y|$. 这样就得到了$|\Lambda_y|=|y|$. 
+
+	剩下的就是要证明$\Lambda$是满射。若$y=0$，则取$\Lambda_y=0$. 若$y\neq 0$，令$N(\Lambda_y)$为$\Lambda_y$的零空间，即
+	\[
+		N(\Lambda_y)=\bigl\{x\in\mathcal{H}\,:\, \Lambda_y(x)=(y,x)=0\bigr\}.
+	\]
+	由于$N(\Lambda_y)=N(y)$是一个闭子空间，所以存在直和分解$\mathcal{H}=N(\Lambda_y)\oplus N(\Lambda_y)^\bot$. 取定一个非零的$z\in N(\Lambda_y)^\bot$，因为
+	\[
+		(\Lambda_y(x))z-(\Lambda_y(z))x\in N(\Lambda_y),
+	\]
+	所以
+	\[
+		(z,(\Lambda_y(x))z-(\Lambda_y(z))x)=\Lambda_y(x)(z,z)-\Lambda_y(z)(z,x)=0,
+	\]
+	或者
+	\[
+		\Lambda_y(x)=\left(\frac{\Lambda_y(z)}{(z,z)}z,x\right),
+	\]
+	此时当$y=\Lambda_y(z)z/(z,z)$时上式成立。\qed
+
+\section{伴随算子}
+\end{document}

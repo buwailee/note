@@ -8,6 +8,8 @@
 %% Relax
 \ProcessOptions\relax
 
+\RequirePackage{amsthm}
+
 \if@chapter
 	\newtheorem{para}{}[chapter]
 	\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
@@ -22,13 +24,13 @@
 	\renewcommand{\thepara}{\arabic{para}}
 \fi\fi\fi
 
-\newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}\hspace{0.5em}}
+\newcommand{\paracount}[1]{\refstepcounter{para}\textbf{#1 (\thepara)}\hspace{0.25em}}
 	\renewcommand{\para}{\refstepcounter{para}\textbf{(\thepara)}\hspace{0.5em}}
 	\newcommand{\theo}{\paracount{Theorem}}
 	\newcommand{\pro}{\paracount{Proposition}}
 	\newcommand{\lem}{\paracount{Lemma}}
 	\newcommand{\cor}{\paracount{Corollary}}
-	\renewcommand{\proof}{\textit{Proof}:\hspace{0.5em}}
+	\renewcommand{\proof}{\textit{Proof}:\hspace{0.25em}}
 
 \renewcommand{\eqref}[1]{(\ref{#1})}
 \newcommand{\lemref}[1]{Lemma \eqref{#1}}

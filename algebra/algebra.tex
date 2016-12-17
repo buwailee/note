@@ -1,10 +1,10 @@
 % author: buwailee@nmhs
-\documentclass[9pt]{extbook}
-\usepackage[book,zh]{noteheader}
-% \usepackage[fontset=windows]{ctex}
-\usepackage{ctex}
-	\CTEXoptions[today=old]
-	\CTEXoptions[contentsname=Table of Contents]
+\documentclass[10pt]{extbook}
+\usepackage[zh]{noteheader}
+
+\CTEXoptions[today=old]
+\CTEXoptions[contentsname=Table of Contents]
+
 \usepackage[section]{../egastyle}
 \usepackage{titletoc}
 \usepackage[titletoc,title]{appendix}
@@ -32,8 +32,12 @@
 \tableofcontents
 \mainmatter
 	\input{foundation.tex}
+	\input{module_1.tex}
+	\input{ring_1.tex}
+	\input{module_2.tex}
+	\input{linear_algebra.tex}
 	\input{field.tex}
-	% \input{connection.tex}
+	\input{ring_2.tex}
 	\input{appendix.tex}
 % \backmatter
 % 	\input{references.tex}
