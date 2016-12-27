@@ -1,8 +1,9 @@
 \appendix
 \renewcommand{\thepara}{\Alph{chapter}.\arabic{para}}
 
-\chapter{Partially Ordered Set and Zorn's Lemma}
+\chapter{Zorn引理与等价关系}
 
+\section{Zorn引理}
 \para 设$A$是一个集合，而$\leq$是$A$上的一个关系，如果满足
 
 \no{1} $\forall x\in A$, $x\leq x$;
@@ -30,3 +31,26 @@
 \theo Zorn引理：设$(A,\leq)$是一个非空偏序集，且其中的每一条链都存在上界，则$A$中存在极大元。
 
 Zorn引理是选择公理的等价形式，这里不做证明了。
+
+\section{等价关系}
+\para 一个关系$\sim$被称为集合$S$上的等价关系，如果
+\[
+	a\sim a,
+\]
+\[
+	a\sim b \Rightarrow b \sim a,
+\]
+\[
+	a\sim b\text{ and } b\sim c \Rightarrow a \sim c,
+\]
+第一个被称为自反性，第二个被称为对称性，第三个被称为传递性。
+
+\para 一旦给定集合$S$上的一个等价关系$\sim$，我们把与$a$等价的那些元素构成的子集记作$\bar{a}$. 从等价关系的三个性质可以看出：
+\begin{itemize}
+\item $a$与$b$等价当且仅当$\bar{a}=\bar{b}$. 
+\item $\bigcup_{a\in S}\bar{a}=S$.
+\item 如果$\bar{a}\cap \bar{b}\neq \varnothing$，则$\bar{a}=\bar{b}$.
+\end{itemize}
+这样的子集被称为等价类。从上面的第二点可以看出，不同的等价类不相交，所以通过等价关系，我们将$S$划分成了许多不相交的子集。满足上面性质的后两点的子集族被称为$S$的一个划分。
+
+\para 反过来，如果我们给定了$S$的一个划分，则可以定义出一个等价关系：$a$和$b$等价当且仅当他们同处于一个划分$S_i$里面。而划分在这个等价关系里面就构成了等价类。所以等价关系与划分等价。

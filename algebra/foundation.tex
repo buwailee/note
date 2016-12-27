@@ -124,6 +124,16 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	H'K\subset HK,\quad HK'\subset HK.
 \]
 
+% 对于环$R$的两个子集$H$和$K$，他们的加法就是上述左作用的一个特例
+% \[
+% 	H+K=\{a+b\,:\,a\in H,b\in K\}\subset R.
+% \]
+% 然后考虑到$R$上也有乘法，所以我们定义
+% \[
+% 	HK=\left\{\sum_i a_i b_i\,:\,a_i\in H,b_i\in K\right\}\subset R,
+% \]
+% 其中求和是任意有限求和。
+
 \para 设$G$是一个群，$H$是他的一个子集。所以群运算$\mu$限制在$H\times H$得到了运算$\mu|_{H\times H}:H\times H\to G$. 如果$\im\mu|_{H\times H}\subset H$，则$(H,\mu)$也构成了一个群，他被称为$G$的一个子群。最后一句话就是说，$H$中的任意两个元素相乘依然在$H$中，再或者用我们上面的写法，$HH\subset H$.
 
 类似地，如果$R$是一个环，$S$是他的一个子集。如果对$R$的交换群结构，$S$是他的子群，且$SS\subset S$，则$S$被称为$R$的一个子环。子环一般而言不用含有单位元。
@@ -162,24 +172,332 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 对$R$-模的情况，先只考虑他的加法群结构，则$\ker(f)=f^{-1}(0)$. 任取$a\in \ker(f)$以及$r\in A$，由于$f(ra)=rf(a)=0$，所以$ra\in \ker(f)$或者$R\ker(f)\subset \ker(f)$，这就意味着$\ker(f)$是$A$的一个子模。
 
-\para 设$\{e\}$是平凡群，则$\{e\}\to A$的同态只可能是$f(e)=e$，此时$\im f =\{e\}$. 而$A\to \{e\}$的同态$f$满足$\ker(f)=A$. 类似的，在环中，零环$\{0\}$也提供了同样的作用，在$R$-模中，零模$\{0\}$也类似。
+\para 有一个自然的单同态：考虑$A$是$B$的子群/环/$R$-模，则$\id_B|_A:A\to B$就是一个单同态。此时这个映射（同态）被称为含入映射（同态），一般而言我们会略去他的符号，用一个弯曲的箭头写作$A\hookrightarrow B$. 正如我们前面看到的，设$\rho:A\to C$是一个同态，则他的核是$A$的子群/环/$R$-模，此时有$\ker\rho\hookrightarrow A$.
+
+设$\{e\}$是平凡群，则同态$f:\{e\}\to A$只可能是$f(e)=e$，因此平凡群$\{e\}$可以看成任意群的子群，从他到任意群的同态只有一个同态，即含入同态。而任意同态$g:A\to \{e\}$满足$\ker(g)=A$，他被称为零同态。 类似的，在环中，零环$\{0\}$也提供了同样的作用，在$R$-模中，零模$\{0\}$也类似。
 
 \para 若有一族同态$f_i:A_i\to A_{i+1}$满足$\im f_i=\ker f_{i+1}$，则列
 \[
 	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
 \]
-被称为正合的。在正合列中，平凡群一般写作$1$，零环和零模则写作$0$，从平凡群出发或者到平凡群的映射记作$1$，零环和零模的则记作$0$，通常略去他们的符号。
+被称为正合的。在正合列中，平凡群一般写作$1$，零环和零模则写作$0$，从平凡群出发或者到平凡群的同态记作$1$，零环和零模的则记作$0$，通常略去他们的符号，因为这些同态的我们是清楚的。
 
-正合列可以用来表示一个同态是否是单射或者满射。考虑正合列$0\to A\xrightarrow{f} B$，由于$\ker(f)=\im(0)=\{0\}$，所以$f$是一个单射。考虑正合列$A\xrightarrow{f} B\to 0$，由于$\im f=\ker(0)=B$，所以$f$是一个满射。
+正合列可以用来表示一个同态是否是单射或者满射。考虑正合列$0\to A\xrightarrow{f} B$，由于$\ker(f)=\im(0\to A)=\{0\}$，所以$f$是一个单射。考虑正合列$A\xrightarrow{f} B\to 0$，由于$\im f=\ker(B\to 0)=B$，所以$f$是一个满射。
 
 在正合列中，短正合列尤其重要，他写作
 \[
 	0\to A \xrightarrow{f} B \xrightarrow{g} C\to 0,
 \]
-其中$f$是单射，而$C$是满射。
-
-\theo 同构基本定理：设$f:A\to B$是一个满同态，则存在一个群$C$使得短正合列成立
+其中$f$是单射，而$C$是满射。如果有如下正和列
 \[
-	1\to \ker(f) \hookrightarrow A \xrightarrow{f} B\to 1,
+	0\to A \xrightarrow{f} B \to 0,
 \]
-\section{范畴}
+这就意味着同态$f$即是单射又是满射。下面的命题告诉我们，$f$此时是一个同构。
+
+\pro 一个（群/环/$R$-模）同态是同构当且仅当他既是单的又是满的。
+
+\proof 一个同构肯定既是单的又是满的。反过来，设$f: A\to B$既是单的又是满的，则对$b\in B$，我们唯一存在一个$a\in A$使得$f(a)=b$，定义
+\[
+	\begin{array}{ccccc}
+		g &:&B &\to& A,\\
+		g &:&b &\mapsto& a.
+	\end{array}
+\]
+我们下面检验这是一个同态。
+
+对于群而言，设$g(b_1)=a_1$和$g(b_2)=a_2$，则只要检验$g(b_1b_2)=a_1a_2$，由于$f(a_1a_2)=f(a_1)f(a_2)=b_1b_2$以及$f$是一个单射就得出了$g(b_1b_2)=a_1a_2=g(b_1)g(b_2)$. 另外，显然$g(e)=e$，所以$g$是一个同态。
+
+对于环而言，加法群同态部分已经由群的结论得到了，只要检验乘法即可。而乘法部分和群的情况是一模一样的。
+
+对于$R$-模的情况，加法群同态部分已经由群的结论得到了，只要检验标量乘法即可。设$g(b)=a$，以及$g(rb)=a'$. 由于$f(a')=rb$以及$rf(a)=f(ra)=rb$，所以由$f$是一个单射也就得到了$a'=ra$，故$g(rb)=rg(b)$，所以$g$是一个同态。
+
+最后显然$f\circ g =\id_B$以及$g\circ f=\id_A$，所以$f$是一个同构，而他的逆$g$常常记作$f^{-1}$.
+\qed
+
+\para 设$f:G\to H$是一个群同态，前面说过$\ker(f)$是$G$的一个子群。我们问反过来的一个问题，什么时候子群可以称为一个同态的核。为此，先看看核有什么性质，设$h\in \ker(f)$，则任取$g\in G$有
+\[
+	f\left(ghg^{-1}\right)=f(g)f(h)f(g)^{-1}=f(g)ef(g)^{-1}=e,
+\]
+所以$ghg^{-1}\in \ker(f)$，或者$gh \in \ker(f)g$，再或者$g\ker(f)\subset \ker(f)g$. 然后再考虑$g\to g^{-1}$我们就得到了反向包含，合起来就得到了$g\ker(f)=\ker(f)g$对任意$g\in G$都成立。
+
+我们抽象出这个性质：如果一个$G$的子群$H$满足对任意的$g\in G$都成立$gH=Hg$，则$H$被称为$G$的正规子群。
+
+一般而言，子群不是正规子群。但是，对于交换群，$gh=hg$，所以任意子群都是正规子群。反过来也不对，任意子群是正规子群也不一定是交换群。
+
+\para 在继续回答上面的问题之前，我们先看看陪集。设$H$是$G$的一个子群，我们可以自然地定义一个等价关系：子集族$\{gH\,:\, g\in G\}$构成了$G$的一个划分。
+
+证明是简单的。显然他们的并等于$G$，只要证明不交性即可，如果$gH\cap hH\neq \varnothing$，则存在$k\subset gH\cap hH$，故$g^{-1}k$和$h^{-1}k$属于$H$，由于$H$是子群，则$g^{-1}k\left(h^{-1}k\right)^{-1}=g^{-1}h\in H$，因此$g^{-1}hH=H$也就堆出了$hH=gH$.
+
+这样定义的等价类被称为一个左陪集(coset)，当然还可以类似定义右陪集。对于陪集，有如下简单性质：$|gH|=|H|$. 这点只要注意到$gh_1=gh_2$可以推出$h_1=h_2$即可。所以对于有限群，我们就得到了Lagrange定理：子群的元素个数可以整除群的元素个数，除出来就是陪集的个数。
+
+\para 对于正规子群$H$而言，由于$gH=Hg$，所以正规子群的左陪集和右陪集相同。将$gH$记作$\bar{g}$，我们证明$\{\bar{g}\,:\, g\in G\}$构成了一个群。
+
+首先是乘法，他来自于$G$的乘法：
+\[
+	\bar{g}\bar{h}=gHhH=HghH=H(gh)H=(gh)HH=(gh)H=\overline{gh}.
+\]
+从乘法定义看出看出，单位元是$\bar{e}$，而$\bar{g}$的逆就是$\overline{g^{-1}}$. 因此$\{\bar{g}\,:\, g\in G\}$构成了一个群，他被记作$G/H$，称作$G$关于$H$的商群，或者说$G$模掉$H$.
+
+注意到，在定义乘法的时候，我们利用了正规子群的性质。这是非常关键的。
+
+\para 前面我们看到了，任意同态的核都是正规子群。反过来，我们问过什么时候子群是一个同态的核。下面我们做出回答，任何正规子群都可以实现为一个同态的核。这就是说，同态的核刚好就是正规子群，不多不少。
+
+设$H$是$G$的一个子群，我们定义一个同态
+\[
+	\begin{array}{ccccc}
+		\pi &:&G &\to& G/H,\\
+		\pi &:&g &\mapsto& \bar{g}.
+	\end{array}
+\]
+利用$\bar{g}\bar{h}=\overline{gh}$可以看出他是一个同态，而且是满同态，且$\ker(\pi)=\bar{e}=H$. 这就证明了我们的论断。
+
+使用短正合列，我们可以将上面的结论总结为：
+\[
+	1\to H \hookrightarrow G \xrightarrow{\pi} G/H\to 1.
+\]
+
+\para 类似于商群，我们可以定义出商环。设$\mathfrak{a}$是$R$的任意一个理想，作为交换群，$\mathfrak{a}$是$R$的正规子群，所以可以定义出商群$R/\mathfrak{a}=\{\bar{r}=r+\mathfrak{a}\,:\, r\in R\}$，换而言之，$r\in \bar{s}$当且仅当$r=s+a$，其中$a\in \mathfrak{a}$. 我们下面在$R/\mathfrak{a}$上定义出一个环结构。
+
+我们定义$R/\mathfrak{a}$中的乘法为$\bar{r}\bar{s}=\overline{rs}$. 注意到这并不是$R$上的两个子集的乘法。这个乘法的定义是合理的，设$\overline{r'}=\bar{r}$，即$r'+a=r$, 以及$\overline{s'}=\bar{s}$，即$s'+b =s$，则
+\[
+	rs=(r'+a)(s'+b)=r's'+(r'b+as'+ab),
+\]
+其中$r'b+as'+ab\in \mathfrak{a}$，因为$\mathfrak{a}$是一个理想。故$\overline{rs}=\overline{r's'}$. 剩下的环的性质的检验都是直接的。
+
+\para 同样的，我们可以定义出商模。设$M$是一个$R$-模，而$N$是$M$的任意一个子模，作为交换群可以定义出商群$M/N=\{\bar{m}=m+N\,:\, m\in M\}$. 我们下面在$M/N$上定义出一个$R$-模结构。
+
+我们定义$M/N$中的标量乘法为$r\bar{m}=\overline{rm}$.这个乘法的定义是合理的，设$m'=m+n$，其中$n\in N$，则
+\[
+	rm'=rm+rn
+\]
+其中$rn\in N$，因为$N$是一个理想。故$\overline{rm}=\overline{rm'}$. 剩下的模的性质的检验都是直接的。
+
+\theo 同构基本定理：设$f:A\to B$是一个（群/环/$R$-模）同态，若存在同态$g: A\to B$使得$\ker f\subset \ker g$，则他诱导了一个同态$\bar{g}:A/\ker{f}\to B$. 如果$g$是满同态，则$\bar{g}$是满同态。特别地，如果$f$是满同态，则$\bar{f}: A/\ker{f}\to B$是一个同构。
+
+\proof
+	对于群的情况，$g(\ker f)=e$，$g(a\ker f)=g(a)$. 对于环和$R$-模的情况，$g(\ker f)=0$，$g(a+\ker f)=g(a)$. 所以我们可以定义$\bar{g}(\bar{a})=g(a)$，不难检验这是一个（群/环/$R$-模）同态。并且$g$是满的时候，$\bar{g}$是满的。
+
+	现在假设$f$是满同态，则$\bar{f}$是满同态。我们剩下的只要证明$\bar{f}$是个单射，或者$\ker(\bar{f})=\{\bar{e}\}$即可。设$\bar{f}(\bar{a})=f(a)=e$，于是$a\in \ker(f)=\bar{e}$，因此$\bar{a}\cap \bar{e}=\varnothing$，于是我们也就得到$\bar{a}=\bar{e}$，所以$\ker(\bar{f})=\{\bar{e}\}$. 
+
+	由于$\bar{f}$是满同态也是单同态，所以他是一个同构。
+\qed
+
+一般只有最后一点被称为同构基本定理，但是前面的一部分是商群/环/$R$-模的泛性质，所以我们特地写出来。下面我们写两个常用的同构，他们是同构基本定理的简单推论。由于会谈到子模，所以我们可以先做观察：子模的子模依然是子模。
+
+\para 设$L\subset M \subset N$是有包含关系的三个$R$-模，则商映射$\rho:N\to N/M$诱导了一个满射$\bar{\rho}:N/L \to N/M$使得$\ker \bar{\rho}=M/L$. 使用同构基本定理，我们就得到了同构$N/M=(N/L)/(M/L)$.
+
+考虑商映射$\rho:N\to N/M$，由于$L\subset \ker \rho=M$，所以由同构基本定理，我们诱导了一个满射$\bar{\rho}:N/L \to N/M$，接下来只要求他的核即可。任取$\bar{x}\in N/L$以及代表元$x\in N$，由于$\bar{\rho}(\bar{x})=\rho(x)$，所以$\bar{\rho} (\bar{x})=0$当且仅当$x\in \ker \rho =M$，这就告诉我们$\ker \bar{\rho}=M/L$.
+
+\para 设$M_1$和$M_2$是$M$的子模，则复合$M_2\hookrightarrow M_1+M_2 \to (M_1+M_2)/M_1$是一个满射，他的核是$M_1\cap M_2$，因此我们有同构
+\[
+	(M_1+M_2)/M_1\cong M_2/(M_1\cap M_2).
+\]
+
+\para 可以将上面的命题翻译到群上去。不过由于只有正规子群才可以谈商群，所以我们必须更加谨慎。两个相应的同构被如下表述：
+
+\begin{itemize}
+\item 给定群$G$，$N$和$M$为$G$的正规子群，满足$M$包含于$N$，则$N/M$是$G/M$的正规子群，且有如下的群同构： $ (G/M)/(N/M)\cong G/N$.
+
+\item 给定群$G$ 、其正规子群$N$ 、其子群$H$ ，则$N\cap H$是$H$ 的正规子群，且我们有群同构如下：$H/(H\cap N)\cong HN/N$
+\end{itemize}
+
+证明和模的情况是类似的，只不过必须更加小心而已。对于环，我们一般谈理想，所以可以应用模的定理（作为模，理想是子模）。
+
+\section{范畴与函子}
+
+前面看到了，在群/环/模上面，我们都谈论了什么叫同态，什么是同构，以及后来将可能遇到的一些在不同的代数结构上有类似性质的构造。下面我们要引入新的语言来抽象这些东西，他的名字叫范畴。
+
+\para 一个范畴$\mathcal{C}$有如下数据：
+\begin{enumerate}
+\item 一类(class)对象(object)，类在这里的意思并不是构成一个集合。一个范畴中所有的对象可以不构成一个集合。如果$X$是$\mathcal{C}$的一个对象，我们沿用集合论的符号，写成$X\in \mathcal{C}$.
+
+对每两个对象$X$和$Y$，有一个集合$\Hom(X,Y)$，其中的元素被称为态射。设$\varphi\in \Hom(X,Y)$，他通常沿用映射的记号写成$\varphi:X\to Y$，但态射不必是映射。沿用叫法，$\varphi:X\to Y$中$X$被称为定义域，而$Y$被称为值域。态射还需要满足如下假设：
+
+\begin{itemize}
+
+\item 任取态射$\varphi$，我们都可以从他得到唯一的定义域和值域，即$\varphi$如果同时属于$\Hom(X,Y)$和$\Hom(Z,W)$，则$X=Z$以及$Y=W$.
+
+\end{itemize}
+
+\item 任取对象$X$, $Y$和$Z\in \mathcal{C}$，则有映射$\Hom(X,Y)\times \Hom(Y,Z)\to \Hom(X,Z)$，沿袭映射的说法，他被称为态射的复合。设$\varphi\in \Hom(X,Y)$和$\psi \in \Hom(Y,Z)$，则复合出来的态射被记作$\psi\circ \varphi$或者再简单一点$\psi\varphi$. 复合还需要满足：
+\begin{itemize}
+
+\item 态射的复合满足结合率，即$\varphi(\psi\theta)=(\varphi\psi)\theta$.
+
+\item 在每一个$\Hom(X,X)$中有一个元素$\id_X$使得，任取$\rho:X\to Y$以及$\psi:Z\to X$成立复合$\rho\id_X=\rho$以及$\id_X\psi=\psi$.
+\end{itemize}
+\end{enumerate}
+
+如果一个范畴的对象可以构成一个集合，那么这个范畴就被称为小范畴。在定义中，我们可以看到，所有对象与集合、态射与映射的相似性，所以我们可以直接断言，所有集合以及集合间的态射构成了一个范畴，他被称为集合范畴。
+
+类似地，所有的群/环/$R$-模和他们两两之间的同态构成了一个范畴。下面是一个稍微不一般一点的例子。
+
+\para 设$I$是一个偏序集，偏序关系为$\leq$，那么我们如下定义态射使得他构成了一个范畴：
+\[
+	\Hom_{I}\left(x,y\right)=\begin{cases}
+	\{x,\{x,y\}\}=(x,y)&\text{, if }x\leq y\text{;}\\
+	\varnothing&\text{, otherwise}.
+	\end{cases}
+\]
+复合映射就写作$(y,z)(x,y)=(x,z)$，因此偏序集具有一个（小）范畴结构，其中的态射记作$x\leq y$.
+
+一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
+\[
+	\Hom_{X}(U,V)=\begin{cases}
+	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
+	\varnothing&\text{, otherwise}.
+	\end{cases}
+\]
+当然这个范畴也可以通过在开集族上给定一个偏序$U\leq V$当且仅当$U\subset V$给出。
+
+所有拓扑空间和其间的连续映射当然构成一个范畴。所有光滑流形和其间的光滑映射构成一个范畴。最后一个例子是关系构成了范畴，他的对象是集合，而$\Hom(X,Y)$是所有$X\times Y$的子集，设$\varphi:X\to Y$和$\psi:Y\to Z$是两个态射，则复合被定义为
+\[
+	\psi\varphi=\{(x,z)\in X\times Z\,:\,\exists y\in Y\,\text{ s.t. } (x,y)\in\varphi,\, (y,z)\in \psi\}.
+\]
+
+\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^\circ$如下：对象不变，而$\Hom_{\mathcal{C}^\circ}(X,Y)$被定义为$\Hom_{\mathcal{C}}(Y,X)$，复合不变。他被称为给定范畴的对偶范畴。
+
+\para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。
+
+\para 类似于集合之间有映射，范畴之间也有个函子(functor). 由于范畴有对象以及对象之间的态射，所以函子也是由关于对象和范畴的数据构成的，设$\mathcal{C}$和$\mathcal{D}$是两个范畴，$F$被称为一个函子，如果
+\begin{enumerate}
+
+\item 对任意的$X\in \mathcal{C}$，都唯一的$F(X)\in \mathcal{D}$.
+
+\item 对任意的$\varphi\in \Hom(X,Y)$，存在唯一的$F(\varphi)\in  \Hom(F(X),F(Y))$使得成立复合关系$F(\varphi\psi)=F(\varphi)F(\psi)$以及$F(\id_X)=\id_{F(X)}$.
+
+\end{enumerate}
+
+一般将“从$\mathcal{C}$到$\mathcal{D}$的函子$F$”记作$F:\mathcal{C}\to \mathcal{D}$. 虽然记号相同，但是我们可以通过语境来区分他与态射。
+
+函子的实例是非常多的，比如从$R$-模范畴到交换群范畴就有一个函子，他将一个模看成一个交换群，模同态看成交换群同态。这样的函子，从某个结构丰富的范畴到结构没那么丰富的范畴，被称为遗忘函子。遗忘函子又比如从拓扑空间范畴到集合范畴。
+
+\para 范畴与函子也构成一个范畴，即范畴的范畴。关键是我们要定义函子之间的态射。设$F$和$G$都是从$\mathcal{C}$到$\mathcal{D}$的函子，如果对每一个$X\in \mathcal{C}$都有一个态射$f(X):F(X)\to G(X)$使得如下交换图成立
+\[
+\begin{xy}
+	\xymatrix
+	{
+		F(X)\ar[rr]^{f(X)} \ar[d]_{F(\varphi)}&&G(X) \ar[d]^{G(\varphi)}\\
+		F(Y)\ar[rr]^{f(Y)}&&G(Y)
+	}
+\end{xy}
+\]
+则$f$被称为一个自然变换，或者叫函子间的态射。
+
+\para 在有些作者那里，我们上面定义的函子被称为协变函子，而函子$F:\mathcal{C}^\circ \to \mathcal{D}$被称为反变函子。后者明确写出来即$F(\varphi\psi)=F(\psi)F(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的函子。
+
+% \section{极限与余极限}
+
+% \para 设$\mathcal{J}$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:\mathcal{J}\to \mathcal{C}$为$\mathcal{C}$中的一个$\mathcal{J}$-图，或者简略叫做图。对于$j\in \mathcal{J}$，$D(j)$称为该图的一个顶点，而对任意的态射$\alpha:j_1\to j_2$，态射$D(\alpha)$称为该图的一条边。
+
+% \para 称$(A,\lambda)$为$J$-图的一个{锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:A\to D(j)$使得如下交换图对所有的顶点和边都成立
+% \[
+% 	\xymatrix{
+% 		&A \ar[dl]_{\lambda_{j}}\ar[dr]^{\lambda_{j'}}&\\
+% 		D(j)\ar[rr]^{D(\alpha)}&&D(j')
+% 	}
+% \]
+
+% 称呼一个锥形$(A,\lambda)$是$J$-图的一个{极限}，如果对于任意的锥形$(B,\mu)$，都有唯一的态射$f:B\to A$使得如下分解$\mu_j:B\xrightarrow{f}A\xrightarrow{\lambda_j}D(j)$成立。
+
+% 在实际过程中，如果极限$(A,\lambda)$中的态射族是明确的（乃至于是由对象$A$确定的），那么我们会用$A$来表示极限。并且一般将$J$-图$D$的极限写作$\varprojlim_{j\in J} D(j)$.
+
+% 作为例子，模范畴的直积就是一种极限，他对应的小范畴，两个不同的元素之间没有态射。
+
+% \para 锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。称$(A,\lambda)$为$J$-图的一个{余锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:D(j)\to A$使得如下交换图对所有的顶点和边都成立
+% \[
+% 	\xymatrix{
+% 		&A&\\
+% 		D(j)\ar[rr]^{D(\alpha)} \ar[ur]^{\lambda_{j }}&&D(j')\ar[ul]_{\lambda_{j'}}
+% 	}
+% \]
+
+% 称呼一个余锥形$(A,\lambda)$是$J$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都有唯一的态射$f:A\to B$使得如下分解$\mu_j:D(j)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。一般将$J$-图$D$的余极限写作$\varinjlim_{j\in J} D(j)$.
+
+% 同样，作为例子，模范畴的直和就是一种余极限，他对应的小范畴，两个不同的元素之间没有态射。
+
+% \para 设$I$是一个偏序集，偏序关系为$\leq$，那么族$\{\{x\}\,:\, x\in I\}$构成一个（小）范畴，其中的态射定义为
+% \[
+% 	\Hom_{I}\left(\{x\},\{y\}\right)=\begin{cases}
+% 	\bigl\{x\mapsto y\bigr\}&\text{, if }x\leq y\text{;}\\
+% 	\varnothing&\text{, otherwise}.
+% 	\end{cases}
+% \]
+% 当然，我们一般直接将$I$和$\{\{x\}\,:\, x\in I\}$等同，此时会说偏序集具有一个（小）范畴结构，其中的态射记作$x\leq y$.
+
+% 如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^\circ$.
+
+% $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
+
+% 对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^\circ :I^\circ\to \mathcal{C}$通过$D^\circ(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^\circ(j\geq i)\circ D^\circ(k\geq j)=D^\circ(k\geq i)$，可见这确实是一个协变函子。
+
+% \para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。
+
+% 很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^\circ$就是定向的（滤相的），反之亦然。
+
+% 作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。
+
+% 同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
+
+% \para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个{逆系统}（{定向系统}）。逆系统一般谈论极限$\varprojlim_{i\in I} D(i)$，而定向系统一般谈论$\varinjlim_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
+% \[
+% 	\xymatrix{
+% 		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
+% 		D(i)&&D(j)\\
+% 		&D(k)\ar[ul]^{D(k\leq i)}\ar[ur]_{D(k\leq j)}&
+% 	}
+% 	\quad
+% % \xymatrix{
+% % 	&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
+% % 	D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[dl]^{D(j\leq k)}\\
+% % 	&D(k)&
+% % }
+% 	\xymatrix{
+% 		&A &\\
+% 		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
+% 		&D(k)\ar[uu]_{\mu_{k}}&
+% 	}
+% \]
+% 左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
+
+% \para 考虑$I$是滤相的（定向的），而$D$是协变函子，那么$I$-图$D$是逆系统（定向系统）。考虑$I$是滤相的（定向的），而$D$是反变函子，那么$I^\circ$-图$D^\circ$是定向系统（逆系统）。
+
+% \para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
+
+% 在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$.
+
+% 同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
+
+% 更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
+
+% \pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且$\varprojlim_{i\in I} D(i)=\varprojlim_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^\circ $存在一个与其共尾的子集$J^\circ $，则$J$-图$D$是一个定向系统，且$\varinjlim_{i\in I} D(i)=\varinjlim_{i\in J} D(i)$. \rule{2mm}{2mm}
+
+% 所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的对偶极限。这符合我们上面的直观。
+
+% \para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
+% \[
+% 	\Hom_{X}(U,V)=\begin{cases}
+% 	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
+% 	\varnothing&\text{, otherwise}.
+% 	\end{cases}
+% \]
+
+% 考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限$\varinjlim_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in I}$.
+
+% 同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。
+
+% 但它的极限$\varprojlim_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
+
+% \para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
+
+% 由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^\circ$-图$\calf^\circ$是定向系统，进而我们会考虑余极限
+% \[
+% 	\varinjlim_{U\in \mathfrak{B}^\circ} \calf^\circ(U)=\varinjlim_{U\in \mathfrak{B}^\circ} \calf(U),
+% \]
+% 如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.
+
+% % \para 考虑$X$的一个拓扑基，它按照包含也构成一个偏序集，考虑它的一个子族$\mathfrak{B}$，使得每一个元素$V\in \mathfrak{B}$都有$V\subset U$，他继承了来自于拓扑基的偏序结构。
+
+% % 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
+
+% \theo 在左$R$-模范畴，任意的极限与余极限存在。 \rule{2mm}{2mm}

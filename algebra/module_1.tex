@@ -1,10 +1,216 @@
 \chapter{模（一）}
 假设下面出现的环都是交换含幺环，所以我们不区分左右模。
-\section{直和、直积与张量积}
+\section{直和、直积}
 
-张量抽象了多线性函数，尤其是双线性函数。
+直积和直和都属于用一些小的模来构造出大的模的手段。
 
-\para 设$A$是右$R$-模，$B$是左$R$-模，那么我们称$f:A\times B\to G$，其中$G$是一个交换群，为一个双线性函数，如果他满足
+\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M\to M_i$使得，如果存在另一个模$N$和一族同态$\rho_i:N\to M_i$，那么就唯一存在同态$\rho:N\to M$使得分解$\rho_i:N\xrightarrow{\rho} M \xrightarrow{\pi_i} M_i$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直积，而$\pi_i$被称为典范投影，通常将$M$记作$\prod_{i\in I}M_i$. 直积对应于范畴里product的概念。
+
+存在性的证明是简单的，考虑$\{M_i\,:\, i\in I\}$作为集合的直积，很容易检验它有一个$R$-模结构，且投影是同态。更详细的检查这里就略去了。
+
+其他满足这个性质的模及同态，都可以唯一分解到这个典型的模和同态（这里是直积和投影）的性质，被称为泛性质。
+
+\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 直和对应于范畴里coproduct的概念。
+
+直和存在性的构造并不如同直积那么容易。我们考虑$\{M_i\,:\, i\in I\}$的形式和$M$，即
+\[
+	M=\left\{\sum_{i\in I} a_i m_i\,:\, m_i\in M_i\right\},
+\]
+其中的求和只有有限项，或者说系数$a_i$只有有限项非零。可以看到这是一个模。定义$\pi_i:M_i\to M$为$\pi_i(m_i)=m_i$，可以检验这是一个模同态。
+
+现在任取$N$和一族同态$\rho_i:M_i\to N$，我们将其扩展为$\rho_i:M\to N$通过补充定义$\rho_i(m)=0$，如果$m\notin M_i$. 随后我们定义$\rho = \sum_{i\in I} \rho_i$，需要检验这个求和对任意的$m\in M$是有限的。为此，任取$m\in M$，由于他可以分解成$m=\sum_i a_i m_i$，所以
+\[
+	\rho(m)=\sum_i a_i \rho_i(m_i),
+\]
+求和是有限求和因为$a_i$只有有限项非零。有了构造，泛性质的检验就是直接的了。
+
+注意到交换群为$\zz$-模，所以我们也证明了交换群有直和与直积。
+
+\para 如果满足泛性质，则他在同构意义上唯一。
+
+以直积为例，如果$(M,\pi_i)$和$(M',\pi'_i)$都满足泛性质，则利用$M$的泛性质，我们有唯一的同态$\rho:M'\to M$，利用$M'$的泛性质，我们有唯一的同态$\rho':M\to M'$. 之后检验$\rho$和$\rho'$互逆即可。下面我们讨论张量积的时候还会对此做演示。
+
+\section{矩阵与行列式}
+
+\para 设$I$是一个指标集，我们定义$R^I=\bigoplus_{i\in I}R$，他被称为自由模。如果$I$是有限集，$n=|I|$，则我们通常将自由模$R^I$记作$R^n$. 记$1_i$为第$i$个指标的$R$中的$1$.
+
+\para 设$M$是一个$R$-模，$S$是他的一个子集，称呼$M$被$S$生成，就是说$M$中的元素可以写成$S$中元素的有限线性组合。即任取$m\in M$，存在一个系数集$\{a_s\in R\,:\, s\in S\}$，其中只有有限个系数非零，使得
+\[
+	m=\sum_{s\in S}a_s s.
+\]
+称呼一个$R$-模$M$是有限生成的，就是说存在一个$M$的有限子集生成他。
+
+显然$R^I$由$\{1_i\,:\,i\in I\}$生成，其中$1_i$代表的是第$i$个指标的$R$中的$1$，所以$R^n$是有限生成模。
+
+\para 设$M$是一个有限生成$R$-模，他的生成元可以取作$\{m_1$, $\cdots$, $m_n\}$，则一个$R$中元素的$n$-元组$(r_1$, $\cdots$, $r_n)$可以确定一个线性组合$\sum_{i=1}^nr_im_i$，继而是一个模中的元素。
+
+\para 设$M$和$N$有限生成$R$-模，前者的生成元是$\{m_1$, $\cdots$, $m_p\}$，后者的是$\{n_1$, $\cdots$, $n_q\}$，然后考虑一个模同态$\varphi:M\to N$，由于
+\[
+	\varphi\left(\sum_{i} r_im_i\right)=\sum_{i} r_i\varphi\left(m_i\right),
+\]
+所以它由所有$\varphi\left(m_i\right)$描述，由于他在$R^n$中，将其写作
+\[
+	\varphi\left(m_i\right)=\sum_{j}\varphi_{ji}n_j.
+\]
+于是$\{\varphi_{ij}\,:\, 1\leq i \leq p,\,\,1\leq j \leq q\}$这$p\times q$个数构成的整体称为$\varphi$的矩阵，记作$(\varphi)$，他完全描述了整个同态$\varphi$.
+
+设$\psi:R^n\to R^l$的矩阵是$(\psi)_{ij}$，我们下面计算$\psi\circ\varphi$的矩阵：
+\[
+	\psi\circ\varphi(1_i)=\psi\left(\sum_{j=1}^n\varphi_{ji}1_j\right)=\sum_{j=1}^n\varphi_{ji}\psi(1_j)=\sum_{j=1}^n\sum_{k=1}^l\psi_{kj}\varphi_{ji}1_k,
+\]
+所以$\psi\circ\varphi$的矩阵$(\psi\circ\varphi)$为
+\[
+	(\psi\circ\varphi)_{ki}=\sum_{j=1}^n\psi_{kj}\varphi_{ji},
+\]
+这被称为矩阵乘法法则。
+
+\para 通常会使用一张表来表示矩阵
+\[
+(\varphi)=
+\begin{pmatrix}
+	\varphi_{11} & \varphi_{12} & \cdots & \varphi_{1m}\\
+	\varphi_{21} & \varphi_{22} & \cdots & \varphi_{2m}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\varphi_{n1} & \varphi_{n2} & \cdots & \varphi_{nm}\\
+\end{pmatrix}
+\]
+可以看到$\varphi(1_i)$关于$\{1_j\in R^n\}$中展开的系数出现在$(\varphi)$的第$i$列。
+
+\para 矩阵乘法法则此时则写作：
+\begin{equation}
+\begin{pmatrix}
+	\psi_{11} & \psi_{12} & \cdots & \psi_{1n}\\
+	\psi_{21} & \psi_{22} & \cdots & \psi_{2n}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\psi_{l1} & \psi_{l2} & \cdots & \psi_{ln}
+\end{pmatrix}
+\begin{pmatrix}
+	\varphi_{11} & \varphi_{12} & \cdots & \varphi_{1m}\\
+	\varphi_{21} & \varphi_{22} & \cdots & \varphi_{2m}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\varphi_{n1} & \varphi_{n2} & \cdots & \varphi_{nm}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\sum_{i=1}^n \psi_{1i}\varphi_{i1} & \sum_{i=1}^n \psi_{1i}\varphi_{i2} & \cdots & \sum_{i=1}^n \psi_{1i}\varphi_{im}\\
+	\sum_{i=1}^n \psi_{2i}\varphi_{i1} & \sum_{i=1}^n \psi_{2i}\varphi_{i2}& \cdots & \sum_{i=1}^n \psi_{2i}\varphi_{im}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\sum_{i=1}^n \psi_{li}\varphi_{i1} & \sum_{i=1}^n \psi_{li}\varphi_{i2}& \cdots & \sum_{i=1}^n \psi_{li}\varphi_{im}
+\end{pmatrix}
+\end{equation}
+很显然，$(\psi\circ\varphi)_{ij}$由第一个矩阵的第$i$行和第二个矩阵的第$j$列逐个相乘然后相加而得。矩阵乘法把$l\times n$和$n \times m$的矩阵变成了$l \times m$的矩阵。
+
+尤其重要的情况是$m=1$的时候，此时，$n\times 1$的矩阵称为一个列，为了省下书写空间，通常写成行的形式，即$(\varphi_{1i},\cdots,\varphi_{ni})^T$的形式，上标$T$代表将一行转成一列。设$\varphi_{i}=(\varphi_{1i},\cdots,\varphi_{ni})^T$，则一个矩阵可成看出一些列，
+\[
+	\begin{pmatrix}
+	\varphi_{11} & \varphi_{12} & \cdots & \varphi_{1m}\\
+	\varphi_{21} & \varphi_{22} & \cdots & \varphi_{2m}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\varphi_{n1} & \varphi_{n2} & \cdots & \varphi_{nm}\\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+	\varphi_{1} & \varphi_{2} & \cdots & \varphi_{m}
+	\end{pmatrix},
+\]
+其中$\varphi_i=(\varphi_{1i},\cdots,\varphi_{ni})^T$. 
+
+关于列的矩阵乘法为
+\begin{equation}
+\begin{pmatrix}
+	\psi_{11} & \psi_{12} & \cdots & \psi_{1n}\\
+	\psi_{21} & \psi_{22} & \cdots & \psi_{2n}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\psi_{l1} & \psi_{l2} & \cdots & \psi_{ln}
+\end{pmatrix}
+\begin{pmatrix}
+	\varphi_{11} \\
+	\varphi_{21}  \\
+	\vdots \\
+	\varphi_{n1} \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\sum_{i=1}^n \psi_{1i}\varphi_{i1}\\
+	\sum_{i=1}^n \psi_{2i}\varphi_{i1} \\
+	\vdots \\
+	\sum_{i=1}^n \psi_{li}\varphi_{i1}
+\end{pmatrix}
+\end{equation}
+通常将其右侧写作$(\psi)\varphi_1$. 那么一般的矩阵乘法则写作：
+\[
+	(\psi)
+	\begin{pmatrix}
+	\varphi_{1} & \varphi_{2} & \cdots & \varphi_{m}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+	(\psi)\varphi_{1} & (\psi)\varphi_{2} & \cdots & (\psi)\varphi_{m}
+	\end{pmatrix}.
+\]
+
+\section{有限生成模与自由模}
+
+\para 一个$R$-模$M$是有限生成的当且仅当存在某个正整数$n$使得$M$是$R^n$的商模，或者用正合列写作
+\[
+	R^n \xrightarrow{\pi} M\to 0.
+\]
+考虑$M$的一组有限的生成元$\{m_i\,:\, 1\leq i\leq n\}$，他们生成了一个$R$模，满射通过将$\pi:1_i\mapsto m_i$来线性线性扩张得到，即定义
+\[
+	\pi\left(\sum_i r_i 1_i\right)=\sum_i r_i m_i.
+\]
+反过来，如果$M$可以写成某个$R^n$的商模，他自然被$\pi(1_i)$生成。
+
+\para 从自由模模去一些关系是构造一些模的常用手段。比如我们希望构造一个由所有满足$(a,b)=(b,a)$的$(a,b)$构成的一个模，那么最方便的方式就是从$R^2$出发，模去所有$(a,b)-(b,a)$生成的子模。后者被称为一个关系。
+
+自由模模去一个关系得到一个模这个过程，抽象来说，就是存在正合列
+\[
+	R^I\to R^J \to M\to 0.
+\]
+这被称为模$M$的free presentation，如果$I$和$J$都是有限的，则$M$被称为finitely presented.
+
+\theo Hamiltion-Cayley定理：设$M$是一个有限生成$R$-模，他能被$n$个元素生成. 再设$\mathfrak{a}$是$R$的一个理想，$\varphi:M\to M$是一个自同态。如果$\varphi(M)\subset \mathfrak{a}M$，则存在首一多项式
+\[
+	p(x)=x^n+p_1x^{n-1}+\cdots+p_n,
+\]
+其中$p_i\in I$，使得$p(\varphi)=\varphi^n+p_1\varphi^{n-1}+\cdots+p_n$是一个零映射，即任取$m\in M$，有$p(\varphi)(m)=0$. 一般写作$p(\varphi)=0$.
+
+\proof
+	设$\{m_1,\cdots,m_n\}$是$M$的生成元。考虑$\varphi(m_i)\in M$，因为$M$是有限生成的，所以
+	\[
+	\varphi(m_i)=\sum_{j}r_{ij}m_j,
+	\]
+	其中$r_{ij}\in I$. 将其写作$\sum_{j}(\delta_{ij}\varphi-r_{ij})m_i=0$，其中$\delta_{ij}$当$i=j$的时候为$1$，其他时候为$0$.
+
+	将$M$看作$R[x]$-模，其中$xm=\varphi(m)$，则$\sum_{j}(\delta_{ij}x-r_{ij})m_i=0$. 左乘$x\delta_{ij}-r_{
+	ij}$的伴随矩阵，就得到了
+	\[
+	\det\left(x\delta_{ij}-r_{ij}\right)m_i=0,
+	\]
+	对任意的$m_i$都成立。所以也对任意的$m\in M$都成立，而$\det(x\delta_{ij}-\sum_{j}r_{ij})$就是我们需要的多项式。
+\qed
+
+\para 作为Hamiltion-Cayley定理的应用，我们可以断言，有限生成模的任意满自同态是同构。
+
+\proof
+	把$M$看出$R[x]$-模，其中$xm=\varphi(m)$，他是有限生成的，因为作为$R$-模是有限生成的。令$I=(x)$是$x$在$R[x]$中生成的主理想。由于$\varphi$是满射，则$IM=M$. 选则映射$\id_M=1:M\to M$，这显然是一个$R[x]$-模同态，由于$\id_M(M)\subset IM$，利用Hamiltion-Cayley定理，存在一个多项式$p$，系数属于$I$使得
+	\[
+	p(1)m=\left(1^n+xf_1(x)1^{n-1}+\cdots+xf_n(x)\right)m=(1-xq(x))m=0,
+	\]
+	其中$q\in R[x]$. 或者写作，$1-q(\varphi)\varphi=0$. 因此$q(\varphi)$是$\varphi$的一个逆，进而$\varphi$是一个同构。
+\qed
+
+\para 将上述命题应用到自由模。设$M\cong R^n$，而$I=\{x_1$, $\cdots$, $x_n\}$自由生成了$M$（即$\{x_1$, $\cdots$, $x_n\}$的非零$R$-系数线性组合都不为零），则$M$同构于$I=\{x_1$, $\cdots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
+
+\proof
+	$\bigoplus_{x\in I} R$自然可以看成$R^n$，从$\bigoplus_{x\in I} R=R^n$到$M$有自然的满射$\alpha$，他将生成元映到生成元，由于$M\cong R^n$，所以有同构$\beta:M\to R^n$，因此就有了满同态$\alpha\beta:M\to M$，进而是同构。所以$\alpha =(\alpha\beta)\beta^{-1}$就是一个同构。
+\qed
+
+利用上面这个命题，可以证明当$m\neq n$时$R^m\not\cong R^n$. 设$m<n$，反证即可，如果$R^m\cong R^n$，则在$R^m$中可以取$n$个自由生成元，但这$n$个自由生成元都由$R^m$的自由生成元生成，所以他们不是自由的，矛盾。
+
+\section{张量积}
+
+\para 张量抽象了多线性函数，尤其是双线性函数。设$A$是右$R$-模，$B$是左$R$-模，那么我们称$f:A\times B\to G$，其中$G$是一个交换群，为一个双线性函数，如果他满足
 \[
 	f(a+b,a')=f(a,a')+f(b,a'),\quad f(a,a'+b')=f(a,a')+f(a,b'),
 \]
@@ -15,6 +221,8 @@
 	f:A\times B\xrightarrow{\varphi} G\xrightarrow{h_f}H,
 \]
 其中$h_f$对每一个双线性函数$f$存在且唯一，则称呼$G$为$A$与$B$的张量积，记做$A\otimes_R B$，而$\varphi(a,b)$记做$a\otimes_R b$，如果下标$R$不重要，那么我们可以省略他。
+
+如果$G$也有$R$-模结构，那么同态就是$R$-模同态。
 
 \lem 在模范畴内，张量积存在。而且由上面的泛性质，他确定到一个同构。
 
@@ -28,23 +236,23 @@
 \]
 显然，所以由唯一性得到了$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$，同理有另一个等式。
 
-对于存在性，我们可以直接构造，首先，我们知道在交换群范畴有直和存在，那么我们可以构造自由交换群$F=\bigoplus_{(a,b)\in A\times B} \zz\langle (a,b)\rangle$.令$1_{a,b}$是$\zz\langle (a,b)\rangle$中的$1$，我们令$H$是由
+对于存在性，我们可以直接构造，首先，我们知道在交换群范畴（作为$\zz$-模）有直和存在，那么我们可以构造自由交换群
+\[
+	F=\bigoplus_{(a,b)\in A\times B} \zz=\sum_{(a,b)\in A\times B}n_{(a,b)}1_{a,b}.
+\]
+这是一个形式和，系数只有有限项非零，其中$1_{a,b}$是对应指标$(a,b)$的那个$\zz$中的$1$。我们令$H$是由
 \[
 	1_{a,b}+1_{a',b}-1_{a+a',b},\quad 1_{a,b}+1_{a,b'}-1_{a,b+b'},\quad 1_{ar,b}-1_{a,rb}
 \]
 生成的子群，那么我们$A\otimes B$就可以构造为$F/H$，令$\varphi(a,b)=a\otimes b=[1_{a,b}]$，即$1_{a,b}$的陪集。这确实是张量积，具体的检验这里就不进行了。\qed
 
-设$R$是交换环，$A$和$B$都是双边模，那么$A\otimes_R B$显然有一个$R$-模结构，比如$r(a\otimes b)$可以定义为$(ra)\otimes b$.特别地，如果交换环$T$是一个$R$-代数\footnote{设$f:R\to T$是一个环同态，那么我们可以通过$r\cdot t=f(r)t$在$T$上定义一个$R$-模结构，此时称$T$是一个$R$-代数。此外，$R$-代数同态是一个环同态，同时也是一个$R$-模同态。}，设$A$是一个$R$-模，则$A\otimes_R T$就是一个$T$-模。这是因为，我们可以通过$t(a\otimes b)=a\otimes (tb)$来定义标量乘法。
-
-\para 有同构$A\otimes\bigoplus_i B_i\cong \bigoplus_i (A\otimes B_i)$，$R\otimes A\cong A$以及$(R/I)\otimes B\cong B/IB$，其中$I$是$R$的一个理想。这俩的证明完全是利用泛性质，这里就不说了。
+% 设$R$是交换环，$A$和$B$都是双边模，那么$A\otimes_R B$显然有一个$R$-模结构，比如$r(a\otimes b)$可以定义为$(ra)\otimes b$.特别地，如果交换环$T$是一个$R$-代数\footnote{设$f:R\to T$是一个环同态，那么我们可以通过$r\cdot t=f(r)t$在$T$上定义一个$R$-模结构，此时称$T$是一个$R$-代数。此外，$R$-代数同态是一个环同态，同时也是一个$R$-模同态。}，设$A$是一个$R$-模，则$A\otimes_R T$就是一个$T$-模。这是因为，我们可以通过$t(a\otimes b)=a\otimes (tb)$来定义标量乘法。
 
 \para 有了两个模的张量积，我们自然也可以拓展为三个模的张量积，我们可以通过模仿两个模的张量积的泛性质\footnote{即三线性的函数可以唯一分解。}，定义一个新的三个模之间的张量积$A\otimes B\otimes C$，然后可以检验$(A\otimes B)\otimes C$和$A\otimes (B\otimes C)$同时也满足泛性质，所以他们之间是同构的。在这层意义上，我们可以认为张量积满足结合律，因此我们自然也有了有限个模的张量积。
 
-\section{有限生成模与可表示模}
+\para 有同构$A\otimes\bigoplus_i B_i\cong \bigoplus_i (A\otimes B_i)$，$R\otimes A\cong A$以及$(R/I)\otimes B\cong B/IB$，其中$I$是$R$的一个理想。这俩的证明完全是利用泛性质，这里就不说了。
 
 \section{链条件}
-
-\section{自由模与矢量空间}
 
 \section{代数与标量扩张}
 

@@ -6,3 +6,117 @@
 \section{主理想整环上的有限生成模}
 
 \section{极限与余极限}
+
+\para 设$\mathcal{J}$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:\mathcal{J}\to \mathcal{C}$为$\mathcal{C}$中的一个$\mathcal{J}$-图，或者简略叫做图。对于$j\in \mathcal{J}$，$D(j)$称为该图的一个顶点，而对任意的态射$\alpha:j_1\to j_2$，态射$D(\alpha)$称为该图的一条边。
+
+\para 称$(A,\lambda)$为$J$-图的一个{锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:A\to D(j)$使得如下交换图对所有的顶点和边都成立
+\[
+	\xymatrix{
+		&A \ar[dl]_{\lambda_{j}}\ar[dr]^{\lambda_{j'}}&\\
+		D(j)\ar[rr]^{D(\alpha)}&&D(j')
+	}
+\]
+
+称呼一个锥形$(A,\lambda)$是$J$-图的一个{极限}，如果对于任意的锥形$(B,\mu)$，都有唯一的态射$f:B\to A$使得如下分解$\mu_j:B\xrightarrow{f}A\xrightarrow{\lambda_j}D(j)$成立。
+
+在实际过程中，如果极限$(A,\lambda)$中的态射族是明确的（乃至于是由对象$A$确定的），那么我们会用$A$来表示极限。并且一般将$J$-图$D$的极限写作$\varprojlim_{j\in J} D(j)$.
+
+作为例子，模范畴的直积就是一种极限，他对应的小范畴，两个不同的元素之间没有态射。
+
+\para 锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。称$(A,\lambda)$为$J$-图的一个{余锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:D(j)\to A$使得如下交换图对所有的顶点和边都成立
+\[
+	\xymatrix{
+		&A&\\
+		D(j)\ar[rr]^{D(\alpha)} \ar[ur]^{\lambda_{j }}&&D(j')\ar[ul]_{\lambda_{j'}}
+	}
+\]
+
+称呼一个余锥形$(A,\lambda)$是$J$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都有唯一的态射$f:A\to B$使得如下分解$\mu_j:D(j)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。一般将$J$-图$D$的余极限写作$\varinjlim_{j\in J} D(j)$.
+
+同样，作为例子，模范畴的直和就是一种余极限，他对应的小范畴，两个不同的元素之间没有态射。
+
+\para 设$I$是一个偏序集，偏序关系为$\leq$，那么族$\{\{x\}\,:\, x\in I\}$构成一个（小）范畴，其中的态射定义为
+\[
+	\Hom_{I}\left(\{x\},\{y\}\right)=\begin{cases}
+	\bigl\{x\mapsto y\bigr\}&\text{, if }x\leq y\text{;}\\
+	\varnothing&\text{, otherwise}.
+	\end{cases}
+\]
+当然，我们一般直接将$I$和$\{\{x\}\,:\, x\in I\}$等同，此时会说偏序集具有一个（小）范畴结构，其中的态射记作$x\leq y$.
+
+如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^\circ$.
+
+$D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
+
+对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^\circ :I^\circ\to \mathcal{C}$通过$D^\circ(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^\circ(j\geq i)\circ D^\circ(k\geq j)=D^\circ(k\geq i)$，可见这确实是一个协变函子。
+
+\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。
+
+很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^\circ$就是定向的（滤相的），反之亦然。
+
+作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。
+
+同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
+
+\para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个{逆系统}（{定向系统}）。逆系统一般谈论极限$\varprojlim_{i\in I} D(i)$，而定向系统一般谈论$\varinjlim_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
+\[
+	\xymatrix{
+		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
+		D(i)&&D(j)\\
+		&D(k)\ar[ul]^{D(k\leq i)}\ar[ur]_{D(k\leq j)}&
+	}
+	\quad
+% \xymatrix{
+% 	&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
+% 	D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[dl]^{D(j\leq k)}\\
+% 	&D(k)&
+% }
+	\xymatrix{
+		&A &\\
+		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
+		&D(k)\ar[uu]_{\mu_{k}}&
+	}
+\]
+左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
+
+\para 考虑$I$是滤相的（定向的），而$D$是协变函子，那么$I$-图$D$是逆系统（定向系统）。考虑$I$是滤相的（定向的），而$D$是反变函子，那么$I^\circ$-图$D^\circ$是定向系统（逆系统）。
+
+\para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
+
+在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$.
+
+同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
+
+更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
+
+\pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且$\varprojlim_{i\in I} D(i)=\varprojlim_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^\circ $存在一个与其共尾的子集$J^\circ $，则$J$-图$D$是一个定向系统，且$\varinjlim_{i\in I} D(i)=\varinjlim_{i\in J} D(i)$. \rule{2mm}{2mm}
+
+所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的对偶极限。这符合我们上面的直观。
+
+\para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
+\[
+	\Hom_{X}(U,V)=\begin{cases}
+	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
+	\varnothing&\text{, otherwise}.
+	\end{cases}
+\]
+
+考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限$\varinjlim_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in I}$.
+
+同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。
+
+但它的极限$\varprojlim_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
+
+\para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
+
+由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^\circ$-图$\calf^\circ$是定向系统，进而我们会考虑余极限
+\[
+	\varinjlim_{U\in \mathfrak{B}^\circ} \calf^\circ(U)=\varinjlim_{U\in \mathfrak{B}^\circ} \calf(U),
+\]
+如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.
+
+% \para 考虑$X$的一个拓扑基，它按照包含也构成一个偏序集，考虑它的一个子族$\mathfrak{B}$，使得每一个元素$V\in \mathfrak{B}$都有$V\subset U$，他继承了来自于拓扑基的偏序结构。
+
+% 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
+
+\theo 在左$R$-模范畴，任意的极限与余极限存在。 \rule{2mm}{2mm}
