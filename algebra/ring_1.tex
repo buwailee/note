@@ -2,68 +2,183 @@
 依旧是我们的假设：下面出现的环都是交换含幺环。
 \section{理想}
 
+\para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1,\,\,\cdots,f_n)$. 一个理想生成的理想自然就是他本身。
+
+\para 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
+\[\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
+\]
+是一个理想。
+
+两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。
+
 \para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。
 
-\para 一个理想$\mathfrak{p}$被称为素理想，如果$R/\mathfrak{p}$是一个整环。一个理想$\mathfrak{m}$被称为极大理想，如果$R/\mathfrak{p}$是一个域。
+考虑一个单同态$f:R\to S$，如果$S$是一个整环，则$R$也是一个整环。为了证明他，考虑到$ab=0$等价于$f(ab)=f(a)f(b)=0$，由于$S$是整环，所以$f(a)=0$或者$f(b)=0$，再由单同态就得到了结论。作为推论，整环的子环也一定是整环。
 
-由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
+整环上的多项式环也是整环：设多项式$f$以及$g$都不为零，则它们的首项系数$a$与$b$不为零，因此$fg$的首项系数$ab$不为零，也就是说$fg\neq 0$.
 
-\para 设$R$是一个环，$I(R)$是所有$R$的理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$.
+\para 一个理想$\mathfrak{p}$被称为素理想，如果$R/\mathfrak{p}$是一个整环。一个理想$\mathfrak{m}$被称为极大理想，如果$R/\mathfrak{p}$是一个域。由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
 
-这个偏序
+\para 设$R$是一个环，$I(R)$是$R$所有真理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$.
+
+极大理想的命名就来自于这个偏序。对于任意的理想链，他们的并所生成的理想要比他们大。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
+
+反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
+
+从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
+
+\para 我们看到，极大理想是素理想。实际上，满足一些条件的极大的理想也会是素理想。
+\begin{itemize}
+\item 设$\mathcal{P}$是$R$的非有限生成理想构成的集合，则$\mathcal{P}$的极大元是素理想。
+\item 设$\mathcal{P}$是$R$的非主理想的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
+\item 设$S$是一个乘性子集，设$\mathcal{P}$是$R$中与$S$不想交的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
+\end{itemize}
+
+\para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
+
+\proof
+	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
+
+	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
+	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 
+
+	当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
+\qed
+
+\para 上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+
+但是，对于商映射，情况会好很多。设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
+
+证明是朴实的，任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态
+\[
+	\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}},
+\]
+注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，我们有同构
+\[
+	R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}.
+\]
+
+\para 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
+
+\proof 
+	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
+\qed
+
+\para 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
 
 \section{Euclide环和主理想整环}
 
-\section{域扩张}
+\para 域$k$上的多项式环$k[x]$是主理想整环。
 
-如果$k$是一个域，则任意的$k$-代数都是$k$-矢量空间。与此同时，赋予$k$-代数的$k$-模结构的那个同态的核$\ker(f)$作为域$k$中的理想，他只能是$k$本身或者$\{0\}$，前者太平凡，我们舍去，后者得出了$f:k\to f(k)$是一个域同构。
+\proof
+	设$\mathfrak{a}$是$k[x]$的一个理想，由于单位理想和零理想都是主理想，所以假设$\mathfrak{a}$不是单位理想也不是零理想，这样$k$中的非零元素都不在$\mathfrak{a}$中。取一个$\mathfrak{a}$中幂次最小的非零多项式$f$，由构造，$f$存在且不可能是一个常数。显然，我们有包含关系$(f)\subset \mathfrak{a}$.
+
+	任取$g\in \mathfrak{a}$，由多项式除法算法$g=pf+r$，其中$\deg(r)<\deg(f)$. 由于$r=g-pf\in \mathfrak{a}$，而$f$是$\mathfrak{a}$中幂次最小的非零多项式，所以$r=0$. 于是$g=pf\in (f)$给出了反向的包含关系$\mathfrak{a}\subset (f)$.
+
+	综上，$\mathfrak{a}=(f)$. 所以$k[x]$是主理想整环。
+\qed
+
+\pro 一个整环$R$是唯一分解整环，当且仅当，他的不可约元生成的理想是素理想且$R$中的任意主理想升链稳定。
+
+\para 因此主理想整环是唯一分解整环。
+
+\section{域扩张与单扩张}
+
+如果$k$是一个域，则任意的$k$-代数都是$k$-矢量空间。与此同时，赋予$k$-代数的$k$-模结构的那个同态的核$\ker(f)$作为域$k$中的理想，他只能是$k$本身或者$\{0\}$，前者太平凡，我们不考虑，后者得出了$f:k\to f(k)$是一个域同构。
 
 \para 如果域$K$是一个$k$-代数，称$K$是$k$的一个域扩张，记作$K/k$。如果域$K$还是一个有限生成$k$-代数，称$K$是$k$的一个有限生成扩张。
 
 因为$K$是$k$-矢量空间，我们可以定义域扩张的大小为$[K:k]=\dim_k(K)$.若$[K:k]$有限，称这个扩张是有限扩张。
 
-前面说了，对于任意的$k$-代数$K$，$k$都同构于$K$中的一个子域，所以通常也将域扩张定义为包含$k$的更大的域。为了行文的简练，必要的时候，我们就假设域扩张为包含我们的域更大的域。
+前面说了，对于任意的$k$-代数$K$，$k$都同构于$K$中的一个子域，所以通常也将域扩张定义为包含$k$的更大的域。为了行文的简练，我们就假设域扩张为包含我们的域更大的域。
 
 \para 设$B$是环，$A$是他的子环，如果对$a\in B$，存在$f\in A[x]$使得$f(a)=0$，称$a$在$A$上代数。如果$B$中任意的元素都在$A$上代数，则称$B$在$A$上代数。特别地，设$K/k$是一个扩张，若$K$在$k$上代数，则$K$被称为$k$的一个代数扩张。
 
 每一个$k$中元素当然在$k$上代数，因为他是线性多项式的根。如果$\alpha$有逆且在$k$上代数，那么他的逆$1/\alpha$也在$k$上代数。实际上，因为$\alpha$在$k$上代数，所以存在多项式$f=\sum_{i=0}^na_ix^i$使得$f(\alpha)=0$。很容易检验，多项式$g=\sum_{i=0}^na_{n-i}x^i$使得$g(1/\alpha)=0$成立，所以$1/\alpha$在$k$上代数。
 
-作为域扩张的例子，考虑多项式环$k[x_1,\cdots,x_n]$是一个$k$-代数，他的商域$F(k[x_1,\cdots,x_n])$就是$k$的一个扩张，并且$\dim_k(F(k[x_1,\cdots,x_n]))=\infty$，实际上，比如$\{x_1,\cdots,x_1^n,\cdots\}$是线性无关的。或者，如果$\mm$是$k[x_1,\cdots,x_n]$的一个极大理想，则$k[x_1,\cdots,x_n]/\mm$也是$k$的一个扩张，后面我们会看到这个扩张是一个有限扩张。
+作为域扩张的例子，考虑多项式环$k[x_1,\,\,\cdots,x_n]$是一个$k$-代数，他的商域$F(k[x_1,\,\,\cdots,x_n])$就是$k$的一个扩张，并且$\dim_k(F(k[x_1,\,\,\cdots,x_n]))=\infty$，实际上，比如$\{x_1,\,\,\cdots,x_1^n,\cdots\}$是线性无关的。或者，如果$\mm$是$k[x_1,\,\,\cdots,x_n]$的一个极大理想，则$k[x_1,\,\,\cdots,x_n]/\mm$也是$k$的一个扩张，后面我们会看到这个扩张是一个有限扩张。
 
-假如有一个域$K$，而$k$是他的子域，那么必然存在一个$\alpha\in K$但$\alpha\notin k$，我们考虑$K$中包含$\alpha$的最小的子域$k(\alpha)$。首先$k[\alpha]\subset k(\alpha)$，如果不存在多项式$f\in k[x]$使得$f(\alpha)=0$，则$k[\alpha]\cong k[x]$，所以包含$k[\alpha]$的最小的域就是他的商域$F(k[\alpha])$，即$k(\alpha)=F(k[\alpha])$.
+\pro 设$K/k$是$L/K$都是扩张，则$[L:k]\leq[K:k]$. 特别地，如果$K/k$和$L/K$都是有限扩张且$[K:k]=m$以及$[L:K]=n$，则$L/k$是有限扩张且$[L:k]=mn$。这就是说，有限扩张的有限扩张还是有限扩张。
 
-反之，如果存在多项式$f\in k[x]$使得$f(\alpha)=0$，取$g$是$k[x]$中以$\alpha$为零点的次数最低的首一多项式，称为$\alpha$的极小多项式。我们需要下面这个引理。
+\proof 
+	设$\{a_1,\,\,\cdots,a_r\}$是$K$中的任意$k$-代数无关组，而$\{b_1,\,\,\cdots,b_s\}$是$L$中的任意$K$-代数无关组，我们来证明$\{a_ib_j\}$是$k$-线性无关组。设$\alpha=\sum_{i,j}c_{ij}a_ib_j$，其中$c_{ij}\in k$，因为$\sum_i c_{ij}a_i\in K$，所以如果$\alpha=0$，那么由$\{b_1,\,\,\cdots,b_s\}$的$K$-线性无关性，所以$\sum_i c_{ij}a_i=0$，然后再应用一次$\{a_1,\,\,\cdots,a_r\}$的$k$-线性无关性，就得到了对于任意的$i$, $j$都成立$c_{ij}=0$，于是$\{a_ib_j\}$是$k$-线性无关组。由此，维度的结论显然。
+\qed
 
-极小多项式不可约。如果$f$也以$\alpha$为零点，则存在$h\in k[x]$使得$f=gh$.
+利用这个结论，比如$[K:k]$是一个素数，任意的域$L$如果满足$k\subset L\subset K$（他被称为扩张$K/k$的中间域）一定满足$[K:k]=[K:L][L:k]$，所以要么$[K:L]=[K:k]$要么$[K:k]=[L:k]$，分别对应$L=k$以及$L=K$. 
 
-\proof 假设可约，设$g=g_1g_2$，其中$g_1$和$g_2$都是次数比$g$低的多项式。那么在$\alpha$处，我们有$g_1(\alpha)g_2(\alpha)=0$，所以$g_1(\alpha)$和$g_2(\alpha)$中至少有一个为零，而他们都是次数比$g$低的在$\alpha$处为零的多项式，和极小多项式的选取矛盾。
+\para 设$K/k$是一个域扩张，$X$是$K$的一个子集，记$k[X]$为所有包含$k$和$X$的$K$的子环的交，令$k(X)$为所有包含$k$和$X$的$K$的子域的交。换而言之，$k[X]$即$K$中包含$k$和$X$的极小子环，而$k(X)$则是极小子域。由于$k[X]$是整环，所以由商域$F(k[X])$，因此$k(X)\subset F(k[X])$. 但是$F(k[X])$包含于任意包含$k$和$X$的子域，所以$F(k[X])\subset k(X)$. 所以$k(X)$就是$k[X]$的商域。所以下面我们研究$k[X]$.
 
-	辗转相除，我们有分解$f=gh+r$，其中$r$是比$g$次数更低的多项式或者$r=0$。如果是前者，在$\alpha$处$r(\alpha)=f(\alpha)-g(\alpha)h(\alpha)=0$，所以$r$和极小多项式的选取矛盾。\qed
+我们特别关注$X$是单点集$\{\alpha\}$的情况，此时$k(\alpha)$被称为单扩张。下面两个命题把任意的$X$的情况约化到单扩张上面。
 
-通过$x\mapsto \alpha$可以定义同态$k[x]\to k[\alpha]$，他当然是满的，他的核是那些在$\alpha$为零的多项式所构成的理想，从引理可以知道，他就是极小多项式生成的极大理想\footnote{若$k$是一个域，则多项式环$k[x]$是一个主理想整环，他的极大理想被不可约多项式生成。}$(g)$，所以$k[\alpha]\cong k[x]/(g)$是一个域。因而$k[\alpha]$就是我们想要的域$k(\alpha)$，他同构于$k[x]/(g)$，其中$g$是$\alpha$的极小多项式。
+\pro 设$X$是$K$的任意子集，考虑指标集$I$为$X$的任意有限子集，则
+\[
+	k[X]=\bigcup_{\{a_1,\,\,\cdots,a_n\}\in I} k[a_1,\,\,\cdots,a_n].
+\]
 
-所以，我们在$K$中分两种情况找到了包含$\alpha$的最小的$k$的域扩张$k(\alpha)$，这样的扩张称为单扩张，前者被称为（单）超越扩张，扩张的元素被称为超越元，后者被称为（单）代数扩张\footnote{下节我们会看到这个命名是合理的。}。
+\proof
+	设右边为$A$. 显然，任取有限子集$\{a_1,\,\,\cdots,a_n\}$，$k(a_1,\,\,\cdots,a_n)\subset k[X]$，因此$A\subset k[X]$. 反过来要证$k[X]\subset A$，只要证明$A$是一个环即可，则极小性将得到结论。任取$x$, $y\in A$，则存在有限集使得
+	\[
+		x\in k[a_1,\,\,\cdots,a_m],\quad y\in k[b_1,\,\,\cdots,b_n],
+	\]
+	因此$x+y$, $xy\in k[a_1,\,\,\cdots,a_m,b_1,\,\,\cdots,b_n]\subset A$，所以这是一个环。
+\qed
 
-\pro 域的单扩张总是存在的。
+类似地，还可以证明
+\[
+	k(X)=\bigcup_{\{a_1,\,\,\cdots,a_n\}\in I} k(a_1,\,\,\cdots,a_n).
+\]
+这就说明了，$k(X)$中的任意一个元素$\alpha$都可以找到有限个$X$中的元素$\{a_1,\,\,\cdots,a_n\}$使得$\alpha\in k(a_1,\,\,\cdots,a_n)$.
 
-\proof 上面我们预设了一个比$k$大的域$K$的存在，免去了担心单扩张存在性的烦恼。现在有了上面单扩张的知识，我们也就可以直接构造单扩张来证明存在性。
+\pro 对$k$单扩张$\alpha_1$得到了$k(\alpha_1)$，再对其单扩张$\alpha_2$就得到了$k(\alpha_1)(\alpha_2)$，他也是$k$的一个扩张，则$k(\alpha_1)(\alpha_2)= k(\alpha_2)(\alpha_1)=k(\alpha_1,\alpha_2)$.
 
-	如果$\alpha$关于$k$超越，那么我们取$k(\alpha)$为$k[\alpha]$的商域$F(k[\alpha])$，这显然是一个$k$-代数，因此是一个$k$的扩张。如果$\alpha$关于$k$代数，就取$k[\alpha]$，他显然是一个$k$-代数，并且同构于域$k[x]/\mm$，其中$\mm$是$\alpha$的极小多项式生成的极大理想。\qed
+\proof 显然$k(\alpha_1,\alpha_2)\subset k(\alpha_1)(\alpha_2)$，因为$k(\alpha_1)(\alpha_2)$是一个域且同时包含$\alpha_1$和$\alpha_2$. 反过来，因为$k(\alpha_1,\alpha_2)$是一个域，而$\alpha_1$是他的元素，所以$k(\alpha_1)$是$k(\alpha_1,\alpha_2)$的子域，然后再对$k(\alpha_1)$做$\alpha_2$的单扩张，因为单扩张$k(\alpha_1)(\alpha_2)$是$k(\alpha_1,\alpha_2)$中包含$\alpha_2$的最小的域，所以$k(\alpha_1)(\alpha_2)\subset k(\alpha_1,\alpha_2)$.\qed
 
-\pro 两个单扩张同构，即$k(\alpha)\cong k(\beta)$，当且仅当他们或者同为代数扩张且极小多项式相同，或者同为超越扩张。
+这个简单的命题顺便还告诉我们，有限次单扩张的顺序无关紧要。经过有限归纳，则$X$是有限集的情况就变成了有限次单扩张。
 
+\para 现在考虑单扩张$k(\alpha)$. 显然
+\[
+	\{f(\alpha)\,:\, f\in k[x]\}\subset k[\alpha],
+\]
+但又由$k[\alpha]$的极小性，也就得到了$\{f(\alpha)\,:\, f\in k[x]\}=k[\alpha]$. 通过$\ev_{\alpha}:f\mapsto f(\alpha)$定义映射$\ev_{\alpha}:k[x]\to K$，不难检验这是一个$k$-线性映射以及一个环同态，他被称为赋值同态。利用赋值同态我们就可以将上面的结论总结为$k[\alpha]=\ev_{\alpha}(k[x])$.
 
-\proof 如果$k(\alpha)$是超越扩张，而$k(\beta)$是代数扩张。前面已经知道$\dim_k(k(\alpha))=\infty$。如果$\beta$的极小多项式是$n$次的，那么$k[x]/\mm$中$\{1,x,\cdots,x^{n-1},x^n\}$是线性相关的，即$\dim_k(k(\beta))\leq n<\infty$，所以$k(\alpha)\not\cong k(\beta)$.
+$X$是有限集的情况是类似的，可以定义出多重赋值同态
+\[
+	\ev_{a_1,\,\,\cdots,a_n}:k[x_1,\,\,\cdots,x_n]\to K,
+\]
+然后可以检验$k[a_1,\,\,\cdots,a_n]=\ev_{a_1,\,\,\cdots,a_n}(k[x_1,\,\,\cdots,x_n])$.
 
-	现在，如果两者都是超越扩张，则$k(\alpha)\cong F(k[x])\cong k(\beta)$.如果两者都是代数扩张，则$k[x]/\mm_\alpha\cong k[x]/\mm_\beta$，即可推出$\mm_\alpha=\mm_\beta$，继而拥有相同的极小多项式。反过来，如果有相同的极小多项式，则$k(\alpha)\cong k[x]/\mm\cong k(\beta)$.\qed
+在单扩张上，下面要证明，如果$k[\alpha]$在$k$上代数，则$k(\alpha)=k[\alpha]$.
 
-现在对$k$单扩张$\alpha_1$得到了$k(\alpha_1)$，再对其单扩张$\alpha_2$就得到了$k(\alpha_1)(\alpha_2)$，他也是$k$的一个扩张，不妨将其记作$k(\alpha_1, \alpha_2)$. 如是继续，就可以得到$k(\alpha_1,\cdots,\alpha_n)$。
+\para 设$K/k$是一个扩张，$\alpha\in K$在$k$上代数，则存在多项式$f\in k[x]$使得$f(\alpha)=0$，取$g$是$k[x]$中以$\alpha$为零点的次数最低的首一多项式，称为$\alpha$的极小多项式。
 
-\pro  $k(\alpha_1)(\alpha_2)\cong k(\alpha_2)(\alpha_1)$.
+\lem 极小多项式不可约。如果$f$也以$\alpha$为零点，则存在$h\in k[x]$使得$f=gh$.
 
-\proof 这里可以不妨假设，我们的域扩张都做成了包含的形式。因为$k(\alpha_2)(\alpha_1)$是一个域，而$\alpha_1$是他的元素，所以$k(\alpha_1)$可以看成$k(\alpha_2)(\alpha_1)$的子域，然后再对$k(\alpha_1)$做$\alpha_2$的单扩张，因为单扩张$k(\alpha_1)(\alpha_2)$是$k(\alpha_2)(\alpha_1)$中包含$\alpha_2$的最小的域，所以$k(\alpha_1)(\alpha_2)\subset k(\alpha_2)(\alpha_1)$。反过来同理。\qed
+\proof 
+	假设可约，设$g=g_1g_2$，其中$g_1$和$g_2$都是次数比$g$低的多项式。那么在$\alpha$处，我们有$g_1(\alpha)g_2(\alpha)=0$，所以$g_1(\alpha)$和$g_2(\alpha)$中至少有一个为零，而他们都是次数比$g$低的在$\alpha$处为零的多项式，和极小多项式的选取矛盾。
 
-上面这个简单的命题告诉我们，有限次单扩张的顺序无关紧要，于是，对于扩张$k(\alpha_1,\cdots,\alpha_n)/k$，如果我们乐意，可以先超越扩张，然后再代数扩张。
+	辗转相除，我们有分解$f=gh+r$，其中$r$是比$g$次数更低的多项式或者$r=0$。如果是前者，在$\alpha$处$r(\alpha)=f(\alpha)-g(\alpha)h(\alpha)=0$，所以$r$和极小多项式的选取矛盾。
+\qed
+
+我们已经知道了环同态$\ev_\alpha:k[x]\to k[\alpha]$，他当然是满的，他的核是那些在$\alpha$为零的多项式所构成的理想，从引理可以知道，他就是极小多项式生成的极大理想\footnote{若$k$是一个域，则多项式环$k[x]$是一个主理想整环，他的极大理想被不可约多项式生成。}$(g)$，所以$k[\alpha]\cong k[x]/(g)$是一个域。因而$k[\alpha]$就是我们想要的域$k(\alpha)$，他同构于$k[x]/(g)$，其中$g$是$\alpha$的极小多项式。
+
+\para 如果$\alpha$不在$k$上代数，则称$\alpha$在$k$上超越。而单扩张$k(\alpha)$此时称为超越扩张。因为不存在多项式$f\in k[x]$以$\alpha$为跟，所以$\ker \ev_\alpha=\{0\}$，这就意味着$k[\alpha]\cong k[x]$，所以$k(\alpha)\cong F(k[x])=k(x)$.
+
+至此，对单扩张，我们已经分成两种情况得到了$k[\alpha]$和$k(\alpha)$. 当$\alpha$在$k$上代数的时候，而他的极小多项式为$f$，则$k(\alpha)=k[\alpha]=k[x]/(f)$，当$\alpha$在$k$上超越的时候，$k[\alpha]\cong k[x]$.
+
+% \proof 上面我们预设了一个比$k$大的域$K$的存在，免去了担心单扩张存在性的烦恼。现在有了上面单扩张的知识，我们也就可以直接构造单扩张来证明存在性。
+
+% 	如果$\alpha$关于$k$超越，那么我们取$k(\alpha)$为$k[\alpha]$的商域$F(k[\alpha])$，这显然是一个$k$-代数，因此是一个$k$的扩张。如果$\alpha$关于$k$代数，就取$k[\alpha]$，他显然是一个$k$-代数，并且同构于域$k[x]/\mm$，其中$\mm$是$\alpha$的极小多项式生成的极大理想。\qed
+
+\pro 两个单扩张同构，即$k(\alpha)\cong k(\beta)$，当且仅当$\alpha$和$\beta$都在$k$上代数且极小多项式相同，或者同为超越扩张。
+
+\proof 
+	如果$k(\alpha)$是超越扩张，而$k(\beta)$是代数扩张。前面已经知道$\dim_k(k(\alpha))=\infty$。如果$\beta$的极小多项式是$n$次的，那么$k[x]/\mm$中$\{1,x,\,\,\cdots,x^{n-1},x^n\}$是线性相关的，即$\dim_k(k(\beta))\leq n<\infty$，所以$k(\alpha)\not\cong k(\beta)$.
+
+	现在，如果两者都是超越扩张，则$k(\alpha)\cong F(k[x])\cong k(\beta)$.如果两者都是代数扩张，则$k[x]/\mm_\alpha\cong k[x]/\mm_\beta$，即可推出$\mm_\alpha=\mm_\beta$，继而拥有相同的极小多项式。反过来，如果有相同的极小多项式，则$k(\alpha)\cong k[x]/\mm\cong k(\beta)$.
+\qed
+% 于是，对于扩张$k(\alpha_1,\,\,\cdots,\alpha_n)/k$，如果我们乐意，可以先超越扩张，然后再代数扩张。
+
+% 下一节将关注代数扩张，对于单扩张，会有如下现在看起来应该是自然的命题：代数元的单扩张是代数扩张。
 
 \section{整扩张与代数扩张}
 
@@ -88,94 +203,104 @@
 
 	\no{3} $\Rightarrow$ \no{4} ：取$M=C$，这是一个忠实$A[\alpha]$-模，因为如果$aC=0$，由$C$有单位元，所以$a\cdot 1=a=0$.
 
-	\no{4} $\Rightarrow$ \no{1} ：因为$M$是$A[\alpha]$-模，所以$\alpha M\subset M$。因为$M$是有限生成$A$-模，设$M$被$\{x_1,\cdots,x_m\}$生成，则$\alpha M\subset M$告诉我们对任意的$i$都成立$\alpha x_i=\sum_{j=1}^m a_{ij} x_j$，其中$a_{ij}\in A$。所以
+	\no{4} $\Rightarrow$ \no{1} ：因为$M$是$A[\alpha]$-模，所以$\alpha M\subset M$。因为$M$是有限生成$A$-模，设$M$被$\{x_1,\,\,\cdots,x_m\}$生成，则$\alpha M\subset M$告诉我们对任意的$i$都成立$\alpha x_i=\sum_{j=1}^m a_{ij} x_j$，其中$a_{ij}\in A$。所以
 	\[
 		\sum_{j=1}^m (\alpha\delta_{ij} -a_{ij})x_j=0,
 	\]
 	左乘$(\alpha\delta_{ij} -a_{ij})$的伴随矩阵，则$\det(\alpha\delta_{ij} -a_{ij})x_j=0$对任意的$1\leq j \leq m$都成立，也即$\det(\alpha\delta_{ij} -a_{ij})M=0$。由$M$的忠实性，$\det(\alpha\delta_{ij} -a_{ij})=0$，将行列式展开就是我们需要的首一多项式。\qed
 
-如果$\{\alpha_1,\cdots,\alpha_n\}\subset B$都在$A$上整，那么$k[\alpha_1,\cdots,\alpha_n]$也是一个有限生成$k$-模，这只要利用$k[\alpha_1,\cdots,\alpha_n]=k[\alpha_1,\cdots,\alpha_{n-1}][\alpha_n]$经过有限次归纳即可。
+如果$\{\alpha_1,\,\,\cdots,\alpha_n\}\subset B$都在$A$上整，那么$k[\alpha_1,\,\,\cdots,\alpha_n]$也是一个有限生成$k$-模，这只要利用$k[\alpha_1,\,\,\cdots,\alpha_n]=k[\alpha_1,\,\,\cdots,\alpha_{n-1}][\alpha_n]$经过有限次归纳即可。
 
-\pro 设$A$和$B$是环，且$A$是$B$的子环。则所有在$A$上整的元素构成$B$的一个子环。
+\pro 设$A$和$B$是环，且$A$是$B$的子环。则所有在$A$上整的元素构成$B$的一个子环。如果这个子环就是$A$，那么称呼$A$在$B$中是整闭的。
 
 \proof 如果$\alpha$和$\beta$在$A$上面整，$A[\alpha,\beta]$有限生成。因为$A[\alpha\pm\beta]\subset A[\alpha,\beta]$和$A[\alpha\beta]\subset A[\alpha,\beta]$，由上一个命题的\no{3}，$\alpha\pm\beta$和$\alpha\beta$在$A$上面整。\qed
 
-设$K/k$是一个扩张，这个命题告诉我们$K$中在$k$上代数的元素构成$K$中的子环。并且，因为如果$\alpha$代数，那么$1/\alpha$也代数，所以$K$中在$k$上代数的元素构成$K$中的子域。特别地，现在我们终于可以说明，单代数扩张是代数扩张。
+设$K/k$是一个扩张，这个命题告诉我们$K$中在$k$上代数的元素构成$K$中的子环。并且，因为如果$\alpha$代数，那么$1/\alpha$也代数，所以$K$中在$k$上代数的元素构成$K$中的子域。特别地，如果$\{\alpha_1,\,\,\cdots,\alpha_n\}$都在$k$上代数，则单扩张$k(\alpha_1,\,\,\cdots,\alpha_n)$是代数扩张。
+
+\pro 唯一分解整环在他的商域中是整闭的。
+
+一般而言，如果整环$R$在他的商域$F(R)$中是整闭的，则$R$就直接被称为是整闭的。
+
+\proof 
+	设$R$是唯一分解整环，$F(R)$是$R$是他的商域，再设$x\in F(R)$在$R$上整，对于唯一分解整环有分解$x=r/s$，其中$r$和$s$互素，那么就有方程
+	\[
+		r^n+a_1r^{n-1}s+\cdots+a_n s^n=0,
+	\]
+	其中$a_i\in R$，因此$s$需要整除$r^n$，而$r$和$s$互素，所以只能有$s=\pm 1$.这就说明了$x=\pm r\in R$.
+\qed
 
 \pro 设$A\subset B\subset C$是环，且$B$在$A$上整，$C$在$B$上整，则$C$在$A$上整。这就是整的传递性。
 
-\proof 设$x\in C$，因为$x$在$B$上整，所以存在方程$x^n+\cdots+b_{n-1}x+b_n=0$，因为$b_i\in B$都在$A$上整，所以$B'=A[b_1,\cdots,b_n]$是有一个有限生成$A$-模。由同一个首一多项式，$x$也在$B'$上整，于是$B'[x]$是一个有限生成$B'$-模，由模的有限生成的传递性，则$B'[x]$是一个有限生成$A$-模，所以$x$在$A$上整。\qed
+\proof 
+	设$x\in C$，因为$x$在$B$上整，所以存在方程$x^n+\cdots+b_{n-1}x+b_n=0$，因为$b_i\in B$都在$A$上整，所以$B'=A[b_1,\,\,\cdots,b_n]$是有一个有限生成$A$-模。由同一个首一多项式，$x$也在$B'$上整，于是$B'[x]$是一个有限生成$B'$-模，由模的有限生成的传递性，则$B'[x]$是一个有限生成$A$-模，所以$x$在$A$上整。
+\qed
+
+回到域的情况，如果$K/k$是$L/K$都是扩张，则$L/k$是一个扩张。由整的传递性，如果$K/k$和$L/K$都是代数扩张，则$L/k$是代数扩张。
 
 \pro 设环$A\subset B\subset C$，且$A$是Northerian的，$C$是有限生成$A$-代数，以及$C$或者是一个有限生成$B$-模，或者$C$在$B$上整，那么，$B$是一个有限生成$A$-代数。
 	\label{p:2.4}
 
-\proof 在题目的条件下，由Proposition \ref{p2:1}，$C$是一个有限生成$B$-模与$C$在$B$上整等价。所以只对$C$是一个有限生成$B$-模的情况证明。
+\proof 
+	在题目的条件下，由Proposition \eqref{p2:1}，$C$是一个有限生成$B$-模与$C$在$B$上整等价。所以只对$C$是一个有限生成$B$-模的情况证明。
 
-	令$C=A[\bar{x}_1,\cdots,\bar{x}_m]\cong A[x_1,\cdots,x_m]/\mathfrak{a}$，以及令$y_1$, $y_2$, $\cdots$, $y_n$是$C$作为有限生成$B$-模的生成元，那么存在
+	令$C=A[\bar{x}_1,\,\,\cdots,\bar{x}_m]\cong A[x_1,\,\,\cdots,x_m]/\mathfrak{a}$，以及令$y_1$, $y_2$, $\cdots$, $y_n$是$C$作为有限生成$B$-模的生成元，那么存在
 	\begin{equation}
 		\bar{x}_i=\sum_i\alpha_{ij}y_j,\quad y_iy_j=\sum_{k}\beta_{ijk}y_k,
-		\label{1}
 	\end{equation}
-	令$B_0$是由$\alpha_{ij}\in B$和$\beta_{ijk}\in B$生成的$A$-代数，由于$A$是Northerian的，所以$B_0$是Northerian的\footnote{这是因为有限生成$A$-代数同构于$A[x_1,\cdots,x_{N_B}]/\mathfrak{a}_B$，而他是Northerian的。}，以及$A\subset B_0 \subset B$.
+	令$B_0$是由$\alpha_{ij}\in B$和$\beta_{ijk}\in B$生成的$A$-代数，由于$A$是Northerian的，所以$B_0$是Northerian的\footnote{这是因为有限生成$A$-代数同构于$A[x_1,\,\,\cdots,x_{N_B}]/\mathfrak{a}_B$，而他是Northerian的。}，以及$A\subset B_0 \subset B$.
 
-	由于$C$中的元素都是关于$\{\bar{x}_i\}$的、系数处于$A$中的多项式，那么\eqref{1}告诉我们，这个元素可以写成$\sum_i b_i y_i$，其中$b_i\in B_0$，所以$C$是一个有限生成$B_0$-模。而$B_0$是Northerian的就保证了$C$是一个Northerian的$B_0$-模。因为$B$又是$C$的子模，所以$B$是一个有限生成$B_0$-模。又$B_0$是一个有限生成$A$-代数，所以$B$是一个有限生成$A$-代数。\qed
-
-\pro 如果$K/k$是$L/K$都是扩张，则$L/k$是一个扩张。 特别地，如果$K/k$和$L/K$都是代数扩张，则$L/k$是代数扩张。
-
-\proof 不妨设$k\subset K\subset L$，第一点显然。$K/k$和$L/K$都是代数扩张等价于$K$在$k$上整且$L$在$K$上整。由整的传递性，$L$在$k$上整，所以$L/k$是一个代数扩张。\qed
-
-\pro 设$K/k$是$L/K$都是扩张，则$[L:k]\leq[K:k]$. 特别地，如果$K/k$和$L/K$都是有限扩张且$[K:k]=m$以及$[L:K]=n$，则$L/k$是有限扩张且$[L:k]=mn$。这就是说，有限扩张的有限扩张还是有限扩张。
-
-\proof 设$\{a_1,\cdots,a_r\}$是$K$中的任意$k$-代数无关组，而$\{b_1,\cdots,b_s\}$是$L$中的任意$K$-代数无关组，我们来证明$\{a_ib_j\}$是$k$-线性无关组。设$\alpha=\sum_{i,j}c_{ij}a_ib_j$，其中$c_{ij}\in k$，因为$\sum_i c_{ij}a_i\in K$，所以如果$\alpha=0$，那么由$\{b_1,\cdots,b_s\}$的$K$-线性无关性，所以$\sum_i c_{ij}a_i=0$，然后再应用一次$\{a_1,\cdots,a_r\}$的$k$-线性无关性，就得到了对于任意的$i$, $j$都成立$c_{ij}=0$，于是$\{a_ib_j\}$是$k$-线性无关组。由此，维度的结论显然。\qed
+	由于$C$中的元素都是关于$\{\bar{x}_i\}$的、系数处于$A$中的多项式，那么式(\theequation)告诉我们，这个元素可以写成$\sum_i b_i y_i$，其中$b_i\in B_0$，所以$C$是一个有限生成$B_0$-模。而$B_0$是Northerian的就保证了$C$是一个Northerian的$B_0$-模。因为$B$又是$C$的子模，所以$B$是一个有限生成$B_0$-模。又$B_0$是一个有限生成$A$-代数，所以$B$是一个有限生成$A$-代数。
+\qed
 
 \pro 有限扩张等价于有限次单代数扩张。
 
-\proof 注意到单代数扩张是有限扩张，这是因为，如果他的极小多项式为$n$次的，那么$\{1,x,\cdots,x^n\}$线性相关，而有限次有限扩张是有限扩张。
+\proof 注意到单代数扩张是有限扩张，这是因为，如果他的极小多项式为$n$次的，那么$\{1,x,\,\,\cdots,x^n\}$线性相关，而有限次有限扩张是有限扩张。
 
 反之，设$K/k$不是代数扩张，那么存在一个元素$\alpha\in K$是超越的。因为$k\subset k(\alpha)\subset K$，所以$[K:k]\geq [k(\alpha):k]=\infty$. 如果$K/k$是代数扩张，但不是有限次单代数扩张，则对于任何的$n\in \zz^+$，一定存在一组$n$个元素的线性无关组，这和$\dim_k K$有限矛盾。所以一个有限扩张由有限次单代数扩张而成。\qed
 
-\lem Zariski's lemma：有限生成扩张是代数扩张。这还可以表述为，设$\mm$是$A=k[x_1,\cdots,x_n]$的一个极大理想，则$A(\mm)=A/\mm$是$k$的一个代数扩张。
+如果加强条件，比如中间域有限，我们甚至可以得到有限扩张是单代数扩张的情况，这就是所谓的本原元定理，以后我们会遇到。
 
-\proof 归纳证明这个命题。
+\lem Zariski引理：有限生成扩张是代数扩张。这还可以表述为，设$\mm$是$A=k[x_1,\,\,\cdots,x_n]$的一个极大理想，则$A(\mm)=A/\mm$是$k$的一个代数扩张。
 
-	$n=1$的时候是简单的，$k[x]$中任意的极大理想$\mm$都是由一个不可约多项式$f$生成的，所以$\mm=(f)$，而单扩张的知识告诉我们，$k[\bar{x}]=k[x]/(f)$是一个代数扩张，他给$k$添加上了$f$的一个根。
+在证明之前，我们可以注意到如下事实：设$x_i$在$A(\mm)$中的像为$\alpha_i$，则$A(\mm)=k(\alpha_1,\,\,\cdots,\alpha_n)$.
 
-	对$n$个变元的情况，假设对任意的$\mm$有$A(\mm)=k[\bar{x}_1,\cdots,\bar{x}_n]$中的$\{\bar{x}_i\}$都在$k$上代数。
+\proof 
+	归纳证明这个命题。$n=1$的时候是简单的，$k[x]$中任意的极大理想$\mm$都是由一个不可约多项式$f$生成的，所以$\mm=(f)$，而单扩张的知识告诉我们，$k[x]/(f)$是一个代数扩张，他给$k$添加上了$f$的一个根。
 
-	对$n+1$个变元的情况，$k[\bar{x}_0,\cdots,\bar{x}_{n}]$是$k$的一个有限生成扩张，那么他可以分解成有限个单扩张，$k[\bar{x}_0,\cdots,\bar{x}_{n}]=k(\bar{x}_0)[\bar{x}_1,\cdots,\bar{x}_{n}]$，其中$k(\bar{x}_0)$是一个$k$的单扩张，根据归纳假设$\bar{x}_1,\cdots,\bar{x}_{n}$都在$k(\bar{x}_0)$上是代数的。如果$k(\bar{x}_0)$在$k$上是代数的，那么所有的$\bar{x}_i$就都是在$k$上代数的，也就是$k[\bar{x}_0,\cdots,\bar{x}_{n}]$是$k$的代数扩张了。
-
-	假设$k(\bar{x}_0)$是超越扩张，即$k(\bar{x}_0)=F(k[\bar{x}_0])$，$k(\bar{x}_0)$是$k[\bar{x}_0]$的商域。因为$\bar{x}_i$在$k(\bar{x}_0)$上是代数的，所以存在多项式
+	对$n$个变元的情况，假设对任意的$\mm$有$A(\mm)=k[x_1,\,\,\cdots,x_n]/\mm$是一个代数扩张。对$n+1$个变元的情况，设$k(\alpha_0,\,\,\cdots,\alpha_{n})=k[x_0,\,\,\cdots,x_n]/\mm$是$k$的一个有限生成扩张，考虑如下同态
 	\[
-		a_{i0}\bar{x}_i^{N_i}+a_{i1}\bar{x}_i^{N_i-1}+\cdots +a_{i,N_i+1}=0,
+		\ev_{(\alpha_1,\,\,\cdots,\alpha_n)}:k(\alpha_0)[x_1,\,\,\cdots,x_{n}]\to k(\alpha_0,\,\,\cdots,\alpha_{n})=k[x_0,\,\,\cdots,x_n]/\mm,
 	\]
-	其中$a_{ij}\in k(\bar{x}_0)=F(k[\bar{x}_0])$。将其通分，可以得到一个新的等式，系数属于$k[\bar{x}_0]$，为了符号上的简单，不妨直接设$a_{ij}\in k[\bar{x}_0]$.
+	其中$k(\alpha_0)$是一个$k$的单扩张。这是一个满同态，而右侧是一个域，所以$\ker(\ev_{(\alpha_1,\,\,\cdots,\alpha_n)})$是$k(\alpha_0)[x_1,\,\,\cdots,x_{n}]$的极大理想，由归纳假设$k(\alpha_0)(\alpha_1,\,\,\cdots,\alpha_{n})$是$k(\alpha_0)$的代数扩张。如果$k(\alpha_0)$在$k$上是代数的，则$k(\alpha_0,\,\,\cdots,\alpha_{n})$是$k$的代数扩张了。
 
-	将等式两边乘以$a_0^{N_i-1}$后可以看到$a_{i0}\bar{x}_i$在$k[\bar{x}_0]$上是整的，实际上，对所有的$i>0$和$\bar{x}_0$都可以找到这么一个$a_{i0}$。由于在$k[\bar{x}_0]$上整的元素构成一个环，而且$k[\bar{x}_0]$是他的一个子环，特别地，所有的$a_{i0}\in k[\bar{x}_0]$以及$\bar{x}_0\in k[\bar{x}_0]$都是整的，所以我们可以说存在一个因子$a=\prod_{i>0}a_{i0}$，对每一个$\bar{x}_i$都成立$a\bar{x}_i$在$k[\bar{x}_0]$上是整的。
-
-	现在任取一个$y\in k[\bar{x}_0,\cdots,\bar{x}_n]$，写作$y=\sum y_{i_0 \cdots i_n}\bar{x}_0^{N_{i_0}}\cdots\bar{x}_{n}^{N_{i_n}}$.
-	因为在$k[\bar{x}_0]$上整的元素构成一个环，两边乘以$a^N$后可以得到$a^Ny$在$k[\bar{x}_0]$上是整的，其中$N$足够大，因为所有的求和都是有限的，所以$N$总是可以选出来的。
-
-	我们已经证明了，随便取一个$y\in k(\bar{x}_0)$，则存在$N\in \mathbb{Z}^+$使得$a^Ny\in k(\bar{x}_0)$在$k[\bar{x}_0]$上整。由于$k[\bar{x}_0]$作为域上的多项式环是唯一分解整环
-	\footnote{假设$R$是唯一分解整环，$F(R)$是他的商域，假设$x\in F(R)$在$R$上整，对于唯一分解整环有分解$x=r/s$，其中$r$和$s$互素，那么就有方程
+	假设$k(\alpha_0)$是超越扩张，即$k(\alpha_0)=F(k[\alpha_0])$，$k(\alpha_0)$是$k[\alpha_0]$的商域。因为$\alpha_i$在$k(\alpha_0)$上是代数的，所以存在多项式
 	\[
-		r^n+a_1r^{n-1}s+\cdots+a_n s^n=0,
+		a_{i0}\alpha_i^{N_i}+a_{i1}\alpha_i^{N_i-1}+\cdots +a_{i,N_i+1}=0,
 	\]
-	其中$a_i\in R$，因此$s$需要整除$r^n$，而$r$和$s$互素，所以只能有$s=\pm 1$.这就说明了$x=\pm r\in R$.}，
-	所以$a^Ny=f\in k[\bar{x}_0]$，或$y=f/a^N\in k[\bar{x}_0]_{a}$，
-	其中$k[\bar{x}_0]_{a}$是$k[\bar{x}_0]$关于$\{1,a,a^2,\cdots\}$的分式环，而$a$和$y\in  k(\bar{x}_0)$的选取没有关系，只有$N$和$f$的选取和$y$有关系，但是不管取哪个$N$，他们都在同一个分式环里面，而分式环又真包含于商环里面，所以
+	其中$a_{ij}\in k(\alpha_0)=F(k[\alpha_0])$。将其通分，可以得到一个新的等式，系数属于$k[\alpha_0]$，为了符号上的简单，不妨直接设$a_{ij}\in k[\alpha_0]$.
+
+	将等式两边乘以$a_0^{N_i-1}$后可以看到$a_{i0}\alpha_i$在$k[\alpha_0]$上是整的，实际上，对所有的$i>0$和$\alpha_0$都可以找到这么一个$a_{i0}$。由于在$k[\alpha_0]$上整的元素构成一个环，而且$k[\alpha_0]$是他的一个子环，特别地，所有的$a_{i0}\in k[\alpha_0]$以及$\alpha_0\in k[\alpha_0]$都是整的，所以我们可以说存在一个元素$a=\prod_{i>0}a_{i0}\in k[\alpha_0]$，对每一个$\alpha_i$都成立$a\alpha_i$在$k[\alpha_0]$上是整的。
+
+	现在任取一个$y\in k[\alpha_0,\,\,\cdots,\alpha_n]$，写作$y=\sum y_{i_0 \cdots i_n}\alpha_0^{N_{i_0}}\cdots\alpha_{n}^{N_{i_n}}$.
+	因为在$k[\alpha_0]$上整的元素构成一个环，两边乘以$a^N$后可以得到$a^Ny$在$k[\alpha_0]$上是整的，其中$N$足够大，因为所有的求和都是有限的，所以$N$总是可以选出来的。
+
+	我们已经证明了，随便取一个$y\in k(\alpha_0)$，则存在$N\in \mathbb{Z}^+$使得$a^Ny\in k(\alpha_0)$在$k[\alpha_0]$上整。由于$k[\alpha_0]$作为域上的多项式环是唯一分解整环，是整闭的，所以$a^Ny=f\in k[\alpha_0]$，因此
 	\[
-		k(\bar{x}_0)\subset k[\bar{x}_0]_{a}\subsetneq k(\bar{x}_0),
+		y=\frac{f}{a^N}\in k(\alpha_0),
 	\]
-	这就完成了矛盾，故$k(\bar{x}_0)$不可能是超越扩张，$k(\bar{x}_0)$是代数扩张。所以$k[\bar{x}_0,\cdots,\bar{x}_{n}]$是$k$的代数扩张。\qed
+	其中$f\in k[\alpha_0]$. 而$y$是任意的，考虑$y=1/b$，其中$b\not\in \{1,a,a^2,\cdots\}$，他不能写成$f/a^N$的形式，这就完成了矛盾。故$k(\alpha_0)$不可能是超越扩张，$k(\alpha_0)$是代数扩张。所以$k(\alpha_0,\,\,\cdots,\alpha_{n})$是$k$的代数扩张。\qed
 
-\pro  有限次单代数扩张等价于有限生成扩张。
+下面我们再提供一个Zariski引理的证明，他比上面的证明要短一些，用到了Propostion \eqref{p:2.4}.
 
-\proof 对有限次单代数扩张而成的域$k(\alpha_1,\cdots,\alpha_m)$，由$:x_i\mapsto \alpha_i$可以构造一个满的$k$-代数同态$\varphi:k[x_1,\cdots,x_m]\to k(\alpha_1,\cdots,\alpha_m)$，根据同构基本定理，$k(\alpha_1,\cdots,\alpha_m)\cong k[x_1,\cdots,x_m]/\ker \varphi$，所以$k(\alpha_1,\cdots,\alpha_m)$是一个有限生成扩张。
+\proof 设$A(\mm)=k(\alpha_1,\,\,\cdots,\alpha_n)$，如果$A(\mm)$关于$k$不是代数扩张，假设$\alpha_1,\cdots ,\alpha_r$关于$k$超越。我们可以先单扩张这些超越元，至于剩下的则关于域$B=k(\alpha_1,\cdots ,\alpha_r)$代数。
 
-反之，因为$A(\mm)=k[x_1,\cdots,x_n]/\mm=k(\alpha_1,\cdots,\alpha_m)$，其中$m\leq n$，由Zariski's lemma，$A(\mm)$是一个代数扩张，即$\alpha_i$都在$k$上代数，所以$A(\mm)=k(\alpha_1)\cdots(\alpha_m)$，其中每一次单扩张都是代数的。\qed
+现在因为$A(\mm)$是$B$的有限扩张，根据包含关系$k\subset B\subset A(\mm)$和Propostion \eqref{p:2.4}，我们可以得知$B$是一个有限生成$k$-代数，设$B=k[\beta_1,\cdots ,\beta_s]$，其中每一个$\beta_i$都有着形式$f_i/g_i$，而$f_i$, $g_i\in k[\alpha_1,\cdots \alpha_r]$。但是，$k[\alpha_1,\cdots \alpha_r]$中有多项式$h=g_1g_2\cdots g_{s}+1$使得$h^{-1}$不能写成$\beta_1,\cdots ,\beta_s$的多项式，矛盾。\qed
 
-在某些书上，有限生成扩张被定义为有限次单代数扩张，通过上面的命题，我们知道了这两个定义是等价的。最后我们再提供一个Zariski's lemma的证明，他比上面的证明要短一些，用到了Propostion \ref{p:2.4}。
+\pro  有限扩张、有限次单代数扩张和有限生成扩张相互等价。
 
-\proof 设$A(\mm)=k[\alpha_1,\cdots,\alpha_n]$，如果$A(\mm)$关于$k$不是代数扩张，因为有限生成扩张一定是有限次单扩张而成的（这些单扩张是否是代数的我们还不知道），那么假设$\alpha_1,\cdots ,\alpha_r$关于$k$超越。我们可以先单扩张这些超越元，至于剩下的则关于域$B=k(\alpha_1,\cdots ,\alpha_r)$代数。
+\proof 前二者的等价我们已经知道了。对有限次单代数扩张而成的域$k(\alpha_1,\,\,\cdots,\alpha_m)$，由$x_i\mapsto \alpha_i$可以构造一个满的$k$-代数同态$\varphi:k[x_1,\,\,\cdots,x_m]\to k(\alpha_1,\,\,\cdots,\alpha_m)$，根据同构基本定理，
+\[k(\alpha_1,\,\,\cdots,\alpha_m)\cong k[x_1,\,\,\cdots,x_m]/\ker \varphi,\]所以$k(\alpha_1,\,\,\cdots,\alpha_m)$是一个有限生成扩张。
 
-现在因为$A(\mm)$是$B$的有限扩张，根据包含关系$k\subset B\subset A(\mm)$和Propostion \ref{p:2.4}，我们可以得知$B$是一个有限生成$k$-代数，设$B=k[\beta_1,\cdots ,\beta_s]$，其中每一个$\beta_i$都有着形式$f_i/g_i$，而$f_i,g_i\in k[\alpha_1,\cdots \alpha_r]$。但是，$k[\alpha_1,\cdots \alpha_r]$中有多项式$h=g_1g_2\cdots g_{s}+1$使得$h^{-1}$不能写成$\beta_1,\cdots ,\beta_s$的多项式，矛盾。\qed
+反之，因为$A(\mm)=k[x_1,\,\,\cdots,x_n]/\mm=k(\alpha_1,\,\,\cdots,\alpha_n)$，由Zariski引理，$A(\mm)$是一个代数扩张，即$\alpha_i$都在$k$上代数，所以$A(\mm)=k(\alpha_1)\cdots(\alpha_m)$，其中每一次单扩张都是代数的。\qed
+
+在某些书上，有限生成扩张被定义为有限次单代数扩张，通过上面的命题，我们知道了这两个定义是等价的。至此，我们完全分类了有限扩张。对于无限扩张，我们以后再研究。

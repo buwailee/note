@@ -1,0 +1,113 @@
+\chapter{代数}
+\section{张量代数}
+
+\section{对称代数与外代数}
+
+\section{矩阵与行列式}
+
+\para 设$M$是一个有限生成$R$-模，他的生成元可以取作$\{m_1$, $\cdots$, $m_n\}$，则一个$R$中元素的$n$-元组$(r_1$, $\cdots$, $r_n)$可以确定一个线性组合$\sum_{i=1}^nr_im_i$，继而是一个模中的元素。
+
+\para 设$M$和$N$有限生成$R$-模，前者的生成元是$\{m_1$, $\cdots$, $m_p\}$，后者的是$\{n_1$, $\cdots$, $n_q\}$，然后考虑一个模同态$\varphi:M\to N$，由于
+\[
+	\varphi\left(\sum_{i} r_im_i\right)=\sum_{i} r_i\varphi\left(m_i\right),
+\]
+所以它由所有$\varphi\left(m_i\right)$描述，由于他在$R^n$中，将其写作
+\[
+	\varphi\left(m_i\right)=\sum_{j}\varphi_{ji}n_j.
+\]
+于是$\{\varphi_{ij}\,:\, 1\leq i \leq p,\,\,1\leq j \leq q\}$这$p\times q$个数构成的整体称为$\varphi$的矩阵，记作$(\varphi)$，他完全描述了整个同态$\varphi$.
+
+设$\psi:R^n\to R^l$的矩阵是$(\psi)_{ij}$，我们下面计算$\psi\circ\varphi$的矩阵：
+\[
+	\psi\circ\varphi(1_i)=\psi\left(\sum_{j=1}^n\varphi_{ji}1_j\right)=\sum_{j=1}^n\varphi_{ji}\psi(1_j)=\sum_{j=1}^n\sum_{k=1}^l\psi_{kj}\varphi_{ji}1_k,
+\]
+所以$\psi\circ\varphi$的矩阵$(\psi\circ\varphi)$为
+\[
+	(\psi\circ\varphi)_{ki}=\sum_{j=1}^n\psi_{kj}\varphi_{ji},
+\]
+这被称为矩阵乘法法则。
+
+\para 通常会使用一张表来表示矩阵
+\[
+(\varphi)=
+\begin{pmatrix}
+	\varphi_{11} & \varphi_{12} & \cdots & \varphi_{1m}\\
+	\varphi_{21} & \varphi_{22} & \cdots & \varphi_{2m}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\varphi_{n1} & \varphi_{n2} & \cdots & \varphi_{nm}\\
+\end{pmatrix}
+\]
+可以看到$\varphi(1_i)$关于$\{1_j\in R^n\}$中展开的系数出现在$(\varphi)$的第$i$列。
+
+\para 矩阵乘法法则此时则写作：
+\begin{equation}
+\begin{pmatrix}
+	\psi_{11} & \psi_{12} & \cdots & \psi_{1n}\\
+	\psi_{21} & \psi_{22} & \cdots & \psi_{2n}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\psi_{l1} & \psi_{l2} & \cdots & \psi_{ln}
+\end{pmatrix}
+\begin{pmatrix}
+	\varphi_{11} & \varphi_{12} & \cdots & \varphi_{1m}\\
+	\varphi_{21} & \varphi_{22} & \cdots & \varphi_{2m}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\varphi_{n1} & \varphi_{n2} & \cdots & \varphi_{nm}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\sum_{i=1}^n \psi_{1i}\varphi_{i1} & \sum_{i=1}^n \psi_{1i}\varphi_{i2} & \cdots & \sum_{i=1}^n \psi_{1i}\varphi_{im}\\
+	\sum_{i=1}^n \psi_{2i}\varphi_{i1} & \sum_{i=1}^n \psi_{2i}\varphi_{i2}& \cdots & \sum_{i=1}^n \psi_{2i}\varphi_{im}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\sum_{i=1}^n \psi_{li}\varphi_{i1} & \sum_{i=1}^n \psi_{li}\varphi_{i2}& \cdots & \sum_{i=1}^n \psi_{li}\varphi_{im}
+\end{pmatrix}
+\end{equation}
+很显然，$(\psi\circ\varphi)_{ij}$由第一个矩阵的第$i$行和第二个矩阵的第$j$列逐个相乘然后相加而得。矩阵乘法把$l\times n$和$n \times m$的矩阵变成了$l \times m$的矩阵。
+
+尤其重要的情况是$m=1$的时候，此时，$n\times 1$的矩阵称为一个列，为了省下书写空间，通常写成行的形式，即$(\varphi_{1i},\cdots,\varphi_{ni})^T$的形式，上标$T$代表将一行转成一列。设$\varphi_{i}=(\varphi_{1i},\cdots,\varphi_{ni})^T$，则一个矩阵可成看出一些列，
+\[
+	\begin{pmatrix}
+	\varphi_{11} & \varphi_{12} & \cdots & \varphi_{1m}\\
+	\varphi_{21} & \varphi_{22} & \cdots & \varphi_{2m}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\varphi_{n1} & \varphi_{n2} & \cdots & \varphi_{nm}\\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+	\varphi_{1} & \varphi_{2} & \cdots & \varphi_{m}
+	\end{pmatrix},
+\]
+其中$\varphi_i=(\varphi_{1i},\cdots,\varphi_{ni})^T$. 
+
+关于列的矩阵乘法为
+\begin{equation}
+\begin{pmatrix}
+	\psi_{11} & \psi_{12} & \cdots & \psi_{1n}\\
+	\psi_{21} & \psi_{22} & \cdots & \psi_{2n}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\psi_{l1} & \psi_{l2} & \cdots & \psi_{ln}
+\end{pmatrix}
+\begin{pmatrix}
+	\varphi_{11} \\
+	\varphi_{21}  \\
+	\vdots \\
+	\varphi_{n1} \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\sum_{i=1}^n \psi_{1i}\varphi_{i1}\\
+	\sum_{i=1}^n \psi_{2i}\varphi_{i1} \\
+	\vdots \\
+	\sum_{i=1}^n \psi_{li}\varphi_{i1}
+\end{pmatrix}
+\end{equation}
+通常将其右侧写作$(\psi)\varphi_1$. 那么一般的矩阵乘法则写作：
+\[
+	(\psi)
+	\begin{pmatrix}
+	\varphi_{1} & \varphi_{2} & \cdots & \varphi_{m}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+	(\psi)\varphi_{1} & (\psi)\varphi_{2} & \cdots & (\psi)\varphi_{m}
+	\end{pmatrix}.
+\]
