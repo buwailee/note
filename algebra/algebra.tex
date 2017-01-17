@@ -16,6 +16,8 @@
 \input{defs.tex}
 	\newcommand{\cc}{\mathbb{C}}
 
+\includeonly{foundation,module_1,ring_1,module_2}
+
 \begin{document}
 \thispagestyle{empty}
 	\begin{flushright}
@@ -31,15 +33,15 @@
 \frontmatter
 \tableofcontents
 \mainmatter
-	\input{foundation.tex}
-	\input{module_1.tex}
-	\input{algebra_1.tex}
-	\input{ring_1.tex}
-	\input{module_2.tex}
-	\input{linear_algebra.tex}
-	\input{field.tex}
-	\input{ring_2.tex}
-	\input{appendix.tex}
+	\include{foundation}
+	\include{module_1}
+	\include{algebra_1}
+	\include{ring_1}
+	\include{module_2}
+	\include{linear_algebra}
+	\include{field}
+	\include{ring_2}
+	\include{appendix}
 % \backmatter
-% 	\input{references.tex}
+% 	\include{references}
 \end{document}

@@ -1,42 +1,12 @@
 \chapter{模（二）}
-\section{局部化}
-
-我觉得这个看上去有些奇怪的条件在最“自由”地补充进所有可能的分式的时候会自然产生。
-
-首先注意到$k[x]_x=k[x,1/x]=k[x,y]/\langle xy-1\rangle$，这个在几何上就是说$k-\{0\}$和$xy=1$这条曲线同构。考虑$S$是$R$的任意子集，我们可以类比定义一个环$T$
-\[
-T=R\bigl[\{x_s\,:\, s\in S\}\bigr]/\bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle.
-\]
-这样$ax_s$大概就对应$a/s$. 这个环的加法就是
-\[
-ax_{b}+cx_d\equiv a(dx_d)x_{b}+c(bx_{b})x_d\equiv (ad+bc)x_bx_d,
-\]
-乘法就是
-\[
-(ax_{b})(cx_d)\equiv acx_bx_d.
-\]
-并且从
-\[
-bd(ax_{b}-cx_d)\equiv ad-bc
-\]
-可知$ax_{b}\equiv cx_d$当且仅当$ad-bc\equiv 0$. 因此，如果$s,\,t,\,st\in S$，则消去律$sx_{st}\equiv x_t$顺道也是成立的。利用消去率，我们有$x_{st}\equiv sx_s x_{st}\equiv  x_s x_t$.
-
-观察我们上面构造的分式乘法。由于我们想要$ax_b$对应$a/b$，$cx_d$对应$c/d$，那么是否$(ax_{b})(cx_d)\equiv acx_bx_d$对应$(ac)/(bd)$？如果$bd\in S$，那么这是对的，因为$x_bx_d\equiv x_{bd}$. 但是一般而言这是不对的，所以对$S$我们希望是对乘法封闭的。此外，观察加法也是，只有在$bd\in S$的时候才有对应$a/b+c/d=(ad+bc)/(bd)$.
-
-现在我们可以推出那个奇怪的等价关系，在这里的语境下他被表述为：设$a\in R$，则$a\equiv 0$当且仅当存在$s \in S$使得$as=0$.
-
-<= 如果存在$s \in S$使得$as=0$，则$a\equiv asx_s\equiv 0$. 
-
-=> 假设$a\equiv 0$但$as\neq 0$对任意$s\in S$都成立。由于$a\equiv 0$，则$a\in \bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle$.逐次比较，唯一可能的选择就是关于$x$的一次项的线性组合，即
-\[
-\sum_{i=1}^n a_i(s_ix_{s_i}-1)-a=0,
-\]其中求和是有限的。所以$a_is_i=0$对任意的$i$都成立，且$\sum_i a_i=a$. 将$\sum_i a_i=a$两边乘以$s_1\cdots s_n$，得到$as_1\cdots s_n=0$，为了制造矛盾，$S$对乘法封闭又有了用处，因为$s_1\cdots s_n$在$S$里面，所以可以利用$as\neq 0$的假设。
 
 \section{准素分解}
 
 \para 考虑一个$R$-模$M$，如果对$r\in R$存在一个非零的$m\in M$使得$rm=0$，则这个$r$称为$M$的一个零因子。对固定的$m\in M$，使得$rm=0$的$r\in R$的集合记作$\ann(m)$. 这是一个$R$中的理想，因为$ram=r0=0$对$a\in \ann(m)$成立。设$S$是$M$的一个子集，定义$\ann(S)=\bigcap_{m\in S}\ann(m)$.
 
-定义$\Ann(M)$为所有$\ann(m)$中的那些素理想构成的集合。当然可能所有的$\ann(m)$都不是素理想，但是如果$R$是一个Noether环，则下面的引理保证了$\Ann(M)$非空。
+$\ann(m)$中的那些素理想，称之为$M$的associated primes，定义$\Ann_R(M)$为所有associated primes的集合，如果下标$R$是清楚的，我们会略去它。
+
+当然有可能所有的$\ann(m)$都不是素理想，但是如果$R$是一个Noether环，则下面的引理保证了$\Ann(M)$非空。
 
 \lem 设$\mathcal{P}$是所有形如$\ann(m)$的理想按照包含构成的一个偏序集，则$\mathcal{P}$中的极大元都是素理想。
 
@@ -51,7 +21,11 @@ bd(ax_{b}-cx_d)\equiv ad-bc
 
 从这里开始，我们假设这节下面出现的环都是Noether环，除非特别申明。
 
-\lem 
+\lem 设$M$是一个$R$-模，如果$\ann(m)$是素理想，则对$M$的子模$Rm$的任意非零子模$N$有$\ann(N)=\ann(m)$.
+
+\proof
+	显然，$\ann(m)\subset \ann(N)$. 由于有$R$-模同构$\psi: Rm\to R/\ann(m)$，所以$Rm$的任意非零子模$N$对应着$R/\ann(m)$的非零理想$\psi(N)$. 如果$r\in \ann(N)$，则$r\psi(N)=\psi(rN)=0$，因为$\psi(N)$非零且$R/\ann(m)$是整环，所以$r$在$R/\ann(m)$中的像为零，即是说$r\in \ann(M)$. 所以$\ann(N)\subset \ann(m)$.
+\qed
 
 \pro 如果我们有$R$-模的正合列$0\to M'\to M\to M''\to 0$，则我们有包含关系
 \[
@@ -59,24 +33,30 @@ bd(ax_{b}-cx_d)\equiv ad-bc
 \]
 
 \proof
-	由于单同态并不会改变$\Ann$，所以可以将$M'$看成$M$的子模，所以第一个包含显然。对第二个包含，任取$\mathfrak{a}\in \Ann(M)-\Ann(M')$，我们要证明$\mathfrak{a}\in \Ann(M')$. 设$\mathfrak{a}=\ann(m)$，其中$m\in M$，由$m$生成的子模$Rm$同构于$R/\mathfrak{a}$. 考虑$Rm$的任意非零子模$N$，对应着$R/\mathfrak{a}$的任意理想，因为$\mathfrak{a}$是素理想，所以$R/\mathfrak{a}$的任意非零理想都是整环，对应着$\ann(N)=\mathfrak{a}$. 考虑$N=Rm\cap M'$，因为$\mathfrak{a}\notin \Ann(M')$，$\mathfrak{a}N\neq 0$，所以只可能$Rm\cap M'=0$. 在这种情况下，$Rm$同构于他在$M''$中的像，所以$\mathfrak{a}\in \Ann(M'')$.
+	由于单同态并不会改变$\Ann$，所以可以将$M'$看成$M$的子模，所以第一个包含显然。对第二个包含，任取$\mathfrak{a}\in \Ann(M)-\Ann(M')$，我们要证明$\mathfrak{a}\in \Ann(M')$. 设$\mathfrak{a}=\ann(m)$，其中$m\in M$，由$m$生成的子模$Rm$同构于$R/\mathfrak{a}$. 考虑$N=Rm\cap M'$，他是$Rm$的子模，如果$N$非零，因为$\mathfrak{a}\notin \Ann(M')$，$\mathfrak{a}N\neq 0$，因此$\mathfrak{a}\not\subset \ann(N)=\ann(m)=\mathfrak{a}$，矛盾，所以只可能$Rm\cap M'=0$. 在这种情况下，$Rm$同构于他在$M''$中的像，所以$\mathfrak{a}\in \Ann(M'')$.
 \qed
 
 考虑$M=M'\oplus M''$的情况，由于$M'$和$M''$都有到$M$的单同态，所以$\Ann(M')\subset \Ann(M)$以及$\Ann(M'')\subset \Ann(M)$，继而他给出了$\Ann(M)=\Ann(M')\cup \Ann(M'')$.
 
-\para 设$N$是$M$的一个子模，$\Ann(M/N)$是一个单点集，则称呼$N$是$M$的一个准素子模，如果$\Ann(M/N)=\{\mathfrak{p}\}$，则称呼$N$是$\mathfrak{p}$-准素的。
+\para 设$N$是$M$的一个子模，如果$\Ann(M/N)$只有一个元素，则称呼$N$是$M$的一个准素子模，如果$\Ann(M/N)=\{\mathfrak{p}\}$，则称呼$N$是$\mathfrak{p}$-准素的。
 
-\pro 设$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是.
+如果设$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是. 事实上，考虑单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ann(M/(N_1\cap N_2))\subset \Ann(M/N_1)\cup \Ann(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ann(M/(N_1\cap N_2))$非空，所以$\Ann(M/(N_1\cap N_2))=\{\mathfrak{p}\}$.
 
 经过有限次归纳可以得到：有限个$\mathfrak{p}$-准素子模的交依然是一个$\mathfrak{p}$-准素子模。
 
+\lem 设$R$是Noether环，$M$是有限生成$R$-模，则$M$的不可约子模$N$是准素子模。
+
 \proof
-	因为我们有单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ann(M/(N_1\cap N_2))\subset \Ann(M/N_1)\cup \Ann(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ann(M/(N_1\cap N_2))$非空，所以$\Ann(M/(N_1\cap N_2))=\{\mathfrak{p}\}$.
+	如果$\Ann(M/N)$中至少存在两个素理想$\pp_1=\ann(\bar{m}_1)$和$\pp_2=\ann(\bar{m}_2)$，那么在$M/N$中有子模$R\bar{m}_1\cong R/\pp_1$和$R\bar{m}_2\cong R/\pp_2$. 如果$R\bar{m}_1\cap R\bar{m}_2$非零，则$R\bar{m}_1\cap R\bar{m}_2$作为$R\bar{m}_1$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_1$，作为$R\bar{m}_2$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_2$，矛盾，于是推出$R\bar{m}_1\cap R\bar{m}_2=\{\bar{0}\}$. 回到$M$中的原像，我们就可以知道$N$可以写成两个$M$的子模的交，这与$N$不可约矛盾。
 \qed
 
 准素子模的重要性来自于下面这个定理，他被称为准素分解。
 
-\theo 设$R$是一个Noether环，而$M$是一个有限生成$R$-模，设$M'$是$M$的一个子模且$M'\neq M$，那么他是有限个准素理想的交。
+\theo 设$R$是Noether环，$M$是有限生成$R$-模，如果$N$是$M$的一个真子模，那么他是有限个准素子模的交。
+
+\proof
+	由于Noether环上的有限生成模是Noether模，回忆Proposition \eqref{irrde}，$N$可以写成$M$中的有限个不可约子模的交的形式，而每一个不可约子模都是准素子模。
+\qed
 
 \section{主理想整环上的有限生成模}
 
