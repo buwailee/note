@@ -4,7 +4,7 @@
 
 这节就是罗列定义。
 
-\para 设有两个集合$X$和$Y$，则称映射$f:X\times Y \to X$为集合$X$上的一个右作用。称映射$g:Y\times X \to X$为集合$X$上的一个左作用。称映射$h:X\times X \to X$为集合$X$上的一个二元运算。同样地，我们可以定义多元运算。
+\para 设有两个集合$X$和$Y$，则称映射$f:X\times Y \to X$为集合$X$上的一个右\idx{作用}。称映射$g:Y\times X \to X$为集合$X$上的一个左作用。称映射$h:X\times X \to X$为集合$X$上的一个二元\idx{运算}。同样地，我们可以定义多元运算。
 
 可以看到$\mathbb{R}$上的加法$f:\mathbb{R}\times \mathbb{R} \to \mathbb{R}$定义为$f(a,b)=a+b$是一个二元运算，同样可以检验乘法。再比如设$Y$是集合$X$上所有双射$f:X\to X$的集合，那么映射复合构成$Y$上的一个运算。
 
@@ -20,7 +20,7 @@
 \[
 	(ab)c=a(bc),
 \]
-则该运算被称为是满足结合律(associative property)的。
+则该运算被称为是满足\idx{结合律}(\idx{associative property})的。
 
 \para 对于在字符串$a_1a_2\cdots a_n$中任意加括号构成的字符串，比如
 \[
@@ -63,7 +63,7 @@
 
 这个结论就是说，对于满足结合律的运算，有限个元素相乘的结果不依赖于他加括号的方式。
 
-\para 有一个非空集合$G$和其上的二元运算$*$，或者记作$(G,*)$，称为一个群(group)，如果满足：
+\para 有一个非空集合$G$和其上的二元运算$*$，或者记作$(G,*)$，称为一个\idx{群}(\idx{group})，如果满足：
 
 \no{1}结合律：对于任意$a$, $b$, $c\in G$，有$(a*b)*c=a*(b*c)$；
 
@@ -73,9 +73,9 @@
 
 $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以直接称呼$G$为一个群。显然$(\mathbb{R},+)$是一个群，单位元是0，$a^{-1}=-a$.将$\mathbb{R}$去掉了$0$之后的集合记作$\mathbb{R}-\{0\}$，则$(\mathbb{R}-\{0\},\cdot)$构成一个群，单位元是$1$，$a^{-1}=1/a$.
 
-如果有群$(G,*)$，对于任意的$a$, $b\in G$满足$a*b=b*a$，则称$(G,*)$是一个交换群，或者称为Abel群。交换群的运算一般是记作加法的。
+如果有群$(G,*)$，对于任意的$a$, $b\in G$满足$a*b=b*a$，则称$(G,*)$是一个\textit{交换群}\index{群!交换群}，或者称为\idxx{群}{Abel群}。交换群的运算一般是记作加法的。
 
-\para 我们称呼一个三元组$(R,+,\cdot)$为一个环(ring)，如果满足下列性质：
+\para 我们称呼一个三元组$(R,+,\cdot)$为一个\idx{环}(\idx{ring})，如果满足下列性质：
 
 \no{1} $(R,+)$构成一个交换群，运算称为加法，其中的单位元记作$0$，$a$的反元素记作$-a$;
 
@@ -89,9 +89,9 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 所以$0a=0$，同理$a0=0$. 如果在$R$中有$1=0$，则我们有任意的$r\in R$成立$r=1r=0r=0$. 这样的环我们称为零环，零环的地位在集合里面大概就类似空集。下面我们所讨论的环，一般而言不会是零环，即我们会假设$0\neq 1$.
 
-如果$R$中的乘法是可交换的，则称$R$是一个交换环。有些作者在环的定义中会去掉乘法单位元，称我们这里定义的环为含幺环。
+如果$R$中的乘法是可交换的，则称$R$是一个\idxx{环}{交换环}。有些作者在环的定义中会去掉乘法单位元，称我们这里定义的环为含幺环。
 
-和群不同的是，环乘法不一定是可逆的（即对$a$存在一个$b$使得$ab=1$），比如$0$，对于任意的$a\in R$都有$a0=0\neq 1$，所以$0$一定不是可逆的。如果一个环除了零之外的元素全部可逆，则称他为一个除环。交换除环被称为域(field)。
+和群不同的是，环乘法不一定是可逆的（即对$a$存在一个$b$使得$ab=1$），比如$0$，对于任意的$a\in R$都有$a0=0\neq 1$，所以$0$一定不是可逆的。如果一个环除了零之外的元素全部可逆，则称他为一个除环。交换除环被称为\idx{域}(\idx{field})。
 
 在后面，除非特殊申明，环全部假设为交换含幺环。
 
@@ -99,7 +99,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \[
 	(rs)m=r(sm),\quad r(m+n)=rm+rn,\quad (r+s)m=rm+sm,\quad 1m=m,
 \]
-则称呼$M$是一个左$R$-模，同理可以定义右$R$-模。任意的含幺环$R$显然是一个$R$-模。
+则称呼$M$是一个左$R$-\idx{模}，同理可以定义右$R$-模。任意的含幺环$R$显然是一个$R$-模。
 
 由于
 \[
@@ -111,7 +111,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \para $\zz$显然是一个交换群，当然也是一个交换环。不太平凡的一点是，任意的交换群$G$可以看成$\zz$-模。这是因为对任意的$n\in \zz$和任意的$a\in G$，我们做出如下定义：如果$n>0$，定义$na$为$n$个$a$相加，如果$n=0$，定义$na=0$，如果$n<0$，定义$na=-((-n)a)$. 不难检验这是确实是一个$\zz$-模。
 
-\para 除了交换群之外，还有一类重要的模，矢量空间。设$k$是一个域，则任意$k$-模$V$被称为$k$-矢量空间，$V$中的元素被称为矢量。
+\para 除了交换群之外，还有一类重要的模，\idx{矢量空间}。设$k$是一个域，则任意$k$-模$V$被称为$k$-矢量空间，$V$中的元素被称为矢量。
 
 \para 设$\mu:H\times G\to G$为一个$G$上的左作用（一般是乘法），$K$是$G$的一个子集，记
 \[
@@ -134,11 +134,11 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 % \]
 % 其中求和是任意有限求和。
 
-\para 设$G$是一个群，$H$是他的一个子集。所以群运算$\mu$限制在$H\times H$得到了运算$\mu|_{H\times H}:H\times H\to G$. 如果$\im\mu|_{H\times H}\subset H$，则$(H,\mu)$也构成了一个群，他被称为$G$的一个子群。最后一句话就是说，$H$中的任意两个元素相乘依然在$H$中，再或者用我们上面的写法，$HH\subset H$.
+\para 设$G$是一个群，$H$是他的一个子集。所以群运算$\mu$限制在$H\times H$得到了运算$\mu|_{H\times H}:H\times H\to G$. 如果$\im\mu|_{H\times H}\subset H$，则$(H,\mu)$也构成了一个群，他被称为$G$的一个\idxx{群}{子群}。最后一句话就是说，$H$中的任意两个元素相乘依然在$H$中，再或者用我们上面的写法，$HH\subset H$.
 
-类似地，如果$R$是一个环，$S$是他的一个子集。如果对$R$的交换群结构，$S$是他的子群，且$SS\subset S$，则$S$被称为$R$的一个子环。子环一般而言不用含有单位元。
+类似地，如果$R$是一个环，$S$是他的一个子集。如果对$R$的交换群结构，$S$是他的子群，且$SS\subset S$，则$S$被称为$R$的一个\idxx{环}{子环}。子环一般而言不用含有单位元。
 
-同样，如果$M$是一个左$R$-模，$N$是他的一个子集。如果对$M$的交换群结构，$N$是他的子群，且$RN\subset N$，则$N$被称为$M$的一个子模。
+同样，如果$M$是一个左$R$-模，$N$是他的一个子集。如果对$M$的交换群结构，$N$是他的子群，且$RN\subset N$，则$N$被称为$M$的一个\idxx{模}{子模}。
 
 一个群/环/模的子群/环/模如果作为子集是真子集，则称其为真子群/环/模。
 
@@ -146,7 +146,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 显然$\{0\}$和$R$本身是$R$的理想，前者被称为零理想，后者被称为单位理想，这两者往往被称为平凡理想，因为我们感兴趣的理想往往不是他们。
 
-设$a\in R$，则$aR$也是$R$的一个理想，被称为主理想，有时候也记作$(a)$. 由于$\{0\}=0R$以及$R=1R$，所以零理想和单位理想都是主理想。主理想$(a)$一般也称作被$a$生成的主理想。
+设$a\in R$，则$aR$也是$R$的一个\idx{理想}，被称为\idxx{理想}{主理想}，有时候也记作$(a)$. 由于$\{0\}=0R$以及$R=1R$，所以零理想和单位理想都是主理想。主理想$(a)$一般也称作被$a$生成的主理想。
 
 单位理想名字中的单位来自于可逆元的英文unit：考虑一个可逆元$a\in R$，由于存在$a^{-1}$，所以任取$r\in R$，都有$r=a(a^{-1}r)\in (a)$，所以$(a)=R$. 这就是说可逆元生成的主理想都是单位理想。
 
@@ -158,7 +158,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \[
 	f(e_G)=e_H,\quad f(ab)=f(a)(b),
 \]
-则称$f$是一个群同态。可以看到，群同态将单位元映射到单位元，将乘法映成乘法，基本保持了群的结构。如果还有一个群同态$g:H\to G$使得$fg=\id_H$以及$gf=\id_G$，则$f$或者$g$被称为一个群同构，通常会把$g$记作$f^{-1}$. 显然，一个群同构是一个双射，既单又满。如果两个群之间存在群同构，则称呼这两个群是同构的。
+则称$f$是一个群\idx{同态}。可以看到，群同态将单位元映射到单位元，将乘法映成乘法，基本保持了群的结构。如果还有一个群同态$g:H\to G$使得$fg=\id_H$以及$gf=\id_G$，则$f$或者$g$被称为一个群同构，通常会把$g$记作$f^{-1}$. 显然，一个群同构是一个双射，既单又满。如果两个群之间存在群同构，则称呼这两个群是同构的。
 
 后面我们不再区分两个不同群的单位元的符号，基本上属于哪个群从上下文中都是清楚的。
 
@@ -182,7 +182,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \[
 	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
 \]
-被称为正合的。在正合列中，平凡群一般写作$1$，零环和零模则写作$0$，从平凡群出发或者到平凡群的同态记作$1$，零环和零模的则记作$0$，通常略去他们的符号，因为这些同态的我们是清楚的。
+被称为\idx{正合}的。在正合列中，平凡群一般写作$1$，零环和零模则写作$0$，从平凡群出发或者到平凡群的同态记作$1$，零环和零模的则记作$0$，通常略去他们的符号，因为这些同态的我们是清楚的。
 
 正合列可以用来表示一个同态是否是单射或者满射。考虑正合列$0\to A\xrightarrow{f} B$，由于$\ker(f)=\im(0\to A)=\{0\}$，所以$f$是一个单射。考虑正合列$A\xrightarrow{f} B\to 0$，由于$\im f=\ker(B\to 0)=B$，所以$f$是一个满射。
 
@@ -222,7 +222,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 所以$ghg^{-1}\in \ker(f)$，或者$gh \in \ker(f)g$，再或者$g\ker(f)\subset \ker(f)g$. 然后再考虑$g\to g^{-1}$我们就得到了反向包含，合起来就得到了$g\ker(f)=\ker(f)g$对任意$g\in G$都成立。
 
-我们抽象出这个性质：如果一个$G$的子群$H$满足对任意的$g\in G$都成立$gH=Hg$，则$H$被称为$G$的正规子群。
+我们抽象出这个性质：如果一个$G$的子群$H$满足对任意的$g\in G$都成立$gH=Hg$，则$H$被称为$G$的\idxx{群!子群}{正规子群}。
 
 一般而言，子群不是正规子群。但是，对于交换群，$gh=hg$，所以任意子群都是正规子群。反过来也不对，任意子群是正规子群也不一定是交换群。
 
@@ -357,7 +357,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	\psi\varphi=\{(x,z)\in X\times Z\,:\,\exists y\in Y\,\text{ s.t. } (x,y)\in\varphi,\, (y,z)\in \psi\}.
 \]
 
-\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^\circ$如下：对象不变，而$\Hom_{\mathcal{C}^\circ}(X,Y)$被定义为$\Hom_{\mathcal{C}}(Y,X)$，复合不变。他被称为给定范畴的对偶范畴。
+\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，而$\Hom_{\mathcal{C}^{\mathrm{op}}}(X,Y)$被定义为$\Hom_{\mathcal{C}}(Y,X)$，复合不变。他被称为给定范畴的对偶范畴。
 
 \para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。
 
@@ -386,7 +386,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 则$f$被称为一个自然变换，或者叫函子间的态射。
 
-\para 在有些作者那里，我们上面定义的函子被称为协变函子，而函子$F:\mathcal{C}^\circ \to \mathcal{D}$被称为反变函子。后者明确写出来即$F(\varphi\psi)=F(\psi)F(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。
+\para 在有些作者那里，我们上面定义的函子被称为协变函子，而函子$F:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$F(\varphi\psi)=F(\psi)F(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。
 
 \section{极限与余极限}
 
@@ -426,15 +426,15 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	\end{cases}
 \]
 
-如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^\circ$.
+如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^{\mathrm{op}}$.
 
 $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
 
-对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^\circ :I^\circ\to \mathcal{C}$通过$D^\circ(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^\circ(j\geq i)\circ D^\circ(k\geq j)=D^\circ(k\geq i)$，可见这确实是一个协变函子。
+对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^{\mathrm{op}} :I^{\mathrm{op}}\to \mathcal{C}$通过$D^{\mathrm{op}}(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^{\mathrm{op}}(j\geq i)\circ D^{\mathrm{op}}(k\geq j)=D^{\mathrm{op}}(k\geq i)$，可见这确实是一个协变函子。
 
 \para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。
 
-很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^\circ$就是定向的（滤相的），反之亦然。
+很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。
 
 作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。
 
@@ -461,7 +461,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
 
-\para 考虑$I$是滤相的（定向的），而$D$是协变函子，那么$I$-图$D$是逆系统（定向系统）。考虑$I$是滤相的（定向的），而$D$是反变函子，那么$I^\circ$-图$D^\circ$是定向系统（逆系统）。
+\para 考虑$I$是滤相的（定向的），而$D$是协变函子，那么$I$-图$D$是逆系统（定向系统）。考虑$I$是滤相的（定向的），而$D$是反变函子，那么$I^{\mathrm{op}}$-图$D^{\mathrm{op}}$是定向系统（逆系统）。
 
 \para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
 
@@ -471,7 +471,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
 
-\pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且$\varprojlim_{i\in I} D(i)=\varprojlim_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^\circ $存在一个与其共尾的子集$J^\circ $，则$J$-图$D$是一个定向系统，且$\varinjlim_{i\in I} D(i)=\varinjlim_{i\in J} D(i)$. \rule{2mm}{2mm}
+\pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且$\varprojlim_{i\in I} D(i)=\varprojlim_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^{\mathrm{op}} $存在一个与其共尾的子集$J^{\mathrm{op}} $，则$J$-图$D$是一个定向系统，且$\varinjlim_{i\in I} D(i)=\varinjlim_{i\in J} D(i)$. \rule{2mm}{2mm}
 
 所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的对偶极限。这符合我们上面的直观。
 
@@ -491,9 +491,9 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
 
-由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^\circ$-图$\calf^\circ$是定向系统，进而我们会考虑余极限
+由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^{\mathrm{op}}$-图$\calf^{\mathrm{op}}$是定向系统，进而我们会考虑余极限
 \[
-	\varinjlim_{U\in \mathfrak{B}^\circ} \calf^\circ(U)=\varinjlim_{U\in \mathfrak{B}^\circ} \calf(U),
+	\varinjlim_{U\in \mathfrak{B}^{\mathrm{op}}} \calf^{\mathrm{op}}(U)=\varinjlim_{U\in \mathfrak{B}^{\mathrm{op}}} \calf(U),
 \]
 如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.
 
@@ -554,3 +554,80 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \qed
 
 存在性的证明就是整个算法，从算法来看，这个命题即使是对非交换环上的多项式环也是成立的。
+
+\section{理想}
+
+\para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1,\,\cdots,\,f_n)$. 一个理想生成的理想自然就是他本身。
+
+\para 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
+\[\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
+\]
+是一个理想。
+
+两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。
+
+\para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。
+
+考虑一个单同态$f:R\to S$，如果$S$是一个整环，则$R$也是一个整环。为了证明他，考虑到$ab=0$等价于$f(ab)=f(a)f(b)=0$，由于$S$是整环，所以$f(a)=0$或者$f(b)=0$，再由单同态就得到了结论。作为推论，整环的子环也一定是整环。
+
+整环上的多项式环也是整环：设多项式$f$以及$g$都不为零，则它们的首项系数$a$与$b$不为零，因此$fg$的首项系数$ab$不为零，也就是说$fg\neq 0$.
+
+\para 一个理想$\mathfrak{p}$被称为素理想，如果$R/\mathfrak{p}$是一个整环。一个理想$\mathfrak{m}$被称为极大理想，如果$R/\mathfrak{p}$是一个域。由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
+
+\para 设$R$是一个环，$I(R)$是$R$所有真理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$.
+
+极大理想的命名就来自于这个偏序。对于任意的理想链，他们的并所生成的理想要比他们大。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
+
+反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
+
+从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
+
+\para 我们看到，极大理想是素理想。实际上，满足一些条件的极大的理想也会是素理想。
+\begin{itemize}
+\item 设$\mathcal{P}$是$R$的非有限生成理想构成的集合，则$\mathcal{P}$的极大元是素理想。
+\item 设$\mathcal{P}$是$R$的非主理想的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
+\item 设$S$是一个乘性子集，设$\mathcal{P}$是$R$中与$S$不相交的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
+\end{itemize}
+
+\pro 设$R$是一个环，而$I_1$, $\cdots$, $I_n$是一族理想，还有一个理想$J$满足$J\subset \bigcup_i I_i$. 如果$I_1$, $\cdots$, $I_n$中至多只有两个不是素理想，则存在一个$i$使得$J\subset I_i$. 如果将包含改成等号，命题依然成立。\notprove
+
+\para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
+
+\proof
+	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
+
+	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
+	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 
+
+	当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
+\qed
+
+\para 上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+
+但是，对于商映射，情况会好很多。设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
+
+证明是朴实的，任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态
+\[
+	\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}},
+\]
+注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，我们有同构
+\[
+	R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}.
+\]
+
+\para 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
+
+\proof 
+	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
+\qed
+
+\para 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+
+\para 定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
+\[
+	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
+\]
+
+一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
+
+一个理想的根其实是所有包含它的素理想的交。

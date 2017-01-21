@@ -1,0 +1,7 @@
+#!/bin/bash
+# Author : buwailee
+# Script follows here:
+aplatex -synctex=1 algebra > /dev/null
+zhmakeindex -q algebra.idx >/dev/null
+aplatex -synctex=1 algebra > /dev/null
+rm *.dvi *.ilg *.out

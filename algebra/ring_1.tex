@@ -1,81 +1,5 @@
 \chapter{环（一）}
 依旧是我们的假设：下面出现的环都是交换环。
-\section{理想}
-
-\para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1,\,\cdots,\,f_n)$. 一个理想生成的理想自然就是他本身。
-
-\para 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
-\[\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
-\]
-是一个理想。
-
-两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。
-
-\para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。
-
-考虑一个单同态$f:R\to S$，如果$S$是一个整环，则$R$也是一个整环。为了证明他，考虑到$ab=0$等价于$f(ab)=f(a)f(b)=0$，由于$S$是整环，所以$f(a)=0$或者$f(b)=0$，再由单同态就得到了结论。作为推论，整环的子环也一定是整环。
-
-整环上的多项式环也是整环：设多项式$f$以及$g$都不为零，则它们的首项系数$a$与$b$不为零，因此$fg$的首项系数$ab$不为零，也就是说$fg\neq 0$.
-
-\para 一个理想$\mathfrak{p}$被称为素理想，如果$R/\mathfrak{p}$是一个整环。一个理想$\mathfrak{m}$被称为极大理想，如果$R/\mathfrak{p}$是一个域。由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
-
-\para 设$R$是一个环，$I(R)$是$R$所有真理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$.
-
-极大理想的命名就来自于这个偏序。对于任意的理想链，他们的并所生成的理想要比他们大。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
-
-反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
-
-从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
-
-\para 我们看到，极大理想是素理想。实际上，满足一些条件的极大的理想也会是素理想。
-\begin{itemize}
-\item 设$\mathcal{P}$是$R$的非有限生成理想构成的集合，则$\mathcal{P}$的极大元是素理想。
-\item 设$\mathcal{P}$是$R$的非主理想的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
-\item 设$S$是一个乘性子集，设$\mathcal{P}$是$R$中与$S$不相交的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
-\end{itemize}
-
-\pro 设$R$是一个环，而$I_1$, $\cdots$, $I_n$是一族理想，还有一个理想$J$满足$J\subset \bigcup_i I_i$. 如果$I_1$, $\cdots$, $I_n$中至多只有两个不是素理想，则存在一个$i$使得$J\subset I_i$. 如果将包含改成等号，命题依然成立。
-
-\para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
-
-\proof
-	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
-
-	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
-	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 
-
-	当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
-\qed
-
-\para 上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
-
-但是，对于商映射，情况会好很多。设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
-
-证明是朴实的，任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态
-\[
-	\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}},
-\]
-注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，我们有同构
-\[
-	R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}.
-\]
-
-\para 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
-
-\proof 
-	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
-\qed
-
-\para 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
-
-\para 定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
-\[
-	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
-\]
-
-一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
-
-一个理想的根其实是所有包含它的素理想的交。
 
 \section{Euclide环和主理想整环}
 
@@ -670,3 +594,24 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 前面说了，一个多项式在$Y$上为$0$当且仅当他在$\bar{Y}$上为$0$。特别地，如果$\bar{Y}$是一个仿射簇，那么而$Y$是其中的一个开集，那么由于仿射簇不可约，所以$Y$在$\bar{Y}$中稠密，此时，上面的那个论断现在似乎在暗示我们多项式函数是连续函数，即在Zariski拓扑下$\bba^n\to \bba^1=\bar{k}$的连续函数。
 
+\para 设$Y$是一个代数集。一个函数$f:Y\to \bar{k}$在点$p\in Y$是正则的，就是说存在$p$的邻域$U$使得$p\in U\subset Y$，以及存在两个多项式$g$, $h$，其中$h$在$U$上处处不为$0$，使得$f=g/h$. 称一个函数在$Y$上正则，就是说他在$Y$上的每一点都正则。
+
+多项式函数显然是正则函数。
+
+\pro 正则函数在Zariski拓扑下是连续函数。
+
+\proof
+	按连续的定义，只要证闭集的逆象是闭的就好了。由于$\bba^1$中的闭集对应于$k[x]$中的理想的零点集，而$k[x]$中的理想是主理想，一个多项式的零点集总是有限的，所以$\bba^1$中的闭集都是有限集。如果我们证明了单点集的逆象是闭的，那也就证明了所有闭集的逆象是闭的。
+
+	闭集可以局部检查，如果$Z$是拓扑空间$Y$的子集，那么他是闭集当且仅当对于任意一个$Y$的开覆盖$\{U_\alpha\}$，$Z\cap U_\alpha$是$U_\alpha$中的闭集。
+
+	找个开覆盖，在每个$U_\alpha$中，$f$都可以写作$f=g_\alpha/h_\alpha$，此时
+	\[
+		f^{-1}(a)\cap U_\alpha=\bigl\{p\in U| g_\alpha(p)/h_\alpha(p)=a\bigr\},
+	\]
+	所以$g_\alpha(p)/h_\alpha(p)=a$又等价于$g_\alpha(p)-ah_\alpha(p)=0$，所以
+	\[
+		f^{-1}(a)\cap U_\alpha=Z(g_\alpha-ah_\alpha)\cap U_\alpha
+	\]
+	是一个闭集。
+\qed
