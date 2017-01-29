@@ -40,11 +40,11 @@ It is the case that $D=1$, a general scalar field is spin-zero field and can be 
 \]
 where
 \[
-	\phi^+(x)=\frac{1}{(2\pi)^{3/2}}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}a(\bm{p}),
+	\phi^+(x)=\frac{1}{(2\pi)^{3/2}}\int \frac{e^{ip\cdot x}\mathrm{d}^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}a(\bm{p}),
 \]
 and
 \[
-	\phi^{c+}(x)=\frac{1}{(2\pi)^{3/2}}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}a^c(\bm{p}).
+	\phi^{c+}(x)=\frac{1}{(2\pi)^{3/2}}\int \frac{e^{ip\cdot x}\mathrm{d}^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}a^c(\bm{p}).
 \]
 
 What's more,
@@ -53,13 +53,13 @@ What's more,
 \]
 where
 \[
-	\Delta_+(x)=\frac{1}{(2\pi)^3}\int  \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}=\frac{m}{(2\pi)^2\sqrt{x^2}}\int_0^\infty  \frac{u\dd u}{\sqrt{u^2+1}}\sin(m\sqrt{x^2}u).
+	\Delta_+(x)=\frac{1}{(2\pi)^3}\int  \frac{e^{ip\cdot x}\mathrm{d}^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}=\frac{m}{(2\pi)^2\sqrt{x^2}}\int_0^\infty  \frac{u\mathrm{d} u}{\sqrt{u^2+1}}\sin(m\sqrt{x^2}u).
 \]
 It is obviously even when $x^2>0$, i.e. $x$ is space-like.
 
 Propagator:
 \[
-	\Delta(x,y)=\frac{1}{(2\pi)^4}\int \dd^4q \frac{e^{iq\cdot (x-y)}}{q^2+m^2-i\epsilon}.
+	\Delta(x,y)=\frac{1}{(2\pi)^4}\int \mathrm{d}^4q \frac{e^{iq\cdot (x-y)}}{q^2+m^2-i\epsilon}.
 \]
 
 For internal symmetry, $\eta^c=\eta^*$, $\xi^c=\xi^*$ and $\zeta^c=\zeta^*$,
@@ -87,11 +87,11 @@ and $e^\mu(\bm{p},\sigma)=L^\mu_{\phantom{\mu}\nu}(\bm{p})e^\mu(\bm{p},0)$, then
 \]
 where
 \[
-	\phi^{+\mu}=\frac{1}{(2\pi)^{3/2}}\sum_{\sigma}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}e^\mu(\bm{p},\sigma)a(\bm{p},\sigma),
+	\phi^{+\mu}=\frac{1}{(2\pi)^{3/2}}\sum_{\sigma}\int \frac{e^{ip\cdot x}\mathrm{d}^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}e^\mu(\bm{p},\sigma)a(\bm{p},\sigma),
 \]
 and
 \[
-	\phi^{+c\mu}=\frac{1}{(2\pi)^{3/2}}\sum_{\sigma}\int \frac{e^{ip\cdot x}\dd^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}e^\mu(\bm{p},\sigma)a^c(\bm{p},\sigma).
+	\phi^{+c\mu}=\frac{1}{(2\pi)^{3/2}}\sum_{\sigma}\int \frac{e^{ip\cdot x}\mathrm{d}^3\bm{p}}{2\sqrt{\bm{p}^2+m^2}}e^\mu(\bm{p},\sigma)a^c(\bm{p},\sigma).
 \]
 This may be useful
 \[
@@ -104,7 +104,7 @@ and then
 
 Propagator:
 \[
-	\Delta_{\mu\nu}(x,y)=\frac{1}{(2\pi)^4}\int \dd^4q \frac{e^{iq\cdot (x-y)}P_{\mu\nu}(q)}{q^2+m^2-i\epsilon}+m^{-2}\delta^4(x-y)\delta^0_\mu \delta^0_\nu,
+	\Delta_{\mu\nu}(x,y)=\frac{1}{(2\pi)^4}\int \mathrm{d}^4q \frac{e^{iq\cdot (x-y)}P_{\mu\nu}(q)}{q^2+m^2-i\epsilon}+m^{-2}\delta^4(x-y)\delta^0_\mu \delta^0_\nu,
 \]
 where $P_{\mu\nu}(q)=\eta_{\mu\nu}+m^{-2}q_\mu q_\nu$.
 
@@ -145,15 +145,15 @@ so then using
 it is not difficult to vertify the commutation relations of $\mathscr{J}$.
 
 Some useful relations:\\
-\no{1} $\gamma$ is a vector:
+1. $\gamma$ is a vector:
 \[
 	D(\Lambda)\gamma^\rho D^{-1}(\Lambda)=(\Lambda^{-1})^\rho_{\phantom{\rho}\sigma}\gamma^\sigma.
 \]
-\no{2} $\mathscr{J}$ is an anticommutatic tensor:
+2. $\mathscr{J}$ is an anticommutatic tensor:
 \[
 	D(\Lambda)\mathscr{J}^{\rho\sigma} D^{-1}(\Lambda)=(\Lambda^{-1})^\rho_{\phantom{\rho}\mu}(\Lambda^{-1})^\sigma_{\phantom{\sigma}\nu}\mathscr{J}^{\mu\nu}.
 \]
-\no{3} Define $\beta=i\gamma^0$, then $\beta$ is the space-inversion operator, i.e.
+3. Define $\beta=i\gamma^0$, then $\beta$ is the space-inversion operator, i.e.
 \[
 	\beta \gamma^\mu \beta^{-1}=\mathscr{P}^\mu_{\phantom{\mu}\nu}\gamma^\nu,
 \]
@@ -167,7 +167,7 @@ Define
 \]
 where $S^n$ is the symmetry group, so that $[v_1,v_2]=v_1\wedge v_2$. If $v_i=v_j$ in $v_1\wedge \cdots \wedge v_n$, then $v_1\wedge \cdots \wedge v_n=0$.
 
-Suppose $\{\gamma^\mu: 0 \leq \mu \leq n-1\}$ is a basis of a $\cc$-vector space $V$, define $\Lambda^kV$ the space which spanned by $\{\gamma^{i_1}\wedge \cdots \wedge \gamma^{i_k}\}$ and $\Lambda^0V:=\cc$, then its dimension is $\tbinom{n}{k}$. Denote that $\Lambda V=\oplus_{k=0}^n \Lambda^kV$, its dimension is $\sum_{k=0}^{n}\tbinom{n}{k}=2^{n}$.
+Suppose $\{\gamma^\mu: 0 \leq \mu \leq n-1\}$ is a basis of a $\mathbb{C}$-vector space $V$, define $\Lambda^kV$ the space which spanned by $\{\gamma^{i_1}\wedge \cdots \wedge \gamma^{i_k}\}$ and $\Lambda^0V:=\mathbb{C}$, then its dimension is $\tbinom{n}{k}$. Denote that $\Lambda V=\oplus_{k=0}^n \Lambda^kV$, its dimension is $\sum_{k=0}^{n}\tbinom{n}{k}=2^{n}$.
 
 When $n=4$, then $\dim \Lambda V=2^4=16$. If we want to construct matrices $\gamma^\mu$ to furnish this representation, since the dimension of the space of $N\times N$ matrices is $N^2$, it is clear that the minimal $N$ is $\sqrt{16}=4$.
 
@@ -263,11 +263,11 @@ The Dirac field describes spin-$1/2$ particles, they are fermions. A general Dir
 \]
 where
 \[
-	\psi^+_l(x)=\frac{1}{(2\pi)^{3/2}}\sum_\sigma\int \dd^3\bm{p}\,u_l(\bm{p},\sigma)e^{ip\cdot x}a(\bm{p},\sigma),
+	\psi^+_l(x)=\frac{1}{(2\pi)^{3/2}}\sum_\sigma\int \mathrm{d}^3\bm{p}\,u_l(\bm{p},\sigma)e^{ip\cdot x}a(\bm{p},\sigma),
 \]
 and
 \[
-	\psi^{-c}_l(x)=\frac{1}{(2\pi)^{3/2}}\sum_\sigma\int \dd^3\bm{p}\,v_l(\bm{p},\sigma)e^{ip\cdot x}a^{c\dag}(\bm{p},\sigma).
+	\psi^{-c}_l(x)=\frac{1}{(2\pi)^{3/2}}\sum_\sigma\int \mathrm{d}^3\bm{p}\,v_l(\bm{p},\sigma)e^{ip\cdot x}a^{c\dag}(\bm{p},\sigma).
 \]
 The coefficient $u$ and $v$ is defined by
 \begin{align*}
@@ -285,19 +285,19 @@ where
 Some useful relations:
 \[
 \begin{split}
-	&D(L(p))\beta D(L(p))^{-1}=-i\frac{p_\mu \gamma^\mu}{m}：=-i\frac{\notl{p}}{m},\\
-	&M(\bm{p})_{ll'}=\sum_{\sigma}u_l(\bm{p},\sigma)u_{l'}(\bm{p},\sigma)=\left(\frac{1}{2p^0}(-i\notl{p}+m)\beta\right)_{ll'},\\
-	&N(\bm{p})_{ll'}=\sum_{\sigma}v_l(\bm{p},\sigma)v_{l'}(\bm{p},\sigma)=\left(\frac{1}{2p^0}(-i\notl{p}-m)\beta\right)_{ll'},
+	&D(L(p))\beta D(L(p))^{-1}=-i\frac{p_\mu \gamma^\mu}{m}:=-i\frac{\not{p}}{m},\\
+	&M(\bm{p})_{ll'}=\sum_{\sigma}u_l(\bm{p},\sigma)u_{l'}(\bm{p},\sigma)=\left(\frac{1}{2p^0}(-i\not{p}+m)\beta\right)_{ll'},\\
+	&N(\bm{p})_{ll'}=\sum_{\sigma}v_l(\bm{p},\sigma)v_{l'}(\bm{p},\sigma)=\left(\frac{1}{2p^0}(-i\not{p}-m)\beta\right)_{ll'},
 \end{split}
 \]
 so
 \[
-	\{\psi_l(x),\psi_{l'}^\dag (y)\}=\left((-\notl{\partial}+m)\beta\right)_{ll'}\Delta(x-y).
+	\{\psi_l(x),\psi_{l'}^\dag (y)\}=\left((-\not{\partial}+m)\beta\right)_{ll'}\Delta(x-y).
 \]
 
 Propagator:
 \[
-	\Delta(x,y)=\frac{1}{(2\pi)^4}\int \dd^4q \frac{e^{iq\cdot (x-y)}(-i\notl{q}+m)\beta}{q^2+m^2-i\epsilon}.
+	\Delta(x,y)=\frac{1}{(2\pi)^4}\int \mathrm{d}^4q \frac{e^{iq\cdot (x-y)}(-i\not{q}+m)\beta}{q^2+m^2-i\epsilon}.
 \]
 
 For internal symmetry, $\eta^c=-\eta^*$, $\xi^c=\xi^*$ and $\zeta^c=\zeta^*$,
@@ -370,5 +370,5 @@ and
 \]
 It is easy to see that $D_L$ or $D_R$ contains a spin-$1/2$ representation of $\mathfrak{su}(2)$.
 
-The Lie algebra representation $D_L\otimes D_R:=D_L\otimes \id+\id \otimes D_R$ is denoted by $(1/2,1/2)$. In fact, $D_L\otimes D_R$ is a Lie algebra isomorphism, so it is just the vector representation. To prove this, since $D_L\otimes D_R$ has been a Lie algebra morphism, we only need to show that it is an isomorphism between vector spaces, and it is because that $\{(D_L\otimes D_R)(J^{\mu\nu})\}$ are linearly independent (this can be vertified by directly calculation). 
+The Lie algebra representation $D_L\otimes D_R:=D_L\otimes \mathrm{id}+\mathrm{id} \otimes D_R$ is denoted by $(1/2,1/2)$. In fact, $D_L\otimes D_R$ is a Lie algebra isomorphism, so it is just the vector representation. To prove this, since $D_L\otimes D_R$ has been a Lie algebra morphism, we only need to show that it is an isomorphism between vector spaces, and it is because that $\{(D_L\otimes D_R)(J^{\mu\nu})\}$ are linearly independent (this can be vertified by directly calculation). 
 \end{document}

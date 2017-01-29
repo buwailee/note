@@ -1,0 +1,7 @@
+#!/bin/bash
+# Author : buwailee
+# Script follows here:
+xelatex -synctex=1 manifold > /dev/null
+zhmakeindex -q manifold.idx >/dev/null
+xelatex -synctex=1 manifold > /dev/null
+rm *.dvi *.ilg *.out

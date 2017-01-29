@@ -1,7 +1,6 @@
 % author: buwailee@nmhs
 \documentclass[9pt,twoside,openany,svgnames,x11names]{extbook}
-\usepackage[zh,book]{noteheader}
-\usepackage{ctex}
+\usepackage[zh]{noteheader}
 	\CTEXoptions[today=old]
 	\CTEXoptions[contentsname=Table of Contents]
 \usepackage[section]{../egastyle}
@@ -36,11 +35,11 @@
 \frontmatter
 \tableofcontents
 \mainmatter
-	\input{calculus.tex}
-	\input{lie_group.tex}
-	\input{connection.tex}
-	\input{appendix.tex}
+	\include{calculus}
+	\include{lie_group}
+	\include{connection}
+	\include{appendix}
 \backmatter
 	\printindex
-	\input{references.tex}
+	\include{references}
 \end{document}
