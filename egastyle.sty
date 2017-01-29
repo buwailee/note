@@ -11,7 +11,7 @@
 \RequirePackage{amsthm}
 
 \if@chapter
-	\newtheorem{para}{}[chapter]
+	\newtheorem{para}{}[section]
 	\renewcommand{\thepara}{\arabic{chapter}.\arabic{section}.\arabic{para}}
 \else\if@section
 	\newtheorem{para}{}[section]
