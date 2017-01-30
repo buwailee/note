@@ -1,3 +1,5 @@
+\renewcommand\chapterimg{../Pictures/5.png}
+
 \chapter{模（二）}
 
 \section{准素分解}
@@ -70,7 +72,9 @@
 \]
 如果$S$是一个$R$-代数，设$\varphi:R\to S$是定义代数的环同态，那么$r\cdot m=\varphi(r)m$定义出了$M$上的一个$R$-模结构。此时，导子$d$如果是$R$-模同态，则称呼$d$是$R$-线性的。$S$到$M$所有的$R$-线性导子构成了一个$R$-模。
 
-由于$d(1\cdot 1)=d(1)+d(1)$，因此对任意的导子有$d(1)=0$. 如果$d$是$R$线性的，对$r\in R$，我们有$d(r)=rd(1)=0$. 设$s\in S$，则$d(s^n)=ns^{n-1}d(s)$，这个可以用Leibniz法则直接计算得到。
+由于$d(1\cdot 1)=d(1)+d(1)$，因此对任意的导子有$d(1)=0$. 如果$d$是$R$-线性的，对$r\in R$，我们有$d(r)=rd(1)=0$. 设$s\in S$，则$d(s^n)=ns^{n-1}d(s)$，这个可以用Leibniz法则直接计算得到。
+
+如果$\varphi:R\to S$是一个满同态，如果将$S$看成$R$-代数，则$\varphi(r)=r\cdot 1$，于是从上面的构造有$d(r\cdot 1)=rd(1)=0$，所以此时$\Omega_{S/R}=\{0\}$.
 
 \pro 给定环$R$和$R$-代数$S$，则存在一个$S$-模$\Omega_{S/R}$和一个$R$-线性的导子$d:S\to R$使得任意的$S$-模$M$与$R$-线性导子$\delta: S\to M$都存在唯一的$R$-线性映射$\varphi:\Omega_{S/R}\to M$使得分解
 \[
@@ -81,7 +85,7 @@
 \proof
 	考虑集合$\{d(f)\,:\, f\in S\}$生成的自由$S$-模$M$，再考虑其中由
 	\[
-	d(fg)-fd(g)-gd(f),\quad d(r_1f_1+r_2f_2)-r_1d(f_1)-r_2d(f_2)
+	d(fg)-fd(g)-gd(f),\quad d(rf)-rd(f),\quad d(f+g)-d(f)-d(g)
 	\]
 	生成的子模$N$，于是$\Omega_{S/R}$就被构造为$M/N$，而$d:f\mapsto d(f)$很容易检验这是一个$R$-线性导子。
 
@@ -89,6 +93,12 @@
 \qed
 
 今后，$d(f)$的括号不产生理解上的差异的时候会略去记成$df$. 上面定义的模就被称为$S$的微分模。由泛性质，微分模在同构意义下唯一。
+
+\para 在继续关于微分模的讨论之前，先谈谈他相关的几何概念。在光滑流形$M$上，我们知道，给定一个光滑函数$f:M\to \mathbb{R}$，那么在每一点$f_{*p}:T_pM\to T_{f(p)}\mathbb{R}=\mathbb{R}$将$p$点的切矢量$v$变成了一个数$f_{*p}(v)=v(f)=df(v)(p)$，然后让$p$在流形上跑动起来，这样就得到了$f_*=df$实际上是余切丛的一个光滑截面。
+
+记$\mathcal{C}^\infty(M)$是流形$M$上的光滑函数环，这是一个$\mathbb{R}$-代数，而$\Gamma(T^*M)$是$M$的余切丛的光滑截面构成的集合，他是一个加法群，通过逐点定义数乘，可以赋予一个$\mathcal{C}^\infty(M)$-模结构，此时$f\mapsto f_*$就是一个导子。
+
+由微分模的泛性质，因此存在一个$\mathcal{C}^\infty(M)$-模同态$\Omega_{\mathcal{C}^\infty(M)/\mathbb{R}}\to \Gamma(T^*M)$. 由于$T^*M$与$\Gamma(T^*M)$是等价的对象，所以$\Omega_{\mathcal{C}^\infty(M)/\mathbb{R}}$这里就可以理解成余切丛。他的对偶就可以理解成切丛。
 
 \para 设$S$是一个有限生成$R$-代数，他被$\{f_1,\cdots,f_n\}$生成，那么任意的单项式$f_1^{k_1}\cdots f_n^{k_n}\in S$求导后有
 \[
@@ -122,11 +132,57 @@
 \]
 没有标记的那个同态来自于微分模的泛性质，因此，我们可以将$\Omega$看成一个代数范畴到模范畴的一个函子。
 
-\para 考虑$R=R'$的情况，此时代数的态射约化成了$S\to S'$的一个环同态，换而言之，即考虑
+\para 考虑$R=R'$的情况，此时代数的态射约化成了$S\to S'$的一个环同态，换而言之，即考虑三个环
 $R\to S\to T$的情况。
 
-考虑$T$-模$\Omega_{T/R}$和$\Omega_{T/S}$，由于$S$-线性可以推出$R$-线性，所以$dc\mapsto dc$给出了满同态$\Omega_{T/R}\to\Omega_{T/S}$. 对$S$-模$\Omega_{S/R}$，我们可以标量扩张成一个$T$-模，通过$T\otimes_S \Omega_{S/R}$. 由于同样都是$R$-线性，所以通过$t\otimes ds\mapsto tds$可以给出同态$T\otimes_S \Omega_{S/R}\to \Omega_{T/R}$，并且，由于$ds$在$\Omega_{T/S}$中为零，所以上面两个同态复合为零。综上，我们有正合列
+考虑$T$-模$\Omega_{T/R}$和$\Omega_{T/S}$，从构造，他们都可以写成自由$T$-模$M$关于两个子模$N_R$和$N_S$的商模，由于$S$-线性可以推出$R$-线性，所以$N_R\subset N_S$. 从商同态$M\to M/N_S=\Omega_{T/S}$可以诱导出满同态$\psi:\Omega_{T/R}=M/N_R\to \Omega_{T/S}$，具体到元素就是$\psi:dc\mapsto dc$. 
+
+对$S$-模$\Omega_{S/R}$，我们可以标量扩张成一个$T$-模，通过$T\otimes_S \Omega_{S/R}$. 对环同态$\pi:S\to T$. 由于同样都是$R$-线性的，所以通过$\varphi:t\otimes ds\mapsto tds$可以给出$R$-线性的$T$-模同态$\varphi:T\otimes_S \Omega_{S/R}\to \Omega_{T/R}$.
+
+现在我们来求$\ker\psi$，由构造，他就是$N_S/N_R$. $N_S$由所有$d(fg)-df-dg$, $d(fg)-df-dg$和$d(f+g)-df-dg$生成，由于$d(fg)-df-dg$, $d(f+g)-df-dg\in N_R$, 所以$\ker\psi$被$d(st)-sdt=tds$生成元，其中$s\in S$，由于$tds=\varphi(t\otimes ds)$，于是$\ker\psi=\im\varphi$.
+
+综上，我们有正合列
 \[
-	T\otimes_S \Omega_{S/R}\xrightarrow{\varphi} \Omega_{T/R}\xrightarrow{\psi} \Omega_{T/S}\to 0,
+	T\otimes_S \Omega_{S/R}\xrightarrow{\varphi} \Omega_{T/R}\xrightarrow{\varphi} \Omega_{T/S}\to 0,
 \]
-其中$\varphi(t\otimes ds)\mapsto tds$以及$\psi(dt)\mapsto dt$.
+其中$\varphi:t\otimes ds\mapsto tds$以及$\psi:dt\mapsto dt$.
+
+利用这个正合列，当$R\to S$是一个满同态的时候，由于此时$\Omega_{S/R}=\{0\}$，所以$\Omega_{T/R}\cong \Omega_{T/S}$.
+
+\para 依然考虑三个环$R\to S\to T$的情况，但此时假设$\pi:S\to T$是一个满射，因此$\Omega_{T/S}=0$，上述正合列就只剩
+\[
+	T\otimes_S \Omega_{S/R}\xrightarrow{\psi} \Omega_{T/R}\to 0,
+\]
+此时$\psi$是一个满同态。
+
+设$I=\ker \pi$，由于$\pi:S\to T$满同态，由于张量积是右正和的，所以$1\otimes \pi:\Omega_{S/R}=S\otimes\Omega_{S/R}\to T\otimes\Omega_{S/R}$是一个满同态，并且$\ker(1\otimes \pi)=I\Omega_{S/R}$，所以$\Omega_{S/R}/I\Omega_{S/R}\cong T\otimes\Omega_{S/R}$，这个同构具体写出来就是$df\to 1\otimes df$. 利用这个同构，可以断言$T\otimes_S\Omega_{S/R}$由$\{1\otimes_S ds\,:\,s\in S\}$张成。
+
+考虑标准导子$d:S\to \Omega_{S/R}$限制在$I$上得到的$S$-模同态$d|_I$. 任取$s\in S$以及$r\in I$，有$d(rs)=sdr+rds$，在$\Omega_{S/R}/I\Omega_{S/R}\cong T\otimes\Omega_{S/R}$中$rds$将被模去，这样$d|_I$就诱导了一个$S$-模同态$I\to \Omega_{S/R}/I\Omega_{S/R}$，我们依然记作$d$。如果$s\in I$，则$d(rs)$在$\Omega_{S/R}/I\Omega_{S/R}$中为零，因此$d(I^2)=0$. 由商模的泛性质，他诱导了$S$-模同态$d:I/I^2\to \Omega_{S/R}/I\Omega_{S/R}$，他同时也是$S/I=T$-模同态。综上，我们就有一列$T$-模同态
+\[
+	I/I^2\xrightarrow{D} T\otimes_S\Omega_{S/R}\xrightarrow{\varphi} \Omega_{T/R}\to 0,
+\]
+其中$D:f\mapsto 1\otimes df$. 下面我们证明这还是正合列。
+
+\pro 设$R\to S\to T$是三个环，并且$\pi:S\to T$是满同态，记$I=\pi$，我们有正合列
+\[
+	I/I^2\xrightarrow{D} T\otimes_S\Omega_{S/R}\xrightarrow{\varphi} \Omega_{T/R}\to 0,
+\]
+其中$D:f\mapsto 1\otimes df$，以及$\varphi:1\otimes df\mapsto df$.
+
+\proof
+	只要求$\ker \varphi$. 由于$T\otimes_S\Omega_{S/R}$由$\{1\otimes_S ds\,:\,s\in S\}$张成，并且，由于$S\to T$是满同态，所以$\Omega_{T/R}$由$\{ds\,:\,s\in S\}$张成。于是$\varphi$将生成元$1\otimes_S ds$变成生成元$ds$，并且$T\otimes_S\Omega_{S/R}$和$\Omega_{T/R}$满足相同的Leibniz法则和$R$-线性性，所以$\ker \varphi$由那些$1\otimes ds\neq 0$张成，其中$ds=0\in\Omega_{T/R}$，如果$1\otimes ds\neq 0$，则只可能$s\in I$. 此时$1\otimes ds=Ds\in\im D$，所以$\ker\varphi=\im D$. 
+\qed
+
+利用同构基本定理，上面的正合列给出了同构
+\[
+	\Omega_{T/R}\cong \coker\left(I/I^2\xrightarrow{D} T\otimes_S\Omega_{S/R}\right).
+\]
+当$T$是一个有限生成$R$-代数，即$T=R[x_1,\cdots,x_n]/I$，取$S=R[x_1,\cdots,x_n]$，则
+\[
+	T\otimes_S\Omega_{S/R}=T\otimes_S\bigoplus_{i=1}^n Sx_i=\bigoplus_{i=1}^n Tx_i,
+\]
+所以
+\[
+	\Omega_{T/R}\cong \coker\left(I/I^2\xrightarrow{D} \bigoplus_{i=1}^n Tx_i\right),
+\]
+此时$\Omega_{T/R}$是一个有限生成$T$-模。

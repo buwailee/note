@@ -1,45 +1,21 @@
-% author: buwailee@nmhs 2016/12/16
+% author: buwailee@nmhs 2017/1/31
 \ProvidesPackage{noteheader}
 
 %% math Package
 \RequirePackage{amssymb,amsfonts,amsmath,amsthm,bm,mathrsfs}
 
-%% other Package
-
-% % fancy headers & footers
-% \RequirePackage{fancyhdr}
-% 	\fancyhead{} % clear all header fields
-% 	\fancyfoot{}
-% 	%\renewcommand{\headrulewidth}{0.4pt}
-% 	%\renewcommand{\footrulewidth}{0.4pt}
-% 	\pagestyle{fancy}
-% 	% \renewcommand{\chaptermark}[1]{\markboth{\thechapter}{}} %{\markboth{\MakeUppercase{#1}}{}}
-% 	\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
-
-% 	% \renewcommand\thechapter{\Roman{chapter}} 
-% 	% \renewcommand\thesection{\arabic{section}}
-% 	% \newcommand{\ssection}[1]{%
-% 	%   \section[#1]{\centering\normalfont\scshape #1}}
-% 	% \newcommand{\ssectionstar}[1]{%
-% 	%   \section*[#1]{\centering\normalfont\scshape #1}}
-% 	% \newcommand{\ssubsection}[1]{%
-% 	%   \subsection[#1]{\raggedright\normalfont\itshape #1}}
-% 	% \newcommand{\ssubsection}{\subsection}
-% %%
-
 \def\pgfsysdriver{pgfsys-dvipdfm.def}
 \RequirePackage{tikz}
 \RequirePackage[all]{xy}
 
-%% Option
-% \DeclareOption{article}{
-% 	\fancyhead[L]{{\small \sf \rightmark}}
-% 	\fancyhead[R]{{\small \sf \thepage}}
-% }
-% \DeclareOption{book}{
-% 	\fancyhead[LO,RE]{{\small \sf \rightmark}}
-% 	\fancyhead[RO,LE]{{\small \sf \thepage}}
-% }
+% Option
+
+\newif\if@plain\@plainfalse
+\DeclareOption{plain}{\@plaintrue}
+
+\newif\if@book\@bookfalse
+\DeclareOption{book}{\@plainfalse\@booktrue}
+\DeclareOption{article}{\@plainfalse\@bookfalse}
 
 \newif\if@zh\@zhfalse
 \DeclareOption{en}{\@zhfalse}
@@ -49,7 +25,7 @@
 \DeclareOption{a4paper}{\@afourtrue}
 \DeclareOption{b5paper}{\@afourfalse}
 
-\ExecuteOptions{en,a4paper}
+\ExecuteOptions{plain,en,a4paper}
 %%
 
 %% Relax
@@ -63,11 +39,73 @@
 %% a4paper
 	\pdfpagewidth=210truemm
 	\pdfpageheight=297truemm
-	\RequirePackage[a4paper, top=14mm, text={170mm, 250mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+	\if@plain
+		\RequirePackage[a4paper, top=16mm, text={170mm, 248mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+	\else
+		% fancy headers & footers
+		\RequirePackage{fancyhdr}
+			\fancyhead{} % clear all header fields
+			\fancyfoot{}
+			% \renewcommand{\headrulewidth}{0.4pt}
+			% \renewcommand{\footrulewidth}{0.4pt}
+			\pagestyle{fancy}
+			% \renewcommand{\chaptermark}[1]{\markboth{\thechapter}{}} 		%{\markboth{\MakeUppercase{#1}}{}}		
+			\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+		
+			% \renewcommand\thechapter{\Roman{chapter}} 
+			% \renewcommand\thesection{\arabic{section}}
+			% \newcommand{\ssection}[1]{%
+			%   \section[#1]{\centering\normalfont\scshape #1}}
+			% \newcommand{\ssectionstar}[1]{%
+			%   \section*[#1]{\centering\normalfont\scshape #1}}
+			% \newcommand{\ssubsection}[1]{%
+			%   \subsection[#1]{\raggedright\normalfont\itshape #1}}
+			% \newcommand{\ssubsection}{\subsection}
+		\RequirePackage[a4paper, top=18mm, text={170mm, 246mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+		\if@book
+			\fancyhead[LO,RE]{{\sffamily\itshape\small\nouppercase{\rightmark}}}
+			\fancyhead[RO,LE]{{\small \sf \thepage}}
+		\else
+			\fancyhead[L]{{\sffamily\itshape\small\nouppercase{\rightmark}}}
+			\fancyhead[R]{{\small \sf \thepage}}
+		\fi
+		\headwidth=\textwidth
+	\fi
 \else
 %% b5paper
 	\pdfpagewidth=176truemm
 	\pdfpageheight=250truemm
-	\RequirePackage[b5paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+	\RequirePackage[b5paper, top=14mm, text={144mm, 205mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+	\if@plain
+	\else
+		% fancy headers & footers
+		\RequirePackage{fancyhdr}
+			\fancyhead{} % clear all header fields
+			\fancyfoot{}
+			% \renewcommand{\headrulewidth}{0.4pt}
+			% \renewcommand{\footrulewidth}{0.4pt}
+			\pagestyle{fancy}
+			% \renewcommand{\chaptermark}[1]{\markboth{\thechapter}{}} 		%{\markboth{\MakeUppercase{#1}}{}}		
+			\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+		
+			% \renewcommand\thechapter{\Roman{chapter}} 
+			% \renewcommand\thesection{\arabic{section}}
+			% \newcommand{\ssection}[1]{%
+			%   \section[#1]{\centering\normalfont\scshape #1}}
+			% \newcommand{\ssectionstar}[1]{%
+			%   \section*[#1]{\centering\normalfont\scshape #1}}
+			% \newcommand{\ssubsection}[1]{%
+			%   \subsection[#1]{\raggedright\normalfont\itshape #1}}
+			% \newcommand{\ssubsection}{\subsection}
+		
+		\if@book
+			\fancyhead[LO,RE]{{\sffamily\itshape\small\nouppercase{\rightmark}}}
+			\fancyhead[RO,LE]{{\small \sf \thepage}}
+		\else
+			\fancyhead[L]{{\sffamily\itshape\small\nouppercase{\rightmark}}}
+			\fancyhead[R]{{\small \sf \thepage}}
+		\fi
+		\headwidth=\textwidth
+	\fi
 \fi
 \endinput

@@ -6,7 +6,7 @@
 \usepackage{ctex}
 	% \CTEXoptions[today=old]
 	% \CTEXoptions[contentsname=Table of Contents]
-\usepackage[chapter]{../../egastyle}
+\usepackage[chapter]{../egastyle}
 \usepackage{titletoc, makeidx}
 	\makeindex
 	% \renewcommand{\indexname}{Index}
@@ -16,22 +16,23 @@
 \usepackage{hyperref}
 	\hypersetup{bookmarksnumbered=true}
 
-\input{../../defs.tex}
+\input{defs.tex}
 	\newcommand{\cc}{\mathbb{C}}
 	\DeclareMathOperator{\spec}{Spec}
-\newcommand{\idx}[1]{{\kaishu #1\index{#1}}}
+
+\includeonly{foundation,module_1,ring_1,module_2}
 
 \begin{document}
 \thispagestyle{empty}
 %% Cover illustration
-	\ThisLLCornerWallPaper{1.1}{../../Pictures/1.jpg}
+	\ThisLLCornerWallPaper{1.1}{../Pictures/1.jpg}
 	% Buwai Lee@Shanghai Nanyang Model High School
 	\vspace*{2\baselineskip}
 	\begin{flushright}
-	\includegraphics[scale=0.5]{../../Pictures/img1.png}
+	\includegraphics[scale=0.5]{../Pictures/img1.png}
 
 	\vspace*{1.5\baselineskip}
-	{\Huge\bfseries 代数几何笔记}\\[\baselineskip]
+	{\Huge\bfseries 代数笔记}\\[\baselineskip]
 	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
 	{by Buwai Lee@NJU}\par
 	\today
@@ -55,16 +56,22 @@
 \clearpage
 \frontmatter
 \pagestyle{plain}
-\renewcommand\chapterimg{../../Pictures/0.png}
+\renewcommand\chapterimg{../Pictures/0.png}
 \ThisULCornerWallPaper{1}{\chapterimg}
 \tableofcontents
 \mainmatter
 \pagestyle{headings}
-	\input{chap1.tex}
-	% \input{chap2.tex}
-	\input{appendix.tex}
+	\include{foundation}
+	\include{module_1}
+	\include{algebra_1}
+	\include{ring_1}
+	\include{module_2}
+	\include{linear_algebra}
+	\include{field}
+	\include{ring_2}
+	\include{appendix}
 \backmatter
-	\renewcommand\chapterimg{../../Pictures/0.png}
+	\renewcommand\chapterimg{../Pictures/0.png}
 	\ThisULCornerWallPaper{1}{\chapterimg}
 	\printindex
 	% \input{references.tex}
