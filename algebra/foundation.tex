@@ -564,14 +564,18 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \section{理想}
 
-\para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1,\,\cdots,\,f_n)$. 一个理想生成的理想自然就是他本身。
+\para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$或者$\langle S\rangle$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1$, $\cdots$, $f_n)$或者$\langle f_1$, $\cdots$, $f_n\rangle$. 如果指标需要用一个指标集表示，那么就通常写作$\langle f_i\rangle_{i\in I}$或者$\langle f_i\,:\,i\in I\rangle$. 一个理想生成的理想自然就是他本身。
 
 \para 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
 \[\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
 \]
-是一个理想。
+是一个理想。由于$\mathfrak{a}$, $\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$，所以$\mathfrak{a}\cup\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$. 一般而言，两个理想的并不是理想，但是两个理想的并生成的理想实际上就是两个理想的和。
 
-两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。
+两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。由于$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}$以及$\mathfrak{a}\mathfrak{b}\subset \mathfrak{b}$，所以有包含关系$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}\cap \mathfrak{b}$.
+
+设$(a)$和$(b)$是环$R$的两个主理想，则$(a)(b)=(ab)$. 实际上，左手边的元素由所有$(ra)(sb)=rs(ab)$生成，其中$r$, $s$走遍$R$. 所以$(a)(b)\subset (ab)$. 反过来，因为$ab\in (a)(b)$，所以$(ab)\subset (a)(b)$.
+
+最后，给定$R$的两个理想$\mathfrak{a}$和$\mathfrak{b}$，定义$(\mathfrak{a}:\mathfrak{b})$为$\{r\in R\,:\, r\mathfrak{b}\subset \mathfrak{a}\}$，这是一个理想，因为若$x\in (\mathfrak{a}:\mathfrak{b})$，由于$\mathfrak{a}$是一个理想，则$yx\mathfrak{b}\subset y\mathfrak{a}\subset \mathfrak{a}$或者$xy\in (\mathfrak{a}:\mathfrak{b})$. 当$\mathfrak{a}=(a)$是一个主理想的时候，通常会略去主理想的括号，写作$(a:\mathfrak{b})$，同样，如果$\mathfrak{b}=(b)$是主理想，会写做$(\mathfrak{a}:b)$. $(\mathfrak{a}:\mathfrak{b})$被称为理想$\mathfrak{a}$关于理想$\mathfrak{b}$的商，比如在整数环内，$(6:2)=(3)$.
 
 \para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。
 
@@ -581,25 +585,85 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \para 一个理想$\mathfrak{p}$被称为素理想，如果$R/\mathfrak{p}$是一个整环。一个理想$\mathfrak{m}$被称为极大理想，如果$R/\mathfrak{p}$是一个域。由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
 
-\para 设$R$是一个环，$I(R)$是$R$所有真理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$.
+\para 设$R$是一个环，$I(R)$是$R$所有理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$. 设$\mathcal{F}$是$I(R)$的一个子集，记$\mathcal{F}^c=I(R)-\mathcal{F}$.
 
-极大理想的命名就来自于这个偏序。对于任意的理想链，他们的并所生成的理想要比他们大。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
+极大理想的命名就来自于这个偏序，他是所有真理想构成的集合中的极大元素。对于任意的真理想链，他们的并所生成的理想是真理想。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
 
 反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
 
 从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
 
-\para 我们看到，极大理想是素理想。实际上，满足一些条件的极大的理想也会是素理想。
-\begin{itemize}
-\item 设$\mathcal{P}$是$R$的非有限生成理想构成的集合，则$\mathcal{P}$的极大元是素理想。
-\item 设$\mathcal{P}$是$R$的非主理想的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
-\item 设$S$是一个乘性子集，设$\mathcal{P}$是$R$中与$S$不相交的理想构成的集合，则$\mathcal{P}$的极大元是素理想。
-\end{itemize}
-\proof
+\para 我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
 
+给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{http://www.bowdoin.edu/\~{}reyes/oka1.pdf}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
+
+对于单位理想$(1)$，由于任取$a\in R$都有$a+(1)=(1)$以及$(1:a)=(1)$，所以对任意的Ako理想族或者Oka理想族$\mathcal{F}$，$\mathcal{F}$都包含单位理想。
+
+\pro 如果$\mathcal{F}$是Oka理想族或者Ako理想族，那么$\mathcal{F}^c$中极大的理想是素理想。
+
+\proof
+	假设$\pp$是$\mathcal{F}^c$中极大的理想，但不是素理想。因为$\pp$不是单位理想，所以存在$a$, $b\not\in \pp$但$ab\in\pp$. 此时$(\pp:a)$和$\pp+(b)$都比$\pp$严格大，因为他们都包含$b$，同样$\pp+(a)$严格比$\pp$大，所以他们都属于$\mathcal{F}$. 但此时$\pp=\pp+(ab)\in \mathcal{F}^c$或者$\pp=\pp+(ab)\not\in \mathcal{F}$，所以$\mathcal{F}$既不是Ako理想族，也不是Oka理想族。矛盾。
 \qed
 
-\pro 设$R$是一个环，而$I_1$, $\cdots$, $I_n$是一族理想，还有一个理想$J$满足$J\subset \bigcup_i I_i$. 如果$I_1$, $\cdots$, $I_n$中至多只有两个不是素理想，则存在一个$i$使得$J\subset I_i$. 如果将包含改成等号，命题依然成立。\notprove
+作为应用，先证明如下理想族是Ako或者Oka理想族：
+
+1. 只有单位理想的理想族。
+
+2. $R$的所有有限生成理想构成的集合。
+
+3. $R$的所有主理想的理想构成的集合。
+
+4. 设$S$是一个乘性子集，$R$中与$S$相交的理想构成的集合。
+
+\proof
+	1. 这是Ako理想族。如果$\mathfrak{a}+(a)=(1)$以及$\mathfrak{a}+(b)=(1)$，那么存在$x$, $y\in \mathfrak{a}$使得$x+a=1$以及$y+b=1$，于是$ab=(1-x)(1-y)$或者$(x+y-xy)+ab=1$，所以$\mathfrak{a}+(ab)=(1)$. 也是Oka理想族，如果$(\mathfrak{a}:a)=(1)$，那么$a\in \mathfrak{a}$，此时$\mathfrak{a}+(a)=\mathfrak{a}$. 因此$\mathfrak{a}+(a)=1$也推出了$\mathfrak{a}=(1)$.
+
+	2. 这是Oka理想族。如果$\mathfrak{a}+(a)$和$(\mathfrak{a}:a)$是有限生成理想。设$\mathfrak{a}+(a)=\langle x_i+r_ia \rangle_{i\in I}$以及$(\mathfrak{a}:a)=\langle y_j\rangle_{j\in J}$，其中$I$, $J$都是有限的指标集。任取$x\in \mathfrak{a}$，由于$x\in \mathfrak{a}+(a)$，所以
+	\[
+		x= \sum_{i\in I}s_i(x_i+r_ia)=\sum_{i\in I}s_ix_i+\sum_{i\in I}s_ir_ia,
+	\]
+	由于$a\sum_{i\in I}s_ir_i=x-\sum_{i\in I}s_ix_i\in \mathfrak{a}$，因此$\sum_{i\in I}s_ir_i\in (\mathfrak{a}:a)$，可以被$\{y_j\}_{j\in J}$生成。所以$\mathfrak{a}$被$\{x_i$, $y_ja\}_{i\in I,j\in J}$生成。
+
+	3. 这是Oka理想族。如果$\mathfrak{a}+(a)=(b)$是主理想且$(\mathfrak{a}:a)=(c)$也是主理想，如果$a\in \mathfrak{a}$，则$\mathfrak{a}=(b)$是主理想。假设$a\not\in\mathfrak{a}$，存在$x\in \mathfrak{a}$使得$x+a=b$，所以$bc=xc+ac\in \mathfrak{a}$，或者$(bc)\subset \mathfrak{a}$. 反过来，任取$x\in \mathfrak{a}$,由于$\mathfrak{a}+a=\mathfrak{b}$，所以存在$r$, $s\in R$使得$x=rb$以及$a=sb$. 因此$ra=rsb=sx\in\mathfrak{a}$给出了$r\in (\mathfrak{a}:a)=(c)$，于是$y=rb\in (c)(b)=(bc)$.
+
+	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$是乘性子集，$xy\in S$，所以$\pp+(ab)\cap S\neq \varnothing$.
+\qed
+
+所以上述命题告诉我们：在保证存在性的前提下，
+
+	1. 极大理想是素理想。
+
+	2. 所有非有限生成的理想中极大的是素理想。
+
+	2. 所有非主理想的理想中极大的是素理想。
+
+	4. 所有与某乘性子集不交的理想中极大的是素理想。
+
+\pro 设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
+
+\proof
+	如果$\mathfrak{b}=\bigcup_i \mathfrak{a}_i$，则由包含的命题可知，存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 反过来，$\mathfrak{a}_i\subset \bigcup_i \mathfrak{a}_i=\mathfrak{b}$. 等号的命题得证。
+
+	反证，如果$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$但不存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 适当重排顺序，可以假设前$n-2$个理想是素理想。我们采用有限归纳制造矛盾，素理想的假设将会自然地出现。为此，假设$\mathfrak{b}$不能包含于少于$n$个的$\mathfrak{a}_i$的并里面。这就是说，我们能找到$x_i\in \mathfrak{b}$使得$x_i\not\in \bigcup_{j\neq i}\mathfrak{a}_j$，由于$\mathfrak{b}\subset \bigcup_{i=1}^n \mathfrak{a}_i$，所以$x_i\in \mathfrak{a}_i$.
+
+	考虑$x_1+x_2\cdots x_n\in \mathfrak{b}$，如果$\mathfrak{a}_1$是素理想，则$x_2\cdots x_n\not\in \mathfrak{a}_1$，同时由于$x_1\not\in \mathfrak{a}_2$, $\cdots$, $\mathfrak{a}_n$，所以对于任意的$1\leq i \leq n$有$x_1+x_2\cdots x_n\not\in \mathfrak{a}_i$，或者说$x_1+x_2\cdots x_n\not\in \bigcup_{i=1}^n \mathfrak{a}_i$，这与$x_1+x_2\cdots x_n\in \mathfrak{b}$矛盾。
+
+	所以$\mathfrak{b}$必然处于更小的并里面，由反证假设$\mathfrak{b}\not\subset \mathfrak{a}_1$，所以$\mathfrak{b}\subset \bigcup_{i=2}^n \mathfrak{a}_i$. 重复上述论证，假设$\mathfrak{a}_2$是素理想，我们就可以推知$\mathfrak{b}\subset \bigcup_{i=3}^n \mathfrak{a}_i$直到$\mathfrak{b}\subset \mathfrak{a}_n$，这与反证假设矛盾，因此得证。 
+
+	注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
+\qed
+
+\pro 设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
+
+\proof
+	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。
+\qed
+
+\para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
+\begin{itemize}
+\item 如果一个代数集包含几个仿射簇的交，则在这些仿射簇中存在一个仿射簇包含于这个代数集中。
+\item 如果一个仿射簇包含于几个代数集的并中，则在这些代数集中必然存在一个代数集包含这个仿射簇。
+\end{itemize}
 
 \para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
 
@@ -640,4 +704,4 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
 
-一个理想的根其实是所有包含它的素理想的交。实际上，设$A$是所有包含$\mathfrak{a}$的素理想的交，设$\pp$是任意一个包含$\mathfrak{a}$的素理想，如果$f^n\in \mathfrak{a}$，则$f^n\in \pp$，由于$\pp$是素理想，所以$f^n=f\cdot f^{n-1}$给出$f\in\pp$或者$f^{n-1}\in\pp$，通过归纳法就有$f\in \pp$. 这就给出了$\sqrt{\mathfrak{a}}\subset A$. 反过来，如果$f\not\in \sqrt{a}$，考虑所有与$\{1,f,f^2,\cdots\}$不交的，但包含$\mathfrak{a}$的所有理想中极大的那个理想$\pp$，这是一个素理想，所以$f\not\in \pp$. 这就给出了$A\subset \sqrt{\mathfrak{a}}$.
+一个理想的根其实是所有包含它的素理想的交。实际上，设$A$是所有包含$\mathfrak{a}$的素理想的交，设$\pp$是任意一个包含$\mathfrak{a}$的素理想，如果$f^n\in \mathfrak{a}$，则$f^n\in \pp$，由于$\pp$是素理想，所以$f^n=f\cdot f^{n-1}$给出$f\in\pp$或者$f^{n-1}\in\pp$，通过归纳法就有$f\in \pp$. 这就给出了$\sqrt{\mathfrak{a}}\subset A$. 反过来，如果$f\not\in \sqrt{a}$，考虑所有与$\{1,f,f^2,\cdots\}$不交的，但包含$\mathfrak{a}$的所有理想中极大的那个理想$\pp$，这是一个素理想，存在性来自于Zorn引理，所以$f\not\in \pp$. 这就给出了$A\subset \sqrt{\mathfrak{a}}$.
