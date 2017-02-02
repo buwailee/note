@@ -11,13 +11,13 @@
 
 对于一个未知的运算或者作用，我们通常称之为“乘法”。左作用称为“左乘”，右作用称为“右乘”。对于运算$f(a,b)$通常直接记作$a*b$，或者再干脆一些省略中间的符号$*$，记作$ab$，读作$a$左乘$b$、$b$右乘$a$或$a$乘以$b$.
 
-我们定义多个元素$\{a_i\,:\, 1\leq i \leq n\}$的乘法
+定义多个元素$\{a_i\,:\, 1\leq i \leq n\}$的乘法
 \[
 	a_1a_2\cdots a_n=a_1(a_2a_3\cdots a_n)=a_1(a_2(a_3\cdots a_n))=\cdots,
 \]
 这是一个递归定义。
 
-\para 设集合$X$上有一个运算$h:X\times X \to X$，我们将$h(a,b)$直接记作$ab$. 如果任取$a$, $b$, $c\in X$都成立
+\para 设集合$X$上有一个运算$h:X\times X \to X$，将$h(a,b)$直接记作$ab$. 如果任取$a$, $b$, $c\in X$都成立
 \[
 	(ab)c=a(bc),
 \]
@@ -27,7 +27,7 @@
 \[
 (a_1(a_2(a_3a_4)a_5))(a_6(a_7a_8a_9))a_{10},
 \]
-先预设一个$n=0$，我们我们从左往右开始计数，遇到`$($'则$n\to n+1$，并称该括号为第$n$层括号，遇到`$)$'则$n\to n-1$，直到最后一个字符。比如上式中，第一个和第四个`$($'都是第一层括号，而第二个和第五个`$($'是第二层括号。如果到达最右端字符的时候，得到了$n=0$，则上面的字符串称为$a_1a_2\cdots a_n$的一种加括号的方式。
+先预设一个$n=0$，我们从左往右开始计数，遇到`$($'则$n\to n+1$，并称该括号为第$n$层括号，遇到`$)$'则$n\to n-1$，直到最后一个字符。比如上式中，第一个和第四个`$($'都是第一层括号，而第二个和第五个`$($'是第二层括号。如果到达最右端字符的时候，得到了$n=0$，则上面的字符串称为$a_1a_2\cdots a_n$的一种加括号的方式。
 
 \pro 设$\{a_i\in A\,:\, 1\leq i\leq n\}$是$A$中任意的一个有限集，且$A$上存在一种运算满足结合律。对于任意字符串$a_1a_2\cdots a_n$中任意加括号的方式，经过运算后，他们都等于$a_1a_2\cdots a_n$.
 
@@ -37,30 +37,30 @@
 \[
 	a_1a_2\cdots (a_{k_1}\cdots a_{k_2})a_{k_2+1}\cdots (a_{k_3}\cdots a_{k_4})\cdots (a_{k_i}\cdots a_{k_{i+1}})\cdots a_n,
 \]
-一个$m$对括号，这个字符串的最大层数是$1$。现在，当这个字符串看作元素之间相乘的时候，我们可以证明此时他等于$a_1a_2\cdots a_n$.
+一个$m$对括号，这个字符串的最大层数是$1$。现在，当这个字符串看作元素之间相乘的时候，可以证明此时他等于$a_1a_2\cdots a_n$.
 
-为此，我们先证明如下特殊情况：对任意的正整数$n$和$k$以及元素$\{a_i\,:\, 1\leq i \leq n\}$成立
+为此先证明如下特殊情况：对任意的正整数$n$和$k$以及元素$\{a_i\,:\, 1\leq i \leq n\}$成立
 \[(a_1a_2\cdots a_{k})(a_{k+1}\cdots a_{n})=a_1a_2\cdots a_n.\]
 首先注意到
 \[
 (a_1a_2\cdots a_{k})(a_{k+1}\cdots a_{n})=(a_1(a_2\cdots a_{k}))(a_{k+1}\cdots a_{n})=a_1((a_2\cdots a_{k})(a_{k+1}\cdots a_{n})),
 \]
-第二个等号来自于结合律。然后对$(a_2\cdots a_{k})(a_{k+1}\cdots a_{n})$进行同样的操作，如是归纳下去，由于$n$是有限的，所以归纳也是有限的，我们就可以得到
+第二个等号来自于结合律。然后对$(a_2\cdots a_{k})(a_{k+1}\cdots a_{n})$进行同样的操作，如是归纳下去，由于$n$是有限的，归纳也是有限的，我们就可以得到
 \[
 (a_1a_2\cdots a_{k})(a_{k+1}\cdots a_{n})=a_1(a_2(a_3(\cdots (a_{k}(a_{k+1}\cdots a_{n})))))=a_1a_1a_2\cdots a_n.
 \]
 
-现在，假设有$m$对括号，多重乘积可能出现三种情况：一是$a_1a_2\cdots a_{k-1}(a_{k}\cdots a_n)$，即最后一对括号出现在最后，那么按照定义，他就等于$a_1a_2\cdots a_{k-1}a_{k}\cdots a_n$，这样我们就消去了最后一对括号。二是$a_1a_2\cdots$ $a_{k-1}(a_{k}\cdots a_l)$ $a_{l+1}\cdots a_n$，其中$a_1a_2\cdots a_{k-1}$中有$(m-1)$对括号，或者说$(a_{k}\cdots a_l)$是最后一对括号。我们利用定义和上面的结论可以得到
+现在，假设有$m$对括号，多重乘积可能出现三种情况：一是$a_1a_2\cdots a_{k-1}(a_{k}\cdots a_n)$，即最后一对括号出现在最后，那么按照定义，他就等于$a_1a_2\cdots a_{k-1}a_{k}\cdots a_n$，这样就消去了最后一对括号。二是$a_1a_2\cdots$ $a_{k-1}(a_{k}\cdots a_l)$ $a_{l+1}\cdots a_n$，其中$a_1a_2\cdots a_{k-1}$中有$(m-1)$对括号，或者说$(a_{k}\cdots a_l)$是最后一对括号。利用定义和上面的结论可以得到
 \begin{align*}
 	a_1a_2\cdots a_{k-1}(a_{k}\cdots a_l)a_{l+1}\cdots a_n&=a_1a_2\cdots ((a_{k}\cdots a_l)(a_{l+1}\cdots a_n))\\
 	&=a_1a_2\cdots a_{k-1}(a_{k}\cdots a_n)\\
 	&=a_1a_2\cdots a_{k-1}a_{k}\cdots a_n.
 \end{align*}
-这样我们就消去了最后一对括号。如是往复，我们就可以消去全部的括号，得到$a_1\cdots a_n$.
+这样我们就消去了最后一对括号。如是往复可以消去全部的括号，得到$a_1\cdots a_n$.
 
 我们已经对任意字符串$a_1a_2\cdots a_n$最大括号层数为$1$的所有可能加括号方式证明了，在满足结合律的时候等于$a_1a_2\cdots a_n$.
 
-先设最大的层数为$N$，对所有的$(N-1)$层括号，他里面的最大括号层数为1，所以利用上面的结论，我们可以将这层内所有的括号消去，则最大层数降为$(N-1)$，如是往复，经过有限次归纳，就得到了他最终将等于$a_1a_2\cdots a_n$.\qed 
+先设最大的层数为$N$，对所有的$(N-1)$层括号，他里面的最大括号层数为1，利用上面的结论可以将这层内所有的括号消去，则最大层数降为$(N-1)$，如是往复，经过有限次归纳，就得到了他最终将等于$a_1a_2\cdots a_n$.\qed 
 
 这个结论就是说，对于满足结合律的运算，有限个元素相乘的结果不依赖于他加括号的方式。
 
@@ -88,7 +88,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \[
 	0a=(0+0)a=0a+0a,
 \]
-所以$0a=0$，同理$a0=0$. 如果在$R$中有$1=0$，则我们有任意的$r\in R$成立$r=1r=0r=0$. 这样的环我们称为零环，零环的地位在集合里面大概就类似空集。下面我们所讨论的环，一般而言不会是零环，即我们会假设$0\neq 1$.
+所以$0a=0$，同理$a0=0$. 如果在$R$中有$1=0$，则对任意的$r\in R$成立$r=1r=0r=0$. 这样的环称为零环，零环的地位在集合里面大概就类似空集。下面我们所讨论的环，一般而言不会是零环，即我们会假设$0\neq 1$.
 
 如果$R$中的乘法是可交换的，则称$R$是一个\idxx{环}{交换环}。有些作者在环的定义中会去掉乘法单位元，称我们这里定义的环为含幺环。
 
@@ -135,7 +135,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 % \]
 % 其中求和是任意有限求和。
 
-\para 设$G$是一个群，$H$是他的一个子集。所以群运算$\mu$限制在$H\times H$得到了运算$\mu|_{H\times H}:H\times H\to G$. 如果$\im\mu|_{H\times H}\subset H$，则$(H,\mu)$也构成了一个群，他被称为$G$的一个\idxx{群}{子群}。最后一句话就是说，$H$中的任意两个元素相乘依然在$H$中，再或者用我们上面的写法，$HH\subset H$.
+\para 设$G$是一个群，$H$是他的一个子集。群运算$\mu$限制在$H\times H$得到了运算$\mu|_{H\times H}:H\times H\to G$. 如果$\im\mu|_{H\times H}\subset H$，则$(H,\mu)$也构成了一个群，他被称为$G$的一个\idxx{群}{子群}。最后一句话就是说，$H$中的任意两个元素相乘依然在$H$中，再或者用上面的写法，$HH\subset H$.
 
 类似地，如果$R$是一个环，$S$是他的一个子集。如果对$R$的交换群结构，$S$是他的子群，且$SS\subset S$，则$S$被称为$R$的一个\idxx{环}{子环}。子环一般而言不用含有单位元。
 
@@ -147,7 +147,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 显然$\{0\}$和$R$本身是$R$的理想，前者被称为零理想，后者被称为单位理想，这两者往往被称为平凡理想，因为我们感兴趣的理想往往不是他们。
 
-设$a\in R$，则$aR$也是$R$的一个\idx{理想}，被称为\idxx{理想}{主理想}，有时候也记作$(a)$. 由于$\{0\}=0R$以及$R=1R$，所以零理想和单位理想都是主理想。主理想$(a)$一般也称作被$a$生成的主理想。
+设$a\in R$，则$aR$也是$R$的一个\idx{理想}，被称为\idxx{理想}{主理想}，有时候也记作$(a)$. 由于$\{0\}=0R$以及$R=1R$，零理想和单位理想都是主理想。主理想$(a)$一般也称作被$a$生成的主理想。
 
 单位理想名字中的单位来自于可逆元的英文unit：考虑一个可逆元$a\in R$，由于存在$a^{-1}$，所以任取$r\in R$，都有$r=a(a^{-1}r)\in (a)$，所以$(a)=R$. 这就是说可逆元生成的主理想都是单位理想。
 
@@ -159,7 +159,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \[
 	f(e_G)=e_H,\quad f(ab)=f(a)(b),
 \]
-则称$f$是一个群\idx{同态}。可以看到，群同态将单位元映射到单位元，将乘法映成乘法，基本保持了群的结构。如果还有一个群同态$g:H\to G$使得$fg=\id_H$以及$gf=\id_G$，则$f$或者$g$被称为一个群同构，通常会把$g$记作$f^{-1}$. 显然，一个群同构是一个双射，既单又满。如果两个群之间存在群同构，则称呼这两个群是同构的。
+则称$f$是一个群\idx{同态}（\idx{homomorphism}）。可以看到，群同态将单位元映射到单位元，将乘法映成乘法，基本保持了群的结构。如果还有一个群同态$g:H\to G$使得$fg=\id_H$以及$gf=\id_G$，则$f$或者$g$被称为一个群同构，通常会把$g$记作$f^{-1}$. 显然，一个群同构是一个双射，既单又满。如果两个群之间存在群同构，则称呼这两个群是同构的。
 
 后面我们不再区分两个不同群的单位元的符号，基本上属于哪个群从上下文中都是清楚的。
 
@@ -175,7 +175,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 对$R$-模的情况，先只考虑他的加法群结构，则$\ker(f)=f^{-1}(0)$. 任取$a\in \ker(f)$以及$r\in A$，由于$f(ra)=rf(a)=0$，所以$ra\in \ker(f)$或者$R\ker(f)\subset \ker(f)$，这就意味着$\ker(f)$是$A$的一个子模。
 
-\para 有一个自然的单同态：考虑$A$是$B$的子群/环/$R$-模，则$\id_B|_A:A\to B$就是一个单同态。此时这个映射（同态）被称为含入映射（同态），一般而言我们会略去他的符号，用一个弯曲的箭头写作$A\hookrightarrow B$. 正如我们前面看到的，设$\rho:A\to C$是一个同态，则他的核是$A$的子群/环/$R$-模，此时有$\ker\rho\hookrightarrow A$.
+\para 有一个自然的单同态：考虑$A$是$B$的子群/环/$R$-模，则$\id_B|_A:A\to B$就是一个单同态。此时这个映射（同态）被称为含入映射（同态），一般而言我们会略去他的符号，用一个弯曲的箭头写作$A\hookrightarrow B$. 正如前面看到的，设$\rho:A\to C$是一个同态，则他的核是$A$的子群/环/$R$-模，此时有$\ker\rho\hookrightarrow A$.
 
 设$\{e\}$是平凡群，则同态$f:\{e\}\to A$只可能是$f(e)=e$，因此平凡群$\{e\}$可以看成任意群的子群，从他到任意群的同态只有一个同态，即含入同态。而任意同态$g:A\to \{e\}$满足$\ker(g)=A$，他被称为零同态。 类似的，在环中，零环$\{0\}$也提供了同样的作用，在$R$-模中，零模$\{0\}$也类似。
 
@@ -183,7 +183,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \[
 	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
 \]
-被称为\idx{正合}的。在正合列中，平凡群一般写作$1$，零环和零模则写作$0$，从平凡群出发或者到平凡群的同态记作$1$，零环和零模的则记作$0$，通常略去他们的符号，因为这些同态的我们是清楚的。
+被称为\idx{正合}的。在正合列中，平凡群一般写作$1$，零环和零模则写作$0$，从平凡群出发或者到平凡群的同态记作$1$，零环和零模的则记作$0$，通常略去他们的符号，因为这些同态我们是清楚的。
 
 正合列可以用来表示一个同态是否是单射或者满射。考虑正合列$0\to A\xrightarrow{f} B$，由于$\ker(f)=\im(0\to A)=\{0\}$，所以$f$是一个单射。考虑正合列$A\xrightarrow{f} B\to 0$，由于$\im f=\ker(B\to 0)=B$，所以$f$是一个满射。
 
@@ -199,14 +199,14 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \pro 一个（群/环/$R$-模）同态是同构当且仅当他既是单的又是满的。
 
-\proof 一个同构肯定既是单的又是满的。反过来，设$f: A\to B$既是单的又是满的，则对$b\in B$，我们唯一存在一个$a\in A$使得$f(a)=b$，定义
+\proof 一个同构肯定既是单的又是满的。反过来，设$f: A\to B$既是单的又是满的，则对$b\in B$，唯一存在$a\in A$使得$f(a)=b$，定义
 \[
 	\begin{array}{ccccc}
 		g &:&B &\to& A,\\
 		g &:&b &\mapsto& a.
 	\end{array}
 \]
-我们下面检验这是一个同态。
+下面检验这是一个同态。
 
 对于群而言，设$g(b_1)=a_1$和$g(b_2)=a_2$，则只要检验$g(b_1b_2)=a_1a_2$，由于$f(a_1a_2)=f(a_1)f(a_2)=b_1b_2$以及$f$是一个单射就得出了$g(b_1b_2)=a_1a_2=g(b_1)g(b_2)$. 另外，显然$g(e)=e$，所以$g$是一个同态。
 
@@ -227,11 +227,11 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 一般而言，子群不是正规子群。但是，对于交换群，$gh=hg$，所以任意子群都是正规子群。反过来也不对，任意子群是正规子群也不一定是交换群。
 
-\para 在继续回答上面的问题之前，我们先看看陪集。设$H$是$G$的一个子群，我们可以自然地定义一个等价关系：子集族$\{gH\,:\, g\in G\}$构成了$G$的一个划分。
+\para 在继续回答上面的问题之前，我们先看看陪集。设$H$是$G$的一个子群，可以自然地定义一个等价关系：子集族$\{gH\,:\, g\in G\}$构成了$G$的一个划分。
 
 证明是简单的。显然他们的并等于$G$，只要证明不交性即可，如果$gH\cap hH\neq \varnothing$，则存在$k\subset gH\cap hH$，故$g^{-1}k$和$h^{-1}k$属于$H$，由于$H$是子群，则$g^{-1}k\left(h^{-1}k\right)^{-1}=g^{-1}h\in H$，因此$g^{-1}hH=H$也就堆出了$hH=gH$.
 
-这样定义的等价类被称为一个左陪集(coset)，当然还可以类似定义右陪集。对于陪集，有如下简单性质：$|gH|=|H|$. 这点只要注意到$gh_1=gh_2$可以推出$h_1=h_2$即可。所以对于有限群，我们就得到了Lagrange定理：子群的元素个数可以整除群的元素个数，除出来就是陪集的个数。
+这样定义的等价类被称为一个左陪集(coset)，当然还可以类似定义右陪集。对于陪集，有如下简单性质：$|gH|=|H|$. 这点只要注意到$gh_1=gh_2$可以推出$h_1=h_2$即可。对于有限群就得到了Lagrange定理：子群的元素个数可以整除群的元素个数，除出来就是陪集的个数。
 
 \para 对于正规子群$H$而言，由于$gH=Hg$，所以正规子群的左陪集和右陪集相同。将$gH$记作$\bar{g}$，我们证明$\{\bar{g}\,:\, g\in G\}$构成了一个群。
 
@@ -269,7 +269,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \para 同样的，我们可以定义出商模。设$M$是一个$R$-模，而$N$是$M$的任意一个子模，作为交换群可以定义出商群$M/N=\{\bar{m}=m+N\,:\, m\in M\}$. 我们下面在$M/N$上定义出一个$R$-模结构。
 
-我们定义$M/N$中的标量乘法为$r\bar{m}=\overline{rm}$.这个乘法的定义是合理的，设$m'=m+n$，其中$n\in N$，则
+定义$M/N$中的标量乘法为$r\bar{m}=\overline{rm}$.这个乘法的定义是合理的，设$m'=m+n$，其中$n\in N$，则
 \[
 	rm'=rm+rn
 \]
@@ -285,13 +285,13 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	由于$\bar{f}$是满同态也是单同态，所以他是一个同构。
 \qed
 
-一般只有最后一点被称为同构基本定理，但是前面的一部分是商群/环/$R$-模的泛性质，所以我们特地写出来。下面我们写两个常用的同构，他们是同构基本定理的简单推论。由于会谈到子模，所以我们可以先做观察：子模的子模依然是子模。
+一般只有最后一点被称为同构基本定理，但是前面的一部分是商群/环/$R$-模的泛性质，所以我们特地写出来。下面我们写两个常用的同构，他们是同构基本定理的简单推论。由于会谈到子模，先做观察：子模的子模依然是子模。
 
 \para 设$L\subset M \subset N$是有包含关系的三个$R$-模，则商映射$\rho:N\to N/M$诱导了一个满射$\bar{\rho}:N/L \to N/M$使得$\ker \bar{\rho}=M/L$. 使用同构基本定理，我们就得到了同构$N/M=(N/L)/(M/L)$.
 
-考虑商映射$\rho:N\to N/M$，由于$L\subset \ker \rho=M$，所以由同构基本定理，我们诱导了一个满射$\bar{\rho}:N/L \to N/M$，接下来只要求他的核即可。任取$\bar{x}\in N/L$以及代表元$x\in N$，由于$\bar{\rho}(\bar{x})=\rho(x)$，所以$\bar{\rho} (\bar{x})=0$当且仅当$x\in \ker \rho =M$，这就告诉我们$\ker \bar{\rho}=M/L$.
+考虑商映射$\rho:N\to N/M$，由于$L\subset \ker \rho=M$，由同构基本定理，诱导了一个满射$\bar{\rho}:N/L \to N/M$，接下来只要求他的核即可。任取$\bar{x}\in N/L$以及代表元$x\in N$，由于$\bar{\rho}(\bar{x})=\rho(x)$，所以$\bar{\rho} (\bar{x})=0$当且仅当$x\in \ker \rho =M$，这就告诉我们$\ker \bar{\rho}=M/L$.
 
-\para 设$M_1$和$M_2$是$M$的子模，则复合$M_2\hookrightarrow M_1+M_2 \to (M_1+M_2)/M_1$是一个满射，他的核是$M_1\cap M_2$，因此我们有同构
+\para 设$M_1$和$M_2$是$M$的子模，则复合$M_2\hookrightarrow M_1+M_2 \to (M_1+M_2)/M_1$是一个满射，他的核是$M_1\cap M_2$，因此有同构
 \[
 	(M_1+M_2)/M_1\cong M_2/(M_1\cap M_2).
 \]
@@ -301,7 +301,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \begin{itemize}
 \item 给定群$G$，$N$和$M$为$G$的正规子群，满足$M$包含于$N$，则$N/M$是$G/M$的正规子群，且有如下的群同构： $ (G/M)/(N/M)\cong G/N$.
 
-\item 给定群$G$ 、其正规子群$N$ 、其子群$H$ ，则$N\cap H$是$H$ 的正规子群，且我们有群同构如下：$H/(H\cap N)\cong HN/N$
+\item 给定群$G$ 、其正规子群$N$ 、其子群$H$ ，则$N\cap H$是$H$ 的正规子群，且有群同构如下：$H/(H\cap N)\cong HN/N$
 \end{itemize}
 
 证明和模的情况是类似的，只不过必须更加小心而已。对于环，我们一般谈理想，所以可以应用模的定理（作为模，理想是子模）。
@@ -314,7 +314,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \begin{enumerate}
 \item 一类(class)对象(object)，类在这里的意思并不是构成一个集合。一个范畴中所有的对象可以不构成一个集合。如果$X$是$\mathcal{C}$的一个对象，我们沿用集合论的符号，写成$X\in \mathcal{C}$.
 
-对每两个对象$X$和$Y$，有一个集合$\Hom(X,Y)$，其中的元素被称为态射。设$\varphi\in \Hom(X,Y)$，他通常沿用映射的记号写成$\varphi:X\to Y$，但态射不必是映射。沿用叫法，$\varphi:X\to Y$中$X$被称为定义域，而$Y$被称为值域。态射还需要满足如下假设：
+对每两个对象$X$和$Y$，有一个集合$\Hom_{\mathcal{C}}(X,Y)$，其中的元素被称为\idx{态射}（\idx{morphism}\footnote{从英文来看，态射构成的集合更加准确地应该写作$\mathrm{Mor}_{\mathcal{C}}(X,Y)$，因为morphism不一定是homomorphism（同态），不过既然只是记号，从习惯上以后依然用$\Hom$这个符号。}），在范畴可以通过上下文明确的时候，通常也会简略写作$\Hom(X,Y)$. 设$\varphi\in \Hom(X,Y)$，他通常沿用映射的记号写成$\varphi:X\to Y$，但态射不必是映射。沿用叫法，$\varphi:X\to Y$中$X$被称为定义域，而$Y$被称为值域。态射还需要满足如下假设：
 
 \begin{itemize}
 
@@ -331,7 +331,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \end{itemize}
 \end{enumerate}
 
-如果一个范畴的对象可以构成一个集合，那么这个范畴就被称为小范畴。在定义中，我们可以看到，所有对象与集合、态射与映射的相似性，所以我们可以直接断言，所有集合以及集合间的态射构成了一个范畴，他被称为集合范畴。
+如果一个范畴的对象可以构成一个集合，那么这个范畴就被称为小范畴。在定义中，我们可以看到，所有对象与集合、态射与映射的相似性，所以我们可以直接断言，所有集合以及集合间的映射构成了一个范畴，他被称为集合范畴，记作Set.
 
 类似地，所有的群/环/$R$-模和他们两两之间的同态构成了一个范畴。下面是一个稍微不一般一点的例子。
 
@@ -355,212 +355,174 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 所有拓扑空间和其间的连续映射当然构成一个范畴。所有光滑流形和其间的光滑映射构成一个范畴。最后一个例子是关系构成了范畴，他的对象是集合，而$\Hom(X,Y)$是所有$X\times Y$的子集，设$\varphi:X\to Y$和$\psi:Y\to Z$是两个态射，则复合被定义为
 \[
-	\psi\varphi=\{(x,z)\in X\times Z\,:\,\exists y\in Y\,\text{ s.t. } (x,y)\in\varphi,\, (y,z)\in \psi\}.
+	\psi\varphi=\bigl\{(x,z)\in X\times Z\,:\,\exists y\in Y\,\text{ s.t. } (x,y)\in\varphi,\, (y,z)\in \psi\bigr\}.
 \]
 
-\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，而$\Hom_{\mathcal{C}^{\mathrm{op}}}(X,Y)$被定义为$\Hom_{\mathcal{C}}(Y,X)$，复合不变。他被称为给定范畴的对偶范畴。
+\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，定义$\Hom_{\mathcal{C}^{\mathrm{op}}}(X,Y)=\Hom_{\mathcal{C}}(Y,X)$，复合不变。他被称为给定范畴的对偶范畴。
 
-\para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。
+凡是纯范畴的命题与证明，将所有的箭头（即态射）全部反过来，可以得到对应的命题与证明，这样的命题被称为对偶命题。
+
+\para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。$X$和$Y$同构记作$X\cong Y$. 集合范畴的同构即双射。
 
 \para 类似于集合之间有映射，范畴之间也有个函子(functor). 由于范畴有对象以及对象之间的态射，所以函子也是由关于对象和范畴的数据构成的，设$\mathcal{C}$和$\mathcal{D}$是两个范畴，$F$被称为一个函子，如果
 \begin{enumerate}
-
-\item 对任意的$X\in \mathcal{C}$，有唯一的$F(X)\in \mathcal{D}$.
-
-\item 对任意的$\varphi\in \Hom(X,Y)$，存在唯一的$F(\varphi)\in  \Hom(F(X),F(Y))$使得成立复合关系$F(\varphi\psi)=F(\varphi)F(\psi)$以及$F(\id_X)=\id_{F(X)}$.
-
+	\item 对任意的$X\in \mathcal{C}$，有唯一的$F(X)\in \mathcal{D}$.
+	
+	\item 对任意的$\varphi\in \Hom(X,Y)$，存在唯一的$F(\varphi)\in  \Hom(F(X),F(Y))$使得成立复合关系$F(\varphi\psi)=F(\varphi)F(\psi)$以及$F(\id_X)=\id_{F(X)}$.
 \end{enumerate}
 
 一般将“从$\mathcal{C}$到$\mathcal{D}$的函子$F$”记作$F:\mathcal{C}\to \mathcal{D}$. 虽然记号相同，但是我们可以通过语境来区分他与态射。
 
+与态射类似，函子也能谈复合，设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{E}$是两个函子，则他们的复合函子$gf:\mathcal{C}\to \mathcal{E}$表现在对象上是$X\mapsto f(X)\mapsto g(f(X))$，表现在态射上是$\varphi\mapsto f(\varphi)\mapsto g(f(\varphi))$. 
+
 函子的实例是非常多的，比如从$R$-模范畴到交换群范畴就有一个函子，他将一个模看成一个交换群，模同态看成交换群同态。这样的函子，从某个结构丰富的范畴到结构没那么丰富的范畴，被称为遗忘函子。遗忘函子又比如从拓扑空间范畴到集合范畴。
 
-\para 范畴与函子也构成一个范畴，即范畴的范畴。关键是我们要定义函子之间的态射。设$F$和$G$都是从$\mathcal{C}$到$\mathcal{D}$的函子，如果对每一个$X\in \mathcal{C}$都有一个态射$f(X):F(X)\to G(X)$使得如下交换图成立
+范畴与函子在数学中的出现是如此地频繁的原因在于：对一个数学结构的认识，不仅仅需要描述对象本身，也需要描述这个对象与其他对象之间的作用，即还需要描述态射，这就构成范畴的内容。而函子的出现在于联系两个数学结构，比如我们经常从一些对象开始构造得到新的对象。同样，描述两个合适的数学结构之间的联系，一方面描述对象之间的联系，另一方面也要描述态射之间的联系，而这正是函子所做的。基于这些理由，一个合适的分类理论，不仅仅要分类对象，也要分类态射。
+
+\para 在有些作者那里，上面定义的函子被称为协变函子，而函子$f:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$f(\varphi\psi)=f(\psi)f(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。
+
+\para （反变）态射函子是（反变）函子的重要例子。设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。定义一个函子$\Hom_\mathcal{C}(A,\star):\mathcal{C}\to \text{Set}$如下：对于对象，$B\mapsto \Hom_\mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
+\[
+	\Hom_\mathcal{C}(A,f)=f_*: g\mapsto f\circ g.
+\]
+此时$\Hom_\mathcal{C}(A,\star)$被称为关于$A$的\idx{态射函子}。
+
+同样，我们可以定义\idx{反变态射函子}$\Hom_\mathcal{C}(\star,A):\mathcal{C}^{\text{op}}\to \text{Set}$：对于对象，$B\mapsto \Hom_\mathcal{C}(B,A)$，对于态射$f:B\to C$，它通过
+\[
+	\Hom_\mathcal{C}(f,A)=f^*: g\mapsto g\circ f
+\]
+得到了态射$\Hom_\mathcal{C}(f,A):\Hom_\mathcal{C}(C,A)\to \Hom_\mathcal{C}(B,A)$. 经常，我们将$\Hom_\mathcal{C}(\star,A)$简单记$h_A$，而且有时候会将$h_A(B)$就写做$A(B)$.
+
+\para 一个范畴到另一个范畴的全部函子也构成一个范畴，即函子的范畴。对象是函子，所以关键点在于定义函子之间的态射。设$f$和$g$都是从$\mathcal{C}$到$\mathcal{D}$的函子，如果对每一个$X\in \mathcal{C}$都有一个态射$\varphi(X):f(X)\to g(X)$使得如下交换图成立
 \[
 \begin{xy}
-	\xymatrix
-	{
-		F(X)\ar[rr]^{f(X)} \ar[d]_{F(\varphi)}&&G(X) \ar[d]^{G(\varphi)}\\
-		F(Y)\ar[rr]^{f(Y)}&&G(Y)
+	\xymatrix{
+		f(X)\ar[rr]^{\varphi(X)} \ar[d]_{f(\varphi)}&&g(X) \ar[d]^{g(\varphi)}\\
+		f(Y)\ar[rr]^{\varphi(Y)}&&g(Y)
 	}
 \end{xy}
 \]
-则$f$被称为一个自然变换，或者叫函子间的态射。
+则$\varphi$被称为一个自然变换，或者叫函子间的态射。继而，谈论函子的同构也有了意义。将$\mathcal{C}$与$\mathcal{D}$之间的函子构成的范畴记作$\fun(\mathcal{C},\mathcal{D})$，特别地，将$\fun(\mathcal{C},\text{Set})$记作$\hat{\mathcal{C}}$.
 
-\para 在有些作者那里，我们上面定义的函子被称为协变函子，而函子$F:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$F(\varphi\psi)=F(\psi)F(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。
-
-\section{极限与余极限}
-
-\para 设$\mathcal{J}$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:\mathcal{J}\to \mathcal{C}$为$\mathcal{C}$中的一个$\mathcal{J}$-图，或者简略叫做图。对于$j\in \mathcal{J}$，$D(j)$称为该图的一个顶点，而对任意的态射$\alpha:j_1\to j_2$，态射$D(\alpha)$称为该图的一条边。
-
-\para 称$(A,\lambda)$为$J$-图的一个{锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:A\to D(j)$使得如下交换图对所有的顶点和边都成立
+描述自然变换是范畴论的初衷，自然变换在数学中的频繁出现才使得人们想要抽象出这个概念，为了描述这个概念，人们发明了范畴与函子。自然变换频繁出现的原因在于一些构造：设有一个范畴$\mathcal{C}$，对每一个对象$X\in \mathcal{C}$构造了一个函子$f_X$，比如前面定义出的反变态射函子$h_X$. 当我们改变对象的时候，即给出一个态射$\varphi:X\to Y$，往往具体的构造将诱导出对每一个$V\in \mathcal{C}$都有态射$f_\varphi(V):f_X(V)\to f_Y(V)$. 由于是函子，对态射$\rho:V\to W$也诱导了态射，汇总起来就是有图
 \[
+\begin{xy}
 	\xymatrix{
-		&A \ar[dl]_{\lambda_{j}}\ar[dr]^{\lambda_{j'}}&\\
-		D(j)\ar[rr]^{D(\alpha)}&&D(j')
+		f_X(V)\ar[rr]^{f_\varphi(V)} \ar[d]_{f_X(\rho)}&&f_Y(V) \ar[d]^{f_Y(\rho)}\\
+		f_X(W)\ar[rr]^{f_\varphi(W)}&&f_Y(W)
 	}
+\end{xy}
 \]
+既然有图，要求交换当然是自然的。到了具体例子，图的交换性需要检验。
 
-称呼一个锥形$(A,\lambda)$是$J$-图的一个{极限}，如果对于任意的锥形$(B,\mu)$，都有唯一的态射$f:B\to A$使得如下分解$\mu_j:B\xrightarrow{f}A\xrightarrow{\lambda_j}D(j)$成立。
-
-在实际过程中，如果极限$(A,\lambda)$中的态射族是明确的（乃至于是由对象$A$确定的），那么我们会用$A$来表示极限。并且一般将$J$-图$D$的极限写作$\varprojlim_{j\in J} D(j)$.
-
-作为例子，模范畴的直积就是一种极限，他对应的小范畴，两个不同的元素之间没有态射。
-
-\para 锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。称$(A,\lambda)$为$J$-图的一个{余锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:D(j)\to A$使得如下交换图对所有的顶点和边都成立
+以反变态射函子为例。给定态射$\varphi:X\to Y$，则$\varphi_*$将给出一个自然变换$h_X\to h_Y$，实际上给定态射$\psi:W\to V$，需要检查图
 \[
+\begin{xy}
 	\xymatrix{
-		&A&\\
-		D(j)\ar[rr]^{D(\alpha)} \ar[ur]^{\lambda_{j }}&&D(j')\ar[ul]_{\lambda_{j'}}
+		h_X(V)\ar[rr]^{\varphi_*} \ar[d]_{\psi^*}&&h_Y(V) \ar[d]^{\psi^*}\\
+		h_X(W)\ar[rr]^{\varphi_*}&&h_Y(W)
 	}
+\end{xy}
 \]
+任取$\pi\in h_X(V)$即$\pi:V\to X$，有$\psi^*(\varphi_*(\pi))=\varphi\pi\psi$以及$\varphi_*(\psi^*(\pi))=\varphi\pi\psi$，所以图是交换的。类似例子给出如下命题：如果$X\cong Y$，则$h_X\cong h_Y$. 反命题实际上也是正确的，后面会予以证明。
 
-称呼一个余锥形$(A,\lambda)$是$J$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都有唯一的态射$f:A\to B$使得如下分解$\mu_j:D(j)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。一般将$J$-图$D$的余极限写作$\varinjlim_{j\in J} D(j)$.
+\para 设$f$, $g:\mathcal{C}\to \mathcal{D}$是函子，$X\in \mathcal{C}$是一个对象，通过$X:f\to f(X)$以及任取自然变换$\varphi:f\to g$，定义$X(\varphi)=\varphi(X):f(X)\to g(X)$，可以看到此时$X$此时构成一个$\fun(\mathcal{C},\mathcal{D}) \to \mathcal{D}$的函子。
 
-同样，作为例子，模范畴的直和就是一种余极限，他对应的小范畴，两个不同的元素之间没有态射。
+可见，$f(X)$一方面可以将$f$理解成函子，另一方面也可以将$X$理解成函子。只不过前者是范畴$\mathcal{C}$到范畴$\mathcal{D}$的函子，后者是范畴$\fun(\mathcal{C},\mathcal{D})$到范畴$\mathcal{D}$的函子。
 
-\para 设$I$是一个偏序集，偏序关系为$\leq$，那么族$\{\{x\}\,:\, x\in I\}$构成一个（小）范畴，其中的态射定义为
-\[
-	\Hom_{I}\left(x,y\right)=\begin{cases}
-	(x,y)&\text{, if }x\leq y\text{;}\\
-	\varnothing&\text{, otherwise}.
-	\end{cases}
-\]
+% \lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \text{Set}$是一个函子，则从$\Hom_\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
 
-如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^{\mathrm{op}}$.
+% \proof 对每个自然变换$\alpha:\Hom_\mathcal{C}(A,\star)\to F$定义$\theta(\alpha)=\alpha(A)(\id_A)\in F(A)$，现在定义一个逆映射即可。对$x\in F(A)$，定义自然变换$\psi(x):\Hom_\mathcal{C}(A,\star)\to F$通过$\psi(x)(B)(f)=F(f)(x)$，不难验证这是一个自然变换，而且$\psi$和$\theta$是互逆的。\qed
 
-$D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
+\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\text{Set}$是一个集合，那么它与集合$X(e)=\Hom_{\text{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的$\Hom_{\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$.
 
-对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^{\mathrm{op}} :I^{\mathrm{op}}\to \mathcal{C}$通过$D^{\mathrm{op}}(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^{\mathrm{op}}(j\geq i)\circ D^{\mathrm{op}}(k\geq j)=D^{\mathrm{op}}(k\geq i)$，可见这确实是一个协变函子。
+设$f$是一个$\mathcal{C}$到Set的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，那么我们不仅仅得到了函子$f$的信息，我们也同样得到了对象$X$的信息。而且，比起任意的函子，反变态射函子是我们更愿意看到的，并且有着许多好的性质，因此我们可以做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
 
-\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。
-
-很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。
-
-作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。
-
-同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
-
-\para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个{逆系统}（{定向系统}）。逆系统一般谈论极限$\varprojlim_{i\in I} D(i)$，而定向系统一般谈论$\varinjlim_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
-\[
-	\xymatrix{
-		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-		D(i)&&D(j)\\
-		&D(k)\ar[ul]^{D(k\leq i)}\ar[ur]_{D(k\leq j)}&
-	}
-	\quad
-% \xymatrix{
-% 	&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-% 	D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[dl]^{D(j\leq k)}\\
-% 	&D(k)&
-% }
-	\xymatrix{
-		&A &\\
-		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
-		&D(k)\ar[uu]_{\mu_{k}}&
-	}
-\]
-左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
-
-\para 考虑$I$是滤相的（定向的），而$D$是协变函子，那么$I$-图$D$是逆系统（定向系统）。考虑$I$是滤相的（定向的），而$D$是反变函子，那么$I^{\mathrm{op}}$-图$D^{\mathrm{op}}$是定向系统（逆系统）。
-
-\para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
-
-在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$.
-
-同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
-
-更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
-
-\pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且$\varprojlim_{i\in I} D(i)=\varprojlim_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^{\mathrm{op}} $存在一个与其共尾的子集$J^{\mathrm{op}} $，则$J$-图$D$是一个定向系统，且$\varinjlim_{i\in I} D(i)=\varinjlim_{i\in J} D(i)$. \rule{2mm}{2mm}
-
-所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的对偶极限。这符合我们上面的直观。
-
-\para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
-\[
-	\Hom_{X}(U,V)=\begin{cases}
-	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
-	\varnothing&\text{, otherwise}.
-	\end{cases}
-\]
-
-考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限$\varinjlim_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in I}$.
-
-同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。
-
-但它的极限$\varprojlim_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
-
-\para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
-
-由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^{\mathrm{op}}$-图$\calf^{\mathrm{op}}$是定向系统，进而我们会考虑余极限
-\[
-	\varinjlim_{U\in \mathfrak{B}^{\mathrm{op}}} \calf^{\mathrm{op}}(U)=\varinjlim_{U\in \mathfrak{B}^{\mathrm{op}}} \calf(U),
-\]
-如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.
-
-\section{自由对象}
-
-简单来说，自由对象是遗忘函子的伴随函子。遗忘函子以前我们已经谈过，他将结构比较多的对象变成了结构比较少的对象，而自由对象就是反过来，从一个结构比较少的对象来构造一个结构比较多的对象。
-
-\para 
-
-\section{多项式环}
-
-多项式环的重要性无需赘述。
-
-\para 设$R$是一个环，而$a=(a_0,a_1,\cdots,a_n,\cdots)$是一列$R$中的元素，记只有有限个元素非零的$a$构成的集合为$R[x]$. 在$R[x]$上，我们可以定义加法
-\[
-	a+b=(a_0+b_0,a_1+b_1,\cdots),
-\]
-由于$a+b$也是只有有限个元素非零，所以$a+b \in R[x]$. 对于加法$0=(0,0,\cdots)$显然是零元，而$a$的逆元$-a=(-a_0,-a_1,\cdots)$.
-
-然后是乘法，定义
-\[
-	(ab)_i=\sum_{k+j=i}a_kb_j,
-\]
-可以看出$ab$也只有有限个元素非零，所以$ab\in R[x]$.
-
-分配律的检验是直接的，
-\[
-	((a+b)c)_i=\sum_{k+j=i}(a+b)_kc_j=\sum_{k+j=i}a_kc_j+\sum_{k+j=i}b_kc_j=(ac)_i+(bc)_i,
-\]
-所有的一切都可以直接检验。因此$R[x]$确实是一个环，称为多项式环。
-
-一般而言，我们将$R[x]$中的元素$f=(a_0,a_1,\cdots)$写成
-\[
-	f=\sum_{n}a_n x^n
-\]
-的形式，这就是我们熟悉的多项式，一切的运算都和我们熟悉的那样。$x$称之为不定元，不定元只是一个符号，在不发生歧义的情况下可以任意选取。
-
-\para 定义多元多项式环$R[x_1,\cdots,x_n]$为$R[x_1,\cdots,x_{n-1}][x_n]$，这是一个递归定义。
-
-\para 一个多项式$f=(a_0,a_1,\cdots)$中的最高项即使得$a_n$不为零的最大的$n$，这个$n$记作$\deg(f)$，称为多项式$f$的幂次。最高幂次的系数我们称之为最高次系数，或者首项系数。其余的项目通常我们会指出具体的指标，比如说$k$-次项，就是指$a_kx^k$，而$k$-此项系数就是指$a_k$. 如果最高次系数为$1$，这个多项式称为首一多项式。
-
-对于首一多项式而言$f$，$\deg(fg)=\deg(f)+\deg(g)$. 但是一般的多项式并不如此，比如在$\zz/4\zz$上的多项式$2x$，有$(2x)(2x)=0$.
-
-对于$\deg(f+g)$，我们有估计$\deg(f+g)\leq \max\{\deg(f),\deg(g)\}$，不等号是可以取严格的，同样比如在$\zz/4\zz$上的多项式$2x$，有$2x+2x=0$.
-
-\theo 多项式除法算法：设$f$, $g\in R[x]$，而且$g$的首项系数可逆，则存在唯一的多项式$p$, $r\in R[x]$使得$f=pg+r$，且$\deg(r)< \deg(f)$.
+\lem 设$f$是一个$\mathcal{C}$到集合范畴的反变函子，则$f(X)\cong \Hom_{\hat{\mathcal{C}}}(h_X,f)$对任意的$X\in \mathcal{C}$都成立。
 
 \proof
-	可以假设$g$是首一多项式，因为如果设$g$的首项系数为$a$，则$g/a$是一个首一多项式，如果命题对首一多项式成立，即存在$q$, $r\in R[x]$使得$f=q(g/a)+r$，则$f=(q/a)g+r=pg+r$，其中$p=q/a$和$r$都是多项式。这样就得到了我们的命题。
-
-	首先假设存在，证明唯一性。设$f=p'g+r'$以及$f=pg+r$成立，则$(p'-p)g=r'-r$，由于$g$是首一的，且$p'-p$非零，所以$\deg((p'-p)g)\geq \deg(g)$，但是$\deg(r'-r)< \deg(g)$，这就造成了矛盾。下面证明存在性。
-
-	设$\deg(f)=n$, $\deg(g)=m$，如果$n<m$，则取$p=0$, $r=f$. 考虑$n\leq m$的情况，设$f$的首项系数为$a_0$，考虑多项式$f_1=f-a_0x^{n-m}g$，由于$f$和$a_0x^{n-m}g$的最高次项相同，所以$\deg(f_1)<\deg(f)$，如果$\deg(f_1)<\deg(g)$，那么$f=a_0x^{n-m}g+f_1$就给出了分解。
-
-	否则继续对$f_1$进行这样的操作，得到$f_2=f_1-a_1x^{\deg(f_1)-m}g$，再比较$\deg(f_2)$与$\deg(g)$. 不断如是进行下去，由于$f$的幂次有限，而每次操作，幂次都至少减一，所以该过程在进行至多$n-m+1$次后就会停止。设该过程在第$k$次后停止，则我们就得到了
+	任取自然变换$\varphi\in \Hom_{\hat{\mathcal{C}}}(h_X,f)$，对象$Y\in\mathcal{C}$以及态射$g:Y\to X$，有交换图
 	\[
-	f_{k}=f-a_0x^{n-m}g-a_1x^{\deg(f_1)-m}g-\cdots-a_{k-1}x^{\deg(f_{k-1})-m}g
+	\begin{xy}
+		\xymatrix{
+			h_X(X)\ar[rr]^{\varphi(X)} \ar[d]_{g^*}&&f(X) \ar[d]^{f(g)}\\
+			h_X(Y)\ar[rr]^{\varphi(Y)}&&f(Y)
+		}
+	\end{xy}
 	\]
-	使得$\deg(f_k)< \deg(g)$. 即$f=f_0$，则我们就得到了分解
+	取$\id_X\in h_X(X)=\Hom(X,X)$，有$e(\varphi)=\varphi(X)(\id_X)\in f(X)$，因此有映射$e:\Hom_{\hat{\mathcal{C}}}(h_X,f)\to f(X)$. 由交换图，$\varphi(Y)(g)=f(g)\left(e(\varphi)\right)$.
+
+	反过来任取$a\in f(X)$，对每一个$Y\in\mathcal{C}$，我们可以定义映射
 	\[
-	f=f_k+a_0x^{n-m}g+a_1x^{\deg(f_1)-m}g+\cdots+a_{k-1}x^{\deg(f_{k-1})-m}g=\left(\sum_{i=0}^{k-1}a_{i}x^{\deg(f_{i})-m}\right)g+f_k.
+	\begin{array}{ccccc}
+	i(a)(Y)&:&h_X(Y)&\to &f(Y)\\
+	i(a)(Y)&:&g&\mapsto&f(g)(a)
+	\end{array},
 	\]
-	因此$p=\sum_{i=0}^{k-1}a_{i}x^{\deg(f_{i})-m}$以及$r=f_k$就是我们需要的多项式。
+	这样也就定义了一个函子$i(a)\in \Hom_{\hat{\mathcal{C}}}(h_X,f)$，继而有映射$i:f(X)\to \Hom_{\hat{\mathcal{C}}}(h_X,f)$. 最后只要检验$e(i(a))=a$以及$i(e(\varphi))=\varphi$，他们都由$i(Y)(g)=f(g)\left(e(\varphi)\right)$保证。
 \qed
 
-存在性的证明就是整个算法，从算法来看，这个命题即使是对非交换环上的多项式环也是成立的。
+对于固定的$X$，他可以看成一个$\hat{\mathcal{C}}=\fun(\mathcal{C}^\text{op},\text{Set})\to \text{Set}$的函子。同样，对于固定的$X$，态射函子$\Hom_{\hat{\mathcal{C}}}(h_X,\star)$也是一个$\hat{\mathcal{C}}\to \text{Set}$的函子。上面的引理就是在说，这两个函子作用在相同的对象$f\in \hat{\mathcal{C}}$上可以得到同构的两个对象。
+
+对于固定的$f$，他本身是$\hat{\mathcal{C}}$中的函子。同时，函子$\Hom_{\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \text{Set}$也是$\hat{\mathcal{C}}$中的函子。上面的引理就是在说，这两个函子作用在相同的对象$X\in \mathcal{C}$上可以得到同构的两个对象。
+
+下面一个命题告诉我们，Lemma (\thepara)中的同构对于这两对函子都是自然变换，即实际上是函子间的同构，而不仅仅是作用在对象上的同构。
+
+% 如果有一个自然变换$\varphi:f\to g$，他将诱导出态射$\varphi(X):f(X)\to g(X)$，以及态射$\varphi_*: \Hom_{\hat{\mathcal{C}}}(h_X,f)\to \Hom_{\hat{\mathcal{C}}}(h_X,g)$.
+
+\pro 我们有如下函子间的同构：$X\cong \Hom_{\hat{\mathcal{C}}}(h_X,\star): \hat{\mathcal{C}}\to \text{Set}$以及$f\cong \Hom_{\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \text{Set}$.
+
+\proof 
+	固定$X$，给出$\varphi:f\to g$，实际上就是检验交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X)\ar@<0.5ex>[rr]^-{i_f} \ar[d]_{\varphi(X)}&&\Hom_{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{\varphi_*}\ar@<0.5ex>[ll]^-{e_f}\\
+			g(X)\ar@<0.5ex>[rr]^-{i_g}&&\Hom_{\hat{\mathcal{C}}}(h_X,g)\ar@<0.5ex>[ll]^-{e_g}
+		}
+	\end{xy}
+	\]
+	固定$f$，给出$\varphi:Y\to X$，实际上就是检验交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X)\ar@<0.5ex>[rr]^-{i_X} \ar[d]_{f(\varphi)}&&\Hom_{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{(\varphi^*)^*}\ar@<0.5ex>[ll]^-{e_X}\\
+			f(Y)\ar@<0.5ex>[rr]^-{i_Y}&&\Hom_{\hat{\mathcal{C}}}(h_Y,f)\ar@<0.5ex>[ll]^-{e_Y}
+		}
+	\end{xy}
+	\]
+	构造都是清楚的，检查都是直接的。
+	
+	仅仅以第一个交换图里面的一部分为例，任取$a\in f(X)$，检查$\varphi\circ (i_f(a))=i_g\bigl(\varphi(X)(a)\bigr)\in \Hom_{\hat{\mathcal{C}}}(h_X,g)$. 给一个$Y\in \mathcal{C}$，$i_g\bigl(\varphi(X)(a)\bigr)(Y):p\mapsto g(p)\bigl (\varphi(X)(a)\bigr)$，其中$p:Y\to X$是一个态射。同样，$\varphi\circ (i_f(a))(Y)=\varphi\bigl(p\mapsto f(p)(a)\bigr):p\mapsto \varphi(Y)\bigl(f(p)(a)\bigr)$. 最后只要检验$g(p)\bigl (\varphi(X)(a)\bigr)=\varphi(Y)\bigl(f(p)(a)\bigr)$，注意到交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X)\ar[rr]^{\varphi(X)} \ar[d]_{f(p)}&&g(X) \ar[d]^{g(p)}\\
+			f(Y)\ar[rr]^{\varphi(Y)}&&g(Y)
+		}
+	\end{xy}
+	\]
+	所以得证，其他的检查也类似。
+\qed 
+
+\para 特别地，当$f=h_Y$，则$h_Y\cong \Hom_{\hat{\mathcal{C}}}(h_\star,h_Y)$. 作用到$X$上得到$h_Y(X)=\Hom_{\mathcal{C}}(X,Y)\cong \Hom_{\hat{\mathcal{C}}}(h_X,h_Y)$. 所以，$X\cong Y$当且仅当$h_X\cong h_Y$. 如果$f$是可表函子，$X$和$Y$同时表示了函子$f$，则同构$h_X\cong f \cong h_Y$诱导了同构$X\cong Y$，因此可表函子的表示对象确定到一个同构。 
+
+\para 设$\mathcal{C}$是一个范畴，则$\id_\mathcal{C}:\mathcal{C}\to \mathcal{C}$是恒等函子，他使得$\id_\mathcal{C}(X)=X$，以及$\id_\mathcal{C}(\varphi)=\varphi$. 如果一个函子$f:\mathcal{C}\to\mathcal{C}$与恒等函子同构，即有如下交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+		X\ar@<0.5ex>[rr]^-{p(X)} \ar[d]_{\varphi}&&f(X) \ar[d]^{f(\varphi)}\ar@<0.5ex>[ll]^-{q(X)}\\
+		Y\ar@<0.5ex>[rr]^-{p(Y)}&&f(Y)\ar@<0.5ex>[ll]^-{q(Y)}
+	}
+\end{xy}
+\]
+那么在范畴论意义下，我们无法区分范畴$\mathcal{C}$和范畴$f(\mathcal{C})$的，因为这两个范畴有相同的结构。尽管，原本$X\in \mathcal{C}$在$f(\mathcal{C})$里面变成了$f(X)$，看上去变成了不同的对象，但这仅仅类似于重命名，对范畴的结构并没有任何影响。所以如果谈论范畴的等价，也应该止步于此，即有相同结构的范畴看成是等价的。
+
+设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$以及$g:\mathcal{D}\to \mathcal{C}$是两个函子，那么如果$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$，则称这两个范畴等价。
+
+这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子/满函子，如果$f:\Hom_\mathcal{C}(X,Y)\to \Hom_\mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射/满射。
+
+\pro 两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又满的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$Y=f(X)$.\notprove
 
 \section{理想}
 
@@ -613,7 +575,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 3. $R$的所有主理想的理想构成的集合。
 
-4. 设$S$是一个乘性子集，$R$中与$S$相交的理想构成的集合。
+4. 设$S\subset R$是一个对乘法封闭的子集，$R$中与$S$相交的理想构成的集合。
 
 \proof
 	1. 这是Ako理想族。如果$\mathfrak{a}+(a)=(1)$以及$\mathfrak{a}+(b)=(1)$，那么存在$x$, $y\in \mathfrak{a}$使得$x+a=1$以及$y+b=1$，于是$ab=(1-x)(1-y)$或者$(x+y-xy)+ab=1$，所以$\mathfrak{a}+(ab)=(1)$. 也是Oka理想族，如果$(\mathfrak{a}:a)=(1)$，那么$a\in \mathfrak{a}$，此时$\mathfrak{a}+(a)=\mathfrak{a}$. 因此$\mathfrak{a}+(a)=1$也推出了$\mathfrak{a}=(1)$.
@@ -684,7 +646,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \[
 	\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}},
 \]
-注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，我们有同构
+注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，有同构
 \[
 	R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}.
 \]

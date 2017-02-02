@@ -1,0 +1,424 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 624.0,
+		"last_filter": "terminal",
+		"selected_items":
+		[
+			[
+				"terminal",
+				"Terminal: Open"
+			],
+			[
+				"term",
+				"Preferences: Terminal Settings – Default"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pro",
+				"Project: Add Folder"
+			],
+			[
+				"folder",
+				"Project: Add Folder"
+			],
+			[
+				"sidebar",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings"
+			],
+			[
+				"latex",
+				"LaTeXZeta: Install BracketHighlighter Settings"
+			],
+			[
+				"colo",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"color",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"latex tools",
+				"LaTeXTools: Show word count"
+			],
+			[
+				"git gu",
+				"GitGutter: Compare Against Branch"
+			],
+			[
+				"diff",
+				"Git: Diff Current File (Ignore Whitespace)"
+			],
+			[
+				"setting",
+				"Preferences: Settings"
+			],
+			[
+				"inst",
+				"Install Package Control"
+			]
+		],
+		"width": 892.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": false,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"//192.168.1.9/Documents/OneDrive/note/algebra"
+	],
+	"file_history":
+	[
+		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/module_1.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/field.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/defs.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/Terminal.sublime-settings",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/Terminality/Terminality.sublime-settings",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/main.sublime-project",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/make",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/.sublime-project",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/Side Bar.sublime-settings",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/algebra_1.tex",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/Popforclang.tmTheme",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/ring_1.tex",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/main.tex",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/appendix.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/module_2.tex",
+		"//192.168.1.9/morphisme/.oh-my-zsh/plugins/sublime/sublime.plugin.zsh",
+		"//192.168.1.9/Documents/sublime配置/win/Sublime Text 3/Packages/Colorsublime - Themes/Popforclang.tmTheme",
+		"//192.168.1.9/Documents/OneDrive/note/noteheader.sty",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/appendix.tex",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
+		"/C/texlive/2016/texmf-dist/tex/plain/noteheader/noteheader.sty",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/structure.tex",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/main.synctex.gz(busy)",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/chap1.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/coloredmain.tex",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/coloredmain.tex",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/chap2.tex",
+		"//192.168.1.9/Documents/OneDrive/note/.gitignore",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/algebra.tex",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/structure.tex",
+		"//192.168.1.9/Documents/OneDrive/note/manifold/manifold.tex",
+		"//192.168.1.9/Documents/OneDrive/note/manifold/make",
+		"//192.168.1.9/Documents/OneDrive/note/qft/qft.tex",
+		"//192.168.1.9/Documents/OneDrive/note/qft/quantumfiled.tex",
+		"//192.168.1.9/Documents/OneDrive/note/Electrodynamics/Electrodynamics.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/algebra.mst",
+		"/C/Users/Buwai_Lee/OneDrive/note/Electrodynamics/Electrodynamics.tex",
+		"/C/Users/Buwai_Lee/OneDrive/note/egastyle.sty",
+		"/C/Users/Buwai_Lee/OneDrive/note/algebra/make",
+		"/C/Users/Buwai_Lee/OneDrive/note/algebra/module_2.tex",
+		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/DiffView/DiffView.sublime-settings",
+		"/C/ProgramData/NVIDIA Corporation/CUDA Samples/v8.0/0_Simple/clock/clock.cu",
+		"/C/ProgramData/NVIDIA Corporation/CUDA Samples/v8.0/0_Simple/cdpSimpleQuicksort/cdpSimpleQuicksort.cu"
+	],
+	"find":
+	{
+		"height": 132.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"\\Hom_{\\hat{\\mathcal{C}}}(",
+			"f",
+			"X",
+			"to",
+			"mathfrak",
+			"g",
+			"i_g(\\varphi(X)(a))",
+			"g(",
+			"_X",
+			"env",
+			"Z",
+			"\\xymatrix\n\t\t{",
+			"\t\\xymatrix\n\t{",
+			"_",
+			"0.75ex",
+			"1ex",
+			"@/^/",
+			"G",
+			"F",
+			"G",
+			"F",
+			"f",
+			"F",
+			"\\varphi}",
+			"e_{",
+			"psi",
+			"\\varphi(",
+			"物件",
+			"\\fun(\\mathcal{C},\\text{Set})",
+			"F",
+			"\\hat{\\mathcal{C}}",
+			"\\hat{X}",
+			"\\hat{Y}",
+			"text",
+			"\\text{Funct}",
+			"Im",
+			"673AB7",
+			"A,f",
+			"^{\\circ}",
+			"所以",
+			"我们对",
+			"我们有",
+			"我们",
+			"\n\\",
+			"\\mathfrak{a}:a",
+			"d",
+			"calf",
+			"pp",
+			"I",
+			"i",
+			"I",
+			"J",
+			"I_",
+			"FF9800",
+			"R",
+			"\\{1\\otimes_S fdg\\,:\\,f,\\, g\\in S\\}",
+			"$\\{1\\otimes_S dt\\}$",
+			"r_",
+			"plaintrue",
+			"true",
+			"hmarginratio=1:1",
+			"\\sffamily\\itshape\\small\\nouppercase{\\rightmark}",
+			"phi",
+			"I_",
+			"../../",
+			"algebra",
+			"id",
+			"d",
+			"notl",
+			"\\cc",
+			"\\no{",
+			"\\dd",
+			"maniflod",
+			"ap",
+			"tex",
+			"input",
+			"algebra",
+			"algebr"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 51.0
+	},
+	"input":
+	{
+		"height": 129.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 328.0
+	},
+	"output.latextools":
+	{
+		"height": 346.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 328.0
+	},
+	"pinned_build_system": "",
+	"project": "main.sublime-project",
+	"replace":
+	{
+		"height": 98.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 300.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
