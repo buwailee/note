@@ -147,20 +147,60 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \theo 在左$R$-模范畴，任意的极限与余极限存在。 \notprove
 
+\para 设$I$是一个指标集，我们定义$R^I=\bigoplus_{i\in I}R$，他被称为自由模。如果$I$是有限集，$n=|I|$，则我们通常将自由模$R^I$记作$R^n$. 记$1_i$为第$i$个指标的$R$中的$1$.
+
+\para 设$M$是一个$R$-模，$S$是他的一个子集，称呼$M$被$S$生成，就是说$M$中的元素可以写成$S$中元素的有限线性组合。即任取$m\in M$，存在一个系数集$\{a_s\in R\,:\, s\in S\}$，其中只有有限个系数非零，使得
+\[
+	m=\sum_{s\in S}a_s s.
+\]
+称呼一个$R$-模$M$是有限生成的，就是说存在一个$M$的有限子集生成他。
+
+显然$R^I$由$\{1_i\,:\,i\in I\}$生成，其中$1_i$代表的是第$i$个指标的$R$中的$1$，所以$R^n$是有限生成模。
+
+\para 域上的自由模是矢量空间。
+
 \para 如果$M$和$N$都是双边$R$-模（比如我们一直讨论的交换环的情况），则
 
 
 \section{自由对象}
 
-简单来说，自由对象是遗忘函子的伴随函子。遗忘函子以前我们已经谈过，他将结构比较多的对象变成了结构比较少的对象，而自由对象就是反过来，从一个结构比较少的对象来构造一个结构比较多的对象。
+简单来说，自由对象是遗忘函子的左伴随函子。所以这里先给出伴随函子的定义。
 
-\para 
+\para 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto \Hom_{\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$X$所表示，于是就有函子同构$\alpha:h_X\to \Hom_{\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+\[
+\begin{xy}
+	\xymatrix{
+		h_X(T)\ar[rr]^-{\alpha_T} \ar[d]_{\psi^*}&&\Hom_{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
+		h_X(S)\ar[rr]^-{\alpha_S}&&\Hom_{\mathcal{D}}(f(S),Y)
+	}
+\end{xy}
+\]
+任取$u:T\to X$，有$\alpha_S(u\psi)=\alpha_T(u)f(\psi)$. 特别地，当$T=X$时，取$u=\id_X$，记$\alpha_X(\id_X)=\sigma_Y:f(X)\to Y$，$\alpha_S(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to X$.
+
+\para 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果同构
+\[
+	\alpha_T(Y):\Hom_\mathcal{C}(T,g(Y))\to \Hom_\mathcal{D}(f(T),Y)
+\]
+不管对$T$还是对$Y$都是自然同构，则$(f,g)$被称为一对伴随函子。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
+
+固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\Hom_\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto \Hom_{\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个左伴随函子。
+
+设$g(Y)$是$\Hom_\mathcal{D}(f(\star),Y)$的表示对象。改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}_{g(Y)}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha_{g(Y)}(T)$，对每一个$T$，$\beta_T$将给出了函子同构
+\[
+	\beta_T:\Hom_\mathcal{C}(T,g(\star))\to \Hom_\mathcal{D}(f(T),\star).
+\]
+自然变换的检验是直接的。
+
+\para 以忘却函子为例，如果$g$是忘却函子，再具体一点，如果他是将群$G$变成集合的那个忘却函子。再设$T=\{e\}$是一个单点集，如果他存在左伴随函子$f$，则有同构
+\[
+	\Hom_{\text{Group}}(f(\{e\}),G)\cong \Hom_{\text{Set}}(\{e\},g(G))
+\]
 
 \section{多项式环}
 
 多项式环的重要性无需赘述。
 
-\para 设$R$是一个环，而$a=(a_0,a_1,\cdots,a_n,\cdots)$是一列$R$中的元素，记只有有限个元素非零的$a$构成的集合为$R[x]$. 在$R[x]$上，我们可以定义加法
+\para 设$R$是一个环，而$a=(a_0,a_1,\,\cdots\!,\,a_n,\cdots)$是一列$R$中的元素，记只有有限个元素非零的$a$构成的集合为$R[x]$. 在$R[x]$上，我们可以定义加法
 \[
 	a+b=(a_0+b_0,a_1+b_1,\cdots),
 \]
@@ -184,7 +224,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 的形式，这就是我们熟悉的多项式，一切的运算都和我们熟悉的那样。$x$称之为不定元，不定元只是一个符号，在不发生歧义的情况下可以任意选取。
 
-\para 定义多元多项式环$R[x_1,\cdots,x_n]$为$R[x_1,\cdots,x_{n-1}][x_n]$，这是一个递归定义。
+\para 定义多元多项式环$R[x_1,\,\cdots\!,\,x_n]$为$R[x_1,\,\cdots\!,\,x_{n-1}][x_n]$，这是一个递归定义。
 
 \para 一个多项式$f=(a_0,a_1,\cdots)$中的最高项即使得$a_n$不为零的最大的$n$，这个$n$记作$\deg(f)$，称为多项式$f$的幂次。最高幂次的系数我们称之为最高次系数，或者首项系数。其余的项目通常我们会指出具体的指标，比如说$k$-次项，就是指$a_kx^k$，而$k$-此项系数就是指$a_k$. 如果最高次系数为$1$，这个多项式称为首一多项式。
 
@@ -216,15 +256,13 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \section{矩阵与行列式}
 
-\para 设$M$是一个有限生成$R$-模，他的生成元可以取作$\{m_1$, $\cdots$, $m_n\}$，则一个$R$中元素的$n$-元组$(r_1$, $\cdots$, $r_n)$可以确定一个线性组合$\sum_{i=1}^nr_im_i$，继而是一个模中的元素。
-
-\para 设$M$和$N$有限生成$R$-模，前者的生成元是$\{m_1$, $\cdots$, $m_p\}$，后者的是$\{n_1$, $\cdots$, $n_q\}$，然后考虑一个模同态$\varphi:M\to N$，由于
+\para 记$1_i=(0,\,\cdots\!,\,1,\,\cdots\!,\,0)\in R^m$，即只有第$i$个位置是一，其他都是零的那个元素。考虑一个模同态$\varphi:R^m\to R^n$，由于
 \[
-	\varphi\left(\sum_{i} r_im_i\right)=\sum_{i} r_i\varphi\left(m_i\right),
+	\varphi\left(\sum_{i} r_i1_i\right)=\sum_{i} r_i\varphi\left(1_i\right),
 \]
-所以它由所有$\varphi\left(m_i\right)$描述，由于他在$R^n$中，将其写作
+所以它由所有$\varphi\left(1_i\right)$描述，由于他在$R^n$中，将其写作
 \[
-	\varphi\left(m_i\right)=\sum_{j}\varphi_{ji}n_j.
+	\varphi\left(1_i\right)=\sum_{j}\varphi_{ji}1_j.
 \]
 于是$\{\varphi_{ij}\,:\, 1\leq i \leq p,\,\,1\leq j \leq q\}$这$p\times q$个数构成的整体称为$\varphi$的矩阵，记作$(\varphi)$，他完全描述了整个同态$\varphi$.
 
@@ -250,7 +288,13 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 可以看到$\varphi(1_i)$关于$\{1_j\in R^n\}$中展开的系数出现在$(\varphi)$的第$i$列。
 
-\para 矩阵乘法法则此时则写作：
+下面将单独研究矩阵，而不将其看成某个自由模的矩阵。之所以这样，因为有时候我们处理的矩阵并不能很好地表为自由模之间的同态。记号上，表示矩阵时可加或不加括号，比如$\varphi$或者$(\varphi)$. 相应的，表示矩阵元时写作$\varphi_{ij}$或者$(\varphi)_{ij}$. 如果需要以矩阵元来表述矩阵，写作$(\varphi_{ij})$. 
+
+按照习惯，我们下面依旧假设$R$是一个交换环，虽然在非交换环上谈论矩阵也是可能的。称呼一个矩阵是$R$上的矩阵，如果他的矩阵元都属于$R$.
+
+所有环$R$的$m\times n$矩阵构成一个$R$-模，实际上，任取$r\in R$以及矩阵$\varphi$，定义矩阵$r\varphi= (r\varphi_{ij})$. 另取矩阵$\psi$，定义矩阵加法$\psi+\varphi=(\psi_{ij}+\varphi_{ij})$.
+
+矩阵乘法就按照自由模里面推出的法则来定义：
 \begin{equation}
 \begin{pmatrix}
 	\psi_{11} & \psi_{12} & \cdots & \psi_{1n}\\
@@ -272,9 +316,33 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	\sum_{i=1}^n \psi_{li}\varphi_{i1} & \sum_{i=1}^n \psi_{li}\varphi_{i2}& \cdots & \sum_{i=1}^n \psi_{li}\varphi_{im}
 \end{pmatrix}
 \end{equation}
-很显然，$(\psi\circ\varphi)_{ij}$由第一个矩阵的第$i$行和第二个矩阵的第$j$列逐个相乘然后相加而得。矩阵乘法把$l\times n$和$n \times m$的矩阵变成了$l \times m$的矩阵。
+即$(\psi\varphi)_{ij}$由第一个矩阵的第$i$行和第二个矩阵的第$j$列逐个相乘然后相加而得，矩阵乘法把$l\times n$和$n \times m$的矩阵变成了$l \times m$的矩阵。矩阵乘法满足结合律是直接的计算。
 
-尤其重要的情况是$m=1$的时候，此时，$n\times 1$的矩阵称为一个列，为了省下书写空间，通常写成行的形式，即$(\varphi_{1i},\cdots,\varphi_{ni})^T$的形式，上标$T$代表将一行转成一列。设$\varphi_{i}=(\varphi_{1i},\cdots,\varphi_{ni})^T$，则一个矩阵可成看出一些列，
+尤其重要的情况是$m=1$的时候，此时，$n\times 1$的矩阵称为一个列，一个列我们直接记成一个$n$-元组$\varphi=(\varphi_1$, $\cdots$, $\varphi_n)$. 其中，记$1_i=(0$, $\cdots$, $1$, $\cdots$, $0)$，即只有第$i$个位置为$1$，其他位置都为零的那个列。所有的列都可以看成$\{1_i\,:\, 1\leq i \leq n\}$的线性组合，
+\[
+	(\varphi_1,\,\cdots\!,\,\varphi_n)=\sum_{i=1}^n\varphi_i1_i.
+\]
+特别地，记矩阵$I_n=\begin{pmatrix}1_{1} & 1_{2} & \cdots & 1_{n}\end{pmatrix}$，称之为单位矩阵。由矩阵乘法，对任意的$m\times n$矩阵$\varphi$有$\varphi I_n=\varphi$以及$I_m\varphi =\varphi$成立。单位矩阵具体写出来就是
+\[
+	I_n=
+		\begin{pmatrix}
+			1 & & &\\
+			& 1 & &\\
+			& & \ddots &\\
+			& & & 1
+		\end{pmatrix}
+	=(\delta_{ij}),
+\]
+其中$\delta_{ij}$被称为Kronecker符号，或者叫Kronecker delta，定义为
+\[
+	\delta_{{ij}}=
+	\begin{cases}
+	1,&\text{if} i=j,\\
+	0,&\text{if} i\neq j.
+	\end{cases}
+\]
+
+设$\varphi_{i}=(\varphi_{1i}$, $\cdots$, $\varphi_{ni})$，则一个矩阵可以看成一些列的并列，
 \[
 	\begin{pmatrix}
 	\varphi_{11} & \varphi_{12} & \cdots & \varphi_{1m}\\
@@ -287,7 +355,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	\varphi_{1} & \varphi_{2} & \cdots & \varphi_{m}
 	\end{pmatrix},
 \]
-其中$\varphi_i=(\varphi_{1i},\cdots,\varphi_{ni})^T$. 
+其中$\varphi_i=(\varphi_{1i}$, $\cdots$, $\varphi_{ni})$. 
 
 关于列的矩阵乘法为
 \begin{equation}
@@ -298,27 +366,180 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	\psi_{l1} & \psi_{l2} & \cdots & \psi_{ln}
 \end{pmatrix}
 \begin{pmatrix}
-	\varphi_{11} \\
-	\varphi_{21}  \\
+	\varphi_{1} \\
+	\varphi_{2}  \\
 	\vdots \\
-	\varphi_{n1} \\
+	\varphi_{n} \\
 \end{pmatrix}
 =
 \begin{pmatrix}
-	\sum_{i=1}^n \psi_{1i}\varphi_{i1}\\
-	\sum_{i=1}^n \psi_{2i}\varphi_{i1} \\
+	\sum_{i=1}^n \psi_{1i}\varphi_{i}\\
+	\sum_{i=1}^n \psi_{2i}\varphi_{i} \\
 	\vdots \\
-	\sum_{i=1}^n \psi_{li}\varphi_{i1}
+	\sum_{i=1}^n \psi_{li}\varphi_{i}
 \end{pmatrix}
 \end{equation}
-通常将其右侧写作$(\psi)\varphi_1$. 那么一般的矩阵乘法则写作：
+通常将其右侧写作$\psi\varphi$. 那么一般的矩阵乘法则写作：
 \[
-	(\psi)
+	\psi
 	\begin{pmatrix}
 	\varphi_{1} & \varphi_{2} & \cdots & \varphi_{m}
 	\end{pmatrix}
 	=
 	\begin{pmatrix}
-	(\psi)\varphi_{1} & (\psi)\varphi_{2} & \cdots & (\psi)\varphi_{m}
+	\psi\varphi_{1} & \psi\varphi_{2} & \cdots & \psi\varphi_{m}
 	\end{pmatrix}.
 \]
+
+\para 下面要讨论行列式函数，行列式函数是对方阵定义的函数，所谓方阵就是$n\times n$矩阵。将所有矩阵元属于环$R$的$n\times n$矩阵构成的集合记作$M_n(R)$. $M_n(R)$通过矩阵加法和乘法构成一个环，但不是交换环，单位元是$I_n$. 
+
+对$M(R,1)$可以通过$(r)\mapsto r$定义一个函数$f_1:M_n(R)\to R$. 然后对$M_n(R)$里面的矩阵$\varphi$，记$\varphi$除去第$i$行第$j$列得到的$(n-1)\times (n-1)$矩阵为$\Phi_{ij}$，定义
+\[
+	f_n(\varphi)=\sum_{i=1}^n (-1)^{i+j}\varphi_{ij}f_{n-1}(\Phi_{ij}).
+\]
+这个展开被称为按第$j$列展开，这个归纳定义的目前的缺陷在于，似乎按照不同的两列展开会有不同的结果。其实并不会这样，首先考虑$n=2$的情况，设$\varphi=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，按第一列展开会得到$ad-bc$，按第二列展开也会得到$ad-bc$. 然后假设当$i<n$的时候，$f_i$都已经定义良好了，即并不依赖于按列展开的选取。那么考虑$f_n(\varphi)$的按第$i$列和按第$j$列的两个展开，可以假设$i<j$。对按照第$i$列展开的式子，对所有$f_{n-1}(\Phi_{kl})$按第$(j-1)$列展开。对按照第$j$列展开的式子，对所有$f_{n-1}(\Phi_{kl})$按第$i$列展开。这两个展开将会得到相同的结果。所以$f_n(\varphi)$的定义并不依赖于对列的展开。
+
+这样，对每一个$n$，我们归纳定义了$f_n:M_n(R)\to R$，这个函数对每一个$n$统一记作$\det:M_n(R)\to R$，称之为行列式。设$n\times n$矩阵为$\varphi=\begin{pmatrix}\varphi_{1} & \varphi_{2} & \cdots & \varphi_{n}\end{pmatrix}$，他的行列式记作$\det(\varphi)=\det(\varphi_1$, $\cdots$, $\varphi_n)$，其中每一个$\varphi_i$都是一个$n\times 1$的列。如果矩阵要把他所有的元素写出来，则行列式会记作
+\[
+\det(\psi)=\begin{vmatrix}
+	\psi_{11} & \psi_{12} & \cdots & \psi_{1n}\\
+	\psi_{21} & \psi_{22} & \cdots & \psi_{2n}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	\psi_{l1} & \psi_{l2} & \cdots & \psi_{ln}
+\end{vmatrix}.
+\]
+
+\pro 行列式具有以下性质：
+
+1. 行列式对每一个列线性。
+
+2. 行列式中如果有两列相同，则行列式为零。
+
+3. $\det(I_n)=1$对每一个$n$都成立。
+
+\proof 
+	第一点由按列展开的定义可得。对于第二点，我们采用对$n$归纳，当$n=2$的时候，
+	\[
+		\begin{vmatrix}a&a\\b&b\end{vmatrix}=ab-ab=0.
+	\]
+	当$n>3$的时候，选不同于该两列的第三列展开，就可以归结到$n-1$的情况，随后由归纳法就得到了结论。
+
+	第三点是直接的计算，对第$n$列展开，我们就得到了
+	\[
+		\det(I_n)=\det(1_1,\,\cdots\!,\,1_{n-1})=\det(I_{n-1}),
+	\]
+	最后由$\det(I_1)=\det(1_1)=1$就得到了结论。
+\qed
+
+应用第一、第二点，我们有
+\[
+	0=\det(\cdots\!,\psi+\varphi,\,\cdots\!,\,\psi+\varphi,\cdots)=\det(\cdots\!,\psi,\,\cdots\!,\,\varphi,\cdots)+\det(\cdots\!,\varphi,\,\cdots\!,\,\psi,\cdots),
+\]
+所以，调换行列式的两列，行列式的值变成相反数。
+
+满足上列性质第一、第二点的函数$M_n(R)\to R$被称为反对称多线性函数。反对称的意思就是调换任意两列将得到相反的结果。
+
+\para 给定一个给定矩阵$\psi=\begin{pmatrix}\psi_{1} & \psi_{2} & \cdots & \psi_{n}\end{pmatrix}$，由于每一个$\psi_i$都可以写成$\psi_i=\sum_{j=1}^n\psi_{ji}1_j$，所以任取一个反对称多线性函数$F$，则
+\[
+	F(\psi_1,\,\cdots\!,\,\psi_n)=\sum_{j_1=1}^n\cdots \sum_{j_n=1}^n \psi_{j_11}\cdots \psi_{j_n n} F(1_{j_1},\,\cdots\!,\,1_{j_n}),
+\]
+所以对反对称多线性函数的计算，只要计算所有形如$F(1_{i_1},\,\cdots\!,\,1_{i_n})$的式子即可。同时，上面的式子也说明了，多线性函数是矩阵元的多项式函数。
+
+\pro 设$F:M_n(R)\to R$是一个反对称多线性函数，则$F=F(I_n)D$. 作为推论，行列式的三点性质将完全决定行列式函数。
+
+\proof 
+	从上面看到的，只要证明\[F(1_{i_1},\,\cdots\!,\,1_{i_n})=F(I_n)D(1_{i_1},\,\cdots\!,\,1_{i_n}).\]如果$\{i_1$, $\cdots$, $i_n\}$中有重复指标，两边都为零。如果没有重复指标，采用冒泡排序\footnote{先比较相邻的元素，如果第一个比第二个大，就交换他们两个。对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。针对所有的元素重复以上的步骤，除了最后一个。持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。}，可以通过不断两两调换两列，将$(i_1$, $\cdots$, $i_n)$变成$(1$, $\cdots$, $n)$，对等式两边进行同样的调换两列的操作，等式依旧成立，所以最后只要检验$F(I_n)=F(I_n)D(I_n)$，而这来自于$D(I_n)=1$.
+\qed
+
+\pro 行列式乘法公式：$\det(\varphi \psi)=\det(\varphi)\det(\psi)$.
+
+\proof 
+	由矩阵乘法，
+	\[
+	\varphi
+	\begin{pmatrix}
+	\psi_{1} & \psi_{2} & \cdots & \psi_{n}\\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+	\varphi\psi_{1} & \varphi\psi_{2} & \cdots & \varphi\psi_{n}\\
+	\end{pmatrix}
+	\]
+	因此$\det (\varphi \psi)=\det (\varphi\psi_{1}$, $\cdots$, $\varphi\psi_{n})$.
+
+	将$\det(\varphi\psi_{1}$, $\cdots$, $\varphi\psi_{n})$记作$F(\psi_{1}$, $\cdots$, $\psi_{n})$，可以看到这是一个反对称的多重线性映射，所以
+	\[
+	F(\psi_{1},\,\cdots\!,\,\psi_{n})=F(I_n)\det (\psi_{1},\,\cdots\!,\,\psi_{n})
+	\]
+	也就是说
+	\[
+	\det (\varphi\psi_{1},\,\cdots\!,\,\varphi\psi_{n})=\det(\varphi 1_1,\,\cdots\!,\,\varphi 1_n)\det(\psi_{1},\,\cdots\!,\,\psi_{n}).
+	\]
+
+	最后，只需要计算$\varphi 1_i=\begin{pmatrix}\varphi_{1} & \varphi_{2} & \cdots & \varphi_{n}\end{pmatrix}1_i$，由矩阵乘法$\varphi 1_i=\varphi_i$，所以
+	\[
+	\det(\varphi\psi)=\det(\varphi\psi_{1},\,\cdots\!,\,\varphi\psi_{n})=\det(\varphi_1,\,\cdots\!,\,\varphi_n)\det(\psi_{1},\,\cdots\!,\,\psi_{n})=\det(\varphi)\det(\psi).
+	\]
+\qed
+
+\para 矩阵的一个起源是线性方程组，这里暂时只考虑$n$个方程$n$个未知元的情况。所谓的线性方程组即如下的方程
+\[
+	\begin{cases}
+	a_{11}x_1+\cdots+a_{1n}x_n=b_1,\\
+	\qquad\qquad\vdots\\
+	a_{n1}x_1+\cdots+a_{nn}x_n=b_n,
+	\end{cases}
+\]
+其中$a_{ij}$, $b_i\in R$是已知的，而解线性方程组就是找到$x_i\in R$满足上述方程。
+
+采用矩阵和矩阵乘法，上述的线性方程组可以写作$ax=b$，其中$a=(a_{ij})=\begin{pmatrix}a_{1} & a_{2} & \cdots & a_{n}\end{pmatrix}$, $x=(x_1$, $\cdots$, $x_n)$和$b=(b_1$, $\cdots$, $b_n)$. 下面将利用行列式给出一种可能的求解方式，其实也就是著名的Cramer法则。陈述如下：
+
+将矩阵的第$i$列换作$b$，计算这个新矩阵的行列式，有
+\[
+	\det(a_1,\,\cdots\!,\,b,\,\cdots\!,\,a_n)=\det\left(a_1,\,\cdots\!,\,\sum_{j=1}^na_j x_j,\,\cdots\!,\,a_n\right)=\sum_{j=1}^n x_j \det(a_1,\,\cdots\!,\,a_j,\,\cdots\!,\,a_n),
+\]
+在求和中，除了$j=i$可能行列式$\det(a_1$, $\cdots$, $a_j$, $\cdots$, $a_n)$不为零，其他的行列式，由于有相同的两列都为零，于是
+\[
+	x_i \det(a)=\det(a_1,\,\cdots\!,\,b,\,\cdots\!,\,a_n).
+\]
+这就是Cramer法则。如果$\det(a)$可逆，则$x_i=\det(a_1$, $\cdots$, $b$, $\cdots$, $a_n)\det(a)^{-1}$.
+
+\para 利用Cramer法则，可以谈论一个方阵的右逆。设$\varphi$是一个$n\times n$方阵，而$\psi$又是另一个$n\times n$方阵，如果$\varphi\psi=I_n$，则称$\psi$是$\varphi$的右逆，同样，也称$\varphi$是$\psi$的左逆。
+
+设$\psi=\begin{pmatrix}\psi_{1} & \psi_{2} & \cdots & \psi_{n}\\\end{pmatrix}$，则
+\[
+	\varphi\psi=\begin{pmatrix}\varphi\psi_{1} & \varphi\psi_{2} & \cdots & \varphi\psi_{n}\end{pmatrix}=\begin{pmatrix}1_{1} & 1_{2} & \cdots & 1_{n}\end{pmatrix}=I_n,
+\]
+所以求右逆等价于求解$n$个线性方程组$\varphi\psi_i=1_i$. Cramer法则告诉我们，如果$\det(\varphi)$可逆，则$\varphi$存在右逆。
+
+\para 设$\varphi$是一个方阵，将$\varphi$除去第$i$行第$j$列得到的矩阵记作$\Phi_{ij}$，则矩阵元$\varphi_{ij}$对应的代数余子式$\varphi_{ji}^*$定义为$(-1)^{i+j}\det(\Phi_{ij})$，定义矩阵$\varphi^*=(\varphi_{ji}^*)$，称作方阵$\varphi$的伴随矩阵。注意到上面$i$和$j$的顺序，伴随矩阵第$i$行第$j$列的矩阵元是原矩阵第$j$行第$i$列的代数余子式，即$(\varphi^*)_{ij}=\varphi_{ji}^*$. 将行列式的按列展开用伴随矩阵重写的话，就写做
+\[
+	\det(\varphi)=\sum_{j=1}^n\varphi_{ji}\varphi_{ji}^*=\sum_{j=1}^n(\varphi^*)_{ij}\varphi_{ji}.
+\]
+
+伴随矩阵给出了方阵左逆的存在性的一些判据，直接计算
+\[
+	(\varphi^*\varphi)_{ij}=\sum_{k=1}^n(\varphi^*)_{ik}\varphi_{kj}=\sum_{k=1}^n\varphi^*_{ki}\varphi_{kj},
+\]
+当$i=j$时，由按列展开有$(\varphi^*\varphi)_{ii}=\det(\varphi)$. 当$i\neq j$时，依然利用按列展开，将右边的和式还原成行列式，可以发现第$i$列和第$j$列都是$(\varphi_{1j}$, $\cdots$, $\varphi_{nj})$，所以当$i\neq j$时有$(\varphi^*\varphi)_{ij}=0$. 于是
+\[
+	\varphi^*\varphi=\det(\varphi)I_n.
+\]
+所以如果$\det(\varphi)$，他的左逆写作$\det(\varphi)^{-1}\varphi^*$.
+
+\para 如果$\varphi$同时存在左逆和右逆，设$\psi$是$\varphi$的左逆，$\pi$是$\varphi$的右逆，于是
+\[
+\begin{aligned}
+	\psi\varphi\pi&=(\psi\varphi)\pi=I_n \pi=\pi,\\
+	\psi\varphi\pi&=\psi(\varphi\pi)=\psi I_n=\psi,
+\end{aligned}
+\]
+所以$\pi=\psi$，此时$\pi=\psi$就被称为矩阵$\varphi$的逆，记作$\varphi^{-1}$. 因此，从Cramer法则与伴随矩阵，我们已经给出了方阵逆存在的一个充分条件：$\det(\varphi)$可逆。
+
+\pro 方阵$\varphi$左（右）逆存在的充分必要条件是$\det(\varphi)$可逆。如果存在左（右）逆，则也存在右（左）逆，且左逆等于右逆。于是方阵$\varphi$逆存在的充分必要条件是$\det(\varphi)$可逆。
+
+\proof 上面已经证明了，如果$\det(\varphi)$可逆，则$\varphi$同时存在左逆以及右逆，且左逆等于右逆。反过来，如果$\varphi$有左逆$\psi$，则$\det(\psi\varphi)=\det(I_n)=1$，由行列式乘法公式，$1=\det(\psi\varphi)=\det(\psi)\det(\varphi)$，于是$\det(\varphi)$可逆。存在右逆同理可以推出$\det(\varphi)$可逆。从$\det(\varphi)$可逆就得出了结论。\qed
+
+方阵存在逆时，我们会称呼该方阵是可逆的。上面的命题就是在说，环$R$上的方阵$\varphi$可逆当且仅当$\det(\varphi)$可逆。举个例子，整数环$\mathbb{Z}$上的方阵$\varphi$可逆当且仅当$\det(\varphi)=1$. 而域$k$上的方阵$\varphi$可逆当且仅当$\det(\varphi)\neq 0$. 随后如果可逆，伴随矩阵给出了逆的一个计算公式。
+
+对于交换环，由于乘法可以交换，我们无需担心左逆不能推出右逆。但一般而言，在任意的非交换环里面，左逆存在不一定能推出右逆存在，反之亦然。但是交换环上的方阵构成的环$M_n(R)$中，行列式函数将逆的存在性等价于$R$中逆的存在性，继而保证了$M_n(R)$上左逆存在可以推出右逆存在。

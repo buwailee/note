@@ -314,20 +314,21 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \begin{enumerate}
 \item 一类(class)对象(object)，类在这里的意思并不是构成一个集合。一个范畴中所有的对象可以不构成一个集合。如果$X$是$\mathcal{C}$的一个对象，我们沿用集合论的符号，写成$X\in \mathcal{C}$.
 
-对每两个对象$X$和$Y$，有一个集合$\Hom_{\mathcal{C}}(X,Y)$，其中的元素被称为\idx{态射}（\idx{morphism}\footnote{从英文来看，态射构成的集合更加准确地应该写作$\mathrm{Mor}_{\mathcal{C}}(X,Y)$，因为morphism不一定是homomorphism（同态），不过既然只是记号，从习惯上以后依然用$\Hom$这个符号。}），在范畴可以通过上下文明确的时候，通常也会简略写作$\Hom(X,Y)$. 设$\varphi\in \Hom(X,Y)$，他通常沿用映射的记号写成$\varphi:X\to Y$，但态射不必是映射。沿用叫法，$\varphi:X\to Y$中$X$被称为定义域，而$Y$被称为值域。态射还需要满足如下假设：
+对每两个对象$X$和$Y$，有一个集合$\mathcal{C}(X,Y)$，有时候也写做$\mathrm{Mor}_{\mathcal{C}}(X,Y)$乃至$\Hom_{\mathcal{C}}(X,Y)$，其中的元素被称为\idx{态射}（\idx{morphism}\footnote{从英文来看，态射构成的集合写作$\mathrm{Mor}_{\mathcal{C}}(X,Y)$比$\Hom_{\mathcal{C}}(X,Y)$准确，因为morphism不一定是homomorphism（同态）。}
+）. 设$\varphi\in \mathcal{C}(X,Y)$，他通常沿用映射的记号写成$\varphi:X\to Y$，但态射不必是映射。沿用叫法，$\varphi:X\to Y$中$X$被称为定义域，而$Y$被称为值域。态射还需要满足如下假设：
 
 \begin{itemize}
 
-\item 任取态射$\varphi$，我们都可以从他得到唯一的定义域和值域，即$\varphi$如果同时属于$\Hom(X,Y)$和$\Hom(Z,W)$，则$X=Z$以及$Y=W$.
+\item 任取态射$\varphi$，我们可以从他得到唯一的定义域和值域，即$\varphi$如果同时属于$\mathcal{C}(X,Y)$和$\mathcal{C}(Z,W)$，则$X=Z$以及$Y=W$.
 
 \end{itemize}
 
-\item 任取对象$X$, $Y$和$Z\in \mathcal{C}$，则有映射$\Hom(X,Y)\times \Hom(Y,Z)\to \Hom(X,Z)$，沿袭映射的说法，他被称为态射的复合。设$\varphi\in \Hom(X,Y)$和$\psi \in \Hom(Y,Z)$，则复合出来的态射被记作$\psi\circ \varphi$或者再简单一点$\psi\varphi$. 复合还需要满足：
+\item 任取对象$X$, $Y$和$Z\in \mathcal{C}$，则有映射$\mathcal{C}(X,Y)\times \mathcal{C}(Y,Z)\to \mathcal{C}(X,Z)$，沿袭映射的说法，他被称为态射的复合。设$\varphi\in \mathcal{C}(X,Y)$和$\psi \in \mathcal{C}(Y,Z)$，则复合出来的态射被记作$\psi\circ \varphi$或者再简单一点$\psi\varphi$. 复合还需要满足：
 \begin{itemize}
 
 \item 态射的复合满足结合率，即$\varphi(\psi\theta)=(\varphi\psi)\theta$.
 
-\item 在每一个$\Hom(X,X)$中有一个元素$\id_X$使得，任取$\rho:X\to Y$以及$\psi:Z\to X$成立复合$\rho\id_X=\rho$以及$\id_X\psi=\psi$.
+\item 在每一个$\mathcal{C}(X,X)$中有一个元素$\id_X$使得，任取$\rho:X\to Y$以及$\psi:Z\to X$成立复合$\rho\id_X=\rho$以及$\id_X\psi=\psi$.
 \end{itemize}
 \end{enumerate}
 
@@ -353,12 +354,13 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 当然这个范畴也可以通过在开集族上给定一个偏序$U\leq V$当且仅当$U\subset V$给出。
 
-所有拓扑空间和其间的连续映射当然构成一个范畴。所有光滑流形和其间的光滑映射构成一个范畴。最后一个例子是关系构成了范畴，他的对象是集合，而$\Hom(X,Y)$是所有$X\times Y$的子集，设$\varphi:X\to Y$和$\psi:Y\to Z$是两个态射，则复合被定义为
+所有拓扑空间和其间的连续映射当然构成一个范畴。所有光滑流形和其间的光滑映射构成一个范畴。最后一个例子是关系构成了范畴，他的对象是集合，而$\text{Mor}(X,Y)$是所有$X\times Y$的子集，设$\varphi:X\to Y$和$\psi:Y\to Z$是两个态射，则复合被定义为
 \[
 	\psi\varphi=\bigl\{(x,z)\in X\times Z\,:\,\exists y\in Y\,\text{ s.t. } (x,y)\in\varphi,\, (y,z)\in \psi\bigr\}.
 \]
 
-\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，定义$\Hom_{\mathcal{C}^{\mathrm{op}}}(X,Y)=\Hom_{\mathcal{C}}(Y,X)$，复合不变。他被称为给定范畴的对偶范畴。
+\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，定义
+\[\mathcal{C}^{\mathrm{op}}(X,Y)=\mathcal{C}(Y,X),\]复合不变。他被称为给定范畴的对偶范畴。
 
 凡是纯范畴的命题与证明，将所有的箭头（即态射）全部反过来，可以得到对应的命题与证明，这样的命题被称为对偶命题。
 
@@ -368,7 +370,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \begin{enumerate}
 	\item 对任意的$X\in \mathcal{C}$，有唯一的$F(X)\in \mathcal{D}$.
 	
-	\item 对任意的$\varphi\in \Hom(X,Y)$，存在唯一的$F(\varphi)\in  \Hom(F(X),F(Y))$使得成立复合关系$F(\varphi\psi)=F(\varphi)F(\psi)$以及$F(\id_X)=\id_{F(X)}$.
+	\item 对任意的$\varphi\in \mathcal{C}(X,Y)$，存在唯一的$F(\varphi)\in  \mathcal{D}(F(X),F(Y))$使得成立复合关系$F(\varphi\psi)=F(\varphi)F(\psi)$以及$F(\id_X)=\id_{F(X)}$.
 \end{enumerate}
 
 一般将“从$\mathcal{C}$到$\mathcal{D}$的函子$F$”记作$F:\mathcal{C}\to \mathcal{D}$. 虽然记号相同，但是我们可以通过语境来区分他与态射。
@@ -381,17 +383,17 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \para 在有些作者那里，上面定义的函子被称为协变函子，而函子$f:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$f(\varphi\psi)=f(\psi)f(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。
 
-\para （反变）态射函子是（反变）函子的重要例子。设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。定义一个函子$\Hom_\mathcal{C}(A,\star):\mathcal{C}\to \text{Set}$如下：对于对象，$B\mapsto \Hom_\mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
+\para （反变）态射函子是（反变）函子的重要例子。设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。定义一个函子$\mathcal{C}(A,\star):\mathcal{C}\to \text{Set}$如下：对于对象，$B\mapsto \mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
 \[
-	\Hom_\mathcal{C}(A,f)=f_*: g\mapsto f\circ g.
+	\mathcal{C}(A,f)=f_*: g\mapsto f\circ g.
 \]
-此时$\Hom_\mathcal{C}(A,\star)$被称为关于$A$的\idx{态射函子}。
+此时$\mathcal{C}(A,\star)$被称为关于$A$的\idx{态射函子}。经常，我们将$\mathcal{C}(A,\star)$简单记$h^A$.
 
-同样，我们可以定义\idx{反变态射函子}$\Hom_\mathcal{C}(\star,A):\mathcal{C}^{\text{op}}\to \text{Set}$：对于对象，$B\mapsto \Hom_\mathcal{C}(B,A)$，对于态射$f:B\to C$，它通过
+同样，我们可以定义\idx{反变态射函子}$\mathcal{C}(\star,A):\mathcal{C}^{\text{op}}\to \text{Set}$：对于对象，$B\mapsto \mathcal{C}(B,A)$，对于态射$f:B\to C$，它通过
 \[
-	\Hom_\mathcal{C}(f,A)=f^*: g\mapsto g\circ f
+	\mathcal{C}(f,A)=f^*: g\mapsto g\circ f
 \]
-得到了态射$\Hom_\mathcal{C}(f,A):\Hom_\mathcal{C}(C,A)\to \Hom_\mathcal{C}(B,A)$. 经常，我们将$\Hom_\mathcal{C}(\star,A)$简单记$h_A$，而且有时候会将$h_A(B)$就写做$A(B)$.
+得到了态射$\mathcal{C}(f,A):\mathcal{C}(C,A)\to \mathcal{C}(B,A)$. 经常，我们将$\mathcal{C}(\star,A)$简单记$h_A$，而且有时候会将$h_A(B)$就写做$A(B)$.
 
 \para 一个范畴到另一个范畴的全部函子也构成一个范畴，即函子的范畴。对象是函子，所以关键点在于定义函子之间的态射。设$f$和$g$都是从$\mathcal{C}$到$\mathcal{D}$的函子，如果对每一个$X\in \mathcal{C}$都有一个态射$\varphi(X):f(X)\to g(X)$使得如下交换图成立
 \[
@@ -402,7 +404,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	}
 \end{xy}
 \]
-则$\varphi$被称为一个自然变换，或者叫函子间的态射。继而，谈论函子的同构也有了意义。将$\mathcal{C}$与$\mathcal{D}$之间的函子构成的范畴记作$\fun(\mathcal{C},\mathcal{D})$，特别地，将$\fun(\mathcal{C},\text{Set})$记作$\hat{\mathcal{C}}$.
+则$\varphi$被称为一个自然变换，或者叫函子间的态射。继而，谈论函子的同构也有了意义。将$\mathcal{C}$与$\mathcal{D}$之间的函子构成的范畴记作$[\mathcal{C},\mathcal{D}]$，特别地，将$[\mathcal{C}^\text{op},\text{Set}]$记作$\hat{\mathcal{C}}$.
 
 描述自然变换是范畴论的初衷，自然变换在数学中的频繁出现才使得人们想要抽象出这个概念，为了描述这个概念，人们发明了范畴与函子。自然变换频繁出现的原因在于一些构造：设有一个范畴$\mathcal{C}$，对每一个对象$X\in \mathcal{C}$构造了一个函子$f_X$，比如前面定义出的反变态射函子$h_X$. 当我们改变对象的时候，即给出一个态射$\varphi:X\to Y$，往往具体的构造将诱导出对每一个$V\in \mathcal{C}$都有态射$f_\varphi(V):f_X(V)\to f_Y(V)$. 由于是函子，对态射$\rho:V\to W$也诱导了态射，汇总起来就是有图
 \[
@@ -426,22 +428,76 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 任取$\pi\in h_X(V)$即$\pi:V\to X$，有$\psi^*(\varphi_*(\pi))=\varphi\pi\psi$以及$\varphi_*(\psi^*(\pi))=\varphi\pi\psi$，所以图是交换的。类似例子给出如下命题：如果$X\cong Y$，则$h_X\cong h_Y$. 反命题实际上也是正确的，后面会予以证明。
 
-\para 设$f$, $g:\mathcal{C}\to \mathcal{D}$是函子，$X\in \mathcal{C}$是一个对象，通过$X:f\to f(X)$以及任取自然变换$\varphi:f\to g$，定义$X(\varphi)=\varphi(X):f(X)\to g(X)$，可以看到此时$X$此时构成一个$\fun(\mathcal{C},\mathcal{D}) \to \mathcal{D}$的函子。
+\para 由于经常一个构造会涉及两个对象或多个对象，而分别改变对象就会产生不同的函子，为了抽象这个过程，就产生了下面积范畴的概念，正如讨论多元函数引入了集合的直积一样。
 
-可见，$f(X)$一方面可以将$f$理解成函子，另一方面也可以将$X$理解成函子。只不过前者是范畴$\mathcal{C}$到范畴$\mathcal{D}$的函子，后者是范畴$\fun(\mathcal{C},\mathcal{D})$到范畴$\mathcal{D}$的函子。
+设$\mathcal{C}$和$\mathcal{D}$是范畴，他们的积范畴记作$\mathcal{C}\times\mathcal{D}$：对象是这样的二元组$(X,Y)$或$X\times Y$，其中$X\in \mathcal{C}$, $Y\in\mathcal{D}$. 而态射定义为$(\varphi,\psi)$或$\varphi\times \psi$，其中$\varphi$是$\mathcal{C}$中的态射，而$\psi$是$\mathcal{D}$中的态射，这样就建立了集合的等同
+\[
+	{\mathcal{C}}(X,X')\times {\mathcal{D}}(Y,Y')=(\mathcal{C}\times \mathcal{D})(X\times Y,X'\times Y').
+\]
+复合定义为$(\varphi,\psi)(\varphi',\psi')=(\varphi\varphi',\psi\psi')$. 在这个复合下，对象$X\times Y$到自己的恒等态射就是$(\id_X,\id_Y)$. 所以$\mathcal{C}\times\mathcal{D}$确确实实是一个范畴。同理，可以定义有限个范畴的积。
 
-% \lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \text{Set}$是一个函子，则从$\Hom_\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
+设$\mathcal{F}$是另一个范畴，函子$f:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$被称为一个双函子。比如$\mathcal{C}(\star,\star)$是一个$\mathcal{C}^\text{op}\times \mathcal{C}\to \text{Set}$的双函子。如果固定双函子的一个变元，那么双函子会退化成一个函子。比如$\mathcal{C}(\star,\star)$固定第一个变元为$X$的时候得到$h^X$.
+
+反过来，如果$f$对每一个$X\in \mathcal{C}$是函子$f(X,\star):\mathcal{D}\to \mathcal{F}$，以及对每一个$Y\in \mathcal{C}$是函子$f(\star,Y):\mathcal{C}\to \mathcal{F}$，那么何时$f$才是一个双函子。考虑如下图
+\[
+\begin{xy}
+	\xymatrix{
+		f(X,Y)\ar[rr]^{f(\varphi,Y)} \ar[d]_{f(X,\psi)}&&f(X',Y) \ar[d]^{f(X',\psi)}\\
+		f(X,Y')\ar[rr]^{f(\varphi,Y')}&&f(X',Y')
+	}
+\end{xy}
+\]
+如果这个图交换，那么从左上到右下的映射，即复合$f(X,\psi)f(\varphi,Y)$将定义出一个态射$f(\varphi,\psi)$，此时$f$构成一个双函子。具体的检验交由读者。
+
+\para 设$f$, $g:\mathcal{C}\to \mathcal{D}$是函子，$X\in \mathcal{C}$是一个对象，通过$X:f\to f(X)$以及任取自然变换$\varphi:f\to g$，定义$X(\varphi)=\varphi(X):f(X)\to g(X)$，可以看到此时$X$此时构成一个$[\mathcal{C},\mathcal{D}] \to \mathcal{D}$的函子。可见，$f(X)$一方面可以将$f$理解成函子，另一方面也可以将$X$理解成函子。只不过前者是范畴$\mathcal{C}$到范畴$\mathcal{D}$的函子，后者是范畴$[\mathcal{C},\mathcal{D}]$到范畴$\mathcal{D}$的函子。将这点抽象出来，如果把$f(X)$写作$\Gamma(X,f)$，则
+\[
+	\Gamma(\star,\star):\mathcal{C}\times [\mathcal{C},\mathcal{D}]\to \mathcal{D}
+\]
+是一个双函子。这点的证明只要按定义应用上面的判据就可以了。
+
+\para 双函子之间的态射，表现为如下自然变换
+\[
+\begin{xy}
+	\xymatrix{
+		f(X,Y)\ar[rr]^{\varphi(X,Y)} \ar[d]_{f(\psi,\varphi)}&&g(X,Y) \ar[d]^{g(\psi,\varphi)}\\
+		f(X',Y')\ar[rr]^{\varphi(X,Y)}&&g(X',Y')
+	}
+\end{xy}
+\]
+很清楚，当固定$X$的时候，$\varphi(X,\star)$是$f(X,\star)\to g(X,\star)$的一个自然变换。固定$Y$也一样。
+
+反过来，设$f$, $g:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$是两个双函子，如果任取$X\in \mathcal{C}$，存在自然变换$\alpha(X):f(X,\star)\to g(X,\star)$，任取$Y\in \mathcal{D}$，存在自然变换使得$\beta(Y):f(\star,Y)\to g(\star,Y)$，且$\alpha(X)(Y)=\beta(Y)(X)$，则存在自然变换$\gamma:f\to g$使得$\gamma(X,Y)=\alpha(X)(Y)=\beta(Y)(X)$.
+
+\proof
+	考虑态射$(\psi,\varphi):(X,Y)\to (X',Y')$，他可以拆成
+	\[
+		(\psi,\varphi): (X,Y) \xrightarrow{(\psi,\id_Y)} (X',Y)\xrightarrow{(\id_{X'},\varphi)} (X',Y'),
+	\]
+	分别应用自由变换
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X,Y)\ar[rr]^{\alpha(X)(Y)} \ar[d]_{f(\psi,\id_Y)}&&g(X,Y) \ar[d]^{g(\psi,\id_Y)}\\
+			f(X',Y)\ar[rr]^{\alpha(X')(Y)}_{\beta(Y)(X')} \ar[d]_{f(\id_{X'},\varphi)}&&g(X',Y) \ar[d]^{g(\id_{X'},\varphi)}\\
+			f(X',Y')\ar[rr]^{\beta(Y')(X')}&&g(X',Y')
+		}
+	\end{xy}
+	\]
+	因此，从左上到右下两条路给出$g(\psi,\varphi)\alpha(X)(Y)=\beta(Y')(X')f(\psi,\varphi)$，由于$\gamma(X,Y)=\alpha(X)(Y)=\beta(Y)(X)$，所以也就是$g(\psi,\varphi)\gamma(X,Y)=\gamma(X',Y')f(\psi,\varphi)$，所以$\gamma:f\to g$是一个自然变换。
+\qed
+
+% \lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \text{Set}$是一个函子，则从$\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
 
 % \proof 对每个自然变换$\alpha:\Hom_\mathcal{C}(A,\star)\to F$定义$\theta(\alpha)=\alpha(A)(\id_A)\in F(A)$，现在定义一个逆映射即可。对$x\in F(A)$，定义自然变换$\psi(x):\Hom_\mathcal{C}(A,\star)\to F$通过$\psi(x)(B)(f)=F(f)(x)$，不难验证这是一个自然变换，而且$\psi$和$\theta$是互逆的。\qed
 
-\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\text{Set}$是一个集合，那么它与集合$X(e)=\Hom_{\text{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的$\Hom_{\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$.
+\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\text{Set}$是一个集合，那么它与集合$X(e)={\text{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的${\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$.
 
-设$f$是一个$\mathcal{C}$到Set的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，那么我们不仅仅得到了函子$f$的信息，我们也同样得到了对象$X$的信息。而且，比起任意的函子，反变态射函子是我们更愿意看到的，并且有着许多好的性质，因此我们可以做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
+设$f$是一个$\mathcal{C}$到Set的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，那么我们不仅仅得到了函子$f$的信息，我们也同样得到了对象$X$的信息。而且，比起任意的函子，反变态射函子是我们更愿意看到的，并且有着许多好的性质，因此我们可以做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}\to \text{Set}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
 
-\lem 设$f$是一个$\mathcal{C}$到集合范畴的反变函子，则$f(X)\cong \Hom_{\hat{\mathcal{C}}}(h_X,f)$对任意的$X\in \mathcal{C}$都成立。
+\lem 对任意的$X\in \mathcal{C}$以及$f\in \hat{\mathcal{C}}$，存在同构$i_{X,f}:\Gamma(X,f)=f(X)\to {\hat{\mathcal{C}}}(h_X,f)$.
 
 \proof
-	任取自然变换$\varphi\in \Hom_{\hat{\mathcal{C}}}(h_X,f)$，对象$Y\in\mathcal{C}$以及态射$g:Y\to X$，有交换图
+	固定$f$，任取自然变换$\varphi\in {\hat{\mathcal{C}}}(h_X,f)$，对象$Y\in\mathcal{C}$以及态射$g:Y\to X$，有交换图
 	\[
 	\begin{xy}
 		\xymatrix{
@@ -450,7 +506,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 		}
 	\end{xy}
 	\]
-	取$\id_X\in h_X(X)=\Hom(X,X)$，有$e(\varphi)=\varphi(X)(\id_X)\in f(X)$，因此有映射$e:\Hom_{\hat{\mathcal{C}}}(h_X,f)\to f(X)$. 由交换图，$\varphi(Y)(g)=f(g)\left(e(\varphi)\right)$.
+	取$\id_X\in h_X(X)=\mathcal{C}(X,X)$，有$e_{X,f}(\varphi)=\varphi(X)(\id_X)\in f(X)$，因此有映射$e_{X,f}:{\hat{\mathcal{C}}}(h_X,f)\to f(X)$. 由交换图，$\varphi(Y)(g)=f(g)\left(e_{X,f}(\varphi)\right)$.
 
 	反过来任取$a\in f(X)$，对每一个$Y\in\mathcal{C}$，我们可以定义映射
 	\[
@@ -459,41 +515,56 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	i(a)(Y)&:&g&\mapsto&f(g)(a)
 	\end{array},
 	\]
-	这样也就定义了一个函子$i(a)\in \Hom_{\hat{\mathcal{C}}}(h_X,f)$，继而有映射$i:f(X)\to \Hom_{\hat{\mathcal{C}}}(h_X,f)$. 最后只要检验$e(i(a))=a$以及$i(e(\varphi))=\varphi$，他们都由$i(Y)(g)=f(g)\left(e(\varphi)\right)$保证。
+	这样也就定义了一个函子$i_{X,f}(a)\in {\hat{\mathcal{C}}}(h_X,f)$，继而有映射$i_{X,f}:f(X)\to {\hat{\mathcal{C}}}(h_X,f)$. 最后只要检验$e_{X,f}(i_{X,f}(a))=a$以及$i_{X,f}(e_{X,f}(\varphi))=\varphi$，他们都由$i_{X,f}(Y)(g)=f(g)\left(e_{X,f}(\varphi)\right)$保证。
 \qed
 
-对于固定的$X$，他可以看成一个$\hat{\mathcal{C}}=\fun(\mathcal{C}^\text{op},\text{Set})\to \text{Set}$的函子。同样，对于固定的$X$，态射函子$\Hom_{\hat{\mathcal{C}}}(h_X,\star)$也是一个$\hat{\mathcal{C}}\to \text{Set}$的函子。上面的引理就是在说，这两个函子作用在相同的对象$f\in \hat{\mathcal{C}}$上可以得到同构的两个对象。
+对偶地，设$f$是一个$\mathcal{C}$到集合范畴的函子，则$\Gamma(X,f)\cong [\mathcal{C},\text{Set}](h^X,f)$对任意的$X\in \mathcal{C}$都成立。
 
-对于固定的$f$，他本身是$\hat{\mathcal{C}}$中的函子。同时，函子$\Hom_{\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \text{Set}$也是$\hat{\mathcal{C}}$中的函子。上面的引理就是在说，这两个函子作用在相同的对象$X\in \mathcal{C}$上可以得到同构的两个对象。
+% \para 对于固定的$X$，他可以看成一个$\hat{\mathcal{C}}=[\mathcal{C}^\text{op},\text{Set}]\to \text{Set}$的函子。同样，对于固定的$X$，态射函子${\hat{\mathcal{C}}}(h_X,\star)$也是一个$\hat{\mathcal{C}}\to \text{Set}$的函子。上面的引理就是在说，这两个函子作用在相同的对象$f\in \hat{\mathcal{C}}$上可以得到同构的两个对象。
 
-下面一个命题告诉我们，Lemma (\thepara)中的同构对于这两对函子都是自然变换，即实际上是函子间的同构，而不仅仅是作用在对象上的同构。
+% 对于固定的$f$，他本身是$\hat{\mathcal{C}}$中的函子，也可以写成$\Gamma(\star,f)$. 同时，函子${\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \text{Set}$也是$\hat{\mathcal{C}}$中的函子。上面的引理就是在说，这两个函子作用在相同的对象$X\in \mathcal{C}$上可以得到同构的两个对象。
 
-% 如果有一个自然变换$\varphi:f\to g$，他将诱导出态射$\varphi(X):f(X)\to g(X)$，以及态射$\varphi_*: \Hom_{\hat{\mathcal{C}}}(h_X,f)\to \Hom_{\hat{\mathcal{C}}}(h_X,g)$.
+% 下面一个命题告诉我们，Lemma (\thepara)中的同构对于这两对函子都是自然变换，即实际上是函子间的同构，而不仅仅是作用在对象上的同构。
 
-\pro 我们有如下函子间的同构：$X\cong \Hom_{\hat{\mathcal{C}}}(h_X,\star): \hat{\mathcal{C}}\to \text{Set}$以及$f\cong \Hom_{\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \text{Set}$.
+% 如果有一个自然变换$\varphi:f\to g$，他将诱导出态射$\varphi(X):f(X)\to g(X)$，以及态射$\varphi_*: {\hat{\mathcal{C}}}(h_X,f)\to {\hat{\mathcal{C}}}(h_X,g)$.
 
-\proof 
-	固定$X$，给出$\varphi:f\to g$，实际上就是检验交换图
+\para 固定$X$，${\hat{\mathcal{C}}}(h_X,\star)$是一个函子。固定$f$，${\hat{\mathcal{C}}}(h_\star,f)$也是一个函子。为了检查${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子，必须检查图
+\[
+\begin{xy}
+	\xymatrix{
+		\hat{\mathcal{C}}(h_{X},f)\ar[rr]^{\hat{\mathcal{C}}(\varphi^*,f)} \ar[d]_{\psi_*}&&\hat{\mathcal{C}}(h_{X'},f) \ar[d]^{\psi_*}\\
+		\hat{\mathcal{C}}(h_{X},f')\ar[rr]^{\hat{\mathcal{C}}(\varphi^*,f')}&&\hat{\mathcal{C}}(h_{X'},f')
+	}
+\end{xy}
+\]
+其中$\varphi:X'\to X$是一个态射，而$\psi:f\to f'$是一个自然变换。任取$\pi\in \hat{\mathcal{C}}(h_{X},f)$，则先右再下得到$\psi_*(\varphi^*(\pi))=\psi\pi\varphi$. 先下再右得到$\varphi_*(\psi^*(\pi))=\psi\pi\varphi$. 所以图交换，因此${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子。
+
+\pro 上面的引理可以加强到双函子同构：$i_{-,\star}:\Gamma(-,\star)\to {\hat{\mathcal{C}}}(h_-,\star)$，这被称为Yoneda引理。
+
+\proof
+	由于同构已经有了构造，所以只要检验是不是自然变换。而这点只要分别固定$X$和$f$去证明即可。
+
+	固定$X$，给出$\varphi:f\to g$，检验交换图
 	\[
 	\begin{xy}
 		\xymatrix{
-			f(X)\ar@<0.5ex>[rr]^-{i_f} \ar[d]_{\varphi(X)}&&\Hom_{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{\varphi_*}\ar@<0.5ex>[ll]^-{e_f}\\
-			g(X)\ar@<0.5ex>[rr]^-{i_g}&&\Hom_{\hat{\mathcal{C}}}(h_X,g)\ar@<0.5ex>[ll]^-{e_g}
+			f(X)\ar@<0.5ex>[rr]^-{i_{X,f}} \ar[d]_{\varphi(X)}&&{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{\varphi_*}\ar@<0.5ex>[ll]^-{e_{X,f}}\\
+			g(X)\ar@<0.5ex>[rr]^-{i_{X,g}}&&{\hat{\mathcal{C}}}(h_X,g)\ar@<0.5ex>[ll]^-{e_{X,g}}
 		}
 	\end{xy}
 	\]
-	固定$f$，给出$\varphi:Y\to X$，实际上就是检验交换图
+	固定$f$，给出$\varphi:Y\to X$，检验交换图
 	\[
 	\begin{xy}
 		\xymatrix{
-			f(X)\ar@<0.5ex>[rr]^-{i_X} \ar[d]_{f(\varphi)}&&\Hom_{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{(\varphi^*)^*}\ar@<0.5ex>[ll]^-{e_X}\\
-			f(Y)\ar@<0.5ex>[rr]^-{i_Y}&&\Hom_{\hat{\mathcal{C}}}(h_Y,f)\ar@<0.5ex>[ll]^-{e_Y}
+			f(X)\ar@<0.5ex>[rr]^-{i_{X,f}} \ar[d]_{f(\varphi)}&&{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{(\varphi^*)^*}\ar@<0.5ex>[ll]^-{e_{X,f}}\\
+			f(Y)\ar@<0.5ex>[rr]^-{i_{Y,f}}&&{\hat{\mathcal{C}}}(h_Y,f)\ar@<0.5ex>[ll]^-{e_{Y,f}}
 		}
 	\end{xy}
 	\]
 	构造都是清楚的，检查都是直接的。
 	
-	仅仅以第一个交换图里面的一部分为例，任取$a\in f(X)$，检查$\varphi\circ (i_f(a))=i_g\bigl(\varphi(X)(a)\bigr)\in \Hom_{\hat{\mathcal{C}}}(h_X,g)$. 给一个$Y\in \mathcal{C}$，$i_g\bigl(\varphi(X)(a)\bigr)(Y):p\mapsto g(p)\bigl (\varphi(X)(a)\bigr)$，其中$p:Y\to X$是一个态射。同样，$\varphi\circ (i_f(a))(Y)=\varphi\bigl(p\mapsto f(p)(a)\bigr):p\mapsto \varphi(Y)\bigl(f(p)(a)\bigr)$. 最后只要检验$g(p)\bigl (\varphi(X)(a)\bigr)=\varphi(Y)\bigl(f(p)(a)\bigr)$，注意到交换图
+	仅仅以第一个交换图里面的一部分为例，任取$a\in f(X)$，检查$\varphi\circ (i_f(a))=i_g\bigl(\varphi(X)(a)\bigr)\in {\hat{\mathcal{C}}}(h_X,g)$. 给一个$Y\in \mathcal{C}$，$i_g\bigl(\varphi(X)(a)\bigr)(Y):p\mapsto g(p)\bigl (\varphi(X)(a)\bigr)$，其中$p:Y\to X$是一个态射。同样，$\varphi\circ (i_f(a))(Y)=\varphi\bigl(p\mapsto f(p)(a)\bigr):p\mapsto \varphi(Y)\bigl(f(p)(a)\bigr)$. 最后只要检验$g(p)\bigl (\varphi(X)(a)\bigr)=\varphi(Y)\bigl(f(p)(a)\bigr)$，注意到交换图
 	\[
 	\begin{xy}
 		\xymatrix{
@@ -505,7 +576,9 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	所以得证，其他的检查也类似。
 \qed 
 
-\para 特别地，当$f=h_Y$，则$h_Y\cong \Hom_{\hat{\mathcal{C}}}(h_\star,h_Y)$. 作用到$X$上得到$h_Y(X)=\Hom_{\mathcal{C}}(X,Y)\cong \Hom_{\hat{\mathcal{C}}}(h_X,h_Y)$. 所以，$X\cong Y$当且仅当$h_X\cong h_Y$. 如果$f$是可表函子，$X$和$Y$同时表示了函子$f$，则同构$h_X\cong f \cong h_Y$诱导了同构$X\cong Y$，因此可表函子的表示对象确定到一个同构。 
+\pro 对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\text{Set}](h^-,\star)$，这也被称为Yoneda引理。
+
+\para 特别地，当$f=h_Y$，则$h_Y\cong {\hat{\mathcal{C}}}(h_\star,h_Y)$. 作用到$X$上得到$h_Y(X)={\mathcal{C}}(X,Y)\cong {\hat{\mathcal{C}}}(h_X,h_Y)$. 所以，$X\cong Y$当且仅当$h_X\cong h_Y$. 如果$f$是可表函子，$X$和$Y$同时表示了函子$f$，则同构$h_X\cong f \cong h_Y$诱导了同构$X\cong Y$，因此可表函子的表示对象确定到一个同构。 
 
 \para 设$\mathcal{C}$是一个范畴，则$\id_\mathcal{C}:\mathcal{C}\to \mathcal{C}$是恒等函子，他使得$\id_\mathcal{C}(X)=X$，以及$\id_\mathcal{C}(\varphi)=\varphi$. 如果一个函子$f:\mathcal{C}\to\mathcal{C}$与恒等函子同构，即有如下交换图成立
 \[
@@ -520,9 +593,9 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$以及$g:\mathcal{D}\to \mathcal{C}$是两个函子，那么如果$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$，则称这两个范畴等价。
 
-这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子/满函子，如果$f:\Hom_\mathcal{C}(X,Y)\to \Hom_\mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射/满射。
+这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子/完全函子，如果$f:\mathcal{C}(X,Y)\to \mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射/满射。
 
-\pro 两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又满的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$Y=f(X)$.\notprove
+\pro 两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$Y=f(X)$.\notprove
 
 \section{理想}
 

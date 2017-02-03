@@ -7,6 +7,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "construction.tex",
+			"settings":
+			{
+				"buffer_size": 23574,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -161,11 +170,12 @@
 	"file_history":
 	[
 		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/module_1.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/field.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/module_1.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/defs.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
+		"//192.168.1.9/Documents/OneDrive/note/黑历史/Calculus.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/field.tex",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/Terminal.sublime-settings",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/Terminality/Terminality.sublime-settings",
@@ -227,6 +237,91 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Hom",
+			"e_",
+			"i",
+			"i_",
+			"i_f",
+			"i",
+			"e",
+			"\\varphi",
+			"X",
+			"X'",
+			"X",
+			"Y",
+			"f",
+			"{\\hat{\\mathcal{C}}}",
+			"Hom",
+			"\\Hom_",
+			"Hom_",
+			"\\Hom_",
+			"\\Hom",
+			"Hom",
+			"varphi",
+			"\\psi,\\varphi",
+			"都有",
+			"fun",
+			"\\fun(\\mathcal{C},\\mathcal{D})",
+			"\\varphi_*",
+			"h_X(V)",
+			"\\star",
+			"G",
+			"varphi",
+			"T",
+			"S",
+			"alpha",
+			"X",
+			"M(R,n)",
+			",\\,\\cdots,\\!\\,",
+			"M(n,R)",
+			",\\,\\cdots,\\,",
+			",\\,\\cdots\\!,\\,",
+			"\\cdots,",
+			",\\cdots,",
+			",",
+			"(1_1,\\cdots,1_n)",
+			"(\\varphi)^*",
+			",",
+			"1_1,\\cdots,1_n",
+			"\\varphi_",
+			"\\varphi\\psi_",
+			"\\varphi",
+			"多现象",
+			"1_{1},\\cdots,1_{n}",
+			"1_{i_1},\\cdots,1_{i_n}",
+			"varphi",
+			"\\varphi",
+			"\\varphi^*",
+			",",
+			"行列式",
+			",",
+			",\\cdots,",
+			"ij",
+			"i",
+			"1_",
+			"D",
+			"a_",
+			"\\varphi1",
+			"A",
+			"v",
+			"D",
+			"A",
+			"b_",
+			"B",
+			"A",
+			"1_{i_n}",
+			"1_{i_1}",
+			"$",
+			",",
+			"…",
+			"\\end{defi}",
+			"\\begin{defi}",
+			"eqref",
+			"bmatrix",
+			"(\\psi)",
+			"\\varphi_",
+			",",
+			"m_i",
 			"\\Hom_{\\hat{\\mathcal{C}}}(",
 			"f",
 			"X",
@@ -269,42 +364,7 @@
 			"所以",
 			"我们对",
 			"我们有",
-			"我们",
-			"\n\\",
-			"\\mathfrak{a}:a",
-			"d",
-			"calf",
-			"pp",
-			"I",
-			"i",
-			"I",
-			"J",
-			"I_",
-			"FF9800",
-			"R",
-			"\\{1\\otimes_S fdg\\,:\\,f,\\, g\\in S\\}",
-			"$\\{1\\otimes_S dt\\}$",
-			"r_",
-			"plaintrue",
-			"true",
-			"hmarginratio=1:1",
-			"\\sffamily\\itshape\\small\\nouppercase{\\rightmark}",
-			"phi",
-			"I_",
-			"../../",
-			"algebra",
-			"id",
-			"d",
-			"notl",
-			"\\cc",
-			"\\no{",
-			"\\dd",
-			"maniflod",
-			"ap",
-			"tex",
-			"input",
-			"algebra",
-			"algebr"
+			"我们"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -322,8 +382,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "construction.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23574,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23391,
+								23398
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 38147.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
