@@ -381,7 +381,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 范畴与函子在数学中的出现是如此地频繁的原因在于：对一个数学结构的认识，不仅仅需要描述对象本身，也需要描述这个对象与其他对象之间的作用，即还需要描述态射，这就构成范畴的内容。而函子的出现在于联系两个数学结构，比如我们经常从一些对象开始构造得到新的对象。同样，描述两个合适的数学结构之间的联系，一方面描述对象之间的联系，另一方面也要描述态射之间的联系，而这正是函子所做的。基于这些理由，一个合适的分类理论，不仅仅要分类对象，也要分类态射。
 
-\para 在有些作者那里，上面定义的函子被称为协变函子，而函子$f:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$f(\varphi\psi)=f(\psi)f(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。
+在有些作者那里，上面定义的函子被称为协变函子，而函子$f:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$f(\varphi\psi)=f(\psi)f(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。
 
 \para （反变）态射函子是（反变）函子的重要例子。设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。定义一个函子$\mathcal{C}(A,\star):\mathcal{C}\to \text{Set}$如下：对于对象，$B\mapsto \mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
 \[
@@ -454,6 +454,12 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	\Gamma(\star,\star):\mathcal{C}\times [\mathcal{C},\mathcal{D}]\to \mathcal{D}
 \]
 是一个双函子。这点的证明只要按定义应用上面的判据就可以了。
+
+\para 有了二元积范畴，类似地，可以定义多元（有限）积范畴。类似于对角函数，可以定义对角函子：设$\mathcal{C}$是一个范畴，而$\mathcal{C}\times \cdots \times \mathcal{C}$是积范畴。那么可以定义函子$\Delta:\mathcal{C}\to \mathcal{C}\times \cdots \times \mathcal{C}$，对于对象$X$，定义$\Delta:X\mapsto (X$, $\cdots$, $X)$，对于态射$\varphi\in \mathcal{C}(X,Y)$，定义$\Delta: \varphi \mapsto (\varphi$, $\cdots$, $\varphi)$.
+
+甚至是考虑关于一个集合的积范畴（即指标构成一个集合的情况），积范畴依然可以定义。但是如果比如考虑指标并不是一个集合，有些东西就会自然地出现问题。这个问题有相当深刻的背景，涉及了现代数学的逻辑基础，即公理化体系（主要是ZFC公理体系）上面。众所周知，在朴素的集合论里面有Russell悖论，这就限制了一些集合的构造，比如所有集合构成的一个整体并不是集合。到了范畴论里面，我们自然也会面临集合论的问题，比如当考虑所有范畴的构成的整体是不是范畴。
+
+为了避免谈及ZFC公理体系的问题，Grothendieck给出了一个新的假设，即Grothendieck universe的存在。简单来说，就是给出了一个足够大的集合$\mathscr{U}$，而我们在具体问题中谈论的集合，都是$\mathscr{U}$的子集与元素。并且在$\mathscr{U}$内，他的元素与子集在ZFC体系下进行运算都会落入$\mathscr{U}$内。于是，在Grothendieck universe内，我们就模拟了一个集合论公理体系，在这里面讨论，就可以避免许多集合论的问题。所有可能的问题都会集中到Grothendieck universe的存在上。
 
 \para 双函子之间的态射，表现为如下自然变换
 \[

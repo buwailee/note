@@ -7,15 +7,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "construction.tex",
-			"settings":
-			{
-				"buffer_size": 23574,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -169,13 +160,34 @@
 	],
 	"file_history":
 	[
-		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
+		"//192.168.1.9/morphisme/workdir/tex2md/test.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/module_1.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/defs.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
-		"//192.168.1.9/Documents/OneDrive/note/黑历史/Calculus.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/ring_1.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/module_2.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/field.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
+		"/C/ProgramData/Microsoft/VisualStudio/Packages/Win10SDK_10.0.14393.795,version=10.0.14393.79500/WinSdkInstall.ps1",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/DRACULAE_0.4/examples/DRACULAE.bst",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/digitcontours/default/standard/digits/FeatureMatrix",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/imagedata/default/greek/lower-case/ML_epsilon0",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/bin/constants.tcl",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/Makefile",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/bin/train.tcl",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/DRACULAE_0.4/src/E_Grammars/E_BST.Grammar",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/imagedata/default/math/ML_left-arrow1",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/imagedata/FeatureMatrix",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/imagedata/default/greek/lower-case/ML_delta0",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/src/RecognitionPartitions.cc",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/INSTALL",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/Makefile",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/include/util/Math.h",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/include/rec/Font.h",
+		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/LICENSE",
+		"/C/Users/Buwai_Lee/Downloads/cygwin_ffes0.3.1/cygwin_ffes0.3/ffes_0.3.1/DRACULAE_0.3/examples/README",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/defs.tex",
+		"//192.168.1.9/Documents/OneDrive/note/黑历史/Calculus.tex",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/Terminal.sublime-settings",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/Terminality/Terminality.sublime-settings",
@@ -187,10 +199,8 @@
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/algebra_1.tex",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/Popforclang.tmTheme",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/ring_1.tex",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/main.tex",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/appendix.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/module_2.tex",
 		"//192.168.1.9/morphisme/.oh-my-zsh/plugins/sublime/sublime.plugin.zsh",
 		"//192.168.1.9/Documents/sublime配置/win/Sublime Text 3/Packages/Colorsublime - Themes/Popforclang.tmTheme",
 		"//192.168.1.9/Documents/OneDrive/note/noteheader.sty",
@@ -237,6 +247,23 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\n\\",
+			"\\cc",
+			"\\rr",
+			"\\cc",
+			"线性映射",
+			"$R$--模",
+			"实",
+			"矢量空间",
+			",",
+			"B",
+			"A",
+			",",
+			"R[U]",
+			",",
+			"足够大集合",
+			"\\Hom_",
+			"wget",
 			"Hom",
 			"e_",
 			"i",
@@ -347,24 +374,7 @@
 			"F",
 			"\\varphi}",
 			"e_{",
-			"psi",
-			"\\varphi(",
-			"物件",
-			"\\fun(\\mathcal{C},\\text{Set})",
-			"F",
-			"\\hat{\\mathcal{C}}",
-			"\\hat{X}",
-			"\\hat{Y}",
-			"text",
-			"\\text{Funct}",
-			"Im",
-			"673AB7",
-			"A,f",
-			"^{\\circ}",
-			"所以",
-			"我们对",
-			"我们有",
-			"我们"
+			"psi"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -382,37 +392,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "construction.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 23574,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								23391,
-								23398
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 38147.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

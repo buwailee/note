@@ -15,7 +15,7 @@
 \pro 极大条件等价于所有链都是a.c.c.
 
 \proof
-	如果$P$满足极大条件，则任取一条链$S$，他都有极大元$a$，任意的$a\leq x\in S$都可以推出$x=a$. 反过来，如果$P$不满足极大条件，则存在$S\subset P$中没有极大元。则给定一个$x_0\in S$，可以找到一个$x_1\in S$满足$x_1>x_0$，再对$x_1$可以找到$x_2>x_2$，如是进行下去，我们就找到了一条不稳定的链。
+	如果$P$满足极大条件，则任取一条链$S$，他都有极大元$a$，任意的$a\leq x\in S$都可以推出$x=a$. 反过来，如果$P$不满足极大条件，则存在$S\subset P$中没有极大元。则给定一个$x_0\in S$，可以找到一个$x_1\in S$满足$x_0<x_1$，再对$x_1$可以找到$x_2$使得$x_1<x_2$，如是进行下去，我们就找到了一条不稳定的链。
 \qed
 
 可见极大条件和a.c.c.是等价的，在应用中极大条件往往比较方便，而在证明/证伪Noether性的时候，构造一个具体的升链就比较简单。
@@ -196,19 +196,9 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 
 \para 上面我们已经看到了，$\otimes N$构成一个函子，而实际上，它是右正和函子。
 
-\section{代数与标量扩张}
+\section{标量扩张与局部化}
 
-设有两个环$A$, $B$和一个环同态$f:A\to B$，再设$a\in A$, $b\in B$，我们可以通过$f$定义他们的乘法为$a\cdot b=f(a)b\in B$，这样环$B$就被赋予了一个$A$-模结构。
-
-\para 环$B$若被赋予一个$A$-模结构，则称$B$是一个$A$-代数。
-
-设$B$是$A$-代数，有$f:A\to B$，设$C$也是$A$-代数，有$g:A\to C$，那么$A$-代数之间的同态$h:B\to C$，首先是$B$和$C$之间的环同态，还要和$A$-模结构相容，即$g=h\circ f$.
-
-\para 设$B$是$A$-代数，我们称呼$B$是有限生成$A$-代数，如果存在满同态$A[x_1,\cdots ,x_n]\to B$，这就等价于$B$同构于$A[x_1,\cdots ,x_n]/\mathfrak{a}$，其中$\mathfrak{a}$是$A[x_1,\cdots ,x_n]$的一个理想。一个环称为有限生成的就是指他作为$\zz$-代数是有限生成的。如果$B$作为$A$-模是有限生成的，则称$B$作为$A$-代数是有限的。
-
-复化是所谓的标量扩充或者base change的特例，所以我们直接来谈模（交换环上的双边模）的标量扩充。
-
-\para 关于模的张量基，可以参看附录。如果$M$是$R$-模，$S$是$R$-代数，那么$M_S=S\otimes_R M$就是一个$S$-模，通过$s(t\otimes a)=(st)\otimes a$，我们称这个$S$-模$M_S$为$M$经过标量扩充而来的。
+\para 设$M$是$R$-模，$S$是$R$-代数，那么$M_S=S\otimes_R M$就是一个$S$-模，通过$s(t\otimes a)=(st)\otimes a$，我们称这个$S$-模$M_S$为$M$经过标量扩充而来的。
 
 \lem 有以下同构：
 
@@ -216,9 +206,7 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 
 \no{2} 设$N$是一个$S$-模，有同构$\Hom_R(M,N)\cong \Hom_S(M_S,N)$
 
-\proof 第一个同构。实际上，$(s_1\otimes_R a,s_2\otimes_R b)\mapsto s_1s_2\otimes_R(a\otimes_R b)$是一个双线性映射，所以他唯一诱导了$\varphi:M_S\otimes_S N_S\to (M\otimes_R N)_S$.
-
-反过来，映射$(s,a\otimes_R b)\mapsto (s\otimes_R a)\otimes_S (1\otimes_R b)=(1\otimes_R a)\otimes_S (s\otimes_R b)$也是一个双线性映射，所以他唯一诱导了$\psi:(M\otimes_R N)_S\to M_S\otimes_S N_S$.容易验证他们互逆。
+\proof 第一个同构。实际上，$(s_1\otimes_R a,s_2\otimes_R b)\mapsto s_1s_2\otimes_R(a\otimes_R b)$是一个双线性映射，所以他唯一诱导了$\varphi:M_S\otimes_S N_S\to (M\otimes_R N)_S$. 反过来，映射$(s,a\otimes_R b)\mapsto (s\otimes_R a)\otimes_S (1\otimes_R b)=(1\otimes_R a)\otimes_S (s\otimes_R b)$也是一个双线性映射，所以他唯一诱导了$\psi:(M\otimes_R N)_S\to M_S\otimes_S N_S$.容易验证他们互逆。
 
 第二个同构。设$\phi\in \Hom_R(M,N)$，我们可以通过$\Phi(s\otimes a)=s\phi(a)$定义$\Phi\in \Hom_S(M_S,N)$，反过来，已知$\Phi\in \Hom_S(M_S,N)$，我们可以通过$\phi(a)=\Phi(1\otimes a)$来定义$\phi\in \Hom_R(M,N)$.不难检验，这是一个同构。 \qed
 
@@ -227,18 +215,16 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \bigotimes_{i\in I} \left(S\otimes_RM_i\right)\cong S\otimes_R\bigotimes_{i\in I} M_i.
 \]
 
-\para 举个例子，设$V$是一个$\rr$上的$n$维矢量空间，那么$V\cong \rr\oplus \cdots \oplus \rr$，所以$V_{\cc}\cong \rr_{\cc}\oplus \cdots \oplus \rr_{\cc}$，由于$\rr_{\cc}=\cc\otimes \rr=\cc$，所以$V_{\cc}\cong \cc\oplus \cdots \oplus \cc$，因此$V_{\cc}$这就被称为$V$的复化，同时因为$v\mapsto 1\otimes v$是单射，所以可以把$V$看成$V_\cc$的实的子空间，即$1\otimes V=V$.
+\para 设$S$是一个$R$-代数，我们有下面三个小命题：
 
-\para 复化扩张是指将实矢量空间扩张到复矢量空间，这在有些地方是有用的，比如实Lie代数到复Lie代数的扩张。关于复化扩张，我们有下面三个小命题：
+\no{1}设$V$是一个$R$-模，$W$是一个$S$-模，$f:V\to W$是$R$-模同态，则他可以唯一扩张为一个$S$-模同态$V_S\to W$.
 
-\no{1}设$V$是一个实矢量空间，$W$是一个复矢量空间，$f:V\to W$是实线性映射，则他可以唯一扩张为一个复线性映射$V_\cc\to W$.
+\no{2}设$V$和$W$都是$R$-模，$f:V\to W$是$R$-模同态，则他可以唯一扩张为一个$S$-模同态$V_S\to W_S$.
 
-\no{2}设$V$和$W$都是实矢量空间，$f:V\to W$是实线性映射，则他可以唯一扩张为一个复线性映射$V_\cc\to W_\cc$.
-
-\no{3}设$V$和$W$都是实矢量空间，$f:V\times\cdots\times V\to W$是实多线性映射，则他可以唯一扩张为一个复多线性映射$V_\cc\times\cdots\times V_\cc\to W_\cc$.
+\no{3}设$V$和$W$都是$R$-模，$f:V\times\cdots\times V\to W$是$R$-多线性映射，则他可以唯一扩张为一个$S$-多线性映射$V_S\times\cdots\times V_S\to W_S$.
 
 \proof 
-	因为$\Hom_\rr(V,W)\cong \Hom_\cc(V_\cc,W)$，所以\no{1}得证。对于\no{2}，我们有$i:W\hookrightarrow W_\cc$，那么$i\circ f:V\to W_\cc$就满足\no{1}题设，由\no{1}自然得证。对于\no{3}，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由\no{2}，可以唯一扩张为$(V^k)_\cc\to W_\cc$，因为$(V^k)_\cc=V_\cc\otimes_\cc \cdots\otimes_\cc V_\cc$，引理得证。
+	因为$\Hom_R(V,W)\cong \Hom_S(V_S,W)$，所以\no{1}得证。对于\no{2}，我们有$i:W\hookrightarrow W_S$，那么$i\circ f:V\to W_S$就满足\no{1}题设，由\no{1}自然得证。对于\no{3}，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由\no{2}，可以唯一扩张为$(V^k)_S\to W_S$，因为$(V^k)_S=V_S\otimes_S \cdots\otimes_S V_S$，引理得证。
 \qed
 
 注意到，零映射扩张成的映射依然是零映射，这可以用来给出一些等式。比如在实Lie代数$V$中有Jacobi恒等式$B(u,v,w)=0$对任意的$u$, $v$, $w\in V$成立，其中$B$是一个多线性映射，所以经过复化后依然有$B_\cc (u,v,w)=0$对任意的$u$, $v$, $w\in V_\cc$成立。
@@ -261,13 +247,13 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \]
 如果$S$是一个平坦$R$-模且$M$具有有限表示，则$\alpha$还是一个同构。
 
-\section{局部化}
+\para 从一个整环，很容易得到一个环。
 
-我觉得这个看上去有些奇怪的条件在最“自由”地补充进所有可能的分式的时候会自然产生。
+\para 我觉得这个看上去有些奇怪的条件在最“自由”地补充进所有可能的分式的时候会自然产生。
 
 首先注意到$k[x]_x=k[x,1/x]=k[x,y]/\langle xy-1\rangle$，这个在几何上就是说$k-\{0\}$和$xy=1$这条曲线同构。考虑$S$是$R$的任意子集，我们可以类比定义一个环$T$
 \[
-T=R\bigl[\{x_s\,:\, s\in S\}\bigr]/\bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle.
+T=R\bigl[\{x_s\,:\, s\in S\}\bigr]\big/\bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle.
 \]
 这样$ax_s$大概就对应$a/s$. 这个环的加法就是
 \[
@@ -285,11 +271,9 @@ bd(ax_{b}-cx_d)\equiv ad-bc
 
 观察我们上面构造的分式乘法。由于我们想要$ax_b$对应$a/b$，$cx_d$对应$c/d$，那么是否$(ax_{b})(cx_d)\equiv acx_bx_d$对应$(ac)/(bd)$？如果$bd\in S$，那么这是对的，因为$x_bx_d\equiv x_{bd}$. 但是一般而言这是不对的，所以对$S$我们希望是对乘法封闭的。此外，观察加法也是，只有在$bd\in S$的时候才有对应$a/b+c/d=(ad+bc)/(bd)$.
 
-现在我们可以推出那个奇怪的等价关系，在这里的语境下他被表述为：设$a\in R$，则$a\equiv 0$当且仅当存在$s \in S$使得$as=0$.
+\lem 设$a\in R$，则$a\equiv 0$当且仅当存在$s \in S$使得$as=0$.
 
-<= 如果存在$s \in S$使得$as=0$，则$a\equiv asx_s\equiv 0$. 
-
-=> 假设$a\equiv 0$但$as\neq 0$对任意$s\in S$都成立。由于$a\equiv 0$，则$a\in \bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle$.逐次比较，唯一可能的选择就是关于$x$的一次项的线性组合，即
+\proof 如果存在$s \in S$使得$as=0$，则$a\equiv asx_s\equiv 0$. 反过来，假设$a\equiv 0$但$as\neq 0$对任意$s\in S$都成立。由于$a\equiv 0$，则$a\in \bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle$.逐次比较，唯一可能的选择就是关于$x$的一次项的线性组合，即
 \[
-\sum_{i=1}^n a_i(s_ix_{s_i}-1)-a=0,
-\]其中求和是有限的。所以$a_is_i=0$对任意的$i$都成立，且$\sum_i a_i=a$. 将$\sum_i a_i=a$两边乘以$s_1\cdots s_n$，得到$as_1\cdots s_n=0$，为了制造矛盾，$S$对乘法封闭又有了用处，因为$s_1\cdots s_n$在$S$里面，所以可以利用$as\neq 0$的假设。
+a=\sum_{i=1}^n a_i(s_ix_{s_i}-1),
+\]其中求和是有限的。所以$a_is_i=0$对任意的$i$都成立，且$\sum_i a_i=-a$. 将$\sum_i a_i=-a$两边乘以$s_1\cdots s_n$，得到$as_1\cdots s_n=0$，由于$S$对乘法封闭，所以$s_1\cdots s_n\in S$，然后利用$as\neq 0$的假设就得到了矛盾。\qed

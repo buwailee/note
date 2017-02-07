@@ -32,7 +32,7 @@
 
 \para 设$I$是一个偏序集，偏序关系为$\leq$，那么族$\{\{x\}\,:\, x\in I\}$构成一个（小）范畴，其中的态射定义为
 \[
-	\Hom_{I}\left(x,y\right)=\begin{cases}
+	{I}\left(x,y\right)=\begin{cases}
 	(x,y)&\text{, if }x\leq y\text{;}\\
 	\varnothing&\text{, otherwise}.
 	\end{cases}
@@ -89,7 +89,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
 \[
-	\Hom_{X}(U,V)=\begin{cases}
+	{X}(U,V)=\begin{cases}
 	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
 	\varnothing&\text{, otherwise}.
 	\end{cases}
@@ -147,7 +147,43 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \theo 在左$R$-模范畴，任意的极限与余极限存在。 \notprove
 
-\para 设$I$是一个指标集，我们定义$R^I=\bigoplus_{i\in I}R$，他被称为自由模。如果$I$是有限集，$n=|I|$，则我们通常将自由模$R^I$记作$R^n$. 记$1_i$为第$i$个指标的$R$中的$1$.
+\section{自由对象}
+
+简单来说，自由对象是遗忘函子的左伴随函子。所以这里先给出伴随函子的定义。
+
+\para 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$X$所表示，于是就有函子同构$\alpha:h_X\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+\[
+\begin{xy}
+	\xymatrix{
+		h_X(T)\ar[rr]^-{\alpha_T} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
+		h_X(S)\ar[rr]^-{\alpha_S}&&{\mathcal{D}}(f(S),Y)
+	}
+\end{xy}
+\]
+任取$u:T\to X$，有$\alpha_S(u\psi)=\alpha_T(u)f(\psi)$. 特别地，当$T=X$时，取$u=\id_X$，记$\alpha_X(\id_X)=\sigma_Y:f(X)\to Y$，$\alpha_S(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to X$.
+
+\para 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果存在自然同构
+\[
+	\alpha(T,Y):\mathcal{C}(T,g(Y))\to \mathcal{D}(f(T),Y),
+\]
+则$(f,g)$被称为一对伴随函子。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
+
+固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个左伴随函子。
+
+设$g(Y)$是$\mathcal{D}(f(\star),Y)$的表示对象。改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}_{g(Y)}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha_{g(Y)}(T)$，对每一个$T$，$\beta_T$将给出了函子同构
+\[
+	\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
+\]
+自然变换的检验是直接的。
+
+\para 以忘却函子为例，如果$g$是忘却函子，再具体一点，如果他是将群$G$变成集合的那个忘却函子。再设$T=\{e\}$是一个单点集，如果他存在左伴随函子$f$，则有同构
+\[
+	{\text{Group}}(f(\{e\}),G)\cong {\text{Set}}(\{e\},g(G))
+\]
+
+\para 首先介绍$R$-模范畴的自由对象，遗忘函子是$R$-模到集合。设$I$是一个指标集，我们定义$R^I=\bigoplus_{i\in I}R$，他被称为自由$R$-模，或者当$R$是清楚地时候，称为自由模。自由模是$R$-模范畴的自由对象。从构造，检查是清楚的。
+
+如果$I$是有限集，$n=|I|$，则我们通常将自由模$R^I$记作$R^n$. 记$1_i$为第$i$个指标的$R$中的$1$.
 
 \para 设$M$是一个$R$-模，$S$是他的一个子集，称呼$M$被$S$生成，就是说$M$中的元素可以写成$S$中元素的有限线性组合。即任取$m\in M$，存在一个系数集$\{a_s\in R\,:\, s\in S\}$，其中只有有限个系数非零，使得
 \[
@@ -157,76 +193,59 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 显然$R^I$由$\{1_i\,:\,i\in I\}$生成，其中$1_i$代表的是第$i$个指标的$R$中的$1$，所以$R^n$是有限生成模。
 
-\para 域上的自由模是矢量空间。
-
 \para 如果$M$和$N$都是双边$R$-模（比如我们一直讨论的交换环的情况），则
 
+\para 设$U$是一个集合，上面有乘法运算，满足结合律，这样的代数结构被称为\idx{半群}（\idx{semigroup}）. 如果半群含有乘法单位元，则称他为\idx{幺半群}（\idx{monoid}）. 群是特殊的幺半群，一个环除去加法结构也是一个幺半群。半群之间的同态依然定义为满足$f(ab)=f(a)f(b)$的映射$f$. 所以所有半群构成一个范畴，所有幺半群也构成一个范畴。
 
-\section{自由对象}
+从幺半群到集合有自然的遗忘函子。反过来，下面从一个集合构造一个幺半群，这就构成了幺半群范畴的自由对象。
 
-简单来说，自由对象是遗忘函子的左伴随函子。所以这里先给出伴随函子的定义。
-
-\para 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto \Hom_{\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$X$所表示，于是就有函子同构$\alpha:h_X\to \Hom_{\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+设$S$是一个集合，设$U(S)$作为集合是$S$中所有有限长序列（或者说有序组）的集合，其中空序列也看成有限长序列。对于序列$(a_1$, $\cdots$, $a_n)$，我们通常记作$a_1\cdots a_n$，将其称为一个字符串，而空字符串记作$1$. 两个字符串之间的乘法就定义成字符串的连接，即
 \[
-\begin{xy}
-	\xymatrix{
-		h_X(T)\ar[rr]^-{\alpha_T} \ar[d]_{\psi^*}&&\Hom_{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
-		h_X(S)\ar[rr]^-{\alpha_S}&&\Hom_{\mathcal{D}}(f(S),Y)
-	}
-\end{xy}
+	(a_1\cdots a_n)(b_1\cdots b_m)=a_1\cdots a_nb_1\cdots b_m,
 \]
-任取$u:T\to X$，有$\alpha_S(u\psi)=\alpha_T(u)f(\psi)$. 特别地，当$T=X$时，取$u=\id_X$，记$\alpha_X(\id_X)=\sigma_Y:f(X)\to Y$，$\alpha_S(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to X$.
+空字符串因此自然地成为该乘法的单位元，结合律由构造也是显然的。因此$U(S)$就构成了一个幺半群，他被称为被$S$生成的自由幺半群。泛性质的检验是直接的。
 
-\para 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果同构
+自由交换幺半群的构造也是类似的，可以理解成所有有限长无序组，乘法定义为无序组的拼接。
+
+\para 类似于幺半群，从集合$S$出发，可以构造自由群$G(S)$，他是群范畴的自由对象。首先从每个$s\in S$出发，新建一个符号$s^{-1}$，这样就有了一个新的集合$S^{-1}=\{s^{-1}\,:\, s\in S\}$. 然后考虑自由幺半群$U(S\cup S^{-1})$. 通过$\mu: ss^{-1}\mapsto 1$以及$\mu: s^{-1}s\mapsto 1$定义一个半群自同态$\mu:U(S\cup S^{-1})\to U(S\cup S^{-1})$，则我们需要的自由群$G(S)$就是$\mu$在$U(S\cup S^{-1})$中的像。$G(S)$确确实实是一个群的检验是直接的，这里略去。
+
+上面这个构造也可以看成从一个幺半群构造一个群的过程，这点直接令$S$是一个幺半群即可。
+
+\para 设$S$是群$G$的一个子集，考虑自由群$G(S)$，通过任取$s\in S$，$\mu(s)=s$将给给出一个群同态$\mu:S\mapsto G$，定义子群$\langle S\rangle=\mu(G(S))$，他被称为集合$S$生成的子群。
+
+\para 当然也有不是到集合范畴的忘却函子，比如将一个交换群看成一个群的忘却函子。那么反过来，我们要从群构造一个交换群，这就构成了群的交换化的过程。这是上面那个忘却函子的自由对象。
+
+设$G$是一个群，记$[G,G]$是$G$中所有形如$aba^{-1}b^{-1}$的元素构成的集合生成的子群。这是一个正规子群，任取$b\in G$，存在形如$aba^{-1}b^{-1}\in [G,G]$使得$(aba^{-1}b^{-1})b=aba^{-1}=b(b^{-1}aba^{-1})\in b[G,G]$，所以$[G,G]b=b[G,G]$. 考虑商群$G/[G,G]$，可以看到，这是一个交换群，因为在这个商群中，$aba^{-1}b^{-1}$和$e$看成是一样的，即$ab$和$ba$看成是一样的。
+
+从一个集合$S$，可以构造自由群$G(S)$，然后将其交换化得到了一个交换群$A(S)=G(S)/[G(S),G(S)]$. 这被称为自由交换群，他是交换群范畴到集合范畴的遗忘函子伴随的自由对象。而这又可以通过看成自由$\mathbb{Z}$-模。
+
+\section{代数与多项式环}
+
+设有两个环$A$, $B$和一个环同态$f:A\to B$，再设$a\in A$, $b\in B$，我们可以通过$f$定义他们的乘法为$a\cdot b=f(a)b\in B$，这样环$B$就被赋予了一个$A$-模结构。环$B$若被赋予一个$A$-模结构，则称$B$是一个$A$-代数。
+
+设$B$是$A$-代数，有$f:A\to B$，设$C$也是$A$-代数，有$g:A\to C$，那么$A$-代数之间的同态$h:B\to C$，首先是$B$和$C$之间的环同态，还要和$A$-模结构相容，即$g=h\circ f$.
+
+多项式环是幺半群环的一种，所以直接从幺半群环开始。
+
+\para 设$U$是一个幺半群，而$R$是一个环，将其看成一个集合，那么从$U$出发可以构造一个自由$R$-模$R(U)$. 任取$a\in R(U)$，他可以写成$a=\sum_{i\in I} r_i u_i$，其中$I$是一个有限指标集。类似地，同样任取$b\in R(U)$可以写成$b=\sum_{i\in J} s_i v_i$，而$J$同样是一个有限指标集。定义乘法
 \[
-	\alpha_T(Y):\Hom_\mathcal{C}(T,g(Y))\to \Hom_\mathcal{D}(f(T),Y)
+	ab=\sum_{i\in I,\, j\in J}r_is_j u_i v_j,
 \]
-不管对$T$还是对$Y$都是自然同构，则$(f,g)$被称为一对伴随函子。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
+结合律与分配律是自然成立的，于是$R(U)$是一个环。
 
-固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\Hom_\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto \Hom_{\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个左伴随函子。
+如果$U$是一个交换幺半群，则$R(U)$是一个交换环。此时$R(U)$是一个$R$-代数。
 
-设$g(Y)$是$\Hom_\mathcal{D}(f(\star),Y)$的表示对象。改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}_{g(Y)}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha_{g(Y)}(T)$，对每一个$T$，$\beta_T$将给出了函子同构
-\[
-	\beta_T:\Hom_\mathcal{C}(T,g(\star))\to \Hom_\mathcal{D}(f(T),\star).
-\]
-自然变换的检验是直接的。
+\para 设$S$是一个集合，他生成的自由幺半群为$U(S)$，记$R[S]=R(U(S))$，称其为$R$上由集合$S$生成的多项式环。特别地，如果$S$是有限集$\{x_1$, $\cdots$, $x_n\}$，则$R[S]$记作$R[x_1$, $\cdots$, $x_n]$. 
 
-\para 以忘却函子为例，如果$g$是忘却函子，再具体一点，如果他是将群$G$变成集合的那个忘却函子。再设$T=\{e\}$是一个单点集，如果他存在左伴随函子$f$，则有同构
-\[
-	\Hom_{\text{Group}}(f(\{e\}),G)\cong \Hom_{\text{Set}}(\{e\},g(G))
-\]
+当$S=\{x\}$，$R[x]$中的元素写成$f=\sum_{i=0}^na_ix^i$的形式，这就是熟悉的一元多项式。$x$称之为不定元，不定元只是一个符号，在不发生歧义的情况下可以任意选取。这即如下事实的体现：如果两个集合存在双射，则他们生成的多项式环同构。
 
-\section{多项式环}
+从定义，不难发现作为$R$-代数，$R[S\cup T]$与$R[S][T]$同构，所以完全可以把这两个$R$-代数等同。
 
-多项式环的重要性无需赘述。
+与从$R$-代数范畴到集合范畴的忘却函子伴随的，正是从一个集合构造多项式。所以多项式是$R$-代数范畴的自由对象。
 
-\para 设$R$是一个环，而$a=(a_0,a_1,\,\cdots\!,\,a_n,\cdots)$是一列$R$中的元素，记只有有限个元素非零的$a$构成的集合为$R[x]$. 在$R[x]$上，我们可以定义加法
-\[
-	a+b=(a_0+b_0,a_1+b_1,\cdots),
-\]
-由于$a+b$也是只有有限个元素非零，所以$a+b \in R[x]$. 对于加法$0=(0,0,\cdots)$显然是零元，而$a$的逆元$-a=(-a_0,-a_1,\cdots)$.
+\para 设$A$是$R$-代数，如果存在满同态$R[x_1,\cdots ,x_n]\to B$，或者说$B$同构于$R[x_1$, $\cdots$, $x_n]/\mathfrak{a}$，其中$\mathfrak{a}$是$R[x_1,\cdots ,x_n]$的一个理想，则我们称呼$B$是有限生成$R$-代数。一个环称为有限生成的就是指他作为$\zz$-代数是有限生成的。如果$B$作为$R$-模是有限生成的，则称$B$作为$A$-代数是有限的。
 
-然后是乘法，定义
-\[
-	(ab)_i=\sum_{k+j=i}a_kb_j,
-\]
-可以看出$ab$也只有有限个元素非零，所以$ab\in R[x]$.
-
-分配律的检验是直接的，
-\[
-	((a+b)c)_i=\sum_{k+j=i}(a+b)_kc_j=\sum_{k+j=i}a_kc_j+\sum_{k+j=i}b_kc_j=(ac)_i+(bc)_i,
-\]
-所有的一切都可以直接检验。因此$R[x]$确实是一个环，称为多项式环。
-
-一般而言，我们将$R[x]$中的元素$f=(a_0,a_1,\cdots)$写成
-\[
-	f=\sum_{n}a_n x^n
-\]
-的形式，这就是我们熟悉的多项式，一切的运算都和我们熟悉的那样。$x$称之为不定元，不定元只是一个符号，在不发生歧义的情况下可以任意选取。
-
-\para 定义多元多项式环$R[x_1,\,\cdots\!,\,x_n]$为$R[x_1,\,\cdots\!,\,x_{n-1}][x_n]$，这是一个递归定义。
-
-\para 一个多项式$f=(a_0,a_1,\cdots)$中的最高项即使得$a_n$不为零的最大的$n$，这个$n$记作$\deg(f)$，称为多项式$f$的幂次。最高幂次的系数我们称之为最高次系数，或者首项系数。其余的项目通常我们会指出具体的指标，比如说$k$-次项，就是指$a_kx^k$，而$k$-此项系数就是指$a_k$. 如果最高次系数为$1$，这个多项式称为首一多项式。
+\para 一个一元多项式$f=\sum_{i=0}^na_ix^i$使得$a_i$不为零的最大的$i$记作$\deg(f)$，称为多项式$f$的幂次，$0$的幂次补充定义为$0$. 最高幂次的系数我们称之为最高次系数，或者首项系数。其余的项目通常我们会指出具体的指标，比如说$k$-次项，就是指$a_kx^k$，而$k$-此项系数就是指$a_k$. 如果最高次系数为$1$，这个多项式称为首一多项式。
 
 对于首一多项式而言$f$，$\deg(fg)=\deg(f)+\deg(g)$. 但是一般的多项式并不如此，比如在$\zz/4\zz$上的多项式$2x$，有$(2x)(2x)=0$.
 
@@ -337,8 +356,8 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \[
 	\delta_{{ij}}=
 	\begin{cases}
-	1,&\text{if} i=j,\\
-	0,&\text{if} i\neq j.
+	1,&\text{if } i=j,\\
+	0,&\text{if } i\neq j.
 	\end{cases}
 \]
 
@@ -443,7 +462,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \[
 	F(\psi_1,\,\cdots\!,\,\psi_n)=\sum_{j_1=1}^n\cdots \sum_{j_n=1}^n \psi_{j_11}\cdots \psi_{j_n n} F(1_{j_1},\,\cdots\!,\,1_{j_n}),
 \]
-所以对反对称多线性函数的计算，只要计算所有形如$F(1_{i_1},\,\cdots\!,\,1_{i_n})$的式子即可。同时，上面的式子也说明了，多线性函数是矩阵元的多项式函数。
+所以对反对称多线性函数的计算，只要计算所有形如$F(1_{i_1}$, $\cdots$, $1_{i_n})$的式子即可。同时，上面的式子也说明了，多线性函数是矩阵元的多项式函数。
 
 \pro 设$F:M_n(R)\to R$是一个反对称多线性函数，则$F=F(I_n)D$. 作为推论，行列式的三点性质将完全决定行列式函数。
 
