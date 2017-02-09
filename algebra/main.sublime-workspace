@@ -7,6 +7,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "coloredmain.tex",
+			"settings":
+			{
+				"buffer_size": 2129,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"build_system_choices":
@@ -160,6 +169,10 @@
 	],
 	"file_history":
 	[
+		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/coloredmain.tex",
+		"/C/Users/Buwai_Lee/OneDrive/code/lisp/linearalgebra.scm",
+		"/C/Users/Buwai_Lee/OneDrive/code/julia/1.jl",
 		"//192.168.1.9/morphisme/workdir/tex2md/test.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
@@ -167,7 +180,6 @@
 		"//192.168.1.9/Documents/OneDrive/note/algebra/ring_1.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/module_2.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/field.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
 		"/C/ProgramData/Microsoft/VisualStudio/Packages/Win10SDK_10.0.14393.795,version=10.0.14393.79500/WinSdkInstall.ps1",
 		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/DRACULAE_0.4/examples/DRACULAE.bst",
 		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/CIT4.3.2/digitcontours/default/standard/digits/FeatureMatrix",
@@ -211,7 +223,6 @@
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/main.synctex.gz(busy)",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/chap1.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/coloredmain.tex",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/coloredmain.tex",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/chap2.tex",
 		"//192.168.1.9/Documents/OneDrive/note/.gitignore",
@@ -392,8 +403,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "coloredmain.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								652,
+								652
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
