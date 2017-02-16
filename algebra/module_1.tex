@@ -212,7 +212,7 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 
 对有限个$\{M_i\}_{i\in I}$，那么反复利用\no{1}我们就得到了同构
 \[
-\bigotimes_{i\in I} \left(S\otimes_RM_i\right)\cong S\otimes_R\bigotimes_{i\in I} M_i.
+	\bigotimes_{i\in I} \left(S\otimes_RM_i\right)\cong S\otimes_R\bigotimes_{i\in I} M_i.
 \]
 
 \para 设$S$是一个$R$-代数，我们有下面三个小命题：
@@ -247,33 +247,120 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \]
 如果$S$是一个平坦$R$-模且$M$具有有限表示，则$\alpha$还是一个同构。
 
-\para 从一个整环，很容易得到一个环。
+\para 一个环$R$中的元素一般不是可逆的，那一个自然的问题就出现了，是否存在一个比这个环大一点的环$S$使得$R$中的某些元素（因为0自然不会是可逆的）在环$S$中是可逆的。一个经典的构造是从整数环$\mathbb{Z}$构造出有理数域$\mathbb{Q}$. 下面以整环的语境复述一遍。
 
-\para 我觉得这个看上去有些奇怪的条件在最“自由”地补充进所有可能的分式的时候会自然产生。
+设$R$是一个整环，而$R^{*}=R-\{0\}$是$R$中除去$0$得到的集合，考虑集合$R\times R^{*}$，即所有的二元组$(r,s)$的集合，其中$s\neq 0$. 其中$r$被称为分子，而$s$被称为分母。
 
-首先注意到$k[x]_x=k[x,1/x]=k[x,y]/\langle xy-1\rangle$，这个在几何上就是说$k-\{0\}$和$xy=1$这条曲线同构。考虑$S$是$R$的任意子集，我们可以类比定义一个环$T$
+分数里面很重要的是消去率，比如$8/4$应该等同于$2/1$. 于是上面构造的集合还太大，应该适当构造等价关系来完成上面的等同。实际上，这个等价关系就是：$(r,s)\sim (r',s')$当且仅当$rs'=r's$，即一个二元组消去同一因子或者乘以一个相同的元素都是等价的。此时，包含$(r,s)$的等价类记作$r/s$.
+
+剩下的就是定义运算，
 \[
-T=R\bigl[\{x_s\,:\, s\in S\}\bigr]\big/\bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle.
+	\frac{r}{s}+\frac{r'}{s'}=\frac{rs'+r's}{ss'},\quad \frac{r}{s}\frac{r'}{s'}=\frac{rr'}{ss'}.
 \]
-这样$ax_s$大概就对应$a/s$. 这个环的加法就是
+不难检验这个运算的定义这和代表元的选取无关。注意到整环的条件会用到乘法里面，因为如果不是整环，两个分母相乘可能得到零，而零并不能作为分母。这个环记作$F(R)$，乘法单位元是$1/1$，而零元是$0/1$，通过建立$r\in R$与$r/1\in F(R)$的等同，可以将$R$看成$F(R)$的子环。$F(R)$还是一个域，实际上，任取$r/s$，其中$r\neq 0$，则$s/r$是它的逆。称$F(R)$是整环$R$的分式域。
+
+\para 这里我们来看另一种构造。设$R$是一个整环，记$R^*=R-\{0\}$，可以构造一个多项式环$R[R^*]$，对应于$r\in R^*$，$R[R^*]$中的元素我们记作$x_r$. 那么$F(R)$可以定义为
 \[
-ax_{b}+cx_d\equiv a(dx_d)x_{b}+c(bx_{b})x_d\equiv (ad+bc)x_bx_d,
+	R[R^*]/\bigl\langle\{rx_r-1\,:\, r\in R^*\}\bigr\rangle.
+\]
+换而言之，$x_r$就是$r$的逆。在$F(R)$中的等号记作$\equiv$. 从构造，$rx_s$应该对应$r/s$.
+
+下面我们来检验分子分母消去律，即计算$rx_{rs}$. 由于$s(rx_{rs})\equiv (sr)x_{rs}\equiv 1$，所以$rx_{rs}\equiv x_s$. 两边乘以$x_r$，就得到了$x_rx_s\equiv x_{rs}$. 这个环的加法就是
+\[
+	ax_{b}+cx_d\equiv a(dx_d)x_{b}+c(bx_{b})x_d\equiv (ad+bc)x_bx_d \equiv (ad+bc)x_{bd},
 \]
 乘法就是
 \[
-(ax_{b})(cx_d)\equiv acx_bx_d.
+	(ax_{b})(cx_d)\equiv acx_bx_d\equiv acx_{bd}.
+\]
+
+\para 下面要推广分式域的概念，假设$R$是一个环，不一定是一个整环。考虑$S$是$R$的任意子集，我们可以类比定义一个环$S^{-1}R$或者$R[S^{-1}]$，称之为$R$关于$S$的分式环，
+\[
+	S^{-1}R=R\bigl[\{x_s\,:\, s\in S\}\bigr]\big/\bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle.
+\]
+这个环的加法就是
+\[
+	ax_{b}+cx_d\equiv a(dx_d)x_{b}+c(bx_{b})x_d\equiv (ad+bc)x_bx_d,
+\]
+乘法就是
+\[
+	(ax_{b})(cx_d)\equiv acx_bx_d.
 \]
 并且从
 \[
-bd(ax_{b}-cx_d)\equiv ad-bc
+	bd(ax_{b}-cx_d)\equiv ad-bc
 \]
-可知$ax_{b}\equiv cx_d$当且仅当$ad-bc\equiv 0$. 因此，如果$s,\,t,\,st\in S$，则消去律$sx_{st}\equiv x_t$顺道也是成立的。利用消去率，我们有$x_{st}\equiv sx_s x_{st}\equiv  x_s x_t$.
+可知$ax_{b}\equiv cx_d$当且仅当$ad-bc\equiv 0$. 因此，如果$s$, $t$, $st\in S$，则分子分母消去律$sx_{st}\equiv x_t$顺道也是成立的。利用消去率，我们有$x_{st}\equiv sx_s x_{st}\equiv x_s x_t$.
 
-观察我们上面构造的分式乘法。由于我们想要$ax_b$对应$a/b$，$cx_d$对应$c/d$，那么是否$(ax_{b})(cx_d)\equiv acx_bx_d$对应$(ac)/(bd)$？如果$bd\in S$，那么这是对的，因为$x_bx_d\equiv x_{bd}$. 但是一般而言这是不对的，所以对$S$我们希望是对乘法封闭的。此外，观察加法也是，只有在$bd\in S$的时候才有对应$a/b+c/d=(ad+bc)/(bd)$.
+观察上面构造的分式乘法。由于我们想要$ax_b$对应$a/b$，$cx_d$对应$c/d$，那么是否$(ax_{b})(cx_d)\equiv acx_bx_d$对应$(ac)/(bd)$？如果$bd\in S$，那么这是对的，因为$x_bx_d\equiv x_{bd}$. 但是一般而言这是不对的，所以对$S$我们希望是对乘法封闭的。此外，观察加法也是，只有在$bd\in S$的时候才有对应$a/b+c/d=(ad+bc)/(bd)$. 为了，将$T$看成一个$R$-代数，即建立环同态$r\mapsto r/1$，最好还需要假设$1\in S$.
+
+如果$S$是$R$的一个子集，满足$1\in S$且$S$对乘法封闭，这样一个集合称之为乘性子集。
 
 \lem 设$a\in R$，则$a\equiv 0$当且仅当存在$s \in S$使得$as=0$.
 
-\proof 如果存在$s \in S$使得$as=0$，则$a\equiv asx_s\equiv 0$. 反过来，假设$a\equiv 0$但$as\neq 0$对任意$s\in S$都成立。由于$a\equiv 0$，则$a\in \bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle$.逐次比较，唯一可能的选择就是关于$x$的一次项的线性组合，即
+\proof 
+	如果存在$s \in S$使得$as=0$，则$a\equiv asx_s\equiv 0$. 反过来，假设$a\equiv 0$但$as\neq 0$对任意$s\in S$都成立。由于$a\equiv 0$，则$a\in \bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle$. 逐次比较，唯一可能的选择就是关于$x$的一次项的线性组合，即
+	\[
+	a=\sum_{i=1}^n a_i(s_ix_{s_i}-1),
+	\]
+	其中求和是有限的。所以$a_is_i=0$对任意的$i$都成立，且$\sum_i a_i=-a$. 将$\sum_i a_i=-a$两边乘以$s_1\cdots s_n$，得到$as_1\cdots s_n=0$，由于$S$对乘法封闭，所以$s_1\cdots s_n\in S$，然后利用$as\neq 0$的假设就得到了矛盾。
+\qed
+
+\para 利用上面这个引理，可以给出$S^{-1}R$的另一个定义。它是在$R\times S$中引入等价关系得到的，这个等价关系写作：$(r,s)\sim (r',s')$当且仅当存在一个$t\in S$使得$t(rs'-r's)=0$. 将包含$(r,s)$的等价类记作$r/s$，加法和乘法定义的检验这里就略去了。一般教科书上，会直接使用这个定义而并不给出为什么这样定义等价关系，而这里给出了一个启发。
+
+通过$r\mapsto r/1$，就给出了一个环同态$\varphi:R\to S^{-1}R$. 利用上面的引理，可以看到$R\to S^{-1}R$不一定是单同态，$a/1=0$并不在只在$a=0$的时候才成立，在存在$s\in S$使得$sa=0$的时候也成立。不管怎样，$S^{-1}R$是一个$R$-代数。设$M$是一个$R$-模，则$S^{-1}R\otimes_R M$是一个$S^{-1}R$-模，记作$S^{-1}M$. 这又是一个标量扩张的例子。
+
+\pro 设$S$是$R$的一个乘性子集，记同态$R\to S^{-1}R$为$i_S$. 再设$T$是一个环，如果$\varphi:R\to T$是一个环同态，且使得$\varphi(S)=\{\varphi(s)\,:\, s\in S\}$中的元素都是$T$中的可逆元，则存在唯一的环同态$\pi:S^{-1}R\to T$使得分解$\varphi:R\xrightarrow{i_S}S^{-1}R\xrightarrow{\pi} T$成立。
+
+换句话说，如果一个$R$-代数$T$中$S\cdot 1$都是可逆的，则$T$是一个$S^{-1}R$-代数。这被称为分式环的泛性质，这就指出分式环的实质在于将某个乘性子集搞成可逆的。
+
+\proof
+	令$\pi(r/s)=\varphi(r)\varphi(s)^{-1}$. 下面检验$\pi$是一个环同态，关键不在乘法上，而在于分式不同代表元的选取。令$r'/s'=r/s$，则存在一个$t\in S$使得$t(r's-rs')=0$，于是
+	\[
+		\pi(t)(\pi(r')\pi(s)-\pi(r)\pi(s'))=0,
+	\]
+	由于$\pi(t)$可逆，所以$\pi(r')\pi(s)=\pi(r)\pi(s')$或者$\pi(r)\pi(s)^{-1}=\pi(r')\pi(s')^{-1}$. 所以$\pi$是一个环同态。至于唯一性，由构造，$\pi(r/s)=\varphi(r)\varphi(s)^{-1}$，所以它由$\varphi$唯一决定。最后，$\pi i_S(r)=\pi(r/1)=\varphi(r)$，所以分解成立。
+\qed
+
+\para 固定环$R$，以及设$S$是$R$的一个子集。任取环同态$\varphi:R\to T$，如果$S$是可逆元构成的集合，则$\varphi(S)$也是可逆元构成的集合，如果$S$是乘性子集，则$\varphi(S)$也是乘性子集。
+
+已知，$R$-代数构成了一个范畴，它的对象是二元组$(T,\varphi_T)$. 设$S$是$R$的一个乘性子集，如果$\varphi_T(S)$中的元素都是可逆的，这样的代数构成了一个范畴，我们记作$\mathrm{Alg}_{(R,S)}$，它的态射就是普通的$R$-代数的同态，因为同态自然将可逆元变成了可逆元。由于$T$是一个$R$-代数，它本身就是一个$R$-模，给定乘性子集$S\subset R$，通过标量扩张，$S^{-1}T=S^{-1}R\otimes_R T$就得到了一个$S^{-1}R$-代数，实际上$S^{-1}T$作为环同构于$\varphi_T(S)^{-1}T$. 记$i_T=i_S\otimes 1:T\to S^{-1}T$是自然诱导的同态。
+
+任取$(T,\varphi_T)\in \mathrm{Alg}_R$，则局部化将给出一个函子$S^{-1}:T\mapsto S^{-1}T$，对于态射$\Psi:(T,\varphi_T)\to (U,\varphi_U)$，即满足$\varphi_U=\Psi\varphi_T$的环同态$\Psi:T\to U$. 考虑复合同态$i_{U}\Psi:T\to S^{-1}U$，由于$i_{U}\Psi(\varphi_T(s))=i_{U}\varphi_U(s)=s/1\in S^{-1}U$是可逆元，所以由局部环$S^{-1}T=\varphi_T(S)^{-1}T$的泛性质，存在同态
 \[
-a=\sum_{i=1}^n a_i(s_ix_{s_i}-1),
-\]其中求和是有限的。所以$a_is_i=0$对任意的$i$都成立，且$\sum_i a_i=-a$. 将$\sum_i a_i=-a$两边乘以$s_1\cdots s_n$，得到$as_1\cdots s_n=0$，由于$S$对乘法封闭，所以$s_1\cdots s_n\in S$，然后利用$as\neq 0$的假设就得到了矛盾。\qed
+	S^{-1}(\Psi):S^{-1}T\to S^{-1}U.
+\]
+使得交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+		T\ar[rr]^-{i_T} \ar[d]_-{\Psi}&&S^{-1}T \ar@{.>}[d]^-{S^{-1}(\Psi)}\\
+		U\ar[rr]^-{i_U} &&S^{-1}U
+	}
+\end{xy}
+\]
+因此，$S^{-1}$确实是一个函子。
+
+反过来，从范畴$\mathrm{Alg}_{(R,S)}$到$\mathrm{Alg}_R$有自然的遗忘函子$f$，他忘掉了$S\cdot 1$在相应的$R$-代数中是可逆的。
+
+\theo 存在双函子同构：
+\[
+	F(-,\star):\mathrm{Alg}_R\bigl(-,f(\star)\bigr)\to \mathrm{Alg}_{(R,S)}\bigl(S^{-1}(-),\star\bigr).
+\]
+因此$S^{-1}$是遗忘函子的左伴随函子，继而是一个自由函子。这也可以看成$S^{-1}R$的另一种定义，只要将$f$的左伴随函子作用在$R$上就得到了$S^{-1}R$.
+
+\proof
+	首先构造同构，任取同态$R$-代数同态$\Psi:X\to f(Y)$，其中$Y$使得$\varphi_Y(S)$在$Y$中是可逆的。由于是$R$-代数同态，所以$\varphi_Y=\Psi\varphi_X$. 任取$s\in S$，有$\varphi_Y(s)=\Psi\varphi_X(s)$可逆，通过分式环的泛性质，有唯一的同态$F(X,Y)(\Psi):\varphi_X(S)^{-1}X=S^{-1}X\to Y$. 于是$F(X,Y)$就是我们构造的同构。由构造，这是一个单射，反过来，任取$\rho:\mathrm{Alg}_{(R,S)}(S^{-1}(X),Y)$，我们有$F(X,Y)(i_X\circ \rho)=\rho$，因此这是一个满射。
+
+	最后要验证函子性同构，分别对$X$和$Y$检验自然变换即可。这点过于琐碎，这里就略去了。
+\qed
+
+任取$X\in \mathrm{Alg}_{(R,S)}$，它可以自然地看成一个$S^{-1}R$-代数，这由分式环的泛性质保证，反过来，任意的$S^{-1}R$-代数都可以看成$\mathrm{Alg}_{(R,S)}$里面的元素，所以有理由认为$\mathrm{Alg}_{S^{-1}R}$和$\mathrm{Alg}_{(R,S)}$作为范畴等价。事实上，可以定义一个函子$\mathrm{Alg}_{(R,S)}\to \mathrm{Alg}_{S^{-1}R}$，对对象，将任意的$R$-代数$X$看作$S^{-1}R$-代数$X$，对态射，任取$\varphi\in \mathrm{Alg}_{(R,S)}(X,Y)$，它也可以看作$S^{-1}R$-代数同态（请检查）。在上面的等同下，由泛性质，$\mathrm{Alg}_{(R,S)}(X,Y)=\mathrm{Alg}_{S^{-1}R}(X,Y)$，所以这是一个完全且忠实的函子。同样，任取$S^{-1}R$-代数$X$，他也可以看成$\mathrm{Alg}_{(R,S)}$里面的对象。所以由Proposition \eqref{equivcat}，$\mathrm{Alg}_{S^{-1}R}$和$\mathrm{Alg}_{(R,S)}$是等价范畴。
+
+也正是如此，因此上面的双函子同构可以写成
+\[
+	F(-,\star):\mathrm{Alg}_R\bigl(-,f(\star)\bigr)\to \mathrm{Alg}_{S^{-1}R}\bigl(S^{-1}(-),\star\bigr).
+\]
+但是，范畴$\mathrm{Alg}_{(R,S)}$并不需要$S^{-1}R$的构造，所以我们才谈论的是这个范畴，然后才可以通过自由函子给出$S^{-1}R$的一个定义。当然，这里已经可以事后诸葛亮地说，函子$S^{-1}$是与$S^{-1}R$-代数到$R$-代数的遗忘函子左伴随的自由函子。
+
+\para 上面讨论了分式环几个定义。下面讨论分式环的几个重要实例。从一个事实开始，设$S\subset R$是一个乘性子集，而$S'$是$S$中元素的全部因子构成的乘性子集，则$S^{-1}R=S'^{-1}R$.

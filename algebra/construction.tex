@@ -2,7 +2,7 @@
 
 \section{极限与余极限}
 
-\para 设$\mathcal{J}$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:\mathcal{J}\to \mathcal{C}$为$\mathcal{C}$中的一个$\mathcal{J}$-图，或者简略叫做图。对于$j\in \mathcal{J}$，$D(j)$称为该图的一个顶点，而对任意的态射$\alpha:j_1\to j_2$，态射$D(\alpha)$称为该图的一条边。
+\para 设$J$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:J\to \mathcal{C}$为$\mathcal{C}$中的一个$J$-图，或者简略叫做图。对于$j\in J$，$D(j)$称为该图的一个顶点，而对任意的态射$\alpha:j_1\to j_2$，态射$D(\alpha)$称为该图的一条边。
 
 \para 称$(A,\lambda)$为$J$-图的一个{锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:A\to D(j)$使得如下交换图对所有的顶点和边都成立
 \[
@@ -30,15 +30,45 @@
 
 同样，作为例子，模范畴的直和就是一种余极限，他对应的小范畴，两个不同的元素之间没有态射。
 
-\para 设$I$是一个偏序集，偏序关系为$\leq$，那么族$\{\{x\}\,:\, x\in I\}$构成一个（小）范畴，其中的态射定义为
+\pro 设$\mathcal{C}$是一个范畴，其中的对象都是集合，态射都是映射。而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
+\[
+	\varprojlim \mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,\varprojlim X_i\right),\quad \varprojlim \mathcal{C}(X_i,-)\cong  \mathcal{C}\left(\varinjlim X_i,-\right)
+\]
+其中极限与余极限都是对$I$-图进行的。
+
+\proof
+	仅证第一点，第二点是类似的。给定$Y$，任取$\alpha_i\in \mathcal{C}(Y,X_i)$，由于对每一个$i\in I$，都有映射$\pi_i: \varprojlim X_i\to X_i$，所以$\pi_{i*}$给出了映射$\mathcal{C}(Y,\varprojlim X_i)\to \mathcal{C}(Y,X_i)$，因此$\left(\mathcal{C}(Y,\varprojlim X_i),\{\pi_{i*}\,:\, i\in I\}\right)$是一个锥形。我们下面验证这就是$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的极限。
+
+	任取$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的一个锥形$(A,\lambda)$以及$a\in A$，则$\lambda_i(a):Y\to X_i$成立如下交换图
+	\[
+		\xymatrix{
+			&Y \ar[dl]_{\lambda_{i}(a)}\ar[dr]^{\lambda_{j}(a)}&\\
+			X_i\ar[rr]^{X(\alpha)}&&X_j
+		}
+	\]
+	这是一个锥形，由于存在极限$\varprojlim X_i$，所以存在态射$\mu_\lambda(a):Y\to \varprojlim X_i$使得分解
+	\[
+		\lambda_i(a):Y\xrightarrow{\mu_\lambda(a)}\varprojlim X_i\xrightarrow{\pi_i}X_i
+	\]
+	成立，遍历$a\in A$将给出态射$\mu_\lambda:A\to \mathcal{C}(Y,\varprojlim X_i)$使得分解
+	\[
+	\lambda_i: A\xrightarrow{\mu_\lambda}\mathcal{C}(Y,\varprojlim X_i)\xrightarrow{\pi_{i*}}\mathcal{C}(Y,X_i)
+	\]
+	成立，所以$\mathcal{C}(Y,\varprojlim X_i)$就是$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的极限。由极限的泛性质，于是有同构
+	\[
+		\varprojlim \mathcal{C}(Y,X_i)\cong \mathcal{C}\left(Y,\varprojlim X_i\right),
+	\]
+	函子性的检查是简单的。
+\qed
+
+\para 回忆一下偏序集，设$I$是一个偏序集，偏序关系为$\leq$，那么通过定义态射
 \[
 	{I}\left(x,y\right)=\begin{cases}
 	(x,y)&\text{, if }x\leq y\text{;}\\
 	\varnothing&\text{, otherwise}.
 	\end{cases}
 \]
-
-如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^{\mathrm{op}}$.
+则$I$是一个小范畴，如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^{\mathrm{op}}$.
 
 $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
 
@@ -149,37 +179,52 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \section{自由对象}
 
-简单来说，自由对象是遗忘函子的左伴随函子。所以这里先给出伴随函子的定义。
-
-\para 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$X$所表示，于是就有函子同构$\alpha:h_X\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+一句话来概括自由对象，它是遗忘函子的左伴随函子的像，遗忘函子的左伴随函子称为自由函子，所以自由对象是自由函子作用在一个对象上得到的。何谓伴随函子？给定一个函子$f:\mathcal{C}\to \mathcal{D}$，它的伴随函子从某种程度上来说就是它的逆$g:\mathcal{D}\to \mathcal{C}$. 但是远不如逆那么强，准确来说，就是说存在函子同态（自然变换）$\sigma:fg\to \id_{\mathcal{D}}$以及$\tau:\id_{\mathcal{C}}\to gf$使得函子复合
 \[
-\begin{xy}
-	\xymatrix{
-		h_X(T)\ar[rr]^-{\alpha_T} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
-		h_X(S)\ar[rr]^-{\alpha_S}&&{\mathcal{D}}(f(S),Y)
-	}
-\end{xy}
+	f\xrightarrow{f\tau}fgf\xrightarrow{\sigma f}f,\quad g\xrightarrow{\tau g}gfg\xrightarrow{g\sigma}g
 \]
-任取$u:T\to X$，有$\alpha_S(u\psi)=\alpha_T(u)f(\psi)$. 特别地，当$T=X$时，取$u=\id_X$，记$\alpha_X(\id_X)=\sigma_Y:f(X)\to Y$，$\alpha_S(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to X$.
+都得到恒等自然变换。此时$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
 
-\para 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果存在自然同构
+以遗忘函子举例，如果一个函子$g:\mathcal{C}\to \text{Set}$使得$\mathcal{C}$中的对象$X$忘掉了某代数结构，变成了集合$|X|$。那么怎么样的函子才是它的伴随函子？必然是一个赋予$\text{Set}$中对象代数结构的函子$f$，但是从一个结构少的对象到结构多的对象，我们不一定能还原出$X$，比如我们忘掉了$2+4=6$，那么在从$|X|$赋予代数结构得到的$f(|X|)$中，只能把$2$, $4$, $6$单独处理，引入一个新的元素`$2+4$'来表示$f(|X|)$中$2+4$的结果，而不与$6$建立联系。所以$f(|X|)=f(g(X))$作为集合，即$g(f(g(X)))$，一般来说应该比$g(X)$大。那么如何使得$f(|X|)$回忆其原本的代数结构？最方便的，就是找一个态射$f(|X|)\to X$，这样`$2+4$'就映射到了$6$. 改变$X$，就得到了自然变换$\sigma:fg\to \id_\mathcal{C}$.
+
+类似地，给定一个集合$S\in \text{Set}$，生成一个$f(S)\in \mathcal{C}$. 为了满足代数结构，必须得添进去一些元素，比如要生成一个群，得添进去逆元。所以，作为集合，$S$是$g(f(S))$的子集，或者说存在映射$S\to g(f(S))$，改变$S$就得到了自然变换$\tau:\id_{\text{Set}}\to gf$.
+
+现在来审查条件
+\[
+	f\xrightarrow{f\tau}fgf\xrightarrow{\sigma f}f,\quad g\xrightarrow{\tau g}gfg\xrightarrow{g\sigma}g.
+\]
+设$S$是一个集合，则
+\[
+	f(S)\xrightarrow{f(\tau(S))}f(g(f(S)))\xrightarrow{\sigma(f(S))}f(S),
+\]
+其中$f(\tau(S))$意味着$f(S)$看成$f(g(f(S)))$的子对象，而$\sigma(f(S))$意味着从$f(g(f(S)))$回忆起$f(S)$的代数结构，他们的复合将得到$f(S)$. 另一个条件也是类似的，这里就不说了。
+
+但是这个定义并不是最常用的，一般而言，我们会使用下面这个定义。
+
+\para 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果对任意的$T\in\mathcal{C}$和$Y\in\mathcal{Y}$存在自然同构
 \[
 	\alpha(T,Y):\mathcal{C}(T,g(Y))\to \mathcal{D}(f(T),Y),
 \]
-则$(f,g)$被称为一对伴随函子。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
+则$(f,g)$被称为一对\idx{伴随函子}（\idx{adjoint functor})。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
 
-固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个左伴随函子。
+固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个右伴随函子。所以实际上，双函子同构可以减弱为对$T$的。
 
-设$g(Y)$是$\mathcal{D}(f(\star),Y)$的表示对象。改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}_{g(Y)}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha_{g(Y)}(T)$，对每一个$T$，$\beta_T$将给出了函子同构
+\para 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$g(Y)$所表示，于是就有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+\[
+\begin{xy}
+	\xymatrix{
+		h_{g(Y)}(T)\ar[rr]^-{\alpha(Y,T)} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
+		h_{g(Y)}(S)\ar[rr]^-{\alpha(Y,S)}&&{\mathcal{D}}(f(S),Y)
+	}
+\end{xy}
+\]
+其中$\alpha(Y,T)$用来简记$\alpha(Y)(T)$. 任取$u:T\to {g(Y)}$，有$\alpha(Y,S)(u\psi)=\alpha(Y,T)(u)f(\psi)$. 特别地，当$T=g(Y)$时，取$u=\id_{g(Y)}$，记$\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y$，则$\alpha(Y,S)(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to g(Y)$.
+
+改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}{Y}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha(Y,T)$，对每一个$T$，$\beta_T$将给出了函子同构
 \[
 	\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
 \]
-自然变换的检验是直接的。
-
-\para 以忘却函子为例，如果$g$是忘却函子，再具体一点，如果他是将群$G$变成集合的那个忘却函子。再设$T=\{e\}$是一个单点集，如果他存在左伴随函子$f$，则有同构
-\[
-	{\text{Group}}(f(\{e\}),G)\cong {\text{Set}}(\{e\},g(G))
-\]
+自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
 
 \para 首先介绍$R$-模范畴的自由对象，遗忘函子是$R$-模到集合。设$I$是一个指标集，我们定义$R^I=\bigoplus_{i\in I}R$，他被称为自由$R$-模，或者当$R$是清楚地时候，称为自由模。自由模是$R$-模范畴的自由对象。从构造，检查是清楚的。
 
@@ -223,7 +268,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 设有两个环$A$, $B$和一个环同态$f:A\to B$，再设$a\in A$, $b\in B$，我们可以通过$f$定义他们的乘法为$a\cdot b=f(a)b\in B$，这样环$B$就被赋予了一个$A$-模结构。环$B$若被赋予一个$A$-模结构，则称$B$是一个$A$-代数。
 
-设$B$是$A$-代数，有$f:A\to B$，设$C$也是$A$-代数，有$g:A\to C$，那么$A$-代数之间的同态$h:B\to C$，首先是$B$和$C$之间的环同态，还要和$A$-模结构相容，即$g=h\circ f$.
+设$B$是$A$-代数，有$f:A\to B$，设$C$也是$A$-代数，有$g:A\to C$，那么$A$-代数之间的同态$h:B\to C$，首先是$B$和$C$之间的环同态，还要和$A$-模结构相容，即$g=h\circ f$. 所有$A$-代数构成一个范畴，记作$\mathrm{Alg}_A$，其中的对象由一个环$B$和一个环同态$\mu:A\to B$构成。
 
 多项式环是幺半群环的一种，所以直接从幺半群环开始。
 
@@ -235,7 +280,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 如果$U$是一个交换幺半群，则$R(U)$是一个交换环。此时$R(U)$是一个$R$-代数。
 
-\para 设$S$是一个集合，他生成的自由幺半群为$U(S)$，记$R[S]=R(U(S))$，称其为$R$上由集合$S$生成的多项式环。特别地，如果$S$是有限集$\{x_1$, $\cdots$, $x_n\}$，则$R[S]$记作$R[x_1$, $\cdots$, $x_n]$. 
+\para 设$S$是一个集合，他生成的自由交换幺半群为$U(S)$，记$R[S]=R(U(S))$，称其为$R$上由集合$S$生成的多项式环。特别地，如果$S$是有限集$\{x_1$, $\cdots$, $x_n\}$，则$R[S]$记作$R[x_1$, $\cdots$, $x_n]$. 
 
 当$S=\{x\}$，$R[x]$中的元素写成$f=\sum_{i=0}^na_ix^i$的形式，这就是熟悉的一元多项式。$x$称之为不定元，不定元只是一个符号，在不发生歧义的情况下可以任意选取。这即如下事实的体现：如果两个集合存在双射，则他们生成的多项式环同构。
 
@@ -329,10 +374,10 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \end{pmatrix}
 =
 \begin{pmatrix}
-	\sum_{i=1}^n \psi_{1i}\varphi_{i1} & \sum_{i=1}^n \psi_{1i}\varphi_{i2} & \cdots & \sum_{i=1}^n \psi_{1i}\varphi_{im}\\
-	\sum_{i=1}^n \psi_{2i}\varphi_{i1} & \sum_{i=1}^n \psi_{2i}\varphi_{i2}& \cdots & \sum_{i=1}^n \psi_{2i}\varphi_{im}\\
-	\vdots & \vdots & \ddots & \vdots \\
-	\sum_{i=1}^n \psi_{li}\varphi_{i1} & \sum_{i=1}^n \psi_{li}\varphi_{i2}& \cdots & \sum_{i=1}^n \psi_{li}\varphi_{im}
+	\sum_{i=1}^n \psi_{1i}\varphi_{i1} & \cdots & \sum_{i=1}^n \psi_{1i}\varphi_{im}\\
+	\sum_{i=1}^n \psi_{2i}\varphi_{i1} & \cdots & \sum_{i=1}^n \psi_{2i}\varphi_{im}\\
+	\vdots & \ddots & \vdots \\
+	\sum_{i=1}^n \psi_{li}\varphi_{i1} & \cdots & \sum_{i=1}^n \psi_{li}\varphi_{im}
 \end{pmatrix}
 \end{equation}
 即$(\psi\varphi)_{ij}$由第一个矩阵的第$i$行和第二个矩阵的第$j$列逐个相乘然后相加而得，矩阵乘法把$l\times n$和$n \times m$的矩阵变成了$l \times m$的矩阵。矩阵乘法满足结合律是直接的计算。
@@ -559,6 +604,6 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \proof 上面已经证明了，如果$\det(\varphi)$可逆，则$\varphi$同时存在左逆以及右逆，且左逆等于右逆。反过来，如果$\varphi$有左逆$\psi$，则$\det(\psi\varphi)=\det(I_n)=1$，由行列式乘法公式，$1=\det(\psi\varphi)=\det(\psi)\det(\varphi)$，于是$\det(\varphi)$可逆。存在右逆同理可以推出$\det(\varphi)$可逆。从$\det(\varphi)$可逆就得出了结论。\qed
 
-方阵存在逆时，我们会称呼该方阵是可逆的。上面的命题就是在说，环$R$上的方阵$\varphi$可逆当且仅当$\det(\varphi)$可逆。举个例子，整数环$\mathbb{Z}$上的方阵$\varphi$可逆当且仅当$\det(\varphi)=1$. 而域$k$上的方阵$\varphi$可逆当且仅当$\det(\varphi)\neq 0$. 随后如果可逆，伴随矩阵给出了逆的一个计算公式。
+方阵存在逆时，我们会称呼该方阵是可逆的。上面的命题就是在说，环$R$上的方阵$\varphi$可逆当且仅当$\det(\varphi)$可逆。举个例子，整数环$\mathbb{Z}$上的方阵$\varphi$可逆当且仅当$\det(\varphi)=\pm 1$. 而域$k$上的方阵$\varphi$可逆当且仅当$\det(\varphi)\neq 0$. 随后如果可逆，伴随矩阵给出了逆的一个计算公式。
 
 对于交换环，由于乘法可以交换，我们无需担心左逆不能推出右逆。但一般而言，在任意的非交换环里面，左逆存在不一定能推出右逆存在，反之亦然。但是交换环上的方阵构成的环$M_n(R)$中，行列式函数将逆的存在性等价于$R$中逆的存在性，继而保证了$M_n(R)$上左逆存在可以推出右逆存在。

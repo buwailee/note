@@ -8,12 +8,21 @@
 	"buffers":
 	[
 		{
-			"file": "coloredmain.tex",
+			"file": "module_1.tex",
 			"settings":
 			{
-				"buffer_size": 2129,
+				"buffer_size": 16739,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "construction.tex",
+			"settings":
+			{
+				"buffer_size": 28352,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -169,16 +178,23 @@
 	],
 	"file_history":
 	[
+		"//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/main_eng.tex",
+		"//192.168.1.9/Documents/OneDrive/note/vector_analysis.tex",
+		"/C/Users/Buwai_Lee/OneDrive/Document/Calculus/编译.bat",
+		"//192.168.1.9/Documents/OneDrive/note/ag/note/coloredmain.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/ring_1.tex",
+		"//192.168.1.9/Documents/OneDrive/note/series.tex",
+		"//192.168.1.9/Documents/OneDrive/note/manifold/manifold.tex",
+		"//192.168.1.9/Documents/OneDrive/note/noteheader.sty",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
+		"//192.168.1.9/Documents/OneDrive/note/algebra/module_2.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/coloredmain.tex",
 		"/C/Users/Buwai_Lee/OneDrive/code/lisp/linearalgebra.scm",
 		"/C/Users/Buwai_Lee/OneDrive/code/julia/1.jl",
 		"//192.168.1.9/morphisme/workdir/tex2md/test.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/module_1.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/ring_1.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/module_2.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/field.tex",
 		"/C/ProgramData/Microsoft/VisualStudio/Packages/Win10SDK_10.0.14393.795,version=10.0.14393.79500/WinSdkInstall.ps1",
 		"/C/Users/Buwai_Lee/Desktop/ffes_0.4.tar/ffes_0.4/DRACULAE_0.4/examples/DRACULAE.bst",
@@ -215,7 +231,6 @@
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/appendix.tex",
 		"//192.168.1.9/morphisme/.oh-my-zsh/plugins/sublime/sublime.plugin.zsh",
 		"//192.168.1.9/Documents/sublime配置/win/Sublime Text 3/Packages/Colorsublime - Themes/Popforclang.tmTheme",
-		"//192.168.1.9/Documents/OneDrive/note/noteheader.sty",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/appendix.tex",
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
 		"/C/texlive/2016/texmf-dist/tex/plain/noteheader/noteheader.sty",
@@ -223,12 +238,10 @@
 		"/C/Users/Buwai_Lee/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/main.synctex.gz(busy)",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/chap1.tex",
-		"//192.168.1.9/Documents/OneDrive/note/ag/note/coloredmain.tex",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/chap2.tex",
 		"//192.168.1.9/Documents/OneDrive/note/.gitignore",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/algebra.tex",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/structure.tex",
-		"//192.168.1.9/Documents/OneDrive/note/manifold/manifold.tex",
 		"//192.168.1.9/Documents/OneDrive/note/manifold/make",
 		"//192.168.1.9/Documents/OneDrive/note/qft/qft.tex",
 		"//192.168.1.9/Documents/OneDrive/note/qft/quantumfiled.tex",
@@ -258,6 +271,32 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\\varinjlim",
+			"_{i\\in I}",
+			"\\mathcal{J}",
+			"自由对象",
+			"f",
+			"U",
+			"T",
+			"i_{\\varphi_U",
+			"\\varphi_U(S)^{-1}U",
+			"\\varphi_T(S)^{-1}T",
+			"\\alpha(",
+			"U",
+			"Pi",
+			"g",
+			"消去律",
+			"s",
+			"Ye",
+			"Ya",
+			"Yenode",
+			"\\alpha(Y)_",
+			"\\alpha_{g(Y)}",
+			"X",
+			"f(f(X))",
+			"g",
+			"\\alpha(",
+			"\\alpha_",
 			"\n\\",
 			"\\cc",
 			"\\rr",
@@ -359,33 +398,7 @@
 			"(\\psi)",
 			"\\varphi_",
 			",",
-			"m_i",
-			"\\Hom_{\\hat{\\mathcal{C}}}(",
-			"f",
-			"X",
-			"to",
-			"mathfrak",
-			"g",
-			"i_g(\\varphi(X)(a))",
-			"g(",
-			"_X",
-			"env",
-			"Z",
-			"\\xymatrix\n\t\t{",
-			"\t\\xymatrix\n\t{",
-			"_",
-			"0.75ex",
-			"1ex",
-			"@/^/",
-			"G",
-			"F",
-			"G",
-			"F",
-			"f",
-			"F",
-			"\\varphi}",
-			"e_{",
-			"psi"
+			"m_i"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -403,24 +416,32 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "coloredmain.tex",
+					"file": "module_1.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2129,
+						"buffer_size": 16739,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								652,
-								652
+								15323,
+								15323
+							],
+							[
+								16550,
+								16550
+							],
+							[
+								16628,
+								16628
 							]
 						],
 						"settings":
@@ -428,7 +449,36 @@
 							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 25130.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "construction.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 28352,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2347,
+								2347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2912.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -439,7 +489,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 51.0
+		"height": 53.0
 	},
 	"input":
 	{
@@ -488,7 +538,7 @@
 	"project": "main.sublime-project",
 	"replace":
 	{
-		"height": 98.0
+		"height": 102.0
 	},
 	"save_all_on_build": true,
 	"select_file":
