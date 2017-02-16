@@ -11,7 +11,7 @@
 			"file": "module_1.tex",
 			"settings":
 			{
-				"buffer_size": 16739,
+				"buffer_size": 16743,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -20,7 +20,16 @@
 			"file": "construction.tex",
 			"settings":
 			{
-				"buffer_size": 28352,
+				"buffer_size": 28933,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "ring_1.tex",
+			"settings":
+			{
+				"buffer_size": 34296,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -271,6 +280,23 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\\ev",
+			",\\cdots,",
+			"qed",
+			",\\cdots\\}",
+			",\\,\\cdots,\\,",
+			",\\,",
+			",\\,\\cdots,\\,",
+			"$k[x_1,\\,\\cdots,\\,x_n]$",
+			",\\,",
+			"\\alpha_i",
+			"\\mathcal{C}(Y,\\varprojlim X_i)",
+			"D(\\alpha)",
+			"\\alpha",
+			"j'",
+			"D(j)",
+			"j\\in I",
+			"J",
 			"\\varinjlim",
 			"_{i\\in I}",
 			"\\mathcal{J}",
@@ -381,24 +407,7 @@
 			"\\varphi1",
 			"A",
 			"v",
-			"D",
-			"A",
-			"b_",
-			"B",
-			"A",
-			"1_{i_n}",
-			"1_{i_1}",
-			"$",
-			",",
-			"…",
-			"\\end{defi}",
-			"\\begin{defi}",
-			"eqref",
-			"bmatrix",
-			"(\\psi)",
-			"\\varphi_",
-			",",
-			"m_i"
+			"D"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -416,7 +425,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -425,23 +434,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16739,
+						"buffer_size": 16743,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15323,
-								15323
-							],
-							[
-								16550,
-								16550
-							],
-							[
-								16628,
-								16628
+								11217,
+								11217
 							]
 						],
 						"settings":
@@ -449,10 +450,10 @@
 							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 25130.0,
+						"translation.y": 17979.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -461,15 +462,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28352,
+						"buffer_size": 28933,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2347,
-								2347
+								6918,
+								6918
 							]
 						],
 						"settings":
@@ -478,10 +479,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2912.0,
+						"translation.y": 9168.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "ring_1.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 34296,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11277,
+								11309
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 15056.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

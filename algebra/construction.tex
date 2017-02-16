@@ -2,33 +2,46 @@
 
 \section{极限与余极限}
 
-\para 设$J$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:J\to \mathcal{C}$为$\mathcal{C}$中的一个$J$-图，或者简略叫做图。对于$j\in J$，$D(j)$称为该图的一个顶点，而对任意的态射$\alpha:j_1\to j_2$，态射$D(\alpha)$称为该图的一条边。
+\para 设$I$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:I\to \mathcal{C}$为$\mathcal{C}$中的一个$I$-图，或者简略叫做图。对于$i\in I$，$D(i)$称为该图的一个顶点（经常改用下标写作$D_i$），而对任意的态射$\alpha_{ij}:i\to j$，态射$D(\alpha_{ij})$称为该图的一条边。
 
-\para 称$(A,\lambda)$为$J$-图的一个{锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:A\to D(j)$使得如下交换图对所有的顶点和边都成立
+作为例子，当$I$是一个指标集，即不同的$i$, $j\in I$之间不存在态射时，一个$I$-图就是一族以$I$为指标集的对象。
+
+\para 称$(A,\lambda)$为$I$-图的一个{锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:A\to D(i)$使得如下交换图对所有的顶点和边都成立
 \[
 	\xymatrix{
-		&A \ar[dl]_{\lambda_{j}}\ar[dr]^{\lambda_{j'}}&\\
-		D(j)\ar[rr]^{D(\alpha)}&&D(j')
+		&D(i)\ar[dd]^{D(\alpha_{ij})}\\
+		A\ar[ru]^{\lambda_i}\ar[rd]_{\lambda_j}&\\
+		&D(j)
+	}
+\]
+称呼一个锥形$(A,\lambda)$是$I$-图的一个\idx{极限}（\idx{limit}），如果对于任意的锥形$(B,\mu)$，都存在唯一的态射$f:B\to A$使得如下分解$\mu_j:B\xrightarrow{f}A\xrightarrow{\lambda_j}D(i)$成立。这里极限满足的性质被称为泛性质，是范畴论中经常出现的一种性质。
+
+如果极限$(A,\lambda)$中的态射族是明确的（乃至于是由对象$A$确定的），那么我们会用$A$来表示极限。并且一般将$I$-图$D$的极限写作$\varprojlim_{i\in I} D(i)$. 用交换图来表述上面的分解，那么就是说
+\[
+	\xymatrix{
+		&&D(i)\ar[dd]^{D(\alpha_{ij})}\\
+		B\ar@{.>}[r]|-{f}\ar@/^/[rru]^-{\mu_i}\ar@/_/[rrd]_{\mu_j}&\varprojlim_{i\in I} D(i)\ar[ru]\ar[rd]&\\
+		&&D(j)
+	}
+\]
+途中略去的箭头是极限自带的态射族，虚线代表唯一存在。
+
+作为例子，一族集合的直积是一个极限。设$\{X_i\,:\, i\in I\}$是一族集合，它的直积记作$\prod_{i\in I}X_i$，且到每个分量都有一个投影函数$\pi_i:\prod_{i\in I}X_i\to X_i$. 这两个数据构成了这一族集合的极限。
+
+\pro 如果一个$I$-图有两个极限$(A,\lambda)$和$(B,\mu)$，则$A$与$B$同构。因此，满足泛性质的对象，这里是极限，在同构意义上唯一。
+
+\proof 假设$(A,\lambda)$和$(B,\mu)$都满足泛性质。利用$A$的泛性质，有同态$\rho:B\to A$，利用$B$的泛性质，有同态$\rho':A\to B$. 接着考虑$\rho \rho':A\to A$和$\id_A:A\to A$，他们同时都满足两个锥形$(A,\lambda)$到$(A,\lambda)$的分解，由分解的唯一性，$\rho\rho'=\id_A$. 同理，$\rho'\rho=\id_{B}$. 所以$A$与$B$同构。\qed
+
+\para 锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。称$(A,\lambda)$为$I$-图的一个{余锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:D(i)\to A$使得如下交换图对所有的顶点和边都成立
+\[
+	\xymatrix{
+		&D(i)\ar[ld]_{\lambda_i}\ar[dd]^{D(\alpha_{ij})}\\
+		A&\\
+		&D(j)\ar[lu]^{\lambda_j}
 	}
 \]
 
-称呼一个锥形$(A,\lambda)$是$J$-图的一个{极限}，如果对于任意的锥形$(B,\mu)$，都有唯一的态射$f:B\to A$使得如下分解$\mu_j:B\xrightarrow{f}A\xrightarrow{\lambda_j}D(j)$成立。
-
-在实际过程中，如果极限$(A,\lambda)$中的态射族是明确的（乃至于是由对象$A$确定的），那么我们会用$A$来表示极限。并且一般将$J$-图$D$的极限写作$\varprojlim_{j\in J} D(j)$.
-
-作为例子，模范畴的直积就是一种极限，他对应的小范畴，两个不同的元素之间没有态射。
-
-\para 锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。称$(A,\lambda)$为$J$-图的一个{余锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:D(j)\to A$使得如下交换图对所有的顶点和边都成立
-\[
-	\xymatrix{
-		&A&\\
-		D(j)\ar[rr]^{D(\alpha)} \ar[ur]^{\lambda_{j }}&&D(j')\ar[ul]_{\lambda_{j'}}
-	}
-\]
-
-称呼一个余锥形$(A,\lambda)$是$J$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都有唯一的态射$f:A\to B$使得如下分解$\mu_j:D(j)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。一般将$J$-图$D$的余极限写作$\varinjlim_{j\in J} D(j)$.
-
-同样，作为例子，模范畴的直和就是一种余极限，他对应的小范畴，两个不同的元素之间没有态射。
+称呼一个余锥形$(A,\lambda)$是$I$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都存在唯一的态射$f:A\to B$使得如下分解$\mu_j:D(i)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。这是另一种泛性质。一般将$I$-图$D$的余极限写作$\varinjlim_{i\in I} D(i)$. 类似极限，如果余极限存在，则它在同构意义上唯一。
 
 \pro 设$\mathcal{C}$是一个范畴，其中的对象都是集合，态射都是映射。而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
 \[
@@ -37,24 +50,24 @@
 其中极限与余极限都是对$I$-图进行的。
 
 \proof
-	仅证第一点，第二点是类似的。给定$Y$，任取$\alpha_i\in \mathcal{C}(Y,X_i)$，由于对每一个$i\in I$，都有映射$\pi_i: \varprojlim X_i\to X_i$，所以$\pi_{i*}$给出了映射$\mathcal{C}(Y,\varprojlim X_i)\to \mathcal{C}(Y,X_i)$，因此$\left(\mathcal{C}(Y,\varprojlim X_i),\{\pi_{i*}\,:\, i\in I\}\right)$是一个锥形。我们下面验证这就是$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的极限。
+	仅证第一点，第二点是类似的。给定$Y$，由于对每一个$i\in I$都有态射$\pi_i: \varprojlim X_i\to X_i$，所以$\pi_{i*}$给出了映射$\mathcal{C}\left(Y,\varprojlim X_i\right)\to \mathcal{C}(Y,X_i)$，于是$\left(\mathcal{C}\left(Y,\varprojlim X_i\right),\{\pi_{i*}\,:\, i\in I\}\right)$是一个锥形。下面验证这就是$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的极限，然后由极限在同构意义上的唯一性就得到了同构。
 
 	任取$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的一个锥形$(A,\lambda)$以及$a\in A$，则$\lambda_i(a):Y\to X_i$成立如下交换图
 	\[
 		\xymatrix{
 			&Y \ar[dl]_{\lambda_{i}(a)}\ar[dr]^{\lambda_{j}(a)}&\\
-			X_i\ar[rr]^{X(\alpha)}&&X_j
+			X_i\ar[rr]^{X(\alpha_{ij})}&&X_j
 		}
 	\]
 	这是一个锥形，由于存在极限$\varprojlim X_i$，所以存在态射$\mu_\lambda(a):Y\to \varprojlim X_i$使得分解
 	\[
 		\lambda_i(a):Y\xrightarrow{\mu_\lambda(a)}\varprojlim X_i\xrightarrow{\pi_i}X_i
 	\]
-	成立，遍历$a\in A$将给出态射$\mu_\lambda:A\to \mathcal{C}(Y,\varprojlim X_i)$使得分解
+	成立，遍历$a\in A$将给出态射$\mu_\lambda:A\to \mathcal{C}\left(Y,\varprojlim X_i\right)$使得分解
 	\[
-	\lambda_i: A\xrightarrow{\mu_\lambda}\mathcal{C}(Y,\varprojlim X_i)\xrightarrow{\pi_{i*}}\mathcal{C}(Y,X_i)
+	\lambda_i: A\xrightarrow{\mu_\lambda}\mathcal{C}\left(Y,\varprojlim X_i\right)\xrightarrow{\pi_{i*}}\mathcal{C}(Y,X_i)
 	\]
-	成立，所以$\mathcal{C}(Y,\varprojlim X_i)$就是$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的极限。由极限的泛性质，于是有同构
+	成立，所以$\mathcal{C}\left(Y,\varprojlim X_i\right)$就是$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的极限。由极限的泛性质，于是有同构
 	\[
 		\varprojlim \mathcal{C}(Y,X_i)\cong \mathcal{C}\left(Y,\varprojlim X_i\right),
 	\]
@@ -74,9 +87,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^{\mathrm{op}} :I^{\mathrm{op}}\to \mathcal{C}$通过$D^{\mathrm{op}}(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^{\mathrm{op}}(j\geq i)\circ D^{\mathrm{op}}(k\geq j)=D^{\mathrm{op}}(k\geq i)$，可见这确实是一个协变函子。
 
-\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。
-
-很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。
+\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。
 
 作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。
 
@@ -86,18 +97,18 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \[
 	\xymatrix{
 		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-		D(i)&&D(j)\\
+		D(i)&&D(i)\\
 		&D(k)\ar[ul]^{D(k\leq i)}\ar[ur]_{D(k\leq j)}&
 	}
 	\quad
 % \xymatrix{
 % 	&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-% 	D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[dl]^{D(j\leq k)}\\
+% 	D(i)\ar[dr]_{D(i\leq k)}&&D(i)\ar[dl]^{D(j\leq k)}\\
 % 	&D(k)&
 % }
 	\xymatrix{
 		&A &\\
-		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
+		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(i)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
 		&D(k)\ar[uu]_{\mu_{k}}&
 	}
 \]
@@ -115,7 +126,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且$\varprojlim_{i\in I} D(i)=\varprojlim_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^{\mathrm{op}} $存在一个与其共尾的子集$J^{\mathrm{op}} $，则$J$-图$D$是一个定向系统，且$\varinjlim_{i\in I} D(i)=\varinjlim_{i\in J} D(i)$. \rule{2mm}{2mm}
 
-所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的对偶极限。这符合我们上面的直观。
+所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的余极限。这符合我们上面的直观。
 
 \para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
 \[
@@ -125,7 +136,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	\end{cases}
 \]
 
-考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限$\varinjlim_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in I}$.
+考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限$\varinjlim_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in \mathfrak{B}} U$.
 
 同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。
 
@@ -147,7 +158,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 存在性的证明是简单的，考虑$\{M_i\,:\, i\in I\}$作为集合的直积，很容易检验它有一个$R$-模结构，且投影是同态。更详细的检查这里就略去了。
 
-其他满足这个性质的模及同态，都可以唯一分解到这个典型的模和同态（这里是直积和投影）的性质，被称为泛性质。
+% 其他满足这个性质的模及同态，都可以唯一分解到这个典型的模和同态（这里是直积和投影）的性质，被称为泛性质。
 
 \para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 直和对应于范畴里coproduct的概念。
 
@@ -164,10 +175,6 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 求和是有限求和因为$a_i$只有有限项非零。有了构造，泛性质的检验就是直接的了。
 
 注意到交换群为$\zz$-模，所以我们也证明了交换群有直和与直积。
-
-\para 如果满足泛性质，则他在同构意义上唯一。
-
-以直积为例，如果$(M,\pi_i)$和$(M',\pi'_i)$都满足泛性质，则利用$M$的泛性质，我们有唯一的同态$\rho:M'\to M$，利用$M'$的泛性质，我们有唯一的同态$\rho':M\to M'$. 然后$\rho \rho':M\to M$和$\id_M$是同时满足泛性质的分解，由唯一性，$\rho\rho'=\id_M$. 同理，$\rho'\rho=\id_{M'}$. 所以他们同构。
 
 \para 由构造，有限直和与有限直积在模范畴里面是等价的。考虑两个$R$-模$M_1$和$M_2$，那么$M_1$可以看成$M_1\oplus M_2$的子模，通过$m\to (m,0)$. 反过来，设$M_1$和$M_2$是一个模$M$的两个子模，则我们有如下短正合列
 \[
@@ -201,7 +208,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 但是这个定义并不是最常用的，一般而言，我们会使用下面这个定义。
 
-\para 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果对任意的$T\in\mathcal{C}$和$Y\in\mathcal{Y}$存在自然同构
+\para 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果对任意的$T\in\mathcal{C}$和$Y\in\mathcal{D}$存在自然同构
 \[
 	\alpha(T,Y):\mathcal{C}(T,g(Y))\to \mathcal{D}(f(T),Y),
 \]
