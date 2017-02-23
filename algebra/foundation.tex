@@ -11,7 +11,7 @@
 
 对于一个未知的运算或者作用，我们通常称之为“乘法”。左作用称为“左乘”，右作用称为“右乘”。对于运算$f(a,b)$通常直接记作$a*b$，或者再干脆一些省略中间的符号$*$，记作$ab$，读作$a$左乘$b$、$b$右乘$a$或$a$乘以$b$.
 
-定义多个元素$\{a_i\,:\, 1\leq i \leq n\}$的乘法
+定义多个元素$\{a_i\,:\, 1\leq i \leq n\}$的乘法为
 \[
 	a_1a_2\cdots a_n=a_1(a_2a_3\cdots a_n)=a_1(a_2(a_3\cdots a_n))=\cdots,
 \]
@@ -50,13 +50,13 @@
 (a_1a_2\cdots a_{k})(a_{k+1}\cdots a_{n})=a_1(a_2(a_3(\cdots (a_{k}(a_{k+1}\cdots a_{n})))))=a_1a_1a_2\cdots a_n.
 \]
 
-现在，假设有$m$对括号，多重乘积可能出现三种情况：一是$a_1a_2\cdots a_{k-1}(a_{k}\cdots a_n)$，即最后一对括号出现在最后，那么按照定义，他就等于$a_1a_2\cdots a_{k-1}a_{k}\cdots a_n$，这样就消去了最后一对括号。二是$a_1a_2\cdots$ $a_{k-1}(a_{k}\cdots a_l)$ $a_{l+1}\cdots a_n$，其中$a_1a_2\cdots a_{k-1}$中有$(m-1)$对括号，或者说$(a_{k}\cdots a_l)$是最后一对括号。利用定义和上面的结论可以得到
+现在，假设有$m$对括号，多重乘积可能出现两种情况：一是$a_1a_2\cdots a_{k-1}(a_{k}\cdots a_n)$，即最后一对括号出现在最后，那么按照定义，他就等于$a_1a_2\cdots a_{k-1}a_{k}\cdots a_n$，这样就消去了最后一对括号。二是$a_1a_2\cdots$ $a_{k-1}(a_{k}\cdots a_l)$ $a_{l+1}\cdots a_n$，其中$a_1a_2\cdots a_{k-1}$中有$(m-1)$对括号，或者说$(a_{k}\cdots a_l)$是最后一对括号。利用定义和上面的结论可以得到
 \begin{align*}
 	a_1a_2\cdots a_{k-1}(a_{k}\cdots a_l)a_{l+1}\cdots a_n&=a_1a_2\cdots ((a_{k}\cdots a_l)(a_{l+1}\cdots a_n))\\
 	&=a_1a_2\cdots a_{k-1}(a_{k}\cdots a_n)\\
 	&=a_1a_2\cdots a_{k-1}a_{k}\cdots a_n.
 \end{align*}
-这样我们就消去了最后一对括号。如是往复可以消去全部的括号，得到$a_1\cdots a_n$.
+这样我们就消去了最后一对括号。如是往复，对$m$进行有限归纳可以消去全部的括号，得到$a_1\cdots a_n$.
 
 我们已经对任意字符串$a_1a_2\cdots a_n$最大括号层数为$1$的所有可能加括号方式证明了，在满足结合律的时候等于$a_1a_2\cdots a_n$.
 
