@@ -1,0 +1,10 @@
+#!/bin/bash
+# Author : buwailee
+# Script follows here:
+aplatex -synctex=1 main > /dev/null
+echo "1. O.K."
+zhmakeindex -q main.idx >/dev/null
+echo "2. O.K."
+aplatex -synctex=1 main > /dev/null
+echo "3. O.K."
+rm *.dvi *.ilg *.out

@@ -1,0 +1,228 @@
+\documentclass[10pt]{extarticle}
+\usepackage[a4paper, top=12mm, text={170mm, 246mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\usepackage{amsmath,amssymb}
+\linespread{1}
+\pagestyle{plain}
+\title{The Green function of $\mathrm{SU}(N)$ Hubbard model}
+\author{lzj}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+
+\begin{document}
+\maketitle
+
+This is a note of \textit{Metal-insulator transition in the one-dimensional $\mathrm{SU}(N)$ Hubbard model} [PRB,1999], details omitted here can be found in that paper.
+
+Suppose we have a one-dimensional lattice, its length is $L$ and the lattice spacing is $a_0$. Fermions with spin index $a=1$, $\dots$, $N$ can be annihilate and created at site $i=1$, $\dots$, $L/a_0$, whose annihilation operator is $c_{ia}$ and its density is defined by $n_{ia}=c_{ia}^\dag c_{ia}$.
+
+The Hamiltonian of $\mathrm{SU}(N)$ Hubbard model is described as
+\[
+	H=-t\sum_{i=1}^L\sum_{a=1}^N\bigl(c_{ia}^\dag c_{i+1a}+\text{H.c.}\bigr)+\frac{U}{2}\sum_{i=1}^L\left(\sum_{a=1}^N n_{ia}\right)^a,
+\]
+where the neighbor hopping $t$ and the on-site interaction $U$ are positive.
+
+The Fermi point $k_F$ of this system is determined by
+\[
+	\frac{k_F^2}{2m}=\frac{\pi^2}{2mL^2}\left(\frac{L/a_0}{N}\right)^2=\frac{\pi^2}{2ma_0^2}\frac{1}{N^2},
+\]
+thus $k_F=\pi/(Na_0)$.
+
+In the continuum limit, the linear approximation of spectrum around the two Fermi points $\pm k_F$ gives rise to left-movine fermions $\psi_{aL}$ and right-moving fermion $\psi_{aR}$, and
+\begin{equation}
+	\frac{c_{ia}}{\sqrt{a_0}}\to \psi_a(ia_0)\sim \psi_{aR}(ia_0)e^{\ii k_F (ia_0)}+\psi_{aL}(x)e^{-\ii k_F (ia_0)}.
+\end{equation}
+Then we obtain the new Hamiltonian
+\[
+	H=-\ii v_F \int \dd x \,\left(:\psi_{aR}^\dag \partial_x \psi_{aR}:-:\psi_{aL}^\dag \partial_x \psi_{aL}:\right),
+\]
+where $v_F=2 t a_0 \sin(\pi /N)$.
+
+In the rest of this part, we will use the method of Abelian bosonization to calculate the Green function $\langle \psi_a^\dag(x,\tau)\psi_b(0,0)\rangle$. 
+
+Firstly, it is easy to see that $\langle \psi_a^\dag(x,\tau)\psi_b(0,0)\rangle$ vanishes when $a\neq b$, so let us assume $a=b$ in following calculation. Then using equation (\theequation) and $\langle \psi_{aR/L}^\dag(x,\tau)\psi_{aL/R}(0,0)\rangle = 0$ we will get
+\[
+	\langle \psi_a^\dag(x,\tau)\psi_b(0,0)\rangle=\exp(-\ii k_Fx)\langle \psi_{aR}^\dag(x,\tau)\psi_{aR}(0,0)\rangle+\exp(\ii k_Fx)\langle \psi_{aL}^\dag(x,\tau)\psi_{aL}(0,0)\rangle.
+\]
+Denote
+\[
+	G_R(x,\tau)=\langle \psi_{aR}^\dag(x,\tau)\psi_{aR}(0,0)\rangle\text{ and }G_L(x,\tau)=\langle \psi_{aL}^\dag(x,\tau)\psi_{aL}(0,0)\rangle,
+\]
+we only need to calculate these Green functions.
+
+Next, using the method of Abelian bosonization, 
+\begin{equation}
+	\psi_{aR}(x)=\frac{\kappa_a}{\sqrt{2\pi}}\exp\bigl(-\ii (\phi_a(x)-\theta_a(x))\bigr),
+	\label{psiR}
+\end{equation}
+\begin{equation}
+	\psi_{aL}(x)=\frac{\kappa_a}{\sqrt{2\pi}}\exp\bigl(\ii (\phi_a(x)+\theta_a(x))\bigr),
+	\label{psiL}
+\end{equation}
+where $\{\phi_a\}_{1\leq a \leq N}$ and $\{\theta_a\}_{1\leq a \leq N}$ are bosonic fields which satisfy the commutation relation 
+\[
+	[\phi_a(x),\partial_x\theta_b(x')]=\pi \delta_{ab}\delta(x-x'),
+\]
+$\{\kappa_a\}_{1\leq a \leq N}$ are Majorana fermions (i.e. $\kappa_a^\dag=\kappa_a$) which satisfy the commutation relation $\{\kappa_a,\kappa_a\}=2\delta_{ab}$.
+
+To simplify the Hamiltonian, let us introduce two charge bosonic fields $\Psi_c$, $\Theta_c$ and $2(N-1)$ spin bosonic fields $\{\Psi_{na}:$ $1\leq a\leq N-1\}$, $\{\Theta_{sa}:$ $1\leq a\leq N-1\}$ as follows:
+\[
+	\Phi_c =\frac{1}{N}(\phi_1+\cdots+\phi_N),\quad \Theta_c =\frac{1}{N}(\theta_1+\cdots+\theta_N),
+\]
+\[
+	\Phi_{a} =\frac{1}{\sqrt{a(a+1)}}(\phi_1+\cdots+\phi_a-a\phi_{a+1}),\quad \Theta_{a} =\frac{1}{\sqrt{a(a+1)}}(\theta_1+\cdots+\theta_a-a\theta_{a+1}),
+\]
+The inverse transformation from $\Phi$ to $\phi$ is easily found to be
+\begin{equation}
+	\phi_a=
+	\begin{cases}
+		\frac{1}{\sqrt{N}}\Phi_c+ \sum_{l=1}^{N-1}\frac{\Phi_{l}}{\sqrt{l(l+1)}},&a=1;\\
+		\frac{1}{\sqrt{N}}\Phi_c - \sqrt{\frac{N-1}{N}}\Phi_{N-1},&a=N;\\
+		\frac{1}{\sqrt{N}}\Phi_c - \sqrt{\frac{a-1}{a}}\Phi_{a-1} + \sum_{l=a}^{N-1}\frac{\Phi_{l}}{\sqrt{l(l+1)}},&\text{otherwise.}\\
+	\end{cases}
+\end{equation}
+The inverse transformation from $\Theta$ to $\theta$ is similar.
+
+The new Hamiltonian density in this new basis is
+\[
+	\mathcal{H}=\mathcal{H}_c+\mathcal{H}_s=\frac{u_c}{2}\left(\frac{1}{K_c}(\partial_x \Phi_c)^2+K_c (\partial_x \Theta_c)^2\right)+\frac{u_s}{2}\sum_{a=1}^{N-1}\bigl((\partial_x \Phi_a)^2+(\partial_x \Theta_a)^2\bigr),
+\]
+where 
+\[
+	K_c=\frac{1}{\sqrt{1+(N-1)Ua_0/(\pi v_F)}},\quad u_c=v_F \sqrt{1+(N-1)Ua_0/(\pi v_F)},
+\]
+and the $u_s$ is the spin velocity at the IR fixed point. Notice that the Hamiltonian is invarent by $\Phi\to \Theta$ and $K_c \to 1/K_c$, so once we get some relations of $\Phi$, we could use this transformation to get the similar relations of $\Theta$.
+
+Then the foundamental Green functions can be calculated form the above Hamiltonian by functional integral: 
+\[\left\{
+\begin{aligned}
+	\langle \Phi_c(k,\omega)\Phi_c(k',\omega')\rangle&=K_c\frac{\pi u_c}{\omega^2+u_c^2k^2}\delta_{-kk'}\delta_{-\omega\omega'},\\
+	\langle \Theta_c(k,\omega)\Theta_c(k',\omega')\rangle&=\frac{1}{K_c}\frac{\pi u_c}{\omega^2+u_c^2k^2}\delta_{-kk'}\delta_{-\omega\omega'},\\
+	\langle \Phi_c(k,\omega)\Theta_c(k',\omega')\rangle&=\langle \Theta_c(k,\omega)\Phi_c(k',\omega')\rangle=\frac{-\pi\ii\omega}{k(\omega^2+u_c^2k^2)}\delta_{-kk'}\delta_{-\omega\omega'},\\
+	\langle \Phi_a(k,\omega)\Phi_b(k',\omega')\rangle&=\langle \Theta_a(k,\omega)\Theta_b(k',\omega')\rangle=\frac{\pi u_s}{\omega^2+u_s^2k^2}\delta_{ab}\delta_{-kk'}\delta_{-\omega\omega'},\\
+	\langle \Phi_a(k,\omega)\Theta_b(k',\omega')\rangle&=\langle \Theta_a(k,\omega)\Phi_b(k',\omega')\rangle=\frac{-\pi\ii\omega}{k(\omega^2+u_s^2k^2)}\delta_{ab}\delta_{-kk'}\delta_{-\omega\omega'},
+\end{aligned}
+\right.
+\]
+the other combination are all zero. Notice that $\langle \Phi_a(k,\omega)\Phi_a(k',\omega')\rangle$ and indenpendent of index $a$, so let us introduce the Green function
+\[
+	G_s(k,\omega;k',\omega')=\langle \Phi_a(k,\omega)\Phi_a(k',\omega')\rangle=\langle \Theta_a(k,\omega)\Theta_a(k',\omega')\rangle=\frac{\pi u_s}{\omega^2+u_s^2k^2}\delta_{-kk'}\delta_{-\omega\omega'}.
+\]
+
+Using equation (\theequation) and the foundamental Green functions, we have
+\begin{align*}
+	\langle \phi_a(k,\omega)\phi_a(k',\omega')\rangle &=\frac{1}{N}\langle \Phi_c(k,\omega)\Phi_c(k',\omega')\rangle +\frac{a-1}{a}G_s(k,\omega;k',\omega')+\sum_{l=a}^{N-1}\frac{G_s(k,\omega;k',\omega')}{l(l+1)}\\
+	&=\frac{1}{N}\langle \Phi_c(k,\omega)\Phi_c(k',\omega')\rangle+\left(1-\frac{1}{N}\right)G_s(k,\omega;k',\omega')\\
+	&=\pi\left(\frac{1}{N}\frac{u_c K_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)\delta_{-kk'}\delta_{-\omega\omega'},
+\end{align*}
+and similar calculation provides
+\[
+	\langle \theta_a(k,\omega)\theta_a(k',\omega')\rangle =\pi\left(\frac{1}{N K_c}\frac{u_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)\delta_{-kk'}\delta_{-\omega\omega'},
+\]
+\[
+	\langle \theta_a(k,\omega)\phi_a(k',\omega')\rangle =\langle \phi_a(k,\omega)\theta_a(k',\omega')\rangle =\pi\left(\frac{1}{N}\frac{-\ii\omega}{k(\omega^2+u_c^2k^2)}+\left(1-\frac{1}{N}\right)\frac{-\ii\omega}{k(\omega^2+u_s^2k^2)}\right)\delta_{-kk'}\delta_{-\omega\omega'}.
+\]
+Return to position space, 
+\begin{equation}
+\begin{aligned}
+	\langle \phi_a(x,\tau)\theta_a(0,0)\rangle=&\langle \theta_a(x,\tau)\phi_a(0,0)\rangle \\
+	=&\frac{1}{\beta L}\sum_{k,\omega}\sum_{k',\omega'}\langle \phi_a(k,\omega)\theta_a(k',\omega')\rangle e^{-\ii \omega\tau+\ii k x}\\
+	% =&\frac{\pi}{\beta L}\sum_{k,\omega}\left(\frac{1}{N}\frac{-\ii\omega}{k(\omega^2+u_c^2k^2)}+\left(1-\frac{1}{N}\right)\frac{-\ii\omega}{k(\omega^2+u_s^2k^2)}\right)e^{\ii \omega\tau-\ii k x}\\
+	=&-\frac{\pi}{\beta L}\sum_{k,\omega}\left(\frac{1}{N}\frac{\omega}{k(\omega^2+u_c^2k^2)}+\left(1-\frac{1}{N}\right)\frac{\omega}{k(\omega^2+u_s^2k^2)}\right)\sin(kx)e^{\ii\omega\tau}.
+	% &\sim \frac{1}{(2\pi)^2}\int_{\mathbb{R}^2} \dd\omega\dd k\,\left(\frac{1}{N}\frac{\ii\omega}{k(\omega^2+u_c^2k^2)}+\left(1-\frac{1}{N}\right)\frac{\ii\omega}{k(\omega^2+u_s^2k^2)}\right)\sin(kx)\sin(\omega\tau)\\
+\end{aligned}
+\end{equation}
+Let $x=0$ and $\tau=0$, the above result gives
+\[
+	\langle \phi_a(0,0)\theta_a(0,0)\rangle=\langle \theta_a(0,0)\phi_a(0,0)\rangle=0.
+\]
+It is equivalent to say
+\[
+	\langle \phi_a(x,\tau)\theta_a(x,\tau)\rangle=\langle \theta_a(x,\tau)\phi_a(x,\tau)\rangle=0,
+\]
+since Green functions are invariant under translation.
+
+In the $T\to 0$ (i.e. $\beta\to \infty$) and continuum limit (i.e. $L\to \infty$), we could use integral to replace the sum in equation (\theequation):
+\begin{equation}
+\begin{aligned}
+	2\langle \phi_a(x,\tau)\theta_a(0,0)\rangle=&2\langle \theta_a(x,\tau)\phi_a(0,0)\rangle \\
+	\sim&-\frac{1}{2\pi}\int_{\mathbb{R}^2} \dd\omega\dd k\,\left(\frac{1}{N}\frac{\omega}{k(\omega^2+u_c^2k^2)}+\left(1-\frac{1}{N}\right)\frac{\omega}{k(\omega^2+u_s^2k^2)}\right)\sin(kx)e^{\ii\omega\tau}\\
+	% =&\frac{\ii}{2\pi N}\arctan\left(\frac{x}{|\tau|u_c}\right)+\frac{\ii}{2\pi}\left(1-\frac{1}{N}\right)\arctan\left(\frac{x}{|\tau|u_s}\right)\\
+	=&\frac{1}{N}\left(\ln \sqrt{x^2+u_c^2\tau^2}-\ln (|\tau|u_c+\ii x)\right)+\left(1-\frac{1}{N}\right)\left(\ln \sqrt{x^2+u_s^2\tau^2}-\ln (|\tau|u_s+\ii x)\right)\\
+	=&\frac{1}{N}\left(\ln (|\tau|u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+\left(1-\frac{1}{N}\right)\left(\ln (|\tau|u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right).
+\end{aligned}
+\end{equation}
+
+Now we have enough meterial to calculate $G_L(x,\tau)$ and $G_R(x,\tau)$. According to equation \eqref{psiR},
+\begin{align*}
+	G_R(x,\tau) = \langle \psi_{aR}^\dag(x,\tau)\psi_{aR}(0,0)\rangle &= \frac{1}{2\pi}\left\langle \exp\bigl(\ii (\phi_a(x,\tau)-\theta_a(x,\tau))-\ii (\phi_a(0,0)-\theta_a(0,0))\bigr)\right\rangle\\
+	&=\frac{1}{2\pi} \exp\left(-\frac{1}{2} \left\langle\bigl[(\phi_a(x,\tau)-\phi_a(0,0))-(\theta_a(x,\tau)-\theta_a(0,0))\bigr]^2\right\rangle\right),
+\end{align*}
+where
+\[
+\begin{aligned}
+\biggr\langle\bigl[(\phi_a(x,\tau)-\phi_a(0,0))&-(\theta_a(x,\tau)-\theta_a(0,0))\bigr]^2\biggr\rangle\\
+&=\bigl\langle\bigl[\phi_a(x,\tau)-\phi_a(0,0)\bigr]^2\bigr\rangle+\bigl\langle\bigl[\theta_a(x,\tau)-\theta_a(0,0)\bigr]^2\bigr\rangle+4\langle\phi_a(x,\tau)\theta_a(0,0)\rangle.
+\end{aligned}
+\]
+There are three parts. We have calculated the last part in equation (\theequation).
+
+The part one:
+\begin{align*}
+	\bigl\langle\bigl[\phi_a(x,\tau)-\phi_a(0,0)\bigr]^2\bigr\rangle
+	% &=\frac{1}{\beta L}\sum_{k,\omega}\sum_{k',\omega'}\left\langle (\phi_a(k,\omega)e^{-\ii \omega\tau+\ii k x}-\phi_a(k,\omega))(\phi_a(k',\omega')e^{-\ii \omega'\tau+\ii k' x}-\phi_a(k',\omega'))
+	% \right\rangle\\
+	&=\frac{1}{\beta L}\sum_{k,\omega}\sum_{k',\omega'}\langle \phi_a(k,\omega)\phi_a(k',\omega')\rangle (e^{-\ii \omega\tau+\ii k x}-1)(e^{-\ii \omega'\tau+\ii k' x}-1)\\
+	% &=\frac{1}{2\beta L}\sum_{k,\omega}\left(\frac{1}{N}\frac{u_c K_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)|e^{-\ii \omega\tau+\ii k x}-1|^2\\
+	&=\frac{2\pi}{\beta L}\sum_{k,\omega}\left(\frac{1}{N}\frac{u_c K_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)(1-\cos(kx-\omega\tau))\\
+	&\sim \frac{2\pi}{(2\pi)^2}\int_{\mathbb{R}^2} \dd\omega\dd k\,\left(\frac{1}{N}\frac{u_c K_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)(1-\cos(kx-\omega\tau))\\
+	&\sim \frac{K_c}{N} \ln \sqrt{x^2+u_c^2\tau^2}+\left(1-\frac{1}{N}\right) \ln \sqrt{x^2+u_s^2\tau^2}.
+\end{align*}
+Here, we introduced an infrared cut-off $|(\omega,uk)|^2\sim (x^2+u^2 \tau^2)^{-1/2}$ when performing the integral of $\omega$ and $k$. By $K_c\to 1/K_c$ we get the part two
+\begin{align*}
+	\langle (\theta_a(x,\tau)-\theta_a(0,0))^2\rangle\sim \frac{1}{N K_c} \ln \sqrt{x^2+u_c^2\tau^2}+\left(1-\frac{1}{N}\right) \ln \sqrt{x^2+u_s^2\tau^2}.
+\end{align*}
+
+Then
+\[
+\begin{aligned}
+\biggr\langle\bigl[(\phi_a(x,\tau)-\phi_a(0,0))&-(\theta_a(x,\tau)-\theta_a(0,0))\bigr]^2\biggr\rangle\\
+\sim &\frac{1}{N}\left(K_c+\frac{1}{K_c}\right) \ln \sqrt{x^2+u_c^2\tau^2}+2\left(1-\frac{1}{N}\right) \ln \sqrt{x^2+u_s^2\tau^2}\\
+&+\frac{2}{N}\left(\ln (|\tau|u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+2\left(1-\frac{1}{N}\right)\left(\ln (|\tau|u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right)\\
+=&\frac{1}{N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}+\frac{2}{N}\ln (|\tau|u_c-\ii x)+2\left(1-\frac{1}{N}\right)\ln (|\tau|u_s-\ii x),
+\end{aligned}
+\]
+and 
+\[
+\begin{aligned}
+	G_R(x,\tau)&\sim\frac{1}{2\pi}\exp\left(-\frac{1}{2N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}-\frac{1}{N}\ln (|\tau|u_c-\ii x)-\left(1-\frac{1}{N}\right)\ln (|\tau|u_s-\ii x)\right)\\
+	&=\frac{1}{2\pi}\left[\frac{1}{x^2+u_c^2\tau^2}\right]^{\alpha/2}\frac{1}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}},
+\end{aligned}
+\]
+where
+\[
+	\alpha=\frac{1}{2N}\left(K_c+\frac{1}{K_c}-2\right)=\frac{1}{2NK_c}(1-K_c)^2.
+\]
+Similarly
+\[
+	G_L(x,\tau)\sim \frac{1}{2\pi}\left[\frac{1}{x^2+u_c^2\tau^2}\right]^{\alpha/2}\frac{1}{(\ii x+u_c\tau)^{1/N}(\ii x+u_s\tau)^{1-1/N}}.
+\]
+
+Finally,
+\[
+\begin{aligned}
+	\langle \psi_a^\dag(x,\tau)\psi_b(0,0)\rangle&=\exp(-\ii k_Fx)G_R(x,\tau)+\exp(\ii k_Fx)G_L(x,\tau)\\
+	&\sim \frac{1}{2\pi}\left[\frac{1}{x^2+u_c^2\tau^2}\right]^{\alpha/2}\left[\frac{\exp(\ii k_F x)}{(\ii x+u_c\tau)^{1/N}(\ii x+u_s\tau)^{1-1/N}}+\frac{\exp(-\ii k_F x)}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}}\right],
+\end{aligned}
+\]
+and the momentum distribution can be given as
+\[
+\begin{aligned}
+	n(k)&=\sum_a\int_\mathbb{R} \mathrm{d}x\, e^{-\ii kx}\langle \psi_a^\dag(x,0)\psi_b(0,0)\rangle\\
+	&=\frac{N}{2\pi} \int_{-\infty}^\infty \mathrm{d}x\,\frac{e^{-\ii kx}}{|x|^\alpha}\left(\frac{\exp(\ii k_F x)}{\ii x}-\frac{\exp(-\ii k_F x)}{\ii x}\right)\\
+	% &=\frac{N}{\pi} \int_{-\infty}^\infty \mathrm{d}x\,\frac{e^{-\ii kx}}{x |x|^{\alpha}}\sin(k_Fx)\\
+	&=\frac{N}{\pi}\sin \left(\frac{\pi  \alpha }{2}\right) \Gamma (-\alpha ) \left(\frac{k-k_F}{\left| k-k_F\right| ^{1-\alpha}}-\frac{k+k_F}{\left| k+k_F\right| ^{1-\alpha}}\right),
+\end{aligned}
+\]
+where $\Gamma(x)$ is the famous Gamma function.
+\end{document}

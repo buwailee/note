@@ -8,30 +8,30 @@
 	"buffers":
 	[
 		{
-			"file": "module_1.tex",
+			"file": "//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
 			"settings":
 			{
-				"buffer_size": 16743,
+				"buffer_size": 1202,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "construction.tex",
+			"file": "//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
 			"settings":
 			{
-				"buffer_size": 28933,
+				"buffer_size": 29355,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "ring_1.tex",
+			"file": "//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
 			"settings":
 			{
-				"buffer_size": 34296,
+				"buffer_size": 40742,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -183,11 +183,15 @@
 	},
 	"expanded_folders":
 	[
-		"//192.168.1.9/Documents/OneDrive/note/algebra"
+		"/C/Users/Buwai_Lee/OneDrive/note/algebra"
 	],
 	"file_history":
 	[
+		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
+		"/C/Users/Buwai_Lee/OneDrive/note/algebra/module_1.tex",
+		"/C/Users/Buwai_Lee/OneDrive/note/algebra/ring_1.tex",
+		"/C/Users/Buwai_Lee/OneDrive/note/algebra/construction.tex",
 		"//192.168.1.9/Documents/OneDrive/note/ag/note/main_eng.tex",
 		"//192.168.1.9/Documents/OneDrive/note/vector_analysis.tex",
 		"/C/Users/Buwai_Lee/OneDrive/Document/Calculus/编译.bat",
@@ -197,7 +201,6 @@
 		"//192.168.1.9/Documents/OneDrive/note/manifold/manifold.tex",
 		"//192.168.1.9/Documents/OneDrive/note/noteheader.sty",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
-		"//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/module_2.tex",
 		"//192.168.1.9/Documents/OneDrive/note/algebra/coloredmain.tex",
 		"/C/Users/Buwai_Lee/OneDrive/code/lisp/linearalgebra.scm",
@@ -280,6 +283,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"inj",
+			"varprojlim",
 			"\\ev",
 			",\\cdots,",
 			"qed",
@@ -405,9 +410,7 @@
 			"D",
 			"a_",
 			"\\varphi1",
-			"A",
-			"v",
-			"D"
+			"A"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -425,24 +428,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "module_1.tex",
+					"file": "//192.168.1.9/Documents/OneDrive/note/algebra/main.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16743,
+						"buffer_size": 1202,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11217,
-								11217
+								76,
+								76
 							]
 						],
 						"settings":
@@ -450,68 +453,66 @@
 							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 17979.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "construction.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 28933,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6918,
-								6918
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 9168.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "ring_1.tex",
+					"buffer": 1,
+					"file": "//192.168.1.9/Documents/OneDrive/note/algebra/construction.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 34296,
+						"buffer_size": 29355,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11277,
-								11309
+								12836,
+								12836
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 15056.0,
+						"translation.y": 17180.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "//192.168.1.9/Documents/OneDrive/note/algebra/foundation.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 40742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2687,
+								2687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3373.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
