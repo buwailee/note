@@ -291,7 +291,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 考虑商映射$\rho:N\to N/M$，由于$L\subset \ker \rho=M$，由同构基本定理，诱导了一个满射$\bar{\rho}:N/L \to N/M$，接下来只要求他的核即可。任取$\bar{x}\in N/L$以及代表元$x\in N$，由于$\bar{\rho}(\bar{x})=\rho(x)$，所以$\bar{\rho} (\bar{x})=0$当且仅当$x\in \ker \rho =M$，这就告诉我们$\ker \bar{\rho}=M/L$.
 
-\para 设$M_1$和$M_2$是$M$的子模，则复合$M_2\hookrightarrow M_1+M_2 \to (M_1+M_2)/M_1$是一个满射，他的核是$M_1\cap M_2$，因此有同构
+\para \label{modiso1}设$M_1$和$M_2$是$M$的子模，则复合$M_2\hookrightarrow M_1+M_2 \to (M_1+M_2)/M_1$是一个满射，他的核是$M_1\cap M_2$，因此有同构
 \[
 	(M_1+M_2)/M_1\cong M_2/(M_1\cap M_2).
 \]
@@ -305,6 +305,10 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \end{itemize}
 
 证明和模的情况是类似的，只不过必须更加小心而已。对于环，我们一般谈理想，所以可以应用模的定理（作为模，理想是子模）。
+
+\para 设$G$和$G'$是两个群，$f:G\to G'$是一个群同态，设$H'\subset G'$是一个子群，则$f^{-1}(H')$是一个$G$的子群。事实上，任取$g$, $h\in f^{-1}(H')$，于是$f(gh)=f(g)f(h)\in H'$也就推出了$gh\in f^{-1}(H')$. 
+
+类似地，设$M$和$M'$都是$R$-模，而$f:M\to M'$是一个$R$-模同态，考虑一个子模$N'\subset M'$，则$f^{-1}(N')$是$M$的一个子模。事实上，加法群结构来自于群的结论，任取$r\in R$以及$x\in f^{-1}(N')$，于是$f(rx)=rf(x)\in N'$推出了$rx\in f^{-1}(N')$. 
 
 \section{范畴与函子}
 
@@ -638,7 +642,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
 
-\para 我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
+\para \label{oka}我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
 
 给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{http://www.bowdoin.edu/\~{}reyes/oka1.pdf}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
 
@@ -684,7 +688,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 	4. 所有与某乘性子集不交的理想中极大的是素理想。
 
-\pro 设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
+\pro \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
 
 \proof
 	如果$\mathfrak{b}=\bigcup_i \mathfrak{a}_i$，则由包含的命题可知，存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 反过来，$\mathfrak{a}_i\subset \bigcup_i \mathfrak{a}_i=\mathfrak{b}$. 等号的命题得证。
@@ -698,7 +702,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
 \qed
 
-\pro 设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
+\pro \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
 
 \proof
 	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。

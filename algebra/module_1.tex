@@ -24,7 +24,15 @@
 
 Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定是一个Noether环，反之不然。Noether性是有限性条件之一，下面一个命题展现了这一点。
 
-\pro 如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\to M\to Q\to 0$，则$M$是Noether模当且仅当$P$和$Q$都是Noether模。\notprove
+\pro 如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\to M\to Q\to 0$，则$M$是Noether/Artin模当且仅当$P$和$Q$都是Noether/Artin模。\notprove
+
+作为推论，设$N$是$M$的一个子模，那么有自然的短正合列$0\to N\hookrightarrow M\to M/N\to 0$，因此$M$是Noether/Artin模当且仅当$N$和$M/N$是Noether/Artin模。
+
+设$M=\bigoplus_{i=1}^nM_i$，因为有短正合列
+\[
+	0\to M_n\to \bigoplus_{i=1}^nM_i\to \bigoplus_{i=1}^{n-1}M_i\to 0,
+\]
+如果每一个$M_i$都是Noether/Artin模，由归纳法，可知$M=\bigoplus_{i=1}^nM_i$是Noether/Artin模。
 
 \pro 一个模是Noether模当且仅当它的任意子模是有限生成的。\notprove
 
@@ -46,13 +54,13 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \[
 	R^n \xrightarrow{\pi} M\to 0.
 \]
-考虑$M$的一组有限的生成元$\{m_i\,:\, 1\leq i\leq n\}$，他们生成了一个$R$模，满射通过将$\pi:1_i\mapsto m_i$来线性线性扩张得到，即定义
+考虑$M$的一组有限的生成元$\{m_i\,:\, 1\leq i\leq n\}$，他们生成了一个$R$模，满射通过将$\pi:1_i\mapsto m_i$来线性扩张得到，即定义
 \[
 	\pi\left(\sum_i r_i 1_i\right)=\sum_i r_i m_i.
 \]
 反过来，如果$M$可以写成某个$R^n$的商模，他自然被$\pi(1_i)$生成。
 
-\pro Noether环上的有限生成模是Noether模。
+\para Noether/Artin环上的有限生成模是Noether/Artin模。可以将其归结到有限生成自由模的情况即可，因为Noether/Artin模的商模或者子模都是Noether/Artin模。而这是因为在上节我们看到了，有限个Noether/Artin模直和后还是Noether/Artin模。
 
 \para 从自由模模去一些关系是构造一些模的常用手段。比如我们希望构造一个由所有满足$(a,b)=(b,a)$的$(a,b)$构成的一个模，那么最方便的方式就是从$R^2$出发，模去所有$(a,b)-(b,a)$生成的子模。后者被称为一个关系。
 
@@ -97,13 +105,29 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 	其中$q\in R[x]$. 或者写作，$1-q(\varphi)\varphi=0$. 因此$q(\varphi)$是$\varphi$的一个逆，进而$\varphi$是一个同构。
 \qed
 
-\para 将上述命题应用到自由模。设$M\cong R^n$，而$I=\{x_1$, $\cdots$, $x_n\}$自由生成了$M$（即$\{x_1$, $\cdots$, $x_n\}$的非零$R$-系数线性组合都不为零），则$M$同构于$I=\{x_1$, $\cdots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
+\para 设$M$是一个模，一组元素$\{x_1$, $\cdots$, $x_n$, $\cdots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1}$, $\cdots$, $x_{i_k}\in M$，以及对任意的$r_{i_1}$, $\cdots$, $r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1$, $\cdots$, $x_n$, $\cdots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。
+
+\para 将上述命题应用到自由模。设$M\cong R^n$，而$I=\{x_1$, $\cdots$, $x_n\}$自由生成了$M$，则$M$同构于$I=\{x_1$, $\cdots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
 
 \proof
 	$\bigoplus_{x\in I} R$自然可以看成$R^n$，从$\bigoplus_{x\in I} R=R^n$到$M$有自然的满射$\alpha$，他将生成元映到生成元，由于$M\cong R^n$，所以有同构$\beta:M\to R^n$，因此就有了满同态$\alpha\beta:M\to M$，进而是同构。所以$\alpha =(\alpha\beta)\beta^{-1}$就是一个同构。
 \qed
 
 利用上面这个命题，可以证明当$m\neq n$时$R^m\not\cong R^n$. 设$m<n$，反证即可，如果$R^m\cong R^n$，则在$R^m$中可以取$n$个自由生成元，但这$n$个自由生成元都由$R^m$的自由生成元生成，所以他们不是自由的，矛盾。
+
+因此，一个有限生成自由模的基的元素个数总是一定的。
+
+\pro 域$k$上的有限生成模$M$都是自由模。
+
+\proof
+	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1$, $\cdots$, $x_{n+1}\}$，如果这组生成元是自由生产元，则没什么要证的，如果不是，则存在一组系数$a_1$, $\cdots$, $a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
+	\[
+	a_{n+1}x_{n+1}=-a_1x_1-\cdots-a_nx_n,
+	\]
+	两边除以$a_{n+1}$得出$x_{n+1}$可以由$\{x_1$, $\cdots$, $x_{n}\}$生成，于是$M$也可以由$\{x_1$, $\cdots$, $x_{n}\}$生成，由归纳假设，$M$是一个自由模。
+\qed
+
+利用选择公理，实际上，域上的模（矢量空间）都是自由模，但是这里暂时用不到这点。
 
 \section{张量积}
 
