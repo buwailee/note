@@ -334,6 +334,8 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 
 通过$r\mapsto r/1$，就给出了一个环同态$\varphi:R\to S^{-1}R$. 利用上面的引理，可以看到$R\to S^{-1}R$不一定是单同态，$a/1=0$并不在只在$a=0$的时候才成立，在存在$s\in S$使得$sa=0$的时候也成立。不管怎样，$S^{-1}R$是一个$R$-代数。设$M$是一个$R$-模，则$S^{-1}R\otimes_R M$是一个$S^{-1}R$-模，记作$S^{-1}M$. 这又是一个标量扩张的例子。
 
+$S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (m',s')$当且仅当存在一个$t\in S$使得$t(s'm-sm')=0$. 将包含$(m,s)$的等价类记作$m/s$，加法和乘法定义的检验这里同样略去了。
+
 \pro 设$S$是$R$的一个乘性子集，记同态$R\to S^{-1}R$为$i_S$. 再设$T$是一个环，如果$\varphi:R\to T$是一个环同态，且使得$\varphi(S)=\{\varphi(s)\,:\, s\in S\}$中的元素都是$T$中的可逆元，则存在唯一的环同态$\pi:S^{-1}R\to T$使得分解$\varphi:R\xrightarrow{i_S}S^{-1}R\xrightarrow{\pi} T$成立。
 
 换句话说，如果一个$R$-代数$T$中$S\cdot 1$都是可逆的，则$T$是一个$S^{-1}R$-代数。这被称为分式环的泛性质，这就指出分式环的实质在于将某个乘性子集搞成可逆的。
@@ -388,3 +390,31 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 但是，范畴$\mathrm{Alg}_{(R,S)}$并不需要$S^{-1}R$的构造，所以我们才谈论的是这个范畴，然后才可以通过自由函子给出$S^{-1}R$的一个定义。当然，这里已经可以事后诸葛亮地说，函子$S^{-1}$是与$S^{-1}R$-代数到$R$-代数的遗忘函子左伴随的自由函子。
 
 \para 上面讨论了分式环几个定义。下面讨论分式环的几个重要实例。从一个事实开始，设$S\subset R$是一个乘性子集，而$S'$是$S$中元素的全部因子构成的乘性子集，则$S^{-1}R=S'^{-1}R$.
+
+\para 设$M$是一个$R$-模，$S$是$R$的一个乘性子集，记$\varphi:M\to S^{-1}M$是局部化自然的同态，满足$\varphi(m)=m/1$. 设$N\subset M$是一个子模，则$S^{-1}N$是$S^{-1}M$的一个子模。由于子模的原像是子模，所以如果$L$是$S^{-1}M$的子模，则$\varphi^{-1}(L)$是$M$的子模。如果$N$是$M$的一个子模，则$N\subset \varphi^{-1}(S^{-1}N)$. 特别地，如果$N=\varphi^{-1}(L)$，则$L=S^{-1}N$.
+
+这些关系非常类似Galois联络，只不过这里都不是逆序的而是保持顺序的。
+
+\proof
+	除去最后一点都是简单的。令$N$是$M$的一个子模，任取$a\in N$，我们有$a=\varphi^{-1}(a/1)$，所以$N\subset \varphi^{-1}(S^{-1}N)$. 现在设$N=\varphi^{-1}(L)$，于是前面的包含关系给出$\varphi^{-1}(L)\subset \varphi^{-1}(S^{-1}N)$或者$L\subset S^{-1}N$. 反过来，令$a\in N$以及$s\in S$，则$a/s=(a/1)(1/s)=\varphi(a)/s$，因为$\varphi(a)\in L$，而$L$是一个$S^{-1}R$-模，所以$a/s\in L$，这就给出了$S^{-1}N=L$.
+\qed
+
+利用这个结论，我们可以发现，$S^{-1}M$的每一个子模$L$，实际上都可以写成$M$中的子模$\varphi^{-1}(L)$的分式模$L=S^{-1}(\varphi^{-1}(L))$. 
+
+\para 反过来，如果$M$的子模$N$满足$\ann(M/N)\cap S=\varnothing$，或者说，任取$s\in S$以及$m\in M-N$，都有$sm\not\in N$，则$N$可以写成$\varphi^{-1}(L)$的形式，其中$L=S^{-1}(\varphi^{-1}(L))=S^{-1}N$. 
+
+$\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\in M-N$，都有$sm\not\in N$. 或者写成逆否的形式，设$s\in S$以及$m\in M$，如果$sm\in N$，则$m\in N$. 应用这个条件的理由是，在一般的模里面，$a/1\in S^{-1}N$并不能推出$a\in N$，因为如果存在一个$s\in S$使得$sa\in N$，就可以推出$a/1=sa/s\in S^{-1}N$. 而这又是因为$M-N$一般不是一个模。
+
+\proof
+	包含关系$N\subset \varphi^{-1}(S^{-1}N)$已经是清楚的，任取$a\in \varphi^{-1}(S^{-1}N)$或者说$\varphi(a)=a/1\in S^{-1}N$. 于是存在$s\in S$使得$(sa)/s$的分子$sa\in N$，继而根据条件$\ann(M/N)\cap S=\varnothing$可以推知$a\in N$. 
+\qed
+
+\pro 结合上面的结论，这里做出断言：$S^{-1}M$的子模一一对应于$M$中满足$\ann(M/N)\cap S=\varnothing$的子模$N$，通过$N\mapsto S^{-1}N$以及$L\mapsto \varphi^{-1}(L)$.
+
+应用到环$R$的理想上面，$S^{-1}R$的理想一一对应着$R$中那些满足$\ann(R/\mathfrak{a})\cap S=\varnothing$的理想$\mathfrak{a}$. 由于$\ann(R/\mathfrak{a})=\mathfrak{a}$，所以$S^{-1}R$的理想一一对应着$R$中与$S$不相交的理想。由于素理想的原像是素理想，所以$S^{-1}R$中的素理想一一对应着$R$中与$S$不相交的素理想。
+
+\pro 如果$M$是一个Noether或者Artin模，$S$是一个$R$的乘性子集，则$S^{-1}M$是一个Noether或者Artin模。
+
+\proof
+	只要证明$S^{-1}M$中的非空子模族$\mathcal{F}$有极大/极小元即可。利用一一对应，$\varphi^{-1}(\mathcal{F})$是$M$的非空子模族，所以存在一个极大/极小元$N\in \varphi^{-1}(\mathcal{F})$，继而对应回$S^{-1}M$中就得到了$\mathcal{F}$中的极大/极小元。
+\qed
