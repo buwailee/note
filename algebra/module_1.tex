@@ -88,7 +88,11 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 
 但是到了Noether环上的模就不会如此，考虑任意的有限生成模$M$，他可以写成$R^n$的商模，即有短正合列$0\to N \hookrightarrow R^n \to M\to 0$，由于$N$是$R^n$的子模，而$R^n$是$R$上的有限生成模，所以$R^n$是Noether模，继而推知$N$是有限生成的，所以存在满同态$R^m\to N$，这样我们就得到了正合列$R^m\to R^n\to M\to 0$.
 
-\theo Hamiltion-Cayley定理：设$M$是一个有限生成$R$-模，他能被$n$个元素生成. 再设$\mathfrak{a}$是$R$的一个理想，$\varphi:M\to M$是一个自同态。如果$\varphi(M)\subset \mathfrak{a}M$，则存在首一多项式
+\para 设$\mathfrak{a}$是$R$的一个理想，而$M$是一个$R$-模，记$\mathfrak{a}M$是所有形如$am$，其中$a\in \mathfrak{a}$以及$m\in M$的元素生成的。
+
+作为例子，设$N$是$M$的一个子模，这里来计算$\mathfrak{a}(M/N)$. $\mathfrak{a}(M/N)$由$\sum_{i=1}^n a_i\bar{m}_i$生成，其中$\bar{m}_i\in M/N$. 观察$\sum_{i=1}^n a_i m_i$，为得到$\sum_{i=1}^n a_i\bar{m}_i$，需要模去$N$，但是$N$未必是$\mathfrak{a}M$的子模，所以可以先把$\mathfrak{a}M$扩张为$\mathfrak{a}M+N$，再模去$N$，添进去的多余的$N$里面的元素也一道模掉了，这样就得到了想要的$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$. 或者，可以通过先将$N$缩小到$\mathfrak{a}M$的一个子模$N\cap \mathfrak{a}M$，于是$\mathfrak{a}(M/N)=\mathfrak{a}M/(N\cap \mathfrak{a}M)$.
+
+\theo Hamilton-Cayley定理：设$M$是一个有限生成$R$-模，他能被$n$个元素生成. 再设$\mathfrak{a}$是$R$的一个理想，$\varphi:M\to M$是一个自同态。如果$\varphi(M)\subset \mathfrak{a}M$，则存在首一多项式
 \[
 	p(x)=x^n+p_1x^{n-1}+\cdots+p_n,
 \]
@@ -109,10 +113,10 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 	对任意的$m_i$都成立。所以也对任意的$m\in M$都成立，而$\det\left(x\delta_{ij}-\sum_{j}r_{ij}\right)$就是我们需要的多项式。
 \qed
 
-\para 作为Hamiltion-Cayley定理的应用，我们可以断言，有限生成模的任意满自同态是同构。
+\para 作为Hamilton-Cayley定理的应用，我们可以断言，有限生成模的任意满自同态是同构。
 
 \proof
-	把$M$看出$R[x]$-模，其中$xm=\varphi(m)$，他是有限生成的，因为作为$R$-模是有限生成的。令$I=(x)$是$x$在$R[x]$中生成的主理想。由于$\varphi$是满射，则$IM=M$. 选则映射$\id_M=1:M\to M$，这显然是一个$R[x]$-模同态，由于$\id_M(M)\subset IM$，利用Hamiltion-Cayley定理，存在一个多项式$p$，系数属于$I$使得
+	把$M$看出$R[x]$-模，其中$xm=\varphi(m)$，他是有限生成的，因为作为$R$-模是有限生成的。令$I=(x)$是$x$在$R[x]$中生成的主理想。由于$\varphi$是满射，则$IM=M$. 选则映射$\id_M=1:M\to M$，这显然是一个$R[x]$-模同态，由于$\id_M(M)\subset IM$，利用Hamilton-Cayley定理，存在一个多项式$p$，系数属于$I$使得
 	\[
 	p(1)m=\left(1^n+xf_1(x)1^{n-1}+\cdots+xf_n(x)\right)m=(1-xq(x))m=0,
 	\]
@@ -142,6 +146,24 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \qed
 
 利用选择公理，实际上，域上的模（矢量空间）都是自由模，但是这里暂时用不到这点。
+
+\theo Nakayama引理：设$M$是一个有限生成$R$-模，$\mathfrak{a}$是$R$的一个理想，则$M=\mathfrak{a}M$可以推出存在一个$a\in \mathfrak{a}$使得$am=m$对任意的$m\in M$都成立。
+
+\proof
+	在Hamilton-Cayley定理中，取$\varphi=\id_M$，因此，存在$a_1$, $\cdots$, $a_n\in \mathfrak{a}$使得$x=1+a_1+\cdots+a_n=1-a$左乘在$M$上是一个零映射，于是$(1-a)m=0$或者$am=m$对任意的$m\in M$都成立。
+\qed
+
+特别地，当$\mathfrak{a}$包含于$R$任意的极大理想中时，$1-a$不处于任意的极大理想中，所以必然是可逆，因此$(1-a)m=0$推出了$m=0$. 因此Nakayama引理在局部环（只有一个极大理想的环）上会特别有用，因为此时包含于每一个极大理想中就变成了一个平凡的条件。
+
+作为推论，令$M$是一个有限生成$R$-模，而$N$是$M$的一个子模，而$\mathfrak{a}$是包含于每一个极大理想中的一个理想，那么$M=\mathfrak{a}M+N$可以推出$M=N$. 实际上，将Nakayama引理应用到$M/N$上，注意到$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$即可。
+
+\pro 将上面的推论稍微推广一下。设$M$是一个有限生成$R$-模，而$\mathfrak{a}$还是包含于每一个极大理想中的一个理想，设$\varphi:M\to M/\mathfrak{a}M$是商同态。如果$M$中的一组元素$\{m_1$, $\cdots$, $m_n\}$使得$\{\varphi(m_1)$, $\cdots$, $\varphi(m_n)\}$生成$M/\mathfrak{a}M$，则$\{m_1$, $\cdots$, $m_n\}$生成$M$.
+
+证明只需要将上面的推论应用到$N=\sum_{i=1}^n Rm_i$即可。
+
+\para 作为Nakayama引理的一个应用，我们谈谈余切空间。将在流形$M$上一点$p$的某个邻域$U$光滑的函数$f$记作一个偶对$(f,U)$，并在两个偶对上定义如下等价关系：$(f,U)\sim (g,V)$，如果存在一个开集$W\subset U\cap V$使得$f|_W=g|_V$. 这样，所有等价类构成了一个环$\mathcal{F}_p$，这是一个局部环，唯一的极大理想由那些在点$p$上为零的光滑函数构成，因为如果$f$不在点$p$为零，由连续性，在足够小的一个邻域上，$f$存在逆。将$\mathcal{F}_p$的极大理想记作$\mathfrak{m}$. 流形上点$p$处的余切空间$T_pM$定义为$\mathfrak{m}/\mathfrak{m}^2$，这是一个$\mathcal{F}_p/\mathfrak{m}$-矢量空间。而商映射$d:\mathfrak{m}\to \mathfrak{m}^2$正是微分算子，或者说从$0$-阶到$1$-阶的外微分算子。
+
+应用Nakayama引理，如果$\mathfrak{m}$中的某些元素在$\mathfrak{m}/\mathfrak{m}^2$的像生成了$\mathfrak{m}/\mathfrak{m}^2$，则它们也生成了$\mathfrak{m}$. 这是在说什么呢？这其实是在说，如果我们知道了微分的生成元，那么我们也可以得到非微分的生成元（在这里类似于局部坐标）。这非常像反函数定理，在一点处如果一族函数线性化（微分后）性质足够好（Jacobian可逆），则非微分的函数在那点附近性质也非常好。
 
 \section{张量积}
 
