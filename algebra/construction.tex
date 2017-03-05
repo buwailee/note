@@ -43,7 +43,7 @@
 
 称呼一个余锥形$(A,\lambda)$是$I$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都存在唯一的态射$f:A\to B$使得如下分解$\mu_j:D(i)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。这是另一种泛性质。一般将$I$-图$D$的余极限写作$\varinjlim_{i\in I} D(i)$. 类似极限，如果余极限存在，则它在同构意义上唯一。
 
-\pro 设$\mathcal{C}$是一个范畴，其中的对象都是集合，态射都是映射。而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
+\pro \label{homlimit}设$\mathcal{C}$是一个范畴，其中的对象都是集合，态射都是映射。而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
 \[
 	\varprojlim \mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,\varprojlim X_i\right),\quad \varprojlim \mathcal{C}(X_i,-)\cong  \mathcal{C}\left(\varinjlim X_i,-\right)
 \]
@@ -240,7 +240,29 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 粗略来说，就是左伴随函子与余极限可交换，而右伴随函子与极限可交换。
 
-\notprove
+\proof
+	命题的证明是利用Yoneda引理，他有协变和反变两个版本：协变的是，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 反变的是，如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$.
+
+	由Proposition \eqref{homlimit}，我们知道如下函子同构
+	\[
+	\mathcal{C}\left(-,\varprojlim RX_i\right)\cong \varprojlim \mathcal{C}(-,RX_i),
+	\]
+	连同伴随函子的函子同构，有如下同构链
+	\[
+	\mathcal{C}\left(-,\varprojlim RX_i\right)\cong \varprojlim \mathcal{C}(-,RX_i)\cong \varprojlim \mathcal{D}(L-,X_i)\cong \mathcal{D}\left(L-,\varprojlim X_i\right)\cong \mathcal{C}\left(-,R\varprojlim X_i\right),
+	\]
+	所以$\varprojlim RX_i\cong R\varprojlim X_i$.
+
+	同样由Proposition \eqref{homlimit}，有如下函子同构
+	\[
+	\mathcal{D}\left(\varinjlim LX_i,-\right)\cong \varprojlim \mathcal{D}(LX_i,-),
+	\]
+	连同伴随函子的函子同构，有如下同构链
+	\[
+	\mathcal{D}\left(\varinjlim LX_i,-\right)\cong \varprojlim \mathcal{D}(LX_i,-)\cong \varprojlim \mathcal{C}(X_i,R-)\cong \mathcal{C}\left(\varinjlim X_i,R-\right)\cong \mathcal{D}\left(L\varinjlim X_i,-\right),
+	\]
+	所以$\varinjlim LX_i\cong L\varinjlim X_i$.
+\qed
 
 \para 首先介绍$R$-模范畴的自由对象，遗忘函子是$R$-模到集合。设$I$是一个指标集，我们定义$R^I=\bigoplus_{i\in I}R$，他被称为自由$R$-模，或者当$R$是清楚地时候，称为自由模。自由模是$R$-模范畴的自由对象。从构造，检查是清楚的。
 
@@ -253,8 +275,6 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 称呼一个$R$-模$M$是有限生成的，就是说存在一个$M$的有限子集生成他。
 
 显然$R^I$由$\{1_i\,:\,i\in I\}$生成，其中$1_i$代表的是第$i$个指标的$R$中的$1$，所以$R^n$是有限生成模。
-
-\para 如果$M$和$N$都是双边$R$-模（比如我们一直讨论的交换环的情况），则
 
 \para 设$U$是一个集合，上面有乘法运算，满足结合律，这样的代数结构被称为\idx{半群}（\idx{semigroup}）. 如果半群含有乘法单位元，则称他为\idx{幺半群}（\idx{monoid}）. 群是特殊的幺半群，一个环除去加法结构也是一个幺半群。半群之间的同态依然定义为满足$f(ab)=f(a)f(b)$的映射$f$. 所以所有半群构成一个范畴，所有幺半群也构成一个范畴。
 

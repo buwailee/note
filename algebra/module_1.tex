@@ -1,6 +1,20 @@
 \renewcommand\chapterimg{../Pictures/7.png}
 \chapter{模（一）}
-假设下面出现的环都是交换环，所以我们不区分左右模。
+
+设$M$和$N$都是左$R$-模，记$\Hom_R(M,N)$为所有左$R$-模同态的集合，如果$R$是清楚的，则可以简单记作$\Hom(M,N)$. $\Hom(M,N)$具有清楚的交换群结构，所以可以看成双边$\zz$-模，并且可以等同$fn=nf$，其中$f\in \Hom_R(M,N)$，而$n\in \zz$.
+
+如果$M$是左$R$-模也是右$S$-模，而$N$是左$R$-模，那么任取$f\in \Hom_R(M,N)$以及$s\in S$，可以通过$(sf)(m)=f(ms)$定义出$\Hom_R(M,N)$上的一个左$S$-模结构。实际上，
+\[
+	((st)f)(m)=(s(tf))(m)=(tf)(ms)=f(mst)=f(m(st)).
+\]
+同样，如果$M$只是左$R$-模，但$N$是左$R$-模兼右$S$-模，那么任取$f\in \Hom_R(M,N)$以及$s\in S$，可以通过$(sf)(m)=f(m)s$定义出$\Hom_R(M,N)$上的一个右$S$-模结构。实际上
+\[
+	(fst)(m)=(fst)(m)=(fs)(m)t=f(m)st.
+\]
+
+假设下面出现的环都是交换环，此时，每一个左$R$-模$M$，都可以通过$rf=fr$定义出一个右$R$-模结构而成为一个双边$R$-模，当$M$具有这样诱导的双边$R$-模结构时，我们简单称呼$M$是一个$R$-模。如果$M$和$N$都是$R$-模，上面的推理告诉我们，$\Hom_R(M,N)$也是一个$R$-模。
+
+除非在讨论$\Hom_R(M,N)$的结构时，将$M$和$N$只看成一个左$R$-模并不会有什么损失，我们将采用这种观点。
 
 \section{链条件}
 
@@ -24,15 +38,15 @@
 
 Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定是一个Noether环，反之不然。Noether性是有限性条件之一，下面一个命题展现了这一点。
 
-\pro 如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\to M\to Q\to 0$，则$M$是Noether/Artin模当且仅当$P$和$Q$都是Noether/Artin模。\notprove
+\pro 如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\to M\to Q\to 0$，则$M$是Noether(Artin)模当且仅当$P$和$Q$都是Noether(Artin)模。\notprove
 
-作为推论，设$N$是$M$的一个子模，那么有自然的短正合列$0\to N\hookrightarrow M\to M/N\to 0$，因此$M$是Noether/Artin模当且仅当$N$和$M/N$是Noether/Artin模。
+作为推论，设$N$是$M$的一个子模，那么有自然的短正合列$0\to N\hookrightarrow M\to M/N\to 0$，因此$M$是Noether(Artin)模当且仅当$N$和$M/N$是Noether(Artin)模。
 
 设$M=\bigoplus_{i=1}^nM_i$，因为有短正合列
 \[
 	0\to M_n\to \bigoplus_{i=1}^nM_i\to \bigoplus_{i=1}^{n-1}M_i\to 0,
 \]
-如果每一个$M_i$都是Noether/Artin模，由归纳法，可知$M=\bigoplus_{i=1}^nM_i$是Noether/Artin模。
+如果每一个$M_i$都是Noether(Artin)模，由归纳法，可知$M=\bigoplus_{i=1}^nM_i$是Noether(Artin)模。
 
 \pro 一个模是Noether模当且仅当它的任意子模是有限生成的。\notprove
 
@@ -60,7 +74,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \]
 反过来，如果$M$可以写成某个$R^n$的商模，他自然被$\pi(1_i)$生成。
 
-\para Noether/Artin环上的有限生成模是Noether/Artin模。可以将其归结到有限生成自由模的情况即可，因为Noether/Artin模的商模或者子模都是Noether/Artin模。而这是因为在上节我们看到了，有限个Noether/Artin模直和后还是Noether/Artin模。
+\para Noether(Artin)环上的有限生成模是Noether(Artin)模。可以将其归结到有限生成自由模的情况即可，因为Noether(Artin)模的商模或者子模都是Noether(Artin)模。而这是因为在上节我们看到了，有限个Noether(Artin)模直和后还是Noether(Artin)模。
 
 \para 从自由模模去一些关系是构造一些模的常用手段。比如我们希望构造一个由所有满足$(a,b)=(b,a)$的$(a,b)$构成的一个模，那么最方便的方式就是从$R^2$出发，模去所有$(a,b)-(b,a)$生成的子模。后者被称为一个关系。
 
@@ -120,7 +134,7 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \pro 域$k$上的有限生成模$M$都是自由模。
 
 \proof
-	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1$, $\cdots$, $x_{n+1}\}$，如果这组生成元是自由生产元，则没什么要证的，如果不是，则存在一组系数$a_1$, $\cdots$, $a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
+	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1$, $\cdots$, $x_{n+1}\}$，如果这组生成元是自由生成元，则没什么要证的，如果不是，则存在一组系数$a_1$, $\cdots$, $a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
 	\[
 	a_{n+1}x_{n+1}=-a_1x_1-\cdots-a_nx_n,
 	\]
@@ -143,7 +157,7 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \]
 其中$h_f$对每一个双线性函数$f$存在且唯一，则称呼$G$为$A$与$B$的张量积，记做$A\otimes_R B$，而$\varphi(a,b)$记做$a\otimes_R b$，如果下标$R$不重要，那么我们可以省略他。
 
-如果$G$也有$R$-模结构，那么同态就是$R$-模同态。
+设$R$是交换环，$A$和$B$都是$R$-模，那么$A\times B$具有$R$-模结构，即$r(a,b)=(ra,b)$. 通过将$r(a\otimes b)$可以定义为$(ra)\otimes b$，$A\otimes_R B$显然有一个$R$-模结构，这样，$\varphi$将是一个$R$-模同态。而上面的泛性质，也可以改成相应的$R$-模和$R$-模同态。
 
 \lem 在模范畴内，张量积存在。而且由上面的泛性质，他确定到一个同构。
 
@@ -157,7 +171,7 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \]
 显然，所以由唯一性得到了$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$，同理有另一个等式。
 
-对于存在性，我们可以直接构造，首先，我们知道在交换群范畴（作为$\zz$-模）有直和存在，那么我们可以构造自由交换群
+对于存在性，我们可以直接构造。首先，我们知道在交换群范畴（作为$\zz$-模）有直和存在，那么我们可以构造自由交换群
 \[
 	F=\bigoplus_{(a,b)\in A\times B} \zz=\sum_{(a,b)\in A\times B}n_{(a,b)}1_{a,b}.
 \]
@@ -167,13 +181,9 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \]
 生成的子群，那么我们$A\otimes B$就可以构造为$F/H$，令$\varphi(a,b)=a\otimes b=[1_{a,b}]$，即$1_{a,b}$的陪集。这确实是张量积，具体的检验这里就不进行了。\qed
 
-% 设$R$是交换环，$A$和$B$都是双边模，那么$A\otimes_R B$显然有一个$R$-模结构，比如$r(a\otimes b)$可以定义为$(ra)\otimes b$.特别地，如果交换环$T$是一个$R$-代数\footnote{设$f:R\to T$是一个环同态，那么我们可以通过$r\cdot t=f(r)t$在$T$上定义一个$R$-模结构，此时称$T$是一个$R$-代数。此外，$R$-代数同态是一个环同态，同时也是一个$R$-模同态。}，设$A$是一个$R$-模，则$A\otimes_R T$就是一个$T$-模。这是因为，我们可以通过$t(a\otimes b)=a\otimes (tb)$来定义标量乘法。
-
 \para 有了两个模的张量积，我们自然也可以拓展为三个模的张量积，我们可以通过模仿两个模的张量积的泛性质\footnote{即三线性的函数可以唯一分解。}，定义一个新的三个模之间的张量积$A\otimes B\otimes C$，然后可以检验$(A\otimes B)\otimes C$和$A\otimes (B\otimes C)$同时也满足泛性质，所以他们之间是同构的。在这层意义上，我们可以认为张量积满足结合律，因此我们自然也有了有限个模的张量积。
 
-\para 有同构$A\otimes\bigoplus_i B_i\cong \bigoplus_i (A\otimes B_i)$，$R\otimes A\cong A$以及$(R/I)\otimes B\cong B/IB$，其中$I$是$R$的一个理想。这俩的证明完全是利用泛性质，这里就不说了。
-
-\para 下面讨论张量积在同态下的表现。设$\varphi:M\to M'$和$\psi:N\to N'$是$R$-模同态，则它诱导了一个同态
+\para 下面讨论张量积在同态下的表现。设$\varphi:M\to M'$是右$R$-模同态和$\psi:N\to N'$是左$R$-模同态，则它诱导了一个交换群同态
 \[
 	\alpha(\varphi,\psi):M\otimes N\to M'\otimes N',
 \]
@@ -206,7 +216,20 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \]
 成立。
 
-上面的交换图用范畴论的语言来表述就是，$\otimes N$以及$\otimes \id_N:=\alpha(*,\id_N)$一起构成了一个函子，而同态$N\to N'$将诱导出一个函子间的态射（即自然变换）。这样的同态我们称为自然同态或者函子式同态，描述同态其实就是建立范畴论的初衷，为了抽象出自然变换才定义了范畴等概念。然后到了教科书上，逻辑就反了过来。
+上面的交换图用范畴论的语言来表述就是，$-\otimes N$以及$-\otimes \id_N:=\alpha(-,\id_N)$一起构成了一个函子，而同态$N\to N'$将诱导出一个函子间的态射（即自然变换）。这样的同态我们称为自然同态或者函子式同态，描述同态其实就是建立范畴论的初衷，为了抽象出自然变换才定义了范畴等概念。然后到了教科书上，逻辑就反了过来。同理，$(N\otimes -,\id_N\otimes -)$也是一个函子。
+
+\pro 记左$R$-模范畴之间的态射集为$\Hom_R(-,*)$. 则成立双函子同构
+\[
+	\Hom_{\mathbb{Z}}(M\otimes_R N,G)\cong \Hom_R(M,\Hom_\mathbb{Z}(N,G)),
+\]
+其中$M$和$N$是可以变动的。因此，$-\otimes_R N$就是一个左伴随函子，而$\Hom_\mathbb{Z}(N,*)=h^N$是一个右伴随函子。\notprove
+
+根据左伴随函子与逆极限可交换，而直和是模范畴的一种逆极限，我们可以得知同构
+\[
+	\left(\bigoplus_i M_i\right)\otimes N\cong \bigoplus_i \left(M_i\otimes N\right).
+\]
+
+\para 成立同构$R\otimes A\cong A$以及$(R/I)\otimes B\cong B/IB$，其中$I$是$R$的一个理想。这俩的证明完全是利用泛性质，这里就不说了。
 
 \para 上一个命题给出了如下映射：
 \[
@@ -218,7 +241,9 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \]
 这也就是为什么大家将$\alpha(\varphi,\psi)$记作$\varphi\otimes \psi$. 
 
-\para 上面我们已经看到了，$\otimes N$构成一个函子，而实际上，它是右正和函子。
+\para 上面我们已经看到了，$-\otimes N$构成一个函子，而实际上，它是右正和函子。
+
+\para 从这里开始，以后讨论的张量积都是$R$-模范畴的张量积，所以两个$R$-模的张量积依然是$R$-模，所有出现的同态都是$R$-模同态。并且，我们有函子性同构$-\otimes N\cong N\otimes -$.
 
 \section{标量扩张与局部化}
 
