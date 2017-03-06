@@ -1,3 +1,4 @@
+\renewcommand\chapterimg{../Pictures/14.png}
 \chapter{环（二）}
 \section{赋值环}
 
@@ -78,7 +79,7 @@
 
 	反过来，设有一个赋值映射$v:k^*\to \zz$. 如果$x$, $y\in R$满足$v(x)=v(y)$，于是$v(xy^{-1})=v(x)-v(y)=0$，所以$xy^{-1}$可逆。由于$x=(xy^{-1})y$，所以$(x)=(y)$. 这也意味着，如果有一个真理想$\mathfrak{a}$以及$x\in \mathfrak{a}$，则所有与$x$具有相同赋值的$y\in R$也都在$\mathfrak{a}$中，因为$(y)=(x)\subset \mathfrak{a}$.
 
-	设$\mathfrak{a}$是$R$的一个真理想，记$n(\mathfrak{a})=\min_{x\in \mathfrak{a}}v(x)$. 由于是真理想，所以$\mathfrak{a}$中元素都是不可逆的，所以$n(\mathfrak{a})>0$. 由上面的推理，$\mathfrak{a}=\varphi^{-1}\left((n(\mathfrak{a})-1,\infty]\right)$. 因此$\mathfrak{a}$中所有的非平凡理想都具有$\mathfrak{a}_n=\varphi^{-1}\left((n,\infty]\right)$的形式，其中$n$是一个非负整数。因为在$\varphi^{-1}\left((n,\infty]\right)$中必然有一个$x$使得$v(x)=n+1$，此时$\varphi^{-1}\left((n,\infty]\right)=(x)$. 所以每一个$\varphi^{-1}\left((n,\infty]\right)$都是主理想，记作$(a_n)$. 所以将$R$中所有理想排出来得到如下严格降链：
+	设$\mathfrak{a}$是$R$的一个真理想，记$n(\mathfrak{a})=\min_{x\in \mathfrak{a}}v(x)$. 由于是真理想，所以$\mathfrak{a}$中元素都是不可逆的，所以$n(\mathfrak{a})>0$. 由上面的推理，$\mathfrak{a}=v^{-1}\left((n(\mathfrak{a})-1,\infty]\right)$. 因此$\mathfrak{a}$中所有的非平凡理想都具有$\mathfrak{a}_n=v^{-1}\left((n,\infty]\right)$的形式，其中$n$是一个非负整数。因为在$v^{-1}\left((n,\infty]\right)$中必然有一个$x$使得$v(x)=n+1$，此时$v^{-1}\left((n,\infty]\right)=(x)$. 所以每一个$v^{-1}\left((n,\infty]\right)$都是主理想，记作$(a_n)$. 所以将$R$中所有理想排出来得到如下严格降链：
 	\[
 		(a_0)\supset (a_1) \supset (a_2)\supset \cdots,
 	\]
