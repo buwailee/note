@@ -336,7 +336,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \end{itemize}
 \end{enumerate}
 
-如果一个范畴的对象可以构成一个集合，那么这个范畴就被称为小范畴。在定义中，我们可以看到，所有对象与集合、态射与映射的相似性，所以我们可以直接断言，所有集合以及集合间的映射构成了一个范畴，他被称为集合范畴，记作Set.
+如果一个范畴的对象可以构成一个集合，那么这个范畴就被称为小范畴。在定义中，我们可以看到，所有对象与集合、态射与映射的相似性，所以我们可以直接断言，所有集合以及集合间的映射构成了一个范畴，他被称为集合范畴，记作$\mathsf{Set}$.
 
 类似地，所有的群/环/$R$-模和他们两两之间的同态构成了一个范畴。下面是一个稍微不一般一点的例子。
 
@@ -391,13 +391,13 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 在有些作者那里，上面定义的函子被称为协变函子，而函子$f:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$f(\varphi\psi)=f(\psi)f(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。于是，偏序集之间的反变函子就是逆序映射，对$x_1\leq x_2$成立$f(x_2)\leq f(x_1)$.
 
-\para （反变）态射函子是（反变）函子的重要例子。设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。定义一个函子$\mathcal{C}(A,\star):\mathcal{C}\to \text{Set}$如下：对于对象，$B\mapsto \mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
+\para （反变）态射函子是（反变）函子的重要例子。设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。定义一个函子$\mathcal{C}(A,\star):\mathcal{C}\to \mathsf{Set}$如下：对于对象，$B\mapsto \mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
 \[
 	\mathcal{C}(A,f)=f_*: g\mapsto f\circ g.
 \]
 此时$\mathcal{C}(A,\star)$被称为关于$A$的\idx{态射函子}。经常，我们将$\mathcal{C}(A,\star)$简单记$h^A$.
 
-同样，我们可以定义\idx{反变态射函子}$\mathcal{C}(\star,A):\mathcal{C}^{\text{op}}\to \text{Set}$：对于对象，$B\mapsto \mathcal{C}(B,A)$，对于态射$f:B\to C$，它通过
+同样，我们可以定义\idx{反变态射函子}$\mathcal{C}(\star,A):\mathcal{C}^{\text{op}}\to \mathsf{Set}$：对于对象，$B\mapsto \mathcal{C}(B,A)$，对于态射$f:B\to C$，它通过
 \[
 	\mathcal{C}(f,A)=f^*: g\mapsto g\circ f
 \]
@@ -412,7 +412,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	}
 \end{xy}
 \]
-则$\varphi$被称为一个自然变换，或者叫函子间的态射。继而，谈论函子的同构也有了意义。将$\mathcal{C}$与$\mathcal{D}$之间的函子构成的范畴记作$[\mathcal{C},\mathcal{D}]$，特别地，将$[\mathcal{C}^\text{op},\text{Set}]$记作$\hat{\mathcal{C}}$.
+则$\varphi$被称为一个自然变换，或者叫函子间的态射。继而，谈论函子的同构也有了意义。将$\mathcal{C}$与$\mathcal{D}$之间的函子构成的范畴记作$[\mathcal{C},\mathcal{D}]$，特别地，将$[\mathcal{C}^\text{op},\mathsf{Set}]$记作$\hat{\mathcal{C}}$.
 
 描述自然变换是范畴论的初衷，自然变换在数学中的频繁出现才使得人们想要抽象出这个概念，为了描述这个概念，人们发明了范畴与函子。自然变换频繁出现的原因在于一些构造：设有一个范畴$\mathcal{C}$，对每一个对象$X\in \mathcal{C}$构造了一个函子$f_X$，比如前面定义出的反变态射函子$h_X$. 当我们改变对象的时候，即给出一个态射$\varphi:X\to Y$，往往具体的构造将诱导出对每一个$V\in \mathcal{C}$都有态射$f_\varphi(V):f_X(V)\to f_Y(V)$. 由于是函子，对态射$\rho:V\to W$也诱导了态射，汇总起来就是有图
 \[
@@ -444,7 +444,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 复合定义为$(\varphi,\psi)(\varphi',\psi')=(\varphi\varphi',\psi\psi')$. 在这个复合下，对象$X\times Y$到自己的恒等态射就是$(\id_X,\id_Y)$. 所以$\mathcal{C}\times\mathcal{D}$确确实实是一个范畴。同理，可以定义有限个范畴的积。
 
-设$\mathcal{F}$是另一个范畴，函子$f:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$被称为一个双函子。比如$\mathcal{C}(\star,\star)$是一个$\mathcal{C}^\text{op}\times \mathcal{C}\to \text{Set}$的双函子。如果固定双函子的一个变元，那么双函子会退化成一个函子。比如$\mathcal{C}(\star,\star)$固定第一个变元为$X$的时候得到$h^X$.
+设$\mathcal{F}$是另一个范畴，函子$f:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$被称为一个双函子。比如$\mathcal{C}(\star,\star)$是一个$\mathcal{C}^\text{op}\times \mathcal{C}\to \mathsf{Set}$的双函子。如果固定双函子的一个变元，那么双函子会退化成一个函子。比如$\mathcal{C}(\star,\star)$固定第一个变元为$X$的时候得到$h^X$.
 
 反过来，如果$f$对每一个$X\in \mathcal{C}$是函子$f(X,\star):\mathcal{D}\to \mathcal{F}$，以及对每一个$Y\in \mathcal{C}$是函子$f(\star,Y):\mathcal{C}\to \mathcal{F}$，那么何时$f$才是一个双函子。考虑如下图
 \[
@@ -500,13 +500,13 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	因此，从左上到右下两条路给出$g(\psi,\varphi)\alpha(X)(Y)=\beta(Y')(X')f(\psi,\varphi)$，由于$\gamma(X,Y)=\alpha(X)(Y)=\beta(Y)(X)$，所以也就是$g(\psi,\varphi)\gamma(X,Y)=\gamma(X',Y')f(\psi,\varphi)$，所以$\gamma:f\to g$是一个自然变换。
 \qed
 
-% \lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \text{Set}$是一个函子，则从$\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
+% \lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \mathsf{Set}$是一个函子，则从$\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
 
 % \proof 对每个自然变换$\alpha:\Hom_\mathcal{C}(A,\star)\to F$定义$\theta(\alpha)=\alpha(A)(\id_A)\in F(A)$，现在定义一个逆映射即可。对$x\in F(A)$，定义自然变换$\psi(x):\Hom_\mathcal{C}(A,\star)\to F$通过$\psi(x)(B)(f)=F(f)(x)$，不难验证这是一个自然变换，而且$\psi$和$\theta$是互逆的。\qed
 
-\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\text{Set}$是一个集合，那么它与集合$X(e)={\text{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的${\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$.
+\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\mathsf{Set}$是一个集合，那么它与集合$X(e)={\mathsf{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的${\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$.
 
-设$f$是一个$\mathcal{C}$到Set的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，那么我们不仅仅得到了函子$f$的信息，我们也同样得到了对象$X$的信息。而且，比起任意的函子，反变态射函子是我们更愿意看到的，并且有着许多好的性质，因此我们可以做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}\to \text{Set}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
+设$f$是一个$\mathcal{C}$到Set的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，那么我们不仅仅得到了函子$f$的信息，我们也同样得到了对象$X$的信息。而且，比起任意的函子，反变态射函子是我们更愿意看到的，并且有着许多好的性质，因此我们可以做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}\to \mathsf{Set}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
 
 \lem 对任意的$X\in \mathcal{C}$以及$f\in \hat{\mathcal{C}}$，存在同构$i_{X,f}:\Gamma(X,f)=f(X)\to {\hat{\mathcal{C}}}(h_X,f)$.
 
@@ -532,11 +532,11 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	这样也就定义了一个函子$i_{X,f}(a)\in {\hat{\mathcal{C}}}(h_X,f)$，继而有映射$i_{X,f}:f(X)\to {\hat{\mathcal{C}}}(h_X,f)$. 最后只要检验$e_{X,f}(i_{X,f}(a))=a$以及$i_{X,f}(e_{X,f}(\varphi))=\varphi$，他们都由$i_{X,f}(Y)(g)=f(g)\left(e_{X,f}(\varphi)\right)$保证。
 \qed
 
-对偶地，设$f$是一个$\mathcal{C}$到集合范畴的函子，则$\Gamma(X,f)\cong [\mathcal{C},\text{Set}](h^X,f)$对任意的$X\in \mathcal{C}$都成立。
+对偶地，设$f$是一个$\mathcal{C}$到集合范畴的函子，则$\Gamma(X,f)\cong [\mathcal{C},\mathsf{Set}](h^X,f)$对任意的$X\in \mathcal{C}$都成立。
 
-% \para 对于固定的$X$，他可以看成一个$\hat{\mathcal{C}}=[\mathcal{C}^\text{op},\text{Set}]\to \text{Set}$的函子。同样，对于固定的$X$，态射函子${\hat{\mathcal{C}}}(h_X,\star)$也是一个$\hat{\mathcal{C}}\to \text{Set}$的函子。上面的引理就是在说，这两个函子作用在相同的对象$f\in \hat{\mathcal{C}}$上可以得到同构的两个对象。
+% \para 对于固定的$X$，他可以看成一个$\hat{\mathcal{C}}=[\mathcal{C}^\text{op},\mathsf{Set}]\to \mathsf{Set}$的函子。同样，对于固定的$X$，态射函子${\hat{\mathcal{C}}}(h_X,\star)$也是一个$\hat{\mathcal{C}}\to \mathsf{Set}$的函子。上面的引理就是在说，这两个函子作用在相同的对象$f\in \hat{\mathcal{C}}$上可以得到同构的两个对象。
 
-% 对于固定的$f$，他本身是$\hat{\mathcal{C}}$中的函子，也可以写成$\Gamma(\star,f)$. 同时，函子${\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \text{Set}$也是$\hat{\mathcal{C}}$中的函子。上面的引理就是在说，这两个函子作用在相同的对象$X\in \mathcal{C}$上可以得到同构的两个对象。
+% 对于固定的$f$，他本身是$\hat{\mathcal{C}}$中的函子，也可以写成$\Gamma(\star,f)$. 同时，函子${\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \mathsf{Set}$也是$\hat{\mathcal{C}}$中的函子。上面的引理就是在说，这两个函子作用在相同的对象$X\in \mathcal{C}$上可以得到同构的两个对象。
 
 % 下面一个命题告诉我们，Lemma (\thepara)中的同构对于这两对函子都是自然变换，即实际上是函子间的同构，而不仅仅是作用在对象上的同构。
 
@@ -590,7 +590,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	所以得证，其他的检查也类似。
 \qed 
 
-\pro 对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\text{Set}](h^-,\star)$，这也被称为Yoneda引理。
+\pro 对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\mathsf{Set}](h^-,\star)$，这也被称为Yoneda引理。
 
 在Yoneda引理的证明中，已经看到，最不平凡的地方在于：如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$. 类似地，还有协变的版本，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 所以，往往这两点被单独拎出来称为Yoneda引理。
 
@@ -677,7 +677,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 	3. 这是Oka理想族。如果$\mathfrak{a}+(a)=(b)$是主理想且$(\mathfrak{a}:a)=(c)$也是主理想，如果$a\in \mathfrak{a}$，则$\mathfrak{a}=(b)$是主理想。假设$a\not\in\mathfrak{a}$，存在$x\in \mathfrak{a}$使得$x+a=b$，所以$bc=xc+ac\in \mathfrak{a}$，或者$(bc)\subset \mathfrak{a}$. 反过来，任取$x\in \mathfrak{a}$,由于$\mathfrak{a}+a=\mathfrak{b}$，所以存在$r$, $s\in R$使得$x=rb$以及$a=sb$. 因此$ra=rsb=sx\in\mathfrak{a}$给出了$r\in (\mathfrak{a}:a)=(c)$，于是$y=rb\in (c)(b)=(bc)$.
 
-	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$是乘性子集，$xy\in S$，所以$\pp+(ab)\cap S\neq \varnothing$.
+	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$对乘法封闭，$xy\in S$，所以$(\pp+(ab))\cap S\neq \varnothing$.
 \qed
 
 所以上述命题告诉我们：在保证存在性的前提下，
@@ -686,7 +686,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 	2. 所有非有限生成的理想中极大的是素理想。
 
-	2. 所有非主理想的理想中极大的是素理想。
+	3. 所有非主理想的理想中极大的是素理想。
 
 	4. 所有与某乘性子集不交的理想中极大的是素理想。
 
