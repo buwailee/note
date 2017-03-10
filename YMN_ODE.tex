@@ -1,0 +1,83 @@
+% author: buwailee@nmhs
+\documentclass[10pt]{article}
+\usepackage[zh]{noteheader}
+\usepackage{titletoc}%使用目录
+	\theoremstyle{plain}%定理环境样式
+	\newtheorem{pro}{Proposition}[section]% 定义命题环境
+	\newtheorem{defi}{Definition}[section]% 定义命题环境
+	\newtheorem{theo}{Theorem}[section]% 定义定理环境
+
+\usepackage{hyperref}
+	\hypersetup %一些选项
+	{
+		bookmarksnumbered=true,%书签中章节编号
+		colorlinks=true,  % 彩色链接 false:边框链接 ; true: 彩色链接
+	}
+
+\include{defs}
+\newcommand{\cc}{\mathbb{C}}
+
+\begin{document}
+\title{你必须知道的常微分方程常识}
+\author{Buwai Lee}
+\date{\today}
+\maketitle %标题
+
+\section{微积分}
+
+记号上，所有$k$-阶导数在开集$U$上连续的$Y$-值函数的集合记作$C^k(U,Y)$，如果$Y=\rr$，则简单记作$C^k(U)$. 特别地，约定$C^0(U,Y)$为$U$上的$Y$-值连续函数。
+
+\begin{theo}
+	隐函数定理：设$f=(f^1$, $\cdots$, $f^n)$是从$\rr^{n}\times \rr^k$到$\rr^n$的函数，不妨记前$k$个变元为$\{t^1$, $\cdots$, $t^k\}$，后$n$个变元为$\{x^1$, $\cdots$, $x^n\}$. 如果在$(t_0,x_0)\in \rr^{n+k}$附近，存在一个矩形邻域$W=U\times V$使得
+
+	\no{1} $f$在$(t_0,x_0)$处连续且$f(t_0,x_0)=0$；
+
+	\no{2} 对每一个$1\leq i$, $j\leq n$，Jacobi矩阵$(\partial_i f^j)=(\partial f^j/\partial x^i)$在$W$上有定义且在$(t_0,x_0)$处连续；
+
+	\no{3} Jacobi行列式$|\partial_i f^j|$在$(t_0,x_0)$处不为零；\\
+\noindent 则存在一个足够小的矩形邻域$U'\times V'\subset U\times V$，以及函数$\varphi=(\varphi_1$, $\cdots$, $\varphi_n):U' \to V'$使得方程$f(t,\varphi(t))=0$成立，并且这是满足初始条件$x_0=\varphi(t_0)$的唯一解。$\varphi$在$t_0$处连续。
+\end{theo}
+
+简单来说，就是一组方程$f(t,x)=0$在$(t_0,x_0)$处关于$x$的Jacobi矩阵如果可逆，则局部存在方程的唯一解$x=\varphi(t)$.
+
+隐函数定理的条件还是比较弱的，可以适当加强，比如设$f$不仅仅在$(t_0,x_0)$一点连续，还在它的一个邻域上连续。那么可以推知$\varphi$也不仅仅在$t_0$连续，而是在$t_0$的一个邻域上连续。实际上，由$\partial_i f^j$的连续性，在$(t_0,x_0)$的某个邻域上，所有形如$(t,\varphi(t))$的点都满足隐函数定理的条件，所有这些点附近都可以求解隐函数，然后由解的唯一性，可以拼出一个比较大的隐函数，他在$t_0$的某个邻域上连续。
+
+另一方面，如果矩阵$(\partial f^i/\partial t^j)$在$(t_0,x_0)$的领域上存在，且在$(t_0,x_0)$处连续，则$\varphi(t)$在$t_0$处可微，导数就是按照一般的法则去求，将$f(t,\varphi(t))=0$在$t_0$处对$t$求导，有
+\[
+	0=\frac{\partial f^i(t,\varphi(t))}{\partial t^j}\bigg|_{t=t_0}=\frac{\partial f^i}{\partial t^j}(t_0,x_0)+\frac{\partial f^i}{\partial x^k}(t_0,x_0)\frac{\partial \varphi^k}{\partial t^j}(t_0),
+\]
+所以，为求$\varphi'(t_0)$，只要将
+\[
+	\frac{\partial f^i}{\partial x^k}(t_0,x_0)\frac{\partial \varphi^k}{\partial t^j}(t_0)=-\frac{\partial f^i}{\partial t^j}(t_0,x_0),
+\]
+两边乘以$\frac{\partial f^i}{\partial x^k}(t_0,x_0)$的逆矩阵即可。证明就是验证这样求出来的确实是导数。
+
+类似地，如果在$(t_0,x_0)$的一个邻域$W$内，$f$对$x$和$t$的偏导数都存在且连续，即$f\in C^1(W,\rr^n)$，则在$t_0$的某个邻域$V$内，$f(t,x)=0$的解$\varphi\in C^1(V,\rr^n)$, 且满足
+\[
+	\frac{\partial f^i}{\partial x^k}(t,\varphi(t))\frac{\partial \varphi^k}{\partial t^j}(t)=-\frac{\partial f^i}{\partial t^j}(t,\varphi(t)).
+\]
+将这个式子两边对$t$求导，就得到了下面的命题。
+
+\begin{pro}
+	隐函数的可微性：如果存在一个$(t_0,x_0)$的邻域$W$使得$f\in C^k(W,\rr^n)$，则在$t_0$的某个邻域$V$内，$f(t,x)=0$的解$\varphi\in C^1(V,\rr^n)$. 换而言之，$\varphi$与$f$具有相同的可微性。
+\end{pro}
+
+\section{常微分方程}
+
+从最简单的一阶常微分方程开始。设$F:\rr^3\to \rr$是一个函数，具体到变量写作$F(t,x,v)$. 所谓的一阶常微分方程就是形如$F(t,x,\dot{x})=0$的方程，其中$\dot{x}$是$x$关于$t$的导函数，这是Newton的记号。这个方程的解就是函数$\varphi(t)$，使得$F(t,\varphi(t),\varphi'(t))=0$对一定范围内的$t$成立。
+
+一般而言，$F$不会在$\rr^3$上定义，而只在一个更小的集合上有定义，此时方程的解$\varphi$的定义域就要保证$\varphi$和$\varphi'$的值域不会在$F$的定义域外边。这样确定下来的$t$的范围就被称为解$\varphi$的定义域。
+
+考虑特殊的一阶常微分方程$\dot{x}=f(t,x)$，其中$f$是一个给定的函数。这个方程会很普遍，因为如果$F$满足隐函数定理的条件，将$\dot{x}$解出来就得到了上面的方程。并且，关于这个方程，我们有著名的存在与唯一性定理。
+
+\begin{theo}
+	给定一阶常微分方程$\dot{x}=f(t,x)$，其中$f:U\to \rr$是开集$U\subset \rr^2$上的函数，且$f$以及$\partial_t f$在$U$上都连续，则
+
+	\no{1} 对$U$的每一点$(t_0,x_0)$，方程$\dot{x}=f(t,x)$都存在解$x=\varphi(t)$满足初始条件$x_0=\varphi(t_0)$.
+
+	\no{2} 如果$x=\varphi(t)$和$x=\psi(t)$都是方程的解，如果存在一个$t_0$使得$\varphi(t_0)=\psi(t_0)$成立，则在它们都有解的地方，都成立$\varphi(t)=\psi(t)$.
+\end{theo}
+
+上述定义第一条是存在性，第二条是唯一性。利用唯一性，我们可以考虑解的延拓。比方说，在开集$U_0$上有一个解，在开集$U_1$上也有一个解，且在$U_0\cap U_1$的某个点上它们是相同的，则它们在$U_0\cap U_1$上处处相同，继而我们可以将他粘起来得到$U_0\cup U_1$上面的一个解。
+
+\end{document}
