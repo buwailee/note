@@ -436,9 +436,9 @@ $S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (
 
 \para 固定环$R$，以及设$S$是$R$的一个子集。任取环同态$\varphi:R\to T$，如果$S$是可逆元构成的集合，则$\varphi(S)$也是可逆元构成的集合，如果$S$是乘性子集，则$\varphi(S)$也是乘性子集。
 
-已知，$R$-代数构成了一个范畴，它的对象是二元组$(T,\varphi_T)$. 设$S$是$R$的一个乘性子集，如果$\varphi_T(S)$中的元素都是可逆的，这样的代数构成了一个范畴，我们记作$\mathrm{Alg}_{(R,S)}$，它的态射就是普通的$R$-代数的同态，因为同态自然将可逆元变成了可逆元。由于$T$是一个$R$-代数，它本身就是一个$R$-模，给定乘性子集$S\subset R$，通过标量扩张，$S^{-1}T=S^{-1}R\otimes_R T$就得到了一个$S^{-1}R$-代数，实际上$S^{-1}T$作为环同构于$\varphi_T(S)^{-1}T$. 记$i_T=i_S\otimes 1:T\to S^{-1}T$是自然诱导的同态。
+已知，$R$-代数构成了一个范畴，它的对象是二元组$(T,\varphi_T)$. 设$S$是$R$的一个乘性子集，如果$\varphi_T(S)$中的元素都是可逆的，这样的代数构成了一个范畴，我们记作$\mathsf{Alg}_{(R,S)}$，它的态射就是普通的$R$-代数的同态，因为同态自然将可逆元变成了可逆元。由于$T$是一个$R$-代数，它本身就是一个$R$-模，给定乘性子集$S\subset R$，通过标量扩张，$S^{-1}T=S^{-1}R\otimes_R T$就得到了一个$S^{-1}R$-代数，实际上$S^{-1}T$作为环同构于$\varphi_T(S)^{-1}T$. 记$i_T=i_S\otimes 1:T\to S^{-1}T$是自然诱导的同态。
 
-任取$(T,\varphi_T)\in \mathrm{Alg}_R$，则分式环将给出一个函子$S^{-1}:T\mapsto S^{-1}T$，对于态射$\Psi:(T,\varphi_T)\to (U,\varphi_U)$，即满足$\varphi_U=\Psi\varphi_T$的环同态$\Psi:T\to U$. 考虑复合同态$i_{U}\Psi:T\to S^{-1}U$，由于$i_{U}\Psi(\varphi_T(s))=i_{U}\varphi_U(s)=s/1\in S^{-1}U$是可逆元，所以由分式环$S^{-1}T=\varphi_T(S)^{-1}T$的泛性质，存在同态
+任取$(T,\varphi_T)\in \mathsf{Alg}_R$，则分式环将给出一个函子$S^{-1}:T\mapsto S^{-1}T$，对于态射$\Psi:(T,\varphi_T)\to (U,\varphi_U)$，即满足$\varphi_U=\Psi\varphi_T$的环同态$\Psi:T\to U$. 考虑复合同态$i_{U}\Psi:T\to S^{-1}U$，由于$i_{U}\Psi(\varphi_T(s))=i_{U}\varphi_U(s)=s/1\in S^{-1}U$是可逆元，所以由分式环$S^{-1}T=\varphi_T(S)^{-1}T$的泛性质，存在同态
 \[
 	S^{-1}(\Psi):S^{-1}T\to S^{-1}U.
 \]
@@ -453,27 +453,27 @@ $S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (
 \]
 因此，$S^{-1}$确实是一个函子。
 
-反过来，从范畴$\mathrm{Alg}_{(R,S)}$到$\mathrm{Alg}_R$有自然的遗忘函子$f$，他忘掉了$S\cdot 1$在相应的$R$-代数中是可逆的。
+反过来，从范畴$\mathsf{Alg}_{(R,S)}$到$\mathsf{Alg}_R$有自然的遗忘函子$f$，他忘掉了$S\cdot 1$在相应的$R$-代数中是可逆的。
 
 \theo 存在双函子同构：
 \[
-	F(-,\star):\mathrm{Alg}_R\bigl(-,f(\star)\bigr)\to \mathrm{Alg}_{(R,S)}\bigl(S^{-1}(-),\star\bigr).
+	F(-,\star):\mathsf{Alg}_R\bigl(-,f(\star)\bigr)\to \mathsf{Alg}_{(R,S)}\bigl(S^{-1}(-),\star\bigr).
 \]
 因此$S^{-1}$是遗忘函子的左伴随函子，继而是一个自由函子。这也可以看成$S^{-1}R$的另一种定义，只要将$f$的左伴随函子作用在$R$上就得到了$S^{-1}R$.
 
 \proof
-	首先构造同构，任取同态$R$-代数同态$\Psi:X\to f(Y)$，其中$Y$使得$\varphi_Y(S)$在$Y$中是可逆的。由于是$R$-代数同态，所以$\varphi_Y=\Psi\varphi_X$. 任取$s\in S$，有$\varphi_Y(s)=\Psi\varphi_X(s)$可逆，通过分式环的泛性质，有唯一的同态$F(X,Y)(\Psi):\varphi_X(S)^{-1}X=S^{-1}X\to Y$. 于是$F(X,Y)$就是我们构造的同构。由构造，这是一个单射，反过来，任取$\rho:\mathrm{Alg}_{(R,S)}(S^{-1}(X),Y)$，我们有$F(X,Y)(i_X\circ \rho)=\rho$，因此这是一个满射。
+	首先构造同构，任取同态$R$-代数同态$\Psi:X\to f(Y)$，其中$Y$使得$\varphi_Y(S)$在$Y$中是可逆的。由于是$R$-代数同态，所以$\varphi_Y=\Psi\varphi_X$. 任取$s\in S$，有$\varphi_Y(s)=\Psi\varphi_X(s)$可逆，通过分式环的泛性质，有唯一的同态$F(X,Y)(\Psi):\varphi_X(S)^{-1}X=S^{-1}X\to Y$. 于是$F(X,Y)$就是我们构造的同构。由构造，这是一个单射，反过来，任取$\rho:\mathsf{Alg}_{(R,S)}(S^{-1}(X),Y)$，我们有$F(X,Y)(i_X\circ \rho)=\rho$，因此这是一个满射。
 
 	最后要验证函子性同构，分别对$X$和$Y$检验自然变换即可。这点过于琐碎，这里就略去了。
 \qed
 
-任取$X\in \mathrm{Alg}_{(R,S)}$，它可以自然地看成一个$S^{-1}R$-代数，这由分式环的泛性质保证，反过来，任意的$S^{-1}R$-代数都可以看成$\mathrm{Alg}_{(R,S)}$里面的元素，所以有理由认为$\mathrm{Alg}_{S^{-1}R}$和$\mathrm{Alg}_{(R,S)}$作为范畴等价。事实上，可以定义一个函子$\mathrm{Alg}_{(R,S)}\to \mathrm{Alg}_{S^{-1}R}$，对对象，将任意的$R$-代数$X$看作$S^{-1}R$-代数$X$，对态射，任取$\varphi\in \mathrm{Alg}_{(R,S)}(X,Y)$，它也可以看作$S^{-1}R$-代数同态（请检查）。在上面的等同下，由泛性质，$\mathrm{Alg}_{(R,S)}(X,Y)=\mathrm{Alg}_{S^{-1}R}(X,Y)$，所以这是一个完全且忠实的函子。同样，任取$S^{-1}R$-代数$X$，他也可以看成$\mathrm{Alg}_{(R,S)}$里面的对象。所以由Proposition \eqref{equivcat}，$\mathrm{Alg}_{S^{-1}R}$和$\mathrm{Alg}_{(R,S)}$是等价范畴。
+任取$X\in \mathsf{Alg}_{(R,S)}$，它可以自然地看成一个$S^{-1}R$-代数，这由分式环的泛性质保证，反过来，任意的$S^{-1}R$-代数都可以看成$\mathsf{Alg}_{(R,S)}$里面的元素，所以有理由认为$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$作为范畴等价。事实上，可以定义一个函子$\mathsf{Alg}_{(R,S)}\to \mathsf{Alg}_{S^{-1}R}$，对对象，将任意的$R$-代数$X$看作$S^{-1}R$-代数$X$，对态射，任取$\varphi\in \mathsf{Alg}_{(R,S)}(X,Y)$，它也可以看作$S^{-1}R$-代数同态（请检查）。在上面的等同下，由泛性质，$\mathsf{Alg}_{(R,S)}(X,Y)=\mathsf{Alg}_{S^{-1}R}(X,Y)$，所以这是一个完全且忠实的函子。同样，任取$S^{-1}R$-代数$X$，他也可以看成$\mathsf{Alg}_{(R,S)}$里面的对象。所以由Proposition \eqref{equivcat}，$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$是等价范畴。
 
 也正是如此，因此上面的双函子同构可以写成
 \[
-	F(-,\star):\mathrm{Alg}_R\bigl(-,f(\star)\bigr)\to \mathrm{Alg}_{S^{-1}R}\bigl(S^{-1}(-),\star\bigr).
+	F(-,\star):\mathsf{Alg}_R\bigl(-,f(\star)\bigr)\to \mathsf{Alg}_{S^{-1}R}\bigl(S^{-1}(-),\star\bigr).
 \]
-但是，范畴$\mathrm{Alg}_{(R,S)}$并不需要$S^{-1}R$的构造，所以我们才谈论的是这个范畴，然后才可以通过自由函子给出$S^{-1}R$的一个定义。当然，这里已经可以事后诸葛亮地说，函子$S^{-1}$是与$S^{-1}R$-代数到$R$-代数的遗忘函子左伴随的自由函子。
+但是，范畴$\mathsf{Alg}_{(R,S)}$并不需要$S^{-1}R$的构造，所以我们才谈论的是这个范畴，然后才可以通过自由函子给出$S^{-1}R$的一个定义。当然，这里已经可以事后诸葛亮地说，函子$S^{-1}$是与$S^{-1}R$-代数到$R$-代数的遗忘函子左伴随的自由函子。
 
 \para 上面讨论了分式环几个定义。下面讨论分式环的几个重要实例。从一个事实开始，设$S\subset R$是一个乘性子集，而$S'$是$S$中元素的全部因子构成的乘性子集，则$S^{-1}R=S'^{-1}R$.
 

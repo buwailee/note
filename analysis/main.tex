@@ -1,7 +1,7 @@
 %!TEX program = xelatex
-\documentclass[9pt]{extbook}
+\documentclass[10pt]{extbook}
 \usepackage[book,zh]{noteheader}
-\usepackage[fontset = fandol]{ctex}
+% \usepackage[fontset = fandol]{ctex}
 \usepackage[chapter]{../egastyle}
 \usepackage{hyperref}
 	\hypersetup{
@@ -22,11 +22,183 @@
 \tableofcontents
 
 \mainmatter
-\chapter{测度与拓扑矢量空间}
-\section{Hilbert空间}
+\chapter{拓扑矢量空间}
 
+\section{拓扑群}
 
-\chapter{haha}
+\para 一个群$G$是拓扑群，如果群上有一个拓扑结构使得群乘法和逆都是连续映射。由于左乘是一个同胚，所以如果$U$是一个开集（闭集），那么$gU=\{gh\,:\,h\in U\}$也是一个开集（闭集）。对应到拓扑矢量空间，如果$U$是一个开集（闭集），那么$a+U=\{a+x\,:\,x\in U\}$也是一个开集（闭集）。
+
+对拓扑群$G$，以及子集$A$, $B$，引入两个记号：$A^{-1}=\{a^{-1}\,:\,a\in A\}$以及$AB=\{ab\,:\,a\in A,\, b\in B\}$. 如果$U$是一个开集（闭集），则$U^{-1}$也是一个开集（闭集）。任取开集$U$，以及子集$A$，由于$AU=\bigcup_{a\in A}aU$，所以$AU$是开集，类似地，$UA$也是开集。
+
+从定义来看，如果$A=A_0\cup A_1$，则$BA=BA_0\cup BA_1$，同样，如果$A=A_0\cap A_1$，则$BA=BA_0\cap BA_1$. 因此至少对于有限交或者有限并来说，乘积是可以分配进去的。如果单位元的一个邻域$U$满足$U^{-1}=U$，这样的开集就被称为对称的。
+
+\lem 设$U$是单位元的一个邻域，则存在单位元的一个对称邻域$V$使得$V\subset VV\subset U$. 
+
+\proof
+	由于乘法是连续的，所以存在$e$的邻域$V_1$和$V_2$使得$V_1V_2\subset U$. 令$V=(V_1\cap V_1^{-1})\cap (V_2\cap V_2^{-1})$. 显然这是对称的，并且$VV\subset U$. 由于$e\in V$，所以$V=eV\subset VV\subset U$.
+\qed
+
+\lem 设$A\subset G$是一个拓扑群的一个子集，记$\mathfrak{I}$是所有包含单位元$e$的开集构成的集合，则对$A$的闭包$\overline{A}$有等式
+\[
+	\overline{A}=\bigcap_{U\subset \mathfrak{I}}AU=\bigcap_{U\subset \mathfrak{I}}\overline{AU}.
+\]
+
+\proof
+	任取$x\in \overline{A}$以及$U\in \mathfrak{I}$. 我们有$xU^{-1}$是$x$的一个邻域，于是存在$a\in A\cap x U^{-1}$，记$a=xu^{-1}$，我们有$x=au\in AU$. 于是$\overline{A}\subset \bigcap_{U\subset \mathfrak{I}}AU$. 这也给出了一个下面会用到的结论：任取$e$的一个开集$U$，有$\overline{A}\subset AU$.
+
+	反过来，考虑闭集的并$\bigcap_{U\subset \mathfrak{I}}\overline{AU}$，这是一个闭集，且有显然的包含关系$\bigcap_{U\subset \mathfrak{I}}AU\subset \bigcap_{U\subset \mathfrak{I}}\overline{AU}$. 任取$x\in \bigcap_{U\subset \mathfrak{I}}\overline{AU}$以及$U\in \mathfrak{I}$，由上一个引理，存在$U'\in \mathfrak{I}$使得$U'U'\subset U$. 由于$x\in \overline{AU'}\subset AU'U'\subset AU$，所以有$\bigcap_{U\subset \mathfrak{I}}\overline{AU}\subset \bigcap_{U\subset \mathfrak{I}}AU$. 进而$\bigcap_{U\subset \mathfrak{I}}AU=\bigcap_{U\subset \mathfrak{I}}\overline{AU}$.
+
+	令$U_x$是$x\in \bigcap_{U\subset \mathfrak{I}}AU$的一个邻域，再令$U=U_x^{-1}x$，他是$e$的一个邻域且$x\in AU$. 于是存在$a\in A$使得$a\in xU^{-1}=xx^{-1}U_x=U_x$，这就是在说$A\cap U_x\neq \varnothing$. 假设$x\in G-\overline{A}$，则$x$附近一定有一个邻域$U_x$使得$U_x\subset G-\overline{A}$，这与$A\cap U_x\neq \varnothing$矛盾，所以$x\in \overline{A}$.
+\qed
+
+% 对于$A=\{e\}$的情况会特别有趣。记$H=\overline{\{e\}}=\bigcap_{U\subset \mathfrak{I}}U$. 于是$x\in H$就是在说，对于任意包含$e$的开集$U$，$x\in U$. 我们下面证明这是一个子群。
+
+% 任取$x\in H$，由于$U$是包含$e$的开集当且仅当$U^{-1}$是包含$e$的开集，所以$x^{-1}\in H$. 任取$x$, $y\in H$，任取$xy$的一个邻域$U$，我们要证明他总是包含$e$的，这样就有$xy\in H$. 由于$e\in U(xy)^{-1}$，由于$x^{-1}\in H$，所以$x^{-1}\in U(xy)^{-1}$. 两边乘以$x$得到$e \in Uy^{-1}$. 类似地，有$y^{-1}\in Uy^{-1}$，两边乘以$y$得到$e\in U$. 于是$H$是$G$的一个子群，而且还是一个闭子群。
+
+\pro 设$G$是一个拓扑群，如果$\{e\}$是一个闭集，则
+
+1. $G$中任意单点集是一个闭集，这样的拓扑空间被称为$\mathsf{T}_1$空间。
+
+2. $G$是一个Hausdorff空间\footnote{对于任意不同的两点$x$和$y$，他们有不相交的邻域，换而言之，点与点是可以用开集分离的。}，或者被称为$\mathsf{T}_2$空间。
+
+3. $G$是正则Hausdorff空间\footnote{单点集是闭集，且任取一个$x$以及一个不包含$x$的闭集$V$，存在两个不相交的开集$U_x$和$U_V$使得$x\in U_x$, $V\subset U_V$. 换而言之，点与开集是可以用开集分离的。}，或者被称为$\mathsf{T}_3$空间。
+
+\proof 
+	对于第一点，任意一个单点集都是单位元的平移，所以成立。因为$\mu:(x,y)\mapsto x^{-1}y$是连续映射且$\{e\}$闭集，$\Delta=\mu^{-1}(e)\subset G\times G$是闭集，其中$\Delta=\{(x,x):x\in G\}$，利用Hausdorff性的对角线判别法\footnote{一个拓扑空间是Hausdorff空间，当且仅当对角线集合$\Delta=\{(x,x)\,:\,x\in X\}\subset X\times X$是一个闭集。}，$G$是一个Hausdorff空间。而一个$\mathsf{T}_1$空间是$\mathsf{T}_3$的，当且仅当对任意的$x$以及他的一个邻域$U$，存在$x$的邻域$V$使得$\overline{V}\subset U$. 由于$x^{-1}U$是$e$的一个邻域，所以存在对称开集$U'$满足$U'\subset U'U'\subset x^{-1}U$. 所以$xU'\subset xx^{-1}U=U$是$x$的一个邻域，满足$\overline{xU'}\subset xU'U'\subset xx^{-1}U=U$.
+\qed
+
+脱离上面的命题，下面给出一个分离性条件的直接证明：
+
+\pro 设$V$是拓扑群$G$的一个闭子集，而$K$是$G$的一个紧子集，并且$V\cap K=\varnothing$. 那么存在$e$的一个邻域$U$使得$VU\cap KU=\varnothing$.
+
+由于有限集是紧集，当假设$\{e\}$是闭集的时候，这个命题可以直接推出$\mathsf{T}_3$条件。
+
+\proof
+	假定$K$非空，否则命题显然正确。已经知道，任意一个包含原点的开集$U$，可以找到对称开集$V$使得$VV\subset U$. 现在任取$x\in K$，于是$G-V$是一个开集，所以可以找到包含原点的开集$U_x$使得$xU_x\cap V=\varnothing$. 取对称开集$U'_x$使得$U'_xU'_x\subset U_x$，再取对称开集$U''_x$使得$U''_xU''_x\subset U'_x$此时$xU'_xU''_xU''_x\subset xU'_xU'_x\subset xU_x$，所以$xU'_xU''_xU''_x\cap V=\varnothing$. 
+
+	任取$y\in xU'_xU''_x\cap VU''_x$，由于$y\in xU'_xU''_x$，所以$yU''_x\subset xU'_xU''_xU''_x$，这意味着$yU''_x\cap V=\varnothing$，或者说，任取$a\in U''_x$，都有$ya\not\in V$. 另一方面，由于$y\in VU''_x$，所以一定存在一个$b\in U''_x$和$v\in V$使得$y=vb$成立，反过来，$yb^{-1}=v\in V$，由于$U''_x$是对称的，所以$b^{-1}\in U''_x$，矛盾。因此$xU'_xU''_x\cap VU''_x=\varnothing$.
+
+	遍历$x$，$xU'_x$构成$K$的一个开覆盖，由于$K$是紧集，取一个有限子覆盖，对应于$x_1$, $\cdots$, $x_n\in K$. 令$U=\bigcap_{i=1}^n U''_{x_i}$，则
+	\[
+	KU\subset \bigcup_{i=1}^n {x_i}U'_{x_i}U\subset \bigcup_{i=1}^n x_iU'_{x_i}U''_{x_i}.
+	\]
+	任取$x_iU'_{x_i}U''_{x_i}$，由于
+	\[
+		x_iU'_{x_i}U''_{x_i}\cap VU=x_iU'_{x_i}U''_{x_i}\cap \bigcap_{j=1}^n VU''_{x_j}=(x_iU'_{x_i}U''_{x_i}\cap VU''_{x_i})\cap \bigcap_{j\neq i}^n VU''_{x_j}=\varnothing \cap \bigcap_{j\neq i} VU''_{x_j}=\varnothing,
+	\]
+	所以$KU\cap VU=\varnothing$.
+\qed
+
+由于$VU$是一个开集，所以$\overline{KU}$都与$VU$不交，进而与$V$不交。由于有限集都是紧的，取$K=\{e\}$，然后就有$\overline{U}$与$V$不交。所以，任取$e$的一个邻域$W$，有闭集$G-W$，于是存在一个$e$的邻域$U$使得$\overline{U}$与$G-W$不交，或者说$\overline{U}\subset W$.
+
+上面讨论了所有单位元邻域的交，由此产生了分离性的讨论。下面说明，任意一个单位元邻域都可以生成整个含有单位元的连通分支。
+
+\lem \label{lem:116} 对于连通拓扑群，设$U$是单位元的任意一个邻域，则$G=\bigcup_{n\geq 1}U^n$，其中$U^k=\{g_1\cdots g_k\,:\,g_i\in U,\, 1\leq i \leq k\}$是开集。
+
+\proof
+	令$V=U\cap U^{-1}$，显然$V=V^{-1}\subset U$以及$H=\bigcup_{n\geq 1}V^n\subset \bigcup_{n\geq 1}U^n$，而且$H$还是一个子群。下面我们只要证明$H=\bigcup_{n\geq 1}V^n$既是开的也是闭的，那么连通性自然给出了结论。他是开的，如果$\sigma\in V^k$，那么$\sigma V\in V^{k+1}\subset H$就是他的一个开邻域。他是闭的，因为每一个$\sigma H$都是开的，于是$H=G-\bigcup_{\sigma\notin H}\sigma H$是一个闭集。
+\qed
+
+结合上面两点不难看到，因为拓扑群有着代数结构，一般而言，这就使得拓扑群的拓扑结构都来自于其单位元附近的邻域。
+
+举个例子，一个拓扑空间是局部紧的，需要每一点处有一个紧邻域，到了拓扑群，只需要单位元有一个紧邻域。
+
+\para 一个拓扑空间$X$的拓扑可以由某个度量$d$诱导出来，则这个拓扑空间被称为可度量化的。对一般的拓扑空间$X$，Nagata-Smirnov度量化定理给出了可度量化的等价条件为$X$是$\mathsf{T}_3$且存在可数局部有限基。所谓的可数局部有限基就是说拓扑空间的基是可数个局部有限子族的并。所谓的局部有限族，就是对任意一点$p\in X$，存在一个邻域只与族中的有限个元素相交。
+
+到了拓扑群语境，这个条件可以减弱到单位元附近存在局部基，使得他是数个局部有限子族的并。而$\mathsf{T}_3$可以减弱到$\{e\}$是一个闭集。
+
+\section{拓扑矢量空间}
+
+本文称矢量空间一般是指$\rr$-模，称复矢量空间空间一般是指$\cc$-模. 因此，对标量有绝对值函数$|*|:k\to \rr$.
+
+\para 一个矢量空间$X$被称为赋范空间，如果存在一个非负函数$|*|:X\to \rr$使得如下性质成立：
+
+1. 三角不等式，任取$x$, $y\in X$，成立不等式：$|x+y|\leq |x|+|y|$.
+
+2. 任取标量$a$，以及$x\in X$，成立等式：$|ax|=|a||x|$.
+
+3. $|x|=0$当且仅当$x=0$.\\
+\noindent 这个非负函数被称为$X$上的一个范数。一旦给出$X$的一个范数，那么就可以定义$X$上的一个度量，$d(x,y)=|x-y|$. 这个度量被称为赋范空间的由范数诱导的度量。一般而言，除非特别声明，赋范空间上的范数都是指这个。
+
+\para 一个度量空间的拓扑结构是清楚的。记$B(x,r)=\{y\,:\, d(x,y)<r\}$为圆心在$x$，半径为$r$的开球。度量空间的所有开球构成一组拓扑基，继而给出了度量空间的一个拓扑结构。
+
+赋范空间的许多结构实际上完全来自于原点附近，这来自于这个事实，$d(x-z,y-z)=|x-z-y+z|=|x-y|=d(x,y)$，如果在平移下，两点之间的距离是不变的。然后可以证明，平移映射$T_a:x\mapsto x+a$是一个同胚，实际上，只要证明这是连续的即可，因为$T_{-a}$此时构成$T_a$的连续逆，而连续性来自于开球的原像也是开球。类似地，放缩映射$M_r:x\mapsto rx$是一个连续同胚，其中$r$是一个非零标量。由于$r$可以是负数，所以$x\mapsto -x$也是连续同胚。乘以零虽然不是一个同胚，但依然是一个连续映射，实际上，任取不包含原点的开集，原像是空集所以是开集，选取包含原点的开集，原像是整个空间所以是开集。
+
+更一般的，可以证明加法$p:X\times X\to X$是一个连续映射。考虑开球$B(x,r)$，我们有$p^{-1}(B(x,r))=\{(y,z)\,:\,|y+z-x|<r\}$，这是一个开集。实际上，任取$(y,z)\in p^{-1}(B(x,r))$，我们有$|y+z-x|=a<r$. 考虑开集$U=B(y,(r-a)/2)\times B(z,(r-a)/2)$，任取$(y',z')\in U$，有
+\[
+	|y'+z'-x|=\left|y'-y+z'-z+y+z-x\right|\leq |y'-y|+|z'-z|+|y+z-x|<r-a+a=r,
+\]
+于是$U\subset p^{-1}(B(x,r))$. 所以$p^{-1}(B(x,r))$是一个开集。
+
+\para 赋范空间是拓扑矢量空间的重要实例，而拓扑矢量空间也可以看成赋范空间的抽象。一个拓扑矢量空间是一个矢量空间$X$，上面有一个拓扑结构使得$X$是一个Hausdorff空间，且加法与标量乘法是连续映射。因此，一个拓扑矢量空间看成加法群的时候是一个拓扑群。
+
+Hausdorff空间的假设在许多材料里这个条件不是必须的，但是引入会很方便，而且基本上感兴趣的所有情况都会满足$\mathsf{T}_2$的假设，因为对于拓扑群来说$\mathsf{T}_2$空间假设其实是一个很容易满足的强力条件，只需要原点作为单点集是一个闭集即可。
+
+此外，拓扑矢量空间是道路连通的，任取$x$, $y\in X$，则$tx+(1-t)y$就构成连接$x$和$y$的一条连续道路。
+
+\para 由于拓扑矢量空间比交换拓扑群多了一个数乘的结构，这就导致了如下的一些定义：
+\begin{enumerate}
+\item 一个$X$的子集$C$是凸的，如果任取$0\leq t\leq 1$，都有$tC+(1-t)C\subset C$. 凸集是平移不变的，实际上，任取$a\in X$，都有$a+tC+(1-t)C=t(a+C)+(1-t)(a+C)\subset a+C$.
+
+\item 一个$X$的子集$C$是均衡的，如果任取标量$\alpha$使得$|\alpha|\leq 1$的时候有$\alpha C\subset C$.
+
+\item 一个拓扑矢量空间被称为局部凸的，如果$0$有一个局部基使得他的元素都是凸集。这等价于说每一点都有局部基，它的元素都是凸集。
+
+\item 一个$X$的子集$C$是有界的，如果对每一个$0$的邻域$U$，存在一个正实数$s_U$使得当$t>s_U$的时候有$C\subset tU$.
+
+\item 一个拓扑矢量空间被称为局部有界的，如果他有一个$0$的有界邻域$U$。
+
+\item 称一个拓扑矢量空间$X$为F-空间，如果它的拓扑是由一个完备\footnote{Cauchy列都收敛。}度量$d$诱导的，且满足$d(x-z,y-z)=d(x,y)$对任意的$x$, $y$, $z\in X$都成立。最后一点往往被称为平移不变，或者简单叫做不变。
+
+\item 称一个拓扑矢量空间$X$为Fr`{e}chet空间，如果$X$是一个局部凸F-空间。
+
+\item 如果拓扑矢量空间$X$的每一个有界闭子集都是紧的，则$X$被称为满足Heine-Borel性质。这个名字自然来自于Heine-Borel定理：$\rr^n$的每一个有界闭子集都是紧的。
+
+\item 赋范空间已经定义了。一个完备的赋范空间被称为Banach空间。
+\end{enumerate}
+
+从定义，可以得到：凸子集的闭包与内部都是凸子集；子空间的闭包是子空间；有界子集的闭包是有界子集；均衡子集的闭包是均衡子集，如果均衡子集包含原点，则它的内部也是均衡子集。
+
+\pro 任取一个原点的（凸）邻域$U$，都存在一个均衡（凸）邻域$V$使得$V\subset U$. 
+
+\proof
+	由于标量乘法是连续的，所以存在一个$\delta$和开集$V$使得当$0<|\alpha|<\delta$时，$\alpha V\subset U$. 遍历$\alpha$，所有$\alpha V$的并就是需要的均衡开子集。
+
+	如果$U$是凸的，设$A$是所有$\alpha U$的交，其中$|\alpha|=1$. 由于在$U$中存在均衡开子集$V$，所以对任意使得$|\alpha|=1$的$\alpha$，有$V\subset \alpha V$以及$\alpha V\subset \alpha^{-1}\alpha V=V$，所以$V=\alpha V$给出了$V\subset \alpha U$以及$V\subset A$. 这说明$A$具有非空内部，下面我们证明这就是想要的均衡凸邻域。首先作为凸集的交，$A$是凸集，其内部也是凸的。然后任取$\beta$使得$0\leq |\beta|\leq 1$，将其分解为径部$r=|\beta|$以及$\gamma=\beta/r$，其中$|\gamma|=1$. 于是
+	\[
+	\beta A=r\gamma A=\bigcap_{|\alpha|=1}r\gamma\alpha U=\bigcap_{|\gamma\alpha|=1}r(\gamma\alpha) U=\bigcap_{|\alpha|=1}r\alpha U,
+	\]
+	由于$U$包含原点，所以$rU=rU+0\subset rU+(1-r)U\subset U$，进而
+	\[
+	\beta A=\bigcap_{|\alpha|=1}r\alpha U\subset \bigcap_{|\alpha|=1}\alpha U=A
+	\]
+	推出$A$是均衡的，其内部也是均衡。
+\qed
+
+上面的命题意味着，拓扑矢量空间局部基的元素可以都选成均衡的。如果空间还是局部凸的，则局部基局部基的元素可以都选成均衡凸的。
+
+\para 任取一个原点的开邻域$U$，由于拓扑矢量空间$X$是连通的，所以$X$实际上可以写成所有形如$U+U+\cdots+U$的开集的并，这是拓扑群那里的Lemma \eqref{lem:116}. 这只是利用了加法结构的一个推论，到了拓扑矢量空间上，标量的引入可以让我们做得更多。
+
+考虑任意一个严格递增正实数序列$\{r_n\}$，$U$是原点的一个邻域。如果当$n\to \infty$时$r_n\to \infty$，则$X=\bigcup_{n=1}^\infty r_n U$.
+
+证明是简单的，固定$x$，由于$\alpha\to \alpha x$是连续映射，所以所有使得$\alpha x\in U$的标量$\alpha$构成一个开集$V$，且$0$属于这个开集，这就意味这，对于足够大的$n$，$1/r_n$都在$V$中，所以$(1/r_n) x\in U$给出了$x\in r_n U$.
+
+类似地，考虑任意一个严格递减正实数序列$\{r_n\}$，$V$是原点的一个有界邻域。如果当$n\to \infty$时$r_n\to 0$，则$\{r_n V\}$构成原点的一个局部基。
+
+实际上，设$U$是原点的一个邻域。由于$V$是有界的，则存在一个$s$使得$r>s$时，$V\subset rU$. 对于足够大的$n$，我们有$sr_n<1$，所以$V\subset (1/r_n)U$或者$r_n V\subset U$.
+
+\para 作为推论，拓扑矢量空间的紧子集$K$一定是有界的。任取一个$0$的开邻域$V$，取$0$的一个均衡邻域$U\subset V$，则$K\subset \bigcup_{n=1}^\infty nU$. 由于$K$是紧的，所以存在有限个$n_1< \cdots <n_k$使得
+\[
+	K\subset \bigcup_{i=1}^k n_iU=n_k U.
+\]
+最后的等号来自于，对均衡邻域$U$以及$r>1$一定成立$U\subset rU$. 所以$K\subset n_k U\subset n_k V$.
+
+\theo 一个拓扑矢量空间$X$，如果具有可数局部基，则他是可度量化的，且该度量可以选成不变度量，使得中心在$0$的开球是均衡开集。如果$X$还是局部凸的，则所有开球是凸的。\notprove
+
+\para 在拓扑矢量空间上，Cauchy列可以通过局部基来定义：设有一个序列$\{x_n\}$，对每一个局部基中的$V$，都存在一个$N$使得$n$, $m>N$时，$x_n-x_m\in V$. 当拓扑矢量空间上有一个不变度量时，等式$d(x_n,x_m)=d(x_n-x_m,0)$就将这个Cauchy列翻译成了熟知的度量空间上的Cauchy列。
+
+\section{线性映射}
+
 \section{Hilbert空间}
 
 设$\mathcal{H}$是复数域上的矢量空间。假设$x$, $y\in \mathcal{H}$，有一个二元运算写作$(x,y)$，需要满足如下性质

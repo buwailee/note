@@ -87,13 +87,15 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^{\mathrm{op}} :I^{\mathrm{op}}\to \mathcal{C}$通过$D^{\mathrm{op}}(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^{\mathrm{op}}(j\geq i)\circ D^{\mathrm{op}}(k\geq j)=D^{\mathrm{op}}(k\geq i)$，可见这确实是一个协变函子。
 
-\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。
+\para 设$I$是一个指标集，即只存在关系$x\leq x$. 此时构成的$I$-图的极限称为\idx{积}（\idx{product}），余极限称为\idx{余积}（\idx{coproduct}）。前面提到过的集合的直积就是一种积。
 
-作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。
+\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。所以下面的讨论，将固定$I$是一个滤相偏序集，而$I^{\mathrm{op}}$则是一个定向偏序集。
 
-同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
+作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
 
-\para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个{逆系统}（{定向系统}）。逆系统一般谈论极限$\varprojlim_{i\in I} D(i)$，而定向系统一般谈论$\varinjlim_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
+\para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个{逆系统}（{定向系统}）。对偶地，如果$D$是反变函子，那么$I^{\mathrm{op}}$-图$D^{\mathrm{op}}$是定向系统（逆系统）。
+
+逆系统一般谈论极限$\varprojlim_{i\in I} D(i)$，而定向系统一般谈论$\varinjlim_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
 \[
 	\xymatrix{
 		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
@@ -114,13 +116,9 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
 
-\para 考虑$I$是滤相的（定向的），而$D$是协变函子，那么$I$-图$D$是逆系统（定向系统）。考虑$I$是滤相的（定向的），而$D$是反变函子，那么$I^{\mathrm{op}}$-图$D^{\mathrm{op}}$是定向系统（逆系统）。
-
 \para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
 
-在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$.
-
-同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
+在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$. 同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
 
 更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
 
@@ -138,9 +136,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限$\varinjlim_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in \mathfrak{B}} U$.
 
-同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。
-
-但它的极限$\varprojlim_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
+同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。但它的极限$\varprojlim_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
 
 \para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
 
@@ -150,17 +146,41 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.
 
+\para 极限很好地抽象了许多有用的概念，比如等值子。等值子的一个特例就是模范畴的核。这就意味着，我们可以把核看成一种极限，这在某些地方是实用的，比如在模范畴里去证明右伴随函子是左正和的时候。
+
+考虑$\mathcal{J}$是这样一个范畴，它有两个对象，除了自己到自己的恒等态射外，两个对象之间还有同向的两个态射，我们记作$\xymatrix{\cdot\ar@<0.3ex>[r] \ar@<-0.3ex>[r]&\cdot}$. 设$D:\mathcal{J}\to\mathcal{C}$是一个协变函子，他将两个态射变为$f$, $g:X\to Y$，于是在$\mathcal{C}$中关于$J$-图$D$的极限就是对象$\mathrm{eq}(f,g)$以及态射$\pi:\mathrm{eq}(f,g)\to X$，满足：$f\pi=g\pi$，任取对象$A\in \mathcal{C}$以及态射$p:A\to X$使得$fp=gp$，则存在$h:A\to \mathrm{eq}(f,g)$使得下面的交换图成立：
+\[
+\begin{xy}
+	\xymatrix{
+		\mathrm{eq}(f,g)\ar[r]^-{\pi}&X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\\
+		A\ar@{.>}[u]^-{h}\ar[ur]_-{p}
+	}
+\end{xy}
+\]
+
+集合范畴的等值子很简单，设$f$, $g:X\to Y$是两个映射，则$\mathrm{eq}(f,g)=\{x\in X\,:\, f(x)=g(x)\}$. 不难检验，对于模范畴，$0$可以看成任意两个模之间的同态（比如看作左乘$0$），此时$\ker(f)=\mathrm{eq}(f,0)$. 对偶地，可以定义余等值子。类似地，在模范畴里面，$\coker(f)=\mathrm{coeq}(f,0)$.
+
+如果有一个函子$R:\mathcal{C}\to \mathcal{D}$，对任意极限满足$R\varprojlim_i Y_i\cong \varprojlim_i (RY_i)$，那么应用到等值子上面，就有
+\[
+	R\left(\mathrm{eq}(f,g)\right)\cong \mathrm{eq}(Rf,Rg).
+\]
+设$R$是一个模范畴到模范畴的一个函子，如果$R$对任意的零态射$0:X\to Y$都有$R0=0$，则这个等式给出了核的一个关系$R\left(\ker f\right)\cong \ker(Rf)$. 如果$R$对零模$0$也有$R(0)=0$，则如果$f$是单射，核的那个关系将给出$\ker(Rf)\cong R(0)=0$. 于是$Rf$也是一个单射。
+
+\para 极限的另一个例子是终对象，考虑$\mathcal{J}$是这样一个范畴，它只有一个对象，态射只有一个恒等态射。关于这幅图的极限就是所谓的终对象。
+
+域构成的范畴不存在始对象或终对象。
+
 \section{直和与直积}
 
 直积和直和都属于用一些小的模来构造出大的模的手段。
 
-\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M\to M_i$使得，如果存在另一个模$N$和一族同态$\rho_i:N\to M_i$，那么就唯一存在同态$\rho:N\to M$使得分解$\rho_i:N\xrightarrow{\rho} M \xrightarrow{\pi_i} M_i$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直积，而$\pi_i$被称为典范投影，通常将$M$记作$\prod_{i\in I}M_i$. 直积对应于范畴里product的概念。
+\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M\to M_i$使得，如果存在另一个模$N$和一族同态$\rho_i:N\to M_i$，那么就唯一存在同态$\rho:N\to M$使得分解$\rho_i:N\xrightarrow{\rho} M \xrightarrow{\pi_i} M_i$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直积，而$\pi_i$被称为典范投影，通常将$M$记作$\prod_{i\in I}M_i$. 直积是模范畴里的积。
 
 存在性的证明是简单的，考虑$\{M_i\,:\, i\in I\}$作为集合的直积，很容易检验它有一个$R$-模结构，且投影是同态。更详细的检查这里就略去了。
 
 % 其他满足这个性质的模及同态，都可以唯一分解到这个典型的模和同态（这里是直积和投影）的性质，被称为泛性质。
 
-\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 直和对应于范畴里coproduct的概念。
+\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 直和是模范畴里的余积。
 
 直和存在性的构造并不如同直积那么容易。我们考虑$\{M_i\,:\, i\in I\}$的形式和$M$，即
 \[
@@ -192,9 +212,9 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 都得到恒等自然变换。此时$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
 
-以遗忘函子举例，如果一个函子$g:\mathcal{C}\to \text{Set}$使得$\mathcal{C}$中的对象$X$忘掉了某代数结构，变成了集合$|X|$。那么怎么样的函子才是它的伴随函子？必然是一个赋予$\text{Set}$中对象代数结构的函子$f$，但是从一个结构少的对象到结构多的对象，我们不一定能还原出$X$，比如我们忘掉了$2+4=6$，那么在从$|X|$赋予代数结构得到的$f(|X|)$中，只能把$2$, $4$, $6$单独处理，引入一个新的元素`$2+4$'来表示$f(|X|)$中$2+4$的结果，而不与$6$建立联系。所以$f(|X|)=f(g(X))$作为集合，即$g(f(g(X)))$，一般来说应该比$g(X)$大。那么如何使得$f(|X|)$回忆其原本的代数结构？最方便的，就是找一个态射$f(|X|)\to X$，这样`$2+4$'就映射到了$6$. 改变$X$，就得到了自然变换$\sigma:fg\to \id_\mathcal{C}$.
+以遗忘函子举例，如果一个函子$g:\mathcal{C}\to \mathsf{Set}$使得$\mathcal{C}$中的对象$X$忘掉了某代数结构，变成了集合$|X|$。那么怎么样的函子才是它的伴随函子？必然是一个赋予$\mathsf{Set}$中对象代数结构的函子$f$，但是从一个结构少的对象到结构多的对象，我们不一定能还原出$X$，比如我们忘掉了$2+4=6$，那么在从$|X|$赋予代数结构得到的$f(|X|)$中，只能把$2$, $4$, $6$单独处理，引入一个新的元素`$2+4$'来表示$f(|X|)$中$2+4$的结果，而不与$6$建立联系。所以$f(|X|)=f(g(X))$作为集合，即$g(f(g(X)))$，一般来说应该比$g(X)$大。那么如何使得$f(|X|)$回忆其原本的代数结构？最方便的，就是找一个态射$f(|X|)\to X$，这样`$2+4$'就映射到了$6$. 改变$X$，就得到了自然变换$\sigma:fg\to \id_\mathcal{C}$.
 
-类似地，给定一个集合$S\in \text{Set}$，生成一个$f(S)\in \mathcal{C}$. 为了满足代数结构，必须得添进去一些元素，比如要生成一个群，得添进去逆元。所以，作为集合，$S$是$g(f(S))$的子集，或者说存在映射$S\to g(f(S))$，改变$S$就得到了自然变换$\tau:\id_{\text{Set}}\to gf$.
+类似地，给定一个集合$S\in \mathsf{Set}$，生成一个$f(S)\in \mathcal{C}$. 为了满足代数结构，必须得添进去一些元素，比如要生成一个群，得添进去逆元。所以，作为集合，$S$是$g(f(S))$的子集，或者说存在映射$S\to g(f(S))$，改变$S$就得到了自然变换$\tau:\id_{\mathsf{Set}}\to gf$.
 
 现在来审查条件
 \[
@@ -214,24 +234,26 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 则$(f,g)$被称为一对\idx{伴随函子}（\idx{adjoint functor})。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
 
-固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个右伴随函子。所以实际上，双函子同构可以减弱为对$T$的。
+固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个右伴随函子。所以实际上，双函子同构可以减弱为对$T$的。下面我们证明这一点。
 
-\para 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$g(Y)$所表示，于是就有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
-\[
-\begin{xy}
-	\xymatrix{
-		h_{g(Y)}(T)\ar[rr]^-{\alpha(Y,T)} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
-		h_{g(Y)}(S)\ar[rr]^-{\alpha(Y,S)}&&{\mathcal{D}}(f(S),Y)
-	}
-\end{xy}
-\]
-其中$\alpha(Y,T)$用来简记$\alpha(Y)(T)$. 任取$u:T\to {g(Y)}$，有$\alpha(Y,S)(u\psi)=\alpha(Y,T)(u)f(\psi)$. 特别地，当$T=g(Y)$时，取$u=\id_{g(Y)}$，记$\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y$，则$\alpha(Y,S)(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to g(Y)$.
+\proof 
+	设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$g(Y)$所表示，于是就有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			h_{g(Y)}(T)\ar[rr]^-{\alpha(Y,T)} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
+			h_{g(Y)}(S)\ar[rr]^-{\alpha(Y,S)}&&{\mathcal{D}}(f(S),Y)
+		}
+	\end{xy}
+	\]
+	其中$\alpha(Y,T)$用来简记$\alpha(Y)(T)$. 任取$u:T\to {g(Y)}$，有$\alpha(Y,S)(u\psi)=\alpha(Y,T)(u)f(\psi)$. 特别地，当$T=g(Y)$时，取$u=\id_{g(Y)}$，记$\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y$，则$\alpha(Y,S)(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to g(Y)$.
 
-改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}{Y}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha(Y,T)$，对每一个$T$，$\beta_T$将给出了函子同构
-\[
-	\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
-\]
-自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
+	改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}{Y}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha(Y,T)$，对每一个$T$，$\beta_T$将给出了函子同构
+	\[
+		\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
+	\]
+	自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
+\qed
 
 \pro 设$L:\mathcal{C}\to \mathcal{D}$是一个左伴随函子，而$R:\mathcal{D}\to \mathcal{C}$是一个右伴随函子。设有一个$\mathcal{C}$中的$I$-图$X:I\to \mathcal{C}$以及一个$\mathcal{D}$中的$J$-图$Y:J\to \mathcal{D}$，于是，$LX$是$\mathcal{D}$中的$I$-图，$RY$是$\mathcal{C}$中的一个$J$图，并且存在同构
 \[
@@ -302,9 +324,9 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 \section{代数与多项式环}
 
-设有两个环$A$, $B$和一个环同态$f:A\to B$，再设$a\in A$, $b\in B$，我们可以通过$f$定义他们的乘法为$a\cdot b=f(a)b\in B$，这样环$B$就被赋予了一个$A$-模结构。环$B$若被赋予一个$A$-模结构，则称$B$是一个$A$-代数。
+设有两个环$A$, $B$和一个环同态$f:A\to B$，再设$a\in A$, $b\in B$，我们可以通过$f$定义他们的乘法为$a\cdot b=f(a)b\in B$，这样环$B$就被赋予了一个$A$-模结构。环$B$若被赋予一个$A$-模结构，则称$B$是一个$A$-\idx{代数}（\idx{algebra}）。
 
-设$B$是$A$-代数，有$f:A\to B$，设$C$也是$A$-代数，有$g:A\to C$，那么$A$-代数之间的同态$h:B\to C$，首先是$B$和$C$之间的环同态，还要和$A$-模结构相容，即$g=h\circ f$. 所有$A$-代数构成一个范畴，记作$\mathrm{Alg}_A$，其中的对象由一个环$B$和一个环同态$\mu:A\to B$构成。
+设$B$是$A$-代数，有$f:A\to B$，设$C$也是$A$-代数，有$g:A\to C$，那么$A$-代数之间的同态$h:B\to C$，首先是$B$和$C$之间的环同态，还要和$A$-模结构相容，即$g=h\circ f$. 所有$A$-代数构成一个范畴，记作$\mathsf{Alg}_A$，其中的对象由一个环$B$和一个环同态$\mu:A\to B$构成。
 
 多项式环是幺半群环的一种，所以直接从幺半群环开始。
 
@@ -590,7 +612,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \[
 	\begin{cases}
 	a_{11}x_1+\cdots+a_{1n}x_n=b_1,\\
-	\qquad\qquad\vdots\\
+	\qquad\qquad\,\vdots\\
 	a_{n1}x_1+\cdots+a_{nn}x_n=b_n,
 	\end{cases}
 \]

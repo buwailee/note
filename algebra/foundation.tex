@@ -358,21 +358,43 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 当然这个范畴也可以通过在开集族上给定一个偏序$U\leq V$当且仅当$U\subset V$给出。
 
-所有拓扑空间和其间的连续映射当然构成一个范畴。所有光滑流形和其间的光滑映射构成一个范畴。最后一个例子是关系构成了范畴，他的对象是集合，而$\text{Mor}(X,Y)$是所有$X\times Y$的子集，设$\varphi:X\to Y$和$\psi:Y\to Z$是两个态射，则复合被定义为
+所有拓扑空间和其间的连续映射当然构成一个范畴。所有光滑流形和其间的光滑映射构成一个范畴。另外一个例子是关系构成了范畴，他的对象是集合，而$\text{Mor}(X,Y)$是所有$X\times Y$的子集，设$\varphi:X\to Y$和$\psi:Y\to Z$是两个态射，则复合被定义为
 \[
 	\psi\varphi=\bigl\{(x,z)\in X\times Z\,:\,\exists y\in Y\,\text{ s.t. } (x,y)\in\varphi,\, (y,z)\in \psi\bigr\}.
 \]
 
 \para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，定义
-\[\mathcal{C}^{\mathrm{op}}(X,Y)=\mathcal{C}(Y,X),\]复合不变。他被称为给定范畴的对偶范畴。
+\[\mathcal{C}^{\mathrm{op}}(X,Y)=\mathcal{C}(Y,X),\]复合不变。他被称为给定范畴的对偶范畴。凡是纯范畴的命题与证明，将所有的箭头（即态射）全部反过来，可以得到对应的命题与证明，这样的命题被称为对偶命题。
 
-凡是纯范畴的命题与证明，将所有的箭头（即态射）全部反过来，可以得到对应的命题与证明，这样的命题被称为对偶命题。
+对偶范畴的一个实例就是偏序集,他将小于等于改成大于等于。设$(X,\leq)$是一个偏序集，那么$(X,\leq)^\text{op}$与$(X,\leq)$具有相同的对象，但有着相反的态射，即$(X,\leq)^\text{op}$中的偏序$x\leq_{\text{op}} y$当且仅当在$(X,\leq)$中成立$y\leq x$. 对于符号$\leq_{\text{op}}$，我们通常以$\geq$代之，因此，$(X,\leq)$的对偶范畴就是$(X,\geq)$. 如果以$X$代之$(X,\geq)$，则以$X^{\text{op}}$代之$(X,\geq)$.
 
-对偶范畴的一个实例就是偏序集,他将小于等于改成大于等于。设$(X,\leq)$是一个偏序集，那么$(X,\leq)^\text{op}$与$(X,\leq)$具有相同的对象，但有着相反的态射，即$(X,\leq)^{op}$中的偏序$x\leq_{\text{op}} y$当且仅当在$(X,\leq)$中成立$y\leq x$. 对于符号$\leq_{\text{op}}$，我们通常以$\geq$代之，因此，$(X,\leq)$的对偶范畴就是$(X,\geq)$. 如果以$X$代之$(X,\geq)$，则以$X^{\text{op}}$代之$(X,\geq)$.
+\para 在范畴论中，我们经常要讨论所谓的交换图。从一个对象$X_0$开始，我们可以通过多次复合不同态射得到一个对象$X_n$，我们可以通过图来表示这个过程，
+\[
+	X_0\xrightarrow{f_0} X_1\xrightarrow{f_1} X_2\cdots X_{n-1}\xrightarrow{f_{n-1}} X_n.
+\]
+但一般而言，从$X_0$到$X_n$我们有不同的路径，比如考虑最简单的图
+\[
+\begin{xy}
+	\xymatrix{
+		X\ar[r]^{f} \ar[dr]_{h}&Y \ar[d]^{g}\\
+		&Z
+	}
+\end{xy}
+\]
+从$X$到$Z$一共是两条路径，其一是先通过$Y$然后再到$Z$，另一个是直接到$Z$，前者对应于态射$gf:X\to Z$，后者对应于态射$h:X\to Z$. 称一个图是交换的，就是说沿着不同路径却可以得到相同的结果。比如在上例中就是指$h=gf$. 另一类很常见的图是方的，
+\[
+\begin{xy}
+	\xymatrix{
+		A\ar[rr]^{f} \ar[d]_{h}&&B \ar[d]^{g}\\
+		C\ar[rr]^{l}&&D
+	}
+\end{xy}
+\]
+从$A$到$D$有两条路径，此图交换就是在说$gf=lh$.
 
 \para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。$X$和$Y$同构记作$X\cong Y$. 集合范畴的同构即双射。
 
-\para 类似于集合之间有映射，范畴之间也有个函子(functor). 由于范畴有对象以及对象之间的态射，所以函子也是由关于对象和范畴的数据构成的，设$\mathcal{C}$和$\mathcal{D}$是两个范畴，$F$被称为一个函子，如果
+\para 类似于集合之间有映射，范畴之间也有个\idx{函子}(\idx{functor}). 由于范畴有对象以及对象之间的态射，所以函子也是由关于对象和范畴的数据构成的，设$\mathcal{C}$和$\mathcal{D}$是两个范畴，$F$被称为一个函子，如果
 \begin{enumerate}
 	\item 对任意的$X\in \mathcal{C}$，有唯一的$F(X)\in \mathcal{D}$.
 	
@@ -646,7 +668,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \para \label{oka}我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
 
-给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{http://www.bowdoin.edu/\~{}reyes/oka1.pdf}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
+给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{\url{http://www.bowdoin.edu/~reyes/oka1.pdf}}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
 
 对于单位理想$(1)$，由于任取$a\in R$都有$a+(1)=(1)$以及$(1:a)=(1)$，所以对任意的Ako理想族或者Oka理想族$\mathcal{F}$，$\mathcal{F}$都包含单位理想。
 

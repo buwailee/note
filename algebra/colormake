@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author : buwailee
+# Script follows here:
+echo '1'
+xelatex --synctex=1 coloredmain.tex > /dev/null
+zhmakeindex coloredmain > /dev/null
+for ((n=2;n<10;n++))
+do
+	echo $n
+	xelatex --synctex=1 coloredmain.tex > /dev/null
+done
