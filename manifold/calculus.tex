@@ -50,7 +50,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \[
 	f_p=\partial_i f(p)x^i_p+\frac{1}{2}g_{ij}(q)x^i_px^j_p
 \]
-考虑一个局部坐标$\varphi=(x^1,\cdots,x^n)$，设自然同态$\dd_p:\mm_p\to \mm_p/\mm_p^2$，很简单就可以看到$\dd_p(x^i_p)\neq 0$.实际上，如果$x^i_p\in \mm_p^2$，那么$x^i_p=rs$，其中$r$, $s\in \mm_p$，然后根据上面的引理$r=a_ix^i_p+\cdots$以及$s=b_ix^i_p+\cdots$，于是$x^i=rs=a_jb_kx^j_px^k_p+\cdots$，但显然这是不可能的。
+考虑一个局部坐标$\varphi=(x^1$, $\cdots$, $x^n)$，设自然同态$\dd_p:\mm_p\to \mm_p/\mm_p^2$，很简单就可以看到$\dd_p(x^i_p)\neq 0$.实际上，如果$x^i_p\in \mm_p^2$，那么$x^i_p=rs$，其中$r$, $s\in \mm_p$，然后根据上面的引理$r=a_ix^i_p+\cdots$以及$s=b_ix^i_p+\cdots$，于是$x^i=rs=a_jb_kx^j_px^k_p+\cdots$，但显然这是不可能的。
 
 所以，如果$f_p\in \mm_p$，则
 \begin{equation}
@@ -59,12 +59,11 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \end{equation}
 这样所有的$T_p^*M=\mm_p/\mm_p^2$中的元素都可以由$\dd_p(x^i_p)$展开，他们都是非零的，而且容易证明是线性无关的，所以这是$T_p^*M$的一组基，余切空间的维数计算完毕。
 
-以后我们用$\dd_p(f)$乃至$\dd_pf$来记$\dd_p(f_p)$。实际上，我们可以将$\dd_p$定义在$\calf_p$上，设$a$是一个常值芽，补充定义$\dd_pa=0$，可以看到，此时式\eqref{c1:e1}依旧满足。以后我们就这样来看$\dd_p:\calf_p\to T_p^*M$，他被称为\idx{外微分}算子。
-
-此时
+以后我们用$\dd_p(f)$乃至$\dd_pf$来记$\dd_p(f_p)$。实际上，我们可以将$\dd_p$定义在$\calf_p$上，设$a$是一个常值芽，补充定义$\dd_pa=0$，可以看到，此时式\eqref{c1:e1}依旧满足，且
 \[
 \dd_p (fg)=\dd_p\bigl(\bigl(f-f(p)\bigr)\bigl(g-g(p)\bigr)+f(p)\bigl(g-g(p)\bigr)+\bigl(f-f(p)\bigr)g(p)\bigr)=f(p)\dd_pg+\dd_pf g(p).
 \]
+以后我们就这样来看$\dd_p:\calf_p\to T_p^*M$，他被称为\idx{外微分}算子
 
 \para 设$f:M\to N$是一个光滑映射，上面的光滑函数层分别为$\calf$和$\calg$。任取$\varphi\in \calg(V)$，可以通过$f^*\varphi=\varphi\circ f$定义$f^*\varphi\in \calf(f^{-1}(V))$.
 
@@ -72,7 +71,11 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 对于复合，显然$(f\circ g)^*=f^*\circ g^*$，以及在一点处，$(f\circ g)^*_p=g^*_p\circ f^*_{g(p)}$.很容易看到$\id^*_p=\id_{T_p^*M}$，所以如果$f:M\to N$是同胚，则$f_p^*:T_{f(p)}^*N\to T_p^*M$是同构。
 
-\para \label{f*d=df*}利用复合公式，设$f:M\to N$是光滑映射，则$f^*_p\bigl(\dd_{f(p)}g\bigr)=\dd_{p}(f^*g)=\dd_p(g\circ f)$.
+\para \label{f*d=df*}利用复合公式，设$f:M\to N$是光滑映射而$g$是$N$上的光滑函数，则
+\[
+	(g\circ f)_{*p}=(f^*g)_{*p}=\dd_p(f^*g),\quad (g\circ f)_{*p}=f_{*p}g_{*f(p)}=f_{*p}\left(\dd_{f(p)}g \right),
+\]
+所以$f^*_p\bigl(\dd_{f(p)}g\bigr)=\dd_{p}(f^*g)$.
 
 \para 设$p\in M$，$M$是$n$维光滑流形，则\idx{切空间}$T_pM$被定义为余切空间$T_p^*M$的对偶空间。切空间的元素被称为\idx{切矢量}。由于余切空间是有限维的，他的对偶空间也和他有着相同的维度，即$n$维。
 
@@ -139,7 +142,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 后面我们经常会说“设流形$M$上有某某”这样的话，但一般来说，某某在流形上的整体存在性是很难保证的，往往他只是局部存在，即可以在流形$M$的某个开集上存在。但是注意到$M$的开集现在也有流形结构，即开子流形结构，于是我们的命题就可以在这个新的流形上正常工作了。所以经常为了方便，对于不少命题的陈述，我们会把对象直接定义到整个流形上。
 
-\para 设$\varphi:M\to N$，如果$M$微分同胚于$N$的开子流形$\varphi(M)$，则称子流形$(M,\varphi)$是一个嵌入。浸入子流形不一定是嵌入子流形，比如秩为$1$的单的光滑曲线$f(t)=((t^3+t)/(t^4+1),(t^3-t)/(t^4+1))$，在$\rr^2$中他的图像看起来是可以有自交点的。
+\para 设$\varphi:M\to N$，如果$M$微分同胚于$N$的开子流形$\varphi(M)$，则称子流形$(M,\varphi)$是一个嵌入。浸入子流形不一定是嵌入子流形，比如秩为$1$的单的光滑曲线$f(t)=\bigl((t^3+t)/(t^4+1),(t^3-t)/(t^4+1)\bigr)$，在$\rr^2$中他的图像看起来是可以有自交点的。
 
 \para 设$U$是$M$的一个子集，但$U$本身有一个流形的结构，如果此时$i:U\hookrightarrow M$是一个嵌入，则称$U$是$M$的一个正则子流形。所谓的正则子流形就是说，它本身的流形结构和从大的流形那里继承来的流形结构是相同的的。
 
@@ -153,54 +156,55 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 称一族$M$上的光滑函数$\{f_i\}_{1\leq i\leq n}$在点$p$相互无关，即指$\{\dd_p (f_i)=(f_i)_{*p}\in T_p^*M:1\leq i\leq n\}$们线性无关。
 
-如果$\{f_i\}_{1\leq i\leq n}$相互无关，则函数$f=(f_1,\cdots,f_n):M\to \rr^n$在点$p$上的导数$f_{*p}$可逆，所以按照反函数定理，可以在$p$附近找一个领域，使得$f|_V$是一个$V$到$\rr^n$中开集的同胚，这样$(V,f|_V)$就是一张坐标卡。如果$\{f_i\}$个数不到$n$，那么补几个进去，照样可以找到一张坐标卡，其中前几个分量是$\{f_i\}$.
+如果$\{f_i\}_{1\leq i\leq n}$相互无关，则函数$f=(f_1$, $\cdots$, $f_n):M\to \rr^n$在点$p$上的导数$f_{*p}$可逆，所以按照反函数定理，可以在$p$附近找一个邻域，使得$f|_V$是一个$V$到$\rr^n$中开集的同胚，这样$(V,f|_V)$就是一张坐标卡。如果$\{f_i\}$个数不到$n$，那么补几个进去，照样可以找到一张坐标卡，其中前几个分量是$\{f_i\}$.
 
 \lem 设$f_*:V\to W$是一个有限维矢量空间间的线性映射以及他的对偶映射是$f^*:W^*\to V^*$，则$\rank(f_*)=\rank(f^*)$. 特别地，当$f_*$是单（满）的时候，$f^*$是满（单）的。
 
-\para 设$\varphi:M\to N$光滑，且$\varphi_{*p}$是单射。令$(x_1,\cdots,x_n)$是$\varphi(p)$附近的一个坐标，那么$x_i\circ\varphi$是$p$附近的一个坐标。特别地，$\varphi$在$p$附近是一个单射。如果$\varphi_{*p}$是满射，则$x_i\circ\varphi$是$p$附近的一个坐标中的一部分。
+\para 设$\varphi:M\to N$光滑，且$\varphi_{*p}$是单射。令$(x_1$, $\cdots$, $x_n)$是$\varphi(p)$附近的一个坐标，那么$x_i\circ\varphi$是$p$附近的一个坐标。特别地，$\varphi$在$p$附近是一个单射。如果$\varphi_{*p}$是满射，则$x_i\circ\varphi$是$p$附近的一个坐标中的一部分。
 
-若$\varphi_{*p}$是单射，他的对偶映射$\varphi^*_p$就是满射，于是$\varphi^*_p(x_i)_{*\varphi(p)}=(x_i\circ\varphi)_{*p}=\dd_p(x_i\circ \varphi)$张成了$T_p^*M$，在其中选出一组极大线性无关组（不妨设为前$m$个），这就构成了$p$附近的一组坐标。而$(x_1,\cdots,x_m)\circ \varphi$局部是同胚，所以$\varphi$局部是单射。
+若$\varphi_{*p}$是单射，他的对偶映射$\varphi^*_p$就是满射，于是$\varphi^*_p(x_i)_{*\varphi(p)}=(x_i\circ\varphi)_{*p}=\dd_p(x_i\circ \varphi)$张成了$T_p^*M$，在其中选出一组极大线性无关组（不妨设为前$m$个），这就构成了$p$附近的一组坐标。而$(x_1$, $\cdots$, $x_m)\circ \varphi$局部是同胚，所以$\varphi$局部是单射。
 
 若$\varphi_{*p}$是满射，他的对偶映射$\varphi^*_p$就是单射，于是$\varphi^*_p\dd_{\varphi(p)}x_i=\dd_p(x_i\circ \varphi)$相互独立，一般来说，他数量不够构成坐标，但是却可以构成坐标中的一部分。
 
 \para 设$f:M\to N$是一个光滑映射，则$\rank_p f$被定义为$\rank_p f_{*p}$.取$p$和$f(p)$附近的坐标$\varphi$和$\psi$且使得$\varphi(p)=0$，则$f$在点$p$的秩就是Jacobian矩阵$(\psi\circ f \circ \varphi^{-1})_{*0}$的秩。
 
-选取$f(p)$附近的坐标$\psi$，则$\psi\circ f:M\to \rr^n$，不妨将其写作$(f_1,\cdots,f_n)$，则$\rank_p f$就是${\dd_pf_1,\cdots,\dd_pf_n}$张成的线性空间的维度。实际上，因为这是局部结果，所以可以假设$N=\rr^n$，此时$f_{*p}=(\dd_pf_1,\cdots,\dd_pf_n)$。
+选取$f(p)$附近的坐标$\psi$，则$\psi\circ f:M\to \rr^n$，不妨将其写作$(f_1$, $\cdots$, $f_n)$，则$\rank_p f$就是$\{\dd_pf_1$, $\cdots$, $\dd_pf_n\}$张成的线性空间的维度。实际上，因为这是局部结果，所以可以假设$N=\rr^n$，此时$f_{*p}=(\dd_pf_1$, $\cdots$, $\dd_pf_n)$.
 
 \theo 正则子流形的结构定理：设$N$是流形$M$的一个子集，则$N$是$M$的一个$k$维正则字流形，当且仅当，在每一点$p\in N$，可以找到一张$M$的坐标卡$(U_p,\varphi)$，使得$p\in U_p$且
 \[
-	U_p\cap N=\bigl\{q\in U_p\,:\,\varphi(q)=\left(x^1(q),\cdots,x^k(q),0,\cdots,0\right)\bigr\},
+	U_p\cap N=\bigl\{q\in U_p\,:\,\varphi(q)=\left(x^1(q)\text{, $\cdots$, }x^k(q)\text{, }0\text{, $\cdots$, }0\right)\bigr\},
 \]
 即$U_p\cap N$中的点正好为那些后$n-k$个坐标为零的那些点$q\in U_p$.
 
 \theo \label{ranktheo}设$M$是一个$m$维流形且$f:M\to N$是一个光滑映射，如果存在常数$l$使得$\rank_p f$处处等于$l$，那么对于$q\in N$，$f^{-1}(q)$要么是空集，要么是$M$的一个正则子流形，维度为$m-l$。
 
-这个定理我们就不证明了。特别当$N=\rr$的时候，$f$如果是一个秩处处为$1$的光滑函数（即$\dd_p f$处处不为零），则$f^{-1}(a)$或者是一个空集，或者是一个$m-1$维正则子流形。这就是所谓的等能面，或等势面。
+这个定理利用正则子流形的结构定理不难证明，这里就略去了。特别当$N=\rr$的时候，$f$如果是一个秩处处为$1$的光滑函数（即$\dd_p f$处处不为零），则$f^{-1}(a)$或者是一个空集，或者是一个$m-1$维正则子流形。这就是所谓的等能面，或等势面。
 
 \section{Vector Field}
 和我们以前的直观一样，所谓的矢量场(vector field)就是每一点赋予一个矢量。
 
 \para 设$U\osub M$，$U$上的映射$X:p\mapsto X(p)\in T_pM$被称为$U$上的\idx{（切）矢量场}。因为在$U$的每一个局部$V$（至少一个坐标卡内），矢量场$X$都可以写作$X=X^i\partial_i$，其中$X^i$是$V$上的实值函数，而$\partial_i$在不同的点分属不同的切空间。如果$\{X^i\}$在点$p$是光滑函数，则称$X$在$p$处光滑。如果$X$在$U$处处光滑，则称$X$是$U$上的一个光滑矢量场。
 
-对矢量场而言，他可以作用在光滑函数上得到一个函数，在局部的作用效果即$Xf=X^i\partial_if$. 显然，如果$X$是要给光滑矢量场，则$Xf$是一个光滑函数。反过来，如果$X^i\partial_if$对任意的光滑函数都光滑，则$X^i$自然也是光滑的，所以有下面一个结论。
-
-\para 设$X$是一个$U$上的矢量场，如果$Xf$对任意的光滑函数$f$也是光滑的，那么$X$是一个光滑矢量场。这个命题可以看作矢量场光滑性的一个坐标无关的定义。
+对矢量场而言，他可以作用在光滑函数上得到一个函数，在局部的作用效果即$Xf=X^i\partial_if$. 显然，如果$X$是要给光滑矢量场，则$Xf$是一个光滑函数。反过来，如果$X^i\partial_if$对任意的光滑函数都光滑，则$X^i$自然也是光滑的，所以有下面一个结论：设$X$是一个$U$上的矢量场，如果$Xf$对任意的光滑函数$f$也是光滑的，那么$X$是一个光滑矢量场。这个命题可以看作矢量场光滑性的一个坐标无关的定义。
 
 \para 设$f:M\to N$是一个光滑单射，而$X$是$M$上的一个光滑矢量场，则$f_*X:p\mapsto f_{*f^{-1}(p)}X_{f^{-1}(p)}$是$N$上的一个矢量场。因为$(f_*X)g=X(g\circ f)$成立，所以这也是一个光滑矢量场。
 
 下面我们用（光滑）纤维丛的语言来抽象地定义场。
 
-\para \label{bundle} 设$E$, $B$, $F$是三个光滑流形，$\pi:E\to B$是一个光滑映射，若在每一点$p\in B$，都存在一个邻域$U$和光滑同胚$\varphi$使得$\pi^{-1}(U)$同胚于$U \times F$，且如下交换图成立。则称$(E, B, \pi, F)$是一个以$B$为底，以$F$为纤维的\idx{纤维丛}(fiber bundle)。
-	\[
-		\xymatrix{
-			\pi^{-1}\left(U\right)\ar[rr]^\varphi \ar[dr]_\pi&&U\times F \ar[dl]^{\mathrm{proj}_1}\\
-			&U&
-			}
-	\]
+\para \label{bundle} 设$E$, $M$, $F$是三个光滑流形，$\pi:E\to M$是一个光滑映射，若在每一点$p\in M$，都存在一个邻域$U$和光滑同胚$\varphi$使得$\pi^{-1}(U)$同胚于$U \times F$，且如下交换图成立
+\[
+	\xymatrix{
+		\pi^{-1}\left(U\right)\ar[rr]^\varphi \ar[dr]_\pi&&U\times F \ar[dl]^{\mathrm{proj}_1}\\
+		&U&
+		}
+\]
+则称$(E, M, \pi, F)$是一个以$M$为底，以$F$为纤维的\idx{纤维丛}(fiber bundle)。对每一点$p\in M$，$\pi^{-1}(p)\cong F$被称为点$p$处的纤维。
 
-一般称呼$B\times F$为平凡丛。如果$F$是一个矢量空间，则$(E, B, \pi, F)$被称为一个\idx{矢量丛}。显然，$\calf(M)$是以$M$为底$\rr$为纤维的纤维丛。
+显然，$M\times F$是一个丛，他被称为平凡丛。
 
-\para 设$(E, B, \pi, F)$是一个纤维丛，设$U\subset B$是一个开集，则$U$上的光滑截面(section)定义为一个光滑映射$s:B\to E$满足$\pi\circ s=\id_U$.$E$上所有截面的集合通常记做$\Gamma(E)$.
+如果$F=V$是一个矢量空间，且对每一个局部同胚$\varphi=(\pi,\Phi):\pi^{-1}(U)\to U\times V$，任取$p\in U$，$\varphi|_{\pi^{-1}(p)}:\pi^{-1}(p)\to \{p\}\times V$是一个线性同构，其中$\{p\}\times V$具有一个与$V$相同的矢量空间结构，通过定义加法$(p,v)+(p,w)=(p,v+w)$以及定义数乘$k(p,v)=(p,kv)$. 此时，$(E, M, \pi, V)$被称为一个\idx{矢量丛}。
+
+\para 设$(E, M, \pi, F)$是一个纤维丛，设$U\subset M$是一个开集，则$U$上的光滑截面(section)定义为一个光滑映射$s:M\to E$满足$\pi\circ s=\id_U$. $E$上所有截面的集合通常记做$\Gamma(E)$. $M\times \mathbb{R}$是一个平凡丛，它的光滑截面是$M$上的光滑函数，因此，$M$上所有光滑函数的集合$\calf(M)$就是$\Gamma(M\times \rr)$.
 
 \begin{figure}[htp]
 \centering
@@ -224,22 +228,22 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 反过来，如果给定了每一点的纤维，则我们有可能拼出一个纤维丛。切丛和余切丛正是如此定义的。
 
-\para 流形$M$的切丛(tangent bundle) $TM$被在集合上被定义为
+\para 流形$M$的\idx{切丛}(tangent bundle) $TM$被在集合上被定义为
 \[
 	TM=\coprod_{x\in M}T_xM=\bigcup_{x\in M} \left\{x\right\}\times T_xM=\bigcup_{x\in M} \left\{(x, y)\vert\; y\in T_xM\right\}.
 \]
-余切丛(cotangent bundle)$T^*M$在集合上被被定义为
+\idx{余切丛}(cotangent bundle)$T^*M$在集合上被被定义为
 \[
 	T^*M=\coprod_{x\in M}T^*_xM=\bigcup_{x\in M} \left\{x\right\}\times T^*_xM=\bigcup_{x\in M} \left\{(x, y)\vert\; y\in T_x^*M\right\}.
 \]
 
-\para 来看切丛，$M$显然是底流形，而$\pi$也可以显然地通过把$(p,v)\in TM$映射到$p\in M$来定义。剩下的，我们要赋予$TM$一个光滑流形结构，然后检验是否满足纤维丛的定义。
+来看切丛，$M$显然是底流形，而$\pi$也可以显然地通过把$(p,v)\in TM$映射到$p\in M$来定义。剩下的，我们要赋予$TM$一个光滑流形结构，然后检验是否满足纤维丛的定义。
 
 为此，对于$p\in M$，找一个坐标卡$(U,\varphi)$，在这张卡内，$T_qM$通过$\varphi_{*q}$同构于$\rr^n$，我们这样选取$\pi^{-1}(U)$上的微分结构，使得他通过$\id_U\times \varphi_*$光滑同胚于$U \times \rr^n$，这样$TM$就有了一个坐标卡$(\pi^{-1}(U),\varphi\times \varphi_*)$，于是他是一个光滑流形，也是一个以$M$为底，$\rr^n$为纤维的纤维丛。同样地，$T^*M$也是一个纤维丛。
 
-\para 所以$U$上的光滑切矢量场就是$TM$的$U$上的一个光滑截面。
+于是，$U$上的光滑切矢量场就是$TM$的$U$上的一个光滑截面。
 
-光滑切矢量场，局部依赖坐标$(U,\varphi)$，我们有$\varphi_*(X|_U)$在$\varphi(U)$上写作$Y^i \frac{\partial}{\partial x^i}$，那么通过逆映射$\varphi_*^{-1}$，我们就知道$X|_U$局部写作$X^i\partial_i$的形式。
+\para 光滑切矢量场，局部依赖坐标$(U,\varphi)$，我们有$\varphi_*(X|_U)$在$\varphi(U)$上写作$Y^i \frac{\partial}{\partial x^i}$，那么通过逆映射$\varphi_*^{-1}$，我们就知道$X|_U$局部写作$X^i\partial_i$的形式。
 
 现在我们自然提出反问题，设$v\in T_pM$是在$p$处的一个切矢量，我们是否可以（至少在局部）找到一个切矢量场$X$，使得$X_p=v$. 答案自然是有的，在局部，切矢量写作$X^i(p)(\partial_i)_p$，我们令$X^i$是常值的，则$x\mapsto X^i(x)(\partial_i)_x$就是一个我们所需的局部切矢量场。
 
@@ -249,9 +253,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \[
 	\frac{\dd x^i\circ \sigma}{\dd t}(t)=X^i(\sigma(t)),
 \]
-他的初值为$\sigma(0)=p$。微分方程的（光滑）解在局部存在且唯一，所以我们得到了：
-
-\para 在$p$附近，对$X$存在唯一的积分曲线$\sigma:(-\epsilon,\epsilon)\to U$.
+他的初值为$\sigma(0)=p$。微分方程的（光滑）解在局部存在且唯一，所以我们得到了：在$p$附近，对$X$存在唯一的积分曲线$\sigma:(-\epsilon,\epsilon)\to U$.
 
 \lem 设$X$是$U$上的光滑矢量场，如果$X_p\neq 0$，则存在一个$p$的邻域$V$，在$V$上存在一组坐标使得$X$可以写作$\partial_1$.
 
@@ -262,7 +264,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 	\[
 		\frac{\dd x^i}{\dd x^1}=\frac{X^n(x^1,\cdots,x^n)}{X^1(x^1,\cdots,x^n)},
 	\]
-	给定初值为$\{\varphi^i(0;v^2,\cdots,v^n)=v^i:2\leq i \leq n\}$，我们知道解$\{x^i=\varphi^i(x^1;v^2,\cdots,v^n)\}_{2\leq i \leq n}$局部存在且光滑依赖于初值$\{v^2,\cdots,v^n\}$以及$x^1$，所以我们选取新坐标$\{v^1,v^2,\cdots,v^n\}$使得
+	给定初值为$\{\varphi^i(0;v^2$, $\cdots$, $v^n)=v^i:2\leq i \leq n\}$，我们知道解$\{x^i=\varphi^i(x^1;v^2$, $\cdots$, $v^n)\}_{2\leq i \leq n}$局部存在且光滑依赖于初值$\{v^2$, $\cdots$, $v^n\}$以及$x^1$，所以我们选取新坐标$\{v^1$, $v^2$, $\cdots$, $v^n\}$使得
 	\[
 		\{x^1,x^2,\cdots,x^n\}=\{v^1,\varphi^2(v^1,\cdots,v^n),\cdots,\varphi^n(v^1,\cdots,v^n)\},
 	\]

@@ -2303,6 +2303,148 @@ Lie代数本身就是一个矢量空间，我们这里感兴趣的是表示是�
 % 其显然是Lie代数上面的一个导子。
 \newpage
 
+\section{Lie Algebra}
+
+本节主要在于Lie代数本身的代数结构。
+
+\para 设有一个域$k$上面的矢量空间$V$，他上面赋予了一个反对称的双线性映射$[\star,\star]:V\times V\to V$，且满足Jacobi恒等式
+\[
+[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0,
+\]
+则此时$V$以及上面的双线性映射构成一个$k$-代数，称为Lie代数。$\rr$上的Lie代数被称为实的Lie代数，$\cc$上的Lie代数被称为复的Lie代数。这个代数不是结合的，即不一定满足结合律。
+
+一个古典的例子，$(\rr^3,\times)$构成一个实Lie代数，其中$\times$是矢量的叉乘。
+
+\para 如果对于Lie代数$\lag$的一个子集$\mathfrak{h}$，如果成立$[\mathfrak{h},\mathfrak{h}]\subset \mathfrak{h}$，则$\mathfrak{h}$就被称为Lie代数的子代数。如果子代数$\mathfrak{h}$还满足$[\lag,\mathfrak{h}]\subset \mathfrak{h}$，则称$\mathfrak{h}$是$\lag$的一个{\kaishu 理想}\footnote{可以搜一搜ring和ideal的笑话。}。
+
+一个代数$\lag$显然有两个理想（当然也是子代数），一个是$0$一个是$\lag$，我们称这两个为平凡理想。
+
+% \para 因为Lie代数是矢量空间，所以作为矢量空间，两个Lie代数可以直积，如果有两个Lie代数$\lag_1$和$\lag_2$，我们在$\lag_1\otimes\lag_2$如下定义交换子：
+% \[
+% 	[a_1\otimes b_1,a_2\otimes b_2]=[a_1,b_1]\otimes [a_2,b_2],
+% \]
+% 那么很容易看到$\lag_1\otimes\lag_2$也变成了Lie代数，只要检验Jacobi恒等式就可以了。
+
+% 同样，两个Lie代数也可以直和。如果有两个Lie代数$\lag_1$和$\lag_2$，那么直和的$\lag_1\oplus\lag_2$上的交换子写作
+% \[
+% 	[(X_1,X_2),(Y_1,Y_2)]=\bigl([X_1,Y_1],[X_2,Y_2]\bigr).
+% \]
+
+\para 设$\lag_1$是域$k$上的Lie代数，他和Lie代数$\lag_2$间的同态$f$首先是一个$k$-线性映射，其次满足$f([a,b]_1)=[fa,fb]_2$. Lie同构就是当$f$还是一个线性空间同构的时候。
+
+迄今为止，我们都只谈论了实数域上面的Lie代数，当然，我们可以直接拓展到复数域上面去，但是复化的手段也是常用的。复化是所谓的标量扩充或者base change的特例，所以我们直接来谈模（交换环上的双边模）的标量扩充。
+
+\para 关于模的张量基，可以参看附录。如果$M$是$R$-模，$S$是$R$-代数，那么$M_S=S\otimes_R M$就是一个$S$-模，通过$s(t\otimes a)=(st)\otimes a$，我们称这个$S$-模$M_S$为$M$经过标量扩充而来的。
+
+\lem 有以下同构：
+
+\no{1} $M_S\otimes_S N_S\cong (M\otimes_R N)_S$.
+
+\no{2} 设$N$是一个$S$-模，有同构$\Hom_R(M,N)\cong \Hom_S(M_S,N)$
+
+\proof 第一个同构。实际上，$(s_1\otimes_R a,s_2\otimes_R b)\mapsto s_1s_2\otimes_R(a\otimes_R b)$是一个双线性映射，所以他唯一诱导了$\varphi:M_S\otimes_S N_S\to (M\otimes_R N)_S$.
+
+反过来，映射$(s,a\otimes_R b)\mapsto (s\otimes_R a)\otimes_S (1\otimes_R b)=(1\otimes_R a)\otimes_S (a\otimes_R b)$也是一个双线性映射，所以他唯一诱导了$\psi:(M\otimes_R N)_S\to M_S\otimes_S N_S$.容易验证他们互逆。
+
+第二个同构。设$\phi\in \Hom_R(M,N)$，我们可以通过$\Phi(s\otimes a)=s\phi(a)$定义$\Phi\in \Hom_S(M_S,N)$，反过来，已知$\Phi\in \Hom_S(M_S,N)$，我们可以通过$\phi(a)=\Phi(1\otimes a)$来定义$\phi\in \Hom_R(M,N)$.不难检验，这是一个同构。 \qed
+
+对有限个$\{M_i\}_{i\in I}$，那么反复利用\no{1}我们就得到了同构
+\[
+\bigotimes_{i\in I} \left(S\otimes_RM_i\right)\cong S\otimes_R\bigotimes_{i\in I} M_i.
+\]
+
+\para 设$V$是一个$\rr$上的$n$维矢量空间，那么$V\cong \rr\oplus \cdots \oplus \rr$，所以$V_{\cc}\cong \rr_{\cc}\oplus \cdots \oplus \rr_{\cc}$，由于$\rr_{\cc}=\cc\otimes \rr=\cc$，所以$V_{\cc}\cong \cc\oplus \cdots \oplus \cc$，因此$V_{\cc}$这就被称为$V$的复化，同时因为$v\mapsto 1\otimes v$是单射，所以我们把$V$看成$V_\cc$的实的子空间，即$1\otimes V=V$.
+
+\lem 复化扩张引理：
+
+\no{1}设$V$是一个实矢量空间，$W$是一个复矢量空间，$f:V\to W$是实线性映射，则他可以唯一扩张为一个复线性映射$V_\cc\to W$.
+
+\no{2}设$V$和$W$都是实矢量空间，$f:V\to W$是实线性映射，则他可以唯一扩张为一个复线性映射$V_\cc\to W_\cc$.
+
+\no{3}设$V$和$W$都是实矢量空间，$f:V\times\cdots\times V\to W$是实多线性映射，则他可以唯一扩张为一个复多线性映射$V_\cc\times\cdots\times V_\cc\to W_\cc$.
+
+\proof 
+	因为$\Hom_\rr(V,W)\cong \Hom_\cc(V_\cc,W)$，所以\no{1}得证。对于\no{2}，我们有$i:W\hookrightarrow W_\cc$，那么$i\circ f:V\to W_\cc$就满足\no{1}题设，由\no{1}自然得证。对于\no{3}，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由\no{2}，可以唯一扩张为$(V^k)_\cc\to W_\cc$，因为$(V^k)_\cc=V_\cc\otimes_\cc \cdots\otimes_\cc V_\cc$，引理得证。
+\qed
+
+对于\no{1}中的映射$f$，如果他被扩张为$f_\cc$，藏在同构里的对应为$f_\cc(c\otimes v)=cf(v)$.那么$f_\cc(1\otimes v+i\otimes w)=f_\cc(1\otimes v)+f_\cc(i\otimes w)=f(v)+if(w)$.
+
+而且，如果$f_\cc$限制在$V$是零，那么$f_\cc$本身就是零。这是因为$f_\cc(c\otimes v)=cf(v)=0$对任意的$c\in \cc$和$v\in V$都成立，然后$V_\cc$中的元素都是$c\otimes v$们的线性组合，所以$f_\cc(w)=0$对任意$w\in V_\cc$都成立。同样，\no{2}和\no{3}中的扩张，也满足在没扩张的空间上限制为零则他本身为零。
+
+\para 由于Lie代数也是矢量空间，我们可以对其复化，由于对易子$[\star,\star]:\lag\times \lag\to \lag$是一个双线性映射，由复化扩张引理，我们可以唯一扩张为双复线性映射$[\star,\star]:\lag_\cc\times \lag_\cc\to \lag_\cc$.至于Jacobi恒等式，他的左边是三线性映射$\lag_\cc\times \lag_\cc\times \lag_\cc\to\rr$，因为他限制在$\lag\times \lag\times \lag$是零，所以在整个$\lag_\cc\times \lag_\cc\times \lag_\cc$也是零。故实Lie代数复化后是一个复Lie代数。
+
+\para 利用复化扩张引理，如果$\lag$是一个实的Lie代数，而$\mathfrak{h}$是一个复Lie代数，那么Lie代数同态$f:\lag\to \mathfrak{h}$可以唯一被扩张为线性映射$f_\cc:\lag_\cc\to \mathfrak{h}$.他还是一个Lie代数同态，因为$[f_\cc(v),f_\cc(w)]$和$f_\cc([v,w])$是复双线性映射$\lag_\cc\times \lag_\cc\to\mathfrak{h}$当$v$和$w$限制在$\lag$上的时候是相同的，所以当$v$和$w$在$\lag_\cc$上时候也相同。
+
+设$f:\lag\to\mathfrak{h}$还是单的Lie代数同态，且$\mathfrak{h}=f(\lag)\oplus if(\lag)$，那么自然$f_\cc$是满射，因为任取$f(v)+if(w)$，他都可以写作$f_\cc(1\otimes v+i\otimes w)$，而且$f_\cc$还是一个单射，因为如果$f_\cc(1\otimes v+i\otimes w)=0$，则$f(v)+if(w)=0$，则$f(v)=f(w)=0$，因为$f$是单的，所以$v=w=0$，因此$1\otimes v+i\otimes w=0$.故$f_\cc$是一个矢量空间的同构，也是Lie代数的同构，即$\lag_\cc\cong \mathfrak{h}$. 
+
+这就意味这，如果一个复Lie代数$\mathfrak{h}$能够分解成$\mathfrak{h}=\lag\oplus i\lag$，其中$\lag$是一个实Lie代数，那么$\mathfrak{h}$就是$\lag$的复化。
+
+反过来，对于复化，我们直接将$1\otimes v+i\otimes w$记做$v+iw$，则复化中的每一个元素都可以唯一写成$v+iw$的形式。此时将$\lag\oplus \lag$中的元素$(v,w)$记做$v+iw$，则$\lag\oplus \lag$就是我们的复化，下面可以通过$f_\cc(v+iw)=f(v)+if(w)$以及
+\[
+	[v_1+iv_2,w_1+iw_2]=\bigl([v_1,w_1]-[v_2,w_2]\bigr)+i\bigl([v_1,w_2]+[v_2,w_1]\bigr),
+\]
+来定义线性映射和交换子。这个式子当然要比复化扩张引理实在很多，比如我们可以直接计算Jacobi恒等式成立。
+
+\para 设$\lag_1$和$\lag_2$为Lie代数，我们可以定义通过$[(a,b),(c,d)]=\left([a,c],[b,d]\right)$来定义$\lag_1\oplus \lag_2$上的交换子，可以验证，他是一个Lie代数。这被称为Lie代数的直和。
+
+有了直和，我们就可以谈论Lie代数的分类和分解。
+
+\para 一个Lie代数$\lag$如果没有非平凡理想，则称其为单的。一个Lie代数$\lag$如果其同构于单Lie代数的直和，就称呼其为半单的。
+
+特别地，对于一维Lie代数来说，他没有非平凡的子代数，其中任意两个元素的交换子为0。
+
+\para 设$A$是一个结合代数，那么我们定义$[a,b]=ab-ba$，那么自然$A$就构成了一个Lie代数，我们将其记做$\lie(A)$.
+
+设$f:A\to B$是两个$k$-结合代数同态，则$f([a,b])=f(ab-ba)=f(a)f(b)-f(b)f(a)=[f(a),f(b)]$，所以$f:\lie(A)\to \lie(B)$也是Lie代数同态，为了明确，有时候我们会记做$\lie(f)$. 
+
+\lem 设$\lag$是一个域$k$上的Lie代数，那么存在一个结合$k$-代数$U(\lag)$和Lie代数同态$i:\lag\to \lie(U(\lag))$，使得对任意的结合$k$-代数$A$，Lie代数同态$\varphi:\lag\to \lie(A)$都可以唯一分解为$\varphi:\lag \xrightarrow{i} \lie(U(\lag))\xrightarrow{\lie(f)}\lie(A)$，其中$f:U(\lag)\to A$是一个$k$-代数同态。
+
+因为这是一个泛性质，所以$U(\lag)$决定到一个$k$-代数同构上。其存在性我们通过张量代数直接构造$U(\lag)=\bigotimes \lag/I$，其中$I$由$[x,y]-(x\otimes y-y\otimes x)$生成。设$\varphi:\lag\to \lie(A)$是一个Lie代数同态，是一个$k$-线性映射，那么我们可以提升成一个$k$-代数同态$\Phi:\bigotimes\lag\to \lie(A)$，剩下的只要检验$\Phi(I)=0$即可，这样，我们就可以定义出一个$k$-代数同态$\Phi:U(\lag)=\bigotimes \lag/I\to \lie(A)$.而
+\[
+	\Phi\bigl([x,y]-(x\otimes y-y\otimes x)\bigr)=\varphi([x,y])-\bigl(\varphi(x)\varphi(y)-\varphi(y)\varphi(x)\bigr)=0,
+\]
+所以得证。
+
+\para 设$\lag$是Lie群$G$的一个Lie代数，则自然同态$i:\lag\hookrightarrow U(\lag)$是一个单同态。
+
+\proof 考虑$X\in \lag$对应的左不变矢量场，依然记做$\varphi(X)$，显然$\varphi(X):\calf(G)\to \calf(G)$，令$A$是$\calf(G)$的自同态环，那么我们就有自然的Lie代数单同态$\varphi:\lag \to \mathrm{Lie}(A)$.
+
+使用上面引理我们对$\varphi$分解$\varphi:\lag \xrightarrow{i} \lie(U(\lag))\xrightarrow{\lie(f)}\lie(A)$，如果$i(X)=0$，那么$\varphi(X)=0$，利用$\varphi$是单的，我们就可以断言$X=0$.\qed
+
+\para 对于一个Lie代数$\lag$，$U(\lag)$的中心，即$\{X:XY=YX,$ $Y\in U(\lag)\}$是很重要的，一个原因是$U(\lag)$中的元素被理解成左不变矢量场，则他中心中的元素就是同时左不变且右不变的矢量场。
+
+下面的定理连接了紧矩阵Lie群以及半单Lie代数。
+
+\theo 一个复Lie代数是半单的当且仅当他同构于一个单连通的紧矩阵Lie群的Lie代数的复化。
+
+我们已经做过了从实Lie代数复化得到一个复Lie代数，那么自然地，我们可以问反问题，对一个复Lie代数是否可以寻找一个实Lie代数，那个实Lie代数的复化就是原本的复Lie代数。
+
+\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的紧实形式（compact real form）是$\lag$的一个子代数$\mathfrak{l}$使得对任意的$X\in\lag$都可以找到两个$X_1,X_2\in\mathfrak{l}$满足$X=X_1+iX_2$.因此，存在一个单连通的紧矩阵Lie群$K_1$使得$K_1$的Lie代数同构于$\lag$的紧实形式。
+
+上面一个定理告诉我们上面这个反问题在半单Lie代数的情况下始终是有解的。
+
+\pro 如果$\lag$是一个实的Lie代数，那么他是半单的当且仅当他的复化$\lag_\cc$是半单的。
+
+从这个可以推知，紧的单连通矩阵Lie群的实Lie代数是半单的。当然，反过来，不是任何半单实Lie代数都可以找到紧的单连通矩阵Lie群。
+
+\para 如果$\lag$是一个复的半单Lie代数，那么$\lag$的一个子空间$\mathfrak{h}$被称为$\lag$的Cartan子代数，如果满足：
+
+\no{1} 对于任意的两个元素$H_1,H_2\in\mathfrak{h}$，都有$[H_1,H_2]=0$;
+
+\no{2} 对于任意的$X\in \lag$，如果有$[X,H]=0$对全部$H\in\mathfrak{h}$都成立，则$X\in \mathfrak{h}$.
+
+\no{3} 对于全部$H\in \mathfrak{h}$，$\ad(H)$作为Lie代数的表示是完全可约的。
+
+Cartan子代数的维度称为半单Lie代数的秩。
+
+条件1说明了Cartan子代数是交换子代数，然后条件2就说明这个极大的交换子代数。
+
+\pro 令$\lag$是一个复的半单Lie代数，令$\mathfrak{l}$是$\lag$的紧实形式，再令$\mathfrak{t}$是$\mathfrak{l}$任意的极大交换子代数，定义$\mathfrak{h}\in\lag$为$\mathfrak{h}=\mathfrak{t}+i\mathfrak{t}$.然后，$\mathfrak{h}$就是$\lag$的Cartan子代数。
+
+我们以后下面要谈论Lie群和Lie代数的表示，但是却只限制在紧Lie群，特别是紧的矩阵群上面，从而根据上面的定理，我们也只要去研究半单Lie代数就可以了。
+
+\newpage
+
 \section{一些矩阵恒等式}
 
 矩阵幂被定义为

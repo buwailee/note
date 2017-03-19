@@ -4,6 +4,6 @@
 aplatex -synctex=1 manifold > /dev/null
 echo "1 o.k."
 zhmakeindex -q manifold.idx >/dev/null
-echo "2 o.k."
 aplatex -synctex=1 manifold > /dev/null
+echo "2 o.k."
 rm *.dvi *.ilg *.out
