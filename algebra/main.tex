@@ -4,9 +4,6 @@
 \usepackage[zh,book]{../noteheader}
 	\CTEXoptions[today=old]
 	\CTEXoptions[contentsname=Table of Contents]
-	
-\usepackage{wallpaper}
-	\newcommand\chapterimg{Pictures/0.png}
 
 \usepackage[chapter]{../egastyle}
 \usepackage{titletoc}
@@ -22,7 +19,7 @@
 \input{defs.tex}
 	\newcommand{\cc}{\mathbb{C}}
 
-% \includeonly{foundation,module_1,ring_1,module_2}
+\newcommand{\ThisULCornerWallPaper}[2]{}
 
 \begin{document}
 \begin{titlepage}
@@ -42,16 +39,16 @@
 \frontmatter
 \tableofcontents
 \mainmatter
-	\include{foundation}
-	\include{construction}
-	\include{module_1}
-	\include{ring_1}
-	\include{module_2}
-	\include{linear_algebra}
-	\include{field}
-	\include{ring_2}
-	\include{abelcat}
-	\include{appendix}
+	\input{foundation.tex}
+	\input{construction.tex}
+	\input{module_1.tex}
+	\input{ring_1.tex}
+	\input{module_2.tex}
+	\input{linear_algebra.tex}
+	\input{field.tex}
+	\input{ring_2.tex}
+	% \input{abelcat.tex}
+	\input{appendix.tex}
 % \backmatter
 % 	\include{references}
 \printindex

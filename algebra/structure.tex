@@ -8,9 +8,6 @@
 \usepackage{hyperref}
 	\hypersetup{bookmarksnumbered=true}
 
-%% Command to hold chapter illustration image
-\newcommand\chapterimg{Pictures/0.png}
-
 %% Define how the chapter title is printed
 \titleformat{\chapter}{}{}{0pt}{
 %% Background image at top of page
@@ -18,12 +15,12 @@
 	%% Check if on an odd or even page
 	\strictpagecheck\checkoddpage
 	\ifoddpage{
-	\ThisULCornerWallPaper{1}{\chapterimg}
+	\ThisULCornerWallPaper{1}{../Pictures/0.png}
 	}
 	\else {
 	\newpage
 	\thispagestyle{plain}
-	\ThisULCornerWallPaper{1}{\chapterimg}
+	\ThisULCornerWallPaper{1}{../Pictures/0.png}
 	}
 	\fi
 	\tikz[overlay,remember picture]

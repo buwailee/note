@@ -57,23 +57,21 @@
 \clearpage
 \frontmatter
 \pagestyle{plain}
-\renewcommand\chapterimg{../Pictures/0.png}
-\ThisULCornerWallPaper{1}{\chapterimg}
+\ThisULCornerWallPaper{1}{../Pictures/0.png}
 \tableofcontents
 \mainmatter
 \pagestyle{headings}
-	\include{foundation}
-	\include{construction}
-	\include{module_1}
-	\include{ring_1}
-	\include{module_2}
-	\include{linear_algebra}
-	\include{field}
-	\include{ring_2}
-	\include{appendix}
+	\input{foundation}
+	\input{construction}
+	\input{module_1}
+	\input{ring_1}
+	\input{module_2}
+	\input{linear_algebra}
+	\input{field}
+	\input{ring_2}
+	\input{appendix}
 \backmatter
-	\renewcommand\chapterimg{../Pictures/0.png}
-	\ThisULCornerWallPaper{1}{\chapterimg}
+	\ThisULCornerWallPaper{1}{../Pictures/0.png}
 	\printindex
 	% \input{references.tex}
 \end{document}
