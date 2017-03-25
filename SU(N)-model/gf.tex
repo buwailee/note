@@ -222,16 +222,17 @@ The Fourier transformation of the Green's function $G_{ab}$ is
 \begin{aligned}
 	G_{ab}(k,\omega)=&\frac{\delta_{ab}}{2\pi}\int_{\mathbb{R}^2}\frac{\mathrm{sgn}(\tau)\mathrm{d}x\mathrm{d}\tau}{(x^2+u_c^2\tau^2)^{\alpha/2}}\biggl[\frac{\exp(\ii (k_F-k) x)\exp(\ii \omega\tau)}{(\ii x+u_c\tau)^{1/N}(\ii x+u_s\tau)^{1-1/N}}+\frac{\exp(-\ii (k_F+k) x)\exp(\ii \omega\tau)}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}}\biggr]\\
 	=&\frac{\delta_{ab}}{2\pi}\int_{\mathbb{R}^2}\frac{\mathrm{d}x\mathrm{d}\tau}{|u_c\tau|^{\alpha}(x^2+1)^{\alpha/2}}\biggl[\frac{\exp(\ii (k_F-k)u_c\tau x)\exp(\ii \omega\tau)}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}+\frac{\exp(-\ii (k_F+k)u_c\tau x)\exp(\ii \omega\tau)}{(-\ii x+1)^{1/N}(-\ii x+u_s/u_c)^{1-1/N}}\biggr]\\
-	=&\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|\omega+(k_F-k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}+\begin{cases}x\mapsto -x\\ k_F-k\mapsto k_F+k\end{cases}\right],
+	=&\frac{\delta_{ab}}{\pi}\int_{\mathbb{R}^2}\frac{\mathrm{d}x\mathrm{d}\tau}{|u_c\tau|^{\alpha}(x^2+1)^{\alpha/2}}\frac{\cos(ku_c\tau x)\exp(\ii k_Fu_c\tau x)\exp(\ii \omega\tau)}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}\\
+	=&\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|\omega+(k_F-k)u_cx|^{\alpha-1}+|\omega+(k_F+k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}\right],
 \end{aligned}
 \]
 where $\Gamma(x)$ is the famous Gamma function. Let $\ii\omega\to E+\ii\delta$ in $G_{ab}(k,\omega)$, we will get the retarded Green's function
 \[
 \begin{aligned}
-	G^{\text{ret}}_{ab}(k,E)=\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|E+\ii \delta+\ii (k_F-k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u)^{1-1/N}}+\frac{|E+\ii\delta-\ii (k_F+k)u_cx|^{\alpha-1}}{(-\ii x+1)^{1/N}(-\ii x+u)^{1-1/N}}\right],
+	G^{\text{ret}}_{ab}(k,E)=\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|E+\ii \delta+\ii (k_F-k)u_cx|^{\alpha-1}+|E+\ii\delta+\ii (k_F+k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u)^{1-1/N}}\right],
 \end{aligned}
 \]
-where $u=u_s/u_c$ and $v=(E+\ii\delta)/((k_F-k)u_c)$.
+where $u=u_s/u_c$.
 
 The momentum distribution can be given as
 \[

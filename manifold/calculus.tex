@@ -142,35 +142,56 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 后面我们经常会说“设流形$M$上有某某”这样的话，但一般来说，某某在流形上的整体存在性是很难保证的，往往他只是局部存在，即可以在流形$M$的某个开集上存在。但是注意到$M$的开集现在也有流形结构，即开子流形结构，于是我们的命题就可以在这个新的流形上正常工作了。所以经常为了方便，对于不少命题的陈述，我们会把对象直接定义到整个流形上。
 
-\para 设$\varphi:M\to N$，如果$M$微分同胚于$N$的开子流形$\varphi(M)$，则称子流形$(M,\varphi)$是一个嵌入。浸入子流形不一定是嵌入子流形，比如秩为$1$的单的光滑曲线$f(t)=\bigl((t^3+t)/(t^4+1),(t^3-t)/(t^4+1)\bigr)$，在$\rr^2$中他的图像看起来是可以有自交点的。
-
-\para 设$U$是$M$的一个子集，但$U$本身有一个流形的结构，如果此时$i:U\hookrightarrow M$是一个嵌入，则称$U$是$M$的一个正则子流形。所谓的正则子流形就是说，它本身的流形结构和从大的流形那里继承来的流形结构是相同的的。
-
-设$M$和$N$是光滑流形，$f:M\to N$是一个单浸入。我们可以赋予$f(M)$一个微分结构通过把$f:M\to f(M)$做成一个微分同胚，即设$\{(U_\alpha,\varphi_\alpha)\}$是$M$上的一个极大图册，在$f(M)$上通过$\{f(U_\alpha)\}$定义了拓扑，然后$\{f(U_\alpha),\varphi_\alpha\circ f^{-1}\}$定义了微分流形结构。此时，$f(M)$是$N$的正则子流形当且仅当$f$是一个嵌入。
-
 \para 反函数定理：设$U\subset \rr^n$是一个开集，映射$f:U\to \rr^n$光滑，如果Jacobian在$p$处非奇异，即$f_{*p}$可逆，则存在$p$的一个邻域$V\osub U$，使得$f|_V:V\to f(V)$是一个（光滑）同胚。
 
 证明见微积分教材，常见的证明有比如压缩映像定理。该定理说明，如果函数局部线性化后性质不错，那么在那点附近性质也不错。由于是局部性质，所以可以直接翻译到流形上没什么改变。
 
 \theo 流形上的反函数定理：设$M$和$N$的维度相同，映射$f:M\to N$光滑，如果$f_{*p}$可逆，则存在$p$的一个邻域$U$，使得$f|_U:U\to f(U)\subset N$是一个（光滑）同胚。换句话说，浸入局部是嵌入。
 
-\para 称一族$M$上的光滑函数$\{f_i\}_{1\leq i\leq n}$在点$p$相互无关，即指$\{\dd_p (f_i)=(f_i)_{*p}\in T_p^*M:1\leq i\leq n\}$们线性无关。
+\para 设$f:M\to N$是一个光滑映射，则$\rank_p f$被定义为$\rank_p f_{*p}$.取$p$和$f(p)$附近的坐标$\varphi$和$\psi$且使得$\varphi(p)=0$，则$f$在点$p$的秩就是Jacobian矩阵$(\psi\circ f \circ \varphi^{-1})_{*0}$的秩。这个定义可以用切空间的语言如下进行重新表述：选取$f(p)$附近的坐标$\psi$，则$\psi\circ f:M\to \rr^n$，不妨将其写作$(f_1$, $\cdots$, $f_n)$，则$\rank_p f$就是$\{\dd_pf_1$, $\cdots$, $\dd_pf_n\}$张成的线性空间的维度。实际上，因为这是局部结果，所以可以假设$N=\rr^n$，此时$f_{*p}=(\dd_pf_1$, $\cdots$, $\dd_pf_n)$.
+
+类似地，也可以将线性无关的概念推广到一组光滑函数在一点处无关。称一族$M$上的光滑函数$\{f_i\}_{1\leq i\leq n}$在点$p$相互无关，即指$\{\dd_p (f_i)=(f_i)_{*p}\in T_p^*M:1\leq i\leq n\}$们线性无关。
 
 如果$\{f_i\}_{1\leq i\leq n}$相互无关，则函数$f=(f_1$, $\cdots$, $f_n):M\to \rr^n$在点$p$上的导数$f_{*p}$可逆，所以按照反函数定理，可以在$p$附近找一个邻域，使得$f|_V$是一个$V$到$\rr^n$中开集的同胚，这样$(V,f|_V)$就是一张坐标卡。如果$\{f_i\}$个数不到$n$，那么补几个进去，照样可以找到一张坐标卡，其中前几个分量是$\{f_i\}$.
 
 \lem 设$f_*:V\to W$是一个有限维矢量空间间的线性映射以及他的对偶映射是$f^*:W^*\to V^*$，则$\rank(f_*)=\rank(f^*)$. 特别地，当$f_*$是单（满）的时候，$f^*$是满（单）的。
 
-\para 设$\varphi:M\to N$光滑，且$\varphi_{*p}$是单射。令$(x_1$, $\cdots$, $x_n)$是$\varphi(p)$附近的一个坐标，那么$x_i\circ\varphi$是$p$附近的一个坐标。特别地，$\varphi$在$p$附近是一个单射。如果$\varphi_{*p}$是满射，则$x_i\circ\varphi$是$p$附近的一个坐标中的一部分。
+\pro \label{pro:111}设$\varphi:M\to N$光滑，令$(x_1$, $\cdots$, $x_n)$是$\varphi(p)$附近的一个坐标。如果$\varphi_{*p}$是单射，则$x_i\circ\varphi$中可以选出几个作为$p$附近的一个坐标。特别地，$\varphi$在$p$附近是一个单射。如果$\varphi_{*p}$是满射，则$x_i\circ\varphi$是$p$附近的一个坐标中的一部分。
 
-若$\varphi_{*p}$是单射，他的对偶映射$\varphi^*_p$就是满射，于是$\varphi^*_p(x_i)_{*\varphi(p)}=(x_i\circ\varphi)_{*p}=\dd_p(x_i\circ \varphi)$张成了$T_p^*M$，在其中选出一组极大线性无关组（不妨设为前$m$个），这就构成了$p$附近的一组坐标。而$(x_1$, $\cdots$, $x_m)\circ \varphi$局部是同胚，所以$\varphi$局部是单射。
+\proof
+	若$\varphi_{*p}$是单射，他的对偶映射$\varphi^*_p$就是满射，于是$\varphi^*_p(x_i)_{*\varphi(p)}=(x_i\circ\varphi)_{*p}=\dd_p(x_i\circ \varphi)$张成了$T_p^*M$，在其中选出一组极大线性无关组（不妨设为前$m$个），这就构成了$p$附近的一组坐标。而$(x_1$, $\cdots$, $x_m)\circ \varphi$局部是同胚，所以$\varphi$局部是单射。
 
-若$\varphi_{*p}$是满射，他的对偶映射$\varphi^*_p$就是单射，于是$\varphi^*_p\dd_{\varphi(p)}x_i=\dd_p(x_i\circ \varphi)$相互独立，一般来说，他数量不够构成坐标，但是却可以构成坐标中的一部分。
+	若$\varphi_{*p}$是满射，他的对偶映射$\varphi^*_p$就是单射，于是$\varphi^*_p\dd_{\varphi(p)}x_i=\dd_p(x_i\circ \varphi)$相互独立，一般来说，他数量不够构成坐标，但是却可以构成坐标中的一部分。
+\qed
 
-\para 设$f:M\to N$是一个光滑映射，则$\rank_p f$被定义为$\rank_p f_{*p}$.取$p$和$f(p)$附近的坐标$\varphi$和$\psi$且使得$\varphi(p)=0$，则$f$在点$p$的秩就是Jacobian矩阵$(\psi\circ f \circ \varphi^{-1})_{*0}$的秩。
+作为推论，从命题的第一点，我们根本不需要$(x_1$, $\cdots$, $x_n)$是一组坐标，只需要有一组无关的$(x_1$, $\cdots$, $x_m)$即可，命题的推理依然是成立的。这样我们就得到了一个函数$\psi=(x_1$, $\cdots$, $x_m):V\to \mathbb{R}^m$使得$\psi\varphi$是$p$附近的一个坐标，其中$V$是$\varphi(p)$附近的一个开集。同样，补充进一些新的光滑函数$x_{m+1}$, $\cdots$, $x_n$使得$(x_1$, $\cdots$, $x_n)$是无关的，我们也就得到了$p$附近的坐标$\gamma:U\to \mathbb{R}^n$，并且在$p$的足够小的邻域上，成立关系$\psi\varphi=\pi\gamma\varphi$，其中$\pi:\mathbb{R}^n\to\mathbb{R}^m$是将前$m$个坐标投影下来的投影函数。
 
-选取$f(p)$附近的坐标$\psi$，则$\psi\circ f:M\to \rr^n$，不妨将其写作$(f_1$, $\cdots$, $f_n)$，则$\rank_p f$就是$\{\dd_pf_1$, $\cdots$, $\dd_pf_n\}$张成的线性空间的维度。实际上，因为这是局部结果，所以可以假设$N=\rr^n$，此时$f_{*p}=(\dd_pf_1$, $\cdots$, $\dd_pf_n)$.
+\para 设$\varphi:M\to N$，如果$M$微分同胚于$N$的开子流形$\varphi(M)$，则称子流形$(M,\varphi)$是一个嵌入。浸入子流形不一定是嵌入子流形，比如秩为$1$的单的光滑曲线$f(t)=\bigl((t^3+t)/(t^4+1),(t^3-t)/(t^4+1)\bigr)$，在$\rr^2$中他的图像看起来是可以有自交点的。
 
-\theo 正则子流形的结构定理：设$N$是流形$M$的一个子集，则$N$是$M$的一个$k$维正则字流形，当且仅当，在每一点$p\in N$，可以找到一张$M$的坐标卡$(U_p,\varphi)$，使得$p\in U_p$且
+\pro 设$\psi:M\to N$是光滑映射，而$(P,\varphi)$是$N$的一个子流形，且$\psi(M)\subset \varphi(P)$. 因为$\varphi$是单射，所以存在唯一的映射$\psi_0:N\to P$使得$\varphi\varphi_0=\psi$，正如下面交换图所示
+\[
+\begin{xy}
+	\xymatrix{
+		N\ar[rr]^\psi\ar[rrd]_{\psi_0}&&M\\
+		&&P\ar[u]_\varphi
+	}
+\end{xy}
+\]
+于是，$\psi_0$如果是连续的，则他就是光滑的。如果$\psi$是嵌入，则$\psi_0$是连续的，进而是光滑的。
+
+\proof
+	第二点是清楚的。假设$\psi_0$是连续的，为证明$\psi_0$是光滑的，我们只要证明$P$能够被坐标卡$(U,\tau)$所覆盖，其中$\tau\psi_0$限制在$\psi_0^{-1}(U)$上是光滑的。任取$p\in P$，令$(V,\gamma)$是$\varphi(p)$附近的一个坐标卡，从Proposition \eqref{pro:111}下面的推论可知，存在一个欧式空间之间的投影$\pi$使得$\tau=\pi\gamma\varphi$给出了$p$附近的一个坐标卡，于是$\tau\varphi_0|_{\varphi_0^{-1}(U)}=\pi\gamma\varphi\varphi_0|_{\varphi_0^{-1}(U)}=\pi\gamma\psi|_{\varphi_0^{-1}(U)}$是光滑的。
+\qed
+
+\para 设$(P,\varphi)$和$(Q,\psi)$都是$M$的子流形，如果存在一个光滑映射$\pi:P\to Q$使得$\varphi=\psi\pi$，则称$\pi$是一个子流形之间的映射。如果$\pi$是一个光滑同胚，则$\pi^{-1}$显然也是一个子流形之间的映射，此时两个子流形$(P,\varphi)$和$(Q,\psi)$被称为等价的。
+
+这是一个很清楚的等价关系。所以研究子流形，就是分类这些等价类而已。设$(P,\varphi)$是一个子流形，可以通过引入$\varphi(P)$上的一个流形结构将$\varphi$做成一个$P\to \varphi(P)$的光滑同胚使得$(\varphi(P),i)$称为一个子流形，其中$i:\varphi(P)\hookrightarrow M$是集合间嵌入映射，这里是单且浸入的。所以在等价类中，只要研究这样的子流形即可。
+
+\para 设$U$是$M$的一个子集，但$U$本身有一个流形的结构，如果此时$i:U\hookrightarrow M$是一个嵌入，则称$U$是$M$的一个正则子流形。所谓的正则子流形就是说，它本身的流形结构和从大的流形那里继承来的流形结构是相同的的。
+
+设$M$和$N$是光滑流形，$f:M\to N$是一个单浸入。我们可以赋予$f(M)$一个微分结构通过把$f:M\to f(M)$做成一个微分同胚，即设$\{(U_\alpha,\varphi_\alpha)\}$是$M$上的一个极大图册，在$f(M)$上通过$\{f(U_\alpha)\}$定义了拓扑，然后$\{f(U_\alpha),\varphi_\alpha\circ f^{-1}\}$定义了微分流形结构。此时，$f(M)$是$N$的正则子流形当且仅当$f$是一个嵌入。
+
+\theo 正则子流形的结构定理：设$N$是流形$M$的一个子集，则$N$是$M$的一个$k$维正则子流形，当且仅当，在每一点$p\in N$，可以找到一张$M$的坐标卡$(U_p,\varphi)$，使得$p\in U_p$且
 \[
 	U_p\cap N=\bigl\{q\in U_p\,:\,\varphi(q)=\left(x^1(q)\text{, $\cdots$, }x^k(q)\text{, }0\text{, $\cdots$, }0\right)\bigr\},
 \]
@@ -669,7 +690,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 \para 设$f:M\to N$，我们前面已经谈到了，这个$f$在0-形式，即光滑函数之间诱导了一个$f^*$（被称为一个拉回），即$f^*g=g\circ f$. 对于$1$-形式，由\eqref{f*d=df*}，我们知道了$f^*\dd g=\dd (f^* g)$，对比矢量场之间$f_*$的定义还需要$f$是单射，这里1-形式之间的$f^*$则没有这个限制。
 
-\para 通过$(f^*\omega)_p=\omega_{f(p)}\bigl(f_{*p}(X_1)_p,\cdots,f_{*p}(X_k)_p\bigr)$，我们可以定义出$k$-形式之间的$f^*$.
+通过$(f^*\omega)_p=\omega_{f(p)}\bigl(f_{*p}(X_1)_p,\cdots,f_{*p}(X_k)_p\bigr)$，我们可以定义出$k$-形式之间的$f^*$.
 
 \para 所以，很容易检验，$f^*(\omega\wedge \eta)=(f^*\omega)\wedge (f^*\eta)$.
 
