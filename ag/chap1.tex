@@ -1,6 +1,7 @@
 % !TEX root = main.tex
-\renewcommand\chapterimg{../../Pictures/7.png}
+
 \chapter{一些定义}
+\ThisULCornerWallPaper{1}{../../Pictures/7.png}
 
 我们假设本文所出现的环都是含幺交换环，即有一个乘法单位元的交换环，并且，我们所谓的环同态，他将单位元映到单位元。特别地，我们约定，零环即$R=\{0\}$，其中乘法单位元和加法单位元相等，即$0=1$。在环（即我们这里所谓的环）范畴中，零环的地位大致相当于集合范畴中的空集。所以下面我们在提到环的时候，经常是默认该环不是零环。此外，我们下面谈及的模也都是含幺交换环上的模，所以不分左右双边。
 
@@ -46,7 +47,7 @@
 
 \para 两个层的例子，流形$M$上，每一个开集$U$上的光滑函数的全体构成一个环，记作$\calf(U)$，则这是一个预层，$U$上的截面就是$U$上的光滑函数。这显然是一个层，因为光滑性是局部概念，如果两个光滑函数限制在同一个开集上是相同的，那么我们自然可以拼成一个唯一的更大的光滑函数，一族也是类似的。
 
-另一个例子来自代数簇，设$X$是一个代数簇，他的每一个开集$U$都是一个子代数簇，自然有相应的正则函数环$\calf(U)$，则这是也给预层，$U$上的截面就是$U$上的正则函数。这依然是一个层，因为正则性还是局部概念，可以拼接的理由同上。
+另一个例子来自代数簇，设$X$是一个代数簇，他的每一个开集$U$都是一个子代数簇，自然有相应的正则函数环$\calf(U)$，则这是一个预层，$U$上的截面就是$U$上的正则函数。这依然是一个层，因为正则性还是局部概念，可以拼接的理由同上。
 
 \para 设$\calf$是$X$上的一个预层，如果范畴$K$能容纳colimit，那么定义$\calf$在$p\in X$处的\idx{纤维}$\calf_p$为$\varinjlim \calf(U)$，其中$U$跑遍所有$p$的邻域，这些领域通过包含构成一个显然的direct system。
 
@@ -73,37 +74,39 @@
 
 \proof 选取包含在某个开覆盖的开集的全体，这是全空间的一个拓扑基，命题中的黏合条件自然地给出层的条件。详细见[EGA, Chap 0, 3.3].\qed
 
-\para 设$\varphi:X\to Y$是拓扑空间之间的连续映射，而$\calf$是$X$上的一个预层，则通过$f_*\calf(U)=\calf(f^{-1}(U))$我们可以定义出$Y$上的一个预层$f_*\calf$，他被称为$\calf$关于$f$的\idx{顺像}。 由于原象是保持包含关系的，即如果$V\subset U$，则$f^{-1}(V)\subset f^{-1}(U)$，所以$f_*\calf$上的限制映射就很自然地写作$\pi^U_V=\rho^{f^{-1}(U)}_{f^{-1}(V)}$. 不难检验，当$\calf$是$X$上的一个层的时候，$f_*\calf$是$Y$上的一个层。
+\para 设$f:X\to Y$是拓扑空间之间的连续映射，而$\calf$是$X$上的一个预层，则通过$f_*\calf(U)=\calf(f^{-1}(U))$我们可以定义出$Y$上的一个预层$f_*\calf$，他被称为$\calf$关于$f$的\idx{顺像}。 由于原象是保持包含关系的，即如果$V\subset U$，则$f^{-1}(V)\subset f^{-1}(U)$，所以$f_*\calf$上的限制映射就很自然地写作$\pi^U_V=\rho^{f^{-1}(U)}_{f^{-1}(V)}$. 不难检验，当$\calf$是$X$上的一个层的时候，$f_*\calf$是$Y$上的一个层。
 
 设$\varphi:\calf\to\calg$是$X$上两个预层之间的态射，那么，很自然，$f$诱导了一个新的态射$f_*\varphi:f_*\calf\to f_*\calg$，具体写出来就是$(f_*\varphi)(U)=\varphi(f^{-1}(U))$，通过自然变换$\varphi$可以验证$f_*\varphi$是一个自然变换。
 
-考虑两个连续映射的复合，很自然地可以验证$(f\circ g)_*=f_*\circ g_*$，这来自于关于原象的等式$(f\circ g)^{-1}(U)=g^{-1}(f^{-1}(U))$.
+考虑两个连续映射的复合，很自然地可以验证$(f\circ g)_*=f_*\circ g_*$，这来自于关于原象的等式$(f\circ g)^{-1}(U)=g^{-1}(f^{-1}(U))$. 
+
+设$u:\mathcal{F}\to\mathcal{G}$是一个$X$上预层间的态射，则$f_*u(U)=u(f^{-1}(U))$就是一个$f_*\mathcal{F}\to f_*\mathcal{G}$之间的态射。并且，设$v:\mathcal{G}\to\mathcal{H}$是令一个$X$上预层间的态射，成立$f_*(v\circ u)=f_*v\circ f_* u$. 于是$f_*$就构成了一个$X$上预层范畴到$Y$上预层范畴之间的协变函子。并且，由于$f_*$将层变成层，所以$f_*$也诱导了一个$X$上层范畴到$Y$上层范畴之间的协变函子。
 
 \para 所谓的\idx{赋环空间}(ringed space)，就是一个拓扑空间$X$，和拓扑空间上的环层$\mathcal{O}_X$构成的资料$(X,\mathcal{O}_X)$. 流形和上面的光滑函数构成一个赋环空间，同样，代数簇和上面的正则函数构成一个赋环空间。
 
 所谓的\idx{局部赋环空间}，就是说任意一点$p\in X$处的纤维$\mathcal{O}_p=\varinjlim \mathcal{O}_X(U)$是局部环。流形的例子是一个局部赋环空间，因为在$p$附近的光滑函数，如果在$p$处不为零，则存在一个邻域是可逆的，故而，在$p$处为零的光滑函数构成的等价类是唯一的极大理想。代数簇的例子还是一个局部赋环空间，因为代数簇局部是仿射的，所以我们可以假设这是一个仿射簇，对于仿射簇而言，$X$中的点$p$（如果是非代数闭的情况，那就是一条Galois轨道）一一对应着坐标环$A(X)$中的一个极大理想$\mm_p$（这来自于Hilbert零点定理），而$\mathcal{O}_p$正好同构于$A(X)$关于$\mm_p$的局部化，所以是一个局部环。
 
-赋环空间之间的态射如下定义：设有赋环空间$(X,\mathcal{O}_X)$和$(Y,\mathcal{O}_Y)$，以及连续映射$\psi:X\to Y$和$Y$上的层之间的同态$\theta:\mathcal{O}_Y\to \psi_*\mathcal{O}_X$，这样的一个二元组$\Psi=(\psi,\theta)$构成了赋环空间范畴的同态，记做$\Psi:(X,\mathcal{O}_X)\to (Y,\mathcal{O}_Y)$.
+赋环空间之间的态射如下定义：设有赋环空间$(X,\mathcal{O}_X)$和$(Y,\mathcal{O}_Y)$，以及连续映射$\psi:X\to Y$和$Y$上的层之间的态射$\theta:\mathcal{O}_Y\to \psi_*\mathcal{O}_X$，这样的一个二元组$\Psi=(\psi,\theta)$构成了赋环空间范畴的态射，记做$\Psi:(X,\mathcal{O}_X)\to (Y,\mathcal{O}_Y)$.
 
-要确切地理解是一个同态，则需要验证复合，假设$\Phi=(\psi',\theta'):(Y,\mathcal{O}_Y)\to (Z,\mathcal{O}_Z)$是另一个态射，在$\Phi\circ \Psi$中，连续映射的复合不用多说，对于层的复合，则如图所示
+要确切地理解是一个态射，则需要验证复合，假设$\Phi=(\psi',\theta'):(Y,\mathcal{O}_Y)\to (Z,\mathcal{O}_Z)$是另一个态射，在$\Phi\circ \Psi$中，连续映射的复合不用多说，对于层的复合，则如图所示
 \[
 	\mathcal{O}_Z\xrightarrow{\theta'} \psi'_*\mathcal{O}_Y \xrightarrow{\psi'_*\theta} \psi'_*\psi_*\mathcal{O}_X,
 \]
 写成$(\psi'_*\theta)\circ \theta'$的形式。
 
-\para 有了顺像，我们现在考虑逆像，设$\psi:X\to Y$是一个连续映射，而$\calf$是$X$上的一个层，$\calg$是$Y$上的一个预层。预层$\calg$关于$\psi$的\idx{逆像}首先是这样一个二元组$(\psi^*\calg,\rho_\calg)$，其中$\psi^*\calg$是$X$上的层，而$\rho_\calg$是$\calg$到$\psi_*\psi^*\calg$的典范态射。其次对于任意的态射$u:\calg \to \psi_*\calf$，都可以找到唯一的态射$v:\psi^*\calg \to \calf$使得分解$u:\calg\xrightarrow{\rho_\calg} \psi_*\psi^*\calg \xrightarrow{\psi_*v} \psi_*\calf$成立。换而言之，集合$\Hom_X(\psi^*\calg,\calf)$和$\Hom_Y(\calg,\psi_*\calf)$之间存在双射。$(\psi^*\calg,\rho_\calg)$满足的是一个泛性质，所以逆像确定到一个同构上。当然对于逆像的存在性我们现在还不清楚。
+\para 有了顺像，我们现在考虑\idx{逆像}。设$f:X\to Y$是一个连续映射，而$\calf$是$X$上的一个层，$\calg$是$Y$上的一个预层。$f_*$是$X$上层范畴到$Y$上预层范畴的一个函子，如果它存在左伴随函子$f^*$，则$f^*\calg$被称为预层$\calg$关于$f$的逆像。换而言之，$\Hom_X(f^*\calg,\calf)$和$\Hom_Y(\calg,f_*\calf)$对层$\calg$与预层$\calf$是双函子同构。
 
-特别地，$1_X:X\to X$是恒同映射，对于$X$上的预层$\calf$，如果层$1_X^*\calf$存在，则他称为$\calf$的\idx{伴随层}，有时候也被记做$\calf^+$. 对于任意的层$\calf'$和态射$u:\calf\to\calf'$，总有唯一分解$u:\calf\xrightarrow{\rho_\calf} \calf^+ \xrightarrow{v} \calf'$成立。这意味着层的伴随层与自己同构。
+明确来说，预层$\calg$关于$f$的逆像首先是这样一个二元组$(f^*\calg,\rho_\calg)$，其中$f^*\calg$是$X$上的层，而$\rho_\calg$是$\calg$到$f_*f^*\calg$的典范态射。其次对于任意的态射$u:\calg \to f_*\calf$，都可以找到唯一的态射$v:f^*\calg \to \calf$使得分解$u:\calg\xrightarrow{\rho_\calg} f_*f^*\calg \xrightarrow{f_*v} f_*\calf$成立。$(f^*\calg,\rho_\calg)$满足的是一个泛性质，所以逆像确定到一个同构上。当然对于逆像的存在性我们现在还不清楚。
 
-\para 对于一些特殊情况，逆像层总是存在的。考虑一个内含映射的例子，设$U$是$X$的开子集，相应的内含映射为$i:U\hookrightarrow X$。对于$X$上的$K$-层$\calf$，$\calf|_U$即其在$U$上的逆像层$i^*\calf$.
+\pro \label{pro:1}对于一些特殊情况，逆像层总是存在的。考虑一个内含映射的例子，设$U$是$X$的开子集，相应的内含映射为$i:U\hookrightarrow X$。对于$X$上的$K$-层$\calf$，$\calf|_U$即其在$U$上的逆像层$i^*\calf$.
 
 \proof 为此，我们先假设这是对的，然后检查泛性质即可。现在还缺一个典范态射$\calf\to i_*i^*\calf$，由于我们假设了$i^*\calf=\calf|_U$，所以$i_*i^*\calf(V)=i^*\calf(i^{-1}(V))=\calf|_U(U\cap V)=\calf(U\cap V)$. 那么限制映射族$\rho^V_{U\cap V}:\calf(V)\to \calf(U\cap V)$可以构成层之间的态射$\calf\to i_*i^*\calf$，我们将其记做$i^\#$，我们希望这就是典范态射。
 
 剩下的不过是检查$(\calf|_U,i^\#)$所需要满足的泛性质。设$\calg$是$U$上的一个层，对于任意的态射$u:\calf\to i_*\calg$，他具有形式$u(V):\calf(V)\to i_*\calg(V)=\calg(U\cap V)$. 遍历$U$中的开集$V$，我们定义$v(V)=u(V):\calf(V)\to \calg(U\cap V)=\calg(V)$，此时由于$i^*\calf(V)=\calf|_U(V)=\calf(V)$，所以我们定义出了一族态射$v(V):i^*\calf(V)=\calf(V)\to \calg(V)$，自然也得到了态射$v:i^*\calf\to \calg$. 这样定出来的$v$显然是唯一的。最后，需要检查分解$u:\calf\xrightarrow{i^\#} i_*i^*\calf \xrightarrow{i_*v} i_*\calg$成立，这个分解其实说白了就是，已知如下交换图（图中的限制映射都略去了）成立，
 \[
 	\xymatrix{
-		\calf(V)\ar[r]^{u(V)} \ar[d]&\calg(U\cap V) \ar[d]\\
-		\calf(W)\ar[r]^{u(W)}&\calg(U\cap W)
+		\calf(V)\ar[r]^-{u(V)} \ar[d]&\calg(U\cap V) \ar[d]\\
+		\calf(W)\ar[r]^-{u(W)}&\calg(U\cap W)
 	}
 \]
 其中$W\subset V$是$X$中的开集，要验证定出来的$v$使得如下交换图成立。
@@ -118,11 +121,23 @@
 现考虑如下交换图，
 \[
 	\xymatrix{
-		\calf(V)\ar[r]^{u(V)} \ar[d]&\calg(U\cap V) \ar@{=}[d]\\
+		\calf(V)\ar[r]^-{u(V)} \ar[d]&\calg(U\cap V) \ar@{=}[d]\\
 		\calf(U\cap V)\ar[r]^{u(U\cap V)}&\calg(U\cap V)
 	}
 \]
 这就得出了$u(V)=u(U\cap V)\circ \rho^V_{U\cap V}$，而$v(U\cap V)=u(U\cap V)$，所以$u(V)=v(U\cap V)\circ \rho^V_{U\cap V}$，即交换图横向的分解成立。逆像层的泛性质检验完毕。\qed
+
+\para 特别地，$1_X:X\to X$是恒同映射，对于$X$上的预层$\calf$，如果层$1_X^*\calf$存在，则他称为$\calf$的\idx{伴随层}，有时候也被记做$\calf^+$. 对于任意的层$\calf'$和态射$u:\calf\to\calf'$，总有唯一分解$u:\calf\xrightarrow{\rho_\calf} \calf^+ \xrightarrow{v} \calf'$成立。
+
+注意到双函子同构$\Hom_X (1_X^* \mathcal{F},\mathcal{G})\cong \Hom_X(\mathcal{F},\mathcal{G})$，前者是$X$上层范畴之间的态射集，后者是$X$上预层范畴的态射集。所以$1_X^*$是层范畴的自由对象，即层范畴到预层范畴的遗忘函子的左伴随函子。若$\calf$是一个层，则$\Hom_X(\calf,\calg)$同时是预层与层的态射集，由Yoneda引理，$\calf\cong 1_X^* \mathcal{F}$. 因此，层的伴随层总存在，且同构于他本身。
+
+\lem 如果范畴$K$可以容纳limit，那么存在$Y$上的预层$\mathcal{F}$存在伴随层，则对任意连续映射$f :X\to Y$，逆像层$f^*\mathcal{F}$存在，且同构于层$U\mapsto \varprojlim_V \mathcal{F}^+(V)$，其中$V$跑遍所有包含$f(U)$的开集。
+
+\proof
+	\notprove
+\qed
+
+从这个引理，Proposition \eqref{pro:1}就是显然的了。事实上，由于包含$i(V)=U\cap V$的任意开集中有极小元$U\cap V$，所以极限$\varprojlim_W \mathcal{F}^+(W)$总存在且就等于$\mathcal{F}^+(U\cap V)$. 并且，由于$\mathcal{F}$是一个层，所以$\mathcal{F}^+=\mathcal{F}$也存在。
 
 \para 应用到赋环空间，我们就有了一个赋环空间的态射$(i,i^\#):(U,\mathcal{O}_U)\to (X,\mathcal{O}_X)$，其中$\mathcal{O}_U=\mathcal{O}_X|_U$，他被称为赋环空间的典范内含态射。
 
@@ -177,7 +192,7 @@
 % 对$X$中的开集$U$，可以定义$\calg'(U)$如下：$\calg'(U)$的元素$s'$是一个族$(s_x')_{x\in U}$，其中$s_x'\in \calg_{\psi(x)}$且这些$s'_x$满足下面的条件“对任意的$x\in U$，总存在$\psi(x)$的一个开邻域$V$，$x$的一个邻域$W\subset \psi^{-1}(V)\cap U$和一个元素$s\in \calg(V)$，使得当$x\in W$的时候总有$s'_z=s_{\psi(z)}$”。很容易证明$U\mapsto \calg'(U)$这是一个层。
 % \qed
 
-\para 设$w:\calg_1\to \calg_2$是$Y$上的一个$K$-预层同态，如果$\calg_2$和$\calg_2$关于$\psi:X\to Y$的逆像是存在的，则复合$\rho_{\calg_2}\circ w:\calg_1\to \psi_*\psi^*\calg_2$，由逆像的泛性质，我们可以找到一个态射$v:\psi^*\calg_1\to \psi^*\calg_2$来分解上面的复合态射，我们将其记做$\psi^*(w)$，他将$Y$上的$K$-预层同态，变成了$X$上的$K$-层同态。这里不加验证，$\psi^*(w_1)\circ \psi^*(w_2)=\psi^*(w_1\circ w_2)$，所以这是一个协变函子。
+\para 设$w:\calg_1\to \calg_2$是$Y$上的一个$K$-预层态射，如果$\calg_2$和$\calg_2$关于$\psi:X\to Y$的逆像是存在的，则复合$\rho_{\calg_2}\circ w:\calg_1\to \psi_*\psi^*\calg_2$，由逆像的泛性质，我们可以找到一个态射$v:\psi^*\calg_1\to \psi^*\calg_2$来分解上面的复合态射，我们将其记做$\psi^*(w)$，他将$Y$上的$K$-预层态射，变成了$X$上的$K$-层态射。这里不加验证，$\psi^*(w_1)\circ \psi^*(w_2)=\psi^*(w_1\circ w_2)$，所以这是一个协变函子。
 
 \para 设$(X,\mathcal{O}_X)$是一个赋环空间，我们称$\calf$是一个$\mathcal{O}_X$-\idx{模层}，如果对每一个开集$U$，$\calf(U)$都是一个$\mathcal{O}_X(U)$-模，并且$\calf$和$\mathcal{O}_X$的限制映射是相容的，即：设$V\subset U$是$X$的开子集，记$\calf$的限制映射为$\pi^U_V$，相应地$\mathcal{O}_X$的限制映射为$\rho^U_V$，那么对于标量乘法而成的截面$a\cdot s\in\calf(U)$，则$\pi^U_V(a\cdot s)=\rho^U_V(a)\cdot \pi^U_V(s)$. 类似地，我们定义什么叫$\mathcal{O}_X$-\idx{代数层}：环层$\calf$被称为$\mathcal{O}_X$-代数层，如果他是一个$\mathcal{O}_X$-模层。
 
