@@ -51,8 +51,6 @@
 
 \para 设$\calf$是$X$上的一个预层，如果范畴$K$能容纳colimit，那么定义$\calf$在$p\in X$处的\idx{纤维}$\calf_p$为$\varinjlim \calf(U)$，其中$U$跑遍所有$p$的邻域，这些领域通过包含构成一个显然的direct system。
 
-对于交换群范畴，直接写出具体构造还是比较方便的，$\calf_p$中的元素是这样的等价类$\langle U,f\rangle$的全体，其中$f$是$U$上的截面，而$U$是$p$的邻域。等价关系定义为$\langle U,f\rangle\sim \langle V,g\rangle$，当且仅当存在一个$p$的邻域$W\subset U\cap V$使得$f|_W=g|_W$.
-
 利用colimit的泛性质，我们发现，预层间的态射$\varphi:\calf\to\calg$如下图在局部诱导了$\varphi_p:\calf_p\to\calg_p$.
 \[
 	\xymatrix{
@@ -61,6 +59,8 @@
 		&&\ar[ul]_{\rho_{Vp}}\calf(V)\ar@/^/[llu]^{\rho'_{Vp}\circ\varphi(V)}
 	}
 \]
+
+对于交换群范畴，直接写出具体构造还是比较方便的，$\calf_p$中的元素是这样的等价类$\langle U,f\rangle$的全体，其中$f$是$U$上的截面，而$U$是$p$的邻域。等价关系定义为$\langle U,f\rangle\sim \langle V,g\rangle$，当且仅当存在一个$p$的邻域$W\subset U\cap V$使得$f|_W=g|_W$.
 
 \para 考虑$\mathfrak{B}$是$X$的拓扑基，则同拓扑空间一样，我们取对象为基中的元素，态射为内含映射，则自然他也构成一个范畴。类似地，我们可以定义$\mathfrak{B}$上取值在$K$的预层为$\mathfrak{B}$到$K$的一个反变函子，层公理也可以一模一样搬过来。
 
@@ -94,7 +94,7 @@
 \]
 写成$(\psi'_*\theta)\circ \theta'$的形式。
 
-\para 有了顺像，我们现在考虑\idx{逆像}。设$f:X\to Y$是一个连续映射，而$\calf$是$X$上的一个层，$\calg$是$Y$上的一个预层。$f_*$是$X$上层范畴到$Y$上预层范畴的一个函子，如果它存在左伴随函子$f^*$，则$f^*\calg$被称为预层$\calg$关于$f$的逆像。换而言之，$\Hom_X(f^*\calg,\calf)$和$\Hom_Y(\calg,f_*\calf)$对层$\calg$与预层$\calf$是双函子同构。
+\para 有了顺像，我们现在考虑\idx{逆像}。设$f:X\to Y$是一个连续映射，而$\calf$是$X$上的一个层，$\calg$是$Y$上的一个预层。$f_*$是$X$上层范畴到$Y$上预层范畴的一个函子，如果它存在左伴随函子$f^*$，则$f^*\calg$被称为预层$\calg$关于$f$的逆像。换而言之，$\Hom_X(f^*\calg,\calf)$和$\Hom_Y(\calg,f_*\calf)$对层$\calf$与预层$\calg$是双函子同构。
 
 明确来说，预层$\calg$关于$f$的逆像首先是这样一个二元组$(f^*\calg,\rho_\calg)$，其中$f^*\calg$是$X$上的层，而$\rho_\calg$是$\calg$到$f_*f^*\calg$的典范态射。其次对于任意的态射$u:\calg \to f_*\calf$，都可以找到唯一的态射$v:f^*\calg \to \calf$使得分解$u:\calg\xrightarrow{\rho_\calg} f_*f^*\calg \xrightarrow{f_*v} f_*\calf$成立。$(f^*\calg,\rho_\calg)$满足的是一个泛性质，所以逆像确定到一个同构上。当然对于逆像的存在性我们现在还不清楚。
 
@@ -131,7 +131,7 @@
 
 注意到双函子同构$\Hom_X (1_X^* \mathcal{F},\mathcal{G})\cong \Hom_X(\mathcal{F},\mathcal{G})$，前者是$X$上层范畴之间的态射集，后者是$X$上预层范畴的态射集。所以$1_X^*$是层范畴的自由对象，即层范畴到预层范畴的遗忘函子的左伴随函子。若$\calf$是一个层，则$\Hom_X(\calf,\calg)$同时是预层与层的态射集，由Yoneda引理，$\calf\cong 1_X^* \mathcal{F}$. 因此，层的伴随层总存在，且同构于他本身。
 
-\lem 如果范畴$K$可以容纳limit，那么存在$Y$上的预层$\mathcal{F}$存在伴随层，则对任意连续映射$f :X\to Y$，逆像层$f^*\mathcal{F}$存在，且同构于层$U\mapsto \varprojlim_V \mathcal{F}^+(V)$，其中$V$跑遍所有包含$f(U)$的开集。
+\lem 如果范畴$K$可以容纳limit，且对$Y$上的预层$\mathcal{F}$存在伴随层，则对任意连续映射$f :X\to Y$，逆像层$f^*\mathcal{F}$存在，且同构于层$U\mapsto \varprojlim_V \mathcal{F}^+(V)$，其中$V$跑遍所有包含$f(U)$的开集。
 
 \proof
 	\notprove
@@ -151,11 +151,13 @@
 \]
 很容易验证，如果$V$又是$U$的一个开子集，则$(\Phi|_U)|_V=\Phi|_V$.
 
-\pro 有了限制的知识，就可以讨论赋环空间间态射的黏合。设$(X,\mathcal{O}_X)$是一个赋环空间，并且$\{U_\alpha\}_{\alpha\in I}$是一个$X$的开覆盖。如果我们有一族态射$\Phi_\alpha:(U_{\alpha},\mathcal{O}_{U_{\alpha}})\to (Y,\mathcal{O}_Y)$，对于任意的两个指标$(\alpha,\beta)$，成立$\Phi_\alpha|_{U_{\alpha}\cap U_{\alpha}}=\Phi_\beta|_{U_{\alpha}\cap U_{\alpha}}$，则存在一个态射$\Phi:(X,\mathcal{O}_{X})\to (Y,\mathcal{O}_Y)$使得$\Phi|_{U_{\alpha}}=\Phi_\alpha$.
+\pro 有了限制的知识，就可以讨论赋环空间间态射的黏合。设$(X,\mathcal{O}_X)$是一个赋环空间，并且$\{U_\alpha\}_{\alpha\in I}$是一个$X$的开覆盖。如果我们有一族态射$\Phi_\alpha:(U_{\alpha},\mathcal{O}_{U_{\alpha}})\to (Y,\mathcal{O}_Y)$，对于任意的两个指标$(\alpha,\beta)$，成立$\Phi_\alpha|_{U_{\alpha}\cap U_{\beta}}=\Phi_\beta|_{U_{\alpha}\cap U_{\beta}}$，则存在一个态射$\Phi:(X,\mathcal{O}_{X})\to (Y,\mathcal{O}_Y)$使得$\Phi|_{U_{\alpha}}=\Phi_\alpha$.
 
 \proof 连续函数在开覆盖上的黏合是显然的，对于层的态射那部分，用的技术无外乎层上截面的黏合，这是很琐碎的检验，这里略去了。\qed
 
 \pro 设$\psi:X\to Y$是一个连续映射，$\calf$是$X$上的一个$K$-层，而$\calg$是$Y$上的一个$K$-预层。如果范畴$K$是交换群范畴，则$\calg$关于$\psi$的逆像层$\psi^*\calg$存在。
+
+由于交换群作为$\zz$-模，对任意族都一定存在limit. 所以从上面的引理，逆像的存在性就归结到了伴随层的存在性上面。不过下面我们还是直接证明这个命题。
 
 \proof 
 	证明是直接的构造。交换群范畴，我们知道预层的纤维总是存在的。所以我们这样定义$\psi^*\calg$：对$X$中的开集$U$, 令$\psi^*\calg(U)$是函数$s:U\to \bigcup_{p\in U}\calg_{\psi(p)}$的集合，这些函数需要满足
@@ -222,7 +224,7 @@
 
 \section{拓扑空间的复习}
 
-\para 一个拓扑空间$X$被称为\idx{拟紧}的，如果对于他的任意开覆盖$\{U_\alpha\}_{\alpha\in I}$，都存在$I$的某个有限子集$J$使得$\{U_\alpha\}_{\alpha\in J}$也是$X$的开覆盖。或者说简单点，$X$是紧的，如果对于任意$X$的开覆盖都存在有限子覆盖。
+\para 一个拓扑空间$X$被称为\idx{拟紧}的，如果对于他的任意开覆盖$\{U_\alpha\}_{\alpha\in I}$，都存在$I$的某个有限子集$J$使得$\{U_\alpha\}_{\alpha\in J}$也是$X$的开覆盖。或者说简单点，$X$是拟紧的，如果对于任意$X$的开覆盖都存在有限子覆盖。
 
 % \para 任意集合$X$的幂集$P(X)$上可以用包含关系定义一个偏序：设$U$, $V\in P(X)$，$U\leq V$当且仅当$U\subset V$. 任意幂集的子集可以继承这个偏序。
 
@@ -252,7 +254,7 @@
 
 \para 一个拓扑空间被称为是Noetherian的，就是说闭集链满足d.c.c.，这其实也等价说，Noether拓扑空间的闭集族满足极小条件。再或者等价地，开集族满足极大条件。对于在模范畴里面，满足a.c.c.的才是Noetherian的，到拓扑空间反过来后面我们会看到这是自然的。如同模范畴里面那样，Noether性是一种有限性条件，如同上面的拟紧性一样。
 
-\para 从定义可以很轻松看出，Noether拓扑空间的子空间也是Noether拓扑空间。反之，如果一个拓扑空间是有限个Noether拓扑空间的并，则其也是Noether拓扑空间。
+从定义可以很轻松看出，Noether拓扑空间的子空间也是Noether拓扑空间。反之，如果一个拓扑空间是有限个Noether拓扑空间的并，则其也是Noether拓扑空间。
 
 \para Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 
@@ -262,9 +264,7 @@
 
 \para 现在转而走进\idx{不可约}性，所谓不可约的拓扑空间，就是说该拓扑空间是非空的，且不能表示为两个真闭子集的并。这个定义可以转而描述为，他是非空的且其中任意非空开集的交非空，或者任意非空开集在其中稠密，或者任意开集都连通。从定义可以直接得出，不可约拓扑空间的非空开子集也是不可约的。
 
-\para 如果$X$的一个稠密子集$Y$是不可约的，则$X$是不可约的。
-
-假设$X$是可约的，那么存在$X$的两个非空闭子集，使得他们的并是$X$，这两个闭子集交上$Y$构成两个$Y$中的非空闭子集他们的并是$Y$，因此$Y$可约。逆否即证毕。
+\para 如果$X$的一个稠密子集$Y$是不可约的，则$X$是不可约的。事实上，假设$X$是可约的，那么存在$X$的两个非空闭子集，使得他们的并是$X$，这两个闭子集交上$Y$构成两个$Y$中的非空闭子集他们的并是$Y$，因此$Y$可约。逆否即证毕。
 
 利用这个小命题，我们得出，一个拓扑空间$X$的子空间$Y$是不可约的，当且仅当$Y$的闭包$\bar{Y}$是不可约的。反方向并不困难。特别地，单点的闭包$\overline{\{x\}}$总是不可约的。
 
@@ -292,29 +292,41 @@
 
 \para 定义$D(f):=\{x\in \spec(R)\,:\, f(x)\neq 0\}$，我们下面的目标是让$f(x)$尽可能看上去像一个连续函数，我们要证明$D(f)$满足开集公理。等价地，我们要验证$V(f):=\{x\in \spec(R)\,:\, f(x)=0\}=\{\pp\in \spec(R)\,:\, (f)\subset \pp\}$满足闭集公理，或者更一般地，我们可以验证$V(E):=\{\pp\in \spec(R)\,:\, E\subset \pp\}$满足闭集公理，其中$E$是$R$的任意子集。
 
-可以注意到$V$的一些性质，比如对$R$的任意子集$E$，显然有$V(E)=V((E))$，其中$(E)=ER$是$E$生成的理想，由于$\sqrt{(E)}$是所有包含$(E)$的素理想的交，所以有$V(E)=V((E))=V(\sqrt{(E)})$. 再比如，如果$E\subset F$，则$V(F)\subset V(E)$.
-
 \pro $V(E)$确实满足闭集公理，所以$\spec(R)$以$V(E)$为闭集是一个拓扑空间。
 
 \proof 显然的是$V(1)=\varnothing$以及$V(0)=\spec(R)$，剩下的我们需要检验$\bigcap_{i\in I}V(E_i)=V(\bigcup_{i\in I}E_i)$. 设$\pp \in \bigcap_{i\in I}V(E_i)$，则$\pp\in V(E_i)$对$i\in I$都成立，这等价于$E_i\subset \pp$对$i\in I$都成立，而这又等价于$\bigcup_{i\in I}E_i \subset \pp$，因此得证。\qed
 
 作为推论，我们可以得出$D(f)$是开集，更加神奇的是，他构成了$\spec(R)$的一个拓扑基。设$U$是任意的开集，则其写作$U=\spec(R)-V(E)$的形式，而$\spec(R)-V(E)=\spec(R)-V\bigl(\bigcup_{f\in E} f\bigr)=\spec(R)-\bigcap_{f\in E}V(f)=\bigcup_{f\in E}D(f)$，所以$U=\bigcup_{f\in E}D(f)$.
 
-\para 记$\pp(Y)=\{f\in A\,:\, f(Y)=0\}$，即在$Y$上消失的所有环元构成的理想，利用这个记号，显然的是$\pp(\{x\})=\pp_x$。把$f(Y)=0$的意义详细写出来，则$\pp(Y)=\bigcap_{y\in Y}\pp_y$. 于是，$\pp(V(E))=\sqrt{(E)}$，这来自于$\sqrt{(E)}$是所有包含$(E)$的素理想的交。这是传统的Hilbert零点定理的对应。
+此外，环的素谱满足$T_0$分离公理，实际上，设$\pp_x$和$\pp_y$分别是两个素理想，则或者有$\pp_x\not\subset \pp_y$或者有$\pp_y\not\subset \pp_x$，因此有$y\not\in \overline{\{x\}}$或者$x\not\in \overline{\{y\}}$. 用开集描述就是，$y\in \spec(A)-\overline{\{x\}}$或者$x\in \spec(A)-\overline{\{y\}}$，这就使得$T_0$分离公理成立。
+
+\para 可以注意到$V$的一些性质，比如对$R$的任意子集$E$，显然有$V(E)=V((E))$，其中$(E)=ER$是$E$生成的理想，由于$\sqrt{(E)}$是所有包含$(E)$的素理想的交，所以有$V(E)=V((E))=V(\sqrt{(E)})$. 再比如，如果$E\subset F$，则$V(F)\subset V(E)$.
+
+记$\pp(Y)=\{f\in A\,:\, f(Y)=0\}$，即在$Y$上消失的所有环元构成的理想，利用这个记号，显然的是$\pp(\{x\})=\pp_x$。把$f(Y)=0$的意义详细写出来，则$\pp(Y)=\bigcap_{y\in Y}\pp_y$. 于是，$\pp(V(E))=\sqrt{(E)}$，这来自于$\sqrt{(E)}$是所有包含$(E)$的素理想的交。这是传统的Hilbert零点定理的对应。
 
 不容易看出的是反过来的一点，$V(\pp(Y))=\overline{Y}$. 由于$\pp(Y)=\bigcap_{y\in Y}\pp_y$，所以$\pp(Y) \subset \pp_y$，其中$y\in Y$，所以$Y\subset V(\pp(Y))$. 剩下我们要证明，$V(\pp(Y))$就是包含$Y$的最小闭集。考虑$Y\subset V(E)$，对于任意的$f\in E$以及$y\in Y$，都有$f(y)=0$，从而$E\subset \pp(Y)$，进而$V(\pp(Y))\subset V(E)$. 
 
-\para 设$x\in \spec(A)$，$\overline{\{x\}}=V(\pp(\{x\}))=V(\pp_x)$，则$\{x\}$是闭集的充分必要条件就是$V(\pp_x)=\{x\}=\{\pp_x\}$，或者说$\pp_x$是一个极大理想。所以极大理想对应着素谱中的闭点，类似于坐标环的极大理想对应着仿射簇中的点一样。
+设$x\in \spec(A)$，$\overline{\{x\}}=V(\pp(\{x\}))=V(\pp_x)$，则$\{x\}$是闭集的充分必要条件就是$V(\pp_x)=\{x\}=\{\pp_x\}$，或者说$\pp_x$是一个极大理想。所以极大理想对应着素谱中的闭点，类似于坐标环的极大理想对应着仿射簇中的点一样。
 
-\para 环的素谱满足$T_0$分离公理，实际上，设$\pp_x$和$\pp_y$分别是两个素理想，则或者有$\pp_x\not\subset \pp_y$或者有$\pp_y\not\subset \pp_x$，因此有$y\not\in \overline{\{x\}}$或者$x\not\in \overline{\{y\}}$. 用开集描述就是，$y\in \spec(A)-\overline{\{x\}}$或者$x\in \spec(A)-\overline{\{y\}}$，这就使得$T_0$分离公理成立。
+\pro 将上面的讨论总结一下，我们有
 
-\para 设$\varphi:R_1\to R_2$是一个环同态，由于素理想在$\varphi$的原像也是素理想，所以$\varphi$通过$\spec(R_2)\ni x\mapsto \varphi^{-1}(\pp_x)\in \spec(R_1)$诱导了素谱之间的映射$^a\varphi:\spec(R_2)\to \spec(R_1)$. 这是一个连续映射，这个我们只要检验$^a\varphi^{-1}(V(f))$是一个闭集就可以了，事实上，更一般的命题是：$^a\varphi^{-1}(V(E))=V(\varphi(E))$，老实按照定义检验即可。
+1. $V(E)=V((E))=V(\sqrt{(E)})$;
 
-由于$^a(\varphi\circ \psi)={^a\psi}\circ{^a\varphi}$，所以$\spec$是环范畴到拓扑空间范畴的反变函子。
+2. 若$E\subset F$，则$V(F)\subset V(E)$;
 
-\para 局部来看，我们用$\varphi^x$来表示$\varphi$在商环$R_1/\varphi^{-1}(\pp_x)\to R_2/\pp_x$诱导出的同态，以及用同样的符号来表示诱导的域同态$\varphi^x:k({^a}\varphi(x))\to k(x)$.
+3. $\bigcap_{i\in I}V(E_i)=V(\bigcup_{i\in I}E_i)$;
 
-根据定义，对任意的$f\in R_1$，以及$x\in \spec(R_2)$，我们有等式
+4. 若$X\subset Y$，则$\pp(Y) \subset \pp(X)$;
+
+5. $\pp(V(E))=\sqrt{(E)}$;
+
+6. $V(\pp(Y))=\overline{Y}$.
+
+于是，由1, 2, 4, 5和6，可知$\pp$与$V$构成了一对Galois联络，于是它们的像构成一一对应。即$\spec R$中的闭集一一对应于$R$中的根式理想。
+
+\para 设$\varphi:R_1\to R_2$是一个环同态，由于素理想在$\varphi$的原像也是素理想，所以$\varphi$通过$\spec(R_2)\ni x\mapsto \varphi^{-1}(\pp_x)\in \spec(R_1)$诱导了素谱之间的映射$^a\varphi:\spec(R_2)\to \spec(R_1)$. 这是一个连续映射，这个我们只要检验$^a\varphi^{-1}(V(f))$是一个闭集就可以了，事实上，更一般的命题是：$^a\varphi^{-1}(V(E))=V(\varphi(E))$，老实按照定义检验即可。又是也把$^a\varphi$记作$\spec \varphi$. 由于$^a(\varphi\circ \psi)={^a\psi}\circ{^a\varphi}$，所以$\spec$是环范畴到拓扑空间范畴的反变函子。
+
+局部来看，我们用$\varphi^x$来表示$\varphi$在商环$R_1/\varphi^{-1}(\pp_x)\to R_2/\pp_x$诱导出的同态，以及用同样的符号来表示诱导的域同态$\varphi^x:k({^a}\varphi(x))\to k(x)$. 根据定义，对任意的$f\in R_1$，以及$x\in \spec(R_2)$，有等式
 \[
 	\varphi^x(f({^a}\varphi(x)))=\varphi^x\left(f \text{ mod } \varphi^{-1}(\pp_x)\right)=\varphi(f)\text{ mod } \pp_x=\varphi(f)(x).
 \]
@@ -324,19 +336,41 @@
 
 再证明反过来的包含$\overline{{^a}\varphi(V(E))}\subset V(\varphi^{-1}(E))$。设$\varphi^{-1}(\pp)\in {^a}\varphi(V(E))$，其中$\pp\in V(E)$或者$E\subset \pp$，则$\varphi^{-1}(E)\subset \varphi^{-1}(\pp)$，于是$\varphi^{-1}(\pp)\in V(\varphi^{-1}(E))$或者说${^a}\varphi(V(E))\subset V(\varphi^{-1}(E))$. 由于$V(\varphi^{-1}(E))$是一个闭集，所以$\overline{{^a}\varphi(V(E))}\subset V(\varphi^{-1}(E))$。
 
-\pro 如果环同态$\varphi:A'\to A$满足：对任意的$a\in A$，总存在$a'\in A'$和$A$中的可逆元$h$使得$\varphi(a')=ha$，那么$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。\rule{2mm}{2mm}
+\pro 将上面的讨论总结一下，我们有
 
-\proof 只需对每一个$A$的子集$E$，证明总存在$A'$中的一个子集$E'$满足$V(E)=V(\varphi(E'))={^a\varphi}^{-1}(V(E'))$即可。
+1. $^a\varphi^{-1}(V(E))=V(\varphi(E))$;
 
-因为由$T_0$公理和${^a\varphi}^{-1}(V(E'))=V(\varphi(E'))=V(E)$可以推知${^a\varphi}$是单的，然后再由${^a\varphi}^{-1}(V(E))=V(\varphi(E))$可以知道他是同胚。
+2. $\varphi^x(f({^a}\varphi(x)))=\varphi(f)(x)$;
 
-对每一个$a\in E$，取一个$a'\in A$和一个可逆元$h$使得$\varphi(a')=ha$，则这些$a'$组成的集合$E'$就满足我们的需求。\qed
+3. $\overline{{^a}\varphi(V(E))}=V(\varphi^{-1}(E))$.
 
-% \para 如果$^a\varphi:\spec(R_2)\to \spec(R_1)$是单射，则它也是一个闭映射。这实际上直接来自于等式$^a\varphi(V(E))=V(\varphi^{-1}(E))$.
+第一点告诉我们$^a\varphi$是一个连续映射，因为任意闭集对它的原像是闭集。
 
-\para 如果$\varphi$是满射，按照上一个命题，$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。设$\mathfrak{a}$是$R$的一个理想，则商映射$\varphi:R\to R/\mathfrak{a}$诱导的连续映射$^a\varphi:\spec(R/\mathfrak{a})\to \spec(R)$给出了$\spec(R/\mathfrak{a})$与$\spec(R)$的闭子集$V(\mathfrak{a})$之间的同胚。特别地，$\spec(R/\sqrt{0})$和$\spec(R)$同胚。
+\lem 设$\varphi:A'\to A$是一个环同态，对任意的$a\in A$，总存在$a'\in A'$和$A$中的可逆元$h$使得$\varphi(a')=ha$，那么$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。
 
-\para $\spec(R)$不可约当且仅当$\sqrt{0}$是一个素理想。因此，$\spec(R)$的不可约闭子集一一对应着$R$的素理想，特别地，$\spec(R)$的不可约分支对应着$R$的极小素理想。
+\proof 先对每一个$A$的子集$E$，证明总存在$A'$中的一个子集$E'$满足$V(E)=V(\varphi(E'))$即可。固定$E$，对每一个$a\in E$，取一个$a'\in A$和一个可逆元$h$使得$\varphi(a')=ha$，则这些$a'$组成的集合$E'$就满足我们的需求。
+
+首先证明$^a\varphi$是一个单射。假设$^a\varphi(x)={}^a\varphi(y)$但$x\neq y$. 由$T_0$分离性，可以假设$y\not\in \overline{\{x\}}$，选择$V(E)=\overline{\{x\}}$，于是存在$E'$使得$x\in V(E)=V(\varphi(E'))$，所以${}^a\varphi(y)={}^a\varphi(x)\in V(E')$. 因为$y\not\in \overline{\{x\}}=V(E)=V(\varphi(E'))={}^a\varphi^{-1}(V(E'))$，所以${}^a\varphi(y)\not\in V(E')$，矛盾。因此$^a\varphi$是一个单射。设$\psi$是它在$\im (^a\varphi)$上的函数逆，下面我们证明这是一个连续映射。
+
+任取$E$，存在$E'$使得$V(E)=V(\varphi(E'))={}^a\varphi^{-1}(V(E'))$，于是
+\[
+	\psi^{-1}(V(E))={}^a\varphi(V(E))={}^a\varphi({}^a\varphi^{-1}(V(E')))=V(E'),
+\]
+任意闭集关于$\psi$的原像是闭集，故$\psi$连续。进而$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。\qed
+
+如果$\varphi$是满射，按照上一个命题，$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。设$\mathfrak{a}$是$R$的一个理想，则商映射$\varphi:R\to R/\mathfrak{a}$诱导的连续映射$^a\varphi:\spec(R/\mathfrak{a})\to \spec(R)$给出了$\spec(R/\mathfrak{a})$与$\spec(R)$的闭子集$V(\mathfrak{a})$之间的同胚。特别地，$\spec(R/\sqrt{0})$和$\spec(R)$同胚。
+
+设$S$是$A$的一个乘性子集，我们由典范的同态$i:A\to S^{-1}A$，且，对任意的$a/s\in S^{-1}A$，我们都有$a'=a$使得$i(a')=a/1=s(a/s)$，所以引理条件满足。此时${}^ai:\spec(S^{-1}A)\to \im ({}^ai)$是一个同胚，由$S^{-1}A$的素理想的结构，它的素理想一一对应于$A$中与$S$不想交的素理想，所以$\im ({}^ai)$即$\spec A$中满足$\pp_x\cap S=\varnothing$的$x$构成的子空间。
+
+\para 若$R$是一个整环，则$\spec R$是一个不可约空间。实际上，如果$\spec R$是可约的，则存在两个真闭子集$V_1$和$V_2$使得$\spec R=V_1\cup V_2$. 于是$\pp(V_1)\cap \pp(V_2)=\pp(V_1\cup V_2)=\pp (\spec R)=0$，但由于$V_1$, $V_2$是真闭子集，所以$\pp(V_1)$和$\pp(V_2)$都不为零，因此$R$不是整环。
+
+反过来，我们可以证明，如果$\spec R$不可约，则$\sqrt{0}$是一个素理想。实际上，由于$\spec(R/\sqrt{0})$和$\spec R$的同胚，可以假设$\sqrt{0}=0$. 如果$\spec R$不是整环，则存在非零的$f$, $g$使得$fg=0$，于是$\spec R=V(0)=V(fg)=V(f)\cup V(g)$. 但由于$f$, $g$非零，且$\sqrt{0}=0$，所以$V(f)$与$V(g)$是$\spec R$的真闭子集。进而$\spec R$可约。
+
+综上，$\spec R$不可约当且仅当$\sqrt{0}$是一个素理想。因此，$\spec(R)$的不可约闭子集一一对应着$R$的素理想，特别地，$\spec(R)$的不可约分支对应着$R$的极小素理想。
+
+设$V(\mathfrak{a})$是$\spec R$的一个不可约闭子集，由于$V(\mathfrak{a})$与$\spec (R/\mathfrak{a})$同胚，所以$\spec (R/\mathfrak{a})$是不可约的。因此，$\sqrt{\mathfrak{a}}$是极小的素理想，故是$V(\mathfrak{a})$的一个一般点。由于$\spec R$是$T_0$的，所以这个一般点也是唯一的一般点。于是$\spec R$中的任意不可约闭子集都具有唯一的一般点。或者说，$\spec R$中所有的不可约闭子集都具有$\overline{\{x\}}$的形式，其一般点是$x$. 
+
+反过来，给定$x\in\spec R$，$\overline{\{x\}}$是不可约闭子集，所以$x\mapsto \overline{\{x\}}$是$\spec R$上的点到$\spec R$中不可约闭子集之间的一一对应。
 
 \para 由于在拓扑空间的一组基上给出层的公理，就可以得到一个层，所以我们通过$D(f)\mapsto R_f$来定义$\spec(R)$的一个预层结构$\mathcal{O}_R$，现在需要去检验层公理，见[EGA, Chap 1, 1.3.7]，所以这是一个环层，称为结构层或者说伴随层。特别地，$\mathcal{O}_R(\spec(R))=R_1=R$. 素谱连同其上的结构层构成一个赋环空间，我们依旧记做$\spec(R)$，如有必要，他的结构层写作$\mathcal{O}_R$。这样一个赋环空间我们称其为一个仿射概形。
 
