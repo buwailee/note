@@ -1,0 +1,101 @@
+% author: buwailee@nmhs
+\documentclass[11pt]{article}
+\usepackage{noteheader}
+\usepackage{egastyle,color}
+
+\usepackage{enumitem}
+	\setlist[enumerate]{itemsep=-4pt}
+
+\include{defs}
+\newcommand{\cc}{\mathbb{C}}
+
+\begin{document}
+\title{$G$-bundle and Principal Bundle}
+\author{Buwai Lee@NJU}
+\date{\today}
+\maketitle %标题
+
+The manifolds in this article are all smooth.
+
+\para A fiber bundle $(E,M,\pi,F)$ consists of three manifold $E$, $M$ and $F$, and a smooth map $\pi:E\to M$, such that for all $p\in M$, there exists an open neighbourhood $U$ of $p$ and a homeomorphism $\varphi:\pi^{-1}(U)\to U\times F$.
+
+Suppose on $U_{\alpha}$, there's a homeomorphism $\varphi_\alpha:\pi^{-1}(U_\alpha)\to U\times F$, and on $U_\beta$, a homeomorphism $\varphi_\beta:\pi^{-1}(U_\beta)\to U\times F$. Then for all $p\in U_\alpha\cap U_\beta$,
+\[
+	\varphi_{\alpha}|_p:\pi^{-1}(p)\to F\quad \text{and}\quad \varphi_{\beta}|_p:\pi^{-1}(p)\to F
+\]
+are homeomorphism, so $\varphi_{\alpha\beta}(p):=\varphi_{\alpha}|_p(\varphi_{\beta}|_p)^{-1}:F\to F$ is a homeomorphism such that
+\begin{enumerate}
+	\item $\varphi_{\alpha\alpha}(p)=\id_F$;
+	\item $\varphi_{\alpha\beta}(p)\varphi_{\beta\alpha}(p)=\id_F$;
+	\item $\varphi_{\alpha\beta}(p)\varphi_{\beta\gamma}(p)\varphi_{\gamma\alpha}(p)=\id_F$.
+\end{enumerate}
+
+\para $G$-bundle: Suppose $G$ is a Lie group, $(E,M,\pi,F)$ is a fiber bundle and $\lambda:G\times M\to M$ is a group action. If there exists a $g_{\alpha\beta}(p)\in G$ such that $\varphi_{\alpha}\circ \varphi_{\beta}^{-1}(p,v)=(p,\lambda(g_{\alpha\beta}(p),v))$ is valid for a fixed $p\in U_\alpha\cap U_\beta$ and all $v\in F$. Then $(E,M,\pi,F)$ is called a $G$-bundle.
+
+It's not necessary to say that 
+\begin{enumerate}
+	\item $g_{\alpha\alpha}(p)=\id_F$;
+	\item $g_{\alpha\beta}(p)g_{\beta\alpha}(p)=\id_F$;
+	\item $g_{\alpha\beta}(p)g_{\beta\gamma}(p)g_{\gamma\alpha}(p)=\id_F$.
+\end{enumerate}
+since the group action is not necessary to be {\color{blue} effective}. So when we define a $G$-bundle, these conditions should be added artificially.
+
+\para A principal $G$-bundle $(P,M,\pi,G)$ is a fiber bundle where $G$ is a Lie group, and there's a right free $G$-action on $P$, that is $\mu:P\times G\to P$ such that
+\begin{enumerate}
+	\item $\pi(u)=\pi(ug)$ for all $u\in P$ and $g\in G$;
+	\item for all $p\in M$, there exists an open neighbourhood $U\subset M$ and a homeomorphism $\varphi=(\pi,\Phi):\pi^{-1}(U)\to U\times G$ such that
+	\[
+	\Phi(u)g=\Phi(ug)
+	\]
+	for all $u\in \pi^{-1}(U)$ and $g\in G$.
+\end{enumerate}
+
+\para The fiber of a principal bundle is exactly the orbit of the right action.
+
+\proof
+	Fix $p\in M$.
+
+	$(\Leftarrow)$ part: For all $u\in\pi^{-1}(p)$ and $g\in G$,
+	\[
+		\pi(ug)=\pi(u)=p
+	\]
+	tells us that $ug\in \pi^{-1}(p)$.
+
+	$(\Rightarrow)$ part: For all $u$, $v\in\pi^{-1}(p)$, there's an open neighbourhood $U\subset M$ of $p$ such that
+	\[
+	\varphi=(\pi,\Phi):\pi^{-1}(U)\to U\times G,
+	\]
+	so $\Phi(u)$, $\Phi(v)\in G$. Let $g=\Phi(v)^{-1}\Phi(u)$, then
+	\[
+	\varphi(u)=(p,\Phi(u))=(p,\Phi(v)g)=(\pi(v),\Phi(vg))=(\pi(vg),\Phi(vg))=\varphi(vg).
+	\]
+	Since $\varphi$ is bijective, $u=vg$.
+\qed
+
+As a manifold, $M\cong P/G$.
+
+\para What's more,
+\[
+	\Phi_{\alpha}(ug)\Phi_{\beta}(ug)^{-1}=\Phi_{\alpha}(u)gg^{-1}\Phi_{\beta}(u)^{-1}=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}.
+\]
+So $g_{\alpha\beta}=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}$ for all $u\in \pi^{-1}(p)$.
+
+\lem $\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=g_{\alpha\beta}(p)g$.
+
+\proof
+	Let $\left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=u$, then $g=\Phi_\beta(u)$ and $\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=\Phi_{\alpha}(u)$. On the other hand, $u\in \pi^{1-}(p)$ and so
+	\[
+	g_{\alpha\beta}(p)g=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}\Phi_\beta(u)=\Phi_{\alpha}(u)=\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g).
+	\]
+\qed
+
+So the translation function is just the left multiplication of $g_{\alpha\beta}(p)=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}$! Thus $P$ is a $G$-bundle, the left action is free.
+
+\para Conversely, if $(P,M,\pi,G)$ is a $G$-bundle that $\lambda$ is just the left multiplication, then $(P,M,\pi,G)$ is a $G$-principal bundle.
+
+In fact, define $ug=\varphi_{\alpha}^{-1}(p,\Phi_{\alpha}(u)g)$, where $p=\pi(u)$. ({\color{blue} It is well-defined. Suppose we have a $\varphi_\beta$, then 
+\[
+	\varphi_\beta(ug)=(p,\Phi_{\beta\alpha}(u)\Phi_\alpha(u)g)=(p,\Phi_{\beta}(u)g).
+\]
+}) Then $\pi(ug)=\pi(u)$ and $\Phi_{\alpha}(ug)=\Phi_{\alpha}(u)g$, so $(P,M,\pi,G)$ is really a $G$-principal bundle.
+\end{document}
