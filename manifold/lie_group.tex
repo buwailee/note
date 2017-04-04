@@ -440,11 +440,17 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 \para 设$\varphi:H\to G$是Lie群同态，如果$\varphi$是单的，则$H$被称为$G$的Lie子群，如果$\varphi$是嵌入，则$H$被称为$G$的闭Lie子群。显然，上面谈论的Lie群同态的核是一个闭Lie子群。
 
-闭Lie子群作为集合是闭集，这里就略去证明了。
+因为单的Lie群同态必定为浸入，所以如果$\varphi$是单的，则$H$是$G$的一个子流形。如果$H$是$G$的一个正则子流形，我们称$H$是一个闭Lie子群，是因为在拓扑上，$\varphi(H)$真的是$G$的一个闭子集。
 
-\para 如果$\varphi:G\to H$是Lie群同态，且$\varphi_{*e}$是满射，由于Lie群同态常秩，所以$\varphi_{*g}$在每一个$g$上都是满射。由反函数定理，他在每一个局部都可以写作投影，投影将开集映射成开集，所以此时$\varphi$也将开集映射到开集，即$\varphi$是一个开映射，
+\pro 设$H\subset G$的一个闭Lie子群，则$H$是$G$的闭子集。
+
+\para 如果$\varphi:G\to H$是Lie群同态，且$\varphi_{*e}$是满射，由于Lie群同态常秩，所以$\varphi_{*g}$在每一个$g$上都是满射。因此$\varphi$是一个淹没，是一个开映射。
 
 特别地，如果$H$还是连通的，那么因为$\varphi$是一个开映射，所以存在一个$e_H$的邻域$V\subset H$使得$V\subset \varphi(H)$，那么$H=\bigcup_{n\geq 1}V^n\subset \varphi(G)$，因此$\varphi$就是一个满射。所以，对Lie群而言，局部满就可以说明整体满。
+
+反过来，如果$\varphi:G\to H$是Lie群同态是一个满Lie群同态，由于$\varphi$常秩，由Proposition \eqref{pro:surrank}，$\varphi$是一个淹没。
+
+因此，对Lie群同态$\varphi$来说，满等价于淹没等价于在原点$\varphi_{*e}$是满射。
 
 \para \label{covering_space}设$M$是底空间为$B$的一个纤维丛，他的纤维被赋予离散拓扑，此时，$M$被称为$B$的一个覆叠空间，投影$\pi$现在被称为覆叠映射。一般来说，我们要求覆叠空间是连通的，如果覆叠空间还是单连通的，则被称为万有覆叠空间。关于覆叠空间的更多内容，可以参看附录。
 
