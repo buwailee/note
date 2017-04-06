@@ -515,3 +515,156 @@ $q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们�
 作为一个例子，我们知道$e^{2\pi it}:\rr\to S^1=\mathrm{U}(1)$是一个覆叠映射，且$\rr$可缩，所以$\rr$单连通，因此这还是一个万有覆叠映射，故$\pi_1(S^1,e)\cong \ker{\pi}=\zz$.
 
 再来一个例子，$\mathrm{SU}(2)$是$\mathrm{SO}(3)$的万有覆叠，$\ker(\pi)=\{-I,I\}=\zz/2\zz$，所以$\pi_1(\mathrm{SO}(3),e)\cong \ker(\pi)=\zz/2\zz$.
+
+
+\chapter{表示论基础}
+
+\para 令$V$是一个域$k$（后面我们只会考虑$\rr$和$\cc$的情况）上的有限维矢量空间，群$G$的一个表示$(\pi, V)$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{Gl}(V)$，使得
+\[
+	\pi(g)\pi(g')=\pi(gg'),\quad \pi(g^{-1})=\pi(g)^{-1},\quad \pi(e_G)=e_{\mathrm{Gl}(V)}
+\]
+成立。表示$(\pi, V)$的维度被定义为$V$的维度。
+
+如果没什么会混淆的话，就直接略去$\pi$，写$gx$来表达$\pi(g)x$，当然还有用$Gx$来表达$\pi(G)x=\{\pi(g)x:g\in G\}$。如果$\pi$是一个单同态，那么我们称这个表示为忠实表示。
+
+\para 同一个群$G$的两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$可以构造出新的表示：
+
+\no{1} 直和：$(\pi_1\oplus \pi_2,V_1\oplus V_2)$即满足
+\[
+	(\pi_1\oplus \pi_2)(g)(x,y)=(\pi_1(g)x,\pi_2(g)y).
+\]
+或者简单地写作$g(x,y)=(gx,gy)$.
+
+\no{2} 直积：$(\pi_1\otimes \pi_2,V_1\otimes V_2)$即满足
+\[
+	(\pi_1\otimes \pi_2)(g)(x\otimes y)=(\pi_1(g)x)\otimes (\pi_2(g)y).
+\]
+或者简单地写作$g(x\otimes y)=(gx)\otimes(gy)$.
+
+\para 设$G$是一个群，$(\pi,V)$是他的一个表示，$W\subset V$是一个子空间，如果$\pi(G)W\subset W$则$W$称为不变子空间。显然，$\{0\}$和$V$是两个不变子空间，略去这两个平凡不变子空间，如果没有其他不变子空间了，则$V$被称为是不可约的，此时表示被称为不可约表示。如果一个表示能被分解成几个不可约表示的直和，则称该表示为完全可约的。
+
+下面的一系列定义涉及表示的等价，当然还有很重要的Schur引理。
+
+\para 设$G$有两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$，如果存在线性映射$T:V_1\to V_2$，对任意的$g\in G$都满足$\pi_2(g)\circ T=T\circ \pi_1(g)$. 这样的$T$被称为缠结映射。当缠结映射是同构的时候，两个表示被称为是等价的。显然，这是一个等价关系。自反对称显然，而传递性自然来自两个同构复合还是同构。
+
+\lem 如果$\pi_1$和$\pi_2$之间存在缠结映射$T$，那么$\ker T$是$\pi_1$的不变子空间，而$\im T$是$\pi_2$的不变子空间。
+
+\proof 因为$T(\pi_1(g)x)=\pi_2(g)Tx$对于任何$x$使得$Tx=0$的，都有$\pi_1(g)x$使得$T(\pi_1(g)x)=0$，所以前半句话证明完了。对于$\im T$中的元素$y$可以找到原象$x$，由于$\pi_2(g)y=\pi_2(g)Tx=T(\pi_1(g)x)$，则$\pi_2(g)y$也在$\im T$中，后半句话证完。\qed
+
+\lem 相当有名的Schur引理：如果$(\pi_1,V_1)$和$(\pi_2,V_2)$是不等价的不可约表示，若存在缠结映射$T$，则$T=0$.换句话说，不等价的表示没有非平凡的缠结映射。
+
+\proof 如果两个表示不等价，则$T$不是双射，所以$\ker T\neq \{0\}$，而他是不变子空间，由不可约性，则$\ker T= V_2$，同理$\im  T= \{0\}$，这就是说$T=0$。\qed
+
+\para 反之，在复表示情况下，我们考虑不可约表示$(\pi_1,V_1)=(\pi_2,V_2)$的情况下。此时如果存在一个非平凡的双的缠结映射$T\neq I$使得$T\circ \pi(g)=\pi(g)\circ T$.
+
+在复数域上，$T$一定存在一个本征值$\lambda$，令$E_\lambda$是$\lambda$的本征空间，任取$v\in E_\lambda$，我们有$T(\pi(g)(v))=\pi(g)\circ T(v)=\lambda\pi(g)(v)$，所以$\pi(G)E_\lambda\subset E_\lambda$，由$\pi$的不可约性，所以他要么是零空间，要么是全空间。而本征值的存在性说明了零空间不可能，所以本征空间就是全空间，这也就是说$T=\lambda I$.
+
+\para 如果我们遇到的群是Abel群，那么他的不可约群表示也是可交换的，同时其本身就构成了一个缠结映射，即$T=\pi(g)$对任意的$h$成立$T\circ \pi(h)=\pi(h)\circ T$，所以通过上面的定理我们就可以知道，$\pi(g)=T=\lambda I$。
+
+如果$V$是大于$1$维的，那么任意的$V$的子空间都是$\pi$的不变子空间，但不可约性否决了这点，所以我们得到了：凡Abel群的不可约复表示都是一维的。
+
+\para 如果$(\star,\star)$是$V$上的一个内积，如果对任意的$g\in G$,$u,v\in V$有$(u,v)=(gu,gv)$，则我们称呼这个表示为幺正表示，幺正表示也可以写作$\pi(g)^{-1}=\pi(g)^\dag$。对于有限群我们总可以找到幺正表示，因为我们可以重新构造内积
+\[
+	(u,v)'=\frac{1}{|G|}\sum_{g\in G}(gu,gv),
+\]
+那么
+\[
+	(hu,hv)'=\frac{1}{|G|}\sum_{g\in G}(hgu,hgv)=\frac{1}{|G|}\sum_{hg\in G}(hgu,hgv)=\frac{1}{|G|}\sum_{k\in G}(ku,kv)=(u,v)'.
+\]
+
+幺正表示的好处是，一个不变子空间的正交空间也是不变的。对于一个有限维的幺正表示，如果不是完全可约的，那么就分解出一个不变子空间，他是不可约的，然后对这个不变子空间的正交空间，我们又得到了一个可约或不可约的不变子空间，靠着有限归纳（因为有限维），我们就得到了如果群存在一个有限维幺正表示，则这个表示一定是完全可约的。
+
+\theo 结合上面所说的，我们就得到了Maschke定理：有限群的有限维表示总是完全可约的。 
+
+\theo 在局部紧的拓扑群上存在Haar测度$\mu$，他是一个正则的左不变的Borel测度。所谓的左不变就是指对于一个集合$S$，通过左作用$L_g$，我们有$\mu(S)=\mu(L_gS)$，当然还有右作用和右不变的概念。
+
+对于$G$上的可测函数$f$，上述测度满足
+\[
+	\int_G f(l_h g)\dd \mu(g)=\int_G f(g)\dd \mu(g),
+\]
+可以从中直接看出左不变的意义。以后我们将$\dd \mu(g)$直接写作$\dd g$.
+
+\para 上面的定理我们不证明，同时也不证明如下命题：如果$G$是紧Lie群，则我们存在双不变（既左不变也右不变）测度$\mu$，且$\mu(G)$有限。
+
+\pro 紧Lie群上存在幺正表示，所以紧Lie群的有限维表示总是完全可约的。 
+
+换而言之，我们可以找到内积$\langle \star,\star\rangle$使得$\langle gx,gy\rangle=\langle x,y\rangle$。假设原本存在内积$\langle \star,\star \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
+\[
+	\langle x,y\rangle'=\int_G \langle gx,gy \rangle \dd g
+\]
+就满足了要求。下面我们谈论紧Lie群的表示的时候，总使用幺正表示。
+
+\para 对于Lie群$G$上的复值光滑函数$f$和$g$，我们可以定义内积为
+\[
+	(f,g)=\int_G f(h)g^*(h)\dd h,
+\]
+其中$*$代表的是复共轭。
+
+\para 对于矢量空间$V$和$W$，$\Hom(V,W)$也有自然的矢量空间结构，所以如果已知$V$上有群表示$\pi_1$，以及$W$上有群表示$\pi_2$，则对于$A\in \Hom(V,W)$，我们可以定义群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$如下
+\[
+	\pi_1^*\otimes\pi_2(g)A=\pi_2(g)A\pi_1(g)^{-1}.
+\]
+很容易验证$\pi_1^*\otimes\pi_2(g)\pi_1^*\otimes\pi_2(h)=\pi_1^*\otimes\pi_2(gh)$，所以这是一个群表示。为了省略空间，我们经常也直接记做$gA$.
+
+对每一个群元$g$，表示诱导了映射$g:A\mapsto gA$，现在如果$A$是该映射的不动点$gA=A$，则有$A\pi_1(g)=\pi_2(g)A$。如果对每一个$g$，$A$都是其不动点，那么我们就称$A$是表示$\pi_1^*\otimes\pi_2$的不动点。那么对于群表示$(\pi_1,V)$和$(\pi_2,W)$，$A$就是一个缠结映射。
+
+\para 利用Schur引理，假若$\pi_1$, $\pi_2$都是不可约的且不等价的，则群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$的不动点集平凡（即只有$A=0$这一个不动点）。
+
+假如$\pi$, $\rho$都是不可约的且不等价的，现在我们考虑线性映射$A\in \Hom(V,W)$在紧Lie群上的平均\footnote{在有限群上也有平均，所以下面一套对有限群也成立。}$\bar{A}=\int_G \pi^*\otimes\rho(g)A \dd g$，显然$\bar{A}$是一个不动点，因此由Schur引理，
+\[
+	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g=0
+\]
+对任意的线性映射$A\in \Hom(V,W)$都成立。
+
+同样，如果$\pi$, $\rho$等价，此时不妨就直接记$\pi=\rho$.因为$\bar{A}$是一个缠结映射，那么由Schur引理，$\bar{A}=\lambda_{\bar{A}} I$，所以
+\[
+	\int_G \pi(g)A\pi(g)^{-1}\dd g=\lambda_{\bar{A}} I
+\]
+对任意的线性映射$A\in \Hom(V,V)$都成立，但是由于$\lambda_{\bar{A}}$并不已知，所以这公式用着不是很方便。为了求出$\lambda_{\bar{A}}$，两边求迹，就有$\tr(A)=\lambda_{\bar{A}} \dim V$，即$\lambda_{\bar{A}}=\tr(A)/\dim V$，所以我们也可以将上式写作更实用的形式
+\[
+	\bar{A}=\int_G \pi(g)A\pi(g)^{-1}\dd g=\frac{\tr(A)}{\dim V}I.
+\]
+
+\para 现在，为了做一点小小的计算，我们将固定矢量空间的基，此时任意的线性算子都可以看做矩阵。记$E_{ij}$为只在$(a,b)$位置为1，其他位置为0的矩阵。很容易可以计算得到$E_{ij}AE_{kl}=A_{jk}E_{il}$.现在对
+\[
+	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g
+\]
+左乘$E_{ij}$，右乘$E_{kl}$，并令$A=E_{ab}$，可以得到
+\[
+	\int_G E_{ij}\rho(g)E_{ab}\pi(g)^{-1}E_{kl}\dd g=\int_G \rho(g)_{ja}E_{ib}\pi(g)^{-1}E_{kl}\dd g=\int_G (\rho(g))_{ja}\left(\pi(g)^{-1}\right)_{bk}E_{il}\dd g,
+\]
+由于$\pi$是幺正表示，所以$\left(\pi(g)^{-1}\right)_{bk}=\left(\pi(g)^{\dag}\right)_{bk}=\pi(g)_{kb}^*$，并记$\pi_{ia}:g\to \pi(g)_{ia}$为分量函数，则利用复函数内积的写法，上式可以写作
+\[
+	E_{ij}\overline{E_{ab}}E_{kl}=\left(\rho_{ja},\pi_{kb}\right)E_{il}.
+\]
+
+\para 设$\rho$和$\pi$都是不可约的，对于$\rho$和$\pi$不等价的情况，我们有$\overline{E_{ab}}=0$，所以$\left(\rho_{ja},\pi_{kb}\right)=0$.类似地，对于$\rho=\pi$的情况，我们有$\overline{E_{ab}}=\tr(E_{ab})I/\dim V=\delta_{ab}I/\dim V$，所以
+\[
+	\left(\pi_{ja},\pi_{kb}\right)E_{il}=E_{ij}\overline{E_{ab}}E_{kl}=\frac{\delta_{ab}}{\dim V}E_{ij}IE_{kl}=\frac{\delta_{ab}\delta_{jk}}{\dim V}E_{il},
+\]
+或者
+\[
+	\left(\pi_{ja},\pi_{kb}\right)=\frac{\delta_{ab}\delta_{jk}}{\dim V}.
+\]
+
+\para 令$\phi:G\to \mathrm{GL}(V)$是一个$G$的复表示，那么复值函数$\chi_\phi:G\xrightarrow{\phi}\mathrm{GL}(V)\xrightarrow{\tr}\cc:g\mapsto \tr(\phi(g))$被称为$\phi$的特征标。
+
+对于紧Lie群的不可约幺正表示，我们有
+\[
+(\chi_\pi, \chi_\pi)=\sum_{i,j}(\pi_{ii},\pi_{jj})=\sum_{i,j}\frac{\delta_{ij}^2}{\dim V}=\sum_{i}\frac{1}{\dim V}=1,
+\]
+对于两个不可约的不等价表示，我们有$(\chi_\pi, \chi_\rho)=0$.
+
+令$\hat{G}$是紧Lie群$G$的复不可约表示的等价类，那么由于是紧Lie群，有限维表示必然是完全可约的，就是说任何一个有限维表示能写作$\rho=\sum_{\pi\in\hat{G}}m(\rho,\pi)\pi$，其中$m(\rho,\pi)$是乘数，是一个自然数，就是说分解出来的等价的$\pi$各数。直接计算就可以得到$m(\rho,\pi)=(\chi_\rho,\chi_\pi)$,以及
+\[
+	(\chi_{\rho_1},\chi_{\rho_2})=\sum_{\pi\in\hat{G}}m(\rho_1,\pi)m(\rho_2,\pi).
+\]
+
+前面说过，紧Lie群的一个不可约的复有限维表示$\pi$满足$(\chi_\pi, \chi_\pi)=1$，反过来，如果$(\chi_\pi, \chi_\pi)=1$，则$(\chi_{\pi},\chi_{\pi})=\sum_{\rho\in\hat{G}}m(\rho,\pi)^2=1$，因此存在一个$\rho\in\hat{G}$使得$m(\rho,\pi)=1$,而其他的$\pi\in\hat{G}$都有$m(\rho,\psi)=0$.这样我们就得到了：
+
+\para 一个复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi})=1$.
+
+\pro 如果$G$是一个紧Lie群，那么两个表示$\pi_1$, $\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
+
+实际上，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
+$A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。

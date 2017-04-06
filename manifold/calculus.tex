@@ -291,13 +291,15 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 	如果$x_n$不趋向于$x$，取一个子序列，存在一个$x$的开邻域$U$使得对所有$n$都有$x_n\not\in U$，由于$M-U$是闭集，而$M$是Hausdorff紧空间，所以$M-U$是紧的，于是，它在$M-U$中有个收敛子序列，不妨就将$x_n$取作这个序列，极限为$x'\neq x$. 因为$f$是连续的，所以$f(x_n)$的极限为$f(x')$，但是因为$x'\neq f^{-1}(y)$，所以$f(x')\neq y$，而$f(x')$和$y$是序列$f(x_n)$的不同极限，但是流形是Hausdorff的，极限唯一，矛盾。
 \qed
 
-嵌入，或者说正则子流形，将一个流形变成了有着相同的拓扑与微分结构某个流形的子流形，如果外面这个流形足够简单，欧式空间，则对我们研究抽象流形会有很大的益处。实际上，Whitney证明了，如果$M$是一个$m$维光滑流形，则$M$可以光滑嵌入到$\rr^{2m}$之中。因此，Arnold说，没有抽象的流形。
+嵌入，或者说正则子流形，将一个流形变成了有着相同的拓扑与微分结构某个流形的子流形，如果外面这个流形足够简单，比如欧式空间，则对我们研究抽象流形会有很大的益处。事实上，Whitney证明了，如果$M$是一个$m$维光滑流形，则$M$可以光滑嵌入到$\rr^{2m}$之中。因此，Arnold说，没有抽象的流形。
 
 \theo 正则子流形的结构定理：设$N$是流形$M$的一个子集，则$N$是$M$的一个$k$维正则子流形，当且仅当，在每一点$p\in N$，可以找到一张$M$的坐标卡$(U_p,\varphi)$，使得$p\in U_p$且
 \[
 	U_p\cap N=\left\{q\in U_p\,:\,\varphi(q)=\left(x^1(q)\text{, $\cdots$, }x^k(q)\text{, }0\text{, $\cdots$, }0\right)\right\},
 \]
 即$U_p\cap N$中的点正好为那些后$n-k$个坐标为零的那些点$q\in U_p$.
+
+所以拓扑上来讲，正则子流形是局部闭的，局部来说他就像后几个坐标恒等的等高线。
 
 \theo \label{ranktheo}设$M$是一个$m$维流形且$f:M\to N$是一个光滑映射，如果存在常数$l$使得$\rank_p f$处处等于$l$，那么对于$q\in N$，$f^{-1}(q)$要么是空集，要么是$M$的一个正则子流形，维度为$m-l$。
 
@@ -933,7 +935,7 @@ $\Omega^*(U)$和外微分算子$\dd$构成一个链复形，下面的定理给�
 
 然后证明$\ker J^p=\mathrm{Im}\, I^p$. 分两个包含。
 
-\begin{compaceenum}[(1)]
+\begin{compactenum}[(1)]
 \item $\mathrm{Im}\, I^p\subset \ker J^p$
 \[
 J^p\circ I^p(\omega)=j_2^*\circ i_2^*(\omega)-j_1^*\circ i_1^*(\omega)
@@ -946,7 +948,7 @@ J^p\circ I^p(\omega)=j_2^*\circ i_2^*(\omega)-j_1^*\circ i_1^*(\omega)
 \[
 I^p\left(\sum_Ih_I\dd x_I\right)=(\omega_1,\omega_2).
 \]
-\end{compaceenum}
+\end{compactenum}
 \qed
 
 将Theorem \eqref{longexact} 和 Proposition \eqref{directsum} 应用到上面这个定理。就得到下面这个定理。

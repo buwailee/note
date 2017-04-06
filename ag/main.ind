@@ -1,0 +1,109 @@
+\begin{theindex}
+  \def\seename{见}
+  \def\alsoname{又见}
+  \providecommand*\indexgroup[1]{%
+    \indexspace
+    \item \textbf{#1}\nopagebreak}
+  %
+  \indexgroup{B}
+  %
+
+  \item 伴随层, \hyperpage{3}
+  \item 不可约, \hyperpage{6}
+
+  \indexspace
+
+  %
+  \indexgroup{C}
+  %
+
+  \item 层, \hyperpage{1}
+
+  \indexspace
+
+  %
+  \indexgroup{D}
+  %
+
+  \item 代数层, \hyperpage{5}
+
+  \indexspace
+
+  %
+  \indexgroup{F}
+  %
+
+  \item 赋环空间, \hyperpage{2}
+
+  \indexspace
+
+  %
+  \indexgroup{J}
+  %
+
+  \item 截面, \hyperpage{1}
+  \item 局部赋环空间, \hyperpage{2}
+
+  \indexspace
+
+  %
+  \indexgroup{L}
+  %
+
+  \item 理想层, \hyperpage{5}
+
+  \indexspace
+
+  %
+  \indexgroup{M}
+  %
+
+  \item 模层, \hyperpage{5}
+
+  \indexspace
+
+  %
+  \indexgroup{N}
+  %
+
+  \item 拟紧, \hyperpage{5}
+  \item 拟凝聚, \hyperpage{5}
+  \item 逆像, \hyperpage{3}
+
+  \indexspace
+
+  %
+  \indexgroup{S}
+  %
+
+  \item 顺像, \hyperpage{2}
+
+  \indexspace
+
+  %
+  \indexgroup{X}
+  %
+
+  \item 纤维, \hyperpage{2}
+
+  \indexspace
+
+  %
+  \indexgroup{Y}
+  %
+
+  \item 一般点, \hyperpage{6}
+  \item 有限生成, \hyperpage{5}
+  \item 预层, \hyperpage{1}
+
+  \indexspace
+
+  %
+  \indexgroup{Z}
+  %
+
+  \item 直和层, \hyperpage{5}
+  \item 直积层, \hyperpage{5}
+  \item 自然变换, \hyperpage{1}
+
+\end{theindex}
