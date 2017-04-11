@@ -112,7 +112,13 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \]
 如果每一个$M_i$都是Noether(Artin)模，由归纳法，可知$M=\bigoplus_{i=1}^nM_i$是Noether(Artin)模。
 
-\pro 一个模是Noether模当且仅当它的任意子模是有限生成的。\notprove
+\pro 一个模是Noether模当且仅当它的任意子模是有限生成的。
+
+\proof
+	令$N$是一个Noether模$M$的一个子模，而$\mathscr{B}$是所有$N$的有限生成子模的集合。因为$0\in \mathscr{B}$，所以$\mathscr{B}$非空，于是由极大条件，$\mathscr{B}$中存在极大元$P$. 如果$P\neq N$，那么必然存在$x\in N-P$，于是$P+\langle x\rangle$严格包含$P$同时也有有限生成的，矛盾。于是$N=P$是有限生成的。
+
+	反过来，假设$M$的任意子模是有限生成的。令$M_1\subset M_2\subset \cdots$是一个升链，于是$N=\bigcup_{n=1}^\infty M_n$是$M$的子模继而是有限生成的，记作$x_1$, $\cdots$, $x_r$，记$x_i\in M_{n_i}$，选一个最大的$n$，则$x_i\in M_n$，于是$M_n=N$，因此链是稳定的。进而$M$是Noether模。
+\qed
 
 \theo Hilbert基定理：如果$R$是一个Noether环，则$R[x]$也是一个Noether环。\notprove
 
@@ -240,123 +246,6 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 于是，我们就得到了$\{f_1$, $\cdots$, $f_n\}$的“反函数”。这并不是真正的反函数，是因为系数$a_{ij}\in \mathcal{F}_p$还没写成$\{f_1$, $\cdots$, $f_n\}$的函数形式。
 
 注意到这与反函数定理的相似性，反函数定理就是在说：如果在一点处如果一族函数线性化后（微分后）性质足够好（Jacobian可逆），则非微分的函数在那点附近性质也非常好（可逆，有反函数）。因此，Nakayama引理此时和反函数定理是相近的。
-
-\section{张量积}
-
-\para 张量抽象了多线性函数，尤其是双线性函数。设$A$是右$R$-模，$B$是左$R$-模，那么我们称$f:A\times B\to G$，其中$G$是一个交换群，为一个双线性函数，如果他满足
-\[
-	f(a+b,a')=f(a,a')+f(b,a'),\quad f(a,a'+b')=f(a,a')+f(a,b'),
-\]
-以及对$r\in R$满足$f(ar,b)=f(a,rb)$.
-
-特别地，如果我们存在一个双线性函数$\varphi$，以及一个交换群$G$，使得每一个$A\times B$上的双线性函数$f:A\times B\to H$都可以唯一分解为
-\[
-	f:A\times B\xrightarrow{\varphi} G\xrightarrow{h_f}H,
-\]
-其中$h_f$对每一个双线性函数$f$存在且唯一，则称呼$G$为$A$与$B$的张量积，记做$A\otimes_R B$，而$\varphi(a,b)$记做$a\otimes_R b$，如果下标$R$不重要，那么我们可以省略他。
-
-设$R$是交换环，$A$和$B$都是$R$-模，那么$A\times B$具有$R$-模结构，即$r(a,b)=(ra,b)$. 通过将$r(a\otimes b)$可以定义为$(ra)\otimes b$，$A\otimes_R B$显然有一个$R$-模结构，这样，$\varphi$将是一个$R$-模同态。而上面的泛性质，也可以改成相应的$R$-模和$R$-模同态。
-
-\lem 在模范畴内，张量积存在。而且由上面的泛性质，他确定到一个同构。
-
-\proof 对于唯一性，我们考虑两个张量积$(G,\varphi)$和$(G',\varphi')$，那么根据张量积的性质，有分解
-\[
-	\varphi:A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G,\quad \varphi':A\times B\xrightarrow{\varphi} G\xrightarrow{h_{\varphi'}}G',
-\]
-所以只要验证$h_\varphi\circ h_{\varphi'}=\id_{G}$和$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$就好了，这样我们就得到了$G$和$G'$之间的同构。而上述等式来自于分解的唯一性，显然，我们有分解
-\[
-	A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G\xrightarrow{h_{\varphi'}}G',\quad A\times B\xrightarrow{\varphi'} G'\xrightarrow{\id_{G'}}G',
-\]
-显然，所以由唯一性得到了$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$，同理有另一个等式。
-
-对于存在性，我们可以直接构造。首先，我们知道在交换群范畴（作为$\zz$-模）有直和存在，那么我们可以构造自由交换群
-\[
-	F=\bigoplus_{(a,b)\in A\times B} \zz=\sum_{(a,b)\in A\times B}n_{(a,b)}1_{a,b}.
-\]
-这是一个形式和，系数只有有限项非零，其中$1_{a,b}$是对应指标$(a,b)$的那个$\zz$中的$1$。我们令$H$是由
-\[
-	1_{a,b}+1_{a',b}-1_{a+a',b},\quad 1_{a,b}+1_{a,b'}-1_{a,b+b'},\quad 1_{ar,b}-1_{a,rb}
-\]
-生成的子群，那么我们$A\otimes B$就可以构造为$F/H$，令$\varphi(a,b)=a\otimes b=[1_{a,b}]$，即$1_{a,b}$的陪集。这确实是张量积，具体的检验这里就不进行了。\qed
-
-\para 有了两个模的张量积，我们自然也可以拓展为三个模的张量积，我们可以通过模仿两个模的张量积的泛性质\footnote{即三线性的函数可以唯一分解。}，定义一个新的三个模之间的张量积$A\otimes B\otimes C$，然后可以检验$(A\otimes B)\otimes C$和$A\otimes (B\otimes C)$同时也满足泛性质，所以他们之间是同构的。在这层意义上，我们可以认为张量积满足结合律，因此我们自然也有了有限个模的张量积。
-
-\para 下面讨论张量积在同态下的表现。设$\varphi:M\to M'$是右$R$-模同态和$\psi:N\to N'$是左$R$-模同态，则它诱导了一个交换群同态
-\[
-	\alpha(\varphi,\psi):M\otimes N\to M'\otimes N',
-\]
-使得复合公式
-\[
-	\alpha(\varphi'\varphi,\psi'\psi)=\alpha(\varphi',\psi')\alpha(\varphi,\psi)
-\]
-成立。大家经常将$\alpha(\varphi,\psi)$记作$\varphi\otimes \psi$，两个模同态的张量积的意义后面会阐述，这里看成形式的符号即可。
-
-\proof
-	映射
-	\[
-	\begin{array}{ccc}
-		M\times N&\to& M'\otimes N'\\
-		(m,n)&\mapsto& \varphi(m)\otimes \psi(n)
-	\end{array}
-	\]
-	显然是双线性的，所以它诱导了映射$M\otimes N\to M'\otimes N'$，而张量积的泛性质中的唯一性给出了复合公式，于是这就是我们想要的$\alpha(\varphi,\psi)$.
-\qed
-
-注意到复合公式成立意味着成立交换图
-\[
-\begin{xy}
-	\xymatrix
-	{
-		M\otimes N\ar[rr]^{\alpha(\id_M,\psi)}\ar[d]_{\alpha(\varphi,\id_{N})}&&M\otimes N'\ar[d]^{\alpha(\varphi,\id_{N'})}\\
-		M'\otimes N\ar[rr]^{\alpha(\id_{M'},\psi)}&&M'\otimes N'
-	}
-\end{xy}
-\]
-成立。
-
-上面的交换图用范畴论的语言来表述就是，$-\otimes N$以及$-\otimes \id_N:=\alpha(-,\id_N)$一起构成了一个函子，而同态$N\to N'$将诱导出一个函子间的态射（即自然变换）。这样的同态我们称为自然同态或者函子式同态，描述同态其实就是建立范畴论的初衷，为了抽象出自然变换才定义了范畴等概念。然后到了教科书上，逻辑就反了过来。同理，$(N\otimes -,\id_N\otimes -)$也是一个函子。
-
-\para 上一个命题给出了如下映射：
-\[
-	\alpha:\Hom(M,M')\times \Hom(N,N')\to \Hom(M\otimes N,M'\otimes N').
-\]
-由于$\Hom(M,M')$和$\Hom(N,N')$都是$R$-模，并且上述映射是双线性的，所以他自然诱导了一个映射
-\[
-	\Hom(M,M')\otimes \Hom(N,N')\to \Hom(M\otimes N,M'\otimes N').
-\]
-这也就是为什么大家将$\alpha(\varphi,\psi)$记作$\varphi\otimes \psi$. 
-
-\pro 记左$R$-模范畴之间的态射集为$\Hom_R(-,*)$. 则成立双函子同构
-\[
-	\Hom_{\mathbb{Z}}(M\otimes_R N,G)\cong \Hom_R(M,\Hom_\mathbb{Z}(N,G)),
-\]
-其中$M$和$N$是可以变动的。因此，$-\otimes_R N$就是一个左伴随函子，而$\Hom_\mathbb{Z}(N,*)=h^N$是一个右伴随函子。\notprove
-
-根据左伴随函子与逆极限可交换，而直和是模范畴的一种逆极限，我们可以得知同构
-\[
-	\left(\bigoplus_i M_i\right)\otimes N\cong \bigoplus_i \left(M_i\otimes N\right).
-\]
-
-\pro 成立交换群的同构$R\otimes M\cong M$以及$(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的一个理想。
-
-\proof
-	记$(r,m)\mapsto rm$为映射$\varphi$，毫无疑问这是一个双线性映射，所以诱导了一个交换群同态$\psi:R\otimes M\to M$，使得分解$\varphi:R\times M\xrightarrow{h} R\otimes M\xrightarrow{\psi} M$成立。毫无疑问，$\psi$是一个满射，因为对任意的$m$都有$m=\varphi(1,m)$，所以$m=\psi(h(1,m))$. 注意到$R\otimes M$里面的元素可以写成这样的有限和
-	\[
-	\sum_i r_i\otimes m_i=\sum_i 1\otimes r_im_i=1\otimes \left(\sum_i r_i m_i\right),
-	\]
-	因此，$\psi\left(\sum_i r_i\otimes m_i\right)=0$推出$\sum_i r_i m_i=0$，再利用上面的等式推出$\sum_i r_i\otimes m_i$. 所以$\psi$是一个单射。
-
-	第二个同构，依然是记$(\bar{r},m)\mapsto \overline{rm}\in M/\mathfrak{a}M$为映射$\varphi$. 这是一个定义良好的映射，选取$\bar{r}$的不同代表元$r'=r+a$，其中$a\in\mathfrak{a}$，所以$r'm=rm+am$，由于$am\in \mathfrak{a}M$，所以$\overline{r'm}=\overline{rm}$. 双线性性从定义看是显然的，所以诱导了一个交换群同态$\psi:(R/\mathfrak{a})\otimes M\to M/\mathfrak{a}M$，使得分解$\varphi:R/\mathfrak{a}\times M\xrightarrow{h} (R/\mathfrak{a})\otimes M\xrightarrow{\psi} M/\mathfrak{a}M$成立。
-
-	先检验$\psi$是一个满射，这只要检验$\varphi$是一个满射。任取$\bar{m}\in M/\mathfrak{a}M$，则有$\varphi(\bar{1},m)=\bar{m}$. 最后要检验$\psi$是一个单射，
-	如果$\psi(\sum_i \bar{r}_i\otimes m_i)=0$，可以推出$\sum_i \overline{r_im_i}=0$，于是$\sum_i r_im_i \in \mathfrak{a}M$，这意味着$r_i\in \mathfrak{a}$，所以$\sum_i \bar{r}_i\otimes m_i=\sum_i 0\otimes m_i=0$.
-\qed
-
-当$R$是一个交换环，$M$是一个$R$-模，此时上面证明的同态实际上都是$R$-模同态，所以也自然是$R$-模同构。这两个同构不仅仅是同构，改变$M$的时候，还是一个自然同构。这里就略去检验了。很多时候，这不是检验不检验的问题，这是一个相信不相信的问题。
-
-\para 上面我们已经看到了，$-\otimes N$构成一个函子，而实际上，它是右正和函子。
-
-\para 从这里开始，以后讨论的张量积都是$R$-模范畴的张量积，所以两个$R$-模的张量积依然是$R$-模，所有出现的同态都是$R$-模同态。并且，我们有函子性同构$-\otimes N\cong N\otimes -$.
 
 \section{标量扩张与局部化}
 

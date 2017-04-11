@@ -147,9 +147,9 @@ In the $T\to 0$ (i.e. $\beta\to \infty$) and continuum limit (i.e. $L\to \infty$
 \begin{aligned}
 	2\langle T_\tau \phi_a(x,\tau)\theta_a(0,0)\rangle=&2\langle T_\tau \theta_a(x,\tau)\phi_a(0,0)\rangle \\
 	\sim&-\frac{1}{2\pi}\int_{\mathbb{R}^2} \dd\omega\dd k\,\left(\frac{1}{N}\frac{\omega}{k(\omega^2+u_c^2k^2)}+\left(1-\frac{1}{N}\right)\frac{\omega}{k(\omega^2+u_s^2k^2)}\right)\sin(kx)e^{\ii\omega\tau}\\
-	% =&\frac{\ii}{2\pi N}\arctan\left(\frac{x}{|\tau|u_c}\right)+\frac{\ii}{2\pi}\left(1-\frac{1}{N}\right)\arctan\left(\frac{x}{|\tau|u_s}\right)\\
-	=&\frac{1}{N}\left(\ln \sqrt{x^2+u_c^2\tau^2}-\ln (|\tau|u_c+\ii x)\right)+\left(1-\frac{1}{N}\right)\left(\ln \sqrt{x^2+u_s^2\tau^2}-\ln (|\tau|u_s+\ii x)\right)\\
-	=&\frac{1}{N}\left(\ln (|\tau|u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+\left(1-\frac{1}{N}\right)\left(\ln (|\tau|u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right).
+	% =&\frac{\ii}{2\pi N}\arctan\left(\frac{x}{\tau u_c}\right)+\frac{\ii}{2\pi}\left(1-\frac{1}{N}\right)\arctan\left(\frac{x}{\tau u_s}\right)\\
+	=&\frac{1}{N}\left(\ln \sqrt{x^2+u_c^2\tau^2}-\ln (\tau u_c+\ii x)\right)+\left(1-\frac{1}{N}\right)\left(\ln \sqrt{x^2+u_s^2\tau^2}-\ln (\tau u_s+\ii x)\right)\\
+	=&\frac{1}{N}\left(\ln (\tau u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+\left(1-\frac{1}{N}\right)\left(\ln (\tau u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right).
 \end{aligned}
 \end{equation}
 
@@ -188,14 +188,14 @@ Then,
 \begin{aligned}
 \biggl\langle T_\tau \bigl[(\phi_a(x,\tau)&-\phi_a(0,0))-(\theta_a(x,\tau)-\theta_a(0,0))\bigr]^2\biggr\rangle\\
 \sim &\frac{1}{N}\left(K_c+\frac{1}{K_c}\right) \ln \sqrt{x^2+u_c^2\tau^2}+2\left(1-\frac{1}{N}\right) \ln \sqrt{x^2+u_s^2\tau^2}\\
-&+\frac{2}{N}\left(\ln (|\tau|u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+2\left(1-\frac{1}{N}\right)\left(\ln (|\tau|u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right)\\
-=&\frac{1}{N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}+\frac{2}{N}\ln (|\tau|u_c-\ii x)+2\left(1-\frac{1}{N}\right)\ln (|\tau|u_s-\ii x),
+&+\frac{2}{N}\left(\ln (\tau u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+2\left(1-\frac{1}{N}\right)\left(\ln (\tau u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right)\\
+=&\frac{1}{N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}+\frac{2}{N}\ln (\tau u_c-\ii x)+2\left(1-\frac{1}{N}\right)\ln (\tau u_s-\ii x),
 \end{aligned}
 \]
 and
 \[
 \begin{aligned}
-	G_R(x,\tau)&\sim\frac{1}{2\pi}\exp\left(-\frac{1}{2N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}-\frac{1}{N}\ln (|\tau|u_c-\ii x)-\left(1-\frac{1}{N}\right)\ln (|\tau|u_s-\ii x)\right)\\
+	G_R(x,\tau)&\sim\frac{1}{2\pi}\exp\left(-\frac{1}{2N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}-\frac{1}{N}\ln (\tau u_c-\ii x)-\left(1-\frac{1}{N}\right)\ln (\tau u_s-\ii x)\right)\\
 	&=\frac{1}{2\pi}\left[\frac{1}{x^2+u_c^2\tau^2}\right]^{\alpha/2}\frac{1}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}},
 \end{aligned}
 \]
