@@ -178,23 +178,31 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 设$R$是一个模范畴到模范畴的一个函子，如果$R$对任意的零态射$0:X\to Y$都有$R0=0$，则这个等式给出了核的一个关系$R\left(\ker f\right)\cong \ker(Rf)$. 如果$R$对零模$0$也有$R(0)=0$，则如果$f$是单射，核的那个关系将给出$\ker(Rf)\cong R(0)=0$. 于是$Rf$也是一个单射。
 
-\section{直和与直积}
+\para 另一个极限的例子如下。考虑范畴$\mathcal{J}=\cdot \to \cdot \leftarrow \cdot$，即$\mathcal{J}$只有三个对象，除去恒等态射外，剩下的还有两边指向中间的态射。那么$\mathcal{J}$-图$X\xrightarrow{f} Z \xleftarrow{g} Y$的极限$X\times_Z Y$用泛性质表述就是如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+		A\ar@/_/[rdd]\ar@/^/[drr]\ar@{.>}[dr]&&\\
+		&X\times_Z Y\ar[d]_{\pi_2}\ar[r]_{\pi_1}&X\ar[d]^f\\
+		&Y\ar[r]_g&Z
+	}
+\end{xy}
+\]
+这样的极限$X\times_Z Y$，被称为$X$, $Y$关于$Z$的\idx{纤维积}，或者叫\idx{拉回}。如果$X=Y$，则我们回到了等值子的情况。假设$X$, $Y$和$Z$都是集合，不难检验，$X\times_Z Y=\{(x,y)\in X \times Y\,:\,f(x)=g(y)\in Z\}$. 于是若$Z$是单点集，则$X\times_Z Y=X\times Y$，若$X$和$Y$的子集，它们到$Z$都是标准的含入映射，则$X\times_Z Y=X\cap Y$.
 
-直积和直和都属于用一些小的模来构造出大的模的手段。
+\section{模范畴中的极限与余极限}
 
-\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M\to M_i$使得，如果存在另一个模$N$和一族同态$\rho_i:N\to M_i$，那么就唯一存在同态$\rho:N\to M$使得分解$\rho_i:N\xrightarrow{\rho} M \xrightarrow{\pi_i} M_i$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直积，而$\pi_i$被称为典范投影，通常将$M$记作$\prod_{i\in I}M_i$. 直积是模范畴里的积。
+\para 首先介绍模范畴里的积，他被称为直积。下面重新描述一下泛性质：设$\{M_i\,:\, i\in I\}$是一族左$R$-模，则存在一个左$R$-模$M$以及一族同态$\pi_i:M\to M_i$使得，如果存在另一个模$N$和一族同态$\rho_i:N\to M_i$，那么就唯一存在同态$\rho:N\to M$使得分解$\rho_i:N\xrightarrow{\rho} M \xrightarrow{\pi_i} M_i$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直积，而$\pi_i$被称为典范投影，通常将$M$记作$\prod_{i\in I}M_i$. 
 
 存在性的证明是简单的，考虑$\{M_i\,:\, i\in I\}$作为集合的直积，很容易检验它有一个$R$-模结构，且投影是同态。更详细的检查这里就略去了。
 
-% 其他满足这个性质的模及同态，都可以唯一分解到这个典型的模和同态（这里是直积和投影）的性质，被称为泛性质。
-
-\para 设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 直和是模范畴里的余积。
+\para 对偶地，这里描述一下模范畴里的余积，他就是直和。设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 
 
 直和存在性的构造并不如同直积那么容易。我们考虑$\{M_i\,:\, i\in I\}$的形式和$M$，即
 \[
 	M=\left\{\sum_{i\in I} a_i m_i\,:\, m_i\in M_i\right\},
 \]
-其中的求和只有有限项，或者说系数$a_i$只有有限项非零。可以看到这是一个模。定义$\pi_i:M_i\to M$为$\pi_i(m_i)=m_i$，可以检验这是一个模同态。
+其中的求和只有有限项，或者说系数$a_i$只有有限项非零（这被称为几乎处处为零，注意到，如果没有拓扑，求和总应该是有限的）。不难看到这是一个模。定义$\pi_i:M_i\to M$为$\pi_i(m_i)=m_i$，可以检验这是一个模同态。
 
 现在任取$N$和一族同态$\rho_i:M_i\to N$，我们将其扩展为$\rho_i:M\to N$通过补充定义$\rho_i(m)=0$，如果$m\notin M_i$. 随后我们定义$\rho = \sum_{i\in I} \rho_i$，需要检验这个求和对任意的$m\in M$是有限的。为此，任取$m\in M$，由于他可以分解成$m=\sum_i a_i m_i$，所以
 \[
@@ -202,13 +210,23 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 求和是有限求和因为$a_i$只有有限项非零。有了构造，泛性质的检验就是直接的了。
 
-注意到交换群为$\zz$-模，所以我们也证明了交换群有直和与直积。
-
-\para 由构造，有限直和与有限直积在模范畴里面是等价的。考虑两个$R$-模$M_1$和$M_2$，那么$M_1$可以看成$M_1\oplus M_2$的子模，通过$m\to (m,0)$. 反过来，设$M_1$和$M_2$是一个模$M$的两个子模，则我们有如下短正合列
+由构造，有限直和与有限直积在模范畴里面是等价的。考虑两个$R$-模$M_1$和$M_2$，那么$M_1$可以看成$M_1\oplus M_2$的子模，通过$m\to (m,0)$. 反过来，设$M_1$和$M_2$是一个模$M$的两个子模，则我们有如下短正合列
 \[
 	0\to M_1\cap M_2 \xrightarrow{\mu} M_1\oplus M_2\xrightarrow{\nu} M_1+M_2\to 0,
 \]
 其中$\mu:m\mapsto (m,m)$，$\nu:(m_1,m_2)\mapsto m_1-m_2$. 所以在$M_1\cap M_2=\{0\}$的时候，我们有同构$\nu: M_1\oplus M_2\to M_1+M_2$. 如果$M_1+M_2=M$，那么就是有同构$M\cong M_1\oplus M_2$.
+
+\para 注意到交换群为$\zz$-模，所以我们也证明了交换群有直和与直积。
+
+\para 前面已经看到，左$R$-模范畴内，$\ker(f)=\mathrm{eq}(f,0)$以及$\coker(f)=\mathrm{coeq}(f,0)$，存在性都是清楚的。更一般地，设$f$, $g:M\to N$是两个模同态，则
+\[
+	\mathrm{eq}(f,g)=\ker(f-g)
+\]
+就是等值子，而
+\[
+	\mathrm{coeq}(f,g)=\coker (f-g)
+\]
+就是余等值子。
 
 \theo 在左$R$-模范畴，任意的极限与余极限存在。 \notprove
 
