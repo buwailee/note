@@ -1,7 +1,14 @@
 % author: buwailee@nmhs
 \documentclass[11pt]{article}
-\usepackage{noteheader}
-\usepackage{egastyle,color}
+\usepackage{amssymb,amsfonts,amsmath,amsthm,bm,mathrsfs}
+\usepackage[a4paper, top=16mm, text={170mm, 248mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\usepackage{hyperref,color}
+
+\theoremstyle{definition}
+\newtheorem{para}{}[part]
+\newtheorem{thm}[para]{Theorem}
+\newtheorem{lem}[para]{Lemma}
+\renewcommand{\thepara}{\arabic{para}}
 
 \usepackage{enumitem}
 	\setlist[enumerate]{itemsep=-4pt}
@@ -10,37 +17,75 @@
 \newcommand{\cc}{\mathbb{C}}
 
 \begin{document}
-\title{$G$-bundle and Principal Bundle}
+\title{Connection on Bundle}
 \author{Buwai Lee@NJU}
 \date{\today}
 \maketitle %标题
 
 The manifolds in this article are all smooth.
 
-\para A fiber bundle $(E,M,\pi,F)$ consists of three manifold $E$, $M$ and $F$, and a smooth map $\pi:E\to M$, such that for all $p\in M$, there exists an open neighbourhood $U$ of $p$ and a homeomorphism $\varphi:\pi^{-1}(U)\to U\times F$.
+\section{$G$-bundle and Principal Bundle}
 
-Suppose on $U_{\alpha}$, there's a homeomorphism $\varphi_\alpha:\pi^{-1}(U_\alpha)\to U\times F$, and on $U_\beta$, a homeomorphism $\varphi_\beta:\pi^{-1}(U_\beta)\to U\times F$. Then for all $p\in U_\alpha\cap U_\beta$,
+\begin{para}
+A fiber bundle $(E,M,\pi,F)$ consists of three manifold, total space $E$, base space $M$ and fiber space $F$, and a smooth map $\pi:E\to M$, such that for all $p\in M$, there exists an open neighbourhood $U$ of $p$ and a homeomorphism $\varphi:\pi^{-1}(U)\to U\times F$. 
+Suppose on $U_{\alpha}$, there's a homeomorphism $\varphi_\alpha=(\pi,\Phi_\alpha):\pi^{-1}(U_\alpha)\to U\times F$, and on $U_\beta$, a homeomorphism $\varphi_\beta=(\pi,\Phi_\beta):\pi^{-1}(U_\beta)\to U\times F$. Then for all $p\in U_\alpha\cap U_\beta$,
 \[
-	\varphi_{\alpha}|_p:\pi^{-1}(p)\to F\quad \text{and}\quad \varphi_{\beta}|_p:\pi^{-1}(p)\to F
+	\Phi_{\alpha}|_{\pi^{-1}(p)}:\pi^{-1}(p)\to F\quad \text{and}\quad \Phi_{\beta}|_{\pi^{-1}(p)}:\pi^{-1}(p)\to F
 \]
-are homeomorphism, so $\varphi_{\alpha\beta}(p):=\varphi_{\alpha}|_p(\varphi_{\beta}|_p)^{-1}:F\to F$ is a homeomorphism such that
+are homeomorphism, so $\varphi_{\alpha\beta}(p):=\Phi_{\alpha}|_{\pi^{-1}(p)}(\Phi_{\beta}|_{\pi^{-1}(p)})^{-1}:F\to F$ is a homeomorphism such that
 \begin{enumerate}
 	\item $\varphi_{\alpha\alpha}(p)=\id_F$;
 	\item $\varphi_{\alpha\beta}(p)\varphi_{\beta\alpha}(p)=\id_F$;
 	\item $\varphi_{\alpha\beta}(p)\varphi_{\beta\gamma}(p)\varphi_{\gamma\alpha}(p)=\id_F$.
 \end{enumerate}
+\end{para}
 
-\para $G$-bundle: Suppose $G$ is a Lie group, $(E,M,\pi,F)$ is a fiber bundle and $\lambda:G\times M\to M$ is a group action. If there exists a $g_{\alpha\beta}(p)\in G$ such that $\varphi_{\alpha}\circ \varphi_{\beta}^{-1}(p,v)=(p,\lambda(g_{\alpha\beta}(p),v))$ is valid for a fixed $p\in U_\alpha\cap U_\beta$ and all $v\in F$. Then $(E,M,\pi,F)$ is called a $G$-bundle.
+\begin{para}[$G$-bundle]
+Suppose $G$ is a Lie group, $(E,M,\pi,F)$ is a fiber bundle and $\lambda:G\times M\to M$ is a group action. Let $\{U_\alpha\}_{\alpha\in A}$ be a cover of $M$ and $\varphi_\alpha$ be the local trivialization for $U_\alpha$, if there exists a $g_{\alpha\beta}(p)\in G$ such that $\varphi_{\alpha}\circ \varphi_{\beta}^{-1}(p,v)=(p,\lambda(g_{\alpha\beta}(p),v))$ is valid for all $p\in U_\alpha\cap U_\beta$ and all $v\in F$. 
 
-It's not necessary to say that 
+Note, it is not necessary to say that 
 \begin{enumerate}
 	\item $g_{\alpha\alpha}(p)=\id_F$;
 	\item $g_{\alpha\beta}(p)g_{\beta\alpha}(p)=\id_F$;
 	\item $g_{\alpha\beta}(p)g_{\beta\gamma}(p)g_{\gamma\alpha}(p)=\id_F$.
 \end{enumerate}
-since the group action is not necessary to be {\color{blue} effective}. So when we define a $G$-bundle, these conditions should be added artificially.
+since the group action is not necessary to be {\color{blue} effective}. If these conditions is valid, then $(E,M,\pi,F)$ is a $G$-bundle. Set $\{g_{\alpha\beta}\}$ is usually called a \textit{$G$-cocycle} for cover $\{U_\alpha\}_{\alpha\in A}$.
+\end{para}
 
-\para A principal $G$-bundle $(P,M,\pi,G)$ is a fiber bundle where $G$ is a Lie group, and there's a right free $G$-action on $P$, that is $\mu:P\times G\to P$ such that
+\begin{thm}[$G$-bundle construction theorem]
+	Let $M$ and $F$ be smooth manifolds and let $G$ be a Lie group. Let $\{U_\alpha\}_{\alpha\in A}$ be a cover of $M$ and $\{g_{\alpha\beta}\}$ be a $G$-cocycle. For {\color{blue}every} action $\lambda:G\times F\to F$, there exists a fiber bundle with bundle-atlas $\{U_\alpha,\varphi_\alpha\}$ satisfying $\varphi_\alpha\circ \varphi_\beta^{-1}(p,y)=(p,\lambda(g_{\alpha\beta}(p),y))$ on noempty overlaps $U_\alpha\cap U_\beta$. Thus the resulting bundle has a $(G,\lambda)$-bundle structure, or simply $G$-bundle.
+\end{thm}
+
+\begin{proof}
+	On the disjoint union $\Sigma:=\bigsqcup_{\alpha\in A}U_\alpha\times F$ define an equivalence relation such that $(p,y)\in U_\alpha\times F$ is equivalent to $(p',y')\in U_\beta\times F$ iff $p=p'$ and $y=g_{\alpha\beta}(p)\cdot y'=\lambda(g_{\alpha\beta}(p),y')$. This equivalent relation is well-defined because of the cocycle conditions. 
+	
+	The total space of our bundle is then $\Sigma/\!\!\sim$ whose elements are the equivalence class $\epsilon$. Define $\pi:(p,y)\mapsto p$ and $\varphi_\alpha(\epsilon)$ be the unique member $(p,y)$ of $U_\alpha\times F$ such that $[p,y]:=(p,y)/\!\!\sim\,\,\in \epsilon$, then $(\Sigma/\!\!\sim,M,\pi,F)$ is what we need.
+\end{proof}
+
+\begin{para}[Vector bundle]
+	Suppose $\lambda$ is a representation of Lie group $G$ on $V$, then $(G,\lambda)$-bundle $(E,M,\pi,V)$ is called a vector bundle with with typical $V$.
+
+	On a vector bundle $(E,M,\pi,V)$, there's a natural vector space structure on each fiber $E_p:=\pi^{-1}(p)\cong V$. In fact, suppose $(U_\alpha,\varphi_\alpha)$ is a local trivialization near $p$, $a$ is a scale and $s$, $t\in \pi^{-1}(p)$, we can define
+	\[
+	s+t:=\Phi_{\alpha}|_{E_p}^{-1}\left(\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right),\quad as:=\Phi_{\alpha}|_{E_p}^{-1}\left(a\Phi_{\alpha}|_{E_p}(s)\right).
+	\]
+	It is well-defined. If $(U_\beta,\varphi_\beta)$ is another trivialization near $p$, then
+	\[
+	\begin{aligned}
+	\Phi_{\alpha}|_{E_p}^{-1}\left(\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right)&=\varphi_\beta|_{E_p}^{-1}\varphi_{\beta\alpha}(p)\left(\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right)\\
+	&=\varphi_\beta|_{E_p}^{-1}\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right)\\
+	&=\varphi_\beta|_{E_p}^{-1}\left(\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(s)\right)+\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(t)\right)\right)\\
+	&=\varphi_\beta|_{E_p}^{-1}\left(\varphi_{\beta\alpha}(p)\Phi_{\alpha}|_{E_p}(s)+\varphi_{\beta\alpha}(p)\Phi_{\alpha}|_{E_p}(t)\right)\\
+	&=\varphi_\beta|_{E_p}^{-1}\left(\Phi_{\beta}|_{E_p}(s)+\Phi_{\beta}|_{E_p}(t)\right).
+	\end{aligned}
+	\]
+	The check of $a\cdot s$ is similar.
+
+	Conversely, suppose $(E,M,\pi,V)$ is a fiber bundle and $V$ is a vector space, if the transition maps are all linear isomorphisms of $V$. By $G$-bundle construction theorem, $(E,M,\pi,V)$ is a $G$-bundle, where $G$ is a subgroup of $\mathrm{GL}(V)$ and the representation is the standard representation.
+\end{para}
+
+\begin{para}
+A principal $G$-bundle $(P,M,\pi,G)$ is a fiber bundle where $G$ is a Lie group, and there's a right free $G$-action on $P$, that is $\mu:P\times G\to P$ such that
 \begin{enumerate}
 	\item $\pi(u)=\pi(ug)$ for all $u\in P$ and $g\in G$;
 	\item for all $p\in M$, there exists an open neighbourhood $U\subset M$ and a homeomorphism $\varphi=(\pi,\Phi):\pi^{-1}(U)\to U\times G$ such that
@@ -49,17 +94,20 @@ since the group action is not necessary to be {\color{blue} effective}. So when 
 	\]
 	for all $u\in \pi^{-1}(U)$ and $g\in G$.
 \end{enumerate}
+\end{para}
 
-\para The fiber of a principal bundle is exactly the orbit of the right action.
+\begin{para}
+The fiber of a principal bundle is exactly the orbit of the right action.
+\end{para}
 
-\proof
-	Fix $p\in M$.
+\begin{proof}
+	Fix $p\in M$. 
 
 	$(\Leftarrow)$ part: For all $u\in\pi^{-1}(p)$ and $g\in G$,
 	\[
 		\pi(ug)=\pi(u)=p
 	\]
-	tells us that $ug\in \pi^{-1}(p)$.
+	tells us that $ug\in \pi^{-1}(p)$. 
 
 	$(\Rightarrow)$ part: For all $u$, $v\in\pi^{-1}(p)$, there's an open neighbourhood $U\subset M$ of $p$ such that
 	\[
@@ -70,32 +118,121 @@ since the group action is not necessary to be {\color{blue} effective}. So when 
 	\varphi(u)=(p,\Phi(u))=(p,\Phi(v)g)=(\pi(v),\Phi(vg))=(\pi(vg),\Phi(vg))=\varphi(vg).
 	\]
 	Since $\varphi$ is bijective, $u=vg$.
-\qed
+\end{proof}
 
 As a manifold, $M\cong P/G$.
 
-\para What's more,
+\begin{para}
+What's more,
 \[
 	\Phi_{\alpha}(ug)\Phi_{\beta}(ug)^{-1}=\Phi_{\alpha}(u)gg^{-1}\Phi_{\beta}(u)^{-1}=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}.
 \]
 So $g_{\alpha\beta}=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}$ for all $u\in \pi^{-1}(p)$.
+\end{para}
 
-\lem $\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=g_{\alpha\beta}(p)g$.
+\begin{lem}\label{lem:8}
+$\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=g_{\alpha\beta}(p)g$.
+\end{lem}
 
-\proof
-	Let $\left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=u$, then $g=\Phi_\beta(u)$ and $\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=\Phi_{\alpha}(u)$. On the other hand, $u\in \pi^{1-}(p)$ and so
+\begin{proof}
+	Let $\left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=u$, then $g=\Phi_\beta(u)$ and $\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g)=\Phi_{\alpha}(u)$. On the other hand, $u\in \pi^{-1}(p)$ and so
+		\[
+		g_{\alpha\beta}(p)g=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}\Phi_\beta(u)=\Phi_{\alpha}(u)=\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g).
+		\]
+\end{proof}
+
+So the transition function is just the left multiplication of $g_{\alpha\beta}(p)=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}$! Thus $P$ is indeed a $G$-bundle, the left action is free.
+
+\begin{para}
+Conversely, if $(P,M,\pi,G)$ is a $G$-bundle that $\lambda$ is just the left multiplication, then $(P,M,\pi,G)$ is a $G$-principal bundle.
+
+In fact, define $ug=\varphi_{\alpha}^{-1}(p,\Phi_{\alpha}(u)g)$, where $p=\pi(u)$.\footnote{It is well-defined. Suppose $\varphi_\beta$ is another trivialization, then $\varphi_\beta(ug)=(p,\Phi_{\beta\alpha}(u)\Phi_\alpha(u)g)=(p,\Phi_{\beta}(u)g)$.} Then $\pi(ug)=\pi(u)$ and $\Phi_{\alpha}(ug)=\Phi_{\alpha}(u)g$, so $(P,M,\pi,G)$ is really a principal $G$-bundle.
+\end{para}
+
+\begin{thm}
+If $\pi:P\to M$ is a surjective submersion and a Lie group G acts freely on $P$ so that for each $p\in M$ and orbit of $p$ is exactly $\pi^{-1}(p)$, then $(P,M,\pi,G)$ is a principal $G$-bundle.
+\end{thm}
+
+\begin{proof}
+	Without loss of generality, we can assume that the action is right action, since if it is a left action, we can define an equivalent right action by $p\cdot g:=g^{-1}p$.
+	
+	Since $\pi$ is a surjective submersion, for each $p\in M$, there exists a open neighbourhood $U\subset M$ and a local section $\sigma:U\to P$. Consider the map $f_\sigma:U\times G\to \pi^{-1}(U)$ given by $f_\sigma(p,g)=\sigma(p)g$. It is injective. If $\sigma(p)g=\sigma(p')g'$ is on the same orbit, then $\pi(\sigma(p)g)=p$ tell us $p=p'$, and $\sigma(p)g=\sigma(p)g'$ gives that $g=g'$ since the action is free. It is surjective, too. For each $u\in \pi^{-1}(U)$, $\sigma(\pi(u))\in \pi^{-1}(\pi(u))$, then there exists a $h\in G$ such that $u = \sigma(\pi(u))h$ since the orbit of $\pi(u)$ is exactly $\pi^{-1}(\pi(u))$, thus $u= f_\sigma(\sigma(\pi(u)),h)$.
+	
+	Now, suppose $\gamma(t)$ is a smooth curve on $\pi^{-1}(U)$ and $\gamma(0)=\sigma(p)g$, since the action is free, we can find a curve $g(t)$ on $G$ such that $\gamma(t)=\sigma(\pi(\gamma(t)))g(t)$. Let us define a linear map $\varphi_\sigma: T_{\sigma(p)g}P\to T_{p}M\oplus T_{g}G$ by $\gamma'(0) \mapsto (\pi\circ \gamma)'(0)\oplus g'(0)$, it is not difficule to vertify that it is the inverse of $(f_\sigma)_{*(p,g)}$. By inverse function theorem, bijection $f_\sigma:U\times G\to \pi^{-1}(U)$ is a local diffeomorphism, and then it is a diffeomorphism.
+	
+	Let $\varphi:=f_\sigma^{-1}$, then we have $\varphi=(\pi,\Phi)$ for a uniquely determined smooth map $\Phi:U\to G$. If $p=\pi(u)$, we have $\varphi(ug)=(p,\Phi(ug))$ and so
 	\[
-	g_{\alpha\beta}(p)g=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}\Phi_\beta(u)=\Phi_{\alpha}(u)=\Phi_{\alpha}|_{\pi^{-1}(p)}\circ \left(\Phi_{\beta}|_{\pi^{-1}(p)}\right)^{-1}(g).
+		ug=\varphi^{-1}(p,\Phi(ug)),
 	\]
-\qed
+	while
+	\[
+	\begin{aligned}
+		\varphi^{-1}(p,\Phi(u)g)&=f_\sigma(p,\Phi(u)g)=\sigma(p)(\Phi(u)g)=(\sigma(p)\Phi(u))g\\
+		&=f_\sigma(p,\Phi(u))g=\varphi^{-1}(p,\Phi(u))g=ug=\varphi^{-1}(p,\Phi(ug)).
+	\end{aligned}
+	\]
+	Since $\varphi^{-1}$ is a bijection, we have $\Phi(ug)=\Phi(u)g$. Thus the 	section $\sigma$ give rise to a principal bundle chart $(U,\varphi)$, where $\varphi=(\pi,\Phi)$.
+\end{proof}
 
-So the translation function is just the left multiplication of $g_{\alpha\beta}(p)=\Phi_{\alpha}(u)\Phi_{\beta}(u)^{-1}$! Thus $P$ is a $G$-bundle, the left action is free.
+\begin{para}[Associated bundle]
+	Let $\pi:P\to M$ is a principal $G$-bundle, and suppose we are given a smooth left action $\lambda:G\times F\to F$ on some smooth manifold $F$. Then we can construt a $G$-bundle with base space $M$ and fiber space $F$ as follow.
 
-\para Conversely, if $(P,M,\pi,G)$ is a $G$-bundle that $\lambda$ is just the left multiplication, then $(P,M,\pi,G)$ is a $G$-principal bundle.
+	Define a right action of $G$ on $P\times F$ according to
+	\[
+	(u,y)g:=(ug,g^{-1}y)=(ug,\lambda(g^{-1},y)).
+	\]
+	The total space of our new bundle is the orbit space of this action $P\times_G F$. Denote the equivalenece class of $(u,y)$ by $[u,y]$, and define $\bar{\pi}([u,y]):=\pi(u)$. $\bar{\pi}$ is a well-defined map because $\bar{\pi}([ug,g^{-1}y])=\pi(ug)=\pi(u)$. By the next lemma, we call bundle $(P\times_G F,M,\bar{\pi},F)$ the associated $G$-bundle of principal bundle $P$.
+\end{para}
 
-In fact, define $ug=\varphi_{\alpha}^{-1}(p,\Phi_{\alpha}(u)g)$, where $p=\pi(u)$. ({\color{blue} It is well-defined. Suppose we have a $\varphi_\beta$, then 
-\[
-	\varphi_\beta(ug)=(p,\Phi_{\beta\alpha}(u)\Phi_\alpha(u)g)=(p,\Phi_{\beta}(u)g).
-\]
-}) Then $\pi(ug)=\pi(u)$ and $\Phi_{\alpha}(ug)=\Phi_{\alpha}(u)g$, so $(P,M,\pi,G)$ is really a $G$-principal bundle.
+\begin{lem}
+	$(P\times_G F,M,\bar{\pi},F)$ is a $G$-bundle with transition maps $\{\lambda(g_{\alpha\beta},*)\}$, where $g_{\alpha\beta}$ is the transition map of principal $G$-bundle $\pi:P\to M$.
+\end{lem}
+
+\begin{proof}
+	Let $\{(U_\alpha,\varphi_\alpha)\}$ be a principal bundle atlas for $\pi:P\to M$. Note that $[\pi^{-1}(U_\alpha)\times F]=\pi^{-1}(U_\alpha)$. For each $\alpha$, define $\bar{\Phi}_\alpha:\pi^{-1}(U_\alpha)\to F$ by requiring that $\bar{\Phi}_\alpha([u,y])=\Phi_\alpha(u)\cdot y$ for all $[u,y]\in \pi^{-1}(U_\alpha)$ and then let $\bar{\varphi}_\alpha:=(\pi,\bar{\Phi}_\alpha)$ on $\pi^{-1}(U_\alpha)$. We want to show that $\bar{\varphi}_\alpha$ is bijective by defining an inverse for $\bar{\varphi}_\alpha$. For every $p\in U_\alpha$, let $\sigma_\alpha(p):=\varphi_\alpha^{-1}(p,e)$, where $e$ is the identity element in $G$. Then we have
+	\[
+	\sigma_\alpha \cdot \Phi_\alpha(u)=\varphi_\alpha^{-1}(p,e)\cdot \Phi_\alpha(u)=\varphi_\alpha^{-1}(p,\Phi_\alpha(u))=u.
+	\]
+	Define $\eta_\alpha:U_\alpha\times F\to \pi^{-1}(U_\alpha)$ by $\eta_{\alpha}(p,y):=[\sigma_\alpha(p),y]$. We have
+	\[
+	\eta\bar{\varphi}_\alpha([u,y])=\eta(p,\Phi_\alpha(u)\cdot y)=\bar{\pi}(\sigma_\alpha(p),\Phi_\alpha(u)\cdot y)=\bar{\pi}(\sigma_\alpha(p)\cdot \Phi_\alpha(u),y)=[u,y].
+	\]
+	Thus $\eta_\alpha$ is a right inverse for $\bar{\varphi}_{\alpha}$. It is easily checked that $\eta_\alpha$ is also a left inverse for $\bar{\varphi}_{\alpha}$. Thus $\bar{\varphi}_\alpha$ is a bijection. Next we check the overlaps. We use Lemma \ref{lem:8};
+	\[
+	\begin{aligned}
+	\bar{\varphi}_{\alpha}\bar{\varphi}_{\beta}^{-1}(p,y)&=\bar{\varphi}_{\alpha}\eta_\beta(p,y)=\bar{\varphi}_{\alpha}([\sigma_\beta(p),y])\\
+	&=(p,\Phi_\alpha(\sigma_\beta(p))\cdot y)=(p,\Phi_\alpha(\varphi_\beta^{-1}(p,e))\cdot y)\\
+	&=(p,\Phi_\alpha|_p\circ \Phi_\beta|_p^{-1}(e)\cdot y)\\
+	&=(p,g_{\alpha\beta}(p)\cdot e\cdot y)\\
+	&=(p,g_{\alpha\beta}(p)y).
+	\end{aligned}
+	\]
+	This shows that the transition mappings  have the stated form and that the overlap maps $\bar{\varphi}_{\alpha}\bar{\varphi}_{\beta}^{-1}$ are smooth. The family $\{(U_\alpha,\bar{\varphi}_\alpha)\}$ provides the induced smooth structure and is also a bundle atlas.
+\end{proof}
+
+According to the above proof, the local trivializations of this bundle is $\bar{\varphi}_\alpha([u,y])=(\pi(u),\Phi_\alpha(u)y)$.
+
+\begin{para}
+	Suppose that $(E,M,\pi,F)$ is a $G$-bundle. Suppose that this bundle has a $G$-atlas $\{(U_\alpha,\varphi_\alpha)\}$ with associated $G$-valued cocycle of transition functions $\{g_{\alpha\beta}\}$. Using $G$-bundle construction theorem, one may construction a bundle with typical fiber $G$ by using left translation as the action. The resulting bundle is then a principal bundle $(P,\pi',M,G)$, and it turns out that $P\times_G F$ is equivalent to the original bundle $E$.
+\end{para}
+
+\begin{para}
+	Suppose $F=V$ is a real(complex) vector space, and $\lambda:G\to \mathrm{GL}(V)$ is a representation of $G$ on $V$. Then $P\times_G V$ has a natural vector bundle structure.
+\end{para}
+
+\section{Koszul Connection}
+
+Suppose $\pi:E\to M$ is a fiber bundle, denote the set of all sections on open subset $U\subset M$ by $\Gamma(E,U)$, and denote $\Gamma(E,M)$ by $\Gamma(E)$ for simplicity.
+
+\begin{para}[Koszul connection]
+	A \textit{covariant derivative} or \textit{Koszul connection} on a smooth $k$-vector bundle $E\to M$ is a map $D:\Gamma(TM)\times \Gamma(E)\to \Gamma(E)$ (where $D(X,s)$ is written as $D_Xs$) satisfying the following four properties:
+	\begin{enumerate}
+	\item $D_{fX}(s)=fD_Xs$ for all $f\in C^\infty(M)$, $X\in \Gamma(TM)$ and $s\in \Gamma(E)$;
+	\item $D_{X_1+X_2}s=D_{X_1}s+D_{X_2}s$ for all $X_1$, $X_2\in \Gamma(TM)$ and $s\in\Gamma(E)$;
+	\item $D_X(s_1+s_2)=D_Xs_1+D_Xs_2$ for all $X\in \Gamma(TM)$ and $s_1$, $s_2\in \Gamma(E)$;
+	\item $D_{X}(fs)=(Xf)s+fD_X s$ for all $f\in C^\infty (M;k)$, $X\in \Gamma(TM)$ and $s\in \Gamma(E)$.
+	\end{enumerate}
+	For a fixed $X\in \Gamma(TM)$, the map $D_X:\Gamma(E)\to \Gamma(E)$ is called the \textit{covariant derivative with respect to} $X$.
+\end{para}
+
 \end{document}
