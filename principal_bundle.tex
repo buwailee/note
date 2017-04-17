@@ -67,16 +67,16 @@ since the group action is not necessary to be {\color{blue} effective}. If these
 
 	On a vector bundle $(E,M,\pi,V)$, there's a natural vector space structure on each fiber $E_p:=\pi^{-1}(p)\cong V$. In fact, suppose $(U_\alpha,\varphi_\alpha)$ is a local trivialization near $p$, $a$ is a scale and $s$, $t\in \pi^{-1}(p)$, we can define
 	\[
-	s+t:=\Phi_{\alpha}|_{E_p}^{-1}\left(\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right),\quad as:=\Phi_{\alpha}|_{E_p}^{-1}\left(a\Phi_{\alpha}|_{E_p}(s)\right).
+	s+t:=\Phi_{\alpha}|_{E_p}^{-1}\left(\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right),\quad a\cdot s:=\Phi_{\alpha}|_{E_p}^{-1}\left(a\Phi_{\alpha}|_{E_p}(s)\right).
 	\]
 	It is well-defined. If $(U_\beta,\varphi_\beta)$ is another trivialization near $p$, then
 	\[
 	\begin{aligned}
 	\Phi_{\alpha}|_{E_p}^{-1}\left(\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right)&=\varphi_\beta|_{E_p}^{-1}\varphi_{\beta\alpha}(p)\left(\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right)\\
-	&=\varphi_\beta|_{E_p}^{-1}\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right)\\
-	&=\varphi_\beta|_{E_p}^{-1}\left(\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(s)\right)+\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(t)\right)\right)\\
-	&=\varphi_\beta|_{E_p}^{-1}\left(\varphi_{\beta\alpha}(p)\Phi_{\alpha}|_{E_p}(s)+\varphi_{\beta\alpha}(p)\Phi_{\alpha}|_{E_p}(t)\right)\\
-	&=\varphi_\beta|_{E_p}^{-1}\left(\Phi_{\beta}|_{E_p}(s)+\Phi_{\beta}|_{E_p}(t)\right).
+	&=\Phi_\beta|_{E_p}^{-1}\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(s)+\Phi_{\alpha}|_{E_p}(t)\right)\\
+	&=\Phi_\beta|_{E_p}^{-1}\left(\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(s)\right)+\lambda\left(g_{\beta\alpha}(p),\Phi_{\alpha}|_{E_p}(t)\right)\right)\\
+	&=\Phi_\beta|_{E_p}^{-1}\left(\varphi_{\beta\alpha}(p)\Phi_{\alpha}|_{E_p}(s)+\varphi_{\beta\alpha}(p)\Phi_{\alpha}|_{E_p}(t)\right)\\
+	&=\Phi_\beta|_{E_p}^{-1}\left(\Phi_{\beta}|_{E_p}(s)+\Phi_{\beta}|_{E_p}(t)\right).
 	\end{aligned}
 	\]
 	The check of $a\cdot s$ is similar.
@@ -233,6 +233,24 @@ Suppose $\pi:E\to M$ is a fiber bundle, denote the set of all sections on open s
 	\item $D_{X}(fs)=(Xf)s+fD_X s$ for all $f\in C^\infty (M;k)$, $X\in \Gamma(TM)$ and $s\in \Gamma(E)$.
 	\end{enumerate}
 	For a fixed $X\in \Gamma(TM)$, the map $D_X:\Gamma(E)\to \Gamma(E)$ is called the \textit{covariant derivative with respect to} $X$.
+
+	The value of $D_Xs$ only depends on the local value of $X$ and $s$, i.e. $(D_Xs)|_U=(D_Ys)|_U$ if $X|_U=Y|_U$. Since $(D_Xs)|_U$ is linear for the vector field $X$, we could assume $Y=0$ and then $D_Ys=0$.
+
+	Suppose $X$ vanishes on a open set $U$. Near a point $p\in U$, by the partition of unity, we can find a open set $V$ and a smooth function $g$ on $M$ such that $p\in V\subset \bar{V}\subset U$, $g|_V=1$ and $g|_{M-U}=0$. Then $gX$ vanishes on $M$, so that
+	\[
+		(D_Xs)(p)=g(p)(D_Xs)(p)=(D_{gX}s)(p)=(D{0-0}s)(p)=(D_0s-D_0s)(p)=0.
+	\]
+	Since $p$ is an arbitrarily point in $U$, we have that $(D_Xs)|_U=0$. Similarily, if $s|_U=0$, we have
+	\[
+		0=(D_X0)(p)=(D_X(gs))(p)=(Xg)(p)s(p)+g(p)(D_Xs)(p)=(Xg)(p)s(p)+(D_Xs)(p).
+	\]
+	Since $g$ is a locally const function near $p$, $Xg$ should vanish on $p$, thus $(D_Xs)(p)=0$.
+
+	In addition, suppose $(U,\varphi)$ is a chart containing $p$, we have that $X|_U=X^i\partial_i$ and
+	\[
+	(D_Xs)(p)=X^i(p)(D_{\partial_i}s)(p).
+	\]
+	If $X$ vanishes on $p$, $X^i(p)=0$ tells us $(D_Xs)(p)=0$. Thus, if $X_p=Y_p$, then $(D_Xs)(p)=(D_Ys)(p)$.
 \end{para}
 
 \end{document}
