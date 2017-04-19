@@ -1,5 +1,158 @@
 \chapter{环（二）}
 \ThisULCornerWallPaper{1}{../Pictures/14.png}
+
+\section{完备化}
+
+设$R$是一个环，而$R=\mm_0\supset \mm_1\supset \mm_2\supset \cdots$是一族理想。我们定义$R$关于这族理想的降链的完备化$\hat R$为$R/\mm_i$的极限
+\[
+\begin{aligned}
+	\hat R&:=\varprojlim R/\mm_i\\
+	&:=\left\{
+	g=(g_1,g_2,\dots)\in \prod_i R/\mm_i\,:\, \text{给定$i$，对所有的$j>i$成立$g_j\equiv g_i$ (mod $\mm_i$)}
+	\right\}.
+\end{aligned}
+\]
+显然，$\hat R$是一个环，加法和乘法的定义都是自然的。这个环有自然的理想$\hat \mm_i$
+\[
+	\hat \mm_i:=\{g=(g_1,g_2,\dots)\in\hat R\,:\, \text{对所有$j\leq i$都有$g_j=0$}\}.
+\]
+由定义，不难看到$\hat R/\hat \mm_i\cong R/\mm_i$. 进而$\hat{\hat R}\cong \hat R$.
+
+注意到局部化的等式$S^{-1}(R/\mm_i)=S^{-1}R/S^{-1}\mm_i$，因此局部化与完备化可交换。特别地，$\widehat{R_\mm}\cong \hat{R}_{\hat{\mm}}$.
+
+直观来看，$R=\mm_0\supset \mm_1\supset \mm_2\supset \cdots$是降链，它们将$R$分成了一个一个等价类，而$\mm_i$愈小，则等价类越多，将$R$分得更细。对$g=(g_1,g_2,\dots)$，给定$i$，所有的$g_j$在$R/\mm_i$中看起来都是相同的，其中$j\geq i$，或者说，它们在同一个等价类中。所以$\hat R$中的一个元素，即从大的等价类中再取一个小的等价类，然后越来越细。
+
+完备化的一个典型应用是取$\mm_i=\mm^i$. 比如整数环$\zz$关于$(p)^i$的完备化$\hat\zz_{(p)}$就是所谓的$p$进制数环。再比如，$R[x]$关于$(x)^i$的完备化是幂级数环$R[\![x]\!]$. 这时候，我们记这类完备化为$\hat R_\mm$.
+
+\para 完备化的名字来自于，我们可以给$R$一个拓扑空间结构使得$\hat R$是$R$作为拓扑空间的完备化。实际上，$R$如果是拓扑空间而且是交换群，则自然我们希望是拓扑群，在拓扑群中，加法是$R\to R$的同胚。这时候取$\{\mm_i\}$为$R$原点处的拓扑基，进而我们就得到了$R$上的一个拓扑结构。这个拓扑结构的直观是与上面说的相同的，我们把更细的等价类看成了$R$中更小的开集。
+
+在拓扑群$R$中，一个Cauchy列是$G$中的一个序列$\{g_1$, $g_2$, $\dots\}$，对每一个$R$中$0$的开邻域$U$，都存在一个正整数$n(U)$使得当$s$, $t>n(U)$时都有$g_s-g_t\in U$. 两个Cauchy列$\{x_i\}$和$\{y_i\}$是等价的，如果$x_i-y_i\to 0$. 这显然是一个等价关系。所有Cauchy列的等价类的集合就构成了$R$的完备化，记作$\bar{R}$. 
+
+不难直接在$\bar{R}$上给出一个环结构，Cauchy列$\{p_i\}$和$\{q_i\}$的加法定义为序列$\{p_i+q_i\}$，乘法定义为序列$\{p_iq_i\}$. 这两个序列是Cauchy列，对加法，如果$p_j-p_k\in \mm_i$以及$q_j-q_k\in \mm_i$，则$(p_j+q_j)-(p_k+q_k)=p_j-p_k+q_j-q_k \in \mm_i$. 对乘法，如果$p_j-p_k\in \mm_i$以及$q_j-q_k\in \mm_i$，则$p_jq_j-p_kq_k=p_j(q_j-q_k)+q_k(p_j-p_k)\in \mm_i$. 
+
+\lem Cauchy列的无穷子列也是Cauchy列，且与原列等价。
+
+\proof
+	设$\{x_i\}$是一个Cauchy列，而$\{x_{n_i}\}$是一个无穷子列，其中$n_i$随着$i$严格递增。于是，给定$0$的邻域$U$，则存在$n(U)$使得$i$, $j>n(U)$时候一定有$x_i-x_j\in U$，于是当$n_i$, $n_j>n(U)$时$x_{n_i}-x_{n_j}\in U$. 因此他也是Cauchy列。
+
+	下面我们证明$x_{n_i}-x_i\to 0$，这等价于说，任取$0$的一个邻域$U$，存在一个$N$使得$i>N$时候一定有$x_{n_i}-x_{i}\in U$. 事实上，由于$n_i$是选成递增的，所以$n_i\geq i$. 由于$\{x_i\}$是一个Cauchy列，所以存在一个$n(U)$使得$i$, $j>n(U)$时候一定有$x_i-x_j\in U$，取$N=n(U)$，则$i>N$时也有$n_i>N$，于是我们就得到了结论。
+\qed
+
+\pro 我们两种方法定义的局部化是同构的，即$\bar{R}\cong \hat R$.
+
+\proof
+	首先指出$R$中的元素$g$将给出一族等价的Cauchy列。实际上，选取$g_i$在$R$中的原像$p_i$. 给定一个$R$中零的邻域$U$，我们总可以找一个$\mm_i$使得$\mm_i\subset U$. 由$\hat R$的定义，对$j$, $k>i$，都有$p_j-p_i\in \mm_i$以及$p_k-p_i \in \mm_i$，由于$\mm_i$是一个理想，所以$p_j-p_k=(p_j-p_i)-(p_k-p_i)\in \mm_i\subset U$. 这时候取$n(U)=i$即可。于是，$\{p_1$, $p_2$, $\dots\}$是一个Cauchy列。注意到，这只是对一族选定的原像得到的Cauchy列. 还需要证明，如果选取不同原像，将会得到等价的Cauchy列。实际上，如果$q_i$是$g_i$在$R$中选取的其他原像，则$p_i-q_i\in \mm_i$，因此$p_i-q_i\to 0$. 此即所需。这样就得到了映射$\varphi:\hat{R}\to \bar{R}$，它显然是一个环同态。
+
+	反过来，我们证明$R$中每一条Cauchy列可以等价于$\hat R$中某个元素给出的Cauchy列。给定一条$R$中的Cauchy列$\{p_1$, $p_2$, $\dots\}$. 对原点的开邻域$\mm_i$，存在一个正整数$n(\mm_i)$使得$j$, $k>n(\mm_i)$时有$p_j-p_k\in \mm_i$. 为方便起见，选取$n(\mm_i)$的过程中将其选为严格递增的，这样$n(\mm_i)\geq i$. 记$n_i=n(\mm_i)+1$，考虑子列$q_i=p_{n_i}$，它显然是Cauchy列，并且，对每一个$\mm_i$，以及$j$, $k>i$，成立$q_j-q_k=p_{n_j}-p_{n_k}$，由于$n_j$, $n_k>n_i=n(\mm_i)+1>n(\mm_i)$，所以
+	\[
+		q_j-q_k=p_{n_j}-p_{n_k}\in \mm_i,
+	\]
+	这样我们就可以定义出一个$q\in \hat R$通过$q=(\bar{q}_1$, $\bar{q}_2$, $\dots)$，其中$\bar{q}_i$是$q_i$在$R/\mm_i$中的像。于是$\{q_i\}$就被称为$\{p_i\}$由$\{n_i\}$选取的子序列，他给出了$\hat R$里面的一个元素。由上一个引理，这条子序列与原序列等价。
+
+	可以看到，改变选取的$\{n_i\}$或者等价类中不同的序列，似乎会给出$\hat R$里面不同的元素。我们下面依次说明，首先，$q\in \hat R$不依赖于$n(\mm_i)$的选取，其次，如果给出两条等价的Cauchy列，它们会得到$\hat R$中相同的元素。
+
+	第一点，如果选取不同的严格递增的$n(\mm_i)$和$n'(\mm_i)$，得到了$n_i$和$n_i'$，继而有了不同的$q_i$和$q_i'$. 如果$n_i=n_i'$，则$q_i=q_i'$自不必说。如果$n_i\neq n_i'$，由于$q_i-q_i'=p_{n_i}-p_{n_i'}$且$n_i'$, $n_i$或者大于$n(\mm_i)$或者大于$n'(\mm_i)$，则$q_i-q_i'\in \mm_i$，所以它们在$R/\mm_i$有着相同的像，继而得到了同一个$q\in\hat R$.
+
+	第二点，假设有两条等价的Cauchy列$\{p_1$, $p_2$, $\dots\}$和$\{p'_1$, $p'_2$, $\dots\}$，我们证明可以选出一列严格递增的正整数$\{n_i\}$使得子序列$q_i=p_{n_i}$和$q'_i=p'_{n_i}$可以定义$\hat R$中的一个元素，且满足$q_i-q_i'\in \mm_i$. 于是它们在$R/\mm_i$的像就相同了，继而得到了同一个$q\in\hat R$.
+
+	对每一个$\mm_i$，由于$p$和$p'$等价，所以存在一个$m(\mm_i)$使得$j>m(\mm_i)$时一定有$p_j-p'_j\in \mm_i$，然后对$p$和$q'$，可以选出$n(\mm_i)$和$n'(\mm_i)$使得其满足Cauchy列的要求。现在定义$N(\mm_i)=\max\{m(\mm_i)$, $n(\mm_i)$, $n'(\mm_i)\}$以及$n_i=N(\mm_i)+1$. 于是子列$q_i=p_{n_i}$和$q'_i=p'_{n_i}$就是我们需要的子列。实际上，只需要证明$q_i-q_i'\in \mm_i$即可。由于，$n_i>N(\mm_i)\geq m(\mm_i)$，所以
+	\[
+		q_i-q'_i=p_{n_i}-p'_{n_i}\in \mm_i.
+	\]
+	这样，我们就得到了映射$\psi:\bar{R}\to \hat{R}$，它显然是一个环同态。
+
+	最后，由构造，不难检验$\psi\varphi(g)=g$以及$\varphi\psi(p)=p$. 所以$\hat R$与$\bar R$等价。
+\qed
+
+这个同构提供了许多事情的不同观点。比如，从$R\to \hat R$有一个自然的映射$r\mapsto (r$, $r$, $r$, $\dots)$，很容易看到，这不一定是单的：如果$\bigcap_i \mm_i\neq 0$且$r-s\in \bigcap_i \mm_i$，则$r$与$s$映向$\hat R$中同一个元素。而以拓扑的观点来看，这就是在说$R$是不是一个Hausdorff空间。只有当具有足够可分性时，$\bar R$中的常序列才可能一一对应于$R$中的元素。这并不奇怪，因为众所周知，非Hausdorff空间中同一个序列可能有不同的极限。
+
+因此，如果$R\to \hat R$的典范同态是同构，则我们称$R$是（关于理想族$\{\mm_i\}$）\idx{完备}的。如果理想族是$\mm_i=\mm^i$，则称关于理想$\mm$是完备的。显然，$\hat R$是完备的，因为它与$\hat{\hat R}$同构。
+
+由于$R\to \hat R$的自然同态$r\mapsto (r$, $r$, $r$, $\dots)$，我们可以将$\hat R$看成一个$R$-模。
+
+\para 我们下面将形式地处理级数，尽管上面给出了一个拓扑。在$\prod_{i=0}^\infty \mm_i$上，考虑如下等价关系：$(x_0$, $x_1$, $\dots)\sim (y_0$, $y_1$, $\dots)$，如果对每一个$n\geq 1$都有
+\[
+	\sum_{i=0}^{n-1} (x_i-y_i)\in \mm_n.
+\]
+不难看到这是一个等价关系。将$(x_0$, $x_1$, $\dots)$在$\prod_{i=0}^\infty \mm_i\,\big/\!\sim$中的像（即等价类）记作（形式）级数$\sum_{i=0}^\infty x_i$. 同样，可以定义级数对应的$R$中的部分和序列$\{X_n=\sum_{i=0}^{n-1} x_i\,:\, n\geq 1\}$，并且约定$X_0=0$.  虽然级数不同代表元的选取会对应有不同的部分和，但是对$X_n$而言，不过至多相差一个$\mm_n$中的元素，因为等价关系
+\[
+	\sum_{i=0}^{n-1} (x_i-y_i)\in \mm_n
+\]
+不过是在说$X_n-Y_n\in \mm_n$. 
+
+给定一个级数$\sum_{i=0}^\infty x_i$，其部分和序列虽不唯一，但却给出了唯一的$(\bar{X}_1$, $\bar{X}_2$, $\dots)\in \hat{R}$，其中$\bar{X}_n$为$X_n$在$R/\mm_n$中的像。反过来，取顶$\hat R$中的元素$g$，对每一个$g_i\in R/\mm_i$找一个$R$中的原像$x_i$，定义$x'_0=x_1\in R=\mm_{0}$以及定义$x'_i=x_{i+1}-x_{i}\in \mm_{i}$，不难看出，级数$\sum_{i=0}^\infty x'_i$的部分和$\sum_{i=0}^{n-1} x'_i$就是$\{x_i\,:\,i\geq 1\}$. 所以$\hat R$都确定了一个级数$\sum_{i=0}^\infty x'_i$，其中$x'_i\in \mm_{i}$. 而且这个级数还是唯一的，因为选取不同的原像，部分和$X'_n=x_n$不过就差一个$\mm_n$中的元素而已。
+
+因此，我们建立了$\hat R$中的元素与级数$\sum_{i=0}^\infty x_i$的一一对应，其中$x_i\in\mm_{i}$. 所以我们将就级数的和取作$\hat R$中的元素。作为这个等同的应用，此时$\hat\mm_n$是所有形如$\sum_{i=n}^\infty x_i$的级数，其中$x_i\in\mm_i$. 再比如，$\hat R$此时的$R$-模乘法就是
+\[
+	r\sum_{i=0}^nx_i=\sum_{i=0}^n rx_i.
+\]
+
+\para 两个级数的和是$\sum_i x_i+\sum_i y_i =\sum_i(x_i+y_i)$。乘法会复杂些，但还是挺自然的，记$\sum_i x_i$和$\sum_i y_i$的部分和分别是$\{X_i\}$与$\{Y_i\}$，则$\hat R$上的乘法翻译作
+\[
+	\left(\sum_{i=0}^\infty x_i\right)\left(\sum_{i=0}^\infty y_i\right)=\sum_{n=0}^\infty (X_{i+1}Y_{i+1}-X_{i}Y_i)=\sum_{i=0}^\infty (x_iy_i+x_iY_i+y_iX_i).
+\]
+一般而言，这个乘法并不方便，但是当$\mm_i\mm_j\subset \mm_{i+j}$时，由于$x_i\in\mm_{i}$以及$y_j\in\mm_{j}$，所以$x_iy_i\in \mm_{i+j}$，此时$\sum_{i+j=n}x_iy_j\in \mm_n$，不难证明此时的乘法就可以写作
+\[
+	\left(\sum_{i=0}^\infty x_i\right)\left(\sum_{i=0}^\infty y_i\right)=\sum_{n=0}^\infty \sum_{i+j=n}x_iy_j.
+\]
+实际上，我们只要证明
+\[
+	\sum_{i=0}^{n-1} (x_iy_i+x_iY_i+y_iX_i)-\sum_{k=0}^{n-1} \sum_{i+j=k}x_iy_j\in \mm_n
+\]
+即可，这是直接的计算。
+
+这种情况的例子是很常见的，比如$\mm_i=\mm^i$. 作为上述乘法的例子，我们验证，如果$h\in\mm$，则$1-h$在$\hat{R}_\mm$中有逆$\sum_{i=0}^\infty h^i$，因为
+\[
+	(1-h)\sum_{i=0}^\infty h^i=1+\sum_{n=1}^\infty(1-1)=1.
+\]
+如果$R$是关于$\mm$是完备的，则$1-h$在$R$中也可逆的。
+
+\para 这里来谈谈级数的重排。首先引入一个说法，如果$a\in \mm_{n}$但$a\not\in\mm_{n+1}$，则称$a$的阶数为$n$. $R$中每一个元素都有一个固定的阶数。
+
+现在考虑这样一种情况，$x_i$的阶数为$i+d_i$，其中$d_i\geq 0$，而$y_i$是所有阶数为$i$的$x_j$的和，由于$x_j$的阶数总不小于$j$，所以$y_i$的求和项中$x_j$的$j$总不大于$i$，因此这个求和总是有限的。此时对每一个$n$，我们总有
+\[
+	\sum_{i=0}^{n-1} (x_i-y_i)=\sum_{i=0}^{n-1} x_i-\sum_{i=0}^{n-1} y_i\in \mm_n,
+\]
+这也是直接的计算，不过可以直接注意到$\sum_{i=0}^{n-1} y_i$即是所有阶数小于$n$的$x_j$的和，因此$\sum_{i=0}^{n-1} x_i$减去它后剩下的项阶数都应该不小于$n$.
+
+这就意味着，在级数计算中，“高阶项”可以出现在低阶位置（指第$n$个位置处出现的加项阶数高于$n$），如果我们把他移到其他合理的位置（即不高于其阶数的位置），级数的值依然不变，都等于那种最合理的方式（即$k$-阶项就出现在第$k$个位置求和）。这种意义上，我们允许级数的部分重排。
+
+举个例子，对级数$\sum_{i=0}^\infty x_i$，如果$x_i\in \mm_{i+d}$其中$d$是一个正整数，则
+\[
+	\sum_{i=0}^\infty x_i=\sum_{i=d}^\infty x_{i-d}.
+\]
+
+\para 利用级数记号，我们来观察典范同构$\hat{\hat R}\cong \hat{R}$. 首先，$\hat R/\hat \mm_n$中的元素都可以写成$\sum_{i=0}^{n-1}x_i$在$R/\mm_n$中的像。这就是典范同构$\hat R/\hat \mm_n \to R/\mm_n$在级数记号下的等同。
+
+利用级数，$\hat{\hat R}$中的元素可以写成$\sum_{i=0}^\infty x_i$，而$x_i\in \hat \mm_i$，因此$x_i=\sum_{j\geq i}y_{ij}$，其中$y_{ij}\in \mm_j$. 将其还原成
+\[
+	\sum_{i=0}^nx_i=(\bar{x}_0,\bar{x}_0+\bar{x}_1,\bar{x}_0+\bar{x}_1+\bar{x}_2,\dots),
+\]
+利用等同，此时第$n$项$\sum_{i=0}^{n-1}\bar{x}_i$是$\sum_{i=0}^{n-1}\sum_{j=i}^{n-1} \bar{y}_{ij}$，其中$\bar{y}_{ij}\in R/\mm_n$. 换而言之，典范同构$\hat{\hat R}\cong \hat{R}$在这里即
+\[
+	(\bar{x}_0,\bar{x}_0+\bar{x}_1,\bar{x}_0+\bar{x}_1+\bar{x}_2,\dots)\leftrightarrow\left(\bar{y}_{00},\bar{y}_{00}+\bar{y}_{01}+\bar{y}_{11},\dots,\sum_{i=0}^{n-1}\sum_{j=i}^{n-1} \bar{y}_{ij},\dots\right),
+\]
+在这里，符号上，对应于第$R/\mm_n$位置处的$\bar{y}_{ij}$是$y_{ij}$在$R/\mm_n$中的像。注意到恒等式
+\[
+	\sum_{j=0}^{n-1}\sum_{i=0}^{j} \bar{y}_{ij}=\sum_{i=0}^{n-1}\sum_{j=i}^{n-1} \bar{y}_{ij},
+\]
+所以如果用级数来表述典范同构给出的等同，他就写作
+\[
+	\sum_{i=0}^\infty \sum_{j=i}^\infty y_{ij}=\sum_{j=0}^\infty \sum_{i=0}^jy_{ij},
+\]
+其中$y_{ij}\in \mm_j$. 注意到，等式左边是在$\hat{\hat R}$中，而右边是在$\hat R$中。
+
+反过来，任取$\sum_{i=0}^\infty x_i\in \hat{R}$，其中$x_i\in \mm_0$，则我们可以将其看成$\sum_{j=0}^\infty y_j$，其中$y_0=\sum_{i=0}^\infty x_i$，而对$j\neq 0$，$y_j=0$. 这显然是一个单射，因为很清楚$\bigcap_{i=0}^\infty \hat{\mm}_i =\{0\}$. 用级数来看，$\sum_{i=0}^\infty x_i \in \hat{\mm}_n$意味着它前$n$项部分和处于$\mm_n$中，而现在$n$是任意的，所以$\sum_{i=0}^\infty x_i=0$.
+
+\pro 如果$\mm$是$R$的一个极大理想，则$\hat R_\mm$是一个局部环，极大理想为$\hat\mm$.
+
+\proof
+	首先由$\hat R_\mm/\hat\mm\cong R/\mm$，可以得到$\mm$是一个极大理想。任取$g\not\in \hat \mm$，特别地，则$g_1\neq 0 \in R/\mm$，所以有逆$g_1^{-1}\in R/\mm$，选一个$a\in R$使得它在$R/\mm$中的像为$g_1^{-1}$，于是如果$ag$是可逆的，则$g$是可逆的。此时$ag$具有形式$(1$, $ag_2$, $ag_3$, $\dots)$.
+
+	设$ag=1+\sum_{i=1}^\infty x_i$，其中$x_i\in \mm^i$. 记$h=-\sum_{i=1}^\infty x_i\in \hat{\mm}$，我们有$1-h\in \hat{\hat R}$，利用典范同构$\hat{\hat R}\cong \hat{R}$，只要它在$\hat{\hat R}$中有逆，则同构回来就得到了$\hat{R}$中$ag$的逆，而$1-h$的逆即熟知的几何级数$\sum_{i=0}^\infty h^i\in \hat{\hat R}$，此即所证。
+\qed
+
+
 \section{赋值环}
 
 \para 令$R$是一个整环，$k$是它的分式域。称$R$是$k$的一个赋值环，如果任取非零$x\in k$，有$x\in R$或者$x^{-1}\in R$，或者都在。如果$R$还是一个Noether环，则$R$被称为一个离散赋值环，有时候会简单记作DVR.

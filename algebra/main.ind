@@ -9,7 +9,7 @@
   %
 
   \item adjoint functor, \hyperpage{22}
-  \item algebra, \hyperpage{24}
+  \item algebra, \hyperpage{26}
   \item associative property, \hyperpage{1}
 
   \indexspace
@@ -19,7 +19,7 @@
   %
 
   \item 伴随函子, \hyperpage{22}
-  \item 半群, \hyperpage{23}
+  \item 半群, \hyperpage{24}
 
   \indexspace
 
@@ -35,8 +35,8 @@
   \indexgroup{D}
   %
 
-  \item 代数, \hyperpage{24}
-  \item 单态, \hyperpage{32}
+  \item 代数, \hyperpage{26}
+  \item 单态, \hyperpage{34}
 
   \indexspace
 
@@ -44,7 +44,7 @@
   \indexgroup{E}
   %
 
-  \item epimorphism, \hyperpage{32}
+  \item epimorphism, \hyperpage{34}
 
   \indexspace
 
@@ -93,9 +93,10 @@
   %
 
   \item limit, \hyperpage{17}
+  \item 拉回, \hyperpage{21}
   \item 理想, \hyperpage{3}
     \subitem 主理想, \hyperpage{3}
-  \item 零对象, \hyperpage{31}
+  \item 零对象, \hyperpage{33}
 
   \indexspace
 
@@ -103,10 +104,10 @@
   \indexgroup{M}
   %
 
-  \item monoid, \hyperpage{23}
-  \item monomorphism, \hyperpage{32}
+  \item monoid, \hyperpage{24}
+  \item monomorphism, \hyperpage{34}
   \item morphism, \hyperpage{7}
-  \item 满态, \hyperpage{32}
+  \item 满态, \hyperpage{34}
   \item 模, \hyperpage{3}
     \subitem 子模, \hyperpage{3}
 
@@ -144,8 +145,8 @@
   \indexgroup{S}
   %
 
-  \item semigroup, \hyperpage{23}
-  \item 始对象, \hyperpage{31}
+  \item semigroup, \hyperpage{24}
+  \item 始对象, \hyperpage{33}
   \item 矢量空间, \hyperpage{3}
 
   \indexspace
@@ -161,10 +162,18 @@
   \indexspace
 
   %
+  \indexgroup{X}
+  %
+
+  \item 纤维积, \hyperpage{21}
+
+  \indexspace
+
+  %
   \indexgroup{Y}
   %
 
-  \item 幺半群, \hyperpage{23}
+  \item 幺半群, \hyperpage{24}
   \item 余积, \hyperpage{19}
   \item 域, \hyperpage{3}
   \item 运算, \hyperpage{1}
@@ -176,7 +185,7 @@
   %
 
   \item 正合, \hyperpage{4}
-  \item 终对象, \hyperpage{31}
+  \item 终对象, \hyperpage{33}
   \item 作用, \hyperpage{1}
 
 \end{theindex}
