@@ -1,0 +1,41 @@
+\documentclass[9pt]{extarticle}
+\usepackage[zh]{noteheader}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Arg}{Arg}
+
+\begin{document}
+
+在引入（玻色到费米）修正之后，Green函数可以计算得
+\[
+	G_R(x,\tau)\sim \exp\left(-\ii k_F x\right)\left[\frac{\epsilon^2}{x^2+(u_c|\tau|+\epsilon)^2}\right]^{\alpha/2}\left[\frac{\epsilon^2}{x^2+(u_s|\tau|+\epsilon)^2}\right]^{-(1-1/N)/2}\exp\left(-\frac 1 N \ln \frac{y_{c\epsilon}-\ii x}{\epsilon}-\left(1-\frac 1 N\right) \ln \frac{y_{s\epsilon}-\ii x}{\epsilon}\right),
+\]
+以及$G_L(x,\tau)=G_R(-x,\tau)$和$G(x,\tau)=G_R(x,\tau)+G_L(x,\tau)$. 取$\tau =\ii t +\sgn(t)\delta$，其中$\delta=0^+$，就可以得到实时间的Green函数，对$(t>0)$有
+\[
+	G_R(x,t)\sim \exp\left(-\ii k_F x\right)\left[\frac{\epsilon^2}{x^2+(\ii u_c t+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_ct-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s t+\epsilon)^2}}{\ii(u_st-x)+\epsilon}\right)^{1-1/N},
+\]
+于是由$G^\text{ret}(x,t)=-2H(t)\,\mathrm{Im}\, G(x,t)$可以得到（右行粒子）谱函数的表达式为
+\[
+	\begin{aligned}
+	A^\text{ret}_R(k-k_F,\omega)&\sim -2\,\mathrm{Im}\int_{-\infty}^\infty \dd x\int_{0}^\infty \dd t \exp(\ii \omega t-\ii k x)\left[\frac{\epsilon^2}{x^2+(\ii u_c t+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_ct-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s t+\epsilon)^2}}{\ii(u_st-x)+\epsilon}\right)^{1-1/N}\\
+	&=-2\,\mathrm{Im}\int_{-\infty}^\infty \dd x\left[\frac{\epsilon^2}{x^2+(\ii u_c+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_c-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s +\epsilon)^2}}{\ii(u_s-x)+\epsilon}\right)^{1-1/N}f(\omega-kx),
+	\end{aligned}
+\]
+其中
+\[
+	f(y)=\int_{0}^\infty \dd t \,t^{1-\alpha-1/N} \exp(\ii y t)=\Gamma \left(2-\alpha-\frac 1 N\right)(-\ii y)^{\alpha+1/N-2},
+\]
+所以
+\[
+	\begin{aligned}
+	A^\text{ret}_R(k-k_F,\omega)&\propto -\,\mathrm{Im}\int_{-\infty}^\infty \dd x\,(\ii (kx-\omega))^{\alpha+1/N-2}\left[\frac{1}{x^2+(\ii u_c+\epsilon)^2}\right]^{\alpha/2}\left(\frac{1}{\ii(u_c-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s +\epsilon)^2}}{\ii(u_s-x)+\epsilon}\right)^{1-1/N},
+	\end{aligned}
+\]
+其中$\epsilon=0^+$. 可以作图如下：
+\begin{center}
+\includegraphics[scale=0.8]{1.pdf}
+\end{center}
+其中第一个峰在$u_s$处，第二个峰在$u_c$处。左行粒子的谱函数的计算是类似的。
+\end{document}

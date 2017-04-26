@@ -8,6 +8,9 @@
 
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\ii}{\mathrm{i}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\arctanh}{arctanh}
 
 \begin{document}
 \maketitle
@@ -143,7 +146,7 @@ It is equivalent to say
 since Green's functions are invariant under translation.
 
 In the $T\to 0$ (i.e. $\beta\to \infty$) and continuum limit (i.e. $L\to \infty$), we could use integral to replace the sum in equation (\theequation):
-\begin{equation}
+\[
 \begin{aligned}
 	2\langle T_\tau \phi_a(x,\tau)\theta_a(0,0)\rangle=&2\langle T_\tau \theta_a(x,\tau)\phi_a(0,0)\rangle \\
 	\sim&-\frac{1}{2\pi}\int_{\mathbb{R}^2} \dd\omega\dd k\,\left(\frac{1}{N}\frac{\omega}{k(\omega^2+u_c^2k^2)}+\left(1-\frac{1}{N}\right)\frac{\omega}{k(\omega^2+u_s^2k^2)}\right)\sin(kx)e^{\ii\omega\tau}\\
@@ -151,7 +154,18 @@ In the $T\to 0$ (i.e. $\beta\to \infty$) and continuum limit (i.e. $L\to \infty$
 	=&\frac{1}{N}\left(\ln \sqrt{x^2+u_c^2\tau^2}-\ln (\tau u_c+\ii x)\right)+\left(1-\frac{1}{N}\right)\left(\ln \sqrt{x^2+u_s^2\tau^2}-\ln (\tau u_s+\ii x)\right)\\
 	=&\frac{1}{N}\left(\ln (\tau u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+\left(1-\frac{1}{N}\right)\left(\ln (\tau u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right).
 \end{aligned}
+\]
+
+Note that the time-ordering in $\langle T_\tau \psi_a^\dag(x,\tau)\psi_b(0,0)\rangle$ is for fermions, so we need to introduce a phase to convert our bosonic time-ordering to fermionic time-ordering, see \textit{Quantum Physics in One Dimension} by Thierry Giamarchi. And we will get
+\begin{equation}
+\begin{aligned}
+	2\langle T_\tau \phi_a(x,\tau)\theta_a(0,0)\rangle=-\frac \ii N \Arg(\ii x +y_{c\alpha})-\ii \left(1-\frac 1 N\right) \Arg(\ii x +y_{s\alpha}),
+\end{aligned}
 \end{equation}
+where
+\[
+	y_{c,s\alpha}=u_{c,s}\tau+\alpha \sgn(\tau).
+\]
 
 Now we have enough meterial to calculate $G_L(x,\tau)$ and $G_R(x,\tau)$. According to equation \eqref{psiR},
 \begin{align*}
@@ -176,26 +190,25 @@ The part one:
 	% &=\frac{1}{2\beta L}\sum_{k,\omega}\left(\frac{1}{N}\frac{u_c K_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)|e^{-\ii \omega\tau+\ii k x}-1|^2\\
 	&=\frac{2\pi}{\beta L}\sum_{k,\omega}\left(\frac{1}{N}\frac{u_c K_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)(1-\cos(kx-\omega\tau))\\
 	&\sim \frac{2\pi}{(2\pi)^2}\int_{\mathbb{R}^2} \dd\omega\dd k\,\left(\frac{1}{N}\frac{u_c K_c}{\omega^2+u_c^2k^2}+\left(1-\frac{1}{N}\right)\frac{u_s}{\omega^2+u_s^2k^2}\right)(1-\cos(kx-\omega\tau))\\
-	&\sim \frac{K_c}{N} \ln \sqrt{x^2+u_c^2\tau^2}+\left(1-\frac{1}{N}\right) \ln \sqrt{x^2+u_s^2\tau^2}.
+	&=\frac{K_c}{2N} \ln \frac{x^2+(u_c|\tau|+\epsilon)^2}{\epsilon^2}+\frac 1 2 \left(1-\frac 1 N\right) \ln \frac{x^2+(u_s|\tau|+\epsilon)^2}{\epsilon^2}.
 \end{align*}
-Here, we introduced an infrared cut-off $|(\omega,uk)|^2\sim (x^2+u^2 \tau^2)^{-1/2}$ when performing the integral of $\omega$ and $k$. By $K_c\to 1/K_c$ we get the part two
+Here, we introduced an infrared cut-off $|(\omega,uk)|^2\sim (x^2+u^2 \tau^2)^{-1/2}\sim \epsilon^2$ when performing the integral of $\omega$ and $k$. By $K_c\to 1/K_c$ we get the part two
 \begin{align*}
-	\left\langle T_\tau\bigl[\theta_a(x,\tau)-\theta_a(0,0)\bigr]^2\right\rangle\sim \frac{1}{N K_c} \ln \sqrt{x^2+u_c^2\tau^2}+\left(1-\frac{1}{N}\right) \ln \sqrt{x^2+u_s^2\tau^2}.
+	\left\langle T_\tau\bigl[\theta_a(x,\tau)-\theta_a(0,0)\bigr]^2\right\rangle\sim \frac{1}{2NK_c} \ln \frac{x^2+(u_c|\tau|+\epsilon)^2}{\epsilon^2}+\frac 1 2 \left(1-\frac 1 N\right) \ln \frac{x^2+(u_s|\tau|+\epsilon)^2}{\epsilon^2}.
 \end{align*}
 
 Then, 
-\[
+\[\small
 \begin{aligned}
-\biggl\langle T_\tau \bigl[(\phi_a(x,\tau)&-\phi_a(0,0))-(\theta_a(x,\tau)-\theta_a(0,0))\bigr]^2\biggr\rangle\\
-\sim &\frac{1}{N}\left(K_c+\frac{1}{K_c}\right) \ln \sqrt{x^2+u_c^2\tau^2}+2\left(1-\frac{1}{N}\right) \ln \sqrt{x^2+u_s^2\tau^2}\\
-&+\frac{2}{N}\left(\ln (\tau u_c-\ii x)-\ln \sqrt{x^2+u_c^2\tau^2}\right)+2\left(1-\frac{1}{N}\right)\left(\ln (\tau u_s-\ii x)-\ln \sqrt{x^2+u_s^2\tau^2}\right)\\
-=&\frac{1}{N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}+\frac{2}{N}\ln (\tau u_c-\ii x)+2\left(1-\frac{1}{N}\right)\ln (\tau u_s-\ii x),
+&\biggl\langle T_\tau \bigl[(\phi_a(x,\tau)-\phi_a(0,0))-(\theta_a(x,\tau)-\theta_a(0,0))\bigr]^2\biggr\rangle\\
+\sim &\frac{1}{2N}\left(K_c+\frac{1}{K_c}\right) \ln \frac{x^2+(u_c|\tau|+\epsilon)^2}{\epsilon^2}+\left(1-\frac{1}{N}\right) \ln \frac{x^2+(u_s|\tau|+\epsilon)^2}{\epsilon^2}-2\frac \ii N \Arg(\ii x +y_{c\epsilon})-2\ii \left(1-\frac 1 N\right) \Arg(\ii x +y_{s\epsilon}),\\
+=&\frac{1}{2N}\left(K_c+\frac{1}{K_c}-2\right)\ln \frac{x^2+(u_c|\tau|+\epsilon)^2}{\epsilon^2}-\left(1-\frac{1}{N}\right) \ln \frac{x^2+(u_s|\tau|+\epsilon)^2}{\epsilon^2}+\frac 2 N \ln \frac{y_{c\epsilon}-\ii x}{\epsilon}+2\left(1-\frac 1 N\right) \ln \frac{y_{s\epsilon}-\ii x}{\epsilon}
 \end{aligned}
 \]
 and
 \[
 \begin{aligned}
-	G_R(x,\tau)&\sim\frac{1}{2\pi}\exp\left(-\frac{1}{2N}\left(K_c+\frac{1}{K_c}-2\right) \ln \sqrt{x^2+u_c^2\tau^2}-\frac{1}{N}\ln (\tau u_c-\ii x)-\left(1-\frac{1}{N}\right)\ln (\tau u_s-\ii x)\right)\\
+	G_R(x,\tau)&\sim\frac{1}{2\pi}\exp\left(-\frac 1 2 \biggl\langle T_\tau \bigl[(\phi_a(x,\tau)-\phi_a(0,0))-(\theta_a(x,\tau)-\theta_a(0,0))\bigr]^2\biggr\rangle\right)\\
 	&=\frac{1}{2\pi}\left[\frac{1}{x^2+u_c^2\tau^2}\right]^{\alpha/2}\frac{1}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}},
 \end{aligned}
 \]
@@ -211,28 +224,45 @@ Similarly
 Finally, the Green's function is given by
 \[
 \begin{aligned}
-	G_{ab}(x,\tau)&=\langle T_\tau \psi_a^\dag(x,\tau)\psi_b(0,0)\rangle=\delta_{ab}\mathrm{sgn}(\tau)\left(\exp(-\ii k_Fx)G_R(x,\tau)+\exp(\ii k_Fx)G_L(x,\tau)\right)\\
-	&\sim \frac{\mathrm{sgn}(\tau)\delta_{ab}}{2\pi}\left[\frac{1}{x^2+u_c^2\tau^2}\right]^{\alpha/2}\left[\frac{\exp(\ii k_F x)}{(\ii x+u_c\tau)^{1/N}(\ii x+u_s\tau)^{1-1/N}}+\frac{\exp(-\ii k_F x)}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}}\right],
+	G_{ab}(x,\tau)&=\langle T_\tau \psi_a^\dag(x,\tau)\psi_b(0,0)\rangle=\delta_{ab}\sgn(\tau)\left(\exp(-\ii k_Fx)G_R(x,\tau)+\exp(\ii k_Fx)G_L(x,\tau)\right)\\
+	&\sim \frac{\sgn(\tau)\delta_{ab}}{2\pi}\left[\frac{1}{x^2+u_c^2\tau^2}\right]^{\alpha/2}\left[\frac{\exp(\ii k_F x)}{(\ii x+u_c\tau)^{1/N}(\ii x+u_s\tau)^{1-1/N}}+\frac{\exp(-\ii k_F x)}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}}\right],
 \end{aligned}
 \]
-where the addtional $\mathrm{sgn}(\tau)$ is used to convert the bosonic time ordering operate to the fermionic time ordering operate.
+where the addtional $\sgn(\tau)$ is used to convert the bosonic time ordering operate to the fermionic time ordering operate.
 
-The Fourier transformation of the Green's function $G_{ab}$ is
+Then the time-ordered Green's function in real time can be obtained from the time-ordered Green's function in imaginary time by Wick rotation $\tau=\ii t+\sgn(t)\epsilon$, where $\epsilon=0^+$, thus
 \[
 \begin{aligned}
-	G_{ab}(k,\omega)=&\frac{\delta_{ab}}{2\pi}\int_{\mathbb{R}^2}\frac{\mathrm{sgn}(\tau)\mathrm{d}x\mathrm{d}\tau}{(x^2+u_c^2\tau^2)^{\alpha/2}}\biggl[\frac{\exp(\ii (k_F-k) x)\exp(\ii \omega\tau)}{(\ii x+u_c\tau)^{1/N}(\ii x+u_s\tau)^{1-1/N}}+\frac{\exp(-\ii (k_F+k) x)\exp(\ii \omega\tau)}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}}\biggr]\\
-	=&\frac{\delta_{ab}}{2\pi}\int_{\mathbb{R}^2}\frac{\mathrm{d}x\mathrm{d}\tau}{|u_c\tau|^{\alpha}(x^2+1)^{\alpha/2}}\biggl[\frac{\exp(\ii (k_F-k)u_c\tau x)\exp(\ii \omega\tau)}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}+\frac{\exp(-\ii (k_F+k)u_c\tau x)\exp(\ii \omega\tau)}{(-\ii x+1)^{1/N}(-\ii x+u_s/u_c)^{1-1/N}}\biggr]\\
-	=&\frac{\delta_{ab}}{\pi}\int_{\mathbb{R}^2}\frac{\mathrm{d}x\mathrm{d}\tau}{|u_c\tau|^{\alpha}(x^2+1)^{\alpha/2}}\frac{\cos(ku_c\tau x)\exp(\ii k_Fu_c\tau x)\exp(\ii \omega\tau)}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}\\
-	=&\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|\omega+(k_F-k)u_cx|^{\alpha-1}+|\omega+(k_F+k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}\right],
+	G_{ab}(x,t)\sim -\frac{\sgn(t)\delta_{ab}}{2\pi}\left[\frac{1}{x^2-u_c^2(t-\ii \sgn(t)\epsilon)^2}\right]^{\alpha/2}\left[\frac{-\ii\exp(\ii k_F x)}{(x+u_ct-\ii \sgn(t)\epsilon)^{1/N}(x+u_st-\ii \sgn(t)\epsilon)^{1-1/N}}+x\mapsto -x\right],
 \end{aligned}
 \]
-where $\Gamma(x)$ is the famous Gamma function. Let $\ii\omega\to E+\ii\delta$ in $G_{ab}(k,\omega)$, we will get the retarded Green's function
+so the retarded Green's function is
 \[
 \begin{aligned}
-	G^{\text{ret}}_{ab}(k,E)=\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|-\ii E+\delta+(k_F-k)u_cx|^{\alpha-1}+|-\ii E+\delta+(k_F+k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u)^{1-1/N}}\right],
+	G^{\text{ret}}_{ab}(x,t)=&-2H(t)\,\mathrm{Im}\, G_{ab}(x,t)\\
+	=&\frac{\delta_{ab}H(t)}{\pi}\left[\frac{1}{\sqrt{(x-u_ct)^2+\epsilon^2}\sqrt{(x+u_ct)^2+\epsilon^2}}\right]^{\alpha/2}\biggl[\frac{\sin(k_F x)}{((x+u_ct)^2+\epsilon^2))^{1/(2N)}((x+u_st)^2+\epsilon^2))^{1/2-1/(2N)}}\\
+	&+x\mapsto -x\biggr],
 \end{aligned}
 \]
-where $u=u_s/u_c$.
+
+The Fourier transformation of the retarded Green's function $G_{ab}$ 
+
+% is
+% \[
+% \begin{aligned}
+% 	G_{ab}(k,\omega)=&\frac{\delta_{ab}}{2\pi}\int_{\mathbb{R}^2}\frac{\sgn(\tau)\mathrm{d}x\mathrm{d}\tau}{(x^2+u_c^2\tau^2)^{\alpha/2}}\biggl[\frac{\exp(\ii (k_F-k) x)\exp(\ii \omega\tau)}{(\ii x+u_c\tau)^{1/N}(\ii x+u_s\tau)^{1-1/N}}+\frac{\exp(-\ii (k_F+k) x)\exp(\ii \omega\tau)}{(-\ii x+u_c\tau)^{1/N}(-\ii x+u_s\tau)^{1-1/N}}\biggr]\\
+% 	=&\frac{\delta_{ab}}{2\pi}\int_{\mathbb{R}^2}\frac{\mathrm{d}x\mathrm{d}\tau}{|u_c\tau|^{\alpha}(x^2+1)^{\alpha/2}}\biggl[\frac{\exp(\ii (k_F-k)u_c\tau x)\exp(\ii \omega\tau)}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}+\frac{\exp(-\ii (k_F+k)u_c\tau x)\exp(\ii \omega\tau)}{(-\ii x+1)^{1/N}(-\ii x+u_s/u_c)^{1-1/N}}\biggr]\\
+% 	=&\frac{\delta_{ab}}{\pi}\int_{\mathbb{R}^2}\frac{\mathrm{d}x\mathrm{d}\tau}{|u_c\tau|^{\alpha}(x^2+1)^{\alpha/2}}\frac{\cos(ku_c\tau x)\exp(\ii k_Fu_c\tau x)\exp(\ii \omega\tau)}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}\\
+% 	=&\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|\omega+(k_F-k)u_cx|^{\alpha-1}+|\omega+(k_F+k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u_s/u_c)^{1-1/N}}\right],
+% \end{aligned}
+% \]
+% where $\Gamma(x)$ is the famous Gamma function. Let $\ii\omega\to E+\ii\delta$ in $G_{ab}(k,\omega)$, we will get the retarded Green's function
+% \[
+% \begin{aligned}
+% 	G^{\text{ret}}_{ab}(k,E)=\frac{\delta_{ab}}{\pi}\frac{\Gamma(1-\alpha)}{|u_c|^\alpha}\sin\left(\frac{\alpha\pi}{2}\right)\int_{\mathbb{R}}\frac{\mathrm{d}x}{(x^2+1)^{\alpha/2}}\left[\frac{|-\ii E+\delta+(k_F-k)u_cx|^{\alpha-1}+|-\ii E+\delta+(k_F+k)u_cx|^{\alpha-1}}{(\ii x+1)^{1/N}(\ii x+u)^{1-1/N}}\right],
+% \end{aligned}
+% \]
+% where $u=u_s/u_c$.
 
 The momentum distribution can be given as
 \[

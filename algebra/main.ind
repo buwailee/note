@@ -9,7 +9,7 @@
   %
 
   \item adjoint functor, \hyperpage{22}
-  \item algebra, \hyperpage{26}
+  \item algebra, \hyperpage{27}
   \item associative property, \hyperpage{1}
 
   \indexspace
@@ -35,7 +35,7 @@
   \indexgroup{D}
   %
 
-  \item 代数, \hyperpage{26}
+  \item 代数, \hyperpage{27}
   \item 单态, \hyperpage{34}
 
   \indexspace
@@ -158,6 +158,14 @@
   \item 态射, \hyperpage{7}
   \item 态射函子, \hyperpage{9}
   \item 同态, \hyperpage{4}
+
+  \indexspace
+
+  %
+  \indexgroup{W}
+  %
+
+  \item 完备, \hyperpage{72}
 
   \indexspace
 

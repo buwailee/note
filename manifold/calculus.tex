@@ -419,8 +419,17 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 我们现在需要比较两条路径两个终点的差，在欧式空间里面，我们可以比较这两个点的距离。但是在流形上这样做是不方便的，我们可能连一个很直接的计算两个点距离的手段都没有。为了克服这个困难，我们可以采用“表示”的手段，取一个$U$上的光滑函数$f$，比较$f(\sigma^Y_t\circ\sigma^X_s(p))$和$f(\sigma^X_s\circ\sigma^Y_t(p))$。但光取一个$f$肯定是不够的，取而代之，我们可以取遍$U$上所有的光滑函数，如果我们关于所有的光滑函数都计算出了$f(\sigma^Y_t\circ\sigma^X_s(p))-f(\sigma^X_s\circ\sigma^Y_t(p))$（在$s$, $t$都很小时），那么就可以确认这两个坐标相差很小的程度。所以现在就是要计算在$s$, $t$都很小时的
 \[
-	g(s,t)=f(\sigma^Y_t\circ\sigma^X_s(p))-f(\sigma^X_s\circ\sigma^Y_t(p)).
+	g(s,t)(p)=f(\sigma^Y_t\circ\sigma^X_s(p))-f(\sigma^X_s\circ\sigma^Y_t(p)).
 \]
+或者说，考虑
+\[
+	h(s,t)(p)=f(\sigma^Y_{-t}\sigma^X_{-s}\sigma^Y_{t}\sigma^X_{s}(p))-f(p),
+\]
+所以有关系
+\[
+	h(s,t)(p)=g(-s,-t)\left(\sigma^Y_t\circ\sigma^X_s(p)\right).
+\]
+这个$h$即是从$p$开始，先沿着$X$方向走$s$，然后沿着$Y$方向走$t$，接着往$X$的反方向走$s$，最后验证$Y$反方向走$t$后，即在参数空间里面走了一圈，然后比较实函数在这点的值与在点$p$的值的差异。
 
 因为$g$是光滑函数，我们在$(0,0)$局部展开他，求导就可以得到系数。显然，他到二阶为止的导数都为$0$，并且$\partial_s^2g(0,0)=\partial_t^2g(0,0)=0$，所以他最低阶不为零的只可能是$\partial_s\partial_t g(0,0)$，这就是说，我们要求$\lim_{s,t\to 0}g(s,t)/st$.
 
@@ -435,7 +444,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 以及
 \[
-	g(s,t)=sXf(p)+tY(\sigma^X_s\circ f(p))-tYf(p)-sX(\sigma^Y_t\circ f(p)),
+	g(s,t)(p)=sXf(p)+tY(\sigma^X_s\circ f(p))-tYf(p)-sX(\sigma^Y_t\circ f(p)),
 \]
 其中
 \[
@@ -443,9 +452,16 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 所以
 \[
-	g(s,t)=st\bigl(X(Y(f))(p)-Y(X(f))(p)\bigr),
+	g(s,t)(p)=st\bigl(X(Y(f))(p)-Y(X(f))(p)\bigr),
 \]
-这就是说$\partial_s\partial_t g(0,0)=X(Y(f))(p)-Y(X(f))(p)$.
+这就是说$\partial_s\partial_t g(0,0)(p)=X(Y(f))(p)-Y(X(f))(p)$. 同样，我们也有
+\[
+\begin{aligned}
+	\frac{\partial^2}{\partial s\partial t} h(0,0)(p)&=\lim_{s,t\to 0}\frac{g(-s,-t)\left(\sigma^Y_t\circ\sigma^X_s(p)\right)}{st}\\
+	&=\lim_{s,t\to 0}\left(X(Y(f))-Y(X(f))\right)\left(\sigma^Y_t\circ\sigma^X_s(p)\right)\\
+	&=X(Y(f))(p)-Y(X(f))(p).
+\end{aligned}
+\]
 
 \para 定义两个矢量场$X$, $Y$的Lie括号为$[X,Y]$，他满足$[X,Y](f)=X(Y(f))-Y(X(f))$. 如果采用局部表示$X=X^i\partial_i$和$X=Y^i\partial_j$，则我们可以计算出
 \begin{align*}
@@ -455,15 +471,25 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \end{align*}
 因此，尽管形式上是二阶的，但$[X,Y]$还是一个切矢量场，局部写作$[X,Y]=(X^i\partial_iY^j-Y^i\partial_i X^j)\partial_j=(X(Y^j)-Y(X^j))\partial_j$.同时，我们可以将$[X,Y]_p$定义为$[X_p,Y_p]$，反过来，因为$X_p$和$Y_p$都可以扩张为局部的光滑切矢量场，所以对于任意的切矢量，我们都定义了一个双线性映射$[*,*]:T_pM\times T_pM\to T_pM$，他也被称为Lie括号。
 
+有上一段的结论，我们有
+\[
+	\frac{\partial^2}{\partial s\partial t} h(0,0)(p)=[X,Y]f(p),
+\]
+或者，当$s$, $t$很小的时候有
+\[
+	h(s,t)(p)=st[X,Y]f(p),
+\]
+如果我们改变$\sigma^Y_{-t}\sigma^X_{-s}\sigma^Y_{t}\sigma^X_{s}(p)$中的参数$s$和$t$，然后当$s$, $t\to 0$的时候，$\sigma^Y_{-t}\sigma^X_{-s}\sigma^Y_{t}\sigma^X_{s}(p)$趋向于$p$，得到一条曲线$\sigma(st)$，他的切矢量就是$\sigma'(0)=[X,Y]_p=[X_p,Y_p]$. 如果存在积分曲面，则$\sigma^Y_{-t}\sigma^X_{-s}\sigma^Y_{t}\sigma^X_{s}(p)$也在曲面上，所以切矢量$\sigma'(0)=[X_p,Y_p]$应该由$X_p$和$Y_p$张成。
+
 \para 设在每一个$p\in U$处，都给定一个$T_pM$的子空间$D_p$，使得在每一个局部，都存在一族光滑切矢量场$\{X_i\}_{1\leq i\leq k}$，使得$D_p$由$\{(X_i)_p\}_{1\leq i\leq k}$张成，则称呼$D$是$U$上的一个$k$维光滑分布或简称$k$维分布。而在每个局部，则称呼其局部由$\{X_i\}$张成。
 
-设$D$是$M$上的一个$k$维分布，而$N$是$M$的一个浸入子流形（即不存在自交点的子流形），如果$T_pN=D_p$处处成立，则称$N$是$D$的一个积分子流形（二维的情况就叫积分曲面了）。
+设$D$是$M$上的一个$k$维分布，而$N$是$M$的一个子流形，如果$T_pN=D_p$处处成立，则称$N$是$D$的一个积分子流形（二维的情况就叫积分曲面了）。
 
-\para 设点$p$附近有两个切矢量$X$和$Y$张成一个分布$D$，则局部积分曲面存在当且仅当$[X,Y]\in D$.
+\pro 设点$p$附近有两个切矢量$X$和$Y$张成一个分布$D$，则局部积分曲面存在当且仅当$[X,Y]\in D$.
 
-如果局部积分曲面存在，那么曲边四边形完全处于积分曲面上面，尽管沿着两条路径得到的终点可能不同，但是这两个点的连线（或者他的切矢量）应该在$s\to 0$, $t\to 0$的时候确定了一个切矢量（由于$X$和$Y$的光滑性，所以这个切矢量并不依赖于连线的选取），他处于积分曲面的切子空间（由$X_p$和$Y_p$张成）里面，且正比于$[X,Y]_p$，所以$[X,Y]_p=a(p)X_p+b(p)Y_p$.而$a$和$b$的光滑性是显然的。
+% 如果局部积分曲面存在，那么曲边四边形完全处于积分曲面上面，尽管沿着两条路径得到的终点可能不同，但是这两个点的连线（或者他的切矢量）应该在$s\to 0$, $t\to 0$的时候确定了一个切矢量（由于$X$和$Y$的光滑性，所以这个切矢量并不依赖于连线的选取），他处于积分曲面的切子空间（由$X_p$和$Y_p$张成）里面，且正比于$[X,Y]_p$，所以$[X,Y]_p=a(p)X_p+b(p)Y_p$.而$a$和$b$的光滑性是显然的。
 
-如果不存在，就是说两个端点分处$X_p$和$Y_p$张成的切子空间两侧，所以两个点的连线确定的那个切矢量应该不在和$X_p$和$Y_p$张成的切子空间里，即$[X,Y]_p\neq aX_p+bY_p$.
+存在的话，已经证明了。如果局部积分曲面不存在，就是说两个端点分处$X_p$和$Y_p$张成的切子空间两侧，所以两个点的连线确定的那个切矢量应该不在和$X_p$和$Y_p$张成的切子空间里，即$[X,Y]_p\neq aX_p+bY_p$.
 
 \para 问题可以问得更广一点，设$X_1$, $\cdots$, $X_k$是一族切矢量场，他们是否（至少在局部）有积分“曲面”存在？回答是Frobenius定理：设$X_1$, $\cdots$, $X_k$在点$p$附近张成的分布为$D$，则局部存在积分“曲面”当且仅当对任意的$i$和$j$成立$[X_i,X_j]\in D$。
 
