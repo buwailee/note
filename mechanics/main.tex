@@ -1,0 +1,66 @@
+\documentclass[10pt]{book}
+
+\usepackage[book]{noteheader}
+\usepackage[fontset = fandol]{ctex}
+	% \CTEXoptions[today=old]
+	% \CTEXoptions[contentsname=Table of Contents]
+\usepackage{graphicx,wrapfig,paralist}
+	\setlength{\pltopsep}{3pt}
+	\setlength{\plpartopsep}{3pt}
+
+\usepackage{titletoc}
+	\setcounter{secnumdepth}{5}  
+	\setcounter{tocdepth}{5} 
+
+\usepackage{makeidx}
+	\makeindex
+
+\usepackage{hyperref}
+	\hypersetup{bookmarksnumbered=true}
+
+\renewcommand\thechapter{\Roman{chapter}} 
+
+\input{../defs}
+	\newcommand{\cc}{\mathbb{C}}
+
+% \setCJKmainfont[
+% 	ItalicFont = AdobeKaitiStd-Regular ,
+% 	BoldFont = SourceHanSerifSC-Bold ,
+% ]{SourceHanSerifSC-Regular}
+% \renewcommand{\hyp}{\raisebox{.1em}{-}}
+% \renewcommand{\textit}[1]{{\raisebox{-.05ex}{\scalebox{1.05}{\it #1}}}}
+
+\theoremstyle{definition}
+\newtheorem{para}{}[chapter]
+\newtheorem{exa}[para]{Example}
+\renewcommand{\thepara}{\thechapter.\arabic{para}}
+
+\theoremstyle{plain}
+\newtheorem{thm}[para]{Theorem}
+\newtheorem{pro}[para]{Proposition}
+\newtheorem{lem}[para]{Lemma}
+
+\begin{document}
+\begin{titlepage}
+\setcounter{page}{-1}
+\thispagestyle{empty}
+	\begin{flushright}
+	{\Huge\bfseries 经典力学}\\[\baselineskip]
+	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
+	{by xxx}\par
+	\today
+	\end{flushright}
+	\vfill
+	{\Large\itshape 仅作内部交流用}
+\end{titlepage}
+\clearpage
+\thispagestyle{empty}
+
+\frontmatter
+\tableofcontents
+\mainmatter
+	\input{1.tex}
+\backmatter
+ 	% \input{references}
+\printindex
+\end{document}

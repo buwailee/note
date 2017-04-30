@@ -1,8 +1,7 @@
 % !TeX program = XeLaTeX
-\documentclass[9pt]{extarticle}
+\documentclass[10pt]{extarticle}
 \usepackage[zh]{noteheader}
 \usepackage{tocloft}
-	% \setCJKmainfont{汉仪书宋二简}
 \usepackage{multido, pstricks, young, youngtab} % for root/weight system and Young tableaux
 \usepackage[section]{egastyle}
 \usepackage{hyperref}
@@ -11,6 +10,11 @@
 		pdfmenubar=true,
 		bookmarksnumbered=true,
 	}
+
+\setCJKmainfont[
+	ItalicFont = Adobe Kaiti Std ,
+	BoldFont = SourceHanSerifSC-Bold ,
+	]{Source Han Serif SC}
 
 \pagestyle{plain}
 
@@ -26,6 +30,7 @@
 	\DeclareMathOperator{\sgn}{sgn}
 	\DeclareMathOperator{\sym}{Sym}
 	\DeclareMathOperator{\mult}{mult}
+	\DeclareMathOperator{\lie}{Lie}
 
 \begin{document}
 \maketitle
