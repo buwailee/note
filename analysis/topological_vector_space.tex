@@ -6,6 +6,8 @@
 
 称$X$的一个子集$E$是紧的，如果$E$继承$X$的子空间拓扑时是一个紧拓扑空间。直接的判别法是，$X$中任意$E$的开覆盖都可以找到有限子覆盖。比如，$X$中的有限集一定是紧集。
 
+紧集可以看成拓扑空间中的一种有限性条件，紧集在进行许多操作时候，往往非常方便。从定义可以看到，一个拓扑空间$X$中紧集要多，则它的开集就要少一点。这也是后面要研究弱拓扑的理由之一，比起原有的拓扑，弱拓扑的开集要少一些，但还足以描述许多东西。
+
 \begin{pro}
 下列命题等价：
 \begin{compactenum}[(1)]
@@ -26,7 +28,7 @@
 \begin{para}
 设$X$是一个拓扑空间，如果对于任意不同的两点$x$和$y$，他们有不相交的开邻域，则称$X$是一个Hausdorff空间。换而言之，点与点是可以用开集分离的。很容易看出，Hausdorff空间的子空间是Hausdorff空间，有限个Hausdorff空间的积是Hausdorff空间。
 
-这里可以给一个直接的论断，可知Hausdorff空间中的单点集是闭集。因为单点集的补中任意一点都可以用开集与单点集分离。
+这里可以给一个直接的论断，Hausdorff空间中的单点集是闭集。因为单点集的补中任意一点都可以用开集与单点集分离。
 
 更一般地，Hausdorff空间中的紧集是闭集。实际上，设$E$是紧的，而$x\not\in E$，由于$X$是Hausdorff空间，所以对任意的$y\in E$，都存在开集$U_y$和$U_x$使得$x\in U_x$和$y\in U_y$且$U_y\cap U_x=\varnothing$. 遍历$y$，$U_y$构成了$E$的开覆盖，进而有有限子覆盖$U_{y_1}$, $\dots$, $U_{y_n}$，然后$x$的开邻域$\bigcap_{i=1}^n U_{x_i}$就与它们无交，进而与$E$无交，故$x\in \bigcap_{i=1}^n U_{x_i}\subset X-E$，这就告诉我们$E$是闭集。
 \end{para}
@@ -48,14 +50,12 @@
 \end{proof}
 
 \begin{para}
-称一个Hausdorff空间$X$在$x$处局部紧\footnote{实际上，局部紧性可以脱离Hausdorff空间来定义：如果对$x$存在一个紧集包含它的一个邻域，则$X$在$x$处是局部紧的。定义的相容性这里按下不表。}，如果对于$x$的任意开邻域$U$，都存在一个$x$的开邻域$V$使得其闭包$\bar{V}$紧，且$\bar{V}\subset U$. 如果$X$处处是局部紧的，则称其为局部紧Hausdorff空间。不难从定义看出，紧Hausdorff空间是局部紧的，局部紧Hausdorff空间的任意非空开子集或者闭子集都是局部紧Hausdorff空间。
+称一个Hausdorff空间$X$在$x$处局部紧\footnote{实际上，局部紧性可以脱离Hausdorff空间来定义：如果对$x$存在一个紧集包含它的一个邻域，则$X$在$x$处是局部紧的。定义的相容性这里按下不表。}，如果对于$x$的任意开邻域$U$，都存在一个$x$的开邻域$V$使得其闭包$\overline{V}$紧，且$\overline{V}\subset U$. 如果$X$处处是局部紧的，则称其为局部紧Hausdorff空间。不难从定义看出，紧Hausdorff空间是局部紧的，局部紧Hausdorff空间的任意非空开子集或者闭子集都是局部紧Hausdorff空间。
 
 一个局部紧Hausdorff空间可以看成一个紧Hausdorff空间的一个子空间（即继承了子空间拓扑），加一点紧致化定理保证了这点。
-
 \begin{quote}\it
 	加一点紧致化定理：设$X$是一个局部紧Hausdorff空间，则存在一个紧Hausdorff空间$Y$使得$X$是$Y$的子空间，且$Y-X$是一个单点集。并且，$Y$在同胚意义下唯一。
 \end{quote}
-
 上述定理的证明这里不打算给出，但是可以给出$Y$的拓扑的描述：$Y$中的开集，要么是$X$的开集，要么是$Y-C$的形式，其中$C$是$X$中的紧集。
 
 于是我们可以给出局部紧Hausdorff空间的另一个等价描述：$X$同胚于紧Hausdorff空间的一个开子集当且仅当$X$是一个局部紧Hausdorff空间。
@@ -70,17 +70,39 @@
 \begin{lem}
 设$X$是一个拓扑空间，则
 \begin{compactenum}[(a)]
-\item 如果$E$是$X$的一个子集，若存在$E$中点的序列收敛于$x$，则$x\in \bar{E}$.
+\item 如果$E$是$X$的一个子集，若存在$E$中点的序列收敛于$x$，则$x\in \overline{E}$.
 \item 设$Y$也是一个拓扑空间，而$f:X\to Y$连续，则对$X$中任意的收敛序列$x_i\to x$，序列$\{f(x_i)\}$收敛于$f(x)$.
 \end{compactenum}
 \end{lem}
 
+这两点从定义都是显然的，但是对一般的拓扑空间，它们的逆不一定成立。这就引出了如下的概念。
+
 \begin{para}
-设$X$是一个拓扑空间，它的子集$E$如果其闭包的补$X-\bar{E}$是一个稠密开集，则$E\subset X$被称为无处稠密的。由于$X-\bar{E}$是$X-E$的内部，所以$E$是无处稠密的等价于它的补有稠密内部。此外，因为$X-(\bar{E})^\circ=\overline{X-\bar{E}}=X$，所以$E$无处稠密又等价于$\bar{E}$有空内部。显然，一个无处稠密集$E$的子集$S$也是无处稠密的，因为$S$闭包的内部包含于$E$闭包的内部，同样是空集。此外，空集显然是无处稠密的，无处稠密结的闭包是无处稠密的。
+	称一个拓扑空间$X$是第一可数的，如果对每一点$x\in X$，都存在$x$可数的一族开邻域$\{U_i\}$，使得任取$x$的邻域$V$，都存在一个$U_i$使得$U_i\subset V$. 这样的开邻域族被称为$x$处的一个可数局部基。如果一个拓扑空间$X$处处有可数局部基，则称空间$X$是第一可数的。作为例子，度量空间是第一可数的，实际上，取$x$半径为$1/n$的开球就得到了一组局部基。第一（第二）可数开集空间的子空间自然也是第一（第二）可数的。
+
+	如果一个拓扑空间$X$有可数基，则称$X$是第二可数的。第二可数空间显然是第一可数的，对$x\in X$，取基中所有包含$x$的开集就构成了一个可数局部基。第二可数空间很强，强到并非所有的度量空间都是第二可数的。
+
+	对于第一可数空间来说，上面引理的逆命题也成立，即
+	\begin{compactenum}[~~~(A)]\it 
+	\item 如果$X$是第一可数空间，而$E$是$X$的一个子集，任取$x\in \overline{E}$，则存在$E$中的一个序列趋向于$x$.
+	\item 如果$X$是第一可数空间，而$Y$是一个一般的拓扑空间，而$f:X\to Y$是一个映射，如果对$X$中任意的收敛序列$x_i\to x$，序列$\{f(x_i)\}$收敛于$f(x)$，则$f$是一个连续映射。
+	\end{compactenum}
+
+	\begin{proof}
+	对(A)，给定$x\in \overline{E}$，取一个可数局部基，它们每一个都交于$E$，分别从取一个点出来构成一个序列，则该序列的极限就是$x$. 对(B)，只要证明$f$关于任意闭集的原像是闭集即可，设$E$是$Y$中的一个闭集，然后任取$x\in f^{-1}(E)$，我们要证明$f^{-1}(E)$是闭集。任取$x\in \overline{f^{-1}(E)}$，由(A)，存在一个$f^{-1}(E)$中的序列$\{x_i\}$趋向于$x$，则$\{f(x_i)\in E\}$趋向于$f(x)$，由于$E$是闭集，由(a)，可知$f(x)\in E$，故$x\in f^{-1}(E)$. 综上可知$f^{-1}(E)=\overline{f^{-1}(E)}$，所以$f^{-1}(E)$是闭集，而$f$连续。
+	\end{proof}
+
+	对(B)，我们还可以做得更细致一些。如果$X$是第一可数空间，则$f:X\to Y$在点$x\in X$处连续，当且仅当对任意收敛于$x$的序列$\{x_n\}$，有$f(x_n)\to f(x)$.
+
+	实际上，如果$f$在点$x$处不连续，则存在一个$f(x)$的邻域$W$使得任取$x$的邻域$V$都成立$f(V)\not\subset W$. 取$x$处的可数局部基$\{V_n\}$，然后从每一个开集$V_n$中取一个元素$x_n$使得$f(x_n)\not\in W$，我们就得到了趋向于$x$的序列$x_n$，但是$f(x_n)$不趋向于$f(x)$. 反过来，由$f$连续，任取$f(x)$的邻域$W$都存在$x$的邻域$V$使得$f(V)\subset W$，所以给定$W$，存在一个$N$使得$n>N$时有$x_n\in V$继而$f(x_n)\in W$. 故$f(x_n)\to f(x)$.
+\end{para}
+
+\begin{para}
+设$X$是一个拓扑空间，它的子集$E$如果其闭包的补$X-\overline{E}$是一个稠密开集，则$E\subset X$被称为无处稠密的。由于$X-\overline{E}$是$X-E$的内部，所以$E$是无处稠密的等价于它的补有稠密内部。此外，因为$X-(\overline{E})^\circ=\overline{X-\overline{E}}=X$，所以$E$无处稠密又等价于$\overline{E}$有空内部。显然，一个无处稠密集$E$的子集$S$也是无处稠密的，因为$S$闭包的内部包含于$E$闭包的内部，同样是空集。此外，空集显然是无处稠密的，无处稠密结的闭包是无处稠密的。
 
 $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取一个有限无处稠密族，然后补上可数个空集，则可知有限无处稠密族的并是第一纲集。$X$中不是第一纲的子集被称为第二纲集。显然，第一纲集的子集是第一纲集，第一纲集的任意可数并也是第一纲集，无处稠密集是第一纲集，所以比如有空内部的闭集是第一纲集。
 
-利用第一纲集的子集是第一纲的，所以可以给出第一纲集一个更宽松的定义：$X$中的第一纲集是一个无处稠密闭集的可数并的子集，或者说是包含于一个无处稠密闭集的可数并中。实际上，考虑无处稠密集的可数并$\bigcup E_\alpha$中，则它也包含于$\bigcup \bar{E}_\alpha$中，其中$\bar{E}_\alpha$也是无处稠密的。于是，第二纲集的定义就可以写作：不能包含于任意无处稠密闭集的可数并中。
+利用第一纲集的子集是第一纲的，所以可以给出第一纲集一个更宽松的定义：$X$中的第一纲集是一个无处稠密闭集的可数并的子集，或者说是包含于一个无处稠密闭集的可数并中。实际上，考虑无处稠密集的可数并$\bigcup E_\alpha$中，则它也包含于$\bigcup \overline{E_\alpha}$中，其中$\overline{E_\alpha}$也是无处稠密的。于是，第二纲集的定义就可以写作：不能包含于任意无处稠密闭集的可数并中。
 
 称一个空间$X$为Baire空间，如果给定$X$中可数个无处稠密闭集，则它们的并依然有空内部。如果用开集表述，则是：给定$X$中可数个稠密开子集，则它们的交依然在$X$中稠密。
 \end{para}
@@ -90,12 +112,34 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 \end{lem}
 
 \begin{proof}
-	设$X$是Baire空间，而$U$是一个非空开集，只要证明不是第一纲集即可。反正，如果$U$包含于一个无处稠密集的可数并$\bigcup E_\alpha$中，则它也包含于$\bigcup \bar{E}_\alpha$中，由于$X$是Baire空间，我们可知$\bigcup \bar{E}_\alpha$有空内部，于是$U\subset \varnothing$与$U$非空矛盾。
+	设$X$是Baire空间，而$U$是一个非空开集，只要证明不是第一纲集即可。反正，如果$U$包含于一个无处稠密集的可数并$\bigcup E_\alpha$中，则它也包含于$\bigcup \overline{E_\alpha}$中，由于$X$是Baire空间，我们可知$\bigcup \overline{E_\alpha}$有空内部，于是$U\subset \varnothing$与$U$非空矛盾。
 
 	反过来，设$X$的任意非空开集是第二纲集。如果$X$不是Baire空间，则存在一个无处稠密闭集的可数族，使得它们的并的内部$U$非空。此时，$U$作为非空开集是第二纲集，但同时，$U$作为第一纲集的子集，是第一纲集，矛盾。
 \end{proof}
 
 作为推论，如果$X$是Baire空间，$X$在$X$中是第二纲集。
+
+\begin{pro}
+	Baire空间的开子空间也是Baire空间。
+\end{pro}
+
+\begin{proof}
+	设$U$是Baire空间$X$的开子空间。设$\{U_n\}$是$U$是稠密开集的可数族，我们要证明$\bigcap U_n$在$U$中依然稠密。
+
+	考虑$X$中的可数开集族$\{U_n\cup (X-\overline{U})\}$，首先要证明$U_n\cup (X-\overline{U})$在$X$中是稠密的。注意到，由$U_n$在$U$中稠密，$U_n$在$X$中的闭包是$\overline{U}$. 因为
+	\[
+	X=\overline{U_n}\cup (X-\overline{U})\subset \overline{U_n\cup (X-\overline{U})},
+	\]
+	所以$U_n\cup (X-\overline{U})$在$X$中是稠密的。由于$X$是Baire空间，因此
+	\[
+	\bigcap_n\left(U_n\cup (X-\overline{U})\right)=\left(\bigcap_n U_n\right)\cup (X-\overline{U}) 
+	\]
+	在$X$中是稠密的。令$V=\bigcap_n U_n$，则$\overline{V}\subset \bigcap_n \overline{U_n}=\overline{U}$，反之，因为$V\cup (X-\overline{U})$是稠密的，所以
+	\[
+		X=\overline{V}\cup \overline{X-\overline{U}}=\overline{V}\cup \left(X-(\overline{U})^\circ\right),
+	\]
+	因为$U$是开集，所以$U\subset (\overline{U})^\circ$，由上式，可知$U\subset \overline{V}$，进而$\overline{U}\subset \overline{V}$. 综上，$\overline{U}=\overline{V}$，所以$V$在$U$中稠密。
+\end{proof}
 
 \begin{thm}[Baire纲定理]
 	如果$X$是完备度量空间或者局部紧Hausdorff空间，则$X$是一个Baire空间。
@@ -133,22 +177,24 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 	由于乘法是连续的，所以存在$e$的邻域$V_1$和$V_2$使得$V_1V_2\subset U$. 令$V=(V_1\cap V_1^{-1})\cap (V_2\cap V_2^{-1})$. 显然这是对称的，并且$VV\subset U$. 由于$e\in V$，所以$V=eV\subset VV\subset U$.
 \end{proof}
 
+作为推论，对给定$U$，找一个对称开集$V$使得$V\cdots V\subset U$都是不难的，其中$V$相乘任意正整数次。实际上，对相乘$2^n$次是直接的推论，而对任意正整数$k$，都存在一个$2^n>k$，然后取$V$为$2^n$情况的$V$即可。
+
 \begin{lem}\label{lem:2}
-设$A\subset G$是一个拓扑群的一个子集，记$\mathscr{O}$是所有包含单位元$e$的开集构成的集合，则对$A$的闭包$\overline{A}$有等式
+设$A\subset G$是一个拓扑群的一个子集，记$\mathscr{B}$是所有包含单位元$e$的开集构成的集合，则对$A$的闭包$\overline{A}$有等式
 \[
-	\overline{A}=\bigcap_{U\subset \mathscr{O}}AU=\bigcap_{U\subset \mathscr{O}}\overline{AU}.
+	\overline{A}=\bigcap_{U\subset \mathscr{B}}AU=\bigcap_{U\subset \mathscr{B}}\overline{AU}.
 \]
 \end{lem}
 
 \begin{proof}
-	任取$x\in \overline{A}$以及$U\in \mathscr{O}$. 我们有$xU^{-1}$是$x$的一个邻域，于是存在$a\in A\cap x U^{-1}$，记$a=xu^{-1}$，我们有$x=au\in AU$. 于是$\overline{A}\subset \bigcap_{U\subset \mathscr{O}}AU$. 这也给出了一个下面会用到的结论：任取$e$的一个开集$U$，有$\overline{A}\subset AU$.
+	任取$x\in \overline{A}$以及$U\in \mathscr{B}$. 我们有$xU^{-1}$是$x$的一个邻域，于是存在$a\in A\cap x U^{-1}$，记$a=xu^{-1}$，我们有$x=au\in AU$. 于是$\overline{A}\subset \bigcap_{U\subset \mathscr{B}}AU$. 这也给出了一个下面会用到的结论：任取$e$的一个开集$U$，有$\overline{A}\subset AU$.
 
-	反过来，考虑闭集的并$\bigcap_{U\subset \mathscr{O}}\overline{AU}$，这是一个闭集，且有显然的包含关系$\bigcap_{U\subset \mathscr{O}}AU\subset \bigcap_{U\subset \mathscr{O}}\overline{AU}$. 任取$x\in \bigcap_{U\subset \mathscr{O}}\overline{AU}$以及$U\in \mathscr{O}$，由上一个引理，存在$U'\in \mathscr{O}$使得$U'U'\subset U$. 由于$x\in \overline{AU'}\subset AU'U'\subset AU$，所以有$\bigcap_{U\subset \mathscr{O}}\overline{AU}\subset \bigcap_{U\subset \mathscr{O}}AU$. 进而$\bigcap_{U\subset \mathscr{O}}AU=\bigcap_{U\subset \mathscr{O}}\overline{AU}$.
+	反过来，考虑闭集的并$\bigcap_{U\subset \mathscr{B}}\overline{AU}$，这是一个闭集，且有显然的包含关系$\bigcap_{U\subset \mathscr{B}}AU\subset \bigcap_{U\subset \mathscr{B}}\overline{AU}$. 任取$x\in \bigcap_{U\subset \mathscr{B}}\overline{AU}$以及$U\in \mathscr{B}$，由上一个引理，存在$U'\in \mathscr{B}$使得$U'U'\subset U$. 由于$x\in \overline{AU'}\subset AU'U'\subset AU$，所以有$\bigcap_{U\subset \mathscr{B}}\overline{AU}\subset \bigcap_{U\subset \mathscr{B}}AU$. 进而$\bigcap_{U\subset \mathscr{B}}AU=\bigcap_{U\subset \mathscr{B}}\overline{AU}$.
 
-	令$U_x$是$x\in \bigcap_{U\subset \mathscr{O}}AU$的一个邻域，再令$U=U_x^{-1}x$，他是$e$的一个邻域且$x\in AU$. 于是存在$a\in A$使得$a\in xU^{-1}=xx^{-1}U_x=U_x$，这就是在说$A\cap U_x\neq \varnothing$. 假设$x\in G-\overline{A}$，则$x$附近一定有一个邻域$U_x$使得$U_x\subset G-\overline{A}$，这与$A\cap U_x\neq \varnothing$矛盾，所以$x\in \overline{A}$.
+	令$U_x$是$x\in \bigcap_{U\subset \mathscr{B}}AU$的一个邻域，再令$U=U_x^{-1}x$，他是$e$的一个邻域且$x\in AU$. 于是存在$a\in A$使得$a\in xU^{-1}=xx^{-1}U_x=U_x$，这就是在说$A\cap U_x\neq \varnothing$. 假设$x\in G-\overline{A}$，则$x$附近一定有一个邻域$U_x$使得$U_x\subset G-\overline{A}$，这与$A\cap U_x\neq \varnothing$矛盾，所以$x\in \overline{A}$.
 \end{proof}
 
-% 对于$A=\{e\}$的情况会特别有趣。记$H=\overline{\{e\}}=\bigcap_{U\subset \mathscr{O}}U$. 于是$x\in H$就是在说，对于任意包含$e$的开集$U$，$x\in U$. 我们下面证明这是一个子群。
+% 对于$A=\{e\}$的情况会特别有趣。记$H=\overline{\{e\}}=\bigcap_{U\subset \mathscr{B}}U$. 于是$x\in H$就是在说，对于任意包含$e$的开集$U$，$x\in U$. 我们下面证明这是一个子群。
 
 % 任取$x\in H$，由于$U$是包含$e$的开集当且仅当$U^{-1}$是包含$e$的开集，所以$x^{-1}\in H$. 任取$x$, $y\in H$，任取$xy$的一个邻域$U$，我们要证明他总是包含$e$的，这样就有$xy\in H$. 由于$e\in U(xy)^{-1}$，由于$x^{-1}\in H$，所以$x^{-1}\in U(xy)^{-1}$. 两边乘以$x$得到$e \in Uy^{-1}$. 类似地，有$y^{-1}\in Uy^{-1}$，两边乘以$y$得到$e\in U$. 于是$H$是$G$的一个子群，而且还是一个闭子群。
 
@@ -177,17 +223,17 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 由于有限集是紧集，当假设$\{e\}$是闭集的时候，这个命题可以直接推出$\mathsf{T}_3$条件。
 
 \begin{proof}
-	假定$K$非空，否则命题显然正确。已经知道，任意一个包含原点的开集$U$，可以找到对称开集$V$使得$VV\subset U$. 现在任取$x\in K$，于是$G-V$是一个开集，所以可以找到包含原点的开集$U_x$使得$xU_x\cap V=\varnothing$. 取对称开集$U'_x$使得$U'_xU'_x\subset U_x$，再取对称开集$U''_x$使得$U''_xU''_x\subset U'_x$此时$xU'_xU''_xU''_x\subset xU'_xU'_x\subset xU_x$，所以$xU'_xU''_xU''_x\cap V=\varnothing$. 
+	假定$K$非空，否则命题显然正确。已经知道，任意一个包含原点的开集$U$，可以找到对称开集$V$使得$VV\subset U$. 现在任取$x\in K$，于是$G-V$是一个开集，所以可以找到包含原点的开集$U_x$使得$xU_x\cap V=\varnothing$. 取对称开集$U'_x$使得$U'_xU'_xU'_xU'_x\subset U_x$，此时$xU'_xU'_xU'_x\subset xU_x$，所以$xU'_xU'_xU'_x\cap V=\varnothing$. 
 
-	任取$y\in xU'_xU''_x\cap VU''_x$，由于$y\in xU'_xU''_x$，所以$yU''_x\subset xU'_xU''_xU''_x$，这意味着$yU''_x\cap V=\varnothing$，或者说，任取$a\in U''_x$，都有$ya\not\in V$. 另一方面，由于$y\in VU''_x$，所以一定存在一个$b\in U''_x$和$v\in V$使得$y=vb$成立，反过来，$yb^{-1}=v\in V$，由于$U''_x$是对称的，所以$b^{-1}\in U''_x$，矛盾。因此$xU'_xU''_x\cap VU''_x=\varnothing$.
+	任取$y\in xU'_xU'_x\cap VU'_x$，由于$y\in xU'_xU'_x$，所以$yU'_x\subset xU'_xU'_xU'_x$，这意味着$yU'_x\cap V=\varnothing$，或者说，任取$a\in U'_x$，都有$ya\not\in V$. 另一方面，由于$y\in VU'_x$，所以一定存在一个$b\in U'_x$和$v\in V$使得$y=vb$成立，反过来，$yb^{-1}=v\in V$，由于$U'_x$是对称的，所以$b^{-1}\in U'_x$，矛盾。因此$xU'_xU'_x\cap VU'_x=\varnothing$.
 
-	遍历$x$，$xU'_x$构成$K$的一个开覆盖，由于$K$是紧集，取一个有限子覆盖，对应于$x_1$, $\cdots$, $x_n\in K$. 令$U=\bigcap_{i=1}^n U''_{x_i}$，则
+	遍历$x$，$xU'_x$构成$K$的一个开覆盖，由于$K$是紧集，取一个有限子覆盖，对应于$x_1$, $\cdots$, $x_n\in K$. 令$U=\bigcap_{i=1}^n U'_{x_i}$，则
 	\[
-	KU\subset \bigcup_{i=1}^n {x_i}U'_{x_i}U\subset \bigcup_{i=1}^n x_iU'_{x_i}U''_{x_i}.
+	KU\subset \bigcup_{i=1}^n {x_i}U'_{x_i}U\subset \bigcup_{i=1}^n x_iU'_{x_i}U'_{x_i}.
 	\]
-	任取$x_iU'_{x_i}U''_{x_i}$，由于
+	任取$x_iU'_{x_i}U'_{x_i}$，由于
 	\[
-		x_iU'_{x_i}U''_{x_i}\cap VU=x_iU'_{x_i}U''_{x_i}\cap \bigcap_{j=1}^n VU''_{x_j}=(x_iU'_{x_i}U''_{x_i}\cap VU''_{x_i})\cap \bigcap_{j\neq i}^n VU''_{x_j}=\varnothing \cap \bigcap_{j\neq i} VU''_{x_j}=\varnothing,
+		x_iU'_{x_i}U'_{x_i}\cap VU=x_iU'_{x_i}U'_{x_i}\cap \bigcap_{j=1}^n VU'_{x_j}=(x_iU'_{x_i}U'_{x_i}\cap VU'_{x_i})\cap \bigcap_{j\neq i}^n VU'_{x_j}=\varnothing \cap \bigcap_{j\neq i} VU'_{x_j}=\varnothing,
 	\]
 	所以$KU\cap VU=\varnothing$.
 \end{proof}
@@ -211,7 +257,7 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 \begin{para}
 一个拓扑空间$X$的拓扑可以由某个度量$d$诱导出来，则这个拓扑空间被称为可度量化的。对一般的拓扑空间$X$，Nagata-Smirnov度量化定理给出了可度量化的等价条件为$X$是$\mathsf{T}_3$且存在可数局部有限基。所谓的可数局部有限基就是说拓扑空间的基是可数个局部有限子族的并。所谓的局部有限族，就是对任意一点$p\in X$，存在一个邻域只与族中的有限个元素相交。
 
-到了拓扑群语境，这个条件可以减弱到单位元附近存在局部基，使得他是数个局部有限子族的并。而$\mathsf{T}_3$可以减弱到$\{e\}$是一个闭集。
+到了拓扑群语境，这个条件可以减弱到单位元附近存在局部基，使得他是可数个局部有限子族的并。而$\mathsf{T}_3$可以减弱到$\{e\}$是一个闭集。
 \end{para}
 
 \begin{para}
@@ -225,13 +271,13 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 \]
 于是$a$也是$\{y_i\}$的极限。
 
-将这两个定义结合起来，不难看到，与Cauchy列等价的列也是Cauchy列，于是它诱导了所有Cauchy列上的一个等价关系。实际上，任取$0$的邻域$U$，选一个对称邻域$V$使得$V+V\subset U$，再取一个对称邻域$W$使得$W+W\subset V$. 设$\{x_n\}$是一个Cauchy列，而$\{y_n\}$与他等价，那么对$W$，我们有一个正整数$N$使得，$i$, $j>N$时成立
+将这两个定义结合起来，不难看到，与Cauchy列等价的列也是Cauchy列，于是它诱导了所有Cauchy列上的一个等价关系。实际上，任取$0$的邻域$U$，选一个对称邻域$V$使得$V+V+V\subset U$. 设$\{x_n\}$是一个Cauchy列，而$\{y_n\}$与他等价，那么对$W$，我们有一个正整数$N$使得，$i$, $j>N$时成立
 \[
-	y_i-x_i\in W,\quad x_j-y_j\in W,\quad x_i-x_j\in W,
+	y_i-x_i\in V,\quad x_j-y_j\in V,\quad x_i-x_j\in V,
 \]
 其中前两个是等价，第三个是Cauchy列的条件，于是
 \[
-	y_i-y_j=(y_i-x_i)+(x_i-x_j)+(x_j-y_j)\subset W+W+W\subset V+V\subset U.
+	y_i-y_j=(y_i-x_i)+(x_i-x_j)+(x_j-y_j)\subset V+V+V\subset U.
 \]
 因此$\{y_n\}$也是一个Cauchy列。
 
@@ -252,7 +298,7 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 
 	不难在$\hat G$上定义出一个交换群结构。Cauchy列$\{x_i\}$和$\{y_i\}$的加法定义为序列$\{x_i+y_i\}$，我们需要验证它也是Cauchy列。实际上，任取$0$的开邻域$U$，找一个对称邻域$V$使得$V\subset V+V\subset U$. 存在一个足够大的$N$使得$i$, $j>N$时有$x_i-x_j\in V$以及$y_i-y_j\in V$成立，此时$(x_i+y_i)-(x_j+y_j)\in V+V\subset U$. 因此$\{x_i+y_i\}$也是一个Cauchy列。
 
-	从$G$到$\hat G$有一个自然的同态$\varphi$，即将$x\in G$变成常序列$\{x$, $x$, $\dots\}$. 但是注意到，这个同态可能不是单的。因为如果存在非零的$a\in\bigcap_{U\subset \mathscr{O}}U$，则$\varphi(x)$与$\varphi(x+a)$诱导的两个Cauchy列是等价的。反过来，不难从Cauchy列等价的定义证明也只有当$\bigcap_{U\subset \mathscr{O}}U=\{0\}$时，$\varphi$才是单同态。回忆Lemma \ref{lem:2}，这就是说$\{0\}=\overline{\{0\}}$或者说$\{0\}$是一个闭集，回忆Proposition \ref{pro:3}，这等价于说$G$是一个Hausdorff空间。
+	从$G$到$\hat G$有一个自然的同态$\varphi$，即将$x\in G$变成常序列$\{x$, $x$, $\dots\}$. 但是注意到，这个同态可能不是单的。因为如果存在非零的$a\in\bigcap_{U\subset \mathscr{B}}U$，则$\varphi(x)$与$\varphi(x+a)$诱导的两个Cauchy列是等价的。反过来，不难从Cauchy列等价的定义证明也只有当$\bigcap_{U\subset \mathscr{B}}U=\{0\}$时，$\varphi$才是单同态。回忆Lemma \ref{lem:2}，这就是说$\{0\}=\overline{\{0\}}$或者说$\{0\}$是一个闭集，回忆Proposition \ref{pro:3}，这等价于说$G$是一个Hausdorff空间。
 
 	那么$\varphi$什么时候才是满射呢？注意到，如果$G$中的Cauchy列是收敛的，则他与极限的常序列是等价的，所以如果$G$中的Cauchy列都是收敛的，则$\varphi:G\to \hat{G}$是满的。
 \end{para}
@@ -260,7 +306,7 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 \begin{para}
 	假设$G$是第一可数的，即在每一点处都有可数局部基，在拓扑群上，只需要在原点处有可数局部基即可。这里我们可以赋予$\hat G$一个拓扑空间结构。这个拓扑空间自然要使得$\varphi$以及$\hat G$上的运算成为连续映射，这点我们慢慢检验。
 
-	首先称序列$\{x_i\}$最终处于$0$的邻域$U$中，如果存在一个$N$使得$n>N$时候一定有$x_n\in U$. 主义，如果一个Cauchy列最终处于$U$中，与他等价的Cauchy列不一定也最终处于$U$中。比如考虑开集$(-1,1)\subset \rr$以及序列$\{1-2^{-n}\}$以及$\{1+(-2)^{-n}\}$，它们显然都是Cauchy列，并且相互等价，但是第二个就并不是最终处于$(-1,1)$中的。
+	首先称序列$\{x_i\}$最终处于$0$的邻域$U$中，如果存在一个$N$使得$n>N$时候一定有$x_n\in U$. 注意，如果一个Cauchy列最终处于$U$中，与他等价的Cauchy列不一定也最终处于$U$中。比如考虑开集$(-1,1)\subset \rr$以及序列$\{1-2^{-n}\}$以及$\{1+(-2)^{-n}\}$，它们显然都是Cauchy列，并且相互等价，但是第二个就并不是最终处于$(-1,1)$中的。
 
 	对$G$中的$0$的任意邻域$U$，定义$\hat U$是$\hat G$中那些等价类中的Cauchy列都最终处于$U$的等价类的集合。注意到，我们选取的等价类中所有的元素都最终处于$U$中，这就避免了$\{1+(-2)^{-n}\}$这种会与“边界”无限接近的序列的存在。
 
@@ -271,6 +317,7 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 
 	%首先，由第一点，显然$\widehat{U\cap V}\subset \hat{U}\cap \hat{V}$. 反过来，由于$\hat{U}$是所有最终处于$U$中的Cauchy列的等价类的集合，而$\hat{V}$是所有最终处于$V$中的Cauchy列的等价类的集合，于是$\hat{U}\cap \hat{V}$中的Cauchy列都最终处于$U\cap V$中。
 	\item $\hat{U}\cup \hat{V}=\widehat{U\cup V}$.
+	\item $-\hat{U}=\widehat{-U}$.
 	\item $\hat{U}+\hat{V}\subset \widehat{U+V}$.
 	\end{compactenum}
 
@@ -368,6 +415,8 @@ $X$中的第一纲集被定义为无处稠密集的可数并。注意到，取�
 \item $|x|=0$当且仅当$x=0$.
 \end{compactenum}
 这个非负函数被称为$X$上的一个范数。一旦给出$X$的一个范数，那么就可以定义$X$上的一个度量，$d(x,y)=|x-y|$. 这个度量被称为赋范空间的由范数诱导的度量。一般而言，除非特别声明，赋范空间上的范数都是指这个。
+
+赋范空间的一个例子就是标量域，比如$\mathbb{Q}$, $\mathbb{R}$以及$\mathbb{C}$，非负函数即绝对值函数。在这个范数诱导的度量下，已经知道，$\mathbb{Q}$是不完备的，而$\mathbb{R}$和$\mathbb{C}$是完备的。完备的赋范空间被称为Banach空间。
 \end{para}
 
 \begin{para}
@@ -395,6 +444,8 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 \begin{compactenum}
 \item 一个$X$的子集$C$是凸的，如果任取$0\leq t\leq 1$，都有$tC+(1-t)C\subset C$. 凸集是平移不变的，实际上，任取$a\in X$，都有$a+tC+(1-t)C=t(a+C)+(1-t)(a+C)\subset a+C$.
 
+\item 称一个集合$A\subset X$是吸收的，如果任取$x\in X$，都存在一个$t>0$使得$x\in tA$成立。显然，吸收集必须包含$0$.
+
 \item 一个$X$的子集$C$是均衡的，如果任取标量$\alpha$使得$|\alpha|\leq 1$的时候有$\alpha C\subset C$.
 
 \item 一个拓扑矢量空间被称为局部凸的，如果$0$有一个局部基使得他的元素都是凸集。这等价于说每一点都有局部基，它的元素都是凸集。
@@ -409,22 +460,22 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 
 \item 如果拓扑矢量空间$X$的每一个有界闭子集都是紧的，则$X$被称为满足Heine-Borel性质。这个名字自然来自于Heine-Borel定理：$\rr^n$的每一个有界闭子集都是紧的。
 
-\item 赋范空间已经定义了。一个完备的赋范空间被称为Banach空间。
+\item 赋范空间已经定义了，完备赋范空间被称为Banach空间。
 \end{compactenum}
 \end{para}
 
-从定义，可以得到：
+注意，前三个定义并不涉及拓扑。然后从定义，可以得到：
 \begin{compactenum}
 \item 凸子集的闭包与内部都是凸子集。
 \item 子空间的闭包是子空间。
-\item 有界子集的闭包是有界子集。
+\item 有界子集的闭包是有界子集，有界集的子集是有界子集。
 \item 均衡子集的闭包是均衡子集。
 \item 如果均衡子集包含原点，则它的内部也是均衡子集。
 \end{compactenum}
 
 如果拓扑矢量空间的拓扑结构可以由一个不变度量出来，那么在度量意义下的Cauchy列与在拓扑群意义下的Cauchy列是等价的。于是，如果两个不变度量诱导了同一个拓扑，则它们的Cauchy列等价，特别地，如果拓扑矢量空间对其中一个完备，则对每一个也完备。
 
-\begin{pro}
+\begin{pro}\label{1.30}
 任取一个原点的（凸）邻域$U$，都存在一个均衡（凸）邻域$V$使得$V\subset U$. 
 \end{pro}
 
@@ -444,16 +495,24 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 
 上面的命题意味着，拓扑矢量空间局部基的元素可以都选成均衡的。如果空间还是局部凸的，则局部基的元素可以都选成均衡凸的。
 
-\begin{para}
+\begin{para}\label{1.31}
 任取一个原点的开邻域$U$，由于拓扑矢量空间$X$是连通的，所以$X$实际上可以写成所有形如$U+U+\cdots+U$的开集的并，这是拓扑群那里的Lemma \ref{lem:116}. 这只是利用了加法结构的一个推论，到了拓扑矢量空间上，标量的引入可以让我们做得更多。
-\begin{compactenum}
+\begin{compactenum}[(a)]
 \item 考虑任意一个严格递增正实数序列$\{r_n\}$，$U$是原点的一个邻域。如果当$n\to \infty$时$r_n\to \infty$，则$X=\bigcup_{n=1}^\infty r_n U$.
 
-证明是简单的，固定$x$，由于$\alpha\to \alpha x$是连续映射，所以所有使得$\alpha x\in U$的标量$\alpha$构成一个开集$V$，且$0$属于这个开集，这就意味这，对于足够大的$n$，$1/r_n$都在$V$中，所以$(1/r_n) x\in U$给出了$x\in r_n U$.
+\begin{proof}
+	固定$x$，由于$\alpha\to \alpha x$是连续映射，所以所有使得$\alpha x\in U$的标量$\alpha$构成一个开集$V$，且$0$属于这个开集，这就意味这，对于足够大的$n$，$1/r_n$都在$V$中，所以$(1/r_n) x\in U$给出了$x\in r_n U$.
+\end{proof}
+
+从这个命题可以看到，拓扑矢量空间中$0$的任意邻域都是吸收集。此外，我们可以给出这个小结论：任取$0$的一个邻域$U$以及一个$x\in X$，总存在一个正数$s$使得$x\in sU$.
 
 \item 类似地，考虑任意一个严格递减正实数序列$\{r_n\}$，$V$是原点的一个有界邻域。如果当$n\to \infty$时$r_n\to 0$，则$\{r_n V\}$构成原点的一个局部基。
 
-实际上，设$U$是原点的一个邻域。由于$V$是有界的，则存在一个$s$使得$r>s$时，$V\subset rU$. 对于足够大的$n$，我们有$sr_n<1$，所以$V\subset (1/r_n)U$或者$r_n V\subset U$.
+\begin{proof}
+	实际上，设$U$是原点的一个邻域。由于$V$是有界的，则存在一个$s$使得$r>s$时，$V\subset rU$. 对于足够大的$n$，我们有$sr_n<1$，所以$V\subset (1/r_n)U$或者$r_n V\subset U$.
+\end{proof}
+
+作为推论，如果$X$是局部有界的，则$X$是第一可数的。
 \end{compactenum}
 \end{para}
 
@@ -469,176 +528,634 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 
 度量空间显然是第一可数的，但第一可数一般不足以说明一个拓扑空间是可度量化的。不过因为矢量空间多了两个运算，这就导致了拓扑矢量空间上第一可数成了可度量化的充要条件。这个定理的证明见[Rudin, Theorem 1.10].
 
-\section{线性映射}
-
-\section{Hilbert空间}
-
-设$\mathcal{H}$是复数域上的矢量空间。假设$x$, $y\in \mathcal{H}$，有一个二元运算写作$(x,y)$，需要满足如下性质
-\begin{itemize}
-\item $(x,y)=(y,x)^*,$
-
-这里用$a^*$表示$a$的复共轭。
-
-\item 对第二个变量线性
-\[
-(x,\xi_1y_1+\xi_2y_2)=\xi_1(x,y_1)+\xi_2(x,y_2),
-\]
-结合上面两个性质，很容易证明内积对第一个变量反线性，即
-\[
-(\eta_1x_1+\eta_2x_2,y)=\eta_1^*(x_1,y)+\eta_2^*(x_2,y).
-\]
-\item 对任意的$x\in \mathcal{H}$，$(x,x)\geq 0$，等号当且仅当$x=0$的时候取到。
-\end{itemize}
-
-则称这个二元运算是一个内积，而$\mathcal{H}$被称为一个内积空间。在内积空间上可以定义一个矢量的长度
-\[
-	|x|=\sqrt{(x,x)},
-\]
-注意到，我们重用了绝对值符号。在具体语境下，含义基本还是可以分辨的，否则我们会具体指出。从内积的定义，长度为零的矢量只有零。
-
 \begin{para}
-两个矢量$y$和$x$被称为正交的，如果$(y,x)=0$. 于是我们就有勾股定理，如果$y$和$x$正交，则
-\[
-	|x+y|^2=|x|^2+|y|^2+(x,y)+(y,x)=|x|^2+|y|^2.
-\]
+	前面谈过，一个拓扑交换群$G$如果是第一可数的，则它的完备化$\hat{G}$也是一个拓扑群。现在这里考虑$X$是一个第一可数拓扑矢量空间，则作为拓扑交换群，我们有其完备化$\hat{X}$. 下面将展示，这还是一个拓扑矢量空间。
+
+	实际上，任取标量$a$与$X$中的Cauchy列$x=\{x_i\}$，定义$ax=\{ax_i\}$，下面证明这也是Cauchy列。首先如果$a=0$，那就没什么好证的了。设$a$非零，给定原点的邻域$U$，由标量乘法的连续性，存在原点的邻域$V$使得$aV\subset U$，由于$x$是Cauchy列，对$V$存在$n(V)$使得$i$, $j>n(V)$使得成立$x_i-x_j\in V$，因此$ax_i-ax_j=a(x_i-x_j)\in aV\subset U$. 所以$ax$也是Cauchy列。
+
+	此外，如果$x$与$x'$等价，则$x_i-x'_i\to 0$. 由标量乘法的连续性，$ax_i-ax'_i=a(x_i-x'_i)\to a0=0$，所以$ax$与$ax'$也等价。这样，我们就在$\hat{X}$上定义出了一个标量乘法，使得$\hat{X}$是一个完备拓扑矢量空间。
+
+	从上面的度量化定理，我们知道第一可数拓扑矢量空间$X$是可度量化的，而$\hat{X}$也正是度量化后度量空间的完备化。
 \end{para}
 
-\begin{pro}
-Cauchy-Schwarz不等式：$|(x,y)|\leq |x||y|$.
+\begin{pro}\label{p.fsdfas}
+	设$X$是一个可度量化的拓扑矢量空间，而$\{x_n\}$是其中趋向于$0$的序列，则存在趋向于无穷的正数序列$\gamma_n$使得$\gamma_n x_n \to 0$. 
 \end{pro}
 
 \begin{proof}
-等式对$x=0$的情况是显然成立的，下面设$x\neq 0$. 令$\alpha=(x,y)$，考虑
+	取$X$上与拓扑相容的不变度量$d$，因为$d(x_n,0)\to 0$，所以存在着递增的正数序列$n_k$使得$n\geq n_k$时有$d(x_n,0)<1/k^2$. 令$\gamma_n=1$，若$n_k\leq n\leq n_{k+1}$，令$\gamma_n=k$，则对于这样的$n$，我们有
 	\[
-		0\leq |\lambda x+y|^2=|\lambda|^2|x|^2+|y|^2+\lambda^* \alpha+\lambda \alpha^*.
+	d(\gamma_nx_n,0)=d(kx_n,0)\leq \sum_{i=1}^k d(ix_n,(i-1)x_n)=kd(x_n,0)<1/k,
 	\]
-	在这之中，令$\lambda=-\alpha/|x|^2$，则上述不等式变为
+	所以当$n\to \infty$时，$\gamma_nx_n\to 0$.
+\end{proof}
+
+\section{连续线性映射与有界性}
+
+矢量空间之间线性映射的定义是清楚的，这里略去了。设$X$是一个矢量空间，而$k$是他的标量域，则$X\to k$的线性映射被称为$X$上的线性函数或者线性泛函。
+
+\begin{para}
+	设$f$是一个复线性映射，所以它也是实线性映射，将$f$的值分为实部和虚部，就得到了两个实线性映射，记$f$的实部为$u$，而虚部为$v$，则$f(x)=u(x)+iv(x)$且$f(ix)=u(ix)+iv(ix)$或者$f(x)=-iu(ix)+v(ix)$，所以$v(x)=-iu(ix)$以及$u(x)=v(ix)$. 因此，我们有等式
 	\[
-		0\leq |\lambda x+y|^2=|y|^2-\frac{|\alpha|^2}{|x|^2},
+	f(x)=u(x)-i u(i x),\quad f(x)=v(ix)+iv(x)
 	\]
-	这就是我们的需要的不等式。
-\end{proof}
+	来还原出$f$. 所以复线性映射由其实部或虚部决定。
+
+	反过来，给出复矢量空间之间的一个实线性映射$u$，可以构造一个复线性映射
+	\[
+		f(x)=u(x)-iu(i x),
+	\]
+	由$f(ix)=u(ix)-iu(-x)=i(u(x)-i u(ix))=if(x)$可知$f$是复线性的。类似地，$f(x)=u(ix)+iu(x)$也可以给出一个复线性映射。如果$u$还是连续的，则构造出来的$f$也是连续的，这点来自于加法和数乘是连续函数。
+\end{para}
 
 \begin{pro}
-$|y|\leq |\lambda x+y|$对每一个$\lambda \in \cc$成立当且仅当$(x,y)=0$.
+	设$X$, $Y$是拓扑矢量空间，若$f:X\to Y$是一个线性映射，如果$f$在原点处连续，则$f$连续。
+\end{pro}
+
+这又是一个线性的东西的性质有原点处决定的例子，实际上，这里只利用了$f$是一个交换群同态。
+
+\begin{proof}
+	给定$f(0)=0\in Y$的邻域$W$，有$f$在点$0$处的连续性，存在$0\in X$的邻域$V$使得$f(V)\subset W$. 现在，若$y-x\in V$，则$f(y)-f(x)=f(y-x)\in W$. 所以对于$f(x)$事先给定的邻域$f(x)+W$，$x$有邻域$x+V$使得$f(x+V)\subset f(x)+W$，所以$f$在点$x$连续。
+\end{proof}
+
+对于线性函数，我们还有如下判别法。
+
+\begin{pro}
+设$f$是拓扑矢量空间$X$上的线性函数，如果$\ker f\neq X$，则以下性质相互等价
+\begin{compactenum}[(a)]
+\item $f$连续；
+\item $\ker f$是一个闭集；
+\item $\ker f$不在$X$中稠密；
+\item $f$在$0$的某个邻域中有界。
+\end{compactenum}
 \end{pro}
 
 \begin{proof}
-对于$(x,y)=0$，由勾股定理
-\[
-	|\lambda x+y|^2=|\lambda x|^2+ |y|^2\geq |y|^2.
-\]
-反过来，如果$(x,y)\neq 0$，只要找一个$\lambda$使得$|y|^2>|\lambda x+y|^2$即可。同上一个命题取$\lambda=-\alpha/|x|^2$，则
-\[
-	|\lambda x+y|^2=|y|^2-\frac{|\alpha|^2}{|x|^2},
-\]
-在$(x,y)\neq 0$时$|y|^2>|\lambda x+y|^2$. 
+从(a)到(b)到(c)是显然的。假设(d)正确，该邻域为$U$，则存在$M< \infty$，使得$|f(x)|<M$对$x\in U$都成立。对于给定的$0<r<\infty$，令$U_r=(r/M)U$，则任取$x\in U_r$，由$f$线性可知$|f(x)|<r$，因此$f$在点$0$处连续，也于是在整个$X$上连续。
+
+最后我们证明(c)到(d). 由于$\ker f$不稠密，则存在$X$的一个开集$U$，使得$U\cap \ker f=\varnothing$，取$U$中的一个形如$x+V$的开集，其中$V$是一个均衡邻域，则$f(V)$也是标量域$k$中的均衡子集。如果$f(V)$无界，则$f(V)=k$，因此存在$y\in V$使得$f(x+y)=f(x)+f(y)=0$，所以$x+y\in \ker f$，与$(x+V)\cap \ker f=\varnothing$矛盾，故$f(V)$有界。
 \end{proof}
 
-此时，我们可以检验$|*|$构成了一个范数，因为
-\[
-	|x|\geq 0,\quad |\lambda x|=|\lambda||x|,
-\]
-以及最重要的
-\[
-	|x+y|^2=|x|^2+|y|^2+(x,y)+(y,x)\leq |x|^2+|y|^2+2|x||y|=(|x|+|y|)^2,
-\]
-这就是三角不等式$|x+y|\leq |x|+|y|$.
-
 \begin{para}
-有了范数，就自然有了一个度量$d(x,y)=|x-y|$，于是内积空间就是一个度量空间。有了度量，就很容易定义出拓扑，由于是矢量空间，是加法群，所以在单位元$0$附近定义拓扑即可，剩下的可以通过平移移过去。选取所有$|x|<r$的$x$的集合作为单位元处的开集基，这样我们就定义出了$\mathcal{H}$上的一个拓扑。
+	一个矢量空间$X$的对偶空间$X^*$一般定义为$\Hom_k(X,k)$，因为这里引入了$X$的拓扑，所以$X^*$转而定义为所有连续线性函数的集合，容易看到$X^*$依然有一个自然的矢量空间结构。这里暂时不考虑$X^*$上的拓扑，但指出一点，$X^*$可能非常小。
 
-固定$x$，$(x,y)$对$y$是一个连续函数，因为
-\[
-	|(x,y+\Delta y)-(x,y)|=|(x,\Delta y)|\leq |x||\Delta y|,
-\]
-对选定的$\delta$，都可以选取$\epsilon=\delta/|x|$使得$\Delta y<\epsilon$时有$|(x,y+\Delta y)-(x,y)|<\delta$. 反过来，固定$y$，$(x,y)$对$x$也是一个连续函数。
+	比如，对$0<p<1$，设$L^p$中的元素是$[0,1]$上所有Lebesgue可测函数$f$，像通常一样，几乎处处相同的函数看作是相同的，然后定义
+	\[
+	\Delta(f)=\int_0^1 |f(t)|^p \dd t,
+	\]
+	这样$d(f,g)=\Delta(f-g)$就是一个不变度量。对于$L^p$而言，$(L^p)^*$中只有一个连续线性函数$0$. 究其原因，是这类空间中缺少凸开集，以后我们会回到这点。
 
-利用这点，我们可以说明$x$的正交补空间$N(x)=\{y\in\mathcal{H}\,:\, (x,y)=0\}$是一个闭集，因为$N(x)$是$\Lambda_x(y)=(x,y)$关于$\{0\}$的原像。
+	谈到凸集，这里给一个简单的命题，线性映射将凸集映射为凸集：实际上，设$E$为凸集，则$tf(E)+(1-t)f(E)=f(tE+(1-t)E)\subset f(E)$对任意的$0\leq t\leq 1$都成立。
 \end{para}
 
 \begin{para}
-如果我们的内积空间$\mathcal{H}$在这个范数下是完备的（即Cauchy列收敛），则称$\mathcal{H}$是一个Hilbert空间。由于Cauchy列收敛，所以Hilbert空间的非空闭凸子集$E$\footnote{所谓凸集就是说，如果$x$和$y$都在该集合内，则对任意的$t\in [0,1]$都有$tx+(1-t)y$也在该集合内。}必然有着唯一的范数最小的元素。
+	拓扑矢量空间中有界子集$C$的概念这里再次重复一下，任取$0$的邻域$U$，都存在一个整数$t$，当任取$s>t$时，$C\subset sU$恒成立。容易看到，在赋范空间与范数诱导出的度量下，传统的度量空间中的有界子集概念与这里的有界子集概念是相同的，所以比如标量域中就成立这点。注意到，这里的度量是范数诱导出的，我们可以给出诱导同一拓扑的度量，但是却会产生不一样的（度量意义的）有界子集概念。
+
+	已经知道，拓扑矢量空间中的紧集总是有界的。这里再指出，Cauchy列总是有界的，实际上，给定均衡邻域$W$，可以找到对称均衡邻域$V$使得$V+V\subset W$. 对给定的Cauchy列$\{x_n\}$，存在一个$N$使得$x_n\in x_N+V$，取$s>1$使得$x_N\in sV$，于是
+	\[
+	x_n\in sV+V\subset sV+sV\subset sW
+	\]
+	对于$n\geq N$都成立。然后再放大$s$，我们总可以将$n\geq 1$使得$x_n\subset sW$都成立。
 \end{para}
 
-\begin{proof}
-考虑$E$中所有元素范数的下界$d$，然后找一个序列$\{x_i\}$使得$|x_i|\to d$，由于$(x_m+x_n)/2\in E$，故$|(x_m+x_n)/2|\geq d$，考虑恒等式
-\[
-	0\leq |x_m-x_n|^2=2|x_m|^2+2|x_n|^2-|x_m+x_n|^2\leq 2(|x_m|^2+|x_n|^2)-4d^2,
-\]
-或者
-\[
-	|x_m-x_n|^2\leq 2(|x_m|^2-d^2)+2(|x_m|^2-d^2)\leq 2\bigl||x_m|^2-d^2\bigr|+2\bigl||x_m|^2-d^2\bigr|,
-\]
-因此$\{x_i\}$是一个Cauchy列，故而收敛到某个$x\in H$使得$|x|=d$. 由于$x$是$E$的极限点，而$E$是闭集，所以$x\in E$. 至于唯一性，如果$|y|=d$，考虑$\{x$, $y$, $x$, $y$, $\cdots\}$的极限即可。
-\end{proof}
-
-\begin{pro}
-对于Hilbert空间$\mathcal{H}$以及他的任意一个子空间$M$，$M$的正交补$M^\bot=\{y\in H\,:\, \forall x\in M,\, (x,y)=0\}$是一个闭子空间。如果$M$还是闭的，则成立直和分解$\mathcal{H}=M\oplus M^\bot$.
+\begin{pro}\label{p.1.39}
+设$X$是一个拓扑矢量空间，而$E$是它的一个子集，则$E$是有界的当且仅当，任取$E$中的序列$\{x_n\}$以及趋向于$0$的标量序列$\{a_n\}$有$a_nx_n\to 0$.
 \end{pro}
 
 \begin{proof}
-由于
+	如果$E$不是有界的，则存在一个$0$的邻域$U$以及序列$r_n\to \infty$使得没有$r_n U$包含$E$. 取$x_n \in E$使得$x_n \not\in r_n U$，则没有$r_n^{-1}x_n$在$U$中，所以$\{r_n^{-1}x_n\}$不趋向于$0$.
+
+	反过来，如果$E$是有界的，而标量序列$\{a_n\}$趋向于零，设$V$是$X$中$0$的一个均衡邻域，则存在$t$，我们有$E\subset tV$或者$t^{-1}E\subset V$. 若$x_n\in E$以及$a_n\to 0$，则存在$N$使得$n>N$时有$|a_n|t<1$，因为$V$是均衡的，对于所有的$n>N$有$a_nx_n\in a_n E=a_nt t^{-1}E\subset a_n t V \subset V$. 因此$a_nx_n\to 0$.
+\end{proof}
+
+作为应用，考虑一个非零矢量$v$张成的子空间$\langle v\rangle$，取$x_n=nv$，而$a_n=1/n$，则$a_nx_n=v$，因此$\langle v\rangle$并不有界。因为有界子集的子集也有界，所以$X$的任意非零子空间都不可能有界。因为紧集总是有界的，所以非零子空间也不可能紧。
+
+\begin{para}
+	如果线性映射$f:X\to Y$将有界子集映成有界子集，则称$f$是有界的。注意，这里有界并不是说$f$的值域是有界的，因为如果$f$非零，则$f$的值域作为非零子空间总不会是有界的。
+
+	连续线性映射是一类有界线性映射。实际上，任取$X$中的有界集$E$，以及$Y$中原点处的邻域$W$，由于$f$的连续性，存在$V$使得$f(V)\subset W$. 由于$E$有界，所以对于足够大的$t$都有$E\subset tV$，因此$f(E)\subset f(tV)=tf(V)\subset tW$. 所以$f$是有界的。
+
+	对赋范空间之间的线性映射，有界性往往会定义如下：$f:X\to Y$被称为有界的，如果存在一个正数$M$使得$|f(x)|\leq M|x|$恒成立。
+
+	这两种定义此时是等价的。实际上，任取$E$是一个有界集，由于$X$是赋范空间，所以可以挑一个闭球$B_X(r)$包含$E$，闭球半径为$r$.  
+	任取$x\in B_X(r)$，我们有$|f(x)|\leq M|x|\leq Mr$，故$f(E)\subset B_Y(Mr)$是有界的。反之，因为闭球$B_X(1)$是有界的，所以$f(B_X(1))$也是有界的，选一个闭球$B_Y(r)$包含$f(B_X(1))$，则任取$x\in B_X(1)$都有$|f(x)|\leq r$. 现在任取$x\in X$，我们有$x/|x|\in B_X(1)$，所以$|f(x/|x|)| \leq r$或者$|f(x)|\leq r|x|$.
+\end{para}
+
+\begin{pro}\label{1.42}
+	如果$X$是可度量化的拓扑矢量空间，则线性映射$f:X\to Y$是有界的当且仅当$f$是连续的。
+\end{pro}
+
+\begin{proof}
+	这里只要有界推连续即可。由于$f$线性，只需要推出$f$在点$0$处连续即可，而由于$X$第一可数，只需要对任意$X$中趋向于$0$的序列$\{x_n\}$推出$f(x_n)\to 0$即可。现在给定一个趋向于$0$的序列$\{x_n\}$. 由Proposition \ref{p.fsdfas}可知，存在一个趋向于无穷的正序列$\gamma_n$使得$\gamma_nx_n\to 0$. 现在，由于$\{\gamma_nx_n\}$收敛，它是一个Cauchy列，所以$\{\gamma_nx_n\}$有界，而$f$是有界映射，故$\{f(\gamma_nx_n)\}$也有界。由于$\gamma^{-1}_n\to 0$，则从Proposition \ref{p.1.39}，
+	\[
+	f(x_n)=\gamma_n^{-1}f(\gamma_n x_n)\to 0.\qedhere
+	\]
+\end{proof}
+
+可度量的拓扑矢量空间非常常见，比如Banach空间，从这个命题可以看到，连续与有界是等价的。所以，似乎对线性算子来说连续性太强了，因为无界的算子非常常见，比如在量子力学上，几乎所有算子都是无界的。
+
+\section{商空间、积空间与子空间}
+
+\begin{para}\label{1.43}
+	首先来谈一下拓扑矢量空间的子空间。值得指出，拓扑矢量空间唯一的开子空间就是它本身，甚至，每一个真子空间的内部都必须为空。
+
+	实际上，如果$X$的子空间$Y$包含$x\in Y$的一个邻域$U\subset X$，则$Y$包含原点的邻域$-x+U$，由标量乘法的连续性，任取一个$y\in X$，存在一个正数$t$使得$ty\in -x+U\subset X$，于是$y=t^{-1}(ty)\in Y$.
+
+	因此，特别地，真闭子空间都是第一纲的。如果子空间$Y$在$X$内是第二纲的，则$Y$在$X$中稠密，因为如果$Y$不在$X$中稠密，则$\overline{Y}$是$X$的真闭子空间，继而是第一纲的。
+\end{para}
+
+\begin{lem}
+设$X$是$k$-拓扑矢量空间（比如$k$可以取作$\rr$或者$\cc$）. 则任意的线性映射$f:k^n\to X$是连续映射。
+\end{lem}
+
+这个小引理表示，有限维空间上的线性映射是都是连续的。所以这也同时给出了有限维矢量空间的拓扑很大的限制。事实上下一个命题就将我们，有限维矢量空间唯一的拓扑就是熟知的欧式空间拓扑（对实数域和复数域）。
+
+\begin{proof}
+设$\{e_i\}$是$k^n$的一组基，令$x_i=f(e_i)$. 对每一个$v=\sum_{i=1}^nv^ie_i$，我们有
 \[
-	M^\bot=\bigcap_{x\in M}N(x),
+	f(v)=\sum_{i=1}^nv^ix_i.
 \]
-而$N(x)$是闭集，所以$M^\bot$自然是闭集。由于$(x,y)$关于$y$线性，所以$M^\bot$也是一个子空间。
+由于分量函数$v\to v^i$是连续的，则由有限个加法与标量乘法的连续性，$f$是连续的。
+\end{proof}
 
-现在假设$M$是闭的。剩下的就是要证明$M\cap M^\bot=\{0\}$，以及任意的$x\in \mathcal{H}$都可以分解为$x=x_1+x_2$，其中$x_1\in M$, $x_2\in M^\bot$. 对于前者，假设$x\in M\cap M^\bot$，因此$(x,x)=0$就推出了$x=0$. 
+\begin{pro}
+	设域$k$为$\cc$或者$\rr$，而$X$是一个$k$-拓扑矢量空间。设$Y$是$X$的一个有限维子空间，$\dim Y=n$. 则每一个同构$k^n\to Y$是同胚，且$Y$是一个闭子空间。
+\end{pro}
 
-对后者，设$x\in \mathcal{H}$，考虑集合$x-M$，这是$\mathcal{H}$的一个闭凸子集，闭来自于他是$M$的一个平移，而凸来自于$M$是一个子空间。所以$x-M$中必然有唯一的$x_1$使得$|x-x_1|$最小。令$x_2=x-x_1$，则对于所有的$y\in M$都成立$|x_2|\leq |x_2+y|$，特别地，对于任意的$\lambda\in \cc$有$|x_2|\leq |x_2+\lambda x_1|$，因此$(x_1,x_2)=0$. 综上，任取$x\in \mathcal{H}$，成立分解$x=x_1+x_2$，$x_1\in M$，而$x_2\in M^\bot$.
+\begin{pro}\label{1.46}
+局部紧拓扑矢量空间是有限维的。因此，只有形如$\cc^n$或者$\rr^n$的拓扑矢量空间才是局部紧的，无限维的拓扑矢量空间都不可能是局部紧的。
+\end{pro}
+
+这俩命题这里都不证了，可见[Rudin Theorem 1.21]和[Rudin Theorem 1.22].
+
+作为推论，如果一个局部有界拓扑矢量空间满足Heine-Borel性质，则原点处可以找到有界闭子集是紧的，这是一个局部紧拓扑矢量空间，继而是有限维的。所以，在无限维拓扑矢量空间上，不可能同时满足局部有界以及Heine-Borel性质。
+
+使用Zorn引理，对任意一个矢量空间都可以发现一组基（极大线性无关组），他被称为Hamel基。如果用子空间表示，则就是说矢量空间$X$可以写成有限维子空间的并。如果$X$是一个拓扑矢量空间，有限维子空间是闭集且具有空内部，所以它们都是第一纲集。如果$X$具有可数Hamel基，则$X$是第一纲集。如果$X$是一个F-空间，则$X$是第二纲的，矛盾。所以比如Banach空间并不存在可数Hamel基。但是，在比如Banach空间上，有着另一个基的概念，它被称为Schauder基，以后我们会描述，它可以是可数的。
+
+\begin{para}
+	商构造的重要性无需多言，比如从代数中已经知道，通过商构造，我们可以将一个满射变成一个同构。
+
+	设$Y$是$X$的一个子空间，则$X/Y$也是一个矢量空间，同时有自然的商映射$\pi:X\to X/Y$. 欲使得$\pi$是一个连续映射，不管$X/Y$的拓扑是怎么样的，只要$X/Y$中的原点是闭集（即$X/Y$的分离性足够好），$\pi^{-1}(0)=Y$都必须在$X$中是闭的。因此，讨论商空间的时候，$Y$会假设成一个闭空间。
+
+	$X/Y$上的拓扑由$\pi$给出，令所有形如$\pi^{-1}(U)$是开集的$X/Y$的子集$U$构成的集合族为$X/Y$上的一个拓扑结构，即$U\subset X/Y$是开集当且仅当$\pi^{-1}(U)$是开集。利用原点处的局部基来表述的话：设$\{U_\alpha\}$是$X$的原点处的局部基，则$\{\pi(U_\alpha)\}$是$X/Y$原点处的局部基。因此，$X$是第一可数的就可以推出$X/Y$是第一可数的。
+
+	由定义，商映射是满、连续、开的线性映射，所谓开映射，就是将开集映射成开集。由于$\pi$是连续的，所以他是有界线性映射。由于$\pi$是线性的，所以他将凸集映射成凸集。所以如果$X$局部有界（凸），则$X/Y$也局部有界（凸）。
+\end{para}
+
+\begin{pro}\label{1.48}
+	设$Y$是$X$的一个闭子空间，如果$X$是可度量化的（可赋范的），则$X/Y$是可度量化的（可赋范的），同时如果$X$还完备，则$X/Y$也完备。因此，如果$X$是F-空间（Banach空间），则$X/Y$也是F-空间（Banach空间）。
+\end{pro}
+
+\begin{proof}
+	尽管可以用很强的命题，比如第一可数的拓扑矢量空间可度量化来直接给出$X/Y$可度量化，但这里采用直接的构造。
+
+	设$d_X$是$X$上的一个不变度量，则我们可以定义$X/Y$上的一个不变度量，通过
+	\[
+	d_{X/Y}(\pi(x),\pi(y))=\inf\{d(x-y,z)\,:\, z\in Y\}.
+	\]
+	容易验证这是一个不变度量，且与商拓扑相容。
+
+	对于可赋范的情况，假设$X$上有一个范数$|*|$，则我们定义
+	\[
+	|\pi(x)|=\inf\{|x-y|\,:\,y\in Y\},
+	\]
+	不难检验这是一个范数。由度量的结论，他与商拓扑相容。
+
+	最后是完备性。赋范的情况是包含在度量空间的情况中的，所以只讨论度量空间的情况。设$\{u_i\}$是$X/Y$中的Cauchy序列，则存在其无穷子序列$\{u_{n_i}\}$使得$d_{X/Y}(u_{n_i},u_{n_{i+1}})<1/2^i$，因为Cauchy序列等价于其无穷子序列，所以我们只要证明其无穷子序列收敛即可。对应$\{u_{n_i}\}$选出$x_i$使得$\pi(x_i)=u_{n_i}$，并且$d_X(x_i,x_{i+1})<1/2^i$，因为$d_X$是完备的，所以$\{x_i\}$收敛于$x\in X$，由于$\pi$是连续的，所以$u_{n_i}\to \pi(x)$.
 \end{proof}
 
 \begin{para}
-Hilbert空间$\mathcal{H}$的对偶空间$\mathcal{H}^*$是由$\mathcal{H}$上所有线性函数张成的矢量空间，上面可以如下赋予范数
-\[
-	|T|=\sup\bigl\{|Tx|\,:\,x\in \mathcal{H},\,|x|\leq 1\bigr\},
-\]
-很容易检验这是一个范数，比如三角不等式：
-\[
-	|(T+S)x|=|Tx|+|Sx|\leq |T|+|S|,
-\]
-对任意的$|x|\leq 1$都成立，所以$|T+S|\leq |T|+|S|$.
+	最后来谈一下积空间。设$X$和$Y$是两个拓扑矢量空间，则我们不难在$X\times Y$上定义一个矢量空间结构，实际上，在模范畴中，有限直积与有限直和是等价的，所以作为矢量空间，$X\times Y$就是$X\oplus Y$. 此外，由于$X$和$Y$是拓扑空间，所以可以在$X\times Y$上定义出一个积拓扑。于是，两个拓扑矢量空间$X$和$Y$的积$X\times Y$（有时候也会写作$X\oplus Y$）也是一个拓扑矢量空间。
 
-关于这个范数还有一个有用的不等式$|Tx|\leq |T||x|$：显然，$|x/|x||=1$，所以由
-\[
-	\left|T\frac{x}{|x|}\right|\leq |T|
-\]
-可以推知$|Tx|\leq |T||x|$. 
+	如果$X$和$Y$都是度量空间，$X$上的不变度量是$d_X$，而$Y$上的不变度量是$d_Y$. 则我们可以定义$X\times Y$上的不变度量如下
+	\[
+	d_{X\times Y}\left((x_1,y_1),(x_2,y_2)\right)=d_X(x_1,x_2)+d_Y(y_1+y_2).
+	\]
+	不难验证，他与乘积拓扑相容。此外，如果$d_X$和$d_Y$都完备，则$d_{X\times Y}$也完备。
+
+	如果$X$和$Y$都是赋范空间，$X$上的范数是$|*|_X$，而$Y$的是$|*|_Y$，则我们可以定义$X\times Y$上的范数如下
+	\[
+	|(x,y)|_{X\times Y}=|x|_X+|y|_Y.
+	\]
+	从度量的结论，可以知道他与乘积拓扑相容。
+
+	两个凸集的积自然也是一个凸集，所以两个局部凸空间的乘积也是局部凸的。类似地，两个有界集的积也是有界的，所以两个局部有界空间的乘积也是局部有界的。类似的，还有两个第一可数空间的积是第一可数的。这些都是简单的结论。
+
+	作为推论，两个有界集$E$和$F$在$X\times X$中的积$E\times F$是有界集，因为加法是一个$X\times X\to X$的连续线性映射，继而是有有界映射，故$E+F\subset X$也是一个有界集。
 \end{para}
 
-使用内积，可以在$\mathcal{H}$和$\mathcal{H}^*$之间建立一个线性映射：通过$\Lambda_y(x)=(y,x)$可以定义出一个线性函数$\Lambda_y\in \mathcal{H}^*$，这样我们就得到一个线性映射$\Lambda:\mathcal{H}\to \mathcal{H}^*$，他将$y$变为$\Lambda_{y}$.
+以上定义与结论，不难将其拓展到有限个积的情况上面去。
+
+\section{半范数}
+
+\begin{para}
+矢量空间$X$上的\textit{半范数}\index{半范数}是一个$X$上的实值函数$p$，使得对于$X$中任意$x$, $y$以及任意标量$\alpha$成立
+\begin{compactenum}
+\item 次可加性：$p(x+y)\leq p(x)+p(x)$;
+\item $p(\alpha x)=|\alpha|p(x)$.
+\end{compactenum}
+一个范数自然是一个半范数。注意，这里的矢量空间未必具有拓扑。
+
+一些简单的推论是$p(0)=0$以及$p(x)=p(-x)$. 此外，由于
+\[
+	p(x)=p(x-y+y)\leq p(x-y)+p(y),
+\]
+故$p(x)-p(y)\leq p(x-y)$，调换$y$与$x$，可知$p(y)-p(x)\leq p(y-x)=p(x-y)$，所以$|p(x)-p(y)|\leq p(x-y)$. 取$y=0$就得到了$p(x)\geq |p(x)|\geq 0$. 所以一个半范数距离一个范数，只差如果$x\neq 0$则$p(x)\neq 0$.
+
+考虑$[0,1]$上所有的Lebesgue可测函数$f$，给定$1\leq r<\infty$，我们可以定义
+\[
+	p(f)=|f|_r=\left[\int_{0}^{1}|f(x)|^r\dd x\right]^{1/r},
+\]
+这就是一个半范数，而不是一个范数，因为对于几乎处处为零的函数而言，$p(f)=0$. 一般而言，我们会选择将那些几乎处处相同的函数看成是相同的，这样才能得到一个范数。而这种手段在一般的情况也是适用的，如果$p^{-1}(0)$是一个子空间，考虑商空间$\bar{X}=X/p^{-1}(0)$，$p$将可以通过$|\bar{x}|=p(x)$诱导出$\bar{X}$上的一个范数。这是一个良定的范数，因为取$\bar{x}$的不同代表元$x$与$x'$，由于$x-x'\in \pi^{-1}(0)$，所以
+\[
+	|p(x)-p(x')|\leq p(x-x')=0
+\]
+就给出了$p(x)=p(x')$. 进而这个范数在商空间$\bar{X}=X/p^{-1}(0)$给出了一个拓扑。
+
+可以检验，$p^{-1}(0)$确确实实是一个子空间。任取$x$, $y\in p^{-1}(0)$以及任意的标量$\alpha$, $\beta$成立等式$p(\alpha x+\beta y)=0$，实际上，我们有如下不等式
+\[
+	0\leq p(\alpha x+\beta y)\leq |\alpha|p(x)+|\beta|p(y)\leq 0.
+\]
+此即所证。
+\end{para}
+
+% \begin{para}
+
+% 现在，如果$X$是一个拓扑矢量空间，则我们自然会问，$p$在商空间给出范数诱导的拓扑何时与来自$X$的商拓扑相同？
+
+% 首先我们指出，如果$X$是局部有界的，则$p^{-1}(0)$是一个闭子空间。任取$p^{-1}(0)$的极限点$x$，所有包含$x$的开集都至少交$p^{-1}(0)$中的一个点（这个点不能是$x$），我们要证明$x\in p^{-1}(0)$. 任取$x$的邻域$x+U$以及$y\in (x+U)\cap p^{-1}(0)$，则
+% \[
+% 	|p(x)|=|p(x)-p(y)|\leq p(x-y)\leq \sup\{p(z)\,:\,z\in U\}=f(U).
+% \]
+% 其中$f(U)=\sup\{p(z)\,:\,z\in U\}$. 下面只要说明，对于给定的正数$\epsilon$，总可以找到一个$U$使得$f(U)\leq \epsilon$即可。为此，选一个$0$的有界邻域$U_0$，以及序列$\{r_n=1/n\}$，则$\{U_n=r_n U_0\}$构成了$X$的一组拓扑基，此时由于$p(r_nx)=r_np(x)$，所以$f(U_n)=r_nf(U_0)$，由于$r_n$趋于零，所以$f(U_n)$随着$n$增大可以变得足够小，此即所证。
+% \end{para}
+
+\begin{thm}[Hahn-Banach定理]
+设$Y$是实矢量空间$X$的子空间，而$p:X\to \rr$是一个满足次可加性以及正齐性的实函数，即对$x$, $y\in X$以及$t\geq 0$满足
+\[
+	p(x+y)\leq p(x)+p(y),\quad p(tx)=tp(x).
+\]
+如果$f$是$Y$上的一个线性函数使得$f(x)\leq p(x)$对$x\in Y$都成立，则$f$可以延拓成为$X$上线性函数（依然记作$f$），使得$f(x)\leq p(x)$对$x\in X$都成立。
+\end{thm}
+
+虽然从形式上会认为这是一个纯代数的命题，但是整个命题实际上依赖于实数域的拓扑性质（确界的存在性），在其他有序域，比如有理数域这是不成立的。
+
+此外，令$y=-x$，则$f(y)\leq p(y)$给出了$f$的下界控制$-p(-x)\leq f(x)$.
+
+\begin{proof}
+	考虑所有序对$(Z,f_Z)$的族，其中$Z$是包含$Y$的一个子空间而$f_Z$是$f$在$Z$上的线性延拓，并且在$Z$上满足$f_Z(z)\leq p(z)$，然后定义偏序关系如下：$(Z_1,f_{Z_1})\leq (Z_2,f_{Z_2})$当且仅当$Z_1\subset Z_2$且$f_{Z_2}|_{Z_1}=f|_{Z_1}$. 
+
+	这是一个非空族，因为$(Y,f)$处于其中。然后对于任意一条链$\{Z_\alpha\}$，在并$\bigcup_\alpha Z_\alpha$上将那些$f_{\alpha}$粘合起来，不难看到$\bigcup_\alpha Z_\alpha$是一个子空间，而$f_{\alpha}$粘合起来得到一个线性函数，所以这是链的上界。从Zorn引理，序对$(Z,f_Z)$的族存在极大元，记作$(Y_{\text{m}},f_{\text{m}})$.
+
+	我们下面证明，如果$Y\neq X$，取$x_0\in X-Y$，我们可以将$f$延拓到$Y+\langle x_0\rangle$上，并且满足估计$f\leq p$. 将这个小命题应用到$(Y_{\text{m}},f_{\text{m}})$上，则$Y_{\text{m}}\neq X$与极大性矛盾。所以$Y_{\text{m}}=X$，而$f_{\text{m}}$就是我们需要的延拓。
+
+	考虑子空间$Y+\langle x_0\rangle$. 由于
+	\[
+	f(x)+f(y)=f(x+y)\leq p(x+y)\leq p(x-x_0)+p(x_0+y),
+	\]
+	我们有
+	\[
+	f(x)-p(x-x_0)\leq p(x_0+y)-f(y),
+	\]
+	对任意的$x$, $y\in Y$都成立，固定一个$y$，这说明上式左边关于$x$是有上界的，取$\alpha$是它的上确界。则
+	\[
+	f(x)-p(x-x_0)\leq \alpha \quad \text{或者说}\quad f(x)-\alpha\leq p(x-x_0),
+	\]
+	以及
+	\[
+	\alpha \leq p(x_0+y)-f(y) \quad \text{或者说}\quad f(y)+\alpha \leq p(y+x_0)
+	\]
+	对任意的$x$, $y\in Y$都成立。这两个不等式下面会用。
+
+	现在可以通过
+	\[
+	f(x+tx_0)=f(x)+t\alpha
+	\]
+	将延拓$f$到$Y+\langle x_0\rangle$上，这显然是一个线性函数。我们下面要证明$f\leq p$. 任取$t>0$我们有
+	\[
+	f(x+tx_0)=f(x)+t\alpha=t(f(x/t)+\alpha)\leq t p(x/t+x_0)= p(x+tx_0).
+	\]
+	同样，我们有
+	\[
+	f(x-tx_0)=f(x)-t\alpha=t(f(x/t)-\alpha)\leq t p(x/t-x_0)=p(x-tx_0).
+	\]
+	因此这个$f$的延拓满足需求。
+\end{proof}
+
+\begin{pro}\label{1.47}
+	设$Y$是$X$的子空间，而$p$是$X$上的半范数，$f$是$Y$上的线性泛函使得
+	\[
+	|f(x)|\leq p(x)
+	\]
+	对$x\in Y$都成立。则其可以线性延拓到$X$上依然满足$|f(x)|\leq p(x)$.
+\end{pro}
+
+注意到，此时$p(-x)=p(x)$，所以如果$f$是实值的，则$f(x)\leq p(x)$与$|f(x)|\leq p(x)$等价。
+
+\begin{proof}
+	标量域是$\rr$的情况就是Hahn-Banach定理的简单推论，如果标量域是$\cc$，则取$f$的实部$u$，$u$是实值实线性的，所以按照Hahn-Banach定理，可以延拓到$X$上，并且$u(x)\leq p(x)$在$X$上处处成立，然后对这个延拓的$u$，考虑复线性函数$u(x)-i u(i x)$，不难看出这是$f$的延拓，依然记作$f$. 最后即要检验$|f(x)|\leq p(x)$.
+
+	由于$f(x)$是复的，可以写作$|f(x)|\alpha$的形式，其中$|\alpha|=1$，所以
+	\[
+	|f(x)|=\alpha^{-1}f(x)=f(\alpha^{-1}x)=u(\alpha^{-1}x)\leq p(\alpha^{-1}x)=p(x).
+	\]
+	最后一个等号应用了半范数的性质。
+\end{proof}
+
+作为推论，我们有如下实用的命题。
+
+\begin{pro}\label{1.52}
+	设$X$是一个赋范空间，而$Y$是它的一个子空间，如果$f$是$Y$上面的连续线性泛函，则存在$g\in X^*$使得$g|_Y=f$，即$f$可以延拓为$X$上的连续线性泛函。如果$Y$还是$X$的稠密子空间，则延拓唯一。
+\end{pro}
+
+这个定理甚至可以减弱到$X$是局部凸的情况，当然证明中最硬的地方还是Hahn-Banach定理搞定的。
+
+\begin{proof}
+	首先，$f$在$Y$上连续，所以$f$在$Y$上有界。对于赋范空间而言，即存在一个正数$M$使得$|f(y)|\leq M|y|$对$y\in Y$都成立。此时$M|*|$就是$X$上的半范数，利用Proposition \ref{1.47}，可以延拓到$X$上使得$|f(x)|\leq M|x|$对$x\in X$都成立，即延拓为一个有界泛函。赋范空间作为可度量化拓扑矢量空间，有界等价于连续（见Proposition \ref{1.42}），所以延拓后$f$在$X$上也连续。
+
+	最后，假设$Y$在$X$上稠密，由于$X$是第一可数的，任取$x\in X$，都存在$Y$中的序列$\{x_n\}$使得当$n\to\infty$时候有$x_n\to x$. 因为$f$是连续的，所以$\lim_{n\to\infty}f(x_n)=f(x)$. 最后，$X$是Hausdorff空间，所以$f(x)$唯一。
+\end{proof}
+
+% \[
+% 	\begin{cases}
+% 	a_1 v_{i_1}+\cdots+a_nv_{i_n}=0,\\
+% 	\hspace{3em}\vdots\\
+% 	a_1 (\lambda-2i_1)^{n-1}v_{i_1}+\cdots+a_n(\lambda-2i_n)^{n-1}v_{i_n}=0,\\
+% 	\end{cases}
+% \]
+
+% \[
+% 	\begin{vmatrix}
+% 	a_1&a_2&\cdots&a_n\\
+% 	a_1(\lambda-2i_1)&a_2(\lambda-2i_2)&\cdots&a_n(\lambda-2i_n)\\
+% 	\vdots&\vdots&&\vdots\\
+% 	a_1(\lambda-2i_1)^{n-1}&a_2(\lambda-2i_2)^{n-1}&\cdots&a_n(\lambda-2i_n)^{n-1}
+% 	\end{vmatrix}
+% 	=a_1a_2\cdots a_n
+% 	\begin{vmatrix}
+% 	1&2&\cdots&1\\
+% 	(\lambda-2i_1)&(\lambda-2i_2)&\cdots&(\lambda-2i_n)\\
+% 	\vdots&\vdots&&\vdots\\
+% 	(\lambda-2i_1)^{n-1}&(\lambda-2i_2)^{n-1}&\cdots&(\lambda-2i_n)^{n-1}
+% 	\end{vmatrix}
+% \]
+
+\begin{exa}
+设$X$是一个局部紧Hausdorff空间，而$f$是它上面的一个函数，定义$f$的支集为$X-f^{-1}(0)$的闭包。记$C_c(X)$为$X$上所有的具有紧支集的实值连续函数构成的集合，逐点定义加法和数乘，就可以发现$C_c(X)$上有一个矢量空间结构：对加法而言，$f+g$的支集处于$f$和$g$的支集的并中，后者是紧的，作为Hausdorff空间中紧集的闭子集，$f+g$的支集也是紧的。数乘非零标量支集不变，而乘以零之后，支集是空的，所以显然是紧的。此外，在$C_c(X)$上可以定义一个绝对值函数$\abs:C_c(X)\to C_c(X)$，通过$\abs(f(x))=|f(x)|$. 
+
+称$\ell:C_c(X)\to \rr$是一个正线性泛函，如果对$C_c(X)$中的非负函数$f$，$\ell(f)$都非负。因此正线性泛函在如下意义下单调：如果$f_1(x)\leq f_2(x)$处处成立，则$\ell(f_1)\leq \ell(f_2)$.
+
+不难看到，给定一个正线性泛函$\ell$，$\ell\circ \abs$是一个半范数，其中$\abs:C_c(X)\to C_c(X)$是$C_c(X)$上的绝对值函数，方便起见，我们将$\ell$确定的半范数记作$|\ell|$. 这是一个暂时的记号，所以不用太在意。既然得到了一个半范数$|\ell|$，进一步，可以在$C_c(X)/|\ell|^{-1}(0)$上定义出一个范数使得它称为一个拓扑矢量空间，然后完备化之，这样得到的空间记作$L(X)$，$L(X)$上的范数记作$|*|_\ell$. 
+
+一般来说，在谈论$L(X)$或者$C_c(X)/|\ell|^{-1}(0)$的时候，我们会心照不宣地将$f\in C_c(X)$看作其等价类。比如，我们可能会对$f\in C_c(X)$说成立等式$|f|_\ell = \ell(\abs(f))$.
+
+由测度论中的Riesz表示定理，$C_c(X)$上的每一个正线性泛函$\ell$都可以定义出$X$上的一个正测度$\mu$，使得任取$f\in C_c(X)$都成立
+\[
+	\ell(f)=\int f\,\dd \mu.
+\]
+实际上，我们构造的完备拓扑矢量空间$L(X)$就是$L^1(\mu)$而已。但说明这点远比这样构造$L(X)$要困难得多。
+
+再具体一些，考虑$X=\rr^n$，每一个$C_c(X)$中的函数都是Riemann可积的，取$\ell$为通常的Riemann积分，不难发现这是一个正线性泛函。通过半范数诱导出范数继而完备化的手段，我们得到的空间$L(\rr^n)$正是寻常的$L^1(\rr^n)$. 下面一个引理则给出了$L(\rr^n)$上新的积分，即Lebesgue积分。
+\end{exa}
+
+\begin{lem}
+	一切记号与习惯同上一个例子。$C_c(X)$上的正线性泛函$\ell$将诱导出$L(X)$上的唯一的连续线性泛函$\ell'$，对满足$\ell'(f)=\ell(f)$.
+\end{lem}
+
+\begin{proof}
+	可以将$C_c(X)/|\ell|^{-1}(0)$看作$L(X)$的子空间，而$\ell$在$C_c(X)/|\ell|^{-1}(0)$诱导了一个$\bar{\ell}$满足$\bar{\ell}(f)=\ell(f)$. $\bar{\ell}$的连续性来自于$\bar{\ell}$在$C_c(X)/|\ell|^{-1}(0)$是有界的，实际上，
+	\[
+	|\bar{\ell}(f)|=|\ell(f)|\leq \ell(|f|)=|\ell|(f).
+	\]
+	不等式来自于$-|f|\leq f\leq |f|$以及$\ell$是一个正线性泛函，即
+	\[
+	-\ell(|f|)\leq \ell(f)\leq \ell(|f|).
+	\]
+	由于$C_c(X)/|\ell|^{-1}(0)$在其完备化空间$L(X)$中稠密，然后对$\bar{\ell}$使用Proposition \ref{1.52}即可。
+\end{proof}
+
+\begin{para}
+半范数的重要实例是被称为Minkowski泛函的函数。设$A$是$X$的吸收集，定义Minkowski泛函$\mu_A$如下：
+\[
+	\mu_A(x)=\inf\{t>0\,:\,t^{-1}x\in A\},
+\]
+其中$x\in X$. $A$是吸收集的假设是为了让$\mu_A$有界，因为任取$x$，总存在一个$s>0$使得当$t^{-1}>s$时候都有$x\in t^{-1}A$，这样就保证了$t$有一个上界。显然，Minkowski泛函具有正齐性，即任取正数$t$，我们有等式$\mu_A(tx)=t\mu_A(x)$. 此外，如果$A\subset B$，则$\mu_B(x)\leq \mu_A(x)$处处成立。
+
+假设$A$是一个凸集，则我们可以得到Minkowski泛函的次可加性，设$x$, $y\in X$，且$s^{-1}x\in A$以及$t^{-1}y\in A$，由于$A$是凸的，则
+\[
+	\frac{s}{s+t}s^{-1}x+\frac{t}{s+t}t^{-1}y=(s+t)^{-1}(x+y)\in A,
+\]
+于是$\mu_A(x+y)\leq s+t$对所以满足$s^{-1}x\in A$以及$t^{-1}y\in A$的$s$, $t$都成立，故
+\[
+	\mu_A(x+y)\leq \mu_A(x)+\mu_A(y).
+\]
+
+假设$A$是一个均衡集，则我们可以得到Minkowski泛函满足$\mu_A(\alpha x)=|\alpha|\mu_A(x)$. 由Minkowski泛函的正齐次性，只要证明$\mu_A(\alpha x)=\mu_A(|\alpha| x)$，由于$\alpha=|\alpha|\beta$，其中$|\beta|=1$，则我们只要证明$\mu_A(\beta y)=\mu_A(y)$即可。如果$ty\in A$，由于$A$是均衡的，则它等价于$t\beta y\in A$. 此即所证。
+
+所以，如果$A$是一个均衡凸吸收集，则Minkowski泛函$\mu_A$就是一个半范数。但即使$A$仅仅只是一个凸吸收集，Hahn-Banach定理也是可以应用的。
+\end{para}
+
+下面一个小引理告诉我们，Minkowski泛函也是唯一的半范数。
+
+\begin{lem}
+设$p$是一个$X$上的半范数，则集合$A=\{x\,:\, p(x)<1\}$是一个均衡凸吸收集，且$p=\mu_A$.
+\end{lem}
+
+\begin{proof}
+显然$A$是均衡的，取$x$, $y\in A$以及$0<t<1$，则
+\[
+	p(tx+(1-t)y)\leq tp(x)+(1-t)p(y)< t+(1-t)=1.
+\]
+所以$A$是凸的。最后，设$x\in X$且对$s>p(x)$，我们有$p(s^{-1}x)=s^{-1}p(x)<1$，于是$A$是一个吸收集，而且$\mu_A(x)\leq p(x)$. 现在假设$\mu_A(x)<p(x)$，则存在一个$t$使得$\mu_A(x)<t<p(x)$且$t^{-1}x\in A$，但是$p(t^{-1}x)=t^{-1}p(x)>1$，即$t^{-1}x\not\in A$，矛盾，于是$\mu_A(x)=p(x)$.
+\end{proof}
+
+\begin{para}\label{1.50}
+从这里开始，我们回到拓扑矢量空间。已经从Propostion \ref{1.30}, \ref{1.31} 知道：拓扑矢量空间原点的任意开邻域都是吸收集；拓扑矢量空间的局部基中的元素都可以取作均衡的；如果拓扑矢量空间是局部凸的，则局部基中的元素都可以取作均衡凸的。
+
+考虑局部凸的拓扑矢量空间$X$，则可以找一个原点的均衡凸局部基，对其中每一个元素，它们的Minkowski泛函都是半范数。
+
+设$V$是均衡凸局部基中的一个元素，我们先断言$\mu_V$是连续的。对给定的正数$\epsilon$，如果$x-y\in \epsilon V$，则
+\[
+	|\mu_V(x)-\mu_V(y)|\leq \mu_V(x-y)<\epsilon.
+\]
+此外，我们还有
+\[
+	V=\mu_V^{-1}((0,1))=\{x\in X\,:\, \mu_V(x)<1\}.
+\]
+实际上，给定$x$，注意到$V$是开集，由标量乘法的连续性，存在$1$的一个开邻域$(1-a,1+b)$，其中$a$, $b>0$，使得任取$t\in (1-a,1+b)$都有$tx\in V$. 取一个$t\in (1,1+b)$，我们有$tx\in V$，由于$t^{-1}<1$，所以$\mu_V(x)<1$. 反过来，如果$x\not\in V$，由于$V$是均衡的，只有当$t>1$的时候才有可能$x/t \in V$，因此$\mu_V(x)\geq 1$.
+\end{para}
 
 \begin{thm}
-Riesz表示定理：设$\mathcal{H}$是一个Hilbert空间，则$\Lambda:\mathcal{H}\to \mathcal{H}^*$是一个同构，且$|\Lambda_y|=|y|$.
+拓扑矢量空间$X$是可赋范的，当且仅当$X$的原点具有有界凸邻域。
 \end{thm}
 
 \begin{proof}
-	注意到，$|\Lambda_y|\geq |y|$就可以推出$\Lambda$是一个单射。因为如果$|\Lambda_y|=0$，则$|y|=0$可以推出$y=0$. 所以我们先推$|\Lambda_y|=|y|$，这样单射就是显然的了。
+如果$X$是可赋范的，则$\{x\,:\, |x|<1\}$是原点的有界凸邻域。反过来，如果原点具有有界凸邻域$U$，则我们可以以包含于$U$中的均衡凸邻域来代替$U$，这样$U$就是一个原点均衡有界凸邻域，然后邻域族$\{n^{-1}U\,:\, n\in \zz^+\}$是原点处的一个均衡有界凸局部基。定义$|x|=\mu_U(x)$，如果$x\not\in n^{-1}U$，则$|x|\geq n^{-1}$，所以$|*|$就是一个范数。附带地，可以看到，$\mu_{n^{-1}U}(x)=n|x|$.
 
-	由Cauchy-Schwarz不等式，在$|x|\leq 1$时，$|\Lambda_y(x)|\leq |y||x|\leq |y|$，所以$\Lambda_y|\leq |y|$. 反过来，由于
-	\[
-		|y|^2=\Lambda_y(y)=|\Lambda_y(y)|\leq |\Lambda_y||y|,
-	\]
-	所以$|y|\leq |\Lambda_y|$. 这样就得到了$|\Lambda_y|=|y|$. 
-
-	剩下的就是要证明$\Lambda$是满射。若$y=0$，则取$\Lambda_y=0$. 若$y\neq 0$，令$N(\Lambda_y)$为$\Lambda_y$的零空间，即
-	\[
-		N(\Lambda_y)=\bigl\{x\in\mathcal{H}\,:\, \Lambda_y(x)=(y,x)=0\bigr\}.
-	\]
-	由于$N(\Lambda_y)=N(y)$是一个闭子空间，所以存在直和分解$\mathcal{H}=N(\Lambda_y)\oplus N(\Lambda_y)^\bot$. 取定一个非零的$z\in N(\Lambda_y)^\bot$，因为
-	\[
-		(\Lambda_y(x))z-(\Lambda_y(z))x\in N(\Lambda_y),
-	\]
-	所以
-	\[
-		(z,(\Lambda_y(x))z-(\Lambda_y(z))x)=\Lambda_y(x)(z,z)-\Lambda_y(z)(z,x)=0,
-	\]
-	或者
-	\[
-		\Lambda_y(x)=\left(\frac{\Lambda_y(z)}{(z,z)}z,x\right),
-	\]
-	此时当$y=\Lambda_y(z)z/(z,z)$时上式成立。
+最后，我们需要检验这个范数给出的拓扑与原拓扑相同，此即检验等式
+\[
+	n^{-1}U=\{x\in X\,:\, \mu_{n^{-1}U}(x)<1\}=\{x\in X\,:\,|x|<n^{-1}\}.
+\]
+这在\ref{1.50}中已经做过。
 \end{proof}
 
-\section{伴随算子}
+作为推论，如果一个无穷维矢量空间满足Heine-Borel性质，见Proposition \ref{1.46}可知它不是局部有界的，进而不可赋范。
+
+\begin{lem}
+设$\mathscr{B}$是局部凸的拓扑矢量空间$X$的一个均衡凸局部基，则对每一个非零$x\in X$，都存在一个$V\in \mathscr{B}$使得$\mu_V(x)\neq 0$.
+\end{lem}
+
+如果$\{f_\alpha\}$是$X$上的一个映射族，且任取$x$, $y\in X$，都存在一个$f_\alpha$使得$f_\alpha(x)\neq f_\alpha(y)$，则称该函数族在$X$上是\textit{可分点}\index{可分点}的。特别地，如果映射族是两个交换群之间的同态族，则$\{f_\alpha\}$可分点可以用如下判据替代：这个函数族没有非平凡的公共零点。
+
+\begin{proof}
+	因为$x$不为零，所以在$\mathscr{B}$中存在$0$的一个邻域$V$使得$x\not\in V$，由$V=\mu_V^{-1}((0,1))=\{x\in X\,:\, \mu_V(x)<1\}$可知$\mu_V(x)\geq 1$. 此即所证。
+\end{proof}
+
+最后，我们已经从\ref{1.50}和Lemma \thelem 中得知，对一个局部凸的拓扑矢量空间的一个均衡凸局部基，我们可以给出一个可分点的连续半范数族。神奇的是，这个命题的逆也是成立的。
+
+\begin{thm}
+设$X$只是一个矢量空间，而$\mathscr{P}$是$X$上的一个可分点半范数族，任取$p\in\mathscr{P}$以及正整数$n$，定义
+\[
+	V(p,n)=\{x\,:\, p(x)<1/n\},
+\]
+则$\{V(p,n)\,:\, p\in\mathscr{P},\, n\in \zz^+\}$的任意有限交构成的族是$X$原点处的一个均衡凸局部基。并且，在该拓扑下，我们有
+\begin{compactenum}[(a)]
+\item 每个$p\in \mathscr{P}$都是连续函数；
+\item 集合$E\subset X$是有界的，当且仅当每个$p\in \mathscr{P}$在$E$上有界。
+\end{compactenum}
+\end{thm}
+
+这个定理的证明见[Rudin, Theorem 1.36].
+
+\section{凸集的分离}
+
+\begin{thm}
+	设$A$和$B$是拓扑矢量空间$X$不不相交的非空凸集。
+	\begin{compactenum}[(a)]
+	\item 如果$A$是开的，则存在$f\in X^*$以及$\gamma\in \rr$使得对于每一个$x\in A$以及$y\in B$成立
+	\[
+		\re f(x)<\gamma \leq \re f(y).
+	\]
+	\item 如果$A$是紧的，$B$是闭的，而$X$是局部凸的，则存在$f\in X^*$，$\gamma_1$, $\gamma_2\in\rr$使得对于每一个$x\in A$以及$y\in B$成立
+	\[
+		\re f(x)<\gamma_1<\gamma_2<\re f(y).
+	\]
+	\end{compactenum}
+\end{thm}
+
+对于局部凸拓扑矢量空间，由于单点集即是紧集又是闭集，所以由(b)可以推知$X^*$在$X$上是可分点的。
+
+\section{线性映射（续）}
+
+\begin{para}
+	考虑一族线性映射$\Gamma$，其中的线性映射是从拓扑矢量空间$X$到拓扑矢量空间$Y$的，如果对每一个$Y$中零点的邻域$W$，都存在$X$中原点的邻域$V$使得对每一个$f\in \Gamma$都成立$f(V)\subset W$. 则称这族映射是\textit{等度连续}的。
+
+	显然，等度连续线性映射族中每一个线性映射都是连续的。反过来，对有限族的情况，如果族中每一个映射都是连续的，则该有限族是等度连续的。对于无限族的情况，这个逆命题不一定成立。
+\end{para}
+
+已经看到，连续映射是有界的，而等度连续族有如下相应的有界性概念，它被称为一致有界。
+
+\begin{pro}
+设$X$和$Y$是拓扑矢量空间，而$\Gamma$是$X$到$Y$的等度连续线性映射族，且$E$是$X$的有界子集，则$Y$中有一个有界子集$F$使得对每一个$f\in \Gamma$都成立$f(E)\subset F$.
+\end{pro}
+
+\begin{proof}
+	直接验证$F=\bigcup_{f\in \Gamma}f(E)$有界即可。
+\end{proof}
+
+\begin{thm}[Banach-Steinhaus 定理]
+	设$X$和$Y$是拓扑矢量空间，而$\Gamma$是从$X$到$Y$的连续映射族。对每一个$x$，都有$Y$中的一条轨道$\Gamma(x)=\{f(x)\,:\, f\in \Gamma\}\subset Y$. 考虑所有使得$\Gamma(x)$有界的$x$的集合$B$，如果$B$在$X$中是第二纲集，则$B=X$且$\Gamma$是等度连续的。
+\end{thm}
+
+由于等度连续族一致有界，所以Banach-Steinhaus 定理有时候也被叫做一致有界原理。
+
+\begin{proof}
+	在$Y$中取原点的均衡邻域$W$，以及对称均衡邻域$V$使得$V+V\subset W$. 由于拓扑矢量空间是$\mathsf{T}_3$空间，所以原点存在一个均衡邻域$U$使得$\overline{U}\subset V$，因此$\overline{U}+\overline{U}\subset W$. 现在令
+	\[
+	E=\bigcap_{f\in \Gamma}f^{-1}(\overline{U}).
+	\]
+	如果$x\in B$，则存在一个$n$使得$\Gamma(x)\subset nU$，所以$x\in n E$，进而可知$B\subset \bigcap_{n=1}^\infty nE$.
+
+	由于$B$是第二纲的，所以至少存在一个$nE$在$X$中是第二纲的，否则作为第一纲集的子集，$B$就是第一纲的。取$nE$是第二纲的，由于标量乘法是同胚，所以$E$在$X$中是第二纲的。从定义，$E$是一个闭集，但$E$是第二纲的，所以$E$内有一个开集$O$，取$x\in O\subset E$，则$x-O$是原点的一个邻域，且对于每一个$f\in \Gamma$都有
+	\[
+	f(x-O)=f(x)-f(O)\subset \overline{U}-\overline{U}\subset W.
+	\]
+	因此$\Gamma$是等度连续的。等度连续族$\Gamma$是一致有界的，故$B=X$.
+\end{proof}
+
+从证明可以看出来，第二纲集的假设经常就是用来保证一些开集的存在性（比如闭集的内部非空）。这个假设时常就来自于Baire纲定理。比如，拓扑矢量空间$X$是一个F-空间，即完备度量空间，由Baire纲定理，$X$是Baire空间，所以$X$在$X$中是第二纲。
+
+直接的推论：如果$\Gamma$是F-空间$X$到拓扑矢量空间$Y$的连续线性映射族，且每条轨道$\Gamma(x)$都在$Y$中有界，则$\Gamma$是等度连续的。
+
+Banach-Steinhaus 定理的条件可以适当改写：如果所有使得轨道$\Gamma(x)$满足某性质$\mathsf{P}$的$x$构成的子集$C$是$X$的一个第二纲集，而该性质$\mathsf{P}$可以推出$\Gamma(x)$有界。则所有使得$\Gamma(x)$有界的$x$构成了$X$的一个第二纲集$B$，因为$C\subset B$. 利用Banach-Steinhaus 定理可以推知$\Gamma$是等度连续的，虽然此时并不能推出$C=X$.
+
+\begin{pro}
+	设$X$和$Y$都是拓扑矢量空间，而$\{f_n:X\to Y\}_n$是一族连续线性映射。设$C$是使得$\{f_n(x)\}_n$是$Y$中的Cauchy列的$x\in X$构成的子空间。如果$C$是$X$的第二纲集，则$C=X$.
+\end{pro}
+
+很容易看出$C$是一个子空间，因此$C$在$X$中稠密，这点可以参见\ref{1.43}.
+
+\begin{proof}
+	由于Cauchy列都有界，由Banach-Steinhaus 定理以及它后面的一些附注，可以推知$\{f_n\}_n$等度连续。现在要证明$C=X$，即证明，任取$x\in X$，$\{f_n(x)\}_n$是$Y$中的Cauchy列。
+
+	取$W$是$Y$原点的一个邻域，然后找一个对称邻域$V$使得$V+V+V+V\subset W$. 由于$\{f_n\}_n$等度连续，所以存在$X$原点的邻域$U$使得对任意的$n$都有$f_n(U)\subset V$. 由于$C$是稠密的，所以$x$的邻域$(x+U)\cap C\neq \varnothing$. 取其中一点$x'$，他使得$\{f_n(x')\}_n$是$Y$中的Cauchy列，即对足够大的$i$和$j$有
+	\[
+	f_i(x')-f_j(x')\in V,
+	\]
+	于是
+	\[
+	f_i(x)-f_j(x)=f_i(x-x')+f_i(x')-f_j(x')+f_j(x'-x)\in V+V+V\subset W.
+	\]
+	所以$\{f_n(x)\}_n$也是$Y$中的Cauchy列。
+\end{proof}
+
+\begin{thm}
+设$X$是拓扑矢量空间，而$Y$是完备拓扑矢量空间，而$\{f_n:X\to Y\}_n$是一族连续线性映射。设$L$是所有使得$\lim_{n\to \infty}f_n(x)$存在的$x\in X$构成的子空间，如果$L$是第二纲的，则$L=X$. 且可以通过$f(x):=\lim_{n\to \infty}f_n(x)$定义一个连续线性映射$f:X\to Y$.
+\end{thm}
+
+\begin{proof}
+因为$Y$是完备的，所以序列收敛等价于它是Cauchy列。按照上一个命题，可以知道$\{f_n\}_n$等度连续且$L=X$. 所以$f(x):=\lim_{n\to \infty}f_n(x)$确实定义了一个映射$f:X\to Y$，不难发现他是线性的。最后只要说明他是连续的即可。
+
+取一个$Y$原点的邻域$W$，由于拓扑矢量空间是$\mathsf{T}_3$的，所以可以再取一个邻域$V$使得$V\subset \overline{V}\subset W$. 由于$\{f_n\}_n$等度连续，所以存在$X$原点的邻域$U$使得$f_n(U)\subset V$对任意的$n$都成立。由定义，$f(U)$里的元素都是$V$中序列的极限，故$f(U)\subset \overline{V}\subset W$. 因此$f$连续。
+\end{proof}
+
+上述定理需要$Y$是完备拓扑矢量空间，不过就是为了$L=X$. 实际上，在某些应用里，$\{f_n:X\to Y\}_n$处处收敛，所以可以直接撤掉$Y$是完备拓扑矢量空间这个假设。但为了保证等度连续性，$X$在$X$中是第二纲集的假设并不能去掉，不过这个假设可以通过另外的假设获得，比如$X$是一个完备度量空间，此即下面的定理。
+
+\begin{thm}
+设$X$是F-空间，而$Y$是拓扑矢量空间，如果$\{f_n:X\to Y\}_n$在$X$上处处收敛，则$f(x):=\lim_{n\to \infty}f_n(x)$定义了一个连续线性映射$f:X\to Y$.
+\end{thm}
+
+特别地，取$Y$为标量域$k$，则我们可以得知：设$X$是F-空间，如果$X^*$上的一族序列$\{f_n\}$在$X$上处处收敛，则$\{f_n\}$“收敛”于$X^*$上的一个元素$f$. 注意，收敛打括号是因为$X^*$上此时还没有一个拓扑。
+
+\begin{thm}[开映射定理]
+设$X$是F-空间，而$Y$是拓扑矢量空间，$f:X\to Y$是一个连续线性映射。如果$f(X)$是$Y$的第二纲集，则$f$是一个开映射，且$Y$是一个F-空间。
+\end{thm}
+
+注意，如果$f$是一个开映射，因为$X$是一个开集，所以$f(X)$是$Y$的开子空间，继而$f(X)=Y$. 所以$f$是一个开映射蕴含了它还是一个满射。开映射是本定理最不平凡的地方，而$Y$是一个F-空间可以通过F-空间的商空间还是F-空间（见\ref{1.48}）如下得到。
+
+由同构基本定理，我们有同构$g:X/\ker(f)\to Y$满足$g(\pi(x))=f(x)$，其中$\pi:X/\ker(f)$是商映射。可以说明$g$是一个连续映射，实际上，任取$Y$中的开集$V$，有$g^{-1}(V)=\pi(f^{-1}(V))$. 因为$\pi$是开映射而$f$是连续的，所以$g^{-1}(V)$是开集。此外，$g$还是开映射。任取$X/\ker(f)$中的开集$U$，我们有$g(U)=f(\pi^{-1}(U))$，因为$\pi$连续而$f$开，因此$g(U)$开。一个开的连续双射必然是同胚，所以$Y$同胚于$X/\ker(f)$，是一个F-空间。
+
+开映射定理不平凡部分的证明可以参见[Rudin Theorem 2.11]. 从开映射定理，我们可以直接给出如下简单的推论：
+\begin{compactenum}
+\item 设$f:X\to Y$是F-空间之间的满连续线性映射，则$f$是开映射。
+\item 设$f:X\to Y$是F-空间之间的双连续线性映射，则$f$是同胚。
+\item 设$X$上有两个拓扑$\tau_1$和$\tau_2$使得$(X,\tau_1)$和$(X,\tau_2)$都是F-空间，且$\tau_1\subset \tau_2$，则$\tau_1=\tau_2$.
+\end{compactenum}
+
+第一第二点是显然的，第三点取$f=\id_X$即可。第三点说明了，F-空间拓扑不可能加强也不可能减弱，具有一定的唯一性。
+
+下面这个闭图像定理非常管用，也是开映射定理的一个直接应用。首先观察到，如果双射$f:X\to Y$是开映射，则$f^{-1}:Y\to X$是一个连续映射。
+
+\begin{thm}[闭图像定理]
+设$X$和$Y$都是F-空间，而$f:X\to Y$是线性的，如果映射$f$的图像$\Gamma(f)=\{(x,f(x))\in X\times Y\,:\, x\in X\}$是$X\times Y$中的闭集，则$f$连续。
+\end{thm}
+
+\begin{proof}
+	由假设，$\Gamma(f)$是$X\times Y$的闭子空间。因为$X$, $Y$都是F-空间，所以$X\times Y$也是F-空间。作为完备度量空间的闭子空间，$\Gamma(f)$也是完备度量空间，所以$\Gamma(f)$也是F-空间。记$\pi_X$和$\pi_Y$分别是$X\times Y$到$X$和$Y$的投影，将$\pi_X$限制在$\Gamma(f)$，我们得到了一个映射$\pi$，他是$G$到$X$的一个双射。由开映射定理，$\pi$是一个开映射，因此$\pi^{-1}:X\to G$是一个连续映射。最后，由等式$f=\pi_Y\circ \pi^{-1}$，$f$是连续的。
+\end{proof}
+
+闭图像的假设常常用以下判据替代：若$X$中的序列$\{x_n\}$收敛且$Y$中对应的序列$\{f(x_n)\}$收敛，则
+\[
+	\lim_{n\to \infty}f(x_n)=f\left(\lim_{n\to \infty} x_n\right).
+\]
+可以看到，对连续映射，这是自然的。所以F-空间之间的线性映射$f$是连续的，如果点列极限与$f$可交换，则$f$是连续的。他与原条件的等价性来自于空间的第一可数性。

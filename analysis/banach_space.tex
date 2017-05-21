@@ -1,0 +1,93 @@
+\chapter{Banach空间的对偶空间}
+
+\begin{para}
+设$X$和$Y$是两个拓扑矢量空间，记$\mathcal{B}(X,Y)$是所有$X$到$Y$的有界线性映射构成的集合。不难看到$\mathcal{B}(X,Y)$有一个自然的矢量空间结构，因为两个有界线性映射相加依然是有界的，而一个有界线性映射乘以一个标量还是有界的。
+
+设$X$是可度量化空间，因为可度量化空间上的线性映射的有界性等价于连续性，所以此时$\mathcal{B}(X,Y)$就是$X\to Y$的所有连续线性映射的构成的矢量空间，特别地，$X^*=\mathcal{B}(X,k)$.
+
+如果$X$和$Y$都是赋范空间，则$\mathcal{B}(X,Y)$也将拥有一个自然的范数，使得$\mathcal{B}(X,Y)$也是一个赋范空间。设$f\in \mathcal{B}(X,Y)$，定义
+\[
+	|f|=\sup\bigl\{|f(x)|\,:\,x\in X,\,|x|\leq 1\bigr\},
+\]
+由于$f$是有界的，所以$|f|<\infty$. 我们下面验证，$|f|$构成了$\mathcal{B}(X,Y)$上的一个范数。
+
+\begin{proof}
+首先证明三角不等式$|f+g|\leq |f|+|g|$，其中$f$, $g\in \mathcal{B}(X,Y)$. 由于对任意满足$|x|\leq 1$的$x\in X$，有
+\[
+	|(f+g)x|=|fx|+|gx|\leq |f|+|g|,
+\]
+所以三角不等式$|f+g|\leq |f|+|g|$成立。此外，对标量$\alpha\in k$，由于$|\alpha f(x)|=|\alpha||f(x)|$，所以
+\[
+	|\alpha f|=|\alpha||f|.
+\]
+最后，对$f\neq 0$，由于存在一个$x\in X$使得$f(x)\neq 0$，此时$|f(x/|x|)|=|f(x)|/|x|>0$，所以$|f|\neq 0$.
+\end{proof}
+
+关于这个范数有一个有用的不等式$|f(x)|\leq |f||x|$：显然，$|x/|x||=1$，所以由
+\[
+	\left|f\left(\frac{x}{|x|}\right)\right|\leq |f|
+\]
+可以推知$|f(x)|\leq |f||x|$. 
+\end{para}
+
+\begin{pro}
+如果$Y$是Banach空间，则$\mathcal{B}(X,Y)$依上述范数也构成一个Banach空间。
+\end{pro}
+
+注意，这与$X$是否完备无关。因为标量域$k$，$\rr$或者$\cc$都是完备的，所以$X^*$在上面定义的范数下总是完备的。
+
+\begin{proof}
+	设$\{f_n\}$是$\mathcal{B}(X,Y)$中的一个Cauchy列，任取$x\in X$，我们有不等式
+	\[
+	|f_n(x)-f_m(x)|\leq |f_n-f_m||x|,
+	\]
+	所以$\{f_n(x)\}$是$Y$中的一个Cauchy列，它的极限记作$f(x)$. 遍历$x\in X$，我们就得到了一个线性映射$f:X\to Y$. 为证明其有界性，给定一个小正数$\epsilon$，注意到不等式
+	\[
+	|f(x)-f_n(x)|\leq \epsilon |x|
+	\]
+	对足够大的$n$一定成立，因此
+	\[
+	|f(x)|\leq |f_n(x)|+\epsilon|x|\leq \bigl(|f_n|+\epsilon\bigr) |x|,
+	\]
+	此外，由于$\{f_n\}$是一个Cauchy列，所以对于足够大的$m$和$n$成立$|f_n-f_m|\leq \epsilon$，固定一个$m$，于是对足够大的$n$满足$|f_n|\leq |f_m|+\epsilon$. 所以，对足够大的$n$，我们有
+	\[
+	|f(x)|\leq \bigl(|f_n|+\epsilon\bigr) |x|\leq \bigl(|f_m|+2\epsilon\bigr) |x|
+	\]
+	对任意的$x$都成立。于是$f:X\to Y$是一个有界线性映射。
+
+	重新利用
+	\[
+	|f(x)-f_n(x)|\leq \epsilon |x|,
+	\]
+	对$|x|\leq 1$时，我们有$|f-f_n|\leq \epsilon$，即$\lim_{n\to\infty}f_n=f$.
+\end{proof}
+
+以后，我们可能会使用$x^*$来表示$X^*$里面的元素，而$x^*(x)$会被记作$\langle x^*,x\rangle$. 于是，我们有不等式$|\langle x^*,x\rangle|\leq |x^*||x|$. 采用这个记号，是因为我们需要考虑$X^*$的对偶空间$(X^*)^*$. 将$(X^*)^*$简记为$X^{**}$.
+
+\begin{lem}
+	若$X$是一个赋范空间，则$x\mapsto \langle x^*,x\rangle$将定义一个$X^*$上的有界线性泛函$\psi(x)$，在$X^{**}$的范数下，我们有等式$|\psi(x)|=|x|$.
+\end{lem}
+
+线性是显然的，而有界性直接来自于不等式$|\psi(x)(x^*)|=|\langle x^*,x\rangle|\leq |x^*||x|$. 所以$\psi(x)$是$X^*$上的有界线性泛函。此外，对$|x^*|\leq 1$，我们有
+\[
+	|\psi(x)(x^*)|=|\langle x^*,x\rangle|\leq |x^*||x|\leq |x|.
+\]
+于是$|\psi(x)|\leq |x|$，下面我们证明存在一个$y^*$使得$\langle y^*,x\rangle=|x|$，于是$|\psi(x)|=|x|$.
+
+考虑$X$中由$x$张成的子空间$\langle x\rangle$，通过$\alpha x\mapsto \alpha|x|$，其中$\alpha$是$k$中任意的标量，可以定义$\langle x\rangle$上的一个线性泛函$f:\langle x\rangle\to k$. 所以，任取$z\in \langle x\rangle$，我们有$|f(z)|=|z|$，由Hahn-Banach定理，我们可以将$f$延拓成$X$上的一个有界线性泛函$y^*$，满足$|y^*(z)|\leq |z|$，所以$|y^*|\leq 1$且
+\[
+	|\psi(x)(y^*)|=\langle y^*,x\rangle = f(x) =|x|,
+\]
+此即所需。
+
+\begin{para}
+从上一个引理，我们有了一个线性映射$\psi:X\to X^{**}$，由等式$|\psi(x)|=|x|$，不难看到$\psi$是一个等距映射，即成立$|\psi(x)-\psi(y)|=|x-y|$. 此外，如果$\psi(x)=0$，则由等式$|\psi(x)|=|x|$可以推出$x=0$，所以$\psi$还是一个单射。
+
+于是，$X$等距同构于$X^{**}$的子空间$\psi(X)$. 通常把$X$等同于$\psi(X)$，即把$x$等同于$\psi(x)$，所以$X$可以看成$X^{**}$的一个子空间。如果$X$是Banach空间，则$X$还可以看成$X^{**}$的闭子空间。
+
+由于$\langle x^*,\psi(x)\rangle=\langle x,x^*\rangle$，而$x$也已经等同于$\psi(x)$，所以在记号上，我们有$\langle x^*,x\rangle=\langle x,x^*\rangle$. 
+
+对有限维空间，或者某些无限维空间（比如$L^1(\mu)$），我们有$X=X^{**}$. 这样的空间被称为自反的。反过来，比如当$X$不是完备的，则$X$必然是$X^{**}$的真子空间，因为$X^{**}$总是完备的。此外，即使存在$X$到$X^{**}$的等距同构$\varphi$，如果$\langle x^*,x\rangle=\langle \varphi(x),x^*\rangle$不成立，则$X$依然有可能是$X^{**}$的真子空间。
+\end{para}
+
+\section{伴随算子}

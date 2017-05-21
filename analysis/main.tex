@@ -17,21 +17,32 @@
 	\newtheorem{para}{}[chapter]
 		\renewcommand{\thepara}{\thechapter.\arabic{para}}
 	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{exa}[para]{Example}
 \theoremstyle{plain}
 	\newtheorem{thm}[para]{Theorem}
 	\newtheorem{pro}[para]{Proposition}
 
+\renewcommand*{\proofname}{Proof}
+
 \begin{document}
 \begin{titlepage}
 \setcounter{page}{-1}
-\title{分析学笔记}
-\author{Buwai. Lee@School of Physics, NJU}
-\date{2016秋季学期}
-\maketitle %标题
+\thispagestyle{empty}
+	\begin{flushright}
+	{\Huge\bfseries 分析学笔记}\\[\baselineskip]
+	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
+	{by Buwai Lee@Shanghai Nanyang Model High School}\par
+	\today
+	\end{flushright}
+	\vfill
+	{\Large\itshape Just for fun}
 \end{titlepage}
+\clearpage
+
 \frontmatter
 	\tableofcontents
 \mainmatter
 	\input{topological_vector_space.tex}
-
+	\input{banach_space.tex}
+	\input{hilbert_space.tex}
 \end{document}
