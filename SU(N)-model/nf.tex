@@ -1,41 +1,197 @@
 \documentclass[9pt]{extarticle}
 \usepackage[zh]{noteheader}
 
-\newcommand{\dd}{\mathrm{d}}
+\newcommand{\calt}{\mathcal{T}}
+\newcommand{\ee}{\mathrm{e}}
 \newcommand{\ii}{\mathrm{i}}
+\newcommand{\jj}{\mathcal{J}}
+\newcommand{\su}{\mathrm{SU}(N)}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\dd}{\mathrm{d}}
+
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\abs}{abs}
 \DeclareMathOperator{\Arg}{Arg}
 
 \begin{document}
 
-在引入（玻色到费米）修正之后，Green函数可以计算得
+已经计算得到
 \[
-	G_R(x,\tau)\sim \exp\left(-\ii k_F x\right)\left[\frac{\epsilon^2}{x^2+(u_c|\tau|+\epsilon)^2}\right]^{\alpha/2}\left[\frac{\epsilon^2}{x^2+(u_s|\tau|+\epsilon)^2}\right]^{-(1-1/N)/2}\exp\left(-\frac 1 N \ln \frac{y_{c\epsilon}-\ii x}{\epsilon}-\left(1-\frac 1 N\right) \ln \frac{y_{s\epsilon}-\ii x}{\epsilon}\right),
+	G(x,\tau)=\langle T_\tau \psi(x,t)\psi^\dag(0,0)\rangle=G_R(x,\tau)\,\ee^{-\ii k_F x}+G_L(x,\tau)\,\ee^{\ii k_F x},
 \]
-以及$G_L(x,\tau)=G_R(-x,\tau)$和$G(x,\tau)=G_R(x,\tau)+G_L(x,\tau)$. 取$\tau =\ii t +\sgn(t)\delta$，其中$\delta=0^+$，就可以得到实时间的Green函数，对$(t>0)$有
+其中，$G_R(x,\tau)$如果引入（玻色到费米）修正，则具有形式
 \[
-	G_R(x,t)\sim \exp\left(-\ii k_F x\right)\left[\frac{\epsilon^2}{x^2+(\ii u_c t+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_ct-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s t+\epsilon)^2}}{\ii(u_st-x)+\epsilon}\right)^{1-1/N},
-\]
-于是由$G^\text{ret}(x,t)=-2H(t)\,\mathrm{Im}\, G(x,t)$可以得到（右行粒子）谱函数的表达式为
-\[
-	\begin{aligned}
-	A^\text{ret}_R(k-k_F,\omega)&\sim -2\,\mathrm{Im}\int_{-\infty}^\infty \dd x\int_{0}^\infty \dd t \exp(\ii \omega t-\ii k x)\left[\frac{\epsilon^2}{x^2+(\ii u_c t+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_ct-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s t+\epsilon)^2}}{\ii(u_st-x)+\epsilon}\right)^{1-1/N}\\
-	&=-2\,\mathrm{Im}\int_{-\infty}^\infty \dd x\left[\frac{\epsilon^2}{x^2+(\ii u_c+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_c-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s +\epsilon)^2}}{\ii(u_s-x)+\epsilon}\right)^{1-1/N}f(\omega-kx),
-	\end{aligned}
+	G_R(x,\tau)\sim \delta_{ab}F\left(x,|\tau|,u_c,\alpha /2\right)\exp\left(-\frac {L_c(x)} N -\left(1-\frac 1 N\right) L_s(x)\right),
 \]
 其中
 \[
-	f(y)=\int_{0}^\infty \dd t \,t^{1-\alpha-1/N} \exp(\ii y t)=\Gamma \left(2-\alpha-\frac 1 N\right)(-\ii y)^{\alpha+1/N-2},
+	F(x,\tau,u,a):=\left[\frac{\epsilon^2}{x^2+(u\tau+\epsilon)^2}\right]^{a},\quad L_{c(s)}(x):=\ln \frac{y_{c(s)\epsilon}-\ii x}{\epsilon}.
+\]
+而$G_L(x,\tau)=G_R(-x,\tau)$. 
+
+如果重复类似的计算，可以得到
+\[
+	\langle T_\tau \psi^\dag(x,t)\psi(0,0)\rangle = G_R(x,\tau)\,\ee^{\ii k_F x}+G_L(x,\tau)\,\ee^{-\ii k_F x}.
+\]
+我们将使用它来计算延时Green函数。
+
+计算谱函数需要实时间的延时Green函数，首先，我们先通过虚时间的Green函数计算实时间的Green函数。而这只需要进行适当的解析延拓即可，见各类量子多体的材料，比如\cite{giamarchi2004quantum}.
+
+取$\tau =\ii t +\sgn(t)\delta$，其中$\delta=0^+$，就可以得到实时间的Green函数，对$t>0$有
+\[
+	G_R(x,t)\sim \delta_{ab}\left[\frac{\epsilon^2}{x^2+(\ii u_c t+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_ct-x)+\epsilon}\right)^{1/N}\left(\frac{\epsilon}{\ii(u_st-x)+\epsilon}\right)^{1-1/N}.
+\]
+同样，$G_R(x,t)=G_L(-x,t)$.
+
+实时间的（费米）延时Green函数被定义为
+\[
+	G^\text{ret}(x,t)=-\ii H(t)\left[\langle \psi(x,t)\psi^\dag(0,0)\rangle+\langle \psi^\dag(0,0)\psi(x,t)\rangle\right],
+\]
+注意到，对$t>0$，
+\[
+	\langle \psi^\dag(0,0)\psi(x,t)\rangle^*=\langle \psi^\dag(x,t)\psi(0,0)\rangle=G_R(x,t)\,\ee^{\ii k_F x}+G_L(x,t)\,\ee^{-\ii k_F x}.
+\]
+所以
+\begin{align*}
+	G^\text{ret}(x,t)&=-\ii H(t)\left[G_R(x,t)\,\ee^{-\ii k_F x}+G_L(x,t)\,\ee^{\ii k_F x}+G_R(x,t)^*\,\ee^{-\ii k_F x}+G_L(x,t)^*\,\ee^{\ii k_F x}\right]\\
+	&=-2\ii H(t)\left[\mathrm{Re}(G_R(x,t))\,\ee^{-\ii k_F x}\,+\,\mathrm{Re}(G_L(x,t))\,\ee^{\ii k_F x}\right].
+\end{align*}
+记
+\[
+	G^\text{ret}_R(x,t)=-2\ii H(t)\mathrm{Re}(G_R(x,t)),\quad 	G^\text{ret}_L(x,t)=-2\ii H(t)\mathrm{Re}(G_L(x,t)),
+\]
+它们有关系$G^\text{ret}_L(x,t)=G^\text{ret}_R(-x,t)$.
+
+差一个相乘因子，一个系统的谱函数被定义为延时Green函数Fourier变换后的虚部，即
+\[
+	A(k,\omega)=-\frac{1}{\pi}\,\mathrm{Im}\,G^\text{ret}(k,\omega).
+\]
+由$G^\text{ret}_R(x,t)$的表示，可以计算得
+\[
+	A(k,\omega)=A_R(k-k_F,\omega)+A_L(k+k_F,\omega),
+\]
+其中
+\[
+	A_{R}(k-k_F,\omega)=\frac{2\delta_{ab}}{\pi}\, \mathrm{Re}\int_{\rr^2}\dd t\dd x\, \exp(\ii \omega t-\ii k x)H(t)\mathrm{Re}(G_R(x,t)).
+\]
+\[
+	A_{L}(k+k_F,\omega)=\frac{2\delta_{ab}}{\pi}\, \mathrm{Re}\int_{\rr^2}\dd t\dd x\, \exp(\ii \omega t-\ii k x)H(t)\mathrm{Re}(G_L(x,t)).
+\]
+
+现在以（右行粒子）谱函数的为例，按定义，有如下积分
+\begin{align*}
+	A_R&(k-k_F,\omega)=\frac{2\delta_{ab}}{\pi} \, \mathrm{Re}\int_{\rr^2}\dd t\dd x\, \exp(\ii \omega t-\ii k x)H(t)\mathrm{Re}(G_R(x,t))\\
+	&\sim \frac{2\delta_{ab}}{\pi}\,\mathrm{Re}\int_{-\infty}^\infty \dd x\int_{0}^\infty \dd t \,\exp(\ii \omega t-\ii k x)\\
+	&\hspace{5em}\mathrm{Re}\left\{\left[\frac{\epsilon^2}{x^2+(\ii u_c t+\epsilon)^2}\right]^{\alpha/2}\left(\frac{\epsilon}{\ii(u_ct-x)+\epsilon}\right)^{1/N}\left(\frac{\epsilon}{\ii(u_st-x)+\epsilon}\right)^{1-1/N}\right\}.
+\end{align*}
+为了对这二重积分进行计算，我们引入新的变量$z=x/t$以及$s=t$，不难计算得到
+\[
+	\dd x \dd t=s\dd z\dd s,
+\]
+注意被积分函数都可以写成$s^a f(z)$的形式，于是我们就可以先对$s$从$0$到$\infty$积分，得到
+\begin{align*}
+	A_R&(k-k_F,\omega)\\
+	&\sim \frac{2\delta_{ab}}{\pi}\,\mathrm{Re}\int_{-\infty}^\infty \dd x \frac{f(\omega-kx)}{F\left(x,\ii,u_c,-\alpha/2\right)}\left(\frac{\epsilon}{\ii(u_c-x)+\epsilon}\right)^{1/N}\left(\frac{\epsilon}{\ii(u_s-x)+\epsilon}\right)^{1-1/N},
+\end{align*}
+其中
+\[
+	f(y)=\mathrm{Re}\int_{0}^\infty \dd t \,t^{-\alpha} \exp(\ii y t)=\Gamma \left(1-\alpha\right)\,\mathrm{Re}\left((-\ii y)^{\alpha-1}\right),
+\]
+这个积分只在$\alpha<1$时候才收敛，不过已经知道$\alpha$是一个很小的正数，所以这个条件是不难满足的。
+
+结合这个积分，我们得到了
+\begin{align*}
+	A_R&(k-k_F,\omega)\\
+	&\propto \delta_{ab}\,\mathrm{Re}\int_{-\infty}^\infty \dd x \frac{\mathrm{Re}\bigl((kx-\omega)^{\alpha-1}\bigr)}{(x^2+(\ii u_c+\epsilon)^2)^{\alpha/2}}\left(\frac{1}{\ii(u_c-x)+\epsilon}\right)^{1/N}\left(\frac{1}{\ii(u_s-x)+\epsilon}\right)^{1-1/N},
+\end{align*}
+其中$\epsilon=0^+$. 
+
+为简化这个积分，首先注意到，被积式除去一个实数$\mathrm{Re}\bigl((kx-\omega)^{\alpha-1}\bigr)$的部分在$x^2-\max\{u_s,u_c\}^2>0$的时候（我们下面假设$u_c>u_s$，一般来说是这样的），等于
+\[
+	\frac{\ii}{(x^2-(u_c-\ii\epsilon)^2)^{\alpha/2}}\left(\frac{1}{x-u_c+\ii\epsilon}\right)^{1/N}\left(\frac{1}{x-u_s+\ii\epsilon}\right)^{1-1/N},
+\]
+令$\epsilon\to 0^+$，不难看到是纯虚的，其实部为零。由积分恒等式
+\[
+	\mathrm{Re}\int_\rr \dd x \,f(x)=\int_\rr \dd x \, \mathrm{Re}(f(x)),
+\]
+我们可以把积分改写为
+\begin{align*}
+	A_R&(k-k_F,\omega)\\
+	&\propto \delta_{ab}\,\mathrm{Re}\int_{-u_c}^{u_c} \dd x \frac{\mathrm{Re}\bigl((kx-\omega)^{\alpha-1}\bigr)}{(x^2+(\ii u_c+\epsilon)^2)^{\alpha/2}}\left(\frac{1}{\ii(u_c-x)+\epsilon}\right)^{1/N}\left(\frac{1}{\ii(u_s-x)+\epsilon}\right)^{1-1/N}.
+\end{align*}
+这个表达式对下面的渐进分析是实用的。
+
+给出了右行粒子的表达式，对左行粒子，我们同样可以计算得到
+\begin{align*}
+	A_L&(k+k_F,\omega)\\
+	&\propto \delta_{ab}\,\mathrm{Re}\int_{-\infty}^{\infty} \dd x \frac{\mathrm{Re}\bigl((-kx-\omega)^{\alpha-1}\bigr)}{(x^2+(\ii u_c+\epsilon)^2)^{\alpha/2}}\left(\frac{1}{\ii(u_c+x)+\epsilon}\right)^{1/N}\left(\frac{1}{\ii(u_s+x)+\epsilon}\right)^{1-1/N}.
+\end{align*}
+由积分恒等式
+\[
+	\int_\rr \dd x\, f(x)=\int_\rr \dd x\, f(-x),
+\]
+可以断言
+\[
+	A_L(k+k_F,\omega)=A_R(k-k_F,\omega).
+\]
+因此，我们只要分析$A_R(k-k_F,\omega)$即可。
+
+\section{数值积分与渐进分析}
+
+选取参数$N=2$, $\alpha=0.2$, $k_F=1$, $u_c=0.3$而$u_s=0.2$的情况下，数值积分作图如下：
+\begin{center}\includegraphics[scale=1]{1.pdf}\end{center}
+其中第一个峰在$u_s k$处，第二个峰在$u_c k$处。此外，在$\omega=-u_c k$处，也有一个突起，数值积分作图如下：
+\begin{center}\includegraphics[scale=1]{1_2.pdf}\end{center}
+注意，两幅图的纵坐标不是一个量级的。
+
+为求出在$\omega=u_c k$处发散的程度，代入$\omega=u_c k$，此时
+\[
+(x^2-u_c^2)^{\alpha/2}\sim (x-u_c)^{\alpha/2}
 \]
 所以
 \[
-	\begin{aligned}
-	A^\text{ret}_R(k-k_F,\omega)&\propto -\,\mathrm{Im}\int_{-\infty}^\infty \dd x\,(\ii (kx-\omega))^{\alpha+1/N-2}\left[\frac{1}{x^2+(\ii u_c+\epsilon)^2}\right]^{\alpha/2}\left(\frac{1}{\ii(u_c-x)+\epsilon}\right)^{1/N}\left(\frac{\sqrt{x^2+(\ii u_s +\epsilon)^2}}{\ii(u_s-x)+\epsilon}\right)^{1-1/N},
-	\end{aligned}
+	A_R(k-k_F,\omega)\sim \int_{u_c-\delta}^{u_c} \dd x \,(x-u_c)^{\alpha-1-\alpha/2-1/N}\sim \delta^{\alpha/2-1/N},
 \]
-其中$\epsilon=0^+$. 可以作图如下：
-\begin{center}
-\includegraphics[scale=0.8]{1.pdf}
-\end{center}
-其中第一个峰在$u_s$处，第二个峰在$u_c$处。左行粒子的谱函数的计算是类似的。
+因此，可以得到
+\[
+	A_R(k-k_F,\omega)\sim |\omega - u_c k|^{\alpha/2-1/N}.
+\]
+在这里，$A_R(k-k_F,\omega)$形如$|\omega - u_c k|^{\alpha/2-1/N}$发散。
+
+但是，注意，这也仅仅只是一个估计。比如取参数$N=10$, $\alpha=0.6$, $k_F=1$, $u_c=0.3$而$u_s=0.2$时候，数值积分的结果是
+\begin{center}\includegraphics[scale=1]{1_3.pdf}\end{center}
+在$\omega=u_ck$处依然发散。但是此时前面的估计却给出了
+\[
+	A_R(k-k_F,\omega)\sim |\omega - u_c k|^{0.3-0.1}=|\omega - u_c k|^{0.2},
+\]
+他将在$\omega=u_ck$处为零！所以，在$\omega=u_ck$处，发散应该比$\alpha/2-1/N$更快一些，但也快不了多少。因为前面已经看到，积分是在有限区间上进行的，在$\omega=u_ck$处其他奇点处的积分很快收敛，所以在$x=u_c$处积分的发散占据的是主导地位。
+
+类似地，在$\omega=u_s k$附近，使用同一手段可以得到
+\[
+	A_R(k-k_F,\omega)\sim \int_{u_s k -\delta}^{u_s k +\delta} \dd x \,(x-u_s)^{(\alpha-1)-(1-1/N)}\sim \delta^{\alpha+1/N-1},
+\]
+于是，在$\omega=u_s k$附近有
+\[
+	A_R(k-k_F,\omega)\sim H(\omega-u_s k)|\omega - u_s k|^{\alpha+1/N-1}.
+\]
+由于$\alpha$是一个很小的正数，所以只要当$N$足够大的时候，$A_R(k-k_F,\omega)$在$\omega=u_s k$处也确确实实是发散的。
+
+最后，在$\omega=-u_c k$附近，依然使用同一手段可以得到
+\[
+	A_R(k-k_F,\omega)\sim \int_{-u_c}^{-u_c+\delta} \dd x \,(x+u_c)^{\alpha-1-\alpha/2}\sim \delta^{\alpha/2},
+\]
+因为$\alpha>0$，所以在$\omega=-u_c k$处积分是不发散的。但是该处的斜率为
+\[
+	\frac{\partial }{\partial \delta} \delta^{\alpha/2}=\delta^{\alpha/2-1},
+\]
+故他与横轴垂直相交。此外，在$\omega=-u_c k$附近，
+\[
+	A_R(k-k_F,\omega)\sim H(-\omega-u_c k)|\omega + u_c k|^{\alpha/2}.
+\]
 \end{document}
