@@ -116,4 +116,104 @@
 	此时$H(z)$可以取作$\Omega(Az,z)/2$.
 \end{thm}
 
+\section{辛流形}
+
+\begin{para}
+	一个辛流形是一个对$(P,\Omega)$，其中$P$是一个流形（可以是Banach流形）而$\Omega$是$P$上的一个非退化的闭2-形式，所谓的非退化就是说，在每一点$p\in P$处，二项式$\Omega_p:T_pP\times T_p P\to \rr$是非退化的，如果这还是强非退化的，则称$(P,\Omega)$是一个强辛流形。
+
+	类似矢量空间的情况，我们可以定义$\Omega_p^\flat(z)=\Omega_p(z,*)$，于是这就得到了映射$\Omega^\flat : \Gamma(TP)\to \Gamma(T^*P)$. 
+\end{para}
+
+\begin{thm}
+	如果$(P,\Omega)$是强辛流形，则在每一点存在局部坐标系使得$\Omega$是一个常值。
+\end{thm}
+
+对于有限维的情况，任意辛流形都是强辛流形，他一定存在局部坐标系$\{q^i;p^i\}_{1\leq i \leq n}$使得
+\[
+	\Omega=\sum_{i=1}^n \dd q^i\wedge \dd p^i.
+\]
+这组坐标被称为辛流形上面的正则坐标。
+
+习惯上，对于$2n$维辛流形，会定义上面的体积形式为
+\[
+	\Lambda =\frac{(-1)^{n(n-1)/2}}{n!} \Omega\wedge\cdots \wedge \Omega,
+\]
+其中外积乘$n$次，在正则坐标下可以写成
+\[
+	\Lambda = \dd q^1\wedge \cdots \wedge \dd q^n\wedge p^1\wedge \cdots\wedge p^n.
+\]
+
+\begin{para}[辛变换]
+	设$(P_1,\Omega_1)$和$(P_2,\Omega_2)$是两个辛流形，而光滑映射$\varphi:P_1\to P_2$被称为一个辛或者正则映射，如果$\varphi$满足$\varphi^*\Omega_2=\Omega_1$.
+\end{para}
+
+有限维的情况，与体积形式的定义合起来，不难看出$\varphi^*\Gamma_2=\Gamma_1$. 这就是所谓的正则映射保体积。同时，也因为正则变换是保体积的，所以其处处非退化，继而保证了局部是微分同胚。
+
+\begin{para}[Hamilton矢量场]
+称辛流形$(P,\Omega)$上的一个矢量场$X$是Hamilton矢量场，如果存在一个光滑函数$H$使得$\Omega_z(X_z,*)=\dd H(z)$处处成立。这个光滑函数$H$被称为Hamilton矢量场$X$对应的Hamilton函数。
+\end{para}
+
+记$L_X$是沿着$X$的Lie导数，由Cartan公式
+\[
+	L_X=i_X\circ \dd+\dd\circ i_X,
+\]
+其中$i_X$是内积算符，
+\[
+	L_X\Omega=i_X\dd \Omega+\dd i_X \Omega=\dd i_X \Omega,
+\]
+我们称虎一个矢量场是局部Hamilton的，如果$i_X \Omega$是闭形式，利用上面的公式即$L_X\Omega=0$.
+
+设$\varphi_t^*$是一个局部Hamilton矢量场$X$对应的流，则
+\[
+	\frac{\dd}{\dd t}\varphi_t^* \Omega=\varphi_t^* L_X\Omega \Omega=0,
+\]
+所以$\varphi_t^* \Omega=\varphi_0^* \Omega=\Omega$，即$\varphi_t^*$是一个辛变换。
+
+\begin{para}[能量守恒]
+设$X_H$是一个Hamilton矢量场，它的Hamilton函数是$H$，对应的流为$\varphi_t$. 则我们有$H(\varphi(z))=H(z)$，即在Hamilton矢量场的积分曲线上，Hamilton函数为常数。
+
+证明是简单的，直接计算有
+\[
+	\frac{\dd}{\dd t}H(\varphi_t(z))=\dd H(\varphi_t(z))(X_{\varphi_t(z)})=\Omega(X_{\varphi_t(z)},X_{\varphi_t(z)})=0.
+\]
+\end{para}
+
+\begin{lem}
+	设$(P_1,\Omega_1)$和$(P_2,\Omega_2)$是两个辛流形，而$\varphi:P_1\to P_2$是一个光滑同胚，则对每一个Hamilton矢量场$X_H$都有
+	\[
+	\varphi^*(X_H)=X_{H\circ \varphi}.
+	\]
+\end{lem}
+
 \section{Possion括号}
+
+\begin{para}
+设$X_F$和$X_G$是Hamilton矢量场，定义Possion括号$\{F,G\}$为
+\[
+	\{F,G\}(z)=\Omega(X_F(z),X_G(z)).
+\]
+设$\varphi$是一个辛变换，作用$\varphi^*$后，我们就得到了
+\[
+	\{F,G\}\circ \varphi=\{F\circ \varphi,G\circ \varphi\}.
+\]
+
+类似地，有$\varphi_t^*\{F,G\}=\{\varphi_t^* F,\varphi_t^* G\}$，其中$\varphi_t$是局部Hamilton矢量场$X$的流，求个导就有
+\[
+	X(\{F,G\})=\{X(F),G\}+\{F,X(G)\}.
+\]
+此外，对Hamilton矢量场$X_H$，我们还有
+\[
+	\{F,H\}=\Omega(X_F,X_H)=\dd F(X_H)=X_H(F),
+\]
+结合两式，这就得出了Jacobi恒等式
+\[
+	\{\{F,G\},H\}=\{\{F,H\},G\}+\{F,\{G,H\}\}.
+\]
+从上面的推导可以看出，Jacobi恒等式是$\varphi_t$正则性的无穷小对应。
+\end{para}
+
+\begin{lem}
+从上述推导，可以得到等式$\{F,G\}=X_G(F)=-X_F(G)$. 我们将之总结为一个引理。
+\end{lem}
+
+并且，由Jacobi恒等式，我们有$[X_F,X_G]=-X_{\{F,G\}}$.

@@ -1,5 +1,7 @@
 \chapter{Banach空间的对偶空间}
 
+\section{有界线性映射空间的范数}
+
 \begin{para}
 设$X$和$Y$是两个拓扑矢量空间，记$\mathcal{B}(X,Y)$是所有$X$到$Y$的有界线性映射构成的集合。不难看到$\mathcal{B}(X,Y)$有一个自然的矢量空间结构，因为两个有界线性映射相加依然是有界的，而一个有界线性映射乘以一个标量还是有界的。
 
@@ -81,13 +83,54 @@
 此即所需。
 
 \begin{para}
-从上一个引理，我们有了一个线性映射$\psi:X\to X^{**}$，由等式$|\psi(x)|=|x|$，不难看到$\psi$是一个等距映射，即成立$|\psi(x)-\psi(y)|=|x-y|$. 此外，如果$\psi(x)=0$，则由等式$|\psi(x)|=|x|$可以推出$x=0$，所以$\psi$还是一个单射。
+从上一个引理，我们有了一个线性映射$\psi:X\to X^{**}$，由等式$|\psi(x)|=|x|$，$\psi$是一个等距映射，即成立$|\psi(x)-\psi(y)|=|x-y|$. 此外，如果$\psi(x)=0$，则由等式$|\psi(x)|=|x|$可以推出$x=0$，所以$\psi$还是一个单射。
 
 于是，$X$等距同构于$X^{**}$的子空间$\psi(X)$. 通常把$X$等同于$\psi(X)$，即把$x$等同于$\psi(x)$，所以$X$可以看成$X^{**}$的一个子空间。如果$X$是Banach空间，则$X$还可以看成$X^{**}$的闭子空间。
 
 由于$\langle x^*,\psi(x)\rangle=\langle x,x^*\rangle$，而$x$也已经等同于$\psi(x)$，所以在记号上，我们有$\langle x^*,x\rangle=\langle x,x^*\rangle$. 
 
-对有限维空间，或者某些无限维空间（比如$L^1(\mu)$），我们有$X=X^{**}$. 这样的空间被称为自反的。反过来，比如当$X$不是完备的，则$X$必然是$X^{**}$的真子空间，因为$X^{**}$总是完备的。此外，即使存在$X$到$X^{**}$的等距同构$\varphi$，如果$\langle x^*,x\rangle=\langle \varphi(x),x^*\rangle$不成立，则$X$依然有可能是$X^{**}$的真子空间。
+对有限维空间，或者某些无限维空间（比如$\mathsf{L}^1(\mu)$），我们有$X=X^{**}$. 这样的空间被称为自反的。反过来，比如当$X$不是完备的，则$X$必然是$X^{**}$的真子空间，因为$X^{**}$总是完备的。此外，即使存在$X$到$X^{**}$的等距同构$\varphi$，如果$\langle x^*,x\rangle=\langle \varphi(x),x^*\rangle$不成立，则$X$依然有可能是$X^{**}$的真子空间。
 \end{para}
 
+\begin{pro}
+设$X$, $Y$都是赋范拓扑矢量空间，而$x_0\in X$以及$f\in \mathcal{B}(X,Y)$，则
+\[
+	|x_0|=\sup\left\{|\langle x^*,x_0\rangle|\,:\, |x^*|\leq 1\right\},\quad
+	|f|=\sup \left\{|\langle y^*,f(x)\rangle |\,:\, |x|\leq 1,\, |y^*|\leq 1\right\}.
+\]
+\end{pro}
+
+这个命题的证明是简单的，从前面已经知道，对$|x^*|\leq 1$的$x^*$，成立$|\langle x^*,x_0\rangle|\leq |x^*||x_0|\leq |x_0|$. 并且，从上一个Lemma的证明中已经知道，存在一个$x_1^*$使得$|x_1^*|\leq 1$且$\langle x_1^*,x_0\rangle=|x_0|$，所以第一个等式得证。
+
+对第二个等式，应用第一个等式，我们有
+\[
+	|f(x)|=\sup\left\{|\langle y^*,f(x)\rangle|\,:\, |y^*|\leq 1\right\},
+\]
+然后应用$|f|$的定义
+\[
+	|f|=\sup\left\{|f(x)|\,:\, |x|\leq 1\right\},
+\]
+所以
+\[
+	|f|=\sup \left\{|\langle y^*,f(x)\rangle |\,:\, |x|\leq 1,\, |y^*|\leq 1\right\}.
+\]
+
 \section{伴随算子}
+
+\begin{thm}
+设$X$和$Y$都是赋范空间，对每一个$f\in \mathcal{B}(X,Y)$，我们都可以定义唯一的一个$f^*\in \mathcal{B}(Y^*,X^*)$，使得对任意的$x\in X$以及$y^*\in Y$成立
+\[
+	\langle f^*(y^*),x\rangle=\langle y^*,f(x)\rangle.
+\]
+此外，还成立$|f^*|=|f|$.
+\end{thm}
+
+$f^*$即所谓的拉回，对于有限维空间，$f^*$即$f$的转置。不难看到，它的定义为$f^*(y^*)=y^*\circ f$. 唯一性来自于等式对任意$x$都成立，因为$f^*(y^*)$是一个$X$上的线性函数。$f^*$线性的检验是平凡的，最后我们只需要证明$|f^*|=|f|$，这也就顺便说明了$f^*$有界。
+
+由上一节最后的命题，
+\begin{align*}
+|f|&=\sup \left\{|\langle y^*,f(x)\rangle |\,:\, |x|\leq 1,\, |y^*|\leq 1\right\}\\
+&=\sup \left\{|\langle f^*(y^*),x\rangle |\,:\, |x|\leq 1,\, |y^*|\leq 1\right\}\\
+&=\sup \left\{|f^*(y^*)|\,:\, |y^*|\leq 1\right\}\\
+&=|f^*|.
+\end{align*}

@@ -1,0 +1,165 @@
+\chapter{例子}
+
+说在最前面，经常地，在同一个矢量空间上，我们可以为了不同的目的选取不同的拓扑，下面各节中出现的拓扑往往是最熟悉的那些，但这不代表这是唯一的拓扑。一个重要的反例是有限维空间，可以看到，作为拓扑矢量空间，它上面具有唯一的拓扑。
+
+\section{有限维空间}
+
+\begin{lem}
+设$X$是$k$-拓扑矢量空间（比如$k$可以取作$\rr$或者$\cc$）. 则任意的线性映射$f:k^n\to X$是连续映射。
+\end{lem}
+
+这个小引理表示，有限维空间上的线性映射是都是连续的。所以这也同时给出了有限维矢量空间的拓扑很大的限制。事实上下一个命题就将我们，有限维矢量空间唯一的拓扑就是熟知的欧式空间拓扑（对实数域和复数域）。
+
+\begin{proof}
+设$\{e_i\}$是$k^n$的一组基，令$x_i=f(e_i)$. 对每一个$v=\sum_{i=1}^nv^ie_i$，我们有
+\[
+	f(v)=\sum_{i=1}^nv^ix_i.
+\]
+由于分量函数$v\to v^i$是连续的，则由有限个加法与标量乘法的连续性，$f$是连续的。
+\end{proof}
+
+\begin{pro}
+	设域$k$为$\cc$或者$\rr$，而$X$是一个$k$-拓扑矢量空间。设$Y$是$X$的一个有限维子空间，$\dim Y=n$. 则每一个同构$k^n\to Y$是同胚，且$Y$是一个闭子空间。
+\end{pro}
+
+\begin{pro}\label{1.46}
+局部紧拓扑矢量空间是有限维的。因此，只有形如$\cc^n$或者$\rr^n$的拓扑矢量空间才是局部紧的，无限维的拓扑矢量空间都不可能是局部紧的。
+\end{pro}
+
+这俩命题这里都不证了，可见[Rudin Theorem 1.21]和[Rudin Theorem 1.22].
+
+作为推论，如果一个局部有界拓扑矢量空间满足Heine-Borel性质，则原点处可以找到有界闭子集是紧的，这是一个局部紧拓扑矢量空间，继而是有限维的。所以，在无限维拓扑矢量空间上，不可能同时满足局部有界以及Heine-Borel性质。
+
+\section{连续函数空间}
+
+这节讨论欧式空间中的开集上的连续函数空间。首先，我们给出这样一个拓扑学上的命题。
+
+\begin{thm}
+设$M$是一个局部紧第二可数Hausdorff空间，则存在一列开集$\{U_i\}$，使得每个$\overline{U}_i$都是紧集，$\overline{U}_i\subset U_{i+1}$，且$\bigcup_iU_i=M$.这样的一列开集被称为$M$上的一个穷竭。
+\end{thm}
+
+\begin{proof}
+任取$x\in M$，由于$M$是局部紧Hausdorff空间，所以我们可以找一个邻域$V_x$使得$\overline{V}_x$是紧集。由于$M$第二可数，有可数基，所以我们可以找至多可数个$x$使得$V_x$构成$M$的一个开覆盖，由于至多可数，所以我们可以利用正数将其编号。随便选定一个编号就好，令$U_1=V_1$，并假设在$0<i<n$的时候$U_i$都已经定义，那么考虑紧集$\bigcup_{i<n}\overline{U}_i$，开覆盖$\{V_j\}$中可以找到一个有限子覆盖，对应着有限指标集$I$，使得$\bigcup_{j\in I}V_j$也是$\bigcup_{i<n}\overline{U}_i$的开覆盖，取$k=\sup(I)$，则
+\[
+	\bigcup_{i<n}\overline{U}_i\subset \bigcup_{j\leq k}V_j,
+\]
+那么定义$U_n=\bigcup_{j\leq k}V_j$，我们就归纳地找到了$M$上的一个穷竭。
+\end{proof}
+
+由于欧式空间中的非空开集总是局部紧的第二可数Hausdorff空间，所以对每一个开集$U$都存在一个穷竭。
+
+下面，我们将讨论欧式空间上的非空开子集$U$上所有的复值连续函数构成的矢量空间$\mathsf{C}(U)$. 首先，即使$U$是任意集合，矢量空间结构是自然的，取连续函数$f$和$g$和标量$a$，可以定义加法和数乘如下：
+\[
+	(f+g)(x):=f(x)+g(x),\quad (af)(x)=af(x).
+\]
+
+\begin{para}
+为了给出$\mathsf{C}(U)$上的拓扑结构，我们先回忆一些中学就学过的定义和定理，它们涉及连续函数族的极限等。
+\begin{compactenum}[(1)]
+\item 设$f:X\to Y$是两个度量空间之间的映射，如果对任意的整数$\epsilon$，都存在$\delta$使得对任意满足$d_X(x,y)<\delta$的$x$, $y\in X$都有$d_Y(f(x),f(y))<\epsilon$，则称$f$是一致连续的。
+
+一致连续与普通的连续性的区别在于，普通的连续性只需要在一点附近有一个$\delta$就行，每点处的$\delta$可以不同，而一致连续需要在全局都有一个$\delta$. 因此，不难得到，一致连续函数是连续的，而如果在全局加上一个有限性条件，比如全局是一个紧集，则此时连续函数是一致连续的。
+
+\item 设$\{f_n\}$是同一个集合$E$到一个度量空间$X$的函数族，如果对每一个正数$\epsilon$，都存在一个$N$使得$n>N$的时候有
+\[
+	d_X(f_n(x),f(x))< \epsilon
+\]
+对任意的$x\in E$都成立，则称$\{f_n\}$一致收敛于函数$f$. 
+
+显然，如果$\{f_n\}$一致收敛于$f$，则也必然逐点收敛于$f$，即对每一个$x\in E$，序列$\{f_n(x)\}$收敛于$f(x)$. 反过来，如果$\{f_n\}$逐点收敛，则可以定义出一个$E$上的函数$f$通过$f(x)=\lim_{n}f_n(x)$，但是此时$\{f_n\}$不一定一致收敛于$f$.
+
+\item 在(2)中，如果度量空间$X$是完备的，则我们有如下的Cauchy准则：$\{f_n\}$一致收敛当且仅当，对每一个正数$\epsilon$，都存在一个$N$使得$m$, $n>N$的时候有
+\[
+	d_X(f_n(x),f_m(x))< \epsilon
+\]
+对任意的$x\in E$都成立。
+
+\item 在(2)中，如果$E$是一个拓扑空间，则此时可以考虑连续函数族。这里有一个非常重要的一致极限定理：一致收敛的连续函数序列将收敛于一个连续函数。
+\end{compactenum}
+\end{para}
+
+\begin{para}
+现在考虑考虑欧式空间中的紧子集$K$，以及$K$上的复值连续函数空间$\mathsf{C}(K)$. 由于紧子集上的复值连续函数都是有界的，所以对每一个$f\in \mathsf{C}(K)$
+\[
+	|f|:=\sup_{x\in K}|f(x)|
+\]
+都是一个正实数，并且只有当$f(x)$恒为零的时候才有$|f|=0$. 此外，由于
+\[
+	|(f+g)(x)|=|f(x)+g(x)|\leq |f(x)|+|g(x)|\leq |f|+|g|
+\]
+对任意的$x\in K$都成立，所以三角不等式$|f+g|\leq |f|+|g|$也成立。这样我们就在$\mathsf{C}(K)$上给出的一个范数，使得其成为了一个赋范空间。
+
+在这个度量下，$|f-g|< \epsilon$等价于
+\[
+	\sup_{x\in K}|f(x)-g(x)|<\epsilon,
+\]
+所以，$\mathsf{C}(K)$中的序列在这个度量下的收敛等价于一致收敛。
+\end{para}
+
+\begin{pro}
+$\mathsf{C}(K)$是一个Banach空间。
+\end{pro}
+
+\begin{proof}
+即证明完备。考虑$\mathsf{C}(K)$的Cauchy列，由一致收敛性的Cauchy准则，它一致收敛于一个函数，而一致收敛的连续函数序列收敛于连续函数，所以它在$\mathsf{C}(K)$中收敛。
+\end{proof}
+
+\begin{para}[$\mathsf{C}(U)$的拓扑]
+考虑$U$的一个穷竭，进而得到一个至多可数紧集族$K_1\subset K_2\subset \cdots$使得每一个$K_n\subset K_{n+1}^\circ$且$\bigcup_i K_i=U$. 考虑如下半范数族
+\[
+	p_n(f):=\sup_{x\in K_n}|f(x)|,
+\]
+因为$K_n\neq U$，所以它们不是范数。而这个半范数族是可分点的，这里即没有非平凡的公共零点，实际上，如果存在一个$f$和$x_0\in U$有$f(x_0)\neq 0$，则必然有一个$K_n$使得$x_0\in K_n$，此时$p_n(f)\geq |f(x_0)|>0$.
+
+由Theorem \ref{1.61}，集合族
+\[
+	V_n=\left\{f\in \mathsf{C}(U)\,:\, p_n(f)< \frac 1 n\right\}
+\]
+的任意有限交构成的族是$\mathsf{C}(U)$原点的一个均衡凸局部基，这就给出了$\mathsf{C}(U)$的一个拓扑。由于$V_n$中总可以找到一个$f$使得在$p_{n+1}(f)$任意大，所以由Theorem \ref{1.61}，$V_n$都不是有界的，进而$\mathsf{C}(U)$不是局部有界的，由Theorem \ref{1.56}，$\mathsf{C}(U)$是不可赋范的。
+
+或者，可以由
+\[
+	d(f,g)=\max_n \frac{2^{-n}p_n(f-g)}{1+p_n(f-g)}
+\]
+直接给出一个与上述拓扑相容的不变度量。此时，$d(f,g)<\epsilon$可以写成
+\[
+	\frac{2^{-n}p_n(f-g)}{1+p_n(f-g)}<\epsilon
+\]
+对任意的$n$都成立，即
+\[
+	(2^{-n}-\epsilon)p_n(f-g)<\epsilon,
+\]
+对于足够大的$n$，左边是负的所以自然成立，因此我们只要转而考虑使得$2^{-n}>\epsilon$的那些有限的$n$，成立
+\[
+	p_n(f-g)<\frac{\epsilon}{2^{-n}-\epsilon}=a_n \epsilon.
+\]
+上述逻辑链反过来，也可以推出$d(f,g)<\epsilon$成立。
+\end{para}
+
+\begin{pro}
+$\mathsf{C}(U)$是一个完备度量空间。
+\end{pro}
+
+\begin{proof}
+考虑一个Cauchy列$\{f_n\}$，对给定的小$\epsilon$，我们有$N$以及$m$, $n>N$时候成立$d(f_n,f_m)<\epsilon$很成立，按照前面所言，存在一个最大的正整数$k(\epsilon)$使得$2^{-k(\epsilon)}>\epsilon$，对$m$, $n>N$以及正整数$i\leq k(\epsilon)$成立
+\[
+	p_i(f_n,f_m)<\frac{\epsilon}{2^{-i}-\epsilon}.
+\]
+显然，$k(\epsilon)$是随着$\epsilon$减小而增大。
+
+对于给定的正数$\delta$，只要$\epsilon$足够小，总是可以保证$p_{k(\epsilon)}(f_n,f_m)<\delta$成立，故$\{f_n|_{K_{k(\epsilon)}}\}$在$\mathsf{C}(K_{k(\epsilon)})$中是Cauchy列。而$\mathsf{C}(K_{k(\epsilon)})$完备，所以收敛于一个$f_\epsilon$. 显然，对于给定的$x$，如果$x$同时处于$K_{k(\epsilon_1)}$和$K_{k(\epsilon_2)}$中，则$f_{\epsilon_1}(x)=f_{\epsilon_2}(x)$.
+
+由于任取$x_0$，都存在一个正整数$\epsilon_0$使得$x_0\in K_{k(\epsilon_0)}$，定义
+\[
+	f(x_0)=f_{\epsilon_0}(x_0),
+\]
+不难检验它在$U$上定义了一个良定的函数$f$。此外，$f$在$U$上连续。实际上，只要局部检验就行了，取$x$，它必然包含于一个$K_n$中，于是$x$包含于$K_{k}$的内部中，其中$k>n$. 选一个足够小的$\epsilon$保证$k(\epsilon)>n$，则按前面的定义，$f|_{K_{k(\epsilon)}}=f_{\epsilon}$在点$x$处连续，因此$f$在点$x$连续。而$x$又是$U$上任取的，所以$f\in \mathsf{C} (U)$.
+
+最后，$d(f_n,f)\to 0$的检验是直接的。所以$\mathsf{C}(U)$是一个完备度量空间。
+\end{proof}
+
+\section{光滑函数空间}
+
+\section{Lebesgue空间}
+
+\section{H\"{o}lder空间}
