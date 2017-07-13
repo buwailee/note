@@ -9,10 +9,20 @@
 	BoldFont = SourceHanSerifSC-Bold ,
 	]{Source Han Serif SC}
 
-\usepackage[section]{../egastyle}
+% \usepackage[section]{../egastyle}
 \usepackage{titletoc, makeidx}
 \usepackage[titletoc,title]{appendix}
 	\renewcommand{\appendixname}{Appendix}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{theo}[para]{Theorem}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
 
 \usepackage{paralist}
 \usepackage{hyperref}

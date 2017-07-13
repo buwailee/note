@@ -3,13 +3,16 @@
 \chapter{微积分}
 \section{基础}
 
-\para 一个局部$n$维欧几里得空间是一个Hausdorff空间$M$满足，对每一个点$p\in M$，存在一个$p$的邻域$U\osub M$和一个同胚$\varphi:U\to V$,其中$V$是一个$\rr^n$中的开集。这个同胚有时候被称为一个坐标、坐标映射等，而资料$(U,\varphi)$被称为一个\idx{坐标卡}。坐标$\varphi$经常写成分量形式，$\varphi=(x^1,\cdots,x^n)$，其中$x^i:U\to \rr$.
+\begin{para}
+一个局部$n$维欧几里得空间是一个Hausdorff空间$M$满足，对每一个点$p\in M$，存在一个$p$的邻域$U\osub M$和一个同胚$\varphi:U\to V$,其中$V$是一个$\rr^n$中的开集。这个同胚有时候被称为一个坐标、坐标映射等，而资料$(U,\varphi)$被称为一个\idx{坐标卡}。坐标$\varphi$经常写成分量形式，$\varphi=(x^1,\cdots,x^n)$，其中$x^i:U\to \rr$.
 
 一个局部$n$维欧几里得空间是局部紧的，这是因为他局部同胚于欧式空间, 而欧式空间是局部紧的。
 
 定义中，局部同胚可以选为同胚于欧式空间中的一个开球。实际上，若我们在$p\in M$处有了一个局部同胚$\varphi:U\to V$，而$V$是欧式空间中的开集，所以必然有包含$\varphi(p)$的一个开球$W$包含其中，将$\varphi^{-1}$限制在$W$上，然后取逆就到了$p$的一个同胚于欧式空间开球的邻域。注意到开球实际上也是（光滑）同胚于整个欧式空间$\rr^n$的，所以说流形局部同胚于整个欧式空间也没什么问题。具体的取什么同胚，还是依所处语境来做判断为好。
+\end{para}
 
-\para 局部欧几里得空间$M$上的一个光滑微分结构$\mathscr{F}$是这样一族坐标卡$(U_\alpha,\varphi_\alpha)$，满足：$\{U_\alpha\}$构成$M$的开覆盖，$\varphi_\alpha\circ\varphi^{-1}_\beta|_{U_\alpha\cap U_\beta}$是光滑映射，后者被称为坐标卡的相容性条件。此外，如果有一个坐标卡$(U,\varphi)$和每一个坐标卡都相容，那么可以推断出他在$\mathscr{F}$中，这样的微分结构被称为极大微分结构。极大微分结构当然不一定是唯一的，不过我们不担心这个，因为我们往往是固定一个微分结构来研究流形的几何，下面假设出现的微分结构总是极大的。
+\begin{para}
+局部欧几里得空间$M$上的一个光滑微分结构$\mathscr{F}$是这样一族坐标卡$(U_\alpha,\varphi_\alpha)$，满足：$\{U_\alpha\}$构成$M$的开覆盖，$\varphi_\alpha\circ\varphi^{-1}_\beta|_{U_\alpha\cap U_\beta}$是光滑映射，后者被称为坐标卡的相容性条件。此外，如果有一个坐标卡$(U,\varphi)$和每一个坐标卡都相容，那么可以推断出他在$\mathscr{F}$中，这样的微分结构被称为极大微分结构。极大微分结构当然不一定是唯一的，不过我们不担心这个，因为我们往往是固定一个微分结构来研究流形的几何，下面假设出现的微分结构总是极大的。
 
 设$(M,\mathscr{F})$和$(N,\mathscr{G})$是两个光滑流形，连续函数$f:M\to N$被称为一个\idx{光滑映射}，如果$\psi\circ f\circ \varphi^{-1}$是一个光滑函数对任意的$\mathscr{F}$中的坐标卡$(U,\varphi)$和$\mathscr{G}$中的坐标卡$(V,\psi)$成立。由于欧式空间之间的光滑函数的复合依然是光滑的，所以光滑的定义是不依赖于坐标卡的选取的。
 
@@ -18,22 +21,29 @@
 从此以后，我们对一个固定的流形$(M,\mathscr{F})$，常常会略去他的微分结构，只写作$M$。对于一个光滑流形$M$的非空开子集$U$，显然，他有继承自$M$的一个拓扑结构和微分结构，所以$U$也是一个光滑流形。很容易看到，$\rr^n$是一个光滑流形，按照上面的结论，我们可以得到一类光滑流形，$\rr^n$的开子集。比如把$n\times n$矩阵放入$\rr^{n^2}$内，那么行列式不为零的那些矩阵就构成一个光滑流形，记作$\mathrm{GL}(n,\rr)$，称作一般线性群。
 
 特别地，$\rr$也是一个光滑流形。我们称光滑映射$f:M\to \rr$是一个$M$上的光滑函数。光滑函数$f$限制在$U\osub M$上也是一个光滑函数$f|_U$.
+\end{para}
 
-\para 设$M$是一个光滑流形，$U\osub M$上的光滑函数的集合记作$\calf(U)$，$\calf$被称为$M$上的光滑函数\idx{层}。由于可以逐点定义加法和乘法，所以$\calf(U)$拥有$\rr$-代数结构。设$p\in M$，我们定义如下等价关系：设$U$和$V$都是$p$的邻域，以及$f\in \calf(U)$和$g\in \calf(V)$，如果在一个$W\osub U\cap V$上，$f|_W=g|_W$，则$f\sim g$. 所有这样的等价类记作$\calf_p$，称为$p$处的光滑函数\idx{茎}，他的代表元素可以写成$f_p=\langle U,f\rangle$，称为\idx{芽}. 显然$\calf_p$有继承自$\calf(U)$的自然的$\rr$-代数结构。上述过程也可以用colimit表示为$\calf_p=\varinjlim_{U\ni p}\calf(U)$，其中$p$的邻域以包含形成归纳系。
+\begin{para}
+设$M$是一个光滑流形，$U\osub M$上的光滑函数的集合记作$\calf(U)$，$\calf$被称为$M$上的光滑函数\idx{层}。由于可以逐点定义加法和乘法，所以$\calf(U)$拥有$\rr$-代数结构。设$p\in M$，我们定义如下等价关系：设$U$和$V$都是$p$的邻域，以及$f\in \calf(U)$和$g\in \calf(V)$，如果在一个$W\osub U\cap V$上，$f|_W=g|_W$，则$f\sim g$. 所有这样的等价类记作$\calf_p$，称为$p$处的光滑函数\idx{茎}，他的代表元素可以写成$f_p=\langle U,f\rangle$，称为\idx{芽}. 显然$\calf_p$有继承自$\calf(U)$的自然的$\rr$-代数结构。上述过程也可以用colimit表示为$\calf_p=\varinjlim_{U\ni p}\calf(U)$，其中$p$的邻域以包含形成归纳系。
 
-设$p\in M$，茎$\calf_p$是一个局部环。实际上，$\langle U,f\rangle \in \calf_p$且$f(p)= 0$的元素构成了$\calf_p$的一个理想。不在这个理想内的$\langle U,f\rangle$，由于$f(p)\neq 0$，那么适当缩小$U$到$V$，由$f$的连续性，总可以找到$V$使得$f|_V$处处不为零，这样$\langle V,1/f|_V\rangle$便是$\langle U,f\rangle$的一个逆。因此上面这个理想即$\calf_p$唯一的极大理想，我们其记作$\mm_p$。容易看到$\calf_p/\mm_p\cong \rr$，实际上，对每一个芽$f_p\in\calf_p$，都成立$f_p=f_p-f(p)+f(p)$，在$\calf_p/\mm_p$中看，他和$f(p)\in\rr$也就没区别了。
+设$p\in M$，茎$\calf_p$是一个局部环。实际上，$\langle U,f\rangle \in \calf_p$且$f(p)= 0$的元素构成了$\calf_p$的一个理想。不在这个理想内的$\langle U,f\rangle$，由于$f(p)\neq 0$，那么适当缩小$U$到$V$，由$f$的连续性，总可以找到$V$使得$f|_V$处处不为零，这样$\langle V,1/f|_V\rangle$便是$\langle U,f\rangle$的一个逆。因此上面这个理想即$\calf_p$唯一的极大理想，将其记作$\mm_p$. 容易看到$\calf_p/\mm_p\cong \rr$，实际上，对每一个芽$f_p\in\calf_p$，都成立$f_p=f_p-f(p)+f(p)$，在$\calf_p/\mm_p$中看，他和$f(p)\in\rr$也就没区别了。
+\end{para}
 
-\lem 设$f:\rr^n\to \rr$光滑，则
+\begin{lem}
+设$f:\rr^n\to \rr$光滑，则
 \[
 	f(x)=f(0)+\partial_if(0)x^i+\frac{1}{2}g_{ij}(x)x^ix^j,
 \]
 其中$g_{ij}$光滑。
+\end{lem}
 
-\proof 利用微积分基本定理
+\begin{proof}
+利用微积分基本定理
 \[
 	f(x)-f(0)=\int_0^1f'(tx)\dd t=\int_0^1\partial_i f(tx)x^i\dd t=h_i(x)x^i,
 \]
-可以得到$h_i(0)=\partial_i f(0)$，然后再对$h_i$使用上面的步骤即可得到我们想要的表达式。\qed
+可以得到$h_i(0)=\partial_i f(0)$，然后再对$h_i$使用上面的步骤即可得到我们想要的表达式。
+\end{proof}
 
 使用一个局部坐标$\varphi=(x^1$, $\cdots$, $x^n)$且$\varphi(p)=0$，可以将上面的引理翻译到流形上。设$f:U\to \rr$光滑，则在$p$的一个邻域$V$上对任意的$q\in V$成立
 \[
@@ -41,55 +51,86 @@
 \]
 其中$g_{ij}$在$V$上光滑，以后我们就将那个偏微分记作$\partial_i f(p)$.
 
-\lem \label{lem:1.5}设$I=(-\epsilon,\epsilon)$是一个区间，而$f(t,p)$是$I\times M$上的一个光滑函数。如果$f(0,p)$对任意的$p\in M$都成立，则存在一个函数$g(t,p)$使得
+\begin{lem}
+\label{lem:1.5}设$I=(-\epsilon,\epsilon)$是一个区间，而$f(t,p)$是$I\times M$上的一个光滑函数。如果$f(0,p)$对任意的$p\in M$都成立，则存在一个函数$g(t,p)$使得
 $f(t,p)=tg(t,p)$，且对每一个$p\in M$，我们有$g(0,p)=f'(0,p)$，其中$f'=\partial_t f$.
+\end{lem}
 
-\proof
+\begin{proof}
 	固定$p$，可以直接从上面引理来得到。但是为了避免讨论改变$p$时的光滑性，所以直接定义
 	\[
 	g(t,p)=\int_0^1 f'(ts,p)\dd s
 	\]
 	还是比较方便的。
-\qed
+\end{proof}
 
-\para 设$p\in M$，$p$处的茎为$\calf_p$，他的极大理想为$\mm_p$，此时$p$处的\idx{余切空间}被定义为自然的矢量空间$T_p^*M:=\mm_p/\mm_p^2$。余切空间的元素被称为\idx{余切矢量}。
+\begin{para}
+设$p\in M$，$p$处的茎为$\calf_p$，他的极大理想为$\mm_p$，此时$p$处的\idx{余切空间}被定义为自然的矢量空间$T_p^*M:=\mm_p/\mm_p^2$. 余切空间的元素被称为\idx{余切矢量}。
 
 $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-模，然后任取$a\in \mm_p$，由于$a\mm_p/\mm_p^2=0$，所以$\mm_p/\mm_p^2$是一个$\calf_p/\mm_p$-模，即$\rr$-矢量空间。这样定义的余切空间，可以看到，是所有的那些一阶小量构成的集合，即其中的元素为“\idx{微分}”。
+\end{para}
 
+考虑一个局部坐标$\varphi=(x^1$, $\cdots$, $x^n)$使得$\varphi(p)=0$，现在我们指出，$x^i$在点$p$处是一个一阶小量但不是一个二阶小量，即$x^i_p\not\in \mm^2$.
+
+由上面的引理，若$f_p\in \mm_p$，则它的芽可以写作
+\begin{equation}
+f_p=\partial_i f(p)x^i_p+\frac{1}{2}(g_{ij})_p x^i_px^j_p.
+\end{equation}
+如果$x^i_p\in \mm^2$，那么$x^i_p=rs$，其中$r$, $s\in \mm_p$，然后根据上面的引理$r=a_ix^i_p+(g_{ij})_p x^i_px^j_p$以及$s=b_ix^i_p+(h_{ij})_p x^i_px^j_p$，于是
+\[
+	x^i_p=rs=a_jb_kx^j_px^k_p+a_k(h_{ij})_p x^i_px^j_px^k_p+b_k(g_{ij})_p x^i_px^j_px^k_p+(g_{ij})_p(h_{kl})_px^i_px^j_px^k_px^l_p.
+\]
+这就意味着，在$p$的某个小邻域$U$中成立等式
+\[
+	x^i=a_jb_kx^jx^k+a_k h_{ij} x^ix^jx^k+b_k g_{ij} x^ix^jx^k+ g_{ij} h_{kl} x^ix^jx^kx^l_p.
+\]
+利用坐标映射，可以可以在$\rr^n$的$0$附近的小邻域$\varphi(U)$中考虑这个等式。将两边对$x^i$求个导，然后零所有的$\{x^i\}$都趋向于$0$，即得到了矛盾。
+
+\begin{para}
 对于一个矢量空间来说，维数是肯定要关注的不变量。并且在一般意义上，维数应该是局部概念。所以，设$p\in M$，$M$是一个$n$维流形，$T_p^*M:=\mm_p/\mm_p^2$应该是$n$维的。
 
-我们可以选取一组局部坐标来算维数，由于选取不同的局部坐标都是通过同胚联系的，所以不同的选取对维数没什么影响。由上面的引理，设$f_p\in \mm_p$，则他可以写作
-\[
-	f_p=\partial_i f(p)x^i_p+\frac{1}{2}g_{ij}(q)x^i_px^j_p
-\]
-考虑一个局部坐标$\varphi=(x^1$, $\cdots$, $x^n)$，设商同态$\dd_p:\mm_p\to \mm_p/\mm_p^2$，很简单就可以看到$\dd_p(x^i_p)\neq 0$.实际上，如果$x^i_p\in \mm_p^2$，那么$x^i_p=rs$，其中$r$, $s\in \mm_p$，然后根据上面的引理$r=a_ix^i_p+\cdots$以及$s=b_ix^i_p+\cdots$，于是$x^i=rs=a_jb_kx^j_px^k_p+\cdots$，但显然这是不可能的。
+由于选取不同的局部坐标都是通过同胚联系的，所以我们可以选取一组局部坐标来算维数。
+考虑一个局部坐标$\varphi=(x^1$, $\cdots$, $x^n)$，设商同态$\dd_p:\mm_p\to \mm_p/\mm_p^2$，前面已经看到$\dd_p(x^i_p)\neq 0$. 
 
-所以，如果$f_p\in \mm_p$，则
+所以，如果$f_p\in \mm_p$，则由式(\theequation)可知
 \begin{equation}
 \label{c1:e1}
 	\dd_p(f_p)=\partial_i f(p)\dd_p(x^i_p).
 \end{equation}
 这样所有的$T_p^*M=\mm_p/\mm_p^2$中的元素都可以由$\dd_p(x^i_p)$展开，他们都是非零的，而且容易证明是线性无关的，所以这是$T_p^*M$的一组基，余切空间的维数计算完毕。
+\end{para}
 
-以后我们用$\dd_p(f)$乃至$\dd_pf$来记$\dd_p(f_p)$。实际上，我们可以将$\dd_p$定义在$\calf_p$上，设$a$是一个常值芽，补充定义$\dd_pa=0$，可以看到，此时式\eqref{c1:e1}依旧满足，且
+以后我们用$\dd_p(f)$, $\dd_pf$或者$\dd f(p)$来记$\dd_p(f_p)$，如果$p$不需要指出，甚至有时候会记作$\dd f$. 
+
+\begin{para}[外微分算子]
+前面将$\dd_p$看成了$\mm_p$到$\mm_p/\mm_p^2$的自然商同态。现在，设$a$是一个常值芽，补充定义$\dd_pa=0$，这样我们就得到了新的算子$\dd_p:\calf_p\to T_p^*M$，他被称为\idx{外微分}算子。
+\end{para}
+
+不难看到，此时式\eqref{c1:e1}依旧满足，且
 \[
 \dd_p (fg)=\dd_p\bigl(\bigl(f-f(p)\bigr)\bigl(g-g(p)\bigr)+f(p)\bigl(g-g(p)\bigr)+\bigl(f-f(p)\bigr)g(p)\bigr)=f(p)\dd_pg+\dd_pf g(p).
 \]
-以后我们就这样来看$\dd_p:\calf_p\to T_p^*M$，他被称为\idx{外微分}算子
+这就是熟知的Leibniz法则。
 
-\para 设$f:M\to N$是一个光滑映射，上面的光滑函数层分别为$\calf$和$\calg$。任取$\varphi\in \calg(V)$，可以通过$f^*\varphi=\varphi\circ f$定义$f^*\varphi\in \calf(f^{-1}(V))$.
+\begin{para}[拉回映射]
+设$f:M\to N$是一个光滑映射，上面的光滑函数层分别为$\calf$和$\calg$. 任取$\varphi\in \calg(V)$，可以通过$f^*\varphi=\varphi\circ f$定义$f^*\varphi\in \calf(f^{-1}(V))$.
 
 下面我们考虑两个流形余切空间之间的映射。设$\langle V,\varphi\rangle\in \calg_{f(p)}$，于是$\langle f^{-1}(V),\varphi\circ f\rangle\in \calf_p$，所以$f^*$诱导了一个$\rr$-代数同态$f^*_p:\calg_{f(p)}\to \calf_p$，特别地，可以看到$f^*_p:\mm_{f(p)}\to \mm_{p}$，于是$f^*_p:\mm^2_{f(p)}\to \mm^2_{p}$. 即$f^*$诱导了一个线性映射\footnote{这里我们滥用一下记号。}$f^*_p:T_{f(p)}^*N\to T_p^*M$.
 
 对于复合，显然$(f\circ g)^*=f^*\circ g^*$，以及在一点处，$(f\circ g)^*_p=g^*_p\circ f^*_{g(p)}$.很容易看到$\id^*_p=\id_{T_p^*M}$，所以如果$f:M\to N$是同胚，则$f_p^*:T_{f(p)}^*N\to T_p^*M$是同构。
+\end{para}
 
-\para \label{f*d=df*}利用复合公式，设$f:M\to N$是光滑映射而$g$是$N$上的光滑函数，则
+\begin{para}\label{f*d=df*}
+利用复合公式，设$f:M\to N$是光滑映射而$g$是$N$上的光滑函数，则
 \[
 	(g\circ f)_{*p}=(f^*g)_{*p}=\dd_p(f^*g),\quad (g\circ f)_{*p}=f_{*p}g_{*f(p)}=f_{*p}\left(\dd_{f(p)}g \right),
 \]
 所以$f^*_p\bigl(\dd_{f(p)}g\bigr)=\dd_{p}(f^*g)$.
+\end{para}
 
-\para 设$p\in M$，$M$是$n$维光滑流形，则\idx{切空间}$T_pM$被定义为余切空间$T_p^*M$的对偶空间。切空间的元素被称为\idx{切矢量}。由于余切空间是有限维的，他的对偶空间也和他有着相同的维度，即$n$维。
+\begin{para}
+设$p\in M$，$M$是$n$维光滑流形，则\idx{切空间}$T_pM$被定义为余切空间$T_p^*M$的对偶空间。切空间的元素被称为\idx{切矢量}。由于余切空间是有限维的，他的对偶空间也和他有着相同的维度，即$n$维。
+\end{para}
 
 由于切空间是余切空间的对偶空间，所以他是余切空间上的线性函数构成的空间，反过来，由于是有限维的，所以可以认为对偶空间的对偶空间就是原本的空间，这就是说可以将余切空间的矢量看成切空间矢量的线性函数：设$\dd_p f\in T_p^*M$和$v\in T_pM$，定义$\dd_p f(v):=v(\dd_p f)$. 虽然这些定义都很短也很清楚，不过操作上却没有那么简单。下面，我们将一个切矢量扩张到$\calf_p^*$上面去。
 
@@ -107,16 +148,17 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 因为有这个同构，所以以后我们用$T_pM$来标记导子构成的矢量空间，一个导子才是一个切矢量。这样的好处是，我们在具体计算的时候，可以直接在$\calf_p$上进行而非$\mm_p$上，特别地，现在对于一个切向量$v$来说，成立$\dd_pf(v)=v(f_p)$，这是因为对一个导子$v$来说$v(f_p)=v(\dd_pf)$.
 
-\para 设$f:M\to N$是一个光滑映射，定义它在$p\in M$处的导数为$T_pf=f_{*p}:T_pM\to T_{f(p)}N$使得对任意的$v\in T_p M$和任意的$g_{f(p)}\in \mm_{f(p)}$成立$(f_{*p}v)(g_{f(p)})=v(f_p^*g_{f(p)})$.
+\begin{para}
+设$f:M\to N$是一个光滑映射，定义它在$p\in M$处的导数为$T_pf=f_{*p}:T_pM\to T_{f(p)}N$使得对任意的$v\in T_p M$和任意的$g_{f(p)}\in \mm_{f(p)}$成立$(f_{*p}v)(g_{f(p)})=v(f_p^*g_{f(p)})=v((g\circ f)_p)$.
+\end{para}
 
-为以后的处理方便，不妨通过等同$\partial_i$和标准基$e_i$来等同$T_p\rr^n$和$\rr^n$。此外，通过坐标卡上的同胚$\varphi$，我们用$\partial_i$来标记$\varphi^{-1}_{*p}(e_i)$，这显然是$T_pM$处的一组基。
-
+通过坐标卡上的同胚$\varphi$，我们用$\partial_i$来标记$\varphi^{-1}_{*p}(e_i)$，这显然是$T_pM$处的一组基。特别地，如果$M=\rr^n$，为方便处理，可以通过等同$\partial_i$和标准基$e_i$来等同$T_p\rr^n$和$\rr^n$. 
 
 \para 设$f$是在$p$附近的光滑函数，任取$v\in T_pM$.因为$f_{*p}:T_pM\to T_{f(p)}\rr=\rr$，所以$f_{*p}(v)$是一个数，故而
-	\[
-		f_{*p}(v)=f_{*p}(v)(\id_{\rr})=v\bigl((\id_{\rr}\circ f)_p\bigr)=v(f_p)=\dd_p f(v).
-	\]
-	因为对所有的切矢量$v$都成立上式，所以$f_{*p}=\dd_p f$.
+\[
+	f_{*p}(v)=f_{*p}(v)(\id_{\rr})=v\bigl((\id_{\rr}\circ f)_p\bigr)=v(f_p)=\dd_p f(v).
+\]
+因为对所有的切矢量$v$都成立上式，所以$f_{*p}=\dd_p f$.
 
 选定一个局部坐标，因为$\dd_p x^i(\partial_j)=\partial_jx^i(p)=\delta^i_j$，所以$\dd_p x^i$就是$\partial_i$的对偶基。下面我们来计算一个特别的例子，设$f:M\to \rr^n$是一个流形$M$上的矢量值光滑函数，则$f^i:M\to \rr$是一个光滑函数，那么$f_{*p}=\dd_pf^i e_i$，其中$e_i$是$\rr^n$的标准基。再设$f:\rr^m\to \rr^n$，则$\dd_pf^i=\partial_j f^i(p) \dd x^j=\partial_j f^i(p) e^j$.写成矩阵即
 \[
@@ -124,7 +166,9 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \]
 此即$f$的Jacobian.
 
-\para 复合函数求导法则：$(f\circ g)_{*p}=f_{*g(p)}\circ g_{*p}$.抽象表现出来是线性映射复合，表现在矩阵（即Jacobian）上就是两个矩阵相乘。
+\begin{para}
+复合函数求导法则：$(f\circ g)_{*p}=f_{*g(p)}\circ g_{*p}$.抽象表现出来是线性映射复合，表现在矩阵（即Jacobian）上就是两个矩阵相乘。
+\end{para}
 
 \para 设$U$上光滑曲线$\sigma:(-\epsilon,\epsilon)\to U$，在时间为零的时候经过点$p$，即$\sigma(0)=p$，于是$\sigma_{*0}=\dot\sigma(0)\in T_pM$. 局部来说，他可以写作
 \[
@@ -258,7 +302,8 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 设$M$和$N$是光滑流形，$f:M\to N$是一个单浸入。我们可以赋予$f(M)$一个微分结构通过把$f:M\to f(M)$做成一个微分同胚，即设$\{(U_\alpha,\varphi_\alpha)\}$是$M$上的一个极大图册，在$f(M)$上通过$\{f(U_\alpha)\}$定义了拓扑，然后$\{f(U_\alpha),\varphi_\alpha\circ f^{-1}\}$定义了微分流形结构。此时，$f(M)$是$N$的正则子流形当且仅当$f$是一个嵌入。
 
-\pro 设$\psi:M\to N$是光滑映射，而$(P,\varphi)$是$N$的一个子流形，且$\psi(M)\subset \varphi(P)$. 因为$\varphi$是单射，所以存在唯一的映射$\psi_0:N\to P$使得$\varphi\psi_0=\psi$，正如下面交换图所示
+\begin{pro}
+设$\psi:M\to N$是光滑映射，而$(P,\varphi)$是$N$的一个子流形，且$\psi(M)\subset \varphi(P)$. 因为$\varphi$是单射，所以存在唯一的映射$\psi_0:N\to P$使得$\varphi\psi_0=\psi$，正如下面交换图所示
 \[
 \begin{xy}
 	\xymatrix{
@@ -268,14 +313,18 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 \end{xy}
 \]
 于是，$\psi_0$如果是连续的，则他就是光滑的。如果$\psi$是嵌入，则$\psi_0$是连续的，进而是光滑的。
+\end{pro}
 
-\proof
+\begin{proof}
 	第二点是清楚的。假设$\psi_0$是连续的，为证明$\psi_0$是光滑的，我们只要证明$P$能够被坐标卡$(U,\tau)$所覆盖，其中$\tau\psi_0$限制在$\psi_0^{-1}(U)$上是光滑的。任取$p\in P$，令$(V,\gamma)$是$\varphi(p)$附近的一个坐标卡，从Proposition \eqref{pro:111}下面的推论可知，存在一个欧式空间之间的投影$\pi$使得$\tau=\pi\gamma\varphi$给出了$p$附近的一个坐标卡，于是$\tau\psi_0|_{\psi_0^{-1}(U)}=\pi\gamma\varphi\psi_0|_{\psi_0^{-1}(U)}=\pi\gamma\psi|_{\psi_0^{-1}(U)}$是光滑的。
-\qed
+\end{proof}
 
-\pro 设$M$是一个紧流形，而$f:M\to N$是一个单的光滑映射，则$(f,M)$是$N$的一个正则子流形。进而，设$(f,M)$是一个浸入子流形，如果$M$是紧的，则$(f,M)$还是一个嵌入子流形。
+\begin{pro}
+设$M$是一个紧流形，而$f:M\to N$是一个单的光滑映射，则$(f,M)$是$N$的一个正则子流形。进而，设$(f,M)$是一个浸入子流形，如果$M$是紧的，则$(f,M)$还是一个嵌入子流形。
+\end{pro}
 
-\proof 考虑如下交换图，
+\begin{proof}
+	考虑如下交换图，
 	\[
 	\begin{xy}
 		\xymatrix{
@@ -289,19 +338,23 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 	由于流形是第二可数的，所以一个函数是连续的，只要证明他与序列的极限可交换即可。任取$y_n$是$y_n\in f(M)$中的一个序列，由于$f(M)$作为紧集在连续函数$f$下的像，如果也是紧的，由于$N$是Hausdorff空间，所以$f(M)$是闭的，进而如果$y_n$是收敛的，则极限$y\in f(M)$. 下面我们要证明$x_n=f^{-1}(y_n)$的极限为$x=f^{-1}(y)$.
 
 	如果$x_n$不趋向于$x$，取一个子序列，存在一个$x$的开邻域$U$使得对所有$n$都有$x_n\not\in U$，由于$M-U$是闭集，而$M$是Hausdorff紧空间，所以$M-U$是紧的，于是，它在$M-U$中有个收敛子序列，不妨就将$x_n$取作这个序列，极限为$x'\neq x$. 因为$f$是连续的，所以$f(x_n)$的极限为$f(x')$，但是因为$x'\neq f^{-1}(y)$，所以$f(x')\neq y$，而$f(x')$和$y$是序列$f(x_n)$的不同极限，但是流形是Hausdorff的，极限唯一，矛盾。
-\qed
+\end{proof}
 
 嵌入，或者说正则子流形，将一个流形变成了有着相同的拓扑与微分结构某个流形的子流形，如果外面这个流形足够简单，比如欧式空间，则对我们研究抽象流形会有很大的益处。事实上，Whitney证明了，如果$M$是一个$m$维光滑流形，则$M$可以光滑嵌入到$\rr^{2m}$之中。因此，Arnold说，没有抽象的流形。
 
-\theo 正则子流形的结构定理：设$N$是流形$M$的一个子集，则$N$是$M$的一个$k$维正则子流形，当且仅当，在每一点$p\in N$，可以找到一张$M$的坐标卡$(U_p,\varphi)$，使得$p\in U_p$且
+\begin{thm}[正则子流形的结构定理]
+设$N$是流形$M$的一个子集，则$N$是$M$的一个$k$维正则子流形，当且仅当，在每一点$p\in N$，可以找到一张$M$的坐标卡$(U_p,\varphi)$，使得$p\in U_p$且
 \[
 	U_p\cap N=\left\{q\in U_p\,:\,\varphi(q)=\left(x^1(q)\text{, $\cdots$, }x^k(q)\text{, }0\text{, $\cdots$, }0\right)\right\},
 \]
-即$U_p\cap N$中的点正好为那些后$n-k$个坐标为零的那些点$q\in U_p$.
+即$U_p\cap N$中的点正好为那些后$n-k$个坐标为零的那些点$q\in U_p$. 
+\end{thm}
 
 所以拓扑上来讲，正则子流形是局部闭的，局部来说他就像后几个坐标恒等的等高线。
 
-\theo \label{ranktheo}设$M$是一个$m$维流形且$f:M\to N$是一个光滑映射，如果存在常数$l$使得$\rank_p f$处处等于$l$，那么对于$q\in N$，$f^{-1}(q)$要么是空集，要么是$M$的一个正则子流形，维度为$m-l$。
+\begin{thm}
+\label{ranktheo}设$M$是一个$m$维流形且$f:M\to N$是一个光滑映射，如果存在常数$l$使得$\rank_p f$处处等于$l$，那么对于$q\in N$，$f^{-1}(q)$要么是空集，要么是$M$的一个正则子流形，维度为$m-l$。
+\end{thm} 
 
 这个定理利用正则子流形的结构定理不难证明，这里就略去了。特别当$N=\rr$的时候，$f$如果是一个秩处处为$1$的光滑函数（即$\dd_p f$处处不为零），则$f^{-1}(a)$或者是一个空集，或者是一个$m-1$维正则子流形。这就是所谓的等能面，或等势面。
 
@@ -679,7 +732,7 @@ $\mm_p/\mm_p^2$确实是一个矢量空间。首先它显然是一个$\calf_p$-�
 
 则称$\{g_i\}$是从属于开覆盖$\{U_\alpha\}_{\alpha\in I}$的一个单位分解。
 
-\textbf{\lemref{POU}} 流形$M$上的每一个开覆盖都存在从属于他的单位分解。
+\textbf{Lemma \ref{POU}} 流形$M$上的每一个开覆盖都存在从属于他的单位分解。
 
 \para \label{unit} 设$V\subset U$，且$\bar{V}\subset U$，则$M-\bar{V}$和$U$构成$M$的一个开覆盖，我们可以找到$h$, $g\in \calf(M)$使得$h+g=1$处处成立，且$h|_{M-U}=0$以及$g|_{\bar{V}}=0$，因此$h|_{\bar{V}}=1$.
 
