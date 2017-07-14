@@ -1,0 +1,415 @@
+\chapter{测度与积分基础}
+
+在这节中，我们可能需要考虑扩充实直线$[-\infty,\infty]$. 上面的拓扑基选为所有形如$[-\infty,\alpha)$, $(\beta,\infty]$, $(\gamma,\rho)$的集合，它们都被称为开区间。当然还可能会考虑含有$\infty$的正实轴$[0,\infty]$（扩充正实轴），这上面的拓扑默认是扩充实直线的子空间拓扑。
+
+在扩充正实轴上，我们定义$\infty+a=a+\infty=\infty$，$0\cdot \infty=0$，对$a\neq 0$定义$a\cdot \infty=\infty$，在这些运算下，交换律、结合律、分配律都是成立的。但要注意，消去律在遇到$\infty$的时候就不好使了。类似于$\infty-\infty$的式子，我们不予考虑。实际上，但凡形式上这样的式子出现，我们大概都可以用更加合适的语言（比如某个极限过程）将其说清楚。
+
+\section{可测空间与可测函数}
+
+\begin{para}
+抽象可测空间的定义与抽象拓扑空间的定义是相似的，都是在一个集合上要求其存在一个满足一些性质的子集族。类似开集族需要满足开集公理，而可测空间$X$的子集族$\mathcal{B}$被称为$\sigma$-代数（稍微没那么洋气地，可以称为可测集族），如果满足如下公理
+\begin{compactenum}[~~~~(1)]
+\item $X\in \mathcal{B}$，
+\item 若$A\in \mathcal{B}$，则$A^\text{c}=X-A\in \mathcal{B}$，
+\item 如果$\{A_n\}$是$\mathcal{B}$中的可数族，则$\bigcup_n A_n\in \mathcal{B}$.
+\end{compactenum}
+于是，可测空间就被定义为具有一个$\sigma$-代数的集合。$\sigma$-代数中的元素被称为可测集。
+
+不难看到，$\varnothing=X-X\in \mathcal{B}$. 此外，取$\mathcal{B}$中的有限族，补充空集成为可数族，则从(3)可知可测集的有限并依然可测。利用(2)，可测集的可数并和有限并都是可测的。
+
+之所以可测集的集族被称为$\sigma$-代数，是因为它构成一个Bool环，即一个交换环$R$上任取$x\in R$都有$x^2=x$. 任意的交换环都具有自然的$\mathbb{Z}$-代数结构，对Bool环来说，一定成立$2x=0$（这可以通过计算$(x+1)^2$得到），所以Bool环具有自然的$\mathbb{F}_2=\mathbb{Z}/2\mathbb{Z}$-代数结构。
+
+\begin{proof}
+在可测集族中定义加法$A+B:=(A-B)\cup (B-A)=(A\cup B)-(A\cap B)$，由于其可以重新写作$A+B=(A\cap B^\text{c})\cup (B\cap A^\text{c})$，这个运算在可测集族中封闭。从定义，显然的是$A+B=B+A$，没那么显然但是正确的是$A+(B+C)=(A+B)+C$，故而这确确实实是一个加法。对这个加法，$0=\varnothing$且$A=-A$. 
+
+定义乘法$AB=A\cap B$，显然，这个乘法是可交换的且满足结合律，不难检验分配律也成立，所以可测集族构成了一个环，环乘法的单位元是$X$，且满足$A^2=A$.
+\end{proof}
+
+集合$X$上最大的$\sigma$-代数显然是$X$的幂集，最小的就只包含$X$和$\varnothing$. 下面我们说明，除此之外，在一个集合$X$上，存在着大量的$\sigma$-代数。
+\end{para}
+
+\begin{pro}
+设$X$是一个集合，而$\mathcal{F}$是它的一个子集族，则存在一个最小的$\sigma$-代数$\langle \mathcal{F}\rangle$包含$\mathcal{F}$. 所谓最小就是说，存在一个$\sigma$-代数$\mathcal{B}$包含$\mathcal{F}$，则$\langle \mathcal{F}\rangle\subset \mathcal{B}$.
+\end{pro}
+
+\begin{proof}
+设$\mathscr{X}$是$X$的所有包含$\mathcal{F}$的$\sigma$-代数的集合，因为$X$的幂集包含其中，所以$\mathscr{X}$非空。取$\mathscr{X}$中所有$\sigma$-代数的交，直接的检验可以说明它正是我们需要的$\langle \mathcal{F}\rangle$.
+\end{proof}
+
+如果$X$具有拓扑$\mathcal{F}$，那么包含$\mathcal{F}$的最小$\sigma$-代数中的元素被称为Borel集。显然，开集和闭集都是Borel集。
+
+\begin{para}
+设$Y$是$X$的子集，而$X$上有一个$\sigma$-代数$\mathcal{F}$，那么$Y$可以从$X$上得到一个可测空间结构。实际上，考虑所有形如$E\cap Y$的集合$\mathcal{F}'$，其中$E\in \mathcal{F}$，他就是$Y$上面的一个$\sigma$-代数。
+
+实际上，一是$Y=X\cap Y$，二是$Y-E\cap Y=(Y-E)\cap Y$，三是$Y\cap \bigcup_n E_n=\bigcup_n (Y\cap E_n)$. 因此$\mathcal{F}'$确确实实是$Y$上面的一个$\sigma$-代数，此时$Y$被称为$X$的一个子可测空间。
+\end{para}
+
+\begin{para}
+与连续函数类似的，可测函数如下定义：设$f:X\to Y$是从可测空间$X$到拓扑空间$Y$的函数，如果对任意$Y$中的开集$U$，$f^{-1}(U)$在$X$中都是可测的，则称$f$是一个可测函数。
+
+如果$X$还具有拓扑，取Borel集则它成为了一个可测空间，在这个意义下的可测函数被称为Borel可测函数，或者直接叫Borel函数。显然，连续函数总是Borel可测的，反之不然。
+
+现在考虑可测函数的复合，设$f:X\to Y$和$g:Y\to Z$是两个映射，$f$是可测的，而$g$是Borel可测的，则直接验证可知$g\circ f:X\to Z$是可测的。这个命题是连续函数复合依然连续的类比，只是这里$Y$有了一个拓扑结构，所以讨论$g$的可测性的时候需要与$Y$的拓扑结构相容，所以这里需要Borel可测。
+\end{para}
+
+\begin{pro}
+设$f:X\to Y$是一个可测空间到拓扑空间的映射，则所有使得$f^{-1}(E)$可测的$E$的集合构成了$Y$的一个$\sigma$-代数$\mathcal{F}$，他被称为$f$诱导的$\sigma$-代数。在这意义下，$f$的可测性等价于$\mathcal{F}$是否包含$Y$的所有开集，或者说$\mathcal{F}$应该包含$Y$的所有Borel集。
+\end{pro}
+
+这个命题的证明是直接的，命题的内容几乎也就是可测性定义的同义重复。
+
+利用这个命题，我们考虑（扩充）实值函数$f:X\to [-\infty,\infty]$. 由于$[-\infty,\infty]$是第二可数的，所有的开集都可以写成$[-\infty,\alpha)$, $(\beta,\infty]$, $(\gamma,\rho)$的可数并（比如取$\alpha$, $\beta$, $\gamma$, $\rho$都是有理数），而可测集的可数并也是可测的，所以$f$可测当且仅当所有$[-\infty,\alpha)$, $(\beta,\infty]$, $(\gamma,\rho)$都在$f$诱导的$\sigma$-代数中。又因为$[-\infty,\alpha)$可以写成形如$[-\infty,\alpha_n]=(\alpha_n,\infty]^\text{c}$的可数并，而$(\gamma,\rho)=(\gamma,\infty]\cap [-\infty,\rho)$，所以只要所有形如$(\alpha,\infty]$的集合在诱导的$\sigma$-代数中即可，即$f$可测当且仅当$f^{-1}((\alpha,\infty])$对任意有理数$\alpha$都可测。
+
+于是，我们可以给出一大类可测函数，它们被称为特征函数。设$E$是$X$的任意子集，定义
+\[
+	\chi_E(x)=\begin{cases}
+	1&x\in E;\\
+	0&x\not\in E.
+	\end{cases}
+\]
+由上面的判据，$\chi_E$可测当且仅当$E$可测。
+
+上面命题的第二个应用是两个实值可测函数的积（这里指有序组）是否可测的问题，即函数$(f,g):X\to \rr^2$的可测性问题，其中假设$f$和$g$都可测。
+
+由于$\rr^2$第二可数，所以$(f,g)$诱导的$\sigma$-代数包含所有开集当且仅当包含一组可数拓扑基。现在考虑所有形如$I_1\times I_2$的开集，其中$I_1$和$I_2$都是端点为有理数的开区间，则$(f,g)^{-1}(I_1\times I_2)=f^{-1}(I_1)\cap g^{-1}(I_2)$是可测的。因此$(f,g)$诱导的$\sigma$-代数包含所有的$I_1\times I_2$，因此也包含所有的开集，故$(f,g)$可测。
+
+由于加法或乘法是$\mu:\rr^2\to \rr$的连续函数，它们是Borel函数，而$f+g$或$fg$可以写成$\mu(f,g)$的形式，所以两个实值可测函数的和或积是可测函数。
+
+类似地，如果$f=u+i v$是一个$X$上的复值函数，则如果$u$和$v$都可测，则$f$也可测。反过来，由于取实部、虚部或者求模都是连续函数，因此如果$f$可测，则$u$, $v$与$|f|$也都可测。
+
+\begin{pro}
+设$\{f_n:X\to [-\infty,\infty]\}$是一个可测函数族，定义
+\[
+	\left(\sup_n f_n\right)(x)=\sup_n (f_n(x)),
+\]
+则$\sup_n f_n$也是一个可测函数。
+\end{pro}
+
+\begin{proof}
+记$g=\sup_n f_n$，不难看到
+\[
+	g^{-1}((\alpha,\infty])=\bigcup_n f_n^{-1}((\alpha,\infty]),
+\]
+实际上，如果存在一个$x$使得$f_n(x)>\alpha$则我们有$g(x)\geq f_n(x)>\alpha$，反过来，如果$g(x)>\alpha$，按上确界和实数域的性质，则必然存在一个$f_n$使得$g(x)\geq f_n(x)>\alpha$成立，否则$g(x)\leq \alpha$成立。由上述等式，我们可以进而断言，$g$是可测的。
+\end{proof}
+
+类似地，可以定义
+\[
+	\left(\inf_n f_n\right)(x)=\inf_n (f_n(x)),
+\]
+注意到，如果令$g_n=-f_n$，则
+\[
+	\inf_n f_n=-\sup_n g_n,
+\]
+所以$\inf_n f_n$也可测。
+
+最后，我们定义
+\[
+	\limsup_{n\to \infty}f_n=\inf_n \left(\sup_{i\geq n}f_i\right),\quad \liminf_{n\to \infty}f_n=\sup_n \left(\inf_{i\geq n}f_i\right)
+\]
+如果$\{f_n\}$在$X$上逐点收敛成$f$，则
+\[
+	\limsup_{n\to \infty}f_n= \liminf_{n\to \infty}f_n=\lim_{n\to\infty}f_n.
+\]
+所以，逐点收敛的（扩充）实值可测函数序列的极限也可测。可以看到，在极限过程中，可测性表现得要比连续性好许多。
+
+取族$\{f_n\}$是有限族，则可以看到$\max_n f_n$和$\min_n f_n$都可测，特别地，$f^+(x)=\max\{0,f(x)\}$和$f^-(x)=-\min\{0,f(x)\}$都是可测的，它们被称为$f$的正部和负部，成立如下等式
+\[
+	|f|=f^++f^-,\quad f=f^+-f^-.
+\]
+
+\section{正测度与积分}
+
+\begin{para}
+设$X$是一个可测空间，而$\mathcal{F}$是他的一个$\sigma$-代数，$\mu$是一个$\mathcal{F}$到$[0,\infty]$的函数。如果对一个可数不交族$\{A_n\}$，成立
+\[
+	\mu\left(\bigcup_n A_n\right)=\sum_{n}\mu(A_n),
+\]
+则称$\mu$满足可数可加性。一般而言，我们还会假设至少存在一个$A\in \mathcal{F}$使得$\mu(A)<\infty$. 此时，我们称$\mu$是一个正测度，赋予了一个正测度的可测空间我们叫做测度空间。如果测度空间$X$的正测度为$\mu$，则我们简单记为二元组$(X,\mu)$. 正测度一般我们简称测度。
+\end{para}
+
+取$A_1=A$使得$\mu(A)<\infty$，其他所有的$A_n=\varnothing$，则
+\[
+	\mu(A)=\mu\left(\bigcup_n A_n\right)=\mu(A)+\sum_{n>1}\mu(\varnothing)
+\]
+给出了$\mu(\varnothing)=0$. 于是将可数族中的绝大多数（除有限项外）改成空集，则我们得到了测度关于有限不交集族的有限可加性。
+
+若$A\subset B$都是可测集，则$B=A\cup (B-A)$，所以
+\[
+	\mu(B)=\mu(A)+\mu(B-A)\geq \mu(A),
+\]
+其中等号是可以取到的。以后我们将给出一些非空集，但他们的测度为零的例子。此外，上面的等式也给出了等式
+\[
+	\mu(B-A)=\mu(B)-\mu(A\cap B).
+\]
+
+\begin{para}
+设$X$是一个可测空间，它上面的简单函数$s:X\to [0,\infty)$是值域为有限点集的实值函数。若$\{s_i\,:\,1\leq i\leq n\}$是它的值，记$E_i=s^{-1}(s_i)$，则我们可以用特征函数将其表为
+\[
+	s=\sum_{i=1}^n s_i \chi_{E_i}.
+\]
+所以$s$可测当且仅当每个$E_i$都可测。
+\end{para}
+
+\begin{pro}
+设$f:X\to [0,\infty]$是一个可测函数，则存在$X$上的递增可测简单函数序列$\{s_n\}$使得$s_n(x)\leq f(x)$对每一个$x\in X$都成立，且$\lim_n s_n =f$.
+\end{pro}
+
+所谓的递增就是说，对每一个$x\in X$和$n>1$都有$s_{n-1}(x)\leq s_n(x)$.
+
+\begin{proof}
+我们找一个有限阶梯函数来逼近$h(t)=t$，则$s_n=h_n\circ f$即我们所求。令$h_n:[0,\infty)\to [0,\infty)$为在$t>n$时候恒有$h_n(t)=n$，而在$t\in [0,n]$上将区间等分为$2^{n+1}$份逐阶上升$n/(2^{n+1}-1)$的阶梯函数。
+\end{proof}
+
+\begin{para}
+设$(X,\mu)$是一个测度空间，而$s=\sum_{i=1}^n s_i \chi_{E_i}$是一个可测简单函数，定义
+\[
+	\int_X s \dd \mu:=\sum_{i=1}^n s_i \mu(E_i).
+\]
+他就是简单函数的积分。对于一般的可测正函数$f:X\to [0,\infty]$，定义积分
+\[
+	\int_X f\dd \mu:=\sup_s \int_X s\dd \mu,
+\]
+其中$s$跑遍所有满足$0\leq s \leq f$的简单可测函数。
+
+如果$E$是一个可测集，定义
+\[
+	\int_E f\dd \mu =\int_X \chi_E f\dd \mu.
+\]
+所以我们可以只考虑$X$上的积分而不是一般性。
+\end{para}
+
+从定义（下面出现的函数都是非负函数），可以发现如下简单的性质：
+\begin{compactenum}[(1)]
+\item 如果$f\geq 0$是$X$上的可测函数，而$c<\infty$为一个非负常数，则
+\[
+	\int_X cf\dd \mu=c\int_X f\dd \mu.
+\]
+这是因为$s$如果是一个非负简单函数，则$cs$也是。
+\item 如果在$X$上有$f=0$，则$\int_X f\dd \mu=0$. 这是因为此时$f=0f$，然后再利用上面的命题即可。此外，如果在$E$上有$f=0$，则$\int_E f\dd \mu=0$.
+\item 如果$0\leq f\leq g$，则
+\[
+	\int_X f\dd \mu\leq \int_X g \dd \mu.
+\]
+\item 如果$E\subset F$，则
+\[
+	\int_E f\dd \mu\leq \int_F f \dd \mu.
+\]
+这来自于$\chi_E f\leq \chi_F f$总成立与上一条。
+\item 对一个可测集$E$和一个非负简单可测函数$s$，我们有
+\[
+	\int_E s\dd \mu =\int_X \sum_{i=1}^ns_i\chi_E  \chi_{E_i}\dd\mu=\int_X \sum_{i=1}^ns_i\chi_{E\cap E_i}\dd\mu=\sum_{i=1}^ns_i\mu(E\cap E_i).
+\]
+特别地，如果$n=1$且$s=1$，则$\int_E \dd \mu=\mu(E)$.
+\end{compactenum}
+
+$\int_E \dd \mu=\mu(E)$有如下的推广：
+\begin{pro}
+设$s$是测度空间$(X,\mu)$上的一个可测简单函数，则
+\[
+	\varphi(E):=\int_E s\dd\mu
+\]
+也是$X$上的一个正测度。
+\end{pro}
+
+\begin{proof}
+直接验证可数可加性，设$\{A_i\,:\,i\geq 1\}$是一族不交可数可测集族，它们的并是$A$，则
+\[
+	\varphi(A)=\sum_{j=1}^ns_j\mu(A\cap E_j)=\sum_{j=1}^ns_j\sum_{i=1}^\infty \mu(A_i\cap E_j)=\sum_{i=1}^\infty \sum_{j=1}^ns_j \mu(A_i\cap E_j)=\sum_{i=1}^\infty\varphi(A_i),
+\]
+倒数第二个等号来自于有限个数列和的极限等于其极限的和（由于是递增正序列，所以在$[0,\infty]$中总存在极限）。
+\end{proof}
+
+\begin{lem}
+设$s$, $t$都是$(X,\mu)$上的简单可测函数，则
+\[
+	\int_X (s+t)\dd \mu=\int_X s\dd \mu+\int_X t\dd \mu,
+\]
+因此，积分对简单可测函数是线性的。
+\end{lem}
+
+\begin{proof}
+设$s=\sum_i s_i X_{E_i}$而$t=\sum_i t_i X_{F_i}$，记$X_{ij}=X_{E_i}\cap X_{F_j}$，则
+\[
+	s+t=\sum_{i,j}(s_i+t_j) X_{ij},
+\]
+它的积分等于
+\[
+	\int_{X_{ij}} (s+t)\dd \mu= (s_i+t_j)\mu(X_{ij})=s_i\mu(X_{ij})+t_j\mu(X_{ij})=\int_{X_{ij}} s\dd \mu+\int_{X_{ij}} t\dd \mu,
+\]
+注意到两边其实都是测度，所以成立可数可加性，而$X_{ij}$相互不交，因此引理成立。
+\end{proof}
+
+下面，我们要建立任意积分对可测函数线性的事实，他是Lebesgue单调收敛定理的直接应用。
+
+\begin{thm}[Lebesgue单调收敛定理]
+令$\{f_n:X\to [0,\infty]\}$是一个递增可测函数列，如果它逐点收敛为$f$，则由前面已知的，$f$也可测，并且
+\[
+	\lim_{n\to \infty} \int_X f_n \dd \mu=\int_X f \dd \mu.
+\]
+\end{thm}
+
+\begin{proof}
+首先，记$\alpha=\lim_{n\to \infty} \int_X f_n \dd \mu$，从$f_n\leq f$可以得知$\alpha\leq \int_X f \dd \mu$. 
+
+反过来，设$s$是一个简单可测函数满足$0\leq s\leq f$，而$c\in (0,1)$是一个常数，定义$E_n=(f_n-cs)^{-1}([0,\infty])$，显然它可测，因为$[0,\infty]$可以写成开区间$(1/n,\infty]$的可数并，此外，由于$\{f_n\}$递增，所以$E_1\subset E_2\subset \cdots$. 任取$x\in X$，如果$f(x)=0$则$x\in E_1$，若$f(x)>0$，因为$c<1$，所以$cs(x)<f(x)$，因此存在一个$n$使得$f_n(x)\geq cs(x)$，故$x\in E_n$. 综上，$X=\bigcup_n E_n$.
+
+由于
+\[
+	\int_X f_n \dd \mu\geq \int_{E_n} f_n \dd\mu\geq c\int_{E_n} s \dd\mu,
+\]
+令$n\to \infty$，则
+\[
+	\alpha \geq c\lim_{n\to \infty}\int_{E_n} s \dd\mu.
+\]
+补充定义$E_0=\varnothing$，考虑$F_n=E_{n}-E_{n-1}$，由于对一个简单函数的积分是一个测度，所以由可数可加性，我们有
+\[
+	\lim_{n\to \infty}\int_{E_n} s \dd\mu=\lim_{n\to \infty}\sum_{k=1}^n\int_{F_k} s \dd\mu=\sum_{k=1}^\infty\int_{F_k} s \dd\mu,
+\]
+由于$\bigcup_n F_n=\bigcup_n E_n=X$，再由可数可加性，等式最右端就是$\int_{X} s \dd\mu$，因此
+\[
+	\alpha \geq c\int_{X} s \dd\mu.
+\]
+由于等式右侧对所有的$c\in (0,1)$和满足$0\leq s\leq f$的简单可测函数$s$都成立，所以
+\[
+	\alpha \geq \int_{X} f \dd\mu,
+\]
+此即所证。
+\end{proof}
+
+由于对任意的可测函数$f$, $g:X\to [0,\infty]$，我们可以用递增简单函数列$\{s_n\}$逼近$f$而$\{t_n\}$逼近$g$. 所以，从积分对简单函数线性，我们可知
+\[
+	\int_X (s_n+t_n)\dd \mu=\int_X s_n\dd \mu+\int_X t_n\dd \mu,
+\]
+对两边求$n\to \infty$的极限，由Lebesgue单调收敛定理，我们就得到了梦寐以求的
+\[
+	\int_X (f+g)\dd \mu=\int_X f\dd \mu+\int_X g\dd \mu.
+\]
+适当归纳，我们可以将求和拓展到有限个。
+
+利用Lebesgue单调收敛定理，将求和拓展到一个级数都是没有问题的。比如考虑任意的正可测函数族$\{f_n:X\to [0,\infty]\}$，从有限的结论我们有
+\[
+	\sum_{n=1}^k \int_{X} f_n \dd\mu=\int_{X}\sum_{n=1}^k f_n \dd\mu,
+\]
+将等式两边求$n\to \infty$的极限，对右侧应用Lebesgue单调收敛定理，我们就得到了令人愉悦的等式
+\[
+	\sum_{n=1}^\infty \int_{X} f_n \dd\mu=\int_{X}\sum_{n=1}^\infty f_n \dd\mu.
+\]
+
+\begin{pro}[Fatou引理]
+设$(X,\mu)$是一个测度空间，而$\{f_n:X\to [0,\infty]\}$是一族可测函数族，则
+\[
+	\int_{X}\liminf_{n\to \infty }f_{n}\,\dd\mu \leq \liminf_{n\to \infty }\int_{X}f_{n}\,\dd\mu.
+\]
+\end{pro}
+
+Fatou引理对可测函数族完全没有任何限制。
+
+\begin{proof}
+定义$g_n=\inf_{i\geq n}f_i$，从定义，我们知道$\liminf_{n\to \infty }f_{n}=\sup_n g_n$. 显然$0\leq g_1\leq g_2\leq \cdots$，所以$\sup_n g_n=\lim_{n\to\infty}g_n$.
+
+再从定义可以看到，对任意的$i\geq n$，我们都有
+\[
+	\int_X g_n\dd \mu\leq \int_X f_i\dd \mu,
+\]
+所以
+\[
+	\int_X g_n\dd \mu\leq \inf_{i\geq n}\int_X f_i\dd \mu.
+\]
+对左侧求$n\to\infty$的极限，由Lebesgue单调收敛定理就是
+\[
+	\lim_{n\to\infty}\int_X g_n\dd \mu=\int_X \lim_{n\to\infty}g_n\dd \mu=\int_{X}\liminf_{n\to \infty }f_{n}\,\dd\mu.
+\]
+而右侧给出$\liminf_{n\to \infty }\int_{X}f_{n}\,\dd\mu$，此即所证。
+\end{proof}
+
+\begin{para}
+我们现在考虑可测函数$f:X\to [-\infty,\infty]$的积分，将$f$重新写作$f=f^+-f^-$，注意到$f^+$与$f^-$都是正函数，所以可以应用正函数的积分，于是，我们定义
+\[
+	\int_X f\dd \mu=\int_X f^+\dd \mu-\int_X f^-\dd \mu,
+\]
+只要关于$f^+$与$f^-$的积分中有一个取有限值即可。
+
+注意，尽管我们知道对性质足够好的函数，我们有Riemann积分与相应的Lebegue积分相同，也知道有些函数不是Riemann可积的但是Lebegue可积的，但是这里的定义却也给出了一个函数$f$是Riemann可积的但不是Lebegue可积的的可能性。
+
+比如考虑函数$\sin(x)/x$在$\rr$上的积分，Riemann积分给出了著名的值
+\[
+	\int_{\rr}\frac{\sin(x)}{x}\dd x=\pi,
+\]
+但是对Lebegue积分，我们得分成正部和负部，它们的积分都不是有限的。
+\end{para}
+
+\begin{para}
+对于复函数，我们得更加谨慎了，比如扩充实直线上的$\infty$放在复数域上就不是一个很好的概念。所以我们宁愿放弃$[-\infty,\infty]$，重新回到$\rr$，他与$\cc$会更加契合，而且我们需要保证一定的有限性。
+
+设$(X,\mu)$是一个测度空间，定义$L^1(X,\mu)$是所有使得
+\[
+	\int_X |f|\dd \mu <\infty
+\]
+成立的复可测函数$f:X\to \cc$的集合。由于$f$可测，所以正函数$|f|$可测，上面的积分是确定的。
+
+将$f$写成$u+iv$，定义
+\[
+	\int_X f\dd \mu =\int_X u\dd \mu +i \int_X v\dd \mu,
+\]
+由于$u^\pm\leq |u| \leq |f|$和$v^\pm\leq |v| \leq |f|$，所以右侧的两个积分都是有限值的，进而整个式子是有意义的一个复数。
+
+直接的验证可以说明这样定义的复函数的积分对被积函数是复线性的。
+\end{para}
+
+\begin{pro}
+取$f\in L^1(X,\mu)$，则
+\[
+	\left|\int_X f\dd \mu\right| \leq \int_X |f|\dd \mu.
+\]
+\end{pro}
+
+\begin{proof}
+记$\int_X f\dd \mu=\rho \exp(\ii \varphi)$，于是我们有
+\[
+	\left|\int_X f\dd \mu\right|=\int_X f\dd \mu=\int_X \exp(-\ii \varphi)f\dd \mu,
+\]
+由于右侧虚部的积分总是为零的，令$u$是$\exp(-\ii \varphi)f$的实部，则
+\[
+	\left|\int_X f\dd \mu\right|=\int_X u\dd \mu\leq \int_X |\exp(-\ii \varphi)f|\dd \mu=\int_X |f|\dd \mu,
+\]
+此即所证。
+\end{proof}
+
+这节我们以下面这个Lebegue控制收敛定理结束。
+
+\begin{thm}[Lebegue控制收敛定理]
+设$(X,\mu)$是一个测度空间，而$\{f_n\}$是上面的一个可测复函数列，它逐点收敛于$f:X\to \cc$. 如果存在一个$g\in L^1(X,\mu)$，使得对于足够大的$n$都有$|f_n(x)|\leq g(x)$对任意的$x\in X$都成立，则$f\in L^1(X,\mu)$且成立
+\[
+	\lim_{n\to\infty}\int_X |f_n-f|\dd\mu=0,\quad \lim_{n\to\infty}\int_X f_n\dd\mu=\int_X f\dd\mu.
+\]
+\end{thm}
+
+\begin{proof}
+由于$|f|\leq g$，所以$f\in L^1(X,\mu)$. 假设两个积分极限中第一个满足，则由
+\[
+	0\leq \lim_{n\to \infty} \left| \int_X (f-f_n)\dd \mu\right|\leq\lim_{n\to \infty}\int_X |f-f_n|\dd \mu=0,
+\]
+可以给出第二个式子，所以我们这里只证明第一个积分的极限为零。
+
+由于$|f_n-f|\leq 2g$，将Fatou引理应用到函数列$2g-|f_n-f|$上，我们有
+\[
+	\int_X 2g \dd \mu\leq \liminf_{n\to \infty}\int_X \left(2g-|f_n-f|\right) \dd \mu,
+\]
+两边减去$\int_X 2g \dd \mu$，可以得到
+\[
+	0\leq \liminf_{n\to \infty}\int_X \left(-|f_n-f|\right) \dd \mu=-\limsup_{n\to \infty}\int_X |f_n-f| \dd \mu
+\]
+或
+\[
+	\limsup_{n\to \infty}\int_X |f_n-f| \dd \mu\leq 0.
+\]
+若一个非负实数序列如果不收敛于零，则求$\limsup$后总是正的，与上式矛盾，所以
+\[
+	\lim_{n\to \infty}\int_X |f_n-f| \dd \mu=0.\qedhere
+\]
+\end{proof}
+
+\section{零测集}
+
+\section{正Borel测度}

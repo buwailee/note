@@ -874,40 +874,6 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 % 	\end{vmatrix}
 % \]
 
-\begin{exa}
-设$X$是一个局部紧Hausdorff空间，而$f$是它上面的一个函数，定义$f$的支集为$X-f^{-1}(0)$的闭包。记$\mathsf{C}_c(X)$为$X$上所有的具有紧支集的实值连续函数构成的集合，逐点定义加法和数乘，就可以发现$\mathsf{C}_c(X)$上有一个矢量空间结构：对加法而言，$f+g$的支集处于$f$和$g$的支集的并中，后者是紧的，作为Hausdorff空间中紧集的闭子集，$f+g$的支集也是紧的。数乘非零标量支集不变，而乘以零之后，支集是空的，所以显然是紧的。此外，在$\mathsf{C}_c(X)$上可以定义一个绝对值函数$\abs:\mathsf{C}_c(X)\to \mathsf{C}_c(X)$，通过$\abs(f(x))=|f(x)|$. 
-
-称$\ell:\mathsf{C}_c(X)\to \rr$是一个正线性泛函，如果对$\mathsf{C}_c(X)$中的非负函数$f$，$\ell(f)$都非负。因此正线性泛函在如下意义下单调：如果$f_1(x)\leq f_2(x)$处处成立，则$\ell(f_1)\leq \ell(f_2)$.
-
-不难看到，给定一个正线性泛函$\ell$，$\ell\circ \abs$是一个半范数，其中$\abs:\mathsf{C}_c(X)\to \mathsf{C}_c(X)$是$\mathsf{C}_c(X)$上的绝对值函数，方便起见，我们将$\ell$确定的半范数记作$|\ell|$. 这是一个暂时的记号，所以不用太在意。既然得到了一个半范数$|\ell|$，进一步，可以在$\mathsf{C}_c(X)/|\ell|^{-1}(0)$上定义出一个范数使得它称为一个拓扑矢量空间，然后完备化之，这样得到的空间记作$\mathsf{L}(X)$，$\mathsf{L}(X)$上的范数记作$|*|_\ell$. 
-
-一般来说，在谈论$\mathsf{L}(X)$或者$\mathsf{C}_c(X)/|\ell|^{-1}(0)$的时候，我们会心照不宣地将$f\in \mathsf{C}_c(X)$看作其等价类。比如，我们可能会对$f\in \mathsf{C}_c(X)$说成立等式$|f|_\ell = \ell(\abs(f))$.
-
-由测度论中的Riesz表示定理，$\mathsf{C}_c(X)$上的每一个正线性泛函$\ell$都可以定义出$X$上的一个正测度$\mu$，使得任取$f\in \mathsf{C}_c(X)$都成立
-\[
-	\ell(f)=\int f\,\dd \mu.
-\]
-实际上，我们构造的完备拓扑矢量空间$\mathsf{L}(X)$就是$\mathsf{L}^1(\mu)$而已。但说明这点远比这样构造$\mathsf{L}(X)$要困难得多。
-
-再具体一些，考虑$X=\rr^n$，每一个$\mathsf{C}_c(X)$中的函数都是Riemann可积的，取$\ell$为通常的Riemann积分，不难发现这是一个正线性泛函。通过半范数诱导出范数继而完备化的手段，我们得到的空间$\mathsf{L}(\rr^n)$正是寻常的$\mathsf{L}^1(\rr^n)$. 下面一个引理则给出了$\mathsf{L}(\rr^n)$上新的积分，即Lebesgue积分。
-\end{exa}
-
-\begin{lem}
-	一切记号与习惯同上一个例子。$\mathsf{C}_c(X)$上的正线性泛函$\ell$将诱导出$\mathsf{L}(X)$上的唯一的连续线性泛函$\ell'$，对满足$\ell'(f)=\ell(f)$.
-\end{lem}
-
-\begin{proof}
-	可以将$\mathsf{C}_c(X)/|\ell|^{-1}(0)$看作$\mathsf{L}(X)$的子空间，而$\ell$在$\mathsf{C}_c(X)/|\ell|^{-1}(0)$诱导了一个$\bar{\ell}$满足$\bar{\ell}(f)=\ell(f)$. $\bar{\ell}$的连续性来自于$\bar{\ell}$在$\mathsf{C}_c(X)/|\ell|^{-1}(0)$是有界的，实际上，
-	\[
-	|\bar{\ell}(f)|=|\ell(f)|\leq \ell(|f|)=|\ell|(f).
-	\]
-	不等式来自于$-|f|\leq f\leq |f|$以及$\ell$是一个正线性泛函，即
-	\[
-	-\ell(|f|)\leq \ell(f)\leq \ell(|f|).
-	\]
-	由于$\mathsf{C}_c(X)/|\ell|^{-1}(0)$在其完备化空间$\mathsf{L}(X)$中稠密，然后对$\bar{\ell}$使用Proposition \ref{1.52}即可。
-\end{proof}
-
 \begin{para}
 半范数的重要实例是被称为Minkowski泛函的函数。设$A$是$X$的吸收集，定义Minkowski泛函$\mu_A$如下：
 \[
