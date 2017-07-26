@@ -614,7 +614,9 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	所以得证，其他的检查也类似。
 \qed 
 
-\pro 对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\mathsf{Set}](h^-,\star)$，这也被称为Yoneda引理。
+\begin{pro}
+对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\mathsf{Set}](h^-,\star)$，这也被称为Yoneda引理。
+\end{pro}
 
 在Yoneda引理的证明中，已经看到，最不平凡的地方在于：如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$. 类似地，还有协变的版本，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 所以，往往这两点被单独拎出来称为Yoneda引理。
 
@@ -635,14 +637,17 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子/完全函子，如果$f:\mathcal{C}(X,Y)\to \mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射/满射。
 
-\pro \label{equivcat}两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$Y=f(X)$.\notprove
+\begin{pro}\label{equivcat}
+两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$Y=f(X)$.\notprove
+\end{pro}
 
 \section{理想}
 
 \para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$或者$\langle S\rangle$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1$, $\cdots$, $f_n)$或者$\langle f_1$, $\cdots$, $f_n\rangle$. 如果指标需要用一个指标集表示，那么就通常写作$\langle f_i\rangle_{i\in I}$或者$\langle f_i\,:\,i\in I\rangle$. 一个理想生成的理想自然就是他本身。
 
 \para 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
-\[\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
+\[
+\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
 \]
 是一个理想。由于$\mathfrak{a}$, $\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$，所以$\mathfrak{a}\cup\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$. 一般而言，两个理想的并不是理想，但是两个理想的并生成的理想实际上就是两个理想的和。
 

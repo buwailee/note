@@ -6,7 +6,18 @@
 \usepackage{ctex}
 	% \CTEXoptions[today=old]
 	% \CTEXoptions[contentsname=Table of Contents]
-\usepackage[chapter]{../egastyle}
+% \usepackage[chapter]{../egastyle}
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{theo}[para]{Theorem}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
 \usepackage{titletoc,makeidx,paralist}
 	\makeindex
 	% \renewcommand{\indexname}{Index}

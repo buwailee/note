@@ -4,17 +4,21 @@
 
 \section{唯一分解整环}
 
-\para 域$k$上的多项式环$k[x]$是主理想整环。
+\begin{pro}
+域$k$上的多项式环$k[x]$是主理想整环。
+\end{pro}
 
-\proof
+\begin{proof}
 	设$\mathfrak{a}$是$k[x]$的一个理想，由于单位理想和零理想都是主理想，所以假设$\mathfrak{a}$不是单位理想也不是零理想，这样$k$中的非零元素都不在$\mathfrak{a}$中。取一个$\mathfrak{a}$中幂次最小的非零多项式$f$，由构造，$f$存在且不可能是一个常数。显然，我们有包含关系$(f)\subset \mathfrak{a}$.
 
 	任取$g\in \mathfrak{a}$，由多项式除法算法$g=pf+r$，其中$\deg(r)<\deg(f)$. 由于$r=g-pf\in \mathfrak{a}$，而$f$是$\mathfrak{a}$中幂次最小的非零多项式，所以$r=0$. 于是$g=pf\in (f)$给出了反向的包含关系$\mathfrak{a}\subset (f)$.
 
 	综上，$\mathfrak{a}=(f)$. 所以$k[x]$是主理想整环。
-\qed
+\end{proof}
 
-\pro 一个整环$R$是唯一分解整环，当且仅当，他的不可约元生成的理想是素理想且$R$中的任意主理想升链稳定。
+\begin{pro}
+一个整环$R$是唯一分解整环，当且仅当，他的不可约元生成的理想是素理想且$R$中的任意主理想升链稳定。
+\end{pro}
 
 \para 因此主理想整环是唯一分解整环。
 
@@ -34,11 +38,13 @@
 
 作为域扩张的例子，考虑多项式环$k[x_1$, $\cdots$, $x_n]$是一个$k$-代数，他的商域$F(k[x_1,\,\cdots\!,\,x_n])$就是$k$的一个扩张，并且$\dim_k(F(k[x_1$, $\cdots$, $x_n]))=\infty$，实际上，比如$\{x_1$, $\cdots$, $x_1^n,\cdots\}$是线性无关的。或者，如果$\mm$是$k[x_1$, $\cdots$, $x_n]$的一个极大理想，则$k[x_1$, $\cdots$, $x_n]/\mm$也是$k$的一个扩张，后面我们会看到这个扩张是一个有限扩张。
 
-\pro 设$K/k$是$L/K$都是扩张，则$[L:k]\leq[K:k]$. 特别地，如果$K/k$和$L/K$都是有限扩张且$[K:k]=m$以及$[L:K]=n$，则$L/k$是有限扩张且$[L:k]=mn$。这就是说，有限扩张的有限扩张还是有限扩张。
+\begin{pro}
+设$K/k$是$L/K$都是扩张，则$[L:k]\leq[K:k]$. 特别地，如果$K/k$和$L/K$都是有限扩张且$[K:k]=m$以及$[L:K]=n$，则$L/k$是有限扩张且$[L:k]=mn$. 这就是说，有限扩张的有限扩张还是有限扩张。
+\end{pro}
 
-\proof 
+\begin{proof} 
 	设$\{a_1$, $\cdots$, $a_r\}$是$K$中的任意$k$-代数无关组，而$\{b_1$, $\cdots$, $b_s\}$是$L$中的任意$K$-代数无关组，我们来证明$\{a_ib_j\}$是$k$-线性无关组。设$\alpha=\sum_{i,j}c_{ij}a_ib_j$，其中$c_{ij}\in k$，因为$\sum_i c_{ij}a_i\in K$，所以如果$\alpha=0$，那么由$\{b_1$, $\cdots$, $b_s\}$的$K$-线性无关性，所以$\sum_i c_{ij}a_i=0$，然后再应用一次$\{a_1$, $\cdots$, $a_r\}$的$k$-线性无关性，就得到了对于任意的$i$, $j$都成立$c_{ij}=0$，于是$\{a_ib_j\}$是$k$-线性无关组。由此，维度的结论显然。
-\qed
+\end{proof}
 
 利用这个结论，比如$[K:k]$是一个素数，任意的域$L$如果满足$k\subset L\subset K$（他被称为扩张$K/k$的中间域）一定满足$[K:k]=[K:L][L:k]$，所以要么$[K:L]=[K:k]$要么$[K:k]=[L:k]$，分别对应$L=k$以及$L=K$. 
 
@@ -46,18 +52,20 @@
 
 我们特别关注$X$是单点集$\{\alpha\}$的情况，此时$k(\alpha)$被称为单扩张。下面两个命题把任意的$X$的情况约化到单扩张上面。
 
-\pro 设$X$是$K$的任意子集，考虑指标集$I$为$X$的任意有限子集，则
+\begin{pro}
+设$X$是$K$的任意子集，考虑指标集$I$为$X$的任意有限子集，则
 \[
 	k[X]=\bigcup_{\{a_1,\,\cdots\!,\,a_n\}\in I} k[a_1,\,\cdots\!,\,a_n].
 \]
+\end{pro}
 
-\proof
+\begin{proof}
 	设右边为$A$. 显然，任取有限子集$\{a_1$, $\cdots$, $a_n\}$，$k(a_1$, $\cdots$, $a_n)\subset k[X]$，因此$A\subset k[X]$. 反过来要证$k[X]\subset A$，只要证明$A$是一个环即可，则极小性将得到结论。任取$x$, $y\in A$，则存在有限集使得
 	\[
 		x\in k[a_1,\,\cdots\!,\,a_m],\quad y\in k[b_1,\,\cdots\!,\,b_n],
 	\]
 	因此$x+y$, $xy\in k[a_1$, $\cdots$, $a_m,b_1$, $\cdots$, $b_n]\subset A$，所以这是一个环。
-\qed
+\end{proof}
 
 类似地，还可以证明
 \[
@@ -65,9 +73,11 @@
 \]
 这就说明了，$k(X)$中的任意一个元素$\alpha$都可以找到有限个$X$中的元素$\{a_1$, $\cdots$, $a_n\}$使得$\alpha\in k(a_1$, $\cdots$, $a_n)$.
 
-\pro 对$k$单扩张$\alpha_1$得到了$k(\alpha_1)$，再对其单扩张$\alpha_2$就得到了$k(\alpha_1)(\alpha_2)$，他也是$k$的一个扩张，则$k(\alpha_1)(\alpha_2)= k(\alpha_2)(\alpha_1)=k(\alpha_1,\alpha_2)$.
+\begin{pro}
+对$k$单扩张$\alpha_1$得到了$k(\alpha_1)$，再对其单扩张$\alpha_2$就得到了$k(\alpha_1)(\alpha_2)$，他也是$k$的一个扩张，则$k(\alpha_1)(\alpha_2)= k(\alpha_2)(\alpha_1)=k(\alpha_1,\alpha_2)$.
+\end{pro}
 
-\proof 显然$k(\alpha_1,\alpha_2)\subset k(\alpha_1)(\alpha_2)$，因为$k(\alpha_1)(\alpha_2)$是一个域且同时包含$\alpha_1$和$\alpha_2$. 反过来，因为$k(\alpha_1,\alpha_2)$是一个域，而$\alpha_1$是他的元素，所以$k(\alpha_1)$是$k(\alpha_1,\alpha_2)$的子域，然后再对$k(\alpha_1)$做$\alpha_2$的单扩张，因为单扩张$k(\alpha_1)(\alpha_2)$是$k(\alpha_1,\alpha_2)$中包含$\alpha_2$的最小的域，所以$k(\alpha_1)(\alpha_2)\subset k(\alpha_1,\alpha_2)$.\qed
+\begin{proof} 显然$k(\alpha_1,\alpha_2)\subset k(\alpha_1)(\alpha_2)$，因为$k(\alpha_1)(\alpha_2)$是一个域且同时包含$\alpha_1$和$\alpha_2$. 反过来，因为$k(\alpha_1,\alpha_2)$是一个域，而$\alpha_1$是他的元素，所以$k(\alpha_1)$是$k(\alpha_1,\alpha_2)$的子域，然后再对$k(\alpha_1)$做$\alpha_2$的单扩张，因为单扩张$k(\alpha_1)(\alpha_2)$是$k(\alpha_1,\alpha_2)$中包含$\alpha_2$的最小的域，所以$k(\alpha_1)(\alpha_2)\subset k(\alpha_1,\alpha_2)$.\end{proof}
 
 这个简单的命题顺便还告诉我们，有限次单扩张的顺序无关紧要。经过有限归纳，则$X$是有限集的情况就变成了有限次单扩张。
 
@@ -87,13 +97,15 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 \para 设$K/k$是一个扩张，$\alpha\in K$在$k$上代数，则存在多项式$f\in k[x]$使得$f(\alpha)=0$，取$g$是$k[x]$中以$\alpha$为零点的次数最低的首一多项式，称为$\alpha$的极小多项式。
 
-\lem 极小多项式不可约。如果$f$也以$\alpha$为零点，则存在$h\in k[x]$使得$f=gh$.
+\begin{lem}
+极小多项式不可约。如果$f$也以$\alpha$为零点，则存在$h\in k[x]$使得$f=gh$.
+\end{lem}
 
-\proof 
+\begin{proof} 
 	假设可约，设$g=g_1g_2$，其中$g_1$和$g_2$都是次数比$g$低的多项式。那么在$\alpha$处，我们有$g_1(\alpha)g_2(\alpha)=0$，所以$g_1(\alpha)$和$g_2(\alpha)$中至少有一个为零，而他们都是次数比$g$低的在$\alpha$处为零的多项式，和极小多项式的选取矛盾。
 
 	辗转相除，我们有分解$f=gh+r$，其中$r$是比$g$次数更低的多项式或者$r=0$。如果是前者，在$\alpha$处$r(\alpha)=f(\alpha)-g(\alpha)h(\alpha)=0$，所以$r$和极小多项式的选取矛盾。
-\qed
+\end{proof}
 
 我们已经知道了环同态$\ev_\alpha:k[x]\to k[\alpha]$，他当然是满的，他的核是那些在$\alpha$为零的多项式所构成的理想，从引理可以知道，他就是极小多项式生成的极大理想\footnote{若$k$是一个域，则多项式环$k[x]$是一个主理想整环，他的极大理想被不可约多项式生成。}$(g)$，所以$k[\alpha]\cong k[x]/(g)$是一个域。因而$k[\alpha]$就是我们想要的域$k(\alpha)$，他同构于$k[x]/(g)$，其中$g$是$\alpha$的极小多项式。
 
@@ -101,17 +113,19 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 至此，对单扩张，我们已经分成两种情况得到了$k[\alpha]$和$k(\alpha)$. 当$\alpha$在$k$上代数的时候，而他的极小多项式为$f$，则$k(\alpha)=k[\alpha]=k[x]/(f)$，当$\alpha$在$k$上超越的时候，$k[\alpha]\cong k[x]$.
 
-% \proof 上面我们预设了一个比$k$大的域$K$的存在，免去了担心单扩张存在性的烦恼。现在有了上面单扩张的知识，我们也就可以直接构造单扩张来证明存在性。
+% \begin{proof} 上面我们预设了一个比$k$大的域$K$的存在，免去了担心单扩张存在性的烦恼。现在有了上面单扩张的知识，我们也就可以直接构造单扩张来证明存在性。
 
-% 	如果$\alpha$关于$k$超越，那么我们取$k(\alpha)$为$k[\alpha]$的商域$F(k[\alpha])$，这显然是一个$k$-代数，因此是一个$k$的扩张。如果$\alpha$关于$k$代数，就取$k[\alpha]$，他显然是一个$k$-代数，并且同构于域$k[x]/\mm$，其中$\mm$是$\alpha$的极小多项式生成的极大理想。\qed
+% 	如果$\alpha$关于$k$超越，那么我们取$k(\alpha)$为$k[\alpha]$的商域$F(k[\alpha])$，这显然是一个$k$-代数，因此是一个$k$的扩张。如果$\alpha$关于$k$代数，就取$k[\alpha]$，他显然是一个$k$-代数，并且同构于域$k[x]/\mm$，其中$\mm$是$\alpha$的极小多项式生成的极大理想。\end{proof}
 
-\pro 两个单扩张同构，即$k(\alpha)\cong k(\beta)$，当且仅当$\alpha$和$\beta$都在$k$上代数且极小多项式相同，或者同为超越扩张。
+\begin{pro}
+两个单扩张同构，即$k(\alpha)\cong k(\beta)$，当且仅当$\alpha$和$\beta$都在$k$上代数且极小多项式相同，或者同为超越扩张。
+\end{pro}
 
-\proof 
+\begin{proof} 
 	如果$k(\alpha)$是超越扩张，而$k(\beta)$是代数扩张。前面已经知道$\dim_k(k(\alpha))=\infty$。如果$\beta$的极小多项式是$n$次的，那么$k[x]/\mm$中$\{1,x$, $\cdots$, $x^{n-1}$, $x^n\}$是线性相关的，即$\dim_k(k(\beta))\leq n<\infty$，所以$k(\alpha)\not\cong k(\beta)$.
 
 	现在，如果两者都是超越扩张，则$k(\alpha)\cong F(k[x])\cong k(\beta)$.如果两者都是代数扩张，则$k[x]/\mm_\alpha\cong k[x]/\mm_\beta$，即可推出$\mm_\alpha=\mm_\beta$，继而拥有相同的极小多项式。反过来，如果有相同的极小多项式，则$k(\alpha)\cong k[x]/\mm\cong k(\beta)$.
-\qed
+\end{proof}
 % 于是，对于扩张$k(\alpha_1$, $\cdots$, $\alpha_n)/k$，如果我们乐意，可以先超越扩张，然后再代数扩张。
 
 % 下一节将关注代数扩张，对于单扩张，会有如下现在看起来应该是自然的命题：代数元的单扩张是代数扩张。
@@ -124,18 +138,18 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 如果$B$在$A$上整，我们也称$B$是$A$的一个整扩张。下面一个命题告诉我们，如果一个整环是域的整扩张，则这是一个域扩张。
 
-\pro 设$A$和$B$是环，且$A$是$B$的子环。以下命题等价：
+\begin{pro}\label{p2:1}
+	设$A$和$B$是环，且$A$是$B$的子环。以下命题等价：
+	\begin{compactenum}[~~~(1)]
+		\item $\alpha$在$A$上整。
+		\item $A[\alpha]$是一个有限生成$A$-模。
+		\item $A[\alpha]$包含在$B$的一个子环$C$中，$C$是一个有限生成$A$-模。
+		\item 存在忠实$A[\alpha]$-模$M$，他作为$A$-模时是有限生成的。
+	\end{compactenum}
+\end{pro}	
 
-	\no{1} $\,\alpha$在$A$上整。
-
-	\no{2} $A[\alpha]$是一个有限生成$A$-模。
-
-	\no{3} $A[\alpha]$包含在$B$的一个子环$C$中，$C$是一个有限生成$A$-模。
-
-	\no{4} 存在忠实$A[\alpha]$-模$M$，他作为$A$-模时是有限生成的。
-	\label{p2:1}
-
-\proof \no{1} $\Rightarrow$ \no{2} ：由于$\alpha$在$A$上代数，他的满足方程$\alpha^n+a_1\alpha^{n-1}+\cdots+a_n=0$，那么通过$\alpha^{n+r}=-(a_1\alpha^{n+r-1}+\cdots+a_n\alpha^r)$即可知$A[\alpha]$是一个有限生成$A$-模。
+\begin{proof} 
+	\no{1} $\Rightarrow$ \no{2} ：由于$\alpha$在$A$上代数，他的满足方程$\alpha^n+a_1\alpha^{n-1}+\cdots+a_n=0$，那么通过$\alpha^{n+r}=-(a_1\alpha^{n+r-1}+\cdots+a_n\alpha^r)$即可知$A[\alpha]$是一个有限生成$A$-模。
 
 	\no{2} $\Rightarrow$ \no{3} ：取$C=A[\alpha]$.
 
@@ -145,38 +159,42 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	\[
 		\sum_{j=1}^m (\alpha\delta_{ij} -a_{ij})x_j=0,
 	\]
-	左乘$(\alpha\delta_{ij} -a_{ij})$的伴随矩阵，则$\det(\alpha\delta_{ij} -a_{ij})x_j=0$对任意的$1\leq j \leq m$都成立，也即$\det(\alpha\delta_{ij} -a_{ij})M=0$。由$M$的忠实性，$\det(\alpha\delta_{ij} -a_{ij})=0$，将行列式展开就是我们需要的首一多项式。\qed
+	左乘$(\alpha\delta_{ij} -a_{ij})$的伴随矩阵，则$\det(\alpha\delta_{ij} -a_{ij})x_j=0$对任意的$1\leq j \leq m$都成立，也即$\det(\alpha\delta_{ij} -a_{ij})M=0$。由$M$的忠实性，$\det(\alpha\delta_{ij} -a_{ij})=0$，将行列式展开就是我们需要的首一多项式。
+\end{proof}
 
 如果$\{\alpha_1$, $\cdots$, $\alpha_n\}\subset B$都在$A$上整，那么$k[\alpha_1$, $\cdots$, $\alpha_n]$也是一个有限生成$k$-模，这只要利用$k[\alpha_1$, $\cdots$, $\alpha_n]=k[\alpha_1$, $\cdots$, $\alpha_{n-1}][\alpha_n]$经过有限次归纳即可。
 
 \para \label{iope}设$A$和$B$是环，且$A$是$B$的子环。则所有在$A$上整的元素构成$B$的一个子环。如果这个子环就是$A$，那么称呼$A$在$B$中是整闭的。
 
-\proof 如果$\alpha$和$\beta$在$A$上面整，$A[\alpha,\beta]$有限生成。因为$A[\alpha\pm\beta]\subset A[\alpha,\beta]$和$A[\alpha\beta]\subset A[\alpha,\beta]$，由上一个命题的\no{3}，$\alpha\pm\beta$和$\alpha\beta$在$A$上面整。\qed
+\begin{proof} 如果$\alpha$和$\beta$在$A$上面整，$A[\alpha,\beta]$有限生成。因为$A[\alpha\pm\beta]\subset A[\alpha,\beta]$和$A[\alpha\beta]\subset A[\alpha,\beta]$，由上一个命题的\no{3}，$\alpha\pm\beta$和$\alpha\beta$在$A$上面整。\end{proof}
 
 设$K/k$是一个扩张，这个命题告诉我们$K$中在$k$上代数的元素构成$K$中的子环。并且，因为如果$\alpha$代数，那么$1/\alpha$也代数，所以$K$中在$k$上代数的元素构成$K$中的子域。特别地，如果$\{\alpha_1$, $\cdots$, $\alpha_n\}$都在$k$上代数，则单扩张$k(\alpha_1$, $\cdots$, $\alpha_n)$是代数扩张。
 
 \para 唯一分解整环在他的商域中是整闭的。一般而言，如果整环$R$在他的商域$F(R)$中是整闭的，则$R$就直接被称为是整闭的。
 
-\proof 
+\begin{proof} 
 	设$R$是唯一分解整环，$F(R)$是$R$是他的商域，再设$x\in F(R)$在$R$上整，对于唯一分解整环有分解$x=r/s$，其中$r$和$s$互素，那么就有方程
 	\[
 		r^n+a_1r^{n-1}s+\cdots+a_n s^n=0,
 	\]
 	其中$a_i\in R$，因此$s$需要整除$r^n$，而$r$和$s$互素，所以只能有$s=\pm 1$.这就说明了$x=\pm r\in R$.
-\qed
+\end{proof}
 
-\pro 设$A\subset B\subset C$是环，且$B$在$A$上整，$C$在$B$上整，则$C$在$A$上整。这就是整的传递性。
+\begin{pro}
+设$A\subset B\subset C$是环，且$B$在$A$上整，$C$在$B$上整，则$C$在$A$上整。这就是整的传递性。
+\end{pro}
 
-\proof 
+\begin{proof} 
 	设$x\in C$，因为$x$在$B$上整，所以存在方程$x^n+\cdots+b_{n-1}x+b_n=0$，因为$b_i\in B$都在$A$上整，所以$B'=A[b_1$, $\cdots$, $b_n]$是有一个有限生成$A$-模。由同一个首一多项式，$x$也在$B'$上整，于是$B'[x]$是一个有限生成$B'$-模，由模的有限生成的传递性，则$B'[x]$是一个有限生成$A$-模，所以$x$在$A$上整。
-\qed
+\end{proof}
 
 回到域的情况，如果$K/k$是$L/K$都是扩张，则$L/k$是一个扩张。由整的传递性，如果$K/k$和$L/K$都是代数扩张，则$L/k$是代数扩张。
 
-\pro 设环$A\subset B\subset C$，$A$是Norther环，$C$是有限生成$A$-代数，以及$C$或者是一个有限生成$B$-模，或者$C$在$B$上整，那么，$B$是一个有限生成$A$-代数。
-	\label{p:2.4}
+\begin{pro}\label{p:2.4}
+设环$A\subset B\subset C$，$A$是Norther环，$C$是有限生成$A$-代数，以及$C$或者是一个有限生成$B$-模，或者$C$在$B$上整，那么，$B$是一个有限生成$A$-代数。
+\end{pro}
 
-\proof 
+\begin{proof} 
 	在题目的条件下，由Proposition \eqref{p2:1}，$C$是一个有限生成$B$-模与$C$在$B$上整等价。所以只对$C$是一个有限生成$B$-模的情况证明。
 
 	令$C=A[\bar{x}_1$, $\cdots$, $\bar{x}_m]\cong A[x_1$, $\cdots$, $x_m]/\mathfrak{a}$，以及令$y_1$, $y_2$, $\cdots$, $y_n$是$C$作为有限生成$B$-模的生成元，那么存在
@@ -186,21 +204,25 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	令$B_0$是由$\alpha_{ij}\in B$和$\beta_{ijk}\in B$生成的$A$-代数，由于$A$是Norther环，所以$B_0$是Norther环，以及$A\subset B_0 \subset B$.
 
 	由于$C$中的元素都是关于$\{\bar{x}_i\}$的、系数处于$A$中的多项式，那么式(\theequation)告诉我们，这个元素可以写成$\sum_i b_i y_i$，其中$b_i\in B_0$，所以$C$是一个有限生成$B_0$-模。而$B_0$是Norther环就保证了$C$是一个Norther $B_0$-模。因为$B$又是$C$的子模，所以$B$是一个有限生成$B_0$-模。又$B_0$是一个有限生成$A$-代数，所以$B$是一个有限生成$A$-代数。
-\qed
+\end{proof}
 
-\pro 有限扩张等价于有限次单代数扩张。
+\begin{pro}
+有限扩张等价于有限次单代数扩张。
+\end{pro}
 
-\proof 注意到单代数扩张是有限扩张，这是因为，如果他的极小多项式为$n$次的，那么$\{1,x$, $\cdots$, $x^n\}$线性相关，而有限次有限扩张是有限扩张。
+\begin{proof} 注意到单代数扩张是有限扩张，这是因为，如果他的极小多项式为$n$次的，那么$\{1,x$, $\cdots$, $x^n\}$线性相关，而有限次有限扩张是有限扩张。
 
-反之，设$K/k$不是代数扩张，那么存在一个元素$\alpha\in K$是超越的。因为$k\subset k(\alpha)\subset K$，所以$[K:k]\geq [k(\alpha):k]=\infty$. 如果$K/k$是代数扩张，但不是有限次单代数扩张，则对于任何的$n\in \zz^+$，一定存在一组$n$个元素的线性无关组，这和$\dim_k K$有限矛盾。所以一个有限扩张由有限次单代数扩张而成。\qed
+反之，设$K/k$不是代数扩张，那么存在一个元素$\alpha\in K$是超越的。因为$k\subset k(\alpha)\subset K$，所以$[K:k]\geq [k(\alpha):k]=\infty$. 如果$K/k$是代数扩张，但不是有限次单代数扩张，则对于任何的$n\in \zz^+$，一定存在一组$n$个元素的线性无关组，这和$\dim_k K$有限矛盾。所以一个有限扩张由有限次单代数扩张而成。\end{proof}
 
 如果加强条件，比如中间域有限，我们甚至可以得到有限扩张是单代数扩张的情况，这就是所谓的本原元定理，以后我们会遇到。
 
-\lem Zariski引理：有限生成扩张是有限扩张。这还可以表述为，设$\mm$是$A=k[x_1$, $\cdots$, $x_n]$的一个极大理想，则$A(\mm)=A/\mm$是$k$的一个有限扩张。
+\begin{thm}[Zariski引理]
+有限生成扩张是有限扩张。这还可以表述为，设$\mm$是$A=k[x_1$, $\cdots$, $x_n]$的一个极大理想，则$A(\mm)=A/\mm$是$k$的一个有限扩张。
+\end{thm}
 
 在证明之前，可以注意到如下事实：设$x_i$在$A(\mm)$中的像为$\alpha_i$，则$A(\mm)=k(\alpha_1$, $\cdots$, $\alpha_n)$. 因此，如果$A(\mm)$如果是代数扩张，则它就是有限扩张，所以只要证明是一个代数扩张就行了。
 
-\proof 
+\begin{proof} 
 	归纳证明这个命题。$n=1$的时候是简单的，$k[x]$中任意的极大理想$\mm$都是由一个不可约多项式$f$生成的，所以$\mm=(f)$，而单扩张的知识告诉我们，$k[x]/(f)$是一个代数扩张，他给$k$添加上了$f$的一个根。
 
 	对$n$个变元的情况，假设对任意的$\mm$有$A(\mm)=k[x_1$, $\cdots$, $x_n]/\mm$是一个代数扩张。对$n+1$个变元的情况，设$k(\alpha_0$, $\cdots$, $\alpha_{n})=k[x_0$, $\cdots$, $x_n]/\mm$是$k$的一个有限生成扩张，考虑如下同态
@@ -224,23 +246,25 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	\[
 		y=\frac{f}{a^N}\in k(\alpha_0),
 	\]
-	其中$f\in k[\alpha_0]$. 而$y$是任意的，考虑$y=1/b$，其中$b\not\in \{1$, $a$, $a^2$, $\cdots\}$，他不能写成$f/a^N$的形式，这就完成了矛盾。故$k(\alpha_0)$不可能是超越扩张，$k(\alpha_0)$是代数扩张。所以$k(\alpha_0$, $\cdots$, $\alpha_{n})$是$k$的代数扩张。\qed
+	其中$f\in k[\alpha_0]$. 而$y$是任意的，考虑$y=1/b$，其中$b\not\in \{1$, $a$, $a^2$, $\cdots\}$，他不能写成$f/a^N$的形式，这就完成了矛盾。故$k(\alpha_0)$不可能是超越扩张，$k(\alpha_0)$是代数扩张。所以$k(\alpha_0$, $\cdots$, $\alpha_{n})$是$k$的代数扩张。\end{proof}
 
 下面我们再提供一个Zariski引理的证明，他比上面的证明要短一些，用到了Propostion \eqref{p:2.4}.
 
-\proof 设$A(\mm)=k(\alpha_1$, $\cdots$, $\alpha_n)$，如果$A(\mm)$关于$k$不是代数扩张，假设$\alpha_1$, $\cdots$, $\alpha_r$关于$k$超越。我们可以先单扩张这些超越元，至于剩下的则关于域$B=k(\alpha_1$, $\cdots$, $\alpha_r)$代数。
+\begin{proof} 设$A(\mm)=k(\alpha_1$, $\cdots$, $\alpha_n)$，如果$A(\mm)$关于$k$不是代数扩张，假设$\alpha_1$, $\cdots$, $\alpha_r$关于$k$超越。我们可以先单扩张这些超越元，至于剩下的则关于域$B=k(\alpha_1$, $\cdots$, $\alpha_r)$代数。
 
-现在因为$A(\mm)$是$B$的有限扩张，根据包含关系$k\subset B\subset A(\mm)$和Propostion \eqref{p:2.4}，可以得知$B$是一个有限生成$k$-代数，设$B=k[\beta_1,\,\cdots\!,\,\beta_s]$，其中每一个$\beta_i$都有着形式$f_i/g_i$，而$f_i$, $g_i\in k[\alpha_1,\,\cdots\!,\,\alpha_r]$。但是，$k[\alpha_1,\,\cdots\!,\,\alpha_r]$中有多项式$h=g_1g_2\cdots g_{s}+1$使得$h^{-1}$不能写成$\beta_1,\,\cdots\!,\,\beta_s$的多项式，矛盾。\qed
+现在因为$A(\mm)$是$B$的有限扩张，根据包含关系$k\subset B\subset A(\mm)$和Propostion \eqref{p:2.4}，可以得知$B$是一个有限生成$k$-代数，设$B=k[\beta_1,\,\cdots\!,\,\beta_s]$，其中每一个$\beta_i$都有着形式$f_i/g_i$，而$f_i$, $g_i\in k[\alpha_1,\,\cdots\!,\,\alpha_r]$。但是，$k[\alpha_1,\,\cdots\!,\,\alpha_r]$中有多项式$h=g_1g_2\cdots g_{s}+1$使得$h^{-1}$不能写成$\beta_1,\,\cdots\!,\,\beta_s$的多项式，矛盾。\end{proof}
 
-\pro  有限扩张、有限次单代数扩张和有限生成扩张相互等价。
+\begin{pro}
+有限扩张、有限次单代数扩张和有限生成扩张相互等价。
+\end{pro}
 
-\proof 前二者的等价已经知道了。对有限次单代数扩张而成的域$k(\alpha_1$, $\cdots$, $\alpha_m)$，由$x_i\mapsto \alpha_i$可以构造一个满的$k$-代数同态$\varphi:k[x_1$, $\cdots$, $x_m]\to k(\alpha_1$, $\cdots$, $\alpha_m)$，根据同构基本定理，
+\begin{proof} 前二者的等价已经知道了。对有限次单代数扩张而成的域$k(\alpha_1$, $\cdots$, $\alpha_m)$，由$x_i\mapsto \alpha_i$可以构造一个满的$k$-代数同态$\varphi:k[x_1$, $\cdots$, $x_m]\to k(\alpha_1$, $\cdots$, $\alpha_m)$，根据同构基本定理，
 \[
 	k(\alpha_1,\,\cdots\!,\,\alpha_m)\cong k[x_1,\,\cdots\!,\,x_m]/\ker \varphi,
 \]
 所以$k(\alpha_1$, $\cdots$, $\alpha_m)$是一个有限生成扩张。
 
-反之，因为$A(\mm)=k[x_1$, $\cdots$, $x_n]/\mm=k(\alpha_1$, $\cdots$, $\alpha_n)$，由Zariski引理，$A(\mm)$是一个代数扩张，即$\alpha_i$都在$k$上代数，所以$A(\mm)=k(\alpha_1)\cdots(\alpha_m)$，其中每一次单扩张都是代数的。\qed
+反之，因为$A(\mm)=k[x_1$, $\cdots$, $x_n]/\mm=k(\alpha_1$, $\cdots$, $\alpha_n)$，由Zariski引理，$A(\mm)$是一个代数扩张，即$\alpha_i$都在$k$上代数，所以$A(\mm)=k(\alpha_1)\cdots(\alpha_m)$，其中每一次单扩张都是代数的。\end{proof}
 
 在某些书上，有限生成扩张被定义为有限次单代数扩张，通过上面的命题，我们知道了这两个定义是等价的。至此，我们完全分类了有限扩张。对于无限扩张，我们以后再研究。
 
@@ -282,21 +306,31 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 \item 任意首一一元多项式都可以分解为线性因子的乘积。
 \end{compactenum}
 
-\theo 对于任意一个域$k$，一定存在一个包含他的代数闭域$\bar{k}$，称为$k$的代数闭包。
+\begin{thm}
+对于任意一个域$k$，一定存在一个包含他的代数闭域$\bar{k}$，称为$k$的代数闭包。
+\end{thm}
 
-\proof
-	这个定理的证明相当多，下面描述的构造由E. Artin首先提出的。设$\Sigma$是$k[x]$中所有不可约首一多项式的集合，然后考虑多项式环$k[\Sigma]$，对应于$f\in\Sigma$，$k[\Sigma]$中的不定元是$x_f$. 令$\mathfrak{a}$是所有形如$f(x_f)$的多项式构成的理想，其中$f\in\Sigma$. 不难看出$\mathfrak{a}$不是单位理想。
+\begin{proof}
+	这个定理的证明相当多，下面描述的构造由E. Artin首先提出的。设$\Sigma$是$k[x]$中所有不可约首一多项式的集合，然后考虑多项式环$k[\Sigma]$，对应于$f\in\Sigma$，$k[\Sigma]$中的不定元是$x_f$. 令$\mathfrak{a}$是所有形如$f(x_f)$的多项式构成的理想，其中$f\in\Sigma$. 首先指出，$\mathfrak{a}$不是单位理想。
 
-	因此令$\mm$是包含$\mathfrak{a}$的极大理想，然后令$k_1=k[\Sigma]/\mm$，这是一个$k$的一个扩张，并且每个$f\in \Sigma$都在$k_1$中都有一个根。对$k_1$同样进行构造得到$k_2$，不断继续下去得到$k_3$, $k_4$等等。令$K=\bigcup_{n=1}^\infty k_n$, 显然$K$是一个域，并且每一个$f\in \Sigma$都可以完全分裂成线性因子。然后令$\bar{k}$是$K$中在$k$上代数的元素构成的集合，从\eqref{iope}，它们构成一个环，进而是一个域。这就是我们需要的代数闭域。
-\qed
+	实际上，如果$\mathfrak{a}=k[\Sigma]$，则存在$g_1$, $\dots$, $g_n\in k[\Sigma]$和$f_1(x_{f_1})$, $\dots$, $f_n(x_{f_n})$使得
+	\[
+	1=g_1f_1(x_{f_1})+\cdots +g_nf_n(x_{f_n}).
+	\]
+	现在，由于$f_1$, $\dots$, $f_n$是有限多项式族，我们可以找一个$k$的扩张$L$使得每一个$f_i$都在$L$上有根$\alpha_i$，将上式在$L$中赋值$x_{f_i}=\alpha_i$就会得到$1=0$，矛盾。
+
+	因此令$\mm$是包含$\mathfrak{a}$的极大理想，然后令$k_1=k[\Sigma]/\mm$，这是一个$k$的一个扩张，并且每个$f\in \Sigma$都在$k_1$中都有一个根，故$k[x]$中的任意多项式都在$k_1$中有根。对$k_1$同样进行构造得到$k_2$，不断继续下去得到$k_3$, $k_4$等等。令$K=\bigcup_{n=1}^\infty k_n$, 显然$K$是一个域，并且每一个$f\in \Sigma$都可以完全分裂成线性因子。然后令$\bar{k}$是$K$中在$k$上代数的元素构成的集合，从\eqref{iope}，它们构成一个环，进而是一个域。这就是我们需要的代数闭域。
+\end{proof}
 
 \section{整扩张的上升与下降}
 
 所谓上升与下降，就是在说理想在整扩张下的表现。
 
-\pro \label{intfield} 设$A\subset B$是两个整环，$B$在$A$上整，则$B$是域当且仅当$A$是域。
+\begin{pro}
+\label{intfield} 设$A\subset B$是两个整环，$B$在$A$上整，则$B$是域当且仅当$A$是域。
+\end{pro}
 
-\proof
+\begin{proof}
 	设$A$是域，$y\neq 0$在$A$上整，则存在一个首一多项式
 	\[
 	y^n+a_1y^{n-1}+\cdots+a_n=0,
@@ -314,7 +348,7 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	\[
 	x^{-1}=-(b_1+b_2x+\cdots+b_mx^{m-1})\in A.
 	\]
-\qed
+\end{proof}
 
 \para 考虑一个整扩张$R\subset S$，设$\aaa$是$S$的一个理想，则$R\cap \aaa$是$R$的一个理想。我们可以断言，$R/(R\cap \aaa)\subset S/\aaa$是一个整扩张。
 
@@ -334,27 +368,31 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 \para 设$k$是一个域，则$k[x]$是Jacobson环。
 
-\proof
+\begin{proof}
 	$k[x]$是主理想整环，所以每个非零素理想都是极大理想。只要证明$(0)$是非零素理想的交即可。由于$k[x]$是唯一分解整环，它的每一个非零元素$f$都可以分解成唯一的几个素元的乘积，即$f$只可能同时处于有限个素理想之中。所以只要素理想有无数个，则所有素理想的交就不能有非零元。而这是古希腊人就知道的结论：假设素元有有限个，记作$p_1$, $\cdots$, $p_n$，则$1+p_1p_2\cdots p_n$不能被$p_1$, $\cdots$, $p_n$整除，也是素的，矛盾。
-\qed
+\end{proof}
 
-\pro Robinowitch's trick: 一个环$R$是Jacobson环，当且仅当，如果$R$的素理想$\pp$不是极大理想，则所有$R$中严格包含$\pp$的素理想的交为$\pp$.
+\begin{pro}[Robinowitch's trick]
+环$R$是Jacobson环，当且仅当，如果$R$的素理想$\pp$不是极大理想，则所有$R$中严格包含$\pp$的素理想的交为$\pp$.
+\end{pro}
 
-\proof $\Rightarrow$: 由于$R$是Jacobson环，所以$\pp$是一族包含它的极大理想的交。反证，如果所有严格包含$\pp$的素理想的交之中存在一个$a\not\in \pp$，则$a$属于所有包含$\pp$的极大理想，所以所有包含$\pp$的极大理想的交就不是$\pp$，矛盾。
+\begin{proof} $\Rightarrow$: 由于$R$是Jacobson环，所以$\pp$是一族包含它的极大理想的交。反证，如果所有严格包含$\pp$的素理想的交之中存在一个$a\not\in \pp$，则$a$属于所有包含$\pp$的极大理想，所以所有包含$\pp$的极大理想的交就不是$\pp$，矛盾。
 
-$\Leftarrow$: 设$\pp$是$R$的一个素理想，令$\aaa$是所有包含$\pp$的极大理想的交，即证$\aaa=\pp$. 若不，取$a\in \aaa-\pp$，用Zorn引理，可以在不包含$a$但是包含$\pp$的所有理想中找到一个极大的，这是一个素理想，记作$\mathfrak{b}$. 由于$a$在所有包含$\pp$的极大理想里，所以$\mathfrak{b}$不是极大理想，严格包含$\mathfrak{b}$的所有素理想的交是$\mathfrak{b}$. 但是由构造，$\mathfrak{b}$是不包含$a$但是包含$\pp$的所有理想中极大的，这就意味着，严格包含$\mathfrak{b}$的素理想都包含$a$，矛盾。因此$\aaa=\pp$.\qed
+$\Leftarrow$: 设$\pp$是$R$的一个素理想，令$\aaa$是所有包含$\pp$的极大理想的交，即证$\aaa=\pp$. 若不，取$a\in \aaa-\pp$，用Zorn引理，可以在不包含$a$但是包含$\pp$的所有理想中找到一个极大的，这是一个素理想，记作$\mathfrak{b}$. 由于$a$在所有包含$\pp$的极大理想里，所以$\mathfrak{b}$不是极大理想，严格包含$\mathfrak{b}$的所有素理想的交是$\mathfrak{b}$. 但是由构造，$\mathfrak{b}$是不包含$a$但是包含$\pp$的所有理想中极大的，这就意味着，严格包含$\mathfrak{b}$的素理想都包含$a$，矛盾。因此$\aaa=\pp$.\end{proof}
 
 为了应用Robinowitch's trick，我们将它的一部分做适当改写。设$R$是一个环，而$\pp$是它的一个素理想，于是有整环$S=R/\pp$，以及其商域$K(S)$. 如果任意严格包含$\pp$的素理想都包含一个$a\not\in \pp$，设$a$在$S$中的像为$\bar{a}$，则有$S[x]/(x\bar{a}-1)\cong K(S)$.
 
-\proof 显然，$S[x]/(x\bar{a}-1)$同构于$K(S)$中所有形如$\bar{b}/\bar{a}^n$的元素构成的子环$P$，并且它包含$S$，所以只要证明这是一个域即可。为此，可以选择考察$P$中所有的素理想，由于$P$是域的子环，所以$P$是整环，零理想是素理想。
+\begin{proof} 显然，$S[x]/(x\bar{a}-1)$同构于$K(S)$中所有形如$\bar{b}/\bar{a}^n$的元素构成的子环$P$，并且它包含$S$，所以只要证明这是一个域即可。为此，可以选择考察$P$中所有的素理想，由于$P$是域的子环，所以$P$是整环，零理想是素理想。
 
-设$\mathfrak{a}$是$P$的一个非零素理想，作为非零素理想的原像，$\mathfrak{a}\cap S$是$S$中的非零素理想，并且$\mathfrak{a}\cap S$并不包含$\bar{a}$，因为如果包含，则$1=\bar{a}\bar{a}^{-1}\in \mathfrak{a}$就推出$\mathfrak{a}$是单位理想。 但是由商环的结构，$S$中的任意非零素理想都包含$\bar{a}$，矛盾。所以$P$中没有非零素理想，因此零理想是唯一的素理想，也就是唯一的极大理想，因此$P$是一个域。\qed
+设$\mathfrak{a}$是$P$的一个非零素理想，作为非零素理想的原像，$\mathfrak{a}\cap S$是$S$中的非零素理想，并且$\mathfrak{a}\cap S$并不包含$\bar{a}$，因为如果包含，则$1=\bar{a}\bar{a}^{-1}\in \mathfrak{a}$就推出$\mathfrak{a}$是单位理想。 但是由商环的结构，$S$中的任意非零素理想都包含$\bar{a}$，矛盾。所以$P$中没有非零素理想，因此零理想是唯一的素理想，也就是唯一的极大理想，因此$P$是一个域。\end{proof}
 
 我们将$S[x]/(x\bar{a}-1)$在$K(S)$中对应的子环记作$S_a$，于是上述命题即：如果任意严格包含$\pp$的素理想都包含一个$a\not\in \pp$，则$S_a=K(S)$. 
 
-\pro 设$S$是$R$的一个整扩张，$S$是Jacobson环当且仅当$R$是Jacobson环。
+\begin{pro}
+设$S$是$R$的一个整扩张，$S$是Jacobson环当且仅当$R$是Jacobson环。
+\end{pro}
 
-\proof
+\begin{proof}
 	设$R$不是Jacobson环，则存在一个非极大的素理想$\pp\subset R$使得以及一个$r\in R-\pp$使得$(R/\pp)_r$是一个域。由于$S$在$R$上整，所以存在一个$\mathfrak{q}$使得$\mathfrak{q}\cap R=\pp$，并且$S/\mathfrak{q}$在$R/\pp$上整。由Proposition \eqref{intfield}，$\pp$是极大理想当且仅当$\mathfrak{q}$是极大理想。所以$\mathfrak{q}$不是极大理想。
 
 	任取$\bar{s}\in S/\mathfrak{q}$，则$\bar{s}\bar{r}^{-1}\in (S/\mathfrak{q})_r$，由于$\bar{s}$在$R/\pp$上整，所以满足一个首一多项式
@@ -384,11 +422,13 @@ $\Leftarrow$: 设$\pp$是$R$的一个素理想，令$\aaa$是所有包含$\pp$�
 	其中$i_2$是$f$的第三高级项的序数。不断如此的进行下去，进行至多$n$次后，左边将得到一个$\bar{s}^{-1}$的首一多项式，系数属于$(R/(R\cap \pp))_{r}$，其中$\bar{r}$是$f$所有非零系数的乘积，右边将变成零。
 
 	所以$(S/\pp)_{s}$在$(R/(R\cap \pp))_{r}$上整，由Proposition \eqref{intfield}，$(R/(R\cap \pp))_{r}$是一个域。因为$R\cap \pp$不是极大理想，利用Robinowitch's trick，我们就得到了$S$不是一个Jacobson环。
-\qed
+\end{proof}
 
-\theo 如果$R$是Jacobson环，则任意的有限生成$R$-代数$S$是Jacobson环。并且，任意的$S$的极大理想在$R$中的原像依然是极大理想。
+\begin{thm}
+如果$R$是Jacobson环，则任意的有限生成$R$-代数$S$是Jacobson环。并且，任意的$S$的极大理想在$R$中的原像依然是极大理想。
+\end{thm}
 
-\proof 关于第一部分，可以去证明$R[x]$是Jacobson环，然后通过有限归纳就得到了$R[x_1,\,\cdots\!,\,x_n]$也是Jacobson环，继而他的商环，即有限生成$R$-代数也是Jacobson环。
+\begin{proof} 关于第一部分，可以去证明$R[x]$是Jacobson环，然后通过有限归纳就得到了$R[x_1,\,\cdots\!,\,x_n]$也是Jacobson环，继而他的商环，即有限生成$R$-代数也是Jacobson环。
 
 对于第二部分。假设$S=R[x_1,\,\cdots\!,\,x_n]/\aaa$，$\mathfrak{n}$是$S$的极大理想，那么在$R[x_1,\,\cdots\!,\,x_n]$中可以找到极大理想$\mm$，使得$\mm$是$S$中的$\mathfrak{n}$的原像，所以可以假设$S=R[x_1,\,\cdots\!,\,x_n]$. 如果可以证明$R[x]$的极大理想$\mm$的原像$R\cap \mm$是极大理想，然后通过$R[x_1,\,\cdots\!,\,x_{n}]=R[x_1,\,\cdots\!,\,x_{n-1}][x_n]$，而由第一部分$R[x_1,\,\cdots\!,\,x_{n-1}]$是Jacobson环，所以可以得到$\mm\cap R[x_1,\,\cdots\!,\,x_{n-1}]$是极大理想，然后有限归纳就得到了$\mm \cap R$是一个极大理想。所以我们也将问题归结到了$S=R[x]$.
 
@@ -423,17 +463,19 @@ $R'_f$是一个域，而且$R'_f$是一个有限生成$k$代数，Zariski引理�
 
 但是$R$是Jacobson环，Robinowitch's trick告诉我们，如果$R\cap \pp$不是$R$中的极大理想，则不能有$(R/(R\cap \pp))_{aa_0}=k$. 矛盾。至此，命题第一部分证明完毕。下面证明第二部分，即极大理想的原像是极大理想。
 
-假设$\mm$是$R[x]$的极大理想，但是$R\cap \mm$不是极大理想。同上，我们已经知道$R[x]/\mm$在$(R/(R\cap \mm))_{p_0}$上整，但是$R[x]/\mm$是域，由Proposition \eqref{intfield}，$(R/(R\cap \mm))_{p_0}$是一个域，利用Robinowitch's trick，我们就知道这与$R$是一个Jacobson环矛盾。\qed
+假设$\mm$是$R[x]$的极大理想，但是$R\cap \mm$不是极大理想。同上，我们已经知道$R[x]/\mm$在$(R/(R\cap \mm))_{p_0}$上整，但是$R[x]/\mm$是域，由Proposition \eqref{intfield}，$(R/(R\cap \mm))_{p_0}$是一个域，利用Robinowitch's trick，我们就知道这与$R$是一个Jacobson环矛盾。\end{proof}
 
 作为推论，当$k$是一个域，有限生成$k$-代数是Jacobson环，这有时候被称为Hilbert's Nullstellensatz.
 
-\pro 设$R$是一个环，$K$是一个有限生成$R$-代数，如果$K$是一个域，则$R$是Jacobson环当且仅当$K$在$R$上有限（即作为$R$-模是有限生成的）。
+\begin{pro}
+设$R$是一个环，$K$是一个有限生成$R$-代数，如果$K$是一个域，则$R$是Jacobson环当且仅当$K$在$R$上有限（即作为$R$-模是有限生成的）。
+\end{pro}
 
 当$R$是一个域，这个命题就变成了Zariski引理。
 
-\proof 如果$K$在$R$上有限，即$K$作为$R$-模是有限生成的，所以$K$在$R$上整，$K$作为域是一个Jacobson环，所以$R$是一个Jacobson环。
+\begin{proof} 如果$K$在$R$上有限，即$K$作为$R$-模是有限生成的，所以$K$在$R$上整，$K$作为域是一个Jacobson环，所以$R$是一个Jacobson环。
 
-反过来，如果$R$是一个Jacobson环，设定义$R$-代数结构的同态为$\varphi:R\to K$，由于$K$是有限生成$R$-代数，作为极大理想的原像，$\ker\varphi$是极大理想，所以有域$k=R/\ker\varphi$，以及单同态$k\to K$，这是一个域扩张。由于$K$是有限生成$R$-代数，所以也是有限生成$k$-代数。由Zariski引理，$K$是一个有限扩张，或者，作为$k$-模是有限生成的。因此，作为$R$-模也是有限生成的。\qed
+反过来，如果$R$是一个Jacobson环，设定义$R$-代数结构的同态为$\varphi:R\to K$，由于$K$是有限生成$R$-代数，作为极大理想的原像，$\ker\varphi$是极大理想，所以有域$k=R/\ker\varphi$，以及单同态$k\to K$，这是一个域扩张。由于$K$是有限生成$R$-代数，所以也是有限生成$k$-代数。由Zariski引理，$K$是一个有限扩张，或者，作为$k$-模是有限生成的。因此，作为$R$-模也是有限生成的。\end{proof}
 
 \section{域的自同构与Galois群}
 
@@ -476,15 +518,15 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 \para 设$S$和$T$之间存在一个Galois联络，则$g(T)$和$f(S)$之间存在一一映射，具体写出来即$s\mapsto f(s)$，以及$t \mapsto g(t)$.
 
-\proof 
+\begin{proof} 
 	设$s=g(t)$，则$t\leq f(g(t))=f(s)$，所以$g(f(s))\leq g(t)=s$. 反过来，由于$s\leq g(f(s))$，所以$s=g(f(s))$. 所以$g|_{f(S)}:f(S)\to g(T)$是一个满射。同样（或者由对称性），对于$t=f(s)$，我们也有$t=f(g(t))$，所以$g|_{f(S)}:f(S)\to g(T)$是一个单射。故而$g|_{f(S)}$是一个双射，它的逆就是$f|_{g(T)}$.
-\qed
+\end{proof}
 
 应用到域扩张的情况，即所有形如$\mathcal{F}(S)$的域和所有形如$\Gal(K/k)$的子群之间，有一个一一映射。
 
 \para 设$K/k$是一个扩张，而$k(X)$是$X\subset K$生成的一个扩张，任取$\sigma$和$\tau\in \Gal(k(X)/k)$，如果$\sigma|_X=\tau|_X$，则$\sigma=\tau$. 这就说明了，对于生成的一个扩张，Galois群的作用只依赖于他在生产元上的集合的作用。
 
-\proof 
+\begin{proof} 
 	由于\[
 		k(X)=\bigcup_{\{a_1,\,\cdots\!,\,a_n\}\in I} k(a_1,\,\cdots\!,\,a_n).
 	\]
@@ -496,17 +538,23 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 	\[
 		\tau(\alpha)=\frac{f(\tau(a_1),\,\cdots\!,\,\tau(a_n))}{g(\tau(a_1),\,\cdots\!,\,\tau(a_n))}=\frac{f(\sigma(a_1),\,\cdots\!,\,\sigma(a_n))}{g(\sigma(a_1),\,\cdots\!,\,\sigma(a_n))}=\sigma(\alpha).
 	\]
-\qed
+\end{proof}
 
 考虑有限扩张的情况，由于有限扩张就是有限次单代数扩张$k(a_1,\,\cdots\!,\,a_n)$. 对每一个$a_i$，都有极小多项式$f_i$. 由于$\Gal(k(a_1,\,\cdots\!,\,a_n)/k)$里面的元素的作用就是将$a_i$变成$f_i$在$k(a_1,\,\cdots\!,\,a_n)$中的其他的根，所以如果每一个$f_i$的根的数目是有限的，则$\Gal(k(a_1,\,\cdots\!,\,a_n)/k)$限制在$\{a_1,\,\cdots\!,\,a_n\}$上的结果是有限的，进而上面证明的内容保证了$\Gal(k(a_1,\,\cdots\!,\,a_n)/k)$是一个有限群。
 
-\pro 设$G$是$\mathrm{Aut}(K)$的一个有限子群，则$|G|=[K:\mathcal{F}(G)]$以及$G=\Gal(K/\mathcal{F}(G))$.
+\begin{pro}
+设$G$是$\mathrm{Aut}(K)$的一个有限子群，则$|G|=[K:\mathcal{F}(G)]$以及$G=\Gal(K/\mathcal{F}(G))$.
+\end{pro}
 
 \para 一个代数扩张$K/k$是Galois扩张，如果$\calf(\Gal(K/k))=k$.
 
-\pro 一个有限扩张$K/k$是Galois扩张，当且仅当$|\Gal(K/k)|=[K:k]$.
+\begin{pro}
+一个有限扩张$K/k$是Galois扩张，当且仅当$|\Gal(K/k)|=[K:k]$.
+\end{pro}
 
-\pro 设$k(\alpha)$是$k$的一个单代数扩张，$f$是$\alpha$的极小多项式，则$k(\alpha)$是Galois扩张当且仅当$f$在$k(\alpha)$中有$\deg(f)$个不同的根。
+\begin{pro}
+设$k(\alpha)$是$k$的一个单代数扩张，$f$是$\alpha$的极小多项式，则$k(\alpha)$是Galois扩张当且仅当$f$在$k(\alpha)$中有$\deg(f)$个不同的根。
+\end{pro}
 
 \section{仿射簇}
 \label{variety}
@@ -525,47 +573,48 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 \para 令$Y$是一个代数集，定义仿射坐标环为$A(Y)=A/I(Y)$. 从定义来看，$A(Y)$是一个有限生成的$k$-代数。
 
-\pro 下面命题成立：
+\begin{pro}下面命题成立：
+\begin{compactenum}[~~~(1)]
+\item 如果$T_1\subset T_2 \subset A$，则$Z(T_2)\subset Z(T_1)$.
+\item 如果$Y_1\subset Y_2 \subset \bba^n$，则$I(Y_2)\subset I(Y_1)$.
+\item 如果$\{Y_\alpha\,:\alpha\in I\}$是一族$\bba^n$的子集，则$I\left(\bigcup_{\alpha\in I} Y_\alpha\right)=\bigcap_{\alpha\in I} I(Y_\alpha)$.
+\item 如果$\{T_\alpha\,:\alpha\in I\}$是一族$A$的子集，则$Z\left(\bigcup_{\alpha\in I} T_\alpha\right)=\bigcap_{\alpha\in I} Z(T_\alpha)$.
+\item $Z(T_1)\cup Z(T_2)=Z(T_1T_2)$.
+\item $Y\subset Z(I(Y))$以及$T\subset I(Z(T))$.
+\end{compactenum}
+\end{pro}
 
-\no{1} 如果$T_1\subset T_2 \subset A$，则$Z(T_2)\subset Z(T_1)$.
-
-\no{2} 如果$Y_1\subset Y_2 \subset \bba^n$，则$I(Y_2)\subset I(Y_1)$.
-
-\no{3} 如果$\{Y_\alpha\,:\alpha\in I\}$是一族$\bba^n$的子集，则$I\left(\bigcup_{\alpha\in I} Y_\alpha\right)=\bigcap_{\alpha\in I} I(Y_\alpha)$.
-
-\no{4} 如果$\{T_\alpha\,:\alpha\in I\}$是一族$A$的子集，则$Z\left(\bigcup_{\alpha\in I} T_\alpha\right)=\bigcap_{\alpha\in I} Z(T_\alpha)$.
-
-\no{5} $Z(T_1)\cup Z(T_2)=Z(T_1T_2)$.
-
-\no{6} $Y\subset Z(I(Y))$以及$T\subset I(Z(T))$.
-
-\proof
+\begin{proof}
 	第一第二第六点从定义显然。第三点，由于$Y_\alpha\subset \bigcup_{\alpha\in I} Y_\alpha$，所以由(2)可知$I\left(\bigcup_{\alpha\in I} Y_\alpha\right)\subset\bigcap_{\alpha\in I} I(Y_\alpha)$. 反过来，任取$f\in \bigcap_{\alpha\in I} I(Y_\alpha)$，由于$f\in I(Y_\alpha)$，所以他在每个$Y_\alpha$上为零，故而在$\bigcup_{\alpha\in I} Y_\alpha$上为零。第四点的证明也类似。第五点，对于多项式$f$和$g$有显然的$Z(fg)=Z(f)\cup Z(g)$，然后从第四点得证。
-\qed
+\end{proof}
 
 上面命题的第四第五点验证了代数集满足闭集公理，所以这也就赋予了$\bba^n_k$一个拓扑，称为Zariski拓扑。在这个拓扑下，闭集就是代数集。这个拓扑不一定是Hausdorff的，比如考虑$\bba^1_k$的情况，他的单点集不一定是闭集。但在$k=\bar{k}$的时候，考虑$P=(a_1,\cdots ,a_n)$，那么存在理想$(x_1-a_1,\,\cdots\!,\,x_n-a_n)$在$P$上为零，所以此时单点集是闭集。
 
 结合上面命题的第一第二第六点，$A$的理想集和$\bba^n$的子集之间建立了一个Galois联络。而研究这个Galois联络下具体的对应，就是Hilbert's Nullstellensatz的内容，我们下面会慢慢阐述。首先指出一半的内容。
 
-\pro 如果$Y \subset \bba^n$，则$Z(I(Y))=\bar{Y}$，即$Y$的闭包。
+\begin{pro}
+如果$Y \subset \bba^n$，则$Z(I(Y))=\bar{Y}$，即$Y$的闭包。
+\end{pro}
 
-\proof 首先，由$Y\subset Z(I(Y))$和$Z(I(Y))$是闭的，所以$\bar{Y}\subset Z(I(Y))$. 反方向，让$\bar{Y}=Z(\mathfrak{a})$，所以$I(Z(\mathfrak{a}))\subset I(Y)$，即$\mathfrak{a}\subset I(Z(\mathfrak{a}))\subset I(Y)$，两边取零点集即$Z(I(Y))\subset Z(\mathfrak{a})=\bar{Y}$. \qed
+\begin{proof} 首先，由$Y\subset Z(I(Y))$和$Z(I(Y))$是闭的，所以$\bar{Y}\subset Z(I(Y))$. 反方向，让$\bar{Y}=Z(\mathfrak{a})$，所以$I(Z(\mathfrak{a}))\subset I(Y)$，即$\mathfrak{a}\subset I(Z(\mathfrak{a}))\subset I(Y)$，两边取零点集即$Z(I(Y))\subset Z(\mathfrak{a})=\bar{Y}$. \end{proof}
 
 作为上述命题的推论。我们可以断言，如果一个多项式在$Y$上为$0$当且仅当他在$\bar{Y}$上为$0$. 
 
-\proof 即证明$I(\bar{Y})=I(Y)$. 将$Z(I(Y))=\bar{Y}$两边取理想，那么$I(\bar{Y})=I(Z(I(Y)))$，特别地，有包含关系$I(Y)\subset I(Z(I(Y)))=I(\bar{Y})$，但是$Y\subset \bar{Y}$又告诉我们$I(\bar{Y})\subset I(Y)$，所以$I(\bar{Y})=I(Y)$. \qed
+\begin{proof} 即证明$I(\bar{Y})=I(Y)$. 将$Z(I(Y))=\bar{Y}$两边取理想，那么$I(\bar{Y})=I(Z(I(Y)))$，特别地，有包含关系$I(Y)\subset I(Z(I(Y)))=I(\bar{Y})$，但是$Y\subset \bar{Y}$又告诉我们$I(\bar{Y})\subset I(Y)$，所以$I(\bar{Y})=I(Y)$. \end{proof}
 
 \para Galois联络保证了我们对于极大极小之间的对应。对于$A$的极大理想$\mm$，$Z(\mm)$是极小的零点集。如果有一个$Z(\aaa)$比$Z(\mm)$小，则$\mm\subset \aaa$就可以知道$\aaa=\mm$. 同时，由$\mm \subset I(Z(\mm))$也可以知道$I(Z(\mm))=\mm$. 反过来，对于一个极小的闭集$Y=Z(\aaa)$，它的理想集为$I(Z(\aaa))$. 取$\mathfrak{m}$为包含$I(Z(\aaa))$的任意极大理想，由Galois联络，$Z(\mathfrak{m})\subset Z(I(Y))=Y$，由极小性，$Y=Z(\mathfrak{m})$，同时这也保证了对应极大理想的唯一性。综上，每一个极大理想的零点集是极小的闭集，每一个极小的闭集都是某个极大理想的零点集。而由拓扑的知识我们知道，极小的闭集是单点集的闭包。
 
 下面借助Zariski引理，我们来研究$Z(\mm)$和单点集闭包的结构。
 
-\lem 对任意$A=k[x_1,\,\cdots\!,\,x_n]$中的极大理想$\mm$，$Z(\mm)\neq\varnothing$.
+\begin{lem}
+对任意$A=k[x_1,\,\cdots\!,\,x_n]$中的极大理想$\mm$，$Z(\mm)\neq\varnothing$.
+\end{lem}
 
-\proof 由于$\mm$极大，那么$k[x_1,\,\cdots\!,\,x_n]/\mm=k[\bar{x}_1,\,\cdots\!,\,\bar{x}_n]$就是一个域，由Zariski引理，他是$k$的一个有限扩张。设$\bar{x}_i$是$x_i$在$k[x_1,\,\cdots\!,\,x_n]/\mm$里面的像，由于是代数扩张，所以$\bar{x}_i\in \bar{k}$. 此时$\mm$上的多项式至少有公共零点$(\bar{x}_1,\,\cdots\!,\,\bar{x}_n)\in \bba^n$，因为对任意$f\in \mm$都成立
+\begin{proof} 由于$\mm$极大，那么$k[x_1,\,\cdots\!,\,x_n]/\mm=k[\bar{x}_1,\,\cdots\!,\,\bar{x}_n]$就是一个域，由Zariski引理，他是$k$的一个有限扩张。设$\bar{x}_i$是$x_i$在$k[x_1,\,\cdots\!,\,x_n]/\mm$里面的像，由于是代数扩张，所以$\bar{x}_i\in \bar{k}$. 此时$\mm$上的多项式至少有公共零点$(\bar{x}_1,\,\cdots\!,\,\bar{x}_n)\in \bba^n$，因为对任意$f\in \mm$都成立
 \[
 	f(\bar{x}_1,\,\cdots\!,\,\bar{x}_n)=\sum a_{i_1\cdots i_n} {\bar{x}}_1^{i_1}\cdots {\bar{x}}_n^{i_n}=\overline{\sum a_{i_1\cdots i_n} x_1^{i_1}\cdots x_n^{i_n}}=\bar{f}=0.
 \]
-所以这就推出了$Z(\mm)\neq\varnothing$.\qed 
+所以这就推出了$Z(\mm)\neq\varnothing$.\end{proof} 
 
 从引理，我们已经知道$P=(\bar{x}_1,\,\cdots\!,\,\bar{x}_n)\in \bba^n_k$是$\mm$的一个公共零点。如果$(\bar{y}_1,\,\cdots\!,\,\bar{y}_n)$也是$\mm$的一个公共零点，通过$\sigma_{\bar{y}}(\bar{x}_i)=\bar{y}_i$且如果$a\in k$则$\sigma_{\bar{y}}(a)=a$可以定义环同态
 \[
@@ -598,25 +647,27 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 \lem 代数集$Y$中的任意一点$P$都处于唯一一条Galois轨道$\overline{\{P\}}\subset Y$上。
 
-\proof 设$P\in Y$，因为$Y$是闭集，所以$\overline{\{P\}}\subset Y$，因此$Y$中轨道的存在性来自于$\bba^n_k$中轨道的存在性，而这点在命题之前已经证明了。下面证明（在$\bba^n_k$上的）轨道的唯一性，即假设$P$在其他轨道上$P\in \overline{\{Q\}}$，我们要证明$\overline{\{Q\}}=\overline{\{P\}}$.
+\begin{proof} 设$P\in Y$，因为$Y$是闭集，所以$\overline{\{P\}}\subset Y$，因此$Y$中轨道的存在性来自于$\bba^n_k$中轨道的存在性，而这点在命题之前已经证明了。下面证明（在$\bba^n_k$上的）轨道的唯一性，即假设$P$在其他轨道上$P\in \overline{\{Q\}}$，我们要证明$\overline{\{Q\}}=\overline{\{P\}}$.
 
 因为$P\in \overline{\{Q\}}$，取闭包有$\overline{\{P\}}\subset \overline{\{Q\}}$。如果可以得到$Q\in \overline{\{P\}}$，取闭包有$\overline{\{Q\}}\subset \overline{\{P\}}$。结合两个包含第一点就证明完毕了。将$\overline{\{P\}}\subset \overline{\{Q\}}$取理想得到$I(\overline{\{Q\}})\subset I(\overline{\{P\}})$，因为这是两个极大理想，所以$I(\overline{\{Q\}})=I(\overline{\{P\}})$. 那么
 \[
 	\Gal\bigl(A\bigl(\overline{\{P\}}\bigr)/k\bigr)=\Gal\bigl(A\bigl(\overline{\{Q\}}\bigr)/k\bigr)=G,
 \]
-因为已有$P\in \overline{\{Q\}}$，所以$P=\sigma \cdot Q$，其中$\sigma\in G$，两边作用上$\sigma^{-1}$就有$Q=\sigma^{-1}\cdot P$，所以$Q\in \overline{\{P\}}$. \qed
+因为已有$P\in \overline{\{Q\}}$，所以$P=\sigma \cdot Q$，其中$\sigma\in G$，两边作用上$\sigma^{-1}$就有$Q=\sigma^{-1}\cdot P$，所以$Q\in \overline{\{P\}}$. \end{proof}
 
 \para 现在我们来看一般的$Z(\mathfrak{a})$. 对于一条轨道$\overline{\{P\}}\subset Z(\mathfrak{a})$，在$A$中可以找到唯一的极大理想$I(\overline{\{P\}})$. 反过来，任取一个包含$\mathfrak{a}$的极大理想$\mm$，由于$\mathfrak{a}\subset \mm$，所以$Z(\mm)\subset Z(\mathfrak{a})$. 而$Z(\mm)$正是一条Galois轨道。所以$Z(\aaa)$中的Galois轨道一一对应着包含$\aaa$的极大理想，这个观察给出了下面一个命题。
 
-\pro 如果$\mathfrak{a}$是$A$的一个理想，则$I(Z(\mathfrak{a}))=\sqrt{\mathfrak{a}}$.
+\begin{pro}
+如果$\mathfrak{a}$是$A$的一个理想，则$I(Z(\mathfrak{a}))=\sqrt{\mathfrak{a}}$.
+\end{pro}
 
 这个命题也被称为Hilbert's Nullstellensatz，即Hilbert零点定理。这个定理联系了代数集与（代数闭域上的）多项式环中的理想，可以说确立了几何和代数之间的基本关系，而代数几何正是建立在这一关联的基础之上的。
 
-\proof 由于$Y=Z(\mathfrak{a})$是一个代数集，遍历其中所有的点的闭包，我们有
+\begin{proof} 由于$Y=Z(\mathfrak{a})$是一个代数集，遍历其中所有的点的闭包，我们有
 \[
 	I(Z(\mathfrak{a}))=I\left(\bigcup_{P\in Y}\overline{\{P\}}\right)=\bigcap_{P\in Y}I\left(\overline{\{P\}}\right),
 \]
-注意到Galois轨道一一对应着包含$\aaa$的极大理想，所以$I(Z(\mathfrak{a}))=\bigcap_{\mm\supset \aaa}\mm$. 因为$k[x_1,\,\cdots\!,\,x_n]$是Jacobson环，所以$I(Z(\mathfrak{a}))=\sqrt{\mathfrak{a}}$. \qed
+注意到Galois轨道一一对应着包含$\aaa$的极大理想，所以$I(Z(\mathfrak{a}))=\bigcap_{\mm\supset \aaa}\mm$. 因为$k[x_1,\,\cdots\!,\,x_n]$是Jacobson环，所以$I(Z(\mathfrak{a}))=\sqrt{\mathfrak{a}}$. \end{proof}
 
 对于任意满足$\mathfrak{a}=\sqrt{\mathfrak{a}}$的理想（称为根式理想），有$I(Z(\mathfrak{a}))=\mathfrak{a}$. 这个命题给出了明确的Galois联络两边的像，即根式理想与代数集一一对应。
 
@@ -630,13 +681,13 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 \pro 一个代数集$Y$是不可约的当且仅当$I(Y)$是一个素理想。
 
-\proof 令$\pp$是一个素理想，以及假设$Z(\pp)=Y_1\cup Y_2$，那么$\pp=I(Z(\pp))=I(Y_1)\cap I(Y_2)$，因此$\pp=I(Y_1)$或者$\pp=I(Y_2)$，因此$Z(\pp)$不可约。
+\begin{proof} 令$\pp$是一个素理想，以及假设$Z(\pp)=Y_1\cup Y_2$，那么$\pp=I(Z(\pp))=I(Y_1)\cap I(Y_2)$，因此$\pp=I(Y_1)$或者$\pp=I(Y_2)$，因此$Z(\pp)$不可约。
 
 反之，假设$Y$不可约，那么如果$fg\in I(Y)$，此时$Y\subset Z(fg)=Z(f)\cup Z(g)$，因此
 \[
 	Y=[Y\cap Z(f)]\cup [Y\cap Z(g)],
 \]
-所以$Y=Y\cap Z(f)$或$Y=Y\cap Z(g)$，即$Y\subset Z(f)$或者$Y\subset Z(g)$，即$f\in I(Y)$或者$g\in I(Y)$.因此$I(Y)$是素理想。\qed
+所以$Y=Y\cap Z(f)$或$Y=Y\cap Z(g)$，即$Y\subset Z(f)$或者$Y\subset Z(g)$，即$f\in I(Y)$或者$g\in I(Y)$.因此$I(Y)$是素理想。\end{proof}
 
 对于不可约代数集，$I(Y)=\pp$是一个素理想，所以也是根式理想，他与它的零点集一一对应，即$Y=Z(\pp)$. 所以上面的命题告诉我们，不可约代数集与$A=k[x_1,\,\cdots\!,\,x_n]$的素理想一一对应。
 
@@ -646,9 +697,11 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 多项式函数显然是正则函数。
 
-\pro 正则函数在Zariski拓扑下是连续函数。
+\begin{pro}
+正则函数在Zariski拓扑下是连续函数。
+\end{pro}
 
-\proof
+\begin{proof}
 	按连续的定义，只要证闭集的逆象是闭的就好了。由于$\bba^1$中的闭集对应于$k[x]$中的理想的零点集，而$k[x]$中的理想是主理想，一个多项式的零点集总是有限的，所以$\bba^1$中的闭集都是有限集。如果我们证明了单点集的逆象是闭的，那也就证明了所有闭集的逆象是闭的。
 
 	闭集可以局部检查，如果$Z$是拓扑空间$Y$的子集，那么他是闭集当且仅当对于任意一个$Y$的开覆盖$\{U_\alpha\}$，$Z\cap U_\alpha$是$U_\alpha$中的闭集。
@@ -662,4 +715,4 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 		f^{-1}(a)\cap U_\alpha=Z(g_\alpha-ah_\alpha)\cap U_\alpha
 	\]
 	是一个闭集。
-\qed
+\end{proof}

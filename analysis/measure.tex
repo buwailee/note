@@ -446,5 +446,56 @@ $\sigma$-代数的检验是直接的。下面我们说明，选取不同的$A_1\
 因为$A_2-A_1\subset E-A_1\subset B_1-A_1$，所以$\mu(A_2-A_1)\leq \mu(B_1-A_1)=0$，即$\mu(A_2-A_1)=0$. 所以$\mu(A_2)=\mu(A_1\cap A_2)+\mu(A_2-A_1)=\mu(A_1\cap A_2)$. 同理，我们也有$\mu(A_1)=\mu(A_1\cap A_2)$，故$\mu(A_1)=\mu(A_2)$.
 \end{proof}
 
+下面几个命题更加深化了零测集在积分论里面的地位。许多时候，我们从积分出发对$f$的性质判断只能到除去一个零测集的地步。
+
+\begin{pro}
+设$(X,\mu)$是测度空间，而$f:X\to [0,\infty]$是可测的，$E$是可测集。如果$f$在$E$上积分为零，则$f$在$E$上几乎处处为零。
+\end{pro}
+
+\begin{proof}
+记$A_n=\{x\in E\,:\, f(x)>1/n\}$，由于$f$可测，所以$A_n$是可测集。同时
+\[
+	\frac{\mu(A_n)}n\leq \int_{A_n}f\dd \mu \leq \int_{E}f\dd \mu=0,
+\]
+所以对于所有$n\geq 1$，$A_n$是零测集。而所有使得$f(x)>0$的$x$的集合是所有$A_n$的并，由可数可加性，它也是零测集。
+\end{proof}
+
+\begin{pro}
+若$f\in L^1(X,\mu)$，且对每一个可测集$E$，$f$在$E$上的积分都是零，则$f$在$X$上几乎处处为零。
+\end{pro}
+
+\begin{proof}
+设$f=u+iv$，考虑集合$E=\{x\,:\, u(x)\geq 0\}$，则$f$在$E$上积分的实部就是$u^+$在$E$上积分，为零。由上一个命题，$u^+$在$E$上几乎处处为零，然后在$E$外，$u^+$全为零，所以$u^+$在$X$上也几乎处处为零。同样的道理可以推知$u^-$, $v^+$和$v^-$在$X$上几乎处处为零。
+\end{proof}
+
+\begin{thm}[另一个Lebegue控制收敛定理]
+设$\{f_n\}$是$X$上几乎处处有定义的复可测函数列，满足
+\[
+	\sum_{n=1}^\infty\int_X |f_n|\dd \mu<\infty,
+\]
+则级数
+\[
+	f(x)=\sum_{n=1}^\infty f_n(x)
+\]
+对几乎所有的$x$都收敛，$f\in L^1(X,\mu)$，且
+\[
+	\int_X f\dd \mu=\sum_{n=1}^\infty\int_X f_n\dd \mu.
+\]
+\end{thm}
+
+\begin{proof}
+考虑$S$是所有$f_n$都有定义的点构成的集合，而$S_n$是$f_n$有定义的点构成的集合，于是$S=\bigcap_n S_n$. 由于$X-S=\bigcup_n (X-S_n)$，而$X-S_n$都零测，故$X-S$零测。令$\varphi(x)=\sum_n |f_n(x)|$，由Lebegue单调收敛定理，我们知道
+\[
+	\int_S \varphi \dd \mu=\sum_{n=1}^\infty\int_S |f_n|\dd \mu=\sum_{n=1}^\infty\int_X |f_n|\dd \mu<\infty.
+\]
+
+令$E$是$S$的子集，在它上面$\varphi$处处小于$\infty$，则从上式可知$\mu(X-E)=0$. 所以对于$E$的每一个$x$，级数$\sum_{n=1}^\infty f_n(x)$绝对收敛。于是对$x\in E$，我们可以用它定义$f(x)$，且$|f(x)|\leq \varphi(x)$. 因为$\mu(X-E)=0$，所以$|f|$在$X$上积分等于在$E$上积分，小于$\varphi$在$E$上积分，保证了有限性。故$f\in L^1(X,\mu)$.
+
+最后，取$g_n=\sum_{i=1}^n f_i$. 我们有$|g_n(x)|\leq \varphi(x)$，且对所有的$x\in E$都有$g_n(x)\to f(x)$，于是原本的控制收敛定理给出了
+\[
+	\int_E f\dd \mu=\sum_{n=1}^\infty\int_E f_n\dd \mu.
+\]
+而$\mu(X-E)=0$保证了上式将$E$改成$X$的时候也正确。
+\end{proof}
 
 \section{正Borel测度}

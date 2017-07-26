@@ -29,9 +29,11 @@
 
 作为例子，一族集合的直积是一个极限。设$\{X_i\,:\, i\in I\}$是一族集合，它的直积记作$\prod_{i\in I}X_i$，且到每个分量都有一个投影函数$\pi_i:\prod_{i\in I}X_i\to X_i$. 这两个数据构成了这一族集合的极限。
 
-\pro 如果一个$I$-图有两个极限$(A,\lambda)$和$(B,\mu)$，则$A$与$B$同构。因此，满足泛性质的对象，这里是极限，在同构意义上唯一。
+\begin{pro}
+如果一个$I$-图有两个极限$(A,\lambda)$和$(B,\mu)$，则$A$与$B$同构。因此，满足泛性质的对象，这里是极限，在同构意义上唯一。
+\end{pro}
 
-\proof 假设$(A,\lambda)$和$(B,\mu)$都满足泛性质。利用$A$的泛性质，有同态$\rho:B\to A$，利用$B$的泛性质，有同态$\rho':A\to B$. 接着考虑$\rho \rho':A\to A$和$\id_A:A\to A$，他们同时都满足两个锥形$(A,\lambda)$到$(A,\lambda)$的分解，由分解的唯一性，$\rho\rho'=\id_A$. 同理，$\rho'\rho=\id_{B}$. 所以$A$与$B$同构。\qed
+\begin{proof} 假设$(A,\lambda)$和$(B,\mu)$都满足泛性质。利用$A$的泛性质，有同态$\rho:B\to A$，利用$B$的泛性质，有同态$\rho':A\to B$. 接着考虑$\rho \rho':A\to A$和$\id_A:A\to A$，他们同时都满足两个锥形$(A,\lambda)$到$(A,\lambda)$的分解，由分解的唯一性，$\rho\rho'=\id_A$. 同理，$\rho'\rho=\id_{B}$. 所以$A$与$B$同构。\end{proof}
 
 \para 锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。称$(A,\lambda)$为$I$-图的一个{余锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:D(i)\to A$使得如下交换图对所有的顶点和边都成立
 \[
@@ -44,13 +46,15 @@
 
 称呼一个余锥形$(A,\lambda)$是$I$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都存在唯一的态射$f:A\to B$使得如下分解$\mu_j:D(i)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。这是另一种泛性质。一般将$I$-图$D$的余极限写作${\varinjlim}_{i\in I} D(i)$. 类似极限，如果余极限存在，则它在同构意义上唯一。
 
-\pro \label{homlimit}设$\mathcal{C}$是一个范畴，其中的对象都是集合，态射都是映射。而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
+\begin{pro}\label{homlimit}
+设$\mathcal{C}$是一个范畴，其中的对象都是集合，态射都是映射。而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
 \[
 	{\varprojlim} \mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,{\varprojlim} X_i\right),\quad {\varprojlim} \mathcal{C}(X_i,-)\cong  \mathcal{C}\left({\varinjlim} X_i,-\right)
 \]
 其中极限与余极限都是对$I$-图进行的。
+\end{pro}
 
-\proof
+\begin{proof}
 	仅证第一点，第二点是类似的。给定$Y$，由于对每一个$i\in I$都有态射$\pi_i: {\varprojlim} X_i\to X_i$，所以$\pi_{i*}$给出了映射$\mathcal{C}\left(Y,{\varprojlim} X_i\right)\to \mathcal{C}(Y,X_i)$，于是$\left(\mathcal{C}\left(Y,{\varprojlim} X_i\right),\{\pi_{i*}\,:\, i\in I\}\right)$是一个锥形。下面验证这就是$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的极限，然后由极限在同构意义上的唯一性就得到了同构。
 
 	任取$I$-图$i\mapsto \mathcal{C}(Y,X_i)$的一个锥形$(A,\lambda)$以及$a\in A$，则$\lambda_i(a):Y\to X_i$成立如下交换图
@@ -73,7 +77,7 @@
 		{\varprojlim} \mathcal{C}(Y,X_i)\cong \mathcal{C}\left(Y,{\varprojlim} X_i\right),
 	\]
 	函子性的检查是简单的。
-\qed
+\end{proof}
 
 \para 回忆一下偏序集，设$I$是一个偏序集，偏序关系为$\leq$，那么通过定义态射
 \[
@@ -123,7 +127,9 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
 
-\pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且${\varprojlim}_{i\in I} D(i)={\varprojlim}_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^{\mathrm{op}} $存在一个与其共尾的子集$J^{\mathrm{op}} $，则$J$-图$D$是一个定向系统，且${\varinjlim}_{i\in I} D(i)={\varinjlim}_{i\in J} D(i)$. \rule{2mm}{2mm}
+\begin{pro}
+设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且${\varprojlim}_{i\in I} D(i)={\varprojlim}_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^{\mathrm{op}} $存在一个与其共尾的子集$J^{\mathrm{op}} $，则$J$-图$D$是一个定向系统，且${\varinjlim}_{i\in I} D(i)={\varinjlim}_{i\in J} D(i)$. \notprove
+\end{pro}
 
 所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的余极限。这符合我们上面的直观。
 
@@ -228,7 +234,9 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 就是余等值子。
 
-\theo 在左$R$-模范畴，任意的极限与余极限存在。 \notprove
+\begin{thm}
+在左$R$-模范畴，任意的极限与余极限存在。 \notprove
+\end{thm}
 
 \section{自由对象}
 
@@ -266,7 +274,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个右伴随函子。所以实际上，双函子同构可以减弱为对$T$的。下面我们证明这一点。
 
-\proof 
+\begin{proof} 
 	设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$g(Y)$所表示，于是就有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
 	\[
 	\begin{xy}
@@ -283,16 +291,19 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 		\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
 	\]
 	自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
-\qed
+\end{proof}
 
-\pro 设$L:\mathcal{C}\to \mathcal{D}$是一个左伴随函子，而$R:\mathcal{D}\to \mathcal{C}$是一个右伴随函子。设有一个$\mathcal{C}$中的$I$-图$X:I\to \mathcal{C}$以及一个$\mathcal{D}$中的$J$-图$Y:J\to \mathcal{D}$，于是，$LX$是$\mathcal{D}$中的$I$-图，$RY$是$\mathcal{C}$中的一个$J$图，并且存在同构
+\begin{pro}
+设$L:\mathcal{C}\to \mathcal{D}$是一个左伴随函子，而$R:\mathcal{D}\to \mathcal{C}$是一个右伴随函子。设有一个$\mathcal{C}$中的$I$-图$X:I\to \mathcal{C}$以及一个$\mathcal{D}$中的$J$-图$Y:J\to \mathcal{D}$，于是，$LX$是$\mathcal{D}$中的$I$-图，$RY$是$\mathcal{C}$中的一个$J$图，并且存在同构
 \[
 	L{\varinjlim}_{i\in I} X_i\cong {\varinjlim}_{i\in I} (LX_i),\quad
 	R{\varprojlim}_{j\in J} Y_j\cong {\varprojlim}_{j\in J} (RY_j).
 \]
+\end{pro}
+
 粗略来说，就是左伴随函子与余极限可交换，而右伴随函子与极限可交换。
 
-\proof
+\begin{proof}
 	命题的证明是利用Yoneda引理，他有协变和反变两个版本：协变的是，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 反变的是，如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$.
 
 	由Proposition \eqref{homlimit}，我们知道如下函子同构
@@ -314,7 +325,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-)\cong {\varprojlim} \mathcal{C}(X_i,R-)\cong \mathcal{C}\left({\varinjlim} X_i,R-\right)\cong \mathcal{D}\left(L{\varinjlim} X_i,-\right),
 	\]
 	所以${\varinjlim} LX_i\cong L{\varinjlim} X_i$.
-\qed
+\end{proof}
 
 \para 首先介绍$R$-模范畴的自由对象，遗忘函子是$R$-模到集合。设$I$是一个指标集，我们定义$R^I=\bigoplus_{i\in I}R$，他被称为自由$R$-模，或者当$R$是清楚地时候，称为自由模。自由模是$R$-模范畴的自由对象。从构造，检查是清楚的。
 
@@ -368,9 +379,11 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 设$R$是交换环，$A$和$B$都是$R$-模，那么$A\times B$具有$R$-模结构，即$r(a,b)=(ra,b)$. 通过将$r(a\otimes b)$可以定义为$(ra)\otimes b$，$A\otimes_R B$显然有一个$R$-模结构，这样，$\varphi$将是一个$R$-模同态。而上面的泛性质，也可以改成相应的$R$-模和$R$-模同态。
 
-\lem 在模范畴内，张量积存在。而且由上面的泛性质，他确定到一个同构。
+\begin{lem}
+在模范畴内，张量积存在。而且由上面的泛性质，他确定到一个同构。
+\end{lem}
 
-\proof 对于唯一性，我们考虑两个张量积$(G,\varphi)$和$(G',\varphi')$，那么根据张量积的性质，有分解
+\begin{proof} 对于唯一性，我们考虑两个张量积$(G,\varphi)$和$(G',\varphi')$，那么根据张量积的性质，有分解
 \[
 	\varphi:A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G,\quad \varphi':A\times B\xrightarrow{\varphi} G\xrightarrow{h_{\varphi'}}G',
 \]
@@ -388,7 +401,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \[
 	1_{a,b}+1_{a',b}-1_{a+a',b},\quad 1_{a,b}+1_{a,b'}-1_{a,b+b'},\quad 1_{ar,b}-1_{a,rb}
 \]
-生成的子群，那么我们$A\otimes B$就可以构造为$F/H$，令$\varphi(a,b)=a\otimes b=[1_{a,b}]$，即$1_{a,b}$的陪集。这确实是张量积，具体的检验这里就不进行了。\qed
+生成的子群，那么我们$A\otimes B$就可以构造为$F/H$，令$\varphi(a,b)=a\otimes b=[1_{a,b}]$，即$1_{a,b}$的陪集。这确实是张量积，具体的检验这里就不进行了。\end{proof}
 
 \para 有了两个模的张量积，我们自然也可以拓展为三个模的张量积，我们可以通过模仿两个模的张量积的泛性质\footnote{即三线性的函数可以唯一分解。}，定义一个新的三个模之间的张量积$A\otimes B\otimes C$，然后可以检验$(A\otimes B)\otimes C$和$A\otimes (B\otimes C)$同时也满足泛性质，所以他们之间是同构的。在这层意义上，我们可以认为张量积满足结合律，因此我们自然也有了有限个模的张量积。
 
@@ -402,7 +415,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 成立。大家经常将$\alpha(\varphi,\psi)$记作$\varphi\otimes \psi$，两个模同态的张量积的意义后面会阐述，这里看成形式的符号即可。
 
-\proof
+\begin{proof}
 	映射
 	\[
 	\begin{array}{ccc}
@@ -411,7 +424,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	\end{array}
 	\]
 	显然是双线性的，所以它诱导了映射$M\otimes N\to M'\otimes N'$，而张量积的泛性质中的唯一性给出了复合公式，于是这就是我们想要的$\alpha(\varphi,\psi)$.
-\qed
+\end{proof}
 
 注意到复合公式成立意味着成立交换图
 \[
@@ -437,20 +450,24 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 这也就是为什么大家将$\alpha(\varphi,\psi)$记作$\varphi\otimes \psi$. 
 
-\pro 记左$R$-模范畴之间的态射集为$\Hom_R(-,*)$. 则成立双函子同构
+\begin{pro}
+记左$R$-模范畴之间的态射集为$\Hom_R(-,*)$. 则成立双函子同构
 \[
 	\Hom_{\mathbb{Z}}(M\otimes_R N,G)\cong \Hom_R(M,\Hom_\mathbb{Z}(N,G)),
 \]
 其中$M$和$N$是可以变动的。因此，$-\otimes_R N$就是一个左伴随函子，而$\Hom_\mathbb{Z}(N,*)=h^N$是一个右伴随函子。\notprove
+\end{pro}
 
 根据左伴随函子与逆极限可交换，而直和是模范畴的一种逆极限，我们可以得知同构
 \[
 	\left(\bigoplus_i M_i\right)\otimes N\cong \bigoplus_i \left(M_i\otimes N\right).
 \]
 
-\pro 成立交换群的同构$R\otimes M\cong M$以及$(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的一个理想。
+\begin{pro}
+成立交换群的同构$R\otimes M\cong M$以及$(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的一个理想。
+\end{pro}
 
-\proof
+\begin{proof}
 	记$(r,m)\mapsto rm$为映射$\varphi$，毫无疑问这是一个双线性映射，所以诱导了一个交换群同态$\psi:R\otimes M\to M$，使得分解$\varphi:R\times M\xrightarrow{h} R\otimes M\xrightarrow{\psi} M$成立。毫无疑问，$\psi$是一个满射，因为对任意的$m$都有$m=\varphi(1,m)$，所以$m=\psi(h(1,m))$. 注意到$R\otimes M$里面的元素可以写成这样的有限和
 	\[
 	\sum_i r_i\otimes m_i=\sum_i 1\otimes r_im_i=1\otimes \left(\sum_i r_i m_i\right),
@@ -461,7 +478,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 	先检验$\psi$是一个满射，这只要检验$\varphi$是一个满射。任取$\bar{m}\in M/\mathfrak{a}M$，则有$\varphi(\bar{1},m)=\bar{m}$. 最后要检验$\psi$是一个单射，
 	如果$\psi(\sum_i \bar{r}_i\otimes m_i)=0$，可以推出$\sum_i \overline{r_im_i}=0$，于是$\sum_i r_im_i \in \mathfrak{a}M$，这意味着$r_i\in \mathfrak{a}$，所以$\sum_i \bar{r}_i\otimes m_i=\sum_i 0\otimes m_i=0$.
-\qed
+\end{proof}
 
 当$R$是一个交换环，$M$是一个$R$-模，此时上面证明的同态实际上都是$R$-模同态，所以也自然是$R$-模同构。这两个同构不仅仅是同构，改变$M$的时候，还是一个自然同构。这里就略去检验了。很多时候，这不是检验不检验的问题，这是一个相信不相信的问题。
 
@@ -502,9 +519,11 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 
 对于$\deg(f+g)$，我们有估计$\deg(f+g)\leq \max\{\deg(f),\deg(g)\}$，不等号是可以取严格的，同样比如在$\zz/4\zz$上的多项式$2x$，有$2x+2x=0$.
 
-\theo 多项式除法算法：设$f$, $g\in R[x]$，而且$g$的首项系数可逆，则存在唯一的多项式$p$, $r\in R[x]$使得$f=pg+r$，且$\deg(r)<\deg(g)$.
+\begin{thm}
+多项式除法算法：设$f$, $g\in R[x]$，而且$g$的首项系数可逆，则存在唯一的多项式$p$, $r\in R[x]$使得$f=pg+r$，且$\deg(r)<\deg(g)$.
+\end{thm}
 
-\proof
+\begin{proof}
 	可以假设$g$是首一多项式，因为如果设$g$的首项系数为$a$，则$g/a$是一个首一多项式，如果命题对首一多项式成立，即存在$q$, $r\in R[x]$使得$f=q(g/a)+r$，则$f=(q/a)g+r=pg+r$，其中$p=q/a$和$r$都是多项式。这样就得到了我们的命题。
 
 	首先假设存在，证明唯一性。设$f=p'g+r'$以及$f=pg+r$成立，则$(p'-p)g=r'-r$，由于$g$是首一的，且$p'-p$非零，所以$\deg((p'-p)g)\geq \deg(g)$，但是$\deg(r'-r)< \deg(g)$，这就造成了矛盾。下面证明存在性。
@@ -520,7 +539,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	f=f_k+a_0x^{n-m}g+a_1x^{\deg(f_1)-m}g+\cdots+a_{k-1}x^{\deg(f_{k-1})-m}g=\left(\sum_{i=0}^{k-1}a_{i}x^{\deg(f_{i})-m}\right)g+f_k.
 	\]
 	因此$p=\sum_{i=0}^{k-1}a_{i}x^{\deg(f_{i})-m}$以及$r=f_k$就是我们需要的多项式。
-\qed
+\end{proof}
 
 存在性的证明就是整个算法，从算法来看，这个命题即使是对非交换环上的多项式环也是成立的。
 
@@ -679,15 +698,17 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \end{vmatrix}.
 \]
 
-\pro 行列式具有以下性质：
+\begin{pro}
+行列式具有以下性质：
 
-1. 行列式对每一个列线性。
+\begin{compactenum}[(1)]
+\item 行列式对每一个列线性。
+\item 行列式中如果有两列相同，则行列式为零。
+\item $\det(I_n)=1$对每一个$n$都成立。
+\end{compactenum}
+\end{pro}
 
-2. 行列式中如果有两列相同，则行列式为零。
-
-3. $\det(I_n)=1$对每一个$n$都成立。
-
-\proof 
+\begin{proof}
 	第一点由按列展开的定义可得。对于第二点，我们采用对$n$归纳，当$n=2$的时候，
 	\[
 		\begin{vmatrix}a&a\\b&b\end{vmatrix}=ab-ab=0.
@@ -699,7 +720,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 		\det(I_n)=\det(1_1,\,\cdots\!,\,1_{n-1})=\det(I_{n-1}),
 	\]
 	最后由$\det(I_1)=\det(1_1)=1$就得到了结论。
-\qed
+\end{proof}
 
 应用第一、第二点，我们有
 \[
@@ -715,19 +736,23 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 所以对反对称多线性函数的计算，只要计算所有形如$F(1_{i_1}$, $\cdots$, $1_{i_n})$的式子即可。同时，上面的式子也说明了，多线性函数是矩阵元的多项式函数。
 
-\pro 设$F:M_n(R)\to R$是一个反对称多线性函数，则$F=F(I_n)D$. 作为推论，行列式的三点性质将完全决定行列式函数。
+\begin{pro}
+设$F:M_n(R)\to R$是一个反对称多线性函数，则$F=F(I_n)D$. 作为推论，行列式的三点性质将完全决定行列式函数。
+\end{pro}
 
-\proof 
+\begin{proof} 
 	从上面看到的，只要证明
 	\[
 		F(1_{i_1},\,\cdots\!,\,1_{i_n})=F(I_n)D(1_{i_1},\,\cdots\!,\,1_{i_n}).
 	\]
 	如果$\{i_1$, $\cdots$, $i_n\}$中有重复指标，两边都为零。如果没有重复指标，采用冒泡排序\footnote{先比较相邻的元素，如果第一个比第二个大，就交换他们两个。对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。针对所有的元素重复以上的步骤，除了最后一个。持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。}，可以通过不断两两调换两列，将$(i_1$, $\cdots$, $i_n)$变成$(1$, $\cdots$, $n)$，对等式两边进行同样的调换两列的操作，等式依旧成立，所以最后只要检验$F(I_n)=F(I_n)D(I_n)$，而这来自于$D(I_n)=1$.
-\qed
+\end{proof}
 
-\pro 行列式乘法公式：$\det(\varphi \psi)=\det(\varphi)\det(\psi)$.
+\begin{pro}[行列式乘法公式]
+$\det(\varphi \psi)=\det(\varphi)\det(\psi)$.
+\end{pro}
 
-\proof 
+\begin{proof} 
 	由矩阵乘法，
 	\[
 	\varphi
@@ -754,7 +779,7 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 	\[
 	\det(\varphi\psi)=\det(\varphi\psi_{1},\,\cdots\!,\,\varphi\psi_{n})=\det(\varphi_1,\,\cdots\!,\,\varphi_n)\det(\psi_{1},\,\cdots\!,\,\psi_{n})=\det(\varphi)\det(\psi).
 	\]
-\qed
+\end{proof}
 
 \para 矩阵的一个起源是线性方程组，这里暂时只考虑$n$个方程$n$个未知元的情况。所谓的线性方程组即如下的方程
 \[
@@ -810,9 +835,13 @@ $D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\l
 \]
 所以$\pi=\psi$，此时$\pi=\psi$就被称为矩阵$\varphi$的逆，记作$\varphi^{-1}$. 因此，从Cramer法则与伴随矩阵，我们已经给出了方阵逆存在的一个充分条件：$\det(\varphi)$可逆。
 
-\pro 方阵$\varphi$左（右）逆存在的充分必要条件是$\det(\varphi)$可逆。如果存在左（右）逆，则也存在右（左）逆，且左逆等于右逆。于是方阵$\varphi$逆存在的充分必要条件是$\det(\varphi)$可逆。
+\begin{pro}
+方阵$\varphi$左（右）逆存在的充分必要条件是$\det(\varphi)$可逆。如果存在左（右）逆，则也存在右（左）逆，且左逆等于右逆。于是方阵$\varphi$逆存在的充分必要条件是$\det(\varphi)$可逆。
+\end{pro}
 
-\proof 上面已经证明了，如果$\det(\varphi)$可逆，则$\varphi$同时存在左逆以及右逆，且左逆等于右逆。反过来，如果$\varphi$有左逆$\psi$，则$\det(\psi\varphi)=\det(I_n)=1$，由行列式乘法公式，$1=\det(\psi\varphi)=\det(\psi)\det(\varphi)$，于是$\det(\varphi)$可逆。存在右逆同理可以推出$\det(\varphi)$可逆。从$\det(\varphi)$可逆就得出了结论。\qed
+\begin{proof}
+上面已经证明了，如果$\det(\varphi)$可逆，则$\varphi$同时存在左逆以及右逆，且左逆等于右逆。反过来，如果$\varphi$有左逆$\psi$，则$\det(\psi\varphi)=\det(I_n)=1$，由行列式乘法公式，$1=\det(\psi\varphi)=\det(\psi)\det(\varphi)$，于是$\det(\varphi)$可逆。存在右逆同理可以推出$\det(\varphi)$可逆。从$\det(\varphi)$可逆就得出了结论。
+\end{proof}
 
 方阵存在逆时，我们会称呼该方阵是可逆的。上面的命题就是在说，环$R$上的方阵$\varphi$可逆当且仅当$\det(\varphi)$可逆。举个例子，整数环$\mathbb{Z}$上的方阵$\varphi$可逆当且仅当$\det(\varphi)=\pm 1$. 而域$k$上的方阵$\varphi$可逆当且仅当$\det(\varphi)\neq 0$. 随后如果可逆，伴随矩阵给出了逆的一个计算公式。
 
