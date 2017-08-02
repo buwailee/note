@@ -207,10 +207,6 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 至此，对单扩张，我们已经分成两种情况得到了$k[\alpha]$和$k(\alpha)$. 当$\alpha$在$k$上代数的时候，而他的极小多项式为$f$，则$k(\alpha)=k[\alpha]=k[x]/(f)$，当$\alpha$在$k$上超越的时候，$k[\alpha]\cong k[x]$.
 
-% \begin{proof} 上面我们预设了一个比$k$大的域$K$的存在，免去了担心单扩张存在性的烦恼。现在有了上面单扩张的知识，我们也就可以直接构造单扩张来证明存在性。
-
-% 	如果$\alpha$关于$k$超越，那么我们取$k(\alpha)$为$k[\alpha]$的商域$F(k[\alpha])$，这显然是一个$k$-代数，因此是一个$k$的扩张。如果$\alpha$关于$k$代数，就取$k[\alpha]$，他显然是一个$k$-代数，并且同构于域$k[x]/\mm$，其中$\mm$是$\alpha$的极小多项式生成的极大理想。\end{proof}
-
 \begin{pro}
 两个单扩张同构，即$k(\alpha)\cong k(\beta)$，当且仅当$\alpha$和$\beta$都在$k$上代数且极小多项式相同，或者同为超越扩张。
 \end{pro}
@@ -220,9 +216,12 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 	现在，如果两者都是超越扩张，则$k(\alpha)\cong F(k[x])\cong k(\beta)$.如果两者都是代数扩张，则$k[x]/\mm_\alpha\cong k[x]/\mm_\beta$，即可推出$\mm_\alpha=\mm_\beta$，继而拥有相同的极小多项式。反过来，如果有相同的极小多项式，则$k(\alpha)\cong k[x]/\mm\cong k(\beta)$.
 \end{proof}
-% 于是，对于扩张$k(\alpha_1$, $\cdots$, $\alpha_n)/k$，如果我们乐意，可以先超越扩张，然后再代数扩张。
 
-% 下一节将关注代数扩张，对于单扩张，会有如下现在看起来应该是自然的命题：代数元的单扩张是代数扩张。
+\begin{para}
+	在研究代数方程的时候，域扩张的出现是自然的。给定域$k$，以及上面的一个多项式$f$，由于$k[x]$是唯一分解整环，所以不妨设$f$是不可约的。我们总是可以找到一个域$K$使得$f$在$K$中有根，实际上，令$K=k[x]/(f)$即可。稍微一般些，对一族多项式$\{f_1$, $\dots$, $f_n\}$，我们也可以找到一个域使得它们在这个域中都可以保证根的存在。但是，当我们考虑一族无限个不可约多项式的时候，这个问题就变得严峻起来了，特别地，如果能找到一个域$K$使得$k[x]$中所有的不可约多项式都至少有一个根时，那在$K$中处理代数方程总是方便的。
+\end{para}
+
+在下一节，我们将构造这样的一个域。
 
 \section{整扩张与代数扩张}
 
@@ -262,7 +261,7 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 \begin{proof} 如果$\alpha$和$\beta$在$A$上面整，$A[\alpha,\beta]$有限生成。因为$A[\alpha\pm\beta]\subset A[\alpha,\beta]$和$A[\alpha\beta]\subset A[\alpha,\beta]$，由上一个命题的\no{3}，$\alpha\pm\beta$和$\alpha\beta$在$A$上面整。\end{proof}
 
-设$K/k$是一个扩张，这个命题告诉我们$K$中在$k$上代数的元素构成$K$中的子环。并且，因为如果$\alpha$代数，那么$1/\alpha$也代数，所以$K$中在$k$上代数的元素构成$K$中的子域。特别地，如果$\{\alpha_1$, $\cdots$, $\alpha_n\}$都在$k$上代数，则单扩张$k(\alpha_1$, $\cdots$, $\alpha_n)$是代数扩张。
+设$K/k$是一个扩张，这个命题告诉我们$K$中在$k$上代数的元素构成$K$中的子环。并且，因为如果$\alpha$代数，那么$1/\alpha$也代数，所以$K$中在$k$上代数的元素构成$K$中的子域。特别地，如果$\{\alpha_1$, $\cdots$, $\alpha_n\}$都在$k$上代数，则扩张$k(\alpha_1$, $\cdots$, $\alpha_n)$是代数扩张。再特别地，关于一个代数元的单扩张是代数扩张。
 
 \para 唯一分解整环在他的商域中是整闭的。一般而言，如果整环$R$在他的商域$F(R)$中是整闭的，则$R$就直接被称为是整闭的。
 
@@ -289,7 +288,7 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 \end{pro}
 
 \begin{proof} 
-	在题目的条件下，由Proposition \eqref{p2:1}，$C$是一个有限生成$B$-模与$C$在$B$上整等价。所以只对$C$是一个有限生成$B$-模的情况证明。
+	在题目的条件下，由Proposition \ref{p2:1}，$C$是一个有限生成$B$-模与$C$在$B$上整等价。所以只对$C$是一个有限生成$B$-模的情况证明。
 
 	令$C=A[\bar{x}_1$, $\cdots$, $\bar{x}_m]\cong A[x_1$, $\cdots$, $x_m]/\mathfrak{a}$，以及令$y_1$, $y_2$, $\cdots$, $y_n$是$C$作为有限生成$B$-模的生成元，那么存在
 	\begin{equation}
@@ -342,11 +341,11 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	\]
 	其中$f\in k[\alpha_0]$. 而$y$是任意的，考虑$y=1/b$，其中$b\not\in \{1$, $a$, $a^2$, $\cdots\}$，他不能写成$f/a^N$的形式，这就完成了矛盾。故$k(\alpha_0)$不可能是超越扩张，$k(\alpha_0)$是代数扩张。所以$k(\alpha_0$, $\cdots$, $\alpha_{n})$是$k$的代数扩张。\end{proof}
 
-下面我们再提供一个Zariski引理的证明，他比上面的证明要短一些，用到了Propostion \eqref{p:2.4}.
+下面我们再提供一个Zariski引理的证明，他比上面的证明要短一些，用到了Propostion \ref{p:2.4}.
 
 \begin{proof} 设$A(\mm)=k(\alpha_1$, $\cdots$, $\alpha_n)$，如果$A(\mm)$关于$k$不是代数扩张，假设$\alpha_1$, $\cdots$, $\alpha_r$关于$k$超越。我们可以先单扩张这些超越元，至于剩下的则关于域$B=k(\alpha_1$, $\cdots$, $\alpha_r)$代数。
 
-现在因为$A(\mm)$是$B$的有限扩张，根据包含关系$k\subset B\subset A(\mm)$和Propostion \eqref{p:2.4}，可以得知$B$是一个有限生成$k$-代数，设$B=k[\beta_1,\,\cdots\!,\,\beta_s]$，其中每一个$\beta_i$都有着形式$f_i/g_i$，而$f_i$, $g_i\in k[\alpha_1,\,\cdots\!,\,\alpha_r]$。但是，$k[\alpha_1,\,\cdots\!,\,\alpha_r]$中有多项式$h=g_1g_2\cdots g_{s}+1$使得$h^{-1}$不能写成$\beta_1,\,\cdots\!,\,\beta_s$的多项式，矛盾。\end{proof}
+现在因为$A(\mm)$是$B$的有限扩张，根据包含关系$k\subset B\subset A(\mm)$和Propostion \ref{p:2.4}，可以得知$B$是一个有限生成$k$-代数，设$B=k[\beta_1,\,\cdots\!,\,\beta_s]$，其中每一个$\beta_i$都有着形式$f_i/g_i$，而$f_i$, $g_i\in k[\alpha_1,\,\cdots\!,\,\alpha_r]$。但是，$k[\alpha_1,\,\cdots\!,\,\alpha_r]$中有多项式$h=g_1g_2\cdots g_{s}+1$使得$h^{-1}$不能写成$\beta_1,\,\cdots\!,\,\beta_s$的多项式，矛盾。\end{proof}
 
 \begin{pro}
 有限扩张、有限次单代数扩张和有限生成扩张相互等价。
@@ -362,7 +361,9 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 
 在某些书上，有限生成扩张被定义为有限次单代数扩张，通过上面的命题，我们知道了这两个定义是等价的。至此，我们完全分类了有限扩张。对于无限扩张，我们以后再研究。
 
-\para 一个域$k$，如果它的任意代数扩张$K$都成立$K\cong k$，则$k$称为代数闭域。
+\begin{para}
+一个域$k$，如果它的任意代数扩张$K$都成立$K\cong k$，则$k$称为代数闭域。
+\end{para}
 
 代数闭域有许多等价判据，为了描述它，我们需要不少实用的概念。首先称形如$x-a$形状的多项式为一个线性因子。下面的小命题将线性因子与多项式的根联系在了一起：如果$f\in k[x]$在$k$中有一个$a$，则存在唯一的$g\in k[x]$使得$f=(x-a)g$.
 
@@ -393,12 +394,30 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 \]
 所以不难看到，对于$0\leq k\leq n-1$，$a$都是$f^{(k)}$的根，而对于$f^{(n)}$，$a$就不是它的根。
 
-\para 设$a$是$f$的一个根，如果对于$f'$, $f^{(2)}$, $\dots$, $f^{(n-1)}$，$a$都是它们的根，而$f^{(n)}$并没有根$a$，则$a$被称为$f$的$n$重根。
+\begin{para}
+设$a$是$f$的一个根，如果对于$f'$, $f^{(2)}$, $\dots$, $f^{(n-1)}$，$a$都是它们的根，而$f^{(n)}$并没有根$a$，则$a$被称为$f$的$n$重根。
+\end{para}
 
-\begin{compactenum}
-\item 任意一元多项式$f\in k[x]$都在$k$中有一个根。
-\item 任意首一一元多项式都可以分解为线性因子的乘积。
+\begin{thm}设$k$是一个域，以下命题等价：
+\begin{compactenum}[~~~(1)]
+\item $k$是代数闭域。
+\item $k$的有限扩张是它本身。
+\item 如果$K$是他的一个扩张，则$k=\{\alpha\in K$ $:$ $\alpha$在$k$上代数$\}$.
+\item 任意首一多项式$f$都可以分解为线性因子的乘积。
+\item 任意多项式$f\in k[x]$都在$k$中有一个根。
+\item $k$上的不可约多项式的次数都为$1$.
 \end{compactenum}
+\end{thm}
+
+\begin{proof}
+	稍微困难的是，$(3)\Rightarrow (4)$, $(5)\Rightarrow (6)$以及$(6)\Rightarrow (1)$.
+
+	对$(3)\Rightarrow (4)$，将首一多项式$f$分解为不可约多项式的乘积，然后对那些不可约多项式，找一个$k$的扩张$K$使得$K$中包含那些不可约多项式的所有根（有限个，所以$K$总是存在的），由$(3)$，这些根都在$k$中，所以$f$在$k$上可以分解为线性因子的乘积。
+
+	对$(5)\Rightarrow (6)$，对不可约多项式$f\in k[x]$，因为他有一个根$\alpha$，所以$f=(x-\alpha)g$，因为$f$是不可约的，因此$g\in k$保证了$\deg(f)=1$.
+
+	对$(6)\Rightarrow (1)$，令$K/k$是代数扩张，取$\alpha\in K$，以及令$p\in k[x]$是$\alpha$的极小多项式。极小多项式都是不可约的，故$(6)$保证了$\deg(p)=1$，即$[k(\alpha):k]=1$，再即$\alpha\in k$. 所以$K=k$.
+\end{proof}
 
 \begin{thm}
 对于任意一个域$k$，一定存在一个包含他的代数闭域$\bar{k}$，称为$k$的代数闭包。
@@ -413,7 +432,7 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	\]
 	现在，由于$f_1$, $\dots$, $f_n$是有限多项式族，我们可以找一个$k$的扩张$L$使得每一个$f_i$都在$L$上有根$\alpha_i$，将上式在$L$中赋值$x_{f_i}=\alpha_i$就会得到$1=0$，矛盾。
 
-	因此令$\mm$是包含$\mathfrak{a}$的极大理想，然后令$k_1=k[\Sigma]/\mm$，这是一个$k$的一个扩张，并且每个$f\in \Sigma$都在$k_1$中都有一个根，故$k[x]$中的任意多项式都在$k_1$中有根。对$k_1$同样进行构造得到$k_2$，不断继续下去得到$k_3$, $k_4$等等。令$K=\bigcup_{n=1}^\infty k_n$, 显然$K$是一个域，并且每一个$f\in \Sigma$都可以完全分裂成线性因子。然后令$\bar{k}$是$K$中在$k$上代数的元素构成的集合，从\eqref{iope}，它们构成一个环，进而是一个域。这就是我们需要的代数闭域。
+	因此令$\mm$是包含$\mathfrak{a}$的极大理想，然后令$k_1=k[\Sigma]/\mm$，这是一个$k$的一个扩张，并且每个$f\in \Sigma$都在$k_1$中都有一个根，故$k[x]$中的任意多项式都在$k_1$中有根。对$k_1$同样进行构造得到$k_2$，不断继续下去得到$k_3$, $k_4$等等。令$K=\bigcup_{n=1}^\infty k_n$, 显然$K$是一个域，并且每一个$f\in \Sigma$都可以完全分裂成线性因子。然后令$\bar{k}$是$K$中在$k$上代数的元素构成的集合，从\ref{iope}，它们构成一个环，进而是一个域。这就是我们需要的代数闭域。
 \end{proof}
 
 \section{整扩张的上升与下降}
@@ -452,7 +471,7 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 \]
 其中系数属于$R$，然后将两边模掉$\aaa$就得到了$\bar{s}$的首一多项式方程，系数属于$R/(R\cap \aaa)$.
 
-作为推论，$\mm$是$S$的极大理想当且仅当$R\cap \mm$是$R$的极大理想。这点只要利用Proposition \eqref{intfield}即可。
+作为推论，$\mm$是$S$的极大理想当且仅当$R\cap \mm$是$R$的极大理想。这点只要利用Proposition \ref{intfield}即可。
 
 \section{Jacobson环}
 
@@ -487,13 +506,13 @@ $\Leftarrow$: 设$\pp$是$R$的一个素理想，令$\aaa$是所有包含$\pp$�
 \end{pro}
 
 \begin{proof}
-	设$R$不是Jacobson环，则存在一个非极大的素理想$\pp\subset R$使得以及一个$r\in R-\pp$使得$(R/\pp)_r$是一个域。由于$S$在$R$上整，所以存在一个$\mathfrak{q}$使得$\mathfrak{q}\cap R=\pp$，并且$S/\mathfrak{q}$在$R/\pp$上整。由Proposition \eqref{intfield}，$\pp$是极大理想当且仅当$\mathfrak{q}$是极大理想。所以$\mathfrak{q}$不是极大理想。
+	设$R$不是Jacobson环，则存在一个非极大的素理想$\pp\subset R$使得以及一个$r\in R-\pp$使得$(R/\pp)_r$是一个域。由于$S$在$R$上整，所以存在一个$\mathfrak{q}$使得$\mathfrak{q}\cap R=\pp$，并且$S/\mathfrak{q}$在$R/\pp$上整。由Proposition \ref{intfield}，$\pp$是极大理想当且仅当$\mathfrak{q}$是极大理想。所以$\mathfrak{q}$不是极大理想。
 
 	任取$\bar{s}\in S/\mathfrak{q}$，则$\bar{s}\bar{r}^{-1}\in (S/\mathfrak{q})_r$，由于$\bar{s}$在$R/\pp$上整，所以满足一个首一多项式
 	\[
 	\bar{s}^n+\bar{a}_1\bar{s}^{n-1}+\cdots+ \bar{a}_n=0,
 	\]
-	其中系数属于$R/\pp$，两边乘以$\bar{r}^{-n}$后，就得到了一个$\bar{s}\bar{r}^{-1}$的首一多项式，系数属于$(R/\pp)_r$. 因此$(S/\mathfrak{q})_r$在$(R/\pp)_r$上整。由Proposition \eqref{intfield}，$(R/\pp)_r$是一个域推出$(S/\mathfrak{q})_r$是一个域。因为$\mathfrak{q}$不是极大理想，利用Robinowitch's trick，我们就得到了$S$不是一个Jacobson环。
+	其中系数属于$R/\pp$，两边乘以$\bar{r}^{-n}$后，就得到了一个$\bar{s}\bar{r}^{-1}$的首一多项式，系数属于$(R/\pp)_r$. 因此$(S/\mathfrak{q})_r$在$(R/\pp)_r$上整。由Proposition \ref{intfield}，$(R/\pp)_r$是一个域推出$(S/\mathfrak{q})_r$是一个域。因为$\mathfrak{q}$不是极大理想，利用Robinowitch's trick，我们就得到了$S$不是一个Jacobson环。
 
 	以上的逆否即是：若$S$是Jacobson环，则$R$是Jacobson环。
 
@@ -515,7 +534,7 @@ $\Leftarrow$: 设$\pp$是$R$的一个素理想，令$\aaa$是所有包含$\pp$�
 	\]
 	其中$i_2$是$f$的第三高级项的序数。不断如此的进行下去，进行至多$n$次后，左边将得到一个$\bar{s}^{-1}$的首一多项式，系数属于$(R/(R\cap \pp))_{r}$，其中$\bar{r}$是$f$所有非零系数的乘积，右边将变成零。
 
-	所以$(S/\pp)_{s}$在$(R/(R\cap \pp))_{r}$上整，由Proposition \eqref{intfield}，$(R/(R\cap \pp))_{r}$是一个域。因为$R\cap \pp$不是极大理想，利用Robinowitch's trick，我们就得到了$S$不是一个Jacobson环。
+	所以$(S/\pp)_{s}$在$(R/(R\cap \pp))_{r}$上整，由Proposition \ref{intfield}，$(R/(R\cap \pp))_{r}$是一个域。因为$R\cap \pp$不是极大理想，利用Robinowitch's trick，我们就得到了$S$不是一个Jacobson环。
 \end{proof}
 
 \begin{thm}
@@ -553,11 +572,11 @@ $R'_f$是一个域，而且$R'_f$是一个有限生成$k$代数，Zariski引理�
 \]
 其中系数在$R/(R\cap \pp)$中. 两边除以首项系数$\bar{p}_0$，得到一个系数在$(R/(R\cap \pp))_{\bar{p}_0}$中的首一多项式，因此$R'$在$(R/(R\cap \pp))_{p_0}$上整。
 
-显然，$(R/(R\cap \pp))_{aa_0}\subset k$同时包含$(R/(R\cap \pp))_{a}$和$(R/(R\cap \pp))_{a_0}$，所以$R'_f$在$(R/(R\cap \pp))_{aa_0}$上整。因为$R'_f$是域，且$(R/(R\cap \pp))_{aa_0}$作为$k$的子环是整环，由Proposition \eqref{intfield}，$(R/(R\cap \pp))_{aa_0}$也是域，故$(R/(R\cap \pp))_{aa_0}=k$.
+显然，$(R/(R\cap \pp))_{aa_0}\subset k$同时包含$(R/(R\cap \pp))_{a}$和$(R/(R\cap \pp))_{a_0}$，所以$R'_f$在$(R/(R\cap \pp))_{aa_0}$上整。因为$R'_f$是域，且$(R/(R\cap \pp))_{aa_0}$作为$k$的子环是整环，由Proposition \ref{intfield}，$(R/(R\cap \pp))_{aa_0}$也是域，故$(R/(R\cap \pp))_{aa_0}=k$.
 
 但是$R$是Jacobson环，Robinowitch's trick告诉我们，如果$R\cap \pp$不是$R$中的极大理想，则不能有$(R/(R\cap \pp))_{aa_0}=k$. 矛盾。至此，命题第一部分证明完毕。下面证明第二部分，即极大理想的原像是极大理想。
 
-假设$\mm$是$R[x]$的极大理想，但是$R\cap \mm$不是极大理想。同上，我们已经知道$R[x]/\mm$在$(R/(R\cap \mm))_{p_0}$上整，但是$R[x]/\mm$是域，由Proposition \eqref{intfield}，$(R/(R\cap \mm))_{p_0}$是一个域，利用Robinowitch's trick，我们就知道这与$R$是一个Jacobson环矛盾。\end{proof}
+假设$\mm$是$R[x]$的极大理想，但是$R\cap \mm$不是极大理想。同上，我们已经知道$R[x]/\mm$在$(R/(R\cap \mm))_{p_0}$上整，但是$R[x]/\mm$是域，由Proposition \ref{intfield}，$(R/(R\cap \mm))_{p_0}$是一个域，利用Robinowitch's trick，我们就知道这与$R$是一个Jacobson环矛盾。\end{proof}
 
 作为推论，当$k$是一个域，有限生成$k$-代数是Jacobson环，这有时候被称为Hilbert's Nullstellensatz.
 
@@ -600,17 +619,18 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 \]
 
 将上述关系抽象出来，设$S$和$T$是两个偏序集，并且存在两个映射$f:S\to T$以及$g:T\to S$满足
-
-1. 如果$s_1\leq s_2$，则$f(s_2)\leq f(s_1)$.
-
-2. 如果$t_1\leq t_2$，则$g(t_2)\leq g(t_1)$.
-
-3. $\,$$t\leq f(g(t))$以及$s\leq g(f(s))$.\\\noindent
+\begin{compactenum}[~~~~(1)]
+\item 如果$s_1\leq s_2$，则$f(s_2)\leq f(s_1)$.
+\item 如果$t_1\leq t_2$，则$g(t_2)\leq g(t_1)$.
+\item $\,$$t\leq f(g(t))$以及$s\leq g(f(s))$.
+\end{compactenum}
 则称$S$和$T$之间存在一个Galois联络。
 
 以范畴的观点来看，第一个条件就是说$f:S^{\text{op}}\to T^{\text{op}}$是一个函子，第二个条件就是在说，$g:T^{\text{op}}\to S^{\text{op}}$是一个函子。不仅如此，第三点还说明这是一对伴随函子。
 
-\para 设$S$和$T$之间存在一个Galois联络，则$g(T)$和$f(S)$之间存在一一映射，具体写出来即$s\mapsto f(s)$，以及$t \mapsto g(t)$.
+\begin{pro}
+设$S$和$T$之间存在一个Galois联络，则$g(T)$和$f(S)$之间存在一一映射，具体写出来即$s\mapsto f(s)$，以及$t \mapsto g(t)$.
+\end{pro}
 
 \begin{proof} 
 	设$s=g(t)$，则$t\leq f(g(t))=f(s)$，所以$g(f(s))\leq g(t)=s$. 反过来，由于$s\leq g(f(s))$，所以$s=g(f(s))$. 所以$g|_{f(S)}:f(S)\to g(T)$是一个满射。同样（或者由对称性），对于$t=f(s)$，我们也有$t=f(g(t))$，所以$g|_{f(S)}:f(S)\to g(T)$是一个单射。故而$g|_{f(S)}$是一个双射，它的逆就是$f|_{g(T)}$.
@@ -618,23 +638,27 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 应用到域扩张的情况，即所有形如$\mathcal{F}(S)$的域和所有形如$\Gal(K/k)$的子群之间，有一个一一映射。
 
-\para 设$K/k$是一个扩张，而$k(X)$是$X\subset K$生成的一个扩张，任取$\sigma$和$\tau\in \Gal(k(X)/k)$，如果$\sigma|_X=\tau|_X$，则$\sigma=\tau$. 这就说明了，对于生成的一个扩张，Galois群的作用只依赖于他在生产元上的集合的作用。
+\begin{lem}
+设$K/k$是一个扩张，而$k(X)$是$X\subset K$生成的一个扩张，任取$\sigma$和$\tau\in \Gal(k(X)/k)$，如果$\sigma|_X=\tau|_X$，则$\sigma=\tau$. 
+\end{lem}
+
+这就说明了，对于生成的一个扩张，Galois群的作用只依赖于他在生产元上的集合的作用。
 
 \begin{proof} 
 	由于\[
-		k(X)=\bigcup_{\{a_1,\,\cdots\!,\,a_n\}\in I} k(a_1,\,\cdots\!,\,a_n).
+		k(X)=\bigcup_{\{a_1\text{, $\cdots$, }a_n\}\in I} k(a_1\text{, $\cdots$, }a_n).
 	\]
-	或者说$k(X)$中的任意一个元素$\alpha$都可以找到有限个$X$中的元素$\{a_1,\,\cdots\!,\,a_n\}$使得$\alpha\in k(a_1,\,\cdots\!,\,a_n)$，即
+	或者说$k(X)$中的任意一个元素$\alpha$都可以找到有限个$X$中的元素$\{a_1$, $\cdots$, $a_n\}$使得$\alpha\in k(a_1$, $\cdots$, $a_n)$，即
 	\[
-		\alpha=\frac{f(a_1,\,\cdots\!,\,a_n)}{g(a_1,\,\cdots\!,\,a_n)},
+		\alpha=\frac{f(a_1\text{, $\cdots$, }a_n)}{g(a_1\text{, $\cdots$, }a_n)},
 	\]
 	所以
 	\[
-		\tau(\alpha)=\frac{f(\tau(a_1),\,\cdots\!,\,\tau(a_n))}{g(\tau(a_1),\,\cdots\!,\,\tau(a_n))}=\frac{f(\sigma(a_1),\,\cdots\!,\,\sigma(a_n))}{g(\sigma(a_1),\,\cdots\!,\,\sigma(a_n))}=\sigma(\alpha).
+		\tau(\alpha)=\frac{f(\tau(a_1)\text{, $\cdots$, }\tau(a_n))}{g(\tau(a_1)\text{, $\cdots$, }\tau(a_n))}=\frac{f(\sigma(a_1)\text{, $\cdots$, }\sigma(a_n))}{g(\sigma(a_1)\text{, $\cdots$, }\sigma(a_n))}=\sigma(\alpha).
 	\]
 \end{proof}
 
-考虑有限扩张的情况，由于有限扩张就是有限次单代数扩张$k(a_1,\,\cdots\!,\,a_n)$. 对每一个$a_i$，都有极小多项式$f_i$. 由于$\Gal(k(a_1,\,\cdots\!,\,a_n)/k)$里面的元素的作用就是将$a_i$变成$f_i$在$k(a_1,\,\cdots\!,\,a_n)$中的其他的根，所以如果每一个$f_i$的根的数目是有限的，则$\Gal(k(a_1,\,\cdots\!,\,a_n)/k)$限制在$\{a_1,\,\cdots\!,\,a_n\}$上的结果是有限的，进而上面证明的内容保证了$\Gal(k(a_1,\,\cdots\!,\,a_n)/k)$是一个有限群。
+考虑有限扩张的情况，由于有限扩张就是有限次单代数扩张$k(a_1$, $\cdots$, $a_n)$. 对每一个$a_i$，都有极小多项式$f_i$. 由于$\Gal(k(a_1$, $\cdots$, $a_n)/k)$里面的元素的作用就是将$a_i$变成$f_i$在$k(a_1$, $\cdots$, $a_n)$中的其他的根，所以如果每一个$f_i$的根的数目是有限的，则$\Gal(k(a_1$, $\cdots$, $a_n)/k)$限制在$\{a_1$, $\cdots$, $a_n\}$上的结果是有限的，进而上面证明的内容保证了$\Gal(k(a_1$, $\cdots$, $a_n)/k)$是一个有限群。
 
 \begin{pro}
 设$G$是$\mathrm{Aut}(K)$的一个有限子群，则$|G|=[K:\mathcal{F}(G)]$以及$G=\Gal(K/\mathcal{F}(G))$.

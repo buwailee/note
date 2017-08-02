@@ -30,17 +30,21 @@
 
 不难直接在$\bar{R}$上给出一个环结构，Cauchy列$\{p_i\}$和$\{q_i\}$的加法定义为序列$\{p_i+q_i\}$，乘法定义为序列$\{p_iq_i\}$. 这两个序列是Cauchy列，对加法，如果$p_j-p_k\in \mm_i$以及$q_j-q_k\in \mm_i$，则$(p_j+q_j)-(p_k+q_k)=p_j-p_k+q_j-q_k \in \mm_i$. 对乘法，如果$p_j-p_k\in \mm_i$以及$q_j-q_k\in \mm_i$，则$p_jq_j-p_kq_k=p_j(q_j-q_k)+q_k(p_j-p_k)\in \mm_i$. 
 
-\lem Cauchy列的无穷子列也是Cauchy列，且与原列等价。
+\begin{lem}
+Cauchy列的无穷子列也是Cauchy列，且与原列等价。
+\end{lem}
 
-\proof
+\begin{proof}
 	设$\{x_i\}$是一个Cauchy列，而$\{x_{n_i}\}$是一个无穷子列，其中$n_i$随着$i$严格递增。于是，给定$0$的邻域$U$，则存在$n(U)$使得$i$, $j>n(U)$时候一定有$x_i-x_j\in U$，于是当$n_i$, $n_j>n(U)$时$x_{n_i}-x_{n_j}\in U$. 因此他也是Cauchy列。
 
 	下面我们证明$x_{n_i}-x_i\to 0$，这等价于说，任取$0$的一个邻域$U$，存在一个$N$使得$i>N$时候一定有$x_{n_i}-x_{i}\in U$. 事实上，由于$n_i$是选成递增的，所以$n_i\geq i$. 由于$\{x_i\}$是一个Cauchy列，所以存在一个$n(U)$使得$i$, $j>n(U)$时候一定有$x_i-x_j\in U$，取$N=n(U)$，则$i>N$时也有$n_i>N$，于是我们就得到了结论。
-\qed
+\end{proof}
 
-\pro 我们两种方法定义的局部化是同构的，即$\bar{R}\cong \hat R$.
+\begin{pro}
+我们两种方法定义的局部化是同构的，即$\bar{R}\cong \hat R$.
+\end{pro}
 
-\proof
+\begin{proof}
 	首先指出$R$中的元素$g$将给出一族等价的Cauchy列。实际上，选取$g_i$在$R$中的原像$p_i$. 给定一个$R$中零的邻域$U$，我们总可以找一个$\mm_i$使得$\mm_i\subset U$. 由$\hat R$的定义，对$j$, $k>i$，都有$p_j-p_i\in \mm_i$以及$p_k-p_i \in \mm_i$，由于$\mm_i$是一个理想，所以$p_j-p_k=(p_j-p_i)-(p_k-p_i)\in \mm_i\subset U$. 这时候取$n(U)=i$即可。于是，$\{p_1$, $p_2$, $\dots\}$是一个Cauchy列。注意到，这只是对一族选定的原像得到的Cauchy列. 还需要证明，如果选取不同原像，将会得到等价的Cauchy列。实际上，如果$q_i$是$g_i$在$R$中选取的其他原像，则$p_i-q_i\in \mm_i$，因此$p_i-q_i\to 0$. 此即所需。这样就得到了映射$\varphi:\hat{R}\to \bar{R}$，它显然是一个环同态。
 
 	反过来，我们证明$R$中每一条Cauchy列可以等价于$\hat R$中某个元素给出的Cauchy列。给定一条$R$中的Cauchy列$\{p_1$, $p_2$, $\dots\}$. 对原点的开邻域$\mm_i$，存在一个正整数$n(\mm_i)$使得$j$, $k>n(\mm_i)$时有$p_j-p_k\in \mm_i$. 为方便起见，选取$n(\mm_i)$的过程中将其选为严格递增的，这样$n(\mm_i)\geq i$. 记$n_i=n(\mm_i)+1$，考虑子列$q_i=p_{n_i}$，它显然是Cauchy列，并且，对每一个$\mm_i$，以及$j$, $k>i$，成立$q_j-q_k=p_{n_j}-p_{n_k}$，由于$n_j$, $n_k>n_i=n(\mm_i)+1>n(\mm_i)$，所以
@@ -62,7 +66,7 @@
 	这样，我们就得到了映射$\psi:\bar{R}\to \hat{R}$，它显然是一个环同态。
 
 	最后，由构造，不难检验$\psi\varphi(g)=g$以及$\varphi\psi(p)=p$. 所以$\hat R$与$\bar R$等价。
-\qed
+\end{proof}
 
 这个同构提供了许多事情的不同观点。比如，从$R\to \hat R$有一个自然的映射$r\mapsto (r$, $r$, $r$, $\dots)$，很容易看到，这不一定是单的：如果$\bigcap_i \mm_i\neq 0$且$r-s\in \bigcap_i \mm_i$，则$r$与$s$映向$\hat R$中同一个元素。而以拓扑的观点来看，这就是在说$R$是不是一个Hausdorff空间。只有当具有足够可分性时，$\bar R$中的常序列才可能一一对应于$R$中的元素。这并不奇怪，因为众所周知，非Hausdorff空间中同一个序列可能有不同的极限。
 
@@ -144,13 +148,15 @@
 
 反过来，任取$\sum_{i=0}^\infty x_i\in \hat{R}$，其中$x_i\in \mm_0$，则我们可以将其看成$\sum_{j=0}^\infty y_j$，其中$y_0=\sum_{i=0}^\infty x_i$，而对$j\neq 0$，$y_j=0$. 这显然是一个单射，因为很清楚$\bigcap_{i=0}^\infty \hat{\mm}_i =\{0\}$. 用级数来看，$\sum_{i=0}^\infty x_i \in \hat{\mm}_n$意味着它前$n$项部分和处于$\mm_n$中，而现在$n$是任意的，所以$\sum_{i=0}^\infty x_i=0$.
 
-\pro 如果$\mm$是$R$的一个极大理想，则$\hat R_\mm$是一个局部环，极大理想为$\hat\mm$.
+\begin{pro}
+如果$\mm$是$R$的一个极大理想，则$\hat R_\mm$是一个局部环，极大理想为$\hat\mm$.
+\end{pro}
 
-\proof
+\begin{proof}
 	首先由$\hat R_\mm/\hat\mm\cong R/\mm$，可以得到$\mm$是一个极大理想。任取$g\not\in \hat \mm$，特别地，则$g_1\neq 0 \in R/\mm$，所以有逆$g_1^{-1}\in R/\mm$，选一个$a\in R$使得它在$R/\mm$中的像为$g_1^{-1}$，于是如果$ag$是可逆的，则$g$是可逆的。此时$ag$具有形式$(1$, $ag_2$, $ag_3$, $\dots)$.
 
 	设$ag=1+\sum_{i=1}^\infty x_i$，其中$x_i\in \mm^i$. 记$h=-\sum_{i=1}^\infty x_i\in \hat{\mm}$，我们有$1-h\in \hat{\hat R}$，利用典范同构$\hat{\hat R}\cong \hat{R}$，只要它在$\hat{\hat R}$中有逆，则同构回来就得到了$\hat{R}$中$ag$的逆，而$1-h$的逆即熟知的几何级数$\sum_{i=0}^\infty h^i\in \hat{\hat R}$，此即所证。
-\qed
+\end{proof}
 
 
 \section{赋值环}
@@ -159,15 +165,17 @@
 
 首先指出，赋值环是一个局部环。
 
-\proof 
+\begin{proof} 
 	实际上，考虑所有$R$中不可逆元构成的集合$\mathfrak{m}$. 我们可以证明这是一个理想，任取$r\in R$，以及$a\in\mathfrak{m}$，如果$a=0$，则$ra=0\in \mathfrak{m}$，如果$ra\not\in R$或者说$(ra)^{-1}\in R$，则$a^{-1}=r(ra)^{-1}\in R$，这与$a$不可逆矛盾，所以$ra\in R$. 但如果$ra$可逆，则依然是$a^{-1}=r(ra)^{-1}\in R$给出$a$可逆，矛盾，所以$ra\in \mathfrak{m}$. 最后只要检验加法即可。如果$x$, $y\in\mathfrak{m}$，不妨设$y\neq 0$，所以$y^{-1}\in R$以及$xy^{-1}\in R$. 此时$x+y=(xy^{-1}+1)y$，由于$(xy^{-1}+1)\in R$以及$y\in\mathfrak{m}$，所以$x+y=(xy^{-1}+1)y\in \mathfrak{m}$.
-\qed
+\end{proof}
 
 \para 一旦给出一个$k$的赋值环，那么我们可以给出一族赋值环：设环$R'$满足$R\subset R'\subset k$，则$R'$也是域$k$的一个赋值环。这是简单的，作为$k$的子环，$R'$是整环，在$R\subset R'\subset k$上取三个整环的分式域，可知$k$是$R'$的分式域。任取非零$x\in k$，或者$x\in R'$，如果不，则$x\not\in R$，于是$x^{-1}\in R\subset R'$. $k$自然是$k$的一个赋值环，这样的赋值环我们称为平凡赋值环。
 
-\pro 设$R$是$k$的一个赋值环，则他是$k$中的整闭整环。
+\begin{pro}
+设$R$是$k$的一个赋值环，则他是$k$中的整闭整环。
+\end{pro}
 
-\proof
+\begin{proof}
 	设$x\in k$在$R$上整，于是我们有一个首一多项式方程
 	\[
 		x^n+r_1x^{n-1}+\cdots+r_n=0,
@@ -176,11 +184,13 @@
 	\[
 		x=-(b_1+b_2x^{-1}+\cdots+b_n x^{1-n})\in R.
 	\]
-\qed
+\end{proof}
 
-\pro 对任意的一个域$k$，存在一个非平凡的赋值环$R$.
+\begin{pro}
+对任意的一个域$k$，存在一个非平凡的赋值环$R$.
+\end{pro}
 
-\proof
+\begin{proof}
 	设$K$是$k$的一个代数闭域。设$R$是$k$的一个真子环，而$f:R\to K$是一个环同态。偶对$(R,f)$之间可以定义如下偏序，即$(R,f)\leq (R',f')$当且仅当$R\subset R'$且$f'|_R=f$.
 
 	考虑任意一条链$(R_1,f_1)\leq (R_2,f_2)\leq \cdots$，则$\bigcup_i R_i$是一个$k$的子环。包含于$k$是简单的，现在任取$x$, $y\in \bigcup_i R_i$，则必然存在一个正整数$n$使得$x$, $y\in R_n$，所以$x+y$, $xy\in R_n\subset \bigcup_i R_i$. 同样，我们可以定义一个同态$f:\bigcup_i R_i\to \Omega$：如果$x\in R_n$，则$f(x)=f_n(x)$. 可以看到，这个定义与$n$无关，所以是良定的，此时$(\bigcup_i R_i,f)$就是链$(R_1,f_1)\leq (R_2,f_2)\leq \cdots$的一个上界。同时，由于$(0)$是一个真子环，以及一个自然的包含，所以由Zorn引理，存在一个极大元$(R,g)$.
@@ -188,17 +198,19 @@
 	下面证明$R$就是一个赋值环。
 
 	首先$g(R)$作为域的子环是整环，由同构基本定义$g(R)\cong R/\ker(g)$，所以$\mathfrak{m}=\ker (g)$是一个素理想。将$R$对$\mathfrak{m}$进行局部化得到$R_\mathfrak{m}$. 我们可以通过$g'(r/s)=g(r)/g(s)$定义出一个同态$g':R_\mathfrak{m}\to K$，满足$g'|_R=g$，由极大性，$R=R_\mathfrak{m}$，所以$R$是一个局部环，$\mathfrak{m}$是它唯一的极大理想。\notprove
-\qed
+\end{proof}
 
-\pro 设$R$是一个整环，$k$是他的分式域，这里给出一个$R$是$k$的赋值环的等价条件：任取$\mathfrak{a}$, $\mathfrak{b}$为两个$R$的理想，则$\mathfrak{a}\subset \mathfrak{b}$或者$\mathfrak{b}\subset \mathfrak{a}$. 
+\begin{pro}
+设$R$是一个整环，$k$是他的分式域，这里给出一个$R$是$k$的赋值环的等价条件：任取$\mathfrak{a}$, $\mathfrak{b}$为两个$R$的理想，则$\mathfrak{a}\subset \mathfrak{b}$或者$\mathfrak{b}\subset \mathfrak{a}$. 
+\end{pro}
 
 这个命题给出了赋值环的一个理想结构的刻画，如果将理想们按照包含给一个偏序，这个命题就是说，整环$R$是一个赋值环，当且仅当它的所有理想构成的偏序集是全序的。
 
-\proof
+\begin{proof}
 	如果存在两个理想$\mathfrak{a}$和$\mathfrak{b}$，但$\mathfrak{a}\subset \mathfrak{b}$和$\mathfrak{b}\subset \mathfrak{a}$都不成立，即存在$x\in \mathfrak{a}$和$y\in \mathfrak{b}$满足$x\not\in \mathfrak{b}$且$y\not\in \mathfrak{a}$. 假设$R$是一个赋值环，如果$x/y\in R$，则$x=y(x/y)\in \mathfrak{b}$，矛盾，所以$y/x=(x/y)^{-1}\in R$，则$y=x(y/x)\in\mathfrak{a}$，矛盾。所以$R$不是赋值环。逆否就得到了，如果$R$是一个赋值环，则$\mathfrak{a}\subset \mathfrak{b}$或者$\mathfrak{b}\subset \mathfrak{a}$.
 
 	反过来，假设任取两个理想$\mathfrak{a}$和$\mathfrak{b}$，成立$\mathfrak{a}\subset \mathfrak{b}$或者$\mathfrak{b}\subset \mathfrak{a}$. 设$x/y\in k$，其中$x$, $y\in R$. 记$\mathfrak{a}=(x)$以及$\mathfrak{b}=(y)$，于是$x\in (y)$或者$y\in (x)$. 对于前者，$x=ay$，所以$x/y=ay/y=a\in R$. 对于后者，$y=bx$，所以$x/y=x/(bx)=1/b$，或者说$(x/y)^{-1}=b\in R$. 因此$R$是一个赋值环。
-\qed
+\end{proof}
 
 作为推论，如果$R$是一个赋值环，而$\mathfrak{p}$是它的一个素理想。则$R/\mathfrak{p}$以及$R_{\mathfrak{p}}$都是赋值环，整环是清楚的，而赋值环的判断只要看理想的结构即可，$R/\mathfrak{p}$的理想一一对应着$R$中包含$\mathfrak{p}$的理想，而$R_{\mathfrak{p}}$的理想一一对应着$R$的包含于$\mathfrak{p}$的理想。
 
@@ -215,11 +227,13 @@
 
 由于赋值环一定是局部环，从赋值映射的角度来看，极大理想就是$R-v^{-1}(0)$. 理由是简单的，如果$x\in R$是可逆的，则$v(x)\geq 0$和$v(x^{-1})\geq 0$同时成立，这就意味着$v(x)=0$. 所以$R-v^{-1}(0)$就是$R$中所有不可逆元的集合，理想结构的验证从赋值映射的性质来看是简单的。
 
-\pro 在赋值环中，Noether的那种是很特殊的，他们是离散赋值环。一个赋值环是离散赋值环，当且仅当它的赋值群是整数群$\zz$. 
+\begin{pro}
+在赋值环中，Noether的那种是很特殊的，他们是离散赋值环。一个赋值环是离散赋值环，当且仅当它的赋值群是整数群$\zz$. 
+\end{pro}
 
 在离散赋值环上，添加$v(0)=+\infty$往往是方便的，记$(n,+\infty]=\{m\in \zz\,:\, m>n\}\cup \{+\infty\}$，则离散赋值环的极大理想就写作$v^{-1}\left((0,+\infty]\right)$. 
 
-\proof
+\begin{proof}
 	假设一个赋值环$R$是离散赋值环，即是Noether环。考虑$R$的所有非平凡主理想，它们也是全序的，由于$R$是Noether环，所以存在一个极大非平凡主理想$(a)$使得其他非平凡主理想$(x)$都满足$(x)\subset (a)$. 这也意味着，所有不可逆元$x$都属于$(a)$，或者说$(a)$就是赋值环的那个极大理想。
 
 	取定不可逆元$x$，他一定可以写成$x=ra^n$的形式。实际上，如果对每一个正整数$n$，都存在不可逆元$r_n\in R$使得$x=r_na^n$成立，则$r_{n+1}a^{n+1}=r_n a^n$和$R$是一个整环可以推出，$r_n = r_{n+1}a$，所以$(r_n)\subset r_{n+1}$. 于是我们就得到了一个升链
@@ -237,7 +251,7 @@
 		(a_0)\supset (a_1) \supset (a_2)\supset \cdots,
 	\]
 	进而，环$R$是Noether环。
-\qed
+\end{proof}
 
 从证明中，我们还可以看到，离散赋值环是一个PID，所以也自然是UFD.
 
