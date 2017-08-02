@@ -29,9 +29,11 @@
 \]
 先预设一个$n=0$，我们从左往右开始计数，遇到`$($'则$n\to n+1$，并称该括号为第$n$层括号，遇到`$)$'则$n\to n-1$，直到最后一个字符。比如上式中，第一个和第四个`$($'都是第一层括号，而第二个和第五个`$($'是第二层括号。如果到达最右端字符的时候，得到了$n=0$，则上面的字符串称为$a_1a_2\cdots a_n$的一种加括号的方式。
 
-\pro 设$\{a_i\in A\,:\, 1\leq i\leq n\}$是$A$中任意的一个有限集，且$A$上存在一种运算满足结合律。对于任意字符串$a_1a_2\cdots a_n$中任意加括号的方式，经过运算后，他们都等于$a_1a_2\cdots a_n$.
+\begin{pro}
+设$\{a_i\in A\,:\, 1\leq i\leq n\}$是$A$中任意的一个有限集，且$A$上存在一种运算满足结合律。对于任意字符串$a_1a_2\cdots a_n$中任意加括号的方式，经过运算后，他们都等于$a_1a_2\cdots a_n$.
+\end{pro}
 
-\proof 对正整数$n$，记$[n]=\{1,2,\cdots,n\}$。设$f:[m]\to [n]$是一个递增函数，则$f$被称为$[n]$的一个$m$-划分。由于是递增函数，所以$m\leq n$. 
+\begin{proof} 对正整数$n$，记$[n]=\{1,2,\cdots,n\}$. 设$f:[m]\to [n]$是一个递增函数，则$f$被称为$[n]$的一个$m$-划分。由于是递增函数，所以$m\leq n$. 
 
 考虑$\{a_i\, :\, 1\leq i\leq n\}$，对于$[n]$的任意一个$(2m)$-划分$k$，$k(i)=k_i$，我们都可以通过在在每一对$a_{k_{2i-1}}$和$a_{k_{2i}}$之间加一对括号定义出一个字符串
 \[
@@ -60,7 +62,7 @@
 
 我们已经对任意字符串$a_1a_2\cdots a_n$最大括号层数为$1$的所有可能加括号方式证明了，在满足结合律的时候等于$a_1a_2\cdots a_n$.
 
-先设最大的层数为$N$，对所有的$(N-1)$层括号，他里面的最大括号层数为1，利用上面的结论可以将这层内所有的括号消去，则最大层数降为$(N-1)$，如是往复，经过有限次归纳，就得到了他最终将等于$a_1a_2\cdots a_n$.\qed 
+先设最大的层数为$N$，对所有的$(N-1)$层括号，他里面的最大括号层数为1，利用上面的结论可以将这层内所有的括号消去，则最大层数降为$(N-1)$，如是往复，经过有限次归纳，就得到了他最终将等于$a_1a_2\cdots a_n$.\end{proof} 
 
 这个结论就是说，对于满足结合律的运算，有限个元素相乘的结果不依赖于他加括号的方式。
 
@@ -197,9 +199,12 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 这就意味着同态$f$即是单射又是满射。下面的命题告诉我们，$f$此时是一个同构。
 
-\pro 一个（群/环/$R$-模）同态是同构当且仅当他既是单的又是满的。
+\begin{pro}
+一个（群/环/$R$-模）同态是同构当且仅当他既是单的又是满的。
+\end{pro}
 
-\proof 一个同构肯定既是单的又是满的。反过来，设$f: A\to B$既是单的又是满的，则对$b\in B$，唯一存在$a\in A$使得$f(a)=b$，定义
+\begin{proof}
+一个同构肯定既是单的又是满的。反过来，设$f: A\to B$既是单的又是满的，则对$b\in B$，唯一存在$a\in A$使得$f(a)=b$，定义
 \[
 	\begin{array}{ccccc}
 		g &:&B &\to& A,\\
@@ -215,7 +220,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 对于$R$-模的情况，加法群同态部分已经由群的结论得到了，只要检验标量乘法即可。设$g(b)=a$，以及$g(rb)=a'$. 由于$f(a')=rb$以及$rf(a)=f(ra)=rb$，所以由$f$是一个单射也就得到了$a'=ra$，故$g(rb)=rg(b)$，所以$g$是一个同态。
 
 最后显然$f\circ g =\id_B$以及$g\circ f=\id_A$，所以$f$是一个同构，而他的逆$g$常常记作$f^{-1}$.
-\qed
+\end{proof}
 
 \para 设$f:G\to H$是一个群同态，前面说过$\ker(f)$是$G$的一个子群。我们问反过来的一个问题，什么时候子群可以称为一个同态的核。为此，先看看核有什么性质，设$h\in \ker(f)$，则任取$g\in G$有
 \[
@@ -275,15 +280,17 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 其中$rn\in N$，因为$N$是一个理想。故$\overline{rm}=\overline{rm'}$. 剩下的模的性质的检验都是直接的。
 
-\theo 同构基本定理：设$f:A\to B$是一个（群/环/$R$-模）同态，若存在同态$g: A\to B$使得$\ker f\subset \ker g$，则他诱导了一个同态$\bar{g}:A/\ker{f}\to B$. 如果$g$是满同态，则$\bar{g}$是满同态。特别地，如果$f$是满同态，则$\bar{f}: A/\ker{f}\to B$是一个同构。
+\begin{thm}[同构基本定理]
+设$f:A\to B$是一个（群/环/$R$-模）同态，若存在同态$g: A\to B$使得$\ker f\subset \ker g$，则他诱导了一个同态$\bar{g}:A/\ker{f}\to B$. 如果$g$是满同态，则$\bar{g}$是满同态。特别地，如果$f$是满同态，则$\bar{f}: A/\ker{f}\to B$是一个同构。
+\end{thm}
 
-\proof
+\begin{proof}
 	对于群的情况，$g(\ker f)=e$，$g(a\ker f)=g(a)$. 对于环和$R$-模的情况，$g(\ker f)=0$，$g(a+\ker f)=g(a)$. 所以我们可以定义$\bar{g}(\bar{a})=g(a)$，不难检验这是一个（群/环/$R$-模）同态。并且$g$是满的时候，$\bar{g}$是满的。
 
 	现在假设$f$是满同态，则$\bar{f}$是满同态。我们剩下的只要证明$\bar{f}$是个单射，或者$\ker(\bar{f})=\{\bar{e}\}$即可。设$\bar{f}(\bar{a})=f(a)=e$，于是$a\in \ker(f)=\bar{e}$，因此$\bar{a}\cap \bar{e}\neq\varnothing$，于是我们也就得到$\bar{a}=\bar{e}$，所以$\ker(\bar{f})=\{\bar{e}\}$. 
 
 	由于$\bar{f}$是满同态也是单同态，所以他是一个同构。
-\qed
+\end{proof}
 
 一般只有最后一点被称为同构基本定理，但是前面的一部分是商群/环/$R$-模的泛性质，所以我们特地写出来。下面我们写两个常用的同构，他们是同构基本定理的简单推论。由于会谈到子模，先做观察：子模的子模依然是子模。
 
@@ -392,7 +399,17 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	}
 \end{xy}
 \]
-从$A$到$D$有两条路径，此图交换就是在说$gf=lh$.
+从$A$到$D$有两条路径，此图交换就是在说$gf=lh$. 
+
+还有，在交换图中，如果出现形如
+\[
+\begin{xy}
+	\xymatrix{
+		A\ar@{.>}[r]^{f}&B
+	}
+\end{xy}
+\]
+的图，这就意味着，存在唯一的态射$f:A\to B$使得交换图成立。
 
 \para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。$X$和$Y$同构记作$X\cong Y$. 集合范畴的同构即双射。
 
@@ -427,7 +444,34 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 得到了态射$\mathcal{C}(f,A):\mathcal{C}(C,A)\to \mathcal{C}(B,A)$. 经常，我们将$\mathcal{C}(\star,A)$简单记$h_A$，而且有时候会将$h_A(B)$就写做$A(B)$.
 
-\para 一个范畴到另一个范畴的全部函子也构成一个范畴，即函子的范畴。对象是函子，所以关键点在于定义函子之间的态射。设$f$和$g$都是从$\mathcal{C}$到$\mathcal{D}$的函子，如果对每一个$X\in \mathcal{C}$都有一个态射$\varphi(X):f(X)\to g(X)$使得如下交换图成立
+\para 由于经常一个构造会涉及两个对象或多个对象，而分别改变对象就会产生不同的函子，为了抽象这个过程，就产生了下面积范畴的概念，正如讨论多元函数引入了集合的直积一样。
+
+设$\mathcal{C}$和$\mathcal{D}$是范畴，他们的积范畴记作$\mathcal{C}\times\mathcal{D}$：对象是这样的二元组$(X,Y)$或$X\times Y$，其中$X\in \mathcal{C}$, $Y\in\mathcal{D}$. 而态射定义为$(\varphi,\psi)$或$\varphi\times \psi$，其中$\varphi$是$\mathcal{C}$中的态射，而$\psi$是$\mathcal{D}$中的态射，这样就建立了集合的等同
+\[
+	{\mathcal{C}}(X,X')\times {\mathcal{D}}(Y,Y')=(\mathcal{C}\times \mathcal{D})(X\times Y,X'\times Y').
+\]
+复合定义为$(\varphi,\psi)(\varphi',\psi')=(\varphi\varphi',\psi\psi')$. 在这个复合下，对象$X\times Y$到自己的恒等态射就是$(\id_X,\id_Y)$. 所以$\mathcal{C}\times\mathcal{D}$确确实实是一个范畴。同理，可以定义有限个范畴的积。
+
+设$\mathcal{F}$是另一个范畴，函子$f:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$被称为一个双函子。比如$\mathcal{C}(\star,\star)$是一个$\mathcal{C}^\text{op}\times \mathcal{C}\to \mathsf{Set}$的双函子。如果固定双函子的一个变元，那么双函子会退化成一个函子。比如$\mathcal{C}(\star,\star)$固定第一个变元为$X$的时候得到$h^X$.
+
+反过来，如果$f$对每一个$X\in \mathcal{C}$是函子$f(X,\star):\mathcal{D}\to \mathcal{F}$，以及对每一个$Y\in \mathcal{C}$是函子$f(\star,Y):\mathcal{C}\to \mathcal{F}$，那么何时$f$才是一个双函子。考虑如下图
+\[
+\begin{xy}
+	\xymatrix{
+		f(X,Y)\ar[rr]^{f(\varphi,Y)} \ar[d]_{f(X,\psi)}&&f(X',Y) \ar[d]^{f(X',\psi)}\\
+		f(X,Y')\ar[rr]^{f(\varphi,Y')}&&f(X',Y')
+	}
+\end{xy}
+\]
+如果这个图交换，那么从左上到右下的映射，即复合$f(X,\psi)f(\varphi,Y)$将定义出一个态射$f(\varphi,\psi)$，此时$f$构成一个双函子。具体的检验交由读者。
+
+\para \label{digf}有了二元积范畴，类似地，可以定义多元（有限）积范畴。类似于对角函数，可以定义对角函子：设$\mathcal{C}$是一个范畴，而$\mathcal{C}\times \cdots \times \mathcal{C}$是积范畴。那么可以定义函子$\Delta:\mathcal{C}\to \mathcal{C}\times \cdots \times \mathcal{C}$，对于对象$X$，定义$\Delta:X\mapsto (X$, $\cdots$, $X)$，对于态射$\varphi\in \mathcal{C}(X,Y)$，定义$\Delta: \varphi \mapsto (\varphi$, $\cdots$, $\varphi)$.
+
+甚至是考虑关于一个集合的积范畴（即指标构成一个集合的情况），积范畴依然可以定义。但是如果比如考虑指标并不是一个集合，有些东西就会可能会出现问题。这个问题有相当深刻的背景，涉及了现代数学的逻辑基础，即公理化体系（主要是ZFC公理体系）上面。众所周知，在朴素的集合论里面有Russell悖论，这就限制了一些集合的构造，比如所有集合构成的一个整体并不是集合。到了范畴论里面，我们自然也会面临集合论的问题，比如在我们的定义中，两个对象之间态射的全体需要构成一个集合。如果我们考虑了一族（不能构成集合）的范畴的积范畴，那么这个积范畴的态射集是否就会出问题？
+
+为了避免谈及ZFC公理体系的问题，Grothendieck引入了一个新的假设，即Grothendieck universe的存在。简单来说，就是给出了一个足够大的集合$\mathscr{U}$，而我们在具体问题中谈论的集合，都是$\mathscr{U}$的子集与元素。并且在$\mathscr{U}$内，他的元素与子集在ZFC体系下进行运算都会落入$\mathscr{U}$内。于是在Grothendieck universe内，我们就模拟了一个集合论公理体系，在这里面讨论，就可以避免许多集合论的问题。而所有可能的问题都会集中到Grothendieck universe的存在上。
+
+\para 设$f$和$g$都是从$\mathcal{C}$到$\mathcal{D}$的函子，如果对每一个$X\in \mathcal{C}$都有一个态射$\varphi(X):f(X)\to g(X)$使得如下交换图成立
 \[
 \begin{xy}
 	\xymatrix{
@@ -436,7 +480,11 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	}
 \end{xy}
 \]
-则$\varphi$被称为一个自然变换，或者叫函子间的态射。继而，谈论函子的同构也有了意义。将$\mathcal{C}$与$\mathcal{D}$之间的函子构成的范畴记作$[\mathcal{C},\mathcal{D}]$，特别地，将$[\mathcal{C}^\text{op},\mathsf{Set}]$记作$\hat{\mathcal{C}}$.
+则$\varphi$被称为一个自然变换。自然变换的复合是清楚的。任取函子$f$，也很清楚有恒等自然变换$\id_f:f\to f$，满足$\id_f(X)=\id_{f(X)}$.
+
+自然变换以前叫做函子间的态射。因为如果$\mathcal{C}$是一个小范畴，所有从$\mathcal{C}$到$\mathcal{D}$的函子以自然变换为态射，则它构成了一个范畴，记作$[\mathcal{C},\mathcal{D}]$. 特别地，将$[\mathcal{C}^\text{op},\mathsf{Set}]$记作$\hat{\mathcal{C}}$. 但就像我们前面看到的，如果$\mathcal{C}$不是一个小范畴，则$[\mathcal{C},\mathcal{D}]$可能并不是一个范畴，因为它们的态射集可能太多了。不过，如果我们不去研究$[\mathcal{C},\mathcal{D}]$的具体结构，而止于形式地应用语言，我们还是可以将其看成一个“范畴”。
+
+既然有了函子间“态射”，函子的同构意义也是清楚的了。设$f$和$g$是两个函子，如果存在自然变换$\varphi:f\to g$和$\psi:g\to f$满足$\varphi\psi=\id_g$和$\psi\varphi=\id_f$，则称$f$和$g$同构，记作$f\cong g$.
 
 描述自然变换是范畴论的初衷，自然变换在数学中的频繁出现才使得人们想要抽象出这个概念，为了描述这个概念，人们发明了范畴与函子。自然变换频繁出现的原因在于一些构造：设有一个范畴$\mathcal{C}$，对每一个对象$X\in \mathcal{C}$构造了一个函子$f_X$，比如前面定义出的反变态射函子$h_X$. 当我们改变对象的时候，即给出一个态射$\varphi:X\to Y$，往往具体的构造将诱导出对每一个$V\in \mathcal{C}$都有态射$f_\varphi(V):f_X(V)\to f_Y(V)$. 由于是函子，对态射$\rho:V\to W$也诱导了态射，汇总起来就是有图
 \[
@@ -460,45 +508,18 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 任取$\pi\in h_X(V)$即$\pi:V\to X$，有$\psi^*(\varphi_*(\pi))=\varphi\pi\psi$以及$\varphi_*(\psi^*(\pi))=\varphi\pi\psi$，所以图是交换的。类似例子给出如下命题：如果$X\cong Y$，则$h_X\cong h_Y$. 反命题实际上也是正确的，后面会予以证明。
 
-\para 由于经常一个构造会涉及两个对象或多个对象，而分别改变对象就会产生不同的函子，为了抽象这个过程，就产生了下面积范畴的概念，正如讨论多元函数引入了集合的直积一样。
-
-设$\mathcal{C}$和$\mathcal{D}$是范畴，他们的积范畴记作$\mathcal{C}\times\mathcal{D}$：对象是这样的二元组$(X,Y)$或$X\times Y$，其中$X\in \mathcal{C}$, $Y\in\mathcal{D}$. 而态射定义为$(\varphi,\psi)$或$\varphi\times \psi$，其中$\varphi$是$\mathcal{C}$中的态射，而$\psi$是$\mathcal{D}$中的态射，这样就建立了集合的等同
-\[
-	{\mathcal{C}}(X,X')\times {\mathcal{D}}(Y,Y')=(\mathcal{C}\times \mathcal{D})(X\times Y,X'\times Y').
-\]
-复合定义为$(\varphi,\psi)(\varphi',\psi')=(\varphi\varphi',\psi\psi')$. 在这个复合下，对象$X\times Y$到自己的恒等态射就是$(\id_X,\id_Y)$. 所以$\mathcal{C}\times\mathcal{D}$确确实实是一个范畴。同理，可以定义有限个范畴的积。
-
-设$\mathcal{F}$是另一个范畴，函子$f:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$被称为一个双函子。比如$\mathcal{C}(\star,\star)$是一个$\mathcal{C}^\text{op}\times \mathcal{C}\to \mathsf{Set}$的双函子。如果固定双函子的一个变元，那么双函子会退化成一个函子。比如$\mathcal{C}(\star,\star)$固定第一个变元为$X$的时候得到$h^X$.
-
-反过来，如果$f$对每一个$X\in \mathcal{C}$是函子$f(X,\star):\mathcal{D}\to \mathcal{F}$，以及对每一个$Y\in \mathcal{C}$是函子$f(\star,Y):\mathcal{C}\to \mathcal{F}$，那么何时$f$才是一个双函子。考虑如下图
-\[
-\begin{xy}
-	\xymatrix{
-		f(X,Y)\ar[rr]^{f(\varphi,Y)} \ar[d]_{f(X,\psi)}&&f(X',Y) \ar[d]^{f(X',\psi)}\\
-		f(X,Y')\ar[rr]^{f(\varphi,Y')}&&f(X',Y')
-	}
-\end{xy}
-\]
-如果这个图交换，那么从左上到右下的映射，即复合$f(X,\psi)f(\varphi,Y)$将定义出一个态射$f(\varphi,\psi)$，此时$f$构成一个双函子。具体的检验交由读者。
-
 \para 设$f$, $g:\mathcal{C}\to \mathcal{D}$是函子，$X\in \mathcal{C}$是一个对象，通过$X:f\to f(X)$以及任取自然变换$\varphi:f\to g$，定义$X(\varphi)=\varphi(X):f(X)\to g(X)$，可以看到此时$X$此时构成一个$[\mathcal{C},\mathcal{D}] \to \mathcal{D}$的函子。可见，$f(X)$一方面可以将$f$理解成函子，另一方面也可以将$X$理解成函子。只不过前者是范畴$\mathcal{C}$到范畴$\mathcal{D}$的函子，后者是范畴$[\mathcal{C},\mathcal{D}]$到范畴$\mathcal{D}$的函子。将这点抽象出来，如果把$f(X)$写作$\Gamma(X,f)$，则
 \[
 	\Gamma(\star,\star):\mathcal{C}\times [\mathcal{C},\mathcal{D}]\to \mathcal{D}
 \]
 是一个双函子。这点的证明只要按定义应用上面的判据就可以了。
 
-\para 有了二元积范畴，类似地，可以定义多元（有限）积范畴。类似于对角函数，可以定义对角函子：设$\mathcal{C}$是一个范畴，而$\mathcal{C}\times \cdots \times \mathcal{C}$是积范畴。那么可以定义函子$\Delta:\mathcal{C}\to \mathcal{C}\times \cdots \times \mathcal{C}$，对于对象$X$，定义$\Delta:X\mapsto (X$, $\cdots$, $X)$，对于态射$\varphi\in \mathcal{C}(X,Y)$，定义$\Delta: \varphi \mapsto (\varphi$, $\cdots$, $\varphi)$.
-
-甚至是考虑关于一个集合的积范畴（即指标构成一个集合的情况），积范畴依然可以定义。但是如果比如考虑指标并不是一个集合，有些东西就会自然地出现问题。这个问题有相当深刻的背景，涉及了现代数学的逻辑基础，即公理化体系（主要是ZFC公理体系）上面。众所周知，在朴素的集合论里面有Russell悖论，这就限制了一些集合的构造，比如所有集合构成的一个整体并不是集合。到了范畴论里面，我们自然也会面临集合论的问题，比如当考虑所有范畴的构成的整体是不是范畴。
-
-为了避免谈及ZFC公理体系的问题，Grothendieck给出了一个新的假设，即Grothendieck universe的存在。简单来说，就是给出了一个足够大的集合$\mathscr{U}$，而我们在具体问题中谈论的集合，都是$\mathscr{U}$的子集与元素。并且在$\mathscr{U}$内，他的元素与子集在ZFC体系下进行运算都会落入$\mathscr{U}$内。于是，在Grothendieck universe内，我们就模拟了一个集合论公理体系，在这里面讨论，就可以避免许多集合论的问题。所有可能的问题都会集中到Grothendieck universe的存在上。
-
-\para 双函子之间的态射，表现为如下自然变换
+\para 双函子之间的“态射”，表现为如下自然变换
 \[
 \begin{xy}
 	\xymatrix{
 		f(X,Y)\ar[rr]^{\varphi(X,Y)} \ar[d]_{f(\psi,\varphi)}&&g(X,Y) \ar[d]^{g(\psi,\varphi)}\\
-		f(X',Y')\ar[rr]^{\varphi(X,Y)}&&g(X',Y')
+		f(X',Y')\ar[rr]^{\varphi(X',Y')}&&g(X',Y')
 	}
 \end{xy}
 \]
@@ -506,7 +527,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 反过来，设$f$, $g:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$是两个双函子，如果任取$X\in \mathcal{C}$，存在自然变换$\alpha(X):f(X,\star)\to g(X,\star)$，任取$Y\in \mathcal{D}$，存在自然变换使得$\beta(Y):f(\star,Y)\to g(\star,Y)$，且$\alpha(X)(Y)=\beta(Y)(X)$，则存在自然变换$\gamma:f\to g$使得$\gamma(X,Y)=\alpha(X)(Y)=\beta(Y)(X)$.
 
-\proof
+\begin{proof}
 	考虑态射$(\psi,\varphi):(X,Y)\to (X',Y')$，他可以拆成
 	\[
 		(\psi,\varphi): (X,Y) \xrightarrow{(\psi,\id_Y)} (X',Y)\xrightarrow{(\id_{X'},\varphi)} (X',Y'),
@@ -522,19 +543,27 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	\end{xy}
 	\]
 	因此，从左上到右下两条路给出$g(\psi,\varphi)\alpha(X)(Y)=\beta(Y')(X')f(\psi,\varphi)$，由于$\gamma(X,Y)=\alpha(X)(Y)=\beta(Y)(X)$，所以也就是$g(\psi,\varphi)\gamma(X,Y)=\gamma(X',Y')f(\psi,\varphi)$，所以$\gamma:f\to g$是一个自然变换。
-\qed
+\end{proof}
 
 % \lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \mathsf{Set}$是一个函子，则从$\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
 
-% \proof 对每个自然变换$\alpha:\Hom_\mathcal{C}(A,\star)\to F$定义$\theta(\alpha)=\alpha(A)(\id_A)\in F(A)$，现在定义一个逆映射即可。对$x\in F(A)$，定义自然变换$\psi(x):\Hom_\mathcal{C}(A,\star)\to F$通过$\psi(x)(B)(f)=F(f)(x)$，不难验证这是一个自然变换，而且$\psi$和$\theta$是互逆的。\qed
+% \begin{proof} 对每个自然变换$\alpha:\Hom_\mathcal{C}(A,\star)\to F$定义$\theta(\alpha)=\alpha(A)(\id_A)\in F(A)$，现在定义一个逆映射即可。对$x\in F(A)$，定义自然变换$\psi(x):\Hom_\mathcal{C}(A,\star)\to F$通过$\psi(x)(B)(f)=F(f)(x)$，不难验证这是一个自然变换，而且$\psi$和$\theta$是互逆的。\end{proof}
 
-\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\mathsf{Set}$是一个集合，那么它与集合$X(e)={\mathsf{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的${\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$.
+\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\mathsf{Set}$是一个集合，那么它与集合$X(e)={\mathsf{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的${\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$. 这点会在后面得到证明。
 
-设$f$是一个$\mathcal{C}$到Set的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，那么我们不仅仅得到了函子$f$的信息，我们也同样得到了对象$X$的信息。而且，比起任意的函子，反变态射函子是我们更愿意看到的，并且有着许多好的性质，因此我们可以做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}\to \mathsf{Set}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
+设$f$是一个$\mathcal{C}$到$\mathsf{Set}$的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，一方面，我们可以用函子$f$来描述$X$，另一方面，我们也可以拿$X$来描述函子$f$. 为此，我们做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}\to \mathsf{Set}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
 
-\lem 对任意的$X\in \mathcal{C}$以及$f\in \hat{\mathcal{C}}$，存在同构$i_{X,f}:\Gamma(X,f)=f(X)\to {\hat{\mathcal{C}}}(h_X,f)$.
+可表函子的出现是频繁的，因为实际上，在范畴论中，我们时常想要构造一个与其他对象“有着某某性质的态射”的对象，而这些“某某性质的态射”往往是事先已知的（比如从一个已知函子和已知范畴映过来的）. 比方说，我们已经有了一个函子$f:\mathcal{C}^\text{op}\to\mathsf{Set}$，它用来描述那些事先给定了的“某某性质的态射”，如果$f$是可表的，则$f\cong h_X$，则这些事先给定的态射就是$h_X(Y)=\mathcal{C}(Y,X)$，而这里的表示对象$X$就是我们试图构造的对象。
 
-\proof
+这里给一个直接的例子，设$\mathcal{C}$, $\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子，对给定的$Y$，$\mathcal{D}(f(-),Y)$就是一个从$\mathcal{C}$到$\mathsf{Set}$的反变函子。它描述了所有形如$f(X)$的对象与$Y$之间的态射，如果它可表，表示对象为$g(Y)$，则我们就有同构$\mathcal{C}(-,g(Y))\cong \mathcal{D}(f(-),Y)$. 这也就意味着，我们只需要研究所有形如$X\to g(Y)$的态射即可。
+
+对偶地，如果$f$是一个$\mathcal{C}$到$\mathsf{Set}$的函子，我们称$f$是可表的，如果它同构于$h^X$，此时$X$被称为$f$的表示对象。
+
+\begin{lem}
+对任意的$X\in \mathcal{C}$以及$f\in \hat{\mathcal{C}}$，存在同构$i_{X,f}:\Gamma(X,f)=f(X)\to {\hat{\mathcal{C}}}(h_X,f)$.
+\end{lem}
+
+\begin{proof}
 	固定$f$，任取自然变换$\varphi\in {\hat{\mathcal{C}}}(h_X,f)$，对象$Y\in\mathcal{C}$以及态射$g:Y\to X$，有交换图
 	\[
 	\begin{xy}
@@ -554,7 +583,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	\end{array},
 	\]
 	这样也就定义了一个函子$i_{X,f}(a)\in {\hat{\mathcal{C}}}(h_X,f)$，继而有映射$i_{X,f}:f(X)\to {\hat{\mathcal{C}}}(h_X,f)$. 最后只要检验$e_{X,f}(i_{X,f}(a))=a$以及$i_{X,f}(e_{X,f}(\varphi))=\varphi$，他们都由$i_{X,f}(Y)(g)=f(g)\left(e_{X,f}(\varphi)\right)$保证。
-\qed
+\end{proof}
 
 对偶地，设$f$是一个$\mathcal{C}$到集合范畴的函子，则$\Gamma(X,f)\cong [\mathcal{C},\mathsf{Set}](h^X,f)$对任意的$X\in \mathcal{C}$都成立。
 
@@ -577,9 +606,11 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 其中$\varphi:X'\to X$是一个态射，而$\psi:f\to f'$是一个自然变换。任取$\pi\in \hat{\mathcal{C}}(h_{X},f)$，则先右再下得到$\psi_*(\varphi^*(\pi))=\psi\pi\varphi$. 先下再右得到$\varphi_*(\psi^*(\pi))=\psi\pi\varphi$. 所以图交换，因此${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子。
 
-\pro 上面的引理可以加强到双函子同构：$i_{-,\star}:\Gamma(-,\star)\to {\hat{\mathcal{C}}}(h_-,\star)$，这被称为Yoneda引理。
+\begin{pro}
+上面的引理可以加强到双函子同构：$i_{-,\star}:\Gamma(-,\star)\to {\hat{\mathcal{C}}}(h_-,\star)$，这被称为Yoneda引理。
+\end{pro}
 
-\proof
+\begin{proof}
 	由于同构已经有了构造，所以只要检验是不是自然变换。而这点只要分别固定$X$和$f$去证明即可。
 
 	固定$X$，给出$\varphi:f\to g$，检验交换图
@@ -612,7 +643,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	\end{xy}
 	\]
 	所以得证，其他的检查也类似。
-\qed 
+\end{proof}
 
 \begin{pro}
 对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\mathsf{Set}](h^-,\star)$，这也被称为Yoneda引理。
@@ -631,15 +662,53 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	}
 \end{xy}
 \]
-那么在范畴论意义下，我们无法区分范畴$\mathcal{C}$和范畴$f(\mathcal{C})$的，因为这两个范畴有相同的结构。尽管，原本$X\in \mathcal{C}$在$f(\mathcal{C})$里面变成了$f(X)$，看上去变成了不同的对象，但这仅仅类似于重命名，对范畴的结构并没有任何影响。所以如果谈论范畴的等价，也应该止步于此，即有相同结构的范畴看成是等价的。
+那么在范畴论意义下，我们无法区分范畴$\mathcal{C}$和范畴$f(\mathcal{C})$，因为这两个范畴有相同的结构。尽管，原本$X\in \mathcal{C}$在$f(\mathcal{C})$里面变成了$f(X)$，看上去变成了不同的对象，但这仅仅类似于重命名，对范畴的结构并没有任何影响。所以如果谈论范畴的等价，也应该止步于此，即有相同结构的范畴看成是等价的。
 
 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$以及$g:\mathcal{D}\to \mathcal{C}$是两个函子，那么如果$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$，则称这两个范畴等价。
 
 这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子/完全函子，如果$f:\mathcal{C}(X,Y)\to \mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射/满射。
 
 \begin{pro}\label{equivcat}
-两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$Y=f(X)$.\notprove
+两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$f(X)$与$Y$同构。
 \end{pro}
+
+\begin{proof}
+假设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{C}\to \mathcal{D}$是范畴之间的等价函子，即满足$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$. 所以，任取$Y$，我们都可以找到$g(Y)\in\mathcal{C}$使得$f(g(Y))$同构于$Y$.
+
+现在对映射$\varphi\in \mathcal{C}(X,X')$，我们考虑映射
+\[
+	\id_{\mathcal{C}(X,X')}:\varphi\mapsto f(\varphi) \mapsto g(f(\varphi)) \mapsto \varphi,
+\]
+最后一个映射来自于$gf\cong \id_\mathcal{C}$给出的交换图
+\[
+\begin{xy}
+	\xymatrix{
+		X\ar@<0.3ex>[rr]^-{p(X)} \ar[d]_{\varphi}&&g(f(X)) \ar[d]^{g(f(\varphi))}\ar@<0.3ex>[ll]^-{q(X)}\\
+		X'\ar@<0.3ex>[rr]^-{p(X')}&&g(f(X'))\ar@<0.3ex>[ll]^-{q(X')}
+	}
+\end{xy}
+\]
+即$\varphi=q(X') \circ g(f(\varphi))\circ p(X)$. 所以$\varphi\mapsto f(\varphi)$是一个从$\mathcal{C}(X,X')$到$\mathcal{D}(f(X),f(X'))$的单射，所以$f$是一个忠实函子。
+
+同时，$f(\varphi) \mapsto g(f(\varphi)) \mapsto \varphi$是一个满射，由于$g(f(\varphi)) \mapsto \varphi$是一一的，所以我们得到了$\mathcal{D}(f(X),f(X'))$到$\mathcal{C}(g(f(X)),g(f(X'))$的满射。现在任取$Y$和$Y'$，从上可知，我们能找到与之同构的$f(X)$和$f(X')$，所以我们也就得到了$\mathcal{D}(Y,Y')$到$\mathcal{C}(g(Y),g(Y'))$的满射。因此$g$是一个完全函子。类似地考察$fg\cong \id_\mathcal{D}$，我们可以知道$f$是一个完全函子，而$g$是一个忠实函子。
+
+反过来，设存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$f(X)$与$Y$同构。于是，对每一个$Y\in \mathcal{D}$，找一个$X_Y$使得$f(X_Y)$与$Y$同构，同构映射为$p(Y):f(X_Y)\to Y$. 现在，我们定义一个函子$g:\mathcal{D}\to \mathcal{C}$，通过令$g(Y)=X_Y$，对态射$\psi:Y\to Y'$，令
+\[
+	g(\psi)=f^{-1}\left(p(Y')^{-1}\circ \psi \circ p(Y)\right)\in \mathcal{C}(g(Y),g(Y')),
+\]
+其中同构$f^{-1}:\mathcal{D}(f(g(Y)),f(g(Y')))\to \mathcal{C}(g(Y),g(Y'))$来自于忠实且完全函子$f$. $g$显然是一个函子。
+
+最后，我们可以定义自然变换$p$：通过令$p(Y):f(g(Y))\to Y$. 此时，考虑图
+\[
+\begin{xy}
+	\xymatrix{
+		Y\ar[rr]^-{p(Y)} \ar[d]_{\psi}&&f(g(Y)) \ar[d]^{f(g(\psi))}\\
+		Y'\ar[rr]^-{p(Y')}&&f(g(Y'))
+	}
+\end{xy}
+\]
+从$g(\psi)$的定义，可以看到上图交换，所以$p$确实是一个自然变换。类似地，$p^{-1}$也是一个自然变换，它们分别给出了函子同构$fg\cong \id_\mathcal{D}$以及$gf\cong \id_\mathcal{C}$.
+\end{proof}
 
 \section{理想}
 
@@ -679,11 +748,12 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 对于单位理想$(1)$，由于任取$a\in R$都有$a+(1)=(1)$以及$(1:a)=(1)$，所以对任意的Ako理想族或者Oka理想族$\mathcal{F}$，$\mathcal{F}$都包含单位理想。
 
-\pro 如果$\mathcal{F}$是Oka理想族或者Ako理想族，那么$\mathcal{F}^c$中极大的理想是素理想。
+\begin{pro} 如果$\mathcal{F}$是Oka理想族或者Ako理想族，那么$\mathcal{F}^c$中极大的理想是素理想。
+\end{pro}
 
-\proof
+\begin{proof}
 	假设$\pp$是$\mathcal{F}^c$中极大的理想，但不是素理想。因为$\pp$不是单位理想，所以存在$a$, $b\not\in \pp$但$ab\in\pp$. 此时$(\pp:a)$和$\pp+(b)$都比$\pp$严格大，因为他们都包含$b$，同样$\pp+(a)$严格比$\pp$大，所以他们都属于$\mathcal{F}$. 但此时$\pp=\pp+(ab)\in \mathcal{F}^c$或者$\pp=\pp+(ab)\not\in \mathcal{F}$，所以$\mathcal{F}$既不是Ako理想族，也不是Oka理想族。矛盾。
-\qed
+\end{proof}
 
 作为应用，先证明如下理想族是Ako或者Oka理想族：
 
@@ -695,7 +765,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 4. 设$S\subset R$是一个对乘法封闭的子集，$R$中与$S$相交的理想构成的集合。
 
-\proof
+\begin{proof}
 	1. 这是Ako理想族。如果$\mathfrak{a}+(a)=(1)$以及$\mathfrak{a}+(b)=(1)$，那么存在$x$, $y\in \mathfrak{a}$使得$x+a=1$以及$y+b=1$，于是$ab=(1-x)(1-y)$或者$(x+y-xy)+ab=1$，所以$\mathfrak{a}+(ab)=(1)$. 也是Oka理想族，如果$(\mathfrak{a}:a)=(1)$，那么$a\in \mathfrak{a}$，此时$\mathfrak{a}+(a)=\mathfrak{a}$. 因此$\mathfrak{a}+(a)=1$也推出了$\mathfrak{a}=(1)$.
 
 	2. 这是Oka理想族。如果$\mathfrak{a}+(a)$和$(\mathfrak{a}:a)$是有限生成理想。设$\mathfrak{a}+(a)=\langle x_i+r_ia \rangle_{i\in I}$以及$(\mathfrak{a}:a)=\langle y_j\rangle_{j\in J}$，其中$I$, $J$都是有限的指标集。任取$x\in \mathfrak{a}$，由于$x\in \mathfrak{a}+(a)$，所以
@@ -707,7 +777,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	3. 这是Oka理想族。如果$\mathfrak{a}+(a)=(b)$是主理想且$(\mathfrak{a}:a)=(c)$也是主理想，如果$a\in \mathfrak{a}$，则$\mathfrak{a}=(b)$是主理想。假设$a\not\in\mathfrak{a}$，存在$x\in \mathfrak{a}$使得$x+a=b$，所以$bc=xc+ac\in \mathfrak{a}$，或者$(bc)\subset \mathfrak{a}$. 反过来，任取$x\in \mathfrak{a}$,由于$\mathfrak{a}+a=\mathfrak{b}$，所以存在$r$, $s\in R$使得$x=rb$以及$a=sb$. 因此$ra=rsb=sx\in\mathfrak{a}$给出了$r\in (\mathfrak{a}:a)=(c)$，于是$y=rb\in (c)(b)=(bc)$.
 
 	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$对乘法封闭，$xy\in S$，所以$(\pp+(ab))\cap S\neq \varnothing$.
-\qed
+\end{proof}
 
 所以上述命题告诉我们：在保证存在性的前提下，
 
@@ -719,9 +789,10 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 	4. 所有与某乘性子集不交的理想中极大的是素理想。
 
-\pro \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
+\begin{pro} \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
+\end{pro}
 
-\proof
+\begin{proof}
 	如果$\mathfrak{b}=\bigcup_i \mathfrak{a}_i$，则由包含的命题可知，存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 反过来，$\mathfrak{a}_i\subset \bigcup_i \mathfrak{a}_i=\mathfrak{b}$. 等号的命题得证。
 
 	反证，如果$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$但不存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 适当重排顺序，可以假设前$n-2$个理想是素理想。我们采用有限归纳制造矛盾，素理想的假设将会自然地出现。为此，假设$\mathfrak{b}$不能包含于少于$n$个的$\mathfrak{a}_i$的并里面。这就是说，我们能找到$x_i\in \mathfrak{b}$使得$x_i\not\in \bigcup_{j\neq i}\mathfrak{a}_j$，由于$\mathfrak{b}\subset \bigcup_{i=1}^n \mathfrak{a}_i$，所以$x_i\in \mathfrak{a}_i$.
@@ -731,13 +802,14 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	所以$\mathfrak{b}$必然处于更小的并里面，由反证假设$\mathfrak{b}\not\subset \mathfrak{a}_1$，所以$\mathfrak{b}\subset \bigcup_{i=2}^n \mathfrak{a}_i$. 重复上述论证，假设$\mathfrak{a}_2$是素理想，我们就可以推知$\mathfrak{b}\subset \bigcup_{i=3}^n \mathfrak{a}_i$直到$\mathfrak{b}\subset \mathfrak{a}_n$，这与反证假设矛盾，因此得证。 
 
 	注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
-\qed
+\end{proof}
 
-\pro \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
+\begin{pro} \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
+\end{pro}
 
-\proof
+\begin{proof}
 	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。
-\qed
+\end{proof}
 
 \para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
 \begin{itemize}
@@ -747,14 +819,14 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
 
-\proof
+\begin{proof}
 	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
 
 	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
 	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 
 
 	当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
-\qed
+\end{proof}
 
 \para 上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
 
@@ -771,9 +843,9 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \para 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
 
-\proof 
+\begin{proof} 
 	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
-\qed
+\end{proof}
 
 \para 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
 

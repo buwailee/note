@@ -56,21 +56,25 @@
 % \]
 % 使得分解$R(\pi_{f})=h\pi_{Rf}$成立，于是存在单态$\ker(\pi_{Rf})\hookrightarrow \ker(R(\pi_{f}))$，或者说存在单态$\im(Rf)\hookrightarrow R(\im f)$. 
 
-\pro 设$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$是一列左$R$-模的正合列，则函子$\Hom_R(N,-)$将给出$\mathbb{Z}$-模的正合列
+\begin{pro}
+设$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$是一列左$R$-模的正合列，则函子$\Hom_R(N,-)$将给出$\mathbb{Z}$-模的正合列
 \[
 	0\to \Hom_R(N,M_1)\xrightarrow{(f_1)_*} \Hom_R(N,M_2)\xrightarrow{(f_2)_*} \Hom_R(N,M_3).
 \]
+\end{pro}
 
-\proof
+\begin{proof}
 	首先，由于$0$是终对象，所以$\Hom_R(N,0)=0$，于是上面的列成立，且$f_2f_1=0$给出了$(f_2)_*(f_1)_*=(f_2f_1)_*=0_*=0$. 所以$\im ((f_1)_*)\subset \ker ((f_2)_*)$. 任取$g_1$, $g_2\in \Hom_R(N,M_1)$，$(f_1)_*(g_1)=(f_1)_*(g_2)$等价于$f_1g_1=f_1g_2$，由于$f_1$是单态，$g_1=g_2$，于是$(f_1)_*$是单射。最后只要检验$\ker ((f_2)_*)\subset \im ((f_1)_*)$. 任取$g\in \Hom_R(N,M_2)$使得$(f_2)_*g=f_2g=0$. 任取$n\in N$，$f_2(g(n))=0$给出$g(n)\in \ker(f_2)=\im(f_1)$，于是$g(N)\subset \im(f_1)$，由于$f_1:M_1\to \im(f_1)$是单同态，所以有同态$i=f_1^{-1}g\in \Hom_R(N,M_1)$使得$g=(f_1)_*(i)\in \im ((f_1)_*)$.
-\qed
+\end{proof}
 
-\pro 如果$R$是一个从左$R$-模范畴到左$S$-模范畴的右伴随函子，对对象有$R(0)=0$，于是对态射有$R(0)=0$. 则对正合列$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$，他将诱导一个正合列
+\begin{pro}
+如果$R$是一个从左$R$-模范畴到左$S$-模范畴的右伴随函子，对对象有$R(0)=0$，于是对态射有$R(0)=0$. 则对正合列$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$，他将诱导一个正合列
 \[
 	0\to R(M_1)\xrightarrow{R(f_1)} R(M_2)\xrightarrow{R(f_2)} R(M_3).
 \]
+\end{pro}
 
-\proof
+\begin{proof}
 	我们首先证明$R(f_1)$是一个单同态，或者说$\ker(R(f_1))=0$. 由于$\ker$是一种极限，右伴随函子与它可以交换，所以$\ker(R(f_1))\cong R(\ker f_1)=0$. 因此$R(f_1)$是一个单同态。粗略来说，右伴随函子把单同态变成单同态。于是考虑模$M$与它的子模$P$以及$i:P\hookrightarrow M$，于是单同态$R(i):R(P)\hookrightarrow M$就可以将$R(P)$看作$R(M)$的子模，当然更准确地说法是，我们有同构$R(i):R(P)\to R(i)(R(P))$. 
 
 	现在设$f:M\to N$是一个普通的模同态，由于$R(i)\left(R(\ker f)\right)$与$\ker (R(f))$同构，于是他们都是$R(f)$的核，以及都是$R(M)$的子模，所以$R(i)\left(R(\ker f)\right)= \ker (R(f))$，或者说$R(i)$是$R(\ker f)$到$\ker(R(f))$的同构。
@@ -78,7 +82,7 @@
 	最后，只要检验$\ker (R(f_2))=\im (R(f_1))$即可。由于$\ker f_2=\im f_1$，所以$R(\ker f_2)=R(\im f_1)$，因此存在同构$R(k):R(\im f_1)\to \ker (Rf_2)$.
 
 	任取$a\in R(M_2)$使得$R(f_2)(a)=0$，由于存在唯一的$b\in R(\ker f_2)$使得$R(i)(b)=a$
-\qed
+\end{proof}
 
 \section{链条件}
 
@@ -90,11 +94,13 @@
 
 \para 设$P$是一个偏序集，他的全序子集被称为一个链。如果给定一条链$S$，存在一个元素$a$，使得所有$S$中所有满足$a\leq x\in S$都成立$x=a$，则该链被称为是（向上）稳定的，简写成a.c.c. 类似的，还有（向下）稳定的，简写成d.c.c.
 
-\pro 极大条件等价于所有链都是a.c.c.
+\begin{pro}
+极大条件等价于所有链都是a.c.c. 对偶地，极小条件等价于所有链都是d.c.c.
+\end{pro}
 
-\proof
+\begin{proof}
 	如果$P$满足极大条件，则任取一条链$S$，他都有极大元$a$，任意的$a\leq x\in S$都可以推出$x=a$. 反过来，如果$P$不满足极大条件，则存在$S\subset P$中没有极大元。则给定一个$x_0\in S$，可以找到一个$x_1\in S$满足$x_0<x_1$，再对$x_1$可以找到$x_2$使得$x_1<x_2$，如是进行下去，我们就找到了一条不稳定的链。
-\qed
+\end{proof}
 
 可见极大条件和a.c.c.是等价的，在应用中极大条件往往比较方便，而在证明/证伪Noether性的时候，构造一个具体的升链就比较简单。
 
@@ -102,7 +108,9 @@
 
 Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定是一个Noether环，反之不然。Noether性是有限性条件之一，下面一个命题展现了这一点。
 
-\pro 如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\to M\to Q\to 0$，则$M$是Noether(Artin)模当且仅当$P$和$Q$都是Noether(Artin)模。\notprove
+\begin{pro}
+如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\to M\to Q\to 0$，则$M$是Noether(Artin)模当且仅当$P$和$Q$都是Noether(Artin)模。\notprove
+\end{pro}
 
 作为推论，设$N$是$M$的一个子模，那么有自然的短正合列$0\to N\hookrightarrow M\to M/N\to 0$，因此$M$是Noether(Artin)模当且仅当$N$和$M/N$是Noether(Artin)模。
 
@@ -112,25 +120,31 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \]
 如果每一个$M_i$都是Noether(Artin)模，由归纳法，可知$M=\bigoplus_{i=1}^nM_i$是Noether(Artin)模。
 
-\pro 一个模是Noether模当且仅当它的任意子模是有限生成的。
+\begin{pro}
+一个模是Noether模当且仅当它的任意子模是有限生成的。
+\end{pro}
 
-\proof
+\begin{proof}
 	令$N$是一个Noether模$M$的一个子模，而$\mathscr{B}$是所有$N$的有限生成子模的集合。因为$0\in \mathscr{B}$，所以$\mathscr{B}$非空，于是由极大条件，$\mathscr{B}$中存在极大元$P$. 如果$P\neq N$，那么必然存在$x\in N-P$，于是$P+\langle x\rangle$严格包含$P$同时也有有限生成的，矛盾。于是$N=P$是有限生成的。
 
 	反过来，假设$M$的任意子模是有限生成的。令$M_1\subset M_2\subset \cdots$是一个升链，于是$N=\bigcup_{n=1}^\infty M_n$是$M$的子模继而是有限生成的，记作$x_1$, $\cdots$, $x_r$，记$x_i\in M_{n_i}$，选一个最大的$n$，则$x_i\in M_n$，于是$M_n=N$，因此链是稳定的。进而$M$是Noether模。
-\qed
+\end{proof}
 
-\theo Hilbert基定理：如果$R$是一个Noether环，则$R[x]$也是一个Noether环。\notprove
+\begin{thm}
+Hilbert基定理：如果$R$是一个Noether环，则$R[x]$也是一个Noether环。\notprove
+\end{thm}
 
 作为推论，如果$R$是一个Noether环，而$S$是一个有限生成$R$-代数，则$S$也是一个Noether环。
 
 \para 下面的观察来自于Noether，他与拓扑上的不可约性对应。设$M$是一个Noether模，而$N$是它的一个子模，如果$N$不能写成两个$M$的子模$P$和$Q$的交，其中$N$是$P$和$Q$的真子模，则称$N$是一个不可约子模。
 
-\pro \label{irrde}设$M$是一个Noether模，则每一个$M$的真子模都可以写成$M$的有限个不可约子模的交的形式，这被称为不可约分解。
+\begin{pro}
+\label{irrde}设$M$是一个Noether模，则每一个$M$的真子模都可以写成$M$的有限个不可约子模的交的形式，这被称为不可约分解。
+\end{pro}
 
-\proof
+\begin{proof}
 	假设命题不对，考虑所有不能写成有限个不可约子模的交的那些真子模构成的集合，它按包含关系构成一个偏序集。由于这个集合非空，而且$M$是一个Noether模，所以存在极大元$N$。由于$N$是可约的，所以可以写成$P\cap Q$的形式。由于$P$和$Q$都严格比$N$大，所以它们可以写成有限个不可约子模的交，进而$N$可以写成有限个不可约子模的交。矛盾。
-\qed
+\end{proof}
 
 \section{有限生成模}
 
@@ -162,13 +176,15 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 
 作为例子，设$N$是$M$的一个子模，这里来计算$\mathfrak{a}(M/N)$. $\mathfrak{a}(M/N)$由$\sum_{i=1}^n a_i\bar{m}_i$生成，其中$\bar{m}_i\in M/N$. 观察$\sum_{i=1}^n a_i m_i$，为得到$\sum_{i=1}^n a_i\bar{m}_i$，需要模去$N$，但是$N$未必是$\mathfrak{a}M$的子模，所以可以先把$\mathfrak{a}M$扩张为$\mathfrak{a}M+N$，再模去$N$，添进去的多余的$N$里面的元素也一道模掉了，这样就得到了想要的$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$. 或者，可以通过先将$N$缩小到$\mathfrak{a}M$的一个子模$N\cap \mathfrak{a}M$，于是$\mathfrak{a}(M/N)=\mathfrak{a}M/(N\cap \mathfrak{a}M)$.
 
-\theo Hamilton-Cayley定理：设$M$是一个有限生成$R$-模，他能被$n$个元素生成. 再设$\mathfrak{a}$是$R$的一个理想，$\varphi:M\to M$是一个自同态。如果$\varphi(M)\subset \mathfrak{a}M$，则存在首一多项式
+\begin{thm}[Hamilton-Cayley定理]
+设$M$是一个有限生成$R$-模，他能被$n$个元素生成. 再设$\mathfrak{a}$是$R$的一个理想，$\varphi:M\to M$是一个自同态。如果$\varphi(M)\subset \mathfrak{a}M$，则存在首一多项式
 \[
 	p(x)=x^n+p_1x^{n-1}+\cdots+p_n,
 \]
 其中$p_i\in I$，使得$p(\varphi)=\varphi^n+p_1\varphi^{n-1}+\cdots+p_n$是一个零映射，即任取$m\in M$，有$p(\varphi)(m)=0$. 一般写作$p(\varphi)=0$.
+\end{thm}
 
-\proof
+\begin{proof}
 	设$\{m_1,\cdots,m_n\}$是$M$的生成元。考虑$\varphi(m_i)\in M$，因为$M$是有限生成的，所以
 	\[
 	\varphi(m_i)=\sum_{j}r_{ij}m_j,
@@ -181,53 +197,59 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 	\det\left(x\delta_{ij}-r_{ij}\right)m_i=0,
 	\]
 	对任意的$m_i$都成立。所以也对任意的$m\in M$都成立，而$\det\left(x\delta_{ij}-r_{ij}\right)$就是我们需要的多项式。
-\qed
+\end{proof}
 
 \para 作为Hamilton-Cayley定理的应用，我们可以断言，有限生成模的任意满自同态是同构。
 
-\proof
+\begin{proof}
 	把$M$看出$R[x]$-模，其中$xm=\varphi(m)$，他是有限生成的，因为作为$R$-模是有限生成的。令$I=(x)$是$x$在$R[x]$中生成的主理想。由于$\varphi$是满射，则$IM=M$. 选则映射$\id_M=1:M\to M$，这显然是一个$R[x]$-模同态，由于$\id_M(M)\subset IM$，利用Hamilton-Cayley定理，存在一个多项式$p$，系数属于$I$使得
 	\[
 	p(1)m=\left(1^n+xf_1(x)1^{n-1}+\cdots+xf_n(x)\right)m=(1-xq(x))m=0,
 	\]
 	其中$q\in R[x]$. 或者写作，$1-q(\varphi)\varphi=0$. 因此$q(\varphi)$是$\varphi$的一个逆，进而$\varphi$是一个同构。
-\qed
+\end{proof}
 
 \para 设$M$是一个模，一组元素$\{x_1$, $\cdots$, $x_n$, $\cdots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1}$, $\cdots$, $x_{i_k}\in M$，以及对任意的$r_{i_1}$, $\cdots$, $r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1$, $\cdots$, $x_n$, $\cdots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。
 
 \para 将上述命题应用到自由模。设$M\cong R^n$，而$I=\{x_1$, $\cdots$, $x_n\}$自由生成了$M$，则$M$同构于$I=\{x_1$, $\cdots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
 
-\proof
+\begin{proof}
 	$\bigoplus_{x\in I} R$自然可以看成$R^n$，从$\bigoplus_{x\in I} R=R^n$到$M$有自然的满射$\alpha$，他将生成元映到生成元，由于$M\cong R^n$，所以有同构$\beta:M\to R^n$，因此就有了满同态$\alpha\beta:M\to M$，进而是同构。所以$\alpha =(\alpha\beta)\beta^{-1}$就是一个同构。
-\qed
+\end{proof}
 
 利用上面这个命题，可以证明当$m\neq n$时$R^m\not\cong R^n$. 设$m<n$，反证即可，如果$R^m\cong R^n$，则在$R^m$中可以取$n$个自由生成元，但这$n$个自由生成元都由$R^m$的自由生成元生成，所以他们不是自由的，矛盾。
 
 因此，一个有限生成自由模的基的元素个数总是一定的。
 
-\pro 域$k$上的有限生成模$M$都是自由模。
+\begin{pro}
+域$k$上的有限生成模$M$都是自由模。
+\end{pro}
 
-\proof
+\begin{proof}
 	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1$, $\cdots$, $x_{n+1}\}$，如果这组生成元是自由生成元，则没什么要证的，如果不是，则存在一组系数$a_1$, $\cdots$, $a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
 	\[
 	a_{n+1}x_{n+1}=-a_1x_1-\cdots-a_nx_n,
 	\]
 	两边除以$a_{n+1}$得出$x_{n+1}$可以由$\{x_1$, $\cdots$, $x_{n}\}$生成，于是$M$也可以由$\{x_1$, $\cdots$, $x_{n}\}$生成，由归纳假设，$M$是一个自由模。
-\qed
+\end{proof}
 
 利用选择公理，实际上，域上的模（矢量空间）都是自由模，但是这里暂时用不到这点。
 
-\theo Nakayama引理：设$M$是一个有限生成$R$-模，$\mathfrak{a}$是$R$的一个理想，则$M=\mathfrak{a}M$可以推出存在一个$a\in \mathfrak{a}$使得$am=m$对任意的$m\in M$都成立。
+\begin{thm}[Nakayama引理]
+设$M$是一个有限生成$R$-模，$\mathfrak{a}$是$R$的一个理想，则$M=\mathfrak{a}M$可以推出存在一个$a\in \mathfrak{a}$使得$am=m$对任意的$m\in M$都成立。
+\end{thm}
 
-\proof
+\begin{proof}
 	在Hamilton-Cayley定理中，取$\varphi=\id_M$，因此，存在$a_1$, $\cdots$, $a_n\in \mathfrak{a}$使得$x=1+a_1+\cdots+a_n=1-a$左乘在$M$上是一个零映射，于是$(1-a)m=0$或者$am=m$对任意的$m\in M$都成立。
-\qed
+\end{proof}
 
 特别地，当$\mathfrak{a}$包含于$R$任意的极大理想中时，$1-a$不处于任意的极大理想中，所以必然是可逆，因此$(1-a)m=0$推出了$m=0$. 因此Nakayama引理在局部环（只有一个极大理想的环）上会特别有用，因为此时包含于每一个极大理想中就变成了一个平凡的条件。
 
 作为推论，令$M$是一个有限生成$R$-模，而$N$是$M$的一个子模，而$\mathfrak{a}$是包含于每一个极大理想中的一个理想，那么$M=\mathfrak{a}M+N$可以推出$M=N$. 实际上，将Nakayama引理应用到$M/N$上，注意到$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$即可。
 
-\pro 将上面的推论稍微推广一下。设$M$是一个有限生成$R$-模，而$\mathfrak{a}$还是包含于每一个极大理想中的一个理想，设$\varphi:M\to M/\mathfrak{a}M$是商同态。如果$M$中的一组元素$\{m_1$, $\cdots$, $m_n\}$使得$\{\varphi(m_1)$, $\cdots$, $\varphi(m_n)\}$生成$M/\mathfrak{a}M$，则$\{m_1$, $\cdots$, $m_n\}$生成$M$.
+\begin{pro}
+将上面的推论稍微推广一下。设$M$是一个有限生成$R$-模，而$\mathfrak{a}$还是包含于每一个极大理想中的一个理想，设$\varphi:M\to M/\mathfrak{a}M$是商同态。如果$M$中的一组元素$\{m_1$, $\cdots$, $m_n\}$使得$\{\varphi(m_1)$, $\cdots$, $\varphi(m_n)\}$生成$M/\mathfrak{a}M$，则$\{m_1$, $\cdots$, $m_n\}$生成$M$.
+\end{pro}
 
 证明只需要将上面的推论应用到$N=\sum_{i=1}^n Rm_i$即可。
 
@@ -251,15 +273,17 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 
 \para 设$M$是$R$-模，$S$是$R$-代数，那么$M_S=S\otimes_R M$就是一个$S$-模，通过$s(t\otimes a)=(st)\otimes a$，我们称这个$S$-模$M_S$为$M$经过标量扩充而来的。
 
-\lem 有以下同构：
+\begin{lem}
+有以下同构：
 
 \no{1} $M_S\otimes_S N_S\cong (M\otimes_R N)_S$.
 
 \no{2} 设$N$是一个$S$-模，有同构$\Hom_R(M,N)\cong \Hom_S(M_S,N)$
+\end{lem}
 
-\proof 第一个同构。实际上，$(s_1\otimes_R a,s_2\otimes_R b)\mapsto s_1s_2\otimes_R(a\otimes_R b)$是一个双线性映射，所以他唯一诱导了$\varphi:M_S\otimes_S N_S\to (M\otimes_R N)_S$. 反过来，映射$(s,a\otimes_R b)\mapsto (s\otimes_R a)\otimes_S (1\otimes_R b)=(1\otimes_R a)\otimes_S (s\otimes_R b)$也是一个双线性映射，所以他唯一诱导了$\psi:(M\otimes_R N)_S\to M_S\otimes_S N_S$.容易验证他们互逆。
+\begin{proof} 第一个同构。实际上，$(s_1\otimes_R a,s_2\otimes_R b)\mapsto s_1s_2\otimes_R(a\otimes_R b)$是一个双线性映射，所以他唯一诱导了$\varphi:M_S\otimes_S N_S\to (M\otimes_R N)_S$. 反过来，映射$(s,a\otimes_R b)\mapsto (s\otimes_R a)\otimes_S (1\otimes_R b)=(1\otimes_R a)\otimes_S (s\otimes_R b)$也是一个双线性映射，所以他唯一诱导了$\psi:(M\otimes_R N)_S\to M_S\otimes_S N_S$.容易验证他们互逆。
 
-第二个同构。设$\phi\in \Hom_R(M,N)$，我们可以通过$\Phi(s\otimes a)=s\phi(a)$定义$\Phi\in \Hom_S(M_S,N)$，反过来，已知$\Phi\in \Hom_S(M_S,N)$，我们可以通过$\phi(a)=\Phi(1\otimes a)$来定义$\phi\in \Hom_R(M,N)$.不难检验，这是一个同构。 \qed
+第二个同构。设$\phi\in \Hom_R(M,N)$，我们可以通过$\Phi(s\otimes a)=s\phi(a)$定义$\Phi\in \Hom_S(M_S,N)$，反过来，已知$\Phi\in \Hom_S(M_S,N)$，我们可以通过$\phi(a)=\Phi(1\otimes a)$来定义$\phi\in \Hom_R(M,N)$.不难检验，这是一个同构。 \end{proof}
 
 对有限个$\{M_i\}_{i\in I}$，那么反复利用\no{1}我们就得到了同构
 \[
@@ -274,9 +298,9 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 
 \no{3}设$V$和$W$都是$R$-模，$f:V\times\cdots\times V\to W$是$R$-多线性映射，则他可以唯一扩张为一个$S$-多线性映射$V_S\times\cdots\times V_S\to W_S$.
 
-\proof 
+\begin{proof} 
 	因为$\Hom_R(V,W)\cong \Hom_S(V_S,W)$，所以\no{1}得证。对于\no{2}，我们有$i:W\hookrightarrow W_S$，那么$i\circ f:V\to W_S$就满足\no{1}题设，由\no{1}自然得证。对于\no{3}，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由\no{2}，可以唯一扩张为$(V^k)_S\to W_S$，因为$(V^k)_S=V_S\otimes_S \cdots\otimes_S V_S$，引理得证。
-\qed
+\end{proof}
 
 注意到，零映射扩张成的映射依然是零映射，这可以用来给出一些等式。比如在实Lie代数$V$中有Jacobi恒等式$B(u,v,w)=0$对任意的$u$, $v$, $w\in V$成立，其中$B$是一个多线性映射，所以经过复化后依然有$B_\cc (u,v,w)=0$对任意的$u$, $v$, $w\in V_\cc$成立。
 
@@ -351,15 +375,17 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 
 其次，设$\mathfrak{p}$是$R$的一个素理想，此时$S=R-\mathfrak{p}$是一个乘性子集，此时$S^{-1}R$记作$R_\mathfrak{p}$. 这类分式环被称为环$R$关于素理想$\mathfrak{p}$的局部化。
 
-\lem 设$a\in R$，则$a\equiv 0$当且仅当存在$s \in S$使得$as=0$.
+\begin{lem}
+设$a\in R$，则$a\equiv 0$当且仅当存在$s \in S$使得$as=0$.
+\end{lem}
 
-\proof 
+\begin{proof} 
 	如果存在$s \in S$使得$as=0$，则$a\equiv asx_s\equiv 0$. 反过来，假设$a\equiv 0$但$as\neq 0$对任意$s\in S$都成立。由于$a\equiv 0$，则$a\in \bigl\langle\{sx_s-1\,:\, s\in S\}\bigr\rangle$. 逐次比较，唯一可能的选择就是关于$x$的一次项的线性组合，即
 	\[
 	a=\sum_{i=1}^n a_i(s_ix_{s_i}-1),
 	\]
 	其中求和是有限的。所以$a_is_i=0$对任意的$i$都成立，且$\sum_i a_i=-a$. 将$\sum_i a_i=-a$两边乘以$s_1\cdots s_n$，得到$as_1\cdots s_n=0$，由于$S$对乘法封闭，所以$s_1\cdots s_n\in S$，然后利用$as\neq 0$的假设就得到了矛盾。
-\qed
+\end{proof}
 
 \para 利用上面这个引理，可以给出$S^{-1}R$的另一个定义。它是在$R\times S$中引入等价关系得到的，这个等价关系写作：$(r,s)\sim (r',s')$当且仅当存在一个$t\in S$使得$t(rs'-r's)=0$. 将包含$(r,s)$的等价类记作$r/s$，加法和乘法定义的检验这里就略去了。一般教科书上，会直接使用这个定义而并不给出为什么这样定义等价关系，而这里给出了一个启发。
 
@@ -377,19 +403,23 @@ $S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (
 
 实际上，由于$gf=0$，所以$S^{-1}(gf)=S^{-1}g\circ S^{-1}f=0$，于是$\im S^{-1}f\subset \ker S^{-1}g$. 反过来，任取$m/s\in \ker S^{-1}g$，则$g(m)/s=0$，于是存在一个$t\in S$使得$g(m)t=g(mt)=0$，所以$mt\in \ker g=\im f$，于是存在$n$使得$mt=f(n)$，于是$m/s=mt/(st)=f(n)/(st)=S^{-1}f(n/(st))\in \im S^{-1}f$.
 
-\pro $S^{-1}$或者说$S^{-1}R\otimes -$是正合函子，等价于说$S^{-1}R$是平坦$R$-模。
+\begin{pro}
+$S^{-1}$或者说$S^{-1}R\otimes -$是正合函子，等价于说$S^{-1}R$是平坦$R$-模。
+\end{pro}
 
-\pro 设$S$是$R$的一个乘性子集，记同态$R\to S^{-1}R$为$i_S$. 再设$T$是一个环，如果$\varphi:R\to T$是一个环同态，且使得$\varphi(S)=\{\varphi(s)\,:\, s\in S\}$中的元素都是$T$中的可逆元，则存在唯一的环同态$\pi:S^{-1}R\to T$使得分解$\varphi:R\xrightarrow{i_S}S^{-1}R\xrightarrow{\pi} T$成立。
+\begin{pro}
+设$S$是$R$的一个乘性子集，记同态$R\to S^{-1}R$为$i_S$. 再设$T$是一个环，如果$\varphi:R\to T$是一个环同态，且使得$\varphi(S)=\{\varphi(s)\,:\, s\in S\}$中的元素都是$T$中的可逆元，则存在唯一的环同态$\pi:S^{-1}R\to T$使得分解$\varphi:R\xrightarrow{i_S}S^{-1}R\xrightarrow{\pi} T$成立。
+\end{pro}
 
 换句话说，如果一个$R$-代数$T$中$S\cdot 1$都是可逆的，则$T$是一个$S^{-1}R$-代数。这被称为分式环的泛性质，这就指出分式环的实质在于将某个乘性子集搞成可逆的。
 
-\proof
+\begin{proof}
 	令$\pi(r/s)=\varphi(r)\varphi(s)^{-1}$. 下面检验$\pi$是一个环同态，关键不在乘法上，而在于分式不同代表元的选取。令$r'/s'=r/s$，则存在一个$t\in S$使得$t(r's-rs')=0$，于是
 	\[
 		\pi(t)(\pi(r')\pi(s)-\pi(r)\pi(s'))=0,
 	\]
 	由于$\pi(t)$可逆，所以$\pi(r')\pi(s)=\pi(r)\pi(s')$或者$\pi(r)\pi(s)^{-1}=\pi(r')\pi(s')^{-1}$. 所以$\pi$是一个环同态。至于唯一性，由构造，$\pi(r/s)=\varphi(r)\varphi(s)^{-1}$，所以它由$\varphi$唯一决定。最后，$\pi i_S(r)=\pi(r/1)=\varphi(r)$，所以分解成立。
-\qed
+\end{proof}
 
 \para 固定环$R$，以及设$S$是$R$的一个子集。任取环同态$\varphi:R\to T$，如果$S$是可逆元构成的集合，则$\varphi(S)$也是可逆元构成的集合，如果$S$是乘性子集，则$\varphi(S)$也是乘性子集。
 
@@ -412,17 +442,20 @@ $S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (
 
 反过来，从范畴$\mathsf{Alg}_{(R,S)}$到$\mathsf{Alg}_R$有自然的遗忘函子$f$，他忘掉了$S\cdot 1$在相应的$R$-代数中是可逆的。
 
-\theo 存在双函子同构：
+\begin{thm}
+存在双函子同构：
 \[
 	F(-,\star):\mathsf{Alg}_R\bigl(-,f(\star)\bigr)\to \mathsf{Alg}_{(R,S)}\bigl(S^{-1}(-),\star\bigr).
 \]
+\end{thm}
+
 因此$S^{-1}$是遗忘函子的左伴随函子，继而是一个自由函子。这也可以看成$S^{-1}R$的另一种定义，只要将$f$的左伴随函子作用在$R$上就得到了$S^{-1}R$.
 
-\proof
+\begin{proof}
 	首先构造同构，任取同态$R$-代数同态$\Psi:X\to f(Y)$，其中$Y$使得$\varphi_Y(S)$在$Y$中是可逆的。由于是$R$-代数同态，所以$\varphi_Y=\Psi\varphi_X$. 任取$s\in S$，有$\varphi_Y(s)=\Psi\varphi_X(s)$可逆，通过分式环的泛性质，有唯一的同态$F(X,Y)(\Psi):\varphi_X(S)^{-1}X=S^{-1}X\to Y$. 于是$F(X,Y)$就是我们构造的同构。由构造，这是一个单射，反过来，任取$\rho:\mathsf{Alg}_{(R,S)}(S^{-1}(X),Y)$，我们有$F(X,Y)(i_X\circ \rho)=\rho$，因此这是一个满射。
 
 	最后要验证函子性同构，分别对$X$和$Y$检验自然变换即可。这点过于琐碎，这里就略去了。
-\qed
+\end{proof}
 
 任取$X\in \mathsf{Alg}_{(R,S)}$，它可以自然地看成一个$S^{-1}R$-代数，这由分式环的泛性质保证，反过来，任意的$S^{-1}R$-代数都可以看成$\mathsf{Alg}_{(R,S)}$里面的元素，所以有理由认为$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$作为范畴等价。事实上，可以定义一个函子$\mathsf{Alg}_{(R,S)}\to \mathsf{Alg}_{S^{-1}R}$，对对象，将任意的$R$-代数$X$看作$S^{-1}R$-代数$X$，对态射，任取$\varphi\in \mathsf{Alg}_{(R,S)}(X,Y)$，它也可以看作$S^{-1}R$-代数同态（请检查）。在上面的等同下，由泛性质，$\mathsf{Alg}_{(R,S)}(X,Y)=\mathsf{Alg}_{S^{-1}R}(X,Y)$，所以这是一个完全且忠实的函子。同样，任取$S^{-1}R$-代数$X$，他也可以看成$\mathsf{Alg}_{(R,S)}$里面的对象。所以由Proposition \eqref{equivcat}，$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$是等价范畴。
 
@@ -438,9 +471,9 @@ $S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (
 
 这些关系非常类似Galois联络，只不过这里都不是逆序的而是保持顺序的。
 
-\proof
+\begin{proof}
 	除去最后一点都是简单的。令$N$是$M$的一个子模，任取$a\in N$，我们有$a=\varphi^{-1}(a/1)$，所以$N\subset \varphi^{-1}(S^{-1}N)$. 现在设$N=\varphi^{-1}(L)$，于是前面的包含关系给出$\varphi^{-1}(L)\subset \varphi^{-1}(S^{-1}N)$或者$L\subset S^{-1}N$. 反过来，令$a\in N$以及$s\in S$，则$a/s=(a/1)(1/s)=\varphi(a)/s$，因为$\varphi(a)\in L$，而$L$是一个$S^{-1}R$-模，所以$a/s\in L$，这就给出了$S^{-1}N=L$.
-\qed
+\end{proof}
 
 利用这个结论，我们可以发现，$S^{-1}M$的每一个子模$L$，实际上都可以写成$M$中的子模$\varphi^{-1}(L)$的分式模$L=S^{-1}(\varphi^{-1}(L))$. 
 
@@ -448,25 +481,31 @@ $S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (
 
 $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\in M-N$，都有$sm\not\in N$. 或者写成逆否的形式，设$s\in S$以及$m\in M$，如果$sm\in N$，则$m\in N$. 应用这个条件的理由是，在一般的模里面，$a/1\in S^{-1}N$并不能推出$a\in N$，因为如果存在一个$s\in S$使得$sa\in N$，就可以推出$a/1=sa/s\in S^{-1}N$. 而这又是因为$M-N$一般不是一个模。
 
-\proof
+\begin{proof}
 	包含关系$N\subset \varphi^{-1}(S^{-1}N)$已经是清楚的，任取$a\in \varphi^{-1}(S^{-1}N)$或者说$\varphi(a)=a/1\in S^{-1}N$. 于是存在$s\in S$使得$(sa)/s$的分子$sa\in N$，继而根据条件$\ann(M/N)\cap S=\varnothing$可以推知$a\in N$. 
-\qed
+\end{proof}
 
-\pro 结合上面的结论，这里做出断言：$S^{-1}M$的子模一一对应于$M$中满足$\ann(M/N)\cap S=\varnothing$的子模$N$，通过$N\mapsto S^{-1}N$以及$L\mapsto \varphi^{-1}(L)$.
+\begin{pro}
+结合上面的结论，这里做出断言：$S^{-1}M$的子模一一对应于$M$中满足$\ann(M/N)\cap S=\varnothing$的子模$N$，通过$N\mapsto S^{-1}N$以及$L\mapsto \varphi^{-1}(L)$.
+\end{pro}
 
 应用到环$R$的理想上面，$S^{-1}R$的理想一一对应着$R$中那些满足$\ann(R/\mathfrak{a})\cap S=\varnothing$的理想$\mathfrak{a}$. 由于$\ann(R/\mathfrak{a})=\mathfrak{a}$，所以$S^{-1}R$的理想一一对应着$R$中与$S$不相交的理想。由于素理想的原像是素理想，所以$S^{-1}R$中的素理想一一对应着$R$中与$S$不相交的素理想。
 
-\pro 如果$M$是一个Noether或者Artin模，$S$是一个$R$的乘性子集，则$S^{-1}M$是一个Noether或者Artin模。
+\begin{pro}
+如果$M$是一个Noether或者Artin模，$S$是一个$R$的乘性子集，则$S^{-1}M$是一个Noether或者Artin模。
+\end{pro}
 
-\proof
+\begin{proof}
 	只要证明$S^{-1}M$中的非空子模族$\mathcal{F}$有极大/极小元即可。利用一一对应，$\varphi^{-1}(\mathcal{F})$是$M$的非空子模族，所以存在一个极大/极小元$N\in \varphi^{-1}(\mathcal{F})$，继而对应回$S^{-1}M$中就得到了$\mathcal{F}$中的极大/极小元。
-\qed
+\end{proof}
 
-\pro 设$f:M\to N$是一个$R$-模同态，则$f$是单同态（满同态）的充分必要条件是对每一个素理想$\mathfrak{p}$，$f_{\mathfrak{p}}=(R-\mathfrak{p})^{-1}f$是单同态（满同态）.
+\begin{pro}
+设$f:M\to N$是一个$R$-模同态，则$f$是单同态（满同态）的充分必要条件是对每一个素理想$\mathfrak{p}$，$f_{\mathfrak{p}}=(R-\mathfrak{p})^{-1}f$是单同态（满同态）.
+\end{pro}
 
-\proof
+\begin{proof}
 	如果$f$是单的，则$\ker(f)$
-\qed
+\end{proof}
 
 \section{有限长模}
 
@@ -480,11 +519,13 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 
 给定任意一个$R$-模的包含$N\subset M$，考虑任意的中间模$N'$，即满足$N\subset N'\subset M$的$R$-模$N'$，则他在商模$M/N$中的像$N'/N$是$M/N$的一个子模。反过来，$M/N$的子模在商映射下的原像就是一个中间模。因此如果$N\subset M$中间不能再插入任意的一个子模等价于$M/N$中没有非平凡子模，即$M/N$是一个单模。于是合成列的定义就是说这是一个不能再插入一些子模让它变得更长的链，换而言之，极大链。
 
-\pro 有限长模的合成列的长度是一定的，因此可以定义有限长模的长度为其中任意一条合成列的长度。如果一个模不是有限长，则定义它的长度为无穷。此外，如果一条严格递增链不是合成列，则可以再其中插入子模得到合成列。
+\begin{pro}
+有限长模的合成列的长度是一定的，因此可以定义有限长模的长度为其中任意一条合成列的长度。如果一个模不是有限长，则定义它的长度为无穷。此外，如果一条严格递增链不是合成列，则可以再其中插入子模得到合成列。
+\end{pro}
 
 以长度的视角，单模等价于说模的长度为1.
 
-\proof
+\begin{proof}
 	记$l(M)$是$M$所有的合成列中最短那条的长度。设$N$是$M$的一个真子模，我们先证明$l(N)<l(M)$.
 
 	给定一个合成列$0=M_0\subset M_1\subset \cdots\subset M_n=M$，记$N$的子模$N\cap M_i$为$N_i$，进而有$N$的子模链$0=N_0\subset N_1\subset \cdots\subset N_n=N$. 由同构\eqref{modiso1}
@@ -500,17 +541,21 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	由于$l(0)=0$，所以$l(M)\geq k$. 最后考虑任意一条合成列，我们有$l(M)$大于等于它的长度，又$l(M)$是$M$所有的合成列中最短那条的长度，因此$M$的任意合成列的长度都是$l(M)$.
 
 	最后，考虑$M$的任意的严格递增链，如果他的长度等于$l(M)$，则这是一条合成列。否则，在其中插入子模，直到长度等于$l(M)$，我们就得到了一条合成列。
-\qed
+\end{proof}
 
-\pro 一个$R$-模$M$是有限长模当且仅当它存在一个有限长合成列。
+\begin{pro}
+一个$R$-模$M$是有限长模当且仅当它存在一个有限长合成列。
+\end{pro}
 
-\proof
+\begin{proof}
 	$(\Rightarrow)$部分是自然的。反过来，如果$M$不是一个有限长模，则它或者Artin模或者Noether模，于是存在向上不稳定的严格递增链或者向下不稳定的严格递减链，那一个都会使得$M$的合成列长度不有限，于是逆否得证。
-\qed
+\end{proof}
 
-\pro 设有短正合列$0\to U\to V\to W\to 0$，则$V$是有限长的，当且仅当$U$和$W$是有限长的，且$l(V)=l(U)+l(W)$.
+\begin{pro}
+设有短正合列$0\to U\to V\to W\to 0$，则$V$是有限长的，当且仅当$U$和$W$是有限长的，且$l(V)=l(U)+l(W)$.
+\end{pro}
 
-\proof
+\begin{proof}
 	第一点来自于定义。不妨假设$U$是$V$的一个子模，而$W=V/U$. 实际上，因为同构的模有着相同的子模结构，所以同构的模的长度相同。考虑严格递增链$0\subset U\subset V$，然后由于$V$是有限长的，我们可以将其扩张为一条合成列，写作
 	\[
 	0\subset U_1\subset \cdots \subset U_k=U\subset V_{k+1}\subset \cdots \subset V_n=V,
@@ -520,7 +565,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	0\subset V_{k+1}/U\subset \cdots \subset V_n/U=V/U
 	\]
 	是$V/U$的一条合成列，因为$(V_{i+1}/U)/(V_{i}/U)\cong V_{i+1}/V_i$. 所以等式$n=k+(n-k)$就给出了$l(V)=l(U)+l(V/U)$.
-\qed
+\end{proof}
 
 设$f:M\to N$是有限长模之间的一个满同态，我们有短正合列$0\to \ker(f)\to M\to N\to 0$，于是上面的命题给出了$l(M)=l(\ker f)+l(N)$. 如果$f:M\to N$不是满同态，那么可以构造出$f:M\to \im(f)$，这是一个满同态，于是$l(M)=l(\ker f)+l(\im f)$. 
 
@@ -542,14 +587,18 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 
 所以，一个$k$-矢量空间是有限生成的当且仅当他是有限维的。
 
-\pro 线性代数基本定理：设$f:V\to W$是两个有限维$k$-矢量空间的同态，由于有限维$k$-矢量空间都是有限长$k$-模，则$l(M)=l(\ker f)+l(\im f)$给出维度的等式：
+\begin{pro}[线性代数基本定理]
+设$f:V\to W$是两个有限维$k$-矢量空间的同态，由于有限维$k$-矢量空间都是有限长$k$-模，则$l(M)=l(\ker f)+l(\im f)$给出维度的等式：
 \[
 	\dim_k(V)=\dim_k(\ker f)+\dim_k(\im f).
 \]
+\end{pro}
 
-\pro 如果$k$-矢量空间$V$是Artin或者Noether模，则$V$是有限维的。即在矢量空间上，Artin性等价于Noether性等价于有限维。
+\begin{pro}
+如果$k$-矢量空间$V$是Artin或者Noether模，则$V$是有限维的。即在矢量空间上，Artin性等价于Noether性等价于有限维。
+\end{pro}
 
-\proof
+\begin{proof}
 	假设$V$不是有限维的，则我们可以构造出一条合成列，
 	\[
 	0\subset \langle x_1\rangle\subset \langle x_1,x_2\rangle\subset \cdots \subset \langle x_1,\,\cdots\!,x_n\rangle\subset \cdots,
@@ -559,15 +608,16 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 		\bigoplus_{i=1}^\infty kx_i \supset \bigoplus_{i=2}^\infty kx_i \supset \bigoplus_{i=3}^\infty kx_i\supset \cdots,
 	\]
 	因此这也不是Artin模。逆否即得证。
-\qed
+\end{proof}
 
-
-\theo 设$M$是一个有限长$R$-模，长度为$n$. 对于$M$的任意合成列$0=M_0\subset M_1\subset \cdots\subset M_n=M$，$M_i/M_{i-1}\cong R/\mathfrak{m}_i$都是域，$\mathfrak{m}_i$都是极大理想，但集合$I=\{\mathfrak{m}_i\,:\,1\leq i\leq n\}$与选取的合成列无关，并且有同构
+\begin{thm}
+设$M$是一个有限长$R$-模，长度为$n$. 对于$M$的任意合成列$0=M_0\subset M_1\subset \cdots\subset M_n=M$，$M_i/M_{i-1}\cong R/\mathfrak{m}_i$都是域，$\mathfrak{m}_i$都是极大理想，但集合$I=\{\mathfrak{m}_i\,:\,1\leq i\leq n\}$与选取的合成列无关，并且有同构
 \[
 	M\cong \bigoplus_{\mathfrak{m}\in I} M_\mathfrak{m}.
 \]
+\end{thm}
 
-\proof
+\begin{proof}
 	我们局部化处理，因为如果在每一个极大理想局部同构，则整体也同构。任取$R$的一个极大理想$\mathfrak{n}$. 先考虑长度为1的情况，此时$M$是一个单模，于是$M\cong R/\mathfrak{m}$，其中$\mathfrak{m}$是一个极大理想，不妨就直接写成$M=R/\mathfrak{m}$. 如果$\mathfrak{n}=\mathfrak{m}$，此时$\mathfrak{n}$外的元素在$R/\mathfrak{m}=R/\mathfrak{n}$中都是可逆元，于是$M_{\mathfrak{n}}=(R/\mathfrak{m})_{\mathfrak{n}}=R/\mathfrak{m}=M$. 
 
 	如果$\mathfrak{n}\neq \mathfrak{m}$，因此$\mathfrak{m}$是极大理想，所以$\mathfrak{m}\not\subset \mathfrak{n}$以及$\mathfrak{n}\not\subset \mathfrak{m}$，因此$\mathfrak{m}_\mathfrak{n}=R_\mathfrak{n}$. 于是$M_\mathfrak{n}=(R/\mathfrak{m})_\mathfrak{n}=R_\mathfrak{n}/\mathfrak{m}_\mathfrak{n}=0$. 由$(M_\mathfrak{m})_\mathfrak{n}=R_\mathfrak{n}\otimes R_\mathfrak{m} \otimes M$，其中张量积都是$R$-模的张量积. 于是有同构$(M_\mathfrak{m})_\mathfrak{n}\cong R_\mathfrak{n}\otimes M\otimes R_\mathfrak{m}$，任取一个$a\in \mathfrak{m}$但$a\not\in \mathfrak{n}$，于是任取$(r/p)\otimes m \in R_\mathfrak{n}\otimes M$有
@@ -596,11 +646,13 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	由于$((M_{i_k})_\mathfrak{m})_\mathfrak{n}/((M_{i_{k-1}})_\mathfrak{m})_\mathfrak{n}=((M_{i_k})_\mathfrak{m}/(M_{i_{k-1}})_\mathfrak{m})_{\mathfrak{n}}\cong R/\mathfrak{m}=((M_{i_k}/M_{i_{k-1}})_\mathfrak{m})_\mathfrak{n}=((R/\mathfrak{m})_{\mathfrak{m}})_\mathfrak{n}=0$，所以推出了$(M_\mathfrak{m})_\mathfrak{n}=0$. 正如长度为1的情况一般。
 
 	现在来看命题，有限长模$M$的一个极大理想$\mathfrak{m}$是否属于$I$，只取决于$M_\mathfrak{m}$是否为零，而与合成列的选取无关。现在只剩下那个同构了，设$i_\mathfrak{m}:M\to M_{\mathfrak{m}}$是局部化诱导的同态，进而定义$\alpha=\sum_{\mathfrak{m}\in I}i_{\mathfrak{m}}:M\to \bigoplus_{\mathfrak{m}\in I} M_{\mathfrak{m}}$. 这检验这是一个同构，只要对每一个极大理想$\mathfrak{n}$进行局部化即可，而这由已知的，对不同的两个极大理想$\mathfrak{m}$和$\mathfrak{n}$有$(M_\mathfrak{m})_\mathfrak{n}=0$，以及如果$\mathfrak{m}\not\in I$则$M_\mathfrak{m}=0$这两点是清楚的。
-\qed
+\end{proof}
 
-\pro 设$M$是一个有限长模，而$\mathfrak{m}$是一个极大理想，则$M=M_{\mathfrak{m}}$当且仅当存在一个正整数$n$使得$\mathfrak{m}^nM=0$.
+\begin{pro}
+设$M$是一个有限长模，而$\mathfrak{m}$是一个极大理想，则$M=M_{\mathfrak{m}}$当且仅当存在一个正整数$n$使得$\mathfrak{m}^nM=0$.
+\end{pro}
 
-\proof
+\begin{proof}
 	任取另一个极大理想$\mathfrak{n}$，那么$\mathfrak{m}$存在一个不属于$\mathfrak{n}$中的元素$a$，这个元素在$M_\mathfrak{n}$中是可逆的，但是$a^n\in \mathfrak{m}^n$给出$a^nM_\mathfrak{n}=0$，由可逆性就得到了$M_\mathfrak{n}=0$. 所以只有可能$M_\mathfrak{m}\neq 0$，由上面的命题，$M\cong M_\mathfrak{m}$.
 
 	反过来，由于$M\cong M_\mathfrak{m}$，所以对于任意的合成列$0=M_0\subset M_1\subset \cdots\subset M_n=M$都有$M_i/M_{i-1}\cong R/\mathfrak{m}$或者$\ann(M_i/M_{i-1})=\mathfrak{m}$再或者$\mathfrak{m}M_{i}\subset M_{i-1}$，于是
@@ -608,13 +660,15 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	\mathfrak{m}^nM=\mathfrak{m}^nM_{n}\subset \mathfrak{m}^{n-1}M_{n-1}\subset \cdots \subset \mathfrak{m}M_1\subset M_0=0,
 	\]
 	因此$\mathfrak{m}^nM=0$.
-\qed
+\end{proof}
 
 \para 由于$R$本身就是一个$R$-模，如果$R$是有限长$R$-模，已经知道，在$R$的任何合成列中出现的极大理想不依赖于合成列的选取，个数不大于$R$的长度。记这些极大理想的集合为$I$，作为$R$-模成立同构$R\cong\bigoplus_{\mathfrak{m}\in I}R_\mathfrak{m}$.
 
-\lem 回忆\eqref{oka}里面的定义，这里再指出一个理想族是Oka理想族，这个理想族由$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$组成。
+\begin{lem}
+回忆\eqref{oka}里面的定义，这里再指出一个理想族是Oka理想族，这个理想族由$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$组成。
+\end{lem}
 
-\proof 
+\begin{proof} 
 	给定$\mathfrak{a}$和$a\in R$，如果$R/(\mathfrak{a}+(a))$和$R/(\mathfrak{a}:a)$都是有限长$R$-模，要证明$R/\mathfrak{a}$是有限长$R$-模。可以假设$a\not\in \mathfrak{a}$，否则$R/(\mathfrak{a}+(a))=R/\mathfrak{a}$. 首先注意到短正合列
 	\[
 		0\to R/(\mathfrak{a}:a)\xrightarrow{\times a} R/\mathfrak{a} \to R/(\mathfrak{a}+(a))\to 0,
@@ -624,25 +678,32 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	检验正和性最好回到$R$中，由于商同态$R\to R/(\mathfrak{a}:a)$是一个满射，所以$R/(\mathfrak{a}:a)\xrightarrow{\times a} R/\mathfrak{a}$的像就是$R\xrightarrow{\times a} R/\mathfrak{a}$的像，也就是$(a)$在$R/\mathfrak{a}$的像。另一方面，考虑$R/\mathfrak{a} \to R/(\mathfrak{a}+(a))$的核，任取$r+\mathfrak{a}\in R/\mathfrak{a}$，如果他在$R/(\mathfrak{a}+(a))$中为零，则$r\in (a)$，因此$R/\mathfrak{a} \to R/(\mathfrak{a}+(a))$的核也是$(a)$在$R/\mathfrak{a}$的像，正和性得证。
 
 	由于短正合列正中一个模是Noether/Artin模当且仅当两边的模是Noether/Artin模，所以从正合列两边都是有限长模，就得到了$R/\mathfrak{a}$是有限长模。因此$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$构成的理想族是Oka理想族。
-\qed
+\end{proof}
 
-\pro 一个Noether环$R$，如果所有的素理想都是极大理想，则他是一个有限长$R$-模。
+\begin{pro}
+一个Noether环$R$，如果所有的素理想都是极大理想，则他是一个有限长$R$-模。
+\end{pro}
 
-\proof
+\begin{proof}
 	由于是Noether环，非空理想族满足极大性条件，考虑$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$构成的Oka理想族$\mathcal{F}$. 假设$R$不是有限长模，则$(0)$就在其中，因此$\mathcal{F}^c$非空，由极大性条件，$\mathcal{F}^c$中存在极大元$\mathfrak{p}$，并且由$\mathcal{F}$是一个Oka理想族，$\mathfrak{p}$是一个素理想，进而由条件是一个极大理想。由于$R/\mathfrak{p}$是一个单模，长度为1. 但是$\mathfrak{p}\not\in \mathcal{F}$，所以$R/\mathfrak{p}$不是有限长模，矛盾。
-\qed
+\end{proof}
 
-\pro 一个环$R$如果是Artin环，则$R$的每一个素理想都是极大理想且$R$极大理想数目有限。
+\begin{pro}
+一个环$R$如果是Artin环，则$R$的每一个素理想都是极大理想且$R$极大理想数目有限。
 
-\proof
+\end{pro}
+
+\begin{proof}
 	令$\mathfrak{p}$是$R$的一个素理想，则$R/\mathfrak{p}$是一个Artin整环。取非零$x\in R/\mathfrak{p}$，有降链$(x)\supset (x^2)\cdots$，由于是Artin整环，所以存在正整数$n$使得$(x^n)=(x^{n+1})$，因此$x^n=x^{n+1}y$，由整环的消去律得到$xy=1$. 所以$R/\mathfrak{p}$是一个域。
 
 	剩下我们考虑所有有限个极大理想的交构成的理想族，由极小条件，这个理想族有极小元$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$. 任取极大理想$\mathfrak{m}$，由于$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，因此极小性给出$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n=\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，故$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}$. 由Proposition \eqref{primeau}，存在$i$使得$\mathfrak{m}_i\subset \mathfrak{m}$，由于是极大理想，所以$\mathfrak{m}=\mathfrak{m}_i$.
-\qed
+\end{proof}
 
-\pro 一个环$R$是Artin环，当且仅当，$R$是一个Noether环且所有素理想都是极大理想。
+\begin{pro}
+一个环$R$是Artin环，当且仅当，$R$是一个Noether环且所有素理想都是极大理想。
+\end{pro}
 
-\proof
+\begin{proof}
 	一个环$R$是Noether环且所有素理想都是极大理想，我们已经看到这是一个有限长$R$-模，进而是一个Artin环。反过来，我们也已经看到，Artin环的所有素理想都是极大理想。
 
 	Artin性就是极小性条件。考虑$R$所有极大理想的任意有限乘积构成的理想族，它存在极小元$\mathfrak{a}$. 由于$\mathfrak{a}^2\subset \mathfrak{a}$也是有限个极大理想的乘积，由极小性$\mathfrak{a}^2=\mathfrak{a}$. 类似地，任取极大理想$\mathfrak{m}$，有$\mathfrak{m}\mathfrak{a}=\mathfrak{a}$. 这就是说，$\mathfrak{a}$中的元素在任意的极大理想$\mathfrak{m}$中。我们下面证明$\mathfrak{a}$只能为零。
@@ -660,7 +721,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	0\to \mathfrak{m}_1\cdots \mathfrak{m}_{k}\hookrightarrow\mathfrak{m}_1\cdots \mathfrak{m}_{k-1}\to (\mathfrak{m}_1\cdots \mathfrak{m}_{k-1})/(\mathfrak{m}_1\cdots \mathfrak{m}_{k})\to 0,
 	\]
 	正中间的Noether性来自于两边的Noether性，所以有限次归纳后，可以得到$R$是一个Noether模。
-\qed
+\end{proof}
 
 \para 结合上面两个命题，一个环$R$是Artin环等价于他是一个有限长$R$-模，也当且仅当他是Noether环且所有的素理想都是极大理想。因此，与模的情况不一样，到了环这里，Artin性就是一个远比Noether性强的一个性质。附带的，还断言了，Artin环的素理想（极大理想）有限。
 
