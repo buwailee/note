@@ -1,7 +1,7 @@
 \appendix
 \renewcommand{\thepara}{\Alph{chapter}.\arabic{para}}
 
-\chapter{Zorn引理与等价关系}
+\chapter{附录}
 \ThisULCornerWallPaper{1}{../Pictures/19.png}
 \section{Zorn引理}
 \para 设$A$是一个集合，而$\leq$是$A$上的一个关系，如果满足
@@ -58,3 +58,79 @@ Zorn引理是选择公理的等价形式，这里不做证明了。
 这样的子集被称为等价类。从上面的第二点可以看出，不同的等价类不相交，所以通过等价关系，我们将$S$划分成了许多不相交的子集。满足上面性质的后两点的子集族被称为$S$的一个划分。
 
 \para 反过来，如果我们给定了$S$的一个划分，则可以定义出一个等价关系：$a$和$b$等价当且仅当他们同处于一个划分$S_i$里面。而划分在这个等价关系里面就构成了等价类。所以等价关系与划分等价。
+
+\section{偏序集上的极限}
+
+\para 回忆一下偏序集，设$I$是一个偏序集，偏序关系为$\leq$，那么通过定义态射
+\[
+	{I}\left(x,y\right)=\begin{cases}
+	(x,y)&\text{, if }x\leq y\text{;}\\
+	\varnothing&\text{, otherwise}.
+	\end{cases}
+\]
+则$I$是一个小范畴，如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^{\mathrm{op}}$.
+
+$D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
+
+对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^{\mathrm{op}} :I^{\mathrm{op}}\to \mathcal{C}$通过$D^{\mathrm{op}}(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^{\mathrm{op}}(j\geq i)\circ D^{\mathrm{op}}(k\geq j)=D^{\mathrm{op}}(k\geq i)$，可见这确实是一个协变函子。
+
+\para 设$I$是一个指标集，即只存在关系$x\leq x$. 此时构成的$I$-图的极限称为\idx{积}（\idx{product}），余极限称为\idx{余积}（\idx{coproduct}）。前面提到过的集合的直积就是一种积。
+
+\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。所以下面的讨论，将固定$I$是一个滤相偏序集，而$I^{\mathrm{op}}$则是一个定向偏序集。
+
+作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
+
+\para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个{逆系统}（{定向系统}）。对偶地，如果$D$是反变函子，那么$I^{\mathrm{op}}$-图$D^{\mathrm{op}}$是定向系统（逆系统）。
+
+逆系统一般谈论极限${\varprojlim}_{i\in I} D(i)$，而定向系统一般谈论${\varinjlim}_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
+\[
+	\xymatrix{
+		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
+		D(i)&&D(i)\\
+		&D(k)\ar[ul]^{D(k\leq i)}\ar[ur]_{D(k\leq j)}&
+	}
+	\quad
+% \xymatrix{
+% 	&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
+% 	D(i)\ar[dr]_{D(i\leq k)}&&D(i)\ar[dl]^{D(j\leq k)}\\
+% 	&D(k)&
+% }
+	\xymatrix{
+		&A &\\
+		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(i)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
+		&D(k)\ar[uu]_{\mu_{k}}&
+	}
+\]
+左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
+
+\para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
+
+在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$. 同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
+
+更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
+
+\begin{pro}
+设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且${\varprojlim}_{i\in I} D(i)={\varprojlim}_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^{\mathrm{op}} $存在一个与其共尾的子集$J^{\mathrm{op}} $，则$J$-图$D$是一个定向系统，且${\varinjlim}_{i\in I} D(i)={\varinjlim}_{i\in J} D(i)$. \notprove
+\end{pro}
+
+所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的余极限。这符合我们上面的直观。
+
+\para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
+\[
+	{X}(U,V)=\begin{cases}
+	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
+	\varnothing&\text{, otherwise}.
+	\end{cases}
+\]
+
+考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限${\varinjlim}_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in \mathfrak{B}} U$.
+
+同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。但它的极限${\varprojlim}_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
+
+\para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
+
+由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^{\mathrm{op}}$-图$\calf^{\mathrm{op}}$是定向系统，进而我们会考虑余极限
+\[
+	{\varinjlim}_{U\in \mathfrak{B}^{\mathrm{op}}} \calf^{\mathrm{op}}(U)={\varinjlim}_{U\in \mathfrak{B}^{\mathrm{op}}} \calf(U),
+\]
+如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.

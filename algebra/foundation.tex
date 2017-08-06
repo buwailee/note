@@ -317,6 +317,154 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 类似地，设$M$和$M'$都是$R$-模，而$f:M\to M'$是一个$R$-模同态，考虑一个子模$N'\subset M'$，则$f^{-1}(N')$是$M$的一个子模。事实上，加法群结构来自于群的结论，任取$r\in R$以及$x\in f^{-1}(N')$，于是$f(rx)=rf(x)\in N'$推出了$rx\in f^{-1}(N')$. 
 
+\section{理想}
+
+\para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$或者$\langle S\rangle$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1$, $\cdots$, $f_n)$或者$\langle f_1$, $\cdots$, $f_n\rangle$. 如果指标需要用一个指标集表示，那么就通常写作$\langle f_i\rangle_{i\in I}$或者$\langle f_i\,:\,i\in I\rangle$. 一个理想生成的理想自然就是他本身。
+
+\para 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
+\[
+\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
+\]
+是一个理想。由于$\mathfrak{a}$, $\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$，所以$\mathfrak{a}\cup\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$. 一般而言，两个理想的并不是理想，但是两个理想的并生成的理想实际上就是两个理想的和。
+
+两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。由于$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}$以及$\mathfrak{a}\mathfrak{b}\subset \mathfrak{b}$，所以有包含关系$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}\cap \mathfrak{b}$.
+
+设$(a)$和$(b)$是环$R$的两个主理想，则$(a)(b)=(ab)$. 实际上，左手边的元素由所有$(ra)(sb)=rs(ab)$生成，其中$r$, $s$走遍$R$. 所以$(a)(b)\subset (ab)$. 反过来，因为$ab\in (a)(b)$，所以$(ab)\subset (a)(b)$.
+
+最后，给定$R$的两个理想$\mathfrak{a}$和$\mathfrak{b}$，定义$(\mathfrak{a}:\mathfrak{b})$为$\{r\in R\,:\, r\mathfrak{b}\subset \mathfrak{a}\}$，这是一个理想，因为若$x\in (\mathfrak{a}:\mathfrak{b})$，由于$\mathfrak{a}$是一个理想，则$yx\mathfrak{b}\subset y\mathfrak{a}\subset \mathfrak{a}$或者$xy\in (\mathfrak{a}:\mathfrak{b})$. 当$\mathfrak{a}=(a)$是一个主理想的时候，通常会略去主理想的括号，写作$(a:\mathfrak{b})$，同样，如果$\mathfrak{b}=(b)$是主理想，会写做$(\mathfrak{a}:b)$. $(\mathfrak{a}:\mathfrak{b})$被称为理想$\mathfrak{a}$关于理想$\mathfrak{b}$的商，比如在整数环内，$(6:2)=(3)$.
+
+\para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。
+
+考虑一个单同态$f:R\to S$，如果$S$是一个整环，则$R$也是一个整环。为了证明他，考虑到$ab=0$等价于$f(ab)=f(a)f(b)=0$，由于$S$是整环，所以$f(a)=0$或者$f(b)=0$，再由单同态就得到了结论。作为推论，整环的子环也一定是整环。
+
+如果读者熟悉多项式环，这里可以看到另一大类例子，整环上的多项式环也是整环：设多项式$f$以及$g$都不为零，则它们的首项系数$a$与$b$不为零，因此$fg$的首项系数$ab$不为零，也就是说$fg\neq 0$.
+
+\para 一个理想$\mathfrak{p}$被称为素理想，如果$R/\mathfrak{p}$是一个整环。一个理想$\mathfrak{m}$被称为极大理想，如果$R/\mathfrak{p}$是一个域。由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
+
+\para 设$R$是一个环，$I(R)$是$R$所有理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$. 设$\mathcal{F}$是$I(R)$的一个子集，记$\mathcal{F}^c=I(R)-\mathcal{F}$.
+
+极大理想的命名就来自于这个偏序，他是所有真理想构成的集合中的极大元素。对于任意的真理想链，他们的并所生成的理想是真理想。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
+
+反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
+
+从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
+
+\para \label{oka}我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
+
+给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{\url{http://www.bowdoin.edu/~reyes/oka1.pdf}}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
+
+对于单位理想$(1)$，由于任取$a\in R$都有$a+(1)=(1)$以及$(1:a)=(1)$，所以对任意的Ako理想族或者Oka理想族$\mathcal{F}$，$\mathcal{F}$都包含单位理想。
+
+\begin{pro} 如果$\mathcal{F}$是Oka理想族或者Ako理想族，那么$\mathcal{F}^c$中极大的理想是素理想。
+\end{pro}
+
+\begin{proof}
+	假设$\pp$是$\mathcal{F}^c$中极大的理想，但不是素理想。因为$\pp$不是单位理想，所以存在$a$, $b\not\in \pp$但$ab\in\pp$. 此时$(\pp:a)$和$\pp+(b)$都比$\pp$严格大，因为他们都包含$b$，同样$\pp+(a)$严格比$\pp$大，所以他们都属于$\mathcal{F}$. 但此时$\pp=\pp+(ab)\in \mathcal{F}^c$或者$\pp=\pp+(ab)\not\in \mathcal{F}$，所以$\mathcal{F}$既不是Ako理想族，也不是Oka理想族。矛盾。
+\end{proof}
+
+作为应用，先证明如下理想族是Ako或者Oka理想族：
+
+1. 只有单位理想的理想族。
+
+2. $R$的所有有限生成理想构成的集合。
+
+3. $R$的所有主理想的理想构成的集合。
+
+4. 设$S\subset R$是一个对乘法封闭的子集，$R$中与$S$相交的理想构成的集合。
+
+\begin{proof}
+	1. 这是Ako理想族。如果$\mathfrak{a}+(a)=(1)$以及$\mathfrak{a}+(b)=(1)$，那么存在$x$, $y\in \mathfrak{a}$使得$x+a=1$以及$y+b=1$，于是$ab=(1-x)(1-y)$或者$(x+y-xy)+ab=1$，所以$\mathfrak{a}+(ab)=(1)$. 也是Oka理想族，如果$(\mathfrak{a}:a)=(1)$，那么$a\in \mathfrak{a}$，此时$\mathfrak{a}+(a)=\mathfrak{a}$. 因此$\mathfrak{a}+(a)=1$也推出了$\mathfrak{a}=(1)$.
+
+	2. 这是Oka理想族。如果$\mathfrak{a}+(a)$和$(\mathfrak{a}:a)$是有限生成理想。设$\mathfrak{a}+(a)=\langle x_i+r_ia \rangle_{i\in I}$以及$(\mathfrak{a}:a)=\langle y_j\rangle_{j\in J}$，其中$I$, $J$都是有限的指标集。任取$x\in \mathfrak{a}$，由于$x\in \mathfrak{a}+(a)$，所以
+	\[
+		x= \sum_{i\in I}s_i(x_i+r_ia)=\sum_{i\in I}s_ix_i+\sum_{i\in I}s_ir_ia,
+	\]
+	由于$a\sum_{i\in I}s_ir_i=x-\sum_{i\in I}s_ix_i\in \mathfrak{a}$，因此$\sum_{i\in I}s_ir_i\in (\mathfrak{a}:a)$，可以被$\{y_j\}_{j\in J}$生成。所以$\mathfrak{a}$被$\{x_i$, $y_ja\}_{i\in I,j\in J}$生成。
+
+	3. 这是Oka理想族。如果$\mathfrak{a}+(a)=(b)$是主理想且$(\mathfrak{a}:a)=(c)$也是主理想，如果$a\in \mathfrak{a}$，则$\mathfrak{a}=(b)$是主理想。假设$a\not\in\mathfrak{a}$，存在$x\in \mathfrak{a}$使得$x+a=b$，所以$bc=xc+ac\in \mathfrak{a}$，或者$(bc)\subset \mathfrak{a}$. 反过来，任取$x\in \mathfrak{a}$,由于$\mathfrak{a}+a=\mathfrak{b}$，所以存在$r$, $s\in R$使得$x=rb$以及$a=sb$. 因此$ra=rsb=sx\in\mathfrak{a}$给出了$r\in (\mathfrak{a}:a)=(c)$，于是$y=rb\in (c)(b)=(bc)$.
+
+	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$对乘法封闭，$xy\in S$，所以$(\pp+(ab))\cap S\neq \varnothing$.
+\end{proof}
+
+所以上述命题告诉我们：在保证存在性的前提下，
+
+	1. 极大理想是素理想。
+
+	2. 所有非有限生成的理想中极大的是素理想。
+
+	3. 所有非主理想的理想中极大的是素理想。
+
+	4. 所有与某乘性子集不交的理想中极大的是素理想。
+
+\begin{pro} \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
+\end{pro}
+
+\begin{proof}
+	如果$\mathfrak{b}=\bigcup_i \mathfrak{a}_i$，则由包含的命题可知，存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 反过来，$\mathfrak{a}_i\subset \bigcup_i \mathfrak{a}_i=\mathfrak{b}$. 等号的命题得证。
+
+	反证，如果$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$但不存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 适当重排顺序，可以假设前$n-2$个理想是素理想。我们采用有限归纳制造矛盾，素理想的假设将会自然地出现。为此，假设$\mathfrak{b}$不能包含于少于$n$个的$\mathfrak{a}_i$的并里面。这就是说，我们能找到$x_i\in \mathfrak{b}$使得$x_i\not\in \bigcup_{j\neq i}\mathfrak{a}_j$，由于$\mathfrak{b}\subset \bigcup_{i=1}^n \mathfrak{a}_i$，所以$x_i\in \mathfrak{a}_i$.
+
+	考虑$x_1+x_2\cdots x_n\in \mathfrak{b}$，如果$\mathfrak{a}_1$是素理想，则$x_2\cdots x_n\not\in \mathfrak{a}_1$，同时由于$x_1\not\in \mathfrak{a}_2$, $\cdots$, $\mathfrak{a}_n$，所以对于任意的$1\leq i \leq n$有$x_1+x_2\cdots x_n\not\in \mathfrak{a}_i$，或者说$x_1+x_2\cdots x_n\not\in \bigcup_{i=1}^n \mathfrak{a}_i$，这与$x_1+x_2\cdots x_n\in \mathfrak{b}$矛盾。
+
+	所以$\mathfrak{b}$必然处于更小的并里面，由反证假设$\mathfrak{b}\not\subset \mathfrak{a}_1$，所以$\mathfrak{b}\subset \bigcup_{i=2}^n \mathfrak{a}_i$. 重复上述论证，假设$\mathfrak{a}_2$是素理想，我们就可以推知$\mathfrak{b}\subset \bigcup_{i=3}^n \mathfrak{a}_i$直到$\mathfrak{b}\subset \mathfrak{a}_n$，这与反证假设矛盾，因此得证。 
+
+	注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
+\end{proof}
+
+\begin{pro} \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
+\end{pro}
+
+\begin{proof}
+	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。
+\end{proof}
+
+\para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
+\begin{itemize}
+\item 如果一个代数集包含几个仿射簇的交，则在这些仿射簇中存在一个仿射簇包含于这个代数集中。
+\item 如果一个仿射簇包含于几个代数集的并中，则在这些代数集中必然存在一个代数集包含这个仿射簇。
+\end{itemize}
+
+\para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
+
+\begin{proof}
+	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
+
+	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
+	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 
+
+	当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
+\end{proof}
+
+\para 上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+
+但是，对于商映射，情况会好很多。设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
+
+证明是朴实的，任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态
+\[
+	\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}},
+\]
+注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，有同构
+\[
+	R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}.
+\]
+
+\para 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
+
+\begin{proof} 
+	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
+\end{proof}
+
+\para 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+
+\para 定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
+\[
+	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
+\]
+
+一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
+
+一个理想的根其实是所有包含它的素理想的交。实际上，设$A$是所有包含$\mathfrak{a}$的素理想的交，设$\pp$是任意一个包含$\mathfrak{a}$的素理想，如果$f^n\in \mathfrak{a}$，则$f^n\in \pp$，由于$\pp$是素理想，所以$f^n=f\cdot f^{n-1}$给出$f\in\pp$或者$f^{n-1}\in\pp$，通过归纳法就有$f\in \pp$. 这就给出了$\sqrt{\mathfrak{a}}\subset A$. 反过来，如果$f\not\in \sqrt{a}$，考虑所有与$\{1,f,f^2,\cdots\}$不交的，但包含$\mathfrak{a}$的所有理想中极大的那个理想$\pp$，这是一个素理想，存在性来自于Zorn引理，所以$f\not\in \pp$. 这就给出了$A\subset \sqrt{\mathfrak{a}}$.
+
 \section{范畴与函子}
 
 前面看到了，在群/环/模上面，我们都谈论了什么叫同态，什么是同构，以及后来将可能遇到的一些在不同的代数结构上有类似性质的构造。下面我们要引入新的语言来抽象这些东西，他的名字叫范畴。
@@ -720,150 +868,464 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 这点比方考虑所有Hausdorff空间构成的范畴$\mathsf{Haus}$，其中的态射是连续映射。其中的单态都是单射，但是其中的满态是那些连续映射$f:X\to Y$满足$f(X)$在$Y$中稠密，所以并不需要是一个满射。
 
-\section{理想}
+\section{极限与余极限}
 
-\para 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$或者$\langle S\rangle$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1$, $\cdots$, $f_n)$或者$\langle f_1$, $\cdots$, $f_n\rangle$. 如果指标需要用一个指标集表示，那么就通常写作$\langle f_i\rangle_{i\in I}$或者$\langle f_i\,:\,i\in I\rangle$. 一个理想生成的理想自然就是他本身。
-
-\para 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
-\[
-\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
-\]
-是一个理想。由于$\mathfrak{a}$, $\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$，所以$\mathfrak{a}\cup\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$. 一般而言，两个理想的并不是理想，但是两个理想的并生成的理想实际上就是两个理想的和。
-
-两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。由于$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}$以及$\mathfrak{a}\mathfrak{b}\subset \mathfrak{b}$，所以有包含关系$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}\cap \mathfrak{b}$.
-
-设$(a)$和$(b)$是环$R$的两个主理想，则$(a)(b)=(ab)$. 实际上，左手边的元素由所有$(ra)(sb)=rs(ab)$生成，其中$r$, $s$走遍$R$. 所以$(a)(b)\subset (ab)$. 反过来，因为$ab\in (a)(b)$，所以$(ab)\subset (a)(b)$.
-
-最后，给定$R$的两个理想$\mathfrak{a}$和$\mathfrak{b}$，定义$(\mathfrak{a}:\mathfrak{b})$为$\{r\in R\,:\, r\mathfrak{b}\subset \mathfrak{a}\}$，这是一个理想，因为若$x\in (\mathfrak{a}:\mathfrak{b})$，由于$\mathfrak{a}$是一个理想，则$yx\mathfrak{b}\subset y\mathfrak{a}\subset \mathfrak{a}$或者$xy\in (\mathfrak{a}:\mathfrak{b})$. 当$\mathfrak{a}=(a)$是一个主理想的时候，通常会略去主理想的括号，写作$(a:\mathfrak{b})$，同样，如果$\mathfrak{b}=(b)$是主理想，会写做$(\mathfrak{a}:b)$. $(\mathfrak{a}:\mathfrak{b})$被称为理想$\mathfrak{a}$关于理想$\mathfrak{b}$的商，比如在整数环内，$(6:2)=(3)$.
-
-\para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。
-
-考虑一个单同态$f:R\to S$，如果$S$是一个整环，则$R$也是一个整环。为了证明他，考虑到$ab=0$等价于$f(ab)=f(a)f(b)=0$，由于$S$是整环，所以$f(a)=0$或者$f(b)=0$，再由单同态就得到了结论。作为推论，整环的子环也一定是整环。
-
-如果读者熟悉多项式环，这里可以看到另一大类例子，整环上的多项式环也是整环：设多项式$f$以及$g$都不为零，则它们的首项系数$a$与$b$不为零，因此$fg$的首项系数$ab$不为零，也就是说$fg\neq 0$.
-
-\para 一个理想$\mathfrak{p}$被称为素理想，如果$R/\mathfrak{p}$是一个整环。一个理想$\mathfrak{m}$被称为极大理想，如果$R/\mathfrak{p}$是一个域。由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
-
-\para 设$R$是一个环，$I(R)$是$R$所有理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$. 设$\mathcal{F}$是$I(R)$的一个子集，记$\mathcal{F}^c=I(R)-\mathcal{F}$.
-
-极大理想的命名就来自于这个偏序，他是所有真理想构成的集合中的极大元素。对于任意的真理想链，他们的并所生成的理想是真理想。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
-
-反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
-
-从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
-
-\para \label{oka}我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
-
-给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{\url{http://www.bowdoin.edu/~reyes/oka1.pdf}}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
-
-对于单位理想$(1)$，由于任取$a\in R$都有$a+(1)=(1)$以及$(1:a)=(1)$，所以对任意的Ako理想族或者Oka理想族$\mathcal{F}$，$\mathcal{F}$都包含单位理想。
-
-\begin{pro} 如果$\mathcal{F}$是Oka理想族或者Ako理想族，那么$\mathcal{F}^c$中极大的理想是素理想。
-\end{pro}
-
-\begin{proof}
-	假设$\pp$是$\mathcal{F}^c$中极大的理想，但不是素理想。因为$\pp$不是单位理想，所以存在$a$, $b\not\in \pp$但$ab\in\pp$. 此时$(\pp:a)$和$\pp+(b)$都比$\pp$严格大，因为他们都包含$b$，同样$\pp+(a)$严格比$\pp$大，所以他们都属于$\mathcal{F}$. 但此时$\pp=\pp+(ab)\in \mathcal{F}^c$或者$\pp=\pp+(ab)\not\in \mathcal{F}$，所以$\mathcal{F}$既不是Ako理想族，也不是Oka理想族。矛盾。
-\end{proof}
-
-作为应用，先证明如下理想族是Ako或者Oka理想族：
-
-1. 只有单位理想的理想族。
-
-2. $R$的所有有限生成理想构成的集合。
-
-3. $R$的所有主理想的理想构成的集合。
-
-4. 设$S\subset R$是一个对乘法封闭的子集，$R$中与$S$相交的理想构成的集合。
-
-\begin{proof}
-	1. 这是Ako理想族。如果$\mathfrak{a}+(a)=(1)$以及$\mathfrak{a}+(b)=(1)$，那么存在$x$, $y\in \mathfrak{a}$使得$x+a=1$以及$y+b=1$，于是$ab=(1-x)(1-y)$或者$(x+y-xy)+ab=1$，所以$\mathfrak{a}+(ab)=(1)$. 也是Oka理想族，如果$(\mathfrak{a}:a)=(1)$，那么$a\in \mathfrak{a}$，此时$\mathfrak{a}+(a)=\mathfrak{a}$. 因此$\mathfrak{a}+(a)=1$也推出了$\mathfrak{a}=(1)$.
-
-	2. 这是Oka理想族。如果$\mathfrak{a}+(a)$和$(\mathfrak{a}:a)$是有限生成理想。设$\mathfrak{a}+(a)=\langle x_i+r_ia \rangle_{i\in I}$以及$(\mathfrak{a}:a)=\langle y_j\rangle_{j\in J}$，其中$I$, $J$都是有限的指标集。任取$x\in \mathfrak{a}$，由于$x\in \mathfrak{a}+(a)$，所以
-	\[
-		x= \sum_{i\in I}s_i(x_i+r_ia)=\sum_{i\in I}s_ix_i+\sum_{i\in I}s_ir_ia,
-	\]
-	由于$a\sum_{i\in I}s_ir_i=x-\sum_{i\in I}s_ix_i\in \mathfrak{a}$，因此$\sum_{i\in I}s_ir_i\in (\mathfrak{a}:a)$，可以被$\{y_j\}_{j\in J}$生成。所以$\mathfrak{a}$被$\{x_i$, $y_ja\}_{i\in I,j\in J}$生成。
-
-	3. 这是Oka理想族。如果$\mathfrak{a}+(a)=(b)$是主理想且$(\mathfrak{a}:a)=(c)$也是主理想，如果$a\in \mathfrak{a}$，则$\mathfrak{a}=(b)$是主理想。假设$a\not\in\mathfrak{a}$，存在$x\in \mathfrak{a}$使得$x+a=b$，所以$bc=xc+ac\in \mathfrak{a}$，或者$(bc)\subset \mathfrak{a}$. 反过来，任取$x\in \mathfrak{a}$,由于$\mathfrak{a}+a=\mathfrak{b}$，所以存在$r$, $s\in R$使得$x=rb$以及$a=sb$. 因此$ra=rsb=sx\in\mathfrak{a}$给出了$r\in (\mathfrak{a}:a)=(c)$，于是$y=rb\in (c)(b)=(bc)$.
-
-	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$对乘法封闭，$xy\in S$，所以$(\pp+(ab))\cap S\neq \varnothing$.
-\end{proof}
-
-所以上述命题告诉我们：在保证存在性的前提下，
-
-	1. 极大理想是素理想。
-
-	2. 所有非有限生成的理想中极大的是素理想。
-
-	3. 所有非主理想的理想中极大的是素理想。
-
-	4. 所有与某乘性子集不交的理想中极大的是素理想。
-
-\begin{pro} \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
-\end{pro}
-
-\begin{proof}
-	如果$\mathfrak{b}=\bigcup_i \mathfrak{a}_i$，则由包含的命题可知，存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 反过来，$\mathfrak{a}_i\subset \bigcup_i \mathfrak{a}_i=\mathfrak{b}$. 等号的命题得证。
-
-	反证，如果$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$但不存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 适当重排顺序，可以假设前$n-2$个理想是素理想。我们采用有限归纳制造矛盾，素理想的假设将会自然地出现。为此，假设$\mathfrak{b}$不能包含于少于$n$个的$\mathfrak{a}_i$的并里面。这就是说，我们能找到$x_i\in \mathfrak{b}$使得$x_i\not\in \bigcup_{j\neq i}\mathfrak{a}_j$，由于$\mathfrak{b}\subset \bigcup_{i=1}^n \mathfrak{a}_i$，所以$x_i\in \mathfrak{a}_i$.
-
-	考虑$x_1+x_2\cdots x_n\in \mathfrak{b}$，如果$\mathfrak{a}_1$是素理想，则$x_2\cdots x_n\not\in \mathfrak{a}_1$，同时由于$x_1\not\in \mathfrak{a}_2$, $\cdots$, $\mathfrak{a}_n$，所以对于任意的$1\leq i \leq n$有$x_1+x_2\cdots x_n\not\in \mathfrak{a}_i$，或者说$x_1+x_2\cdots x_n\not\in \bigcup_{i=1}^n \mathfrak{a}_i$，这与$x_1+x_2\cdots x_n\in \mathfrak{b}$矛盾。
-
-	所以$\mathfrak{b}$必然处于更小的并里面，由反证假设$\mathfrak{b}\not\subset \mathfrak{a}_1$，所以$\mathfrak{b}\subset \bigcup_{i=2}^n \mathfrak{a}_i$. 重复上述论证，假设$\mathfrak{a}_2$是素理想，我们就可以推知$\mathfrak{b}\subset \bigcup_{i=3}^n \mathfrak{a}_i$直到$\mathfrak{b}\subset \mathfrak{a}_n$，这与反证假设矛盾，因此得证。 
-
-	注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
-\end{proof}
-
-\begin{pro} \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
-\end{pro}
-
-\begin{proof}
-	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。
-\end{proof}
-
-\para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
+\para 在很久以前，我们在有限积范畴上定义了所谓的对角函子。在这节，我们需要拓展这个概念。设$\mathcal{J}$是一个小范畴，$\mathcal{C}$是一个范畴，我们如下定义函子$\Delta:\mathcal{C}\to [\mathcal{J},\mathcal{C}]$：
 \begin{itemize}
-\item 如果一个代数集包含几个仿射簇的交，则在这些仿射簇中存在一个仿射簇包含于这个代数集中。
-\item 如果一个仿射簇包含于几个代数集的并中，则在这些代数集中必然存在一个代数集包含这个仿射簇。
+\item 任取$X$和$j\in \mathcal{J}$以及$\mathcal{J}$中的态射$\varphi$，我们定义$\Delta(X)(j)=X$且$\Delta(X)(\varphi)=\id_X$.
+\item 对态射$\psi:X\to Y$，态射$\Delta\psi:\Delta(X)\to \Delta(Y)$这里应是一个自然变换，任取$j\in \mathcal{J}$，我们定义$\Delta\psi(j)=\psi$，它们都将$\Delta(X)(j)=X$映射成$\Delta(Y)(j)=Y$.
 \end{itemize}
 
-\para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
+\para 设$I$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:I\to \mathcal{C}$为$\mathcal{C}$中的一个$I$-图，或者简略叫做图。对于$i\in I$，$D(i)$称为该图的一个顶点（经常改用下标写作$D_i$），而对任意的态射$\alpha_{ij}:i\to j$，态射$D(\alpha_{ij})$称为该图的一条边。
+
+作为例子，当$I$是一个指标集，即不同的$i$, $j\in I$之间不存在态射时，一个$I$-图就是一族以$I$为指标集的对象。此外，给定小范畴$I$及任取$X\in \mathcal{C}$，$\Delta X$就是一个$I$-图。
+
+\para 这里考虑$I$-图之间的自然变换（因为它们是函子）。设$I$是一个小范畴，$\mathcal{C}$是一个范畴，而$D:I\to \mathcal{C}$是$\mathcal{C}$上的一个$I$-图。
+
+给定$X\in\mathcal{C}$，现在考虑$\varphi\in [I,\mathcal{C}](\Delta X,D)$，它可以表为如下的交换图
+\[
+	\xymatrix{
+		X\ar@{=}[rr]\ar[d]_{\varphi(i)}&&X\ar[d]^{\varphi(j)}\\
+		D(i)\ar[rr]^-{D(\alpha_{ij})}&&D(j)
+	}
+\]
+其中$i$, $j\in I$以及$\alpha_{ij}:i\to j$任意。通常，我们会把交换图画成
+\[
+	\xymatrix{
+		&X\ar[dl]_{\varphi(i)}\ar[dr]^{\varphi(j)}&\\
+		D(i)\ar[rr]^-{D(\alpha_{ij})}&&D(j)
+	}
+\]
+此时，自然变换$\varphi$被称为$I$-图$D$的一个以$X$为顶点的\idx{锥形}。
+
+\para 设$I$是一个小范畴，$\mathcal{C}$是一个范畴，而$D:I\to \mathcal{C}$是$\mathcal{C}$上的一个$I$-图。现在考虑反变函子
+\[
+	X\mapsto [I,\mathcal{C}](\Delta X,D):\mathcal{C}^{\text{op}}\to \mathsf{Set},
+\]
+如果他是可表的，则称$I$-图$D$存在极限，其表示对象记作${\varprojlim}_{i\in I} D(i)$，他被称为$I$-图$D$的\idx{极限}。从表示函子的知识可知，如果极限存在，则它在同构意义上唯一。
+
+现在，我们来考察可表条件。为方便起见，我们记$A={\varprojlim}_{i\in I} D(i)$. 可表条件就是说存在同构$\lambda:h_{A}\to [I,\mathcal{C}](\Delta -,D)$. 具体到$X$，即存在同构
+\[
+	\lambda(X):\mathcal{C}\left(X,{\varprojlim}_{i\in I} D(i)\right)\to [I,\mathcal{C}](\Delta X,D).
+\]
+他就是在说，任取映射$f:X\to {\varprojlim}_{i\in I} D(i)$，都存在一个锥形$\mu=\lambda(X)(f):\Delta X\to D$. 反之亦然，因此，我们可以用如下的泛性质来表述这个事实：
+\[
+	\xymatrix{
+		&&D(i)\ar[dd]^{D(\alpha_{ij})}\\
+		X\ar@{.>}[r]|-{f}\ar@/^/[rru]^-{\mu(i)}\ar@/_/[rrd]_{\mu(j)}&{\varprojlim}_{i\in I} D(i)\ar[ru]\ar[rd]&\\
+		&&D(j)
+	}
+\]
+图中略去的箭头是极限自带的态射族，即锥形$\lambda(A)(\id_A)$，虚线代表唯一存在（来自于态射族之间的同构）。
+
+可以看到，如果$I$-图$D$的极限$A$存在，我们都有一个固有的锥形$\lambda(A)(\id_A)$. 通常地，我们会将这个锥形定义成极限，并且，将锥形$\mu$记作$(A,\mu)$的形式，其中$A$是顶点。此时，极限可以定义为：设$(A,\lambda)$是一个锥形，如果对于任意的锥形$(X,\mu)$，都存在唯一的态射$f:X\to A$使得如下分解$\mu(j):X\xrightarrow{f}A\xrightarrow{\lambda(j)}D(i)$成立，则锥形$\lambda$被称为$I$-图$D$的极限。这个定义的直观化即上面的交换图。
+
+作为例子，一族集合的直积是一个极限。设$\{X_i\,:\, i\in I\}$是一族集合，它的直积记作$\prod_{i\in I}X_i$，且到每个分量都有一个投影函数$\pi_i:\prod_{i\in I}X_i\to X_i$. 这两个数据构成了这一族集合的极限。
+
+\begin{para}
+锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。余极限定义为函子
+\[
+	X\mapsto [I,\mathcal{C}](D,\Delta X):\mathcal{C}\to \mathsf{Set}
+\]
+的表示对象。对$\lambda\in [I,\mathcal{C}](D,\Delta X)$，他是一个形如
+\[
+	\xymatrix{
+		&X&\\
+		D(i)\ar[rr]^-{D(\alpha_{ij})}\ar[ur]^{\varphi(i)}&&D(j)\ar[ul]_{\varphi(j)}
+	}
+\]
+的交换图，他被称为$I$-图的一个\idx{余锥形}，类似锥形，我们会特别写出其顶点$X$，将其记作$(X,\lambda)$.
+
+称呼一个余锥形$(A,\lambda)$是$I$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都存在唯一的态射$f:A\to B$使得如下分解$\mu(j):D(i)\xrightarrow{\lambda(j)}A\xrightarrow{f}B$成立。一般将$I$-图$D$的余极限写作${\varinjlim}_{i\in I} D(i)$. 类似极限，如果余极限存在，则它在同构意义上唯一。
+\end{para}
+
+\begin{pro}\label{homlimit}
+设$\mathcal{C}$是一个范畴，而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
+\[
+	{\varprojlim} \mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,{\varprojlim} X_i\right),\quad {\varprojlim} \mathcal{C}(X_i,-)\cong  \mathcal{C}\left({\varinjlim} X_i,-\right)
+\]
+其中极限与余极限都是对$I$-图进行的。
+\end{pro}
 
 \begin{proof}
-	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
+	仅证第一点，第二点是类似的。从极限的定义，我们知道
+	\[
+	\mathcal{C}\left(-,{\varprojlim}_i X_i\right)\cong [I,\mathcal{C}](\Delta -,X),
+	\]
+	所以只要证明
+	\[
+	[I,\mathcal{C}](\Delta -,X)\cong {\varprojlim}_i \mathcal{C}(-,X_i).
+	\]
 
-	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
-	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 
+	给定$Y$. 我们下面构造同构$\alpha(Y):[I,\mathcal{C}](\Delta Y,X)\to {\varprojlim}_i \mathcal{C}(Y,X_i)$. 首先任取锥形$(Y,\mu)\in [I,\mathcal{C}](\Delta Y,X)$，以及集合范畴里面的一个单元素集$\{*\}$，定义映射$h(i):*\mapsto \mu(i)$，于是我们就有了映射$h(i):\{*\}\to \mathcal{C}(Y,X_i)$，不难验证，它构成了一个锥形
+	\[
+		\xymatrix{
+			&\{*\} \ar[dl]_{h(i)}\ar[dr]^{h(j)}&\\
+			\mathcal{C}(Y,X_i)\ar[rr]^{X(\alpha_{ij})_*}&&\mathcal{C}(Y,X_j)
+		}
+	\]
+	因为$X(\alpha_{ij})_*(h(i))(*)=X(\alpha_{ij})\circ h(i)(*)=X(\alpha_{ij})\circ \mu(i)=\mu(j)=h(j)(*)$.
 
-	当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
+	由${\varprojlim}_i \mathcal{C}(Y,X_i)$的泛性质，我们可以知道，从$\{*\}$到${\varprojlim}_i \mathcal{C}(Y,X_i)$有唯一的映射$h_\mu$，使得分解
+	\[
+	h(i):\{*\}\xrightarrow{h_\mu} {\varprojlim}_i \mathcal{C}(Y,X_i) \xrightarrow{p(i)} \mathcal{C}(Y,X_i)
+	\]
+	成立，其中$p(i)$是极限自带的映射。现在我们定义$\alpha(Y)(\mu)=h_\mu(*)$.
+
+	现在我们来直接构造$\alpha(Y)$的逆映射$\beta(Y):{\varprojlim}_i \mathcal{C}(Y,X_i)\to [I,\mathcal{C}](\Delta Y,X)$. 任取$a\in {\varprojlim}_i \mathcal{C}(Y,X_i)$，设$p(i):{\varprojlim}_i \mathcal{C}(Y,X_i)\to \mathcal{C}(Y,X_i)$是极限自带的映射，则$p(i)(a)\in \mathcal{C}(Y,X_i)$. 由于$X(\alpha_{ij})\circ (p(i)(a))=p(j)(a)$，所以我们有锥形
+	\[
+		\xymatrix{
+			&Y \ar[dl]_{p(i)(a)}\ar[dr]^{p(j)(a)}&\\
+			X_i\ar[rr]^{X(\alpha_{ij})}&&X_j
+		}
+	\]
+	记这个锥形为$\mu_a$，我们定义$\beta(Y)(a)=\mu_a$.
+
+	不难验证$\alpha(Y)(\mu_a)=a$. 实际上$\mu_a(i)=p(i)(a)$，因此$h(i)(*)=p(i)(a)$. 定义$h_{\mu_a}(*)=a$，则分解
+	\[
+	h(i):\{*\}\xrightarrow{h_{\mu_a}} {\varprojlim}_i \mathcal{C}(Y,X_i) \to \mathcal{C}(Y,X_i)
+	\]
+	成立。由$h_{\mu_a}$的唯一性，我们知道$\alpha(Y)(\mu_a)=a$. 反过来，不难验证$\beta(Y)(h_\mu(*))=\mu$. 实际上，令$\beta(Y)(h_\mu(*))=\lambda$，则$\lambda(i)=p(i)(h_\mu(*))=h(i)(*)=\mu(i)$. 所以$\lambda=\mu$. 综上，$\alpha(Y)$和$\beta(Y)$互逆。
+
+	最后，可以直接检验$\alpha(Y)$和$\beta(Y)$是自然变换。
 \end{proof}
 
-\para 上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+极限很好地抽象了许多有用的概念，我们列一些在下面。
 
-但是，对于商映射，情况会好很多。设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
+\begin{para}[终对象与始对象]
+没有对象以及态射的范畴，我们记作$\varnothing$. 考虑任意范畴$\mathcal{C}$，$\mathcal{C}$中$\varnothing$-图的极限就是所谓的\idx{终对象}. 对偶地，有\idx{始对象}。由极限的唯一性，可知一个范畴中终对象和始对象在同构意义下是唯一的。
 
-证明是朴实的，任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态
+如果用泛性质来表述：若$X\in \mathcal{C}$满足任意的$Y\in \mathcal{C}$都有唯一的态射$Y\to X$，则称$X$是一个终对象。反过来，如果任取$Y\in \mathcal{C}$都有唯一的态射$X\to Y$，则称$X$是一个始对象。
+
+如果一个对象即是始对象又是终对象，则称它是一个零对象。零对象往往会记作$0$，从零对象出发或者到零对象的唯一态射也会被记作$0$.
+
+始对象和终对象是不一定存在的，比如在域构成的范畴中，没有始对象与终对象。在集合范畴，始对象是任意单点集，而终对象是空集。在左$R$-模范畴中，零模$0$是零对象。
+\end{para}
+
+\begin{para}[积与余积]
+设$I$是一个集合，如果附加上所有的恒等态射，则$I$构成一个范畴。考虑任意范畴$\mathcal{C}$，此时$\mathcal{C}$中$I$-图的极限就是所谓的\idx{积}. 对偶地，有\idx{余积}。由极限的唯一性，可知一个范畴中积和余积在同构意义下是唯一的。如果$I$是一个空集，则积变成终对象，而余积变成始对象。
+
+考虑一个$I$-图$D$，$D(i)=D_i\in \mathcal{C}$，此时积往往记作$\prod_{i\in I} D_i$，对应着还有投影态射$p_i:\prod_{i\in I} D_i\to D_i$. 它可以用泛性质重新表示如下：设$X$是$\mathcal{C}$中的一个对象，他到每一个$D_i$都有一个态射$f_i$，则存在唯一的态射$f:X\to \prod_{i\in I} D_i$使得分解$p_if=f_i$对$i\in I$都成立。余积的泛性质也类似。
+
+显然，集合的直积是一个积。
+
+如果$I$是一个$n$元素集，则称$I$-图的极限为$n$元积。它们统称为有限积。有限积记作$X_1\times \cdots \times X_n$的形式。显然，存在二元积，就存在任意的有限积，为此，只需要检查$X_1\times (X_2\times (X_3 \times \cdots (X_{n-1}\times X_n)))$满足泛性质即可。
+\end{para}
+
+\begin{para}[等值子与余等值子]
+考虑$\mathcal{J}$是这样一个范畴，它有两个对象，除了自己到自己的恒等态射外，两个对象之间还有同向的两个态射，我们记作$\xymatrix{\cdot\ar@<0.3ex>[r] \ar@<-0.3ex>[r]&\cdot}$. 设$D:\mathcal{J}\to\mathcal{C}$是一个协变函子，他将两个态射变为$f$, $g:X\to Y$，于是在$\mathcal{C}$中关于$J$-图$D$的极限就是对象$\eq(f,g)$以及态射$i:\eq(f,g)\to X$，满足：$fi=gi$，任取对象$A\in \mathcal{C}$以及态射$p:A\to X$使得$fp=gp$，则存在唯一的态射$h:A\to \eq(f,g)$使得下面的交换图成立：
 \[
-	\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}},
+\begin{xy}
+	\xymatrix{
+		\eq(f,g)\ar[r]^-{i}&X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\\
+		A\ar@{.>}[u]^-{h}\ar[ur]_-{p}
+	}
+\end{xy}
 \]
-注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，有同构
+
+集合范畴的等值子很简单，设$f$, $g:X\to Y$是两个映射，则$\eq(f,g)=\{x\in X\,:\, f(x)=g(x)\}$. 不难检验，对于模范畴，$0$可以看成任意两个模之间的同态（比如看作左乘$0$），此时$\ker(f)=\eq(f,0)$. 
+
+对偶地，可以定义余等值子，它使得如下交换图成立
 \[
-	R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}.
+\begin{xy}
+	\xymatrix{
+		X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\ar[r]^-{\pi}\ar[dr]_-{q}&\mathrm{coeq}(f,g)\ar@{.>}[d]^-{h}\\
+		&&A
+	}
+\end{xy}
 \]
+类似地，在模范畴里面，$\coker(f)=\mathrm{coeq}(f,0)$.
+\end{para}
 
-\para 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
+\begin{para}[纤维积]
+另一个极限的例子如下。考虑范畴$\mathcal{J}=\cdot \to \cdot \leftarrow \cdot$，即$\mathcal{J}$只有三个对象，除去恒等态射外，剩下的还有两边指向中间的态射。那么$\mathcal{J}$-图$X\xrightarrow{f} Z \xleftarrow{g} Y$的极限$X\times_Z Y$用泛性质表述就是如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+		A\ar@/_/[rdd]\ar@/^/[drr]\ar@{.>}[dr]&&\\
+		&X\times_Z Y\ar[d]_{\pi_2}\ar[r]_{\pi_1}&X\ar[d]^f\\
+		&Y\ar[r]_g&Z
+	}
+\end{xy}
+\]
+这样的极限$X\times_Z Y$，被称为$X$, $Y$关于$Z$的\idx{纤维积}，或者叫\idx{拉回}。
 
-\begin{proof} 
-	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
+如果$X=Y$，则我们回到了等值子的情况。假设$X$, $Y$和$Z$都是集合，不难检验，$X\times_Z Y=\{(x,y)\in X \times Y\,:\,f(x)=g(y)\in Z\}$. 于是若$Z$是单点集，则$X\times_Z Y=X\times Y$，若$X$和$Y$的子集，它们到$Z$都是标准的含入映射，则$X\times_Z Y=X\cap Y$.
+\end{para}
+
+下面几个引理试图给出以上几个特殊极限之间的关系。
+
+\begin{lem}
+如果范畴$\mathcal{C}$中二元积与等值子总存在，则在该范畴中纤维积也总存在。
+\end{lem}
+
+\begin{proof}
+考虑$X\xrightarrow{f} Z \xleftarrow{g} Y$, $X\xleftarrow{p_X}X\times Y\xrightarrow{p_Y} Y$. 将$X\times_Z Y$定义为映射$fp_X$, $gp_Y: X\times Y\to Z$的等值子即可。
 \end{proof}
 
-\para 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+\begin{lem}
+如果范畴$\mathcal{C}$中纤维积与终对象总存在，当且仅当在该范畴中有限积和等值子总存在。
+\end{lem}
 
-\para 定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
+\begin{proof}
+从右往左从上一个引理是清楚的。现在只需要证从左往右的部分。终对象方便起见我们记作$0$，然后定义$X\times Y=X\times_0 Y$. 有了二元积和终对象，则所有的有限积也都存在了。
+
+最后，考虑$f$, $g:X\to Y$. 连同$\id_X$和$\id_Y$，由积的泛性质，存在唯一的态射$\id_X\times f:X \to X\times Y$以及$\id_X\times g:X \to X\times Y$. 最后，考虑它们的纤维积
 \[
-	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
+\begin{xy}
+	\xymatrix{
+	X\times_{X\times Y} X\ar[d]_{\pi_2}\ar[r]^-{\pi_1}&X\ar[d]^{\id_X\times f}\\
+	X\ar[r]_{\id_X\times g}& X\times Y
+	}
+\end{xy}
+\]
+$X\times_{X\times X} Y$即我们所求的等值子。实际上，
+\[
+	\pi_1=\id_X\pi_1=p_1(\id_X\times f)\pi_1=p_1(\id_X\times g)\pi_2=\pi_2,
+\]
+\[
+	f\pi_1=p_2(\id_X\times f)\pi_1=p_2(\id_X\times g)\pi_2=g\pi_2=g\pi_1.
+\]
+再由纤维积的泛性质就给出了等值子的泛性质。
+\end{proof}
+
+\begin{para}
+一个范畴中，如果对象与态射都是有限的，则称这个范畴是有限范畴。有限范畴的图的极限被称为有限极限。如果一个范畴中任意（有限）极限都存在，则称这个范畴是（有限）完备的。
+\end{para}
+
+下一个定理告诉我们，只需要积和等值子这俩个特殊的极限存在，则任意极限都存在。
+
+\begin{thm}\label{wanbei}
+设$\mathcal{C}$是一个范畴，则以下命题等价：
+\begin{compactenum}[~~~~(1)]
+\item $\mathcal{C}$是（有限）完备的。
+\item $\mathcal{C}$中的（有限）积与等值子总存在。
+\end{compactenum}
+\end{thm}
+
+在有限完备的情况下，第二点可以替换为存在任意纤维积与终对象。
+
+\begin{para}
+对偶地，有限范畴的图的极限被称为有限余极限。如果一个范畴中任意（有限）余极限都存在，则称这个范畴是（有限）余完备的。
+\end{para}
+
+\begin{thm}\label{yuwanbei}
+设$\mathcal{C}$是一个范畴，则以下命题等价：
+\begin{compactenum}[~~~~(1)]
+\item $\mathcal{C}$是（有限）余完备的。
+\item $\mathcal{C}$中的（有限）余积与余等值子总存在。
+\end{compactenum}
+\end{thm}
+
+\section{准加性范畴}
+
+\begin{para}
+设$\mathcal{C}$是一个范畴，如果函子$\mathcal{C}(-,*)$是一个从$\mathcal{C}^\text{op}\times \mathcal{C}$到交换群范畴$\mathsf{Ab}$的函子，则称范畴$\mathcal{C}$是一个准加性范畴，有些时候也叫做$\mathsf{Ab}$-范畴。模范畴显然是一个准加性范畴。
+\end{para}
+
+对于准加性范畴$\mathcal{C}$，$\mathcal{C}(X,Y)$是一个交换群，交换群的运算我们一如既往写作加法。这就意味着，在$\mathcal{C}(X,Y)$中至少存在一个零元，我们称为零态射，统统记作$0$. 注意，此时$0$的定义域和值域需要看语境确定。
+
+同时，任取$f:Y_1\to Y_2$，则$\mathcal{C}(X,f):\mathcal{C}(X,Y_1)\to \mathcal{C}(X,Y_2)$是一个交换群同态。因此，$f(g+h)=fg+fh$. 同理，右复合也满足这样的“分配律”。应用到零元上，我们有$f0=0$以及$0f=0$.
+
+注意，虽然这里的零态射总是似乎在暗示我们存在一个零对象，可事实并非如此。考虑域的范畴，他显然是一个准加性范畴，但却没有零对象。
+
+\begin{pro}
+准加性范畴中，始对象等价于终对象，所以也就都等价于零对象。
+\end{pro}
+
+\begin{proof}
+设$A$是始对象或者是终对象，则$\mathcal{C}(A,A)$是单点集，因此$\id_A=0$. 反过来，假设$\id_A=0$，考虑$f\in \mathcal{C}(A,X)$，由于$f=f\id_A=f0=0$. 所以$A$是始对象。考虑$f\in \mathcal{C}(X,A)$，由于$f=\id_A f=0f=0$. 所以$A$是终对象。
+\end{proof}
+
+如果准加性范畴$\mathcal{C}$中有一个零对象$0$，则对任意的$X$, $Y\in\mathcal{C}$，我们都有唯一的态射$0': X\to 0 \to Y$. 上述命题也顺便告诉我们$0=0'$. 
+
+\begin{para}
+在准加性范畴$\mathcal{C}$中，定义$\ker(f)=\eq(f,0)$以及$\coker(f)=\mathrm{coeq}(f,0)$. 注意到，作为极限或者余极限，实际上，除了对象外，还有一个态射。比如，对$f:M\to N$有一个态射$\pi_f:N\to \coker(f)$，这是构成余核的一个资料。再比如，对于$\ker f$，就有一个态射$i_f:\ker f\to M$. 
+
+作为例子，设$0:X\to Y$是零态射，通过直接验证泛性质，可知$\ker(0)=X$以及$i_0=\id_X$.
+\end{para}
+
+当谈论两个核是同构的时候，不应只认为存在同构$\varphi:\ker(f)_1\to \ker(f)_2$，还应把极限包含的态射拿进来一起看，即满足如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+	\ker(f)_1\ar[d]_{\varphi}\ar[r]^-{i_1} &X\\
+	\ker(f)_2\ar[ru]_{i_2}
+	}
+\end{xy}
+\]
+余核也是类似的。
+
+所以，经常我们会直接将$\ker(f)$看成一个态射，谈及对象的时候，只要取其定义域即可。$\coker(f)$同理。
+
+\begin{para}
+
+为了更清楚地描述指向同一个对象的态射或从同一对象出发的态射的同构，我们做出如下定义：
+
+\begin{compactenum}[~~~(1)]
+\item 若$f$和$g$指向同一个对象$X$，若此时存在一个同构$\varphi$使得交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+	\cdot\ar[d]_{\varphi}\ar[r]^-{f} &X\\
+	\cdot \ar[ru]_{g}
+	}
+\end{xy}
+\]
+则记$f\approx g$. 
+
+\item  若$f$和$g$都从同一个对象出发，若此时存在一个同构$\varphi$使得交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+	X \ar[r]^-{f}\ar[rd]_{g} &\cdot \ar[d]^{\varphi}\\
+	&\cdot 
+	}
+\end{xy}
+\]
+则同样记$f\approx g$. 
+\end{compactenum}
+
+如果$\ker(f)_1$和$\ker(f)_2$都是一个态射$f$的核，则$\ker(f)_1\approx\ker(f)_2$. 
+
+\end{para}
+
+\begin{para}
+在准加性范畴$\mathcal{C}$中，如果任意核都存在，则任意等值子都存在。实际上，$f$, $g$的等值子就是$\ker(f-g)$. 同理，如果任意余核存在，则任意余等值子存在。
+\end{para}
+
+在准加性范畴中，核与余核与单态满态联系密切。
+
+\begin{lem}
+设$\mathcal{C}$是一个准加性范畴，而$f:X\to Y$是其中的一个态射，如果$\ker f$存在，则它是一个单态。对偶地，如果$\coker f$存在，则它是一个满态。
+\end{lem}
+
+\begin{proof}
+对偶的论断是对偶原理保证的。任取$g_1$, $g_2:Z\to \ker(f)$，对$\ker (f) g_1=\ker (f) g_2=k:Z\to X$，由$\ker$的泛性质，存在唯一的态射$g:Z\to \ker(f)$使得分解$\ker (f) g_1=\ker (f) g_2=\ker (f) g$成立。由分解的唯一性，则$g_1=g=g_2$.
+\end{proof}
+
+\begin{lem}
+设$\mathcal{C}$是一个准加性范畴，且存在零对象$0$. 如果$0:X\to Y$是一个单态，则$X=0$. 如果$0:X\to Y$是一个满态，则$Y=0$.
+\end{lem}
+
+\begin{proof}
+由$0\id_X =00=0$，单态的左可消性保证了第一点。由$\id_Y 0=00=0$，满态的右可消性保证了第二点。
+\end{proof}
+
+\begin{para}
+再一个抽象的例子，考察复合态射的核。设$f:X\to Y$以及$g:Y\to Z$是两个态射，那么按照在模范畴中的直觉，应当有一个单同态$h:\ker(f)\hookrightarrow \ker(gf)$. 放到范畴里，这也是正确的，只不过应该把单同态改成单态。存在性是由$\ker(gf)$的泛性质保证的，并且成立分解$\ker(f)=\ker(gf)h$，如果$hk_1=hk_2$，则$\ker(f)k_1=\ker(f)k_2$，因为$\ker(f)$是单态，所以$k_1=k_2$. 于是$h$是单态。
+\end{para}
+
+\begin{para}
+类比熟知的$\coker f$的定义$N/\im f$，可以定义$\im f=\ker\left(\coker f\right)$. 
+\end{para}
+
+为使得这个定义是良定的，我们需要证明选取不同的$\coker f$，我们将得到同构的$\im f$. 为此，如果选取不同的$(\coker f)_1$和$(\coker f)_2$，有$(\coker f)_1\approx (\coker f)_2$，存在同构$\psi$使得$(\coker f)_2=\psi(\coker f)_1$.
+
+由上一段，可知存在单态$h:\ker((\coker f)_1)\hookrightarrow \ker((\coker f)_2)$，同理$(\coker f)_1=\psi^{-1}(\coker f)_2$给出了单态$k:\ker((\coker f)_2)\hookrightarrow \ker((\coker f)_1)$，直接的验证将给出$h$和$k$是互逆的一对态射。这就是我们需要的同构。
+
+由于$(\coker f) f=0$，所以由$\ker$的泛性质，我们得到了唯一的态射$M\to \im f$，这个态射类似于$\ker f$和$\coker f$，记作$\im f$.
+
+\begin{pro}
+设$\mathcal{C}$是一个准加性范畴，如果$\mathcal{C}$中含有零对象$0$，则
+\begin{compactenum}[~~~(1)]
+\item $f:X\to Y$是一个单态当且仅当$\ker(f)=0$.
+\item $f:X\to Y$是一个满态当且仅当$\coker(f)=0$.
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+只证第一个，第二个是类似的。如果$f:X\to Y$是一个单态，考虑任意的$fg=0$，由于$f$是单态，所以$fg=0=f0$给出了$g=0$. 由此，不难检验$0$满足核的泛性质。
+
+反过来，如果$\ker(f)=0$. 假设$fg_1=fg_2$或等价的$fh=f(g_1-g_2)=0$，其中$h=g_1-g_2$. 由于$\ker(f)=0$，由核的泛性质，存在唯一的态射$k$使得分解$h=0k$成立，于是$h=0$.
+\end{proof}
+
+\begin{pro}
+设$\mathcal{C}$是一个准加性范畴，而$X_1$, $X_2\in \mathcal{C}$，则$X_1$和$X_2$的积与余积等价。此时记$X_1$和$X_2$的积（余积）为$X_1\oplus X_2$，他有四个典范映射：作为积的投影$p_1:X_1\oplus X_2\to X_1$, $p_2:X_1\oplus X_2\to X_2$和作为余积的含入$i_1:X_1\to X_1\oplus X_2$, $i_2:X_2\to X_1\oplus X_2$. 满足
+\[
+	p_ai_a=\id_{X_a},\quad i_1p_1+i_2p_2=\id_{X_1\oplus X_2},\quad p_ai_b=0,
+\]
+其中$\{a$, $b\}=\{1$, $2\}$. 
+\end{pro}
+
+反过来，如果具有一个对象$X_1\oplus X_2$和满足上述关系的四个典范映射，则我们称它们构成了$X_1$和$X_2$的一个双积。一个双积不难检验是一个积，实际上，如果有$f_a:Y\to X_a$，则构造$f_1\times f_2=i_1f_1+i_2f_2$，他就是满足积的泛性质的唯一分解。同理，不难检验这是一个余积，实际上，如果有$g_a:X_a\to Y$，则构造$g=g_1p_1+g_2p_2$，他就是满足余积的泛性质的唯一分解。
+
+结合上面的命题，我们得到了：准加性范畴中，二元积等价于二元余积等价于双积。
+
+\begin{proof}
+从前面的一些简单的推理，显然，我们只需要构造双积即可。
+
+设$X_1\times X_2$是$X_1$和$X_2$的积，具有投影$p_1:X_1\times X_2\to X_1$, $p_2:X_1\times X_2\to X_2$. 考虑$\id_{X_1}:X_1\to X_1$和$0:X_1\to X_2$，由积的泛性质，存在唯一的态射$i_1:X_1\times X_2 \to X_1$使得$p_1i_1=\id_{X_1}$, $p_2i_1=0$. 同理，可以得到$i_2:X_1\times X_2 \to X_2$满足$p_2i_2=\id_{X_2}$, $p_1i_2=0$. 最后，考虑$i_1p_1+i_2p_2:X_1\times X_2\to X_1\times X_2$，以及映射
+\[
+	p_a(i_1p_1+i_2p_2)=p_a:X_1\times X_2\to X_a,
+\]
+由积的泛性质，存在唯一的态射$\id_{X_1\times X_2}$使得$p_a\id_{X_1\times X_2}=p_a$成立，所以$i_1p_1+i_2p_2=\id_{X_1\times X_2}$.
+
+同理，从$X_1$和$X_2$的余积可以得到积的两个典范态射满足双积的所有条件。
+\end{proof}
+
+\begin{para}
+既然有了$X_1\oplus X_2$，那么拓展到$X=X_1\oplus \cdots \oplus X_n$也是直接的。如果用泛性质来表示，他有$2n$个典范态射$\{p_a:X\to X_a\}$和$\{i_a:X_a\to X\}$，满足
+\[
+	p_ai_a=\id_{X_a},\quad \sum_{a=1}^n i_ap_a=\id_{X},\quad p_ai_b=0,
+\]
+其中$a\neq b$.
+
+通常，我们将$X_1\oplus \cdots \oplus X_n$记作$\bigoplus_{a=1}^nX_a$.
+\end{para}
+
+\begin{lem}
+设$X=\bigoplus_{a=1}^nX_a$，则任意$f:X\to X$可以由所有的$f_{ab}=p_afi_b:X_b\to X_a$确定。并且，如果有$g:X\to X$，则$(gf)_{ab}=\sum_{c}g_{ac}f_{cb}$.
+\end{lem}
+
+如果对矩阵有些了解，不难发现第二点就是矩阵乘法。
+
+\begin{proof}
+实际上，
+\[
+	\sum_{a,b}i_af_{ab}p_b=\sum_{a,b}i_ap_afi_bp_b=\left(\sum_ai_ap_a\right) f\left(\sum_bi_bp_b\right)=\id_{X}f\id_{X}=f.
+\]
+以及
+\[
+	(gf)_{ab}=p_agfi_b=p_ag\id_X fi_b=\sum_c p_ag i_cp_c fi_b=\sum_{c}g_{ac}f_{cb}.
+\]
+\end{proof}
+
+第一点告诉我们，如果存在一族映射$f_{ab}:X_b\to X_a$，可以构造$f=\sum_{a,b}i_af_{ab}p_b:\bigoplus_{a=1}^nX_a\to \bigoplus_{a=1}^nX_a$使得$f_{ab}=p_afi_b$成立。特别地，如果只存在那些“对角”的态射$f_a:X_a\to X_a$，我们可以构造$f_1\oplus \cdots \oplus f_n:\bigoplus_{a=1}^nX_a\to \bigoplus_{a=1}^nX_a$使得
+\[
+	p_a(f_1\oplus \cdots \oplus f_n)i_a=f_a,
+\]
+其中
+\[
+	f_1\oplus \cdots \oplus f_n=\sum_{a}i_af_{a}p_a.
 \]
 
-一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
+\begin{para}
+如果一个准加性范畴中任意有限积都存在，则称这是一个加性范畴。
+\end{para}
 
-一个理想的根其实是所有包含它的素理想的交。实际上，设$A$是所有包含$\mathfrak{a}$的素理想的交，设$\pp$是任意一个包含$\mathfrak{a}$的素理想，如果$f^n\in \mathfrak{a}$，则$f^n\in \pp$，由于$\pp$是素理想，所以$f^n=f\cdot f^{n-1}$给出$f\in\pp$或者$f^{n-1}\in\pp$，通过归纳法就有$f\in \pp$. 这就给出了$\sqrt{\mathfrak{a}}\subset A$. 反过来，如果$f\not\in \sqrt{a}$，考虑所有与$\{1,f,f^2,\cdots\}$不交的，但包含$\mathfrak{a}$的所有理想中极大的那个理想$\pp$，这是一个素理想，存在性来自于Zorn引理，所以$f\not\in \pp$. 这就给出了$A\subset \sqrt{\mathfrak{a}}$.
+注意，终对象也是有限积，所以加性范畴存在零对象。由于准加性范畴中有限积就是有限余积，所以加性范畴中任意有限余积也存在。
+
+\begin{para}
+如果在一个加性范畴中，任意的核与余核存在，任意的单态是某个态射的核，任意的满态是某个态射的余核，则称这个范畴是一个Abel范畴。
+\end{para}
+
+注意，在准加性范畴中，如果任意的任意的核与余核存在，则任意的等值子与任意的余等值子存在。此外，加性范畴中存在任意的有限积与余有限积。结合这两点，从Theorem \ref{wanbei}和\ref{yuwanbei}可以知道，Abel范畴是有限完备且有限余完备的。
+
+\begin{lem}
+设$f$, $g:X\to Y$，如果等值子（看作态射）$\eq(f,g)$是满态，则$\eq(f,g)$是同构。
+\end{lem}
+
+\begin{proof}
+由于$f\eq(f,g)=g\eq(f,g)$，如果$\eq(f,g)$是满态（右可消），如果$f=g$. 此时不难检验$\id_X$是$f$, $f:X\to Y$的一个等值子，由等值子的泛性质，$\eq(f,f)\approx \id_X$，即存在同构$\varphi$使得$\id_X=\eq(f,f)\varphi$. 最后，考虑$\eq(f,f)\varphi\eq(f,f)=\eq(f,f)$，由等值子的泛性质，分解的唯一性保证了$\varphi\eq(f,f)=\id_{\eq(f,f)}$. 因此$\eq(f,f)$是一个同构。
+\end{proof}
+
+\begin{pro}
+Abel范畴中，一个态射是同构等价于它既是单态又是满态。
+\end{pro}
+
+\begin{proof}
+设$\varphi$即是单态又是满态，因为是Abel范畴，所以存在$\psi$使得$\varphi=\ker(\psi)$. 从上一个引理，$\ker(\psi)$作为等值子如果是满态则必然是同构。
+
+反过来，假设$\varphi$是同构。它的逆写作$\psi$，如果$\varphi f=\varphi g$，则$\psi\varphi f =\psi\varphi g$给出$f=g$，所以$\varphi$是单态。同理，放在右边可以给出满态。
+\end{proof}

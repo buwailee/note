@@ -1,371 +1,47 @@
 \chapter{基本构造}
 \ThisULCornerWallPaper{1}{../Pictures/4.png}
 
-\section{极限与余极限}
+\section{模范畴}
 
-\para 在很久以前，我们在有限积范畴上定义了所谓的对角函子。在这节，我们需要拓展这个概念。设$\mathcal{J}$是一个小范畴，$\mathcal{C}$是一个范畴，我们如下定义函子$\Delta:\mathcal{C}\to [\mathcal{J},\mathcal{C}]$：
-\begin{itemize}
-\item 任取$X$和$j\in \mathcal{J}$以及$\mathcal{J}$中的态射$\varphi$，我们定义$\Delta(X)(j)=X$且$\Delta(X)(\varphi)=\id_X$.
-\item 对态射$\psi:X\to Y$，态射$\Delta\psi:\Delta(X)\to \Delta(Y)$这里应是一个自然变换，任取$j\in \mathcal{J}$，我们定义$\Delta\psi(j)=\psi$，它们都将$\Delta(X)(j)=X$映射成$\Delta(Y)(j)=Y$.
-\end{itemize}
+我们这里考虑的是左$R$-模范畴，下面有时会简单称为模范畴。
 
-\para 设$I$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:I\to \mathcal{C}$为$\mathcal{C}$中的一个$I$-图，或者简略叫做图。对于$i\in I$，$D(i)$称为该图的一个顶点（经常改用下标写作$D_i$），而对任意的态射$\alpha_{ij}:i\to j$，态射$D(\alpha_{ij})$称为该图的一条边。
+设$M$和$N$都是左$R$-模，记$\Hom_R(M,N)$为所有左$R$-模同态的集合，如果$R$是清楚的，则可以简单记作$\Hom(M,N)$. $\Hom(M,N)$具有清楚的交换群结构，所以可以看成双边$\zz$-模，并且可以等同$fn=nf$，其中$f\in \Hom_R(M,N)$，而$n\in \zz$. 因此，左$R$-模范畴是一个准加性范畴。
 
-作为例子，当$I$是一个指标集，即不同的$i$, $j\in I$之间不存在态射时，一个$I$-图就是一族以$I$为指标集的对象。此外，给定小范畴$I$及任取$X\in \mathcal{C}$，$\Delta X$就是一个$I$-图。
-
-\para 这里考虑$I$-图之间的自然变换（因为它们是函子）。设$I$是一个小范畴，$\mathcal{C}$是一个范畴，而$D:I\to \mathcal{C}$是$\mathcal{C}$上的一个$I$-图。
-
-给定$X\in\mathcal{C}$，现在考虑$\varphi\in [I,\mathcal{C}](\Delta X,D)$，它可以表为如下的交换图
+如果$M$是左$R$-模也是右$S$-模，而$N$是左$R$-模，那么任取$f\in \Hom_R(M,N)$以及$s\in S$，可以通过$(sf)(m)=f(ms)$定义出$\Hom_R(M,N)$上的一个左$S$-模结构。实际上，
 \[
-	\xymatrix{
-		X\ar@{=}[rr]\ar[d]_{\varphi(i)}&&X\ar[d]^{\varphi(j)}\\
-		D(i)\ar[rr]^-{D(\alpha_{ij})}&&D(j)
-	}
+	((st)f)(m)=(s(tf))(m)=(tf)(ms)=f(mst)=f(m(st)).
 \]
-其中$i$, $j\in I$以及$\alpha_{ij}:i\to j$任意。通常，我们会把交换图画成
+同样，如果$M$只是左$R$-模，但$N$是左$R$-模兼右$S$-模，那么任取$f\in \Hom_R(M,N)$以及$s\in S$，可以通过$(sf)(m)=f(m)s$定义出$\Hom_R(M,N)$上的一个右$S$-模结构。实际上
 \[
-	\xymatrix{
-		&X\ar[dl]_{\varphi(i)}\ar[dr]^{\varphi(j)}&\\
-		D(i)\ar[rr]^-{D(\alpha_{ij})}&&D(j)
-	}
+	(fst)(m)=(fst)(m)=(fs)(m)t=f(m)st.
 \]
-此时，自然变换$\varphi$被称为$I$-图$D$的一个以$X$为顶点的\idx{锥形}。
 
-\para 设$I$是一个小范畴，$\mathcal{C}$是一个范畴，而$D:I\to \mathcal{C}$是$\mathcal{C}$上的一个$I$-图。现在考虑反变函子
-\[
-	X\mapsto [I,\mathcal{C}](\Delta X,D):\mathcal{C}^{\text{op}}\to \mathsf{Set},
-\]
-如果他是可表的，则称$I$-图$D$存在极限，其表示对象记作${\varprojlim}_{i\in I} D(i)$，他被称为$I$-图$D$的\idx{极限}。从表示函子的知识可知，如果极限存在，则它在同构意义上唯一。
+假设下面出现的环都是交换环，此时，每一个左$R$-模$M$，都可以通过$rf=fr$定义出一个右$R$-模结构而成为一个双边$R$-模，当$M$具有这样诱导的双边$R$-模结构时，我们简单称呼$M$是一个$R$-模。如果$M$和$N$都是$R$-模，上面的推理告诉我们，$\Hom_R(M,N)$也是一个$R$-模。
 
-现在，我们来考察可表条件。为方便起见，我们记$A={\varprojlim}_{i\in I} D(i)$. 可表条件就是说存在同构$\lambda:h_{A}\to [I,\mathcal{C}](\Delta -,D)$. 具体到$X$，即存在同构
-\[
-	\lambda(X):\mathcal{C}\left(X,{\varprojlim}_{i\in I} D(i)\right)\to [I,\mathcal{C}](\Delta X,D).
-\]
-他就是在说，任取映射$f:X\to {\varprojlim}_{i\in I} D(i)$，都存在一个锥形$\mu=\lambda(X)(f):\Delta X\to D$. 反之亦然，因此，我们可以用如下的泛性质来表述这个事实：
-\[
-	\xymatrix{
-		&&D(i)\ar[dd]^{D(\alpha_{ij})}\\
-		X\ar@{.>}[r]|-{f}\ar@/^/[rru]^-{\mu(i)}\ar@/_/[rrd]_{\mu(j)}&{\varprojlim}_{i\in I} D(i)\ar[ru]\ar[rd]&\\
-		&&D(j)
-	}
-\]
-途中略去的箭头是极限自带的态射族，即锥形$\lambda(A)(\id_A)$，虚线代表唯一存在（来自于态射族之间的同构）。
+除非在讨论$\Hom_R(M,N)$的结构时，将$M$和$N$只看成一个左$R$-模并不会有什么损失，我们将采用这种观点。
 
-可以看到，如果$I$-图$D$的极限$A$存在，我们都有一个固有的锥形$\lambda(A)(\id_A)$. 通常地，我们会将这个锥形定义成极限，并且，将锥形$\mu$记作$(A,\mu)$的形式，其中$A$是顶点。此时，极限可以定义为：设$(A,\lambda)$是一个锥形，如果对于任意的锥形$(X,\mu)$，都存在唯一的态射$f:X\to A$使得如下分解$\mu(j):X\xrightarrow{f}A\xrightarrow{\lambda(j)}D(i)$成立，则锥形$\lambda$被称为$I$-图$D$的极限。这个定义的直观化即上面的交换图。
-
-作为例子，一族集合的直积是一个极限。设$\{X_i\,:\, i\in I\}$是一族集合，它的直积记作$\prod_{i\in I}X_i$，且到每个分量都有一个投影函数$\pi_i:\prod_{i\in I}X_i\to X_i$. 这两个数据构成了这一族集合的极限。
-
-\begin{para}
-锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。余极限定义为函子
-\[
-	X\mapsto [I,\mathcal{C}](D,\Delta X):\mathcal{C}\to \mathsf{Set}
-\]
-的表示对象。对$\lambda\in [I,\mathcal{C}](D,\Delta X)$，他是一个形如
-\[
-	\xymatrix{
-		&X&\\
-		D(i)\ar[rr]^-{D(\alpha_{ij})}\ar[ur]^{\varphi(i)}&&D(j)\ar[ul]_{\varphi(j)}
-	}
-\]
-的交换图，他被称为$I$-图的一个\idx{余锥形}，类似锥形，我们会特别写出其顶点$X$，将其记作$(X,\lambda)$.
-
-称呼一个余锥形$(A,\lambda)$是$I$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都存在唯一的态射$f:A\to B$使得如下分解$\mu(j):D(i)\xrightarrow{\lambda(j)}A\xrightarrow{f}B$成立。一般将$I$-图$D$的余极限写作${\varinjlim}_{i\in I} D(i)$. 类似极限，如果余极限存在，则它在同构意义上唯一。
+\begin{para}[零对象]
+模范畴的零对象就是零模，作为交换群就是$\{0\}$，任意的环作用都是$r0=0$.
 \end{para}
 
-\begin{pro}\label{homlimit}
-设$\mathcal{C}$是一个范畴，而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
-\[
-	{\varprojlim} \mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,{\varprojlim} X_i\right),\quad {\varprojlim} \mathcal{C}(X_i,-)\cong  \mathcal{C}\left({\varinjlim} X_i,-\right)
-\]
-其中极限与余极限都是对$I$-图进行的。
-\end{pro}
-
-\begin{proof}
-	仅证第一点，第二点是类似的。从极限的定义，我们知道
-	\[
-	\mathcal{C}\left(-,{\varprojlim}_i X_i\right)\cong [I,\mathcal{C}](\Delta -,X),
-	\]
-	所以只要证明
-	\[
-	[I,\mathcal{C}](\Delta -,X)\cong {\varprojlim}_i \mathcal{C}(-,X_i).
-	\]
-
-	给定$Y$. 我们下面构造同构$\alpha(Y):[I,\mathcal{C}](\Delta Y,X)\to {\varprojlim}_i \mathcal{C}(Y,X_i)$. 首先任取锥形$(Y,\mu)\in [I,\mathcal{C}](\Delta Y,X)$，以及集合范畴里面的一个单元素集$\{*\}$，定义映射$h(i):*\mapsto \mu(i)$，于是我们就有了映射$h(i):\{*\}\to \mathcal{C}(Y,X_i)$，不难验证，它构成了一个锥形
-	\[
-		\xymatrix{
-			&\{*\} \ar[dl]_{h(i)}\ar[dr]^{h(j)}&\\
-			\mathcal{C}(Y,X_i)\ar[rr]^{X(\alpha_{ij})_*}&&\mathcal{C}(Y,X_j)
-		}
-	\]
-	因为$X(\alpha_{ij})_*(h(i))(*)=X(\alpha_{ij})\circ h(i)(*)=X(\alpha_{ij})\circ \mu(i)=\mu(j)=h(j)(*)$.
-
-	由${\varprojlim}_i \mathcal{C}(Y,X_i)$的泛性质，我们可以知道，从$\{*\}$到${\varprojlim}_i \mathcal{C}(Y,X_i)$有唯一的映射$h_\mu$，使得分解
-	\[
-	h(i):\{*\}\xrightarrow{h_\mu} {\varprojlim}_i \mathcal{C}(Y,X_i) \xrightarrow{p(i)} \mathcal{C}(Y,X_i)
-	\]
-	成立，其中$p(i)$是极限自带的映射。现在我们定义$\alpha(Y)(\mu)=h_\mu(*)$.
-
-	现在我们来直接构造$\alpha(Y)$的逆映射$\beta(Y):{\varprojlim}_i \mathcal{C}(Y,X_i)\to [I,\mathcal{C}](\Delta Y,X)$. 任取$a\in {\varprojlim}_i \mathcal{C}(Y,X_i)$，设$p(i):{\varprojlim}_i \mathcal{C}(Y,X_i)\to \mathcal{C}(Y,X_i)$是极限自带的映射，则$p(i)(a)\in \mathcal{C}(Y,X_i)$. 由于$X(\alpha_{ij})\circ (p(i)(a))=p(j)(a)$，所以我们有锥形
-	\[
-		\xymatrix{
-			&Y \ar[dl]_{p(i)(a)}\ar[dr]^{p(j)(a)}&\\
-			X_i\ar[rr]^{X(\alpha_{ij})}&&X_j
-		}
-	\]
-	记这个锥形为$\mu_a$，我们定义$\beta(Y)(a)=\mu_a$.
-
-	不难验证$\alpha(Y)(\mu_a)=a$. 实际上$\mu_a(i)=p(i)(a)$，因此$h(i)(*)=p(i)(a)$. 定义$h_{\mu_a}(*)=a$，则分解
-	\[
-	h(i):\{*\}\xrightarrow{h_{\mu_a}} {\varprojlim}_i \mathcal{C}(Y,X_i) \to \mathcal{C}(Y,X_i)
-	\]
-	成立。由$h_{\mu_a}$的唯一性，我们知道$\alpha(Y)(\mu_a)=a$. 反过来，不难验证$\beta(Y)(h_\mu(*))=\mu$. 实际上，令$\beta(Y)(h_\mu(*))=\lambda$，则$\lambda(i)=p(i)(h_\mu(*))=h(i)(*)=\mu(i)$. 所以$\lambda=\mu$. 综上，$\alpha(Y)$和$\beta(Y)$互逆。
-
-	最后，可以直接检验$\alpha(Y)$和$\beta(Y)$是自然变换。
-\end{proof}
-
-极限很好地抽象了许多有用的概念，我们列一些在下面。
-
-\begin{para}[终对象与始对象]
-没有对象以及态射的范畴，我们记作$\varnothing$. 考虑任意范畴$\mathcal{C}$，$\mathcal{C}$中$\varnothing$-图的极限就是所谓的\idx{终对象}. 对偶地，有\idx{始对象}。由极限的唯一性，可知一个范畴中终对象和始对象在同构意义下是唯一的。
-
-如果用泛性质来表述：若$X\in \mathcal{C}$满足任意的$Y\in \mathcal{C}$都有唯一的态射$Y\to X$，则称$X$是一个终对象。反过来，如果任取$Y\in \mathcal{C}$都有唯一的态射$X\to Y$，则称$X$是一个始对象。
-
-如果一个对象即是始对象又是终对象，则称它是一个零对象。零对象往往会记作$0$，从零对象出发或者到零对象的唯一态射也会被记作$0$.
-
-始对象和终对象是不一定存在的，比如在域构成的范畴中，没有始对象与终对象。在集合范畴，始对象是任意单点集，而终对象是空集。在左$R$-模范畴中，零模$0$是零对象。
-\end{para}
-
-\begin{para}[积与余积]
-设$I$是一个集合，如果附加上所有的恒等态射，则$I$构成一个范畴。考虑任意范畴$\mathcal{C}$，此时$\mathcal{C}$中$I$-图的极限就是所谓的\idx{积}. 对偶地，有\idx{余积}。由极限的唯一性，可知一个范畴中积和余积在同构意义下是唯一的。如果$I$是一个空集，则积变成终对象，而余积变成始对象。
-
-考虑一个$I$-图$D$，$D(i)=D_i\in \mathcal{C}$，此时积往往记作$\prod_{i\in I} D_i$，对应着还有投影态射$p_i:\prod_{i\in I} D_i\to D_i$. 它可以用泛性质重新表示如下：设$X$是$\mathcal{C}$中的一个对象，他到每一个$D_i$都有一个态射$f_i$，则存在唯一的态射$f:X\to \prod_{i\in I} D_i$使得分解$p_if=f_i$对$i\in I$都成立。余积的泛性质也类似。
-
-显然，集合的直积是一个积。
-
-如果$I$是一个$n$元素集，则称$I$-图的极限为$n$元积。它们统称为有限积。有限积记作$X_1\times \cdots \times X_n$的形式。显然，存在二元积，就存在任意的有限积，为此，只需要检查$X_1\times (X_2\times (X_3 \times \cdots (X_{n-1}\times X_n)))$满足泛性质即可。
-\end{para}
-
-\begin{para}[等值子与余等值子]
-考虑$\mathcal{J}$是这样一个范畴，它有两个对象，除了自己到自己的恒等态射外，两个对象之间还有同向的两个态射，我们记作$\xymatrix{\cdot\ar@<0.3ex>[r] \ar@<-0.3ex>[r]&\cdot}$. 设$D:\mathcal{J}\to\mathcal{C}$是一个协变函子，他将两个态射变为$f$, $g:X\to Y$，于是在$\mathcal{C}$中关于$J$-图$D$的极限就是对象$\mathrm{eq}(f,g)$以及态射$i:\mathrm{eq}(f,g)\to X$，满足：$fi=gi$，任取对象$A\in \mathcal{C}$以及态射$p:A\to X$使得$fp=gp$，则存在唯一的态射$h:A\to \mathrm{eq}(f,g)$使得下面的交换图成立：
-\[
-\begin{xy}
-	\xymatrix{
-		\mathrm{eq}(f,g)\ar[r]^-{i}&X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\\
-		A\ar@{.>}[u]^-{h}\ar[ur]_-{p}
-	}
-\end{xy}
-\]
-
-集合范畴的等值子很简单，设$f$, $g:X\to Y$是两个映射，则$\mathrm{eq}(f,g)=\{x\in X\,:\, f(x)=g(x)\}$. 不难检验，对于模范畴，$0$可以看成任意两个模之间的同态（比如看作左乘$0$），此时$\ker(f)=\mathrm{eq}(f,0)$. 
-
-对偶地，可以定义余等值子，它使得如下交换图成立
-\[
-\begin{xy}
-	\xymatrix{
-		X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\ar[r]^-{\pi}\ar[dr]_-{q}&\mathrm{coeq}(f,g)\ar@{.>}[d]^-{h}\\
-		&&A
-	}
-\end{xy}
-\]
-类似地，在模范畴里面，$\coker(f)=\mathrm{coeq}(f,0)$.
-\end{para}
-
-\begin{para}[纤维积]
-另一个极限的例子如下。考虑范畴$\mathcal{J}=\cdot \to \cdot \leftarrow \cdot$，即$\mathcal{J}$只有三个对象，除去恒等态射外，剩下的还有两边指向中间的态射。那么$\mathcal{J}$-图$X\xrightarrow{f} Z \xleftarrow{g} Y$的极限$X\times_Z Y$用泛性质表述就是如下交换图
-\[
-\begin{xy}
-	\xymatrix{
-		A\ar@/_/[rdd]\ar@/^/[drr]\ar@{.>}[dr]&&\\
-		&X\times_Z Y\ar[d]_{\pi_2}\ar[r]_{\pi_1}&X\ar[d]^f\\
-		&Y\ar[r]_g&Z
-	}
-\end{xy}
-\]
-这样的极限$X\times_Z Y$，被称为$X$, $Y$关于$Z$的\idx{纤维积}，或者叫\idx{拉回}。
-
-如果$X=Y$，则我们回到了等值子的情况。假设$X$, $Y$和$Z$都是集合，不难检验，$X\times_Z Y=\{(x,y)\in X \times Y\,:\,f(x)=g(y)\in Z\}$. 于是若$Z$是单点集，则$X\times_Z Y=X\times Y$，若$X$和$Y$的子集，它们到$Z$都是标准的含入映射，则$X\times_Z Y=X\cap Y$.
-\end{para}
-
-下面几个引理试图给出以上几个特殊极限之间的关系。
-
-\begin{lem}
-如果范畴$\mathcal{C}$中二元积与等值子总存在，则在该范畴中纤维积也总存在。
-\end{lem}
-
-\begin{proof}
-考虑$X\xrightarrow{f} Z \xleftarrow{g} Y$, $X\xleftarrow{p_X}X\times Y\xrightarrow{p_Y} Y$. 将$X\times_Z Y$定义为映射$fp_X$, $gp_Y: X\times Y\to Z$的等值子即可。
-\end{proof}
-
-\begin{lem}
-如果范畴$\mathcal{C}$中纤维积与终对象总存在，当且仅当在该范畴中有限积和等值子总存在。
-\end{lem}
-
-\begin{proof}
-从右往左从上一个引理是清楚的。现在只需要证从左往右的部分。终对象方便起见我们记作$0$，然后定义$X\times Y=X\times_0 Y$. 有了二元积和终对象，则所有的有限积也都存在了。
-
-最后，考虑$f$, $g:X\to Y$. 连同$\id_X$和$\id_Y$，由积的泛性质，存在唯一的态射$\id_X\times f:X \to X\times Y$以及$\id_X\times g:X \to X\times Y$. 最后，考虑它们的纤维积
-\[
-\begin{xy}
-	\xymatrix{
-	X\times_{X\times Y} X\ar[d]_{\pi_2}\ar[r]^-{\pi_1}&X\ar[d]^{\id_X\times f}\\
-	X\ar[r]_{\id_X\times g}& X\times Y
-	}
-\end{xy}
-\]
-$X\times_{X\times X} Y$即我们所求的等值子。实际上，
-\[
-	\pi_1=\id_X\pi_1=p_1(\id_X\times f)\pi_1=p_1(\id_X\times g)\pi_2=\pi_2,
-\]
-\[
-	f\pi_1=p_2(\id_X\times f)\pi_1=p_2(\id_X\times g)\pi_2=g\pi_2=g\pi_1.
-\]
-再由纤维积的泛性质就给出了等值子的泛性质。
-\end{proof}
-
-\begin{para}
-一个范畴中，如果对象与态射都是有限的，则称这个范畴是有限范畴。有限范畴的图的极限被称为有限极限。如果一个范畴中任意（有限）极限都存在，则称这个范畴是（有限）完备的。
-\end{para}
-
-下一个定理告诉我们，只需要积和等值子这俩个特殊的极限存在，则任意极限都存在。
-
-\begin{thm}
-设$\mathcal{C}$是一个范畴，则以下命题等价：
-\begin{compactenum}[~~~~(1)]
-\item $\mathcal{C}$是（有限）完备的。
-\item $\mathcal{C}$中的（有限）积与等值子总存在。
-\end{compactenum}
-\end{thm}
-
-在有限完备的情况下，第二点可以替换为存在任意纤维积与终对象。
-
-\section{准加性范畴与正合列}
-
-\begin{para}
-设$\mathcal{C}$是一个范畴，如果函子$\mathcal{C}(-,*)$是一个从$\mathcal{C}^\text{op}\times \mathcal{C}$到交换群范畴$\mathsf{Ab}$的函子，则称范畴$\mathcal{C}$是一个准加性范畴，有些时候也叫做$\mathsf{Ab}$-范畴。模范畴显然是一个准加性范畴。
-
-对于准加性范畴$\mathcal{C}$，$\mathcal{C}(X,Y)$是一个交换群，交换群的运算我们一如既往写作加法。这就意味着，在$\mathcal{C}(X,Y)$中至少存在一个零元，我们称为零态射，统统记作$0$. 注意，此时$0$的定义域和值域需要看语境确定。
-
-同时，任取$f:Y_1\to Y_2$，则$\mathcal{C}(X,f):\mathcal{C}(X,Y_1)\to \mathcal{C}(X,Y_2)$是一个交换群同态。因此，$f(g+h)=fg+fh$. 同理，右复合也满足这样的“分配律”。应用到零元上，我们有$f0=0$以及$0f=0$.
-\end{para}
-
-注意，虽然这里的零态射总是似乎在暗示我们存在一个零对象，可事实并非如此。考虑域的范畴，他显然是一个准加性范畴，但却没有零对象。
-
-如果准加性范畴$\mathcal{C}$中有一个零对象$0$，则对任意的$X$, $Y\in\mathcal{C}$，我们都有唯一的态射$0': X\to 0 \to Y$. 很自然的想法是$0=0'$，即零态射是相同的，而这也是正确的。实际上，由于$\mathcal{C}(X,0)$是单点集，此时$0=0':X\to 0$. 因此$0':X\xrightarrow{0'=0} 0\xrightarrow{0'}Y$给出了$0'=0'0=0$.
-
-\begin{para}
-在准加性范畴$\mathcal{C}$中，定义$\ker(f)=\mathrm{eq}(f,0)$以及$\coker(f)=\mathrm{coeq}(f,0)$. 注意到，作为极限或者余极限，实际上，除了对象外，还有一个态射。比如，对$f:M\to N$有一个态射$\pi_f:N\to \coker(f)$，这是构成余核的一个资料。再比如，对于$\ker f$，就有一个态射$i_f:\ker f\to M$. 因此，谈论两个核是同构的时候，不应只认为存在同构$\varphi:\ker(f)_1\to \ker(f)_2$，还应把极限包含的态射拿进来一起看，即满足如下交换图
-\[
-\begin{xy}
-	\xymatrix{
-	\ker(f)_1\ar[d]_{\varphi}\ar[r]^{i_1} &X\\
-	\ker(f)_1\ar[ru]^{i_1}
-	}
-\end{xy}
-\]
-余核也是类似的。
-
-作为例子，设$0:X\to Y$是零态射，通过直接验证泛性质，可知$\ker(0)=X$以及$i_0=\id_X$.
-\end{para}
-
-在准加性范畴中，核与余核与单态满态联系密切。
-
-\begin{lem}
-设$\mathcal{C}$是一个准加性范畴，而$f:X\to Y$是其中的一个态射，如果$\ker f$存在，则$i_f:\ker f\to X$是一个单态。对偶地，如果$\coker f$存在，则$\pi_f:Y\to\coker(f)$是一个满态。
-\end{lem}
-
-\begin{proof}
-对偶的论断是对偶原理保证的。任取$g_1$, $g_2:Z\to \ker(f)$，对$i_fg_1=i_fg_2=k:Z\to X$，由$\ker$的泛性质，存在唯一的态射$g:Z\to \ker(f)$使得分解$i_fg_1=i_fg_2=i_fg$成立。由分解的唯一性，则$g_1=g=g_2$.
-\end{proof}
-
-\begin{lem}
-设$\mathcal{C}$是一个准加性范畴，且存在零对象$0$. 如果$0:X\to Y$是一个单态，则$X=0$. 如果$0:X\to Y$是一个满态，则$Y=0$.
-\end{lem}
-
-\begin{proof}
-由$0\id_X =00=0$，单态的左可消性保证了第一点。由$\id_Y =00=0$，满态的右可消性保证了第二点。
-\end{proof}
-
-\begin{para}
-再一个抽象的例子，考察复合态射的核。设$f:X\to Y$以及$g:Y\to Z$是两个态射，那么按照在模范畴中的直觉，应当有一个单同态$h:\ker(f)\hookrightarrow \ker(gf)$. 放到范畴里，这也是正确的，只不过应该把单同态改成单态。存在性是由$\ker(gf)$的泛性质保证的，并且成立分解$i_f=i_{gf}h$，如果$hk_1=hk_2$，则$i_fk_1=i_fk_2$，因为$i_f$是单态，所以$k_1=k_2$. 于是$h$是单态。
-\end{para}
-
-\begin{para}
-类比熟知的$\coker f$的定义$N/\im f$，可以定义$\im f=\ker\left(\pi_f\right)$. 
-
-为使得这个定义是良定的，我们需要证明选取不同的$\pi_f$，我们将得到同构的$\im f$. 为此，如果选取不同的$\pi_1$和$\pi_2$，则我们存在同构$\psi$使得$\pi_2=\psi\pi_1$. 由上一段，可知存在单态$h:\ker(\pi_1)\hookrightarrow \ker(\pi_2)$，同理$\pi_1=\psi^{-1}\pi_2$给出了单态$k:\ker(\pi_2)\hookrightarrow \ker(\pi_1)$，直接的验证将给出$h$和$k$是互逆的一对态射。这就是我们需要的同构。
-\end{para}
-
-由于$\pi_f f=0$，所以由$\ker$的泛性质，我们得到了唯一的态射$M\to \im f$，这个态射往往依旧记作$f$.
-
-\begin{pro}
-设$\mathcal{C}$是一个准加性范畴，如果$\mathcal{C}$中含有零对象$0$，则
-\begin{compactenum}[~~~(1)]
-\item $f:X\to Y$是一个单态当且仅当$\ker(f)=0$.
-\item $f:X\to Y$是一个满态当且仅当$\coker(f)=0$.
-\end{compactenum}
-\end{pro}
-
-\begin{proof}
-只证第一个，第二个是类似的。如果$f:X\to Y$是一个单态，考虑任意的$fg=0$，由于$f$是单态，所以$fg=0=f0$给出了$g=0$. 由此，不难检验$0$满足核的泛性质。
-
-反过来，如果$\ker(f)=0$. 假设$fg_1=fg_2$或等价的$fh=f(g_1-g_2)=0$，其中$h=g_1-g_2$. 由于$\ker(f)=0$，由核的泛性质，存在唯一的态射$k$使得分解$h=0k$成立，于是$h=0$.
-\end{proof}
-
-% \para 设$R:\mathcal{C}\to \mathcal{D}$与$L:\mathcal{D}\to \mathbb{C}$是一对伴随函子，其中$R$是右伴随函子，而$L$是左伴随函子。此外，假设$\mathcal{C}$与$\mathcal{D}$中都有零对象$0$，并且假设$R(0)=0$以及$L(0)=0$对零对象与零态射都成立。由于右伴随函子与极限可交换，所以$R\mathrm{eq}(f,0)\cong \mathrm{eq}(Rf,0)$，或者说$R(\ker f)\cong \ker(Rf)$. 对偶地，$L(\coker g)\cong \coker(Lg)$.
-
-首先回顾正合列的相关知识，我们这里从左$R$-模范畴中的正合列开始。若有一族同态$f_i:A_i\to A_{i+1}$满足$\im f_i=\ker f_{i+1}$，则列
-\[
-	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
-\]
-被称为正合的。
-
-% \para 在模范畴里面，如果把核看成子模，核是唯一的：设$f:M\to N$是左$R$-模范畴的同态，$(\ker f,i)$显然是它的核，其中$i:\ker f\hookrightarrow M$. 类似地，如果有另一个核$(P,j)$，其中$P$是$M$的一个子模且$j:P\hookrightarrow M$. 由泛性质，存在唯一的同态$g:\ker f\to P$使得$j=ig$以及同态$h:P\to \ker f$使得$i=jh$. 任取$m\in \ker f$，可知$j(m)=i(g(m))=m\in M$，所以$g(m)=m\in M$，于是$g$就是普通的含入映射，进而$\ker f\subset P$，同理$P\subset \ker f$，所以$\ker f = P$以及$i=j$.
-
-% \para 设$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子，范畴$\mathcal{C}$和$\mathcal{D}$中有零对象且任意态射的核与余核存在，此外$R$将零对象映成零对象，于是他也将零态射映射零态射。取$f:X\to Y$，因为$R$与$\ker$（作为极限）可以交换，所以$R(\im f)=R(\ker \pi_f)\cong \ker(R(\pi_f))$，其中$R(\pi_f):R(M)\to R(\coker(f))$. 另一方面，$\im(Rf)=\ker\left(\pi_{Rf}\right)$. 因此，考虑$\pi_{Rf}$与$R(\pi_{f})$的关系是有趣的。
-
-% 由于交换图$\xymatrix{R(X)\ar@<0.3ex>[r]^{Rf} \ar@<-0.3ex>[r]_0&R(Y)\ar[r]-^{R(\pi_{f})}&R(\coker(f))}$成立，所以存在一个态射
-% \[
-% 	h:\coker(\pi_{R(f)})\to R(\coker(f))
-% \]
-% 使得分解$R(\pi_{f})=h\pi_{Rf}$成立，于是存在单态$\ker(\pi_{Rf})\hookrightarrow \ker(R(\pi_{f}))$，或者说存在单态$\im(Rf)\hookrightarrow R(\im f)$. 
-
-\begin{pro}
-设$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$是一列左$R$-模的正合列，则函子$\Hom_R(N,-)$将给出$\mathbb{Z}$-模的正合列
-\[
-	0\to \Hom_R(N,M_1)\xrightarrow{(f_1)_*} \Hom_R(N,M_2)\xrightarrow{(f_2)_*} \Hom_R(N,M_3).
-\]
-\end{pro}
-
-\begin{proof}
-	首先，由于$0$是终对象，所以$\Hom_R(N,0)=0$，于是上面的列成立，且$f_2f_1=0$给出了$(f_2)_*(f_1)_*=(f_2f_1)_*=0_*=0$. 所以$\im ((f_1)_*)\subset \ker ((f_2)_*)$. 任取$g_1$, $g_2\in \Hom_R(N,M_1)$，$(f_1)_*(g_1)=(f_1)_*(g_2)$等价于$f_1g_1=f_1g_2$，由于$f_1$是单态，$g_1=g_2$，于是$(f_1)_*$是单射。最后只要检验$\ker ((f_2)_*)\subset \im ((f_1)_*)$. 任取$g\in \Hom_R(N,M_2)$使得$(f_2)_*g=f_2g=0$. 任取$n\in N$，$f_2(g(n))=0$给出$g(n)\in \ker(f_2)=\im(f_1)$，于是$g(N)\subset \im(f_1)$，由于$f_1:M_1\to \im(f_1)$是单同态，所以有同态$i=f_1^{-1}g\in \Hom_R(N,M_1)$使得$g=(f_1)_*(i)\in \im ((f_1)_*)$.
-\end{proof}
-
-\begin{pro}
-如果$R$是一个从左$R$-模范畴到左$S$-模范畴的右伴随函子，对对象有$R(0)=0$，于是对态射有$R(0)=0$. 则对正合列$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$，他将诱导一个正合列
-\[
-	0\to R(M_1)\xrightarrow{R(f_1)} R(M_2)\xrightarrow{R(f_2)} R(M_3).
-\]
-\end{pro}
-
-\begin{proof}
-	我们首先证明$R(f_1)$是一个单同态，或者说$\ker(R(f_1))=0$. 由于$\ker$是一种极限，右伴随函子与它可以交换，所以$\ker(R(f_1))\cong R(\ker f_1)=0$. 因此$R(f_1)$是一个单同态。粗略来说，右伴随函子把单同态变成单同态。于是考虑模$M$与它的子模$P$以及$i:P\hookrightarrow M$，于是单同态$R(i):R(P)\hookrightarrow M$就可以将$R(P)$看作$R(M)$的子模，当然更准确地说法是，我们有同构$R(i):R(P)\to R(i)(R(P))$. 
-
-	现在设$f:M\to N$是一个普通的模同态，由于$R(i)\left(R(\ker f)\right)$与$\ker (R(f))$同构，于是他们都是$R(f)$的核，以及都是$R(M)$的子模，所以$R(i)\left(R(\ker f)\right)= \ker (R(f))$，或者说$R(i)$是$R(\ker f)$到$\ker(R(f))$的同构。
-
-	最后，只要检验$\ker (R(f_2))=\im (R(f_1))$即可。由于$\ker f_2=\im f_1$，所以$R(\ker f_2)=R(\im f_1)$，因此存在同构$R(k):R(\im f_1)\to \ker (Rf_2)$.
-
-	任取$a\in R(M_2)$使得$R(f_2)(a)=0$，由于存在唯一的$b\in R(\ker f_2)$使得$R(i)(b)=a$
-\end{proof}
-
-\section{模范畴中的极限与余极限}
-
-\para 首先介绍模范畴里的积，他被称为直积。下面重新描述一下泛性质：设$\{M_i\,:\, i\in I\}$是一族左$R$-模，则存在一个左$R$-模$M$以及一族同态$\pi_i:M\to M_i$使得，如果存在另一个模$N$和一族同态$\rho_i:N\to M_i$，那么就唯一存在同态$\rho:N\to M$使得分解$\rho_i:N\xrightarrow{\rho} M \xrightarrow{\pi_i} M_i$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直积，而$\pi_i$被称为典范投影，通常将$M$记作$\prod_{i\in I}M_i$. 
+\begin{para}[直积]
+首先介绍模范畴里的积，他被称为直积。下面重新描述一下泛性质：设$\{M_i\,:\, i\in I\}$是一族左$R$-模，则存在一个左$R$-模$M$以及一族同态$\pi_i:M\to M_i$使得，如果存在另一个模$N$和一族同态$\rho_i:N\to M_i$，那么就唯一存在同态$\rho:N\to M$使得分解$\rho_i:N\xrightarrow{\rho} M \xrightarrow{\pi_i} M_i$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直积，而$\pi_i$被称为典范投影，通常将$M$记作$\prod_{i\in I}M_i$. 
 
 存在性的证明是简单的，考虑$\{M_i\,:\, i\in I\}$作为集合的直积，很容易检验它有一个$R$-模结构，且投影是同态。更详细的检查这里就略去了。
+\end{para}
 
-\para 对偶地，这里描述一下模范畴里的余积，他就是直和。设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 
+结合零对象与直积的存在性，现在可以断言，模范畴是一个加性范畴。
 
-直和存在性的构造并不如同直积那么容易。我们考虑$\{M_i\,:\, i\in I\}$的形式和$M$，即
+\begin{para}[直和]
+对偶地，这里描述一下模范畴里的余积，他就是直和。设$\{M_i\,:\, i\in I\}$是一族$R$-模，则存在一个$R$-模$M$以及一族同态$\pi_i:M_i\to M$使得，如果存在另一个模$N$和一族同态$\rho_i:M_i\to N$，那么就唯一存在同态$\rho:M\to N$使得分解$\rho_i:M_i\xrightarrow{\pi_i} M \xrightarrow{\rho} N$成立对任意的$i\in I$都成立。这样的一个模$M$被称为$\{M_i\,:\, i\in I\}$的直和，而$\pi_i$被称为典范内射，通常将$M$记作$\bigoplus_{i\in I}M_i$. 
+\end{para}
+
+\begin{pro}
+	模范畴中的任意直和都存在。
+\end{pro}
+
+\begin{proof}
+我们考虑$\{M_i\,:\, i\in I\}$的形式和$M$，即
 \[
 	M=\left\{\sum_{i\in I} a_i m_i\,:\, m_i\in M_i\right\},
 \]
@@ -376,104 +52,60 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 	\rho(m)=\sum_i a_i \rho_i(m_i),
 \]
 求和是有限求和因为$a_i$只有有限项非零。有了构造，泛性质的检验就是直接的了。
+\end{proof}
 
-由构造，有限直和与有限直积在模范畴里面是等价的。考虑两个$R$-模$M_1$和$M_2$，那么$M_1$可以看成$M_1\oplus M_2$的子模，通过$m\to (m,0)$. 反过来，设$M_1$和$M_2$是一个模$M$的两个子模，则我们有如下短正合列
+由构造，有限直和与有限直积在模范畴里面是等价的。实际上，这直接来自于模范畴是一个加性范畴。
+
+\begin{para}
+考虑两个$R$-模$M_1$和$M_2$，那么$M_1$可以看成$M_1\oplus M_2$的子模，通过$m\to (m,0)$. 反过来，设$M_1$和$M_2$是一个模$M$的两个子模，则我们有如下短正合列
 \[
 	0\to M_1\cap M_2 \xrightarrow{\mu} M_1\oplus M_2\xrightarrow{\nu} M_1+M_2\to 0,
 \]
 其中$\mu:m\mapsto (m,m)$，$\nu:(m_1,m_2)\mapsto m_1-m_2$. 所以在$M_1\cap M_2=\{0\}$的时候，我们有同构$\nu: M_1\oplus M_2\to M_1+M_2$. 如果$M_1+M_2=M$，那么就是有同构$M\cong M_1\oplus M_2$.
+\end{para}
 
-\para 注意到交换群为$\zz$-模，所以我们也证明了交换群有直和与直积。
+% \para 注意到交换群为$\zz$-模，所以我们也证明了交换群有直和与直积。
 
-\para 前面已经看到，左$R$-模范畴内，$\ker(f)=\mathrm{eq}(f,0)$以及$\coker(f)=\mathrm{coeq}(f,0)$，存在性都是清楚的。更一般地，设$f$, $g:M\to N$是两个模同态，则
+\begin{para}[核与余核]
+左$R$-模范畴内，设$f:M\to N$，不难检验
 \[
-	\mathrm{eq}(f,g)=\ker(f-g)
+	\ker(f)=f^{-1}(0)\subset M,
 \]
-就是等值子，而
+作为核自带的态射取作典范含入同态$i:\ker(f)\to M$.
+
+同样，不难检验
 \[
-	\mathrm{coeq}(f,g)=\coker (f-g)
+	\coker(f)=N/f(M).
 \]
-就是余等值子。
+作为余核自带的态射取作典范商同态$\pi:N\to N/f(M)$.
+\end{para}
+
+于是，在模范畴中，任意的等值子与余等值子都存在。同时，由于模范畴是准加性的，单态等价于$\ker(f)=0$，由$\ker$的构造，这又等价于$f$是单射。同样，可以检验，满态等价于满射。
 
 \begin{thm}
-在左$R$-模范畴，任意的极限与余极限存在。 \notprove
+左$R$-模范畴是完备与余完备的，即任意的极限与余极限存在。
 \end{thm}
 
-\section{偏序集上的极限}
+这直接来自于Theorem \ref{wanbei}, \ref{yuwanbei}.
 
-\para 回忆一下偏序集，设$I$是一个偏序集，偏序关系为$\leq$，那么通过定义态射
+\begin{thm}
+左$R$-模范畴是Abel范畴。
+\end{thm}
+
+\begin{proof}
+我们需要验证任意单态都是$\ker$，而任意满态都是$\coker$. 这并不困难，设$f:M\to N$是单的，记$\pi:N\to N/f(M)$是商同态，则$f=\ker(\pi)$. 实际上，考虑交换图
 \[
-	{I}\left(x,y\right)=\begin{cases}
-	(x,y)&\text{, if }x\leq y\text{;}\\
-	\varnothing&\text{, otherwise}.
-	\end{cases}
-\]
-则$I$是一个小范畴，如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^{\mathrm{op}}$.
-
-$D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
-
-对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^{\mathrm{op}} :I^{\mathrm{op}}\to \mathcal{C}$通过$D^{\mathrm{op}}(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^{\mathrm{op}}(j\geq i)\circ D^{\mathrm{op}}(k\geq j)=D^{\mathrm{op}}(k\geq i)$，可见这确实是一个协变函子。
-
-\para 设$I$是一个指标集，即只存在关系$x\leq x$. 此时构成的$I$-图的极限称为\idx{积}（\idx{product}），余极限称为\idx{余积}（\idx{coproduct}）。前面提到过的集合的直积就是一种积。
-
-\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^{\mathrm{op}}$就是定向的（滤相的），反之亦然。所以下面的讨论，将固定$I$是一个滤相偏序集，而$I^{\mathrm{op}}$则是一个定向偏序集。
-
-作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
-
-\para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个{逆系统}（{定向系统}）。对偶地，如果$D$是反变函子，那么$I^{\mathrm{op}}$-图$D^{\mathrm{op}}$是定向系统（逆系统）。
-
-逆系统一般谈论极限${\varprojlim}_{i\in I} D(i)$，而定向系统一般谈论${\varinjlim}_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
-\[
+\begin{xy}
 	\xymatrix{
-		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-		D(i)&&D(i)\\
-		&D(k)\ar[ul]^{D(k\leq i)}\ar[ur]_{D(k\leq j)}&
+		M\ar[r]^-{f}&N\ar@<0.3ex>[r]^-{\pi} \ar@<-0.3ex>[r]_-{0}&N/f(M)\\
+		X\ar@{.>}[u]^-{h}\ar[ur]_-{g}
 	}
-	\quad
-% \xymatrix{
-% 	&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-% 	D(i)\ar[dr]_{D(i\leq k)}&&D(i)\ar[dl]^{D(j\leq k)}\\
-% 	&D(k)&
-% }
-	\xymatrix{
-		&A &\\
-		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(i)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
-		&D(k)\ar[uu]_{\mu_{k}}&
-	}
+\end{xy}
 \]
-左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
+我们只需要构造$h:X\to M$即可。取$x\in X$，由于$\pi (g(x))=0\in N/f(M)$，所以$g(x)\in f(M)$. 定义$h(x)=f^{-1}(g(x))$，不难检验这是一个同态。最后，设$h'$也满足上图的分解，则$f(h'(x))=f(h(x))$，由$f$是单的，$h'=h$，所以分解唯一。
 
-\para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
-
-在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$. 同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
-
-更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
-
-\begin{pro}
-设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且${\varprojlim}_{i\in I} D(i)={\varprojlim}_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^{\mathrm{op}} $存在一个与其共尾的子集$J^{\mathrm{op}} $，则$J$-图$D$是一个定向系统，且${\varinjlim}_{i\in I} D(i)={\varinjlim}_{i\in J} D(i)$. \notprove
-\end{pro}
-
-所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的余极限。这符合我们上面的直观。
-
-\para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
-\[
-	{X}(U,V)=\begin{cases}
-	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
-	\varnothing&\text{, otherwise}.
-	\end{cases}
-\]
-
-考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限${\varinjlim}_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in \mathfrak{B}} U$.
-
-同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。但它的极限${\varprojlim}_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
-
-\para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
-
-由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^{\mathrm{op}}$-图$\calf^{\mathrm{op}}$是定向系统，进而我们会考虑余极限
-\[
-	{\varinjlim}_{U\in \mathfrak{B}^{\mathrm{op}}} \calf^{\mathrm{op}}(U)={\varinjlim}_{U\in \mathfrak{B}^{\mathrm{op}}} \calf(U),
-\]
-如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.
+同理，如果$f:M\to N$是满射，考虑自然的含入同态$i:\ker(f)\hookrightarrow M$，不难检验$f=\coker(i)$.
+\end{proof}
 
 \section{自由对象}
 

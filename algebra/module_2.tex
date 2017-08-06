@@ -55,11 +55,13 @@
 
 准素子模的重要性来自于下面这个定理，他被称为准素分解。
 
-\theo 设$R$是Noether环，$M$是有限生成$R$-模，如果$N$是$M$的一个真子模，那么他是有限个准素子模的交。
+\begin{thm}
+设$R$是Noether环，$M$是有限生成$R$-模，如果$N$是$M$的一个真子模，那么他是有限个准素子模的交。
+\end{thm}
 
-\proof
-	由于Noether环上的有限生成模是Noether模，回忆Proposition \eqref{irrde}，$N$可以写成$M$中的有限个不可约子模的交的形式，而每一个不可约子模都是准素子模。
-\qed
+\begin{proof}
+由于Noether环上的有限生成模是Noether模，回忆Proposition \ref{irrde}，$N$可以写成$M$中的有限个不可约子模的交的形式，而每一个不可约子模都是准素子模。
+\end{proof}
 
 \section{主理想整环上的有限生成模}
 
@@ -77,21 +79,23 @@
 
 如果$\varphi:R\to S$是一个满同态，如果将$S$看成$R$-代数，则$\varphi(r)=r\cdot 1$，于是从上面的构造有$d(r\cdot 1)=rd(1)=0$，所以此时$\Omega_{S/R}=\{0\}$.
 
-\pro 给定环$R$和$R$-代数$S$，则存在一个$S$-模$\Omega_{S/R}$和一个$R$-线性的导子$d:S\to R$使得任意的$S$-模$M$与$R$-线性导子$\delta: S\to M$都存在唯一的$R$-线性映射$\varphi:\Omega_{S/R}\to M$使得分解
+\begin{pro}
+给定环$R$和$R$-代数$S$，则存在一个$S$-模$\Omega_{S/R}$和一个$R$-线性的导子$d:S\to R$使得任意的$S$-模$M$与$R$-线性导子$\delta: S\to M$都存在唯一的$R$-线性映射$\varphi:\Omega_{S/R}\to M$使得分解
 \[
 	\delta:S\xrightarrow{d}\Omega_{S/R}\xrightarrow{\varphi}M
 \]
 成立。
+\end{pro}
 
-\proof
-	考虑集合$\{d(f)\,:\, f\in S\}$生成的自由$S$-模$M$，再考虑其中由
+\begin{proof}
+考虑集合$\{d(f)\,:\, f\in S\}$生成的自由$S$-模$M$，再考虑其中由
 	\[
 	d(fg)-fd(g)-gd(f),\quad d(rf)-rd(f),\quad d(f+g)-d(f)-d(g)
 	\]
 	生成的子模$N$，于是$\Omega_{S/R}$就被构造为$M/N$，而$d:f\mapsto d(f)$很容易检验这是一个$R$-线性导子。
 
 	泛性质的检验从构造是简单的。
-\qed
+\end{proof}
 
 今后，$d(f)$的括号不产生理解上的差异的时候会略去记成$df$. 上面定义的模就被称为$S$的微分模。由泛性质，微分模在同构意义下唯一。
 
@@ -164,15 +168,17 @@ $R\to S\to T$的情况。
 \]
 其中$D:f\mapsto 1\otimes df$. 下面我们证明这还是正合列。
 
-\pro 设$R\to S\to T$是三个环，并且$\pi:S\to T$是满同态，记$I=\ker\pi$，我们有正合列
+\begin{pro}
+设$R\to S\to T$是三个环，并且$\pi:S\to T$是满同态，记$I=\ker\pi$，我们有正合列
 \[
 	I/I^2\xrightarrow{D} T\otimes_S\Omega_{S/R}\xrightarrow{\varphi} \Omega_{T/R}\to 0,
 \]
 其中$D:f\mapsto 1\otimes df$，以及$\varphi:1\otimes df\mapsto df$.
+\end{pro}
 
-\proof
-	只要求$\ker \varphi$. 由于$T\otimes_S\Omega_{S/R}$由$\{1\otimes_S ds\,:\,s\in S\}$张成，并且，由于$S\to T$是满同态，所以$\Omega_{T/R}$由$\{ds\,:\,s\in S\}$张成。于是$\varphi$将生成元$1\otimes_S ds$变成生成元$ds$，并且$T\otimes_S\Omega_{S/R}$和$\Omega_{T/R}$满足相同的Leibniz法则和$R$-线性性，所以$\ker \varphi$由那些$1\otimes ds\neq 0$张成，其中$ds=0\in\Omega_{T/R}$，如果$1\otimes ds\neq 0$，则只可能$s\in I$. 此时$1\otimes ds=Ds\in\im D$，所以$\ker\varphi=\im D$. 
-\qed
+\begin{proof}
+只要求$\ker \varphi$. 由于$T\otimes_S\Omega_{S/R}$由$\{1\otimes_S ds\,:\,s\in S\}$张成，并且，由于$S\to T$是满同态，所以$\Omega_{T/R}$由$\{ds\,:\,s\in S\}$张成。于是$\varphi$将生成元$1\otimes_S ds$变成生成元$ds$，并且$T\otimes_S\Omega_{S/R}$和$\Omega_{T/R}$满足相同的Leibniz法则和$R$-线性性，所以$\ker \varphi$由那些$1\otimes ds\neq 0$张成，其中$ds=0\in\Omega_{T/R}$，如果$1\otimes ds\neq 0$，则只可能$s\in I$. 此时$1\otimes ds=Ds\in\im D$，所以$\ker\varphi=\im D$. 
+\end{proof}
 
 利用同构基本定理，上面的正合列给出了同构
 \[

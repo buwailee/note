@@ -1,20 +1,53 @@
 \chapter{模（一）}
 \ThisULCornerWallPaper{1}{../Pictures/7.png}
 
-设$M$和$N$都是左$R$-模，记$\Hom_R(M,N)$为所有左$R$-模同态的集合，如果$R$是清楚的，则可以简单记作$\Hom(M,N)$. $\Hom(M,N)$具有清楚的交换群结构，所以可以看成双边$\zz$-模，并且可以等同$fn=nf$，其中$f\in \Hom_R(M,N)$，而$n\in \zz$.
+\section{正合列}
 
-如果$M$是左$R$-模也是右$S$-模，而$N$是左$R$-模，那么任取$f\in \Hom_R(M,N)$以及$s\in S$，可以通过$(sf)(m)=f(ms)$定义出$\Hom_R(M,N)$上的一个左$S$-模结构。实际上，
+% \para 设$R:\mathcal{C}\to \mathcal{D}$与$L:\mathcal{D}\to \mathbb{C}$是一对伴随函子，其中$R$是右伴随函子，而$L$是左伴随函子。此外，假设$\mathcal{C}$与$\mathcal{D}$中都有零对象$0$，并且假设$R(0)=0$以及$L(0)=0$对零对象与零态射都成立。由于右伴随函子与极限可交换，所以$R\mathrm{eq}(f,0)\cong \mathrm{eq}(Rf,0)$，或者说$R(\ker f)\cong \ker(Rf)$. 对偶地，$L(\coker g)\cong \coker(Lg)$.
+
+首先回顾正合列的相关知识，我们这里从左$R$-模范畴中的正合列开始。若有一族同态$f_i:A_i\to A_{i+1}$满足$\im f_i=\ker f_{i+1}$，则列
 \[
-	((st)f)(m)=(s(tf))(m)=(tf)(ms)=f(mst)=f(m(st)).
+	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
 \]
-同样，如果$M$只是左$R$-模，但$N$是左$R$-模兼右$S$-模，那么任取$f\in \Hom_R(M,N)$以及$s\in S$，可以通过$(sf)(m)=f(m)s$定义出$\Hom_R(M,N)$上的一个右$S$-模结构。实际上
+被称为正合的。
+
+% \para 在模范畴里面，如果把核看成子模，核是唯一的：设$f:M\to N$是左$R$-模范畴的同态，$(\ker f,i)$显然是它的核，其中$i:\ker f\hookrightarrow M$. 类似地，如果有另一个核$(P,j)$，其中$P$是$M$的一个子模且$j:P\hookrightarrow M$. 由泛性质，存在唯一的同态$g:\ker f\to P$使得$j=ig$以及同态$h:P\to \ker f$使得$i=jh$. 任取$m\in \ker f$，可知$j(m)=i(g(m))=m\in M$，所以$g(m)=m\in M$，于是$g$就是普通的含入映射，进而$\ker f\subset P$，同理$P\subset \ker f$，所以$\ker f = P$以及$i=j$.
+
+% \para 设$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子，范畴$\mathcal{C}$和$\mathcal{D}$中有零对象且任意态射的核与余核存在，此外$R$将零对象映成零对象，于是他也将零态射映射零态射。取$f:X\to Y$，因为$R$与$\ker$（作为极限）可以交换，所以$R(\im f)=R(\ker \pi_f)\cong \ker(R(\pi_f))$，其中$R(\pi_f):R(M)\to R(\coker(f))$. 另一方面，$\im(Rf)=\ker\left(\pi_{Rf}\right)$. 因此，考虑$\pi_{Rf}$与$R(\pi_{f})$的关系是有趣的。
+
+% 由于交换图$\xymatrix{R(X)\ar@<0.3ex>[r]^{Rf} \ar@<-0.3ex>[r]_0&R(Y)\ar[r]-^{R(\pi_{f})}&R(\coker(f))}$成立，所以存在一个态射
+% \[
+% 	h:\coker(\pi_{R(f)})\to R(\coker(f))
+% \]
+% 使得分解$R(\pi_{f})=h\pi_{Rf}$成立，于是存在单态$\ker(\pi_{Rf})\hookrightarrow \ker(R(\pi_{f}))$，或者说存在单态$\im(Rf)\hookrightarrow R(\im f)$. 
+
+\begin{pro}
+设$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$是一列左$R$-模的正合列，则函子$\Hom_R(N,-)$将给出$\mathbb{Z}$-模的正合列
 \[
-	(fst)(m)=(fst)(m)=(fs)(m)t=f(m)st.
+	0\to \Hom_R(N,M_1)\xrightarrow{(f_1)_*} \Hom_R(N,M_2)\xrightarrow{(f_2)_*} \Hom_R(N,M_3).
 \]
+\end{pro}
 
-假设下面出现的环都是交换环，此时，每一个左$R$-模$M$，都可以通过$rf=fr$定义出一个右$R$-模结构而成为一个双边$R$-模，当$M$具有这样诱导的双边$R$-模结构时，我们简单称呼$M$是一个$R$-模。如果$M$和$N$都是$R$-模，上面的推理告诉我们，$\Hom_R(M,N)$也是一个$R$-模。
+\begin{proof}
+	首先，由于$0$是终对象，所以$\Hom_R(N,0)=0$，于是上面的列成立，且$f_2f_1=0$给出了$(f_2)_*(f_1)_*=(f_2f_1)_*=0_*=0$. 所以$\im ((f_1)_*)\subset \ker ((f_2)_*)$. 任取$g_1$, $g_2\in \Hom_R(N,M_1)$，$(f_1)_*(g_1)=(f_1)_*(g_2)$等价于$f_1g_1=f_1g_2$，由于$f_1$是单态，$g_1=g_2$，于是$(f_1)_*$是单射。最后只要检验$\ker ((f_2)_*)\subset \im ((f_1)_*)$. 任取$g\in \Hom_R(N,M_2)$使得$(f_2)_*g=f_2g=0$. 任取$n\in N$，$f_2(g(n))=0$给出$g(n)\in \ker(f_2)=\im(f_1)$，于是$g(N)\subset \im(f_1)$，由于$f_1:M_1\to \im(f_1)$是单同态，所以有同态$i=f_1^{-1}g\in \Hom_R(N,M_1)$使得$g=(f_1)_*(i)\in \im ((f_1)_*)$.
+\end{proof}
 
-除非在讨论$\Hom_R(M,N)$的结构时，将$M$和$N$只看成一个左$R$-模并不会有什么损失，我们将采用这种观点。
+\begin{pro}
+如果$R$是一个从左$R$-模范畴到左$S$-模范畴的右伴随函子，对对象有$R(0)=0$，于是对态射有$R(0)=0$. 则对正合列$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$，他将诱导一个正合列
+\[
+	0\to R(M_1)\xrightarrow{R(f_1)} R(M_2)\xrightarrow{R(f_2)} R(M_3).
+\]
+\end{pro}
+
+\begin{proof}
+	我们首先证明$R(f_1)$是一个单同态，或者说$\ker(R(f_1))=0$. 由于$\ker$是一种极限，右伴随函子与它可以交换，所以$\ker(R(f_1))\cong R(\ker f_1)=0$. 因此$R(f_1)$是一个单同态。粗略来说，右伴随函子把单同态变成单同态。于是考虑模$M$与它的子模$P$以及$i:P\hookrightarrow M$，于是单同态$R(i):R(P)\hookrightarrow M$就可以将$R(P)$看作$R(M)$的子模，当然更准确地说法是，我们有同构$R(i):R(P)\to R(i)(R(P))$. 
+
+	现在设$f:M\to N$是一个普通的模同态，由于$R(i)\left(R(\ker f)\right)$与$\ker (R(f))$同构，于是他们都是$R(f)$的核，以及都是$R(M)$的子模，所以$R(i)\left(R(\ker f)\right)= \ker (R(f))$，或者说$R(i)$是$R(\ker f)$到$\ker(R(f))$的同构。
+
+	最后，只要检验$\ker (R(f_2))=\im (R(f_1))$即可。由于$\ker f_2=\im f_1$，所以$R(\ker f_2)=R(\im f_1)$，因此存在同构$R(k):R(\im f_1)\to \ker (Rf_2)$.
+
+	任取$a\in R(M_2)$使得$R(f_2)(a)=0$，由于存在唯一的$b\in R(\ker f_2)$使得$R(i)(b)=a$
+\end{proof}
 
 \section{链条件}
 
