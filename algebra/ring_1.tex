@@ -617,26 +617,7 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 \[
 	k\subset \mathcal{F}(\Gal(K/k))\text{ and } S\subset \Gal(K/\mathcal{F}(S)).
 \]
-
-将上述关系抽象出来，设$S$和$T$是两个偏序集，并且存在两个映射$f:S\to T$以及$g:T\to S$满足
-\begin{compactenum}[~~~~(1)]
-\item 如果$s_1\leq s_2$，则$f(s_2)\leq f(s_1)$.
-\item 如果$t_1\leq t_2$，则$g(t_2)\leq g(t_1)$.
-\item $\,$$t\leq f(g(t))$以及$s\leq g(f(s))$.
-\end{compactenum}
-则称$S$和$T$之间存在一个Galois联络。
-
-以范畴的观点来看，第一个条件就是说$f:S^{\text{op}}\to T^{\text{op}}$是一个函子，第二个条件就是在说，$g:T^{\text{op}}\to S^{\text{op}}$是一个函子。不仅如此，第三点还说明这是一对伴随函子。
-
-\begin{pro}
-设$S$和$T$之间存在一个Galois联络，则$g(T)$和$f(S)$之间存在一一映射，具体写出来即$s\mapsto f(s)$，以及$t \mapsto g(t)$.
-\end{pro}
-
-\begin{proof} 
-	设$s=g(t)$，则$t\leq f(g(t))=f(s)$，所以$g(f(s))\leq g(t)=s$. 反过来，由于$s\leq g(f(s))$，所以$s=g(f(s))$. 所以$g|_{f(S)}:f(S)\to g(T)$是一个满射。同样（或者由对称性），对于$t=f(s)$，我们也有$t=f(g(t))$，所以$g|_{f(S)}:f(S)\to g(T)$是一个单射。故而$g|_{f(S)}$是一个双射，它的逆就是$f|_{g(T)}$.
-\end{proof}
-
-应用到域扩张的情况，即所有形如$\mathcal{F}(S)$的域和所有形如$\Gal(K/k)$的子群之间，有一个一一映射。
+于是这构成了一个Galois联络（见附录），因此所有形如$\mathcal{F}(S)$的域和所有形如$\Gal(K/k)$的子群之间，有一个一一映射。
 
 \begin{lem}
 设$K/k$是一个扩张，而$k(X)$是$X\subset K$生成的一个扩张，任取$\sigma$和$\tau\in \Gal(k(X)/k)$，如果$\sigma|_X=\tau|_X$，则$\sigma=\tau$. 

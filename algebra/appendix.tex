@@ -1,8 +1,35 @@
 \appendix
 \renewcommand{\thepara}{\Alph{chapter}.\arabic{para}}
 
-\chapter{附录}
+\chapter{}
 \ThisULCornerWallPaper{1}{../Pictures/19.png}
+\section{Galois联络}
+
+\begin{para}
+设$S$和$T$是两个偏序集，并且存在两个映射$f:S\to T$以及$g:T\to S$满足
+\begin{compactenum}[~~~~(1)]
+\item 如果$s_1\leq s_2$，则$f(s_2)\leq f(s_1)$.
+\item 如果$t_1\leq t_2$，则$g(t_2)\leq g(t_1)$.
+\item $\,$$t\leq f(g(t))$以及$s\leq g(f(s))$.
+\end{compactenum}
+则称$S$和$T$之间存在一个Galois联络。
+\end{para}
+
+以范畴的观点来看，第一个条件就是说$f:S^{\text{op}}\to T^{\text{op}}$是一个函子，第二个条件就是在说，$g:T^{\text{op}}\to S^{\text{op}}$是一个函子。不仅如此，第三点还说明这是一对伴随函子。
+
+\begin{pro}
+设$S$和$T$之间存在一个Galois联络，则$g(T)$和$f(S)$之间存在一一映射，具体写出来即$s\mapsto f(s)$，以及$t \mapsto g(t)$.
+\end{pro}
+
+\begin{proof} 
+	设$s=g(t)$，则$t\leq f(g(t))=f(s)$，所以$g(f(s))\leq g(t)=s$. 反过来，由于$s\leq g(f(s))$，所以$s=g(f(s))$. 所以$g|_{f(S)}:f(S)\to g(T)$是一个满射。同样（或者由对称性），对于$t=f(s)$，我们也有$t=f(g(t))$，所以$g|_{f(S)}:f(S)\to g(T)$是一个单射。故而$g|_{f(S)}$是一个双射，它的逆就是$f|_{g(T)}$.
+\end{proof}
+
+可以摘出证明中顺便得到的等式
+\[
+	g(t)=g(f(g(t))),\quad f(s)=f(g(f(s))).
+\]
+
 \section{Zorn引理}
 \para 设$A$是一个集合，而$\leq$是$A$上的一个关系，如果满足
 
