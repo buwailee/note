@@ -3,51 +3,163 @@
 
 \section{正合列}
 
-% \para 设$R:\mathcal{C}\to \mathcal{D}$与$L:\mathcal{D}\to \mathbb{C}$是一对伴随函子，其中$R$是右伴随函子，而$L$是左伴随函子。此外，假设$\mathcal{C}$与$\mathcal{D}$中都有零对象$0$，并且假设$R(0)=0$以及$L(0)=0$对零对象与零态射都成立。由于右伴随函子与极限可交换，所以$R\mathrm{eq}(f,0)\cong \mathrm{eq}(Rf,0)$，或者说$R(\ker f)\cong \ker(Rf)$. 对偶地，$L(\coker g)\cong \coker(Lg)$.
+首先回顾正合列的相关知识，我们很久以前已经介绍过了左$R$-模范畴中的正合列。现在由于我们对Abel范畴有了一定的任意，所以这里直接将正合列定义到一个Abel范畴中，在许多操作上，他并不比模范畴麻烦多少。
 
-首先回顾正合列的相关知识，我们这里从左$R$-模范畴中的正合列开始。若有一族同态$f_i:A_i\to A_{i+1}$满足$\im f_i=\ker f_{i+1}$，则列
+\begin{para}
+若有一族态射$f_i:A_i\to A_{i+1}$满足$\im f_i\approx \ker f_{i+1}$，则列
 \[
 	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
 \]
-被称为正合的。
+被称为正合的。如果只满足$f_{i+1}f=0$，则称列是一个链复形，或者简称一条链。
+\end{para}
 
-% \para 在模范畴里面，如果把核看成子模，核是唯一的：设$f:M\to N$是左$R$-模范畴的同态，$(\ker f,i)$显然是它的核，其中$i:\ker f\hookrightarrow M$. 类似地，如果有另一个核$(P,j)$，其中$P$是$M$的一个子模且$j:P\hookrightarrow M$. 由泛性质，存在唯一的同态$g:\ker f\to P$使得$j=ig$以及同态$h:P\to \ker f$使得$i=jh$. 任取$m\in \ker f$，可知$j(m)=i(g(m))=m\in M$，所以$g(m)=m\in M$，于是$g$就是普通的含入映射，进而$\ker f\subset P$，同理$P\subset \ker f$，所以$\ker f = P$以及$i=j$.
+显然，正合列是一个链。如果$\im f_i\approx \ker f_{i+1}$，则$\coker \ker f_{i+1} \approx \coker \im f_i$，换而言之，存在同构$t$使得$\coker \ker f_{i+1}=t\coker \im f_i$. 因此
+\begin{align*}
+f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})(\coker \ker f_{i+1}) \im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})t(\coker \im f_i) \im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})t\bigl((\coker \im f_i) \im(f_{i})\bigr)\coim(f_{i})\\
+	&=\im(f_{i+1})t0\coim(f_{i})\\
+	&=0.
+\end{align*}
 
-% \para 设$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子，范畴$\mathcal{C}$和$\mathcal{D}$中有零对象且任意态射的核与余核存在，此外$R$将零对象映成零对象，于是他也将零态射映射零态射。取$f:X\to Y$，因为$R$与$\ker$（作为极限）可以交换，所以$R(\im f)=R(\ker \pi_f)\cong \ker(R(\pi_f))$，其中$R(\pi_f):R(M)\to R(\coker(f))$. 另一方面，$\im(Rf)=\ker\left(\pi_{Rf}\right)$. 因此，考虑$\pi_{Rf}$与$R(\pi_{f})$的关系是有趣的。
+\begin{para}[短正合列]
+考虑正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot.
+\]
+为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态。对偶地，考虑正合列
+\[
+	\cdot\xrightarrow{f} X \to  0.
+\]
+为了满足正和性，我们需要$\im f \approx \ker 0$，两边作用一次$\coker$将得到
+\[
+	\coker f=\coker \ker \coker f=\coker \im f \approx \coker \ker 0.
+\]
+注意到，此时$\ker 0=\id_X$是一个满态，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态。
 
-% 由于交换图$\xymatrix{R(X)\ar@<0.3ex>[r]^{Rf} \ar@<-0.3ex>[r]_0&R(Y)\ar[r]-^{R(\pi_{f})}&R(\coker(f))}$成立，所以存在一个态射
+现在，我们来到正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot \to 0,
+\]
+由上面可知$f$即是单态又是满态，在Abel范畴中这等价于说$f$是一个同构。
+
+最后，正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot\to 0,
+\]
+被称为\idx{短正合列}。它等价于说，$f$单$g$满且$\im f\approx \ker g$.
+\end{para}
+
+\begin{para}
+设$T:\mathcal{C}\to \mathcal{D}$是准加性范畴之间的函子，如果对$\mathcal{C}$中的态射$f$, $g$成立$T(f+g)=Tf+Tg$. 则称$T$是一个加性函子。更形式地说，
+\[
+	T:\mathcal{C}(X,Y)\to \mathcal{D}(TX,TY)
+\]
+是一个交换群同态。
+\end{para}
+
+从定义，不难看到对零态射$0$，成立$T0=0$. 如果$0$是$\mathcal{C}$中的零对象，则$T:\mathcal{C}(0,0)\to \mathcal{D}(T0,T0)$告诉我们$\mathcal{D}(T0,T0)$是一个单点集，所以Propositon \ref{zeroobj}告诉我们$T0$是$\mathcal{D}$中的零对象，即$T0=0$.
+
+\begin{pro}
+$T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可交换。所谓与双积可交换，就是把双积映成双积（包括其对应的相关态射）。
+\end{pro}
+
+\begin{proof}
+设$T$是一个加性函子，而$p_1$, $p_2$, $i_1$和$i_2$是双积的四个典范态射，于是
+\[
+	p_ai_a = \id \quad \Rightarrow \quad T(p_a)T(i_a) = \id,
+\]
+\[
+	p_ai_b = 0 \quad \Rightarrow \quad T(p_a)T(i_a) = T0=0,
+\]
+\[
+	i_1p_1+i_2p_2 = \id \quad \Rightarrow \quad T(i_1)T(p_1)+T(i_2)T(p_2) = \id,
+\]
+告诉我们$T$与双积可交换。$Tp_1$, $Tp_2$, $Ti_1$和$Ti_2$是新双积的四个典范态射。
+
+反过来，考虑态射$f$, $g:X\to Y$. 不难发现$f+g=c(f\oplus g)d$. 其中$d:X\to X\oplus X$满足唯一分解$p^X_1d=p^X_2d=\id_X$，这直接来自于积的泛性质，此外，$c:Y\oplus Y\to Y$满足唯一分解$ci^Y_1=ci^Y_2=\id_Y$，这直接来自于余积的泛性质。所以
+\[
+	c(f\oplus g)d=c(i_1^Y f p_1^X+i_2^Y g p_2^X)d=c i_1^Y f p_1^X d+ ci_2^Y g p_2^Xd=f+g.
+\]
+
+设$T$与双积可交换，双积的泛性质告诉我们$T(f\oplus g)=T(f)\oplus T(g)$. 于是，
+\[
+	T(f+g)=T(c(f\oplus g)d)=T(c)T(f\oplus g)T(d)=T(c)(T(f)\oplus T(g))T(d)=T(f)+T(g).
+\]
+所以$T$是加性函子。
+\end{proof}
+
+由于在Abel范畴中，双积等价于有限积等价于有限余积。所以只要函子与有限积或者有限余积与可交换，这就是加性函子。
+
+\begin{para}
+设$R:\mathcal{C}\to \mathcal{D}$与$L:\mathcal{D}\to \mathbb{C}$是一对伴随函子，其中$R$是右伴随函子，而$L$是左伴随函子。如果$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，由于右伴随函子与极限可交换、左伴随函子与余极限可交换，所以不管左伴随函子还是右伴随函子，它们都是加性函子。
+
+此外，由于核是一个极限，所以$R(\ker f)= \ker(Rf)$. 对偶地，$L(\coker g)= \coker(Lg)$.
+\end{para}
+
+\begin{lem}
+假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态，则$Rf$是$\mathcal{D}$中的单态。
+\end{lem}
+
+\begin{proof}
+已知$f$是一个单态当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态。
+\end{proof}
+
+在Abel范畴中，$f$是一个单态等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态，所以$Rf=\im(Rf)$，结合这两点就得到了
+\[
+	R(\im f)=Rf=\im(Rf).
+\]
+这意味着，对单态而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态。
+
+\begin{pro}
+如果$R$是一个从Abel范畴到Abel范畴的右伴随函子，则对正合列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$，他将诱导一个正合列
+\[
+	0\to R(X_1)\xrightarrow{R(f_1)} R(X_2)\xrightarrow{R(f_2)} R(X_3).
+\]
+\end{pro}
+
+由上一个引理和其推论立即可知。对偶地，可以知道：
+
+\begin{pro}
+如果$L$是一个从Abel范畴到Abel范畴的左伴随函子，则对正合列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3 \to 0$，他将诱导一个正合列
+\[
+	L(X_1)\xrightarrow{L(f_1)} L(X_2)\xrightarrow{L(f_2)} L(X_3) \to 0.
+\]
+\end{pro}
+
+将满足上面两个命题的加性函子抽象出来。
+
+\begin{para}
+设$T$是一个加性函子，如果他把正和列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$变成正合列
+\[
+	0\to T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3),
+\]
+则称$T$是一个左正和函子。对偶地，如果他把正和列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3\to 0$变成正合列
+\[
+	T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3)\to 0,
+\]
+则称$T$是一个右正和函子。
+
+如果把短正合列变成短正合列，则称$T$是一个正和函子。所以，正和性等价于左正和又右正和。
+\end{para}
+
+综上，我们已经证明了：
+
+\begin{thm}
+设函子从Abel范畴到Abel范畴，则左伴随函子右正合，而右伴随函子左正和。
+\end{thm}
+
+% \begin{pro}
+% 设$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$是一列左$R$-模的正合列，则函子$\Hom_R(N,-)$将给出$\mathbb{Z}$-模的正合列
 % \[
-% 	h:\coker(\pi_{R(f)})\to R(\coker(f))
+% 	0\to \Hom_R(N,M_1)\xrightarrow{(f_1)_*} \Hom_R(N,M_2)\xrightarrow{(f_2)_*} \Hom_R(N,M_3).
 % \]
-% 使得分解$R(\pi_{f})=h\pi_{Rf}$成立，于是存在单态$\ker(\pi_{Rf})\hookrightarrow \ker(R(\pi_{f}))$，或者说存在单态$\im(Rf)\hookrightarrow R(\im f)$. 
+% \end{pro}
 
-\begin{pro}
-设$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$是一列左$R$-模的正合列，则函子$\Hom_R(N,-)$将给出$\mathbb{Z}$-模的正合列
-\[
-	0\to \Hom_R(N,M_1)\xrightarrow{(f_1)_*} \Hom_R(N,M_2)\xrightarrow{(f_2)_*} \Hom_R(N,M_3).
-\]
-\end{pro}
-
-\begin{proof}
-	首先，由于$0$是终对象，所以$\Hom_R(N,0)=0$，于是上面的列成立，且$f_2f_1=0$给出了$(f_2)_*(f_1)_*=(f_2f_1)_*=0_*=0$. 所以$\im ((f_1)_*)\subset \ker ((f_2)_*)$. 任取$g_1$, $g_2\in \Hom_R(N,M_1)$，$(f_1)_*(g_1)=(f_1)_*(g_2)$等价于$f_1g_1=f_1g_2$，由于$f_1$是单态，$g_1=g_2$，于是$(f_1)_*$是单射。最后只要检验$\ker ((f_2)_*)\subset \im ((f_1)_*)$. 任取$g\in \Hom_R(N,M_2)$使得$(f_2)_*g=f_2g=0$. 任取$n\in N$，$f_2(g(n))=0$给出$g(n)\in \ker(f_2)=\im(f_1)$，于是$g(N)\subset \im(f_1)$，由于$f_1:M_1\to \im(f_1)$是单同态，所以有同态$i=f_1^{-1}g\in \Hom_R(N,M_1)$使得$g=(f_1)_*(i)\in \im ((f_1)_*)$.
-\end{proof}
-
-\begin{pro}
-如果$R$是一个从左$R$-模范畴到左$S$-模范畴的右伴随函子，对对象有$R(0)=0$，于是对态射有$R(0)=0$. 则对正合列$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$，他将诱导一个正合列
-\[
-	0\to R(M_1)\xrightarrow{R(f_1)} R(M_2)\xrightarrow{R(f_2)} R(M_3).
-\]
-\end{pro}
-
-\begin{proof}
-	我们首先证明$R(f_1)$是一个单同态，或者说$\ker(R(f_1))=0$. 由于$\ker$是一种极限，右伴随函子与它可以交换，所以$\ker(R(f_1))\cong R(\ker f_1)=0$. 因此$R(f_1)$是一个单同态。粗略来说，右伴随函子把单同态变成单同态。于是考虑模$M$与它的子模$P$以及$i:P\hookrightarrow M$，于是单同态$R(i):R(P)\hookrightarrow M$就可以将$R(P)$看作$R(M)$的子模，当然更准确地说法是，我们有同构$R(i):R(P)\to R(i)(R(P))$. 
-
-	现在设$f:M\to N$是一个普通的模同态，由于$R(i)\left(R(\ker f)\right)$与$\ker (R(f))$同构，于是他们都是$R(f)$的核，以及都是$R(M)$的子模，所以$R(i)\left(R(\ker f)\right)= \ker (R(f))$，或者说$R(i)$是$R(\ker f)$到$\ker(R(f))$的同构。
-
-	最后，只要检验$\ker (R(f_2))=\im (R(f_1))$即可。由于$\ker f_2=\im f_1$，所以$R(\ker f_2)=R(\im f_1)$，因此存在同构$R(k):R(\im f_1)\to \ker (Rf_2)$.
-
-	任取$a\in R(M_2)$使得$R(f_2)(a)=0$，由于存在唯一的$b\in R(\ker f_2)$使得$R(i)(b)=a$
-\end{proof}
+% \begin{proof}
+% 	首先，由于$0$是终对象，所以$\Hom_R(N,0)=0$，于是上面的列成立，且$f_2f_1=0$给出了$(f_2)_*(f_1)_*=(f_2f_1)_*=0_*=0$. 所以$\im ((f_1)_*)\subset \ker ((f_2)_*)$. 任取$g_1$, $g_2\in \Hom_R(N,M_1)$，$(f_1)_*(g_1)=(f_1)_*(g_2)$等价于$f_1g_1=f_1g_2$，由于$f_1$是单态，$g_1=g_2$，于是$(f_1)_*$是单射。最后只要检验$\ker ((f_2)_*)\subset \im ((f_1)_*)$. 任取$g\in \Hom_R(N,M_2)$使得$(f_2)_*g=f_2g=0$. 任取$n\in N$，$f_2(g(n))=0$给出$g(n)\in \ker(f_2)=\im(f_1)$，于是$g(N)\subset \im(f_1)$，由于$f_1:M_1\to \im(f_1)$是单同态，所以有同态$i=f_1^{-1}g\in \Hom_R(N,M_1)$使得$g=(f_1)_*(i)\in \im ((f_1)_*)$.
+% \end{proof}
 
 \section{链条件}
 

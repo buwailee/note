@@ -1129,12 +1129,20 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 
 注意，虽然这里的零态射总是似乎在暗示我们存在一个零对象，可事实并非如此。考虑域的范畴，他显然是一个准加性范畴，但却没有零对象。
 
-\begin{pro}
-准加性范畴中，始对象等价于终对象，所以也就都等价于零对象。
+\begin{pro}\label{zeroobj}
+准加性范畴中，以下命题等价：
+\begin{compactenum}[~~~(3)]
+\item $A$是一个始对象。
+\item $\mathcal{C}(A,A)$是单点集。
+\item $A$是一个终对象。
+\item $A$是一个零对象。
+\end{compactenum}
 \end{pro}
 
 \begin{proof}
-设$A$是始对象或者是终对象，则$\mathcal{C}(A,A)$是单点集，因此$\id_A=0$. 反过来，假设$\id_A=0$，考虑$f\in \mathcal{C}(A,X)$，由于$f=f\id_A=f0=0$. 所以$A$是始对象。考虑$f\in \mathcal{C}(X,A)$，由于$f=\id_A f=0f=0$. 所以$A$是终对象。
+我们一旦证明了(1)和(3)等价，则(4)是自然的。所以只要证明(1)和(3)都和(2)等价即可。
+
+设$A$是始对象或者是终对象，则$\mathcal{C}(A,A)$是单点集. 反过来，假设$\mathcal{C}(A,A)$是单点集，所以$\id_A=0$，考虑$f\in \mathcal{C}(A,X)$，由于$f=f\id_A=f0=0$. 所以$A$是始对象。考虑$f\in \mathcal{C}(X,A)$，由于$f=\id_A f=0f=0$. 所以$A$是终对象。
 \end{proof}
 
 如果准加性范畴$\mathcal{C}$中有一个零对象$0$，则对任意的$X$, $Y\in\mathcal{C}$，我们都有唯一的态射$0': X\to 0 \to Y$. 上述命题也顺便告诉我们$0=0'$. 
@@ -1208,11 +1216,7 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 
 因此，如果两个态射$f$, $g$满足$\ker f\approx \ker g$，则$\ker f$和$\ker g$实际是同构的。但因为，在选定核的时候，本来就允许一个同构的存在，所以此时写作$\ker f=\ker g$也完全没有问题。
 
-\begin{para}[复合态射的核与余核]
-显然$f$和$gf$的起点是相同的，由恒等式$f\ker f=0$，所以$gf\ker f=0$给出了$\ker f \leq \ker (gf)$. 同样$g$和$gf$的终点是相同的，由恒等式$\coker (g)g=0$，所以$\coker(g)gf=0$可以出了$\coker(g) \geq \coker(gf)$.
-\end{para}
-
-\begin{pro}假设所有的核与余核都存在，则如下命题成立：
+\begin{pro}\label{glgl}假设所有的核与余核都存在，则如下命题成立：
 \begin{compactenum}[~~~(1)]
 \item 如果$f\geq g$，则$\ker g \leq \ker f$. 
 \item 对偶地，如果$u\leq v$，则$\coker v \geq \coker u$. 
@@ -1249,7 +1253,13 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 \end{compactenum}
 \end{proof}
 
-在准加性范畴中，核与余核与单态满态联系密切。
+作为推论，如果$f\approx g$都从同一个对象出发，则$\ker f\approx \ker g$. 同样，如果$u\approx v$都指向同一个对象，则$\coker u \approx \coker v$.
+
+\begin{para}[复合态射的核与余核]
+显然$f$和$gf$的起点是相同的，且$gf\geq f$. 所以上面的命题告诉我们，$\ker f \leq \ker (gf)$. 同样，$g$和$gf$的终点是相同的，且$gf\leq g$，所以$\coker(g) \geq \coker(gf)$.
+\end{para}
+
+在准加性范畴中，核（余核）与单态（满态）联系密切。
 
 \begin{lem}
 设$\mathcal{C}$是一个准加性范畴，而$f:X\to Y$是其中的一个态射，如果$\ker f$存在，则它是一个单态。对偶地，如果$\coker f$存在，则它是一个满态。
@@ -1271,7 +1281,7 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 类比熟知的$\coker f$的定义$N/\im f$，可以定义$\im f=\ker \coker f$. 对偶地，可以定义$\coim f=\coker \ker f$.
 \end{para}
 
-为使得这个定义是良定的，我们需要证明选取不同的$\coker f$，我们将得到同构的$\im f$. 为此，如果选取不同的$(\coker f)_1$和$(\coker f)_2$，有$(\coker f)_1\approx (\coker f)_2$，即存在同构$\psi$使得$(\coker f)_2=\psi(\coker f)_1$. 由复合态射的知识，$\ker (\coker f)_1 \leq \ker (\coker f)_2$，同理$(\coker f)_1=\psi^{-1}(\coker f)_2$给出了$\ker (\coker f)_2 \leq \ker (\coker f)_1$，所以$\ker (\coker f)_1\approx \ker (\coker f)_2$. $\coim$同理。
+为使得这个定义是良定的，我们需要证明选取不同的$\coker f$，我们将得到同构的$\im f$. 为此，如果选取不同的$(\coker f)_1$和$(\coker f)_2$，有$(\coker f)_1\approx (\coker f)_2$. Proposition \ref{glgl}的推论告诉我们，$\ker (\coker f)_1\approx \ker (\coker f)_2$. 此即所需。
 
 此外，任取态射$f$. 我们都可以保证$f$成立唯一分解$f=\im(f)q$. 事实上，由于$\coker(f)f=0$，由$\ker$的泛性质，我们就得到$f=\ker(\coker f)q$.
 
@@ -1379,8 +1389,8 @@ Abel范畴中，一个态射是同构等价于它既是单态又是满态。
 
 已经知道，在加性范畴中，如果$\ker$和$\coker$都存在，则$f$成立唯一分解$f=\im(f)q$. 事实上，由于$\coker(f)f=0$，由$\ker$的泛性质，我们就得到$f=\ker(\coker f)q$.
 
-\begin{lem}
-在Abel范畴中，如果$f$存在分解$f=m'q'$，其中$m'$是一个核，那么存在唯一的同构$t$使得下面的交换图成立
+\begin{lem}\label{lem1}
+在Abel范畴中，如果$f$存在分解$f=m'q'$，其中$m'$是一个核，那么存在唯一的单态$t$使得下面的交换图成立
 \[
 \begin{xy}
 	\xymatrix{
@@ -1389,25 +1399,27 @@ Abel范畴中，一个态射是同构等价于它既是单态又是满态。
 	}
 \end{xy}
 \]
-且$q$是一个满态，由于$t$是同构，所以$q'$也是满态。
+且$q$是一个满态。
 \end{lem}
 
 \begin{proof}
 设$m'=\ker s$以及$p'=\coker m'$，由恒等式$\ker s=\ker \coker \ker s$（见式\eqref{kck}），因此$m'=\ker p'$. 同样，取$p=\coker \im f=\coker \ker \coker f=\coker f$. 
 
-由于$p'f=p'm'q'=\coker(m')m'q'=0$，由$p=\coker f$的泛性质，存在唯一分解$p'=wp$. 由$p'\im f=wp\im f=w (\coker f) \ker(\coker f)=0$以及$m'=\ker p'$的泛性质，存在唯一分解$\im f=m' t$. 此外，$m' q'=m'tq$，由于$m'=\ker p'$是单态，所以$q'=tq$. 因此，交换图成立。
+由于$p'f=p'm'q'=\coker(m')m'q'=0$，由$p=\coker f$的泛性质，存在唯一分解$p'=wp$. 由$p'\im f=wp\im f=w (\coker f) \ker(\coker f)=0$以及$m'=\ker p'$的泛性质，存在唯一分解$\im f=m' t$. 此外，$m' q'=m'tq$，由于$m'=\ker p'$是单态，所以$q'=tq$. 因此，交换图成立。并且，由于$\im f=m't$，所以$t$是一个单态。
 
-下面证明$q$是一个满态。设$rq=0$，由$\ker r$的泛性质，存在唯一分解$q=\ker (r) q'$. 于是$f=\im(f)q=\im(f)\ker (r) q'=m'q'$，因为$m'=\im(f)\ker (r)$作为单态的复合是一个单态，在Abel范畴中是一个核，所以由上面的已知的结论，存在唯一的$t$使得$\im f=m't=\im(f)\ker (r) t$. 由于$\im f$是单态，所以$\id =\ker (r) t$. 由于$\id$是满态，所以$\ker (r)$是满态。实际上，如果$x\ker(r)=y\ker(r)$，则$x=x\ker (r) t=y\ker (r) t=y$. 因为$\ker (r)$即单又满，上一个命题告诉我们它也是同构。由于$\ker r$是一个同构，所以从$r\ker r=0$给出$r=0$. 同时，由于$\ker r$是同构，而$t$是其右逆，所以$t$也是其左逆，故而也是同构。
+下面证明$q$是一个满态。设$rq=0$，由$\ker r$的泛性质，存在唯一分解$q=\ker (r) q'$. 于是$f=\im(f)q=\im(f)\ker (r) q'=m'q'$，因为$m'=\im(f)\ker (r)$作为单态的复合是一个单态，在Abel范畴中是一个核，所以由上面的已知的结论，存在唯一的$t$使得$\im f=m't=\im(f)\ker (r) t$. 由于$\im f$是单态，所以$\id =\ker (r) t$. 由于$\id$是满态，所以$\ker (r)$是满态。实际上，如果$x\ker(r)=y\ker(r)$，则$x=x\ker (r) t=y\ker (r) t=y$. 此时，$r\ker r=0$给出$r=0$. 
 
 综上，由$rq=0$可推出$r=0$，所以$q$是一个满态。
 \end{proof}
 
-\begin{pro}
-在Abel范畴中，$f=\im(f)\coim(f)$.
+\begin{pro}\label{uni}
+在Abel范畴中，$f=\im(f)\coim(f)$. 而且，如果$f=gh$，其中$g$是单态而$h$是满态，则存在同构$t$使得$g=\im(f)t$以及$\coim(f)=th$.
 \end{pro}
 
 \begin{proof}
 首先，$f$成立唯一分解$f=\im(f)q$. 所以，$ft=0$等价于$\im(f)qt=0$，由于$\im$是一个$\ker$所以是单态，$ft=0$又等价于$qt=0$. 因此$\ker f= \ker q$. 由于$q$是一个满态，所以是一个$\coker$，写成$q=\coker s$. 由恒等式$\coker s = \coker \ker \coker s$，所以$q=\coker \ker q=\coker \ker f=\coim f$. 
+
+唯一性的部分命题直接来自于上面的引理。从上一个引理，我们知道存在这样的单态$t$. 现在，由于$\coim(f)=th$，左侧是一个满态，所以$t$是一个满态。一个单态如果是满态，则必然是一个同构。
 \end{proof}
 
 \begin{pro}
@@ -1419,3 +1431,58 @@ Abel范畴中，一个态射是同构等价于它既是单态又是满态。
 
 对偶地，如果$\coker f=0$，即$f$是一个满态。此时$t=0$等价于$tf=0$等价于$t\im (f) \coim(f)=0$等价于$t\im(f)=0$，所以$\im(f)$是一个满态，也因此是一个同构。由于$\coim$的定义本来就容许一个同构的存在，所以可以写成$f=\coim f$.
 \end{proof}
+
+本节的最后，我们证明一个很有用的命题，他将用在上同调的定义中。
+
+\begin{pro}
+在Abel范畴中，态射$f$, $g$满足$gf=0$. 现考虑如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+	&&\cdot \ar[rrd]^b&&\\
+	\cdot \ar[rr]^f \ar[rrd]_a&&\cdot \ar[rr]^g\ar[u]^{\coker f}&&\cdot\\
+	&&\cdot \ar[u]_{\ker g}&&
+	}
+\end{xy}
+\]
+其中$a$, $b$是核与余核的泛性质诱导的态射。记$\coker(a)$指向$[\coker(a)]$，以及$\ker(b)$的起点为$[\ker(b)]$. 则存在一个同构$t:[\coker(a)]\to [\ker(b)]$.
+\end{pro}
+
+\begin{proof}
+首先，我们假设$f$是一个单态，而$g$是一个满态。令$\varphi=\coker (f) \ker (g)$，我们验证$a=\ker \varphi$和$b=\coker \varphi$，即验证它满足泛性质。
+
+设$\varphi \theta=\coker (f)\ker(g)\theta=0$，由核的泛性质，我们可以得到唯一分解
+\[
+	\ker(g)\theta=(\ker \coker f)\psi=\im(f)\psi=f\psi=\ker(g)a\psi,
+\]
+其中$\im(f)=f$来自于$f$是一个单态。由于$\ker(g)$是单态，所以$\theta=a\psi$. 此即泛性质，所以$a=\ker(\varphi)$. 同理，可以验证，$b=\coker \varphi$.
+
+由于$\varphi=\im(\varphi)\coim(\varphi)=\coker(\ker \varphi)\ker(\coker \varphi)=\coker(a)\ker(b)$. 因此$[\coker(a)]=[\ker(b)]$. 实际上，如果我们选取同构的核（余核），则由$\varphi$分解的唯一性，即Proposition \ref{uni}，我们将得到$[\coker(a)]\cong [\ker(b)]$.
+
+现在我们考虑一般情形，因为$f=\ker(g)a$，其中$\ker(g)$是一个单态，由Lemma \ref{lem1}，存在唯一的态射$a'$使得$a=a'\coim(f)$以及$\im(f)=\ker(g)a'$. 即如下交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+	\cdot \ar[r]^{\coim f} \ar[rrd]_a&\cdot \ar[r]^{\im f} \ar[rd]^{a'}&\cdot \\
+	&&\cdot \ar[u]_{\ker g}
+	}
+\end{xy}
+\]
+由于$ta=0$等价与$ta'\coim(f)=0$等价于$ta'=0$，所以$\coker(a)=\coker(a')$. 同理（对偶地），我们有$b'$使得$b=\im(g)b'$且$\coim(g)=b' \coker(f)$，所以$\ker(b')=\ker(b)$.
+
+现在，考虑交换图
+\[
+\begin{xy}
+	\xymatrix{
+	&&\cdot \ar[rrd]^{b'}&&\\
+	\cdot \ar[rr]^{\im f} \ar[rrd]_{a'}&&\cdot \ar[rr]^{\coim g}\ar[u]^{\coker f}&&\cdot\\
+	&&\cdot \ar[u]_{\ker g}&&
+	}
+\end{xy}
+\]
+由于$\im f$是单态而$\coim g$是满态，所以按照之前证明的特殊情况的结论，$[\coker(a')]\cong [\ker(b')]$. 
+
+最后，由于$\coker(a)=\coker(a')$且$\ker(b')=\ker(b)$，所以我们就得到了$[\coker(a)]\cong [\ker(b)]$.
+\end{proof}
+
+上图中的$[\coker(a)]$或者$[\ker(b)]$，我们经常会记作$\ker(g)/\im(f)$.
