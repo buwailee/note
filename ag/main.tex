@@ -4,8 +4,20 @@
 \usepackage[zh,book]{noteheader}
 	% \CTEXoptions[today=old]
 	% \CTEXoptions[contentsname=Table of Contents]
-\usepackage[chapter]{../egastyle}
-\usepackage{titletoc, makeidx}
+
+% \usepackage[chapter]{../egastyle}
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{theo}[para]{Theorem}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+\usepackage{titletoc,makeidx,paralist}
 	\makeindex
 	% \renewcommand{\indexname}{Index}
 \usepackage[titletoc,title]{appendix}

@@ -1,8 +1,340 @@
 \chapter{环（二）}
 \ThisULCornerWallPaper{1}{../Pictures/14.png}
 
-\section{完备化}
+\section{拓扑群及其完备化}
 
+\begin{para}
+一个群$G$是拓扑群，如果群上有一个拓扑结构使得群乘法和逆都是连续映射。由于左乘是一个同胚，所以如果$U$是一个开集（闭集），那么$gU=\{gh\,:\,h\in U\}$也是一个开集（闭集）。对应到拓扑矢量空间，如果$U$是一个开集（闭集），那么$a+U=\{a+x\,:\,x\in U\}$也是一个开集（闭集）。
+
+对拓扑群$G$，以及子集$A$, $B$，引入两个记号：$A^{-1}=\{a^{-1}\,:\,a\in A\}$以及$AB=\{ab\,:\,a\in A,\, b\in B\}$. 如果$U$是一个开集（闭集），则$U^{-1}$也是一个开集（闭集）。任取开集$U$，以及子集$A$，由于$AU=\bigcup_{a\in A}aU$，所以$AU$是开集，类似地，$UA$也是开集。
+
+从定义来看，如果$A=A_0\cup A_1$，则$BA=BA_0\cup BA_1$，同样，如果$A=A_0\cap A_1$，则$BA=BA_0\cap BA_1$. 因此至少对于有限交或者有限并来说，乘积是可以分配进去的。如果单位元的一个邻域$U$满足$U^{-1}=U$，这样的开集就被称为对称的。
+\end{para}
+
+\begin{lem}
+设$U$是单位元的一个邻域，则存在单位元的一个对称邻域$V$使得$V\subset VV\subset U$. 
+\end{lem}
+
+\begin{proof}
+	由于乘法是连续的，所以存在$e$的邻域$V_1$和$V_2$使得$V_1V_2\subset U$. 令$V=(V_1\cap V_1^{-1})\cap (V_2\cap V_2^{-1})$. 显然这是对称的，并且$VV\subset U$. 由于$e\in V$，所以$V=eV\subset VV\subset U$.
+\end{proof}
+
+作为推论，对给定$U$，找一个对称开集$V$使得$V\cdots V\subset U$都是不难的，其中$V$相乘任意正整数次。实际上，对相乘$2^n$次是直接的推论，而对任意正整数$k$，都存在一个$2^n>k$，然后取$V$为$2^n$情况的$V$即可。
+
+\begin{lem}\label{lem:2}
+设$A\subset G$是一个拓扑群的一个子集，记$\mathscr{B}$是所有包含单位元$e$的开集构成的集合，则对$A$的闭包$\overline{A}$有等式
+\[
+	\overline{A}=\bigcap_{U\subset \mathscr{B}}AU=\bigcap_{U\subset \mathscr{B}}\overline{AU}.
+\]
+\end{lem}
+
+\begin{proof}
+	任取$x\in \overline{A}$以及$U\in \mathscr{B}$. 我们有$xU^{-1}$是$x$的一个邻域，于是存在$a\in A\cap x U^{-1}$，记$a=xu^{-1}$，我们有$x=au\in AU$. 于是$\overline{A}\subset \bigcap_{U\subset \mathscr{B}}AU$. 这也给出了一个下面会用到的结论：任取$e$的一个开集$U$，有$\overline{A}\subset AU$.
+
+	反过来，考虑闭集的并$\bigcap_{U\subset \mathscr{B}}\overline{AU}$，这是一个闭集，且有显然的包含关系$\bigcap_{U\subset \mathscr{B}}AU\subset \bigcap_{U\subset \mathscr{B}}\overline{AU}$. 任取$x\in \bigcap_{U\subset \mathscr{B}}\overline{AU}$以及$U\in \mathscr{B}$，由上一个引理，存在$U'\in \mathscr{B}$使得$U'U'\subset U$. 由于$x\in \overline{AU'}\subset AU'U'\subset AU$，所以有$\bigcap_{U\subset \mathscr{B}}\overline{AU}\subset \bigcap_{U\subset \mathscr{B}}AU$. 进而$\bigcap_{U\subset \mathscr{B}}AU=\bigcap_{U\subset \mathscr{B}}\overline{AU}$.
+
+	令$U_x$是$x\in \bigcap_{U\subset \mathscr{B}}AU$的一个邻域，再令$U=U_x^{-1}x$，他是$e$的一个邻域且$x\in AU$. 于是存在$a\in A$使得$a\in xU^{-1}=xx^{-1}U_x=U_x$，这就是在说$A\cap U_x\neq \varnothing$. 假设$x\in G-\overline{A}$，则$x$附近一定有一个邻域$U_x$使得$U_x\subset G-\overline{A}$，这与$A\cap U_x\neq \varnothing$矛盾，所以$x\in \overline{A}$.
+\end{proof}
+
+\begin{pro}\label{pro:3}
+设$G$是一个拓扑群，如果$\{e\}$是一个闭集，则
+
+\begin{compactenum}
+\item $G$中任意单点集是一个闭集，这样的拓扑空间被称为$\mathsf{T}_1$空间。
+
+\item $G$是一个Hausdorff空间，或者被称为$\mathsf{T}_2$空间。
+
+\item $G$是正则Hausdorff空间\footnote{单点集是闭集，且任取一个$x$以及一个不包含$x$的闭集$V$，存在两个不相交的开集$U_x$和$U_V$使得$x\in U_x$, $V\subset U_V$. 换而言之，点与开集是可以用开集分离的。}，或者被称为$\mathsf{T}_3$空间。
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+	对于第一点，任意一个单点集都是单位元的平移，所以成立。因为$\mu:(x,y)\mapsto x^{-1}y$是连续映射且$\{e\}$闭集，$\Delta=\mu^{-1}(e)\subset G\times G$是闭集，其中$\Delta=\{(x,x):x\in G\}$，利用Hausdorff性的对角线判别法，$G$是一个Hausdorff空间。而一个$\mathsf{T}_1$空间是$\mathsf{T}_3$的，当且仅当对任意的$x$以及他的一个邻域$U$，存在$x$的邻域$V$使得$\overline{V}\subset U$. 由于$x^{-1}U$是$e$的一个邻域，所以存在对称开集$U'$满足$U'\subset U'U'\subset x^{-1}U$. 所以$xU'\subset xx^{-1}U=U$是$x$的一个邻域，满足$\overline{xU'}\subset xU'U'\subset xx^{-1}U=U$.
+\end{proof}
+
+脱离上面的命题，下面给出一个分离性条件的直接证明：
+
+\begin{pro}\label{1.16}
+设$V$是拓扑群$G$的一个闭子集，而$K$是$G$的一个紧子集，并且$V\cap K=\varnothing$. 那么存在$e$的一个邻域$U$使得$VU\cap KU=\varnothing$.
+\end{pro}
+
+由于有限集是紧集，当假设$\{e\}$是闭集的时候，这个命题可以直接推出$\mathsf{T}_3$条件。
+
+\begin{proof}
+	假定$K$非空，否则命题显然正确。现在任取$x\in K$，于是$G-V$是一个开集，所以可以找到包含原点的开集$U_x$使得$xU_x\cap V=\varnothing$. 取对称开集$W_x$使得$W_xW_xW_xW_x\subset U_x$，此时$xW_xW_xW_x\subset xU_x$，所以$xW_xW_xW_x\cap V=\varnothing$. 
+
+	任取$y\in xW_xW_x\cap VW_x$，由于$y\in xW_xW_x$，所以$yW_x\subset xW_xW_xW_x$，这意味着$yW_x\cap V=\varnothing$，或者说，任取$a\in W_x$，都有$ya\not\in V$. 另一方面，由于$y\in VW_x$，所以一定存在一个$b\in W_x$和$v\in V$使得$y=vb$成立，反过来，$yb^{-1}=v\in V$，由于$W_x$是对称的，所以$b^{-1}\in W_x$，矛盾。因此$xW_xW_x\cap VW_x=\varnothing$.
+
+	遍历$x$，$xW_x$构成$K$的一个开覆盖，由于$K$是紧集，取一个有限子覆盖，对应于$x_1$, $\cdots$, $x_n\in K$. 令$U=\bigcap_{i=1}^n W_{x_i}$，则
+	\[
+	KU\subset \bigcup_{i=1}^n {x_i}W_{x_i}U\subset \bigcup_{i=1}^n x_iW_{x_i}W_{x_i}.
+	\]
+	任取$x_iW_{x_i}W_{x_i}$，由于
+	\[
+		x_iW_{x_i}W_{x_i}\cap VU=x_iW_{x_i}W_{x_i}\cap \bigcap_{j=1}^n VW_{x_j}=(x_iW_{x_i}W_{x_i}\cap VW_{x_i})\cap \bigcap_{j\neq i}^n VW_{x_j}=\varnothing \cap \bigcap_{j\neq i} VW_{x_j}=\varnothing,
+	\]
+	所以$KU\cap VU=\varnothing$.
+\end{proof}
+
+由于$VU$是一个开集，所以$\overline{KU}$都与$VU$不交，进而与$V$不交。由于有限集都是紧的，取$K=\{e\}$，然后就有$\overline{U}$与$V$不交。所以，任取$e$的一个邻域$W$，有闭集$G-W$，于是存在一个$e$的邻域$U$使得$\overline{U}$与$G-W$不交，或者说$\overline{U}\subset W$.
+
+上面讨论了所有单位元邻域的交，由此产生了分离性的讨论。下面说明，任意一个单位元邻域都可以生成整个含有单位元的连通分支。
+
+\begin{lem}\label{lem:116}
+对于连通拓扑群，设$U$是单位元的任意一个邻域，则$G=\bigcup_{n\geq 1}U^n$，其中$U^k=\{g_1\cdots g_k\,:\,g_i\in U,\, 1\leq i \leq k\}$是开集。
+\end{lem}
+
+\begin{proof}
+令$V=U\cap U^{-1}$，显然$V=V^{-1}\subset U$以及$H=\bigcup_{n\geq 1}V^n\subset \bigcup_{n\geq 1}U^n$，而且$H$还是一个子群。下面我们只要证明$H=\bigcup_{n\geq 1}V^n$既是开的也是闭的，那么连通性自然给出了结论。他是开的，如果$\sigma\in V^k$，那么$\sigma V\in V^{k+1}\subset H$就是他的一个开邻域。他是闭的，因为每一个$\sigma H$都是开的，于是$H=G-\bigcup_{\sigma\notin H}\sigma H$是一个闭集。
+\end{proof}
+
+结合上面两点不难看到，因为拓扑群有着代数结构，一般而言，这就使得拓扑群的拓扑结构都来自于其单位元附近的邻域。
+
+举个例子，一个拓扑空间是局部紧的，需要每一点处有一个紧邻域，到了拓扑群，只需要单位元有一个紧邻域。
+
+% \begin{para}
+% 一个拓扑空间$X$的拓扑可以由某个度量$d$诱导出来，则这个拓扑空间被称为可度量化的。对一般的拓扑空间$X$，Nagata-Smirnov度量化定理给出了可度量化的等价条件为$X$是$\mathsf{T}_3$且存在可数局部有限基。所谓的可数局部有限基就是说拓扑空间的基是可数个局部有限子族的并。所谓的局部有限族，就是对任意一点$p\in X$，存在一个邻域只与族中的有限个元素相交。
+
+% 到了拓扑群语境，这个条件可以减弱到单位元附近存在局部基，使得他是可数个局部有限子族的并。而$\mathsf{T}_3$可以减弱到$\{e\}$是一个闭集。
+% \end{para}
+
+\begin{para}
+在交换拓扑群上可以谈Cauchy列。由于下面我们谈论的都是交换群，所以这里用加法来表示群运算。其实在拓扑群上也可以谈类似的概念，不过这里就不把问题弄得太一般了。
+
+在拓扑群$G$中，一个Cauchy列是$G$中的一个序列$\{g_1$, $g_2$, $\dots\}$，对每一个$G$中$0$的开邻域$U$，都存在一个正整数$n(U)$使得当$s$, $t>n(U)$时都有$g_s-g_t\in U$. 
+
+称两个列$\{x_i\}$和$\{y_i\}$是等价的（共尾的），如果$x_i-y_i\to 0$. 这显然是一个等价关系。如果一个列收敛，则与他等价的列也收敛，并且有着相同的极限。事实上，给定单位元处的一个开邻域$U$，我们可以找一个对称邻域$V$使得$V\subset V+V\subset U$. 如果$\{x_i\}$收敛于$a$，则存在一个$n(V)$使得$i>n(V)$时一定成立$x_i-a\in V$，同样，由于$x_i-y_i\to 0$，所以存在一个$m(V)$使得$i>m(V)$时一定成立$y_i-x_i\in V$（如有必要，利用一下$V$是对称的），于是当$i>N(U)=\max\{n(V),m(V)\}$时，有
+\[
+	y_i-a=y_i-x_i+x_i-a\in V+V\subset U.
+\]
+于是$a$也是$\{y_i\}$的极限。
+
+将这两个定义结合起来，不难看到，与Cauchy列等价的列也是Cauchy列，于是它诱导了所有Cauchy列上的一个等价关系。实际上，任取$0$的邻域$U$，选一个对称邻域$V$使得$V+V+V\subset U$. 设$\{x_n\}$是一个Cauchy列，而$\{y_n\}$与他等价，那么对$W$，我们有一个正整数$N$使得，$i$, $j>N$时成立
+\[
+	y_i-x_i\in V,\quad x_j-y_j\in V,\quad x_i-x_j\in V,
+\]
+其中前两个是等价，第三个是Cauchy列的条件，于是
+\[
+	y_i-y_j=(y_i-x_i)+(x_i-x_j)+(x_j-y_j)\subset V+V+V\subset U.
+\]
+因此$\{y_n\}$也是一个Cauchy列。
+
+\end{para}
+
+\begin{lem}
+	Cauchy列的无穷子列与原列等价，进而也是Cauchy列。
+\end{lem}
+
+\begin{proof}
+	设$\{x_i\}$是一个Cauchy列，而$\{x_{n_i}\}$是一个无穷子列，其中$n_i$随着$i$严格递增。下面证明$x_{n_i}-x_i\to 0$，这等价于说，任取$0$的一个邻域$U$，存在一个$N$使得$i>N$时候一定有$x_{n_i}-x_{i}\in U$. 事实上，由于$n_i$是选成递增的，所以$n_i\geq i$. 由于$\{x_i\}$是一个Cauchy列，所以存在一个$n(U)$使得$i$, $j>n(U)$时候一定有$x_i-x_j\in U$，取$N=n(U)$，则$i>N$时也有$n_i>N$，于是我们就得到了结论。
+\end{proof}
+
+一个简单的推论就是，如果Cauchy列的某个无穷子列收敛，则Cauchy列也收敛。
+
+\begin{para}
+	设$G$是一个交换拓扑群，而$\hat G$是$G$上所有Cauchy列的等价类，则$\hat G$被称为$G$的完备化。
+
+	不难在$\hat G$上定义出一个交换群结构。Cauchy列$\{x_i\}$和$\{y_i\}$的加法定义为序列$\{x_i+y_i\}$，我们需要验证它也是Cauchy列。实际上，任取$0$的开邻域$U$，找一个对称邻域$V$使得$V\subset V+V\subset U$. 存在一个足够大的$N$使得$i$, $j>N$时有$x_i-x_j\in V$以及$y_i-y_j\in V$成立，此时$(x_i+y_i)-(x_j+y_j)\in V+V\subset U$. 因此$\{x_i+y_i\}$也是一个Cauchy列。
+
+	从$G$到$\hat G$有一个自然的同态$\varphi$，即将$x\in G$变成常序列$\{x$, $x$, $\dots\}$. 但是注意到，这个同态可能不是单的。因为如果存在非零的$a\in\bigcap_{U\subset \mathscr{B}}U$，则$\varphi(x)$与$\varphi(x+a)$诱导的两个Cauchy列是等价的。反过来，不难从Cauchy列等价的定义证明也只有当$\bigcap_{U\subset \mathscr{B}}U=\{0\}$时，$\varphi$才是单同态。回忆Lemma \ref{lem:2}，这就是说$\{0\}=\overline{\{0\}}$或者说$\{0\}$是一个闭集，回忆Proposition \ref{pro:3}，这等价于说$G$是一个Hausdorff空间。
+
+	那么$\varphi$什么时候才是满射呢？注意到，如果$G$中的Cauchy列是收敛的，则他与极限的常序列是等价的，所以如果$G$中的Cauchy列都是收敛的，则$\varphi:G\to \hat{G}$是满的。
+\end{para}
+
+\begin{para}
+	假设$G$是第一可数的，即在每一点处都有可数局部基，在拓扑群上，只需要在原点处有可数局部基即可。这里我们可以赋予$\hat G$一个拓扑空间结构。这个拓扑空间自然要使得$\varphi$以及$\hat G$上的运算成为连续映射，这点我们慢慢检验。
+
+	首先称序列$\{x_i\}$最终处于$0$的邻域$U$中，如果存在一个$N$使得$n>N$时候一定有$x_n\in U$. 注意，如果一个Cauchy列最终处于$U$中，与他等价的Cauchy列不一定也最终处于$U$中。比如考虑开集$(-1,1)\subset \rr$以及序列$\{1-2^{-n}\}$以及$\{1+(-2)^{-n}\}$，它们显然都是Cauchy列，并且相互等价，但是第二个就并不是最终处于$(-1,1)$中的。
+
+	对$G$中的$0$的任意邻域$U$，定义$\hat U$是$\hat G$中那些等价类中的Cauchy列都最终处于$U$的等价类的集合。注意到，我们选取的等价类中所有的元素都最终处于$U$中，这就避免了$\{1+(-2)^{-n}\}$这种会与“边界”无限接近的序列的存在。
+
+	下面罗列一些性质，它们都是简单的：
+	\begin{compactenum}
+	\item 如果$U\subset V$，则$\hat U\subset \hat V$.
+	\item $\hat{U}\cap \hat{V}=\widehat{U\cap V}$.
+
+	%首先，由第一点，显然$\widehat{U\cap V}\subset \hat{U}\cap \hat{V}$. 反过来，由于$\hat{U}$是所有最终处于$U$中的Cauchy列的等价类的集合，而$\hat{V}$是所有最终处于$V$中的Cauchy列的等价类的集合，于是$\hat{U}\cap \hat{V}$中的Cauchy列都最终处于$U\cap V$中。
+	\item $\hat{U}\cup \hat{V}=\widehat{U\cup V}$.
+	\item $-\hat{U}=\widehat{-U}$.
+	\item $\hat{U}+\hat{V}\subset \widehat{U+V}$.
+	\end{compactenum}
+
+	考虑所有形如$\hat{a}+\hat{U}$的集合构成的族，其中$a$跑遍$\hat G$，而$U$跑遍$G$中$0$的开邻域。我们验证这是一个拓扑基，即，我们要检验，如果$(a+\hat{U})\cap (b+\hat{V})\neq \varnothing$，则对$c\in (a+\hat{U})\cap (b+\hat{V})$，一定存在一个$c+\hat{W}\subset (a+\hat{U})\cap (b+\hat{V})$. 而这等价于证明存在一个$\hat{W}$使得
+	\[
+	\hat{W}\subset (a-c+\hat{U})\cap (b-c+\hat{V})
+	\]
+	而这只需要对$a-c+\hat{U}$找到$U_0$使得$\hat{U}_0\subset a-c+\hat{U}$，对$b-c+\hat{V}$找到$V_0$，然后取$W=U_0\cap V_0$即可。
+
+	由于$c\in a+\hat{U}$，所以$c-a\in \hat{U}$. 考虑Cauchy列$\{x_i=c_i-a_i\}$是$x=c-a$的一个代表元，由于它最终落于$U$中，所以不妨直接假设它完全就处于$U$中。
+
+	我们下面寻找一个$0$的对称邻域$U_0$，使得对于足够大的$n$，成立$x_n+U_0\subset x_n+U_0+U_0\subset U$. 这样对于最终落在$U_0$中的Cauchy列$\{y_n\}$，对足够大的$n$，一定有
+	\[
+	y_n+x_n\in x_n+U_0\subset U,
+	\]
+	如果选取$x$的等价类中其他的序列$\{x'_n\}$，那对于足够大的$n$，有$x'_n-x_n\in U_0$，于是
+	\[
+	y_n+x'_n=(y_n+x_n)+(x'_n-x_n)\in x_n+U_0+U_0\subset U,
+	\]
+	因此这是良定的。由于$\{y_n\}$是任取的最终落在$U_0$中的Cauchy列，故$\hat{U_0}+x\subset \hat{U}$或者写作$\hat{U_0}\subset -x+\hat{U}=a-c+\hat{U}$，此即所需。
+
+	注意到，如果存在一个$0$的邻域$U_1$使得对于足够大的$n$一定有$x_n+U_1\subset U$成立，则取$U_0$为使得$U_0\subset U_0+U_0\subset U_1$的对称邻域就满足了上面的要求。最后，我们即要找一个$0$的邻域$U_1$，使得对于足够大的$n$，成立$x_n+U_1\subset U$.
+
+	反证，因为假设了$G$是第一可数的，所以找$0$处的可数局部基，并选出一个严格递减的链$O_1\supset O_2\supset \cdots$使得对于任意的$0$的邻域$V$，存在一个整数$n(V)$使得$i>n(V)$时一定成立$O_i\subset V$. 由于不存在$U_1$使得$x_n+U_1\subset U$对足够大的$n$成立，所以对每一个$O_i$，都存在一个$x_{n_i}$使得$x_{n_i}+O_i\not\subset U$，即存在$y_{i}\not\in U$但$y_i\in x_{n_i}+O_i$. 不妨将$n_i$选成按$i$严格递增的，此时，$y_i-x_{n_i}\in O_i$对每一个$i$都成立。由于$O_i$可以选得任意小，故$y_i-x_{n_i}\to 0$，所以$\{y_i\}$与$\{x_{n_i}\}$等价也就与$\{x_i\}$等价，但$\{y_i\}$最终不处于$U$中。由于$x=c-a\in \hat{U}$，按照$\hat{U}$的定义，$\{y_i\}$处于该等价类中也应该最终处于$U$中。矛盾。
+\end{para}
+
+\begin{lem}\label{lem:11}
+	假设$G$是第一可数的。对$x\in \hat{G}$以及给定$\hat{U}$，若存在对称邻域$V$使得$V\subset V+V\subset U$使得$x$的一个代表元$\{x_i\}$最终处于$V$中，则$x\in\hat{U}$.
+\end{lem}
+
+\begin{proof}
+	只要证明与$\{x_i\}$等价的序列都最终处于$U$中即可。设$\{x'_i\}$与之等价，则足够大的$i$，我们有$x'_i-x_i\in V$，所以$x'_i=x_i+x'_i-x_i\in V+V\subset U$. 
+\end{proof}
+
+\begin{pro}
+	如果交换拓扑群$G$是第一可数的，则其完备化$\hat G$有一个自然的拓扑结构使得它是一个拓扑群，并且使得自然同态$\varphi:G\to \hat G$是一个连续同态。此外，$\varphi(G)$是$\hat{G}$的一个稠密子集。
+\end{pro}
+
+当交换拓扑群$G$是第一可数的时候，我们会默认$\hat G$有引理中的这个拓扑群结构。
+
+\begin{proof}
+	拓扑结构在上面已经给出。考虑基中的任意一个元素$a+\hat{U}$，关于群的逆运算，它的原像是$-a-\hat{U}=-a+\widehat{-U}$也是一个开集，所以逆运算是连续的。
+
+	然后考虑加法$\mu:\hat G\times \hat G\to \hat G$. 设$a+b\in c+\hat{U}$，存在一个$\hat{V}$使得$a+b+\hat{V}\subset c+\hat{U}$，其中$V$是$0$的一个邻域。然后对$V$找一个对称邻域$W$使得$W\subset W+W\subset V$，于是
+	\[
+	a+\hat{W}+b+\hat{W}=a+b+\hat{W}+\hat{W}\subset a+b+\widehat{W+W}\subset a+b+\widehat{V}\subset c+\hat{U},
+	\]
+	所以$\mu^{-1}(c+\hat{U})$是一个开集。
+
+	现在，我们来证明$\varphi^{-1}(a+\hat{U})\subset G$是一个开集。如果是空集，则没什么好证的，否则任取$g\in \varphi^{-1}(a+\hat{U})$，于是$\varphi(g)\in a+\hat{U}$，对它可以找到$0$的一个邻域$V$使得$\varphi(g)+\hat{V}\subset a+\hat{U}$，直接可以计算得到
+	\[
+	g+V\subset \varphi^{-1}(\varphi(g)+\hat{V})\subset \varphi^{-1}(a+\hat U).
+	\]
+	所以$\varphi^{-1}(a+\hat U)$是一个开集，进而$\varphi$是一个连续同态。
+
+	最后我们证明，$\varphi(G)$是$\hat{G}$的一个稠密子集。任取$x\in \hat{G}$，只需在$\hat{G}$中找一个序列趋向于$x$. 选定$x$的一个代表元$\{x_i\}$，然后考虑$\hat{G}$中的序列$\{\varphi(x_i)\}$，下面说明它的极限就是$x$，或者说$x-\varphi(x_i)\to 0$. 
+
+	任取$\hat{U}$，我们需要说明对于足够大的$i$，$x-\varphi(x_i)\in \hat{U}$. 取$U$的一个对称邻域$V$使得$V\subset V+V\subset U$，由Lemma \ref{lem:11}，只要$\{x_j-x_i\}_j$最终处于$V$中就得到了$x-\varphi(x_i)\in \hat{U}$. 由于$\{x_i\}$是Cauchy列，所以对$V$，存在$n(V)$，当$i$, $j>n(V)$时，$x_j-x_i\in V$成立。此即所需。
+\end{proof}
+
+\begin{para}
+	既然$\hat{G}$是一个拓扑群了，我们自然也可以继续谈它的一些拓扑性质。
+	\begin{compactenum}
+	\item $\hat{G}$是Hausdorff空间。
+
+		实际上，考虑$x\in \bigcap\hat{U}$，其中$U$跑遍$G$上$0$处的开邻域，我们证明$x=0$，即$x$中的任意代表元都与常序列$\{0$, $0$, $\dots\}$等价，或者说，任取$x$的代表元$\{x_i\}$，都有$x_i\to 0$. 任取$0$的开邻域$U$，因为$x\in \hat{U}$，$\{x_i\}$最终处于$U$中，所以存在一个$N$使得$n>N$时有$x_n\in U$，这就推出了$x_i\to 0$.
+	\item $\hat{G}$是第一可数的。这当然直接来自于$\hat{G}$的拓扑基的构造与$G$第一可数的假设。
+
+	\item $\hat{G}$是完备的，即$\hat{G}$中所有的Cauchy列收敛。
+	\item 因此，对$\hat{G}$的完备化$\hat{\hat G}$以及自然同态$\hat\varphi:\hat{G}\to\hat{\hat G}$. 由第一点，$\hat\varphi$是单射，由第三点，$\hat\varphi$是满射，所以$\hat\varphi$是一个同构。
+	\end{compactenum}
+
+	\begin{proof}
+		只需证明第三点。因为$G$是第一可数的，所以找$0$处的可数局部基，并选出一个严格递减的链$O_1\supset O_2\supset \cdots$使得对于任意的$0$的邻域$U$，存在一个整数$n(U)$使得$i>n(U)$时一定成立$O_i\subset U$. 
+
+		考虑$\{\hat{x}_i\}_i$是$\hat{G}$中的一个Cauchy列，由于$\varphi(G)$在$\hat{G}$中是稠密，所以$\varphi^{-1}(\hat{x}_i+\hat{O}_i)$非空，让我们取一个$y_i\in\varphi^{-1}(\hat{x}_i+\hat{O}_i)$. 于是$\varphi(y_i)\in \hat{x}_i+\hat{O}_i$或者说$\varphi(y_i)-\hat{x}_i\in \hat{O}_i$，因此$\{\varphi(y_i)\}_i$与$\{\hat{x}_i\}_i$等价，所以只需证明$\{\varphi(y_i)\}_i$收敛。这里先可以得出$\{\varphi(y_i)\}_i$是一个Cauchy列。
+
+		任取开集$U$，由于$\{\varphi(y_i)\}_i$是Cauchy列，所以存在$n(U)$使得$i$, $j>n(U)$时有
+		\[
+		\varphi(y_i-y_j)=\varphi(y_i)-\varphi(y_j)\in \hat{U},
+		\]
+		所以$y_i-y_j\in \varphi^{-1}(\hat{U})=U$. 于是$\{y_i\}$是Cauchy列，它在$\hat G$中的等价类记作$y$. 最后，我们证明它就是$\{\varphi(y_i)\}_i$的极限，或者说$\varphi(y_i)-y\to 0$. 与证明稠密性时候相似，利用Lemma \ref{lem:11}和$y$是一个Cauchy列，我们就得到了结论。
+	\end{proof}
+\end{para}
+
+\section{预可容环}
+
+拓扑环（对加法）当然是一个拓扑群，且乘法是一个连续映射。如果拓扑环在$0$处存在一个一族开理想构成的的拓扑基，则称拓扑环是一个线性拓扑环。
+
+\begin{para}
+设$R$是一个\idx{线性拓扑环}，称开理想$\mathfrak{a}$是一个\idx{定义理想}，如果任取一个包含$0$的开集$U$，存在一个正整数$n(U)$使得当$i>n(U)$时都有$\mathfrak{a}^i\subset U$. 换句话说，即$\mathfrak{a}^i\to 0$. 如果一个线性拓扑环具有定义理想，则称其为\idx{预可容的}。预可容拓扑环如果还是分离且完备的，则称其为\idx{可容的}。
+\end{para}
+
+如果$\mathfrak{a}$是$R$的一个定义理想，而$\mathfrak{b}$是任意的一个开理想，则开理想$\mathfrak{a}\cap \mathfrak{a}$也是一个定义理想。所以，预可容环的所有定义理想构成$0$处的一个拓扑基。
+
+反过来，如果我们知道了一个定义理想，则我们可以知道其他的定义理想。这表现为如下引理。
+
+\begin{lem}
+设$R$是一个预可容环，而$\mathfrak{a}$是一个定义理想。一个开理想$\mathfrak{b}$是一个定义理想，当且仅当存在一个$n$使得$\mathfrak{b}^n\subset \mathfrak{a}$.
+\end{lem}
+
+这从定义是显然的。
+
+\begin{pro}设$R$是一个预可容环，而$\mathfrak{a}$是一个定义理想，则以下命题等价：
+\begin{compactenum}[~~~(1)]
+\item $x^n\to 0$,
+\item $x\in \sqrt{\mathfrak{a}}$,
+\item $x$属于某个定义理想。
+\end{compactenum}
+\end{pro}
+
+\begin{proof}可以按如下顺序来证明：
+\begin{compactitem}
+\item[~~~$(1)\Rightarrow (2)$] 由于$x^n \to 0$，而$\mathfrak{a}$是一个开理想，所以存在一个$N$使得$x^N\in \mathfrak{a}$. 此即$x\in \sqrt{\mathfrak{a}}$.
+\item[~~~$(2)\Rightarrow (3)$] 考虑理想$\mathfrak{b}=\mathfrak{a}+\langle x\rangle$，这是一个开理想，因为它作为集合不过是$\bigcup_{r\in R}(rx+\mathfrak{a})$. 由于$x\in \sqrt{\mathfrak{a}}$，所以存在一个$n$使得$x^n \in \mathfrak{a}$. 不难检验$\mathfrak{b}^n\subset \mathfrak{a}$. 所以$\mathfrak{b}$是一个定义理想，且$x\in \mathfrak{b}$.
+\item[~~~$(3)\Rightarrow (1)$] 显然。
+\end{compactitem}
+\end{proof}
+
+\begin{pro}设$R$是一个预可容环，而$\mathfrak{m}$是一个理想，则以下命题等价：
+\begin{compactenum}[~~~(1)]
+\item $\mm$是$R$最大的定义理想,
+\item $\mm$是$R$的一个极大的定义理想,
+\item $\mathfrak{m}$是一个定义理想且$\mm=\sqrt{\mm}$,
+\item $\mathfrak{m}$是一个定义理想且$R/\mm$是约态环。
+\end{compactenum}
+\end{pro}
+
+\begin{proof}可以按如下顺序来证明：
+\begin{compactitem}
+\item[~~~$(1)\Rightarrow (2)$] 显然。
+\item[~~~$(2)\Rightarrow (3)$] 如果$\mm\neq\sqrt{\mm}$，则存在一个非零的$x\in \sqrt{\mm}-\mm$和一个$n$使得$x^n\in \mm$. 考虑开理想$\mathfrak{b}=\mathfrak{m}+\langle x\rangle$，他是一个定义理想且真包含$\mathfrak{m}$，这与$\mm$的极大性矛盾。所以$\mm=\sqrt{\mm}$.
+\item[~~~$(3)\Rightarrow (1)$] 设$\mathfrak{a}$是任意的一个定义理想，则任取$x\in \mathfrak{a}$都有$x^n\to 0$，所以$x\in \sqrt{\mm}=\mm$，此即$\mathfrak{a}\subset \mm$.
+\item[~~~$(3)\Rightarrow (4)$] $\mm=\sqrt{\mm}$等价于$\mm$是一个素理想，所以$R/\mm$是整环当然也是约态的。
+\item[~~~$(4)\Rightarrow (2)$] 如果$\mm$不是一个极大的定义理想，则必然有一个定义理想$\mathfrak{a}$真包含它。于是存在非零元$x\in \mathfrak{a}-\mm$使得$x^n\in \mm$. 在商态射下，$x$在$R/\mm$中是非平凡的幂零元，所以$R/\mm$不是约态环。
+\end{compactitem}
+\end{proof}
+
+如果$R$是一个Noether预可容环，则可知必然存在一个最大的定义理想。
+
+\begin{para}
+称一个拓扑环是一个预进制环，如果存在一个定义理想$\mathfrak{a}$使得$\{\mathfrak{a}^n\,:\,n\in \zz\}$是$0$处的一个拓扑基。如果一个预进制环完备且分离，则称这是一个进制环。
+\end{para}
+
+\begin{lem}
+设$R$是一个预进制环，则对$R$的任意定义理想$\mathfrak{a}$，$\{\mathfrak{a}^n\,:\,n\in \zz\}$是$0$处的一个拓扑基。因此，预进制环由不同定义理想诱导的拓扑都是相同的。
+\end{lem}
+
+\begin{proof}
+设$\mathfrak{a}_0$是一个定义理想，$\{\mathfrak{a}_0^n\,:\,n\in \zz\}$是$0$处的一个拓扑基。现在考虑定义理想$\mathfrak{a}$，如果开集$a+\mathfrak{a}^m$和开集$b+\mathfrak{a}^n$相交非空，则我们存在一个$c\in (a+\mathfrak{a}^m)\cap (b+\mathfrak{a}^n)$，现在我们只要证明存在一个$\mathfrak{a}^l$使得
+\[
+	c+\mathfrak{a}^l\subset (a+\mathfrak{a}^m)\cap (b+\mathfrak{a}^n)
+\]
+即可。等价地，上式可以写成
+\[
+	\mathfrak{a}^l\subset (a-c+\mathfrak{a}^m)\cap (b-c+\mathfrak{a}^n),
+\]
+由于$(a-c+\mathfrak{a}^m)\cap (b-c+\mathfrak{a}^n)$是包含$0$的一个开集，所以存在$\mathfrak{a}_0^p$使得
+\[
+	\mathfrak{a}_0^p\subset (a-c+\mathfrak{a}^m)\cap (b-c+\mathfrak{a}^n).
+\]
+由于$\mathfrak{a}$是定义理想，所以存在一个$n$使得$\mathfrak{a}^n\subset \mathfrak{a}_0$. 最后，取$l=pn$即可。
+\end{proof}
+
+最后，我们以一个不算太有趣的命题结束这节。
+
+\begin{pro}
+设$R$是一个可容环，而$\mathfrak{a}$是其定义理想，任取$x\in \mathfrak{a}$，$1+x$总是可逆的。
+\end{pro}
+
+\begin{proof}
+给定$x\in \mathfrak{a}$，$\sum_{n=0}^\infty (-x)^n$是Cauchy列，由于$R$完备，所以收敛于$y\in R$. 不难计算得到$y(1+x)=1$. 
+\end{proof}
+
+如果$\mathfrak{a}$还是极大理想，则从这个命题可以看到$R$是一个局部环。因此，定义理想为极大理想的可容环是局部环。
+
+\section{环的完备化}
+
+\begin{para}
 设$R$是一个环，而$R=\mm_0\supset \mm_1\supset \mm_2\supset \cdots$是一族理想。我们定义$R$关于这族理想的降链的完备化$\hat R$为$R/\mm_i$的极限
 \[
 \begin{aligned}
@@ -23,22 +355,22 @@
 直观来看，$R=\mm_0\supset \mm_1\supset \mm_2\supset \cdots$是降链，它们将$R$分成了一个一个等价类，而$\mm_i$愈小，则等价类越多，将$R$分得更细。对$g=(g_1,g_2,\dots)$，给定$i$，所有的$g_j$在$R/\mm_i$中看起来都是相同的，其中$j\geq i$，或者说，它们在同一个等价类中。所以$\hat R$中的一个元素，即从大的等价类中再取一个小的等价类，然后越来越细。
 
 完备化的一个典型应用是取$\mm_i=\mm^i$. 比如整数环$\zz$关于$(p)^i$的完备化$\hat\zz_{(p)}$就是所谓的$p$进制数环。再比如，$R[x]$关于$(x)^i$的完备化是幂级数环$R[\![x]\!]$. 这时候，我们记这类完备化为$\hat R_\mm$.
+\end{para}
 
-\para 完备化的名字来自于，我们可以给$R$一个拓扑空间结构使得$\hat R$是$R$作为拓扑空间的完备化。实际上，$R$如果是拓扑空间而且是交换群，则自然我们希望是拓扑群，在拓扑群中，加法是$R\to R$的同胚。这时候取$\{\mm_i\}$为$R$原点处的拓扑基，进而我们就得到了$R$上的一个拓扑结构。这个拓扑结构的直观是与上面说的相同的，我们把更细的等价类看成了$R$中更小的开集。
+\begin{para}
+完备化的名字来自于，我们可以给$R$一个拓扑空间结构使得$\hat R$是$R$作为拓扑群（当然也是拓扑环）的完备化。实际上，$R$如果是拓扑空间而且是交换群，则自然我们希望是拓扑群，在拓扑群中，加法是$R\to R$的同胚。这时候取$\{\mm_i\}$为$R$原点处的拓扑基，进而我们就得到了$R$上的一个拓扑结构。这个拓扑结构的直观是与上面说的相同的，我们把更细的等价类看成了$R$中更小的开集。
+\end{para}
 
-在拓扑群$R$中，一个Cauchy列是$R$中的一个序列$\{g_1$, $g_2$, $\dots\}$，对每一个$R$中$0$的开邻域$U$，都存在一个正整数$n(U)$使得当$s$, $t>n(U)$时都有$g_s-g_t\in U$. 两个Cauchy列$\{x_i\}$和$\{y_i\}$是等价的，如果$x_i-y_i\to 0$. 这显然是一个等价关系。所有Cauchy列的等价类的集合就构成了$R$的完备化，记作$\bar{R}$. 
+这样定义的$R$当然是第一可数的，所以它的完备化总是存在的，我们临时把它记作$\bar{R}$. $\bar{R}$作为拓扑群的完备化当然是加法群，而上面乘法的定义也是简单的，如果$\bar{a}$, $\bar{b}$是$R$中的两个Cauchy列，定义一个列
+\[
+	(\bar{a}\bar{b})_i=a_ib_i,
+\]
+其中$a_i$, $b_i$分别是Cauchy列$\bar{a}$, $\bar{b}$第$i$个元。这是一个Cauchy列，实际上，任取$\mm_n$，则对于足够大的$i$, $j$都有$b_j-b_i\in \mm_n$和$a_j-a_i\in \mm_n$，我们有
+\[
+	a_jb_j-a_ib_i=a_jb_j-a_jb_i+a_jb_i-a_ib_i=a_j(b_j-b_i)+(a_j-a_i)b_i\in \mm_n.
+\]
 
-不难直接在$\bar{R}$上给出一个环结构，Cauchy列$\{p_i\}$和$\{q_i\}$的加法定义为序列$\{p_i+q_i\}$，乘法定义为序列$\{p_iq_i\}$. 这两个序列是Cauchy列，对加法，如果$p_j-p_k\in \mm_i$以及$q_j-q_k\in \mm_i$，则$(p_j+q_j)-(p_k+q_k)=p_j-p_k+q_j-q_k \in \mm_i$. 对乘法，如果$p_j-p_k\in \mm_i$以及$q_j-q_k\in \mm_i$，则$p_jq_j-p_kq_k=p_j(q_j-q_k)+q_k(p_j-p_k)\in \mm_i$. 
-
-\begin{lem}
-Cauchy列的无穷子列也是Cauchy列，且与原列等价。
-\end{lem}
-
-\begin{proof}
-	设$\{x_i\}$是一个Cauchy列，而$\{x_{n_i}\}$是一个无穷子列，其中$n_i$随着$i$严格递增。于是，给定$0$的邻域$U$，则存在$n(U)$使得$i$, $j>n(U)$时候一定有$x_i-x_j\in U$，于是当$n_i$, $n_j>n(U)$时$x_{n_i}-x_{n_j}\in U$. 因此他也是Cauchy列。
-
-	下面我们证明$x_{n_i}-x_i\to 0$，这等价于说，任取$0$的一个邻域$U$，存在一个$N$使得$i>N$时候一定有$x_{n_i}-x_{i}\in U$. 事实上，由于$n_i$是选成递增的，所以$n_i\geq i$. 由于$\{x_i\}$是一个Cauchy列，所以存在一个$n(U)$使得$i$, $j>n(U)$时候一定有$x_i-x_j\in U$，取$N=n(U)$，则$i>N$时也有$n_i>N$，于是我们就得到了结论。
-\end{proof}
+进而在$\bar{R}$上的乘法就直接定义为两个等价类的代表元的乘积的等价类，不难检验这个定义是良定的。
 
 \begin{pro}
 我们两种方法定义的局部化是同构的，即$\bar{R}\cong \hat R$.
@@ -65,10 +397,10 @@ Cauchy列的无穷子列也是Cauchy列，且与原列等价。
 	\]
 	这样，我们就得到了映射$\psi:\bar{R}\to \hat{R}$，它显然是一个环同态。
 
-	最后，由构造，不难检验$\psi\varphi(g)=g$以及$\varphi\psi(p)=p$. 所以$\hat R$与$\bar R$等价。
+	最后，由构造，不难检验$\psi\varphi(g)=g$以及$\varphi\psi(p)=p$. 所以$\hat R$与$\bar R$同构。
 \end{proof}
 
-这个同构提供了许多事情的不同观点。比如，从$R\to \hat R$有一个自然的映射$r\mapsto (r$, $r$, $r$, $\dots)$，很容易看到，这不一定是单的：如果$\bigcap_i \mm_i\neq 0$且$r-s\in \bigcap_i \mm_i$，则$r$与$s$映向$\hat R$中同一个元素。而以拓扑的观点来看，这就是在说$R$是不是一个Hausdorff空间。只有当具有足够可分性时，$\bar R$中的常序列才可能一一对应于$R$中的元素。这并不奇怪，因为众所周知，非Hausdorff空间中同一个序列可能有不同的极限。
+这个同构提供了许多事情的不同观点。比如，从$R\to \hat R$有一个自然的映射$r\mapsto (r$, $r$, $r$, $\dots)$，很容易看到，这不一定是单的：如果$\bigcap_i \mm_i\neq 0$且$r-s\in \bigcap_i \mm_i$，则$r$与$s$映向$\hat R$中同一个元素。而以拓扑的观点来看，这就是在说$R$是不是一个Hausdorff空间。只有当具有足够分离性时，$\bar R$中的常序列才可能一一对应于$R$中的元素。这并不奇怪，因为众所周知，非Hausdorff空间中同一个序列可能有不同的极限。
 
 因此，如果$R\to \hat R$的典范同态是同构，则我们称$R$是（关于理想族$\{\mm_i\}$）\idx{完备}的。如果理想族是$\mm_i=\mm^i$，则称关于理想$\mm$是完备的。显然，$\hat R$是完备的，因为它与$\hat{\hat R}$同构。
 
