@@ -7,51 +7,57 @@
 
 设$M$是一个$R$-模，设$\mathfrak{a}\subset \ann(M)$是$R$中的一个理想，则$M$可以看成一个$R/\mathfrak{a}$-模，因为$(r+\mathfrak{a})m=rm$. 特别地，$M$是一个$R/\ann(M)$-模，此时，如果$rm=0$，则可以推出$r$和$m$中有一个零。
 
-\para $\ann(m)$中的那些素理想，称之为$M$的associated primes，定义$\Ann_R(M)$为所有associated primes的集合，如果下标$R$是清楚的，我们会略去它。
+\para $R$中形如$\ann(m)$的那些素理想被称之为$M$的associated primes，定义$\Ass_R(M)$为所有associated primes的集合，如果下标$R$是清楚的，我们会略去它。当然有可能所有的$\ann(m)$都不是素理想，但是如果$R$是一个Noether环，则下面的引理保证了$\Ass(M)$非空。
 
-当然有可能所有的$\ann(m)$都不是素理想，但是如果$R$是一个Noether环，则下面的引理保证了$\Ann(M)$非空。
+\begin{lem}
+设$\mathcal{P}$是所有形如$\ann(m)$的理想按照包含构成的一个偏序集，则$\mathcal{P}$中的极大元都是素理想。
+\end{lem}
 
-\lem 设$\mathcal{P}$是所有形如$\ann(m)$的理想按照包含构成的一个偏序集，则$\mathcal{P}$中的极大元都是素理想。
-
-\proof
+\begin{proof}
 	设$\ann(m)$是一个极大元，再设$r\notin \ann(m)$，即$rm\neq 0$. 很清楚，$\ann(m)\subset \ann(rm)$，所以由极大性可知$\ann(rm)=\ann(m)$. 现在如果$rs\in \ann(m)$但$r\notin \ann(m)$，则$srm=0$可知$s\in \ann(rm)=\ann(m)$，所以$\ann(m)$是一个素理想。
-\qed
+\end{proof}
 
-如果$R$是一个Noether环，则它的理想构成的非空子集一定存在极大元，这就保证了$\Ann(M)$非空。并且，如果$r$是$M$的一个零因子，含有$r$的那个极大的$\ann(m)$属于$\Ann(M)$，这就是说，任意的零因子必然属于$\Ann(M)$中的某个元素，或者如下包含关系
+如果$R$是一个Noether环，则它的理想构成的非空子集一定存在极大元，这就保证了$\Ass(M)$非空。并且，如果$r$是$M$的一个零因子，含有$r$的那个极大的$\ann(m)$属于$\Ass(M)$，这就是说，任意的零因子必然属于$\Ass(M)$中的某个元素，或者如下包含关系
 \[
-	\bigcup_{0\neq m\in M}\ann(m)\subset \bigcup_{\mathfrak{a}\in \Ann(M)}\mathfrak{a}. 
+	\bigcup_{0\neq m\in M}\ann(m)\subset \bigcup_{\mathfrak{a}\in \Ass(M)}\mathfrak{a}. 
 \]
 
 从这里开始，我们假设这节下面出现的环都是Noether环，除非特别申明。
 
-\lem 设$M$是一个$R$-模，如果$\ann(m)$是素理想，则对$M$的子模$Rm$的任意非零子模$N$有$\ann(N)=\ann(m)$.
+\begin{lem}
+设$M$是一个$R$-模，如果$\ann(m)$是素理想，则对$M$的子模$Rm$的任意非零子模$N$有$\ann(N)=\ann(m)$.
+\end{lem}
 
-\proof
+\begin{proof}
 	显然，$\ann(m)\subset \ann(N)$. 由于有$R$-模同构$\psi: Rm\to R/\ann(m)$，所以$Rm$的任意非零子模$N$对应着$R/\ann(m)$的非零理想$\psi(N)$. 如果$r\in \ann(N)$，则$r\psi(N)=\psi(rN)=0$，因为$\psi(N)$非零且$R/\ann(m)$是整环，所以$r$在$R/\ann(m)$中的像为零，即是说$r\in \ann(M)$. 所以$\ann(N)\subset \ann(m)$.
-\qed
+\end{proof}
 
-\pro 如果我们有$R$-模的正合列$0\to M'\to M\to M''\to 0$，则我们有包含关系
+\begin{pro}
+如果我们有$R$-模的正合列$0\to M'\to M\to M''\to 0$，则我们有包含关系
 \[
-	\Ann(M')\subset \Ann(M)\subset \Ann(M')\cup \Ann(M'').
+	\Ass(M')\subset \Ass(M)\subset \Ass(M')\cup \Ass(M'').
 \]
+\end{pro}
 
-\proof
-	由于单同态并不会改变$\Ann$，所以可以将$M'$看成$M$的子模，所以第一个包含显然。对第二个包含，任取$\mathfrak{a}\in \Ann(M)-\Ann(M')$，我们要证明$\mathfrak{a}\in \Ann(M')$. 设$\mathfrak{a}=\ann(m)$，其中$m\in M$，由$m$生成的子模$Rm$同构于$R/\mathfrak{a}$. 考虑$N=Rm\cap M'$，他是$Rm$的子模，如果$N$非零，因为$\mathfrak{a}\notin \Ann(M')$，$\mathfrak{a}N\neq 0$，因此$\mathfrak{a}\not\subset \ann(N)=\ann(m)=\mathfrak{a}$，矛盾，所以只可能$Rm\cap M'=0$. 在这种情况下，$Rm$同构于他在$M''$中的像，所以$\mathfrak{a}\in \Ann(M'')$.
-\qed
+\begin{proof}
+	由于单同态并不会改变$\Ass$，所以可以将$M'$看成$M$的子模，所以第一个包含显然。对第二个包含，任取$\mathfrak{a}\in \Ass(M)-\Ass(M')$，我们要证明$\mathfrak{a}\in \Ass(M')$. 设$\mathfrak{a}=\ann(m)$，其中$m\in M$，由$m$生成的子模$Rm$同构于$R/\mathfrak{a}$. 考虑$N=Rm\cap M'$，他是$Rm$的子模，如果$N$非零，因为$\mathfrak{a}\notin \Ass(M')$，$\mathfrak{a}N\neq 0$，因此$\mathfrak{a}\not\subset \ann(N)=\ann(m)=\mathfrak{a}$，矛盾，所以只可能$Rm\cap M'=0$. 在这种情况下，$Rm$同构于他在$M''$中的像，所以$\mathfrak{a}\in \Ass(M'')$.
+\end{proof}
 
-考虑$M=M'\oplus M''$的情况，由于$M'$和$M''$都有到$M$的单同态，所以$\Ann(M')\subset \Ann(M)$以及$\Ann(M'')\subset \Ann(M)$，继而他给出了$\Ann(M)=\Ann(M')\cup \Ann(M'')$.
+考虑$M=M'\oplus M''$的情况，由于$M'$和$M''$都有到$M$的单同态，所以$\Ass(M')\subset \Ass(M)$以及$\Ass(M'')\subset \Ass(M)$，继而他给出了$\Ass(M)=\Ass(M')\cup \Ass(M'')$.
 
-\para 设$N$是$M$的一个子模，如果$\Ann(M/N)$只有一个元素，则称呼$N$是$M$的一个准素子模，如果$\Ann(M/N)=\{\mathfrak{p}\}$，则称呼$N$是$\mathfrak{p}$-准素的。
+\para 设$N$是$M$的一个子模，如果$\Ass(M/N)$只有一个元素，则称呼$N$是$M$的一个准素子模，如果$\Ass(M/N)=\{\mathfrak{p}\}$，则称呼$N$是$\mathfrak{p}$-准素的。
 
-如果设$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是. 事实上，考虑单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ann(M/(N_1\cap N_2))\subset \Ann(M/N_1)\cup \Ann(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ann(M/(N_1\cap N_2))$非空，所以$\Ann(M/(N_1\cap N_2))=\{\mathfrak{p}\}$.
+如果设$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是. 事实上，考虑单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ass(M/(N_1\cap N_2))\subset \Ass(M/N_1)\cup \Ass(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ass(M/(N_1\cap N_2))$非空，所以$\Ass(M/(N_1\cap N_2))=\{\mathfrak{p}\}$.
 
 经过有限次归纳可以得到：有限个$\mathfrak{p}$-准素子模的交依然是一个$\mathfrak{p}$-准素子模。
 
-\lem 设$R$是Noether环，$M$是有限生成$R$-模，则$M$的不可约子模$N$是准素子模。
+\begin{lem}
+设$R$是Noether环，$M$是有限生成$R$-模，则$M$的不可约子模$N$是准素子模。
+\end{lem}
 
-\proof
-	如果$\Ann(M/N)$中至少存在两个素理想$\pp_1=\ann(\bar{m}_1)$和$\pp_2=\ann(\bar{m}_2)$，那么在$M/N$中有子模$R\bar{m}_1\cong R/\pp_1$和$R\bar{m}_2\cong R/\pp_2$. 如果$R\bar{m}_1\cap R\bar{m}_2$非零，则$R\bar{m}_1\cap R\bar{m}_2$作为$R\bar{m}_1$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_1$，作为$R\bar{m}_2$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_2$，矛盾，于是推出$R\bar{m}_1\cap R\bar{m}_2=\{\bar{0}\}$. 回到$M$中的原像，我们就可以知道$N$可以写成两个$M$的子模的交，这与$N$不可约矛盾。
-\qed
+\begin{proof}
+	如果$\Ass(M/N)$中至少存在两个素理想$\pp_1=\ann(\bar{m}_1)$和$\pp_2=\ann(\bar{m}_2)$，那么在$M/N$中有子模$R\bar{m}_1\cong R/\pp_1$和$R\bar{m}_2\cong R/\pp_2$. 如果$R\bar{m}_1\cap R\bar{m}_2$非零，则$R\bar{m}_1\cap R\bar{m}_2$作为$R\bar{m}_1$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_1$，作为$R\bar{m}_2$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_2$，矛盾，于是推出$R\bar{m}_1\cap R\bar{m}_2=\{\bar{0}\}$. 回到$M$中的原像，我们就可以知道$N$可以写成两个$M$的子模的交，这与$N$不可约矛盾。
+\end{proof}
 
 准素子模的重要性来自于下面这个定理，他被称为准素分解。
 

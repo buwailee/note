@@ -1,8 +1,61 @@
 \chapter{环（一）}
 \ThisULCornerWallPaper{1}{../Pictures/12.png}
-依旧是我们的假设：下面出现的环都是交换环。
+
+\section{环范畴}
+
+环范畴记作$\mathsf{Ring}$，交换环范畴记作$\mathsf{CRing}$. 
+
+\begin{para}[始对象与终对象]
+始对象是$\zz$，映射即$n\mapsto 1+\cdots+1$，其中$1$相加$n$次。终对象是$0$，在这个环里面$1=0$. 映射即$0$映射。
+
+由于零环和$\zz$都在$\mathsf{CRing}$中，所以它们也分别是$\mathsf{CRing}$的始对象和终对象。
+\end{para}
+
+从这里，我们就可以得知$\mathsf{Ring}$或者$\mathsf{CRing}$不是Abel范畴。因为在Abel范畴（乃至准加性范畴中），始对象与终对象是等价的。
+
+\begin{para}[积]
+设$\{R_i\}_{i\in I}$是一族环，则在$\zz$-模意义上，我们有积$R=\prod_{i\in I}R_i$. 现在，在$R$上如下定义乘法
+\[
+	(r_1,\cdots,r_n,\cdots)(r'_1,\cdots,r'_n,\cdots)=(r_1r'_1,\cdots,r_nr'_n,\cdots),
+\]
+这$R$构成一个环。不难检验，这就是$\mathsf{Ring}$的积。
+
+如果$\{R_i\}_{i\in I}$是一族交换环，则从构造，$R=\prod_{i\in I}R_i$也交换，所以这也是$\mathsf{CRing}$的积。
+\end{para}
+
+\begin{para}[余积]
+
+\end{para}
+
+
+\begin{para}[核与余核]
+在$\mathsf{Ring}$内，设$f:R\to S$，不难检验
+\[
+	\ker(f)=f^{-1}(0)\subset R,
+\]
+作为核自带的态射取作典范含入同态$i:\ker(f)\to R$.
+
+同样，不难检验
+\[
+	\coker(f)=S/\langle f(R)\rangle.
+\]
+作为余核自带的态射取作典范商同态$\pi:S\to S/\langle f(R)\rangle$.
+\end{para}
+
+于是，在$\mathsf{Ring}$和$\mathsf{CRing}$中，任意的等值子与余等值子都存在。它们可以直接定义为
+\[
+	\eq(f,g)=\ker(f-g),\quad \coeq(f,g)=\coker(f-g).
+\]
+
+\begin{thm}
+$\mathsf{Ring}$和$\mathsf{CRing}$是完备与余完备的，即任意的极限与余极限存在。
+\end{thm}
+
+这直接来自于Theorem \ref{wanbei}, \ref{yuwanbei}.
 
 \section{唯一分解整环}
+
+现在开始，回到我们的假设：下面出现的环都是交换环。
 
 \begin{para}
 首先回忆，在整数环中，任取一个整数$N$，我们都可以唯一分解为一族素数的乘积$N=\pm p_1^{n_1}\cdots p_k^{n_k}$. 在这节中，我们希望可以拓展这个良好的性质。
@@ -463,15 +516,52 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	\]
 \end{proof}
 
-\para 考虑一个整扩张$R\subset S$，设$\aaa$是$S$的一个理想，则$R\cap \aaa$是$R$的一个理想。我们可以断言，$R/(R\cap \aaa)\subset S/\aaa$是一个整扩张。
+\begin{lem}考虑一个整扩张$R\subset S$，
+\begin{compactenum}[~~~(1)]
+\item 设$\aaa$是$S$的一个理想，则$R\cap \aaa$是$R$的一个理想。此时，$R/(R\cap \aaa)\subset S/\aaa$是一个整扩张。
+\item 设$T$是$R$的一个乘性子集，则也是$S$的乘性子集。此时，$T^{-1}R\subset T^{-1}S$是一个整扩张。
+\end{compactenum}
+\end{lem}
 
-任取$\bar{s}\in S/\aaa$，它在$S$中找一个原像$s$有首一的多项式方程成立
+\begin{proof}
+对于第一点，任取$\bar{s}\in S/\aaa$，它在$S$中找一个原像$s$有首一的多项式方程成立
 \[
-	s^n+\cdots+r_n=0,
+	s^n+r_1s^{n-1}+\cdots+r_n=0,
 \]
 其中系数属于$R$，然后将两边模掉$\aaa$就得到了$\bar{s}$的首一多项式方程，系数属于$R/(R\cap \aaa)$.
 
+对于第一点，任取$s/t\in T^{-1}S$，由于$s$满足一个$R$系数的首一多项式
+\[
+	s^n+r_1s^{n-1}+\cdots+r_n=0,
+\]
+故成立$T^{-1}R$系数的首一多项式
+\[
+	(s/t)^n+r_1/t (s/t)^{n-1}+\cdots+ r_n/t^n=0,
+\]
+所以$T^{-1}R\subset T^{-1}S$是一个整扩张。
+\end{proof}
+
 作为推论，$\mm$是$S$的极大理想当且仅当$R\cap \mm$是$R$的极大理想。这点只要利用Proposition \ref{intfield}即可。
+
+\begin{pro}
+设$R\subset S$是一个整扩张，令$\mathfrak{q}\subset \mathfrak{q'}$是$S$的两个理想，如果$\mathfrak{q}\cap R=\mathfrak{q}'\cap R$，则$\mathfrak{q}=\mathfrak{q}'$.
+\end{pro}
+
+\begin{proof}
+令$\mathfrak{p}=\mathfrak{q}\cap R=\mathfrak{q}'\cap R$，上面的引理告诉我们，$S_\pp$在$R_\pp$上整。$R_\pp$中的极大理想为$\mm=\pp R_\pp$，现在记$\mathfrak{n}=\mathfrak{q}_\pp$和$\mathfrak{n}'=\mathfrak{q}'_\pp$. 于是我们有$\mm=\mathfrak{n}\cap R_\pp=\mathfrak{n}'\cap R_\pp$以及$\mathfrak{n}\subset \mathfrak{n}'$. 由上一个引理的推论，$\mathfrak{n}$和$\mathfrak{n}'$都是$S_\pp$的极大理想\footnote{注意，此时$S_\pp$不一定是局部环，实际上，它只是$R_\pp\otimes S$.}，所以$\mathfrak{n}=\mathfrak{n}'$. 又由于$S_\pp$的理想结构，$\mathfrak{q}=\mathfrak{q'}$.
+\end{proof}
+
+注意，$\mathfrak{q}\subset \mathfrak{q'}$是一个必须的条件。比如，考虑整扩张$\zz\subset \zz[i]$，此时$(1+2i)\cap \zz=(1-2i)\cap \zz =(5)$.
+
+\begin{pro}
+设$R\subset S$是一个整扩张，令$\pp$是$R$的一个素理想，则存在一个$S$的素理想$\mathfrak{q}$使得$\mathfrak{q}\cap R=\pp$.
+\end{pro}
+
+反过来也是对的，因为素理想的原像也是素的。这个性质非常类似于所谓的子空间拓扑，素理想可以理解成开集或者闭集。
+
+\begin{proof}
+由于$S_\pp$在$R_\pp$上整，令$\mathfrak{n}$是$S_\pp$的一个极大理想，则$\mathfrak{n}\cap R_\pp$是$R_\pp$的极大理想。由于$R_\pp$是局部环，所以$\mathfrak{n}\cap R_\pp=\pp_\pp$. 设$\varphi:S\to S_\pp$是自然的含入，则$\mathfrak{q}=\varphi^{-1}(\mathfrak{n})$是一个素理想，且$\mathfrak{q}\cap R=\pp$.
+\end{proof}
 
 \section{Jacobson环}
 
@@ -778,7 +868,9 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 下面这个命题可以使我们可以看到不可约代数集和素理想之间的联系：
 
-\pro 一个代数集$Y$是不可约的当且仅当$I(Y)$是一个素理想。
+\begin{pro}
+一个代数集$Y$是不可约的当且仅当$I(Y)$是一个素理想。
+\end{pro}
 
 \begin{proof} 令$\pp$是一个素理想，以及假设$Z(\pp)=Y_1\cup Y_2$，那么$\pp=I(Z(\pp))=I(Y_1)\cap I(Y_2)$，因此$\pp=I(Y_1)$或者$\pp=I(Y_2)$，因此$Z(\pp)$不可约。
 

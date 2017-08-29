@@ -10,10 +10,10 @@
 \[
 	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
 \]
-被称为正合的。如果只满足$f_{i+1}f=0$，则称列是一个链复形，或者简称一条链。
+被称为正合的。
 \end{para}
 
-显然，正合列是一个链。如果$\im f_i\approx \ker f_{i+1}$，则$\coker \ker f_{i+1} \approx \coker \im f_i$，换而言之，存在同构$t$使得$\coker \ker f_{i+1}=t\coker \im f_i$. 因此
+对正合列来说，成立$f_{i+1}f_i=0$. 如果$\im f_i\approx \ker f_{i+1}$，则$\coker \ker f_{i+1} \approx \coker \im f_i$，换而言之，存在同构$t$使得$\coker \ker f_{i+1}=t\coker \im f_i$. 因此
 \begin{align*}
 f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
 	&=\im(f_{i+1})(\coker \ker f_{i+1}) \im(f_{i})\coim(f_{i})\\
@@ -150,16 +150,97 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 设函子从Abel范畴到Abel范畴，则左伴随函子右正合，而右伴随函子左正和。
 \end{thm}
 
-% \begin{pro}
-% 设$0\to M_1\xrightarrow{f_1} M_2\xrightarrow{f_2} M_3$是一列左$R$-模的正合列，则函子$\Hom_R(N,-)$将给出$\mathbb{Z}$-模的正合列
-% \[
-% 	0\to \Hom_R(N,M_1)\xrightarrow{(f_1)_*} \Hom_R(N,M_2)\xrightarrow{(f_2)_*} \Hom_R(N,M_3).
-% \]
-% \end{pro}
+\begin{pro}
+设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\circ \to \mathsf{Ab}$都是左正合函子。
+\end{pro}
 
-% \begin{proof}
-% 	首先，由于$0$是终对象，所以$\Hom_R(N,0)=0$，于是上面的列成立，且$f_2f_1=0$给出了$(f_2)_*(f_1)_*=(f_2f_1)_*=0_*=0$. 所以$\im ((f_1)_*)\subset \ker ((f_2)_*)$. 任取$g_1$, $g_2\in \Hom_R(N,M_1)$，$(f_1)_*(g_1)=(f_1)_*(g_2)$等价于$f_1g_1=f_1g_2$，由于$f_1$是单态，$g_1=g_2$，于是$(f_1)_*$是单射。最后只要检验$\ker ((f_2)_*)\subset \im ((f_1)_*)$. 任取$g\in \Hom_R(N,M_2)$使得$(f_2)_*g=f_2g=0$. 任取$n\in N$，$f_2(g(n))=0$给出$g(n)\in \ker(f_2)=\im(f_1)$，于是$g(N)\subset \im(f_1)$，由于$f_1:M_1\to \im(f_1)$是单同态，所以有同态$i=f_1^{-1}g\in \Hom_R(N,M_1)$使得$g=(f_1)_*(i)\in \im ((f_1)_*)$.
-% \end{proof}
+\begin{proof}
+	设$0\to\cdot \xrightarrow{f}\cdot \xrightarrow{g}\cdot$是一个正合列，我们要证明
+	\[
+	0\to \cdot \xrightarrow{f_*}\cdot \xrightarrow{g_*}\cdot
+	\]
+	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态，所以$\ker (g_*)\subset \im (f_*)$.
+
+	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\circ \to \mathsf{Ab}$是左正合函子。
+\end{proof}
+
+\section{追图}
+
+我们将在Abel范畴中谈论追图。
+
+\begin{lem}\label{zhuitu}
+设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑集合$\mathcal{C}(-,X)$，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态$u$和$v$使得如下交换图成立，
+\[
+\xymatrix{
+	\cdot \ar[r]^u \ar[d]_v & \cdot\ar[d]^f\\
+	\cdot \ar[r]^g & \cdot
+}
+\]
+我们可以断言，$\sim$是一个等价关系，其中，自反性与对称性是显然的。
+\end{lem}
+
+为证明传递性，我们需要如下引理。
+
+\begin{lem}
+	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态，则$p_Y$是满态.
+\end{lem}
+
+\begin{proof}[Proof of Lemma \thelem]
+	在Abel范畴中，我们已经知道积是存在的，即$X\times Y$存在，投影分别记作$\pi_X$和$\pi_Y$. 并且，核是存在的，则$X\times_Z Y$可以定义为$\ker(f\pi_X-g\pi_Y)$的定义域，而$p_X=\pi_X\ker(f\pi_X-g\pi_Y)$以及$p_Y=\pi_Y\ker(f\pi_X-g\pi_Y)$.
+
+	现在，设$f$是一个满态，下面说明$f\pi_X-g\pi_Y$是满态。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态，所以$h=0$. 此即所证。
+
+	利用$f\pi_X-g\pi_Y$是满态，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
+	\[
+	0=h\pi_Yi_X=k(f\pi_X-g\pi_Y)i_X=kf,
+	\]
+	由于$f$是满态，所以$k=0$. 因此
+	\[
+	h=h\pi_Yi_Y=k(f\pi_X-g\pi_Y)i_Y=0.
+	\]
+	这就说明了$p_Y$是一个满态。
+\end{proof}
+
+\begin{proof}[Proof of Lemma \ref{zhuitu}]
+	若$f\sim g$且$g\sim h$，考虑如下交换图
+	\[
+	\xymatrix{
+	&Z_1\ar[r]^a\ar[rd]_b&X\ar[rd]^f&\\
+	Z_1\times_{X'} Z_2\ar[ru]^{p_{Z_1}}\ar[rd]_{p_{Z_2}}&&X'\ar[r]^g&Y\\
+	&Z_2\ar[ru]^c\ar[r]_d&X''\ar[ru]_h&
+	}
+	\]
+	其中$a$, $b$, $c$, $d$都是满态。由上一个引理，$c$是满态给出$p_{Z_1}$是满态，$d$是满态给出$p_{Z_2}$是满态。最后，满态$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
+\end{proof}
+
+\begin{para}
+从Lemma \ref{zhuitu}，我们得到了等价类$\mathcal{C}(-,X)/\sim$，其中的元素称为对象$X$的“元素”，记作$x$，而$x\in \mathcal{C}(-,X)/\sim$记作$x\in_m X$. 一般来说，我们会将等价类的元素心照不宣地看成一个指向$X$的箭头，即将$x$看成一个态射，或者反过来，将一个态射看成其等价类。比方说，$0$在$\mathcal{C}(-,X)/\sim$是看成$0$的等价类，$-x$是看成$-x$的等价类。值得注意的一点是，$0$的等价类中的元素都是$0$，即，如果$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态$u$, $v$使得$xu=0v=0$，再由$u$是一个满态，所以$x=0$. 因此，$x\sim 0$等价于$x=0$.
+
+设$f:X\to Y$是一个态射，$x\in_m X$，记$f(x)$是$fx$在$\mathcal{C}(-,Y)$中对应的等价类。不难看到这是良定的。于是，$f:X\to Y$给出了一个映射$\mathcal{C}(-,X)/\sim \to \mathcal{C}(-,Y)/\sim $，我们依然记作$f$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
+\end{para}
+
+\begin{pro}[追图法]
+设$f:X\to Y$是一个态射，
+\begin{compactenum}[~~~(1)]
+\item $f$是单态，当且仅当$f(x)=0$可以推出$x=0$.
+\item $f$是单态，当且仅当$f(x)=f(x')$可以推出$x=x'$.
+\item $f$是满态，当且仅当任取$y\in_m Y$，都存在$x\in_m X$使得$y=f(x)$.
+\item $f=0$当且仅当任取$x\in_m X$都有$f(x)=0$.
+\item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$x$使得$y=f(x)$.
+\item 如果$f(x)=f(x')$，则存在一个$x''\in X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
+\end{compactenum}
+\end{pro}
+
+第五点看着奇怪，实际上$x''$是模范畴中$x-x'$的类比。追图法的存在让我们可以像处理模范畴一样来处理Abel范畴中的交换图。
+
+\begin{proof}
+依次证明如下。
+\begin{compactenum}[~~~(1)]
+\item 如果$f$是单态，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态。
+
+\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态。
+\end{compactenum}
+\end{proof}
 
 \section{链条件}
 
