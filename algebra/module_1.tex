@@ -151,17 +151,21 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \end{thm}
 
 \begin{pro}
-设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\circ \to \mathsf{Ab}$都是左正合函子。
+设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$都是左正合函子。
 \end{pro}
 
 \begin{proof}
-	设$0\to\cdot \xrightarrow{f}\cdot \xrightarrow{g}\cdot$是一个正合列，我们要证明
+	设
+	\[
+		0\to\cdot \xrightarrow{f}\cdot \xrightarrow{g}\cdot
+	\]
+	是一个正合列，我们要证明
 	\[
 	0\to \cdot \xrightarrow{f_*}\cdot \xrightarrow{g_*}\cdot
 	\]
-	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态，所以$\ker (g_*)\subset \im (f_*)$.
+	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态，所以$\ker g_* \subset \im f_*$.
 
-	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\circ \to \mathsf{Ab}$是左正合函子。
+	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$是左正合函子。
 \end{proof}
 
 \section{追图}
@@ -169,7 +173,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 我们将在Abel范畴中谈论追图。
 
 \begin{lem}\label{zhuitu}
-设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑集合$\mathcal{C}(-,X)$，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态$u$和$v$使得如下交换图成立，
+设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态$u$和$v$使得如下交换图成立，
 \[
 \xymatrix{
 	\cdot \ar[r]^u \ar[d]_v & \cdot\ar[d]^f\\
@@ -181,11 +185,11 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 
 为证明传递性，我们需要如下引理。
 
-\begin{lem}
+\begin{lem}\label{mt}
 	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态，则$p_Y$是满态.
 \end{lem}
 
-\begin{proof}[Proof of Lemma \thelem]
+\begin{proof}[Proof of Lemma \ref{mt}]
 	在Abel范畴中，我们已经知道积是存在的，即$X\times Y$存在，投影分别记作$\pi_X$和$\pi_Y$. 并且，核是存在的，则$X\times_Z Y$可以定义为$\ker(f\pi_X-g\pi_Y)$的定义域，而$p_X=\pi_X\ker(f\pi_X-g\pi_Y)$以及$p_Y=\pi_Y\ker(f\pi_X-g\pi_Y)$.
 
 	现在，设$f$是一个满态，下面说明$f\pi_X-g\pi_Y$是满态。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态，所以$h=0$. 此即所证。
@@ -214,24 +218,46 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \end{proof}
 
 \begin{para}
-从Lemma \ref{zhuitu}，我们得到了等价类$\mathcal{C}(-,X)/\sim$，其中的元素称为对象$X$的“元素”，记作$x$，而$x\in \mathcal{C}(-,X)/\sim$记作$x\in_m X$. 一般来说，我们会将等价类的元素心照不宣地看成一个指向$X$的箭头，即将$x$看成一个态射，或者反过来，将一个态射看成其等价类。比方说，$0$在$\mathcal{C}(-,X)/\sim$是看成$0$的等价类，$-x$是看成$-x$的等价类。值得注意的一点是，$0$的等价类中的元素都是$0$，即，如果$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态$u$, $v$使得$xu=0v=0$，再由$u$是一个满态，所以$x=0$. 因此，$x\sim 0$等价于$x=0$.
+从Lemma \ref{zhuitu}，我们得到了指向$X$的态射的等价类，其中的元素称为对象$X$的伪元素，记作$[x]$，其中$x$是等价类中的代表元。而$[x]\in \mathcal{C}(-,X)/\sim$记作$[x]\in_m X$. 
 
-设$f:X\to Y$是一个态射，$x\in_m X$，记$f(x)$是$fx$在$\mathcal{C}(-,Y)$中对应的等价类。不难看到这是良定的。于是，$f:X\to Y$给出了一个映射$\mathcal{C}(-,X)/\sim \to \mathcal{C}(-,Y)/\sim $，我们依然记作$f$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
+设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
+
+值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态$u$, $v$使得$xu=0v=0$，再由$u$是一个满态，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
+
+设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 不难看到，$f:X\to Y$给出了一个映射$\mathcal{C}(-,X)/\sim \to \mathcal{C}(-,Y)/\sim $，实际上，如果$x\sim x'$，则$fx\sim fx'$. 我们依然将这个映射记作$f$. 特别地，$f(0)=[0]$，$f(x)=[0]$等价于$fx=0$.
+
+再设$g:Y\to Z$是另一个态射，则$gf(x)=[gfx]=g(f(x))$. 这就是复合规则，和映射的情况是一摸一样的。
 \end{para}
+
+一般来说，所有指向$X$的态射的全体都不能构成一个集合。但是，当我们考虑等价类的全体，它们确实是可能构成一个集合的。比如在模范畴中就是如此，为此，我们需要下面的引理。
+
+\begin{lem}
+在模范畴中，$f\sim g$当且仅当$\im f = \im g$.
+\end{lem}
+
+\begin{proof}
+如果$f\sim g$，则存在满态$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
+
+反过来，设$f:X\to Z$而$g:Y\to Z$，考虑$X\times_Z Y=\{(x,y)\,:\,f(x)=g(y)\}$. 如果$\im f=\im g$，则$f(X)=g(Y)$. 所以任取$x_0\in X$都存在一个$y_0\in Y$使得$f(x_0)=g(y_0)$，此时$x_0=p_X(x_0,y_0)$，所以$p_X$是满同态。同理，$p_Y$是满同态。
+\end{proof}
+
+因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f\circ x)=f(\im x)$. 这就还原了作为映射的$f$. 
+
+下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态还是满态可以应用模范畴中类似的手段来做。
 
 \begin{pro}[追图法]
 设$f:X\to Y$是一个态射，
 \begin{compactenum}[~~~(1)]
 \item $f$是单态，当且仅当$f(x)=0$可以推出$x=0$.
-\item $f$是单态，当且仅当$f(x)=f(x')$可以推出$x=x'$.
-\item $f$是满态，当且仅当任取$y\in_m Y$，都存在$x\in_m X$使得$y=f(x)$.
-\item $f=0$当且仅当任取$x\in_m X$都有$f(x)=0$.
-\item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$x$使得$y=f(x)$.
-\item 如果$f(x)=f(x')$，则存在一个$x''\in X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
+\item $f$是单态，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
+\item $f$是满态，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
+\item $f=0$当且仅当任取$[x]\in_m X$都有$f(x)=0$.
+\item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$[x]$使得$[y]=f(x)$.
+\item 如果$f(x)=f(x')$，则存在$[x'']\in_m X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
 \end{compactenum}
 \end{pro}
 
-第五点看着奇怪，实际上$x''$是模范畴中$x-x'$的类比。追图法的存在让我们可以像处理模范畴一样来处理Abel范畴中的交换图。
+最后一点看着奇怪，实际上$x''$是模范畴中$x-x'$的类比。追图法的存在让我们可以像处理模范畴一样来处理Abel范畴中的交换图。
 
 \begin{proof}
 依次证明如下。
@@ -239,8 +265,116 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \item 如果$f$是单态，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态。
 
 \item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态。
+
+\item 假设$f$是满态。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态，所以$p_{X'}:X\times_Y X'\to X'$是满态。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
+
+反过来，设$f$不是满态，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态$u$, $v$使得$fxu=v$，由于$v$是满态，所以$f$也必须是满态，矛盾。
+
+\item 显然。
+
+\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态可以得到$p_h$是一个满态. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
+
+反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
+
+\item 如果$f(x)=f(x')$，则存在满态$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
 \end{compactenum}
 \end{proof}
+
+作为追图法的直接应用，我们来证明非常实用的五引理。
+
+\begin{lem}[五引理]\label{5-lem}
+在Abel范畴$\mathcal{C}$中，如果存在如下交换图
+\[
+	\xymatrix{
+	A_1\ar[r]^{f_1}\ar[d]^{h_1}&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]^{f_4}\ar[d]^{h_4}&A_5\ar[d]^{h_5}\\
+	B_1\ar[r]^{g_1}&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]^{g_4}&B_5\\
+	}
+\]
+且横向的两行都是正合列。则，
+\begin{compactenum}[~~~(1)]
+\item 如果$h_2$, $h_4$是单态，$h_1$是满态，则$h_3$是单态。
+\item 如果$h_2$, $h_4$是满态，$h_5$是单态，则$h_3$是满态。
+\item 如果$h_2$, $h_4$是同构，$h_1$是满态，$h_5$是单态，则$h_3$是同构。
+\end{compactenum}
+\end{lem}
+
+\begin{proof}
+最后一点不过是前面两点的推论。第二点是第一点的对偶命题，所以我们只要证明第一点即可。
+
+取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
+\[
+	g_1(z)=g_1h_1(w)=h_2f_1(w),
+\]
+从$g_1(z)=h_2(y)$以及$h_2$是一个单态，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
+\end{proof}
+
+五引理最常见的应用是短五引理，他将用在短正合列上面。
+
+\begin{lem}[短五引理]\label{short-5-lem}
+在五引理中，令$A_1=B_1=A_5=B_5=0$，那么$h_1=h_5=\id_0$是自然的同构，我们得到了如下交换图（略去了恒等$\id_0:0\to 0$当然还有显然的$f_1=g_1=f_4=g_4=0$）
+\[
+	\xymatrix{
+	0\ar[r]&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]\ar[d]^{h_4}&0\\
+	0\ar[r]&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]&0\\
+	}
+\]
+于是，
+\begin{compactenum}[~~~(1)]
+\item 如果$h_2$, $h_4$是单态，则$h_3$是单态。
+\item 如果$h_2$, $h_4$是满态，则$h_3$是满态。
+\item 如果$h_2$, $h_4$是同构，则$h_3$是同构。
+\end{compactenum}
+\end{lem}
+
+\begin{lem}[蛇引理]\label{snake-lemma}
+考虑如下交换图
+\[
+	\xymatrix{
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
+	0\ar[r]&\cdot \ar[r]^{f'}&\cdot \ar[r]^{g'}&\cdot \ar[r]&0\\
+	}
+\]
+其中两行是正合列。则我们可以拓展为交换图
+\[
+	\xymatrix{
+	&0\ar[d]&0\ar[d]&0\ar[d]&\\
+	0\ar@{.>}[r]&\cdot\ar@{.>}[r]^a\ar[d]^{\ker u}&\cdot\ar@{.>}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
+	0\ar[r]&\cdot \ar[r]^{f'}\ar[d]^{\coker u}&\cdot \ar[r]^{g'}\ar[d]^{\coker v}&\cdot \ar[r]\ar[d]^{\coker w}&0\\
+	&\cdot \ar@{.>}[r]_c\ar[d] &\cdot \ar@{.>}[r]_d\ar[d] &\cdot \ar@{.>}[r]\ar[d]& 0\\
+	&0&0&0&\\
+	}
+\]
+其中每行每列都是正合列，此外，还存在态射$\delta$使得如下正合列成立
+\[
+	0\to \ker u \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}\ker w \xrightarrow[~~~]{\delta}\coker u \xrightarrow[~~~]{c}\coker v \xrightarrow[~~~]{d}\coker w \to 0.
+\]
+\end{lem}
+
+\begin{proof}
+$a$, $b$, $c$, $d$的存在唯一性直接来自于$\ker$与$\coker$的泛性质，正和性也不难检验。最难的在于构造$\delta$. 考虑交换图
+\[
+	\xymatrix{
+	0\ar[r]&\cdot \ar[r]^-{\ker p_X}\ar@{.>}[d]^p&X\times_Z Y \ar[r]^-{p_X}\ar[d]^{p_Y}&X\ar[d]^{\ker w}\ar[r]&0\\
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&Y \ar[r]^{g}\ar[d]^{v}&Z \ar[d]^{w}\ar[r]&0\\
+	0\ar[r]&U \ar[r]^{f'}\ar[d]^{\coker u}&W \ar[r]^{g'}\ar[d]^{i_W}&\cdot \ar@{.>}[d]^q\ar[r]&0\\
+	0\ar[r]&V \ar[r]_-{i_V}&V\cup_U W \ar[r]_-{\coker i_V}&\cdot\ar[r]&0
+	}
+\]
+其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
+
+同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态，所以由Lemma \ref{mt}，$p_X$是满态。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态。
+
+现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
+
+最后，正和性的检验是直接的，追图法将解决一切。
+\end{proof}
+
+利用蛇引理，短五引理是直接的。如果$u$和$w$是单态，则我们在正合列中有
+\[
+	0\to 0 \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}0,
+\]
+所以$\ker v=0$，这就是说$v$也是单态。满态的命题也类似。
 
 \section{链条件}
 
@@ -267,8 +401,38 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定是一个Noether环，反之不然。Noether性是有限性条件之一，下面一个命题展现了这一点。
 
 \begin{pro}
-如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\to M\to Q\to 0$，则$M$是Noether (Artin)模当且仅当$P$和$Q$都是Noether (Artin)模。\notprove
+如果三个$R$-模$P$, $M$和$Q$有一个短正合列$0\to P\xrightarrow{\alpha} M\xrightarrow{\beta} Q\to 0$，则$M$是Noether (Artin)模当且仅当$P$和$Q$都是Noether (Artin)模。
 \end{pro}
+
+\begin{proof}
+只证明Noether的情况，Artin的情况是类似的。首先假设$P$和$Q$是Noether模。
+
+考虑$M$的一个子模$M_i$，我们有$Q$的子模$Q_i=\beta(M_i)$，$P$的子模$P_i=\alpha^{-1}(M_i)$，还有一个短正合列
+\[
+	0\to P_i \xrightarrow{\alpha_i} M_i \xrightarrow{\beta_i} Q_i \to 0,
+\]
+其中$\alpha_i$是$\alpha$限制在$P_i$上得到的同态，还有$\beta_i$是$\beta$限制在$M_i$上得到的同态。
+
+现在考虑$M$的一个子模升链$\cdots\hookrightarrow M_i\hookrightarrow M_{i+1}\hookrightarrow M_{i+2}\hookrightarrow \cdots$，所以我们有正合列的升链
+\[
+	\xymatrix{
+	0\ar[r]&P_i\ar[r]\ar@{^{(}->}[d]&M_i\ar[r]\ar@{^{(}->}[d]&Q_i\ar@{^{(}->}[d]\ar[r]&0\\
+	0\ar[r]&P_{i+1}\ar[r]&M_{i+1}\ar[r]&Q_{i+1}\ar[r]&0
+	}
+\]
+由于$P$和$Q$是Noether模，所以当$i$足够大有
+\[
+	\xymatrix{
+	0\ar[r]&P_i\ar[r]\ar@{=}[d]&M_i\ar[r]\ar@{^{(}->}[d]&Q_i\ar@{=}[d]\ar[r]&0\\
+	0\ar[r]&P_{i+1}\ar[r]&M_{i+1}\ar[r]&Q_{i+1}\ar[r]&0
+	}
+\]
+由短五引理，我们可以得到中间这个含入是同构，所以$M_i=M_{i+1}$. 因此$M$满足a.c.c.，是一个Noether模。
+
+反过来，假设$M$是一个Noether模。由于$P$的任意子模升链可以通过$\alpha$上升到$M$的一条子模升链，由于$M$是Noether模，则该升链稳定。所以对足够大的$i$，我们有$\alpha(P_i)=\alpha(P_{i+1})=\cdots$. 由于$\alpha$是单射，所以$P_i=P_{i+1}=\cdots$. 因此$P$是Noether模。
+
+类似地，$Q$任意的任意子模升链可以由$\beta$的原像得到$M$的一条子模升链，由于$M$是Noether模，则该升链稳定。所以对足够大的$i$，我们有$\beta^{-1}(Q_i)=\beta^{-1}(Q_{i+1})=\cdots$. 作用$\beta$之后就得到了$Q_i=Q_{i+1}=\cdots$. 因此$Q$是Noether模。
+\end{proof}
 
 作为推论，设$N$是$M$的一个子模，那么有自然的短正合列$0\to N\hookrightarrow M\to M/N\to 0$，因此$M$是Noether (Artin)模当且仅当$N$和$M/N$是Noether (Artin)模。
 
