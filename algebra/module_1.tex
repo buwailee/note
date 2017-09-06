@@ -224,7 +224,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 
 值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态$u$, $v$使得$xu=0v=0$，再由$u$是一个满态，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
 
-设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 注意到，如果$x\sim x'$，则$fx\sim fx'$，所以$f(x)=f(x')$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
+设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 不难看到，$f:X\to Y$给出了一个映射$\mathcal{C}(-,X)/\sim \to \mathcal{C}(-,Y)/\sim $，实际上，如果$x\sim x'$，则$fx\sim fx'$. 我们依然将这个映射记作$f$. 特别地，$f(0)=[0]$，$f(x)=[0]$等价于$fx=0$.
 
 再设$g:Y\to Z$是另一个态射，则$gf(x)=[gfx]=g(f(x))$. 这就是复合规则，和映射的情况是一摸一样的。
 \end{para}
@@ -449,19 +449,19 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \begin{proof}
 	令$N$是一个Noether模$M$的一个子模，而$\mathscr{B}$是所有$N$的有限生成子模的集合。因为$0\in \mathscr{B}$，所以$\mathscr{B}$非空，于是由极大条件，$\mathscr{B}$中存在极大元$P$. 如果$P\neq N$，那么必然存在$x\in N-P$，于是$P+\langle x\rangle$严格包含$P$同时也有有限生成的，矛盾。于是$N=P$是有限生成的。
 
-	反过来，假设$M$的任意子模是有限生成的。令$M_1\subset M_2\subset \cdots$是一个升链，于是$N=\bigcup_{n=1}^\infty M_n$是$M$的子模继而是有限生成的，记作$x_1$, $\dots$, $x_r$，记$x_i\in M_{n_i}$，选一个最大的$n$，则$x_i\in M_n$，于是$M_n=N$，因此链是稳定的。进而$M$是Noether模。
+	反过来，假设$M$的任意子模是有限生成的。令$M_1\subset M_2\subset \cdots$是一个升链，于是$N=\bigcup_{n=1}^\infty M_n$是$M$的子模继而是有限生成的，记作$x_1$, $\cdots$, $x_r$，记$x_i\in M_{n_i}$，选一个最大的$n$，则$x_i\in M_n$，于是$M_n=N$，因此链是稳定的。进而$M$是Noether模。
 \end{proof}
 
-\begin{thm}[Hilbert基定理]
-如果$R$是一个Noether环，则$R[x]$也是一个Noether环。\notprove
+\begin{thm}
+Hilbert基定理：如果$R$是一个Noether环，则$R[x]$也是一个Noether环。\notprove
 \end{thm}
 
 作为推论，如果$R$是一个Noether环，而$S$是一个有限生成$R$-代数，则$S$也是一个Noether环。
 
 \para 下面的观察来自于Noether，他与拓扑上的不可约性对应。设$M$是一个Noether模，而$N$是它的一个子模，如果$N$不能写成两个$M$的子模$P$和$Q$的交，其中$N$是$P$和$Q$的真子模，则称$N$是一个不可约子模。
 
-\begin{pro}\label{irrde}
-设$M$是一个Noether模，则每一个$M$的真子模都可以写成$M$的有限个不可约子模的交的形式，这被称为不可约分解。
+\begin{pro}
+\label{irrde}设$M$是一个Noether模，则每一个$M$的真子模都可以写成$M$的有限个不可约子模的交的形式，这被称为不可约分解。
 \end{pro}
 
 \begin{proof}
@@ -596,11 +596,11 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 \para 设$M$是$R$-模，$S$是$R$-代数，那么$M_S=S\otimes_R M$就是一个$S$-模，通过$s(t\otimes a)=(st)\otimes a$，我们称这个$S$-模$M_S$为$M$经过标量扩充而来的。
 
 \begin{lem}
-设$M$, $N$是$R$-模，而$S$是$R$-代数，则我们有以下同构：
-\begin{compactenum}[~~~(1)]
-\item $M_S\otimes_S N_S\cong (M\otimes_R N)_S$.
-\item 如果$N$是一个$S$-模，则有同构$\Hom_R(M,N)\cong \Hom_S(M_S,N)$
-\end{compactenum}
+有以下同构：
+
+\no{1} $M_S\otimes_S N_S\cong (M\otimes_R N)_S$.
+
+\no{2} 设$N$是一个$S$-模，有同构$\Hom_R(M,N)\cong \Hom_S(M_S,N)$
 \end{lem}
 
 \begin{proof} 第一个同构。实际上，$(s_1\otimes_R a,s_2\otimes_R b)\mapsto s_1s_2\otimes_R(a\otimes_R b)$是一个双线性映射，所以他唯一诱导了$\varphi:M_S\otimes_S N_S\to (M\otimes_R N)_S$. 反过来，映射$(s,a\otimes_R b)\mapsto (s\otimes_R a)\otimes_S (1\otimes_R b)=(1\otimes_R a)\otimes_S (s\otimes_R b)$也是一个双线性映射，所以他唯一诱导了$\psi:(M\otimes_R N)_S\to M_S\otimes_S N_S$.容易验证他们互逆。
@@ -612,28 +612,27 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 	\bigotimes_{i\in I} \left(S\otimes_RM_i\right)\cong S\otimes_R\bigotimes_{i\in I} M_i.
 \]
 
-\begin{pro}
-设$S$是一个$R$-代数，我们有下面三个小命题：
-\begin{compactenum}[~~~(1)]
-\item 设$V$是一个$R$-模，$W$是一个$S$-模，$f:V\to W$是$R$-模同态，则他可以唯一扩张为一个$S$-模同态$V_S\to W$.
-\item 设$V$和$W$都是$R$-模，$f:V\to W$是$R$-模同态，则他可以唯一扩张为一个$S$-模同态$V_S\to W_S$.
-\item 设$V$和$W$都是$R$-模，$f:V\times\cdots\times V\to W$是$R$-多线性映射，则他可以唯一扩张为一个$S$-多线性映射$V_S\times\cdots\times V_S\to W_S$.
-\end{compactenum}
-\end{pro}
+\para 设$S$是一个$R$-代数，我们有下面三个小命题：
+
+\no{1}设$V$是一个$R$-模，$W$是一个$S$-模，$f:V\to W$是$R$-模同态，则他可以唯一扩张为一个$S$-模同态$V_S\to W$.
+
+\no{2}设$V$和$W$都是$R$-模，$f:V\to W$是$R$-模同态，则他可以唯一扩张为一个$S$-模同态$V_S\to W_S$.
+
+\no{3}设$V$和$W$都是$R$-模，$f:V\times\cdots\times V\to W$是$R$-多线性映射，则他可以唯一扩张为一个$S$-多线性映射$V_S\times\cdots\times V_S\to W_S$.
 
 \begin{proof} 
-	因为$\Hom_R(V,W)\cong \Hom_S(V_S,W)$，所以(1)得证。对于(2)，我们有$i:W\hookrightarrow W_S$，那么$if:V\to W_S$就满足(1)题设，由(1)自然得证。对于(3)，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由(2)，可以唯一扩张为$(V^k)_S\to W_S$，因为$(V^k)_S=V_S\otimes_S \cdots\otimes_S V_S$，引理得证。
+	因为$\Hom_R(V,W)\cong \Hom_S(V_S,W)$，所以\no{1}得证。对于\no{2}，我们有$i:W\hookrightarrow W_S$，那么$i\circ f:V\to W_S$就满足\no{1}题设，由\no{1}自然得证。对于\no{3}，因为多线性映射他可以唯一分解出一个$V^k\to W$，然后由\no{2}，可以唯一扩张为$(V^k)_S\to W_S$，因为$(V^k)_S=V_S\otimes_S \cdots\otimes_S V_S$，引理得证。
 \end{proof}
 
-注意到，零映射扩张成的映射只能是零映射，这可以用来给出一些等式。比如在实Lie代数$V$中有Jacobi恒等式$B(u,v,w)=0$对任意的$u$, $v$, $w\in V$成立，其中$B$是一个多线性映射，所以经过复化后依然有$B_\cc (u,v,w)=0$对任意的$u$, $v$, $w\in V_\cc$成立。
+注意到，零映射扩张成的映射依然是零映射，这可以用来给出一些等式。比如在实Lie代数$V$中有Jacobi恒等式$B(u,v,w)=0$对任意的$u$, $v$, $w\in V$成立，其中$B$是一个多线性映射，所以经过复化后依然有$B_\cc (u,v,w)=0$对任意的$u$, $v$, $w\in V_\cc$成立。
 
 \para 注意到$M$和$N$如果都是$R$-模，则$\Hom_R(M,N)$也可以看成一个$R$-模，通过定义$(rf)(m)=rf(m)$. 这样我们自然可以问$\Hom_R(M,N)$关于标量扩张的表现。
 
 设$S$是一个$R$-代数，那么存在一个自然的$S$-模同态
 \[
-	\alpha_S:S\otimes\Hom_R(M,N)\to \Hom_S(S\otimes M,S\otimes N).
+	\alpha:S\otimes\Hom_R(M,N)\to \Hom_S(S\otimes M,S\otimes N).
 \]
-所谓自然，就是说满足交换图
+由于$\alpha$是$S$-模同态，所以只要考察$\alpha(1\otimes \varphi)$即可，其中$\varphi\in \Hom_R(M,N)$. 所谓自然，就是说满足交换图
 \[
 \begin{xy}
 	\xymatrix
@@ -643,10 +642,7 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 	}
 \end{xy}
 \]
-
-$\alpha_S$我们如下定义：由于$\alpha_S$是$S$-模同态，所以只要考察$\alpha_S(1\otimes \varphi)$即可，其中$\varphi\in \Hom_R(M,N)$. 
-
-如果$S$是一个平坦$R$-模且$M$具有有限表示，则$\alpha_S$还是一个同构。
+如果$S$是一个平坦$R$-模且$M$具有有限表示，则$\alpha$还是一个同构。
 
 \para 一个环$R$中的元素一般不是可逆的，那一个自然的问题就出现了，是否存在一个比这个环大一点的环$S$使得$R$中的某些元素（因为0自然不会是可逆的）在环$S$中是可逆的。一个经典的构造是从整数环$\mathbb{Z}$构造出有理数域$\mathbb{Q}$. 下面以整环的语境复述一遍。
 

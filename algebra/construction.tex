@@ -7,7 +7,7 @@
 
 设$M$, $N\in {}_R\mathsf{Mod}_S$，记${}_R\!\Hom_S(M,N)$为所有双边模同态的集合，如果$R$和$S$是清楚的，则可以简单记作$\Hom(M,N)$. $\Hom(M,N)$具有清楚的交换群结构，所以可以看成双边$\zz$-模，即等同$fn=nf$，其中$f\in \Hom(M,N)$，而$n\in \zz$. 因此，双边模范畴是一个准加性范畴。
 
-\begin{lem}\label{lemmod}如下命题成立：
+\begin{lem}如下命题成立：
 \begin{compactenum}[~~~(1)]
 \item 设$M\in {}_R\mathsf{Mod}_S$，而$N\in {}_R\mathsf{Mod}$，则${}_R\!\Hom(M,N)\in {}_S\mathsf{Mod}$.
 \item 设$M\in {}_R\mathsf{Mod}$，而$N\in {}_R\mathsf{Mod}_S$，则${}_R\!\Hom(M,N)\in \mathsf{Mod}_S$.
@@ -330,90 +330,47 @@
 
 \section{张量积}
 
-\begin{thm}\label{thmten}
-对任意的环$R$, $S$和$T$，存在双函子$*\otimes_S -:{}_R\mathsf{Mod}_S\times {}_S\mathsf{Mod}_T\to {}_R\mathsf{Mod}_T$使得
+\para 张量抽象了多线性函数，尤其是双线性函数。设$A$是右$R$-模，$B$是左$R$-模，那么我们称$f:A\times B\to G$，其中$G$是一个交换群，为一个双线性函数，如果他满足
 \[
-	{}_R\!\Hom_{T}(M\otimes_S N,P)\cong {}_R\!\Hom_S(M,\Hom_{T}(N,P)),
+	f(a+b,a')=f(a,a')+f(b,a'),\quad f(a,a'+b')=f(a,a')+f(a,b'),
 \]
-对$M\in {}_R\mathsf{Mod}_S$, $N\in {}_S\mathsf{Mod}_T$, $P\in {}_R\mathsf{Mod}_T$是（到交换群范畴的）三函子同构。因此，固定$M$, $N$，函子$*\otimes_S N$或者$M\otimes_S -$都是一个左伴随函子，对应地，还有右伴随函子。
-\end{thm}
+以及对$r\in R$满足$f(ar,b)=f(a,rb)$.
 
-这个定义是纯范畴式的，所有关于元素的细节实际上是利用Lemma \ref{lemmod}藏了起来。双函子的存在性我们慢慢来研究。
-
-% 任意的环$R$都可以看成一个$\zz$-模，当然也可以看成一个$R$-模，所以$R\in {}_R\mathsf{Mod}_\zz$，此时再考虑一个右$S$-模$M$. 于是，$R\otimes_\zz M\in {}_R\mathsf{Mod}_S$且存在函子性同构
-% \[
-% 	{}_R\!\Hom_{S}(R\otimes_\zz M,-)\cong {}_R\!\Hom(R,\Hom_{S}(M,-)),
-% \]
-% 注意到左$R$-模的函子性同构$\varphi\mapsto \varphi(1)$
-% \[
-% 	{}_R\!\Hom(R,\star)\cong \star,
-% \]
-% 所以我们就得到了函子性同构
-% \[
-% 	{}_R\!\Hom_{S}(R\otimes_\zz M,-)\cong \Hom_{S}(M,-).
-% \]
-
-作为推论，根据左伴随函子与逆极限可交换，而直和是模范畴的一种逆极限，我们可以得知同构
+特别地，如果我们存在一个双线性函数$\varphi$，以及一个交换群$G$，使得每一个$A\times B$上的双线性函数$f:A\times B\to H$都可以唯一分解为
 \[
-	\left(\bigoplus_i M_i\right)\otimes_S N\cong \bigoplus_i \left(M_i\otimes_S N\right).
+	f:A\times B\xrightarrow{\varphi} G\xrightarrow{h_f}H,
 \]
-类似地，可以断言$-\otimes_S N$和$M\otimes_S *$都是左正和函子。
+其中$h_f$对每一个双线性函数$f$存在且唯一，则称呼$G$为$A$与$B$的张量积，记做$A\otimes_R B$，而$\varphi(a,b)$记做$a\otimes_R b$，如果下标$R$不重要，那么我们可以省略他。
 
-我们下面回到传统的张量定义，它显性地写出来关于元素的细节。
-
-\para 张量抽象了多线性函数，尤其是双线性函数。设$M\in {}_R\mathsf{Mod}_S$, $N\in {}_S\mathsf{Mod}_T$, $P\in {}_R\mathsf{Mod}_T$，那么我们称$f:M\times N\to P$为一个双线性函数，如果他满足
-\[
-	f(m+n,m')=f(m,m')+f(n,m'),\quad f(m,m'+n')=f(m,m')+f(m,n'),
-\]
-以及对$r\in R$, $s\in S$, $t\in T$满足$f(rms,nt)=rf(m,sn)t$. 
-
-特别地，如果对任意的一个$M\times N$上的双线性函数$f:M\times N\to P$，都存在一个双线性函数$\varphi$和一个$Q\in M\in {}_R\mathsf{Mod}_T$，可以唯一分解为
-\[
-	f:M\times N\xrightarrow{\varphi} Q\xrightarrow{h_f}P,
-\]
-其中$h_f$对每一个双线性函数$f$存在且唯一，则称呼$Q$为$M$与$N$的张量积，记做$M\otimes_S N$，而$\varphi(m,n)$记做$m\otimes_S n$，如果下标$S$不重要，那么我们可以省略他。
-
-% 设$R$是交换环，$A$和$B$都是$R$-模，那么$A\times B$具有$R$-模结构，即$r(a,b)=(ra,b)$. 通过将$r(a\otimes b)$可以定义为$(ra)\otimes b$，$A\otimes_R B$显然有一个$R$-模结构，这样，$\varphi$将是一个$R$-模同态。而上面的泛性质，也可以改成相应的$R$-模和$R$-模同态。
+设$R$是交换环，$A$和$B$都是$R$-模，那么$A\times B$具有$R$-模结构，即$r(a,b)=(ra,b)$. 通过将$r(a\otimes b)$可以定义为$(ra)\otimes b$，$A\otimes_R B$显然有一个$R$-模结构，这样，$\varphi$将是一个$R$-模同态。而上面的泛性质，也可以改成相应的$R$-模和$R$-模同态。
 
 \begin{lem}
-张量积存在。而且由上面的泛性质，他确定到一个同构。
+在模范畴内，张量积存在。而且由上面的泛性质，他确定到一个同构。
 \end{lem}
 
-\begin{proof} 
-
-% 对于唯一性，我们考虑两个张量积$(G,\varphi)$和$(G',\varphi')$，那么根据张量积的性质，有分解
-% \[
-% 	\varphi:A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G,\quad \varphi':A\times B\xrightarrow{\varphi} G\xrightarrow{h_{\varphi'}}G',
-% \]
-% 所以只要验证$h_\varphi\circ h_{\varphi'}=\id_{G}$和$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$就好了，这样我们就得到了$G$和$G'$之间的同构。而上述等式来自于分解的唯一性，显然，我们有分解
-% \[
-% 	A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G\xrightarrow{h_{\varphi'}}G',\quad A\times B\xrightarrow{\varphi'} G'\xrightarrow{\id_{G'}}G',
-% \]
-% 显然，所以由唯一性得到了$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$，同理有另一个等式。
-
-泛性质所以唯一，这点是很清楚的。对于存在性，我们直接构造。首先，我们知道在交换群范畴（作为$\zz$-模）有直和存在，那么我们可以构造自由交换群
+\begin{proof} 对于唯一性，我们考虑两个张量积$(G,\varphi)$和$(G',\varphi')$，那么根据张量积的性质，有分解
 \[
-	F=\bigoplus_{(m,n)\in M\times N} \zz,
+	\varphi:A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G,\quad \varphi':A\times B\xrightarrow{\varphi} G\xrightarrow{h_{\varphi'}}G',
 \]
-$F$中对应指标$(m,n)$的那个$\zz$中的$1$我们记作$1_{m,n}$. 
-
-我们令$H$是由
+所以只要验证$h_\varphi\circ h_{\varphi'}=\id_{G}$和$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$就好了，这样我们就得到了$G$和$G'$之间的同构。而上述等式来自于分解的唯一性，显然，我们有分解
 \[
-	1_{m,n}+1_{m',n}-1_{m+m',n},\quad 1_{m,n}+1_{m,n'}-1_{m,n+n'},\quad 1_{ms,n}-1_{m,sn}
+	A\times B\xrightarrow{\varphi'} G'\xrightarrow{h_{\varphi}}G\xrightarrow{h_{\varphi'}}G',\quad A\times B\xrightarrow{\varphi'} G'\xrightarrow{\id_{G'}}G',
 \]
-生成的子群，那么我们$M\otimes N$就可以构造为$F/H$，令$\varphi(m,n)=m\otimes n=[1_{m,n}]$，即$1_{m,n}$的陪集。
+显然，所以由唯一性得到了$h_{\varphi'}\circ h_{\varphi}=\id_{G'}$，同理有另一个等式。
 
-$F/H$确实有一个自然的左$R$-模右$T$-模结构，实际上，我们任取$a=\sum_{i}k_i m_k\otimes n_k \in F/H$，再任取$r\in R$, $t\in T$，我们定义
+对于存在性，我们可以直接构造。首先，我们知道在交换群范畴（作为$\zz$-模）有直和存在，那么我们可以构造自由交换群
 \[
-	rat=\sum_{i}k_i (rm_k)\otimes (n_kt).
+	F=\bigoplus_{(a,b)\in A\times B} \zz=\sum_{(a,b)\in A\times B}n_{(a,b)}1_{a,b}.
 \]
-
-有了构造之后，可以直接检验这确实是张量积，具体的检验这里就不进行了。
-\end{proof}
+这是一个形式和，系数只有有限项非零，其中$1_{a,b}$是对应指标$(a,b)$的那个$\zz$中的$1$。我们令$H$是由
+\[
+	1_{a,b}+1_{a',b}-1_{a+a',b},\quad 1_{a,b}+1_{a,b'}-1_{a,b+b'},\quad 1_{ar,b}-1_{a,rb}
+\]
+生成的子群，那么我们$A\otimes B$就可以构造为$F/H$，令$\varphi(a,b)=a\otimes b=[1_{a,b}]$，即$1_{a,b}$的陪集。这确实是张量积，具体的检验这里就不进行了。\end{proof}
 
 \para 有了两个模的张量积，我们自然也可以拓展为三个模的张量积，我们可以通过模仿两个模的张量积的泛性质\footnote{即三线性的函数可以唯一分解。}，定义一个新的三个模之间的张量积$A\otimes B\otimes C$，然后可以检验$(A\otimes B)\otimes C$和$A\otimes (B\otimes C)$同时也满足泛性质，所以他们之间是同构的。在这层意义上，我们可以认为张量积满足结合律，因此我们自然也有了有限个模的张量积。
 
-\para 下面讨论张量积在同态下的表现，即张量积作为函子的表现。设$\varphi\in {}_R\!\Hom_S(M,M')$和$\psi\in {}_S\!\Hom_T(N,N')$，则它诱导了一个左$R$-模右$T$-模同态
+\para 下面讨论张量积在同态下的表现。设$\varphi:M\to M'$是右$R$-模同态和$\psi:N\to N'$是左$R$-模同态，则它诱导了一个交换群同态
 \[
 	\alpha(\varphi,\psi):M\otimes N\to M'\otimes N',
 \]
@@ -450,82 +407,50 @@ $F/H$确实有一个自然的左$R$-模右$T$-模结构，实际上，我们任�
 
 \para 上一个命题给出了如下映射：
 \[
-	\alpha:{}_R\!\Hom_S(M,M')\times {}_S\!\Hom_T(N,N')\to {}_R\!\Hom_T(M\otimes N,M'\otimes N'),
+	\alpha:\Hom(M,M')\times \Hom(N,N')\to \Hom(M\otimes N,M'\otimes N').
 \]
-且上述映射是双线性的，所以他自然诱导了一个映射
+由于$\Hom(M,M')$和$\Hom(N,N')$都是$R$-模，并且上述映射是双线性的，所以他自然诱导了一个映射
 \[
 	\Hom(M,M')\otimes \Hom(N,N')\to \Hom(M\otimes N,M'\otimes N').
 \]
 这也就是为什么大家将$\alpha(\varphi,\psi)$记作$\varphi\otimes \psi$. 
 
-\begin{para}
-现在我们回到Theorem \ref{thmten}的证明，即存在三函子同构
+\begin{pro}
+记右$R$-模范畴之间的态射集为$\Hom_R(-,*)$. 则成立双函子同构
 \[
-	{}_R\!\Hom_{T}(M\otimes_S N,P)\cong {}_R\!\Hom_S(M,\Hom_{T}(N,P)).
+	\Hom_{\mathbb{Z}}(M\otimes_R N,G)\cong \Hom_R(M,\Hom_\mathbb{Z}(N,G)),
 \]
+其中$M$和$N$是可以变动的。因此，$-\otimes_R N$就是一个左伴随函子，而$\Hom_\mathbb{Z}(N,*)=h^N$是一个右伴随函子。\notprove
+\end{pro}
 
-\begin{proof}
-记${}_RH_T(M\times N,P)$是所有从$M\times N$到$P$的双线性映射，从张量积的泛性质，我们知道有唯一的态射$\varphi_{M,N}:M\times N\to M\otimes_S N$使得
+根据左伴随函子与逆极限可交换，而直和是模范畴的一种逆极限，我们可以得知同构
 \[
-	(\varphi_{M,N})^*:{}_RH_T(M\times N,P)\to {}_R\!\Hom_{T}(M\otimes_S N,P)
+	\left(\bigoplus_i M_i\right)\otimes N\cong \bigoplus_i \left(M_i\otimes N\right).
 \]
-是一个同构。
-
-另一方面，给定$f\in {}_R\!\Hom_S(M,\Hom_{T}(N,P))$以及$m\in M$, $n\in N$，我们发现$f(m)(n)\in P$，因此它定义了$\psi(f):M\times N \to P$，通过$\psi(f)(m,n)=f(m)(n)$. 现在，任取$r\in R$, $s\in S$, $t\in T$，我们有
-\[
-	\psi(f)(rms,nt)=f(rms)(nt)=f(rms)(n)t=(rf(m)s)(n)t=r(f(m)(sn))t=r\psi(m,sn)f,
-\]
-其中$(f(m)s)(n)=f(m)(sn)$直接来自于$\Hom_{T}(N,P)$模结构的定义，见Lemma \ref{lemmod}. 并且，显然
-\[
-	\psi(f)(m+m',n)=\psi(f)(m,n)+\psi(f)(m',n),\quad \psi(f)(m,n+n')=\psi(f)(m,n)+\psi(f)(m,n'),
-\]
-所以$\psi:{}_R\!\Hom_S(M,\Hom_{T}(N,P))\to {}_RH_T(M\times N,P)$. 
-
-反过来，任取双线性映射$g:M\times N \to P$，我们可以通过$\theta(g)(m)(n)=g(m,n)$来给出同态
-\[
-	\theta(g)\in {}_R\!\Hom_S(M,\Hom_{T}(N,P)).
-\]
-不难检验$\psi$和$\theta$互逆，所以是一对同构。
-
-综上，我们得到了同构
-\[
-	{}_R\!\Hom_S(M,\Hom_{T}(N,P))\cong {}_RH_T(M\times N,P)\cong {}_R\!\Hom_{T}(M\otimes_S N,P),
-\]
-自然同构是不难的，这里就略去检验了。很多时候，这不是检验不检验的问题，这是一个相信不相信的问题。
-\end{proof}
-\end{para}
 
 \begin{pro}
-设$M\in {}_R\mathsf{Mod}_S$，则存在自然同构
-\[
-	R\otimes_R M\cong M\cong M\otimes_S S.
-\]
+成立交换群的同构$R\otimes M\cong M$以及$(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的一个理想。
 \end{pro}
 
 \begin{proof}
-左边右边证明完全是类似的，我们就证明左边的情况。
+	记$(r,m)\mapsto rm$为映射$\varphi$，毫无疑问这是一个双线性映射，所以诱导了一个交换群同态$\psi:R\otimes M\to M$，使得分解$\varphi:R\times M\xrightarrow{h} R\otimes M\xrightarrow{\psi} M$成立。毫无疑问，$\psi$是一个满射，因为对任意的$m$都有$m=\varphi(1,m)$，所以$m=\psi(h(1,m))$. 注意到$R\otimes M$里面的元素可以写成这样的有限和
+	\[
+	\sum_i r_i\otimes m_i=\sum_i 1\otimes r_im_i=1\otimes \left(\sum_i r_i m_i\right),
+	\]
+	因此，$\psi\left(\sum_i r_i\otimes m_i\right)=0$推出$\sum_i r_i m_i=0$，再利用上面的等式推出$\sum_i r_i\otimes m_i$. 所以$\psi$是一个单射。
 
-记$(r,m)\mapsto rm$为映射$\varphi$，毫无疑问这是一个双线性映射，所以诱导了一个同态$\psi:R\otimes M\to M$，使得分解$\varphi:R\times M\xrightarrow{h} R\otimes M\xrightarrow{\psi} M$成立。毫无疑问，$\psi$是一个满射，因为对任意的$m$都有$m=\varphi(1,m)$，所以$m=\psi(h(1,m))$. 注意到$R\otimes M$里面的元素可以写成这样的有限和
-\[
-\sum_i r_i\otimes m_i=\sum_i 1\otimes r_im_i=1\otimes \left(\sum_i r_i m_i\right),
-\]
-因此，$\psi\left(\sum_i r_i\otimes m_i\right)=0$推出$\sum_i r_i m_i=0$，再利用上面的等式推出$\sum_i r_i\otimes m_i=0$. 所以$\psi$是一个单射。
-
-自然同构是简单的。
-\end{proof}
-
-\para 从这里开始，以后讨论的张量积都是$R$-模范畴（交换环自然定义的双边$R$-模）的张量积，所以两个$R$-模的张量积依然是$R$-模，所有出现的同态都是$R$-模同态。并且，我们有双函子同构$-\otimes *\cong *\otimes -$.
-
-\begin{pro}
-$(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的一个理想。
-\end{pro}
-
-\begin{proof}
-	记$(\bar{r},m)\mapsto \overline{rm}\in M/\mathfrak{a}M$为映射$\varphi$. 这是一个定义良好的映射，选取$\bar{r}$的不同代表元$r'=r+a$，其中$a\in\mathfrak{a}$，所以$r'm=rm+am$，由于$am\in \mathfrak{a}M$，所以$\overline{r'm}=\overline{rm}$. 双线性性从定义看是显然的，所以诱导了一个交换群同态$\psi:(R/\mathfrak{a})\otimes M\to M/\mathfrak{a}M$，使得分解$\varphi:R/\mathfrak{a}\times M\xrightarrow{h} (R/\mathfrak{a})\otimes M\xrightarrow{\psi} M/\mathfrak{a}M$成立。
+	第二个同构，依然是记$(\bar{r},m)\mapsto \overline{rm}\in M/\mathfrak{a}M$为映射$\varphi$. 这是一个定义良好的映射，选取$\bar{r}$的不同代表元$r'=r+a$，其中$a\in\mathfrak{a}$，所以$r'm=rm+am$，由于$am\in \mathfrak{a}M$，所以$\overline{r'm}=\overline{rm}$. 双线性性从定义看是显然的，所以诱导了一个交换群同态$\psi:(R/\mathfrak{a})\otimes M\to M/\mathfrak{a}M$，使得分解$\varphi:R/\mathfrak{a}\times M\xrightarrow{h} (R/\mathfrak{a})\otimes M\xrightarrow{\psi} M/\mathfrak{a}M$成立。
 
 	先检验$\psi$是一个满射，这只要检验$\varphi$是一个满射。任取$\bar{m}\in M/\mathfrak{a}M$，则有$\varphi(\bar{1},m)=\bar{m}$. 最后要检验$\psi$是一个单射，
 	如果$\psi(\sum_i \bar{r}_i\otimes m_i)=0$，可以推出$\sum_i \overline{r_im_i}=0$，于是$\sum_i r_im_i \in \mathfrak{a}M$，这意味着$r_i\in \mathfrak{a}$，所以$\sum_i \bar{r}_i\otimes m_i=\sum_i 0\otimes m_i=0$.
 \end{proof}
+
+当$R$是一个交换环，$M$是一个$R$-模，此时上面证明的同态实际上都是$R$-模同态，所以也自然是$R$-模同构。这两个同构不仅仅是同构，改变$M$的时候，还是一个自然同构。这里就略去检验了。很多时候，这不是检验不检验的问题，这是一个相信不相信的问题。
+
+\para 上面我们已经看到了，$-\otimes N$构成一个函子，而实际上，它是右正和函子。
+
+\para 从这里开始，以后讨论的张量积都是$R$-模范畴的张量积，所以两个$R$-模的张量积依然是$R$-模，所有出现的同态都是$R$-模同态。并且，我们有函子性同构$-\otimes N\cong N\otimes -$.
+
 
 \section{代数与多项式环}
 
