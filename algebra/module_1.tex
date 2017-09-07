@@ -151,7 +151,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \end{thm}
 
 \begin{pro}
-设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$都是左正合函子。
+设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\mathrm{op} \to \mathsf{Ab}$都是左正合函子。
 \end{pro}
 
 \begin{proof}
@@ -241,7 +241,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 反过来，设$f:X\to Z$而$g:Y\to Z$，考虑$X\times_Z Y=\{(x,y)\,:\,f(x)=g(y)\}$. 如果$\im f=\im g$，则$f(X)=g(Y)$. 所以任取$x_0\in X$都存在一个$y_0\in Y$使得$f(x_0)=g(y_0)$，此时$x_0=p_X(x_0,y_0)$，所以$p_X$是满同态。同理，$p_Y$是满同态。
 \end{proof}
 
-因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f\circ x)=f(\im x)$. 这就还原了作为映射的$f$. 
+因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f x)=f(\im x)$. 这就还原了作为映射的$f$. 
 
 下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态还是满态可以应用模范畴中类似的手段来做。
 
@@ -507,14 +507,13 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \end{thm}
 
 \begin{proof}
-	设$\{m_1,\cdots,m_n\}$是$M$的生成元。考虑$\varphi(m_i)\in M$，因为$M$是有限生成的，所以
+	设$\{m_1$, $\cdots$, $m_n\}$是$M$的生成元。考虑$\varphi(m_i)\in M$，因为$M$是有限生成的，所以
 	\[
 	\varphi(m_i)=\sum_{j}r_{ij}m_j,
 	\]
 	其中$r_{ij}\in I$. 将其写作$\sum_{j}(\delta_{ij}\varphi-r_{ij})m_i=0$，其中$\delta_{ij}$当$i=j$的时候为$1$，其他时候为$0$.
 
-	将$M$看作$R[x]$-模，其中$xm=\varphi(m)$，则$\sum_{j}(\delta_{ij}x-r_{ij})m_i=0$. 左乘$x\delta_{ij}-r_{
-	ij}$的伴随矩阵，就得到了
+	将$M$看作$R[x]$-模，其中$xm=\varphi(m)$，则$\sum_{j}(\delta_{ij}x-r_{ij})m_i=0$. 左乘$x\delta_{ij}-r_{ij}$的伴随矩阵，就得到了
 	\[
 	\det\left(x\delta_{ij}-r_{ij}\right)m_i=0,
 	\]
@@ -531,9 +530,9 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 	其中$q\in R[x]$. 或者写作，$1-q(\varphi)\varphi=0$. 因此$q(\varphi)$是$\varphi$的一个逆，进而$\varphi$是一个同构。
 \end{proof}
 
-\para 设$M$是一个模，一组元素$\{x_1$, $\cdots$, $x_n$, $\cdots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1}$, $\cdots$, $x_{i_k}\in M$，以及对任意的$r_{i_1}$, $\cdots$, $r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1$, $\cdots$, $x_n$, $\cdots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。
+\para 设$M$是一个模，一组元素$\{x_1$, $\dots$, $x_n$, $\dots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1}$, $\dots$, $x_{i_k}\in M$，以及对任意的$r_{i_1}$, $\dots$, $r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1$, $\dots$, $x_n$, $\dots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。
 
-\para 将上述命题应用到自由模。设$M\cong R^n$，而$I=\{x_1$, $\cdots$, $x_n\}$自由生成了$M$，则$M$同构于$I=\{x_1$, $\cdots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
+\para 将上述命题应用到自由模。设$M\cong R^n$，而$I=\{x_1$, $\dots$, $x_n\}$自由生成了$M$，则$M$同构于$I=\{x_1$, $\dots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
 
 \begin{proof}
 	$\bigoplus_{x\in I} R$自然可以看成$R^n$，从$\bigoplus_{x\in I} R=R^n$到$M$有自然的满射$\alpha$，他将生成元映到生成元，由于$M\cong R^n$，所以有同构$\beta:M\to R^n$，因此就有了满同态$\alpha\beta:M\to M$，进而是同构。所以$\alpha =(\alpha\beta)\beta^{-1}$就是一个同构。
@@ -548,7 +547,7 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 \end{pro}
 
 \begin{proof}
-	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1$, $\cdots$, $x_{n+1}\}$，如果这组生成元是自由生成元，则没什么要证的，如果不是，则存在一组系数$a_1$, $\cdots$, $a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
+	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1$, $\dots$, $x_{n+1}\}$，如果这组生成元是自由生成元，则没什么要证的，如果不是，则存在一组系数$a_1$, $\dots$, $a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
 	\[
 	a_{n+1}x_{n+1}=-a_1x_1-\cdots-a_nx_n,
 	\]

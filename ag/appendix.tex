@@ -1,145 +1,1517 @@
 % !TEX root = main.tex
 \appendix
-\renewcommand{\thepara}{\Alph{chapter}.\arabic{para}}
-\renewcommand\chapterimg{Pictures/5.png}
-\chapter{一点点范畴论}
+\renewcommand{\thepara}{\Alph{chapter}.\arabic{section}.\arabic{para}}
 
-这里就不重复范畴、函子的定义了，并且不会补充对太过抽象的一些东西，原因是，要实际证明一点东西，还是要深入到对象里面去。对于大范围的一些结论，范畴论则提供了足够合适的一套语言。
+\chapter{拓扑空间的复习}
 
-\no{1} 设$\mathcal{C}$是一个范畴，$\mathcal{C}^\circ$是它的对偶范畴，所以任何反变函子$\varphi:\mathcal{C}\to D$都是一个（协变）函子$\varphi:\mathcal{C}^\circ\to \mathcal{D}$.
+\para 一个拓扑空间$X$被称为\idx{拟紧}的，如果对于他的任意开覆盖$\{U_\alpha\}_{\alpha\in I}$，都存在$I$的某个有限子集$J$使得$\{U_\alpha\}_{\alpha\in J}$也是$X$的开覆盖。或者说简单点，$X$是拟紧的，如果对于任意$X$的开覆盖都存在有限子覆盖。
 
-\no{2} 设$\mathcal{C}$和$\mathcal{D}$都是范畴，$\mathcal{C}$到$\mathcal{D}$之间所有的（协变）函子能如下构成一个范畴$\text{Funct}(\mathcal{C},\mathcal{D})$：首先其中的对象为$\mathcal{C}$到$\mathcal{D}$的函子。其次，设$F$和$G$是$\mathcal{C}$到$\mathcal{D}$的函子，那么函子态射（或称为自然变换）$f:F\to G$是一族态射$f(X):F(X)\to G(X)$，其中$X\in \mathcal{C}$，使得对所有的态射$\varphi:X\to Y$如下交换图成立:
+% \para 任意集合$X$的幂集$P(X)$上可以用包含关系定义一个偏序：设$U$, $V\in P(X)$，$U\leq V$当且仅当$U\subset V$. 任意幂集的子集可以继承这个偏序。
+
+% 由于偏序集$(X,\leq)$可以通过$x\leq' y$当且仅当$y\leq x$定义一个新的偏序$\leq'$，在新的偏序下，上界变成了下届，极大变成了极小，所以Zorn引理可以改写为极小版本：如果非空偏序集$(X,\leq)$中任意一条链都有下界，则$X$中存在极小元。
+
+\begin{pro}下列命题等价：
+\begin{compactenum}[~~~(1)]
+\item $X$是拟紧的。
+\item 对任意的闭集族$\{V_\alpha\}_{\alpha\in I}$，如果$\bigcap_{\alpha\in I} V_\alpha=\varnothing$，则存在有限子集$J\subset I$使得$\bigcap_{\alpha\in J} V_\alpha=\varnothing$.
+\item 对任意的闭集族$\{V_\alpha\}_{\alpha\in I}$，如果对任意有限子集$J\subset I$都有$\bigcap_{\alpha\in J} V_\alpha\neq\varnothing$，则$\bigcap_{\alpha\in I} V_\alpha\neq\varnothing$.
+\end{compactenum}
+\end{pro}
+
+\begin{proof} (1)等价(2)因为交和并可以用补集联系，而(2)等价(3)因为他们是逆否命题。\end{proof}
+
+\para 利用第二点，可以知道拟紧空间的闭子集也是拟紧的。利用第三点，我们可以知道，如果$X$是拟紧的，则其中任意递减非空闭集构成的链中所有元素的交非空。
+
+\para 如果偏序集$E$的任意非空子集$S$都有极小元$x\in S$，则称$E$满足极小条件。
+
+偏序集的极小条件往往用所谓的d.c.c.条件来描述，即任意递减的链$I$总存在极小元$x\in I$. 两者的等价的难点在于从任意链到任意子集的那部分。我们假设有一个$T\subset E$并不包含他的极小元，那么任取一个$x\in T$，总可以找到一个元素$y\in T$使得$y<x$，否则$x$就是极小元，不断这么做下去，也就得到了一条没有极小元的链。逆否即证。
+
+同理，我们可以定义极大条件和a.c.c.条件，后者指任意递增的链$I$总存在极大元$x\in I$.
+
+\begin{pro}
+设$E$是一个满足极小条件的偏序集，且$P$是关于$E$中元素的某个性质，假设性质$P$满足：对$a\in E$，若$x< a$时$P(x)$均成立，则$P(a)$也成立。则由这些条件可以推出$P(x)$对所有$x\in E$都成立，这被称为Noether递归原理。
+\end{pro}
+
+\begin{proof} 考虑那些使得$P(x)$不成立的$x$构成的子集$F$，如果$F$非空，那么他存在一个极小元$a$，于是当$x< a$的时候$P(x)$均成立，所以$P(a)$也成立，矛盾。\end{proof}
+
+\para 一个拓扑空间被称为是Noetherian的，就是说闭集链满足d.c.c.，这其实也等价说，Noether拓扑空间的闭集族满足极小条件。再或者等价地，开集族满足极大条件。对于在模范畴里面，满足a.c.c.的才是Noetherian的，到拓扑空间反过来后面我们会看到这是自然的。如同模范畴里面那样，Noether性是一种有限性条件，如同上面的拟紧性一样。
+
+从定义可以很轻松看出，Noether拓扑空间的子空间也是Noether拓扑空间。反之，如果一个拓扑空间是有限个Noether拓扑空间的并，则其也是Noether拓扑空间。
+
+\para Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
+
+设$\{U_\alpha\}_{\alpha\in I}$是$X$的一个开覆盖，以及$\mathscr{A}$是所有$I$的有限子集构成的族，偏序关系定义为：$J\leq K$当且仅当$U_J\subset U_K$，其中$U_J=\bigcup_{\alpha\in J}U_\alpha$. 由Noether拓扑空间开集族满足极大条件，则$\mathscr{A}$中存在一个极大元$J$，下面使用反证法证明$X=U_J$，而这就说明$J$是我们需要的有限子覆盖。
+
+如果存在某个$x\in X-U_J$，因为$\{U_\alpha\}_{\alpha\in I}$是$X$的开覆盖，所以存在$\beta \in I$使得$x\in U_\beta$，可以构造$K=J\cup \{\beta\}$也是$I$的有限子集，且$U_J\subsetneq U_K$，所以$J$就不是一个极大元。证毕。
+
+\para 现在转而走进\idx{不可约}性，所谓不可约的拓扑空间，就是说该拓扑空间是非空的，且不能表示为两个真闭子集的并。这个定义可以转而描述为，他是非空的且其中任意非空开集的交非空，或者任意非空开集在其中稠密，或者任意开集都连通。从定义可以直接得出，不可约拓扑空间的非空开子集也是不可约的。
+
+\para 如果$X$的一个稠密子集$Y$是不可约的，则$X$是不可约的。事实上，假设$X$是可约的，那么存在$X$的两个非空闭子集，使得他们的并是$X$，这两个闭子集交上$Y$构成两个$Y$中的非空闭子集他们的并是$Y$，因此$Y$可约。逆否即证毕。
+
+利用这个小命题，我们得出，一个拓扑空间$X$的子空间$Y$是不可约的，当且仅当$Y$的闭包$\bar{Y}$是不可约的。反方向并不困难。特别地，单点的闭包$\overline{\{x\}}$总是不可约的。
+
+\para 现设$X$是不可约的，而$x$是$X$中的一个点，如果$\overline{\{x\}}=X$，则$x$称为$X$的一个\idx{一般点}。如果$X$满足一些分离公理，比如$T_0$公理：对于$X$的任意两点$x$和$y$，总存在一个只包含其中一个点的开集，则一般点的存在是唯一的，因为任意开集都包含所有的一般点。
+
+因为任意开集都包含一般点，且不可约空间的开子集都是不可约的，所以那个一般点也是开子集的一般点。
+
+\chapter{范畴}
+
+\section{基础}
+
+\para 一个范畴$\mathcal{C}$有如下数据：
+\begin{enumerate}
+\item 一类(class)对象(object)，类在这里的意思并不是构成一个集合。一个范畴中所有的对象可以不构成一个集合。如果$X$是$\mathcal{C}$的一个对象，我们沿用集合论的符号，写成$X\in \mathcal{C}$.
+
+对每两个对象$X$和$Y$，有一个集合$\mathcal{C}(X,Y)$，有时候也写做$\mathrm{Mor}_{\mathcal{C}}(X,Y)$乃至$\Hom_{\mathcal{C}}(X,Y)$，其中的元素被称为\idx{态射}（\idx{morphism}\footnote{从英文来看，态射构成的集合写作$\mathrm{Mor}_{\mathcal{C}}(X,Y)$比$\Hom_{\mathcal{C}}(X,Y)$准确，因为morphism不一定是homomorphism（同态）。}
+）. 设$\varphi\in \mathcal{C}(X,Y)$，他通常沿用映射的记号写成$\varphi:X\to Y$，但态射不必是映射。沿用叫法，$\varphi:X\to Y$中$X$被称为定义域，而$Y$被称为值域。态射还需要满足如下假设：
+
+\begin{itemize}
+
+\item 任取态射$\varphi$，我们可以从他得到唯一的定义域和值域，即$\varphi$如果同时属于$\mathcal{C}(X,Y)$和$\mathcal{C}(Z,W)$，则$X=Z$以及$Y=W$.
+
+\end{itemize}
+
+\item 任取对象$X$, $Y$和$Z\in \mathcal{C}$，则有映射$\mathcal{C}(X,Y)\times \mathcal{C}(Y,Z)\to \mathcal{C}(X,Z)$，沿袭映射的说法，他被称为态射的复合。设$\varphi\in \mathcal{C}(X,Y)$和$\psi \in \mathcal{C}(Y,Z)$，则复合出来的态射被记作$\psi\circ \varphi$或者再简单一点$\psi\varphi$. 复合还需要满足：
+\begin{itemize}
+
+\item 态射的复合满足结合率，即$\varphi(\psi\theta)=(\varphi\psi)\theta$.
+
+\item 在每一个$\mathcal{C}(X,X)$中有一个元素$\id_X$使得，任取$\rho:X\to Y$以及$\psi:Z\to X$成立复合$\rho\id_X=\rho$以及$\id_X\psi=\psi$.
+\end{itemize}
+\end{enumerate}
+
+如果一个范畴的对象可以构成一个集合，那么这个范畴就被称为小范畴。在定义中，我们可以看到，所有对象与集合、态射与映射的相似性，所以我们可以直接断言，所有集合以及集合间的映射构成了一个范畴，他被称为集合范畴，记作$\mathsf{Set}$.
+
+类似地，所有的群/环/$R$-模和他们两两之间的同态构成了一个范畴。左$R$-模范畴我们记作${}_R\mathsf{Mod}$，右$R$-模范畴我们记作$\mathsf{Mod}_R$. 既是左$R$-模，又是右$S$-模的范畴我们记作${}_R\mathsf{Mod}_S$. 下面是一个稍微不一般一点的例子。
+
+从一个范畴也可以构造一些范畴，比如子范畴：一个范畴$\mathcal{C}$的子范畴是一个范畴$\mathcal{S}$，其对象为$\mathcal{C}$内的对象，态射为$\mathcal{C}$内的态射，且有相同的单位态射与态射复合。直观上来看，$\mathcal{C}$的子范畴是一个从C中“移去”部分物件和态射的范畴。比如，模范畴是交换群范畴的子范畴。
+
+\para 设$I$是一个偏序集，偏序关系为$\leq$，那么我们如下定义态射使得他构成了一个范畴：
 \[
-\xymatrix{
-		F(X)\ar[rr]^{f(X)} \ar[d]_{F(\varphi)}&&G(X) \ar[d]^{G(\varphi)}\\
-		F(Y)\ar[rr]^{f(Y)}&&G(Y)
-	}
-\]
-
-如果$F$同构于$G$ （记作$F\cong G$），那么应该有两个自然变换$f$和$g$使得$f(X)\circ g(X)=\id_{G(X)}$以及$g(X)\circ f(X)=\id_{F(X)}$对所有$X\in \mathcal{C}$都成立。
-
-\para 设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。现在我们定义一个函子$\Hom_\mathcal{C}(A,\star):\mathcal{C}\to \text{Set}$如下：对于对象，$B\mapsto \Hom_\mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
-\[
-	\Hom_\mathcal{C}(A,f)=f_*: g\mapsto f\circ g.
-\]
-此时$\Hom_\mathcal{C}(A,\star)$被称为关于$A$的\idx{态射函子}。
-
-与态射函子对偶地，可以定义所谓的\idx{反变态射函子}$\Hom_\mathcal{C}(\star,A):\mathcal{C}^{\circ}\to \text{Set}$，它记作$\hat{A}$。显然$\hat{A}\in \text{Funct}(\mathcal{C}^\circ,\text{Set})$，我们记$\hat{\mathcal{C}}=\text{Funct}(\mathcal{C}^\circ,\text{Set})$.
-
-\lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \text{Set}$是一个函子，则从$\Hom_\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
-
-\proof 对每个自然变换$\alpha:\Hom_\mathcal{C}(A,\star)\to F$定义$\theta(\alpha)=\alpha(A)(\id_A)\in F(A)$，现在定义一个逆映射即可。对$x\in F(A)$，定义自然变换$\psi(x):\Hom_\mathcal{C}(A,\star)\to F$通过$\psi(x)(B)(f)=F(f)(x)$，不难验证这是一个自然变换，而且$\psi$和$\theta$是互逆的。\qed
-
-\para 设$X\in\text{Set}$是一个集合，那么它能够被看作集合$\hat{X}(e)=\Hom_{\text{Set}}(e,X)$，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的$\Hom_{\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就是表示论的思想。
-
-一个函子$F\in \hat{\mathcal{C}}$被称为可表示的，如果$F\cong \hat{X}$对某个$X\in \mathcal{C}$成立。
-
-\lem 与Yoneda引理对偶地，我们有：设$F\in \hat{\mathcal{C}}$是一个$\mathcal{C}$到集合范畴的反变函子，则$F(X)\cong \Hom_{\hat{\mathcal{C}}} (\hat{X},F)$对任意的$X\in \mathcal{C}$都成立。
-
-特别地，如果$F=\hat{Y}$，此时$\hat{Y}(X)=\Hom_{\mathcal{C}}(X,Y)\cong \Hom_{\hat{\mathcal{C}}}(\hat{X},\hat{Y})$. 所以如果$X$表示了函子$F$，则$\Hom_{\hat{\mathcal{C}}}(\hat{Y},F)\cong \Hom_{\hat{\mathcal{C}}}(\hat{Y},\hat{X})\cong\Hom_\mathcal{C}(Y,X)$. 如果$Y$也表示函子$F$，那么就存在一个同构$\varphi:\hat{Y}\cong F$，同时诱导出了$X$和$Y$之间的同构。所以可表示函子的表示物件确定到一个同构。 
-
-\para 设$\mathcal{J}$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:\mathcal{J}\to \mathcal{C}$为$\mathcal{C}$中的一个$\mathcal{J}$-图，或者简略叫做图。对于$j\in \mathcal{J}$，$D(j)$称为该图的一个顶点，而对任意的态射$\alpha:j_1\to j_2$，态射$D(\alpha)$称为该图的一条边。
-
-\para 称$(A,\lambda)$为$J$-图的一个\idx{锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:A\to D(j)$使得如下交换图对所有的顶点和边都成立
-\[
-	\xymatrix{
-		&A \ar[dl]_{\lambda_{j}}\ar[dr]^{\lambda_{j'}}&\\
-		D(j)\ar[rr]^{D(\alpha)}&&D(j')
-	}
-\]
-
-称呼一个锥形$(A,\lambda)$是$J$-图的一个\idx{极限}，如果对于任意的锥形$(B,\mu)$，都有唯一的态射$f:B\to A$使得如下分解$\mu_j:B\xrightarrow{f}A\xrightarrow{\lambda_j}D(j)$成立。
-
-在实际过程中，如果极限$(A,\lambda)$中的态射族是明确的（乃至于是由对象$A$确定的），那么我们会用$A$来表示极限。并且一般将$J$-图$D$的极限写作$\varprojlim_{j\in J} D(j)$.
-
-\para 锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。称$(A,\lambda)$为$J$-图的一个\idx{余锥形}，如果$A$是$\mathcal{C}$的一个对象，而$\lambda$为一族态射$\lambda_{j}:D(j)\to A$使得如下交换图对所有的顶点和边都成立
-\[
-	\xymatrix{
-		&A&\\
-		D(j)\ar[rr]^{D(\alpha)} \ar[ur]^{\lambda_{j }}&&D(j')\ar[ul]_{\lambda_{j'}}
-	}
-\]
-
-称呼一个余锥形$(A,\lambda)$是$J$-图的一个\idx{余极限}，如果对于任意的余锥形$(B,\mu)$，都有唯一的态射$f:A\to B$使得如下分解$\mu_j:D(j)\xrightarrow{\lambda_j}A\xrightarrow{f}B$成立。一般将$J$-图$D$的余极限写作$\varinjlim_{j\in J} D(j)$.
-
-\para 设$I$是一个偏序集，偏序关系为$\leq$，那么族$\{\{x\}\,:\, x\in I\}$构成一个（小）范畴，其中的态射定义为
-\[
-	\Hom_{I}\left(\{x\},\{y\}\right)=\begin{cases}
-	\bigl\{x\mapsto y\bigr\}&\text{, if }x\leq y\text{;}\\
+	\Hom_{I}\left(x,y\right)=\begin{cases}
+	\{x,\{x,y\}\}=(x,y)&\text{, if }x\leq y\text{;}\\
 	\varnothing&\text{, otherwise}.
 	\end{cases}
 \]
-当然，我们一般直接将$I$和$\{\{x\}\,:\, x\in I\}$等同，此时会说偏序集具有一个（小）范畴结构，其中的态射记作$x\leq y$.
+复合映射就写作$(y,z)(x,y)=(x,z)$，因此偏序集具有一个（小）范畴结构，其中的态射记作$x\leq y$.
 
-如果我们定义$x\geq y$当且仅当$y\leq x$，那么新的偏序集$(I,\geq)$就是偏序集$(I,\leq)$的对偶范畴，略去偏序符号，有时候会记作$I^\circ$.
-
-$D:I\to \mathcal{C}$是一个协变函子，就是对$i\leq j\leq k$成立$D(j\leq k)\circ D(i\leq j)=D(i\leq k)$，就是说从小到大有映射。反之，反变函子$D:I\to \mathcal{C}$对$i\leq j\leq k$成立$D(i\leq j)\circ D(j\leq k)=D(i\leq k)$，就是说从大到小有映射。
-
-对于一个反变函子$D:I\to \mathcal{C}$，我们可以定义一个协变函子$D^\circ :I^\circ\to \mathcal{C}$通过$D^\circ(j\geq i)=D(i\leq j)$，此时对$k\geq j\geq i$成立$D^\circ(j\geq i)\circ D^\circ(k\geq j)=D^\circ(k\geq i)$，可见这确实是一个协变函子。
-
-\para 称$I$是一个滤相的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$k\leq i$和$k\leq j$同时成立。称$I$是一个定向的偏序集，即对于任意的$i$, $j\in I$都存在$k\in I$使得$i\leq k$和$j\leq k$同时成立。
-
-很容易看到，如果偏序集$I$是滤相的（定向的），那么$I^\circ$就是定向的（滤相的），反之亦然。
-
-作为例子，考虑拓扑空间中所有非空开集按照包含构成的偏序集，即$U\leq V$当且仅当$U\subset V$，那么这个偏序集是定向的，但不是滤相的，因为对于任意的$U$和$V$总有$U\leq U\cup V$和$V\leq U\cup V$成立，但对于不交的$U$和$V$，并不存在非空开集同时包含于他们其中。
-
-同样是拓扑的例子，考虑所有包含$p$的非空开集按照包含构成的偏序集，那么这个偏序集既是滤相的又是定向的。
-
-\para 将滤相的（定向的）偏序集$I$看作一个范畴，对任意的范畴$\mathcal{C}$，如果一个$I$-图$D$，$D:I\to \mathcal{C}$是协变函子，则这称为一个$C$上的一个\idx{逆系统}（\idx{定向系统}）。逆系统一般谈论极限$\varprojlim_{i\in I} D(i)$，而定向系统一般谈论$\varinjlim_{i\in I} D(i)$，为了思考这个原因，我们考虑如下交换图
-\[
-	\xymatrix{
-		&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-		D(i)&&D(j)\\
-		&D(k)\ar[ul]^{D(k\leq i)}\ar[ur]_{D(k\leq j)}&
-	}
-	\quad
-% \xymatrix{
-% 	&A \ar[dl]_{\lambda_{i}}\ar[dr]^{\lambda_{j}}\ar[dd]^{\lambda_{k}}&\\
-% 	D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[dl]^{D(j\leq k)}\\
-% 	&D(k)&
-% }
-	\xymatrix{
-		&A &\\
-		\ar[ur]^{\mu_{i}}D(i)\ar[dr]_{D(i\leq k)}&&D(j)\ar[ul]_{\mu_{j}}\ar[dl]^{D(j\leq k)}\\
-		&D(k)\ar[uu]_{\mu_{k}}&
-	}
-\]
-左边是对逆系统考虑锥形，右边是对定向系统考虑余锥形。从左边来看，如果$i\leq j\leq k$成立，则$D(k)$构成了一个锥形的顶点，当我们考虑极限的时候，这时候极限就应该表现得像那些“极小”的元素$D(k)$一样。而且如果$A$是极限，那么箭头$A\to D(k)$也构成了唯一分解。类似地考虑右边的图，那些“极大”的元素$D(k)$构成了余锥形的顶点，如果$A$是余极限，那么箭头$D(k)\to A$也构成了唯一分解。
-
-\para 考虑$I$是滤相的（定向的），而$D$是协变函子，那么$I$-图$D$是逆系统（定向系统）。考虑$I$是滤相的（定向的），而$D$是反变函子，那么$I^\circ$-图$D^\circ$是定向系统（逆系统）。
-
-\para 设$I$是一个偏序集，如果$i\in I$有，$i>j$对所有$j\in I$不成立，或者说，与可以比较的元素$j\in I$都有$i\leq j$，则称$i$是$I$的一个极小元。如果$i\leq j$对所有$j\in I$都成立，则称$i\in I$是$I$的最小元。
-
-在滤相的偏序集中，极小元和最小元等价。最小元是极小的，这是显然的。反之，因为如果存在极小元$i$，那么任取一个$j\in I$都存在一个$k\in I$使得$k\leq i$和$k\leq j$都成立，然而$i$是极小元，所以$i=k$，所以$i\leq j$.
-
-同理我们可以定义极大元与最大元，在定向的偏序集中，此二者等价。
-
-更广义地，对于一个偏序集$I$的子集$J$，如果对于任意的$i\in I$，都存在$j\in J$使得$j\leq i$，则称$J$和$I$是共尾的。显然，滤相的偏序集中的极小元构成的单点集就和原来的偏序集共尾。
-
-\pro 设$I$-图$D$是一个逆系统，如果$I$存在一个与其共尾的子集$J$，则$J$-图$D$是一个逆系统，且$\varprojlim_{i\in I} D(i)=\varprojlim_{i\in J} D(i)$. 对偶地，设$I$-图$D$是一个定向系统，如果$I^\circ $存在一个与其共尾的子集$J^\circ $，则$J$-图$D$是一个定向系统，且$\varinjlim_{i\in I} D(i)=\varinjlim_{i\in J} D(i)$. \rule{2mm}{2mm}
-
-所以对于逆系统，如果存在极小元，那么极小元就是它的极限，对偶地，对于定向系统，如果存在极大元，那么极大元就是它的对偶极限。这符合我们上面的直观。
-
-\para 一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
+一个拓扑空间$X$能被看成一个范畴，对象取作他的所有开集，而态射取作
 \[
 	\Hom_{X}(U,V)=\begin{cases}
 	\bigl\{i^U_V:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
 	\varnothing&\text{, otherwise}.
 	\end{cases}
 \]
+当然这个范畴也可以通过在开集族上给定一个偏序$U\leq V$当且仅当$U\subset V$给出。
 
-考虑拓扑空间$X$中一个非空开集族$\mathfrak{B}$，对于任意的两个$U$, $V\in \mathfrak{B}$，都存在一个$W\in \mathfrak{B}$使得$U\cup V\subset W$成立，这样的$\mathfrak{B}$按照包含构成了定向的偏序集。现在定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，它显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个定向系统。可以看到它的余极限$\varinjlim_{U\in \mathfrak{B}} U$实际上就是$\bigcup_{U\in \mathfrak{B}} U$，而态射族就是$i_U:U\hookrightarrow \bigcup_{U\in I}$.
+所有拓扑空间和其间的连续映射当然构成一个范畴。所有光滑流形和其间的光滑映射构成一个范畴。另外一个例子是关系构成了范畴，他的对象是集合，而$\text{Mor}(X,Y)$是所有$X\times Y$的子集，设$\varphi:X\to Y$和$\psi:Y\to Z$是两个态射，则复合被定义为
+\[
+	\psi\varphi=\bigl\{(x,z)\in X\times Z\,:\,\exists y\in Y\,\text{ s.t. } (x,y)\in\varphi,\, (y,z)\in \psi\bigr\}.
+\]
 
-同样考虑拓扑空间$X$中一个包含一个点$p\in X$的所有非空开集构成的族$\mathfrak{B}$，它按照包含构成一个滤相的偏序集。同样可以定义函子$i:\mathfrak{B}\to X$通过$i(U)=U$以及$i(U\leq V)=i^U_V:U\hookrightarrow V$，同样显然成立复合$i(U\leq W)=i(V\leq W)\circ i(U\leq V)$，所以这个$\mathfrak{B}$-图$i$是一个逆系统。
+\para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，定义
+\[\mathcal{C}^{\mathrm{op}}(X,Y)=\mathcal{C}(Y,X),\]复合不变。他被称为给定范畴的对偶范畴。凡是纯范畴的命题与证明，将所有态射的箭头全部反过来，可以得到对应的命题与证明，这个原理被称为对偶原理。
 
-但它的极限$\varprojlim_{U\in \mathfrak{B}} U$就不一定存在，因为类比于上一个例子，它的极限应该类似于所有$\mathfrak{B}$中元素的交，但这不一定是一个开集。
+对偶范畴的一个实例就是偏序集,他将小于等于改成大于等于。设$(X,\leq)$是一个偏序集，那么$(X,\leq)^\text{op}$与$(X,\leq)$具有相同的对象，但有着相反的态射，即$(X,\leq)^\text{op}$中的偏序$x\leq_{\text{op}} y$当且仅当在$(X,\leq)$中成立$y\leq x$. 对于符号$\leq_{\text{op}}$，我们通常以$\geq$代之，因此，$(X,\leq)$的对偶范畴就是$(X,\geq)$. 如果以$X$代之$(X,\geq)$，则以$X^{\text{op}}$代之$(X,\geq)$.
 
-\para 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
+\para 在范畴论中，我们经常要讨论所谓的交换图。从一个对象$X_0$开始，我们可以通过多次复合不同态射得到一个对象$X_n$，我们可以通过图来表示这个过程，
+\[
+	X_0\xrightarrow{f_0} X_1\xrightarrow{f_1} X_2\cdots X_{n-1}\xrightarrow{f_{n-1}} X_n.
+\]
+但一般而言，从$X_0$到$X_n$我们有不同的路径，比如考虑最简单的图
+\[
+\begin{xy}
+	\xymatrix{
+		X\ar[r]^{f} \ar[dr]_{h}&Y \ar[d]^{g}\\
+		&Z
+	}
+\end{xy}
+\]
+从$X$到$Z$一共是两条路径，其一是先通过$Y$然后再到$Z$，另一个是直接到$Z$，前者对应于态射$gf:X\to Z$，后者对应于态射$h:X\to Z$. 称一个图是交换的，就是说沿着不同路径却可以得到相同的结果。比如在上例中就是指$h=gf$. 另一类很常见的图是方的，
+\[
+\begin{xy}
+	\xymatrix{
+		A\ar[rr]^{f} \ar[d]_{h}&&B \ar[d]^{g}\\
+		C\ar[rr]^{l}&&D
+	}
+\end{xy}
+\]
+从$A$到$D$有两条路径，此图交换就是在说$gf=lh$. 
 
-由于$\mathfrak{B}$是滤相的偏序集，而$\calf$是反变函子，因此$\mathfrak{B}^\circ$-图$\calf^\circ$是定向系统，进而我们会考虑余极限$\varinjlim_{U\in \mathfrak{B}^\circ} \calf^\circ(U)=\varinjlim_{U\in \mathfrak{B}^\circ} \calf(U)$，如果这个余极限存在，那么就称为预层$\calf$在点$p$处的纤维，记作$\calf_p$.
+还有，在交换图中，如果出现形如
+\[
+\begin{xy}
+	\xymatrix{
+		A\ar@{.>}[r]^{f}&B
+	}
+\end{xy}
+\]
+的图，这就意味着，存在唯一的态射$f:A\to B$使得交换图成立。
 
-% \para 考虑$X$的一个拓扑基，它按照包含也构成一个偏序集，考虑它的一个子族$\mathfrak{B}$，使得每一个元素$V\in \mathfrak{B}$都有$V\subset U$，他继承了来自于拓扑基的偏序结构。
+\para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。$X$和$Y$同构记作$X\cong Y$. 集合范畴的同构即双射。
 
-% 设我们有一个$X$上的$\mathcal{K}$-预层$\calf$，他是$X\to \mathcal{K}$的一个反变函子。赋予$X$一个偏序，此时函数$U\leq V$即$U\hookrightarrow V$. 那么$X$的那些包含$p\in X$的非空开集构成的子集族$\mathfrak{B}$继承了偏序结构，也是一个范畴，而预层$\calf$限制在$\mathfrak{B}$给出了反变函子$\mathfrak{B}\to \mathcal{K}$.
+\para 类似于集合之间有映射，范畴之间也有个\idx{函子}(\idx{functor}). 由于范畴有对象以及对象之间的态射，所以函子也是由关于对象和范畴的数据构成的，设$\mathcal{C}$和$\mathcal{D}$是两个范畴，$F$被称为一个函子，如果
+\begin{enumerate}
+	\item 对任意的$X\in \mathcal{C}$，有唯一的$F(X)\in \mathcal{D}$.
+	
+	\item 对任意的$\varphi\in \mathcal{C}(X,Y)$，存在唯一的$F(\varphi)\in  \mathcal{D}(F(X),F(Y))$使得成立复合关系$F(\varphi\psi)=F(\varphi)F(\psi)$以及$F(\id_X)=\id_{F(X)}$.
+\end{enumerate}
 
-\theo 在左$R$-模范畴，任意的极限与余极限存在。 \rule{2mm}{2mm}
+一般将“从$\mathcal{C}$到$\mathcal{D}$的函子$F$”记作$F:\mathcal{C}\to \mathcal{D}$. 虽然记号相同，但是我们可以通过语境来区分他与态射。
+
+与态射类似，函子也能谈复合，设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{E}$是两个函子，则他们的复合函子$gf:\mathcal{C}\to \mathcal{E}$表现在对象上是$X\mapsto f(X)\mapsto g(f(X))$，表现在态射上是$\varphi\mapsto f(\varphi)\mapsto g(f(\varphi))$. 
+
+函子的实例是非常多的，比如从$R$-模范畴到交换群范畴就有一个函子，他将一个模看成一个交换群，模同态看成交换群同态。这样的函子，从某个结构丰富的范畴到结构没那么丰富的范畴，被称为遗忘函子。遗忘函子又比如从拓扑空间范畴到集合范畴。
+
+再比如，设$X$和$Y$是两个偏序集，则函子$f:X\to Y$是一个映射，且满足对$x_1\leq x_2$成立$f(x_1)\leq f(x_2)$. 这就是偏序集之间的保序映射。
+
+范畴与函子在数学中的出现是如此地频繁的原因在于：对一个数学结构的认识，不仅仅需要描述对象本身，也需要描述这个对象与其他对象之间的作用，即还需要描述态射，这就构成范畴的内容。而函子的出现在于联系两个数学结构，比如我们经常从一些对象开始构造得到新的对象。同样，描述两个合适的数学结构之间的联系，一方面描述对象之间的联系，另一方面也要描述态射之间的联系，而这正是函子所做的。基于这些理由，一个合适的分类理论，不仅仅要分类对象，也要分类态射。
+
+在有些作者那里，上面定义的函子被称为协变函子，而函子$f:\mathcal{C}^{\mathrm{op}} \to \mathcal{D}$被称为反变函子。后者明确写出来即$f(\varphi\psi)=f(\psi)f(\varphi)$，其中$\psi$和$\varphi$都是$\mathcal{C}$中的态射。于是，偏序集之间的反变函子就是逆序映射，对$x_1\leq x_2$成立$f(x_2)\leq f(x_1)$.
+
+\para （反变）态射函子是（反变）函子的重要例子。设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象。定义一个函子$\mathcal{C}(A,\star):\mathcal{C}\to \mathsf{Set}$如下：对于对象，$B\mapsto \mathcal{C}(A,B)$，对于态射$f:B\to C$，它得到了态射
+\[
+	\mathcal{C}(A,f)=f_*: g\mapsto f\circ g.
+\]
+此时$\mathcal{C}(A,\star)$被称为关于$A$的\idx{态射函子}。经常，我们将$\mathcal{C}(A,\star)$简单记$h^A$.
+
+同样，我们可以定义\idx{反变态射函子}$\mathcal{C}(\star,A):\mathcal{C}^{\text{op}}\to \mathsf{Set}$：对于对象，$B\mapsto \mathcal{C}(B,A)$，对于态射$f:B\to C$，它通过
+\[
+	\mathcal{C}(f,A)=f^*: g\mapsto g\circ f
+\]
+得到了态射$\mathcal{C}(f,A):\mathcal{C}(C,A)\to \mathcal{C}(B,A)$. 经常，我们将$\mathcal{C}(\star,A)$简单记$h_A$，而且有时候会将$h_A(B)$就写做$A(B)$.
+
+\para 由于经常一个构造会涉及两个对象或多个对象，而分别改变对象就会产生不同的函子，为了抽象这个过程，就产生了下面积范畴的概念，正如讨论多元函数引入了集合的直积一样。
+
+设$\mathcal{C}$和$\mathcal{D}$是范畴，他们的积范畴记作$\mathcal{C}\times\mathcal{D}$：对象是这样的二元组$(X,Y)$或$X\times Y$，其中$X\in \mathcal{C}$, $Y\in\mathcal{D}$. 而态射定义为$(\varphi,\psi)$或$\varphi\times \psi$，其中$\varphi$是$\mathcal{C}$中的态射，而$\psi$是$\mathcal{D}$中的态射，这样就建立了集合的等同
+\[
+	{\mathcal{C}}(X,X')\times {\mathcal{D}}(Y,Y')=(\mathcal{C}\times \mathcal{D})(X\times Y,X'\times Y').
+\]
+复合定义为$(\varphi,\psi)(\varphi',\psi')=(\varphi\varphi',\psi\psi')$. 在这个复合下，对象$X\times Y$到自己的恒等态射就是$(\id_X,\id_Y)$. 所以$\mathcal{C}\times\mathcal{D}$确确实实是一个范畴。同理，可以定义有限个范畴的积。
+
+设$\mathcal{F}$是另一个范畴，函子$f:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$被称为一个双函子。比如$\mathcal{C}(\star,\star)$是一个$\mathcal{C}^\text{op}\times \mathcal{C}\to \mathsf{Set}$的双函子。如果固定双函子的一个变元，那么双函子会退化成一个函子。比如$\mathcal{C}(\star,\star)$固定第一个变元为$X$的时候得到$h^X$.
+
+反过来，如果$f$对每一个$X\in \mathcal{C}$是函子$f(X,\star):\mathcal{D}\to \mathcal{F}$，以及对每一个$Y\in \mathcal{C}$是函子$f(\star,Y):\mathcal{C}\to \mathcal{F}$，那么何时$f$才是一个双函子。考虑如下图
+\[
+\begin{xy}
+	\xymatrix{
+		f(X,Y)\ar[rr]^{f(\varphi,Y)} \ar[d]_{f(X,\psi)}&&f(X',Y) \ar[d]^{f(X',\psi)}\\
+		f(X,Y')\ar[rr]^{f(\varphi,Y')}&&f(X',Y')
+	}
+\end{xy}
+\]
+如果这个图交换，那么从左上到右下的映射，即复合$f(X,\psi)f(\varphi,Y)$将定义出一个态射$f(\varphi,\psi)$，此时$f$构成一个双函子。具体的检验交由读者。
+
+\para \label{digf}有了二元积范畴，类似地，可以定义多元（有限）积范畴。类似于对角函数，可以定义对角函子：设$\mathcal{C}$是一个范畴，而$\mathcal{C}\times \cdots \times \mathcal{C}$是积范畴。那么可以定义函子$\Delta:\mathcal{C}\to \mathcal{C}\times \cdots \times \mathcal{C}$，对于对象$X$，定义$\Delta:X\mapsto (X$, $\cdots$, $X)$，对于态射$\varphi\in \mathcal{C}(X,Y)$，定义$\Delta: \varphi \mapsto (\varphi$, $\cdots$, $\varphi)$.
+
+甚至是考虑关于一个集合的积范畴（即指标构成一个集合的情况），积范畴依然可以定义。但是如果比如考虑指标并不是一个集合，有些东西就会可能会出现问题。这个问题有相当深刻的背景，涉及了现代数学的逻辑基础，即公理化体系（主要是ZFC公理体系）上面。众所周知，在朴素的集合论里面有Russell悖论，这就限制了一些集合的构造，比如所有集合构成的一个整体并不是集合。到了范畴论里面，我们自然也会面临集合论的问题，比如在我们的定义中，两个对象之间态射的全体需要构成一个集合。如果我们考虑了一族（不能构成集合）的范畴的积范畴，那么这个积范畴的态射集是否就会出问题？
+
+为了避免谈及ZFC公理体系的问题，Grothendieck引入了一个新的假设，即Grothendieck universe的存在。简单来说，就是给出了一个足够大的集合$\mathscr{U}$，而我们在具体问题中谈论的集合，都是$\mathscr{U}$的子集与元素。并且在$\mathscr{U}$内，他的元素与子集在ZFC体系下进行运算都会落入$\mathscr{U}$内。于是在Grothendieck universe内，我们就模拟了一个集合论公理体系，在这里面讨论，就可以避免许多集合论的问题。而所有可能的问题都会集中到Grothendieck universe的存在上。
+
+\para 设$f$和$g$都是从$\mathcal{C}$到$\mathcal{D}$的函子，如果对每一个$X\in \mathcal{C}$都有一个态射$\varphi(X):f(X)\to g(X)$使得如下交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+		f(X)\ar[rr]^{\varphi(X)} \ar[d]_{f(\varphi)}&&g(X) \ar[d]^{g(\varphi)}\\
+		f(Y)\ar[rr]^{\varphi(Y)}&&g(Y)
+	}
+\end{xy}
+\]
+则$\varphi$被称为一个自然变换。自然变换的复合是清楚的。任取函子$f$，也很清楚有恒等自然变换$\id_f:f\to f$，满足$\id_f(X)=\id_{f(X)}$.
+
+自然变换以前叫做函子间的态射。因为如果$\mathcal{C}$是一个小范畴，所有从$\mathcal{C}$到$\mathcal{D}$的函子以自然变换为态射，则它构成了一个范畴，记作$[\mathcal{C},\mathcal{D}]$. 特别地，将$[\mathcal{C}^\text{op},\mathsf{Set}]$记作$\hat{\mathcal{C}}$. 但就像我们前面看到的，如果$\mathcal{C}$不是一个小范畴，则$[\mathcal{C},\mathcal{D}]$可能并不是一个范畴，因为它们的态射集可能太多了。不过，如果我们不去研究$[\mathcal{C},\mathcal{D}]$的具体结构，而止于形式地应用语言，我们还是可以将其看成一个“范畴”。
+
+既然有了函子间“态射”，函子的同构意义也是清楚的了。设$f$和$g$是两个函子，如果存在自然变换$\varphi:f\to g$和$\psi:g\to f$满足$\varphi\psi=\id_g$和$\psi\varphi=\id_f$，则称$f$和$g$同构，记作$f\cong g$.
+
+描述自然变换是范畴论的初衷，自然变换在数学中的频繁出现才使得人们想要抽象出这个概念，为了描述这个概念，人们发明了范畴与函子。自然变换频繁出现的原因在于一些构造：设有一个范畴$\mathcal{C}$，对每一个对象$X\in \mathcal{C}$构造了一个函子$f_X$，比如前面定义出的反变态射函子$h_X$. 当我们改变对象的时候，即给出一个态射$\varphi:X\to Y$，往往具体的构造将诱导出对每一个$V\in \mathcal{C}$都有态射$f_\varphi(V):f_X(V)\to f_Y(V)$. 由于是函子，对态射$\rho:V\to W$也诱导了态射，汇总起来就是有图
+\[
+\begin{xy}
+	\xymatrix{
+		f_X(V)\ar[rr]^{f_\varphi(V)} \ar[d]_{f_X(\rho)}&&f_Y(V) \ar[d]^{f_Y(\rho)}\\
+		f_X(W)\ar[rr]^{f_\varphi(W)}&&f_Y(W)
+	}
+\end{xy}
+\]
+既然有图，要求交换当然是自然的。到了具体例子，图的交换性需要检验。
+
+以反变态射函子为例。给定态射$\varphi:X\to Y$，则$\varphi_*$将给出一个自然变换$h_X\to h_Y$，实际上给定态射$\psi:W\to V$，需要检查图
+\[
+\begin{xy}
+	\xymatrix{
+		h_X(V)\ar[rr]^{\varphi_*} \ar[d]_{\psi^*}&&h_Y(V) \ar[d]^{\psi^*}\\
+		h_X(W)\ar[rr]^{\varphi_*}&&h_Y(W)
+	}
+\end{xy}
+\]
+任取$\pi\in h_X(V)$即$\pi:V\to X$，有$\psi^*(\varphi_*(\pi))=\varphi\pi\psi$以及$\varphi_*(\psi^*(\pi))=\varphi\pi\psi$，所以图是交换的。类似例子给出如下命题：如果$X\cong Y$，则$h_X\cong h_Y$. 反命题实际上也是正确的，后面会予以证明。
+
+\para 设$f$, $g:\mathcal{C}\to \mathcal{D}$是函子，$X\in \mathcal{C}$是一个对象，通过$X:f\to f(X)$以及任取自然变换$\varphi:f\to g$，定义$X(\varphi)=\varphi(X):f(X)\to g(X)$，可以看到此时$X$此时构成一个$[\mathcal{C},\mathcal{D}] \to \mathcal{D}$的函子。可见，$f(X)$一方面可以将$f$理解成函子，另一方面也可以将$X$理解成函子。只不过前者是范畴$\mathcal{C}$到范畴$\mathcal{D}$的函子，后者是范畴$[\mathcal{C},\mathcal{D}]$到范畴$\mathcal{D}$的函子。将这点抽象出来，如果把$f(X)$写作$\Gamma(X,f)$，则
+\[
+	\Gamma(\star,\star):\mathcal{C}\times [\mathcal{C},\mathcal{D}]\to \mathcal{D}
+\]
+是一个双函子。这点的证明只要按定义应用上面的判据就可以了。
+
+\para 双函子之间的“态射”，表现为如下自然变换
+\[
+\begin{xy}
+	\xymatrix{
+		f(X,Y)\ar[rr]^{\varphi(X,Y)} \ar[d]_{f(\psi,\varphi)}&&g(X,Y) \ar[d]^{g(\psi,\varphi)}\\
+		f(X',Y')\ar[rr]^{\varphi(X',Y')}&&g(X',Y')
+	}
+\end{xy}
+\]
+很清楚，当固定$X$的时候，$\varphi(X,\star)$是$f(X,\star)\to g(X,\star)$的一个自然变换。固定$Y$也一样。
+
+反过来，设$f$, $g:\mathcal{C}\times \mathcal{D}\to \mathcal{F}$是两个双函子，如果任取$X\in \mathcal{C}$，存在自然变换$\alpha(X):f(X,\star)\to g(X,\star)$，任取$Y\in \mathcal{D}$，存在自然变换使得$\beta(Y):f(\star,Y)\to g(\star,Y)$，且$\alpha(X)(Y)=\beta(Y)(X)$，则存在自然变换$\gamma:f\to g$使得$\gamma(X,Y)=\alpha(X)(Y)=\beta(Y)(X)$.
+
+\begin{proof}
+	考虑态射$(\psi,\varphi):(X,Y)\to (X',Y')$，他可以拆成
+	\[
+		(\psi,\varphi): (X,Y) \xrightarrow{(\psi,\id_Y)} (X',Y)\xrightarrow{(\id_{X'},\varphi)} (X',Y'),
+	\]
+	分别应用自由变换
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X,Y)\ar[rr]^{\alpha(X)(Y)} \ar[d]_{f(\psi,\id_Y)}&&g(X,Y) \ar[d]^{g(\psi,\id_Y)}\\
+			f(X',Y)\ar[rr]^{\alpha(X')(Y)}_{\beta(Y)(X')} \ar[d]_{f(\id_{X'},\varphi)}&&g(X',Y) \ar[d]^{g(\id_{X'},\varphi)}\\
+			f(X',Y')\ar[rr]^{\beta(Y')(X')}&&g(X',Y')
+		}
+	\end{xy}
+	\]
+	因此，从左上到右下两条路给出$g(\psi,\varphi)\alpha(X)(Y)=\beta(Y')(X')f(\psi,\varphi)$，由于$\gamma(X,Y)=\alpha(X)(Y)=\beta(Y)(X)$，所以也就是$g(\psi,\varphi)\gamma(X,Y)=\gamma(X',Y')f(\psi,\varphi)$，所以$\gamma:f\to g$是一个自然变换。
+\end{proof}
+
+% \lem Yoneda引理：设$\mathcal{C}$是一个范畴，$A\in \mathcal{C}$是一个对象，$F:\mathcal{C}\to \mathsf{Set}$是一个函子，则从$\mathcal{C}(A,\star)$到函子$F$上的自然变换一一对应着$F(A)$里面的元素。
+
+% \begin{proof} 对每个自然变换$\alpha:\Hom_\mathcal{C}(A,\star)\to F$定义$\theta(\alpha)=\alpha(A)(\id_A)\in F(A)$，现在定义一个逆映射即可。对$x\in F(A)$，定义自然变换$\psi(x):\Hom_\mathcal{C}(A,\star)\to F$通过$\psi(x)(B)(f)=F(f)(x)$，不难验证这是一个自然变换，而且$\psi$和$\theta$是互逆的。\end{proof}
+
+\para 下面我们要引入可表函子，在具体给出定义之前先做出如下观察：设$X\in\mathsf{Set}$是一个集合，那么它与集合$X(e)={\mathsf{Set}}(e,X)$之间存在一个双射，其中$e$是任意的一个单点集。但事实上，在任意范畴$\mathcal{C}$，类似于集合范畴中的单点集的东西是不一定存在的，所以我们转而同时考虑所有的${\mathcal{C}}(Y,X)$，其中$Y\in \mathcal{C}$，或者说考虑反变态射函子$h_X$，此时我们可以得到对象$X\in \mathcal{C}$足够多乃至于全部的信息，这就类似于物理中测量的思想，人类进行的一切测量都是通过相互作用完成的，并且通过测量得到了被测物的信息。事实上，如果$h_X\cong h_Y$，则$X\cong Y$. 这点会在后面得到证明。
+
+设$f$是一个$\mathcal{C}$到$\mathsf{Set}$的反变函子，如果$f\cong h_X$对某个$X\in \mathcal{C}$成立，一方面，我们可以用函子$f$来描述$X$，另一方面，我们也可以拿$X$来描述函子$f$. 为此，我们做出如下定义：如果反变函子$f:\mathcal{C}^{\text{op}}\to \mathsf{Set}$同构于一个反变态射函子$h_X$，则$f$被称为可表函子，以及此时$f$被$X$表示，$X$是$f$的表示对象。
+
+可表函子的出现是频繁的，因为实际上，在范畴论中，我们时常想要构造一个与其他对象“有着某某性质的态射”的对象，而这些“某某性质的态射”往往是事先已知的（比如从一个已知函子和已知范畴映过来的）. 比方说，我们已经有了一个函子$f:\mathcal{C}^\text{op}\to\mathsf{Set}$，它用来描述那些事先给定了的“某某性质的态射”，如果$f$是可表的，则$f\cong h_X$，则这些事先给定的态射就是$h_X(Y)=\mathcal{C}(Y,X)$，而这里的表示对象$X$就是我们试图构造的对象。
+
+这里给一个直接的例子，设$\mathcal{C}$, $\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子，对给定的$Y$，$\mathcal{D}(f(-),Y)$就是一个从$\mathcal{C}$到$\mathsf{Set}$的反变函子。它描述了所有形如$f(X)$的对象与$Y$之间的态射，如果它可表，表示对象为$g(Y)$，则我们就有同构$\mathcal{C}(-,g(Y))\cong \mathcal{D}(f(-),Y)$. 这也就意味着，我们只需要研究所有形如$X\to g(Y)$的态射即可。
+
+对偶地，如果$f$是一个$\mathcal{C}$到$\mathsf{Set}$的函子，我们称$f$是可表的，如果它同构于$h^X$，此时$X$被称为$f$的表示对象。
+
+\begin{lem}
+对任意的$X\in \mathcal{C}$以及$f\in \hat{\mathcal{C}}$，存在同构$i_{X,f}:\Gamma(X,f)=f(X)\to {\hat{\mathcal{C}}}(h_X,f)$.
+\end{lem}
+
+\begin{proof}
+	固定$f$，任取自然变换$\varphi\in {\hat{\mathcal{C}}}(h_X,f)$，对象$Y\in\mathcal{C}$以及态射$g:Y\to X$，有交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			h_X(X)\ar[rr]^{\varphi(X)} \ar[d]_{g^*}&&f(X) \ar[d]^{f(g)}\\
+			h_X(Y)\ar[rr]^{\varphi(Y)}&&f(Y)
+		}
+	\end{xy}
+	\]
+	取$\id_X\in h_X(X)=\mathcal{C}(X,X)$，有$e_{X,f}(\varphi)=\varphi(X)(\id_X)\in f(X)$，因此有映射$e_{X,f}:{\hat{\mathcal{C}}}(h_X,f)\to f(X)$. 由交换图，$\varphi(Y)(g)=f(g)\left(e_{X,f}(\varphi)\right)$.
+
+	反过来任取$a\in f(X)$，对每一个$Y\in\mathcal{C}$，我们可以定义映射
+	\[
+	\begin{array}{ccccc}
+	i(a)(Y)&:&h_X(Y)&\to &f(Y)\\
+	i(a)(Y)&:&g&\mapsto&f(g)(a)
+	\end{array},
+	\]
+	这样也就定义了一个函子$i_{X,f}(a)\in {\hat{\mathcal{C}}}(h_X,f)$，继而有映射$i_{X,f}:f(X)\to {\hat{\mathcal{C}}}(h_X,f)$. 最后只要检验$e_{X,f}(i_{X,f}(a))=a$以及$i_{X,f}(e_{X,f}(\varphi))=\varphi$，他们都由$i_{X,f}(Y)(g)=f(g)\left(e_{X,f}(\varphi)\right)$保证。
+\end{proof}
+
+对偶地，设$f$是一个$\mathcal{C}$到集合范畴的函子，则$\Gamma(X,f)\cong [\mathcal{C},\mathsf{Set}](h^X,f)$对任意的$X\in \mathcal{C}$都成立。
+
+% \para 对于固定的$X$，他可以看成一个$\hat{\mathcal{C}}=[\mathcal{C}^\text{op},\mathsf{Set}]\to \mathsf{Set}$的函子。同样，对于固定的$X$，态射函子${\hat{\mathcal{C}}}(h_X,\star)$也是一个$\hat{\mathcal{C}}\to \mathsf{Set}$的函子。上面的引理就是在说，这两个函子作用在相同的对象$f\in \hat{\mathcal{C}}$上可以得到同构的两个对象。
+
+% 对于固定的$f$，他本身是$\hat{\mathcal{C}}$中的函子，也可以写成$\Gamma(\star,f)$. 同时，函子${\hat{\mathcal{C}}}(h_\star,f):\mathcal{C}^{\text{op}}\to \mathsf{Set}$也是$\hat{\mathcal{C}}$中的函子。上面的引理就是在说，这两个函子作用在相同的对象$X\in \mathcal{C}$上可以得到同构的两个对象。
+
+% 下面一个命题告诉我们，Lemma (\thepara)中的同构对于这两对函子都是自然变换，即实际上是函子间的同构，而不仅仅是作用在对象上的同构。
+
+% 如果有一个自然变换$\varphi:f\to g$，他将诱导出态射$\varphi(X):f(X)\to g(X)$，以及态射$\varphi_*: {\hat{\mathcal{C}}}(h_X,f)\to {\hat{\mathcal{C}}}(h_X,g)$.
+
+\para 固定$X$，${\hat{\mathcal{C}}}(h_X,\star)$是一个函子。固定$f$，${\hat{\mathcal{C}}}(h_\star,f)$也是一个函子。为了检查${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子，必须检查图
+\[
+\begin{xy}
+	\xymatrix{
+		\hat{\mathcal{C}}(h_{X},f)\ar[rr]^{\hat{\mathcal{C}}(\varphi^*,f)} \ar[d]_{\psi_*}&&\hat{\mathcal{C}}(h_{X'},f) \ar[d]^{\psi_*}\\
+		\hat{\mathcal{C}}(h_{X},f')\ar[rr]^{\hat{\mathcal{C}}(\varphi^*,f')}&&\hat{\mathcal{C}}(h_{X'},f')
+	}
+\end{xy}
+\]
+其中$\varphi:X'\to X$是一个态射，而$\psi:f\to f'$是一个自然变换。任取$\pi\in \hat{\mathcal{C}}(h_{X},f)$，则先右再下得到$\psi_*(\varphi^*(\pi))=\psi\pi\varphi$. 先下再右得到$\varphi_*(\psi^*(\pi))=\psi\pi\varphi$. 所以图交换，因此${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子。
+
+\begin{pro}
+上面的引理可以加强到双函子同构：$i_{-,\star}:\Gamma(-,\star)\to {\hat{\mathcal{C}}}(h_-,\star)$，这被称为Yoneda引理。
+\end{pro}
+
+\begin{proof}
+	由于同构已经有了构造，所以只要检验是不是自然变换。而这点只要分别固定$X$和$f$去证明即可。
+
+	固定$X$，给出$\varphi:f\to g$，检验交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X)\ar@<0.3ex>[rr]^-{i_{X,f}} \ar[d]_{\varphi(X)}&&{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{\varphi_*}\ar@<0.3ex>[ll]^-{e_{X,f}}\\
+			g(X)\ar@<0.3ex>[rr]^-{i_{X,g}}&&{\hat{\mathcal{C}}}(h_X,g)\ar@<0.3ex>[ll]^-{e_{X,g}}
+		}
+	\end{xy}
+	\]
+	固定$f$，给出$\varphi:Y\to X$，检验交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X)\ar@<0.3ex>[rr]^-{i_{X,f}} \ar[d]_{f(\varphi)}&&{\hat{\mathcal{C}}}(h_X,f) \ar[d]^{(\varphi^*)^*}\ar@<0.3ex>[ll]^-{e_{X,f}}\\
+			f(Y)\ar@<0.3ex>[rr]^-{i_{Y,f}}&&{\hat{\mathcal{C}}}(h_Y,f)\ar@<0.3ex>[ll]^-{e_{Y,f}}
+		}
+	\end{xy}
+	\]
+	构造都是清楚的，检查都是直接的。
+	
+	仅仅以第一个交换图里面的一部分为例，任取$a\in f(X)$，检查$\varphi\circ (i_f(a))=i_g\bigl(\varphi(X)(a)\bigr)\in {\hat{\mathcal{C}}}(h_X,g)$. 给一个$Y\in \mathcal{C}$，$i_g\bigl(\varphi(X)(a)\bigr)(Y):p\mapsto g(p)\bigl (\varphi(X)(a)\bigr)$，其中$p:Y\to X$是一个态射。同样，$\varphi\circ (i_f(a))(Y)=\varphi\bigl(p\mapsto f(p)(a)\bigr):p\mapsto \varphi(Y)\bigl(f(p)(a)\bigr)$. 最后只要检验$g(p)\bigl (\varphi(X)(a)\bigr)=\varphi(Y)\bigl(f(p)(a)\bigr)$，注意到交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			f(X)\ar[rr]^{\varphi(X)} \ar[d]_{f(p)}&&g(X) \ar[d]^{g(p)}\\
+			f(Y)\ar[rr]^{\varphi(Y)}&&g(Y)
+		}
+	\end{xy}
+	\]
+	所以得证，其他的检查也类似。
+\end{proof}
+
+\begin{pro}
+对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\mathsf{Set}](h^-,\star)$，这也被称为Yoneda引理。
+\end{pro}
+
+在Yoneda引理的证明中，已经看到，最不平凡的地方在于：如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$. 类似地，还有协变的版本，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 所以，往往这两点被单独拎出来称为Yoneda引理。
+
+\para 特别地，当$f=h_Y$，则$h_Y\cong {\hat{\mathcal{C}}}(h_\star,h_Y)$. 作用到$X$上得到$h_Y(X)={\mathcal{C}}(X,Y)\cong {\hat{\mathcal{C}}}(h_X,h_Y)$. 所以，$X\cong Y$当且仅当$h_X\cong h_Y$. 如果$f$是可表函子，$X$和$Y$同时表示了函子$f$，则同构$h_X\cong f \cong h_Y$诱导了同构$X\cong Y$，因此可表函子的表示对象确定到一个同构。 
+
+\para 设$\mathcal{C}$是一个范畴，则$\id_\mathcal{C}:\mathcal{C}\to \mathcal{C}$是恒等函子，他使得$\id_\mathcal{C}(X)=X$，以及$\id_\mathcal{C}(\varphi)=\varphi$. 如果一个函子$f:\mathcal{C}\to\mathcal{C}$与恒等函子同构，即有如下交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+		X\ar@<0.3ex>[rr]^-{p(X)} \ar[d]_{\varphi}&&f(X) \ar[d]^{f(\varphi)}\ar@<0.3ex>[ll]^-{q(X)}\\
+		Y\ar@<0.3ex>[rr]^-{p(Y)}&&f(Y)\ar@<0.3ex>[ll]^-{q(Y)}
+	}
+\end{xy}
+\]
+那么在范畴论意义下，我们无法区分范畴$\mathcal{C}$和范畴$f(\mathcal{C})$，因为这两个范畴有相同的结构。尽管，原本$X\in \mathcal{C}$在$f(\mathcal{C})$里面变成了$f(X)$，看上去变成了不同的对象，但这仅仅类似于重命名，对范畴的结构并没有任何影响。所以如果谈论范畴的等价，也应该止步于此，即有相同结构的范畴看成是等价的。
+
+设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$以及$g:\mathcal{D}\to \mathcal{C}$是两个函子，那么如果$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$，则称这两个范畴等价。
+
+这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子/完全函子，如果$f:\mathcal{C}(X,Y)\to \mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射/满射。
+
+\begin{pro}\label{equivcat}
+两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$f(X)$与$Y$同构。
+\end{pro}
+
+\begin{proof}
+假设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{C}\to \mathcal{D}$是范畴之间的等价函子，即满足$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$. 所以，任取$Y$，我们都可以找到$g(Y)\in\mathcal{C}$使得$f(g(Y))$同构于$Y$.
+
+现在对映射$\varphi\in \mathcal{C}(X,X')$，我们考虑映射
+\[
+	\id_{\mathcal{C}(X,X')}:\varphi\mapsto f(\varphi) \mapsto g(f(\varphi)) \mapsto \varphi,
+\]
+最后一个映射来自于$gf\cong \id_\mathcal{C}$给出的交换图
+\[
+\begin{xy}
+	\xymatrix{
+		X\ar@<0.3ex>[rr]^-{p(X)} \ar[d]_{\varphi}&&g(f(X)) \ar[d]^{g(f(\varphi))}\ar@<0.3ex>[ll]^-{q(X)}\\
+		X'\ar@<0.3ex>[rr]^-{p(X')}&&g(f(X'))\ar@<0.3ex>[ll]^-{q(X')}
+	}
+\end{xy}
+\]
+即$\varphi=q(X') \circ g(f(\varphi))\circ p(X)$. 所以$\varphi\mapsto f(\varphi)$是一个从$\mathcal{C}(X,X')$到$\mathcal{D}(f(X),f(X'))$的单射，所以$f$是一个忠实函子。
+
+同时，$f(\varphi) \mapsto g(f(\varphi)) \mapsto \varphi$是一个满射，由于$g(f(\varphi)) \mapsto \varphi$是一一的，所以我们得到了$\mathcal{D}(f(X),f(X'))$到$\mathcal{C}(g(f(X)),g(f(X'))$的满射。现在任取$Y$和$Y'$，从上可知，我们能找到与之同构的$f(X)$和$f(X')$，所以我们也就得到了$\mathcal{D}(Y,Y')$到$\mathcal{C}(g(Y),g(Y'))$的满射。因此$g$是一个完全函子。类似地考察$fg\cong \id_\mathcal{D}$，我们可以知道$f$是一个完全函子，而$g$是一个忠实函子。
+
+反过来，设存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$f(X)$与$Y$同构。于是，对每一个$Y\in \mathcal{D}$，找一个$X_Y$使得$f(X_Y)$与$Y$同构，同构映射为$p(Y):f(X_Y)\to Y$. 现在，我们定义一个函子$g:\mathcal{D}\to \mathcal{C}$，通过令$g(Y)=X_Y$，对态射$\psi:Y\to Y'$，令
+\[
+	g(\psi)=f^{-1}\left(p(Y')^{-1}\circ \psi \circ p(Y)\right)\in \mathcal{C}(g(Y),g(Y')),
+\]
+其中同构$f^{-1}:\mathcal{D}(f(g(Y)),f(g(Y')))\to \mathcal{C}(g(Y),g(Y'))$来自于忠实且完全函子$f$. $g$显然是一个函子。
+
+最后，我们可以定义自然变换$p$：通过令$p(Y):f(g(Y))\to Y$. 此时，考虑图
+\[
+\begin{xy}
+	\xymatrix{
+		Y\ar[rr]^-{p(Y)} \ar[d]_{\psi}&&f(g(Y)) \ar[d]^{f(g(\psi))}\\
+		Y'\ar[rr]^-{p(Y')}&&f(g(Y'))
+	}
+\end{xy}
+\]
+从$g(\psi)$的定义，可以看到上图交换，所以$p$确实是一个自然变换。类似地，$p^{-1}$也是一个自然变换，它们分别给出了函子同构$fg\cong \id_\mathcal{D}$以及$gf\cong \id_\mathcal{C}$.
+\end{proof}
+
+本节的最后，我们谈论单射和满射在范畴中的对应。
+
+\begin{para}
+一个态射被称为左可消的，或者叫\idx{单态}（\idx{monomorphism}），任取$g_1$和$g_2$，如果$fg_1=fg_2$，则$g_1=g_2$. 对偶地，称一个态射是右可消的，或者叫\idx{满态}（\idx{epimorphism}），任取$g_1$和$g_2$，如果$g_1f=g_2f$，则$g_1=g_2$. 显然，两个单态复合还是单态，两个满态复合还是满态。
+\end{para}
+
+单态和满态是模范畴单同态以及满同态的推广，在模范畴中，可以看到这与单同态以及满同态是等价的概念。实际上，如果$f:M\to N$是单同态，则$fg_1(x)=fg_2(x)$可以推出$f(g_1(x)-g_2(x))=0$进而$g_1=g_2$. 反过来，如果$f$不是单同态，选$g_1:\ker f\hookrightarrow M$以及$g_2=0:\ker f\to M$，可以看到$fg_1=fg_2=0$成立，但是$g_1\neq g_2$. 类似地，在模范畴，$f$是满同态当且仅当他是满态。但是在一般的范畴中，这种等价是不一定成立的。
+
+这点比方考虑所有Hausdorff空间构成的范畴$\mathsf{Haus}$，其中的态射是连续映射。其中的单态都是单射，但是其中的满态是那些连续映射$f:X\to Y$满足$f(X)$在$Y$中稠密，所以并不需要是一个满射。
+
+\section{极限与余极限}
+
+\para 在很久以前，我们在有限积范畴上定义了所谓的对角函子。在这节，我们需要拓展这个概念。设$\mathcal{J}$是一个小范畴，$\mathcal{C}$是一个范畴，我们如下定义函子$\Delta:\mathcal{C}\to [\mathcal{J},\mathcal{C}]$：
+\begin{itemize}
+\item 任取$X$和$j\in \mathcal{J}$以及$\mathcal{J}$中的态射$\varphi$，我们定义$\Delta(X)(j)=X$且$\Delta(X)(\varphi)=\id_X$.
+\item 对态射$\psi:X\to Y$，态射$\Delta\psi:\Delta(X)\to \Delta(Y)$这里应是一个自然变换，任取$j\in \mathcal{J}$，我们定义$\Delta\psi(j)=\psi$，它们都将$\Delta(X)(j)=X$映射成$\Delta(Y)(j)=Y$.
+\end{itemize}
+
+\para 设$I$是一个小范畴（即范畴对象的全体能够构成一个集合），我们称函子$D:I\to \mathcal{C}$为$\mathcal{C}$中的一个$I$-图，或者简略叫做图。对于$i\in I$，$D(i)$称为该图的一个顶点（经常改用下标写作$D_i$），而对任意的态射$\alpha_{ij}:i\to j$，态射$D(\alpha_{ij})$称为该图的一条边。
+
+作为例子，当$I$是一个指标集，即不同的$i$, $j\in I$之间不存在态射时，一个$I$-图就是一族以$I$为指标集的对象。此外，给定小范畴$I$及任取$X\in \mathcal{C}$，$\Delta X$就是一个$I$-图。
+
+\para 这里考虑$I$-图之间的自然变换（因为它们是函子）。设$I$是一个小范畴，$\mathcal{C}$是一个范畴，而$D:I\to \mathcal{C}$是$\mathcal{C}$上的一个$I$-图。
+
+给定$X\in\mathcal{C}$，现在考虑$\varphi\in [I,\mathcal{C}](\Delta X,D)$，它可以表为如下的交换图
+\[
+	\xymatrix{
+		X\ar@{=}[rr]\ar[d]_{\varphi(i)}&&X\ar[d]^{\varphi(j)}\\
+		D(i)\ar[rr]^-{D(\alpha_{ij})}&&D(j)
+	}
+\]
+其中$i$, $j\in I$以及$\alpha_{ij}:i\to j$任意。通常，我们会把交换图画成
+\[
+	\xymatrix{
+		&X\ar[dl]_{\varphi(i)}\ar[dr]^{\varphi(j)}&\\
+		D(i)\ar[rr]^-{D(\alpha_{ij})}&&D(j)
+	}
+\]
+此时，自然变换$\varphi$被称为$I$-图$D$的一个以$X$为顶点的\idx{锥形}。
+
+\para 设$I$是一个小范畴，$\mathcal{C}$是一个范畴，而$D:I\to \mathcal{C}$是$\mathcal{C}$上的一个$I$-图。现在考虑反变函子
+\[
+	X\mapsto [I,\mathcal{C}](\Delta X,D):\mathcal{C}^{\text{op}}\to \mathsf{Set},
+\]
+如果他是可表的，则称$I$-图$D$存在极限，其表示对象记作${\varprojlim}_{i\in I} D(i)$，他被称为$I$-图$D$的\idx{极限}。从表示函子的知识可知，如果极限存在，则它在同构意义上唯一。
+
+现在，我们来考察可表条件。为方便起见，我们记$A={\varprojlim}_{i\in I} D(i)$. 可表条件就是说存在同构$\lambda:h_{A}\to [I,\mathcal{C}](\Delta -,D)$. 具体到$X$，即存在同构
+\[
+	\lambda(X):\mathcal{C}\left(X,{\varprojlim}_{i\in I} D(i)\right)\to [I,\mathcal{C}](\Delta X,D).
+\]
+他就是在说，任取映射$f:X\to {\varprojlim}_{i\in I} D(i)$，都存在一个锥形$\mu=\lambda(X)(f):\Delta X\to D$. 反之亦然，因此，我们可以用如下的泛性质来表述这个事实：
+\[
+	\xymatrix{
+		&&D(i)\ar[dd]^{D(\alpha_{ij})}\\
+		X\ar@{.>}[r]|-{f}\ar@/^/[rru]^-{\mu(i)}\ar@/_/[rrd]_{\mu(j)}&{\varprojlim}_{i\in I} D(i)\ar[ru]\ar[rd]&\\
+		&&D(j)
+	}
+\]
+图中略去的箭头是极限自带的态射族，即锥形$\lambda(A)(\id_A)$，虚线代表唯一存在（来自于态射族之间的同构）。
+
+可以看到，如果$I$-图$D$的极限$A$存在，我们都有一个固有的锥形$\lambda(A)(\id_A)$. 通常地，我们会将这个锥形定义成极限，并且，将锥形$\mu$记作$(A,\mu)$的形式，其中$A$是顶点。此时，极限可以定义为：设$(A,\lambda)$是一个锥形，如果对于任意的锥形$(X,\mu)$，都存在唯一的态射$f:X\to A$使得如下分解$\mu(j):X\xrightarrow{f}A\xrightarrow{\lambda(j)}D(i)$成立，则锥形$\lambda$被称为$I$-图$D$的极限。这个定义的直观化即上面的交换图。
+
+作为例子，一族集合的直积是一个极限。设$\{X_i\,:\, i\in I\}$是一族集合，它的直积记作$\prod_{i\in I}X_i$，且到每个分量都有一个投影函数$\pi_i:\prod_{i\in I}X_i\to X_i$. 这两个数据构成了这一族集合的极限。
+
+\begin{para}
+锥形和极限都有对偶的概念，在交换图中，无外乎就是将箭头完全反过来。余极限定义为函子
+\[
+	X\mapsto [I,\mathcal{C}](D,\Delta X):\mathcal{C}\to \mathsf{Set}
+\]
+的表示对象。对$\lambda\in [I,\mathcal{C}](D,\Delta X)$，他是一个形如
+\[
+	\xymatrix{
+		&X&\\
+		D(i)\ar[rr]^-{D(\alpha_{ij})}\ar[ur]^{\varphi(i)}&&D(j)\ar[ul]_{\varphi(j)}
+	}
+\]
+的交换图，他被称为$I$-图的一个\idx{余锥形}，类似锥形，我们会特别写出其顶点$X$，将其记作$(X,\lambda)$.
+
+称呼一个余锥形$(A,\lambda)$是$I$-图的一个{余极限}，如果对于任意的余锥形$(B,\mu)$，都存在唯一的态射$f:A\to B$使得如下分解$\mu(j):D(i)\xrightarrow{\lambda(j)}A\xrightarrow{f}B$成立。一般将$I$-图$D$的余极限写作${\varinjlim}_{i\in I} D(i)$. 类似极限，如果余极限存在，则它在同构意义上唯一。
+\end{para}
+
+\begin{pro}\label{homlimit}
+设$\mathcal{C}$是一个范畴，而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
+\[
+	{\varprojlim} \mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,{\varprojlim} X_i\right),\quad {\varprojlim} \mathcal{C}(X_i,-)\cong  \mathcal{C}\left({\varinjlim} X_i,-\right)
+\]
+其中极限与余极限都是对$I$-图进行的。
+\end{pro}
+
+\begin{proof}
+	仅证第一点，第二点是类似的。从极限的定义，我们知道
+	\[
+	\mathcal{C}\left(-,{\varprojlim}_i X_i\right)\cong [I,\mathcal{C}](\Delta -,X),
+	\]
+	所以只要证明
+	\[
+	[I,\mathcal{C}](\Delta -,X)\cong {\varprojlim}_i \mathcal{C}(-,X_i).
+	\]
+
+	给定$Y$. 我们下面构造同构$\alpha(Y):[I,\mathcal{C}](\Delta Y,X)\to {\varprojlim}_i \mathcal{C}(Y,X_i)$. 首先任取锥形$(Y,\mu)\in [I,\mathcal{C}](\Delta Y,X)$，以及集合范畴里面的一个单元素集$\{*\}$，定义映射$h(i):*\mapsto \mu(i)$，于是我们就有了映射$h(i):\{*\}\to \mathcal{C}(Y,X_i)$，不难验证，它构成了一个锥形
+	\[
+		\xymatrix{
+			&\{*\} \ar[dl]_{h(i)}\ar[dr]^{h(j)}&\\
+			\mathcal{C}(Y,X_i)\ar[rr]^{X(\alpha_{ij})_*}&&\mathcal{C}(Y,X_j)
+		}
+	\]
+	因为$X(\alpha_{ij})_*(h(i))(*)=X(\alpha_{ij})\circ h(i)(*)=X(\alpha_{ij})\circ \mu(i)=\mu(j)=h(j)(*)$.
+
+	由${\varprojlim}_i \mathcal{C}(Y,X_i)$的泛性质，我们可以知道，从$\{*\}$到${\varprojlim}_i \mathcal{C}(Y,X_i)$有唯一的映射$h_\mu$，使得分解
+	\[
+	h(i):\{*\}\xrightarrow{h_\mu} {\varprojlim}_i \mathcal{C}(Y,X_i) \xrightarrow{p(i)} \mathcal{C}(Y,X_i)
+	\]
+	成立，其中$p(i)$是极限自带的映射。现在我们定义$\alpha(Y)(\mu)=h_\mu(*)$.
+
+	现在我们来直接构造$\alpha(Y)$的逆映射$\beta(Y):{\varprojlim}_i \mathcal{C}(Y,X_i)\to [I,\mathcal{C}](\Delta Y,X)$. 任取$a\in {\varprojlim}_i \mathcal{C}(Y,X_i)$，设$p(i):{\varprojlim}_i \mathcal{C}(Y,X_i)\to \mathcal{C}(Y,X_i)$是极限自带的映射，则$p(i)(a)\in \mathcal{C}(Y,X_i)$. 由于$X(\alpha_{ij})\circ (p(i)(a))=p(j)(a)$，所以我们有锥形
+	\[
+		\xymatrix{
+			&Y \ar[dl]_{p(i)(a)}\ar[dr]^{p(j)(a)}&\\
+			X_i\ar[rr]^{X(\alpha_{ij})}&&X_j
+		}
+	\]
+	记这个锥形为$\mu_a$，我们定义$\beta(Y)(a)=\mu_a$.
+
+	不难验证$\alpha(Y)(\mu_a)=a$. 实际上$\mu_a(i)=p(i)(a)$，因此$h(i)(*)=p(i)(a)$. 定义$h_{\mu_a}(*)=a$，则分解
+	\[
+	h(i):\{*\}\xrightarrow{h_{\mu_a}} {\varprojlim}_i \mathcal{C}(Y,X_i) \to \mathcal{C}(Y,X_i)
+	\]
+	成立。由$h_{\mu_a}$的唯一性，我们知道$\alpha(Y)(\mu_a)=a$. 反过来，不难验证$\beta(Y)(h_\mu(*))=\mu$. 实际上，令$\beta(Y)(h_\mu(*))=\lambda$，则$\lambda(i)=p(i)(h_\mu(*))=h(i)(*)=\mu(i)$. 所以$\lambda=\mu$. 综上，$\alpha(Y)$和$\beta(Y)$互逆。
+
+	最后，可以直接检验$\alpha(Y)$和$\beta(Y)$是自然变换。
+\end{proof}
+
+极限很好地抽象了许多有用的概念，我们列一些在下面。
+
+\begin{para}[终对象与始对象]
+没有对象以及态射的范畴，我们记作$\varnothing$. 考虑任意范畴$\mathcal{C}$，$\mathcal{C}$中$\varnothing$-图的极限就是所谓的\idx{终对象}. 对偶地，有\idx{始对象}。由极限的唯一性，可知一个范畴中终对象和始对象在同构意义下是唯一的。
+
+如果用泛性质来表述：若$X\in \mathcal{C}$满足任意的$Y\in \mathcal{C}$都有唯一的态射$Y\to X$，则称$X$是一个终对象。反过来，如果任取$Y\in \mathcal{C}$都有唯一的态射$X\to Y$，则称$X$是一个始对象。
+
+如果一个对象即是始对象又是终对象，则称它是一个零对象。零对象往往会记作$0$，从零对象出发或者到零对象的唯一态射也会被记作$0$.
+
+始对象和终对象是不一定存在的，比如在域构成的范畴中，没有始对象与终对象。在集合范畴，始对象是任意单点集，而终对象是空集。在左$R$-模范畴中，零模$0$是零对象。
+\end{para}
+
+\begin{para}[积与余积]
+设$I$是一个集合，如果附加上所有的恒等态射，则$I$构成一个范畴。考虑任意范畴$\mathcal{C}$，此时$\mathcal{C}$中$I$-图的极限就是所谓的\idx{积}. 对偶地，有\idx{余积}。由极限的唯一性，可知一个范畴中积和余积在同构意义下是唯一的。如果$I$是一个空集，则积变成终对象，而余积变成始对象。
+
+考虑一个$I$-图$D$，$D(i)=D_i\in \mathcal{C}$，此时积往往记作$\prod_{i\in I} D_i$，对应着还有投影态射$p_i:\prod_{i\in I} D_i\to D_i$. 它可以用泛性质重新表示如下：设$X$是$\mathcal{C}$中的一个对象，他到每一个$D_i$都有一个态射$f_i$，则存在唯一的态射$f:X\to \prod_{i\in I} D_i$使得分解$p_if=f_i$对$i\in I$都成立。余积的泛性质也类似。
+
+显然，集合的直积是一个积。
+
+如果$I$是一个$n$元素集，则称$I$-图的极限为$n$元积。它们统称为有限积。有限积记作$X_1\times \cdots \times X_n$的形式。显然，存在二元积，就存在任意的有限积，为此，只需要检查$X_1\times (X_2\times (X_3 \times \cdots (X_{n-1}\times X_n)))$满足泛性质即可。
+\end{para}
+
+\begin{para}[等值子与余等值子]
+考虑$\mathcal{J}$是这样一个范畴，它有两个对象，除了自己到自己的恒等态射外，两个对象之间还有同向的两个态射，我们记作$\xymatrix{\cdot\ar@<0.3ex>[r] \ar@<-0.3ex>[r]&\cdot}$. 设$D:\mathcal{J}\to\mathcal{C}$是一个协变函子，他将两个态射变为$f$, $g:X\to Y$，于是在$\mathcal{C}$中关于$J$-图$D$的极限就是对象$\eq(f,g)$以及态射$i:\eq(f,g)\to X$，满足：$fi=gi$，任取对象$A\in \mathcal{C}$以及态射$p:A\to X$使得$fp=gp$，则存在唯一的态射$h:A\to \eq(f,g)$使得下面的交换图成立：
+\[
+\begin{xy}
+	\xymatrix{
+		\eq(f,g)\ar[r]^-{i}&X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\\
+		A\ar@{.>}[u]^-{h}\ar[ur]_-{p}
+	}
+\end{xy}
+\]
+
+集合范畴的等值子很简单，设$f$, $g:X\to Y$是两个映射，则$\eq(f,g)=\{x\in X\,:\, f(x)=g(x)\}$. 不难检验，对于模范畴，$0$可以看成任意两个模之间的同态（比如看作左乘$0$），此时$\ker(f)=\eq(f,0)$. 
+
+对偶地，可以定义余等值子，它使得如下交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+		X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\ar[r]^-{\pi}\ar[dr]_-{q}&\mathrm{coeq}(f,g)\ar@{.>}[d]^-{h}\\
+		&&A
+	}
+\end{xy}
+\]
+类似地，在模范畴里面，$\coker(f)=\mathrm{coeq}(f,0)$.
+\end{para}
+
+\begin{para}[纤维积]
+另一个极限的例子如下。考虑范畴$\mathcal{J}=\cdot \to \cdot \leftarrow \cdot$，即$\mathcal{J}$只有三个对象，除去恒等态射外，剩下的还有两边指向中间的态射。那么$\mathcal{J}$-图$X\xrightarrow{f} Z \xleftarrow{g} Y$的极限$X\times_Z Y$用泛性质表述就是如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+		A\ar@/_/[rdd]\ar@/^/[drr]\ar@{.>}[dr]&&\\
+		&X\times_Z Y\ar[d]_{\pi_2}\ar[r]_{\pi_1}&X\ar[d]^f\\
+		&Y\ar[r]_g&Z
+	}
+\end{xy}
+\]
+这样的极限$X\times_Z Y$，被称为$X$, $Y$关于$Z$的\idx{纤维积}，或者叫\idx{拉回}。
+
+如果$X=Y$，则我们回到了等值子的情况。假设$X$, $Y$和$Z$都是集合，不难检验，$X\times_Z Y=\{(x,y)\in X \times Y\,:\,f(x)=g(y)\in Z\}$. 于是若$Z$是单点集，则$X\times_Z Y=X\times Y$，若$X$和$Y$的子集，它们到$Z$都是标准的含入映射，则$X\times_Z Y=X\cap Y$.
+\end{para}
+
+下面几个引理试图给出以上几个特殊极限之间的关系。
+
+\begin{lem}
+如果范畴$\mathcal{C}$中二元积与等值子总存在，则在该范畴中纤维积也总存在。
+\end{lem}
+
+\begin{proof}
+考虑$X\xrightarrow{f} Z \xleftarrow{g} Y$, $X\xleftarrow{p_X}X\times Y\xrightarrow{p_Y} Y$. 将$X\times_Z Y$定义为映射$fp_X$, $gp_Y: X\times Y\to Z$的等值子即可。
+\end{proof}
+
+\begin{lem}
+如果范畴$\mathcal{C}$中纤维积与终对象总存在，当且仅当在该范畴中有限积和等值子总存在。
+\end{lem}
+
+\begin{proof}
+从右往左从上一个引理是清楚的。现在只需要证从左往右的部分。终对象方便起见我们记作$0$，然后定义$X\times Y=X\times_0 Y$. 有了二元积和终对象，则所有的有限积也都存在了。
+
+最后，考虑$f$, $g:X\to Y$. 连同$\id_X$和$\id_Y$，由积的泛性质，存在唯一的态射$\id_X\times f:X \to X\times Y$以及$\id_X\times g:X \to X\times Y$. 最后，考虑它们的纤维积
+\[
+\begin{xy}
+	\xymatrix{
+	X\times_{X\times Y} X\ar[d]_{\pi_2}\ar[r]^-{\pi_1}&X\ar[d]^{\id_X\times f}\\
+	X\ar[r]_{\id_X\times g}& X\times Y
+	}
+\end{xy}
+\]
+$X\times_{X\times X} Y$即我们所求的等值子。实际上，
+\[
+	\pi_1=\id_X\pi_1=p_1(\id_X\times f)\pi_1=p_1(\id_X\times g)\pi_2=\pi_2,
+\]
+\[
+	f\pi_1=p_2(\id_X\times f)\pi_1=p_2(\id_X\times g)\pi_2=g\pi_2=g\pi_1.
+\]
+再由纤维积的泛性质就给出了等值子的泛性质。
+\end{proof}
+
+\begin{para}
+一个范畴中，如果对象与态射都是有限的，则称这个范畴是有限范畴。有限范畴的图的极限被称为有限极限。如果一个范畴中任意（有限）极限都存在，则称这个范畴是（有限）完备的。
+\end{para}
+
+下一个定理告诉我们，只需要积和等值子这俩个特殊的极限存在，则任意极限都存在。
+
+\begin{thm}\label{wanbei}
+设$\mathcal{C}$是一个范畴，则以下命题等价：
+\begin{compactenum}[~~~~(1)]
+\item $\mathcal{C}$是（有限）完备的。
+\item $\mathcal{C}$中的（有限）积与等值子总存在。
+\end{compactenum}
+\end{thm}
+
+在有限完备的情况下，第二点可以替换为存在任意纤维积与终对象。
+
+\begin{para}
+对偶地，有限范畴的图的极限被称为有限余极限。如果一个范畴中任意（有限）余极限都存在，则称这个范畴是（有限）余完备的。
+\end{para}
+
+\begin{thm}\label{yuwanbei}
+设$\mathcal{C}$是一个范畴，则以下命题等价：
+\begin{compactenum}[~~~~(1)]
+\item $\mathcal{C}$是（有限）余完备的。
+\item $\mathcal{C}$中的（有限）余积与余等值子总存在。
+\end{compactenum}
+\end{thm}
+
+\section{伴随函子}
+
+\begin{para}
+设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果对任意的$T\in\mathcal{C}$和$Y\in\mathcal{D}$存在自然同构
+\[
+	\alpha(T,Y):\mathcal{C}(T,g(Y))\to \mathcal{D}(f(T),Y),
+\]
+则$(f,g)$被称为一对\idx{伴随函子}（\idx{adjoint functor}). $f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
+\end{para}
+
+在定义中，固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个右伴随函子。所以实际上，双函子同构可以减弱为对$T$的。下面我们证明这一点。
+
+\begin{proof} 
+	设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$g(Y)$所表示，于是就有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			h_{g(Y)}(T)\ar[rr]^-{\alpha(Y,T)} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
+			h_{g(Y)}(S)\ar[rr]^-{\alpha(Y,S)}&&{\mathcal{D}}(f(S),Y)
+		}
+	\end{xy}
+	\]
+	其中$\alpha(Y,T)$用来简记$\alpha(Y)(T)$. 任取$u:T\to {g(Y)}$，有$\alpha(Y,S)(u\psi)=\alpha(Y,T)(u)f(\psi)$. 特别地，当$T=g(Y)$时，取$u=\id_{g(Y)}$，记$\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y$，则$\alpha(Y,S)(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to g(Y)$.
+
+	改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}{Y}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha(Y,T)$，对每一个$T$，$\beta_T$将给出了函子同构
+	\[
+		\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
+	\]
+	自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
+\end{proof}
+
+\begin{pro}
+设$L:\mathcal{C}\to \mathcal{D}$是一个左伴随函子，而$R:\mathcal{D}\to \mathcal{C}$是一个右伴随函子。设有一个$\mathcal{C}$中的$I$-图$X:I\to \mathcal{C}$以及一个$\mathcal{D}$中的$J$-图$Y:J\to \mathcal{D}$，于是，$LX$是$\mathcal{D}$中的$I$-图，$RY$是$\mathcal{C}$中的一个$J$图，并且存在同构
+\[
+	L{\varinjlim}_{i\in I} X_i\cong {\varinjlim}_{i\in I} (LX_i),\quad
+	R{\varprojlim}_{j\in J} Y_j\cong {\varprojlim}_{j\in J} (RY_j).
+\]
+\end{pro}
+
+粗略来说，就是左伴随函子与余极限可交换，而右伴随函子与极限可交换。
+
+\begin{proof}
+	命题的证明是利用Yoneda引理，他有协变和反变两个版本：协变的是，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 反变的是，如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$.
+
+	由Proposition \ref{homlimit}，我们知道如下函子同构
+	\[
+	\mathcal{C}\left(-,{\varprojlim} RX_i\right)\cong {\varprojlim} \mathcal{C}(-,RX_i),
+	\]
+	连同伴随函子的函子同构，有如下同构链
+	\[
+	\mathcal{C}\left(-,{\varprojlim} RX_i\right)\cong {\varprojlim} \mathcal{C}(-,RX_i)\cong {\varprojlim} \mathcal{D}(L-,X_i)\cong \mathcal{D}\left(L-,{\varprojlim} X_i\right)\cong \mathcal{C}\left(-,R{\varprojlim} X_i\right),
+	\]
+	所以${\varprojlim} RX_i\cong R{\varprojlim} X_i$.
+
+	同样由Proposition \ref{homlimit}，有如下函子同构
+	\[
+	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-),
+	\]
+	连同伴随函子的函子同构，有如下同构链
+	\[
+	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-)\cong {\varprojlim} \mathcal{C}(X_i,R-)\cong \mathcal{C}\left({\varinjlim} X_i,R-\right)\cong \mathcal{D}\left(L{\varinjlim} X_i,-\right),
+	\]
+	所以${\varinjlim} LX_i\cong L{\varinjlim} X_i$.
+\end{proof}
+
+\section{准加性范畴}
+
+\begin{para}
+设$\mathcal{C}$是一个范畴，如果函子$\mathcal{C}(-,*)$是一个从$\mathcal{C}^\text{op}\times \mathcal{C}$到交换群范畴$\mathsf{Ab}$的函子，则称范畴$\mathcal{C}$是一个准加性范畴，有些时候也叫做$\mathsf{Ab}$-范畴。模范畴显然是一个准加性范畴。
+\end{para}
+
+对于准加性范畴$\mathcal{C}$，$\mathcal{C}(X,Y)$是一个交换群，交换群的运算我们一如既往写作加法。这就意味着，在$\mathcal{C}(X,Y)$中至少存在一个零元，我们称为零态射，统统记作$0$. 注意，此时$0$的定义域和值域需要看语境确定。
+
+同时，任取$f:Y_1\to Y_2$，则$\mathcal{C}(X,f):\mathcal{C}(X,Y_1)\to \mathcal{C}(X,Y_2)$是一个交换群同态。因此，$f(g+h)=fg+fh$. 同理，右复合也满足这样的“分配律”。应用到零元上，我们有$f0=0$以及$0f=0$.
+
+注意，虽然这里的零态射总是似乎在暗示我们存在一个零对象，可事实并非如此。考虑域的范畴，他显然是一个准加性范畴，但却没有零对象。
+
+\begin{pro}\label{zeroobj}
+准加性范畴中，以下命题等价：
+\begin{compactenum}[~~~(1)]
+\item $A$是一个始对象。
+\item $\mathcal{C}(A,A)$是单点集。
+\item $A$是一个终对象。
+\item $A$是一个零对象。
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+我们一旦证明了(1)和(3)等价，则(4)是自然的。所以只要证明(1)和(3)都和(2)等价即可。
+
+设$A$是始对象或者是终对象，则$\mathcal{C}(A,A)$是单点集. 反过来，假设$\mathcal{C}(A,A)$是单点集，所以$\id_A=0$，考虑$f\in \mathcal{C}(A,X)$，由于$f=f\id_A=f0=0$. 所以$A$是始对象。考虑$f\in \mathcal{C}(X,A)$，由于$f=\id_A f=0f=0$. 所以$A$是终对象。
+\end{proof}
+
+如果准加性范畴$\mathcal{C}$中有一个零对象$0$，则对任意的$X$, $Y\in\mathcal{C}$，我们都有唯一的态射$0': X\to 0 \to Y$. 上述命题也顺便告诉我们$0=0'$. 
+
+\begin{para}
+在准加性范畴$\mathcal{C}$中，定义$\ker(f)=\eq(f,0)$以及$\coker(f)=\mathrm{coeq}(f,0)$. 注意到，作为极限或者余极限，实际上，除了对象外，还有一个态射。比如，对$f:M\to N$有一个态射$\pi_f:N\to \coker(f)$，这是构成余核的一个资料。再比如，对于$\ker f$，就有一个态射$i_f:\ker f\to M$. 
+
+作为例子，设$0:X\to Y$是零态射，通过直接验证泛性质，可知$\ker(0)=X$以及$i_0=\id_X$.
+\end{para}
+
+\begin{para}
+在准加性范畴$\mathcal{C}$中，如果任意核都存在，则任意等值子都存在。实际上，$f$, $g$的等值子就是$\ker(f-g)$. 同理，如果任意余核存在，则任意余等值子存在。所以，在准加性范畴$\mathcal{C}$中，（余）核的存在等价于（余）等值子的存在。
+\end{para}
+
+当谈论两个核是同构的时候，不应只认为存在同构$\varphi:\ker(f)_1\to \ker(f)_2$，还应把极限包含的态射拿进来一起看，即满足如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+	\ker(f)_1\ar[d]_{\varphi}\ar[r]^-{i_1} &X\\
+	\ker(f)_2\ar[ru]_{i_2}
+	}
+\end{xy}
+\]
+余核也是类似的。
+
+所以，经常我们会直接将$\ker f$看成一个态射，谈及对象的时候，只要取其定义域即可，也经常同样记作$\ker f$. $\coker f$同理。
+
+\begin{para}
+
+为了更清楚地描述指向同一个对象的态射或从同一对象出发的态射的同构，我们做出如下定义：
+
+\begin{itemize}
+\item 设$f$和$g$指向同一个对象，若此时存在一个态射$\varphi$使得交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+	\cdot\ar[r]^-{f} &\cdot\\
+	\cdot \ar[u]^{\varphi}\ar[ru]_{g}
+	}
+\end{xy}
+\]
+则记$g\leq f$. 
+
+\item  设$u$和$v$都从同一个对象出发，若此时存在一个态射$\varphi$使得交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+	\cdot \ar[r]^-{u}\ar[rd]_{v} &\cdot \\
+	&\cdot \ar[u]_{\varphi}
+	}
+\end{xy}
+\]
+则记$u\geq v$. 
+\end{itemize}
+
+不难检验$\leq$和$\geq$是自反的以及可传递的，但却不满足$f\leq g$且$g\leq f$可推出$f=g$. 所以它们并不是偏序关系。如果$f\leq g$且$g\leq f$，则记$f\approx g$. 同样，如果$u\geq v$且$v\geq u$，记$u\approx v$.
+
+当然，这两个关系是属于不同集合的。将所有指向$X$的态射集合记作$P^X$，即集合$\mathcal{C}(-,X)$. 将所有从$Y$出发的态射集合记作$Q_Y$，即集合$\mathcal{C}(Y,-)$. 很容易验证（在保证存在性的时候），$\coker : P^X \to Q_X$，而$\ker : Q_X\to P^X$.
+\end{para}
+
+作为例子之一，如果$\ker(f)_1$和$\ker(f)_2$都是一个态射$f$的核，则$\ker(f)_1\approx\ker(f)_2$. 
+
+作为例子之二，如果$fg=0$，由$\ker f$的泛性质，我们有唯一的分解$g=\ker(f)g'$，此时$g\leq \ker f$. 类似地，如果$gf=0$，由$\coker f$的泛性质，我们有唯一的分解$g=g'\coker(f)$，此时$g\geq \coker f$. 简而言之，
+\[
+	g\leq \ker f \quad \Leftrightarrow \quad fg=0\quad  \Leftrightarrow \quad f\geq \coker g.
+\]
+
+\begin{para}
+在定义$\leq$和$\geq$的时候，只需要分解的存在性。有时候，泛性质还能告诉我们唯一性。实际上，当$\ker$出现在$\leq$右边的时候，即比如$g\leq \ker(f)$，泛性质说明了分解$g=\ker(f)g'$是唯一的。对偶地，当$\coker$出现在$\geq$右边的时候，即比如$f\geq \coker(g)$，则分解$g=g'\coker(f)$是唯一的。
+\end{para}
+
+因此，如果两个态射$f$, $g$满足$\ker f\approx \ker g$，则$\ker f$和$\ker g$实际是同构的。但因为，在选定核的时候，本来就允许一个同构的存在，所以此时写作$\ker f=\ker g$也完全没有问题。
+
+\begin{pro}\label{glgl}假设所有的核与余核都存在，则如下命题成立：
+\begin{compactenum}[~~~(1)]
+\item 如果$f\geq g$，则$\ker g \leq \ker f$. 
+\item 对偶地，如果$u\leq v$，则$\coker v \geq \coker u$. 
+\item $f\leq \ker(\coker f)$.
+\item 对偶地，$u\geq \coker(\ker u)$.
+\end{compactenum}
+\end{pro}
+
+该命题给出了$P^X$和$Q_X$之间的一个“Galois联络”（见附录），当然，它不是真的Galois联络，因为$\geq$和$\leq$都不是真的偏序。但是，类似地，我们可以断言
+\[
+	\ker f\approx \ker \coker \ker f,\quad \coker u \approx \coker \ker \coker u.
+\]
+当然，因为在选定核（余核）的时候，本来就允许一个同构的存在，所以上式也可以写作
+\begin{equation}\label{kck}
+\ker f= \ker \coker \ker f,\quad \coker u = \coker \ker \coker u.
+\end{equation}
+因此，如果$g$是一个核，当且仅当它满足$g=\ker \coker g$. 对偶地，如果$v$是一个余核，当且仅当它满足$v = \coker \ker v$.
+
+\begin{proof}一条一条证明。
+\begin{compactenum}[~~~(1)]
+\item 由于$f\geq g$，所以$f=g'g$，由恒等式$g\ker(g)=0$，我们得到了$f\ker(g)=g'g\ker(g)=0$，即$\ker g\leq \ker f$. 
+\item 对偶原理保证了这点。
+\item 考虑如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+	\cdot \ar[rr]^-{\ker \coker f}&&\cdot \ar@<0.3ex>[r]^-{\coker f} \ar@<-0.3ex>[r]_-{0}&\cdot \\
+	\cdot \ar@{.>}[u]\ar[urr]_f
+	}
+\end{xy}
+\]
+其中虚线来自于$\ker$的泛性质，所以定义给出了$f\leq \ker(\coker f)$.
+\item 对偶原理保证了这点。
+\end{compactenum}
+\end{proof}
+
+作为推论，如果$f\approx g$都从同一个对象出发，则$\ker f\approx \ker g$. 同样，如果$u\approx v$都指向同一个对象，则$\coker u \approx \coker v$.
+
+\begin{para}[复合态射的核与余核]
+显然$f$和$gf$的起点是相同的，且$gf\geq f$. 所以上面的命题告诉我们，$\ker f \leq \ker (gf)$. 同样，$g$和$gf$的终点是相同的，且$gf\leq g$，所以$\coker(g) \geq \coker(gf)$.
+\end{para}
+
+在准加性范畴中，核（余核）与单态（满态）联系密切。
+
+\begin{lem}
+设$\mathcal{C}$是一个准加性范畴，而$f:X\to Y$是其中的一个态射，如果$\ker f$存在，则它是一个单态。对偶地，如果$\coker f$存在，则它是一个满态。
+\end{lem}
+
+\begin{proof}
+对偶的论断是对偶原理保证的。任取$g_1$, $g_2:Z\to \ker(f)$，对$\ker (f) g_1=\ker (f) g_2=k:Z\to X$，由$\ker$的泛性质，存在唯一的态射$g:Z\to \ker(f)$使得分解$\ker (f) g_1=\ker (f) g_2=\ker (f) g$成立。由分解的唯一性，则$g_1=g=g_2$.
+\end{proof}
+
+% \begin{lem}
+% 设$\mathcal{C}$是一个准加性范畴，且存在零对象$0$. 如果$0:X\to Y$是一个单态，则$X=0$. 如果$0:X\to Y$是一个满态，则$Y=0$.
+% \end{lem}
+
+% \begin{proof}
+% 由$0\id_X =00=0$，单态的左可消性保证了第一点。由$\id_Y 0=00=0$，满态的右可消性保证了第二点。
+% \end{proof}
+
+\begin{para}
+类比熟知的$\coker f$的定义$N/\im f$，可以定义$\im f=\ker \coker f$. 对偶地，可以定义$\coim f=\coker \ker f$.
+\end{para}
+
+为使得这个定义是良定的，我们需要证明选取不同的$\coker f$，我们将得到同构的$\im f$. 为此，如果选取不同的$(\coker f)_1$和$(\coker f)_2$，有$(\coker f)_1\approx (\coker f)_2$. Proposition \ref{glgl}的推论告诉我们，$\ker (\coker f)_1\approx \ker (\coker f)_2$. 此即所需。
+
+此外，任取态射$f$. 我们都可以保证$f$成立唯一分解$f=\im(f)q$. 事实上，由于$\coker(f)f=0$，由$\ker$的泛性质，我们就得到$f=\ker(\coker f)q$.
+
+\begin{pro}
+设$\mathcal{C}$是一个准加性范畴，如果$\mathcal{C}$中含有零对象$0$，则
+\begin{compactenum}[~~~(1)]
+\item $f:X\to Y$是一个单态当且仅当$\ker f=0$.
+\item $f:X\to Y$是一个满态当且仅当$\coker f=0$.
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+只证第一个，第二个是类似的。如果$f:X\to Y$是一个单态，考虑任意的$fg=0$，由于$f$是单态，所以$fg=0=f0$给出了$g=0$. 由此，不难检验$0$满足核的泛性质。反过来，如果$\ker(f)=0$. 假设$fg_1=fg_2$或等价的$fh=f(g_1-g_2)=0$，其中$h=g_1-g_2$. 由于$\ker(f)=0$，由核的泛性质，存在唯一的态射$k$使得分解$h=0k$成立，于是$h=0$.
+\end{proof}
+
+\begin{pro}
+设$\mathcal{C}$是一个准加性范畴，而$X_1$, $X_2\in \mathcal{C}$，则$X_1$和$X_2$的积与余积等价。此时记$X_1$和$X_2$的积（余积）为$X_1\oplus X_2$，他有四个典范映射：作为积的投影$p_1:X_1\oplus X_2\to X_1$, $p_2:X_1\oplus X_2\to X_2$和作为余积的含入$i_1:X_1\to X_1\oplus X_2$, $i_2:X_2\to X_1\oplus X_2$. 满足
+\[
+	p_ai_a=\id_{X_a},\quad i_1p_1+i_2p_2=\id_{X_1\oplus X_2},\quad p_ai_b=0,
+\]
+其中$\{a$, $b\}=\{1$, $2\}$. 
+\end{pro}
+
+反过来，如果具有一个对象$X_1\oplus X_2$和满足上述关系的四个典范映射，则我们称它们构成了$X_1$和$X_2$的一个双积。一个双积不难检验是一个积，实际上，如果有$f_a:Y\to X_a$，则构造$f_1\times f_2=i_1f_1+i_2f_2$，他就是满足积的泛性质的唯一分解。同理，不难检验这是一个余积，实际上，如果有$g_a:X_a\to Y$，则构造$g=g_1p_1+g_2p_2$，他就是满足余积的泛性质的唯一分解。
+
+结合上面的命题，我们得到了：准加性范畴中，二元积等价于二元余积等价于双积。
+
+\begin{proof}
+从前面的一些简单的推理，显然，我们只需要构造双积即可。
+
+设$X_1\times X_2$是$X_1$和$X_2$的积，具有投影$p_1:X_1\times X_2\to X_1$, $p_2:X_1\times X_2\to X_2$. 考虑$\id_{X_1}:X_1\to X_1$和$0:X_1\to X_2$，由积的泛性质，存在唯一的态射$i_1:X_1\times X_2 \to X_1$使得$p_1i_1=\id_{X_1}$, $p_2i_1=0$. 同理，可以得到$i_2:X_1\times X_2 \to X_2$满足$p_2i_2=\id_{X_2}$, $p_1i_2=0$. 最后，考虑$i_1p_1+i_2p_2:X_1\times X_2\to X_1\times X_2$，以及映射
+\[
+	p_a(i_1p_1+i_2p_2)=p_a:X_1\times X_2\to X_a,
+\]
+由积的泛性质，存在唯一的态射$\id_{X_1\times X_2}$使得$p_a\id_{X_1\times X_2}=p_a$成立，所以$i_1p_1+i_2p_2=\id_{X_1\times X_2}$.
+
+同理，从$X_1$和$X_2$的余积可以得到积的两个典范态射满足双积的所有条件。
+\end{proof}
+
+\begin{para}
+既然有了$X_1\oplus X_2$，那么拓展到$X=X_1\oplus \cdots \oplus X_n$也是直接的。如果用泛性质来表示，他有$2n$个典范态射$\{p_a:X\to X_a\}$和$\{i_a:X_a\to X\}$，满足
+\[
+	p_ai_a=\id_{X_a},\quad \sum_{a=1}^n i_ap_a=\id_{X},\quad p_ai_b=0,
+\]
+其中$a\neq b$.
+
+通常，我们将$X_1\oplus \cdots \oplus X_n$记作$\bigoplus_{a=1}^nX_a$.
+\end{para}
+
+\begin{pro}
+设$X=\bigoplus_{a=1}^mX_a$和$Y=\bigoplus_{b=1}^nY_b$，则任意$f:X\to Y$可以由所有的$f_{ab}=p^Y_afi^X_b:X_b\to Y_a$确定。并且，如果有$g:Y\to Z=\bigoplus_{c=1}^lZ_c$，则$(gf)_{ab}=\sum_{c}g_{ac}f_{cb}$.
+\end{pro}
+
+如果对矩阵有些了解，不难发现第二点就是矩阵乘法。
+
+\begin{proof}
+实际上，
+\[
+	\sum_{a,b}i^Y_af_{ab}p^X_b=\sum_{a,b}i^Y_ap^Y_afi^X_bp^X_b=\left(\sum_ai^Y_ap^Y_a\right) f\left(\sum_bi^X_bp^X_b\right)=\id_{Y}f\id_{X}=f.
+\]
+以及
+\[
+	(gf)_{ab}=p^Z_agfi^X_b=p^Z_ag\id_Y fi^X_b=\sum_c p^Z_ag i^Y_cp^Y_c fi^X_b=\sum_{c}g_{ac}f_{cb}.
+\]
+\end{proof}
+
+第一点告诉我们，如果存在一族映射$f_{ab}:X_b\to Y_a$，可以构造$f=\sum_{a,b}i^Y_af_{ab}p^X_b:\bigoplus_{a=1}^mX_a\to \bigoplus_{b=1}^nY_b$使得$f_{ab}=p^Y_afi^X_b$成立。特别地，如果只存在那些“对角”的态射$f_a:X_a\to Y_a$，我们可以构造$f_1\oplus \cdots \oplus f_n:\bigoplus_{a=1}^nX_a\to \bigoplus_{a=1}^nY_a$使得
+\[
+	p^Y_a(f_1\oplus \cdots \oplus f_n)i^X_a=f_a,
+\]
+其中
+\[
+	f_1\oplus \cdots \oplus f_n=\sum_{a}i^Y_af_{a}p^X_a.
+\]
+
+\begin{para}
+如果一个准加性范畴中任意有限积都存在，则称这是一个加性范畴。
+\end{para}
+
+注意，终对象也是有限积，所以加性范畴存在零对象。由于准加性范畴中有限积就是有限余积，所以加性范畴中任意有限余积也存在。
+
+\begin{para}
+如果在一个加性范畴中，任意的核与余核存在，任意的单态是某个态射的核，任意的满态是某个态射的余核，则称这个范畴是一个Abel范畴。
+\end{para}
+
+注意，在准加性范畴中，如果任意的任意的核与余核存在，则任意的等值子与任意的余等值子存在。此外，加性范畴中存在任意的有限积与余有限积。结合这两点，从Theorem \ref{wanbei}和\ref{yuwanbei}可以知道，Abel范畴是有限完备且有限余完备的。
+
+\begin{lem}
+设$f$, $g:X\to Y$，如果等值子（看作态射）$\eq(f,g)$是满态，则$\eq(f,g)$是同构。
+\end{lem}
+
+\begin{proof}
+由于$f\eq(f,g)=g\eq(f,g)$，如果$\eq(f,g)$是满态（右可消），如果$f=g$. 此时不难检验$\id_X$是$f$, $f:X\to Y$的一个等值子，由等值子的泛性质，存在同构$\varphi$使得$\id_X=\eq(f,f)\varphi$. 最后，考虑$\eq(f,f)\varphi\eq(f,f)=\eq(f,f)$，由等值子的泛性质，分解的唯一性保证了$\varphi\eq(f,f)=\id_{\eq(f,f)}$. 因此$\eq(f,f)$是一个同构。
+\end{proof}
+
+\begin{pro}
+Abel范畴中，一个态射是同构等价于它既是单态又是满态。
+\end{pro}
+
+\begin{proof}
+设$\varphi$即是单态又是满态，因为是Abel范畴，所以存在$\psi$使得$\varphi=\ker(\psi)$. 从上一个引理，$\ker(\psi)$作为等值子如果是满态则必然是同构。
+
+反过来，假设$\varphi$是同构。它的逆写作$\psi$，如果$\varphi f=\varphi g$，则$\psi\varphi f =\psi\varphi g$给出$f=g$，所以$\varphi$是单态。同理，放在右边可以给出满态。
+\end{proof}
+
+已经知道，在加性范畴中，如果$\ker$和$\coker$都存在，则$f$成立唯一分解$f=\im(f)q$. 事实上，由于$\coker(f)f=0$，由$\ker$的泛性质，我们就得到$f=\ker(\coker f)q$.
+
+\begin{lem}\label{lem1}
+在Abel范畴中，如果$f$存在分解$f=m'q'$，其中$m'$是一个核，那么存在唯一的单态$t$使得下面的交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+	\cdot \ar[r]^q\ar[d]_{q'}& \cdot \ar[d]^{\im f}\ar@{.>}[dl]^t\\
+	\cdot \ar[r]_{m'}& \cdot 
+	}
+\end{xy}
+\]
+且$q$是一个满态。
+\end{lem}
+
+\begin{proof}
+设$m'=\ker s$以及$p'=\coker m'$，由恒等式$\ker s=\ker \coker \ker s$（见式\eqref{kck}），因此$m'=\ker p'$. 同样，取$p=\coker \im f=\coker \ker \coker f=\coker f$. 
+
+由于$p'f=p'm'q'=\coker(m')m'q'=0$，由$p=\coker f$的泛性质，存在唯一分解$p'=wp$. 由$p'\im f=wp\im f=w (\coker f) \ker(\coker f)=0$以及$m'=\ker p'$的泛性质，存在唯一分解$\im f=m' t$. 此外，$m' q'=m'tq$，由于$m'=\ker p'$是单态，所以$q'=tq$. 因此，交换图成立。并且，由于$\im f=m't$，所以$t$是一个单态。
+
+下面证明$q$是一个满态。设$rq=0$，由$\ker r$的泛性质，存在唯一分解$q=\ker (r) q'$. 于是$f=\im(f)q=\im(f)\ker (r) q'=m'q'$，因为$m'=\im(f)\ker (r)$作为单态的复合是一个单态，在Abel范畴中是一个核，所以由上面的已知的结论，存在唯一的$t$使得$\im f=m't=\im(f)\ker (r) t$. 由于$\im f$是单态，所以$\id =\ker (r) t$. 由于$\id$是满态，所以$\ker (r)$是满态。实际上，如果$x\ker(r)=y\ker(r)$，则$x=x\ker (r) t=y\ker (r) t=y$. 此时，$r\ker r=0$给出$r=0$. 
+
+综上，由$rq=0$可推出$r=0$，所以$q$是一个满态。
+\end{proof}
+
+\begin{pro}\label{uni}
+在Abel范畴中，$f=\im(f)\coim(f)$. 而且，如果$f=gh$，其中$g$是单态而$h$是满态，则存在同构$t$使得$g=\im(f)t$以及$\coim(f)=th$.
+\end{pro}
+
+\begin{proof}
+首先，$f$成立唯一分解$f=\im(f)q$. 所以，$ft=0$等价于$\im(f)qt=0$，由于$\im$是一个$\ker$所以是单态，$ft=0$又等价于$qt=0$. 因此$\ker f= \ker q$. 由于$q$是一个满态，所以是一个$\coker$，写成$q=\coker s$. 由恒等式$\coker s = \coker \ker \coker s$，所以$q=\coker \ker q=\coker \ker f=\coim f$. 
+
+唯一性的部分命题直接来自于上面的引理。从上一个引理，我们知道存在这样的单态$t$. 由于$\coim(f)=th$，左侧是一个满态，所以$t$是一个满态。一个单态如果是满态，则必然是一个同构。
+\end{proof}
+
+\begin{pro}
+在Abel范畴中，$\ker f=0$当且仅当$f=\im f$. 对偶地，$\coker f=0$当且仅当$f=\coim f$. 
+\end{pro}
+
+\begin{proof}
+实际上，如果$\ker f=0$，即$f$是单态。此时$t=0$等价于$ft=0$等价于$\im (f) \coim(f)t=0$等价于$\coim(f)t=0$，所以$\coim(f)$是一个单态，也因此是一个同构。由于$\im$的定义本来就容许一个同构的存在，所以写成$f=\im f$也没什么。
+
+对偶地，如果$\coker f=0$，即$f$是一个满态。此时$t=0$等价于$tf=0$等价于$t\im (f) \coim(f)=0$等价于$t\im(f)=0$，所以$\im(f)$是一个满态，也因此是一个同构。由于$\coim$的定义本来就容许一个同构的存在，所以可以写成$f=\coim f$.
+\end{proof}
+
+本节的最后，我们证明一个很有用的命题，他将用在上同调的定义中。
+
+\begin{pro}
+在Abel范畴中，态射$f$, $g$满足$gf=0$. 现考虑如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+	&&\cdot \ar[rrd]^b&&\\
+	\cdot \ar[rr]^f \ar[rrd]_a&&\cdot \ar[rr]^g\ar[u]^{\coker f}&&\cdot\\
+	&&\cdot \ar[u]_{\ker g}&&
+	}
+\end{xy}
+\]
+其中$a$, $b$是核与余核的泛性质诱导的态射。记$\coker(a)$指向$[\coker(a)]$，以及$\ker(b)$的起点为$[\ker(b)]$. 则存在一个同构$t:[\coker(a)]\to [\ker(b)]$.
+\end{pro}
+
+\begin{proof}
+首先，我们假设$f$是一个单态，而$g$是一个满态。令$\varphi=\coker (f) \ker (g)$，我们验证$a=\ker \varphi$和$b=\coker \varphi$，即验证它们满足泛性质。
+
+设$\varphi \theta=\coker (f)\ker(g)\theta=0$，由核的泛性质，我们可以得到唯一分解
+\[
+	\ker(g)\theta=(\ker \coker f)\psi=\im(f)\psi=f\psi=\ker(g)a\psi,
+\]
+其中$\im(f)=f$来自于$f$是一个单态。由于$\ker(g)$是单态，所以$\theta=a\psi$. 此即泛性质，所以$a=\ker(\varphi)$. 同理，可以验证，$b=\coker \varphi$.
+
+由于$\varphi=\im(\varphi)\coim(\varphi)=\coker(\ker \varphi)\ker(\coker \varphi)=\coker(a)\ker(b)$. 因此$[\coker(a)]=[\ker(b)]$. 实际上，如果我们选取同构的核（余核），则由$\varphi$分解的唯一性，即Proposition \ref{uni}，我们将得到$[\coker(a)]\cong [\ker(b)]$.
+
+现在我们考虑一般情形，因为$f=\ker(g)a$，其中$\ker(g)$是一个单态，由Lemma \ref{lem1}，存在唯一的态射$a'$使得$a=a'\coim(f)$以及$\im(f)=\ker(g)a'$. 即如下交换图成立
+\[
+\begin{xy}
+	\xymatrix{
+	\cdot \ar[r]^{\coim f} \ar[rrd]_a&\cdot \ar[r]^{\im f} \ar[rd]^{a'}&\cdot \\
+	&&\cdot \ar[u]_{\ker g}
+	}
+\end{xy}
+\]
+由于$ta=0$等价于$ta'\coim(f)=0$等价于$ta'=0$，所以$\coker(a)=\coker(a')$. 同理（对偶地），我们有$b'$使得$b=\im(g)b'$且$\coim(g)=b' \coker(f)$，所以$\ker(b')=\ker(b)$.
+
+现在，考虑交换图
+\[
+\begin{xy}
+	\xymatrix{
+	&&\cdot \ar[rrd]^{b'}&&\\
+	\cdot \ar[rr]^{\im f} \ar[rrd]_{a'}&&\cdot \ar[rr]^{\coim g}\ar[u]^{\coker f}&&\cdot\\
+	&&\cdot \ar[u]_{\ker g}&&
+	}
+\end{xy}
+\]
+由于$\im f$是单态而$\coim g$是满态，所以按照之前证明的特殊情况的结论，$[\coker(a')]\cong [\ker(b')]$. 
+
+最后，由于$\coker(a)=\coker(a')$且$\ker(b')=\ker(b)$，所以我们就得到了$[\coker(a)]\cong [\ker(b)]$.
+\end{proof}
+
+上图中的$[\coker(a)]$或者$[\ker(b)]$，我们经常会记作$\ker(g)/\im(f)$.
+
+\section{正合列}
+
+首先回顾正合列的相关知识，我们很久以前已经介绍过了左$R$-模范畴中的正合列。现在由于我们对Abel范畴有了一定的任意，所以这里直接将正合列定义到一个Abel范畴中，在许多操作上，他并不比模范畴麻烦多少。
+
+\begin{para}
+若有一族态射$f_i:A_i\to A_{i+1}$满足$\im f_i\approx \ker f_{i+1}$，则列
+\[
+	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
+\]
+被称为正合的。
+\end{para}
+
+对正合列来说，成立$f_{i+1}f_i=0$. 如果$\im f_i\approx \ker f_{i+1}$，则$\coker \ker f_{i+1} \approx \coker \im f_i$，换而言之，存在同构$t$使得$\coker \ker f_{i+1}=t\coker \im f_i$. 因此
+\begin{align*}
+f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})(\coker \ker f_{i+1}) \im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})t(\coker \im f_i) \im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})t\bigl((\coker \im f_i) \im(f_{i})\bigr)\coim(f_{i})\\
+	&=\im(f_{i+1})t0\coim(f_{i})\\
+	&=0.
+\end{align*}
+
+\begin{para}[短正合列]
+考虑正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot.
+\]
+为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态。对偶地，考虑正合列
+\[
+	\cdot\xrightarrow{f} X \to  0.
+\]
+为了满足正和性，我们需要$\im f \approx \ker 0$，两边作用一次$\coker$将得到
+\[
+	\coker f=\coker \ker \coker f=\coker \im f \approx \coker \ker 0.
+\]
+注意到，此时$\ker 0=\id_X$是一个满态，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态。
+
+现在，我们来到正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot \to 0,
+\]
+由上面可知$f$即是单态又是满态，在Abel范畴中这等价于说$f$是一个同构。
+
+最后，正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot\to 0,
+\]
+被称为\idx{短正合列}。它等价于说，$f$单$g$满且$\im f\approx \ker g$.
+\end{para}
+
+\begin{para}
+设$T:\mathcal{C}\to \mathcal{D}$是准加性范畴之间的函子，如果对$\mathcal{C}$中的态射$f$, $g$成立$T(f+g)=Tf+Tg$. 则称$T$是一个加性函子。更形式地说，
+\[
+	T:\mathcal{C}(X,Y)\to \mathcal{D}(TX,TY)
+\]
+是一个交换群同态。
+\end{para}
+
+从定义，不难看到对零态射$0$，成立$T0=0$. 如果$0$是$\mathcal{C}$中的零对象，则$T:\mathcal{C}(0,0)\to \mathcal{D}(T0,T0)$告诉我们$\mathcal{D}(T0,T0)$是一个单点集，所以Propositon \ref{zeroobj}告诉我们$T0$是$\mathcal{D}$中的零对象，即$T0=0$.
+
+\begin{pro}
+$T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可交换。所谓与双积可交换，就是把双积映成双积（包括其对应的相关态射）。
+\end{pro}
+
+\begin{proof}
+设$T$是一个加性函子，而$p_1$, $p_2$, $i_1$和$i_2$是双积的四个典范态射，于是
+\[
+	p_ai_a = \id \quad \Rightarrow \quad T(p_a)T(i_a) = \id,
+\]
+\[
+	p_ai_b = 0 \quad \Rightarrow \quad T(p_a)T(i_a) = T0=0,
+\]
+\[
+	i_1p_1+i_2p_2 = \id \quad \Rightarrow \quad T(i_1)T(p_1)+T(i_2)T(p_2) = \id,
+\]
+告诉我们$T$与双积可交换。$Tp_1$, $Tp_2$, $Ti_1$和$Ti_2$是新双积的四个典范态射。
+
+反过来，考虑态射$f$, $g:X\to Y$. 不难发现$f+g=c(f\oplus g)d$. 其中$d:X\to X\oplus X$满足唯一分解$p^X_1d=p^X_2d=\id_X$，这直接来自于积的泛性质，此外，$c:Y\oplus Y\to Y$满足唯一分解$ci^Y_1=ci^Y_2=\id_Y$，这直接来自于余积的泛性质。所以
+\[
+	c(f\oplus g)d=c(i_1^Y f p_1^X+i_2^Y g p_2^X)d=c i_1^Y f p_1^X d+ ci_2^Y g p_2^Xd=f+g.
+\]
+
+设$T$与双积可交换，双积的泛性质告诉我们$T(f\oplus g)=T(f)\oplus T(g)$. 于是，
+\[
+	T(f+g)=T(c(f\oplus g)d)=T(c)T(f\oplus g)T(d)=T(c)(T(f)\oplus T(g))T(d)=T(f)+T(g).
+\]
+所以$T$是加性函子。
+\end{proof}
+
+由于在Abel范畴中，双积等价于有限积等价于有限余积。所以只要函子与有限积或者有限余积与可交换，这就是加性函子。
+
+\begin{para}
+设$R:\mathcal{C}\to \mathcal{D}$与$L:\mathcal{D}\to \mathbb{C}$是一对伴随函子，其中$R$是右伴随函子，而$L$是左伴随函子。如果$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，由于右伴随函子与极限可交换、左伴随函子与余极限可交换，所以不管左伴随函子还是右伴随函子，它们都是加性函子。
+
+此外，由于核是一个极限，所以$R(\ker f)= \ker(Rf)$. 对偶地，$L(\coker g)= \coker(Lg)$.
+\end{para}
+
+\begin{lem}
+假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态，则$Rf$是$\mathcal{D}$中的单态。
+\end{lem}
+
+\begin{proof}
+已知$f$是一个单态当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态。
+\end{proof}
+
+在Abel范畴中，$f$是一个单态等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态，所以$Rf=\im(Rf)$，结合这两点就得到了
+\[
+	R(\im f)=Rf=\im(Rf).
+\]
+这意味着，对单态而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态。
+
+\begin{pro}
+如果$R$是一个从Abel范畴到Abel范畴的右伴随函子，则对正合列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$，他将诱导一个正合列
+\[
+	0\to R(X_1)\xrightarrow{R(f_1)} R(X_2)\xrightarrow{R(f_2)} R(X_3).
+\]
+\end{pro}
+
+由上一个引理和其推论立即可知。对偶地，可以知道：
+
+\begin{pro}
+如果$L$是一个从Abel范畴到Abel范畴的左伴随函子，则对正合列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3 \to 0$，他将诱导一个正合列
+\[
+	L(X_1)\xrightarrow{L(f_1)} L(X_2)\xrightarrow{L(f_2)} L(X_3) \to 0.
+\]
+\end{pro}
+
+将满足上面两个命题的加性函子抽象出来。
+
+\begin{para}
+设$T$是一个加性函子，如果他把正和列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$变成正合列
+\[
+	0\to T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3),
+\]
+则称$T$是一个左正和函子。对偶地，如果他把正和列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3\to 0$变成正合列
+\[
+	T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3)\to 0,
+\]
+则称$T$是一个右正和函子。
+
+如果把短正合列变成短正合列，则称$T$是一个正和函子。所以，正和性等价于左正和又右正和。
+\end{para}
+
+综上，我们已经证明了：
+
+\begin{thm}
+设函子从Abel范畴到Abel范畴，则左伴随函子右正合，而右伴随函子左正和。
+\end{thm}
+
+\begin{pro}
+设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\mathrm{op} \to \mathsf{Ab}$都是左正合函子。
+\end{pro}
+
+\begin{proof}
+	设
+	\[
+		0\to\cdot \xrightarrow{f}\cdot \xrightarrow{g}\cdot
+	\]
+	是一个正合列，我们要证明
+	\[
+	0\to \cdot \xrightarrow{f_*}\cdot \xrightarrow{g_*}\cdot
+	\]
+	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态，所以$\ker g_* \subset \im f_*$.
+
+	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$是左正合函子。
+\end{proof}
+
+\section{追图}
+
+我们将在Abel范畴中谈论追图。
+
+\begin{lem}\label{zhuitu}
+设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态$u$和$v$使得如下交换图成立，
+\[
+\xymatrix{
+	\cdot \ar[r]^u \ar[d]_v & \cdot\ar[d]^f\\
+	\cdot \ar[r]^g & \cdot
+}
+\]
+我们可以断言，$\sim$是一个等价关系，其中，自反性与对称性是显然的。
+\end{lem}
+
+为证明传递性，我们需要如下引理。
+
+\begin{lem}\label{mt}
+	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态，则$p_Y$是满态.
+\end{lem}
+
+\begin{proof}[Proof of Lemma \ref{mt}]
+	在Abel范畴中，我们已经知道积是存在的，即$X\times Y$存在，投影分别记作$\pi_X$和$\pi_Y$. 并且，核是存在的，则$X\times_Z Y$可以定义为$\ker(f\pi_X-g\pi_Y)$的定义域，而$p_X=\pi_X\ker(f\pi_X-g\pi_Y)$以及$p_Y=\pi_Y\ker(f\pi_X-g\pi_Y)$.
+
+	现在，设$f$是一个满态，下面说明$f\pi_X-g\pi_Y$是满态。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态，所以$h=0$. 此即所证。
+
+	利用$f\pi_X-g\pi_Y$是满态，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
+	\[
+	0=h\pi_Yi_X=k(f\pi_X-g\pi_Y)i_X=kf,
+	\]
+	由于$f$是满态，所以$k=0$. 因此
+	\[
+	h=h\pi_Yi_Y=k(f\pi_X-g\pi_Y)i_Y=0.
+	\]
+	这就说明了$p_Y$是一个满态。
+\end{proof}
+
+\begin{proof}[Proof of Lemma \ref{zhuitu}]
+	若$f\sim g$且$g\sim h$，考虑如下交换图
+	\[
+	\xymatrix{
+	&Z_1\ar[r]^a\ar[rd]_b&X\ar[rd]^f&\\
+	Z_1\times_{X'} Z_2\ar[ru]^{p_{Z_1}}\ar[rd]_{p_{Z_2}}&&X'\ar[r]^g&Y\\
+	&Z_2\ar[ru]^c\ar[r]_d&X''\ar[ru]_h&
+	}
+	\]
+	其中$a$, $b$, $c$, $d$都是满态。由上一个引理，$c$是满态给出$p_{Z_1}$是满态，$d$是满态给出$p_{Z_2}$是满态。最后，满态$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
+\end{proof}
+
+\begin{para}
+从Lemma \ref{zhuitu}，我们得到了指向$X$的态射的等价类，其中的元素称为对象$X$的伪元素，记作$[x]$，其中$x$是等价类中的代表元。而$[x]\in \mathcal{C}(-,X)/\sim$记作$[x]\in_m X$. 
+
+设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
+
+值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态$u$, $v$使得$xu=0v=0$，再由$u$是一个满态，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
+
+设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 注意到，如果$x\sim x'$，则$fx\sim fx'$，所以$f(x)=f(x')$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
+
+再设$g:Y\to Z$是另一个态射，则$gf(x)=[gfx]=g(f(x))$. 这就是复合规则，和映射的情况是一摸一样的。
+\end{para}
+
+一般来说，所有指向$X$的态射的全体都不能构成一个集合。但是，当我们考虑等价类的全体，它们确实是可能构成一个集合的。比如在模范畴中就是如此，为此，我们需要下面的引理。
+
+\begin{lem}
+在模范畴中，$f\sim g$当且仅当$\im f = \im g$.
+\end{lem}
+
+\begin{proof}
+如果$f\sim g$，则存在满态$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
+
+反过来，设$f:X\to Z$而$g:Y\to Z$，考虑$X\times_Z Y=\{(x,y)\,:\,f(x)=g(y)\}$. 如果$\im f=\im g$，则$f(X)=g(Y)$. 所以任取$x_0\in X$都存在一个$y_0\in Y$使得$f(x_0)=g(y_0)$，此时$x_0=p_X(x_0,y_0)$，所以$p_X$是满同态。同理，$p_Y$是满同态。
+\end{proof}
+
+因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f x)=f(\im x)$. 这就还原了作为映射的$f$. 
+
+下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态还是满态可以应用模范畴中类似的手段来做。
+
+\begin{pro}[追图法]
+设$f:X\to Y$是一个态射，
+\begin{compactenum}[~~~(1)]
+\item $f$是单态，当且仅当$f(x)=0$可以推出$x=0$.
+\item $f$是单态，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
+\item $f$是满态，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
+\item $f=0$当且仅当任取$[x]\in_m X$都有$f(x)=0$.
+\item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$[x]$使得$[y]=f(x)$.
+\item 如果$f(x)=f(x')$，则存在$[x'']\in_m X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
+\end{compactenum}
+\end{pro}
+
+最后一点看着奇怪，实际上$x''$是模范畴中$x-x'$的类比。追图法的存在让我们可以像处理模范畴一样来处理Abel范畴中的交换图。
+
+\begin{proof}
+依次证明如下。
+\begin{compactenum}[~~~(1)]
+\item 如果$f$是单态，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态。
+
+\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态。
+
+\item 假设$f$是满态。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态，所以$p_{X'}:X\times_Y X'\to X'$是满态。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
+
+反过来，设$f$不是满态，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态$u$, $v$使得$fxu=v$，由于$v$是满态，所以$f$也必须是满态，矛盾。
+
+\item 显然。
+
+\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态可以得到$p_h$是一个满态. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
+
+反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
+
+\item 如果$f(x)=f(x')$，则存在满态$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
+\end{compactenum}
+\end{proof}
+
+作为追图法的直接应用，我们来证明非常实用的五引理。
+
+\begin{lem}[五引理]\label{5-lem}
+在Abel范畴$\mathcal{C}$中，如果存在如下交换图
+\[
+	\xymatrix{
+	A_1\ar[r]^{f_1}\ar[d]^{h_1}&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]^{f_4}\ar[d]^{h_4}&A_5\ar[d]^{h_5}\\
+	B_1\ar[r]^{g_1}&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]^{g_4}&B_5\\
+	}
+\]
+且横向的两行都是正合列。则，
+\begin{compactenum}[~~~(1)]
+\item 如果$h_2$, $h_4$是单态，$h_1$是满态，则$h_3$是单态。
+\item 如果$h_2$, $h_4$是满态，$h_5$是单态，则$h_3$是满态。
+\item 如果$h_2$, $h_4$是同构，$h_1$是满态，$h_5$是单态，则$h_3$是同构。
+\end{compactenum}
+\end{lem}
+
+\begin{proof}
+最后一点不过是前面两点的推论。第二点是第一点的对偶命题，所以我们只要证明第一点即可。
+
+取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
+\[
+	g_1(z)=g_1h_1(w)=h_2f_1(w),
+\]
+从$g_1(z)=h_2(y)$以及$h_2$是一个单态，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
+\end{proof}
+
+五引理最常见的应用是短五引理，他将用在短正合列上面。
+
+\begin{lem}[短五引理]\label{short-5-lem}
+在五引理中，令$A_1=B_1=A_5=B_5=0$，那么$h_1=h_5=\id_0$是自然的同构，我们得到了如下交换图（略去了恒等$\id_0:0\to 0$当然还有显然的$f_1=g_1=f_4=g_4=0$）
+\[
+	\xymatrix{
+	0\ar[r]&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]\ar[d]^{h_4}&0\\
+	0\ar[r]&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]&0\\
+	}
+\]
+于是，
+\begin{compactenum}[~~~(1)]
+\item 如果$h_2$, $h_4$是单态，则$h_3$是单态。
+\item 如果$h_2$, $h_4$是满态，则$h_3$是满态。
+\item 如果$h_2$, $h_4$是同构，则$h_3$是同构。
+\end{compactenum}
+\end{lem}
+
+\begin{lem}[蛇引理]\label{snake-lemma}
+考虑如下交换图
+\[
+	\xymatrix{
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
+	0\ar[r]&\cdot \ar[r]^{f'}&\cdot \ar[r]^{g'}&\cdot \ar[r]&0\\
+	}
+\]
+其中两行是正合列。则我们可以拓展为交换图
+\[
+	\xymatrix{
+	&0\ar[d]&0\ar[d]&0\ar[d]&\\
+	0\ar@{.>}[r]&\cdot\ar@{.>}[r]^a\ar[d]^{\ker u}&\cdot\ar@{.>}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
+	0\ar[r]&\cdot \ar[r]^{f'}\ar[d]^{\coker u}&\cdot \ar[r]^{g'}\ar[d]^{\coker v}&\cdot \ar[r]\ar[d]^{\coker w}&0\\
+	&\cdot \ar@{.>}[r]_c\ar[d] &\cdot \ar@{.>}[r]_d\ar[d] &\cdot \ar@{.>}[r]\ar[d]& 0\\
+	&0&0&0&\\
+	}
+\]
+其中每行每列都是正合列，此外，还存在态射$\delta$使得如下正合列成立
+\[
+	0\to \ker u \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}\ker w \xrightarrow[~~~]{\delta}\coker u \xrightarrow[~~~]{c}\coker v \xrightarrow[~~~]{d}\coker w \to 0.
+\]
+\end{lem}
+
+\begin{proof}
+$a$, $b$, $c$, $d$的存在唯一性直接来自于$\ker$与$\coker$的泛性质，正和性也不难检验。最难的在于构造$\delta$. 考虑交换图
+\[
+	\xymatrix{
+	0\ar[r]&\cdot \ar[r]^-{\ker p_X}\ar@{.>}[d]^p&X\times_Z Y \ar[r]^-{p_X}\ar[d]^{p_Y}&X\ar[d]^{\ker w}\ar[r]&0\\
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&Y \ar[r]^{g}\ar[d]^{v}&Z \ar[d]^{w}\ar[r]&0\\
+	0\ar[r]&U \ar[r]^{f'}\ar[d]^{\coker u}&W \ar[r]^{g'}\ar[d]^{i_W}&\cdot \ar@{.>}[d]^q\ar[r]&0\\
+	0\ar[r]&V \ar[r]_-{i_V}&V\cup_U W \ar[r]_-{\coker i_V}&\cdot\ar[r]&0
+	}
+\]
+其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
+
+同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态，所以由Lemma \ref{mt}，$p_X$是满态。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态。
+
+现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
+
+最后，正和性的检验是直接的，追图法将解决一切。
+\end{proof}
+
+利用蛇引理，短五引理是直接的。如果$u$和$w$是单态，则我们在正合列中有
+\[
+	0\to 0 \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}0,
+\]
+所以$\ker v=0$，这就是说$v$也是单态。满态的命题也类似。
