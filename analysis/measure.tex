@@ -1,3 +1,4 @@
+%!TEX root = main.tex
 \chapter{测度与积分基础}
 
 在这节中，我们可能需要考虑扩充实直线$[-\infty,\infty]$. 上面的拓扑基选为所有形如$[-\infty,\alpha)$, $(\beta,\infty]$, $(\gamma,\rho)$的集合，它们都被称为开区间。当然还可能会考虑含有$\infty$的正实轴$[0,\infty]$（扩充正实轴），这上面的拓扑默认是扩充实直线的子空间拓扑。
@@ -499,3 +500,76 @@ $\sigma$-代数的检验是直接的。下面我们说明，选取不同的$A_1\
 \end{proof}
 
 \section{正Borel测度}
+
+\begin{para}
+设$X$是一个拓扑空间，$\mathsf{C}(X)$是上面所有复值连续函数构成的复矢量空间。如果$X$还是Hausdorff的，则所有具有紧支集的复值连续函数构成了$\mathsf{C}(X)$的一个子空间，记作$\mathsf{C}_c$. 它确实是一个子空间，因为对加法而言，$f+g$的支集处于$f$和$g$的支集的并中，后者是紧的，作为Hausdorff空间中紧集的闭子集，$f+g$的支集也是紧的。数乘非零标量支集不变，而乘以零之后，支集是空的，所以显然是紧的。
+
+称$\ell:\mathsf{C}_c(X)\to \cc$是一个正线性泛函，如果对$\mathsf{C}_c(X)$中的非负函数$f$，$\ell(f)$都非负。因此正线性泛函在如下意义下单调：如果$f_1(x)\leq f_2(x)$处处成立，则$\ell(f_1)\leq \ell(f_2)$.
+\end{para}
+
+下面这个定理几乎是实分析最重要的定理，它联系了正线性泛函与测度。
+
+\begin{thm}[Riesz表示定理]
+	设$X$是一个局部紧的Hausdorff空间，$\Lambda$是$\mathsf{C}_c(X)$上的一个整正线性泛函，则$X$上具有一个$\sigma$-代数$\mathscr{F}$使得其变为一个完备测度空间，$\mathscr{F}$包含全部的开集，且存在这个$\mathscr{F}$上的唯一的正测度$\mu$，使得任取$f\in \mathsf{C}_c(X)$，我们都有
+	\[
+	\Lambda(f)=\int_X f\mathrm{d}\mu.
+	\]
+	同时，这个正测度$\mu$还满足：
+	\begin{compactenum}[~~~(1)]
+	\item 对任意的紧集$K\subset X$，$\mu(K)<\infty$.
+	\item 对$E\in \mathscr{F}$，有
+	\[
+	\mu(E)=\inf_V \mu(V),
+	\]
+	其中$V$跑遍所有包含$E$的开集。
+	\item 对满足$\mu(E)<\infty$的$E\in \mathscr{F}$或者开集$E$，有
+	\[
+	\mu(E)=\sup_K \mu(K),
+	\]
+	其中$K$跑遍所有包含于$E$中的紧集。
+	\end{compactenum}
+\end{thm}
+
+这里不会证明这个定理，这个定理的详细证明可以参见[Rudin, Real and Complex Analysis, Theorem 2.14]. 但是我们给出下面的一个应用。
+
+\begin{para}
+如果$X$是一个局部紧Hausdorff空间，在$\mathsf{C}_c(X)$上我们可以定义一个绝对值函数$\abs:\mathsf{C}_c(X)\to \mathsf{C}_c(X)$，通过$\abs(f(x))=|f(x)|$. 
+
+称$\ell:\mathsf{C}_c(X)\to \rr$是一个正线性泛函，如果对$\mathsf{C}_c(X)$中的非负函数$f$，$\ell(f)$都非负。因此正线性泛函在如下意义下单调：如果$f_1(x)\leq f_2(x)$处处成立，则$\ell(f_1)\leq \ell(f_2)$.
+
+不难看到，给定一个正线性泛函$\ell$，$\ell\circ \abs$是一个半范数，其中$\abs:\mathsf{C}_c(X)\to \mathsf{C}_c(X)$是$\mathsf{C}_c(X)$上的绝对值函数，方便起见，我们将$\ell$确定的半范数记作$p_\ell$. 既然得到了一个半范数$p_\ell$，进一步，可以在$\mathsf{C}_c(X)/p_\ell^{-1}(0)$上定义出一个范数使得它称为一个拓扑矢量空间，然后完备化之，这样得到的空间记作$\mathsf{L}(X)$，$\mathsf{L}(X)$上的范数记作$|*|_\ell$. 
+
+一般来说，在谈论$\mathsf{L}(X)$或者$\mathsf{C}_c(X)/p_\ell^{-1}(0)$的时候，我们会心照不宣地将$f\in \mathsf{C}_c(X)$看作其等价类。比如，我们可能会对$f\in \mathsf{C}_c(X)$说成立等式$|f|_\ell = \ell(\abs(f))$.
+
+由Riesz表示定理，$\mathsf{C}_c(X)$上的每一个正线性泛函$\ell$都可以定义出$X$上的一个正测度$\mu$，使得任取$f\in \mathsf{C}_c(X)$都成立
+\[
+	\ell(f)=\int f\,\dd \mu.
+\]
+实际上，我们构造的完备拓扑矢量空间$\mathsf{L}(X)$就是$\mathsf{L}^1(\mu)$而已。但说明这点远比这样构造$\mathsf{L}(X)$要困难得多。
+
+\begin{lem}
+	一切记号与习惯同上。$\mathsf{C}_c(X)$上的正线性泛函$\ell$将诱导出$\mathsf{L}(X)$上的唯一的连续线性泛函$\ell'$，对满足$\ell'(f)=\ell(f)$.
+\end{lem}
+
+\begin{proof}
+	可以将$\mathsf{C}_c(X)/p_\ell^{-1}(0)$看作$\mathsf{L}(X)$的子空间，而$\ell$在$\mathsf{C}_c(X)/p_\ell^{-1}(0)$诱导了一个$\bar{\ell}$满足$\bar{\ell}(f)=\ell(f)$. $\bar{\ell}$的连续性来自于$\bar{\ell}$在$\mathsf{C}_c(X)/p_\ell^{-1}(0)$是有界的，实际上，
+	\[
+	|\bar{\ell}(f)|=|\ell(f)|\leq \ell(|f|)=p_\ell(f).
+	\]
+	不等式来自于$-|f|\leq f\leq |f|$以及$\ell$是一个正线性泛函，即
+	\[
+	-\ell(|f|)\leq \ell(f)\leq \ell(|f|).
+	\]
+	由于$\mathsf{C}_c(X)/p_\ell^{-1}(0)$在其完备化空间$\mathsf{L}(X)$中稠密，然后对$\bar{\ell}$使用Proposition \ref{1.52}即可。
+\end{proof}
+
+再具体一些，考虑$X=\rr^n$，每一个$\mathsf{C}_c(X)$中的函数都是Riemann可积的，取$\ell$为通常的Riemann积分，不难发现这是一个正线性泛函。我们这里指出，$p_\ell$不仅仅是一个半范数，它其实是一个范数。
+
+实际上，如果$f$不为零，由$f$的连续性，则$|f|$在一个开集（为方便可以取做一个开长方体$V_0$，体积为$a$）上满足$|f(x)|>\epsilon$，所以
+\[
+	\int_{\rr^n}\dd^n x\, |f|\geq \int_{V_0}\dd^n x\, |f|>a\epsilon>0.
+\]
+因此$p_\ell^{-1}(0)=0$.
+
+于是利用上面的引理，我们就在$\mathsf{C}_c(X)$的完备化$\mathsf{L}(\rr^n)$上得到了新的积分，即Lebesgue积分。实际上，$\mathsf{L}(\rr^n)$正是寻常的$\mathsf{L}^1(\rr^n)$.
+\end{para}

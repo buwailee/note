@@ -145,11 +145,13 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 一个群/环/模的子群/环/模如果作为子集是真子集，则称其为真子群/环/模。
 
-\para 注意到环$R$本身可以看成一个$R$-模，他的子模被称为理想。
+\begin{para}
+注意到环$R$本身可以看成一个$R$-模，他的子模被称为理想。
+\end{para}
 
 显然$\{0\}$和$R$本身是$R$的理想，前者被称为零理想，后者被称为单位理想，这两者往往被称为平凡理想，因为我们感兴趣的理想往往不是他们。
 
-设$a\in R$，则$aR$也是$R$的一个\idx{理想}，被称为\idxx{理想}{主理想}，有时候也记作$(a)$. 由于$\{0\}=0R$以及$R=1R$，零理想和单位理想都是主理想。主理想$(a)$一般也称作被$a$生成的主理想。
+设$a\in R$，则$aR$也是$R$的一个\idx{理想}，被称为\idxx{理想}{主理想}，有时候也记作$(a)$或者$\langle a\rangle$. 由于$\{0\}=0R$以及$R=1R$，零理想和单位理想都是主理想。主理想$(a)$一般也称作被$a$生成的主理想。
 
 单位理想名字中的单位来自于可逆元的英文unit：考虑一个可逆元$a\in R$，由于存在$a^{-1}$，所以任取$r\in R$，都有$r=a(a^{-1}r)\in (a)$，所以$(a)=R$. 这就是说可逆元生成的主理想都是单位理想。
 
@@ -387,14 +389,12 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \end{proof}
 
 所以上述命题告诉我们：在保证存在性的前提下，
-
-	1. 极大理想是素理想。
-
-	2. 所有非有限生成的理想中极大的是素理想。
-
-	3. 所有非主理想的理想中极大的是素理想。
-
-	4. 所有与某乘性子集不交的理想中极大的是素理想。
+\begin{compactenum}[~~~1.]
+\item 极大理想是素理想。
+\item 所有非有限生成的理想中极大的是素理想。
+\item 所有非主理想的理想中极大的是素理想。
+\item 所有与某乘性子集不交的理想中极大的是素理想。
+\end{compactenum}
 
 \begin{pro} \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\cdots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
 \end{pro}
@@ -419,12 +419,14 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \end{proof}
 
 \para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
-\begin{itemize}
+\begin{compactitem}
 \item 如果一个代数集包含几个仿射簇的交，则在这些仿射簇中存在一个仿射簇包含于这个代数集中。
 \item 如果一个仿射簇包含于几个代数集的并中，则在这些代数集中必然存在一个代数集包含这个仿射簇。
-\end{itemize}
+\end{compactitem}
 
-\para 设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
+\begin{pro}
+设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
+\end{pro}
 
 \begin{proof}
 	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
@@ -435,11 +437,16 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 	当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
 \end{proof}
 
-\para 上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
 
-但是，对于商映射，情况会好很多。设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
+但是，对于商映射，情况会好很多。
 
-证明是朴实的，任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态
+\begin{pro}
+设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
+\end{pro}
+
+\begin{proof}
+任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态
 \[
 	\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}},
 \]
@@ -447,21 +454,23 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \[
 	R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}.
 \]
+\end{proof}
 
-\para 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
+利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
 
 \begin{proof} 
 	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
 \end{proof}
 
-\para 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
 
-\para 定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
+\begin{para}
+定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
 \[
 	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
 \]
-
 一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
+\end{para}
 
 一个理想的根其实是所有包含它的素理想的交。实际上，设$A$是所有包含$\mathfrak{a}$的素理想的交，设$\pp$是任意一个包含$\mathfrak{a}$的素理想，如果$f^n\in \mathfrak{a}$，则$f^n\in \pp$，由于$\pp$是素理想，所以$f^n=f\cdot f^{n-1}$给出$f\in\pp$或者$f^{n-1}\in\pp$，通过归纳法就有$f\in \pp$. 这就给出了$\sqrt{\mathfrak{a}}\subset A$. 反过来，如果$f\not\in \sqrt{a}$，考虑所有与$\{1,f,f^2,\cdots\}$不交的，但包含$\mathfrak{a}$的所有理想中极大的那个理想$\pp$，这是一个素理想，存在性来自于Zorn引理，所以$f\not\in \pp$. 这就给出了$A\subset \sqrt{\mathfrak{a}}$.
 

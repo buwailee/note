@@ -1,7 +1,8 @@
 % !TeX program = XeLaTeX
 % author: buwailee@nmhs
 \documentclass[10pt]{book}
-\usepackage[zh,book]{noteheader}
+\usepackage[fontset = fandol]{ctex}
+\usepackage[book]{noteheader}
 	% \CTEXoptions[today=old]
 	% \CTEXoptions[contentsname=Table of Contents]
 
@@ -15,6 +16,7 @@
 	\newtheorem{theo}[para]{Theorem}
 	\newtheorem{thm}[para]{Theorem}
 	\newtheorem{pro}[para]{Proposition}
+	\newtheorem{coro}[para]{Corollary}
 \renewcommand*{\proofname}{Proof}
 
 \usepackage{titletoc,makeidx,paralist}
@@ -33,12 +35,13 @@
 \newcommand{\ThisULCornerWallPaper}[2]{}
 
 \begin{document}
-\setcounter{page}{-1}
+\frontmatter
 \tableofcontents
 \mainmatter
-	\input{chap1.tex}
-	\input{chap2.tex}
-	\input{appendix.tex}
+	\input{variety.tex}
+	\input{scheme.tex}
+	% \input{chap2.tex}
+	% \input{appendix.tex}
 \backmatter
 	\printindex
 	% \input{references.tex}

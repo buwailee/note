@@ -1,13 +1,14 @@
 % author: buwailee@nmhs
-\documentclass[10pt]{book}
-\usepackage[zh,book]{noteheader}
+\documentclass[11pt]{book}
+\usepackage[zh]{noteheader}
 	\CTEXoptions[today=old]
 	\CTEXoptions[contentsname=Table of Contents]
 
-	\setCJKmainfont[
-	ItalicFont = Adobe Kaiti Std ,
-	BoldFont = SourceHanSerifSC-Bold ,
-	]{Source Han Serif SC}
+% \setCJKmainfont[
+% 	ItalicFont = KaiTi ,
+% 	BoldFont = SourceHanSerifSC-Bold ,
+% ]{SimSun}
+% \setCJKsansfont{Inziu IosevkaCC SC}
 
 % \usepackage[section]{../egastyle}
 \usepackage{titletoc, makeidx}
@@ -17,12 +18,13 @@
 \theoremstyle{definition}
 	\newtheorem{para}{}[section]
 		\renewcommand{\thepara}{\thesection.\arabic{para}}
-	\newtheorem{lem}[para]{Lemma}
 	\newtheorem{exa}[para]{Example}
 \theoremstyle{plain}
 	\newtheorem{theo}[para]{Theorem}
 	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{lem}[para]{Lemma}
 	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
 
 \usepackage{paralist}
 \usepackage{hyperref}
@@ -37,6 +39,11 @@
 
 \makeindex
 	\renewcommand{\indexname}{Index}
+
+\setlength{\plitemsep}{0.5ex}
+\setlength{\pltopsep}{0.5ex}
+% \setlength{\plpartopsep}{0.5ex}
+% \setlength{\plparsep}{0.5ex}
 
 \begin{document}
 \setcounter{page}{-1}
@@ -53,11 +60,12 @@
 \frontmatter
 \tableofcontents
 \mainmatter
+	\input{foundation.tex}
 	\input{calculus.tex}
 	\input{lie_group.tex}
 	\input{connection.tex}
 	\input{appendix.tex}
 \backmatter
 	\printindex
-	\input{references.tex}
+	% \input{references.tex}
 \end{document}

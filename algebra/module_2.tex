@@ -21,16 +21,26 @@
 \[
 	\bigcup_{0\neq m\in M}\ann(m)\subset \bigcup_{\mathfrak{a}\in \Ass(M)}\mathfrak{a}. 
 \]
-
-从这里开始，我们假设这节下面出现的环都是Noether环，除非特别申明。
+利用Proposition \ref{primeav}，我们还可以断言，其实存在一个$\pp\in \Ass(M)$使得
+\[
+	\bigcup_{0\neq m\in M}\ann(m)\subset \pp.
+\]
 
 \begin{lem}
-设$M$是一个$R$-模，如果$\ann(m)$是素理想，则对$M$的子模$Rm$的任意非零子模$N$有$\ann(N)=\ann(m)$.
+设$M$是一个$R$-模，如果$\ann(m)$是素理想，则任取$rm\neq 0$，我们有$\ann(rm)=\ann(m)$. 特别地，如果$\pp$是$R$的一个素理想，则$\Ass(R/\pp)=\{\pp\}$.
 \end{lem}
 
+下面可能要用这个非常简单的推论：对$M$的子模$Rm$的任意非零子模$N$有$\ann(N)=\ann(m)$.
+
 \begin{proof}
-	显然，$\ann(m)\subset \ann(N)$. 由于有$R$-模同构$\psi: Rm\to R/\ann(m)$，所以$Rm$的任意非零子模$N$对应着$R/\ann(m)$的非零理想$\psi(N)$. 如果$r\in \ann(N)$，则$r\psi(N)=\psi(rN)=0$，因为$\psi(N)$非零且$R/\ann(m)$是整环，所以$r$在$R/\ann(m)$中的像为零，即是说$r\in \ann(M)$. 所以$\ann(N)\subset \ann(m)$.
+	显然，$\ann(m)\subset \ann(rm)$. 同时，由于$rm\neq 0$，所以$r\not\in \ann(m)$. 反之，任取$s\in \ann(rm)$，则$srm=0$给出$sr\in \ann(m)$. 由于$r\not\in \ann(m)$且$\ann(m)$是素理想，所以$s\in \ann(m)$. 这就给出了$\ann(rm)\subset \ann(m)$.
+
+	% 显然，$\ann(m)\subset \ann(N)$. 由于有$R$-模同构$\psi: Rm\to R/\ann(m)$，所以$Rm$的任意非零子模$N$对应着$R/\ann(m)$的非零理想$\psi(N)$. 如果$r\in \ann(N)$，则$r\psi(N)=\psi(rN)=0$，因为$\psi(N)$非零且$R/\ann(m)$是整环，所以$r$在$R/\ann(m)$中的像为零，即是说$r\in \ann(m)$. 所以$\ann(N)\subset \ann(m)$.
+
+	现在，考虑$M=R/\pp$而$m=1$的情况，此时任取$m\neq 0$，我们都有$\ann(m)=\ann(1)=\pp$，所以$\Ass(R/\pp)=\{\pp\}$.
 \end{proof}
+
+从这里开始，我们假设这节下面出现的环都是Noether环，除非特别申明。
 
 \begin{pro}
 如果我们有$R$-模的正合列$0\to M'\to M\to M''\to 0$，则我们有包含关系
@@ -45,11 +55,105 @@
 
 考虑$M=M'\oplus M''$的情况，由于$M'$和$M''$都有到$M$的单同态，所以$\Ass(M')\subset \Ass(M)$以及$\Ass(M'')\subset \Ass(M)$，继而他给出了$\Ass(M)=\Ass(M')\cup \Ass(M'')$.
 
-\para 设$N$是$M$的一个子模，如果$\Ass(M/N)$只有一个元素，则称呼$N$是$M$的一个准素子模，如果$\Ass(M/N)=\{\mathfrak{p}\}$，则称呼$N$是$\mathfrak{p}$-准素的。
+\begin{pro}
+设$M$是一个有限生成$R$-模，则存在一个子模链
+\[
+	0=M_0\subset M_1\subset \cdots\subset M_n=M,
+\]
+使得$M_{i+1}/M_i\cong R/\pp_i$，其中$\pp_i$是$R$的一个素理想。
+\end{pro}
 
-如果设$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是. 事实上，考虑单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ass(M/(N_1\cap N_2))\subset \Ass(M/N_1)\cup \Ass(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ass(M/(N_1\cap N_2))$非空，所以$\Ass(M/(N_1\cap N_2))=\{\mathfrak{p}\}$.
+\begin{proof}
+利用Hilbert基定理，$M$是一个Noether模。由于$R$是一个Noether环，所以$\Ass(M)$非空，即存在一个素理想$\pp_1=\ann(m_1)$，于是$Rm_1\cong R/\pp_1$. 我们将$M_1$取做$Rm_1$，然后对$M/M_1$重复上面的逻辑，由于$M$是一个Noether模，我们只能这样做有限次，进而得到了我们需要的链。
+\end{proof}
+
+由于$M_{i+1}/M_i\cong R/\pp_i$，所以
+\[
+	\Ass(M_i)\subset \Ass(M_{i+1})\subset \Ass(M_i)\cup \Ass(R/\pp_i).
+\]
+因此，我们得到了一个很粗的包含关系
+\[
+	\Ass(M)\subset \bigcup_i \Ass(R/\pp_i)=\bigcup_i \{\pp_i\}.
+\]
+但至少，对有限生成$R$-模，我们知道，它的associated primes有限。
+
+\begin{pro}
+设$M$是一个有限生成$R$-模，而$S$是$R$的一个乘性子集，则
+\[
+	\Ass_{S^{-1}R}(S^{-1}M)=\{S^{-1}\pp\,:\,\pp\in \Ass_RM\quad \text{and}\quad P\cap S=\varnothing\}.
+\]
+\end{pro}
+
+\begin{proof}
+如果$\pp\in \Ass_R M$，那么存在一个$M$的一个子模同构于$R/\pp$. 局部化之，我们得到了$S^{-1}M$的一个子模同构于$S^{-1}R/S^{-1}\pp$，所以，如果$S^{-1}\pp$是$S^{-1}R$的素理想，即$\pp\cap S= \varnothing$，则$S^{-1}\pp\in\Ass_{S^{-1}R}(S^{-1}M)$.
+
+反之，任取$S^{-1}R$的素理想$\mathfrak{q}$，我们可以将$\mathfrak{q}$写为$S^{-1}\pp$，其中$\pp$是$R$的一个素理想且$\pp\cap S=\varnothing$. 由于$S^{-1}\pp\in \Ass_{S^{-1}R}(S^{-1}M)$，所以存在一个单射$\varphi:S^{-1}R/S^{-1}\pp\to S^{-1}M$. 因为$R$是一个Noether模，所以$\pp$是有限生成模，于是存在典范同构
+\[
+	\Hom_{S^{-1}R}(S^{-1}R/S^{-1}\pp,S^{-1}M)\cong S^{-1}\Hom_R(R/\pp,M),
+\]
+所以，我们可以将$\varphi$写为$s^{-1}f$的形式，其中$f\in \Hom_R(R/\pp,M)$而$s\in S$. 因为$s$并不是$R/\pp$的一个零因子，所以$f$是一个单射，这就给出了反方向的论断。
+\end{proof}
+
+\begin{thm}
+设$M$是一个有限生成$R$-模，则$\Ass M$是有限集，且包含任意包含$\ann M$的素理想中极小的那些素理想。
+\end{thm}
+
+\begin{proof}
+有限集前面已经证明，来自于
+\[
+	\Ass(M)\subset \bigcup_i \Ass(R/\pp_i)=\bigcup_i \{\pp_i\}.
+\]
+由于$M$有限生成，所以右侧的并是有限并。
+
+此外，任取一个包含$\ann M$的素理想中的极小素理想$\pp$，我们需要说明$\pp\in \Ass(M)$. 我们局部化，考虑环$R_\pp$和模$M_\pp$，从前面的命题，我们有$\Ass_{R_\pp}(M_\pp)$非空，且其中的元素对应于$\mathfrak{q}\in \Ass_R M$且$\mathfrak{q}\subset \pp$. 由于每一个$\mathfrak{q}\in \Ass_R M$都会包含$\ann M$，而$\pp$是极小的，如果$\pp$不在$\Ass_R M$中，则$\Ass_{R_\pp}(M_\pp)$为空，矛盾。所以，$\pp\in \Ass_R M$. 
+\end{proof}
+
+\begin{para}
+设$N$是$M$的一个子模，如果$\Ass(M/N)$只有一个元素，则称呼$N$是$M$的一个准素子模，如果$\Ass(M/N)=\{\mathfrak{p}\}$，则称呼$N$是$\mathfrak{p}$-准素的。
+\end{para}
+
+前面我们已经看到，素理想$\pp$总是$R$的一个准素子模，而且是$\pp$-准素的。此外，如果设$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是. 
+
+事实上，考虑单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ass(M/(N_1\cap N_2))\subset \Ass(M/N_1)\cup \Ass(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ass(M/(N_1\cap N_2))$非空，所以$\Ass(M/(N_1\cap N_2))=\{\mathfrak{p}\}$. 
 
 经过有限次归纳可以得到：有限个$\mathfrak{p}$-准素子模的交依然是一个$\mathfrak{p}$-准素子模。
+
+\begin{pro}
+设$R$是Noether环，$\pp$是它的一个素理想，而$M$是一个$R$-模，则下面三个命题等价：
+\begin{compactenum}[(1)]
+\item $\Ass(M)=\{\pp\}$.
+\item $\pp$是包含$\ann(M)$的一个极小素理想，且任取$r\not\in \pp$，则$r$都不是$M$的零因子。
+\item 存在一个正整数$n$使得$\pp^n M=0$，且任取$r\not\in \pp$，则$r$都不是$M$的零因子。
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+$(1)\Rightarrow (2)$：因为$\pp$是$M$唯一的，所以$\pp$是包含$\ann(M)$的一个极小素理想。由于
+\[
+	\bigcup_{0\neq m\in M}\ann(m)\subset \bigcup_{\mathfrak{a}\in \Ass(M)}\mathfrak{a}=\pp. 
+\]
+所以，任取$r\not\in \pp$，则$r$不包含于任意的$\ann(m)$中，即$r$不是$M$的零因子。
+
+$(2)\Rightarrow (3)$：因为不在$\pp$中的每个元素都不是$M$的零因子，所以我们在对$\pp$局部化后考虑问题，此时$\pp$可以看成极大理想。由于$\pp$是包含$\ann(M)$的极小素理想，所以$\pp=\sqrt{\ann(M)}$，而且$\pp$又是有限生成的，所以存在一个正整数$n$使得$\pp^n\subset \ann(M)$. 
+
+$(3)\Rightarrow (1)$：由于模掉$\ann M$后$\pp$是幂零的，所以它就是一个包含$\ann M$的一个极小素理想，于是$\pp \in \Ass(M)$. 又因为每一个不属于$\pp$的元素都不是零因子，所以每一个$\mathfrak{q}\in \Ass(M)$都有$\mathfrak{q}\subset \pp$，所以$\pp$也是$\Ass(M)$唯一的元素。
+\end{proof}
+
+利用这个命题，下面考虑$M=R/\mathfrak{a}\neq 0$的情况，这将给出准素理想的经典的定义。
+
+\begin{pro}
+真理想$\mathfrak{a}$是$R$的准素子模，当且仅当，$R/\mathfrak{a}$中的零因子都是幂零的。
+\end{pro}
+
+等价地，也可以将上面的条件写为：$xy\in \mathfrak{a}$可以推出$x\in \mathfrak{a}$或者$y\in \sqrt\mathfrak{a}$.
+
+\begin{proof}
+如果$\mathfrak{a}$是$\pp$-准素的，从上面我们可以看到，存在一个$n$使得$\pp^n\subset \mathfrak{a}\subset \mathfrak{p}$. 此外，从前面也已知道，任取$\bar{a}\in R/\mathfrak{a}$，$\ann(\bar{a})\subset \mathfrak{p}$，所以如果$\bar r$是$R/\mathfrak{a}$中的零因子，则其原像$r\in \mathfrak{p}$，所以$r^n\in \pp^n\subset \mathfrak{a}$，即$\bar r^n=0$. 
+
+反过来，我们证明$\mathfrak{a}$是$\sqrt{\mathfrak{a}}$-准素的。首先，需要指出$\sqrt{\mathfrak{a}}$是一个素理想，因为任取$xy\in \sqrt{\mathfrak{a}}$，其中$x\not\in \sqrt{\mathfrak{a}}$，则存在一个$m$使得$x^m y^m\in \mathfrak{a}$. 由于$x^m\not\in \mathfrak{a}$，利用条件，$y^m$在$R/\mathfrak{a}$中的像是幂零的，即存在一个$n$使得$(y^m)^n=y^{mn}\in \mathfrak{a}$，所以$y\in\sqrt{\mathfrak{a}}$. 此外，由于$\sqrt{\mathfrak{a}}$是所有包含$\mathfrak{a}$的素理想的交，如果其本身是素理想，则其必然是极小素理想。此外，$\mathfrak{a}\subset \sqrt\mathfrak{a}$告诉我们$\sqrt\mathfrak{a}$外的元素都不是零因子，继而上面的命题告诉我们，$\mathfrak{a}$是$\sqrt{\mathfrak{a}}$-准素的。
+\end{proof}
+
+如果$\mathfrak{a}$是$\pp$-准素的，则$\pp^n\subset \mathfrak{a}\subset \mathfrak{p}$，所以$\sqrt{\mathfrak{a}}=\pp$. 所以对于准素理想，我们只要读出它的根也就读出了其准素于哪个理想。
 
 \begin{lem}
 设$R$是Noether环，$M$是有限生成$R$-模，则$M$的不可约子模$N$是准素子模。
@@ -59,11 +163,11 @@
 	如果$\Ass(M/N)$中至少存在两个素理想$\pp_1=\ann(\bar{m}_1)$和$\pp_2=\ann(\bar{m}_2)$，那么在$M/N$中有子模$R\bar{m}_1\cong R/\pp_1$和$R\bar{m}_2\cong R/\pp_2$. 如果$R\bar{m}_1\cap R\bar{m}_2$非零，则$R\bar{m}_1\cap R\bar{m}_2$作为$R\bar{m}_1$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_1$，作为$R\bar{m}_2$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_2$，矛盾，于是推出$R\bar{m}_1\cap R\bar{m}_2=\{\bar{0}\}$. 回到$M$中的原像，我们就可以知道$N$可以写成两个$M$的子模的交，这与$N$不可约矛盾。
 \end{proof}
 
-准素子模的重要性来自于下面这个定理，他被称为准素分解。
+准素子模的重要性来自于下面这个命题，他被称为准素分解。
 
-\begin{thm}
+\begin{pro}
 设$R$是Noether环，$M$是有限生成$R$-模，如果$N$是$M$的一个真子模，那么他是有限个准素子模的交。
-\end{thm}
+\end{pro}
 
 \begin{proof}
 由于Noether环上的有限生成模是Noether模，回忆Proposition \ref{irrde}，$N$可以写成$M$中的有限个不可约子模的交的形式，而每一个不可约子模都是准素子模。

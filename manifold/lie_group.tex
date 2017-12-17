@@ -1,179 +1,39 @@
+% !TeX root = manifold.tex
 \chapter{Lie群}
 
-这章处理一大类光滑流形，Lie群。Lie群是一个光滑群，即是他一方面有着群的结构，而另一方面还是一个光滑流形，其中群的运算乘法和逆是光滑的。最重要的Lie群的例子是很久以前提到过的一般线性群及其子群。
+\section{Lie群同态}
 
-所谓的一般线性群，就是将$n\times n$实矩阵放入$\rr^{n^2}$内，那么行列式不为零的那些矩阵就构成一个光滑流形，记作$\mathrm{GL}(n,\rr)$. 更一般的，我们记$\mathrm{GL}(V)$为$V$上行列式非零的线性变换构成的群。
+Lie群很容易构成一个范畴，两个Lie群的态射只要定义成光滑的群同态就好了。比如对一般线性群而言，行列式就是一个显然的Lie群同态。这样子做之后，Lie群既是光滑流形范畴的子范畴，也是群范畴的子范畴。
 
-\section{基础}
+Lie群因为本身就是一个群，所以他的很多整体性质都来自于单位元附近。对于拓扑性质，由于左乘是一个同胚，所以如果$U$是一个开集，那么$gU=\{gh:h\in U\}$也是一个开集。因为Lie群也是拓扑群，所以附录中关于拓扑群的结论都可以用到这里。
 
-\para 设$G$为群，单位元记做$e$，群运算记做$\mu:G\times G\to G$，如果$G$是一个光滑流形，且$\mu$是一个光滑映射，则称$G$是一个光滑Lie群。当然可以谈论不怎么光滑的Lie群，但是下面所指的Lie群都是光滑的。记$l_g$是左作用算符，即$l_g=\mu(g,\cdot)$，或者写作$l_gh=gh$，同样，右作用算符记做$r_g$，即$r_gh=hg$.显然这些都是光滑映射。
+\para 设$\varphi:G\to H$是一个Lie群同态，因为$\varphi\circ l_g=l_{\varphi(g)}\circ \varphi$，所以在点$e$的切映射满足$\varphi_{*g}\circ (l_g)_{*e}=(l_{\varphi(g)})_{*e}\circ \varphi_{*e}$，因为左移是同胚，所以$\rank_e \varphi=\rank_g \varphi$.
 
-现在考虑方程$\mu(x,y)=e$，由于$(l_e)_{*e}$是一个恒同映射，所以在$e$附近，按隐函数定理，方程$\mu(x,y)=e$在$e$附近有光滑解，即$y=\nu(x)=x^{-1}$中的逆函数$\nu$在$e$附近光滑，由于$(\nu\circ l_g)(h)=h^{-1}g^{-1}=(r_{g^{-1}}\circ \nu)(h)$，所以逆函数$\nu$处处光滑。
+上面意味着Lie群同态的秩都是常数，此时我们可以对$\ker \varphi=\varphi^{-1}(e)$利用Theorem \ref{ranktheo}，因为他一定非空，所以$\ker \varphi$是$G$的一个正则子流形，维度等于$\dim G-\rank \varphi$.
 
-因为Lie群有着光滑流形结构，那么我们就可以对其局部线性化，特别地，单位元附近的局部线性化就构成了Lie代数的内容。
+同样因为Lie群同态的秩都是常数，所以单的Lie群同态必定为浸入，Lie群同构必为同胚，其逆也光滑。
 
-\para 一个Lie群$G$的Lie代数$\lag$就是其单位元处的切空间。
+\para 设$\varphi:H\to G$是Lie群同态，如果$\varphi$是单的，则$H$被称为$G$的Lie子群，如果$\varphi$是嵌入，则$H$被称为$G$的闭Lie子群。显然，上面谈论的Lie群同态的核是一个闭Lie子群。
 
-由于$l_g$和$r_g$都是$G\to G$的光滑同胚，所以$(l_g)_*$或者$(r_g)_*$就是将光滑切矢量场映射到光滑切矢量场的双射。如果矢量场$X_x$满足$(l_a)_*X_x=X_{ax}$，则称$X$是一个左不变矢量场。对于左不变矢量场$X$而言，由于$(l_a)_*X:g\mapsto (l_a)_{*a^{-1}g}X_{a^{-1}g}=X_g$，所以$(l_a)_*X=X$.
+因为单的Lie群同态必定为浸入，所以如果$\varphi$是单的，则$H$是$G$的一个子流形。如果$H$是$G$的一个正则子流形，我们称$H$是一个闭Lie子群，是因为在拓扑上，$\varphi(H)$真的是$G$的一个闭子集。
 
-和任意的矢量场一样，左不变矢量场$X$在$e$处诱导了$\lag$中的元素$X_e$. 反过来，设$X_e\in\lag$，我们可以构造一个左不变矢量场$X_x=(l_{x})_*X_e=(l_x)^{-1}_*X_x$，因此我们就建立了Lie代数和左不变矢量场之间的一一对应。
+\begin{pro}
+设$H\subset G$的一个闭Lie子群，则$H$是$G$的闭子集。
+\end{pro}
 
-\para 左不变矢量场都是光滑的且完备的。
+\para 如果$\varphi:G\to H$是Lie群同态，且$\varphi_{*e}$是满射，由于Lie群同态常秩，所以$\varphi_{*g}$在每一个$g$上都是满射。因此$\varphi$是一个淹没，是一个开映射。
 
-实际上，任取$f\in\calf(G)$以及$g\in G$，我们来看$(Xf)(g)=X_gf=(l_g)_{*}X_ef=X_e(f\circ l_g)$. 取一个在$e$处切矢量为$X_e$的曲线$\sigma$，则
-\[
-	Xf(g)=\frac{\dd }{\dd t}\bigg|_{t=0}f(g\sigma(t))=\frac{\dd }{\dd t}\bigg|_{t=0}f\circ \mu(g,\sigma(t)),
-\]
-是一个光滑函数，所以左不变矢量场都是光滑矢量场。至于完备性，设$\sigma$是左不变矢量场$X$的积分曲线，则$l_g\circ \sigma$也是$X$的积分曲线，这就使得我们可以把一条局部积分曲线拼到无穷远，这就是说$X$是完备的。
+特别地，如果$H$还是连通的，那么因为$\varphi$是一个开映射，所以存在一个$e_H$的邻域$V\subset H$使得$V\subset \varphi(H)$，那么$H=\bigcup_{n\geq 1}V^n\subset \varphi(G)$，因此$\varphi$就是一个满射。所以，对Lie群而言，局部满就可以说明整体满。
 
-\para 设$X$是左不变矢量场，因为$X$是完备的，所以他诱导的单参数变换群$\{\sigma^X_t\}$在整个Lie群上是有定义的，特别地，在单位元上，我们定义$\exp(t,X):=\sigma^X_t(e)$，其中$X$是左不变矢量场，因为左不变矢量场一一对应着Lie代数，所以也可以说$X\in \lag$.同样，对固定的$X$，映射$\exp(t,X)$对改变的$t$就构成了$G$的一个子群，这被称为单参子群。由积分曲线的存在唯一性，我们也得到了单参子群与Lie代数的一一对应关系。
+反过来，如果$\varphi:G\to H$是Lie群同态是一个满Lie群同态，由于$\varphi$常秩，由Proposition \ref{pro:surrank}，$\varphi$是一个淹没。
 
-\pro 设$f:G\to G$是一个微分同胚，我们有$f_*[X,Y]=[f_*X,f_*Y]$，若$f=l_a$，那么我们立刻就得到了左不变矢量场的对易子也是左不变的。因此对于Lie代数来说，他继承了切矢量场的Lie括号$[\star,\star]:\lag\times \lag\to \lag$，这是一个二元线性运算，所以Lie代数确实是一个代数。
+因此，对Lie群同态$\varphi$来说，满等价于淹没等价于在原点$\varphi_{*e}$是满射。
 
-通过直接的计算，Lie代数上满足：
+\para \label{covering_space}设$M$是底空间为$B$的一个纤维丛，他的纤维被赋予离散拓扑，此时，$M$被称为$B$的一个覆叠空间，投影$\pi$现在被称为覆叠映射。一般来说，我们要求覆叠空间是连通的，如果覆叠空间还是单连通的，则被称为万有覆叠空间。关于覆叠空间的更多内容，可以参看附录。
 
-\no{1} $[X,Y]=-[Y,X]$,
+很容易看到，Lie群的万有覆叠空间有很自然的Lie群结构。附录中已经对拓扑群证明了这一点，有必要的话，利用一些附录中的技术性引理，我们就得到了光滑性，当然也就得到了Lie群的结论。
 
-\no{2} $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$.
-
-第一条反对称性从矢量场的$[X,Y]=XY-YX$来看是显然的。而第二条称为Jacobi恒等式，直接计算即可验证。可以如下记忆Jacobi恒等式，$X$, $Y$和$Z$的三种右手方向构成的置换和为$0$，或者说，$[X_i,[X_j,X_k]]$中$ijk$是$123$的偶置换。
-
-\para 前面我们定义了$\exp:\lag\times \rr\to G$，特别地，我们记$\exp(1,X)$为$\exp(X)$，这样定义的映射$\exp:\lag\to G$他被称为指数映射。
-
-可以看到$\exp(tX)=\sigma^{tX}_1(e)=\sigma^{X}_t(e)=\exp(t,X)$，所以实际上，我们指数映射已经能够完全包含$\exp:\lag\times \rr\to G$的内容了。特别地，
-\[
-	\exp(tX)\exp(sX)=\exp(t,X)\exp(s,X)=\exp(t+s,X)=\exp((t+s)X).
-\]
-就和一般的指数表现得那样。但如果$[X,Y]\neq 0$，一般来说$\exp(X)\exp(Y)\neq \exp(X+Y)$.我们有时候也会通过$e^{X}$来记$\exp(X)$.
-
-\lem \label{exp}我们找一个光滑函数$f:G\to \rr^n$，那么$g(t)=f(xe^{tX})$就是一个$\rr$上的光滑函数，我们来归纳证明他的$n$阶导数为
-\[
-	\frac{\dd^n}{\dd t^n}g(t)=(X^nf)(x e^{tX}).
-\]
-
-\proof $n=0$是显然的，$n=1$需要直接计算验证
-\[
-	(Xf)(x)=\left\{\frac{\dd}{\dd t}f(x e^{tX})\right\}_{t=0},
-\]
-这个的计算只要使用链式法则
-\[
-	\left\{\frac{\dd}{\dd t}f(x e^{tX})\right\}_{t=0}=f_{*x}(e^{tX})_{*0}=f_{*x}X=(Xf)(x).
-\]
-注意最后一个等式要依赖于$f$是矢量值的，某种程度来说这就是$T\rr^n=\rr^n$的结果。由于矩阵也可以看成在欧氏空间$\rr^{n\times n}$里，所以$f$也可以取值为矩阵。
-
-假设$n=k$是成立的，那么因为$X^{k+1}=X\circ X^k$,
-\[
-	(X^{k+1}f)(x e^{tX})=(X(X^{k}f))(x e^{tX})=\left\{\frac{\dd}{\dd s}(X^kf)(x e^{(s+t)X})\right\}_{s=0}=\frac{\dd}{\dd t}(X^kf)(x e^{tX})=\frac{\dd^{k+1}}{\dd t^{k+1}}g(t).
-\]\qed
-
-\para 为了下面的讨论，我们先将实数值的1-形式拓展到矢量值的1-形式。设$V$是一个矢量空间，对于切矢量场的$V$-值函数$\omega:\Gamma(TM)\to V$被称为一个$V$-值1-形式。如果对任意的光滑切矢量场$X$，我们都有$\omega(X)$是$M$上的$V$-值光滑函数，则$\omega$被称为光滑的。
-
-\para Lie群$G$的切丛$TG$相当简单，因为我们可以定义$(l_{a^{-1}})_*$把$T_aG$始终映射到$T_eG=\lag$来考虑，所以切丛就被平凡化了，它同构于$G\times \lag$. 与这相关的概念即Maurer-Cartan形式。设$G$是一个Lie群，他的切丛记做$TG$，映射$\omega_G:(g,v)\mapsto (l_{g^{-1}})_*v$被称为Maurer-Cartan形式。可以看到$\omega_G:\Gamma(TG)\to \lag$，因此Maurer-Cartan形式可以看做一个$\lag$值1-形式。且对于任意的$l_h^*$，我们都有
-\[
-	(l_h^*\omega_G)v=\omega_G((l_h)_*v)=(l_{(hg)^{-1}})_*(l_h)_*v=(l_{(g)^{-1}})_*v=\omega_G(v).
-\]
-所以Maurer-Cartan形式是左不变的。
-
-\para 现在来看具体的例子，设所有$n\times n$的实（复）矩阵构成的集合为$\mathrm{M}(n,\rr)$（$\mathrm{M}(n,\cc)$），其中$\det A\neq 0$的矩阵按矩阵乘法构成一个群$\mathrm{GL}(n,\rr)$（$\mathrm{GL}(n,\cc)$），我们称为一般线性群，单位元是$I$。由于他可以开嵌入$\rr^{n^2}$内，所以他有自然的光滑流形结构。因此一般线性群是一个Lie群，矩阵群上的微分定义使得我们可以直接计算一般线性群的Lie代数，他的Lie代数为$\mathfrak{gl}(n,\rr)$。在一般线性群$G$上
-\[
-	(l_g)_{*a}v=\frac{1}{t}(l_g(a+tv)-l_g(a))
-	=\frac{1}{t}(l_g(tv))=l_g(v)=gv.
-\]
-其中$v\in T_aG$.
-
-所以一般线性群上面的Maurer-Cartan形式即为$\omega_G(v)=l_{g^{-1}}(v)=g^{-1}v$，其中$g$和$v$都是矩阵，矩阵乘矩阵还是矩阵，所以Lie代数$\mathfrak{gl}(n,\rr)$也是矩阵的形式。设$\dd g=(\dd x_{ij})$，那么$v$就可以写成$\dd g(v)$，因为$\dd x_{ij}(v)=v_{ij}$，则$\omega_G=g^{-1}\dd g$.
-
-由于$\mathrm{GL}(n,\rr)$的微分结构是熟知的，我们可以直接计算其Lie代数$\mathfrak{gl}(n,\rr)$上的交换子形式。设$A\in\mathfrak{gl}(n,\rr)$而$g\in\mathrm{GL}(n,\rr)$，容易验证$A_g=gA$是左不变矢量场，因为$(l_h)_{*}A_g=(l_h)_{*}gA=hgA=A_{hg}$.
-
-记$g=(x_{ij})$，考虑与$A=(a_{ij})$和$B=(b_{ij})$相关的左不变矢量场为
-\[
-A_g=\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\quad B_g=\sum_{i,j,k}x_{ij}b_{jk}\partial_{ik},
-\]
-于是
-\[
-[A_g,B_g]=\left[\sum_{i,j,k}x_{ij}a_{jk}\partial_{ik},\sum_{i,j,k}x_{ij}b_{jk}\partial_{ik}\right]=\sum_{i,k}\left(\sum_{j}x_{ij}\sum_{r}(a_{jr}b_{rk}-b_{jr}a_{rk})\right)\partial_{ik},
-\]
-或者$[A_g,B_g]=(AB-BA)_g$，所以$\mathfrak{gl}(n,\rr)$上的对易子为$[A,B]=AB-BA$，其中的乘法就是矩阵乘法。
-
-\para 对于$A\in\mathfrak{gl}(n,\rr)$，指数映射有如下级数展开
-\[
-	e^A=1+\sum_{n=1}^\infty \frac{A^n}{n!}=\sum_{n=0}^\infty \frac{A^n}{n!},
-\]
-对于任意的矩阵$A$都是收敛的。可以看到其完全类似于实数值指数函数的展开$e^x=\sum_{n=0}^\infty x^n/n!$
-
-\proof 由Lemma \ref{exp}，对一般的Lie群$G$和光滑函数$f:G\to \rr^n$，使用Taylor公式
-\[
-	f(xe^{tX})=\sum_{k=0}^n\frac{(tX)^{k}}{k!}f(x)+O(t^{n+1}),
-\]
-如果可以展开无数项，那么
-\[
-	f(xe^{tX})=\sum_{k=0}^\infty\frac{(tX)^{k}}{k!}f(x).
-\]
-
-现在取$f(A)=A$, $x=I$和$t=0$就可以了。至于收敛性，因为对于任意一个矩阵，$A$的范数都是有界的，那么$e^A$就被$A$的范数的级数控制，因此收敛。\qed
-
-当然可以用其他的方式猜出这个关系，我们考虑$e^{tA}$,将其在$t=0$附近展开，有$e^{tA}=I+tA+O(t^2)$,然后对于任意的正整数$n$和固定的$t$我们有
-\[
-	e^{tA}=\left(e^{tA/n}\right)^n=\left(I+\frac{t}{n}A+O\left(\frac{1}{n^2}\right)\right)^n,
-\]
-然后令$n\to\infty$，就有$e^{tA}=\lim_{n\to\infty}\left(I+\frac{t}{n}A\right)^n$.使用二项式展开，就可以得到其级数展开
-\[
-	e^{tA}=1+\sum_{n=1}^\infty \frac{(tA)^n}{n!}=\sum_{n=0}^\infty \frac{(tA)^n}{n!},
-\]
-最后$t=1$即可。
-
-上面的过程可能不怎么严谨，在矩阵的情况下，直接用级数定义指数映射反而可能更加简单。
-
-\para 设$\mathrm{M}(n,k)$是域$k$上的$n\times n$矩阵全体构成的集合，则以下矩阵构成一般线性群的子群：
-
-\no{1} 特殊线性群：$\mathrm{SL}(n,\rr)=\{A\in \mathrm{M}(n,\rr)|\det A=1\};$
-
-\no{2} 正交群：$\mathrm{O}(n) = \{ Q \in \mathrm{M}(n,\rr) \mid Q^T Q = Q Q^T = I \};$
-
-\no{3} 酉群：$\mathrm{U}(n) = \{ Q \in \mathrm{M}(n,\cc) \mid Q^\dag Q = Q Q^\dag = I \};$
-
-\no{4} 特殊正交群：$\mathrm{SO}(n) =\{ Q \in \mathrm{O}(n) \mid \det Q=1 \};$
-
-\no{5} 特殊酉群：$\mathrm{SU}(n) =\{ Q \in \mathrm{U}(n) \mid \det Q=1 \};$
-
-我们来考虑最简单的一个群$\mathrm{SO}(2)$，他的群元素由矩阵
-\[
-	\begin{pmatrix}
-	\cos \theta&-\sin \theta\\
-	\sin \theta&\cos \theta\\
-	\end{pmatrix}
-\]
-构成。这是一个Abel群，而且可以注意到，他同构于群$\mathrm{S}^1=\{e^{i\theta}:\theta\in\rr\}$，这是一个圆周。
-
-\pro 对于矩阵群构成的空间，我们可以使用Heine-Borel定理断言有界闭子群是紧的。所以正交群是紧的，但是一般线性群不是紧的。
-
-但是对于$\mathrm{GL}(n,\rr)$的子群来说，正交群就是极大的紧子群了。
-
-\pro 一般线性群$\mathrm{GL}(n,\rr)$的子群$G$如果是紧的，那么存在可逆矩阵$P$使得$PGP^{-1}\subset \mathrm{O}(n)$.
-
-\proof 设$A\in G$，则序列$A,A^2,\cdots,A^n,\cdots$都在$G$里面。如果$|\det A|>1$，那么$|\det A^n|=|\det A|^n$就可以任意大，和紧性对应的有界性相悖。如果$|\det A|<1$，那么由$G$的紧性，其$A^n$这个序列收敛到$G$内，但$|\det A^n|=|\det A|^n$却又小于任意的正数，所以$A$不可逆但在$G$内，则和$G$作为一般线性群的子群相悖。所以$|\det A|=1$.
-
-现在只考虑$\det A=1$，这就是特殊线性群的情况。然后还设$\mathrm{SO}(3)$在我们的子群里。由于我们总可以将特殊线性群的元素唯一分解为$A=RP$，其中$R\in \mathrm{SO}(3)$，而$P$是正定对称矩阵，且$\det P=1$。由于正定对称一定可以对角化，适当选择基，我们使得$P$就是对角的，所以$\det P=\lambda_1\cdots\lambda_n=1$.
-
-那么$P=R^{-1}A$，由于$R$在我们的群内，那么$R^{-1}$也是，因此$P$也是。如果存在一个$|\lambda_i|>1$，不妨假设就是$\lambda_1$，此时$P^{k}=\mathrm{diag}(\lambda_1^k,\cdots,\lambda_n^k)$中的$|\lambda_1|^k$会比任意正数大，这和紧性相悖。所以所有的$|\lambda_i|=1$，但是由于是正定的，所以$P=I$.因此$A=R\in\mathrm{SO}(3)$.
-
-对于$\det A=-1$的情况类似，对于共轭，也是显然的。 \qed
-
-现在我们来求这个极大的紧子群$\mathrm{O}(n)$的Lie代数，因为Maurer-Cartan形式取$\lag$值，所以我们只要整理出Maurer-Cartan形式就可以了。对恒等式$AA^T=I$求导有$\dd A A^T+A(\dd A)^T=0$，或者
-\[
-	A^{-1}\dd A+(A^{-1}\dd A)^T=0,
-\]
-$A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B^T=0$的矩阵，换而言之，反对称矩阵。
-
-此外，由矩阵恒等式，$AA^{-1}=I$，对其求导我们有$0=(\dd A) A^{-1}+A\dd(A^{-1})$，所以
-\[
-	\dd(A^{-1})=-A^{-1}(\dd A) A^{-1}.
-\]
-如果$A(t):\rr \to \mathrm{GL}(n,\rr)$是一个单参子群，那么有类似的
-\[
-	(A^{-1}(t))'=-A^{-1}(t)A'(t) A^{-1}(t).
-\]
-以上就是微积分里面$(1/x)'=-1/x^2$的矩阵对应。
+\para 一个连通Lie群$G$，记$G'$为其万有覆叠空间，覆叠映射为$\pi:G'\to G$.对于任意的选择$e'\in \pi^{-1}(e)$，总有唯一的$G'$上的Lie群结构使得$e'$是单位元且$\pi$是群同态。
 
 \section{伴随表示}
 
@@ -202,7 +62,9 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 % 	=(l_{{g}^{-1}})_*(r_g)_*(l_{{h}^{-1}})_*v=\mathrm{Ad}(g^{-1})\omega_G.
 % \]
 
-\pro 令$G$的Lie代数为$\lag$，则$\mathrm{Ad}:G\to \mathrm{Aut}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}(\lag)$满足$\ad(X)Y=[X,Y]$.
+\begin{pro}
+令$G$的Lie代数为$\lag$，则$\mathrm{Ad}:G\to \mathrm{Aut}_{\mathrm{Lie}}(\lag)$在$e$的导数$\ad=\mathrm{Ad}_{*e}:\lag\to \mathfrak{gl}_{\mathrm{Lie}}(\lag)$满足$\ad(X)Y=[X,Y]$.
+\end{pro}
 
 \proof 
 	因为$\mathrm{Ad}$是$G$上矢量值的函数，证明就是很直接地要去计算
@@ -262,38 +124,6 @@ $A^{-1}\dd A$就是Lie代数。$\mathrm{O}(n)$的Lie代数就是满足方程$B+B
 \]
 其显然是Lie代数上面的一个导子。
 
-\section{Lie群同态}
-
-Lie群很容易构成一个范畴，两个Lie群的态射只要定义成光滑的群同态就好了。比如对一般线性群而言，行列式就是一个显然的Lie群同态。这样子做之后，Lie群既是光滑流形范畴的子范畴，也是群范畴的子范畴。
-
-Lie群因为本身就是一个群，所以他的很多整体性质都来自于单位元附近。对于拓扑性质，由于左乘是一个同胚，所以如果$U$是一个开集，那么$gU=\{gh:h\in U\}$也是一个开集。因为Lie群也是拓扑群，所以附录中关于拓扑群的结论都可以用到这里。
-
-\para 设$\varphi:G\to H$是一个Lie群同态，因为$\varphi\circ l_g=l_{\varphi(g)}\circ \varphi$，所以在点$e$的切映射满足$\varphi_{*g}\circ (l_g)_{*e}=(l_{\varphi(g)})_{*e}\circ \varphi_{*e}$，因为左移是同胚，所以$\rank_e \varphi=\rank_g \varphi$.
-
-上面意味着Lie群同态的秩都是常数，此时我们可以对$\ker \varphi=\varphi^{-1}(e)$利用Theorem \ref{ranktheo}，因为他一定非空，所以$\ker \varphi$是$G$的一个正则子流形，维度等于$\dim G-\rank \varphi$.
-
-同样因为Lie群同态的秩都是常数，所以单的Lie群同态必定为浸入，Lie群同构必为同胚，其逆也光滑。
-
-\para 设$\varphi:H\to G$是Lie群同态，如果$\varphi$是单的，则$H$被称为$G$的Lie子群，如果$\varphi$是嵌入，则$H$被称为$G$的闭Lie子群。显然，上面谈论的Lie群同态的核是一个闭Lie子群。
-
-因为单的Lie群同态必定为浸入，所以如果$\varphi$是单的，则$H$是$G$的一个子流形。如果$H$是$G$的一个正则子流形，我们称$H$是一个闭Lie子群，是因为在拓扑上，$\varphi(H)$真的是$G$的一个闭子集。
-
-\pro 设$H\subset G$的一个闭Lie子群，则$H$是$G$的闭子集。
-
-\para 如果$\varphi:G\to H$是Lie群同态，且$\varphi_{*e}$是满射，由于Lie群同态常秩，所以$\varphi_{*g}$在每一个$g$上都是满射。因此$\varphi$是一个淹没，是一个开映射。
-
-特别地，如果$H$还是连通的，那么因为$\varphi$是一个开映射，所以存在一个$e_H$的邻域$V\subset H$使得$V\subset \varphi(H)$，那么$H=\bigcup_{n\geq 1}V^n\subset \varphi(G)$，因此$\varphi$就是一个满射。所以，对Lie群而言，局部满就可以说明整体满。
-
-反过来，如果$\varphi:G\to H$是Lie群同态是一个满Lie群同态，由于$\varphi$常秩，由Proposition \eqref{pro:surrank}，$\varphi$是一个淹没。
-
-因此，对Lie群同态$\varphi$来说，满等价于淹没等价于在原点$\varphi_{*e}$是满射。
-
-\para \label{covering_space}设$M$是底空间为$B$的一个纤维丛，他的纤维被赋予离散拓扑，此时，$M$被称为$B$的一个覆叠空间，投影$\pi$现在被称为覆叠映射。一般来说，我们要求覆叠空间是连通的，如果覆叠空间还是单连通的，则被称为万有覆叠空间。关于覆叠空间的更多内容，可以参看附录。
-
-很容易看到，Lie群的万有覆叠空间有很自然的Lie群结构。附录中已经对拓扑群证明了这一点，有必要的话，利用一些附录中的技术性引理，我们就得到了光滑性，当然也就得到了Lie群的结论。
-
-\para 一个连通Lie群$G$，记$G'$为其万有覆叠空间，覆叠映射为$\pi:G'\to G$.对于任意的选择$e'\in \pi^{-1}(e)$，总有唯一的$G'$上的Lie群结构使得$e'$是单位元且$\pi$是群同态。
-
 \section{Lie群和Lie代数的联系}
 
 下面陈述Lie群和Lie代数的联系。
@@ -304,7 +134,9 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 线性子空间部分是显然的，而Lie括号的封闭性也基本是显然的，故而整个结论是显然的。考虑了子代数，现在来看看两个Lie群和Lie代数的联系。
 
-\pro 反过来，设$\lag$是$G$的Lie代数，而$\mathfrak{h}$是$\lag$的Lie子代数，则在$G$中存在一个Lie子群$H$使得$H$的Lie代数就是$\mathfrak{h}$.
+\begin{pro}
+反过来，设$\lag$是$G$的Lie代数，而$\mathfrak{h}$是$\lag$的Lie子代数，则在$G$中存在一个Lie子群$H$使得$H$的Lie代数就是$\mathfrak{h}$.
+\end{pro}
 
 \proof 用左不变矢量场来表示$\mathfrak{h}$，那么它是一个对合分布，所以存在一个极大积分子流形经过点$e$，我们记为$H$. 下面只要证明这是一个连通子群即可，即任取$h\in H$都有$h^{-1}H=H$，这样$H^{-1}H=H$就告诉我们他是一个连通子群。由于$\mathfrak{h}$是左不变的，所以$h^{-1}H$也是它的一个积分子流形，由定义，$h^{-1}H$经过点$e$，由极大性，$h^{-1}H=H$.\qed
 
@@ -363,7 +195,9 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 \para 现有Lie代数$\lag$的表示$(\pi,V)$，如果存在$V$的一个子空间$W$使得$\pi(X)(W)\subset W$对任意$X\in \lag$成立，则$(\pi,W)$构成了$\lag$的一个新的表示，被称为$(\pi,V)$的子表示。如果表示$(\pi,V)$没有非平凡的子表示，则称呼该表示为不可约表示。如果一个表示，能分解成诸不可约表示的直和，则称这个表示是完全分解的。
 
-\pro 因为Lie群表示可以诱导一个Lie代数表示，在$\exp:\lag\to G$是满射的假设下，我们断言：$\pi$是不可约的当且仅当$\pi_*$是不可约的；$\pi$是完全可约的当且仅当$\pi_*$是完全可约的；两个$\pi$和$\eta$是等价的当且仅当$\pi_*$和$\eta_*$是等价的。
+\begin{pro}
+因为Lie群表示可以诱导一个Lie代数表示，在$\exp:\lag\to G$是满射的假设下，我们断言：$\pi$是不可约的当且仅当$\pi_*$是不可约的；$\pi$是完全可约的当且仅当$\pi_*$是完全可约的；两个$\pi$和$\eta$是等价的当且仅当$\pi_*$和$\eta_*$是等价的。
+\end{pro}
 
 上面基本都是从Lie群去得到Lie代数，而且是唯一确定的。那么反过来，我们是否可以从Lie代数得到Lie群，如果可以得到，又能确定到哪种程度？这些内容是下面两个定理的内容。
 
@@ -371,7 +205,9 @@ Lie群因为本身就是一个群，所以他的很多整体性质都来自于�
 
 从上一节，我们知道$G'$有着自然的Lie群结构，而且从万有覆叠空间的定义来看，$G'$的单位元$e'$的附近同胚于$G$的单位元$e$的附近，那么因为Lie代数是单位元处的切空间，则他们俩的Lie代数自然是同构的。
 
-\pro 我们有一个任意的有限维Lie代数$\lag$，那么在同构意义下有唯一的单连通Lie群$G$，他的Lie代数就是$\lag$.
+\begin{pro}
+我们有一个任意的有限维Lie代数$\lag$，那么在同构意义下有唯一的单连通Lie群$G$，他的Lie代数就是$\lag$.
+\end{pro}
 
 如果两个Lie群有着相同的有限维Lie代数，我们虽然不能判断他们是同构的，但是我们可以找到他们同构的万有覆叠空间，一个单连通Lie群。
 

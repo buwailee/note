@@ -1,6 +1,6 @@
 % !TEX root = main.tex
 \appendix
-\renewcommand{\thepara}{\Alph{chapter}.\arabic{section}.\arabic{para}}
+\renewcommand{\thepara}{\Alph{chapter}.\arabic{para}}
 
 \chapter{拓扑空间的复习}
 
@@ -55,7 +55,7 @@
 因为任意开集都包含一般点，且不可约空间的开子集都是不可约的，所以那个一般点也是开子集的一般点。
 
 \chapter{范畴}
-
+\renewcommand{\thepara}{\Alph{chapter}.\arabic{section}.\arabic{para}}
 \section{基础}
 
 \para 一个范畴$\mathcal{C}$有如下数据：
@@ -879,7 +879,7 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 \end{compactenum}
 \end{pro}
 
-该命题给出了$P^X$和$Q_X$之间的一个“Galois联络”（见附录），当然，它不是真的Galois联络，因为$\geq$和$\leq$都不是真的偏序。但是，类似地，我们可以断言
+该命题给出了$P^X$和$Q_X$之间的一个“Galois联络”，当然，它不是真的Galois联络，因为$\geq$和$\leq$都不是真的偏序。但是，类似地，我们可以断言
 \[
 	\ker f\approx \ker \coker \ker f,\quad \coker u \approx \coker \ker \coker u.
 \]

@@ -1,0 +1,702 @@
+\documentclass[11pt]{article}
+\usepackage[zh]{noteheader}
+% \usepackage{graphicx}
+\usepackage{paralist}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}
+		\renewcommand{\thepara}{\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+\input{defs.tex}
+
+\title{集团分解原理}
+\date{\today}
+\author{Buwai Lee}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{引子}
+
+在Weinberg的第二章，藉由 Poincar\'{e} 群的不可约射影表示，我们完成了自由单粒子的分类。继而，在第三章，离开有些无趣的自由单粒子世界，我们加入了相互作用，引入了$S$-矩阵来描述散射过程。在那里，我们认为$S$-矩阵的Lorentz不变性是物理学的基本要求之一，同时，也注意到了不是任何理论都可以得到$S$-矩阵的Lorentz不变性。但是，我们依然还是找到了一大类理论（相互作用）满足$S$-矩阵的Lorentz不变性。
+
+\begin{thm}
+设我们有一个相对论性量子力学理论，满足
+\begin{compactenum}
+\item Poincar\'{e} 群的生成元写作
+\[
+	H=H_0+V,\quad \bm{P}= \bm{P}_0,\quad \bm{J}= \bm{J}_0,
+\]
+其中带$0$下标的生成元都是自由粒子Poincar\'{e} 群的生成元。
+\item 定义含时相互作用算符$V(t)=\exp(iH_0 t)V\exp(-iH_0 t)$，且$V(t)$具有形式
+\[
+	V(t)=\int \dd^3 x\, \mathscr{H}(\bm{x},t),
+\]
+其中$\mathscr{H}$是一个标量算符。
+\item 如果$x-y$类空，则$[\mathscr{H}(x),\mathscr{H}(y)]=0$,
+\end{compactenum}
+此时，这个理论下的$S$-矩阵满足Lorentz不变性。
+\end{thm}
+
+\begin{proof}
+这个定理的证明见 Weinberg 第3.5节，那里有两个证明，一个是微扰的，一个是非微扰的。
+\end{proof}
+
+在这一章，考虑到一些新的物理基本事实，我们将要更深入地讨论这个理论下相互作用的形式。并且说明，从某种程度上来说，场论是我们目前的唯一选择。第一个基本事实是全同粒子假设，这将给出正确的自由多粒子态的形式。
+
+第二个基本事实被称为集团分解原理，它描述了多粒子态的表示的渐进行为：
+\begin{quote}\it
+	当一个系统被分为两个间隔足够远的两个子系统，则这两个子系统将表现如独立系统一般。
+\end{quote}
+这看似与Einstein的因果性要求有所重和，实际上，它是独立于因果性假设的。它可能比因果性还要“强”一些，比方说，因果性并不禁止我们在多粒子态的不可观测量（比如相位）上做文章，但是集团分解原理不能容忍这点。同时，集团分解这种精神也会体现在非相对论系统中，我们怎么可能接受我们在地球做一个实验，它竟然和宇宙中所有的粒子都有关系。
+
+数学地，设系统$A$可以分为两个子系统$B$和$C$，则$\mathcal{H}_A=\mathcal{H}_B\otimes \mathcal{H}_C$，但是，由于$B$和$C$不独立，所以一般地，对应的 Poincar\'{e} 群的表示$U_A$, $U_B$和$U_C$并不成立关系$U_A=U_B\otimes U_C$. 但是，集团分解原理告诉我们这至少是渐进成立的。考虑平移算符$T_B(a)=U_B(1,a)\otimes 1$和$T_C(a)=1 \otimes U_B(1,a)$. 那么，对于任何的归一化态矢量$\Psi$和$\Phi$，我们都应有
+\[
+	\lim_{(b-c)^2\to +\infty} \left(\Phi,T_C^\dag(\Lambda c) T_B^\dag(\Lambda b) \left[U_A(\Lambda,a)-U_B\otimes U_C(\Lambda,a)\right]T_B(b)T_C(c)\Psi\right)=0,
+\]
+其中$b-c$是类空的。这就是集团分解原理的数学表述。我们时常会用更强的条件来表述
+\[
+	\lim_{(b-c)^2\to +\infty}T_C^\dag(\Lambda c) T_B^\dag(\Lambda b) \left[U_A(\Lambda,a)-U_B\otimes U_C(\Lambda,a)\right]T_B(b)T_C(c)\Psi=0.
+\]
+这个强收敛条件比前面那个弱收敛条件更好操作，但不见得更正确。我们没必要在数学上麻烦自己，所以采用后者作为集团分解原理，等出问题再回头看也不迟。此外，我们这里的群也不一定是 Poincar\'{e} 群。
+
+注意特殊情况。固定$\Lambda=1$，然后取$a$在时间方向，然后将$a$趋向于$0$，则
+\[
+	U_A(\Lambda,a)-U_B\otimes U_C(\Lambda,a)\sim ia (H_A-H_B\otimes 1-1\otimes H_C),
+\]
+其中$H_A-H_B\otimes 1-1\otimes H_C$几乎就是在描述$B$和$C$之间的相互作用，所以集团分解原理似乎告诉了我们相互作用在空间间隔变大的时候会渐进为零。从这个简单的观察应该可以认识到，集团分解原理会极大地限制相互作用的形式。
+
+为构造满足集团分解原理的理论，下面我们将会首先引入产生湮灭算符。大家都知道，有无数个理由告诉我们，相对论性量子力学必须考虑粒子以及粒子数改变的过程，不管是实验上发现自发辐射、粒子对撞，还是从纯理论的需求，比如为构造一个满足集团分解原理的理论。而在会让粒子以及粒子数改变的算符中最简单的那个及其共轭被称为产生和湮灭算符，后面将看到，有了产生和湮灭算符，其余任意的多粒子态间的算符都可以由它们构造出来。所以，某种程度上，产生和湮灭算符是我们唯一需要的算符。
+
+通过产生和湮灭算符的语言，我们将使用微扰论给出一大类理论，同时满足集团分解原理和$S$-矩阵的Lorentz对称性。在下一章，我们将确切构造出这类理论中的一大类理论，它被称为量子场论。
+
+\section{约定与基本事实}
+
+我们约定如下记号：考虑多粒子态$\Psi_{\dots,q,\dots}$，其中$q$是所有粒子的可能变量的组，比如$q=(\bm{p},\sigma,n)$，$\bm{p}$是3-动量，而$\sigma$是自旋/helicity，$n$是粒子种类。如果写$q+1$或者$q-1$，是指自旋加$1$或减$1$，其他不变。如果写$\Lambda q$，是指$q$的四动量$p$变成$\Lambda p$，其他不变。如果写$q'$，是指$\sigma$变成了$\sigma'$.
+
+设$\Psi_{q_i}$的空间为$\mathcal{H}_i$，则多粒子态$\Psi_{q_1,\dots,q_N}$所处的空间应该为
+\[
+	\mathcal{H}_{1}\otimes\cdots\otimes \mathcal{H}_{N}.
+\]
+如果需要考虑不同粒子数的态，则可能还需要将这些张量积直和起来。但是，我们没有理由说多粒子态$\Psi_{q_1,\dots,q_N}$就是简单的张量积$\Psi_{q_1}\otimes\cdots\otimes \Psi_{q_N}$. 因为实验上发现，如果存在$\mathcal{H}_i=\mathcal{H}_j$的情况，则物理上制备出来的多粒子态的概率分布与简单的张量积是不同的。特别地，我们这节将考虑所有的$\mathcal{H}_i$都相同的情况，即所谓的全同粒子系统。%此时，应该由全同粒子假设告诉我们在全同粒子体系中，真正的多粒子态应该长什么样。
+
+不过，即使没有全同粒子假设，考虑$N$个自由全同粒子，多粒子态$\Psi_{q_1,\dots,q_N}$也应该是$\Psi_{q_{\tau(1)}}\otimes\cdots\otimes \Psi_{q_{\tau(N)}}$的线性组合，其中$\tau$属于粒子集合$\{q_i\,:\,1\leq i \leq N\}$的最大对称群，这里为有限集，其实也就是$S_N$，所以具有形式
+\[
+	\Psi_{q_1,\dots,q_N}=\sum_{\tau\in S_N}a_\tau(q_1,\dots,q_N)\Psi_{q_{\tau(1)}}\otimes\cdots\otimes \Psi_{q_{\tau(N)}}.
+\]
+所以，确定这里的系数$a_\tau(q_1,\dots,q_N)$是目前的当务之急。
+
+在多粒子态的空间中，内积通过张量积自然地拓展过来，此时归一化关系为
+\[
+	(\Psi_{q_1}\otimes\cdots\otimes \Psi_{q_N},\Psi_{q'_1}\otimes\cdots\otimes \Psi_{q'_N})=\prod_{i=1}^N \delta(q_i-q'_i)=\prod_{i=1}^N \delta^3(\bm{p}_i-\bm{p}'_i)\delta_{n_i,n'_i}\delta_{\sigma_i,\sigma'_i}.
+\]
+对于全同粒子的多粒子态，我们有
+\[
+	(\Psi_{q_1,\dots,q_N},\Psi_{q'_1,\dots,q'_N})=\sum_{\tau,\xi\in S_N}a_\tau(q_{1},\dots,q_{N})^*a_\xi(q'_{1},\dots,q'_{N})\prod_{i=1}^N \delta(q_{\tau(i)}-q'_{\xi(i)}).
+\]
+特别地，如果存在一个$q_i$与$\{q'_1,\dots,q'_N\}$中所有的态都不同，则$\Psi_{q_1,\dots,q_N}$和$\Psi_{q'_1,\dots,q'_N}$正交。于是，只有当，集合$\{q'_1,\dots,q'_N\}$等于集合$\{q_1,\dots,q_N\}$时，内积才有可能非零。
+
+如果对每一个$\Psi_{q_i}$，我们有 Poincar\'{e} 群的表示$U_i(\Lambda,a)$，那么对多粒子态，我们可以定义出一个张量表示
+\[
+	U(\Lambda,a)\Psi_{q_1}\otimes\cdots\otimes \Psi_{q_N}=U_1(\Lambda,a)\Psi_{q_1}\otimes\cdots\otimes U_N(\Lambda,a)\Psi_{q_N}.
+\]
+所以根据 little group 的表示，我们有（比如这里全是有质量粒子）
+\[
+	U(\Lambda)\Psi_{q_1}\otimes\cdots\otimes U(\Lambda)\Psi_{q_N}=\sum_{\sigma'}\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}D^{j_i}_{\sigma_i'\sigma_i}(W(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma'_1,n_1)}\otimes \cdots\otimes \Psi_{(\Lambda \bm{p}_N,\sigma'_N,n_N)}.
+\]
+对无质量粒子，写作
+\[
+	U(\Lambda)\Psi_{q_1}\otimes\cdots\otimes U(\Lambda)\Psi_{q_N}=\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}\exp(i\sigma_i \theta(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma_1,n_1)}\otimes \cdots\otimes \Psi_{(\Lambda \bm{p}_N,\sigma_N,n_N)}.
+\]
+对于自由多粒子态，多粒子态也应该拥有相同的表示，换而言之（比如对有质量粒子）
+\[
+	U_0(\Lambda)\Psi_{q_1,\dots,q_N}=\sum_{\sigma'}\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}D^{j}_{\sigma_i'\sigma_i}(W(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma'_1,n_1),\dots,(\Lambda \bm{p}_N,\sigma'_N,n_N)}.
+\]
+这将给出展开系数$a_\tau(q_{1},\dots,q_{N})$一个极大的限制。但这并不足以完全限制$a_\tau(q_{1},\dots,q_{N})$，真正完成这个工作的是全同粒子假设。
+
+现在，我们给出多粒子的相对论量子力学应该满足的公理（实验事实）：
+\begin{itemize}
+\item 单粒子量子力学基本假设。这里，我们的 Poincar\'{e} 群选作原本的 Poincar\'{e} 群的万有覆叠，所以考虑的都是表示而不是射影表示。此时，有质量粒子的 little group 是$\operatorname{SU}(2)$，而无质量粒子的 little group 是$\operatorname{U}(1)$.
+\item 全同粒子假设：考虑一个$N$个全同粒子构成的系统，则任取$\tau \in S_N$，多粒子态$\Psi_{q_1,\dots,q_N}$与$\Psi_{q_{\tau(1)},\dots,q_{\tau(N)}}$处于同一个ray中。物理上来说，这体现了同类粒子无法分辨。
+\item 集团分解原理。
+\end{itemize}
+下面，让我们首先关注粒子的统计。
+
+\section{粒子统计}
+
+% \begin{lem}
+% $\operatorname{SO}(3)$没有非平凡的一维光滑表示。
+% \end{lem}
+
+% \begin{proof}
+% 作为连通的典型群，指数映射$\exp:\mathfrak{so}(3)\to\operatorname{SO}(3)$是一个满射。设$\rho:\operatorname{SO}(3)\to \rr$是一个一维光滑实表示，考虑它的导数
+% \[
+% 	\rho_*:\mathfrak{so}(3)\to \rr.
+% \]
+% 这是一个Lie代数同态，考虑$\mathfrak{so}(3)$的三个生成元$L_1$, $L_2$, $L_3$，它们满足对易关系
+% \[
+% 	[L_i,L_j]=a_{ijk}L_k,
+% \]
+% 其中$a_{ijk}\neq 0$，两边作用$\rho_*$后得到
+% \[
+% 	a_{ijk}\rho_*L_k=\rho_*[L_i,L_j]=[\rho_*L_i,\rho_*L_j]=0,
+% \]
+% 所以$\rho_*L_i=0$对$i=1$, $2$, $3$都成立。再从
+% \[
+% 	\rho(\exp(tX))=\exp(t\rho_*X)=1,
+% \]
+% 我们就得到了$\rho$总是平凡的。
+
+% 对于光滑复一维表示$\rho$，我们考虑$\abs\circ \rho$，这是一个光滑实一维表示，所以是平凡的，这就意味着$\rho$必须是幺正表示。换而言之，$\rho:\operatorname{SO}(3)\to \operatorname{U}(1)$是一个光滑群同态。重复上面的推理，我们就得到了$\rho$是一个平凡表示。
+% \end{proof}
+
+在进行粒子统计之前，我们首先对零质量粒子多说一句话：零质量粒子的 helicity 来自于$\operatorname{U}(1)$的幺正表示（ little group 要比这大一些，但因为有两个连续指标暂时并没有实验上的证据说明它们存在，所以这里考虑$\operatorname{U}(1)$）。$\operatorname{U}(1)$的幺正不可约表示一定具有形式$\exp(i\theta)\to \exp(in\theta)$，其中$n$可以为任意整数。这里的$n$对应于$2\sigma$，是两倍的$J_3$的本征值，故$\sigma$只可能为整数或者半整数，这就是零质量粒子的 helicity. 
+
+需要注意的是，如果不含时空反演，Lorentz 群并不提供改变 helicity 的方式，即这是一个标量。所以按照粒子分类的一般精神，不同 helicity 的粒子应该认为是不同粒子，虽然它们确实有可能相同。特别地，helicity 分别为$\sigma$和$-\sigma$的粒子也可能是不同的。
+所以，对零质量全同粒子体系，我们这里应当认为它们的 helicity 都是相同的。
+
+\begin{lem}
+对称群$S_N$的一维表示只有两种，一种是平凡表示，一种是$\operatorname{sign}:\tau\mapsto \operatorname{sign}(\tau)$. 
+\end{lem}
+
+\begin{proof}
+设$\rho$是一个一维表示，对两两置换$\sigma$，我们一定有$\rho(\sigma)=\pm 1$，再由对称群中元素可以有两两置换生成，所以任取$\sigma\in S_N$，都有$\rho(\sigma)=\pm 1$.如果任取两两置换$\sigma$，都有$\rho(\sigma)=1$，则这是平凡表示，因为两两置换生成整个对称群。否则，存在一个$\sigma=(ij)$使得$\rho(\sigma)=-1$. 注意到恒等式
+\[
+	\rho[(\tau(i)\tau(j))]=\rho[\tau (ij)\tau^{-1}]=\rho[\tau]\rho[(ij)]\rho[\tau^{-1}]=\rho[(ij)],
+\]
+其中$\tau$是$S_N$中的任意置换。任取$1\leq k\neq l\leq N$，我们总可以找一个$\tau$使得$\tau(k)=i$, $\tau(l)=j$，所以上式给出
+\[
+	\rho[(kl)]=\rho[(ij)]=-1
+\]
+即$\rho$作用在任意的两两置换上都是$-1$，这就是表示$\operatorname{sign}:\tau\mapsto \operatorname{sign}(\tau)$.
+\end{proof}
+
+考虑$N$个自由全同粒子，再考虑一个置换$\tau\in S_N$. 从全同粒子假设，我们应该有
+\[
+	\Psi_{q_{\tau(1)},\dots,q_{\tau(N)}}=\alpha_\tau(q_1,\dots,q_N)\Psi_{q_1,\dots,q_N}.
+\]
+定义，线性算符
+\[
+	\mathscr{F}_\tau \Psi_{q_1,\dots,q_N}= \alpha_\tau(q_1,\dots,q_N)^{-1} \Psi_{q_{\tau(1)},\dots,q_{\tau(N)}}.
+\]
+如果有两个置换$\tau$, $\xi\in S_N$，那么不难检验复合公式$\mathscr{F}_{\tau}\mathscr{F}_{\xi}=\mathscr{F}_{\tau\xi}$成立，用$\alpha_\tau$和$\alpha_\xi$表示即
+\[
+	\alpha_{\tau\xi}(q_1,\dots,q_N)=\alpha_{\tau}(q_{\xi(1)},\dots,q_{\xi(N)})\alpha_{\xi}(q_1,\dots,q_N).
+\]
+
+考虑一个特别特殊的例子，此时$q_1=q_2=\cdots=q_N=q$，那么复合公式告诉我们$\tau \mapsto \alpha_\tau$构成了一个$S_N$的一维表示，所以$\tau=\pm 1$. 由于$\alpha_r$是一个动量的连续函数，我们可以认为$\alpha_r=\pm 1$不依赖于动量，但即使如此我们也无法断言这些$\alpha_r=\pm 1$是否依赖于自旋，比如自旋为电子在自旋为$1/2$或者$-1/2$可能会得到不同的$\alpha_\tau$. 
+
+此外，如果我们这里考虑的$N$个粒子的动量都并不完全相同，则$\tau \mapsto \alpha_\tau$此时不是$S_N$的一个一维表示。那么是否有$\alpha_r=\pm 1$都不得而知，更别说判断$\alpha_r$是否依赖于动量了。
+
+下面我们首先要排除$\alpha_\tau$对自旋的依赖（零质量粒子不需要担心这个）。在那之前，回忆有质量自由全同粒子体系的表示为
+\[
+	U_0(\Lambda)\Psi_{q_1,\dots,q_N}=\sum_{\sigma'}\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}D^{j}_{\sigma_i'\sigma_i}(W(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma'_1,n_1),\dots,(\Lambda \bm{p}_N,\sigma'_N,n_N)}.
+\]
+对无质量自由全同粒子体系，写作
+\[
+	U_0(\Lambda)\Psi_{q_1,\dots,q_N}=\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}\exp(i\sigma_i \theta(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma_1,n_1),\dots,(\Lambda \bm{p}_N,\sigma_N,n_N)}.
+\]
+所以可以直接观察到
+\[
+	\mathscr{F}_{\tau}U_0(\Lambda)=U_0(\Lambda)\mathscr{F}_{\tau}.
+\]
+这暗示我们，Schur引理似乎是有效的。比方说，如果构成了多粒子态们构造了一个$\operatorname{SU}(2)$的不可约表示，则$\mathscr{F}_{\tau}$的作用就不该依赖于自旋指标。不过事实并非如此，一般来说，多粒子态张成的空间对自旋指标是可约的。
+
+\begin{lem}\label{lem:2.2}
+对有质量粒子，任取$R\in \operatorname{SU}(2)$，我们有$W(R,p)=R$. 
+\end{lem}
+
+\begin{proof}
+见 Weinberg 第2.5节。
+\end{proof}
+
+\begin{thm}
+考虑$N$个自由全同粒子组成系统，则$\alpha_\tau$仅为所有$p_i\cdot p_j$的函数，其中$p_i$为第$i$个粒子的$4$-动量。
+\end{thm}
+
+\begin{proof}
+在多粒子态$\Psi_{q_1,\dots,q_N}$中，原则上可能存在$q_i=q_j$的情况，所以，方便起见，可以适当重排，假设序列$q_1$, $\dots$, $q_N$满足条件：如果$q_i=q_j$，则对任意的$i\leq k\leq j$都有$q_k=q_i=q_j$. 换而言之，我们将完全相同的粒子（不仅种类，整个状态都是）放到了一起。
+
+考虑Lorentz变换$\Lambda$在态上的作用,
+\[
+	U_0(\Lambda)\Psi_{q_{\tau(1)},\dots}=\alpha_\tau(q_1,\dots)U_0(\Lambda)\Psi_{q_1,\dots}.
+\]
+下面我们对质量进行分类讨论。
+
+对无质量粒子，利用 little group 的表示，打开两边就得到了（注意这里并没有helicity的指标）
+\[
+	\Psi_{\Lambda \bm{p}_{\tau(1)},\dots}=\alpha_\tau(\bm{p}_1,\dots)\Psi_{\Lambda \bm{p}_1,\dots},
+\]
+再利用$\alpha_\tau$的定义，于是
+\[
+	\alpha_\tau(\bm{p}_1,\dots)=\alpha_\tau(\Lambda \bm{p}_1,\dots).
+\]
+所以$\alpha_r$现在是标量，它只能是$\{p_i\cdot p_j\,:\, i\neq j\}$，这些是我们唯一可以通过动量构造的标量。对于$i=j$的情况，$p_i\cdot p_i=-m^2$，我们可以认为这是关于粒子种类的指标，所以暂时不予考虑。
+
+% 这里，因为没有一个Lorentz变换可以改变无质量粒子的helicity（这是一个标量），所以我们没法从对称性来排除$\alpha_\tau$对helicity的依赖。即使如此，空间反演对称性和时间反演对称性还是能告诉我们一些新的东西。
+
+% \begin{pro}[时空反演对称性]
+% 对自由无质量全同粒子体系，我们有
+% \[
+% 	\alpha_\tau(q_1,\dots,q_N)=\alpha_\tau(-q_1,\dots,-q_N).
+% \]
+% 此外，$\alpha_\tau$是实的，由于$\alpha_\tau$模为$1$，所以$\alpha_\tau=\pm 1$. 
+% \end{pro}
+
+% 考虑到$\alpha_\tau$是动量的连续函数，所以此时$\alpha_\tau$实际上应该不依赖于动量。但是是否依赖于helicity，我们还不得而知。
+
+% \begin{proof}
+% 考虑空间反演$P$，它在自由多粒子态上的作用为
+% \[
+% 	P\Psi_{q_1,\dots,q_N}=\prod_{i=1}^N \eta_{\sigma_i}\exp(\mp i\pi\sigma_i)\Psi_{-Pq_1,\dots,-Pq_N},
+% \]
+% 所以重复在Lorentz变换下的讨论，我们得到
+% \[
+% 	\alpha_\tau (q_1,\dots,q_N)=\alpha_\tau (-Pq_1,\dots,-Pq_N).
+% \]
+% 但是，注意到$(Pp_i)\cdot (Pp_j)=p_i\cdot p_j$，而$\alpha_\tau$对动量仅依赖于$\{p_i\cdot p_j\}$，所以上式右边的$P$可以去掉，此即结论之一。
+
+% 类似地，利用时间反演$T$，重复以上讨论，他将$q$变成了$Pq$而helicity不变，再注意到$T$是反线性的，所以
+% \[
+% 	\alpha_\tau(q_1,\dots,q_N)=\alpha_\tau(q_1,\dots,q_N)^*.
+% \]
+% 于是$\alpha_\tau$是实函数。
+% \end{proof}
+
+% 与无质量的情况不同，对于有质量全同自由粒子体系中$\alpha_\tau$的自旋指标，我们却可以通过对称性方法排除掉。
+
+对有质量粒子，利用 little group 的表示，打开两边得到（这里的$j_i$都是相同的，所以就略去了）
+\[
+	\alpha_\tau(q_1,\dots)\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(W_i)\Psi_{(\Lambda \bm{p}_1,\sigma'_1),\dots}=\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(W_i)\Psi_{(\Lambda \bm{p}_{\tau(1)},\sigma'_{\tau(1)}),\dots}
+\]
+换句话说
+\begin{equation}
+	\alpha_\tau(q_1,\dots)\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(W_i)\Psi_{(\Lambda \bm{p}_1,\sigma'_1),\dots}=\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(W_i)\alpha_\tau(\Lambda q'_1,\dots)\Psi_{(\Lambda \bm{p}_{1},\sigma'_{1}),\dots},
+\end{equation}
+% 两边对$\Psi_{(\bm{q}_{1},\sigma''_{1}),\dots}$求内积，然后对动量$\bm{q}$积分，对$\sigma''$求和，这将给出
+% \begin{equation}
+% \alpha_\tau(\Lambda q'_1,\dots)\prod_{i=1}^N D^{j_i}_{\sigma_i'\sigma_i}(W_i)=\alpha_\tau(q_1,\dots)\prod_{i=1}^N D^{j_i}_{\sigma_i'\sigma_i}(W_i).
+% \end{equation}
+
+我们现在选取$\Lambda\in \operatorname{SU}(2)$，对有质量粒子，Lemma \ref{lem:2.2}告诉我们$W(R,p)=R$并不依赖于$p$. 所以式(\theequation)中的$W_i$也都等于$R$，即
+\[
+	\alpha_\tau(q_1,\dots)\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(R)\Psi_{(R \bm{p}_1,\sigma'_1),\dots}=\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(R)\alpha_\tau(R q'_1,\dots)\Psi_{(R \bm{p}_{1},\sigma'_{1}),\dots},
+\]
+现在，取变换$R=\exp(i\omega J)$，其中$J\in \mathfrak{su}(2)$，当$\omega$很小的时候
+\[
+	D_{\sigma_i'\sigma_i}(R)=\delta_{\sigma_i'\sigma_i}+i\omega D(J)_{\sigma_i'\sigma_i},
+\]
+以及
+\[
+	\prod_{i=1}^N D_{\sigma_i'\sigma_i}(R)=\prod_{i=1}^N \delta_{\sigma_i'\sigma_i}+\sum_{i=1}^Ni\omega D(J)_{\sigma_i'\sigma_i}\delta_{\sigma_1'\sigma_1}\cdots \widehat{\delta_{\sigma_i'\sigma_i}}\cdots \delta_{\sigma_N'\sigma_N},
+\]
+代入并取出$\omega$的一阶项可以得到
+\[
+	\alpha_\tau(q_1,\dots)\sum_{i=1}^N \sum_{\sigma_i'}D(J)_{\sigma'_i \sigma_i}\Psi_{\sigma'_i}^0=\sum_{i=1}^N\sum_{\sigma_i'}D(J)_{\sigma'_i \sigma_i}\alpha_\tau(q_1,\dots,q'_i,\dots,q_N)\Psi_{\sigma'_i}^0+C_J(q_1,\cdots) \Psi_{q_1,\dots},
+\]
+其中$\Psi_{\sigma'_i}^0=\Psi_{ q_1,\dots, q_i',\dots, q_N}$，而$C_J(q_1,\cdots)$来自于$\alpha(Rq_1,\dots)$关于$\omega$的级数展开的一阶项，具体形式在这里并不重要。
+
+取升降算符$J_\pm$，设我们现在考虑的全同粒子的最高自旋为$j$，则具体的矩阵元为
+\[
+	D(J_\pm)_{\sigma'\sigma}=\delta_{\sigma',(\sigma\pm 1)}\sqrt{(j\mp\sigma)(j\pm\sigma+1)}=\delta_{\sigma',(\sigma\pm 1)}(A_\pm)^j_\sigma,
+\]
+故
+\[
+\alpha_\tau(q_1,\dots)\sum_{i=1}^N (A_\pm)^j_{\sigma_i}\Psi_{\sigma_i\pm 1}^0=\sum_{i=1}^N (A_\pm)^j_{\sigma_i}\alpha_\tau(q_1,\dots,q_i\pm 1,\dots,q_N)\Psi_{\sigma_i\pm 1}^0+C_{J_\pm}(q_1,\cdots) \Psi_{ q_1,\dots}.
+\]
+由于$( q_1,\dots)$永远不是$( q_1,\dots, q_i\pm 1,\dots, q_N)$的一个排列，所以$\Psi_{ q_1,\dots}$和$\Psi_{\sigma_i\pm 1}^0$正交，也就线性无关，故上式给出$C_{J_\pm}(q_1,\cdots)=0$且
+\begin{equation}
+\alpha_\tau(q_1,\dots)\sum_{i=1}^N (A_\pm)^j_{\sigma_i}\Psi_{\sigma_i\pm 1}^0=\sum_{i=1}^N (A_\pm)^j_{\sigma_i}\alpha_\tau(q_1,\dots,q_i\pm 1,\dots,q_N)\Psi_{\sigma_i\pm 1}^0.
+\end{equation}
+
+下面我们主要分析式(\theequation). 如果$q_i\neq q_j$，不难看到，$\Psi_{\sigma_i\pm 1}^0$与$\Psi_{\sigma_j\pm 1}^0$正交。相互正交的矢量是线性无关的，所以我们可以把上式拆开来，变成几个形如
+\[
+	\alpha_\tau(q_1,\dots)\sum_{i=r}^s (A_\pm)^j_{\sigma_i}\Psi_{\sigma_i\pm 1}^0=\sum_{i=r}^s (A_\pm)^j_{\sigma_i}\alpha_\tau(q_1,\dots,q_i\pm 1,\dots,q_N)\Psi_{\sigma_i\pm 1}^0
+\]
+的等式，其中$r<s$，根据我们的假设，对$r\leq k \leq s$，我们有$q_k=q_r=q_s$，即粒子状态完全相同。特别地，如果$s=r$，即没有与其相同状态的粒子的时候，则
+\begin{equation}
+\alpha_\tau(q_1,\dots,q_N)(A_\pm)^j_{\sigma_r}\Psi_{\sigma_r\pm 1}^0=\alpha_\tau(q_1,\dots,q_r\pm 1,\dots,q_N)(A_\pm)^j_{\sigma_r}\Psi_{\sigma_r\pm 1}^0.
+\end{equation}
+对$-j \leq \sigma_r< j$，$(A_+)^{j}_{\sigma_r}\neq 0$，这意味着
+\[
+	\alpha_\tau(q_1,\dots,q_r+1,\dots,q_N)=\alpha_\tau(q_1,\dots,q_N)
+\]
+成立。通过这个递推关系，我们可以一路把$\sigma_r$推到最高自旋$j$，而$\alpha_\tau$并不改变，所以$\alpha_\tau$其实不依赖于$\sigma_r$.
+
+现在，我们来讨论$s>r$的情况，方便起见，可以假设$r=1$而$s=N$的情况，同时自旋都并不处于最高自旋$j$. 此时，记这些粒子都具有状态$q$，自旋$\sigma$. 对$\Psi_{q,\dots,q+1,\dots,q}$我们再一次应用式({\addtocounter{equation}{-1}\theequation}\addtocounter{equation}{1})，由于$q+1\neq q$且只有一个，所以式(\theequation)给出了
+\[
+	\alpha_\tau(q,\dots,q+ 1,\dots,q)(A_-)^j_{\sigma+1}\Psi_{q,\dots,q}=\alpha_\tau(q,\dots,q)(A_-)^j_{\sigma+1}\Psi_{q,\dots,q},
+\]
+于是我们就得到了想要的$\alpha_\tau(q,\dots,q + 1,\dots,q)=\alpha_\tau(q,\dots,q)$. 其中$+1$的位置是任意的。
+
+最后，我们回到
+\[
+	\alpha_\tau(q_1,\dots)\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(W_i)\Psi_{(\Lambda \bm{p}_1,\sigma'_1),\dots}=\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(W_i)\alpha_\tau(\Lambda q'_1,\dots)\Psi_{(\Lambda \bm{p}_{1},\sigma'_{1}),\dots},
+\]
+由于$\alpha_\tau$不依赖于任意自旋，所以
+\[
+	\alpha_\tau(q_1,\dots)\sum_{\sigma'}\prod_{i=1}^N D_{\sigma_i'\sigma_i}(W_i)\Psi_{(\Lambda \bm{p}_1,\sigma'_1),\dots}=\alpha_\tau(\Lambda q_1,\dots)\prod_{i=1}^N \sum_{\sigma'}D_{\sigma_i'\sigma_i}(W_i)\Psi_{(\Lambda \bm{p}_{1},\sigma'_{1}),\dots},
+\]
+两个系数应该相同，所以
+\[
+	\alpha_\tau(\Lambda q_1,\dots)=\alpha_\tau(q_1,\dots).
+\]
+类似于无质量粒子的讨论，$\alpha_r$只能是$\{p_i\cdot p_j\,:\, i\neq j\}$的函数。
+\end{proof}
+
+\begin{pro}
+对任意置换$\tau\in S_N$，如果$\alpha_\tau$只依赖于$\tau$置换的粒子的动量，则任取$\xi\in S_N$, $\alpha_\xi$不依赖于动量，$\tau\mapsto\alpha_\tau$构成$S_N$的一个一维表示。
+\end{pro}
+
+从物理上来看，$\alpha_\tau$只依赖于$\tau$置换的粒子的动量是一个很容易理解的要求，这是集团分解原理的精神。如果$\tau$置换的粒子与其余粒子相隔很远，则这两个系统应表现为两个独立系统，故$\alpha_\tau$只能依赖于$\tau$置换的粒子。
+
+\begin{proof}
+设$\tau$是一个两两置换，交换的两个粒子的动量为$p_1$和$p_2$，由假设，$\alpha_{\tau}$只依赖于$p_1\cdot p_2$. 注意到$p_1\cdot p_2=p_2\cdot p_1$，所以
+\[
+	\alpha_{\tau}(p_2\cdot p_1)=\alpha_{\tau}(p_1\cdot p_2).
+\]
+现在从$\tau^2=1$以及复合公式，
+\[
+	1=\alpha_{\tau}(p_1\cdot p_2)\alpha_{\tau}(p_2\cdot p_1)=\alpha_{\tau}(p_1\cdot p_2)^2,
+\]
+即$\alpha_{\tau}(p_1\cdot p_2)=\pm 1$. 由于$\alpha_\tau$是动量的连续函数，所以它并不依赖于任何$p_1\cdot p_2$，即$\alpha_{\tau}$就是一个常数，不依赖动量，也不依赖于自旋。
+
+由于所有置换都是两两置换复合得到的，利用复合公式，任意的$\alpha_\tau$我们都已经求得了，为$\pm 1$. 而复合公式写作$\alpha_\tau \alpha_\xi =\alpha_{\tau \xi}$，即$\alpha_\tau$构成$S_N$的一个一维表示。
+\end{proof}
+
+利用这个命题，如果我们的全同粒子系统在置换下是平凡表示，则称我们处理的粒子是玻色子，否则称之为费米子。
+
+\section{自由多粒子态}
+
+从上一节，对于自由全同玻色子系统，
+\[
+	\Psi_{q_1,\dots,q_N}=\Psi_{q_{\tau(1)},\dots,q_{\tau(N)}}
+\]
+对所有的$\tau\in S_N$都成立。于是，$\Psi_{q_1,\dots,q_N}$的形式已经呼之欲出，为
+\[
+	\Psi_{q_1,\dots,q_N}=\frac{1}{N!}\sum_{\tau\in S_N}\Psi_{q_{\tau(1)}}\otimes \cdots \otimes \Psi_{q_{\tau(N)}},
+\]
+即$\Psi_{q_1}\otimes \cdots \otimes \Psi_{q_N}$关于粒子指标的全对称化。类似地，对于自由全同费米子系统，多粒子态应该具有形式
+\[
+	\Psi_{q_1,\dots,q_N}=\frac{1}{N!}\sum_{\tau\in S_N}\operatorname{sign}(\tau)\Psi_{q_{\tau(1)}}\otimes \cdots \otimes \Psi_{q_{\tau(N)}},
+\]
+即$\Psi_{q_1,\dots,q_N}$关于粒子指标的全对称化。
+
+对于$N$个非全同粒子，多粒子态就形如$\Psi_{q_1}\otimes \cdots \otimes \Psi_{q_N}$. 这里由于单粒子态的空间都不同，所以也谈不上什么置换。不过，Naive的代数已经告诉了我们$\mathcal{H}_{\tau(1)}\otimes \cdots \otimes \mathcal{H}_{\tau(N)}$和$\mathcal{H}_{1}\otimes \cdots \otimes \mathcal{H}_{N}$都是典范同构的，所以，只要我们愿意，我们总可以选定某个同构，把这些空间的张量积换到一种“标准”排序。
+
+现在，我们有一般的$N$个粒子，按照上面的原则，对于非全同粒子，我们可以任意按照某种“规则”改变顺序，所以可以假设多粒子态的空间为
+\[
+(\mathcal H_1\otimes\cdots\otimes\mathcal H_{i_1})\otimes \cdots \otimes (\mathcal H_{i_k+1}\otimes\cdots\otimes\mathcal H_{i_{k+1}})\otimes \cdots \otimes (\mathcal H_{i_n+1}\otimes\cdots\otimes\mathcal H_{N}),
+\]
+其中
+\[
+	\mathcal H_{i_k+1}=\mathcal H_{i_k+2}=\cdots=\mathcal H_{i_{k+1}},
+\]
+即全同粒子紧挨排列。此时，多粒子态应该具有形式
+\[
+	\Psi_{q_1,\dots,q_{i_1}}\otimes \cdots\otimes \Psi_{q_{i_k+1},\dots,q_{i_{k+1}}}\otimes \cdots \otimes \Psi_{q_{i_n+1},\dots,q_N},
+\]
+其中每一个$\Psi_{q_1,\dots,q_{i_1}}$都是全同粒子的多粒子态。
+
+但是，不同粒子混排经常在操作上更加方便。所以我们做出如下约定：对多粒子态中紧邻的两个粒子$q_i$和$q_i+1$，如果$q_i$或$q_i+1$中有一个是玻色子，则约定
+\[
+	\Psi_{\dots,q_i,q_{i+1},\dots}=\Psi_{\dots,q_{i+1},q_{i},\dots},
+\]
+如果$q_i$和$q_i+1$和都是费米子，则约定
+\[
+	\Psi_{\dots,q_i,q_{i+1},\dots}=-\Psi_{\dots,q_{i+1},q_{i},\dots}.
+\]
+当$q_i$和$q_{i+1}$全同的时候，这个约定自然地退化到了全同粒子多粒子态的已知性质。
+
+代数些来说，上面的约定就是考虑了直和
+\[
+	\mathcal{H}=\bigoplus_{\tau\in S_N}\mathcal{H}_{\tau(1)}\otimes\cdots\otimes \mathcal{H}_{\tau(N)},
+\]
+以及对$q$或$q'$中有一个是玻色子时，所有形如
+\[
+	(\cdots\otimes \Psi_{q}\otimes \Psi_{q'}\otimes \cdots)-(\cdots\otimes \Psi_{q'}\otimes \Psi_{q}\otimes \cdots)
+\]
+的矢量的集合$I_1$，对$q$或$q'$都是玻色子，所有形如
+\[
+	(\cdots\otimes \Psi_{q}\otimes \Psi_{q'}\otimes \cdots)+(\cdots\otimes \Psi_{q'}\otimes \Psi_{q}\otimes \cdots),
+\]
+的矢量的集合$I_2$. 那么我们多粒子态的空间就是$\mathcal{H}/\langle I_1 + I_2 \rangle$，而多粒子态$\Psi_{q_1,\dots,q_N}$就是其中的元素。
+
+现在，我们来定义$\mathcal{H}$上的内积如下：首先，对于非全同粒子的单粒子态，它们的内积总是为$0$，于是，任意的两个单粒子态$\Psi_q$和$\Psi_{q'}$之间的内积就有了定义，归一化关系写作
+\[
+	(\Psi_q,\Psi_{q'})=\delta(q-q')=\delta^{3}\left(\bm{p}-\bm{p}'\right)\delta_{\sigma\sigma'}\delta_{nn'}.
+\]
+然后定义
+\[
+	(\Psi_{q_1,\dots,q_N},\Psi_{q'_1,\dots,q'_N})=\sum_{\tau\in S_N}\prod_{i=1}^N\pm (\Psi_{q_i},\Psi_{q'_{\tau(i)}})=\sum_{\tau\in S_N}\prod_{i=1}^N\pm \delta^{3}\left(\bm{p}_i-\bm{p}'_{\tau(i)}\right)\delta_{\sigma_i\sigma'_{\tau(i)}}\delta_{n_in'_{\tau(i)}}.
+\]
+其中$\pm$通过求和中的
+\[
+	\delta(q_1-q'_1)\cdots \delta(q_N-q'_N)
+\]
+取正确定，其他项的符号看置换究竟交换了多少次费米子，奇数为负，偶数为正。不难检验，这是良定的，与选取的等价多粒子态无关。
+
+最后，约定$\Psi_0$为真空态，满足$(\Psi_0,\Psi_0)=1$. 而对于粒子数不同的态，自然约定它们的内积为零。至此，我们总算得到了一套描述多粒子量子力学的语言。
+
+\section{产生湮灭算符}
+
+量子场论与量子力学的一大“区别”就是我们不得不去考虑粒子变化的过程，不管是自发辐射还是粒子对撞。特别地，系统的粒子数此时一般不会是固定的了。因此，在数学上，我们就必须考虑联系不同粒子数态的算符。比方说，在第三章，我们已经看到了$S$-矩阵（算符），它描述了一个散射过程，进去和出来的粒子数可以完全不同。
+
+在所有使得粒子数改变的算符中，最简单的那个必然是
+\[
+	a^\dag(q)\Psi_{q_1,\dots,q_N}=\Psi_{q,q_1,\dots,q_N},
+\]
+以及其共轭算符$a(q)$. 我们称$a^\dag$为产生算符，而$a$为湮灭算符。利用归一化关系，不难求得
+\[
+	a(q)\Psi_{q_1,\dots,q_N}=\sum_{r=1}^N(\pm)\delta(q-q_r)\Psi_{q_1,\dots,q_{r-1},q_{r+1},\dots,q_N},
+\]
+其中$\pm$是通过$q_1$和$q_r$对换需要交换多少次费米子决定的。
+
+利用产生算符，任意的多粒子态都写成一系列产生算符作用在真空态上，即
+\[
+	\Psi_{q_1 \cdots q_N}=a^\dag(q_1)\cdots a^\dag(q_N)\Psi_0,
+\]
+其中$\Psi_0$为真空态。对偶地，对于真空态，无论是费米子还是玻色子的湮灭算符，我们都有
+\[
+	a(q)\Psi_0=\Psi_0.
+\]
+
+利用归一化关系和定义，直接计算将给出对易关系
+\begin{align*}
+	[a(q'),a^\dag(q)]_\mp = &\, a(q')a^\dag(q)\mp a^\dag(q)a(q')=\delta(q'-q),\\
+	[a(q'),a(q)]_\mp = &\, a(q')a(q)\mp a(q)a(q')=0,\\
+	[a^\dag(q'),a^\dag(q)]_\mp = &\, a^\dag(q')a^\dag(q)\mp a^\dag(q)a^\dag(q')=0,
+\end{align*}
+其中$-$是对玻色子，$+$是对费米子。
+
+下面一个定理告诉我们，实际上，有了产生淹没算符，我们可以用他们构造出全部的线性算符，这些线性算符当然不只是单粒子态算符，还可以是改变粒子的多粒子态算符。
+
+\begin{thm}
+任何的多粒子态算符$\mathcal{O}$，都可以写成
+\[
+	\mathcal{O}=\sum_{N=0}^\infty \sum_{M=0}^\infty \int d q'_1\cdots d q'_N d q_1\cdots d q_M a^\dag (q'_1)\cdots a^\dag (q'_N) a(q_M)\cdots a(q_1)C_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M),
+\]
+其中$C_{NM}$是系数函数。
+\end{thm}
+
+\begin{proof}
+证明见 Weinberg I的第 4.2 节，这里不再赘述。证明的根据在于给定$\mathcal O$，所有的
+\[
+	(\Psi_{q'_1,\dots,q'_M},\mathcal O \Psi_{q_1,\dots,q_N})
+\]
+可以决定$\mathcal O$本身。换句话说，$C_{NM}$这里就是$\mathcal O$的矩阵元。
+\end{proof}
+
+作为粒子，满足
+\[
+	F\Psi_{q_1,\dots,q_n}=(F(q_1)+\cdots+F(q_n))\Psi_{q_1,\dots,q_n}
+\]
+的算符$F$可以表为
+\[
+	F=\int dq \,f(q)a^\dag(q)a(q).
+\]
+特别地，自由粒子的Hamiltonian总写作
+\[
+	H_0=\int dq \,E(q)a^\dag(q)a(q)
+\]
+其中$E(\bm{p},\sigma,n)=\sqrt{\bm{p}^2+m_n^2}$.
+
+我们现在考虑这两个算子在Lorentz变换下面的表现。
+\begin{pro}
+对自由粒子的 Poincar\'{e} 群的表示$U_0(\Lambda,\alpha)$，我们有
+\[
+	U_0(\Lambda,\alpha)a^\dag(\bm{p},\sigma,n)U_0^{-1}(\Lambda,\alpha)=e^{-i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)a^\dag(\bm{p}_\Lambda,\bar{\sigma},n),
+\]
+当然，共轭地，有
+\[
+	U_0(\Lambda,\alpha)a(\bm{p},\sigma,n)U_0^{-1}(\Lambda,\alpha)=e^{i(\Lambda p)\cdot \alpha}\sqrt{\frac{(\Lambda p)^0}{p^0}}\sum_{\bar{\sigma}} D^{(j_n)*}_{\bar{\sigma}\sigma}\left(W(\Lambda,p)\right)a(\bm{p}_\Lambda,\bar{\sigma},n).
+\]
+\end{pro}
+
+\begin{proof}
+为公式长度考虑，这里就不考虑平移了。利用
+\[
+	U_0(\Lambda)\Psi_{q_1,\dots,q_N}=\sum_{\sigma'}\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}D^{j}_{\sigma_i'\sigma_i}(W(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma'_1,n_1),\dots,(\Lambda \bm{p}_N,\sigma'_N,n_N)}.
+\]
+我们有
+\[
+	U_0(\Lambda)a^\dag(q_1)\Psi_{q_2,\dots,q_N}=\sum_{\sigma'}\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}D^{j}_{\sigma_i'\sigma_i}(W(\Lambda,p_i))a^\dag(\Lambda q'_1)\Psi_{(\Lambda \bm{p}_2,\sigma'_2,n_2),\dots,(\Lambda \bm{p}_N,\sigma'_N,n_N)},
+\]
+所以
+\[
+	U_0(\Lambda)a^\dag(q_1)\Psi_{q_2,\dots,q_N}=\sum_{\sigma'_1}\sqrt{\frac{(\Lambda p)^0_1}{p^0_1}}D^{j}_{\sigma_1'\sigma_1}(W(\Lambda,p_1))a^\dag(\Lambda q'_1)U_0(\Lambda)\Psi_{q_2,\dots,q_N},
+\]
+由于$\Psi_{q_2,\dots,q_N}$是任意的，所以
+\[
+	U_0(\Lambda)a^\dag(q)U_0(\Lambda)^{-1}=\sum_{\sigma'}\sqrt{\frac{(\Lambda p)^0}{p^0}}D^{j}_{\sigma'\sigma}(W(\Lambda,p))a^\dag(\Lambda q').
+\]
+湮灭算符的关系求其共轭即可。
+\end{proof}
+
+\section{集团分解和连通振幅}
+
+集团分解原理从某种程度上等价于说相互作用在离得非常远的时候会渐进为零，后面我们会看到，为满足集团分解原理，相互作用必须有一些限制。为了描述什么叫做“远”，我们将先在坐标表象下考虑问题。由于我们的主要研究对象是$S$-矩阵，所以定义坐标表象的$S$-矩阵为：
+\[
+	S_{\bm{x}'_1,\dots,\bm{x}'_M;\bm{x}_1,\dots,\bm{x}_N}=\int d^3\bm{p}'_1\cdots d^3\bm{p}'_M d^3\bm{p}_1\cdots d^3\bm{p}_N \,e^{i\bm{p}'_1\cdot \bm{x}'_1}\cdots e^{-i\bm{p}_1\cdot \bm{x}_1}\cdots S_{\bm{p}'_1,\dots,\bm{p}'_M;\bm{p}_1,\dots,\bm{p}_N},
+\]
+即原$S$-矩阵的Fourier变换，这里我们略去了粒子的其他指标，它们都保持不变。由于$S$-矩阵有自然的动量守恒条件，所以坐标表象的$S$-矩阵是平移不变的（将$\bm{x}$和$\bm{x}'$都平移一个常矢量$\bm{a}$下不变）。
+
+现在，集团分解原理立即给出，如果过程$\alpha_1\to \beta_1$, $\alpha_2\to \beta_2$, $\dots$, $\alpha_\mathscr{N}\to \beta_\mathscr{N}$分隔得非常开的，则$S$-矩阵应该满足分解（渐进意义下）
+\[
+	S_{\beta_1+\cdots+\beta_{\mathscr N},\alpha_1+\cdots+\alpha_{\mathscr N}}\to S_{\beta_1,\alpha_1}\cdots S_{\beta_{\mathscr N},\alpha_{\mathscr N}}.
+\]
+后面会看到，如果我们用产生湮灭算符来构造相互作用，则可以以一种较明显的方式给出一套满足集团分解原理的理论。在具体讨论这点之前，我们首先讨论什么叫做连通的振幅。
+
+下面以$2\to 2$的过程为例，即$\alpha=\{q_1,q_2\}$而$\beta=\{q'_1,q'_2\}$. 如果我们把$S$-矩阵$S_{\beta\alpha}$看成$\beta$和$\alpha$的函数，则在完整的$S$-矩阵元中，应该存在如下过程
+\[
+	q_1\to q_1',\quad q_2\to q_2',
+\]
+即$q_1$直接变成$q'_1$，$q_2$直接变成$q'_2$. 这个过程对应的振幅应该为$\delta(q_1-q'_1)\delta(q_2-q'_2)$. 类似地，还应有过程
+\[
+	q_1\to q_2',\quad q_2\to q_1',
+\]
+它对应的振幅应该为$\pm \delta(q_1-q'_2)\delta(q_2-q'_1)$，其中$\pm$要看交换了几次费米子。而我们最感兴趣的过程
+\[
+	q_1+q_2\to q_1'+q_2'
+\]
+对应的振幅应该在整个$S$-矩阵中去掉前面两个过程的振幅，即
+\[
+	S_{q'_1,q'_2;q_1,q_2}-(\delta(q_1-q'_1)\delta(q_2-q'_2)\pm \delta(q_1-q'_2)\delta(q_2-q'_1)).
+\]
+这个部分我们称之为$S$-矩阵的连通部分，记作$S^C_{q'_1,q'_2;q_1,q_2}$，换言之，
+\[
+	S_{q'_1,q'_2;q_1,q_2}=S^C_{q'_1,q'_2;q_1,q_2}+\delta(q_1-q'_1)\delta(q_2-q'_2)\pm \delta(q_1-q'_2)\delta(q_2-q'_1).
+\]
+
+下面我们对任意的过程给出连通$S$-矩阵的定义（这个定义无关动量还是坐标表象，都是适用的）。首先，对两个单粒子态$q$和$q'$而言，定义
+\[
+	S^C_{q';q}=S_{q';q}=\delta(q'-q).
+\]
+于是，注意到上面的$2\to 2$过程写作
+\[
+	S_{q'_1,q'_2;q_1,q_2}=S^C_{q'_1,q'_2;q_1,q_2}+S^C_{q'_1;q_1}S^C_{q'_2;q_2}\pm S^C_{q'_1;q_2}S^C_{q'_2;q_1}.
+\]
+所以，类似地，我们定义
+\[
+	S_{\beta;\alpha}=S^C_{\beta;\alpha}+\sum_{k>1}\sum_{\text{PART}_k} (\pm) S^C_{\beta_1;\alpha_1}S^C_{\beta_2;\alpha_2}\cdots S^C_{\beta_k;\alpha_k},
+\]
+其中第二个求和号是对所有将$\alpha$, $\beta$分成$k$份的所有可能求和。
+
+利用$S$-矩阵的连通部分，我们可以将$S$-矩阵的集团分解原理重新表为：如果在$S$-矩阵中，某（几）个坐标$\bm{x}'_i$或$\bm{x}_j$趋向无穷，则矩阵元$S^C_{\bm{x}'_1,\dots,\bm{x}'_M;\bm{x}_1,\dots,\bm{x}_N}$趋向于$0$. 由于$S^C$的平移不变性，所以实际上这也等价于说，只要存在两个粒子之间的距离趋向于无穷，则矩阵元在这个极限下为$0$. 
+
+下面我们说明这等价于本节一开始所描述的集团分解原理。以过程$\alpha_1+\alpha_2\to \beta_1+\beta_2$为例，其中$\alpha_1\to \beta_1$离开$\alpha_2\to \beta_2$非常远。根据$S^C$的定义，我们展开$S_{\beta_1+\beta_2;\alpha_1+\alpha_2}$，在所有的分解中，$S^C_{\gamma;\tau}$必须满足$\gamma\subset \beta_i$且$\tau\subset \alpha_i$，其中$i=1$, $2$. 其他所有的$S^C$都在极限下为零，所以
+\begin{align*}
+S_{\beta_1+\beta_2;\alpha_1+\alpha_2}&=\sum_{k>1}\sum_{\text{PART}_k} (\pm) S^C_{\gamma_1;\tau_1}S^C_{\gamma_2;\tau_2}\cdots S^C_{\gamma_k;\tau_k}\\
+&\to \sum_{k\geq 1}\sum_{\text{PART}_k} (\pm) S^C_{\gamma^1_1;\tau_1}\cdots S^C_{\gamma^1_k;\tau^1_k}\sum_{k\geq 1}\sum_{\text{PART}_k} (\pm) S^C_{\gamma^2_1;\tau^2_1}\cdots S^C_{\gamma^2_k;\tau^2_k}\\
+&\to S_{\beta_1;\alpha_1}S_{\beta_2;\alpha_2}.
+\end{align*}
+其中$\gamma^i$和$\beta^i$是指它们是$\beta_i$和$\alpha_i$的分解，而求和从$k>1$改成$k\geq 1$是因为比如$S^C_{\beta_1;\alpha_1}$在$S_{\beta_1;\alpha_1}$中对应的分解次数是$1$，而在$S_{\beta_1+\beta_2;\alpha_1+\alpha_2}$是$2$.
+
+现在，让我们回到动量表象，从$S^C$的定义，我们可以知道
+\[
+	S^C_{\bm{x}'_1,\dots,\bm{x}'_M;\bm{x}_1,\dots,\bm{x}_N}=\int d^3\bm{p}'_1\cdots d^3\bm{p}'_M d^3\bm{p}_1\cdots d^3\bm{p}_N \,e^{i\bm{p}'_1\cdot \bm{x}'_1}\cdots e^{-i\bm{p}_1\cdot \bm{x}_1}\cdots S^C_{\bm{p}'_1,\dots,\bm{p}'_M;\bm{p}_1,\dots,\bm{p}_N},
+\]
+其中，被积式中的$S^C$可以写成
+\[
+	\delta^4(p'_1+\cdots+p'_M-p_1-\cdots-p_N)h^C_{\bm{p}'_1,\dots,\bm{p}'_M;\bm{p}_1,\dots,\bm{p}_N},
+\]
+其中$\delta^4$的出现代表能量和动量守恒，也因此，坐标表象的$S^C$的平移不变性成立。根据集团分解原理，坐标表象的$S^C$必须在某两个坐标之差趋向于无穷的时候趋向于零，显然，如果$h^C\in \mathsf{L}_1$，则Riemann-Lebesgue定理可以给出这个结论。但是，一般地，物理上存在的相互作用完全可以使得$h^C\not\in \mathsf{L}_1$，只要集团分解原理成立，我们都可以接受。
+
+\begin{pro}
+函数$h^C_{\bm{p}'_1,\dots,\bm{p}'_M;\bm{p}_1,\dots,\bm{p}_N}$不能包含因子$\delta^3(a_1\bm{p}'_1+\cdots +a_M\bm{p}'_M-a_{M+1}\bm{p}_1-\cdots -a_{M+N}\bm{p}_N)$，其中$\{a_i\in\{0,1\}\}$是一族不完全非零的常数。
+\end{pro}
+
+\begin{proof}
+设包含的因子为
+\[
+	\delta^3\biggl(\sum_{i\in A}\bm{p}'_i-\sum_{j\in B}\bm{p}_j\biggr),
+\]
+那么对所有处于$A$和$B$中的粒子，我们都平移$\bm{a}$，则
+\[
+	\prod_{i\in A}\prod_{j\in B}e^{i \bm{p}'_i\cdot (\bm{x}'_i+\bm{a})}e^{-i \bm{p}_i\cdot (\bm{x}_i+\bm{a})}=\exp\left(\biggl(\sum_{i\in A}\bm{p}'_i-\sum_{j\in B}\bm{p}_j\biggr)\cdot \bm{a}\right)\prod_{i\in A}\prod_{j\in B}e^{i \bm{p}'_i\cdot \bm{x}'_i}e^{-i \bm{p}_i\cdot \bm{x}_i},
+\]
+由于积分中$\delta$-函数的存在，所以前面这项因子在积分中可以看成$1$，即积分值不依赖于$\bm{a}$. 换而言之，此时$S^C_{\bm{x}'_1,\dots,\bm{x}'_M;\bm{x}_1,\dots,\bm{x}_N}$在所有处于$A$和$B$中的粒子都远离其他粒子的时候，函数值不变，这违背了集团分解原理。
+\end{proof}
+
+\section{相互作用的结构}
+
+\begin{thm}
+考虑一个理论，它的Hamilton量可以展开为产生湮灭算符，即
+\[
+	H=\sum_{N,M}\int \prod_{i=1}^N\prod_{j=1}^M \dd q'_i \dd q_j a^\dag (q'_1)\cdots a^\dag (q'_N) a(q_M)\cdots a(q_1)h_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M),
+\]
+由于动量守恒，展开系数$h_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M)$可以写成
+\[
+	h_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M)=\delta^3(\bm{p}'_1+\cdots \bm{p}'_N-\bm{p}_1-\cdots-\bm{p}_M)\bar{h}_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M),
+\]
+如果$\bar{h}_{NM}$中在不包含其他的$3$-动量线性组合的$\delta^3$-函数因子，则这个理论满足集团分解原理。
+\end{thm}
+
+可以微扰地证明这个命题，思路如下：
+
+\begin{enumerate}
+\item 首先，利用含时微扰公式
+\[
+	S_{\beta\alpha}=\sum_{n=0}^{\infty}\frac{(-1)^n}{n!}\int_{\rr^n}\dd t_1\dd t_2\cdots\dd t_n\, \left(\Phi_\beta,T\left\{V(t_1)V(t_2)\cdots V(t_n)\right\}\Phi_\alpha\right),
+\]
+我们需要计算$\left(\Phi_\beta,T\left\{V(t_1)V(t_2)\cdots V(t_n)\right\}\Phi_\alpha\right)$，其中$\Phi_{\alpha}$, $\Phi_\beta$是自由粒子态。
+\item 利用产生和湮灭算符，我们可以把$\Phi_{\alpha}$和对面的$\Phi_\beta$写成一族产生算符作用在真空态$\Phi_0$上，而每一个$V(t)$算符，根据假设，都可以用产生湮灭算符算符展开，于是我们就得要计算诸如$(\Phi_0,F(a,a^\dag)\Phi_0)$的值，其中$F$是一个$a$和$a^\dag$的多项式，每一个$a$或者$a^\dag$都可以带有一个独立的粒子指标。
+
+\item 由于内积是线性的，所以可以假设$F$还是一个单项式，利用对易关系
+\[
+	a(q)a^\dag(q')=\delta(q-q')\pm a^\dag(q')a(q),
+\]
+我们可以将$F(a,a^\dag)$中所有的$a(q)$往右移，当移到$\Phi_0$的时候，将得到零。所以，$F$中最左边的那个$a(q)$必然与$F$中的某个$a^\dag(q')$变成了$\delta(q-q')$，将这些所有可能加起来（考虑到交换所产生的符号）得到了一个新的多项式$G$，其中$a$和$a^\dag$的数量比起$F$都减去了$1$，且
+\[
+	(\Phi_0,F(a,a^\dag)\Phi_0)=(\Phi_0,G(a,a^\dag)\Phi_0),
+\]
+然后，通过递归，我们也就计算出了$(\Phi_0,F(a,a^\dag)\Phi_0)$，他是一族$\delta$-函数的多项式。
+
+\item 以上过程可以用图表示：对$\left(\Phi_\beta,T\left\{V(t_1)V(t_2)\cdots V(t_n)\right\}\Phi_\alpha\right)$，用$n$个点表示$V(t_1)$, $V(t_2)$, $\dots$, $V(t_n)$，然后如果$\delta$-函数来自于$V(t_i)$中的湮灭算符和$\Phi_\alpha$中的产生算符交换得到的，则我们从下至第$i$个点画一条线；如果$\delta$-函数来自于$\Phi_\beta$中的湮灭算符和$V(t_i)$中的产生算符交换得到的，则我们从第$i$个点向上画一条线；如果来自于$V(t_i)$和$V(t_j)$中产生湮灭算符的交换，则我们在第$i$个点和第$j$个点之间画一条线；如果来自于$\Phi_\beta$和$\Phi_\alpha$之间的交换，则从下到上画一条线。
+
+每个图中的线都是一个$\delta$-函数，而一幅图就是所有线的$\delta$-函数之乘积，内积
+\[
+\left(\Phi_\beta,T\left\{V(t_1)V(t_2)\cdots V(t_n)\right\}\Phi_\alpha\right)
+\]
+是每个图乘上正确的系数的和，再对所有$V(t)$的展开中粒子指标求和（积分），注意，对初末态的粒子指标不要求和（积分）掉了。
+
+\item 考虑图，一幅图总可以分为几个连通的子图。固定$\alpha$的一个子集$\alpha_0$和$\beta$的一个子集$\beta_0$，将所有只包含$\alpha_0$和$\beta_0$的$k$个节点的连通子图（要配上系数）求和，我们将其记作
+\[
+	(\Phi_{\beta_0},T\left\{V(t_1)V(t_2)\cdots V(t_k)\right\}\Phi_{\alpha_0})_C,
+\]
+则
+\[
+	S^{C}_{\beta_0\alpha_0}=\sum_{k=0}^{\infty}\frac{(-1)^k}{k!}\int_{\rr^k}\dd t_1\dd t_2\cdots\dd t_k\, (\Phi_{\beta_0},T\left\{V(t_1)V(t_2)\cdots V(t_k)\right\}\Phi_{\alpha_0})_C.
+\]
+这个式子的证明的组合味道非常重，所以这里略去了，可以看 Weinberg 第 4.4 节。顺便，这里可以看到$S^C$被称为$S$-矩阵的连通部分的理由，它对应着连通的图。
+
+\item 注意到，在图中，每一条线上的动量都是守恒的。根据我们的条件，$H$的展开系数至多只有一个$\delta^3$-函数，而由于$H_0$肯定是这样的，所以$V=H-H_0$也满足这点，这意味着，在我们的图中，每一个顶点处都提供了一个动量守恒的$\delta^3$-函数，此外，系数中再无$\delta^3$-函数因子。通过线和点的动量守恒还有外线的动量，我们可以确定内线的动量，除非图中出现了一个圈，则这个圈内可以有一个自由的动量循环（最后也会被积分积掉）。
+
+\item 对于一个有$V$个顶点、$I$条线和$L$个圈的连通图，每一个顶点贡献1个$\delta^3$-函数，在积分中，$V$个$\delta^3$-函数中有$I-L$个用来固定线上的动量，而剩下的$V-(I-L)$个$\delta^3$-函数用以联系初末态的动量。利用拓扑学命题，我们有等式
+\[
+	V-I+L=C,
+\]
+其中$C$是图的连通子图个数，这里是$1$，所以对于连通图，只有一个$\delta^3$-函数用以联系初末态的动量，其他的都在积分中积掉了。最后的结果，剩下的这个$\delta^3$-函数自然就是保证了整个$S$-矩阵的连通部分的动量守恒，此即集团分解原理。
+\end{enumerate}
+
+
+这是一个非常不平凡的条件，考虑一个相互作用$V$，他描述了$2\to 2$的散射过程。不难算出矩阵元
+\[
+	(\Psi_{\bar{\bm{p}}_1,\bar{\bm{p}}_2,\bar{\bm{p}}_3},V\Psi_{\bm{p}_1,\bm{p}_2,\bm{p}_3})=v_{3,3}(\bar{\bm{p}}_1,\bar{\bm{p}}_2,\bar{\bm{p}}_3,\bm{p}_1,\bm{p}_2,\bm{p}_3)+v_{2,2}(\bar{\bm{p}}_1,\bar{\bm{p}}_2,\bm{p}_1,\bm{p}_2)\delta^{3}(\bar{\bm{p}}_3,\bm{p}_3)+\cdots,
+\]
+其中$v_{3,3}$等是$V$用产生湮灭算符展开中的系数。如果$3\to 3$的矩阵元为零，则
+\[
+	v_{3,3}(\bar{\bm{p}}_1,\bar{\bm{p}}_2,\bar{\bm{p}}_3,\bm{p}_1,\bm{p}_2,\bm{p}_3)=-v_{2,2}(\bar{\bm{p}}_1,\bar{\bm{p}}_2,\bm{p}_1,\bm{p}_2)\delta^{3}(\bar{\bm{p}}_3,\bm{p}_3)-\cdots
+\]
+此时如果$v_{2,2}(\bar{\bm{p}}_1,\bar{\bm{p}}_2,\bm{p}_1,\bm{p}_2)$本身就包含一个保证动量守恒的$\delta^3(\bar{\bm{p}}_1+\bar{\bm{p}}_2-\bm{p}_1-\bm{p}_2)$，则在$v_{3,3}(\bar{\bm{p}}_1$, $\bar{\bm{p}}_2$, $\bar{\bm{p}}_3$, $\bm{p}_1$, $\bm{p}_2$, $\bm{p}_3)$中就会有两个$\delta^3$-函数因子，上面定理的条件就不会得以满足。这也多少看看出，构造具有三个粒子的、满足集团分解原理的少体相对论性量子力学非常困难。但是，似乎确实有人已经构造了出来。
+
+反过来，如果我们的理论满足上面定理的条件，则不可能在有双粒子态之间的相互作用的情况下，更高粒子数的态之间的相互作用却为零。所以，比起不让再多的粒子加进来，把所有的粒子都考虑起来反而在这里变得优雅了呢，当然似乎也变得复杂得多。
+
+遵循上面这个定理以及文章开头提到定理的理论最终走向了所谓的量子场论，它们使得量子场论同时满足了$S$-矩阵的Lorentz不变性以及集团分解原理。量子场论的出现，也确确实实地给出了一些非常深刻的结果，比如为了荷守恒，反粒子必然存在，再比如自旋统计定理和CPT定理。量子场论，虽然可能不是唯一的满足集团分解原理的相对论性量子力学，但这是我们目前走得最顺当的一个理论，其他理论的构建即使在满足基本原理上都遇到了各种各样的困难。所以，有理由相信，在结合狭义相对论和量子力学上，场论是我们现在最合理的选择。
+\end{document}

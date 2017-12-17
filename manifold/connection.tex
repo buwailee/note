@@ -1,5 +1,49 @@
+% !TEX root = manifold.tex
 \chapter{Connection}
 \newcommand{\gl}{\mathfrak{gl}}
+
+\section{引入}
+
+\begin{para}[欧氏几何]
+回忆欧氏几何的几大公理：
+\begin{compactenum}
+	\item 从一点向另一点可以引一条直线。
+	\item 任意线段能无限延伸成一条直线。
+	\item 给定任意线段，可以以其一个端点作为圆心，该线段作为半径作一个圆。
+	\item 所有直角都相等。
+	\item 给定一条直线，通过此直线外的任何一点，有且只有一条直线与之平行。
+\end{compactenum}
+任何几何都可以看成欧氏几何的推广，比如我们下面讨论的流形上的几何。但是，正如欧氏几何的几大公理中所体现的，为了给出所谓的“几何”，我们首先得回答几个问题：什么是点？什么是直线？这两个是几何的基本对象。当然，对应欧氏几何最后一个公理（也被称为平行公理），我们还得回答，什么是平行？这也可以理解为几何的一个基本关系。其余的基本关系比这要平凡些，比如点是否在直线上等。
+
+给定一个流形，“点”是不言自明的，但是对“直线”与“平行”我们都没有相关的概念，对于直线，我们只能说它是一条“曲线”。所以为了给出流形上的几何，我们需要给出“直线”与“平行”的概念。
+\end{para}
+
+\begin{para}[直线的两种刻画]
+在欧氏空间中，直线有两种刻画：
+\begin{compactenum}
+	\item 连接两点的曲线中最短的那条。
+	\item 任意两点的切矢量都平行的曲线。
+\end{compactenum}
+这两种刻画都非常深刻，前者对应于所谓的“测地线”，也体现为变分原理，但是为了得到这种刻画，我们需要在流形上引入可以导出“长度”的结构，比如Riemann度量，后者对应于所谓的“自平行曲线”，但我们也需要引入其他结构来告诉我们，两个切矢量什么时候是平行的。
+
+在欧氏空间中，上面两种刻画几乎是等价的。在Riemann流形（或更一般的伪Riemann流形）上，我们将会看到，利用度量，我们可以定义出什么是平行。所以，在直线的两种刻画中，后者相对更为基础，同时也更为直观些。
+\end{para}
+
+所以，在某种程度上，为了回答什么是直线，我们只需回答什么是平行即可。
+
+\begin{para}[平行移动]
+现在让我们回到欧氏几何，或更一般的矢量空间$V$中。$V$中的两个矢量是否平行被直接定义为它们是否线性相关。
+
+现在，假设我们有一条曲线$\sigma:\rr\to \rr^n$，那么它每一点的切矢量有
+\[
+	\dot\sigma(t)\in T_{\sigma(t)}\rr^n,
+\]
+每一点的切空间$T_{\sigma(t)}\rr^n$实际上都是不同的矢量空间，我们可以把$T_{\sigma(t)}\rr^n$看成$\sigma(t)$处放了一个$\rr^n$. 在这里，因为不同切矢量所处的空间不同，我们不能直接利用$\rr^n$中两个矢量的平行的定义。
+
+但是，在非常久远之前，我们将所有的$T_{\sigma(t)}\rr^n$都等同于$\rr^n$，这个过程在这里可以理解为将$T_{\sigma(t)}\rr^n$中的矢量“移到”同一个矢量空间$T_{0}\rr^n$中。此时，利用$T_{0}\rr^n$上面平行的定义，我们也就得到了不同切空间中两个切矢量的平行与否。
+
+在一般的流形$M$上，假设我们有一条曲线$\sigma:\rr\to M$，像之前一样，每一点的切矢量都在不同的切空间之中。所以为了定义平行，我们需要定义什么叫做“平行移动”。
+\end{para}
 
 先复习一个物理，作为伪Riemann几何的引入。并且，下面我们假设使用Einstein指标规则，即存在一上一下存在重复指标的时候就对这个指标求和，比如$x^iy_i=\sum_{i}x^iy_i$等。
 
@@ -258,14 +302,17 @@ $T\rr^n$的截面可以写作$s(x)=x^i(x)e_i$，其中$e_i$是$\rr^n$的标准�
 
 类似的计算可以给出任意张量场$\omega$的联络满足：
 
-\pro 假如$\omega$是一个$(r,s)$型张量场，则
+\begin{pro}
+假如$\omega$是一个$(r,s)$型张量场，则
 \begin{align*}
 	X(\omega(\eta^i;X_j))=&(D_X\omega)(\eta^i;X_j)\\
 	&+\sum_i \omega\left(\eta^{1},\cdots,\eta^{i-1},D^*_X \eta^i,\eta^{i+1},\cdots,\eta^r;X_j\right)\\
 	&+\sum_j \omega\left(\eta^i;X_{1},\cdots,X_{j-1},D_X X_j,X_{j+1},\cdots,X_s\right).
 \end{align*}
+\end{pro}
 
 这个等式可以理解成广义的Leibniz法则。
+
 \section{Curvature}
 前面已经知道
 \[
@@ -365,7 +412,9 @@ $T\rr^n$的截面可以写作$s(x)=x^i(x)e_i$，其中$e_i$是$\rr^n$的标准�
 \]
 Levi-Civita联络的挠率为0，即Levi-Civita联络是无挠的。联络无挠在局部等价于$\Gamma^{k}_{\phantom{k}ij}=\Gamma^{k}_{\phantom{k}ji}$. 挠率的几何意义其实并不很清楚。
 
-\theo 伪Riemann流形存在唯一的和度规相容的、无挠的联络，我们称之为Levi-Civita联络。\endtheo
+\begin{thm}
+伪Riemann流形存在唯一的和度规相容的、无挠的联络，我们称之为Levi-Civita联络。
+\end{thm}
 
 \proof 唯一性的证明，和度规相容的、无挠的联络$\nabla$一定满足：
 \[
@@ -423,11 +472,13 @@ D_{\dot{c}}s(c(t))=\left(\dot{s}^j\mu_j+\dot{c}^i s^j\Gamma^k_{\phantom{k}ij}\mu
 
 本节的最后来谈谈活动标架法，活动标架法利用的是局部基和对偶基来计算联络和曲率。从直接的计算开始，可以得到：
 
-\pro 设$D$是无挠联络，则
+\begin{pro}
+设$D$是无挠联络，则
 \[
 	\dd \omega(X_1,\cdots,X_{r+1})=\sum_{i=1}^{r+1}(-1)^{i-1}D_{X_i}\omega(X_1,\cdots,\hat{X_i},\cdots,X_{r+1}),
 \]
 其中$\hat{X_i}$指在括号中没有这项。
+\end{pro}
 
 对$r=1$和Levi-Civita联络，
 \[
@@ -525,9 +576,11 @@ Hodge星算子的定义和第一章里面的一样
 \]
 通过耐心细致但不复杂的计算可以得到，
 
-\pro 在伪Riemann流形$M$上，如果他的度规的负本征值个数为$s$，那么在$p$-形式上成立恒等式
+\begin{pro}
+在伪Riemann流形$M$上，如果他的度规的负本征值个数为$s$，那么在$p$-形式上成立恒等式
 	\[\star\star=(-1)^{s+p(n-p)}.\]
 证明很类似在$\rr^{s+(n-s)}$上的证明。
+\end{pro}
 
 有了Hodge星算子，可以在任意两个$p$-形式之间定义一个新的内积
 \[
@@ -881,7 +934,9 @@ $P$上的一个联络被称为一个规范场，正如上面看到的，给出�
 
 $\mathrm{SO}(2)$是$\mathrm{SO}(3)$的极大环子群，$\mathrm{SO}(2)\times \mathrm{SO}(2)$是$\mathrm{SO}(4)$的极大环子群，环面$\mathrm{T}^n=\{\mathrm{diag}(e^{i\theta_1}$, $\cdots$, $e^{i\theta_n}):0\leq\theta_i<2\pi\}$是$U(n)$的极大环子群。由于$\mathrm{SO}(2)$同构于环$\mathrm{S}^1$，而$\mathrm{T}^n$同构于$\mathrm{S}^1\times\cdots\times\mathrm{S}^1$，所以环子群的名字是十分形象的。
 
-\pro 令$T$是$G$的环子群以及$F(T,\lag)$或$F(T,G)$是$T$在$\lag$或者$G$上的伴随作用的不动点集，那么$T$是极大环子群当且仅当$\dim F(T,\lag)=\dim T$或者$F(T,G)$包含$T$作为其中之一的连通分支。
+\begin{pro}
+令$T$是$G$的环子群以及$F(T,\lag)$或$F(T,G)$是$T$在$\lag$或者$G$上的伴随作用的不动点集，那么$T$是极大环子群当且仅当$\dim F(T,\lag)=\dim T$或者$F(T,G)$包含$T$作为其中之一的连通分支。
+\end{pro}
 
 让$\mathfrak{t}$是$T$的Lie代数，那么每一个$t\in T$都满足$\mathrm{Ad}_t\mathfrak{t}=\mathfrak{t}$，这是Abel群的自然结果，所以
 \[
@@ -898,7 +953,9 @@ $\mathrm{SO}(2)$是$\mathrm{SO}(3)$的极大环子群，$\mathrm{SO}(2)\times \m
 
 下面这个定理就是这节的主要内容。
 
-\theo 令$T$是紧Lie群$G$的极大环子群，那么每个$g\in G$共轭于某个$T$的元素。
+\begin{thm}
+令$T$是紧Lie群$G$的极大环子群，那么每个$g\in G$共轭于某个$T$的元素。
+\end{thm}
 
 因此所有的极大环子群都是相互共轭的。
 
@@ -926,7 +983,9 @@ $\mathrm{SO}(2)$是$\mathrm{SO}(3)$的极大环子群，$\mathrm{SO}(2)\times \m
 \]
 因为$(l_{t_0})_*\mathfrak{t}$就是$T$在$t_0$处的切空间，为了证明$G(t_0)$在$t_0$处的切空间就是$T$在$t_0$处的切空间的正交补，我们可以去证明$T$的伴随作用诱导在切空间上的作用不包含任意固定的方向。
 
-\pro 令$H$是$G$的紧Lie子群，他们的Lie代数分别为$\mathfrak{h}$和$\lag$，则$\lag=\mathfrak{h}\oplus\mathfrak{h}^\bot$。那么在$G/H$基点处的切空间$T_0(G/H)$诱导的H作用等价于$H$的伴随作用在$\mathfrak{h}^\bot$上的限制。
+\begin{pro}
+令$H$是$G$的紧Lie子群，他们的Lie代数分别为$\mathfrak{h}$和$\lag$，则$\lag=\mathfrak{h}\oplus\mathfrak{h}^\bot$。那么在$G/H$基点处的切空间$T_0(G/H)$诱导的H作用等价于$H$的伴随作用在$\mathfrak{h}^\bot$上的限制。
+\end{pro}
 
 设$p(x)=xH\in G/H$是正则投影，那么
 \[
@@ -940,7 +999,9 @@ p_{*e}:\lag=\mathfrak{h}\oplus\mathfrak{h}^\bot\to T_0(G/H)
 
 注意到作为群作用的共轭类，该作用的轨道就是共轭类，而给定元素的定点子群就是该元素的中心化子。所以$t_0$的轨道就是$G$和$t_0$的中心化子的商群，即$G(t_0)=G/G_{t_0}$，那么我们就得到了$\mathfrak{t}^\bot$和$T_0(G/G_{t_0})$之间的同构，而这和$(l_{t_0})_*\mathfrak{t}$的正交是显然的。
 
-\theo $G$上的两个有限维表示$\psi_1,\psi_2$是等价的，当且仅当他们在极大环子群上的限制是等价的。
+\begin{thm}
+$G$上的两个有限维表示$\psi_1,\psi_2$是等价的，当且仅当他们在极大环子群上的限制是等价的。
+\end{thm}
 
 $\psi_1,\psi_2$等价和$\chi_{\psi_1}=\chi_{\psi_2}$是一个意思，那么因为每一个$g\in G$都共轭于某个$T$的元素，而共轭对迹没影响，所以$\chi_{\psi_1}=\chi_{\psi_2}$和$\chi_{\psi_1}|_T=\chi_{\psi_2}|_T$是一个意思，而$\chi_{\psi_1}|_T=\chi_{\psi_2}|_T$又和$\psi_1|_T,\psi_2|_T$等价是一个意思，所以$\psi_1,\psi_2$等价和$\psi_1|_T,\psi_2|_T$等价是一个意思。
 

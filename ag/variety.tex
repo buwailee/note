@@ -1,0 +1,759 @@
+% !TEX root = main.tex
+\chapter{代数簇}
+
+第一章让我们回顾一下古典的代数簇，它包含了许多代数结论，这些结论将来是用得到的。此外，古典的理论有助于类比现代的理论，所以写下了这章。
+
+\section{仿射簇}
+
+代数簇粗略来说是一族多项式的零点集，他是古典代数几何的主要研究对象。有了它就可以谈论一些代数构造的几何直观。
+
+\begin{para}
+假设有一个域$k$，他的代数闭包为$\bar{k}$，定义$n$元有序组$\bba^n_k=\bar{k}\times \cdots \times \bar{k}$为（$\bar{k}$上的）$n$维仿射空间，其中的元素被称为点，对一个点$p=(a_1$, $\dots$, $a_n)$中的$a_i$被称为$p$的坐标。如果不是必须写出域$k$，则$n$维仿射空间通常直接写作$\bba^n$.
+
+考虑域$k$上的多项式环$A=k[x_1$, $\dots$, $x_n]$，其中的元素都可以看成函数$f:\bba^n\to \bar{k}$，于是可以定义他的零点集：对于$A$中的一众元素，即一个集合$T$，定义$Z(T)$为$T$的共同零点集，即
+\[
+Z(T)=\{x\in \bba^n\,:\, \forall f\in T,\, f(x)=0\}.
+\]
+注意到集合$T$可以生成$A$的一个理想，这个理想的共同零点集和$Z(T)$是一样的。如果$T$是单点集，即只包含一个多项式$f$，此时我们会用$Z(f)$来简记$Z(\{f\})$.
+
+若$\bba^n$中的一个子集$Y$是某个$T$的零点集的时候，即$Z(T)=Y$，此时称$Y$为一个（仿射）代数集。
+\end{para}
+
+由于$k$是一个域，所以多项式环$A$是Noether环，他的每个理想都是有限生成的，所以任意的$Z(T)$都可以表示为有限个多项式的共同零点。
+
+\begin{para}
+考虑一个$\bba^n$中的子集$Y$，我们可以反过来去找$A$的元素$f$，使得$f$在$Y$中为零，于是定义：$I(Y)$是那些使得$f$在$Y$上为零的函数的集合。容易看出这是一个理想。
+
+令$Y$是一个代数集，定义仿射坐标环为$A(Y)=A/I(Y)$. 从定义来看，$A(Y)$是一个有限生成的$k$-代数。
+\end{para}
+
+\begin{pro}下面命题成立：
+\begin{compactenum}[~~~(1)]
+\item 如果$T_1\subset T_2 \subset A$，则$Z(T_2)\subset Z(T_1)$.
+\item 如果$Y_1\subset Y_2 \subset \bba^n$，则$I(Y_2)\subset I(Y_1)$.
+\item 如果$\{Y_\alpha\,:\alpha\in I\}$是一族$\bba^n$的子集，则$I\left(\bigcup_{\alpha\in I} Y_\alpha\right)=\bigcap_{\alpha\in I} I(Y_\alpha)$.
+\item 如果$\{T_\alpha\,:\alpha\in I\}$是一族$A$的子集，则$Z\left(\bigcup_{\alpha\in I} T_\alpha\right)=\bigcap_{\alpha\in I} Z(T_\alpha)$.
+\item $Z(T_1)\cup Z(T_2)=Z(T_1T_2)$.
+\item $Y\subset Z(I(Y))$以及$T\subset I(Z(T))$.
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+	第一第二第六点从定义显然。第三点，由于$Y_\alpha\subset \bigcup_{\alpha\in I} Y_\alpha$，所以由(2)可知$I\left(\bigcup_{\alpha\in I} Y_\alpha\right)\subset\bigcap_{\alpha\in I} I(Y_\alpha)$. 反过来，任取$f\in \bigcap_{\alpha\in I} I(Y_\alpha)$，由于$f\in I(Y_\alpha)$，所以他在每个$Y_\alpha$上为零，故而在$\bigcup_{\alpha\in I} Y_\alpha$上为零。第四点的证明也类似。第五点，对于多项式$f$和$g$有显然的$Z(fg)=Z(f)\cup Z(g)$，然后从第四点得证。
+\end{proof}
+
+上面命题的第四第五点验证了代数集满足闭集公理，所以这也就赋予了$\bba^n_k$一个拓扑，称为Zariski拓扑。在这个拓扑下，闭集就是代数集。这个拓扑不一定是Hausdorff的，比如考虑$\bba^1_k$的情况，他的单点集不一定是闭集。但在$k=\bar{k}$的时候，考虑$P=(a_1$, $\dots$, $a_n)$，那么存在理想$(x_1-a_1$, $\dots$, $x_n-a_n)$在$P$上为零，所以此时单点集是闭集。
+
+结合上面命题的第一第二第六点，$A$的理想集和$\bba^n$的子集之间建立了一个Galois联络。而研究这个Galois联络下具体的对应，就是Hilbert's Nullstellensatz的内容\footnote{这是经典代数几何最重要的定理，Nullstellensatz是德文，意思是零点定理。这个定理联系了代数集与多项式环中的理想，可以说确立了几何和代数之间的基本关系，而代数几何正是建立在这一关联的基础之上的。Hilbert零点定理有许多等价形式，而Zariski引理正是其一，下面我们主要使用Zariski引理。}，我们下面会慢慢阐述。首先指出一半的内容。
+
+\begin{pro}
+如果$Y \subset \bba^n$，则$Z(I(Y))=\overline{Y}$，即$Y$的闭包。
+\end{pro}
+
+\begin{proof} 首先，由$Y\subset Z(I(Y))$和$Z(I(Y))$是闭的，所以$\overline{Y}\subset Z(I(Y))$. 反方向，让$\overline{Y}=Z(\mathfrak{a})$，所以$I(Z(\mathfrak{a}))\subset I(Y)$，即$\mathfrak{a}\subset I(Z(\mathfrak{a}))\subset I(Y)$，两边取零点集即$Z(I(Y))\subset Z(\mathfrak{a})=\overline{Y}$. \end{proof}
+
+\begin{coro}
+如果一个多项式在$Y$上为$0$当且仅当他在$\overline{Y}$上为$0$. 
+\end{coro}
+
+\begin{proof}
+即证$I(\overline{Y})=I(Y)$. 将$Z(I(Y))=\overline{Y}$两边取理想，那么$I(\overline{Y})=I(Z(I(Y)))$，特别地，有包含关系$I(Y)\subset I(Z(I(Y)))=I(\overline{Y})$，但是$Y\subset \overline{Y}$又告诉我们$I(\overline{Y})\subset I(Y)$，所以$I(\overline{Y})=I(Y)$.
+\end{proof}
+
+\begin{thm}[Zariski引理]
+设$k$是一个域，$R$是一个有限生成$k$-代数，如果$R$是一个域，则$R$是$k$的一个有限扩张。
+\end{thm}
+
+下面借助Zariski引理，我们来研究$Z(\mm)$和单点集闭包的结构。
+
+\begin{lem}
+对任意$A=k[x_1$, $\dots$, $x_n]$中的极大理想$\mm$，$Z(\mm)\neq\varnothing$.
+\end{lem}
+
+\begin{proof} 由于$\mm$极大，那么$k[x_1$, $\dots$, $x_n]/\mm=k[\bar{x}_1$, $\dots$, $\bar{x}_n]$就是一个域，由Zariski引理，他是$k$的一个有限扩张。设$\bar{x}_i$是$x_i$在$k[x_1$, $\dots$, $x_n]/\mm$里面的像，由于是代数扩张，所以$\bar{x}_i\in \bar{k}$. 此时$\mm$中的多项式至少有公共零点$(\bar{x}_1$, $\dots$, $\bar{x}_n)\in \bba^n$，因为对任意$f\in \mm$都成立
+\[
+	f(\text{$\bar{x}_1$, $\dots$, $\bar{x}_n$})=\sum a_{i_1\cdots i_n} {\bar{x}}_1^{i_1}\cdots {\bar{x}}_n^{i_n}=\overline{\sum a_{i_1\cdots i_n} x_1^{i_1}\cdots x_n^{i_n}}=\bar{f}=0.
+\]
+所以这就推出了$Z(\mm)\neq\varnothing$.
+\end{proof} 
+
+实际上，$Z(\mm)$中元素的个数与Galois群$\Gal(A(\mm)/k)$中元素的个数是相同的（因此有限），因为$Z(\mm)$可以理解成Galois群$\Gal(A(\mm)/k)$在$\bba^n$上的一条轨道。这里我们就不证明这点了。
+
+\begin{lem}
+每一个极大理想的零点集是极小非空闭集，每一个极小的非空闭集都是某个唯一的极大理想的零点集。
+\end{lem}
+
+而由拓扑的知识我们知道，极小的闭集是单点集的闭包，所以多项式环的极大理想一一对应着Zariski拓扑中单点集的闭包（其实这也是不可约闭子集）。
+
+\begin{proof}
+设$\mm$是$A$的极大理想，此时$Z(\mm)$非空，所以理想$I(Z(\mm))$不是单位理想，由$\mm\subset I(Z(\mm))$，可知$I(Z(\mm))=\mm$. 因此，如果$\mm_1$, $\mm_2$是两个极大理想满足$Z(\mm_1)=Z(\mm_2)$，则$\mm_1=\mm_2$.
+
+现在如果有一个$Z(\mathfrak{a})=\varnothing$满足$Z(\mathfrak{a})\subset Z(\mm)$，两边取理想得到$\mm\subset I(Z(\mathfrak{a}))$，由于$\mm$极大，所以$\mm = I(Z(\mathfrak{a}))$. 两边取一次零点集将得到$Z(\mm)=Z(I(Z(\mathfrak{a})))$，所以$Z(\mathfrak{a})\subset Z(I(Z(\mathfrak{a})))=Z(\mm)$，故$Z(\mm)=Z(\mathfrak{a})$.
+
+反过来，对于一个极小非空闭集$Y=Z(\mathfrak{a})$，它的理想集为$I(Z(\mathfrak{a}))$. 取$\mathfrak{m}$为包含$I(Z(\mathfrak{a}))$的任意极大理想，由Galois联络，$Z(\mathfrak{m})\subset Z(I(Y))=Y$，由极小性，$Y=Z(\mathfrak{m})$. 唯一性前面已经证明。
+\end{proof}
+\
+
+最后来谈谈反问题，前面已经看到，对于任意的极大理想，他的零点集非空。反过来，对于一个任意单点$P\in \bba^n_k$，我们想要寻找极大理想，使得$P$是他的公共零点。存在性是简单的，对于任意点$P\in \bba^n_k$，因为他的闭包就是极小的闭集，对应着一个极大理想$I(\overline{\{P\}})$. 下面的命题保证了唯一性。
+
+\begin{pro}
+若$P\in \overline{\{Q\}}$，则$\overline{\{P\}}= \overline{\{Q\}}$.
+\end{pro}
+
+\begin{proof}
+将$\overline{\{P\}}\subset \overline{\{Q\}}$取理想得到$I(\overline{\{Q\}})\subset I(\overline{\{P\}})$，因为这是两个极大理想，所以$I(\overline{\{Q\}})=I(\overline{\{P\}})$. 两边再取零点集，则
+\[
+	Z\left(I(\overline{\{Q\}})\right)=Z\left(I(\overline{\{P\}})\right).
+\]
+利用$Z(I(Y))=\overline{Y}$，所以$\overline{\{P\}}= \overline{\{Q\}}$. 
+\end{proof}
+
+现在我们来看一般的$Z(\mathfrak{a})$. 对于闭集$\overline{\{P\}}\subset Z(\mathfrak{a})$，在$A$中可以找到唯一的极大理想$I(\overline{\{P\}})$，满足
+$\mathfrak{a}\subset I(Z(\mathfrak{a}))\subset I(\overline{\{P\}})$. 反过来，任取一个包含$\mathfrak{a}$的极大理想$\mm$，由于$\mathfrak{a}\subset \mm$，所以$Z(\mm)\subset Z(\mathfrak{a})$. 而$Z(\mm)$正是一个$\overline{\{Q\}}$. 所以$Z(\mathfrak{a})$中单点集的闭包一一对应着包含$\mathfrak{a}$的极大理想，这个观察给出了下面一个命题。
+
+\begin{pro}
+如果$\mathfrak{a}$是$A$的一个理想，则$I(Z(\mathfrak{a}))=\sqrt{\mathfrak{a}}$.
+\end{pro}
+
+这个命题也被称为Hilbert's Nullstellensatz. 对于任意满足$\mathfrak{a}=\sqrt{\mathfrak{a}}$的理想（称为根式理想），有$I(Z(\mathfrak{a}))=\mathfrak{a}$. 这个命题给出了明确的Galois联络两边的像，即根式理想与代数集一一对应。
+
+\begin{proof} 由于$Y=Z(\mathfrak{a})$是一个代数集，遍历其中所有的点的闭包，我们有
+\[
+	I(Z(\mathfrak{a}))=I\left(\bigcup_{P\in Y}\overline{\{P\}}\right)=\bigcap_{P\in Y}I\left(\overline{\{P\}}\right),
+\]
+注意到单点集的闭包一一对应着包含$\mathfrak{a}$的极大理想，所以$I(Z(\mathfrak{a}))=\bigcap_{\mm\supset \mathfrak{a}}\mm$. 因为$k[x_1$, $\dots$, $x_n]$是Jacobson环，所以$I(Z(\mathfrak{a}))=\sqrt{\mathfrak{a}}$.
+\end{proof}
+
+称拓扑空间$X$是不可约的，即是说$X$不能写作它的两个非空真闭子集的并。在不可约空间内，一个开集必然是稠密的，否则他的闭包和他的补集的并构成了全集。可以证明，这样的开集自身也是不可约的。如果$Y$是$X$的不可约子集，那么$Y$的闭包也是$X$的不可约子集。这些都容易构造出两个闭集来证明。
+
+\begin{para}
+$\bba^n$中的不可约闭子集被称为一个仿射（代数）簇（affine variety），或者说是$\bba^n$中的不可约代数集。一个仿射簇的开子集被称为是拟仿射（代数）簇。
+\end{para}
+
+下面这个命题可以使我们可以看到不可约代数集和素理想之间的联系：
+
+\begin{pro}
+一个代数集$Y$是不可约的当且仅当$I(Y)$是一个素理想。
+\end{pro}
+
+\begin{proof} 令$\pp$是一个素理想，以及假设$Z(\pp)=Y_1\cup Y_2$，那么$\pp=I(Z(\pp))=I(Y_1)\cap I(Y_2)$，因此$\pp=I(Y_1)$或者$\pp=I(Y_2)$，因此$Z(\pp)$不可约。
+
+反之，假设$Y$不可约，那么如果$fg\in I(Y)$，此时$Y\subset Z(fg)=Z(f)\cup Z(g)$，因此
+\[
+	Y=[Y\cap Z(f)]\cup [Y\cap Z(g)],
+\]
+所以$Y=Y\cap Z(f)$或$Y=Y\cap Z(g)$，即$Y\subset Z(f)$或者$Y\subset Z(g)$，即$f\in I(Y)$或者$g\in I(Y)$.因此$I(Y)$是素理想。\end{proof}
+
+对于不可约代数集，$I(Y)=\pp$是一个素理想，所以也是根式理想，他与它的零点集一一对应，即$Y=Z(\pp)$. 所以上面的命题告诉我们，不可约代数集与$A=k[x_1$, $\dots$, $x_n]$的素理想一一对应。
+
+\begin{lem}
+	令$Z(f)$是$\bba^n_k$中的超曲面，那么拟仿射簇$\bba^n_k-Z(f)$同构于$\bba^{n+1}_{k}$中的$Z(x_{n+1}f-1)$，所以$\bba^n_k-Z(f)$仿射，且他的坐标环为$k[x_1$, $\dots$, $x_n]_f$，即$k[x_1$, $\dots$, $x_n]$关于$\{1$, $f$, $f^2$, $\dots\}$的分式环。
+\end{lem}
+\begin{proof}
+	设$\varphi:Z(x_{n+1}f-1)\to \bba^n_k-Z(f)$是前$n$个坐标的投影函数，这是一个态射。很清楚，$\varphi$给出了$Z(x_{n+1}f-1)$到$\bba^n_k-Z(f)$的双射，为了证明$\varphi$是一个同构，所以需要证明$\varphi^{-1}$是一个态射。然而$\varphi^{-1}(a_1$, $\dots$, $a_n)=(a_1$, $\dots$, $a_n,1/f(a_1$, $\dots$, $a_n))$，使用Lemma \ref{c3:l1} 就知道这是一个态射。于是$\bba^n_k-Z(f)$仿射，他的坐标环就是$Z(x_{n+1}f-1)$的坐标环，即$k[x_1$, $\dots$, $x_n]_f$.
+\end{proof}
+
+\section{射影簇}
+
+定义射影空间$\bbp^n=(\bba^{n+1}-\{0\})/\sim$ ，等价关系是由
+\[
+(x_0,\dots,x_n)\sim (px_0,\dots,px_n), \quad \forall p\in \bar{k}-\{0\}
+\]
+确定的等价类$[x_0$, $\dots$, $x_n]$. 多项式环$k[x_1$, $\dots$, $x_n]$记作$S$，齐次多项式构成的子环记作$S^{\mathrm{h}}$.
+
+多项式环$S$是一个分次环，他可以写成分解$S=\bigoplus_{d\geq 0} S_d$，其中$S_d$是由$0$和所有$d$次齐次多项式所并而成的子环。$S$的齐次理想$\mathfrak{a}$是指$S$的由齐次元素生成的理想，齐次理想的元素不一定是齐次的，因为一个齐次理想可以是两个或多个不同次的齐次元素生成的，他们的和一般不是齐次的。齐次理想的乘积、和、交、根式都是齐次的。不加证明地指出，对于齐次理想，成立
+\[
+	\mathfrak{a}=\bigoplus_{d\geq 0} (\mathfrak{a}\cap S_d).
+\]
+所以如果一个齐次理想是素理想，只要指出对于任意两个齐次元素$f$, $g$，$fg\in \mathfrak{a}$可以推出$f\in \mathfrak{a}$或$g\in \mathfrak{a}$.
+
+在射影空间上不能well define多项式，但是可以指出，齐次多项式的零点是well defined. 所以一样地，可以定义对于齐次多项式的集合$T$，他的零点集$Z(T)$.
+
+\begin{para}
+	一个$\bbp^n$中的子集称为代数集如果他是某些齐次多项式的零点集。
+\end{para}
+相似地（连证明过程），零点集的性质满足闭集公理，所以$\bbp^n$上也可以用零点集赋予拓扑，依旧将其称为Zariski拓扑。
+
+\begin{para}
+	如果$Y$是$\bbp^n$中的子集，定义$S$的齐次理想$I(Y)$为在$Y$上为$0$的齐次多项式生成的理想。$S(Y)=S/I(Y)$被称为齐次坐标环。
+\end{para}
+
+\begin{pro}[homogeneous Nullstellensatz]
+设$\mathfrak{a}\subset S$是一个齐次理想，则如下命题成立：
+
+\no{1} 设$f\in S_d$且$d>0$，如果$f$在$Z(\mathfrak{a})$上为零，那么$f \in \sqrt{\mathfrak{a}}$.
+
+\no{2} 如果$Z(\mathfrak{a})\neq \varnothing$，则$I(Z(\mathfrak{a}))=\sqrt{\mathfrak{a}}$.
+\end{pro}
+\begin{proof}
+	假设我们有一个闭集$Z(\mathfrak{a})\in \bbp^n$，我们在$\bba^{n+1}$中构造
+	\[
+		\bar{Z}(\mathfrak{a})=\bigl\{p\in \bba^{n+1}:\forall g\in \mathfrak{a},\, g(p)=0\bigr\},
+	\]
+	这样$Z(\mathfrak{a})=\bar{Z}(\mathfrak{a})/\sim$，由Hilbert's Nullstellensatz，如果一个多项式$f$，特别地一个齐次多项式，在$\bar{Z}(\mathfrak{a})$上为$0$，则$f\in \sqrt{\mathfrak{a}}$，而齐次多项式在$\bar{Z}(\mathfrak{a})$上为$0$等价于他在$Z(\mathfrak{a})$上为$0$，第一部分搞定。
+
+	第二部分显然我们只要证明$I(Z(\mathfrak{a}))\subseteq \sqrt{\mathfrak{a}}$，这是第一部分的推论。如果$Z(\mathfrak{a})$非空，那么在$Z(\mathfrak{a})$上为$0$的齐次多项式$f\in S_d$必须$d>0$，那么第一部分就表明了反向包含。
+\end{proof}
+
+\begin{pro}
+	下面命题对于射影的情况依然成立：
+
+	\no{1} 如果$T_1\subseteq T_2 \subseteq S^{\mathrm{h}}$，则$Z(T_2)\subseteq Z(T_1)$.
+
+	\no{2} 如果$Y_1\subseteq Y_2 \subseteq \bbp^n$，则$I(Y_2)\subseteq I(Y_1)$.
+
+	\no{3} 如果$Y_1$, $Y_2 \subseteq \bbp^n$，则$I(Y_1\cup Y_2)=I(Y_1)\cap I(Y_2)$.
+
+	\no{4} 如果$Y \subseteq \bbp^n$，则$Z(I(Y))=\overline{Y}$.
+\end{pro}
+
+除了最后一点都是显然的，但是靠着homogeneous Nullstellensatz，和仿射情况的证明几乎没有区别，这里略去。所以，由Nullstellensatz，射影情况下依然成立$I(Y)=I(\overline{Y})$. 类似的命题还有：
+
+\begin{pro}
+	一个代数集$Y$是射影簇当且仅当$I(Y)$是一个齐次素理想。
+\end{pro}
+% \begin{pro}
+% 	$\bbp^n$是Noetherian拓扑空间。
+% \end{pro}
+% 这些命题的证明和仿射的都类似。由于$\bbp^n$是Noetherian拓扑空间，作为他的子集，任何的射影簇和拟射影簇都是Noetherian拓扑空间。
+
+下面的几个命题指出，射影空间实际上被仿射空间开覆盖。
+
+在$\bbp^n$中的第$i$个坐标为$0$的点构成一个子集$H_i$，故而都是闭集，令$U_i=\bbp^n-H_i$，他们都是开集，更进一步，$U_i$是$\bbp^n$的开覆盖，因为如果$p\in \bbp^n$，那么$p$至少有一个坐标$p_i$不为$0$，所以$p\in U_i$.定义映射
+\[
+	\begin{array}{lccl}
+		\varphi_i:&U_i&\to& \bba^n_k\\
+		&[a_0,\dots ,a_n]&\mapsto&\displaystyle{\left(\frac{a_0}{a_i},\dots ,\frac{a_{i-1}}{a_i},\frac{a_{i+1}}{a_i},\dots,\frac{a_n}{a_i}\right)}
+	\end{array}
+\]
+这是well defined，因为$a_j/a_i$不依赖于等价类中代表元的选取。
+
+\begin{pro}
+$\varphi_i$是$U_i$和$\bba^n_k$在两边各自的Zariski拓扑下的同胚。
+\end{pro}
+\begin{proof}
+双射显然，只要证明$U_i$的闭集被$\varphi_i$等同于$\bba^n_k$中的闭集就可以了。不妨将$i$取做$0$，将$U_i$简记为$U$，$\varphi_i$简记为$\varphi$.
+
+一个齐次多项式$f(x_0$, $x_1$, $\dots$, $x_n)$可以通过$g(x_1$, $\dots$, $x_n)=f(1,x_1$, $\dots$, $x_n)$定义一个$A$中的多项式，我们记作$g=\alpha(f)$.反之，一个最高次为$N$次的多项式$g(x_1$, $\dots$, $x_n)$可以定义一个$N$次齐次多项式$f(x_0$, $x_1$, $\dots$, $x_n)=x_0^Ng(x_1/x_0$, $\dots$, $x_n/x_0)$，我们记作$f=\beta(g)$.
+
+现在令$Y$是$U$中的一个闭子集，令$\overline{Y}$是他在$\bbp^n$中的闭包，$\overline{Y}$是一个闭子集，所以$\overline{Y}=Z(T)$，令$T'=\alpha(T)$，直接的验算可以知道$\varphi(Y)=Z(T')$，所以$\varphi(Y)$是闭集。
+
+反之，令W是$\bba^n_k$中的闭子集，那么$W=Z(T')$，其中$T'$是$A$中的一个自己，直接的验算可以得到$\varphi^{-1}(W)=Z(\beta(T'))\cap U$，所以$\varphi^{-1}(W)$是闭集。
+正反的连续性都证毕。所以是同胚。
+\end{proof}
+\begin{pro}
+	如果$Y$是（拟）射影簇，那么$Y$被拟射影簇$\{Y_i=Y\cap U_i\}$开覆盖，且每个拟射影簇$Y_i$通过$\varphi_i$同胚于一个（拟）仿射簇。
+	\label{c2:p8}
+\end{pro}
+\begin{proof}
+因为$Y_i=Y\cap U_i$是$Y$中的开集，而$Y$是不可约的，所以$Y_i$是不可约的，由同胚，$\varphi_i(Y_i)$是不可约的。对于（拟）射影的情况，因为$Y$是（开）闭的，所以$Y_i$在$U_i$中是（开）闭的，由同胚，$\varphi_i(Y_i)$在$\bba^n$中是（开）闭的。
+\end{proof}
+
+% 因为$U_i$构成$\bbp^n$的开覆盖，利用Proposition \ref{p1.9}，则
+% \[
+% 	\dim  \bbp^n=\sup(\dim U_i)=\max(\dim U_i).
+% \]
+% 第二个等号来自于覆盖是有限的。但是$U_i$和$\bba^n_k$同胚，所以$\dim U_i=\dim \bba^n_k=n$，因此$\dim  \bbp^n=n$.
+
+% 射影空间的Zariski拓扑依然使得下面命题成立，技术上依然是Proposition \ref{p1.9}：
+% \begin{pro}如果$Y$是拟射影簇，那么$\dim Y=\dim \overline{Y}$.\end{pro}
+% \begin{proof}
+% 设$W_i=\varphi_i(Y\cap U_i)$. 因为$Y$是拟射影簇，所以$W_i$是拟仿射簇。让$\overline{Y}$是$Y$在$\bbp^n$中的闭包，再设$Z_i=\varphi_i(\overline{Y}\cap U_i)$，由于是同胚，$Z_i$是$W_i$的闭包，所以由拟射影簇的结论，$\dim Z_i=\dim W_i$.最后
+% \[
+% 	\dim Y=\max(\dim Y_i)=\max(\dim W_i)=\max(\dim Z_i)=\dim \overline{Y}.
+% \]
+% \end{proof}
+
+\section{代数簇及其态射}
+
+前面说了代数簇，但是没有描述代数簇之间的映射。这里就干这活，后面将会看到，代数簇构成一个范畴，而他又和$k$-代数范畴之间有着密不可分的关系。至少就仿射簇来说，一个$k$-代数如果和某个$\bba^n$中的坐标环同构，当且仅当他是有限生成的且没有幂零元。
+
+假设$Y$是$\bba^n$中的拟仿射簇。
+\begin{para}
+	一个函数$f:Y\to \bar{k}$在点$p\in Y$是正则的，就是说存在$p$的邻域$U$使得$p\in U\subseteq Y$，存在两个多项式$g$, $h$，且$h$在$U$上处处不为$0$，使得$f=g/h$. 称一个函数在$Y$上正则，就是说他在$Y$上的每一点都正则。
+\end{para}
+\begin{pro}
+正则函数是连续的，其中$\bar{k}$被看作$\bba^1$，即被赋予了Zariski拓扑。
+\end{pro}
+\begin{proof}
+	按连续的定义，只要证闭集的逆象是闭的就好了。由于$\bba^1$中的闭集都是有限集，如果我们证明了单点集的逆象是闭的，那也就证明了所有闭集的逆象是闭的。
+
+	闭集可以局部检查，如果$Z$是拓扑空间$Y$的子集，那么他是闭集当且仅当对于任意一个$Y$的开覆盖$\{U_\alpha\}$，$Z\cap U_\alpha$是$U_\alpha$中的闭集。
+
+	找个开覆盖，在每个$U_\alpha$中，$f$都可以写作$f=g_\alpha/h_\alpha$，此时
+	\[
+		f^{-1}(a)\cap U_\alpha=\bigl\{p\in U| g_\alpha(p)/h_\alpha(p)=a\bigr\},
+	\]
+	所以$g_\alpha(p)/h_\alpha(p)=a$又等价于$g_\alpha(p)-ah_\alpha(p)=0$，所以
+	\[
+		f^{-1}(a)\cap U_\alpha=Z(g_\alpha-ah_\alpha)\cap U_\alpha
+	\]
+	是一个闭集。
+\end{proof}
+这个证明中告诉我们，对于正则函数，$\bar{k}$上单点集的原像是闭的。这个内容在代数闭域上和连续性是等价的，因为当$k$是代数闭的时候，$\bar{k}$上单点集是闭集，命题说明了正则函数是连续的，所以单点集的原像是闭的。但是到了非代数闭的情况，单点集的原像是闭集所包含的内容是大于连续性的，因为$\bar{k}$上单点集一般不是闭集。
+
+假设$Y$是$\bbp^n$中的拟射影簇，正则的定义非常类似拟仿射簇。
+\begin{para}
+	一个函数$f:Y\to \bar{k}$在点$p\in Y$是正则的，就是说存在$p$的邻域$U$使得$p\in U\subseteq Y$，存在两个次数相同的齐次多项式$g$, $h$，且$h$在$U$上处处不为$0$，那么$f=g/h$. 称一个函数在$Y$上正则，就是说他在$Y$上的每一点都正则。
+\end{para}
+相同次数的要求保证了正则函数确实是一个函数。此外，我们一模一样地证明正则函数是连续的。不管是仿射还是射影的，如果$f$和$g$是代数簇$Y$上的正则函数，如果$f$和$g$在$Y$的某个开子集$U$上相同，则他在$Y$上相同。因为
+\[
+	U\subseteq (f-g)^{-1}(0)\subseteq Y,
+\]
+因为单点集关于正则函数的原像是闭的，所以$(f-g)^{-1}(0)$是闭集，再由于$U$稠密，两边取闭包就有
+\[
+	Y\subseteq (f-g)^{-1}(0)\subseteq Y,
+\]
+所以$(f-g)^{-1}(0)=Y$，就是说，他们在整个$Y$上是相同的。
+\begin{para}
+令$k$是域，一个代数簇可以指射影、仿射、拟射影、拟仿射簇，所以代数簇的开子集都是代数簇。代数簇范畴的对象就是这些代数簇，剩下的，就是定义这些对象之间的态射。假设$X$, $Y$是两个代数簇，他们之间的连续映射$\varphi:X\to Y$如果满足，对任意的开集$V\subseteq Y$以及$V$上的正则函数$f$，拉回$\varphi^*:f\mapsto f\circ \varphi$后的函数$\varphi^* f=f\circ \varphi:\varphi^{-1}(V)\to \bar{k}$是一个$\varphi^{-1}(V)$上的正则函数，则这个连续映射就是代数簇之间的态射。
+\end{para}
+
+态射的复合依然是态射，所以代数簇就构成一个范畴。代数簇范畴的同构就是说，对于态射$\varphi:X\to Y$，存在$\psi:Y\to X$满足$\varphi\circ \psi=\mathrm{id}_Y$以及$\psi\circ \varphi=\mathrm{id}_X$. %由于每一个代数簇（射影、仿射、拟射影、拟仿射簇）都是一个Noetherian拓扑空间，所以每一个代数簇都是紧的。
+
+\begin{pro}
+	令$X$是代数簇，在每一点$p\in X$，他的任意开邻域$U$里面都可以找到一个开的仿射集$V$使得$p\in V\subseteq U$.
+\end{pro}
+
+这个命题说明了在任意代数簇上，开的仿射子集\footnote{自此以后，我们称一个代数簇是仿射的，如果他同构于一个仿射簇。}将构成一组拓扑基。所以，如果我们在局部考虑问题，很大程度上就是在仿射簇上考虑问题。
+
+\begin{proof}
+	因为$U$也是一个代数簇，所以不妨令$U=X$. 其次，按照Proposition \ref{c2:p8}，$X$被拟仿射集开覆盖，所以我们可以假设$X$是一个$\bba^n_k$中的拟仿射簇。
+
+	任取$p\in X$，我们来找一个他的仿射邻域。由于$\overline{X}-X$是$\bba^n_k$中的闭集，如果$p\notin \overline{X}-X$，我们可以找到一个不可约多项式$f\in I(\overline{X}-X)$使得$f(p)\neq 0$. 显然$\overline{X}-X\subseteq Z(f)$但$p\notin Z(f)$，所以$p\in X-X\cap Z(f)$，而$X-X\cap Z(f)$是一个$X$中的开集。并且，由$X$是不可约的以及$X-X\cap Z(f)$是一个$X$的开子集，则$X-X\cap Z(f)$是一个不可约集。
+
+	此外，$X-X\cap Z(f)$是一个$\bba^n_k-Z(f)$的闭子集，由上一个引理，$\bba^n_k-Z(f)$仿射，而$X-X\cap Z(f)$是一个仿射集的不可约闭子集，所以也是一个仿射集。于是$X-X\cap Z(f)$是$p$的一个仿射邻域。
+\end{proof}
+
+下面这个引理给出了某些情况下的态射的判断方法。
+\begin{lem}
+	令$X$是一个代数簇，以及$Y$是一个仿射簇，$\psi:X\to Y$是态射当且仅当$\{x_i\circ \psi\}$在$X$上是正则函数，其中$\{x_i\}$是$\bba^n_k$上的坐标函数。
+	\label{c3:l1}
+\end{lem}
+这个判据可以如下表述：$\psi=(f_1,\cdots,f_n)$是一个态射，当且仅当$\{f_i\}$都是$X$上的正则函数。
+\begin{proof}
+	如果$\psi$是态射，显然$\{\psi^*x_i=x_i\circ \psi\}$在$X$上是正则函数。反之，设$\{\psi^*x_i\}$在$X$上是正则函数，那么对任意多项式$f=f(x_1,\cdots,x_n)$，$\psi^*f$在$X$上依然是正则函数。
+
+	任取$Y$中的闭集$W$，因为$Y$中的闭集是一些多项式的零点集$W=Z(f_1,\cdots,f_k)$（这是因为闭集中闭集依然是在大的空间中是闭集），如果希望证明$\psi$是连续函数，只要证明$\psi^{-1}(W)$是闭集就可以了。因为对于任意的多项式$f$，$\psi^*f=f\circ \psi$在$X$上依然是正则函数，所以$(f\circ \psi)^{-1}(0)=\psi^{-1}(f^{-1}(0))$是闭集，所以
+	\[
+		\psi^{-1}(W)=\psi^{-1}\left(\bigcap_{i=1}^k f_i^{-1}(0)\right)=\bigcap_{i=1}^k\psi^{-1}\left( f_i^{-1}(0)\right)
+	\]
+	是有限闭集之交，所以也是一个闭集。
+
+	除去连续性，另外需要证明的是$Y$的任意子集$V$上的正则函数变成了$\psi^{-1}(V)$上的正则函数。由于$V$上任意的正则函数$f$，可以在$V$的任意一点$p$附近写作$f=g_p/h_p$，那么
+	\[
+		\psi^*f=f\circ \psi=\frac{g_p(x_1\circ \psi,\cdots,x_n\circ \psi)}{h_p(x_1\circ \psi,\cdots,x_n\circ \psi)}=\frac{\psi^*g_p}{\psi^*h_p}.
+	\]
+	由于$\psi^*g_p$和$\psi^*h_p$在点$\psi^{-1}(p)$的每一点$q$都正则，我们可以找一个$q$的邻域$U\subseteq \psi^{-1}(V)$，在上面$\psi^*g_p$和$\psi^*h_p$都可以写作两个多项式的商，通分后，他们的商还是可以写作两个多项式的商，因此$\psi^*f$在点$q$也是正则的。因为$q$是$\psi^{-1}(p)$中的任意点，$p$是$V$中的任意点，所以$\psi^*f$在$\psi^{-1}(V)$上正则。
+
+	综合上面两点，$\psi$是一个态射。
+\end{proof}
+
+以前说过，对于射影空间，有同胚$\varphi_i:U_i\to \bba^n_k$，有了态射的概念，有了代数簇范畴，下面一个命题就说明这还是一个同构。
+\begin{pro}
+	$\varphi_i:U_i\to \bba^n_k$是一个两个代数簇之间的同构。
+	\label{c3:p1}
+\end{pro}
+\begin{proof}
+	既然已经知道是同胚，只要检验正则函数那部分就好。不妨假设$i=0$，记$\varphi=\varphi_0^{-1}$，在$U_i$上的正则函数某个开集$V$上可以写作两个同次齐次多项式的商
+	\[
+		f\bigl([x_0,\cdots,x_n]\bigr)=\frac{g(x_0,\cdots,x_n)}{h(x_0,\cdots,x_n)},
+	\]
+	对应着$\varphi^*f$仿射空间内$\varphi_0(V)$处上可以写作
+	\[
+		\varphi^*f(x_1,\cdots,x_n)=\frac{\alpha(g)(x_1,\cdots,x_n)}{\alpha(h)(x_1,\cdots,x_n)}=\frac{g(1,\cdots,x_n/x_0)}{h(1,\cdots,x_n/x_0)},
+	\]
+	反过来，对于仿射空间内的正则函数，在$\varphi_0(V)$处上可以写作$j=k/l$，对应着在射影空间内$V$上写作
+	\[
+		(\varphi^{-1})^*j\bigl([x_0,\cdots,x_n]\bigr)=\frac{x_0^Nk(x_1/x_0,\cdots,x_n/x_0)}{x_0^Nl(x_1/x_0,\cdots,x_n/x_0)}=\frac{\beta(k)(x_0,\cdots,x_n)}{\beta(l)(x_0,\cdots,x_n)}.
+	\]
+
+	因此
+	\[
+		(\varphi^{-1})^*\circ \varphi^*(f) \bigl([x_0,\cdots,x_n]\bigr)=(\varphi^{-1})^*\left(\frac{\alpha(g)}{\alpha(h)}\right)=\frac{\beta(\alpha(g))}{\beta(\alpha(h))}=\frac{g}{h}=f\bigl([x_0,\cdots,x_n]\bigr).
+	\]
+	所以$\varphi^*\circ(\varphi^{-1})^* (f)=f$，同理可以检验$(\varphi^{-1})^*\circ\varphi^* (j)=j$，所以$\varphi$是一个代数簇之间的同构。
+\end{proof}
+
+对于任意的代数簇，可以引入一个函数环，他是仿射情况的坐标环的推广。
+\begin{para}
+	设$Y$是一个代数簇，记$\mathcal{O}(Y)$是所有$Y$上的正则函数按照加法和乘法构成的环。
+\end{para}
+在每一点，因为有正则函数是连续函数的性质在，可以在一点$p$上如下定义一个等价关系：取$p$的邻域$U$和$V$，如果$f$是$U$上的正则函数，$g$是$V$上的正则函数，那么$\langle U,f\rangle\sim \langle V,g\rangle$当$f|_{U\cap V}=g|_{U\cap V}$. 对称性和自反性是显然的，传递性靠着连续函数的性质也是自然的。
+\begin{para}
+	设$Y$是一个代数簇，记$\mathcal{O}_{p,Y}$或直接$\mathcal{O}_{p}$是所有$p\in Y$处上述等价关系构成的环，环运算自然继承于正则函数之间的运算。$\mathcal{O}_{p}$也被称为$p$处的正则函数芽，其中的等价类称为芽。
+\end{para}
+正则函数芽是一个局部环，就是他只有一个极大理想$\mm$，因为只有一个极大理想，所以局部环的元素只能分成两类，一类是单位，另一类在极大理想中，反过来，这样的性质也决定了这是一个局部环。$\mathcal{O}_{p}$中的极大理想$\mm$由在$p$处为$0$的那些芽构成，其他芽显然是可逆的，因为如果正则函数$f$不为0，那么$f=g/h$的逆就是$1/f=h/g$，也是正则函数。
+
+类似于在一点上定义的等价关系，对于任意两个正则函数$\langle U,f\rangle$和$ \langle V,g\rangle$，可以定义等价关系$\langle U,f\rangle\sim \langle V,g\rangle$，如果$f|_{U\cap V}=g|_{U\cap V}$. 注意$U\cap V\neq \varnothing$，因为代数簇在拓扑上是一个不可约集，不可约集的任意两个开子集之交不可能是空的，因为他们俩都是稠密的。
+\begin{para}
+	设$Y$是一个代数簇，如下定义有理函数域$K(Y)$为那些在$Y$上满足上述等价关系的等价类构成的域，其中的元素被称为有理函数。
+\end{para}
+有理函数确实构成一个域，如果$\langle U,f\rangle$不是一个恒为0的常函数，那么可以找到一个开集$V=U-U\cap Z(f)$，在$V$上可以定义有理函数$\langle V,1/f\rangle$，$\langle V,1/f\rangle$是$\langle U,f\rangle $的一个逆。
+
+对于同构的代数簇，他们的正则函数环、正则函数芽和有理函数域都是同构的。如果态射是同构的，则其是一个同胚，但反过来，如果两个代数簇之间存在同胚，他们也不一定是同构的。后面会证明，两个仿射簇同构，当且仅当他们的坐标环同构。依靠这个结论，比如$t\mapsto (t^2,t^3)$显然是同胚，但是前者的坐标环是$k[x]$，后者的坐标环是$k[x,y]/(x^3-y^2)$，坐标环不同构，所以这两个仿射簇也不同构。
+
+\begin{pro}
+	设有两个代数簇$X$, $Y$，他们之间存在态射$\varphi:X\to Y$是一个同构，当且仅当，$\varphi$是一个同胚，且这个态射在每点$p\in X$的正则函数芽上诱导的映射$\varphi^*_p:\oo_{\varphi(p),Y}\to \oo_{p,X}$是一个同构。
+	\label{c3:p3}
+\end{pro}
+\begin{proof}
+	首先证明，态射$\varphi$确实在局部环之间诱导了映射$\varphi^*_p:\oo_{\varphi(p),Y}\to \oo_{p,X}$. 取$\oo_{\varphi(p),Y}$中的一个代表元和上面的任意正则函数$\langle U,f\rangle$，于是在态射的作用下就有
+	\[
+		\langle U,f\rangle\mapsto \langle \varphi^{-1}(U),\varphi^*f\rangle,
+	\]
+	再挑一个代表元$\langle V,g\rangle$，使得$g|_{U\cap V}=f|_{U\cap V}$，所以，$\varphi^{-1}(U)\cap \varphi^{-1}(V)=\varphi^{-1}(U\cap  V)\neq \varnothing$和$\varphi^*g|_{U\cap V}=\varphi^*f|_{U\cap V}$保证了$\varphi$将等价的代表元变换成等价的代表元，所以态射$\varphi$确实在正则函数芽之间诱导了映射$\varphi^*_p:\oo_{\varphi(p),Y}\to \oo_{p,X}$.
+
+	正方向，如果$\varphi$是一个同构，那么$\varphi$是一个同胚，将$\varphi$限制在局部，那么由上面$\varphi^*_p$的构造，很容易直接看到$\varphi^*_p$他是两个局部函数芽的同构。反过来，假设$\varphi$是一个同胚，以及对于每一点$p\in X$，都有$\varphi^*_p:\oo_{\varphi(p),Y}\to \oo_{p,X}$是一个同构。要验证这是一个代数簇之间的同构，构造出$\psi=\varphi^{-1}$，首先需要验证这也是一个态射。
+
+	连续性来自于$\psi:Y\to X$是一个同胚。设$f$是$X$上的一个正则函数，我们要检验$\psi^* f$是$Y$上的正则函数。正则性是局部性质，局部检验即可，设$f$在$p\in X$上正则，设$\langle U,f|_U\rangle$是一个代表元，由同构$\varphi^*_p$，$\langle \psi^{-1}(U)=\varphi(U),\psi^* f|_U\rangle$也是一个代表元，所以$\psi^* f$在点$\psi^{-1}(p)=\varphi(p)$正则。由整体的同胚，所以$\psi^* f$在$Y$的每一点都正则，即在$Y$上正则。
+
+	证明同构需要的剩下的等式$\psi^*\circ \varphi^*=\id_{\oo(Y)}$以及$\varphi^*\circ\psi^* =\id_{\oo(X)}$，也是局部性质，在每一个局部验证成立即可，但这由构造是显然的。
+\end{proof}
+
+上面一个命题假设了态射是一个同胚以及在局部是一个同构。但实际上，这里面是有一点信息重叠的，下面一个命题将更细致地指出，只要态射是稠密的，那么在局部，他就是单的。
+\begin{pro}
+	如果态射$\varphi:X\to Y$使得$\varphi(X)$在$Y$中稠密，则$\varphi^*_p:\oo_{\varphi(p),Y}\to \oo_{p,X}$在每一个$p\in X$上都是单的。
+	\label{c3:p4}
+\end{pro}
+\begin{proof}
+	取$\langle U,f\rangle\in \oo_{\varphi(p),Y}$，假设$\varphi^*f=0$在$\varphi^{-1}(U)\subseteq X$上成立，即$\varphi^*_p \langle U,f\rangle=\langle \varphi^{-1}(U),\varphi^*f\rangle=0$，我们要证明存在$\varphi(p)$的邻域$V\subseteq U$使得$V\subseteq Z(f)$，这样$\langle V,f|_V\rangle=\langle U,f\rangle=0$，于是$\varphi^*_p:\oo_{\varphi(p),Y}\to \oo_{p,X}$是单的。
+
+	由于
+	\[
+		\varphi^*(f)\bigl(\varphi^{-1}(U)\bigr)=f\bigl(\varphi(\varphi^{-1}(U))\bigr)=0,
+	\]
+	所以$f$在$\varphi(\varphi^{-1}(U))=\varphi(X)\cap U$上为零，即
+	\[
+		\varphi(X)\cap U\subseteq Z(f)\subseteq U.
+	\]
+	在$U$中取闭包，因为$\varphi(X)$在$Y$中的稠密性，$\varphi(X)\cap U$在$U$中稠密，所以他在$U$中的闭包即$U$，而正则函数$f:U\to \bar{k}$是一个连续函数，所以$Z(f)$是$U$中的闭集，于是取闭包的结果是$U\subseteq Z(f) \subseteq U$，这样即得到了$Z(f)=U$. 
+\end{proof}
+下面我们将具体研究仿射簇和射影簇的正则函数环与正则函数芽。
+\begin{thm}
+	如果$Y$是一个仿射簇，他的坐标环为$A(Y)$，那么
+
+	\no{1} 存在环同构：$\mathcal{O}(Y)\cong A(Y)$.
+
+	\no{2} 对于每一点$p\in Y$，令$\mm_p\subseteq A(Y)$是在点$p$上为$0$的多项式构成的极大理想，存在环同构：$\mathcal{O}_p\cong A(Y)_{\mm_p}$，其中$A(Y)_{\mm_p}$是$A(Y)$关于$\mm_p$的局部化。
+
+	\no{3} 存在域同构：$K(Y)\cong F(A(Y))$，即$K(Y)$同构于$A(Y)$的商域。因此$K(Y)$是一个$k$的有限生成域扩张。
+	\label{c3:t12}
+\end{thm}
+\begin{proof}
+	一步一步来。因为每个多项式是在$\bba^n_k$上的正则函数，当然也是在$Y$上的正则函数，所以我们有一个同态$A\to \mathcal{O}(Y)$，这个同态的核就是$I(Y)$，所以我们存在一个单同态$\alpha: A(Y)\to\mathcal{O}(Y)$.
+
+	对每一个$p\in Y$，单同态$\alpha$自然诱导了映射$A(Y)_{\mm_p}\to \mathcal{O}_p$，所以是单的。由于局部正则函数都写成两个多项式的商，所以这个映射也是满的，于是$\mathcal{O}_p\cong A(Y)_{\mm_p}$.
+
+	关于最后一点，因为$\mathcal{O}_p\cong A(Y)_{\mm_p}$，所以对每一点$p\in Y$，$A(Y)$的商域都同构于$\mathcal{O}_p$的商域，所以$F(A(Y))\cong K(Y)$，因为$A(Y)$是一个有限生成$k$-代数，所以$K(Y)$是$k$的一个有限生成域扩张。
+
+	最后证明第一点，即单同态$\alpha: A(Y)\to\mathcal{O}(Y)$也是满射。首先可以注意到$\mathcal{O}(Y)\subset \bigcap_{p\in Y}\mathcal{O}_p$，由于有同构$\mathcal{O}_p\cong A(Y)_{\mm_p}$，不妨将这两者等同起来，则
+	\[
+		\mathcal{O}(Y)\subseteq \bigcap_{p\in Y}\mathcal{O}_p=\bigcap_{p\in Y}A(Y)_{\mm_p},
+	\]
+	而后者又等同于所有$A(Y)_{\mm}$的交\footnote{对于多项式环极大理想已经非常详尽地考察过了，所有的极大理想实际上都具有$\mm_p$的形式。}，所以
+	\[
+		A(Y)\subseteq \mathcal{O}(Y)\subseteq \bigcap_{\mm}A(Y)_{\mm}.
+	\]
+	所有$A(Y)_{\mm}$中的元素都具有形式$f/g$，其中$g\in A(Y)-\mm$，所以如果$f/g\in \bigcap_{\mm}A(Y)_{\mm}$，即$g$不在任何一个极大理想里面，只能是一个单位，因此$f/g=fg^{-1}\in A(Y)$，这样我们就证明了
+	\[
+		A(Y)\subseteq \mathcal{O}(Y)\subseteq \bigcap_{\mm}A(Y)_{\mm}\subseteq A(Y),
+	\]
+	所以$\mathcal{O}(Y)=A(Y)$，得证。顺便，对于仿射簇来说，正则函数环与正则函数芽成立
+	\[
+		\oo(Y)=\bigcap_{p\in Y}\oo_{p}.
+	\]
+\end{proof}
+
+下一个结论是关于射影簇的，和上面仿射簇的结论至少结构上是类似的，我们要讨论局部化。设$\pp$是$S$的一个齐次素理想，那么根据$(S-\pp)^{\mathrm{h}}$我们可以定义一个局部化$S_\pp$，他是自然分次的，$\deg(f/g)=\deg (f)-\deg (g)$，那么我们记$S_{(\pp)}$是$S_\pp$中的零次齐次子环。考虑零次齐次项是自然的，因为正则函数是写作两个同次齐次多项式的商。在上述记法下，商域写作$S_{(0)}$，零次齐次子域为$S_{((0))}$.
+
+\begin{thm}
+	如果$Y$是一个射影簇，他的坐标环为$S(Y)$，那么
+
+	\no{1} 存在域同构：$\mathcal{O}(Y)\cong k$和$K(Y)\cong S(Y)_{((0))}$.
+
+	\no{2} 对于每一点$p\in Y$，令$\mm_p\subseteq S(Y)$是在$p$处为$0$的齐次多项式生成的极大理想，存在环同构：$\mathcal{O}_p\cong S(Y)_{(\mm_p)}$.
+\end{thm}
+\begin{proof}
+	先证明第二点，思维其实很朴素，由于射影簇是由被仿射簇覆盖，所以局部完全可以放到仿射簇里面，利用仿射簇的局部结论。
+
+	设$U_i$是$x_i\neq 0$构成的$\bbp^n$中的开集，记$Y_i=Y\cap U_i$，因为Proposition \ref{c3:p1} 告诉我们，作为代数簇，存在$\varphi_i:U_i\to \bba^n_k$是一个同构，所以我们可以认为$Y_i$是一个仿射簇。此外，$Y_i$的坐标环$A(Y_i)$和$S(Y)_{(x_i)}$同构，事实上，映射
+	\[
+	\begin{array}{lcccl}
+		\varphi^*_i&:&k[y_0,\cdots,y_{i-1},y_{i+1},\cdots,y_n]&\to& k[x_0,\cdots,x_n]_{(x_i)}\\
+		&&f(y_1,\cdots,y_{i-1},y_{i+1},\cdots,y_n)&\mapsto &\bar{f}(x_0/x_i,\cdots,x_n/x_i)=\bar{f}/x_i^n
+	\end{array}
+	\]
+	是一个同构，他将$I(Y_i)$变成了$I(Y)S_{(x_i)}$，所以$\varphi^*_i:A(Y_i)\to S(Y)_{(x_i)}$是一个同构。
+
+	由于$p\in Y$一定属于某个$Y_i$，那么作为仿射簇上的点，利用仿射簇的结论，可以得到$\oo_p\cong A(Y_i)_{\mm'_p}$，其中$\mm'_p$是$A(Y_i)$中在点$p$处为零的函数构成的极大理想。所以，由同构$\varphi^*_i$有
+	\[
+		\oo_p\cong A(Y_i)_{\mm'_p}\cong \bigl(S(Y)_{(x_i)}\bigr)_{\varphi^*_i(\mm'_p)}=S'.
+	\]
+	由同构的构造，设$f\in \mm'_p$，则$\varphi^*_i(f)=\bar{f}/x_i^n$，其中$\bar{f}\in \mm_p$，所以$S'$中的任意元素$a$具有形式
+	\[
+		a=\frac{\bar{f}/x_i^n}{{\bar{g}/x_i^m}}=\frac{\bar{f} x_i^m}{\bar{g} x_i^n},
+	\]
+	其中$\bar{g}$是不属于$\mm_p$的齐次多项式，可以看到$a\in S(Y)_{(\mm_p)}$. 反之，对于任意$f/g\in S(Y)_{(\mm_p)}$，我们可以看到
+	\[
+		\frac{f}{g}=\frac{f/x_i^n}{g/x_i^n}\in S',
+	\]
+	因此，我们就得到了同构$\oo_p\cong S(Y)_{(\mm_p)}$.
+
+	由于$Y_i$在$Y$中稠密，所以任意在$Y$的某个开集$U$上的正则函数$f$，也属于等价类$\langle U\cap Y_i,f\rangle$，于是可以断言$K(Y)=K(Y_i)$，而$Y_i$作为仿射簇，$K(Y_i)\cong F(A(Y_i))$，通过同构$\varphi^*_i$，我们就可以得到同构$F(A(Y_i))\cong S(Y)_{((0))}$，于是$K(Y) \cong S(Y)_{((0))}$.
+
+	最后来证明唯一的整体结论$\mathcal{O}(Y)\cong k$，不妨将那些同构看成相等的。设$f$是$Y$上的正则函数，他当然也是$Y_i$上的正则函数，所以$f\in A(Y_i)= S(Y)_{(x_i)}$，所以$f=g_i/x_i^{n_i}$，其中$g_i$是$n_i$次齐次多项式。所以$x_i^{n_i}f\in S(Y)_{n_i}$，对任意的$i$成立。
+
+	选一个$N>\sum_i n_i$，那么$S(Y)_N$是由那些$N$次的首一单项式张成的$k$-矢量空间，由于$N$足够大，所以对每一个首一单项式$M$都存在某个$i$使得$M$中含有因子$x^n_i$且$n\geq n_i$.于是，对所有的首一多项式都成立$Mf\subseteq S(Y)_N$，这样$S(Y)_N\cdot f^k\subseteq S(Y)_N$就对任意的正整数$k$成立了，特别地，$x_0^Nf^k\subseteq S(Y)$成立。
+
+	考察$F(S(Y))$的子环$S(Y)[f]$，由于$x_0^Nf^k\subseteq S(Y)$成立，所以$S(Y)[f]\subseteq x_0^{-N}S(Y)$.因为$x_0^{-N}S(Y)$是一个有限生成$S(Y)$-模，所以$f$在$S(Y)$上是整的\footnote{等价的判据有：$S(Y)[f]$是一个有限生成$S(Y)$-模；$S(Y)[f]$包含于一个有限生成$S(Y)$-模内；存在一个忠实$S(Y)[f]$-模$M$，使得$M$被看成$S(Y)$-模时是有限生成的。见[Atiyah \& Macdonald, p59].}，即存在一个首一多项式
+	\[
+		f^m+a_1f^{m-1}+\cdots+a_m=0,
+	\]
+	系数$a_i\in S(Y)$，由于$f$是零次的，所以上面的等式的零次项构成了一个新的等式。但是$S(Y)_0=k$，所以上面的等式的零次项就是一个方程
+	\[
+		f^m+b_1f^{m-1}+\cdots+b_m=0,
+	\]
+	其中$b_i\in k$. 可以解得$f\in \bar{k}$是一个常数，所以$\oo(Y)\subseteq \bar{k}$.然而$\oo(Y)$中的元素在局部都写作两个多项式的商，由于现在元素是常数，所以这个常数只能处于$k$中，即$\oo(Y)\subseteq k$.反之，每一个$k$中的元素也是$Y$上的正则函数，所以$\oo(Y)= k$.
+\end{proof}
+
+从上面一个定理来看，射影空间和仿射空间差别很大，作为一个例子，考察$k=\mathbb{C}$的情况，由于$\bbp^1_{\mathbb{C}}$的元素要么具有形式$[1,a]$，要么具有形式$[0,b]$，前者同构于$\mathbb{C}$，后者可以看成一个无穷远点，所以$\bbp^1_{\mathbb{C}}$即$\mathbb{C}\cup \{\infty\}$，而$\bba^1_{\mathbb{C}}=\mathbb{C}$是清楚的。因为$\mathbb{C}\cup \{\infty\}$是$\mathbb{C}$的紧致化，所以对于一般的射影空间，也大概可以理解成仿射空间的紧致化。
+
+复变函数的例子可以更加深化上面这层联系，重温一下复变函数的里面的定理，在扩充复平面上全纯的函数必须是常值函数，这就说明$\mathcal{O}(\mathbb{C}\cup \{\infty\})\cong \mathbb{C}$，这里的$\mathcal{O}$指的是全纯函数，这和上面的定理中的第一点很相似。复变函数还告诉我们，在整个复平面上以无穷远点为极点的全纯函数只能是多项式，这又暗合$\mathcal{O}(\mathbb{C})\cong \mathbb{C}[z]$.
+
+\begin{pro}
+令$X$是一个代数簇，而$Y$是一个仿射簇，那么存在自然的双射$\alpha$使得
+\[
+\begin{array}{lcccl}
+	\alpha&:&\mathrm{Hom}_{\mathrm{Var}}(X,Y)&\cong& \mathrm{Hom}_{\mathrm{Alg}}(\mathcal{O}(Y),\mathcal{O}(X))\cong \mathrm{Hom}_{\mathrm{Alg}}(A(Y),\mathcal{O}(X))\\
+	\alpha&:&f&\mapsto &f^*
+\end{array}
+\]
+其中$f$是$X\to Y$的态射。
+\label{c3:p14}
+\end{pro}
+这命题说明了，两个范畴之间的态射是一一对应的，特别地，因为同构一一对应同构，因此，如果一个代数簇和一个仿射簇同构，此时代数簇的正则函数环和仿射簇的坐标环同构。反过来不一定，正则函数环和坐标环之间虽然是同构，但是他们诱导的态射可能连同胚都不是，那自然不是代数簇的同构。
+
+\begin{proof}
+	$\alpha$的定义如同上面的图所显示地一样，对于给定的态射$\varphi$，他在正则函数之间自然诱导了一个映射$\varphi^*$.
+
+	反过来，给一个$k$-代数之间的同态$\psi^*:\oo(Y)\to \oo(X)$. 由于$Y$是$\bba^n_k$中的一个仿射簇，那么$\oo(Y)\cong A(Y)=k[x_1,\cdots,x_n]/I(Y)$，令$\bar{x}_i$是$x_i$在$\oo(Y)$中的象，以及$y_i=\psi^*(\bar{x}_i)\in \oo(X)$，于是我们可以用他们定义映射$\psi:X\to \bba^n_k$通过$\psi(p)=(y_1(p),\cdots,y_n(p))$. 
+
+	下面要证明$\im \psi\subseteq Y$，因为$Y=Z(I(Y))$，所以只要证明对任意的$f\in I(Y)$成立$f(\psi(p))=0$即可，但是这由
+	\[
+		f(\psi(p))=f(y_1(p),\cdots,y_n(p))=\psi^*(f(\bar{x}_1,\cdots,\bar{x}_n))(p)=0
+	\]
+	保证。所以$\psi$定义了从$X$到$Y$的映射，他诱导了映射$\psi^*$. 最后，$\psi$是一个态射，这来自于Lemma \ref{c3:l1}.
+\end{proof}
+
+将视线缩小到仿射簇范畴，那么
+\begin{pro}
+函子$A:X\to A(X)$引出了一个$k$上的仿射簇范畴到$k$上的有限生成约态代数范畴之间的反箭头等价。特别地，两个仿射簇是同构的，当且仅当他们的坐标环是同构的。
+\end{pro}
+
+考虑正则函数环的同构是比考虑代数簇的同构在操作上简单的东西。作为例子，我们来判断$\bba^1_k$中的任意真开子集作为拟仿射簇不同构于$\bba^1_k$. 这是因为$\bba^1_k$中的任意真开子集都具有形式$\bba^1_k-U$，其中$U$是一个有限集，所以他的正则函数环中的元素不仅允许多项式存在，而且还允许有$f/g+h$的形式出现，其中$f$, $g$, $h$是多项式，且$Z(g)\subseteq U$. 因为他们的正则函数环不同构，所以这两个代数簇不同构。
+
+\begin{para}
+最后看一个例子，对于代数闭域中的二次曲线\footnote{需要除去直线的情况，比如$y-x=0$和$xy=0$确定的曲线。}，可以适当地对变量进行线性组合来调整二次项系数，使得他是多项式
+\[
+	f(x,y)=ax^2+by^2+cx+dy+e
+\]
+的零点，其中$a$和$b$不同时为$0$. 
+
+如果$ab=0$，不妨设$b=0$，那么$f(x,y)=0$就给出了$y=-(ax^2+cx+e)/d$，所以$A(f)\cong k[x]$，这种情况下，$Z(f)$和$\bba^1_k$作为代数簇同构。
+
+如果$ab\neq 0$，那么适当平移$x$和$y$，总可以消去$f(x,y)$中的一次项，此时
+\[
+	f(x,y)=ax^2-by^2+c,
+\]
+因为是代数闭域，令$w=\sqrt{a}x+\sqrt{b}y$和$z=\sqrt{a}x-\sqrt{b}y$，则$f(x,y)=0$的解则约化成方程
+\[
+	g(z,w)=zw+c=0
+\]
+的解，容易看到$A(g)=k[z,w]/(zw+c)$中的元素具有形式
+\[
+	p(z)+\frac{q(z)}{z^n},
+\]
+其中$p$, $q$为多项式，所以$A(g)\cong \mathcal{O}(\bba^1_k-\{0\})$.于是在这种情况下$Z(g)\cong \bba^1_k-\{0\}$.
+
+因为$ab$就是二次项系数的行列式，所以对于代数闭域上面二次曲线的分类即：如果二次项系数的行列式为零，他就同构于$\bba^1_k$，如果不为零就同构于$\bba^1_k-\{0\}$.
+\end{para}
+
+\section{代数簇范畴的积}
+
+既然这节讨论了代数簇范畴，那么就可以谈谈在任意范畴上都谈论的一些东西，比如积，从仿射簇范畴开始。
+
+\begin{para}
+作为集合，我们将$\bba^{m+n}$看成$\bba^m\times \bba^n$，但是作为拓扑空间，$\bba^{m+n}$是自己有一个Zariski拓扑的，它一般不同于$\bba^{m}\times \bba^n$的乘积拓扑。
+
+举个例子，假设$k$是代数闭的，按照Zarisk拓扑，$\bba^{2}$中$\{(0,0)\}$是闭集。但是按照乘积拓扑，$\bba^1\times \bba^1$中$\{(0,0)\}$不是闭集，或者说$\bba^1\times \bba^1-\{(0,0)\}$不是开集。事实上，$\bba^1$中的闭集都是有限集，开集就是$\bba^1$去掉某些点，所以任意两个开集生成了$\bba^1\times \bba^1$中的开集
+\[
+	(\bba^1-U)\times (\bba^1-V)=\bba^1\times\bba^1-U\times\bba^1-\bba^1\times V,
+\]
+其中$U$和$V$都是有限集。其他的开集都是这样开集的并，特别地，$\bba^1\times \bba^1-\{(0,0)\}$如果是开集，那么应该是某些$0\in U$和$0\in V$所对应的开集的并，令$U=\{0\}\cup U'$和$V=\{0\}\cup U'$，这样的开集写作
+\[
+	\bba^1\times\bba^1-\{0\}\times\bba^1-U'\times\bba^1-\bba^1\times \{0\}-\bba^1\times V',
+\]
+所以，所有这样的开集都包含于$W=\bba^1\times\bba^1-\{0\}\times\bba^1-\bba^1\times \{0\}$，他们的任意并也包含于$W$，但$W\subsetneq\bba^1\times\bba^1-\{(0,0)\}$，所以这就可以推出$\bba^1\times\bba^1-\{(0,0)\}$不能写成那些开集的并，所以不是开集。
+\end{para}
+
+不过Zariski拓扑和乘积拓扑却有下面这样一个联系。
+
+\begin{pro}
+	如果$X\subseteq \bba^{m}$, $Y\subseteq \bba^{n}$是闭集，那么$X\times Y\subseteq \bba^{m+n}$是闭集。
+\end{pro}
+\begin{proof}
+	设$X=Z(f_{1}$, $\dots$, $f_{r})$, $Y=Z(g_{1}$, $\dots$, $g_{s})$，构造$\mathfrak{a}_{ij}=(f_i)+(g_j)=f_iA^{m+n}+g_jA^{m+n}$，且
+	\[
+		Z(\mathfrak{a}_{ij})=Z(f_i)\times Z(g_j),
+	\]
+	现在
+	\[
+		\bigcap_{i,j}Z(\mathfrak{a}_{ij})=\bigcap_{i,j}Z(f_i)\times Z(g_j)=\bigcap_i Z(f_i)\times \bigcap_j Z(g_j)=X\times Y,
+	\]
+	所以$X\times Y\subseteq \bba^{m+n}$是闭集。
+\end{proof}
+
+所以，作为仿射簇的直积，$\bba^{m}\times \bba^n$被赋予的Zariski拓扑要比乘积拓扑更良好一些。这一优势使得我们对于乘积拓扑的直觉都可以直接套上来却不会产生问题。
+
+\begin{pro}
+	如果$X\subseteq \bba^{m}$, $Y\subseteq \bba^{n}$是仿射簇，那么$X\times Y\subseteq \bba^{m+n}$是仿射簇。
+	\label{c3:p18}
+\end{pro}
+\begin{proof}
+	闭集的部分已经证明了，下面只要证明$X\times Y$在$\subseteq \bba^{m+n}$中的不可约性。假如$X\times Y=Z_1\cup Z_2$，其中$Z_1$, $Z_2$是$X\times Y$中的闭集，如果证明$X\times Y=Z_i$，则$X\times Y$是不可约的。
+
+	设$Z_i=Z(f_{i1}$, $\dots$, $f_{in_i})$，其中$f_{ij}\in A^{m+n}$. 定义$X_i=\bigl\{x\in X:\{x\}\times Y\subseteq Z_i\bigr\}$或
+	\[
+		X_i=\bigl\{x\in X:\forall y\in Y,\,f_{i1}(x,y)=0,\dots ,f_{in_i}(x,y)=0\bigr\},
+	\]
+	即对任意的$x\in X_i$和$y\in Y$，都有$f_{ij}(x,y)=0$.
+
+	首先证明$X=X_1\cup X_2$，由于$X_1\cup X_2\subseteq X$是显然的，剩下的只要证明，对于固定的$a\in X$，可以得到$\{a\}\times Y\subseteq Z_1$或$\{a\}\times Y\subseteq Z_2$，这样前者意味着$a\in X_1$后者意味着$a\in X_2$，于是$a\in X_1\cup X_2$.也就有了$X\subseteq X_1\cup X_2$.
+
+	固定$a\in X$，定义$g_{ij}(y)=f_{ij}(a,y)$，考虑$V_i=Z(g_{1i}$, $\dots$, $g_{in_i})$，可以知道$V_i\cap Y$是$Y$中的闭集。任取$y\in Y$，$(a,y)\in Z_1 \cup Z_2$，所以$y$满足$\{g_{1j}(y)=0\}$或者$\{g_{2j}(y)=0\}$，可知$Y=(V_1\cap Y)\cup (V_2\cap Y)$. 由$Y$的不可约性，$Y=V_i\cap Y$或者$Y\subseteq V_i$，这就是$\{a\}\times Y\subseteq Z_i$.
+
+	其次，我们想要证明$X_i$是$\bba^{m}$中的闭集，即他是一族多项式的零点集。由于$X$是闭的，$X_i$如果是$\bba^{m}$中的闭集，也当然是$X$中的闭集。下面的证明固定$i$取$1$或$2$.
+
+	固定$x\in X_i$，定义$g_{ij}(y)=f_{ij}(x,y)$，由$X_i$定义知$g_{ij}\in I(Y)$，所以$g_{ij}$由一些多项式$h_{ijk}\in I(Y)$所生成，即
+	\[
+		g_{ij}(y)=\sum_{k=1}^N\alpha_{ijk}(y)h_{ijk}(y),
+	\]
+	改变$x\in X_i$，上式右边的形式都不变，所以
+	\[
+		f_{ij}(x,y)=\sum_{k=1}^N\alpha_{ijk}(x,y)h_{ijk}(y).
+	\]
+	任取$b\notin Y$，并记
+	\[
+		\beta_{ij}^b(x)=f_{ij}(x,b)-\sum_{k=1}^N\alpha_{ijk}(x,b)h_{ijk}(b),
+	\]
+	则任意的$x\in X_i$都是多项式族$\{\beta_{ij}^b\}$的零点。
+
+	反过来，固定$x\in X$是$\{\beta_{ij}^b\}$的零点，那么
+	\[
+		F_{ij}(b)=f_{ij}(x,b)-\sum_{k=1}^N\alpha_{ijk}(x,b)h_{ijk}(b)=0
+	\]
+	对任意的$b\in \bba^{n}-Y$都成立。因为$\bba^{n}$是不可约的，而$\bba^{n}-Y$是一个开集，所以$\overline{\bba^{n}-Y}=\bba^{n}$. 而一个多项式在一个集合上为$0$当前仅当其在闭包上也为$0$，所以
+	\[
+		f_{ij}(x,y)=\sum_{k=1}^N\alpha_{ijk}(x,y)h_{ijk}(y)
+	\]
+	对任意的$y\in \bba^{n}$都成立，当然也就对$y\in Y$成立，由于$h_{ijk}(Y)=0$，所以对$y\in Y$，我们有$f_{ij}(x,y)=0$，这也就是说$x\in X_i$.
+
+	综上，$X_i$就是多项式族$\{\beta_{ij}^b\}$的零点集，所以$X_i$就是$\bba^{m}$中的闭集，也是$X$中的闭集。已知$X=X_1\cup X_2$，由$X$的不可约性，$X=X_i$，这就告诉我们$X\times Y\subseteq Z_i$，因此$X\times Y$是不可约的。
+\end{proof}
+
+\begin{pro}
+	$A(X\times Y)\cong A(X)\otimes_k A(Y)$.
+\end{pro}
+
+\begin{proof}
+由于是仿射簇，所以上面的同构等价于$\mathcal{O}(X\times Y)\cong \mathcal{O}(X)\otimes_k \mathcal{O}(Y)$，两边都是$k$-代数，定义一个$k$-线性映射$\alpha : \mathcal{O}(X)\otimes_k \mathcal{O}(Y)\to \mathcal{O}(X\times Y)$满足$\alpha:f\otimes g \mapsto fg$.
+
+如果$f$和$g$是正则函数，那么$fg$也是正则函数，所以定义合理。此外，这还是一个代数同态，因为
+\[
+	\alpha(f_1\otimes g_1)\alpha(f_2\otimes g_2)=f_1f_2g_1g_2=\alpha\bigl((f_1f_2)\otimes (g_1g_2)\bigr).
+\]
+显然的部分是$\alpha$满，因为对于任意的坐标函数成立$x_i=\alpha(x_i\otimes 1)$以及$y_j=\alpha(1\otimes y_j)$.
+
+剩下要证明他是一个单射。设$f\in \mathcal{O}(X)\otimes_k \mathcal{O}(Y)$且$\alpha(f)=0$，将其展开有
+\[
+	f=\sum_{i,j}c_{ij}f_i\otimes g_j,
+\]
+所以
+\[
+	\alpha(f)(x,y)=\sum_{i,j}c_{ij}f_i(x)g_j(y)=0,
+\]
+固定$x$，从$\{g_i\}$的线性无关，推知系数有$\sum_{i}c_{ij}f_i(x)=0$. 从$\{f_i\}$的线性无关，推知系数有$c_{ij}=0$，所以也就是$f=0$，因此$\alpha$是单射。
+\end{proof}
+\begin{pro}
+	设$X$, $Y$是仿射簇，则$X\times Y$是代数簇范畴的直积，即满足下面的交换图：设$Z$是一个代数簇，对于任意的态射$r_1:Z\to X$与$r_2:Z\to Y$，存在态射$s:Z\to X\times Y$使得下面的交换图成立。
+	\[
+		\xymatrix{
+			X&\ar[l]_-{\mathrm{proj}_1}X\times Y\ar[r]^-{\mathrm{proj}_2}&Y \\
+			&Z\ar@{-->}[u]^s\ar[ul]^{r_1}\ar[ur]_{r_2}&
+			}
+	\]
+\end{pro}
+\begin{proof}
+	按照直觉可以构造$s=r_1\times r_2:z\mapsto (r_1(z),r_2(z))$，交换图的成立显然。要证明$s$是一个态射，直接应用Lemma \ref{c3:l1} 就可以了。
+\end{proof}
+
+当然，我们对于仿射簇的直积也可以形式地移到拟仿射簇上面，下面一个命题保证了两个拟仿射簇的直积依然是拟仿射的。
+\begin{pro}
+	设$X\subseteq \bba^{m}$, $Y\subseteq \bba^{n}$是拟仿射簇，那么$X\times Y\subseteq \bba^{m+n}$是拟仿射簇。
+	\label{c3:p23}
+\end{pro}
+\begin{proof}
+	由于$\overline{X}$和$\overline{Y}$是仿射簇，则$\overline{X}\times \overline{Y}$是仿射簇。因为$X$和$Y$分别在$\overline{X}$和$\overline{Y}$中开，按照乘积拓扑的直觉，$X\times Y$在$\overline{X}\times \overline{Y}$中开，实际上，存在开集$V$和$W$使得$X=V\cap \overline{X}$和$Y=W\cap \overline{Y}$，同时
+	\[
+		X\times Y=(V\times W)\cap(\overline{X}\times \overline{Y}),
+	\]
+	因此$X\times Y$在$\overline{X}\times \overline{Y}$中开。而$\overline{X}\times \overline{Y}$不可约，所以他的开集$X\times Y$不可约。这样$X\times Y$就是一个拟仿射簇了。
+\end{proof}
+
+接着来看看（拟）射影簇的情况。为了考虑两个（拟）射影簇的直积，我们至少应该赋予$\bbp^m\times \bbp^n$射影簇的结构，就像通过等同$\bba^{m}\times \bba^n$和$\bba^{m+n}$来给予前者射影簇结构一样。
+
+如果有两个（拟）射影簇$X$和$Y$，给予$X\times Y$（拟）射影簇结构的一个简单明快的方式就是将其嵌入到一个射影空间中去，即$\varphi:X\times Y\hookrightarrow \bbp^N$.更进一步地，我们希望局部仿射的性质依然保持，即如果$U$是$p\in X$的仿射邻域，$V$是$q\in Y$的仿射邻域，则$U\times_{\mathrm{aff}} V$作为仿射簇的直积和同构于$\varphi(U\times_{\mathrm{proj}} V)$，这样$U\times_{\mathrm{proj}} V$是$(p,q)\in X\times Y$的仿射邻域。
+
+上面陈述的性质能够完全确定$X\times Y$的嵌入。设我们有两种嵌入$\varphi$和$\psi$，那么$\varphi\circ \psi^{-1}$是$\varphi(X\times Y)$和$\psi(X\times Y)$的同构。然后考虑局部，设$\varphi(U\times V)$和$\psi(U\times V)$都是我们需要的仿射邻域，则他们都同构于$U\times_{\mathrm{aff}} V$. 这样的嵌入就是如下的Segre嵌入。
+
+\begin{pro}[Segre嵌入]
+令$\psi:\bbp^r\times \bbp^s\to \bbp^N$是一个映射
+\[
+	\psi:(a_0,\dots,a_r)\times (b_0,\dots,b_s)\mapsto (\dots,a_ib_j,\dots),
+\]
+其中$(\dots,a_ib_j,\dots)$以字典序(lexicographic order)排列，其中$N=(r+1)(s+1)-1=rs+r+s$. 容易验证$\psi$是well defined以及单的，且$\im(\psi)$在$\bbp^N$中是一个子射影簇。
+\end{pro}
+
+\begin{proof}
+	令$\{z_{ij}\}$是$\bbp^N$的齐次坐标。设映射
+	\[
+	\begin{array}{lccl}
+		\rho:&k\bigl[\{z_{ij}\}\bigr]&\to&k[x_0,\dots,x_r;y_0,\dots,y_s]\\
+		&z_{ij}&\mapsto&x_iy_j,
+	\end{array}
+	\]
+	那么$\ker \rho$由齐次多项式方程组
+	\[
+		z_{ij}z_{lk}-z_{lj}z_{ik}=0,
+	\]
+	确定，因此$\ker \rho$由$z_{ij}z_{lk}-z_{lj}z_{ik}$生成。因为$k[x_0,\dots,x_r;y_0,\dots,y_s]$是整环，所以$\ker \rho$是一个素理想。很直接地，$\im \psi=Z(\ker \rho)$，所以$\im \psi$是一个射影簇。
+\end{proof}
+
+利用Segre嵌入，将$\bbp^m\times \bbp^n$等同于他在$\bbp^N$中的象，这样他就有了射影簇的结构。
+\begin{pro}
+	设$X\subseteq \bbp^m$和$Y\subseteq \bbp^n$是两个（拟）射影簇，$X\times Y\subseteq \bbp^m\times \bbp^n$是一个（拟）射影簇。
+\end{pro}
+\begin{proof}
+	设$X=Z(f_1$, $\dots$, $f_r)$和$Y=Z(g_1$, $\dots$, $g_s)$是射影簇，首先证明$X\times Y$是一个闭集。设映射
+	\[
+		\mathrm{proj}_1:a\times b\mapsto a,\quad \mathrm{proj}_2:a\times b\mapsto b,
+	\]
+	这并不难构造，对于每一个点$(a,b)\in X\times Y$，我们总可以找到一个$b_i\neq 0$，这样$\mathrm{proj}_1$的作用就是$[\dots$, $a_ib_j$, $\dots]\mapsto [a_0b_j$, $\dots$, $a_mb_j]=a$，$\mathrm{proj}_2$同理。容易验证
+	\[
+		X\times Y=\bigcap_{i,j}\bigl(Z(f_i\circ \mathrm{proj}_1)\cap Z(g_j\circ \mathrm{proj}_2)\bigr),
+	\]
+	所以$X\times Y$是一个闭集。这样，和仿射情况是类似的，$X\times Y$上的拓扑比乘积拓扑更好一些。剩下的不可约部分的证明和仿射的情况是相似的，即Propostion \ref{c3:p18}.
+
+	如果$X$和$Y$是拟射影簇，那么只需要证明$X\times Y$是$\overline{X}\times \overline{Y}$中的开集即可，不可约的部分来自于$\overline{X}\times \overline{Y}$是一个射影簇。至于开集，和拟仿射簇的证明是一样的，即Propostion \ref{c3:p23}.
+\end{proof}

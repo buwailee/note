@@ -1,3 +1,4 @@
+%!TEX root = main.tex
 \chapter{Banach空间的对偶空间}
 
 \section{有界线性映射空间的范数}
@@ -6,12 +7,19 @@
 设$X$和$Y$是两个拓扑矢量空间，记$\mathcal{B}(X,Y)$是所有$X$到$Y$的有界线性映射构成的集合。不难看到$\mathcal{B}(X,Y)$有一个自然的矢量空间结构，因为两个有界线性映射相加依然是有界的，而一个有界线性映射乘以一个标量还是有界的。
 
 设$X$是可度量化空间，因为可度量化空间上的线性映射的有界性等价于连续性，所以此时$\mathcal{B}(X,Y)$就是$X\to Y$的所有连续线性映射的构成的矢量空间，特别地，$X^*=\mathcal{B}(X,k)$.
+\end{para}
 
-如果$X$和$Y$都是赋范空间，则$\mathcal{B}(X,Y)$也将拥有一个自然的范数，使得$\mathcal{B}(X,Y)$也是一个赋范空间。设$f\in \mathcal{B}(X,Y)$，定义
+设$f\in \mathcal{B}(X,Y)$，定义
 \[
 	|f|=\sup\bigl\{|f(x)|\,:\,x\in X,\,|x|\leq 1\bigr\},
 \]
-由于$f$是有界的，所以$|f|<\infty$. 我们下面验证，$|f|$构成了$\mathcal{B}(X,Y)$上的一个范数。
+由于$f$是有界的，所以$|f|<\infty$. 
+
+如果$X$和$Y$都是赋范空间，则$\mathcal{B}(X,Y)$也将拥有一个自然的范数，使得$\mathcal{B}(X,Y)$也是一个赋范空间。
+
+\begin{lem}
+$|f|$构成了$\mathcal{B}(X,Y)$上的一个范数。
+\end{lem}
 
 \begin{proof}
 首先证明三角不等式$|f+g|\leq |f|+|g|$，其中$f$, $g\in \mathcal{B}(X,Y)$. 由于对任意满足$|x|\leq 1$的$x\in X$，有
@@ -30,7 +38,6 @@
 	\left|f\left(\frac{x}{|x|}\right)\right|\leq |f|
 \]
 可以推知$|f(x)|\leq |f||x|$. 
-\end{para}
 
 \begin{pro}
 如果$Y$是Banach空间，则$\mathcal{B}(X,Y)$依上述范数也构成一个Banach空间。
@@ -70,6 +77,7 @@
 	若$X$是一个赋范空间，则$x\mapsto \langle x^*,x\rangle$将定义一个$X^*$上的有界线性泛函$\psi(x)$，在$X^{**}$的范数下，我们有等式$|\psi(x)|=|x|$.
 \end{lem}
 
+\begin{proof}
 线性是显然的，而有界性直接来自于不等式$|\psi(x)(x^*)|=|\langle x^*,x\rangle|\leq |x^*||x|$. 所以$\psi(x)$是$X^*$上的有界线性泛函。此外，对$|x^*|\leq 1$，我们有
 \[
 	|\psi(x)(x^*)|=|\langle x^*,x\rangle|\leq |x^*||x|\leq |x|.
@@ -81,6 +89,7 @@
 	|\psi(x)(y^*)|=\langle y^*,x\rangle = f(x) =|x|,
 \]
 此即所需。
+\end{proof}
 
 \begin{para}
 从上一个引理，我们有了一个线性映射$\psi:X\to X^{**}$，由等式$|\psi(x)|=|x|$，$\psi$是一个等距映射，即成立$|\psi(x)-\psi(y)|=|x-y|$. 此外，如果$\psi(x)=0$，则由等式$|\psi(x)|=|x|$可以推出$x=0$，所以$\psi$还是一个单射。
@@ -100,7 +109,8 @@
 \]
 \end{pro}
 
-这个命题的证明是简单的，从前面已经知道，对$|x^*|\leq 1$的$x^*$，成立$|\langle x^*,x_0\rangle|\leq |x^*||x_0|\leq |x_0|$. 并且，从上一个Lemma的证明中已经知道，存在一个$x_1^*$使得$|x_1^*|\leq 1$且$\langle x_1^*,x_0\rangle=|x_0|$，所以第一个等式得证。
+\begin{proof}
+从前面已经知道，对$|x^*|\leq 1$的$x^*$，成立$|\langle x^*,x_0\rangle|\leq |x^*||x_0|\leq |x_0|$. 并且，从上一个Lemma的证明中已经知道，存在一个$x_1^*$使得$|x_1^*|\leq 1$且$\langle x_1^*,x_0\rangle=|x_0|$，所以第一个等式得证。
 
 对第二个等式，应用第一个等式，我们有
 \[
@@ -114,6 +124,7 @@
 \[
 	|f|=\sup \left\{|\langle y^*,f(x)\rangle |\,:\, |x|\leq 1,\, |y^*|\leq 1\right\}.
 \]
+\end{proof}
 
 \section{伴随算子}
 
@@ -124,13 +135,12 @@
 \]
 此外，还成立$|f^*|=|f|$.
 \end{thm}
-
-$f^*$即所谓的拉回，对于有限维空间，$f^*$即$f$的转置。不难看到，它的定义为$f^*(y^*)=y^*\circ f$. 唯一性来自于等式对任意$x$都成立，因为$f^*(y^*)$是一个$X$上的线性函数。$f^*$线性的检验是平凡的，最后我们只需要证明$|f^*|=|f|$，这也就顺便说明了$f^*$有界。
-
-由上一节最后的命题，
+\begin{proof}
+$f^*$即所谓的拉回，对于有限维空间，$f^*$即$f$的转置。不难看到，它的定义为$f^*(y^*)=y^*\circ f$. 唯一性来自于等式对任意$x$都成立，因为$f^*(y^*)$是一个$X$上的线性函数。$f^*$线性的检验是平凡的，最后我们只需要证明$|f^*|=|f|$，这也就顺便说明了$f^*$有界。由上一节最后的命题，
 \begin{align*}
 |f|&=\sup \left\{|\langle y^*,f(x)\rangle |\,:\, |x|\leq 1,\, |y^*|\leq 1\right\}\\
 &=\sup \left\{|\langle f^*(y^*),x\rangle |\,:\, |x|\leq 1,\, |y^*|\leq 1\right\}\\
 &=\sup \left\{|f^*(y^*)|\,:\, |y^*|\leq 1\right\}\\
 &=|f^*|.
 \end{align*}
+\end{proof}

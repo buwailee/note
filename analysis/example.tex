@@ -1,3 +1,4 @@
+%!TEX root = main.tex
 \chapter{例子}
 
 说在最前面，经常地，在同一个矢量空间上，我们可以为了不同的目的选取不同的拓扑，下面各节中出现的拓扑往往是最熟悉的那些，但这不代表这是唯一的拓扑。一个重要的反例是有限维空间，可以看到，作为拓扑矢量空间，它上面具有唯一的拓扑。
@@ -34,7 +35,7 @@
 
 这节讨论欧式空间中的开集上的连续函数空间。首先，我们给出这样一个拓扑学上的命题。
 
-\begin{thm}
+\begin{thm}\label{thm:3.4}
 设$M$是一个局部紧第二可数Hausdorff空间，则存在一列开集$\{U_i\}$，使得每个$\overline{U}_i$都是紧集，$\overline{U}_i\subset U_{i+1}$，且$\bigcup_iU_i=M$.这样的一列开集被称为$M$上的一个穷竭。
 \end{thm}
 
@@ -153,54 +154,57 @@ $\mathsf{C}(U)$是一个完备度量空间。
 \[
 	f(x_0)=f_{\epsilon_0}(x_0),
 \]
-不难检验它在$U$上定义了一个良定的函数$f$。此外，$f$在$U$上连续。实际上，只要局部检验就行了，取$x$，它必然包含于一个$K_n$中，于是$x$包含于$K_{k}$的内部中，其中$k>n$. 选一个足够小的$\epsilon$保证$k(\epsilon)>n$，则按前面的定义，$f|_{K_{k(\epsilon)}}=f_{\epsilon}$在点$x$处连续，因此$f$在点$x$连续。而$x$又是$U$上任取的，所以$f\in \mathsf{C} (U)$.
+不难检验它在$U$上定义了一个良定的函数$f$. 此外，$f$在$U$上连续。实际上，只要局部检验就行了，取$x$，它必然包含于一个$K_n$中，于是$x$包含于$K_{k}$的内部中，其中$k>n$. 选一个足够小的$\epsilon$保证$k(\epsilon)>n$，则按前面的定义，$f|_{K_{k(\epsilon)}}=f_{\epsilon}$在点$x$处连续，因此$f$在点$x$连续。而$x$又是$U$上任取的，所以$f\in \mathsf{C} (U)$.
 
 最后，$d(f_n,f)\to 0$的检验是直接的。所以$\mathsf{C}(U)$是一个完备度量空间。
 \end{proof}
 
-\section{从Riemann积分到Lebegue积分}
-
-设$X$是一个局部紧Hausdorff空间，而$f$是它上面的一个函数，定义$f$的支集为$X-f^{-1}(0)$的闭包。记$\mathsf{C}_c(X)$为$X$上所有的具有紧支集的实值连续函数构成的集合，逐点定义加法和数乘，就可以发现$\mathsf{C}_c(X)$上有一个矢量空间结构：对加法而言，$f+g$的支集处于$f$和$g$的支集的并中，后者是紧的，作为Hausdorff空间中紧集的闭子集，$f+g$的支集也是紧的。数乘非零标量支集不变，而乘以零之后，支集是空的，所以显然是紧的。此外，在$\mathsf{C}_c(X)$上可以定义一个绝对值函数$\abs:\mathsf{C}_c(X)\to \mathsf{C}_c(X)$，通过$\abs(f(x))=|f(x)|$. 
-
-称$\ell:\mathsf{C}_c(X)\to \rr$是一个正线性泛函，如果对$\mathsf{C}_c(X)$中的非负函数$f$，$\ell(f)$都非负。因此正线性泛函在如下意义下单调：如果$f_1(x)\leq f_2(x)$处处成立，则$\ell(f_1)\leq \ell(f_2)$.
-
-不难看到，给定一个正线性泛函$\ell$，$\ell\circ \abs$是一个半范数，其中$\abs:\mathsf{C}_c(X)\to \mathsf{C}_c(X)$是$\mathsf{C}_c(X)$上的绝对值函数，方便起见，我们将$\ell$确定的半范数记作$p_\ell$. 既然得到了一个半范数$p_\ell$，进一步，可以在$\mathsf{C}_c(X)/p_\ell^{-1}(0)$上定义出一个范数使得它称为一个拓扑矢量空间，然后完备化之，这样得到的空间记作$\mathsf{L}(X)$，$\mathsf{L}(X)$上的范数记作$|*|_\ell$. 
-
-一般来说，在谈论$\mathsf{L}(X)$或者$\mathsf{C}_c(X)/p_\ell^{-1}(0)$的时候，我们会心照不宣地将$f\in \mathsf{C}_c(X)$看作其等价类。比如，我们可能会对$f\in \mathsf{C}_c(X)$说成立等式$|f|_\ell = \ell(\abs(f))$.
-
-由测度论中的Riesz表示定理，$\mathsf{C}_c(X)$上的每一个正线性泛函$\ell$都可以定义出$X$上的一个正测度$\mu$，使得任取$f\in \mathsf{C}_c(X)$都成立
-\[
-	\ell(f)=\int f\,\dd \mu.
-\]
-实际上，我们构造的完备拓扑矢量空间$\mathsf{L}(X)$就是$\mathsf{L}^1(\mu)$而已。但说明这点远比这样构造$\mathsf{L}(X)$要困难得多。
-
-\begin{lem}
-	一切记号与习惯同上。$\mathsf{C}_c(X)$上的正线性泛函$\ell$将诱导出$\mathsf{L}(X)$上的唯一的连续线性泛函$\ell'$，对满足$\ell'(f)=\ell(f)$.
-\end{lem}
-
-\begin{proof}
-	可以将$\mathsf{C}_c(X)/p_\ell^{-1}(0)$看作$\mathsf{L}(X)$的子空间，而$\ell$在$\mathsf{C}_c(X)/p_\ell^{-1}(0)$诱导了一个$\bar{\ell}$满足$\bar{\ell}(f)=\ell(f)$. $\bar{\ell}$的连续性来自于$\bar{\ell}$在$\mathsf{C}_c(X)/p_\ell^{-1}(0)$是有界的，实际上，
-	\[
-	|\bar{\ell}(f)|=|\ell(f)|\leq \ell(|f|)=p_\ell(f).
-	\]
-	不等式来自于$-|f|\leq f\leq |f|$以及$\ell$是一个正线性泛函，即
-	\[
-	-\ell(|f|)\leq \ell(f)\leq \ell(|f|).
-	\]
-	由于$\mathsf{C}_c(X)/p_\ell^{-1}(0)$在其完备化空间$\mathsf{L}(X)$中稠密，然后对$\bar{\ell}$使用Proposition \ref{1.52}即可。
-\end{proof}
-
-再具体一些，考虑$X=\rr^n$，每一个$\mathsf{C}_c(X)$中的函数都是Riemann可积的，取$\ell$为通常的Riemann积分，不难发现这是一个正线性泛函。我们这里指出，$p_\ell$不仅仅是一个半范数，它其实是一个范数。
-
-实际上，如果$f$不为零，由$f$的连续性，则$|f|$在一个开集（为方便可以取做一个开长方体$V_0$，体积为$a$）上满足$|f(x)|>\epsilon$，所以
-\[
-	\int_{\rr^n}\dd^n x\, |f|\geq \int_{V_0}\dd^n x\, |f|>a\epsilon>0.
-\]
-因此$p_\ell^{-1}(0)=0$.
-
-于是利用上面的引理，我们就在$\mathsf{C}_c(X)$的完备化$\mathsf{L}(\rr^n)$上得到了新的积分，即Lebesgue积分。实际上，$\mathsf{L}(\rr^n)$正是寻常的$\mathsf{L}^1(\rr^n)$.
-
 \section{光滑函数空间}
+
+这里我们考虑的都是$\rr^n$及其子集上的（复）函数构成的空间，所以先引入一些记号。首先，设$\alpha=(\alpha_1$, $\dots$, $\alpha_n)\in \zz^n$是一个自然数组（非负整数组），则称其为一个多重指标。然后，即
+\[
+	|\alpha|=\sum_{i=1}^n\alpha_i,\quad D^\alpha=\prod_{i=1}^n \partial_i^{\alpha_i}.
+\]
+类似地，我们可能还需要二项式系数，阶乘等：
+\[
+	\binom{\beta}{\alpha}=\prod_{i=1}^n\binom{\beta_i}{\alpha_i},\quad \alpha!=\prod_{i=1}^n \alpha_i!.
+\]
+
+\begin{para}[光滑函数空间]
+任取开集$U$，如果$f\in \msf C(U)$对任意的多重指标$\alpha$，都有$D^\alpha f\in \msf C(U)$，则称$f$在$U$上光滑。最简单的光滑函数是常值函数，稍微复杂一些，多项式函数，再比如我们知道，指数映射也是光滑的。所有在$U$上光滑的函数构成的集合我们记作$\msf C^\infty(U)$. 实（复）光滑函数显然构成一个实（复）矢量空间，所以$\msf C^\infty(U)$被叫做$U$上的光滑函数空间。
+\end{para}
+
+\begin{para}[$\msf C^\infty(U)$的拓扑]
+考虑$U$的一个穷竭，进而得到一个至多可数紧集族$K_1\subset K_2\subset \cdots$使得每一个$K_n\subset K_{n+1}^\circ$且$\bigcup_i K_i=U$. 如果$\rr^n$是局部凸的，所以这些紧集也总可以取成凸的\footnote{参见Theorem \ref{thm:3.4}的证明。}。考虑如下半范数族
+\[
+	p_n(f):=\sup\{|D^\alpha f(x)|\,:\,x\in K_n,\, |\alpha|\leq n\}.
+\]
+因为$K_n\neq U$，所以它们不是范数。而这个半范数族是可分点的，这里即没有非平凡的公共零点，实际上，如果存在一个$f$和$x_0\in U$有$f(x_0)\neq 0$，则必然有一个$K_n$使得$x_0\in K_n$，此时$p_n(f)\geq |f(x_0)|>0$.
+
+此时，Lemma \ref{lem:1.45}或者Theorem \ref{1.61}可以给出$\msf C^\infty(U)$上的一个第一可数局部凸拓扑矢量空间结构。局部基由
+\[
+	V_n=\left\{f\in \msf C^\infty(U)\,:\, p_n(f)<\frac 1n \right\}
+\]
+给出。此外，任取$x\in U$，我们都给出了一个线性泛函$f\mapsto f(x)$，它们是连续的。
+
+$\msf C^\infty(U)$和$\msf C(U)$一样是完备的。任取$\msf C^\infty(U)$中的Cauchy列$\{f_i\}$，给定正整数$n$，对足够大的$i$, $j$，总存在一个$N$使得$i$, $j>N$时成立
+\[
+	\sup_{x\in U}\left|D^\alpha f_i(x)-D^\alpha f_j(x)\right|<\frac 1n,
+\]
+其中$|\alpha|\leq n$. 因此，固定$\alpha$，$\{D^\alpha f_i\}$在$\msf C(U)$拓扑下是一个Cauchy列，所以利用$\msf C(U)$的完备性，$\{D^\alpha f_i\}$都收敛到一个连续函数$g_\alpha$. 特别地，$\alpha=0$时候给出了$\{f_i\}$收敛到一个连续函数$f=g_0$. 验证$f$的光滑性的法子与$\msf C(U)$中验证连续性是相似的，局部检验在紧集中检验，然后利用函数列在紧集上的一致收敛性，这里我们引入一个数学家们幼儿园就知道的定理：
+\begin{quote}
+定义在赋范空间的一个凸有界集$E$上的复可微函数序列$\{f_i\}$，如果其导函数$\{f'_i\}$序列一致收敛到$g$且$\{f_i\}$至少在$E$的一点收敛，则$\{f_i\}$一致收敛于一个函数$f$，且$f'=g$.
+\end{quote}
+所以$f$光滑，且$D^\alpha f=g_\alpha$.
+\end{para}
+
+\begin{para}[测试函数空间]
+设$K$是$\rr^n$的一个紧子集，所有支集处于$K$中的$\rr^n$上的光滑函数构成的集合我们记作$\mathscr D_K$，称为紧集$K$上的测试函数空间。它显然是一个矢量空间，是$\msf C^\infty(\rr^n)$的子空间，我们赋予其子空间拓扑。
+
+我们还可以用另一种方式来描述$\mathscr D_K$，任取$x\not\in K$，泛函$x$的零点集为$x^{-1}(0)$，他是所有在$x$处为零的光滑函数构成的集合，由$x$是连续的，它也是闭的。此时，$\mathscr D_K=\bigcap_{x\not\in K}x^{-1}(0)$. 所以$\mathscr D_K$是$\msf C(U)$的闭子空间，其中$U$是任意一个包含$K$的开集。
+
+由于$\msf C(U)$是完备的，作为其闭子空间，$\mathscr D_K$也是完备的。
+\end{para}
 
 \section{Lebesgue空间}
 

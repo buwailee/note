@@ -1,3 +1,4 @@
+% !TeX root = manifold.tex
 \appendix
 \renewcommand{\thepara}{\Alph{chapter}.\arabic{para}}
 \chapter{Tensors and Exterior Algebra}
@@ -80,7 +81,8 @@
 	\]
 	其中$\sigma$属于$m+n$阶置换群。
 
-\pro 设$\xi$, $\xi_1$, $\xi_2 \in \Omega^m(V)$和$\eta$, $\eta_1$, $\eta_2\in \Omega^n(V)$还有一个$\zeta\in \Omega^h(V)$，有
+\begin{pro}
+设$\xi$, $\xi_1$, $\xi_2 \in \Omega^m(V)$和$\eta$, $\eta_1$, $\eta_2\in \Omega^n(V)$还有一个$\zeta\in \Omega^h(V)$，有
 
 	\no{1}分配律：
 	\[
@@ -93,6 +95,7 @@
 	\no{2}反变换律：$\xi \wedge \eta=(-1)^{mn}\eta \wedge \xi$.
 
 	\no{3}结合律：$(\xi \wedge \eta)\wedge \zeta=\xi \wedge (\eta\wedge \zeta)$.
+\end{pro}
 
 \proof \no{1} 由$\sigma$线性和张量积线性显然。
 
@@ -184,7 +187,9 @@
 
 \para 设$\{e^i:1\leq i \leq n\}$是$V^*$的一组基，则$\{e^{i_1}\wedge \cdots \wedge e^{i_k}\}$是$\Omega^k(V)$的一组基。于是当$k>n$时$\Omega^k(V)=0$，当$0\leq k \leq n$时，$\dim \Omega^k(V)=\tbinom nk$.
 
-\lem （Cartan引理）设$\{v_i:1\leq i \leq r\}$和$\{w_i:1\leq i \leq r\}$是$V^*$中的两组矢量，且$\sum_{i=1}^rv_i\wedge w_i=0$。如果$\{v_i\}$线性无关，则每个$w_i$可以由$\{v_i\}$线性组合而成$w_i=\sum_{i=1}^r\alpha_{ij}v_j$，且$\alpha_{ij}=\alpha_{ji}$.
+\begin{lem}[Cartan引理]
+设$\{v_i:1\leq i \leq r\}$和$\{w_i:1\leq i \leq r\}$是$V^*$中的两组矢量，且$\sum_{i=1}^rv_i\wedge w_i=0$。如果$\{v_i\}$线性无关，则每个$w_i$可以由$\{v_i\}$线性组合而成$w_i=\sum_{i=1}^r\alpha_{ij}v_j$，且$\alpha_{ij}=\alpha_{ji}$.
+\end{lem}
 
 \proof
 	将$\{v_i\}$扩充为一组基，则$w_i=\sum_{i=1}^r\alpha_{ij}v_j$，将其代入条件$\sum_{i=1}^rv_i\wedge w_i=0$有
@@ -199,7 +204,8 @@
 
 函数$f$的支集$\supp(f)$被定义为$\{x\in M:f(x)\neq 0\}$的闭包。
 
-\para \label{POUdef} 单位分解：设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在至多可数个光滑函数$g_i\in \cal(M)$满足：
+\begin{para}[单位分解]\label{POUdef}
+设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在至多可数个光滑函数$g_i\in \cal(M)$满足：
 
 \no{1} 对于任意的$x\in M$和$i\in I$，都有$0\leq g_i(x)\leq 1$.
 
@@ -210,10 +216,14 @@
 \no{4} 因为上一个性质，所以在一点累加$g_i$时，只有有限项非零。我们最后的要求就是$\sum_i g_i=1$.
 
 则称$\{g_i\}$是从属于开覆盖$\{U_\alpha\}_{\alpha\in I}$的一个单位分解。
+\end{para}
 
-\lem \label{POU}流形$M$上的每一个开覆盖都存在从属于他的单位分解。
+\begin{lem}
+\label{POU}流形$M$上的每一个开覆盖都存在从属于他的单位分解。
+\end{lem}
 
-\para （$\rr$上的截断函数）在$\rr$上存在光滑函数$h:\rr\to\rr$，使得
+\begin{pro}[$\rr$上的截断函数]
+在$\rr$上存在光滑函数$h:\rr\to\rr$，使得
 \[
 	h(x)=
 		\begin{cases}
@@ -222,7 +232,9 @@
 		\end{cases}
 \]
 他的图像大概就是在$0$附件鼓起来一块，然后其他地方全都为零，所以有时候也叫他鼓包函数。单位分解中的任意一个函数都长得和他差不多。
+\end{pro}
 
+\begin{proof}
 构造这样的函数，我们可以只构造$x<0$的部分，然后将其偶函数拓展到$\rr$上，因为在$0$附近是常值函数，所以这样构造出的函数是$\rr$上的光滑函数。剩下的关键在于找一个$\rr$上的光滑函数，他在一段区间上可以光滑连接两个阶梯$0$和$1$。
 
 可以证明
@@ -240,8 +252,10 @@
 就是在$[0,1]$上连接两个阶梯的光滑函数。实际上，他在$x<0$的时候是0，而在$x>1$的时候是1，中间光滑连接。
 
 那么我们所需的$h$就可以如下构造：在$x<0$的时候，$h(x)=g(2x+2)$，仍然扩充为$\rr$上的偶函数。
+\end{proof}
 
-\para （$\rr^n$上的截断函数）由于$\rr^n$上的范数、或者标准内积是光滑的，则$\rr^n$上存在光滑函数$f(x)=h(\|x\|)$，使得
+\begin{para}[$\rr^n$上的截断函数]
+由于$\rr^n$上的范数、或者标准内积是光滑的，则$\rr^n$上存在光滑函数$f(x)=h(\|x\|)$，使得
 \[
 	f(x)=
 		\begin{cases}
@@ -249,24 +263,30 @@
 		1,&\|x\|\leq 1/2.
 		\end{cases}
 \]
+\end{para}
 
-\para 设$M$是一个局部紧的第二可数空间，则存在一列开集$\{G_i\}$，使得每个$\bar{G}_i$都是紧集，$\bar{G}_i\subset G_{i+1}$，且$\cup_iG_i=M$.这样的一列开集被称为$M$上的一个穷竭。
+\begin{lem}
+设$M$是一个局部紧的第二可数空间，则存在一列开集$\{G_i\}$，使得每个$\overline{G}_i$都是紧集，$\overline{G}_i\subset G_{i+1}$，且$\bigcup_iG_i=M$. 这样的一列开集被称为$M$上的一个穷竭。
+\end{lem}
 
-\proof 任取$x\in M$，由于$M$是局部紧的，所以我们可以找一个邻域$V_x$使得$\bar{V}_x$是紧集。由于$M$第二可数，有可数基，所以我们可以找至多可数个$x$使得$V_x$构成$M$的一个开覆盖，由于至多可数，所以我们可以利用正数将其编号。随便选定一个编号就好，我们令$G_1=V_1$，然后假设在$0<i<n$的时候$G_i$都已经定义，那么考虑紧集$\cup_{i<n}\bar{G}_i$，开覆盖$\{V_j\}$中可以找到一个有限子覆盖，对应着有限指标集$I$，使得$\cup_{j\in I}V_j$也是$\cup_{i<n}\bar{G}_i$的开覆盖，取$k=\sup(I)$，则
+\begin{proof}
+任取$x\in M$，由于$M$是局部紧的，所以我们可以找一个邻域$V_x$使得$\overline{V}_x$是紧集。由于$M$第二可数，有可数基，所以我们可以找至多可数个$x$使得$V_x$构成$M$的一个开覆盖，由于至多可数，所以我们可以利用正数将其编号。随便选定一个编号就好，我们令$G_1=V_1$，然后假设在$0<i<n$的时候$G_i$都已经定义，那么考虑紧集$\bigcup_{i<n}\overline{G}_i$，开覆盖$\{V_j\}$中可以找到一个有限子覆盖，对应着有限指标集$I$，使得$\bigcup_{j\in I}V_j$也是$\bigcup_{i<n}\overline{G}_i$的开覆盖，取$k=\sup(I)$，则
 \[
-	\bigcup_{i<n}\bar{G}_i\subset \bigcup_{j\leq k}V_j,
+	\bigcup_{i<n}\overline{G}_i\subset \bigcup_{j\leq k}V_j,
 \]
-那么定义$G_n=\cup_{j\leq k}V_j$，我们就归纳地找到了$M$上的一个穷竭。\qed
+那么定义$G_n=\bigcup_{j\leq k}V_j$，我们就归纳地找到了$M$上的一个穷竭。
+\end{proof}
 
-由于任意的微分流形都是局部紧且第二可数的，所以任意的微分流形上都存在穷竭。现在，我们来证明Lemma \ref{POU}：
+由于任意的微分流形都是局部紧且第二可数的，所以任意微分流形上都存在穷竭。现在我们来证明Lemma \ref{POU}：
 
-\proof 设$\{U_{\alpha}\}$是流形$M$的一个开覆盖。在$M$上找一个穷竭$\{G_i:i>0\}$，并令$G_0=\varnothing$，现在取$A_i=\bar{G}_i-G_{i-1}$，则显然$\{A_i:i>1\}$是一组闭集，而流形Hausdorff性告诉我们，因为$A_i$是紧集$\bar{G}_i$的闭子集，所以他也是紧的。
+\begin{proof}
+设$\{U_{\alpha}\}$是流形$M$的一个开覆盖。在$M$上找一个穷竭$\{G_i:i>0\}$，并令$G_0=\varnothing$，现在取$A_i=\overline{G}_i-G_{i-1}$，则显然$\{A_i:i>1\}$是一组闭集，而流形Hausdorff性告诉我们，因为$A_i$是紧集$\overline{G}_i$的闭子集，所以他也是紧的。
 
-此外，$\{A_i:i>1\}$是$M$的一个覆盖。这是因为，如果集合$U\cap A_i=\varnothing$，则$U\subset G_{i-1}\cup (M-\bar{G}_{i})$。如果对每一个$i$都成立的话，则$U$属于$\{G_{i-1}\cup (M-\bar{G}_{i})\}_i$的交，但按照穷竭的定义，这是一个空集。
+此外，$\{A_i:i>1\}$是$M$的一个覆盖。这是因为，如果集合$U\cap A_i=\varnothing$，则$U\subset G_{i-1}\cup (M-\overline{G}_{i})$。如果对每一个$i$都成立的话，则$U$属于$\{G_{i-1}\cup (M-\overline{G}_{i})\}_i$的交，但按照穷竭的定义，这是一个空集。
 
 固定一个$A_i$，取$x\in A_i$，找一个坐标卡$(U_x,\varphi_x)$，使得$\varphi_x(U_x)$是欧式空间中半径为$2$的开球，$U_x$位于某个开覆盖$U_{\alpha(x)}$之中，且$U_x\cap A_j=\varnothing$当$|j-i|>1$。
 
-前面两点是显然的，关于第三点，由于处理$A_i\cap A_{i-1}= \bar{G}_{i-1}-G_{i-1}$以及平凡的$A_i\cap A_i=A_i$，其他的$A_i\cap A_j=\varnothing$，所以对于$|j-i|>1$的$A_j$，我们有$A_i\subset M-A_j$，而$M-A_j$是一个开集，所以只要把$U_x$选得足够小，使得$U_x\subset M-A_j$，我们就有$U_x\cap A_j=\varnothing$当$|j-i|>1$成立。或者稍微弱一点的说法，$U_x$只与有限个$A_j$相交。
+前面两点是显然的，关于第三点，由于处理$A_i\cap A_{i-1}= \overline{G}_{i-1}-G_{i-1}$以及平凡的$A_i\cap A_i=A_i$，其他的$A_i\cap A_j=\varnothing$，所以对于$|j-i|>1$的$A_j$，我们有$A_i\subset M-A_j$，而$M-A_j$是一个开集，所以只要把$U_x$选得足够小，使得$U_x\subset M-A_j$，我们就有$U_x\cap A_j=\varnothing$当$|j-i|>1$成立。或者稍微弱一点的说法，$U_x$只与有限个$A_j$相交。
 
 设$h$是$\rr^n$上的截断函数，那么我们定义
 \[
@@ -276,7 +296,7 @@
 \]
 显然$h_x$是$M$上的光滑函数，实际上，同胚意义下，在半径为2的开球内，在半径大于1的时候以及是常值函数0了，所以在外面拼上0就构成了$M$上的光滑函数。
 
-令开球内半径为$r$的闭球为$B_r$，那么$B_{1/2}$着截断函数恒为1的部分，$B_{1}$对应着截断函数非零的部分，以及开集$V_x=\varphi_x^{-1}(B_{1/2})$，则$h_x|_{V_x}=1$.显然，$\supp(h_{x})=\overline{\varphi_x^{-1}(B_1)}$，因为$\varphi_x$是一个同胚，所以$\supp(h_{x})=\varphi_x^{-1}(\bar{B}_1)\subset U_x$是一个紧闭集。
+令开球内半径为$r$的闭球为$B_r$，那么$B_{1/2}$着截断函数恒为1的部分，$B_{1}$对应着截断函数非零的部分，以及开集$V_x=\varphi_x^{-1}(B_{1/2})$，则$h_x|_{V_x}=1$.显然，$\supp(h_{x})=\overline{\varphi_x^{-1}(B_1)}$，因为$\varphi_x$是一个同胚，所以$\supp(h_{x})=\varphi_x^{-1}(\overline{B}_1)\subset U_x$是一个紧闭集。
 
 由于$A_i$是紧的，所以存在有限个点$\{x_{ij}\in A_i:1\leq j\leq k_i\}$使得
 \[
@@ -290,7 +310,8 @@
 \[
 	\sum_{i,j}h_{x_{ij}}(p)/\varphi(p)=1
 \]
-显然成立。并且$\supp(h_{x_{ij}}/\varphi)=\supp(h_{x_{ij}})\subset U_{x_{ij}}$，因为选坐标的时候$U_{x_{ij}}$选在某一个开覆盖$U_{\alpha(x_{ij})}$里面，所以上面的一切就告诉我们$\{h_{x_{ij}}/\varphi\}_{i,1\leq j\leq k_i}$就是$M$上从属于开覆盖$\{U_\alpha\}$的单位分解。\qed
+显然成立。并且$\supp(h_{x_{ij}}/\varphi)=\supp(h_{x_{ij}})\subset U_{x_{ij}}$，因为选坐标的时候$U_{x_{ij}}$选在某一个开覆盖$U_{\alpha(x_{ij})}$里面，所以上面的一切就告诉我们$\{h_{x_{ij}}/\varphi\}_{i,1\leq j\leq k_i}$就是$M$上从属于开覆盖$\{U_\alpha\}$的单位分解。
+\end{proof}
 
 其实我们构造地得比单位分解引理要求还要多一点。在这里，我们找到了开覆盖$U_{\alpha}$的一个局部有限开加细$\{V_{ij}\}$，设我们找到的单位分解为$h_{ij}$，令$\Gamma=\{\alpha(x_{ij}):i,1\leq j\leq k_i\}$（我们是可能存在$\beta$不包含任意一个$U_{x_{ij}}$的，就是说，$\beta\notin \Gamma$），以及
 \[
@@ -298,9 +319,11 @@
 \]
 如果再令$h_{\alpha}=0$当$\alpha\notin \Gamma$，则$\{h_{\alpha}\}$是$M$上的光滑函数族，$0\leq h_\alpha\leq 1$，$\sum_{\alpha}h_\alpha=1$且$\supp(h_\alpha)\subset U_{\alpha}$. 当然，前面$\supp(h_{ij})$还是紧的，这里$\supp(h_\alpha)$就不一定是紧的了。
 
-\lem 设$A\subset U$，其中$U$是$M$中的开集，而$A$是闭集。再设$f:M\to V$是一个连续映射，其中$V$是一个$\rr^n$中的开集，并且$f|_{U}$是光滑的，那么对任意$M$上的正连续函数$\epsilon(x)$，则存在光滑函数$g:M\to W$使得$f|_A=g|_A$且$\|f(x)-g(x)\|\leq \epsilon(x)$.
+\begin{lem}
+设$A\subset U$，其中$U$是$M$中的开集，而$A$是闭集。再设$f:M\to V$是一个连续映射，其中$V$是一个$\rr^n$中的开集，并且$f|_{U}$是光滑的，那么对任意$M$上的正连续函数$\epsilon(x)$，则存在光滑函数$g:M\to W$使得$f|_A=g|_A$且$\|f(x)-g(x)\|\leq \epsilon(x)$.
+\end{lem}
 
-\proof
+\begin{proof}
 	先对$U=\varnothing$的情况证明。如果$V\neq \rr^n$，那么我们可以定义
 	\[
 		\epsilon'(x)=\min\left(\epsilon(x),\frac{1}{2}\inf\bigl(\|h(x)-y\|,y\in \rr^n-V\bigr)\right),
@@ -320,19 +343,27 @@
 	现在对于$M$的开子流形$M-A$，我们可以应用这个特殊情况，在$M-A$对$\epsilon|_{M-A}$可以找到一个函数$M-A$上的光滑函数$g:M-A\to U$，使得在$M-A$上成立$\|f|_{M-A}(x)-g(x)\|\leq \epsilon|_{M-A}(x)$.
 
 	然后对$U$和$M-A$应用单位分解，找到两个光滑函数$h_1$和$h_2$，$h_1$在$A$上恒为1，在$U$外恒为0，$h_2$则正好相反，因为$h_1+h_2=1$.那么$h_1f+h_2g$就是一个$M$上的光滑函数，而且满足所有我们需要的条件。
-\qed
+\end{proof}
 
-\pro 设$f:M\to U$是一个连续映射，$U$是$\rr^n$中的开集，则他同伦于一个光滑映射$g:M\to U$.
+\begin{pro}
+设$f:M\to U$是一个连续映射，$U$是$\rr^n$中的开集，则他同伦于一个光滑映射$g:M\to U$.
+\end{pro}
 
-\proof 设$U$是$\rr^n$中的开集，如果$f:M\to U$是一个连续函数，则在$M$的每一点$x$，我们连续地找一个$\epsilon(x)>0$使得以$f(x)$为球心的，$\epsilon(x)$为半径的开球完全处于$U$内，那么按上面的引理，我们可以找到$M$上的一个光滑函数$g$使得$\|g(x)-f(x)\|<\epsilon(x)$对$x\in M$恒成立，则我们定义$H(x,t)=tf(x)+(1-t)g(x)$，由于
+\begin{proof}
+设$U$是$\rr^n$中的开集，如果$f:M\to U$是一个连续函数，则在$M$的每一点$x$，我们连续地找一个$\epsilon(x)>0$使得以$f(x)$为球心的，$\epsilon(x)$为半径的开球完全处于$U$内，那么按上面的引理，我们可以找到$M$上的一个光滑函数$g$使得$\|g(x)-f(x)\|<\epsilon(x)$对$x\in M$恒成立，则我们定义$H(x,t)=tf(x)+(1-t)g(x)$，由于
 \[
 	\|H(x,t)-f(x)\|=(1-t)\|f(x)-g(x)\|\leq \epsilon(x),
 \]
-所以$H(x,t)\in U$，这样$H(x,t):M\times [0,1]\to U$就是$f$和$g$的一个同伦映射。\qed
+所以$H(x,t)\in U$，这样$H(x,t):M\times [0,1]\to U$就是$f$和$g$的一个同伦映射。
+\end{proof}
 
-\lem 设光滑映射$f:M\to U$和$g:M\to U$同伦，其中$U$是$\rr^n$中的开集，则我们可以找到一个光滑的同伦映射$H:M\times \rr\to U$满足$F(x,0)=f_1(x)$和$F(x,1)=f_2(x)$.
+\begin{lem}
+设光滑映射$f:M\to U$和$g:M\to U$同伦，其中$U$是$\rr^n$中的开集，则我们可以找到一个光滑的同伦映射$H:M\times \rr\to U$满足$F(x,0)=f_1(x)$和$F(x,1)=f_2(x)$.
+\end{lem}
 
-\proof 令$\varphi:R\to [0,1]$为这样一个光滑函数，他在$t\leq 1/3$的时候恒为0，他在$t\geq 2/3$的时候恒为1，中间光滑连接。因为$f$和$g$是同伦的，必然存在连续的同伦映射$F:M\times [0,1]\to N$，令$G(x,t)$为$F(x,\varphi(t))$，则这样我们定义了连续函数$G:M\times \rr \to N$，他在$M\times (-\infty,1/3)\cup M\times (2/3,\infty)$上光滑。因为，$M\times \{0,1\}$是他的一个闭子集，所以根据上面的引理，我们可以找一个$M\times \rr$上的光滑函数$H$使得$G$和$H$在$M\times \{0,1\}$上相同。\qed
+\begin{proof}
+令$\varphi:R\to [0,1]$为这样一个光滑函数，他在$t\leq 1/3$的时候恒为0，他在$t\geq 2/3$的时候恒为1，中间光滑连接。因为$f$和$g$是同伦的，必然存在连续的同伦映射$F:M\times [0,1]\to N$，令$G(x,t)$为$F(x,\varphi(t))$，则这样我们定义了连续函数$G:M\times \rr \to N$，他在$M\times (-\infty,1/3)\cup M\times (2/3,\infty)$上光滑。因为，$M\times \{0,1\}$是他的一个闭子集，所以根据上面的引理，我们可以找一个$M\times \rr$上的光滑函数$H$使得$G$和$H$在$M\times \{0,1\}$上相同。
+\end{proof}
 
 虽然我们没有证明，但实际上，每一个光滑流形都可以嵌入欧式空间内。所以这些命题也就推出了看上去更广义的命题：光滑流形间的一个连续映射可以同伦于一个光滑映射；流形间同伦的光滑映射之间有光滑的同伦映射。所以按照这俩命题，两个光滑流形间的同伦类只要对光滑的情况讨论就好。
 
@@ -340,7 +371,7 @@
 
 \section*{Covering Space}
 
-\textbf{\eqref{homotopy}} 复习一下：两个连续函数$f$, $g:X\to Y$被称为{\kaishu 同伦}的，就是说存在一个连续函数$H:X\times [0,1]\to Y$使得$H(0,x)=f(x)$以及$H(1,x)=g(x)$.同伦是等价关系，就是说，如果还有$h$和$f$同伦，则$g$和$h$也同伦。一个空间$X$是可缩的，如果$\id_X$同伦于映到自身的常值映射。比如$\rr^n$或者与他同胚的开实心球$D^n$都是可缩的。
+\noindent\textbf{\ref{homotopy}.} 复习一下：两个连续函数$f$, $g:X\to Y$被称为{\kaishu 同伦}的，就是说存在一个连续函数$H:X\times [0,1]\to Y$使得$H(0,x)=f(x)$以及$H(1,x)=g(x)$.同伦是等价关系，就是说，如果还有$h$和$f$同伦，则$g$和$h$也同伦。一个空间$X$是可缩的，如果$\id_X$同伦于映到自身的常值映射。比如$\rr^n$或者与他同胚的开实心球$D^n$都是可缩的。
 
 两个拓扑空间$X$和$Y$称为同伦等价的，如果存在$f:X\to Y$和$g:Y\to X$满足$f\circ g$和$\id_Y$同伦以及$g\circ f$和$\id_X$同伦。
 
@@ -356,7 +387,7 @@
 		q(2t-1)&1/2 \leq t\leq 1.\\
 	\end{cases}
 \]
-不难检验$(p\cdot q)\cdot r \approx p\cdot (q\cdot r)$因为这俩条路径不过差一个重参数化而已。同时我们也能定义道路逆$\bar{p}$通过$p^{-1}(t)=p(1-t)$.
+不难检验$(p\cdot q)\cdot r \approx p\cdot (q\cdot r)$因为这俩条路径不过差一个重参数化而已。同时我们也能定义道路逆$\overline{p}$通过$p^{-1}(t)=p(1-t)$.
 
 \para 设$x_0\in X$，则所有满足$p(0)=p(1)=x_0$（被称为一个{\kaishu 回路}）的连续路径$p:[0,1]\to X$按上述运算在道路同伦意义下构成一个群。换句话说，回路$p$在道路同伦下确定到一个等价类$[p]$，我们定义的回路的乘法和逆在等价类上诱导的乘法和逆满足群公理。具体检验，比如乘法结合律，可以利用重参数化等手段，这里不具体展开了。这个群被称为$X$在$x_0$处的{\kaishu 基本群}，记做$\pi_1(X,x_0)$，下标$1$的意思其实是指他是第一同伦群。
 
@@ -381,11 +412,17 @@
 
 显然$\pi:t\mapsto \exp(2\pi it)$，是一个$\pi:\rr \to S^1$的覆叠映射，其中$S^1$是$\cc$内的单位圆周。
 
-\pro 设$\pi:E\to B$是一个覆叠映射，那么对于路径$p:[0,1]\to B$是一条路径，且$y\in \pi^{-1}(p(0))$，那么存在唯一一条路径$P:[0,1]\to E$使得$\pi\circ P=p$且$P(0)=y$，这样的$P$被称为$p$的一个提升。
+\begin{pro}
+设$\pi:E\to B$是一个覆叠映射，那么对于路径$p:[0,1]\to B$是一条路径，且$y\in \pi^{-1}(p(0))$，那么存在唯一一条路径$P:[0,1]\to E$使得$\pi\circ P=p$且$P(0)=y$，这样的$P$被称为$p$的一个提升。
+\end{pro}
 
-\proof 首先注意到，平凡覆叠空间上提升是一定唯一存在的，实际上，如果$y=(p(0),f)$，那么$P(t)=(p(t),f)$就是唯一的提升。然后，因为$[0,1]$是紧的，所以$p([0,1])$是紧的，那么存在有限个开集$\{U_i\}$覆盖$p([0,1])$，且存在一个划分$0<x_1<\cdots<x_n=1$使得对于每个$[x_i,x_{i+1}]$成立$p([x_i,x_{i+1}])\subset U_i$。因为局部平凡性导出了局部提升存在，然后把这有限条路径拼起来就好。唯一性由构造显然。\qed
+\begin{proof}
+首先注意到，平凡覆叠空间上提升是一定唯一存在的，实际上，如果$y=(p(0),f)$，那么$P(t)=(p(t),f)$就是唯一的提升。然后，因为$[0,1]$是紧的，所以$p([0,1])$是紧的，那么存在有限个开集$\{U_i\}$覆盖$p([0,1])$，且存在一个划分$0<x_1<\cdots<x_n=1$使得对于每个$[x_i,x_{i+1}]$成立$p([x_i,x_{i+1}])\subset U_i$。因为局部平凡性导出了局部提升存在，然后把这有限条路径拼起来就好。唯一性由构造显然。
+\end{proof}
 
-\pro 如果$p$和$q$是$E$上的路径，满足$p(0)=q(0)$且$\pi\circ p$和$\pi\circ q$道路同伦，则$p$和$q$道路同伦。
+\begin{pro}
+如果$p$和$q$是$E$上的路径，满足$p(0)=q(0)$且$\pi\circ p$和$\pi\circ q$道路同伦，则$p$和$q$道路同伦。
+\end{pro}
 
 假设同伦$h(t,s)$，固定$t$，$h_t(s)=h(t,s)$是一个路径，我们将其提升上去变成$H_t(s)$，剩下只要检验他还对$t$连续且$H_0=P$以及$H_1=Q$即可，这里略去。
 
@@ -401,7 +438,9 @@
 
 \para 对拓扑空间而言，研究他的覆叠空间，通常会做一些方便的假设，比如流形会被取作道路连通以及局部道路连通。而对流形的覆叠空间，我们一般会加强定义中条件，要求局部微分（对光滑流形就是光滑）同胚，这样，覆叠空间就有了自然的流形结构。因为流形很强的拓扑结构，所以上面那些方便的假设在流形的语境里面就变得相当自然。
 
-\theo 对于道路连通以及局部道路连通的拓扑空间，如果他局部可缩，即每一点都存在一个可缩的邻域，那么他存在万有覆叠空间。
+\begin{thm}
+对于道路连通以及局部道路连通的拓扑空间，如果他局部可缩，即每一点都存在一个可缩的邻域，那么他存在万有覆叠空间。
+\end{thm}
 
 证明就不证明了，事实上，适当改弱结论，我们甚至可以得到一个充分必要条件。在流形上，局部可缩是自然满足的，因为流形上每一点都有一个邻域同胚于欧式空间的开集，而欧式空间里，开球们组成了拓扑基且开球显然是可缩的。所以对于连通的流形，他就有万有覆叠空间。
 
@@ -430,15 +469,19 @@
 
 前面我们已经知道，覆叠映射诱导的基本群同态是单同态，这里要更加细化这些关系。
 
-\pro 设覆叠映射$\pi:E\to B$，且$\pi(e)=b$，记$\pi_*(\pi_1(E,e))=H_e$，则他是$\pi_1(B,b)$的子群。那么$\pi^{-1}(b)$的元素和$H_e$在$\pi_1(B,b)$中的右陪集一一对应。特别地，如果$\pi$是万有覆叠映射，那么$\pi^{-1}(b)$和$\pi_1(B,b)$之间存在双射。
+\begin{pro}
+设覆叠映射$\pi:E\to B$，且$\pi(e)=b$，记$\pi_*(\pi_1(E,e))=H_e$，则他是$\pi_1(B,b)$的子群。那么$\pi^{-1}(b)$的元素和$H_e$在$\pi_1(B,b)$中的右陪集一一对应。特别地，如果$\pi$是万有覆叠映射，那么$\pi^{-1}(b)$和$\pi_1(B,b)$之间存在双射。
+\end{pro}
 
-\proof 由于$\pi_1(B,b)$中的每一个道路类$[\alpha]$都存在从$e$出发提升的道路类$[p(\alpha)]$，设他的终点为$q([\alpha])$，这样就定义了映射$q:\pi_1(B,b)\to \pi^{-1}(b)$，他是满的，因为任取$e'\in \pi^{-1}(b)$，我们取一条$e$到$e'$的道路$a$，令$\alpha=\pi\circ a$，则$q([\alpha])=e'$.
+\begin{proof}
+由于$\pi_1(B,b)$中的每一个道路类$[\alpha]$都存在从$e$出发提升的道路类$[p(\alpha)]$，设他的终点为$q([\alpha])$，这样就定义了映射$q:\pi_1(B,b)\to \pi^{-1}(b)$，他是满的，因为任取$e'\in \pi^{-1}(b)$，我们取一条$e$到$e'$的道路$a$，令$\alpha=\pi\circ a$，则$q([\alpha])=e'$.
 
 下面证明$q([\alpha])=q([\beta])$当且仅当$[\alpha][\beta^{-1}]\in H_e$. 如果$q([\alpha])=q([\beta])$，则$[p(\alpha)]$和$[p(\beta)]$的终点相同，因此，我们可以讨论$[p(\alpha)\cdot p(\beta)^{-1}]$，他是$[\alpha][\beta^{-1}]$的提升，同时也是一个以$e$为基点的闭道路，所以$[\alpha][\beta^{-1}]\in H_e$.
 
 反之，记$[\gamma]$为$[\beta^{-1}]$以起点为$q([\alpha])$的提升，如果$[\alpha][\beta^{-1}]\in H_e$，则$\gamma$的终点就是$e$，此时$\gamma^{-1}$就是$\beta$的提升的道路，他两个端点都与$p([\alpha])$相同，所以$q([\alpha])=q([\beta])$.
 
-因为$q([\alpha])=q([\beta])$当且仅当$[\alpha][\beta^{-1}]\in H_e$，也当且仅当$H_e[\alpha][\beta^{-1}]=H_e$或者$H_e[\alpha]=H_e[\beta]$.\qed
+因为$q([\alpha])=q([\beta])$当且仅当$[\alpha][\beta^{-1}]\in H_e$，也当且仅当$H_e[\alpha][\beta^{-1}]=H_e$或者$H_e[\alpha]=H_e[\beta]$.
+\end{proof}
 
 \section*{Topological Group}
 
@@ -456,11 +499,15 @@
 
 上面讨论了所有单位元邻域的交，由此产生了分离性的讨论。下面说明，任意一个单位元邻域都可以生成整个含有单位元的连通分支。
 
-\para 对于连通拓扑群，设$U$是单位元的任意一个邻域，则$G=\bigcup_{n\geq 1}U^n$，其中$U^k=\{g_1\cdots g_k:g_i\in U,\, 1\leq i \leq k\}$是开集。
+\begin{pro}
+对于连通拓扑群，设$U$是单位元的任意一个邻域，则$G=\bigcup_{n\geq 1}U^n$，其中$U^k=\{g_1\cdots g_k:g_i\in U,\, 1\leq i \leq k\}$是开集。
+\end{pro}
 
-\proof 令$V=U\cap U^{-1}$，其中$U^{-1}=\{g^{-1}:g\in U\}$，显然$V=V^{-1}\subset U$以及$H=\bigcup_{n\geq 1}V^n\subset \bigcup_{n\geq 1}U^n$，而且$H$还是一个子群。下面我们只要证明$H=\bigcup_{n\geq 1}V^n$既是开的也是闭的，那么连通性自然给出了结论。
+\begin{proof}
+令$V=U\cap U^{-1}$，其中$U^{-1}=\{g^{-1}:g\in U\}$，显然$V=V^{-1}\subset U$以及$H=\bigcup_{n\geq 1}V^n\subset \bigcup_{n\geq 1}U^n$，而且$H$还是一个子群。下面我们只要证明$H=\bigcup_{n\geq 1}V^n$既是开的也是闭的，那么连通性自然给出了结论。
 
-他是开的，如果$\sigma\in V^k$，那么$\sigma V\in V^{k+1}\subset H$就是他的一个开邻域。他是闭的，因为每一个$\sigma H$都是开的，于是$H=G-\bigcup_{\sigma\notin H}\sigma H$是一个闭集。\qed
+他是开的，如果$\sigma\in V^k$，那么$\sigma V\in V^{k+1}\subset H$就是他的一个开邻域。他是闭的，因为每一个$\sigma H$都是开的，于是$H=G-\bigcup_{\sigma\notin H}\sigma H$是一个闭集。
+\end{proof}
 
 结合上面两点不难看到，因为拓扑群有着代数结构，一般而言，这就使得拓扑群的很多拓扑性质都来自于其单位元附近的性质。
 
@@ -485,13 +532,16 @@
 \]
 至少在集合意义下是成立的，其中正和性来自于$\pi_1(G,e)$被嵌入到$G'$中即是$\pi^{-1}(e)$，他经$\pi$作用就变成了$G$中的单位元。那么在群的情况下呢？这至少要求我们给$G'$一个群结构，使得$\pi$和$i\circ q$是群同态，其中$i:\pi^{-1}(e)\hookrightarrow G'$.
 
-\theo 设$G$是道路连通的拓扑群，而$G'$是他的一个万有覆叠空间，覆叠映射为$\pi$，选定一个$e'\in \pi^{-1}(e)$，则$G'$上存在一个群结构，使得$e'$是$G'$的单位元，且使得短正合列
+\begin{thm}
+设$G$是道路连通的拓扑群，而$G'$是他的一个万有覆叠空间，覆叠映射为$\pi$，选定一个$e'\in \pi^{-1}(e)$，则$G'$上存在一个群结构，使得$e'$是$G'$的单位元，且使得短正合列
 \[
 	0\to \pi_1(G,e)\hookrightarrow G' \xrightarrow{\pi} G\to 0
 \]
 成立。
+\end{thm}
 
-\proof 设$[\alpha_{g'}]$是$G'$中连接$e'$与$g'$的道路类，那么我们得到了道路类$[\pi\circ \alpha_{g'}]=[\beta_{g'}]$连接$e$和$\pi(g')$.反过来，$G$的道路类$[\alpha]$在$G'$中以$e'$为起点提升的唯一的道路类的终点记做$q([\alpha])$，和我们以前的习惯一样。显然$q([\beta_{g'}])=g'$，这是因为$[\alpha_{g'}]$是$[\beta_{g'}]$以$e'$为起点的提升，而提升是唯一的。
+\begin{proof}
+设$[\alpha_{g'}]$是$G'$中连接$e'$与$g'$的道路类，那么我们得到了道路类$[\pi\circ \alpha_{g'}]=[\beta_{g'}]$连接$e$和$\pi(g')$.反过来，$G$的道路类$[\alpha]$在$G'$中以$e'$为起点提升的唯一的道路类的终点记做$q([\alpha])$，和我们以前的习惯一样。显然$q([\beta_{g'}])=g'$，这是因为$[\alpha_{g'}]$是$[\beta_{g'}]$以$e'$为起点的提升，而提升是唯一的。
 
 设$g'$和$h'$都是$G'$中的元素，此时由于$G$的群结构，在$G$中有道路类$[\beta_{g'}\beta_{h'}]$，我们定义$g'h'=q([\beta_{g'}\beta_{h'}])$.可以看到，我们定义的乘法即$q([\beta_{g'}])q([\beta_{h'}])=q([\beta_{g'}\beta_{h'}])$
 
@@ -506,7 +556,8 @@
 最后，我们检验$\pi_1(G,e)\hookrightarrow G'$是一个群同态，这就是要检验$q([\eta][\xi])=q([\eta])q([\xi])$，其中$[\eta]$, $[\xi]\in \pi_1(G,e)$，因为基本群里的元素都是回路，所以有$[\eta\xi]=[\eta][\xi]$，所以我们只要检验$q([\eta\xi])=q([\eta])q([\xi])$即可。
 
 将$[\eta]$和$[\xi]$以$e'$为起点往上提升，然后再用$\pi$下降回来，他总可以写成某种$[\beta_{g'}]$和$[\beta_{h'}]$的形式，所以我们只要检验
-$q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们乘法的定义。\qed
+$q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们乘法的定义。
+\end{proof}
 
 \para 给予群结构之后，验证运算的连续性这里就不进行了。于是，道路连通的拓扑群的万有覆叠空间也有拓扑群结构。
 
@@ -519,11 +570,13 @@ $q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们�
 
 \chapter{表示论基础}
 
-\para 令$V$是一个域$k$（后面我们只会考虑$\rr$和$\cc$的情况）上的有限维矢量空间，群$G$的一个表示$(\pi, V)$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{Gl}(V)$，使得
+\begin{para}
+令$V$是一个域$k$（后面我们只会考虑$\rr$和$\cc$的情况）上的有限维矢量空间，群$G$的一个表示$(\pi, V)$指存在这样的一个群同态$\pi:G\rightarrow \mathrm{Gl}(V)$，使得
 \[
 	\pi(g)\pi(g')=\pi(gg'),\quad \pi(g^{-1})=\pi(g)^{-1},\quad \pi(e_G)=e_{\mathrm{Gl}(V)}
 \]
-成立。表示$(\pi, V)$的维度被定义为$V$的维度。
+成立。表示$(\pi, V)$的维度被定义为$V$的维度。如果$(\pi, V)$是$G$的一个表示，则我们称$V$是一个$G$-模。
+\end{para}
 
 如果没什么会混淆的话，就直接略去$\pi$，写$gx$来表达$\pi(g)x$，当然还有用$Gx$来表达$\pi(G)x=\{\pi(g)x:g\in G\}$。如果$\pi$是一个单同态，那么我们称这个表示为忠实表示。
 
@@ -541,25 +594,37 @@ $q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们�
 \]
 或者简单地写作$g(x\otimes y)=(gx)\otimes(gy)$.
 
-\para 设$G$是一个群，$(\pi,V)$是他的一个表示，$W\subset V$是一个子空间，如果$\pi(G)W\subset W$则$W$称为不变子空间。显然，$\{0\}$和$V$是两个不变子空间，略去这两个平凡不变子空间，如果没有其他不变子空间了，则$V$被称为是不可约的，此时表示被称为不可约表示。如果一个表示能被分解成几个不可约表示的直和，则称该表示为完全可约的。
+\begin{para}
+设$G$是一个群，$(\pi,V)$是他的一个表示，$W\subset V$是一个子空间，如果$\pi(G)W\subset W$则$W$称为不变子空间。换句话说，$W$是$V$的一个$G$-子模。
+
+显然，$\{0\}$和$V$是两个$G$-子模，略去这两个平凡$G$-子模，如果没有其他$G$-子模了，则称$V$为一个不可约$G$-模，此时表示被称为不可约表示。如果一个表示能被分解成几个不可约表示的直和，则称该表示为完全可约的。
+\end{para}
 
 下面的一系列定义涉及表示的等价，当然还有很重要的Schur引理。
 
-\para 设$G$有两个表示$(\pi_1,V_1)$和$(\pi_2,V_2)$，如果存在线性映射$T:V_1\to V_2$，对任意的$g\in G$都满足$\pi_2(g)\circ T=T\circ \pi_1(g)$. 这样的$T$被称为缠结映射。当缠结映射是同构的时候，两个表示被称为是等价的。显然，这是一个等价关系。自反对称显然，而传递性自然来自两个同构复合还是同构。
+\begin{para}
+设$V_1$和$V_2$是两个$G$-模，如果线性映射$T:V_1\to V_2$，对任意的$g\in G$, $v\in V_1$都满足$T(gv)=gT(v)$，则称$T$为一个$G$-模同态。当$G$-模同态是线性同构的时候，$V_1$和$V_2$被称为两个等价$G$-模。显然，这是一个等价关系。自反对称显然，而传递性自然来自两个同构复合还是同构。
+\end{para}
 
-\lem 如果$\pi_1$和$\pi_2$之间存在缠结映射$T$，那么$\ker T$是$\pi_1$的不变子空间，而$\im T$是$\pi_2$的不变子空间。
+\begin{lem}
+设$V_1$和$V_2$是两个$G$-模，而$T:V_1\to V_2$是一个$G$-模同态，那么$\ker T$是$V_1$的$G$-子模，而$\im T$是$V_2$的$G$-子模。
+\end{lem}
 
-\proof 因为$T(\pi_1(g)x)=\pi_2(g)Tx$对于任何$x$使得$Tx=0$的，都有$\pi_1(g)x$使得$T(\pi_1(g)x)=0$，所以前半句话证明完了。对于$\im T$中的元素$y$可以找到原象$x$，由于$\pi_2(g)y=\pi_2(g)Tx=T(\pi_1(g)x)$，则$\pi_2(g)y$也在$\im T$中，后半句话证完。\qed
+\begin{proof}
+设$x\in \ker T$，则由$T(gx)=gTx=0$，都有$gx\in \ker T$. 另一方面，对于$\im T$中的元素$y$可以找到原象$x$，由于$gy=gTx=T(gx)$，则$gy$也在$\im T$中。
+\end{proof}
 
-\lem 相当有名的Schur引理：如果$(\pi_1,V_1)$和$(\pi_2,V_2)$是不等价的不可约表示，若存在缠结映射$T$，则$T=0$.换句话说，不等价的表示没有非平凡的缠结映射。
+\begin{lem}[Schur引理]
+设$V_1$和$V_2$是两个不等价的不可约$G$-模，则任意的$G$-模同态$T:V_1\to V_2$都只能为$0$.
+\end{lem}
 
-\proof 如果两个表示不等价，则$T$不是双射，所以$\ker T\neq \{0\}$，而他是不变子空间，由不可约性，则$\ker T= V_2$，同理$\im  T= \{0\}$，这就是说$T=0$。\qed
+\begin{proof}
+如果两个表示不等价，则$T$不是双射，所以$\ker T\neq \{0\}$，而他是不变子空间，由不可约性，则$\ker T= V_2$，同理$\im  T= \{0\}$，这就是说$T=0$。
+\end{proof}
 
-\para 反之，在复表示情况下，我们考虑不可约表示$(\pi_1,V_1)=(\pi_2,V_2)$的情况下。此时如果存在一个非平凡的双的缠结映射$T\neq I$使得$T\circ \pi(g)=\pi(g)\circ T$.
+在复表示情况下，我们考虑不可约$G$-模$V_1=V_2=V$的情况。此时考虑一个非平凡的$G$-模同态$T\neq I:V\to V$，假设$T\neq 0$. 由于在复数域上，$T$一定存在一个非零本征值$\lambda$，令$E_\lambda$是$\lambda$的本征空间，任取$v\in E_\lambda$，我们有$T(gv)=g T(v)=\lambda gv$，所以$GE_\lambda\subset E_\lambda$，由$V$的不可约性，所以$E_\lambda$要么是零空间，要么是全空间。而非零本征值的存在性说明了零空间不可能，所以本征空间就是全空间，这也就是说$T=\lambda I$.
 
-在复数域上，$T$一定存在一个本征值$\lambda$，令$E_\lambda$是$\lambda$的本征空间，任取$v\in E_\lambda$，我们有$T(\pi(g)(v))=\pi(g)\circ T(v)=\lambda\pi(g)(v)$，所以$\pi(G)E_\lambda\subset E_\lambda$，由$\pi$的不可约性，所以他要么是零空间，要么是全空间。而本征值的存在性说明了零空间不可能，所以本征空间就是全空间，这也就是说$T=\lambda I$.
-
-\para 如果我们遇到的群是Abel群，那么他的不可约群表示也是可交换的，同时其本身就构成了一个缠结映射，即$T=\pi(g)$对任意的$h$成立$T\circ \pi(h)=\pi(h)\circ T$，所以通过上面的定理我们就可以知道，$\pi(g)=T=\lambda I$。
+\para 如果我们遇到的群是Abel群，那么他的不可约群表示也是可交换的，同时其本身就构成了一个$G$-模同态，即$T=g$对任意的$h$成立$Th=h T$，所以通过上面的定理我们就可以知道，$g=\lambda I$。
 
 如果$V$是大于$1$维的，那么任意的$V$的子空间都是$\pi$的不变子空间，但不可约性否决了这点，所以我们得到了：凡Abel群的不可约复表示都是一维的。
 
@@ -574,9 +639,13 @@ $q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们�
 
 幺正表示的好处是，一个不变子空间的正交空间也是不变的。对于一个有限维的幺正表示，如果不是完全可约的，那么就分解出一个不变子空间，他是不可约的，然后对这个不变子空间的正交空间，我们又得到了一个可约或不可约的不变子空间，靠着有限归纳（因为有限维），我们就得到了如果群存在一个有限维幺正表示，则这个表示一定是完全可约的。
 
-\theo 结合上面所说的，我们就得到了Maschke定理：有限群的有限维表示总是完全可约的。 
+\begin{thm}
+结合上面所说的，我们就得到了Maschke定理：有限群的有限维表示总是完全可约的。 
+\end{thm}
 
-\theo 在局部紧的拓扑群上存在Haar测度$\mu$，他是一个正则的左不变的Borel测度。所谓的左不变就是指对于一个集合$S$，通过左作用$L_g$，我们有$\mu(S)=\mu(L_gS)$，当然还有右作用和右不变的概念。
+\begin{thm}
+在局部紧的拓扑群上存在Haar测度$\mu$，他是一个正则的左不变的Borel测度。所谓的左不变就是指对于一个集合$S$，通过左作用$L_g$，我们有$\mu(S)=\mu(L_gS)$，当然还有右作用和右不变的概念。
+\end{thm}
 
 对于$G$上的可测函数$f$，上述测度满足
 \[
@@ -586,7 +655,9 @@ $q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们�
 
 \para 上面的定理我们不证明，同时也不证明如下命题：如果$G$是紧Lie群，则我们存在双不变（既左不变也右不变）测度$\mu$，且$\mu(G)$有限。
 
-\pro 紧Lie群上存在幺正表示，所以紧Lie群的有限维表示总是完全可约的。 
+\begin{pro}
+紧Lie群上存在幺正表示，所以紧Lie群的有限维表示总是完全可约的。 
+\end{pro}
 
 换而言之，我们可以找到内积$\langle \star,\star\rangle$使得$\langle gx,gy\rangle=\langle x,y\rangle$。假设原本存在内积$\langle \star,\star \rangle$，那么再设$\dd g$是$G$上的Haar测度（因为紧所以存在，而且已经归一化），那么
 \[
@@ -610,24 +681,24 @@ $q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们�
 
 \para 利用Schur引理，假若$\pi_1$, $\pi_2$都是不可约的且不等价的，则群表示$(\pi_1^*\otimes\pi_2,\Hom(V,W))$的不动点集平凡（即只有$A=0$这一个不动点）。
 
-假如$\pi$, $\rho$都是不可约的且不等价的，现在我们考虑线性映射$A\in \Hom(V,W)$在紧Lie群上的平均\footnote{在有限群上也有平均，所以下面一套对有限群也成立。}$\bar{A}=\int_G \pi^*\otimes\rho(g)A \dd g$，显然$\bar{A}$是一个不动点，因此由Schur引理，
+假如$\pi$, $\rho$都是不可约的且不等价的，现在我们考虑线性映射$A\in \Hom(V,W)$在紧Lie群上的平均\footnote{在有限群上也有平均，所以下面一套对有限群也成立。}$\overline{A}=\int_G \pi^*\otimes\rho(g)A \dd g$，显然$\overline{A}$是一个不动点，因此由Schur引理，
 \[
-	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g=0
+	\overline{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g=0
 \]
 对任意的线性映射$A\in \Hom(V,W)$都成立。
 
-同样，如果$\pi$, $\rho$等价，此时不妨就直接记$\pi=\rho$.因为$\bar{A}$是一个缠结映射，那么由Schur引理，$\bar{A}=\lambda_{\bar{A}} I$，所以
+同样，如果$\pi$, $\rho$等价，此时不妨就直接记$\pi=\rho$.因为$\overline{A}$是一个缠结映射，那么由Schur引理，$\overline{A}=\lambda_{\overline{A}} I$，所以
 \[
-	\int_G \pi(g)A\pi(g)^{-1}\dd g=\lambda_{\bar{A}} I
+	\int_G \pi(g)A\pi(g)^{-1}\dd g=\lambda_{\overline{A}} I
 \]
-对任意的线性映射$A\in \Hom(V,V)$都成立，但是由于$\lambda_{\bar{A}}$并不已知，所以这公式用着不是很方便。为了求出$\lambda_{\bar{A}}$，两边求迹，就有$\tr(A)=\lambda_{\bar{A}} \dim V$，即$\lambda_{\bar{A}}=\tr(A)/\dim V$，所以我们也可以将上式写作更实用的形式
+对任意的线性映射$A\in \Hom(V,V)$都成立，但是由于$\lambda_{\overline{A}}$并不已知，所以这公式用着不是很方便。为了求出$\lambda_{\overline{A}}$，两边求迹，就有$\tr(A)=\lambda_{\overline{A}} \dim V$，即$\lambda_{\overline{A}}=\tr(A)/\dim V$，所以我们也可以将上式写作更实用的形式
 \[
-	\bar{A}=\int_G \pi(g)A\pi(g)^{-1}\dd g=\frac{\tr(A)}{\dim V}I.
+	\overline{A}=\int_G \pi(g)A\pi(g)^{-1}\dd g=\frac{\tr(A)}{\dim V}I.
 \]
 
 \para 现在，为了做一点小小的计算，我们将固定矢量空间的基，此时任意的线性算子都可以看做矩阵。记$E_{ij}$为只在$(a,b)$位置为1，其他位置为0的矩阵。很容易可以计算得到$E_{ij}AE_{kl}=A_{jk}E_{il}$.现在对
 \[
-	\bar{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g
+	\overline{A}=\int_G \rho(g)A\pi(g)^{-1}\dd g
 \]
 左乘$E_{ij}$，右乘$E_{kl}$，并令$A=E_{ab}$，可以得到
 \[
@@ -664,7 +735,9 @@ $q([\beta_{g'}\beta_{h'}])=q([\beta_{g'}])q([\beta_{h'}])$，而这就是我们�
 
 \para 一个复有限维表示$\pi$是不可约的当且仅当$(\chi_{\pi},\chi_{\pi})=1$.
 
-\pro 如果$G$是一个紧Lie群，那么两个表示$\pi_1$, $\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
+\begin{pro}
+如果$G$是一个紧Lie群，那么两个表示$\pi_1$, $\pi_2$等价当且仅当$\chi_{\pi_1}=\chi_{\pi_2}$.
+\end{pro}
 
 实际上，假若$\pi_1$和$\pi_2$等价，那么存在$A$使得
 $A\pi_1(g)=\pi_2(g)A$，于是$\tr(\pi_1(g))=\tr(A^{-1}\pi_2(g)A)=\tr(\pi_2(g))$.反过来，如果两个表示$\pi_1$, $\pi_2$特征标相等，则$	m(\pi_1,\pi)=(\chi_{\pi_1},\chi_\pi)=(\chi_{\pi_2},\chi_\pi)=m(\pi_2,\pi)$，对任意的$\pi\in\hat{G}$都成立，因此$\pi_1$, $\pi_2$等价。
