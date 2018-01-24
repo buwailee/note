@@ -1,0 +1,131 @@
+\documentclass[14pt]{extarticle}
+\usepackage{noteheader}
+\input{defs}
+
+\title{Quantum Mechanics on Manifold}
+
+\begin{document}
+
+\maketitle
+
+In special relativity, we use the symmetry group of spacetime to classify particles. However, when the spacetime is no longer \textit{flat}, the symmetry group of spacetime is not the Poincar\'e group. What's more, we should be careful to deal with translation on general spacetime that depends on the connection we selected. Therefore, we cannot directly conclude that the Hamiltonian or momentum operators are the infinitesimal translations which belong to Poincar\'e group.
+
+In this article, we will give a method to generalize the symmetry method in quantum mechanics and develop a kind of theory of quantum mechanics on manifold.
+
+\section{Background}
+
+Suppose the spacetime is a semi-Riemannian manifold $M$ whose dimension is $4$, $\mathcal H$ is a Hilbert space to describe our quantum system. As we all konw, there's a Levi-Civita connection on $M$ which is denoted by $\nabla$.
+
+In special relativity, the choose of the origin of coordinates does not bother us because we could remove this trouble by considering the action of Poincar\'e group. However, on the general spacetime $M$, transitions may depend on the choosen origin and path. Thus, it is convenient to denote  the origin of coordinates on each state vector or the whole Hilbert space $\mathcal H$, or formally, we will consider the a vector bundle $\pi:\mathsf H\to M$ whose fibers are $\mathcal H_x:=\pi^{-1}(x)\cong \mathcal H$. The construction of $\pi:\mathsf H\to M$ is not clear now.
+
+On the vector bundle $\pi:\mathsf H\to M$, we need a connection $D$ to tell us how to translate a state vector along a path on $M$. Suppose $\psi$ is a local trivialization of $\mathsf H$ near $x\in M$ and $\gamma:[0,1]\to M$ is a smooth path on $M$ such that $\gamma(0)=x$, $\dot\gamma(0)=v$ and $\operatorname{im}(\gamma)$ is near $x$. Locally, suppose $\Psi$ is a section of $\mathsf H$ near $x$ and $\psi(\Psi_y)=(y,\psi_y\Psi_y)\in U\times \mathcal H$, then
+\[
+	\psi_{\gamma(t)}\left(D_{\dot\gamma(t)}\Psi(\gamma(t))\right)=\dot c^n(t)\Psi_n+\Gamma_{im}^n\dot\gamma^i(t)c^m\Psi_n,
+\]
+where $\{\Psi_n\}$ is a basis of $\mathcal H$. If $\Psi(\gamma(t))$ is parallel along $\gamma$, i.e. $D_{\dot\gamma(t)}\Psi(\gamma(t))=0$, then
+\[
+	\dot c^n+\Gamma_{im}^n\dot\gamma^i(t)c^m=0.
+\]
+For short time $t$, we have
+\[
+	c^n(t)=c^n(0)+t\dot c^n(0)+O(t^2)=c^n(0)-t\Gamma_{im}^n(x)v^i c^m(0)+O(t^2).
+\]
+Thus the infinitesimal translation is
+\[
+	\psi_{\gamma(t)}\Psi(\gamma(t))-\psi_{x}\Psi(x)=-t\Gamma_{im}^n(x)v^i c^m(0)\Psi_n+O(t^2)=-t\Gamma_{m}^n(v)c^m(0)\Psi_n+O(t^2),
+\]
+where $\Gamma^n_m$ is the connection $1$-form. If we introduce a new operator $\Gamma(v)$ on $\mathcal H$ whose matrix is $\Gamma_{m}^n(\dot\gamma(0))$ such that
+\[
+	\Gamma(v)\Psi_m=\Gamma_{m}^n(v)\Psi_n,
+\]
+we could get the infinitesimal translation of state vector $\Psi$ that
+\[
+	\psi_{\gamma(t)}\Psi(\gamma(t))-\psi_{x}\Psi(x)=-t\Gamma(v)c^m(0)\Psi_m+O(t^2)=-t\Gamma(v) \psi_{x}\Psi(x)+O(t^2),
+\]
+or
+\[
+	\left. \frac{\mathrm d}{\mathrm dt}\right|_{t=0}\psi_{\gamma(t)}\Psi(\gamma(t))=-\Gamma(v) \psi_{x}\Psi(x).
+\]
+
+It's usually more convenient to work on the space on sections. Suppose $\{\Psi_n\}$ is a basis of $\mathcal H$, and $\psi$ is a local trivialization near $x$, then $y\mapsto \psi_y^{-1}\Psi_n$ is a local section of $\pi:\mathsf H\to M$ near $x$, we will denote it by $\widetilde \Psi_n$. Define $\widetilde\Gamma(v):\mathcal H_x\to \mathcal H_x$ by
+\[
+	\widetilde\Gamma(v)\widetilde \Psi_m(x)=\Gamma^n_m(v)\widetilde \Psi_n(x),
+\]
+it relates to $\Gamma(v)$ by $\widetilde\Gamma(v)=\psi_x^{-1}\Gamma(v)\psi_x$. Therefore, the infinitesimal translation of state vector can be written as
+\[
+	\left. \frac{\mathrm d}{\mathrm dt}\right|_{t=0}\psi_{\gamma(t)}\Psi(\gamma(t))=- \psi_{x}\widetilde\Gamma(v)\Psi(x).
+\]
+
+\section{Construction of the bundle and connection}
+
+Suppose $(U,\varphi)$ is a chart on $M$ containing $x$, if $\varphi$ is an isomorphism to an open subset of Minkowski space $(\mathbb R^{4},\eta_{ij})$, we could guess that the fiber $\mathcal H_y$ near $x$ should be same Hilbert space $\mathcal H$. Generally, if there's another chart $(U,\varphi')$, where $\varphi'$ is a diffeomorphism from $U$ to an open subset of $\mathbb R^{4}$, then we have a map from $\varphi(x)\in \mathbb R^4$ to $\varphi'(x)\in \mathbb R^4$, which induces a map $U_x(\varphi'\varphi^{-1}):\mathcal H\to \mathcal H$. 
+
+The map $U_x(\varphi'\varphi^{-1})$ should not affect the physics because of the principle of relativity. Especially, probability from this quantum system would be invariant under the map $U_x(\varphi'\varphi^{-1})$, i.e. for any state vectors $\Phi$, $\Psi\in \mathcal H$, 
+\[
+	|(\Phi,\Psi)|^2=\bigl|\bigl(U_x(\varphi'\varphi^{-1})\Phi,U_x(\varphi'\varphi^{-1})\Psi\bigr)\bigr|^2.
+\]
+Thus, the well-known Wigner theorem tells us that $U_x(\varphi'\varphi^{-1})$ is linear (anti-linear) and unitary (anti-unitary). It's convenient but not necessary to assume that 
+\[
+	U_x(\varphi''\varphi'^{-1})U_x(\varphi'\varphi^{-1})=U_x(\varphi''\varphi^{-1}),
+\] 
+because there should be one phase factor in the exact relation, just like the flat case. This additional phase factor may be vary important in physics, but let's forget it at first. It's also convenient (but not necessary) to assume $U_x(\varphi'\varphi^{-1})$ is linear and unitary in our disscussion. By the Wigner theorem, we could define
+\[
+	(\Psi_x,\Phi_x)_x:=\left(\psi_x\Psi_x,\psi_x\Phi_x\right)_{\mathcal H}.
+\]
+For locally contant sections $\widetilde \Psi:x\to \psi_x^{-1}\Psi$ and $\widetilde \Phi:x\to \psi_x^{-1}\Phi$, the definition above tells us that
+\[
+	(\widetilde \Psi_x,\widetilde \Phi_x)_x=(\Psi,\Phi)
+\]
+is independent of $x$.
+
+The above discussion is quite general since we don't need any detail about the bundle. If we want to relate the bundle trivialization $\psi:\pi^{-1}(V)\to V\times \mathcal H$ and the chart $(V,\varphi)$ on $M$, it's straightforward and naive to define a `function' between $\varphi(x)$ and $\psi_x:\mathcal H_x\to \mathcal H$ such that $\psi_x=U[\varphi(x)]:\mathcal H_x\to \mathcal H$. However, there exist two different charts $\varphi$ and $\varphi'$ such that $\varphi(x)=\varphi'(x)\in \mathbb R^4$, so the desired `function' should also depend on another imformation of $\varphi'$. Therefore, one could assume that $\psi_x$ is a function of $\varphi(x)$ and $\varphi_{*x}$, or more formally, the 1-jet of $\varphi$. We will use $[\varphi](x)$ or $[\varphi]_x$ to denote the pair $(\varphi(x),\varphi_{*x})$.
+
+Suppose $(V,\varphi)$ is a chart on $M$, we will define a bundle trivialization $U([\varphi]):\pi^{-1}(V)\to V\times \mathcal H$ by 
+\[
+	U([\varphi]):\Psi\mapsto (x,U_x(\varphi(x),\varphi_{*x})\Psi_x)=(x,U_x([\varphi])\Psi_x),
+\]
+where $x=\pi(\Psi)$ and $U$ is a unknown function determined by our quantum system. In this case, the whole structure of the bundle $\mathsf H$ is given by $U$, just like the tangent bundle, and 
+\[
+	U_x(\varphi'\varphi^{-1})=U_{x}([\varphi'])U_{x}([\varphi])^{-1}.
+\]
+
+One usually want his connection compatible with the `metric', i.e.
+\[
+	X(\Psi,\Phi)=(D_X\Psi,\Phi)+(\Psi,D_X\Phi),
+\]
+where $X$ is a vector field on $M$ and $D$ is our connection.
+
+What's more, if the infinitesimal translation is constant on a geodesic, then for geodesic $\gamma(t)$, we have
+\[
+	0=\frac{\mathrm d}{\mathrm dt}\Gamma(\dot\gamma(t))=\Gamma_{i;j}\dot\gamma^i\dot\gamma^j+\Gamma_{i}\ddot\gamma_{j}^i=\Gamma_{i;j}\dot\gamma^i\dot\gamma^j.
+\]
+The above equation is valid for all $\gamma(t)$, then $\Gamma_{i;j}+\Gamma_{j;i}=0$. This is just the Killing equation.
+
+Suppose $\psi'$ is another local trivialization near $p$, then we will get
+\[
+	\Gamma_i(x)=G_x^{-1}\partial_i G_x+G^{-1}_x\Gamma'_i(x)G_x,
+\]
+where $G_x=\psi'_x\psi^{-1}_x$, or 
+\[
+	\Gamma'_i(x)=G_x\partial_i G_x^{-1}+G_x\Gamma_i(x)G_x^{-1}.
+\]
+If we want to construct a connection on $\mathsf H$, we could constant it locally to meet the relation above.
+
+Now we will consider a theory that $U$
+
+Recall that if $\psi_x=U([\varphi]_x)$ and $\psi'_x=U([\varphi']_x)$ and $U$ is a representation, then the above equation can be written as
+\[
+	\Gamma_i(x)=U(g_x)^{-1}\partial_iU(g_x)+U(g_x)^{-1}\Gamma'_iU(g_x)=U(g_x^{-1}\partial_ig_x)+U(g_x)^{-1}\Gamma'_i(x)U(g_x),
+\]
+where $g_x=\varphi'_{*x}\varphi_{*x}^{-1}$ is the transition map of tangent bundle $TM$. So if there's a `connection quantumization' method to construct connection from $\Gamma'_i$ from the Levi-Civita connection from $\Gamma^L$, i.e. $\Gamma'_i=U(\Gamma^L)$, then the relation of Levi-Civita connection that
+\[
+	\Gamma^L_i(x)=g_x^{-1}\partial_ig_x+g_x^{-1}{\Gamma'}^L_ig_x
+\]
+reduce that
+\[
+	\Gamma_i(x)=U(g_x^{-1}\partial_ig_x)+U(g_x)^{-1}\Gamma'_i(x)U(g_x),
+\]
+as we want.
+
+Note that $U$ is a representation of $\operatorname{GL}(\mathbb R^4)$.
+\end{document}

@@ -1771,7 +1771,7 @@ Lie群$G$的切丛$TG$相当简单，因为我们可以定义$(l_{a^{-1}})_*$把
 下一个命题告诉我们，上一个命题给出了主$G$-丛的完整刻画。
 
 \begin{pro}
-如果$G\to P\xrightarrow{\pi}M$是一个$(G,\lambda)$-从，$\lambda$在这里就是Lie群的左乘，则$G\to P\xrightarrow{\pi}M$是一个主$G$-丛。
+如果$G\to P\xrightarrow{\pi}M$是一个$(G,\lambda)$-丛，$\lambda$在这里就是Lie群的左乘，则$G\to P\xrightarrow{\pi}M$是一个主$G$-丛。
 \end{pro}
 
 \begin{proof}
@@ -1862,3 +1862,48 @@ Similarily, suppose that $V^{m,n}$ is the tensor product $V^*\otimes \cdots \oti
 % \begin{para}[Tensor product of vector bundles]
 % Suppose that $(E,M,\pi,V)$ is a $(G,\lambda)$-vector bundle, and $(E',M,\pi',V')$ is a $(G,\lambda')$-vector bundle. Then representation $\lambda\otimes \lambda' : G\to \mathrm{GL}(V\otimes V')$ defines a $(G,\lambda\otimes \lambda')$-vector bundle $(E\times E',M,\pi\times \pi',V\otimes V')$. 
 % \end{para}
+
+\begin{para}[仿射空间]
+	设$V$是一个矢量空间，而$A$是一个集合，而$\lambda$是一个$V$作为加法群在$A$上的自由可迁（一般是右）作用，此时称$(A,V,\lambda)$是一个仿射空间。时常会直接将$A$称作仿射空间，而$V$被称为底空间，作用直接记作加法。
+
+	设$A$和$A'$都是仿射空间，而$V$和$V'$是对应的底空间。设$f:A\to A'$是一个映射，任取$a\in A$，$V\in V$，由于作用是可迁的，所以存在一个唯一的$w\in A'$使得$f(a+v)=f(a)+w$. 这个$w$是$a$和$v$的函数，如果$w$不依赖于$a$且线性依赖于$v$. 则称$f$是一个仿射映射。从定义，$w$可以写为一个线性变换$[f]:V\to V'$作用在$v$上的结果，所以我们有$f(a+v)=f(a)+[f]v$.
+
+	所有$A\to A$的可逆仿射变换（或称仿射同构）显然构成一个群，记作$\operatorname{GA}(A)$. 类似于表示，群$G$到$\operatorname{GA}(A)$的一个同态被称为$G$在$A$上的一个仿射表示。由于
+	\[
+		fg(a+v)=f(g(a)+[g]v)=fg(a)+[f][g]v,
+	\]
+	所以$[fg]=[f][g]$，这就意味着，存在一个典范同态$\operatorname{GA}(A)\to \operatorname{GL}(V)$. 特别地，每一个$G$的仿射表示$\lambda$都定义了一个表示$[\lambda]:g\mapsto [\lambda(g)]$.
+\end{para}
+
+每个矢量空间都是一个仿射空间，上面的仿射映射都可以写作$f(v)=f(0)+[f]v$，即一个线性变换加上一个平移，如果$f(0)=0$，则仿射映射就变成了线性映射。此时，仿射变换的复合写作
+\[
+	gf(v)=g(f(0)+[f]v)=g(0)+[g]f(0)+[g][f]v.
+\]
+
+\begin{para}[仿射丛]
+	类似于矢量丛，我们可以定义仿射丛。设$A$是一个仿射空间，底矢量空间为$V$，	设$\lambda$是一个Lie群$G$在仿射空间$A$上的（光滑）仿射表示，则$(G,\lambda)$-丛$A\to E\xrightarrow{\pi} M$被称为纤维为$A$的仿射丛。此外，由$G$-丛构造定理，我们可以定义出一个$(G,[\lambda])$-矢量丛。它被称为仿射丛的底矢量丛。
+\end{para}
+
+一般来说，我们也可以从矢量丛出发构造一个仿射丛，比方说如果一个纤维丛的纤维都是仿射空间，底矢量空间是对应矢量丛的纤维，并且转移函数都是仿射同构，那么它就是一个仿射丛。
+
+\begin{para}[一阶jet丛]
+	设$\pi:Y\to X$是一个纤维丛，记$V_yY=\ker\pi_{*y}\subset T_yY$，称之为垂直空间。所谓$Y$上的一阶jet丛$J^1Y$是一个仿射丛，它在点$y$的纤维是满足$\pi_{*y}\gamma=\operatorname{id}$的所有线性映射$\gamma:T_{\pi(y)}X\to T_yY$的集合，这个集合有一个自然的仿射（其实也是矢量）空间结构，而所有$T_{\pi(y)}X\to V_yY$的线性映射构成其底矢量空间。
+
+	一阶jet丛也可以用等价类来构造：设$\varphi$和$\psi$都是$x\in X$附近的局部截面，我们定义等价关系如下：如果$\varphi(x)=\psi(x)$且$\varphi_{*x}=\psi_{*x}$，则$\varphi\sim \psi$. 不难检验这是一个等价关系，那么我们就定义丛$J^1Y$在点$y$的纤维为在点$\pi(x)$附近的局部截面的等价类的集合。
+\end{para}
+
+\begin{lem}
+	设$\gamma\in (J^1Y)_y$，则$T_yY=\im\gamma\oplus V_yY$.
+\end{lem}
+
+\begin{proof}
+	从$\pi_{*y}\gamma=\id$，$\ker \gamma=\{0\}$. 首先，设$w\in \im\gamma$是非零矢量，则存在非零矢量$v$使得$w=\gamma(v)$，利用$\pi_{*y}\gamma=\id$立得$\pi_{*y}w=v\neq 0$，所以$w\not\in  V_yY$. 这就意味着$\im\gamma\cap V_yY=\{0\}$. 所以，这两个空间的和也就是它们的直和是$T_yY$的一个子空间。为证明这就是$T_yY$，只需计算维度。
+
+	由于$\ker \gamma=\{0\}$，所以线性代数基本定理告诉我们$\dim \im\gamma=\dim T_xX$. 依然是线性代数基本定理，$\dim T_yY=\dim \ker \pi_{*y}+\dim \im \pi_{*y}=\dim V_yY+\dim T_xX$，所以$\dim T_yY=\dim V_yY+\dim \im\gamma$. 这就告诉我们$T_yY=\im\gamma\oplus V_yY$.
+\end{proof}
+
+\begin{para}[Ehresmann联络]
+	设$\pi:Y\to X$是一个纤维丛，$J^1Y$丛在$Y$上的（局部）截面被称为$Y$的一个（局部）Ehresmann联络。
+\end{para}
+
+传统的Ehresmann联络的定义是在每一点（光滑地）给定$T_yY$的一个直和分解，分解为一个横空间$H_yY$与垂直空间$V_yY$的直和，而上一个引理告诉我们，$J^1Y$丛的一个截面就给出了这样一族横空间的选取。

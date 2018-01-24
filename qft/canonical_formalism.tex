@@ -1,0 +1,395 @@
+\documentclass[11pt]{article}
+\usepackage[zh]{noteheader}
+\usepackage{paralist}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}
+		\renewcommand{\thepara}{\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{defi}[para]{Definition}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+\input{defs.tex}
+\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{正则量子化}
+\author{Buwai Li}
+
+\begin{document}
+\maketitle
+
+简而言之，正则量子化是通过经典的Hamiltonian或者Lagrangian来给出Lorentz群的一个表示。正则量子化如此重要性来自于以下两个定理：
+
+\begin{thm}
+设我们有一个相对论性量子力学理论，满足
+\begin{compactenum}
+\item Poincar\'{e} 群的生成元写作：\[H=H_0+V,\quad \mathbf{P}= \mathbf{P}_0,\quad \mathbf{J}= \mathbf{J}_0,\quad \mathbf{K}=\mathbf{K}_0+\mathbf{W},\]其中带$0$下标的生成元都是自由粒子 Poincar\'{e} 群的生成元。
+
+\item  存在一个算符$\mathscr{H}(x)$满足：
+\begin{compactitem}
+	\item 对任意的 Lorentz 变换$\Lambda$和平移 $a$，成立\[U_0(\Lambda,a)\mathscr{H}(x)U_0(\Lambda,a)^{-1}=\mathscr H(\Lambda x+a).\]
+
+	\item 如果$x-y$类空，则$[\mathscr{H}(x),\mathscr{H}(y)]=0$.
+\end{compactitem}
+\item 该理论的$V$和$\mathbf{W}$为\[V=\int d^3 x\, \mathscr{H}(\mathbf{x},0),\quad\mathbf{W}=-\int d^3 x \, \mathbf{x}\mathscr{H}(\mathbf{x},0).\]
+\end{compactenum}
+此时，这个理论下的$S$-矩阵满足Lorentz不变性。
+\end{thm}
+
+\begin{thm}
+考虑一个相对论性量子力学理论，它的Hamiltonian可以由自由的产生湮灭算符展开为
+\[
+	H=\sum_{N,M}\int \prod_{i=1}^N\prod_{j=1}^M \mathrm{d} q'_i \mathrm{d} q_j a^\dag (q'_1)\cdots a^\dag (q'_N) a(q_M)\cdots a(q_1)h_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M),
+\]
+由于动量守恒，展开系数$h_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M)$可以写成
+\[
+	h_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M)=\delta^3(\bm{p}'_1+\cdots \bm{p}'_N-\bm{p}_1-\cdots-\bm{p}_M)\bar{h}_{NM}(q'_1,\dots,q'_N,q_1,\dots,q_M),
+\]
+如果$\bar{h}_{NM}$中在不包含其他的$3$-动量线性组合的$\delta^3$-函数因子，则这个理论满足集团分解原理。
+\end{thm}
+
+正则量子化给出的表示可以自然地满足以上两个定理，于是，从正则量子化出发的量子场论是满足$S$-矩阵的Lorentz不变性以及集团分解原理的。此外，Noether定理的存在，使得我们更容易从Lagrangian中分析对称性。
+
+\section{Lagrangian}
+
+我们将主要关注可以由Lagrangian描述的系统。一般来说，Lagrangian是“场”$\psi^n$以及其时间导数$\dot\psi^n$的泛函，这里的$n$是场的指标。为了从力学过度到场论，场$\psi^n(\mathbf x,t)$中的坐标$\mathbf x$可以看成场的指标，此时，对于不同的$\mathbf x$，场$\psi^n(\mathbf x,t)$将看成独立的“广义坐标”，有时候我们会将其记作$\psi^n_{\mathbf x}$. 而时间$t$如同力学中一般处理，“广义坐标”是$t$的函数。运动方程由变分原理给出，作用量是
+\[
+	I=\int \mathrm d t\, L[\psi^n(t)],
+\]
+将其做变分就得到了Lagrange方程
+\[
+	\frac{\dd}{\dd t}\pfrac L{\dot\psi^n_{\mathbf x}}=\pfrac L{\psi^n_{\mathbf x}}.
+\]
+
+如果$L$可以由Lagrange密度$\mathcal L$给出，$\mathcal L$是场以及其时空导数的函数，即
+\[
+	L=\int\dd^3 x \, \mathcal L(\psi^n,\partial_\mu\psi^n),
+\]
+所以
+\[
+	I=\int \dd^4 x\, \mathcal L(\psi^n,\partial_\mu\psi^n),
+\]
+此时变分原理给出了Lagrange方程
+\[
+	\partial_\mu\pfrac{\mathcal L}{\partial_\mu \psi^n}=\pfrac{\mathcal L}{\psi^n}.
+\]
+
+量子化后，$\psi^n$变成了算符，从对称性出发的量子场论已经证明了自旋统计原理，在那里，对应于自旋为半整数的场满足的是反对易关系，但如果$\psi^n$是取值为复数的非零场，则我们永远不会有$\psi^n\psi^n=0$. 所以，不能用上述框架来量子化费米子场。
+
+解决这一切的最简单方式是将复数域换成一个环。由于Lagrangian中可能包含不同的场，比如同时包含玻色子场和费米子场，所以我们还要求这个环与复数域之间有一个运算，满足一些我们想要的规则（比如分配律等），所以这个环应当是一个$\mathbb C$-代数。为满足反对易关系，我们引入如下所谓的Clifford代数。
+
+\begin{defi}
+	设$k$是一个交换环，$V$是一个$k$-模，而$Q$是$V$上面的二次型，换而言之是一个$V\to k$的函数满足：$Q(av)=a^2Q(v)$以及$Q(u+v)-Q(u)-Q(v)$对$u$, $v$双线性。则Clifford代数$\operatorname{Cl}(V,Q)$以及典范态射$i:V\to \operatorname{Cl}(V,Q)$满足如下性质：$i(v)^2=Q(v)\in\operatorname{Cl}(V,Q)$，以及任取一个态射$i':V\to A$满足$i'(v)^2=Q(v)\in A$，则存在唯一分解$i':V\xrightarrow{i} \operatorname{Cl}(V,Q)\xrightarrow{h}A$.
+\end{defi}
+
+由上面的泛性质，Clifford代数如果存在则可以确定到一个同构。通过张量代数，不难给出一个Clifford代数的构造：$\operatorname{Cl}(V,Q)=T(V)/\langle v^2+Q(v)\,:\,v\in V\rangle$，典范态射$i$将$v\in V$变成$v\in V$. $Q=0$是Clifford代数中最简单的情况，此时$\operatorname{Cl}(V,0)$就是$V$的外代数$\Lambda(V)$.
+
+在外代数中，任取$v\in V$，我们总有$vv=0$，而这正适合费米子场的对易关系。将交换环$k$取做$\mathbb C$，则我们就得到了我们需要的$\mathbb C$-代数。
+
+设$\psi$是一个费米子场，则它可以看成一个$\rr^4\to V\subset \Lambda(V)$的一个函数，其中$V$是一个$\mathbb C$-模，这里不给定。设$\{e_i\}$是$V$的一组基，那么我们可以将
+\[
+	\psi(x,t)=\psi^i(x,t)e_i,
+\]
+其中系数$\psi^i(x,t)$就是普通的复值场。在进行变分原理的时候，我们应该对$\psi^i(x,t)$进行变分。
+
+以自由Dirac场为例，Lagrangian写作
+\[
+	\mathcal L=\bar\psi(i\mynot{\partial}-m)\psi,
+\]
+其中$\mynot{\partial}=\gamma^\mu\partial_\mu$，而$\psi$和$\bar\psi$分别为向量
+\[
+	\psi=\begin{pmatrix}
+		\psi_1\\
+		\psi_2\\
+		\psi_3\\
+		\psi_4
+	\end{pmatrix},\quad \bar\psi=\begin{pmatrix}
+		\psi_1^*&
+		\psi_2^*&
+		\psi_3^*&
+		\psi_4^*
+	\end{pmatrix}\gamma^0.
+\]
+其中$\psi_i$和$\psi_i^*$都是费米子场，它们是独立的（换而言之，我们取两个独立复场作为变量，而不取两个独立实场）。所以，自由Dirac场的Lagrangian展开写作
+\[
+	\mathcal L=\sum_{a,b}\psi^*_a(i(\gamma^0\gamma^\mu)_{ab}\partial_\mu-m(\gamma^0)_{ab})\psi_b
+\]
+再将费米子场展开，则
+\[
+	\mathcal L=\sum_{a,b}(\psi^*_a)^i\psi^*_a(i(\gamma^0\gamma^\mu)_{ab}\partial_\mu-m(\gamma^0)_{ab})\psi_b^j e_ie_j.
+\]
+从$(\psi^*_a)^i$们的Lagrange方程，立马就得到了Dirac方程：
+\[
+	\sum_{a,b}(i(\gamma^\mu)_{ab}\partial_\mu-m\delta_{ab})\psi_b^j e_j=0,
+\]
+或者写得更好看一些：
+\[
+	(i\mynot{\partial}-m)\psi=0.
+\]
+从$\psi_b^j$们的Lagrange方程，我们有
+\[
+	\sum_{a}(\psi^*_a)^i(-m(\gamma^0)_{ab})e_ie_j=\sum_a \partial_\mu(\psi^*_a)^i(i(\gamma^0\gamma^\mu)_{ab})e_ie_j,
+\]
+注意到上式当$i=j$的时候是平凡的，但是这里$j$是可以随便跑的，除非$i$和$j$只有一个指标可以跑，否则不同的$j$可以告诉我们
+\[
+	im \bar\psi=\partial_\mu \bar\psi \gamma^\mu.
+\]
+现在，我们可以利用复共轭联系起$\psi$和$\psi^*$，两边取复共轭可以得到
+\[
+	(\gamma^\mu)^\dagger\gamma^0\partial_\mu\psi+im\gamma^0\psi=0,
+\]
+利用$\gamma^0 (\gamma^\mu)^\dagger\gamma^0=\gamma^\mu$，立刻重新得到了
+\[
+	(i\mynot{\partial}-m)\psi=0.
+\]
+
+\begin{defi}
+	设$F(\psi^n)$是场$\{\psi^n\}$的多项式，如果$\psi^n$是费米子场，则$F$至多是$\psi^n$的一次函数，即$F=\sum_i A_i\psi^nB_i+C$的形式，我们定义$\partial F/\partial \psi^n=\sum_i A_iB_i$.
+\end{defi}
+
+和上述算例相似，从变分原理出发，利用这个定义，Lagrange方程的形式不变。
+
+\section{Hamilton形式化}
+
+设$(P,\Omega)$是一个辛流形，$\Omega$是典范$2$-形式，它是非退化的，还是闭的。设$X$是$P$上的矢量场，如果存在一个函数$H$使得$\Omega_z(X_z,*)=(\dd H)_z$处处成立，则称$X$是一个Hamilton矢量场，而$H$被称为其对应的Hamiltonian.
+
+设$X_F$和$X_G$都是Hamilton矢量场，对应的Hamiltonian为$F$与$G$，定义Possion括号$\{F,G\}$为
+\[
+	\{F,G\}(z)=\Omega(X_F(z),X_G(z)).
+\]
+不难看到$\{F,G\}+\{G,F\}=0$. 此外，
+\[
+	\{F,GH\}=\{F,G\}H+G\{F,H\}.
+\]
+
+设$X_H$也是一个Hamilton矢量场，不难证明
+\[
+	X_H(\{F,G\})=\{X_HF,G\}+\{F,X_HG\}.
+\]
+由于$X_HF=\dd F(X_H)=\Omega(X_F,X_H)=\{F,H\}$，所以上式即Jacibi恒等式
+\[
+	\{\{F,G\},H\}=\{\{F,H\},G\}+\{F,\{G,H\}\}.
+\]
+由Jacobi恒等式，我们有$[X_F,X_G]=-X_{\{F,G\}}$. 这些定义、式子都可以改成局部的。
+
+现在，假设我们有一个Lagrange系统$L(q^n)$，则我们可以定义出一个辛流形，空间为相空间，典范$2$-形式写作$\dd p_n\wedge \dd q^n$. 并且，通过$p_n=\partial L/\partial \dot q^n$用$p_n$反解出$\dot q^n$，于是得到了一个Hamiltonian
+\[
+	H=p_n\dot q^n-L,
+\]
+其中所有$\dot q^n$要用$p_n$和$q^n$表示出来。此时，运动方程写为一组Hamilton方程
+\[
+	\pfrac{H}{p_n}=\dot q^n,\quad \pfrac{H}{q^n}=-\dot p_n.
+\]
+
+现在，假设有了一个Hamiltonian $H$，可以计算得到
+\[
+	\dd H=\pfrac H{p_n}\dd p_n+\pfrac H{q^n}\dd q^n,
+\]
+而
+\[
+	\Omega(X_H,*)=(X_H)_n \dd q^n-(X_H)^n \dd p_n,
+\]
+比较就知道
+\[
+	X_H=\pfrac H{q^n}\pfrac {}{p_n}-\pfrac H{p_n}\pfrac {}{q^n},
+\]
+进而
+\[
+	\{F,H\}=X_HF=\pfrac {F}{p_n}\pfrac H{q^n}-\pfrac H{p_n}\pfrac {F}{q^n}.
+\]
+特别地，如果$H=q^n$或$p_n$，则
+\[
+	\{F,q^n\}=\pfrac {F}{p_n},\quad \{p_n,F\}=\pfrac {F}{q^n},
+\]
+以及再特别一些的$\{p_m,q^n\}=\delta^n_m$. 所以，利用Possion括号，我们可以将运动方程统一写作$\{H,F\}=\dot F$，当$F$是正则坐标或者动量时回到Hamilton方程。
+
+\section{约束系统}
+
+设$S$是$P$的一个子流形，$i:S\to P$是典范含入，如果$(S,i^*\Omega)$也是一个辛流形，则称其为$P$的一个辛子流形。
+
+设$P$是$2n$维的，而$S$是$2k$维的，在$S$的一点$z_0$附近，我们可以选取坐标$z^1$, $\dots$, $z^{2n}$使得$S$由约束方程
+\[
+	z^{2k+1}=0,\dots,z^{2n}=0
+\]
+给出，即$z^1$, $\dots$, $z^{2k}$构成$S$的一个局部坐标。
+
+考虑矩阵$C^{ij}=\{z^i,z^j\}$，其中$i$, $j=2k+1,\dots,2n$. 假设$C^{ij}$在点$z_0$是可逆的，则其在$z_0$的一个邻域是可逆的，逆矩阵记作$C_{ij}$. Dirac 首先研究了这种情况下，$S$的Possion括号与$P$的Possion括号之间的联系。设$F$是$P$上的一个映射，记$F^*$为$F|_S$.
+
+\begin{thm}[Dirac]
+	设$F$为$P$上的一个Hamiltonian，则$F^*$是$S$上的一个Hamiltonian，其Hamilton矢量场具有关系
+	\[X_{F^*}=X_F-\sum_{i,j=2k+1}^{2n}\{F,z^i\}C_{ij}X_{z^j},\]
+	所以，如果定义Dirac括号$\{F,G\}_{\text{D}}$为
+	\[\{F,G\}_{\mathrm{D}}=\{F,G\}-\sum_{i,j=2k+1}^{2n}\{F,z^i\}C_{ij}\{z^j,G\}.\]
+	则两个流形的Possion括号之间具有关系
+	\[\{F^*,G^*\}=\{F,G\}_{\mathrm{D}}|_S.\]
+\end{thm}
+
+\begin{proof}
+	由于$\Omega$是$z$处的非退化$2$-形式，所以通过它，可以给出一个$T_zS$的补（类似于通过内积给出正交补），记作$(T_zS)^\dagger$，使得$T_zP=T_zS\oplus (T_zS)^\dagger$. 令$\pi_z:T_zP\to T_zS$以及$\pi^\dagger_z:T_zP\to (T_zS)^\dagger$为对应的典范投影。不难验证，$X_{F^*}(z)=\pi_z(X_{F}(z))$. 
+	
+	实际上，从定义出发，设$F$是$P$上的一个函数，而$Y$是$S$上的一个矢量场
+	\[
+		\dd i^*F(Y)=\dd F(i_*Y)=\Omega(X_F,i_*Y),
+	\]
+	从直和的泛性质，存在映射$j:(T_zS)^\dagger\to T_zP$使得$j\pi^\dagger_z+i_*\pi_z=\operatorname{id}$. 所以，
+	\[
+		X_F=j\pi^\dagger_zX_F+i_*\pi_zX_F,
+	\]
+	所以
+	\[
+		\dd i^*F(Y)=\Omega(X_F,i_*Y)=i^*\Omega(\pi_zX_F,Y)+\Omega(j\pi^\dagger_zX_F,i_*Y),
+	\]
+	由于$(T_zS)^\dagger$的构造，$\Omega(j\pi^\dagger_zX_F,i_*Y)=0$，所以
+	\[
+		\dd i^*F(Y)=i^*\Omega(\pi_zX_F,Y).
+	\]
+	另一方面$i^*F=F^*$，所以$\dd F^*(Y)=i^*\Omega(\pi_zX_F,Y)$. 根据定义，所以$X_{F^*}(z)=\pi_z X_{F}$.
+	
+	
+	下面我们来验证
+	\[
+		\pi^\dagger_z(X_{F})=\sum_{i,j=2k+1}^{2n}\{F,z^i\}C_{ij}X_{z^j},
+	\]
+	于是$\pi^\dagger_z+\pi_z=\operatorname{id}$就给出了结论。将右侧记作$Y(z)$，从直和的性质，我们只需要验证$Y(z)\in (T_zS)^\dagger$中，且如果$X_F(z)\in T_zS$，则$Y(z)=0$，如果$X_F(z)\in (T_zS)^\dagger$，则$Y(z)=X_F(z)$.
+
+	首先，任取$v\in T_zS$，我们有
+	\[
+		\Omega(Y,v)=\sum_{i,j=2k+1}^{2n}\{F,z^i\}C_{ij}\dd z^j(v),
+	\]
+	由于在$S$上$z^j$都为零，所以$\dd z^j(v)=v(z^j)=0$，因此$Y(z)\in (T_zS)^\dagger$.
+
+	其次，如果$X_F(z)\in (T_zS)^\dagger$，则任取$v\in T_zS$，$\dd F(v)=0$. 所以
+	\[
+		\dd F=\sum_{j=2k+1}^{2n}a_j\dd z^j,
+	\]
+	所以
+	\[
+		X_F(z)=\sum_{j=2k+1}^{2n}a_jX_{z^j}(z),
+	\]
+	且
+	\[
+		\{z^i,F\}=\dd z^i(X_F)=\sum_{j=2k+1}^{2n}a_j\dd z^i(X_{z^j})=\sum_{j=2k+1}^{2n}a_j\{z^i,z^j\},
+	\]
+	所以不难反解出$a_i=\sum_{j=2k+1}^{2n}\{z^j,F\}C_{ij}$，此时
+	\[
+		X_F=\sum_{i,j=2k+1}^{2n}\{z^i,F\}C_{ji}X_{z^j}(z)=\sum_{i,j=2k+1}^{2n}\{F,z^i\}C_{ij}X_{z^j}(z)=Y.
+	\]
+
+	最后，$X_F(z)\in T_zS$，由于$T_zS=((T_zS)^\dagger)^\dagger$，所以$\Omega(X_F,X_{z^j})=0$对所有$j=2k+1,\dots,2n$都成立，所以$\{F,z^j\}=0$就给出了$Y=0$.
+\end{proof}
+
+上面的定理是依赖于坐标的，我们也可以将其改述为坐标无关的形式。设$\psi:P\to M$是一个淹没，辛子流形$S$有$M$上的一个点$m_0$关于$\psi$的原像给出. 记$z\in S$，而$m=\psi(z)$，定义$C_m:T_m^*M\times T_m^*M\to \rr$为
+\[
+	C_m(\dd F,\dd G)=\{F\circ \psi,G\circ \psi\},
+\]
+其中$F$和$G$为$M$上的光滑函数。假设$C_m$是可逆的，存在“逆”
+\[
+	C_m^{-1}:T_m M\times T_m M\to \rr,
+\]
+于是
+\[
+	\{F|_S,G|_S\}(z)=\{F,G\}(z)-C_m^{-1}(\psi_{*z}X_F(z),\psi_{*z}X_G(z)),
+\]
+其中$z\in S$.
+
+尽管定理本身非常明快，但是，操作起来还会遇到一些其他的问题。比方说，我们遇到一个Lagrangian系统，成立$p_1=\partial L/\partial \dot q^1=C$. 此时，$p_1$是一个自然产生的约束，但是，显然约束数目不够，因为约束方程肯定是偶数个。设$p_1=C$确定的流形为$S$，如果$S$确确实实是辛子流形，则满足一定初始条件的路径随着时间演化也必然在$S$上，即$\dot p_1|_S=0$，利用正则方程，我们就有$\partial H|_S/\partial q^1=0$. 所以$H$限制在$S$并不依赖于$q^1$，这就意味着，我们可以将$q^1$选为任意的数，不妨取$q^1=0$，这就给出了第二个约束。此时，Dirac括号写作
+\[
+	\{F,G\}_{\mathrm{D}}=\{F,G\}+\{F,p_1\}\{q^1,G\}-\{F,q^1\}\{p_1,G\}.
+\]
+但是注意到恒等式
+\[
+	\{F,G\}=\{F,q^n\}\{p_n,G\}-\{G,q^n\}\{p_n,F\},
+\]
+所以
+\[
+	\{F,G\}_{\mathrm{D}}=\sum_{n\geq 2}\bigl(\{F,p_n\}\{q^n,G\}-\{F,q^n\}\{p_n,G\}\bigr),
+\]
+即去掉了$p_1$和$q^1$的Possion括号。
+
+一般地，假设在$S$的一点$z_0$附近，我们可以选取坐标$z^1$, $\dots$, $z^{2n}$使得$S$由约束方程$z^{2k+1}=0$, $\dots$, $z^{2n}=0$给出，记$z^1$, $\dots$, $z^{2n}$张成的函数环的理想为$I$，任何约束都可以看作$I$中的元素。
+
+设$\varphi\in I$，写作$\varphi=\sum_{i=2k+1}^{2n}z^if_i$，其中$f_i$是$P$上的光滑函数。不难计算得，
+\[
+	\{z^j,\varphi\}|_S=\sum_{i=2k+1}^{2n}\{z^j,z^i\}|_Sf_i|_S,
+\]
+所以，不难反解出
+\[
+	f_i|_S=\sum_{j=2k+1}^{2n}C_{ij}\{z^j,\varphi\}|_S.
+\]
+所以，在我们假设了$C^{ij}$可逆的情况下，$\varphi\in I^2$当且仅当$\{z^j,\varphi\}|_S=0$对所有的$2k+1\leq j\leq 2n$都成立。
+
+如果$\{H,\varphi\}|_S=0$，即 
+\[
+	\{H,\varphi\}|_S=\sum_{i=2k+1}^{2n}\{H,z^i\}|_Sf_i|_S=0,
+\]
+
+此外，不难计算
+\[
+	\{F,\varphi\}_{\mathrm D}|_S=0
+\]
+
+\begin{pro}
+	设$\{\varphi_i\,:\,1\leq i\leq s\}$也张成了$I$，如果$s<2n-2k$，则存在$2n-2k-s$个$\varphi_i$使得$\{\varphi_i,\varphi_j\}|_S=0$对所有的$j$都成立。
+\end{pro}
+
+\begin{proof}
+	
+\end{proof}
+
+\section{量子化}
+
+量子化的方式千千万，而正则量子化操作上是将经典量改成算符，把Possion括号（对于约束系统即Dirac括号）转为对易子。
+
+设场$\{q^n(x)\}$和$\{p_n(x)\}$是所谓的“正则坐标”和“正则动量”，$n$是场的指标，一般来说是有限的，再设$F$是$\{q^n(x)\}$和$\{p_n(x)\}$的泛函，写作$F[q(t),p(t)]$，这里至多只依赖于时间。定义变分
+\[
+	\delta F(t)=\int \mathrm d^3\mathbf x \,\left(\delta q^n(\mathbf x,t)\frac{\delta F[p(t),q(t)] }{\delta q^n(\mathbf x,t)} +\frac{\delta F[p(t),q(t)] }{\delta p_n(\mathbf x,t)}\delta p_n(\mathbf x,t)\right),
+\]
+方便起见，我们记
+\[
+	\delta_n F(\mathbf x,t):=\frac{\delta F[p(t),q(t)]}{\delta q^n(\mathbf x,t)},\quad \delta^n F(\mathbf x,t):=\frac{\delta F[p(t),q(t)]}{\delta p_n(\mathbf x,t)}.
+\]
+特别地，给定坐标$\mathbf y$，则$q^n(\mathbf y,t)$和$p_n(\mathbf y,t)$都是泛函，不难发现，
+\[
+	\frac{\delta q^n(\mathbf y,t)}{\delta q^m(\mathbf x,t)}=\delta^n_m\delta^3(\mathbf x-\mathbf y),\quad  \frac{\delta p_n(\mathbf y,t)}{\delta p_m(\mathbf x,t)}=\delta^m_n\delta^3(\mathbf x-\mathbf y).
+\]
+
+在物理中，一大类泛函$F$可以写作$p$和$q$的函数的空间积分，即具有形式
+\[
+	F[p(t),q(t)]=\int\mathrm d^3 \mathbf x \,f(p(\mathbf x,t),q(\mathbf x,t)).
+\]
+则此时不难计算得到
+\[
+	\delta_n F(\mathbf x,t)=\frac{\partial f}{\partial q^n}(\mathbf x,t),\quad \delta^n F(\mathbf x,t)=\frac{\partial f}{\partial p_n}(\mathbf x,t).
+\]
+给定坐标$\mathbf y$，$q^n(\mathbf y,t)$和$p_n(\mathbf y,t)$也是这一类泛函。
+
+继而，我们可以通过变分来定义出场的Possion括号
+\[
+   \delta_n=i\left[p_n(\mathbf x,t),*\right],\quad \delta^n=i\left[*,q^n(\mathbf x,t)\right],
+\]
+它们都作用于某个$\{q^n(x)\}$和$\{p_n(x)\}$的泛函上。从定义，它们都是线性的。特别地，
+\[
+[p_m(\mathbf x,t),q^n(\mathbf y,t)]=-i\delta^n_m\delta^3(\mathbf x-\mathbf y)
+\]
+
+正则量子化将场$\{q^n(x)\}$和$\{p_n(x)\}$量子化为量子场，其他的算符都可以由这些场组合出来，对易关系由
+
+\section{分离自由项}
+
+正则量子化的第一步，是将$H$分离为自由部分$H_0$以及相互作用部分$V$. 从对称性出发，我们可以直接构造出各种自由场，适当改写后，我们可以将其改写为Hamiltonian，于是，我们可以得到正确的自由Hamilton量的形式$H_0$. 比方说，对于实标量场$\phi$，有
+\[
+	H_0=\frac 12 \int \dd^3 x \,\left(\partial_\mu\phi\partial^\mu\phi-m^2\phi^2\right).
+\]
+对于自旋为$1$的有质量矢量场$V^\mu$，记$F_{\mu\nu}=\partial_{\mu}V_{\nu}-\partial_{\nu}V_{\mu}$，则
+\[
+	H_0=\int \dd^3 x \,\left(-\frac 14 F^{\mu\nu}F_{\mu\nu}+\frac 12 m^2V_{\mu}V^\mu\right).
+\]
+再比如自旋$1/2$的有质量场，
+\[
+	H_0=\int \dd^3 x \,\bar\psi(i\mynot{\partial}-m)\psi,
+\]
+\end{document}

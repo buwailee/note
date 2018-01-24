@@ -21,7 +21,7 @@ f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
 	&=\im(f_{i+1})(\coker \ker f_{i+1}) \im(f_{i})\coim(f_{i})\\
 	&=\im(f_{i+1})t(\coker \im f_i) \im(f_{i})\coim(f_{i})\\
 	&=\im(f_{i+1})t\bigl((\coker \im f_i) \im(f_{i})\bigr)\coim(f_{i})\\
-	&=\im(f_{i+1})t0\coim(f_{i})\\
+	&=\im(f_{i+1})t\,0\coim(f_{i})\\
 	&=0.
 \end{align*}
 
@@ -30,7 +30,7 @@ f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
 \[
 	0\to \cdot \xrightarrow{f} \cdot.
 \]
-为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态。对偶地，考虑正合列
+为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态射。对偶地，考虑正合列
 \[
 	\cdot\xrightarrow{f} X \to  0.
 \]
@@ -38,13 +38,13 @@ f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
 \[
 	\coker f=\coker \ker \coker f=\coker \im f \approx \coker \ker 0.
 \]
-注意到，此时$\ker 0=\id_X$是一个满态，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态。
+注意到，此时$\ker 0=\id_X$是一个满态射，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态射。
 
 现在，我们来到正合列
 \[
 	0\to \cdot \xrightarrow{f} \cdot \to 0,
 \]
-由上面可知$f$即是单态又是满态，在Abel范畴中这等价于说$f$是一个同构。
+由上面可知$f$即是单态射又是满态射，在Abel范畴中这等价于说$f$是一个同构。
 
 最后，正合列
 \[
@@ -101,18 +101,18 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \end{para}
 
 \begin{lem}
-假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态，则$Rf$是$\mathcal{D}$中的单态。
+假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态射，则$Rf$是$\mathcal{D}$中的单态射。
 \end{lem}
 
 \begin{proof}
-已知$f$是一个单态当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态。
+已知$f$是一个单态射当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态射。
 \end{proof}
 
-在Abel范畴中，$f$是一个单态等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态，所以$Rf=\im(Rf)$，结合这两点就得到了
+在Abel范畴中，$f$是一个单态射等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态射，所以$Rf=\im(Rf)$，结合这两点就得到了
 \[
 	R(\im f)=Rf=\im(Rf).
 \]
-这意味着，对单态而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态。
+这意味着，对单态射而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态射，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态射。
 
 \begin{pro}
 如果$R$是一个从Abel范畴到Abel范畴的右伴随函子，则对正合列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$，他将诱导一个正合列
@@ -165,7 +165,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 	\[
 	0\to \cdot \xrightarrow{f_*}\cdot \xrightarrow{g_*}\cdot
 	\]
-	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态，所以$\ker g_* \subset \im f_*$.
+	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态射，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态射，所以$\ker g_* \subset \im f_*$.
 
 	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$是左正合函子。
 \end{proof}
@@ -175,7 +175,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 我们将在Abel范畴中谈论追图。
 
 \begin{lem}\label{zhuitu}
-设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态$u$和$v$使得如下交换图成立，
+设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态射$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态射$u$和$v$使得如下交换图成立，
 \[
 \xymatrix{
 	\cdot \ar[r]^u \ar[d]_v & \cdot\ar[d]^f\\
@@ -188,23 +188,23 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 为证明传递性，我们需要如下引理。
 
 \begin{lem}\label{mt}
-	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态，则$p_Y$是满态.
+	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态射，则$p_Y$是满态射.
 \end{lem}
 
 \begin{proof}[Proof of Lemma \ref{mt}]
 	在Abel范畴中，我们已经知道积是存在的，即$X\times Y$存在，投影分别记作$\pi_X$和$\pi_Y$. 并且，核是存在的，则$X\times_Z Y$可以定义为$\ker(f\pi_X-g\pi_Y)$的定义域，而$p_X=\pi_X\ker(f\pi_X-g\pi_Y)$以及$p_Y=\pi_Y\ker(f\pi_X-g\pi_Y)$.
 
-	现在，设$f$是一个满态，下面说明$f\pi_X-g\pi_Y$是满态。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态，所以$h=0$. 此即所证。
+	现在，设$f$是一个满态射，下面说明$f\pi_X-g\pi_Y$是满态射。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态射，所以$h=0$. 此即所证。
 
-	利用$f\pi_X-g\pi_Y$是满态，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
+	利用$f\pi_X-g\pi_Y$是满态射，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
 	\[
 	0=h\pi_Yi_X=k(f\pi_X-g\pi_Y)i_X=kf,
 	\]
-	由于$f$是满态，所以$k=0$. 因此
+	由于$f$是满态射，所以$k=0$. 因此
 	\[
 	h=h\pi_Yi_Y=k(f\pi_X-g\pi_Y)i_Y=0.
 	\]
-	这就说明了$p_Y$是一个满态。
+	这就说明了$p_Y$是一个满态射。
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{zhuitu}]
@@ -216,15 +216,15 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 	&Z_2\ar[ru]^c\ar[r]_d&X''\ar[ru]_h&
 	}
 	\]
-	其中$a$, $b$, $c$, $d$都是满态。由上一个引理，$c$是满态给出$p_{Z_1}$是满态，$d$是满态给出$p_{Z_2}$是满态。最后，满态$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
+	其中$a$, $b$, $c$, $d$都是满态射。由上一个引理，$c$是满态射给出$p_{Z_1}$是满态射，$d$是满态射给出$p_{Z_2}$是满态射。最后，满态射$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
 \end{proof}
 
 \begin{para}
 从Lemma \ref{zhuitu}，我们得到了指向$X$的态射的等价类，其中的元素称为对象$X$的伪元素，记作$[x]$，其中$x$是等价类中的代表元。而$[x]\in \mathcal{C}(-,X)/\sim$记作$[x]\in_m X$. 
 
-设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
+设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态射$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
 
-值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态$u$, $v$使得$xu=0v=0$，再由$u$是一个满态，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
+值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态射$u$, $v$使得$xu=0v=0$，再由$u$是一个满态射，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
 
 设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 注意到，如果$x\sim x'$，则$fx\sim fx'$，所以$f(x)=f(x')$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
 
@@ -238,21 +238,21 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \end{lem}
 
 \begin{proof}
-如果$f\sim g$，则存在满态$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
+如果$f\sim g$，则存在满态射$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态射，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
 
 反过来，设$f:X\to Z$而$g:Y\to Z$，考虑$X\times_Z Y=\{(x,y)\,:\,f(x)=g(y)\}$. 如果$\im f=\im g$，则$f(X)=g(Y)$. 所以任取$x_0\in X$都存在一个$y_0\in Y$使得$f(x_0)=g(y_0)$，此时$x_0=p_X(x_0,y_0)$，所以$p_X$是满同态。同理，$p_Y$是满同态。
 \end{proof}
 
 因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f x)=f(\im x)$. 这就还原了作为映射的$f$. 
 
-下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态还是满态可以应用模范畴中类似的手段来做。
+下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态射还是满态射可以应用模范畴中类似的手段来做。
 
 \begin{pro}[追图法]
 设$f:X\to Y$是一个态射，
 \begin{compactenum}[~~~(1)]
-\item $f$是单态，当且仅当$f(x)=0$可以推出$x=0$.
-\item $f$是单态，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
-\item $f$是满态，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
+\item $f$是单态射，当且仅当$f(x)=0$可以推出$x=0$.
+\item $f$是单态射，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
+\item $f$是满态射，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
 \item $f=0$当且仅当任取$[x]\in_m X$都有$f(x)=0$.
 \item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$[x]$使得$[y]=f(x)$.
 \item 如果$f(x)=f(x')$，则存在$[x'']\in_m X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
@@ -264,21 +264,21 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \begin{proof}
 依次证明如下。
 \begin{compactenum}[~~~(1)]
-\item 如果$f$是单态，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态。
+\item 如果$f$是单态射，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态射。
 
-\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态。
+\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态射$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态射。
 
-\item 假设$f$是满态。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态，所以$p_{X'}:X\times_Y X'\to X'$是满态。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
+\item 假设$f$是满态射。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态射，所以$p_{X'}:X\times_Y X'\to X'$是满态射。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
 
-反过来，设$f$不是满态，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态$u$, $v$使得$fxu=v$，由于$v$是满态，所以$f$也必须是满态，矛盾。
+反过来，设$f$不是满态射，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态射$u$, $v$使得$fxu=v$，由于$v$是满态射，所以$f$也必须是满态射，矛盾。
 
 \item 显然。
 
-\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态可以得到$p_h$是一个满态. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
+\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态射可以得到$p_h$是一个满态射. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
 
-反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
+反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态射$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态射$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
 
-\item 如果$f(x)=f(x')$，则存在满态$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
+\item 如果$f(x)=f(x')$，则存在满态射$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
 \end{compactenum}
 \end{proof}
 
@@ -294,20 +294,20 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \]
 且横向的两行都是正合列。则，
 \begin{compactenum}[~~~(1)]
-\item 如果$h_2$, $h_4$是单态，$h_1$是满态，则$h_3$是单态。
-\item 如果$h_2$, $h_4$是满态，$h_5$是单态，则$h_3$是满态。
-\item 如果$h_2$, $h_4$是同构，$h_1$是满态，$h_5$是单态，则$h_3$是同构。
+\item 如果$h_2$, $h_4$是单态射，$h_1$是满态射，则$h_3$是单态射。
+\item 如果$h_2$, $h_4$是满态射，$h_5$是单态射，则$h_3$是满态射。
+\item 如果$h_2$, $h_4$是同构，$h_1$是满态射，$h_5$是单态射，则$h_3$是同构。
 \end{compactenum}
 \end{lem}
 
 \begin{proof}
 最后一点不过是前面两点的推论。第二点是第一点的对偶命题，所以我们只要证明第一点即可。
 
-取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
+取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态射，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态射，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
 \[
 	g_1(z)=g_1h_1(w)=h_2f_1(w),
 \]
-从$g_1(z)=h_2(y)$以及$h_2$是一个单态，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
+从$g_1(z)=h_2(y)$以及$h_2$是一个单态射，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
 \end{proof}
 
 五引理最常见的应用是短五引理，他将用在短正合列上面。
@@ -322,8 +322,8 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \]
 于是，
 \begin{compactenum}[~~~(1)]
-\item 如果$h_2$, $h_4$是单态，则$h_3$是单态。
-\item 如果$h_2$, $h_4$是满态，则$h_3$是满态。
+\item 如果$h_2$, $h_4$是单态射，则$h_3$是单态射。
+\item 如果$h_2$, $h_4$是满态射，则$h_3$是满态射。
 \item 如果$h_2$, $h_4$是同构，则$h_3$是同构。
 \end{compactenum}
 \end{lem}
@@ -340,10 +340,10 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \[
 	\xymatrix{
 	&0\ar[d]&0\ar[d]&0\ar[d]&\\
-	0\ar@{.>}[r]&\cdot\ar@{.>}[r]^a\ar[d]^{\ker u}&\cdot\ar@{.>}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
+	0\ar@{-->}[r]&\cdot\ar@{-->}[r]^a\ar[d]^{\ker u}&\cdot\ar@{-->}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
 	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
 	0\ar[r]&\cdot \ar[r]^{f'}\ar[d]^{\coker u}&\cdot \ar[r]^{g'}\ar[d]^{\coker v}&\cdot \ar[r]\ar[d]^{\coker w}&0\\
-	&\cdot \ar@{.>}[r]_c\ar[d] &\cdot \ar@{.>}[r]_d\ar[d] &\cdot \ar@{.>}[r]\ar[d]& 0\\
+	&\cdot \ar@{-->}[r]_c\ar[d] &\cdot \ar@{-->}[r]_d\ar[d] &\cdot \ar@{-->}[r]\ar[d]& 0\\
 	&0&0&0&\\
 	}
 \]
@@ -363,20 +363,20 @@ $a$, $b$, $c$, $d$的存在唯一性直接来自于$\ker$与$\coker$的泛性质
 	0\ar[r]&V \ar[r]_-{i_V}&V\cup_U W \ar[r]_-{\coker i_V}&\cdot\ar[r]&0
 	}
 \]
-其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
+其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态射，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
 
-同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态，所以由Lemma \ref{mt}，$p_X$是满态。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态。
+同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态射，所以由Lemma \ref{mt}，$p_X$是满态射。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态射。
 
-现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
+现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态射，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
 
 最后，正和性的检验是直接的，追图法将解决一切。
 \end{proof}
 
-利用蛇引理，短五引理是直接的。如果$u$和$w$是单态，则我们在正合列中有
+利用蛇引理，短五引理是直接的。如果$u$和$w$是单态射，则我们在正合列中有
 \[
 	0\to 0 \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}0,
 \]
-所以$\ker v=0$，这就是说$v$也是单态。满态的命题也类似。
+所以$\ker v=0$，这就是说$v$也是单态射。满态射的命题也类似。
 
 \section{链条件}
 
@@ -490,15 +490,29 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \[
 	R^I\to R^J \to M\to 0.
 \]
-这被称为模$M$的free presentation，如果$I$和$J$都是有限的，则$M$被称为finitely presented.
+这被称为模$M$的有限表示，如果$I$和$J$都是有限的，则$M$被称为有限表示模。
 
-finitely presented模一定是有限生成模，但一般而言，有限生成模不是finitely presented，比如取一个非Noether环$R$以及它的一个非有限生成理想$I$使得$R/I$是一个有限生成模，那么有短正合列$0\to I\to R \to R/I\to 0$，此处由于$I$不是有限生成的，所以$R/I$就不是finitely presented.
+有限表示模一定是有限生成模，但一般而言，有限生成模不是有限表示模，比如取一个非Noether环$R$以及它的一个非有限生成理想$I$使得$R/I$是一个有限生成模，那么有短正合列$0\to I\to R \to R/I\to 0$，此处由于$I$不是有限生成的，所以$R/I$就不是有限表示模。\endpara
 
-但是到了Noether环上的模就不会如此，考虑任意的有限生成模$M$，他可以写成$R^n$的商模，即有短正合列$0\to N \hookrightarrow R^n \to M\to 0$，由于$N$是$R^n$的子模，而$R^n$是$R$上的有限生成模，所以$R^n$是Noether模，继而推知$N$是有限生成的，所以存在满同态$R^m\to N$，这样我们就得到了正合列$R^m\to R^n\to M\to 0$.
+但是到了Noether环上的模就不会如此。
 
-\para 设$\mathfrak{a}$是$R$的一个理想，而$M$是一个$R$-模，记$\mathfrak{a}M$是所有形如$am$，其中$a\in \mathfrak{a}$以及$m\in M$的元素生成的。
+\begin{pro}
+	设$R$是Noether环，则有限生成$R$-模等价于有限表示$R$-模。
+\end{pro}
 
-作为例子，设$N$是$M$的一个子模，这里来计算$\mathfrak{a}(M/N)$. $\mathfrak{a}(M/N)$由$\sum_{i=1}^n a_i\bar{m}_i$生成，其中$\bar{m}_i\in M/N$. 观察$\sum_{i=1}^n a_i m_i$，为得到$\sum_{i=1}^n a_i\bar{m}_i$，需要模去$N$，但是$N$未必是$\mathfrak{a}M$的子模，所以可以先把$\mathfrak{a}M$扩张为$\mathfrak{a}M+N$，再模去$N$，添进去的多余的$N$里面的元素也一道模掉了，这样就得到了想要的$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$. 或者，可以通过先将$N$缩小到$\mathfrak{a}M$的一个子模$N\cap \mathfrak{a}M$，于是$\mathfrak{a}(M/N)=\mathfrak{a}M/(N\cap \mathfrak{a}M)$.
+\begin{proof}
+	考虑任意的有限生成模$M$，他可以写成$R^n$的商模，即有短正合列$0\to N \hookrightarrow R^n \to M\to 0$，由于$N$是$R^n$的子模，而$R^n$是$R$上的有限生成模，所以$R^n$是Noether模，继而推知$N$是有限生成的，所以存在满同态$R^m\to N$，这样我们就得到了正合列$R^m\to R^n\to M\to 0$.
+\end{proof}
+
+\para 设$\mathfrak{a}$是$R$的一个理想，而$M$是一个$R$-模，记$\mathfrak{a}M$是所有形如$am$，其中$a\in \mathfrak{a}$以及$m\in M$的元素生成的$M$的子模。\endpara
+
+\begin{lem}
+	设$N$是$M$的一个子模，则我们可以典范等同模$\mathfrak{a}(M/N)$、模$(\mathfrak{a}M+N)/N$和模$\mathfrak{a}M/(N\cap \mathfrak{a}M)$.
+\end{lem}
+
+\begin{proof}
+	模$\mathfrak{a}(M/N)$由$\sum_{i=1}^n a_i\overline{m}_i$生成，其中$\overline{m}_i\in M/N$，是$M/N$的子模。观察$\sum_{i=1}^n a_i m_i$，为得到$\sum_{i=1}^n a_i\overline{m}_i$，需要模去$N$，但是$N$未必是$\mathfrak{a}M$的子模，所以可以先把$\mathfrak{a}M$扩张为$\mathfrak{a}M+N$，再模去$N$，添进去的多余的$N$里面的元素也一道模掉了，这样就得到了想要的典范等同$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$. 或者，可以通过先将$N$缩小到$\mathfrak{a}M$的一个子模$N\cap \mathfrak{a}M$，于是就有了另一个典范等同$\mathfrak{a}(M/N)=\mathfrak{a}M/(N\cap \mathfrak{a}M)$.
+\end{proof}
 
 \begin{thm}[Hamilton-Cayley定理]
 设$M$是一个有限生成$R$-模，他能被$n$个元素生成. 再设$\mathfrak{a}$是$R$的一个理想，$\varphi:M\to M$是一个自同态。如果$\varphi(M)\subset \mathfrak{a}M$，则存在首一多项式
@@ -522,7 +536,11 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 	对任意的$m_i$都成立。所以也对任意的$m\in M$都成立，而$\det\left(x\delta_{ij}-r_{ij}\right)$就是我们需要的多项式。
 \end{proof}
 
-\para 作为Hamilton-Cayley定理的应用，我们可以断言，有限生成模的任意满自同态是同构。
+作为Hamilton-Cayley定理的应用，我们有如下断言：
+
+\begin{pro}
+	有限生成模的任意满自同态是同构。
+\end{pro}
 
 \begin{proof}
 	把$M$看出$R[x]$-模，其中$xm=\varphi(m)$，他是有限生成的，因为作为$R$-模是有限生成的。令$I=(x)$是$x$在$R[x]$中生成的主理想。由于$\varphi$是满射，则$IM=M$. 选则映射$\id_M=1:M\to M$，这显然是一个$R[x]$-模同态，由于$\id_M(M)\subset IM$，利用Hamilton-Cayley定理，存在一个多项式$p$，系数属于$I$使得
@@ -532,9 +550,13 @@ finitely presented模一定是有限生成模，但一般而言，有限生成�
 	其中$q\in R[x]$. 或者写作，$1-q(\varphi)\varphi=0$. 因此$q(\varphi)$是$\varphi$的一个逆，进而$\varphi$是一个同构。
 \end{proof}
 
-\para 设$M$是一个模，一组元素$\{x_1$, $\dots$, $x_n$, $\dots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1}$, $\dots$, $x_{i_k}\in M$，以及对任意的$r_{i_1}$, $\dots$, $r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1$, $\dots$, $x_n$, $\dots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。
+\para 设$M$是一个模，一组元素$\{x_1$, $\dots$, $x_n$, $\dots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1}$, $\dots$, $x_{i_k}\in M$，以及对任意的$r_{i_1}$, $\dots$, $r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1$, $\dots$, $x_n$, $\dots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。\endpara
 
-\para 将上述命题应用到自由模。设$M\cong R^n$，而$I=\{x_1$, $\dots$, $x_n\}$自由生成了$M$，则$M$同构于$I=\{x_1$, $\dots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
+将上一个命题应用到自由模。
+
+\begin{pro}
+	设$M\cong R^n$，而$I=\{x_1$, $\dots$, $x_n\}$自由生成了$M$，则$M$同构于$I=\{x_1$, $\dots$, $x_n\}$生成的自由模$\bigoplus_{x\in I} R$.
+\end{pro}
 
 \begin{proof}
 	$\bigoplus_{x\in I} R$自然可以看成$R^n$，从$\bigoplus_{x\in I} R=R^n$到$M$有自然的满射$\alpha$，他将生成元映到生成元，由于$M\cong R^n$，所以有同构$\beta:M\to R^n$，因此就有了满同态$\alpha\beta:M\to M$，进而是同构。所以$\alpha =(\alpha\beta)\beta^{-1}$就是一个同构。
@@ -597,7 +619,7 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 \para 设$M$是$R$-模，$S$是$R$-代数，那么$M_S=S\otimes_R M$就是一个$S$-模，通过$s(t\otimes a)=(st)\otimes a$，我们称这个$S$-模$M_S$为$M$经过标量扩充而来的。
 
 \begin{lem}
-设$M$, $N$是$R$-模，而$S$是$R$-代数，则我们有以下同构：
+设$M$, $N$是$R$-模，而$S$是$R$-代数，则我们有以下典范同构：
 \begin{compactenum}[~~~(1)]
 \item $M_S\otimes_S N_S\cong (M\otimes_R N)_S$.
 \item 如果$N$是一个$S$-模，则有同构$\Hom_R(M,N)\cong \Hom_S(M_S,N)$
@@ -608,7 +630,7 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 
 第二个同构。设$\phi\in \Hom_R(M,N)$，我们可以通过$\Phi(s\otimes a)=s\phi(a)$定义$\Phi\in \Hom_S(M_S,N)$，反过来，已知$\Phi\in \Hom_S(M_S,N)$，我们可以通过$\phi(a)=\Phi(1\otimes a)$来定义$\phi\in \Hom_R(M,N)$.不难检验，这是一个同构。 \end{proof}
 
-对有限个$\{M_i\}_{i\in I}$，那么反复利用\no{1}我们就得到了同构
+对有限个$\{M_i\}_{i\in I}$，那么反复利用 (1) 我们就得到了典范同构
 \[
 	\bigotimes_{i\in I} \left(S\otimes_RM_i\right)\cong S\otimes_R\bigotimes_{i\in I} M_i.
 \]
@@ -628,27 +650,52 @@ $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\
 
 注意到，零映射扩张成的映射只能是零映射，这可以用来给出一些等式。比如在实Lie代数$V$中有Jacobi恒等式$B(u,v,w)=0$对任意的$u$, $v$, $w\in V$成立，其中$B$是一个多线性映射，所以经过复化后依然有$B_\cc (u,v,w)=0$对任意的$u$, $v$, $w\in V_\cc$成立。
 
-\para 注意到$M$和$N$如果都是$R$-模，则$\Hom_R(M,N)$也可以看成一个$R$-模，通过定义$(rf)(m)=rf(m)$. 这样我们自然可以问$\Hom_R(M,N)$关于标量扩张的表现。
+\para 注意到$M$和$N$如果都是$R$-模，则$\Hom_R(M,N)$也可以看成一个$R$-模，通过定义$(rf)(m)=rf(m)$. 此时，我们自然可以问$\Hom_R(M,N)$关于标量扩张的表现。
 
 设$S$是一个$R$-代数，那么存在一个自然的$S$-模同态
 \[
 	\alpha_S:S\otimes\Hom_R(M,N)\to \Hom_S(S\otimes M,S\otimes N).
 \]
+实际上，从$\Hom_R(M,N)$出发，我们可以定义一个映射$\alpha:\Hom_R(M,N)\to \Hom_S(S\otimes M,S\otimes N)$，通过将$\varphi$映射为$1\otimes \varphi$. 这显然是一个$R$-模同态，所以上一个命题告诉我们，$\alpha$可以唯一扩展为一个$S$-模同态$S\otimes\Hom_R(M,N)\to \Hom_S(S\otimes M,S\otimes N)$，具体到元素，我们有
+\[
+	\alpha_S(s\otimes \varphi)=s(1\otimes \varphi),
+\]
+其中$\varphi\in \Hom_R(M,N)$.
+
 所谓自然，就是说满足交换图
 \[
 \begin{xy}
 	\xymatrix
 	{
-		S\otimes\Hom_R(M,N)\ar[rr]^{\alpha_S}\ar[d]&&\Hom_S(S\otimes M,S\otimes N)\ar[d]\\
-		T\otimes\Hom_R(M,N)\ar[rr]^{\alpha_T}&&\Hom_T(T\otimes M,T\otimes N)
+		S\otimes\Hom_R(M,N)\ar[rr]^-{\alpha_S}\ar[d]&&\Hom_S(S\otimes M,S\otimes N)\ar[d]\\
+		T\otimes\Hom_R(M,N)\ar[rr]^-{\alpha_T}&&\Hom_T(T\otimes M,T\otimes N)
 	}
 \end{xy}
 \]
-$\alpha_S$我们如下定义：由于$\alpha_S$是$S$-模同态，所以只要考察$\alpha_S(1\otimes \varphi)$即可，其中$\varphi\in \Hom_R(M,N)$. 
+这副图的检查从定义是自然的。
 
-如果$S$是一个平坦$R$-模且$M$具有有限表示，则$\alpha_S$还是一个同构。
+\begin{pro}\label{3.5.5}
+	如果$S$是一个平坦$R$-模且$M$具有有限表示，则$\alpha_S:S\otimes\Hom_R(M,N)\to \Hom_S(S\otimes M,S\otimes N)$还是一个同构。
+\end{pro}
 
-\para 一个环$R$中的元素一般不是可逆的，那一个自然的问题就出现了，是否存在一个比这个环大一点的环$S$使得$R$中的某些元素（因为0自然不会是可逆的）在环$S$中是可逆的。一个经典的构造是从整数环$\mathbb{Z}$构造出有理数域$\mathbb{Q}$. 下面以整环的语境复述一遍。
+\begin{proof}
+	所谓平坦$R$-模就是说张量积是正合的，而$M$具有有限表示就是说存在正整数$m$和$n$使得正合列$R^m\to R^n \to M\to 0$成立。
+
+	我们先考虑$M=R^n$的情况，此时，$S\otimes M=S^n$，进而我们可以通过$\varphi\mapsto (\varphi(1_1),\dots,\varphi(1_n))$来典范等同$\Hom_R(R^n,N)$以及$N^n$，其中$\varphi:R^n\to N$，而$1_i$是第$i$个$R$中的单位元。所以此时$\alpha_S$就是可以等同于$S\otimes N^n\to (S\otimes N)^n$. 由于张量积与直和是可以交换的，所以这两个可以看成同一个模，此时可以检查$\alpha_S$就是恒等映射，所以是一个同构。
+
+	现在，利用$M$是有限表示模，以及$\Hom$函子是左正合函子，所以我们有交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			0\ar[r]\ar@{=}[d]&0\ar[r]\ar@{=}[d]&S\otimes \Hom_R(M,N)\ar[r]\ar[d]&S\otimes \Hom_R(R^n,N)\ar[r]\ar[d]&S\otimes \Hom_R(R^m,N)\ar[d]\\
+			0\ar[r]&0\ar[r]&\Hom_R(S\otimes M,S\otimes N)\ar[r]&\Hom_R(S\otimes R^n,S\otimes N)\ar[r]&\Hom_R(S\otimes R^m,S\otimes N)
+		}
+	\end{xy}
+	\]
+	其中横着的两行都是正合的，除了正中那列，每列都是同构，利用五引理 Lemma \ref{5-lem}，我们立刻得到中间那列是同构，此即所需。
+\end{proof}
+
+\para[分式域] 一个环$R$中的元素一般不是可逆的，那一个自然的问题就出现了，是否存在一个比这个环大一点的环$S$使得$R$中的某些元素（因为0自然不会是可逆的）在环$S$中是可逆的。一个经典的构造是从整数环$\mathbb{Z}$构造出有理数域$\mathbb{Q}$. 下面以整环的语境复述一遍。
 
 设$R$是一个整环，而$R^{*}=R-\{0\}$是$R$中除去$0$得到的集合，考虑集合$R\times R^{*}$，即所有的二元组$(r,s)$的集合，其中$s\neq 0$. 其中$r$被称为分子，而$s$被称为分母。
 
@@ -658,7 +705,7 @@ $\alpha_S$我们如下定义：由于$\alpha_S$是$S$-模同态，所以只要�
 \[
 	\frac{r}{s}+\frac{r'}{s'}=\frac{rs'+r's}{ss'},\quad \frac{r}{s}\frac{r'}{s'}=\frac{rr'}{ss'}.
 \]
-不难检验这个运算的定义这和代表元的选取无关。注意到整环的条件会用到乘法里面，因为如果不是整环，两个分母相乘可能得到零，而零并不能作为分母。这个环记作$F(R)$，乘法单位元是$1/1$，而零元是$0/1$，通过建立$r\in R$与$r/1\in F(R)$的等同，可以将$R$看成$F(R)$的子环。$F(R)$还是一个域，实际上，任取$r/s$，其中$r\neq 0$，则$s/r$是它的逆。称$F(R)$是整环$R$的分式域。
+不难检验这个运算的定义这和代表元的选取无关。注意到整环的条件会用到乘法里面，因为如果不是整环，两个分母相乘可能得到零，而零并不能作为分母。这个环记作$F(R)$，乘法单位元是$1/1$，而零元是$0/1$，通过建立$r\in R$与$r/1\in F(R)$的等同，可以将$R$看成$F(R)$的子环。$F(R)$还是一个域，实际上，任取$r/s$，其中$r\neq 0$，则$s/r$是它的逆。称$F(R)$是整环$R$的分式域。\endpara
 
 \para 这里我们来看另一种构造。设$R$是一个整环，记$R^*=R-\{0\}$，可以构造一个多项式环$R[R^*]$，对应于$r\in R^*$，$R[R^*]$中的元素我们记作$x_r$. 那么$F(R)$可以定义为
 \[
@@ -697,9 +744,11 @@ $\alpha_S$我们如下定义：由于$\alpha_S$是$S$-模同态，所以只要�
 
 如果$S$是$R$的一个子集，满足$1\in S$且$S$对乘法封闭，这样一个集合称之为乘性子集。乘性子集有两个特别重要的例子，对应着两个重要的分式环。
 
-首先，设有非零$x\in R$，则$S=\{1$, $x$, $x^2$, $\cdots\}$是一个乘性子集，这时候，$S^{-1}R$记作$R_x$.
+\begin{itemize}
+	\item 设有非零$x\in R$，则$S=\{1$, $x$, $x^2$, $\cdots\}$是一个乘性子集，这时候，$S^{-1}R$记作$R_x$.
 
-其次，设$\mathfrak{p}$是$R$的一个素理想，此时$S=R-\mathfrak{p}$是一个乘性子集，此时$S^{-1}R$记作$R_\mathfrak{p}$. 这类分式环被称为环$R$关于素理想$\mathfrak{p}$的局部化。
+	\item 设$\mathfrak{p}$是$R$的一个素理想，此时$S=R-\mathfrak{p}$是一个乘性子集，此时$S^{-1}R$记作$R_\mathfrak{p}$. 这类分式环被称为环$R$关于素理想$\mathfrak{p}$的局部化。
+\end{itemize}
 
 \begin{lem}
 设$a\in R$，则$a\equiv 0$当且仅当存在$s \in S$使得$as=0$.
@@ -721,17 +770,19 @@ $S^{-1}M$也可以通过在$M\times S$上加上等价关系定义：$(m,s)\sim (
 
 \para 设$f:M\to N$是一个$R$-模同态，则$\id_{S^{-1}R}\otimes f:S^{-1}M\to S^{-1}N$是一个$S^{-1}R$-模同态，不妨将$\id_{S^{-1}R}\otimes f$也记作$S^{-1}f$. 如果把$S^{-1}f$用元素来表示，就是$S^{-1}f(m/s)=f(m)/s$. 结合这两点，$S^{-1}f$构成了$R$-模范畴到$S^{-1}R$-模范畴的一个函子。
 
-下面我们要说明，这还是一个正合函子。设$M_1\xrightarrow{f} M_2\xrightarrow{g} M_3$是$R$-模的正合列，则
+\begin{pro}
+$S^{-1}$或者说$S^{-1}R\otimes -$是正合函子，等价于说$S^{-1}R$是平坦$R$-模。
+\end{pro}
+
+\begin{proof}
+设$M_1\xrightarrow{f} M_2\xrightarrow{g} M_3$是$R$-模的正合列，我们要说明
 \[
 	S^{-1}M_1\xrightarrow{S^{-1}f} S^{-1}M_2\xrightarrow{S^{-1}g} S^{-1}M_3
 \]
 是$S^{-1}R$-模的正合列。
 
 实际上，由于$gf=0$，所以$S^{-1}(gf)=S^{-1}g\circ S^{-1}f=0$，于是$\im S^{-1}f\subset \ker S^{-1}g$. 反过来，任取$m/s\in \ker S^{-1}g$，则$g(m)/s=0$，于是存在一个$t\in S$使得$g(m)t=g(mt)=0$，所以$mt\in \ker g=\im f$，于是存在$n$使得$mt=f(n)$，于是$m/s=mt/(st)=f(n)/(st)=S^{-1}f(n/(st))\in \im S^{-1}f$.
-
-\begin{pro}
-$S^{-1}$或者说$S^{-1}R\otimes -$是正合函子，等价于说$S^{-1}R$是平坦$R$-模。
-\end{pro}
+\end{proof}
 
 \begin{pro}
 设$S$是$R$的一个乘性子集，记同态$R\to S^{-1}R$为$i_S$. 再设$T$是一个环，如果$\varphi:R\to T$是一个环同态，且使得$\varphi(S)=\{\varphi(s)\,:\, s\in S\}$中的元素都是$T$中的可逆元，则存在唯一的环同态$\pi:S^{-1}R\to T$使得分解$\varphi:R\xrightarrow{i_S}S^{-1}R\xrightarrow{\pi} T$成立。
@@ -759,7 +810,7 @@ $S^{-1}$或者说$S^{-1}R\otimes -$是正合函子，等价于说$S^{-1}R$是平
 \[
 \begin{xy}
 	\xymatrix{
-		T\ar[rr]^-{i_T} \ar[d]_-{\Psi}&&S^{-1}T \ar@{.>}[d]^-{S^{-1}(\Psi)}\\
+		T\ar[rr]^-{i_T} \ar[d]_-{\Psi}&&S^{-1}T \ar@{-->}[d]^-{S^{-1}(\Psi)}\\
 		U\ar[rr]^-{i_U} &&S^{-1}U
 	}
 \end{xy}
@@ -783,37 +834,67 @@ $S^{-1}$或者说$S^{-1}R\otimes -$是正合函子，等价于说$S^{-1}R$是平
 	最后要验证函子性同构，分别对$X$和$Y$检验自然变换即可。这点过于琐碎，这里就略去了。
 \end{proof}
 
-任取$X\in \mathsf{Alg}_{(R,S)}$，它可以自然地看成一个$S^{-1}R$-代数，这由分式环的泛性质保证，反过来，任意的$S^{-1}R$-代数都可以看成$\mathsf{Alg}_{(R,S)}$里面的元素，所以有理由认为$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$作为范畴等价。事实上，可以定义一个函子$\mathsf{Alg}_{(R,S)}\to \mathsf{Alg}_{S^{-1}R}$，对对象，将任意的$R$-代数$X$看作$S^{-1}R$-代数$X$，对态射，任取$\varphi\in \mathsf{Alg}_{(R,S)}(X,Y)$，它也可以看作$S^{-1}R$-代数同态（请检查）。在上面的等同下，由泛性质，$\mathsf{Alg}_{(R,S)}(X,Y)=\mathsf{Alg}_{S^{-1}R}(X,Y)$，所以这是一个完全且忠实的函子。同样，任取$S^{-1}R$-代数$X$，他也可以看成$\mathsf{Alg}_{(R,S)}$里面的对象。所以由Proposition \eqref{equivcat}，$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$是等价范畴。
+任取$X\in \mathsf{Alg}_{(R,S)}$，它可以自然地看成一个$S^{-1}R$-代数，这由分式环的泛性质保证，反过来，任意的$S^{-1}R$-代数都可以看成$\mathsf{Alg}_{(R,S)}$里面的元素，所以有理由认为$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$作为范畴等价。事实上，可以定义一个函子$\mathsf{Alg}_{(R,S)}\to \mathsf{Alg}_{S^{-1}R}$，对对象，将任意的$R$-代数$X$看作$S^{-1}R$-代数$X$，对态射，任取$\varphi\in \mathsf{Alg}_{(R,S)}(X,Y)$，它也可以看作$S^{-1}R$-代数同态（请检查）。在上面的等同下，由泛性质，$\mathsf{Alg}_{(R,S)}(X,Y)=\mathsf{Alg}_{S^{-1}R}(X,Y)$，所以这是一个完全且忠实的函子。同样，任取$S^{-1}R$-代数$X$，他也可以看成$\mathsf{Alg}_{(R,S)}$里面的对象。所以由Proposition \ref{equivcat}，$\mathsf{Alg}_{S^{-1}R}$和$\mathsf{Alg}_{(R,S)}$是等价范畴。
 
 也正是如此，因此上面的双函子同构可以写成
 \[
 	F(-,\star):\mathsf{Alg}_R\bigl(-,f(\star)\bigr)\to \mathsf{Alg}_{S^{-1}R}\bigl(S^{-1}(-),\star\bigr).
 \]
-但是，范畴$\mathsf{Alg}_{(R,S)}$并不需要$S^{-1}R$的构造，所以我们才谈论的是这个范畴，然后才可以通过自由函子给出$S^{-1}R$的一个定义。当然，这里已经可以事后诸葛亮地说，函子$S^{-1}$是与$S^{-1}R$-代数到$R$-代数的遗忘函子左伴随的自由函子。
+但是，范畴$\mathsf{Alg}_{(R,S)}$并不需要$S^{-1}R$的构造，所以我们才谈论的是这个范畴，然后才可以通过自由函子给出$S^{-1}R$的一个定义。当然，这里已经可以事后诸葛亮地说，函子$S^{-1}$是与$S^{-1}R$-代数到$R$-代数的遗忘函子左伴随的自由函子。\endpara
 
-\para 上面讨论了分式环几个定义。下面讨论分式环的几个重要实例。从一个事实开始，设$S\subset R$是一个乘性子集，而$S'$是$S$中元素的全部因子构成的乘性子集，则$S^{-1}R=S'^{-1}R$.
+上面讨论了分式环几个定义，下面来研究分式环的一些性质。
 
-\para 设$M$是一个$R$-模，$S$是$R$的一个乘性子集，记$\varphi:M\to S^{-1}M$是局部化自然的同态，满足$\varphi(m)=m/1$. 设$N\subset M$是一个子模，则$S^{-1}N$是$S^{-1}M$的一个子模。由于子模的原像是子模，所以如果$L$是$S^{-1}M$的子模，则$\varphi^{-1}(L)$是$M$的子模。如果$N$是$M$的一个子模，则$N\subset \varphi^{-1}(S^{-1}N)$. 特别地，如果$N=\varphi^{-1}(L)$，则$L=S^{-1}N$.
+\begin{lem}
+	设$S\subset R$是一个乘性子集，而$S'$是$S$中元素的全部因子构成的乘性子集，则$S'^{-1}R$可以典范等同于$S^{-1}R$.
+\end{lem}
 
-这些关系非常类似Galois联络，只不过这里都不是逆序的而是保持顺序的。
+有了这个引理，我们就可以把所有的$S$取做其全部因子构成的乘性子集，这样，在处理分式$r/s$的时候，我们就可以应用消去率，消去分子和分母中的全部重复因子。这个引理最简单的应用就是，$R_f$和$R_{f^n}$是同构的，因为它们的全部因子构成的乘性子集是相同的。在讨论环的谱的时候，这就意味着仿射概形$D(f)$和$D(f^n)$同构。
 
 \begin{proof}
-	除去最后一点都是简单的。令$N$是$M$的一个子模，任取$a\in N$，我们有$a=\varphi^{-1}(a/1)$，所以$N\subset \varphi^{-1}(S^{-1}N)$. 现在设$N=\varphi^{-1}(L)$，于是前面的包含关系给出$\varphi^{-1}(L)\subset \varphi^{-1}(S^{-1}N)$或者$L\subset S^{-1}N$. 反过来，令$a\in N$以及$s\in S$，则$a/s=(a/1)(1/s)=\varphi(a)/s$，因为$\varphi(a)\in L$，而$L$是一个$S^{-1}R$-模，所以$a/s\in L$，这就给出了$S^{-1}N=L$.
+	显然，$i:r/s\mapsto r/s$就构成了同态$S^{-1}R\to S'^{-1}R$. 这是单同态，因为如果$r/s=0\in S'^{-1}R$，则存在一个$t\in S'$使得$rt=0$. 由于$t\in S'$，所以存在$u\in S'$使得$ut\in S$，故$r(ut)=0$给出$r/s=0\in S^{-1}R$. 同时，$i$也是满同态，任取$r/s\in S'^{-1}R$，存在一个$t\in S'$使得$st\in S$，所以$r/s$是$(rt)/(st)$在$i$下的像。
 \end{proof}
 
-利用这个结论，我们可以发现，$S^{-1}M$的每一个子模$L$，实际上都可以写成$M$中的子模$\varphi^{-1}(L)$的分式模$L=S^{-1}(\varphi^{-1}(L))$. 
+我们下面研究子模在局部化下的表现。
 
-\para 反过来，如果$M$的子模$N$满足$\ann(M/N)\cap S=\varnothing$，或者说，任取$s\in S$以及$m\in M-N$，都有$sm\not\in N$，则$N$可以写成$\varphi^{-1}(L)$的形式，其中$L=S^{-1}(\varphi^{-1}(L))=S^{-1}N$. 
+\begin{pro}
+	设$N$是$M$的子模，则可以将$S^{-1}N$看成$S^{-1}M$的子模，此时$S^{-1}M/S^{-1}N$可以等同于$S^{-1}(M/N)$.
+\end{pro}
+
+\begin{proof}
+	设$i:N\hookrightarrow M$是含入，由于$S^{-1}$是正合函子，所以将$S^{-1}$作用在正合列
+	\[
+		0\to N\hookrightarrow M\xrightarrow{\pi} M/N\to 0
+	\]
+	上，我们有正合列
+	\[
+		0\to S^{-1}N\xrightarrow{S^{-1}i}S^{-1}M\xrightarrow{S^{-1}\pi} S^{-1}(M/N)\to 0.
+	\]
+	所以$S^{-1}i$是单同态，他将$n/s$变成$n/s$，所以我们可以将$S^{-1}N$看成$S^{-1}M$的子模。类似地，由于上面是正合列，所以$\ker (S^{-1}\pi)=\im (S^{-1}i)$，同时，将$S^{-1}N$看成$S^{-1}M$的子模后，我们有$\im (S^{-1}i)=S^{-1}N$，所以此时$\ker (S^{-1}\pi)=S^{-1}N$. 进而，同构基本定理给出了$S^{-1}M/S^{-1}N\cong S^{-1}(M/N)$，这个同构将$\overline{m/s}\in S^{-1}M/S^{-1}N$变成$\overline m/s\in S^{-1}(M/N)$. 我们可以等同它们。
+\end{proof}
+
+% \para 设$M$是一个$R$-模，$S$是$R$的一个乘性子集，记$\varphi:M\to S^{-1}M$是局部化自然的同态，满足$\varphi(m)=m/1$. 设$N\subset M$是一个子模，则$S^{-1}N$是$S^{-1}M$的一个子模。由于子模的原像是子模，所以如果$L$是$S^{-1}M$的子模，则$\varphi^{-1}(L)$是$M$的子模。
+
+\begin{lem}
+	如果$N$是$M$的一个子模，则$N\subset \varphi^{-1}(S^{-1}N)$. 
+\end{lem}
+
+% 这个关系连同上面的一些关系非常类似Galois联络，只不过这里都不是逆序的而是保持顺序的。
+
+\begin{proof}
+	令$N$是$M$的一个子模，任取$a\in N$，我们有$a=\varphi^{-1}(a/1)$，所以$N\subset \varphi^{-1}(S^{-1}N)$. 
+\end{proof}
+
+\begin{pro}\label{pro:3.5.19}
+$S^{-1}M$的子模一一对应于$M$中满足$\ann(M/N)\cap S=\varnothing$的子模$N$，通过$N\mapsto S^{-1}N$以及$L\mapsto \varphi^{-1}(L)$.
+\end{pro}
 
 $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\in M-N$，都有$sm\not\in N$. 或者写成逆否的形式，设$s\in S$以及$m\in M$，如果$sm\in N$，则$m\in N$. 应用这个条件的理由是，在一般的模里面，$a/1\in S^{-1}N$并不能推出$a\in N$，因为如果存在一个$s\in S$使得$sa\in N$，就可以推出$a/1=sa/s\in S^{-1}N$. 而这又是因为$M-N$一般不是一个模。
 
 \begin{proof}
-	包含关系$N\subset \varphi^{-1}(S^{-1}N)$已经是清楚的，任取$a\in \varphi^{-1}(S^{-1}N)$或者说$\varphi(a)=a/1\in S^{-1}N$. 于是存在$s\in S$使得$(sa)/s$的分子$sa\in N$，继而根据条件$\ann(M/N)\cap S=\varnothing$可以推知$a\in N$. 
-\end{proof}
+	设$N=\varphi^{-1}(L)$，于是$\varphi^{-1}(L)\subset \varphi^{-1}(S^{-1}N)$或者$L\subset S^{-1}N$. 反过来，令$a\in N$以及$s\in S$，则$a/s=(a/1)(1/s)=\varphi(a)/s$，因为$\varphi(a)\in L$，而$L$是一个$S^{-1}R$-模，所以$a/s\in L$，这就给出了$S^{-1}N=L$.
 
-\begin{pro}
-结合上面的结论，这里做出断言：$S^{-1}M$的子模一一对应于$M$中满足$\ann(M/N)\cap S=\varnothing$的子模$N$，通过$N\mapsto S^{-1}N$以及$L\mapsto \varphi^{-1}(L)$.
-\end{pro}
+	反过来，包含关系$N\subset \varphi^{-1}(S^{-1}N)$已经是清楚的，任取$a\in \varphi^{-1}(S^{-1}N)$或者说$\varphi(a)=a/1\in S^{-1}N$. 于是存在$s\in S$使得$(sa)/s$的分子$sa\in N$，继而根据条件$\ann(M/N)\cap S=\varnothing$可以推知$a\in N$. 
+\end{proof}
 
 应用到环$R$的理想上面，$S^{-1}R$的理想一一对应着$R$中那些满足$\ann(R/\mathfrak{a})\cap S=\varnothing$的理想$\mathfrak{a}$. 由于$\ann(R/\mathfrak{a})=\mathfrak{a}$，所以$S^{-1}R$的理想一一对应着$R$中与$S$不相交的理想。由于素理想的原像是素理想，所以$S^{-1}R$中的素理想一一对应着$R$中与$S$不相交的素理想。
 
@@ -825,13 +906,108 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	只要证明$S^{-1}M$中的非空子模族$\mathcal{F}$有极大/极小元即可。利用一一对应，$\varphi^{-1}(\mathcal{F})$是$M$的非空子模族，所以存在一个极大/极小元$N\in \varphi^{-1}(\mathcal{F})$，继而对应回$S^{-1}M$中就得到了$\mathcal{F}$中的极大/极小元。
 \end{proof}
 
-\begin{pro}
-设$f:M\to N$是一个$R$-模同态，则$f$是单同态（满同态）的充分必要条件是对每一个素理想$\mathfrak{p}$，$f_{\mathfrak{p}}=(R-\mathfrak{p})^{-1}f$是单同态（满同态）.
+下面我们研究局部化在同态下的表现。
+
+\begin{lem}
+设$M$是一个$R$-模，则$m=0$当且仅当$m/1=0$在$M$关于每个极大理想$\mathfrak m$的局部化$M_{\mathfrak m}=(S-\mathfrak m)^{-1}M$中成立。
+\end{lem}
+
+\begin{proof}
+	如果$m/1=0$在$M_{\mathfrak m}$为零当且仅当$\mathfrak m$不包含$\ann(m)$，此时存在一个$r\in \ann(m)$不在$\mathfrak m$中故$rm=0$给出$m/1=0$，反之亦然。所以，命题条件等价于任意的极大理想都不包含$\ann(m)$. 但是，因为$\ann(m)$是一个理想，如果任意的极大理想都不包含$\ann(m)$，则其必然不能是真理想，所以就是单位理想$R$. 因此，$m=0$.
+\end{proof}
+
+\begin{pro}\label{pro:3.5.22}
+以下命题等价：
+\begin{compactenum}
+	\item $M=0$.
+	\item 对每一个素理想$\mathfrak{p}$，$M_{\mathfrak{p}}=(R-\mathfrak{p})^{-1}M=0$.
+	\item 对每一个极大理想$\mathfrak{m}$，$M_{\mathfrak{m}}=0$.
+\end{compactenum}
 \end{pro}
 
 \begin{proof}
-	如果$f$是单的，则$\ker(f)$
+	只需从3推到1即可。而这就是上面引理的简单推论。
 \end{proof}
+
+\begin{pro}
+设$f:M\to N$是一个$R$-模同态，则以下命题等价：
+\begin{compactenum}
+	\item $f$是单同态（满同态）.
+	\item 对每一个素理想$\mathfrak{p}$，$f_{\mathfrak{p}}=(R-\mathfrak{p})^{-1}f$是单同态（满同态）.
+	\item 对每一个极大理想$\mathfrak{m}$，$f_{\mathfrak{m}}$是单同态（满同态）.
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+	考虑正合列$0\to \ker f\to M\to N$，局部化后，得到了正合列
+	\[
+		0\to (\ker f)_{\mathfrak m}\to M_{\mathfrak m}\xrightarrow{f_{\mathfrak m}} N_{\mathfrak m},
+	\]
+	所以$(\ker f)_{\mathfrak m}\cong \ker f_{\mathfrak m}$. 类似地，考虑正合列$M\to N\to \coker f\to 0$，局部化后，得到了正合列
+	\[
+		M_{\mathfrak m}\to N_{\mathfrak m}\to (\coker f)_{\mathfrak m}\to 0
+	\]
+	所以$(\coker f)_{\mathfrak m}\cong \coker f_{\mathfrak m}$.
+
+	当上面的$\mathfrak m$取遍素理想，便得到了1到2，而2到3是显然的，3到1就是利用上面的Proposition \ref{pro:3.5.22}.
+\end{proof}
+
+作为这个命题的简单应用，我们有如下定理。
+
+\begin{thm}[中国剩余定理]
+	设$\mathfrak a_1$, $\dots$, $\mathfrak a_n$都是$R$的理想，且两两互素，即任取不同$i$和$j$，成立$\mathfrak a_i+\mathfrak a_j=R$. 此时，所有商同态$\pi_i:R\to R/\mathfrak a_i$的积$\pi:R\to \prod_i R/\mathfrak a_i$是一个满同态，并诱导了同构$R/(\bigcap_i \mathfrak a_i)\cong \prod_i R/\mathfrak a_i$.
+\end{thm}
+
+命题中的$\prod$是$R$-代数的积，见\ref{alg_prod}. 简单来说就是集合的积再逐位定义乘法。
+
+\begin{proof}
+	首先，所有典范商同态$\pi_i:R\to R/\mathfrak a_i$的积给出了同态$\pi:R\to \prod_i R/\mathfrak a_i$. $\pi$也可以给出了$\prod_i R/\mathfrak a_i$的一个$R$-代数结构，定义$r\cdot s=\pi(r)s$，其中$s\in \prod_i R/\mathfrak a_i$. 
+
+	任取$R$的一个极大理想$\mathfrak m$，它至多只能包含一个$\mathfrak a_i$，因为如果包含了两个理想$\mathfrak a_i$和$\mathfrak a_j$，则$\mathfrak m$包含$\mathfrak a_i+\mathfrak a_j=R$，这与$\mathfrak m$是理想矛盾。
+
+	现在考虑$R$关于极大理想$\mathfrak m$的局部化$R_{\mathfrak m}$. 将$\pi$也局部化，我们就得到了一个同态$\pi_{\mathfrak m}:R_{\mathfrak m}\to \left(\prod_i R/\mathfrak a_i\right)_{\mathfrak m}$. 对于代数而言，$\left(\prod_i R/\mathfrak a_i\right)_{\mathfrak m}$可以典范等同于$\prod_i (R/\mathfrak a_i)_{\mathfrak m}$，见Proposition \ref{prod_algebra_tensor}. 由于$\mathfrak m$至多包含一个$\mathfrak a_i$，所以，至多只有一个$(R/\mathfrak a_i)_{\mathfrak m}$非零。如果都为零，则$\pi_{\mathfrak m}:R_{\mathfrak m}\to 0$显然是满的，否则就是除了某个$i$，$(R/\mathfrak a_i)_{\mathfrak m}$都为零，继而$\prod_i (R/\mathfrak a_i)_{\mathfrak m}=(R/\mathfrak a_i)_{\mathfrak m}$. 因此，$\pi_{\mathfrak m}:R_{\mathfrak m}\to (R/\mathfrak a_i)_{\mathfrak m}$也是满的，因为局部化是正合函子。所以，上个命题告诉我们$\pi$是一个满射。
+
+	现在，我们来计算$\ker\pi$. 任取$r\in R$，由于$\pi(r)=(r_1,\dots,r_n)$，其中$r_i$是$r$在$R/\mathfrak a_i$中的像，所有的$r_i$都为零等价于$r\in \bigcap_i \mathfrak a_i$. 所以$\ker \pi =\bigcap_i \mathfrak a_i$，继而同构基本定理给出了中国剩余定理。
+\end{proof}
+
+\begin{para}[支集]
+	设$M$是一个$R$-模，则所有使得$M_{\pp}$非零的素理想$\pp$构成的集合我们记作$\supp_R(M)$. 如果$R$是清楚的，则我们记作$\supp(M)$. 这个集合一般被称为模$M$的支集。
+\end{para}
+
+\begin{lem}
+	如果$0\to M\to N\to O\to 0$是$R$-模的正合列，则$\supp(N)=\supp(M)\cup \supp(O)$.
+\end{lem}
+
+\begin{proof}
+	首先，由于局部化是正合函子，所以
+	\[
+		0\to M_{\mathfrak p}\to N_{\mathfrak p}\to O_{\mathfrak p}\to 0,
+	\]
+	如果$M_{\mathfrak p}\neq 0$或者$0_{\mathfrak p}\neq 0$，则$N_{\mathfrak p}$必然不为零，所以得证。
+\end{proof}
+
+注意，只有当$M_{\mathfrak p}=O_{\mathfrak p}=\{0\}$时，才能有$N_{\mathfrak p}=\{0\}$. 所以交不一定是不交并。
+
+\begin{lem}
+	设$\pp\in \supp(M)$，如果$r\in R$成立$rM=\{0\}$，则$r\in \pp$.
+\end{lem}
+
+一般来说，满足$rM=\{0\}$的$r$构成的理想记作$\ann(M)$，此命题告诉我们：如果$\pp\in\supp(M)$，则$\ann(M)\subset \pp$.
+
+\begin{proof}
+	如果$r\not\in\pp$，$rm=0$给出此时所有的$m/s$在$M_{\mathfrak p}$都为零，即$M_{\mathfrak p}=0$，所以$\pp\not\in \supp M$. 逆否即得证。
+\end{proof}
+
+下面一个命题给出了一定程度上的逆命题。
+
+\begin{lem}
+	如果$M$是有限生成$R$-模，则$\supp(M)$由所有包含$\ann(M)$的素理想构成。
+\end{lem}
+
+\begin{proof}
+	只需证明包含$\ann(M)$的素理想在$\supp(M)$即可。设$M$的一组生成元为$\{m_1,\dots,m_n\}$，那么$\mathfrak p\not\in \supp(M)$当且仅当$m_i/1=0$在$M_{\mathfrak p}$中对所有的$i$都成立，这意味着，存在$r_i\in  R-\mathfrak p$使得$r_im_i=0$成立，于是$\prod_i r_i\in R-\mathfrak p$乘上$m_i$都为零，即$\prod_i r_i\in \ann(M)$. 因此$\pp$并不包含$\ann(M)$. 逆否即得证。
+\end{proof} 
+
 
 \section{有限长模}
 
@@ -927,11 +1103,11 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \begin{proof}
 	假设$V$不是有限维的，则我们可以构造出一条合成列，
 	\[
-	0\subset \langle x_1\rangle\subset \langle x_1,x_2\rangle\subset \cdots \subset \langle x_1,\,\cdots\!,x_n\rangle\subset \cdots,
+	0\subset \langle x_1\rangle\subset \langle x_1,x_2\rangle\subset \cdots \subset \langle x_1,\dots,x_n\rangle\subset \cdots,
 	\]
 	因此这自然不是Noether模。然后考察
 	\[
-		\bigoplus_{i=1}^\infty kx_i \supset \bigoplus_{i=2}^\infty kx_i \supset \bigoplus_{i=3}^\infty kx_i\supset \cdots,
+		\bigoplus_{i=1}^\infty \langle x_i\rangle \supset \bigoplus_{i=2}^\infty \langle x_i\rangle \supset \bigoplus_{i=3}^\infty \langle x_i\rangle\supset \cdots,
 	\]
 	因此这也不是Artin模。逆否即得证。
 \end{proof}
@@ -991,7 +1167,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \para 由于$R$本身就是一个$R$-模，如果$R$是有限长$R$-模，已经知道，在$R$的任何合成列中出现的极大理想不依赖于合成列的选取，个数不大于$R$的长度。记这些极大理想的集合为$I$，作为$R$-模成立同构$R\cong\bigoplus_{\mathfrak{m}\in I}R_\mathfrak{m}$.
 
 \begin{lem}
-回忆\eqref{oka}里面的定义，这里再指出一个理想族是Oka理想族，这个理想族由$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$组成。
+回忆\ref{oka}里面的定义，$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$组成的理想族是Oka理想族。
 \end{lem}
 
 \begin{proof} 
@@ -1049,6 +1225,6 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	正中间的Noether性来自于两边的Noether性，所以有限次归纳后，可以得到$R$是一个Noether模。
 \end{proof}
 
-\para 结合上面两个命题，一个环$R$是Artin环等价于他是一个有限长$R$-模，也当且仅当他是Noether环且所有的素理想都是极大理想。因此，与模的情况不一样，到了环这里，Artin性就是一个远比Noether性强的一个性质。附带的，还断言了，Artin环的素理想（极大理想）有限。
+\para 结合上面两个命题，一个环$R$是Artin环等价于他是一个有限长$R$-模，也当且仅当他是Noether环且所有的素理想都是极大理想。因此，与模的情况不一样，到了环这里，Artin性就是一个远比Noether性强的一个性质。附带的，还断言了，Artin环的素理想（极大理想）有限。\endpara
 
 由于Artin环是一个有限长模，所以可以把有限长模的结构定理用到Artin环上，这里就不表了。

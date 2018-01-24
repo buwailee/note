@@ -24,22 +24,20 @@
 
 \section{引子}
 
-在Weinberg的第二章，藉由 Poincar\'{e} 群的不可约射影表示，我们完成了自由单粒子的分类。继而，在第三章，离开有些无趣的自由单粒子世界，我们加入了相互作用，引入了$S$-矩阵来描述散射过程。在那里，我们认为$S$-矩阵的Lorentz不变性是物理学的基本要求之一，同时，也注意到了不是任何理论都可以得到$S$-矩阵的Lorentz不变性。但是，我们依然还是找到了一大类理论（相互作用）满足$S$-矩阵的Lorentz不变性。
+在Weinberg的第二章，藉由 Poincar\'{e} 群的不可约射影表示，我们完成了单粒子的分类。继而，在第三章，离开有些无趣的单粒子世界，我们加入了相互作用，引入了$S$-矩阵来描述散射过程。在那里，我们认为$S$-矩阵的Lorentz不变性是物理学的基本要求之一，同时，也注意到了不是任何理论都可以得到$S$-矩阵的Lorentz不变性。但是，我们依然还是找到了一大类理论（相互作用）满足$S$-矩阵的Lorentz不变性。
 
 \begin{thm}
 设我们有一个相对论性量子力学理论，满足
 \begin{compactenum}
-\item Poincar\'{e} 群的生成元写作
-\[
-	H=H_0+V,\quad \bm{P}= \bm{P}_0,\quad \bm{J}= \bm{J}_0,
-\]
-其中带$0$下标的生成元都是自由粒子Poincar\'{e} 群的生成元。
-\item 定义含时相互作用算符$V(t)=\exp(iH_0 t)V\exp(-iH_0 t)$，且$V(t)$具有形式
-\[
-	V(t)=\int \dd^3 x\, \mathscr{H}(\bm{x},t),
-\]
-其中$\mathscr{H}$是一个标量算符。
-\item 如果$x-y$类空，则$[\mathscr{H}(x),\mathscr{H}(y)]=0$,
+\item Poincar\'{e} 群的生成元写作：\[H=H_0+V,\quad \mathbf{P}= \mathbf{P}_0,\quad \mathbf{J}= \mathbf{J}_0,\quad \mathbf{K}=\mathbf{K}_0+\mathbf{W},\]其中带$0$下标的生成元都是自由粒子 Poincar\'{e} 群的生成元。
+
+\item  存在一个算符$\mathscr{H}(x)$满足：
+\begin{compactitem}
+    \item 对任意的 Lorentz 变换$\Lambda$和平移 $a$，成立\[U_0(\Lambda,a)\mathscr{H}(x)U_0(\Lambda,a)^{-1}=\mathscr H(\Lambda x+a).\]
+
+    \item 如果$x-y$类空，则$[\mathscr{H}(x),\mathscr{H}(y)]=0$.
+\end{compactitem}
+\item 该理论的$V$和$\mathbf{W}$为\[V=\int d^3 x\, \mathscr{H}(\mathbf{x},0),\quad\mathbf{W}=-\int d^3 x \, \mathbf{x}\mathscr{H}(\mathbf{x},0).\]
 \end{compactenum}
 此时，这个理论下的$S$-矩阵满足Lorentz不变性。
 \end{thm}
@@ -114,7 +112,8 @@
 \[
 	U(\Lambda)\Psi_{q_1}\otimes\cdots\otimes U(\Lambda)\Psi_{q_N}=\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}\exp(i\sigma_i \theta(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma_1,n_1)}\otimes \cdots\otimes \Psi_{(\Lambda \bm{p}_N,\sigma_N,n_N)}.
 \]
-对于自由多粒子态，多粒子态也应该拥有相同的表示，换而言之（比如对有质量粒子）
+
+如果我们把独立理解为表现得如张量积那般。那么所谓的自由多粒子态，就是与单粒子态张量积拥有相同的表示的态，换而言之（比如对有质量粒子）
 \[
 	U_0(\Lambda)\Psi_{q_1,\dots,q_N}=\sum_{\sigma'}\prod_{i=1}^N \sqrt{\frac{(\Lambda p)^0_i}{p^0_i}}D^{j}_{\sigma_i'\sigma_i}(W(\Lambda,p_i))\Psi_{(\Lambda \bm{p}_1,\sigma'_1,n_1),\dots,(\Lambda \bm{p}_N,\sigma'_N,n_N)}.
 \]

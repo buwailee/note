@@ -1,13 +1,27 @@
+%!TEX root = main.tex
 \chapter{模（二）}
 \ThisULCornerWallPaper{1}{../Pictures/5.png}
 
 \section{准素分解}
 
-\para 考虑一个$R$-模$M$，如果对$r\in R$存在一个非零的$m\in M$使得$rm=0$，则这个$r$称为$M$的一个零因子。对固定的$m\in M$，使得$rm=0$的$r\in R$的集合记作$\ann(m)$. 这是一个$R$中的理想，因为$ram=r0=0$对$a\in \ann(m)$成立。设$S$是$M$的一个子集，定义$\ann(S)=\bigcap_{m\in S}\ann(m)$.
+这节在某种角度来说，我们要开始研究$R$-模$M$的结构中的标量乘法。标量乘法并不总像$k$在$k[x]$上的作用那么简单，比方说，对$m\in M$，可能存在一个$r\in R$使得$rm=0$. 我们这里就是要考虑这样的问题。
 
-设$M$是一个$R$-模，设$\mathfrak{a}\subset \ann(M)$是$R$中的一个理想，则$M$可以看成一个$R/\mathfrak{a}$-模，因为$(r+\mathfrak{a})m=rm$. 特别地，$M$是一个$R/\ann(M)$-模，此时，如果$rm=0$，则可以推出$r$和$m$中有一个零。
+\para[零因子] 考虑一个非零$R$-模$M$，如果对$r\in R$存在一个非零的$m\in M$使得$rm=0$，则这个$r$称为$M$的一个零因子。对固定的$m\in M$，使得$rm=0$的$r\in R$的集合记作$\ann(m)$. 这是一个$R$中的理想，因为$ram=r0=0$对$a\in \ann(m)$成立。设$S$是$M$的一个子集，定义$\ann(S)=\bigcap_{m\in S}\ann(m)$.\endpara
 
-\para $R$中形如$\ann(m)$的那些素理想被称之为$M$的associated primes，定义$\Ass_R(M)$为所有associated primes的集合，如果下标$R$是清楚的，我们会略去它。当然有可能所有的$\ann(m)$都不是素理想，但是如果$R$是一个Noether环，则下面的引理保证了$\Ass(M)$非空。
+设$M$是一个$R$-模，设$\mathfrak{a}\subset \ann(M)$是$R$中的一个理想，此时$M$可以看成一个$R/\mathfrak{a}$-模，因为$(r+\mathfrak{a})m=rm$. 特别地，$M$是一个$R/\ann(M)$-模，此时，如果$rm=0$，则可以推出$r$和$m$中有一个零。
+
+\begin{lem}
+	如果$\ann(m)$是素理想，则$\ann(m)\in \supp(M)$.
+\end{lem}
+
+\begin{proof}
+	实际上，任取$r\in R-\ann(m)$，则$rm\neq 0$. 所以$m$在$M_{\ann(m)}$中的像不为零，因此$\ann(m)\in \supp(M)$.
+\end{proof}
+
+\para $R$中形如$\ann(m)$的那些素理想被称之为$M$的associated primes，定义$\Ass_R(M)$为所有associated primes的集合，如果下标$R$是清楚的，我们会略去它。
+\endpara
+
+上一个引理告诉了我们$\Ass(M)\subset \supp(M)$. 此外，当然有可能所有的$\ann(m)$都不是素理想，即$\Ass(M)$为空集。但如果$R$是一个Noether环，而$M$非零，则下面的引理保证了$\Ass(M)$非空。当然，如果是零模$M$，则$\Ass(M)$一定为空。
 
 \begin{lem}
 设$\mathcal{P}$是所有形如$\ann(m)$的理想按照包含构成的一个偏序集，则$\mathcal{P}$中的极大元都是素理想。
@@ -26,8 +40,14 @@
 	\bigcup_{0\neq m\in M}\ann(m)\subset \pp.
 \]
 
+\para[本征值与本征矢量] associated primes的经典应用是本征值问题。考虑一个非零$k$-矢量空间$V$，以及一个线性映射$A:V\to V$. 那么，我们可以通过$x\cdot v=Av$定义$V$的一个$k[x]$-模结构。
+
+考虑最简单的情况，$k$是一个代数闭域，比方说$\mathbb C$. 此时，$\mathbb C[x]$中的素理想都形如$\langle x-a\rangle$. 此时，如果$\langle x-a\rangle=\ann(v)$是$V$的一个associated prime，则这就意味着$(A-a)v=0$，或等价地$Av=av$. 这样的一个$a$，我们称之为线性映射$A$的一个本征值，而$v$是对应本征值$a$的一个本征矢量。因为$k[x]$总是Noether环，所以上面的命题告诉我们associated prime一定存在，继而如果$k$是代数闭域，则我们还可以得到一个经典的结论：此时本征值以及其本征矢量一定存在。这个结论以往是在有限维的情况应用代数基本定理得到的，而我们这里的推理是可以直接应用到任意的矢量空间上的。
+
+当然，对于非代数闭域，associated primes可能就不是一次式生成的（尽管依然是主理想），所以就可能不存在本征值。\endpara
+
 \begin{lem}
-设$M$是一个$R$-模，如果$\ann(m)$是素理想，则任取$rm\neq 0$，我们有$\ann(rm)=\ann(m)$. 特别地，如果$\pp$是$R$的一个素理想，则$\Ass(R/\pp)=\{\pp\}$.
+设$M$是一个非零$R$-模，如果$\ann(m)$是素理想，而$r\in R$使得$rm\neq 0$，则$\ann(rm)=\ann(m)$. 特别地，如果$\pp$是$R$的一个素理想，则$\Ass(R/\pp)=\{\pp\}$.
 \end{lem}
 
 下面可能要用这个非常简单的推论：对$M$的子模$Rm$的任意非零子模$N$有$\ann(N)=\ann(m)$.
@@ -35,12 +55,8 @@
 \begin{proof}
 	显然，$\ann(m)\subset \ann(rm)$. 同时，由于$rm\neq 0$，所以$r\not\in \ann(m)$. 反之，任取$s\in \ann(rm)$，则$srm=0$给出$sr\in \ann(m)$. 由于$r\not\in \ann(m)$且$\ann(m)$是素理想，所以$s\in \ann(m)$. 这就给出了$\ann(rm)\subset \ann(m)$.
 
-	% 显然，$\ann(m)\subset \ann(N)$. 由于有$R$-模同构$\psi: Rm\to R/\ann(m)$，所以$Rm$的任意非零子模$N$对应着$R/\ann(m)$的非零理想$\psi(N)$. 如果$r\in \ann(N)$，则$r\psi(N)=\psi(rN)=0$，因为$\psi(N)$非零且$R/\ann(m)$是整环，所以$r$在$R/\ann(m)$中的像为零，即是说$r\in \ann(m)$. 所以$\ann(N)\subset \ann(m)$.
-
 	现在，考虑$M=R/\pp$而$m=1$的情况，此时任取$m\neq 0$，我们都有$\ann(m)=\ann(1)=\pp$，所以$\Ass(R/\pp)=\{\pp\}$.
 \end{proof}
-
-从这里开始，我们假设这节下面出现的环都是Noether环，除非特别申明。
 
 \begin{pro}
 如果我们有$R$-模的正合列$0\to M'\to M\to M''\to 0$，则我们有包含关系
@@ -54,6 +70,8 @@
 \end{proof}
 
 考虑$M=M'\oplus M''$的情况，由于$M'$和$M''$都有到$M$的单同态，所以$\Ass(M')\subset \Ass(M)$以及$\Ass(M'')\subset \Ass(M)$，继而他给出了$\Ass(M)=\Ass(M')\cup \Ass(M'')$.
+
+从下个命题开始，我们假设这节下面出现的环都是Noether环，除非特别申明。
 
 \begin{pro}
 设$M$是一个有限生成$R$-模，则存在一个子模链
@@ -75,71 +93,87 @@
 \[
 	\Ass(M)\subset \bigcup_i \Ass(R/\pp_i)=\bigcup_i \{\pp_i\}.
 \]
-但至少，对有限生成$R$-模，我们知道，它的associated primes有限。
+但至少，对有限生成$R$-模$M$，我们知道，$\Ass M$有限。如果应用到本征值问题，可以断言有限维$k$-矢量空间之间的映射的本征值是有限的（当然也可能不存在）
 
 \begin{pro}
-设$M$是一个有限生成$R$-模，而$S$是$R$的一个乘性子集，则
+设$M$是一个$R$-模，而$S$是$R$的一个乘性子集，则
 \[
-	\Ass_{S^{-1}R}(S^{-1}M)=\{S^{-1}\pp\,:\,\pp\in \Ass_RM\quad \text{and}\quad P\cap S=\varnothing\}.
+	\Ass_{S^{-1}R}(S^{-1}M)=\{S^{-1}\pp\,:\,\pp\in \Ass_RM\;\;\text{and}\;\;\mathfrak p\cap S=\varnothing\}.
 \]
 \end{pro}
 
 \begin{proof}
 如果$\pp\in \Ass_R M$，那么存在一个$M$的一个子模同构于$R/\pp$. 局部化之，我们得到了$S^{-1}M$的一个子模同构于$S^{-1}R/S^{-1}\pp$，所以，如果$S^{-1}\pp$是$S^{-1}R$的素理想，即$\pp\cap S= \varnothing$，则$S^{-1}\pp\in\Ass_{S^{-1}R}(S^{-1}M)$.
 
-反之，任取$S^{-1}R$的素理想$\mathfrak{q}$，我们可以将$\mathfrak{q}$写为$S^{-1}\pp$，其中$\pp$是$R$的一个素理想且$\pp\cap S=\varnothing$. 由于$S^{-1}\pp\in \Ass_{S^{-1}R}(S^{-1}M)$，所以存在一个单射$\varphi:S^{-1}R/S^{-1}\pp\to S^{-1}M$. 因为$R$是一个Noether模，所以$\pp$是有限生成模，于是存在典范同构
+反之，任取$S^{-1}R$的素理想$\mathfrak{q}$，我们可以将$\mathfrak{q}$写为$S^{-1}\pp$，其中$\pp$是$R$的一个素理想且$\pp\cap S=\varnothing$. 如果$S^{-1}\pp\in \Ass_{S^{-1}R}(S^{-1}M)$，则存在一个单射$\varphi:S^{-1}R/S^{-1}\pp\to S^{-1}M$. 因为$R$是一个Noether环，$R/\pp$是有限生成$R$-模，所以$R/\pp$也是有限表示模。因此，Proposition \ref{3.5.5}告诉我们存在典范同构
 \[
 	\Hom_{S^{-1}R}(S^{-1}R/S^{-1}\pp,S^{-1}M)\cong S^{-1}\Hom_R(R/\pp,M),
 \]
-所以，我们可以将$\varphi$写为$s^{-1}f$的形式，其中$f\in \Hom_R(R/\pp,M)$而$s\in S$. 因为$s$并不是$R/\pp$的一个零因子，所以$f$是一个单射，这就给出了反方向的论断。
+所以，我们可以将$\varphi$写为$s^{-1}f$的形式，其中$f\in \Hom_R(R/\pp,M)$而$s\in S$. 因为$S$并不包含$R/\pp$的零因子，所以$f$是一个单射，这就给出了反方向的论断。
 \end{proof}
 
-\begin{thm}
-设$M$是一个有限生成$R$-模，则$\Ass M$是有限集，且包含任意包含$\ann M$的素理想中极小的那些素理想。
-\end{thm}
+\begin{pro}\label{pro:5.1.9}
+设$M$是一个非零$R$-模，则$\supp(M)$中的极小素理想在$\Ass (M)$中。
+\end{pro}
+
+利用这个命题，在本征值问题中（对线性变换$A$和矢量空间$V$），我们可以算出$A$有哪些（但可能不是全部）本征值。因为$k[x]$是PID，如果$\ann(V)$是一个非零理想，则其由一个多项式生成（被称为极小多项式），而这个多项式可以写成一些不可约多项式的乘积（可能重复），这些不可约多项式就生成了包含$\ann(V)$的极小素理想。如果是在代数闭域中，这些素理想都是一次式生成的，它们分别对应着$A$的本征值。
 
 \begin{proof}
-有限集前面已经证明，来自于
-\[
-	\Ass(M)\subset \bigcup_i \Ass(R/\pp_i)=\bigcup_i \{\pp_i\}.
-\]
-由于$M$有限生成，所以右侧的并是有限并。
-
-此外，任取一个包含$\ann M$的素理想中的极小素理想$\pp$，我们需要说明$\pp\in \Ass(M)$. 我们局部化，考虑环$R_\pp$和模$M_\pp$，从前面的命题，我们有$\Ass_{R_\pp}(M_\pp)$非空，且其中的元素对应于$\mathfrak{q}\in \Ass_R M$且$\mathfrak{q}\subset \pp$. 由于每一个$\mathfrak{q}\in \Ass_R M$都会包含$\ann M$，而$\pp$是极小的，如果$\pp$不在$\Ass_R M$中，则$\Ass_{R_\pp}(M_\pp)$为空，矛盾。所以，$\pp\in \Ass_R M$. 
+任取一个$\supp(M)$中的极小素理想$\pp\in \supp(M)$，我们需要说明$\pp\in \Ass(M)$. 首先，$\pp$包含$\ann(M)$. 局部化之，考虑环$R_\pp$和模$M_\pp$，因为$M_\pp\neq \{0\}$，所以$\Ass_{R_\pp}(M_\pp)$非空，且其中的元素对应于$\mathfrak{q}\in \Ass_R M$且$\mathfrak{q}\subset \pp$. 由于每一个$\mathfrak{q}\in \Ass_R M$都在$\supp(M)$中，而$\pp$是极小的，如果$\pp$不在$\Ass_R M$中，则$\Ass_{R_\pp}(M_\pp)$为空，矛盾。
 \end{proof}
+
+注意到，尽管两个素理想的交并不一定是素理想，这就意味着极小素理想可能不唯一。此外，如果$M$是有限生成的，则$\supp(M)$即所有包含$\ann(M)$的素理想的集合，由于素理想降链的交还是素理想（也包含$\ann(M)$），所以此时Zorn引理告诉我们，极小素理想一定存在。所以，即使没有Noether条件，如果$M$有限生成，$\Ass M$也非空。
 
 \begin{para}
 设$N$是$M$的一个子模，如果$\Ass(M/N)$只有一个元素，则称呼$N$是$M$的一个准素子模，如果$\Ass(M/N)=\{\mathfrak{p}\}$，则称呼$N$是$\mathfrak{p}$-准素的。
 \end{para}
 
-前面我们已经看到，素理想$\pp$总是$R$的一个准素子模，而且是$\pp$-准素的。此外，如果设$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是. 
+前面我们已经看到，素理想$\pp$总是$R$的一个准素子模，而且是$\pp$-准素的。
 
-事实上，考虑单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ass(M/(N_1\cap N_2))\subset \Ass(M/N_1)\cup \Ass(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ass(M/(N_1\cap N_2))$非空，所以$\Ass(M/(N_1\cap N_2))=\{\mathfrak{p}\}$. 
+\begin{lem}
+	如果$N_1$和$N_2$都是$\mathfrak{p}$-准素的，则$N_1\cap N_2$也是. 
+\end{lem}
 
 经过有限次归纳可以得到：有限个$\mathfrak{p}$-准素子模的交依然是一个$\mathfrak{p}$-准素子模。
 
-\begin{pro}
-设$R$是Noether环，$\pp$是它的一个素理想，而$M$是一个$R$-模，则下面三个命题等价：
-\begin{compactenum}[(1)]
+\begin{proof}
+	事实上，考虑单同态$M/(N_1\cap N_2)\to M/N_1\oplus M/N_2$，因此$\Ass(M/(N_1\cap N_2))\subset \Ass(M/N_1)\cup \Ass(M/N_2)=\{\mathfrak{p}\}\cup \{\mathfrak{p}\}=\{\mathfrak{p}\}$. 但是由于$\Ass(M/(N_1\cap N_2))$非空，所以$\Ass(M/(N_1\cap N_2))=\{\mathfrak{p}\}$. 
+\end{proof}
+
+\begin{pro}\label{pro:5.1.11}
+设$R$是Noether环，$\pp$是它的一个素理想，而$M$是一个有限生成$R$-模，则下面三个命题等价：
+\begin{compactenum}[~~~(1)]
 \item $\Ass(M)=\{\pp\}$.
-\item $\pp$是包含$\ann(M)$的一个极小素理想，且任取$r\not\in \pp$，则$r$都不是$M$的零因子。
+\item $\pp$是包含$\ann(M)$的极小素理想，且任取$r\not\in \pp$，则$r$都不是$M$的零因子。
 \item 存在一个正整数$n$使得$\pp^n M=0$，且任取$r\not\in \pp$，则$r$都不是$M$的零因子。
 \end{compactenum}
 \end{pro}
 
+注意，条件“任取$r\not\in \pp$，$r$都不是$M$的零因子”这个条件也可以等价为条件“局部化同态$M\to M_{\mathfrak p}$是单同态”。
+
 \begin{proof}
-$(1)\Rightarrow (2)$：因为$\pp$是$M$唯一的，所以$\pp$是包含$\ann(M)$的一个极小素理想。由于
+$(1)\Rightarrow (2)$：因为$\Ass M$只包含一个$\pp$，但$\Ass M$应包含所有的极小素理想，所以$\pp$是包含$\ann(M)$的唯一极小素理想。此外，由于
 \[
 	\bigcup_{0\neq m\in M}\ann(m)\subset \bigcup_{\mathfrak{a}\in \Ass(M)}\mathfrak{a}=\pp. 
 \]
 所以，任取$r\not\in \pp$，则$r$不包含于任意的$\ann(m)$中，即$r$不是$M$的零因子。
 
-$(2)\Rightarrow (3)$：因为不在$\pp$中的每个元素都不是$M$的零因子，所以我们在对$\pp$局部化后考虑问题，此时$\pp$可以看成极大理想。由于$\pp$是包含$\ann(M)$的极小素理想，所以$\pp=\sqrt{\ann(M)}$，而且$\pp$又是有限生成的，所以存在一个正整数$n$使得$\pp^n\subset \ann(M)$. 
+$(2)\Rightarrow (3)$：因为不在$\pp$中的每个元素都不是$M$的零因子（此时$\ann_R(M_\pp)=\ann_R(M)$），所以我们在对$\pp$局部化后考虑问题，此时$\pp$可以看成极大理想，同时$\pp$还是包含$\ann_R(M)$的唯一极小素理想，所以$\pp=\sqrt{\ann_R(M)}$，而且$\pp$又是有限生成的，所以存在一个正整数$n$使得$\pp^n\subset \ann_R(M)$. 
 
-$(3)\Rightarrow (1)$：由于模掉$\ann M$后$\pp$是幂零的，所以它就是一个包含$\ann M$的一个极小素理想，于是$\pp \in \Ass(M)$. 又因为每一个不属于$\pp$的元素都不是零因子，所以每一个$\mathfrak{q}\in \Ass(M)$都有$\mathfrak{q}\subset \pp$，所以$\pp$也是$\Ass(M)$唯一的元素。
+$(3)\Rightarrow (1)$：由于模掉$\ann(M)$后$\pp$是幂零的，所以它就是一个包含$\ann(M)$的一个极小素理想，于是$\pp \in \Ass(M)$. 又因为每一个不属于$\pp$的元素都不是零因子，所以每一个$\mathfrak{q}\in \Ass(M)$都有$\mathfrak{q}\subset \pp$，所以$\pp$也是$\Ass(M)$唯一的元素。
 \end{proof}
 
-利用这个命题，下面考虑$M=R/\mathfrak{a}\neq 0$的情况，这将给出准素理想的经典的定义。
+\begin{pro}
+	设$M$是一个$R$-模，而$\pp\in \supp(M)$是一个包含$\ann(M)$的极小素理想，设$\alpha:M\to M_\pp$是局部化同态，则$\ker\alpha$是一个$\pp$-准素子模。
+\end{pro}
+
+\begin{proof}
+	由于$(M/\ker\alpha)_{\pp}=M_{\pp}$，所以同态$\overline{\alpha}:M/\ker\alpha\to M_{\pp}=(M/\ker\alpha)_{\pp}$是一个单射。为利用上一个命题，我们只要说明$\pp$是包含了$\ann(M/\ker \alpha)$的极小素理想，这样$\ker \alpha$就是$\pp$-准素的了。
+
+	一方面，$\pp$包含$\ann(M/\ker \alpha)$. 实际上，因为$\pp$是包含$\ann(M)$的极小素理想，则$\pp=\ann(m_0)\in \Ass(M)$. 如果$a\overline{m}=0$对任意的$m\in M/\ker \alpha$都成立，则$\alpha(am)=0$对所有的$m\in M$都成立。这意味着存在$b\not\in \pp$使得$abm_0=0$，所以$ab\in \ann(m_0)=\pp$将给出$a\in \pp$. 另一方面，$\ann(M)\subset \ann(M/\ker \alpha)$，所以如果$\mathfrak q\subset \pp$是包含$\ann(M/\ker \alpha)$的素理想，则它也是包含$\ann(M)$的素理想，这与$\pp$极小矛盾。
+\end{proof}
+
+利用Proposition \ref{pro:5.1.11}，下面考虑$M=R/\mathfrak{a}\neq 0$的情况，这将给出准素理想的经典定义。
 
 \begin{pro}
 真理想$\mathfrak{a}$是$R$的准素子模，当且仅当，$R/\mathfrak{a}$中的零因子都是幂零的。
@@ -160,10 +194,10 @@ $(3)\Rightarrow (1)$：由于模掉$\ann M$后$\pp$是幂零的，所以它就�
 \end{lem}
 
 \begin{proof}
-	如果$\Ass(M/N)$中至少存在两个素理想$\pp_1=\ann(\bar{m}_1)$和$\pp_2=\ann(\bar{m}_2)$，那么在$M/N$中有子模$R\bar{m}_1\cong R/\pp_1$和$R\bar{m}_2\cong R/\pp_2$. 如果$R\bar{m}_1\cap R\bar{m}_2$非零，则$R\bar{m}_1\cap R\bar{m}_2$作为$R\bar{m}_1$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_1$，作为$R\bar{m}_2$的非零子模，$\ann(R\bar{m}_1\cap R\bar{m}_2)=\pp_2$，矛盾，于是推出$R\bar{m}_1\cap R\bar{m}_2=\{\bar{0}\}$. 回到$M$中的原像，我们就可以知道$N$可以写成两个$M$的子模的交，这与$N$不可约矛盾。
+	如果$\Ass(M/N)$中至少存在两个素理想$\pp_1=\ann(\overline{m}_1)$和$\pp_2=\ann(\overline{m}_2)$，那么在$M/N$中有子模$R\overline{m}_1\cong R/\pp_1$和$R\overline{m}_2\cong R/\pp_2$. 如果$R\overline{m}_1\cap R\overline{m}_2$非零，则$R\overline{m}_1\cap R\overline{m}_2$作为$R\overline{m}_1$的非零子模，$\ann(R\overline{m}_1\cap R\overline{m}_2)=\pp_1$，作为$R\overline{m}_2$的非零子模，$\ann(R\overline{m}_1\cap R\overline{m}_2)=\pp_2$，矛盾，于是推出$R\overline{m}_1\cap R\overline{m}_2=\{\overline{0}\}$. 回到$M$中的原像，我们就可以知道$N$可以写成两个$M$的子模的交，这与$N$不可约矛盾。
 \end{proof}
 
-准素子模的重要性来自于下面这个命题，他被称为准素分解。
+准素子模的重要性来自于下面几个命题，是将一个子模写成几个准素子模的交，它们被称为准素分解。特别地，理想作为子模，将一个理想写成几个理想的交，在几何上，就是将一个簇写成一些簇的并。下面我们首先陈述存在性。
 
 \begin{pro}
 设$R$是Noether环，$M$是有限生成$R$-模，如果$N$是$M$的一个真子模，那么他是有限个准素子模的交。
@@ -172,6 +206,60 @@ $(3)\Rightarrow (1)$：由于模掉$\ann M$后$\pp$是幂零的，所以它就�
 \begin{proof}
 由于Noether环上的有限生成模是Noether模，回忆Proposition \ref{irrde}，$N$可以写成$M$中的有限个不可约子模的交的形式，而每一个不可约子模都是准素子模。
 \end{proof}
+
+\begin{thm}
+	令$R$是Noether环，而$M$是有限生成$R$-模，$N$是$M$的一个真子模。如果$N$可以写成并$N=\bigcap_{i=1}^n M_i$，其中$M_i$是$M$的$\mathfrak p_i$-准素子模，记$P$为所有的$\mathfrak p_i$的集合，则
+	\begin{compactenum}
+		\item $\Ass(M/N)\subset P$.
+		\item 如果分解中不能再略去任何一个$M_i$，则$\Ass(M/N) = P$.
+		\item 如果分解是极小的，即不存在个数更小的分解，则$\pp_i$各不相同，且刚好就是$\Ass(M/N)$中出现的素理想。此外，如果$\mathfrak p_i$是包含$\ann(M/N)$的极小素理想，则$M_i=\alpha_i^{-1}(N_{\mathfrak p_i})$，其中$\alpha_i:M\to M_{\mathfrak p_i}$是局部化的典范同态。
+	\end{compactenum}
+\end{thm}
+
+\begin{proof}
+	因为前两个命题都是对$M/M_i$或者$M/N$进行的，而$M_i$又都包含$N$，所以我们可以假设$N=0$. 然后在处理第三个命题的时候再回到一般的$N$.
+
+	首先，假设$\bigcap_{i=1}^n M_i=\{0\}$，则我们可以从商映射$\pi_i:M\to M/M_i$构造出映射的积$\pi:M\to \bigoplus_{i=1}^n M/M_i$. 由于$\bigcap_{i=1}^n M_i=\{0\}$，所以$\pi$是一个单射，继而
+	\[
+		\Ass(M)\subset \Ass\left(\bigoplus_{i=1}^n M/M_i\right)=P.
+	\]
+
+	如果分解中不能再略去任何一个$M_i$，则$\bigcap_{i\neq j}M_i\neq \{0\}$，其中$j$是任意的。但是，由于$M_j\cap \bigcap_{i\neq j}M_i= \{0\}$，所以
+	\[
+		\bigcap_{i\neq j}M_i=\left(\bigcap_{i\neq j}M_i\right)\bigg/ \left(M_j\cap \bigcap_{i\neq j}M_i\right)\cong \left(\bigcap_{i\neq j}M_i+M_j\right)/M_j\subset M/M_j,
+	\]
+	所以
+	\[
+		\varnothing\neq \Ass\left(\bigcap_{i\neq j}M_i\right)\subset \Ass(M/M_j)=\{\pp_j\},
+	\]
+	这就意味着$\{\pp_j\}=\Ass\left(\bigcap_{i\neq j}M_i\right)\subset \Ass(M)$. 遍历$j$，我们就得到了$P\subset \Ass(M)$. 结合第一点，我们就得到了$\Ass(M)=P$.
+
+	现在，假设分解是极小的。因为$\pp$-准素子模的有限交也是$\pp$-准素的，因而如果分解不是极小的，则我们可以将准素于同一个素理想的子模先交起来。所以，极小分解中，$\pp_i$各不相同。同时，因为极小分解中不能再略去任何一个$M_i$，所以$\pp_i$刚好就是$\Ass(M)$中出现的素理想。
+
+	现在回到一般的$N$. 假设$\pp_i$是包含$\ann (M/N)$的极小素理想。已经看到，$\pi:M\to \bigoplus_{i=1}^n M/M_i$的核是$N$，所以局部化之后，我们有
+	\[
+		\pi_{\mathfrak p_i}:M_{\mathfrak p_i}\to \bigoplus_{j=1}^n (M/M_j)_{\mathfrak p_i}
+	\]
+	的核为$N_{\mathfrak p_i}$. 因为$\pp_i$是极小的，所以存在一个$a\in \ann(M/M_j)\subset \pp_j$也在$R-\pp_i$中，否则，$\pp_i$包含$\ann(M/M_j)$，利用$\pp_j$的极小性（见Proposition \ref{pro:5.1.11}），我们立刻得到$\pp_j\subset \pp_i$，但这与$\pp_i$的极小性矛盾。进而，$(M/M_i)_{\mathfrak p_i}=0$，因为任取$m/s\in (M/M_i)_{\mathfrak p_i}$，我们都有$am=0$. 综上，
+	\[
+		(\pi_i)_{\mathfrak p_i}:M_{\mathfrak p_i}\to  (M/M_i)_{\mathfrak p_i}
+	\]
+	的核为$N_{\mathfrak p_i}$. 再复合上同态$\alpha_i:M\to M_{\mathfrak p_i}$，我们就得到了同态
+	\[
+		(\pi_i)_{\mathfrak p_i}\alpha_i:M\to  (M/M_i)_{\mathfrak p_i},
+	\]
+	它也等于先局部化再求商$\beta_i:M\to  M_{\mathfrak p_i}/(M_i)_{\mathfrak p_i}$，所以
+	\[
+		\ker ((\pi_i)_{\mathfrak p_i}\alpha_i)=\ker \beta_i=M_i.
+	\]
+	求$\beta_i$的核我们应用了Proposition \ref{pro:3.5.19}. 另一方面
+	\[
+		\ker ((\pi_i)_{\mathfrak p_i}\alpha_i)=\alpha_i^{-1}(\ker (\pi_i)_{\mathfrak p_i})=\alpha_i^{-1}(N_{\mathfrak p_i}).
+	\]
+	所以$\alpha_i^{-1}(N_{\mathfrak p_i})=M_i$，此即所需。
+\end{proof}
+
+准素分解不是唯一的，比方说，在$k[x,y]$中，$(x^2,xy)=(x)\cap (x^2,y)=(x)\cap (x^2,xy,y^2)$，但是，可以看到，对于极小分解，我们还是可以得到许多有趣的信息。
 
 \section{主理想整环上的有限生成模}
 
