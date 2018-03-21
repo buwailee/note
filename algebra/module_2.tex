@@ -2,6 +2,8 @@
 \chapter{模（二）}
 \ThisULCornerWallPaper{1}{../Pictures/5.png}
 
+\section{分次模}
+
 \section{准素分解}
 
 这节在某种角度来说，我们要开始研究$R$-模$M$的结构中的标量乘法。标量乘法并不总像$k$在$k[x]$上的作用那么简单，比方说，对$m\in M$，可能存在一个$r\in R$使得$rm=0$. 我们这里就是要考虑这样的问题。
@@ -39,12 +41,6 @@
 \[
 	\bigcup_{0\neq m\in M}\ann(m)\subset \pp.
 \]
-
-\para[本征值与本征矢量] associated primes的经典应用是本征值问题。考虑一个非零$k$-矢量空间$V$，以及一个线性映射$A:V\to V$. 那么，我们可以通过$x\cdot v=Av$定义$V$的一个$k[x]$-模结构。
-
-考虑最简单的情况，$k$是一个代数闭域，比方说$\mathbb C$. 此时，$\mathbb C[x]$中的素理想都形如$\langle x-a\rangle$. 此时，如果$\langle x-a\rangle=\ann(v)$是$V$的一个associated prime，则这就意味着$(A-a)v=0$，或等价地$Av=av$. 这样的一个$a$，我们称之为线性映射$A$的一个本征值，而$v$是对应本征值$a$的一个本征矢量。因为$k[x]$总是Noether环，所以上面的命题告诉我们associated prime一定存在，继而如果$k$是代数闭域，则我们还可以得到一个经典的结论：此时本征值以及其本征矢量一定存在。这个结论以往是在有限维的情况应用代数基本定理得到的，而我们这里的推理是可以直接应用到任意的矢量空间上的。
-
-当然，对于非代数闭域，associated primes可能就不是一次式生成的（尽管依然是主理想），所以就可能不存在本征值。\endpara
 
 \begin{lem}
 设$M$是一个非零$R$-模，如果$\ann(m)$是素理想，而$r\in R$使得$rm\neq 0$，则$\ann(rm)=\ann(m)$. 特别地，如果$\pp$是$R$的一个素理想，则$\Ass(R/\pp)=\{\pp\}$.
@@ -116,8 +112,6 @@
 设$M$是一个非零$R$-模，则$\supp(M)$中的极小素理想在$\Ass (M)$中。
 \end{pro}
 
-利用这个命题，在本征值问题中（对线性变换$A$和矢量空间$V$），我们可以算出$A$有哪些（但可能不是全部）本征值。因为$k[x]$是PID，如果$\ann(V)$是一个非零理想，则其由一个多项式生成（被称为极小多项式），而这个多项式可以写成一些不可约多项式的乘积（可能重复），这些不可约多项式就生成了包含$\ann(V)$的极小素理想。如果是在代数闭域中，这些素理想都是一次式生成的，它们分别对应着$A$的本征值。
-
 \begin{proof}
 任取一个$\supp(M)$中的极小素理想$\pp\in \supp(M)$，我们需要说明$\pp\in \Ass(M)$. 首先，$\pp$包含$\ann(M)$. 局部化之，考虑环$R_\pp$和模$M_\pp$，因为$M_\pp\neq \{0\}$，所以$\Ass_{R_\pp}(M_\pp)$非空，且其中的元素对应于$\mathfrak{q}\in \Ass_R M$且$\mathfrak{q}\subset \pp$. 由于每一个$\mathfrak{q}\in \Ass_R M$都在$\supp(M)$中，而$\pp$是极小的，如果$\pp$不在$\Ass_R M$中，则$\Ass_{R_\pp}(M_\pp)$为空，矛盾。
 \end{proof}
@@ -163,8 +157,8 @@ $(2)\Rightarrow (3)$：因为不在$\pp$中的每个元素都不是$M$的零因�
 $(3)\Rightarrow (1)$：由于模掉$\ann(M)$后$\pp$是幂零的，所以它就是一个包含$\ann(M)$的一个极小素理想，于是$\pp \in \Ass(M)$. 又因为每一个不属于$\pp$的元素都不是零因子，所以每一个$\mathfrak{q}\in \Ass(M)$都有$\mathfrak{q}\subset \pp$，所以$\pp$也是$\Ass(M)$唯一的元素。
 \end{proof}
 
-\begin{pro}
-	设$M$是一个$R$-模，而$\pp\in \supp(M)$是一个包含$\ann(M)$的极小素理想，设$\alpha:M\to M_\pp$是局部化同态，则$\ker\alpha$是一个$\pp$-准素子模。
+\begin{pro}\label{pro:5.2.13}
+	设$M$是一个有限生成$R$-模，而$\pp\in \supp(M)$是一个包含$\ann(M)$的极小素理想，设$\alpha:M\to M_\pp$是局部化同态，则$\ker\alpha$是一个$\pp$-准素子模。
 \end{pro}
 
 \begin{proof}
@@ -172,6 +166,14 @@ $(3)\Rightarrow (1)$：由于模掉$\ann(M)$后$\pp$是幂零的，所以它就�
 
 	一方面，$\pp$包含$\ann(M/\ker \alpha)$. 实际上，因为$\pp$是包含$\ann(M)$的极小素理想，则$\pp=\ann(m_0)\in \Ass(M)$. 如果$a\overline{m}=0$对任意的$m\in M/\ker \alpha$都成立，则$\alpha(am)=0$对所有的$m\in M$都成立。这意味着存在$b\not\in \pp$使得$abm_0=0$，所以$ab\in \ann(m_0)=\pp$将给出$a\in \pp$. 另一方面，$\ann(M)\subset \ann(M/\ker \alpha)$，所以如果$\mathfrak q\subset \pp$是包含$\ann(M/\ker \alpha)$的素理想，则它也是包含$\ann(M)$的素理想，这与$\pp$极小矛盾。
 \end{proof}
+
+% \begin{para}[主理想整环的情况]
+% 	我们这里考虑$R$是一个主理想整环，此时，任意两个不同的素理想是互素。实际上，考虑$\pp_1=(a_1)$和$\pp_2=(a_2)$生成的理想$(b)$，则$a_1\in (b)$和$a_2\in b$告诉我们$b$是$a_1$和$a_2$的共同因子。但注意到，在PID中，素元等价于不可约元，此时$b$只能是可逆元，所以$(b)=R$.
+
+% 	进而，取$\pp\in \Ass(M)$，定义$M^\pp:=\{m\in M\,:\, \pp \subset \ann(m)\}$. 但是，由于不存在包含$\pp$的素理想，所以$\Ass(M^\pp)=\{\pp\}$. 此外，再取$\mathfrak q\in \Ass(M)$，则我们有$M^{\pp}\cap M^{\mathfrak q}=\{0\}$. 实际上，如果$m\in M^{\pp}\cap M^{\mathfrak q}$，则任取$r\in (\pp+\mathfrak{q})$都有$rm=0$，但是，由于$\pp$和$\mathfrak q$互素，所以$r$可以取做$1$，所以$m=0$.
+
+% 	进一步，考虑$M$是有限生成的。我们来求局部化同态$M\to M_\pp$的核，即使得$m/1=0$的$m$，换言之，我们需要$\ann(m)\not\subset \pp$.
+% \end{para}
 
 利用Proposition \ref{pro:5.1.11}，下面考虑$M=R/\mathfrak{a}\neq 0$的情况，这将给出准素理想的经典定义。
 
@@ -207,7 +209,7 @@ $(3)\Rightarrow (1)$：由于模掉$\ann(M)$后$\pp$是幂零的，所以它就�
 由于Noether环上的有限生成模是Noether模，回忆Proposition \ref{irrde}，$N$可以写成$M$中的有限个不可约子模的交的形式，而每一个不可约子模都是准素子模。
 \end{proof}
 
-\begin{thm}
+\begin{thm}\label{thm:5.2.17}
 	令$R$是Noether环，而$M$是有限生成$R$-模，$N$是$M$的一个真子模。如果$N$可以写成并$N=\bigcap_{i=1}^n M_i$，其中$M_i$是$M$的$\mathfrak p_i$-准素子模，记$P$为所有的$\mathfrak p_i$的集合，则
 	\begin{compactenum}
 		\item $\Ass(M/N)\subset P$.
@@ -260,10 +262,6 @@ $(3)\Rightarrow (1)$：由于模掉$\ann(M)$后$\pp$是幂零的，所以它就�
 \end{proof}
 
 准素分解不是唯一的，比方说，在$k[x,y]$中，$(x^2,xy)=(x)\cap (x^2,y)=(x)\cap (x^2,xy,y^2)$，但是，可以看到，对于极小分解，我们还是可以得到许多有趣的信息。
-
-\section{主理想整环上的有限生成模}
-
-\para 在很久之前，我们已经有了一个结论：域上的有限生成模是自由模。这节就将推广这个结论。
 
 \section{微分模}
 

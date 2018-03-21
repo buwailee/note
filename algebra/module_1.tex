@@ -455,8 +455,22 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \end{proof}
 
 \begin{thm}[Hilbert基定理]
-如果$R$是一个Noether环，则$R[x]$也是一个Noether环。\notprove
+如果$R$是一个Noether环，则$R[x]$也是一个Noether环。
 \end{thm}
+
+方便起见，我们引入如下术语：设$f=a_nx^n+\cdots+a_0\in R[x]$，其中$a_n\neq 0$，则我们称$a_nx^n$为首项，而$a_n$为首项系数。
+
+\begin{proof}
+	令$I\subset R[x]$是一个理想，我们要证明$I$是有限生成的。现在，按照下列方法找一个$I$中元素的序列$\{f_1,f_2,\dots\}$：令$f_1$为$I$中的一个非零的最低次元素，对$i\geq 1$，如果$\langle f_1,\dots,f_i\rangle\neq I$，则取$f_{i+1}$为$I-\langle f_1,\dots,f_i\rangle\neq I$中非零的最低次元素，否则停止寻找序列的下一项。
+
+	现在，令$a_i$为$f_i$的首项系数，因为$R$是Noether环，则理想$J=\langle a_1,a_2,\dots\rangle$是有限生成的，所以我们可以找有限个生成元，而它们有都可以写成有限生成$a_i$的组合，所以，可以将生成元选作前$m$个$a_i$，即$J=\langle a_1,\dots,a_m\rangle$. 下面我们证明$I=\langle f_1,\dots,f_m\rangle$.
+
+	反正，如果$I\neq \langle f_1,\dots,f_m\rangle$，则我们可以选取$f_{m+1}$，其首项系数写作$a_{m+1}=\sum_{i=1}^m r_ia_i$. 因为$f_{m+1}$的次数肯定比任意的$f_1$, $\dots$, $f_m$的次数都大，所以我们可以定义一个多项式
+	\[
+		g=\sum_{i=1}^m r_if_ix^{\deg f_{m+1}-\deg f_i}\in \langle f_1,\dots,f_m\rangle,
+	\]
+	他和$f_{m+1}$的次数相同，首项系数也相同，于是$f_{m+1}-g$的次数比$f_{m+1}$严格小。但是，注意到$f_{m+1}\not\in I$，所以$f_{m+1}-g\not\in I$，这就与构造中$f_{m+1}$的次数最小矛盾。
+\end{proof}
 
 作为推论，如果$R$是一个Noether环，而$S$是一个有限生成$R$-代数，则$S$也是一个Noether环。
 
@@ -514,12 +528,12 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 	模$\mathfrak{a}(M/N)$由$\sum_{i=1}^n a_i\overline{m}_i$生成，其中$\overline{m}_i\in M/N$，是$M/N$的子模。观察$\sum_{i=1}^n a_i m_i$，为得到$\sum_{i=1}^n a_i\overline{m}_i$，需要模去$N$，但是$N$未必是$\mathfrak{a}M$的子模，所以可以先把$\mathfrak{a}M$扩张为$\mathfrak{a}M+N$，再模去$N$，添进去的多余的$N$里面的元素也一道模掉了，这样就得到了想要的典范等同$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$. 或者，可以通过先将$N$缩小到$\mathfrak{a}M$的一个子模$N\cap \mathfrak{a}M$，于是就有了另一个典范等同$\mathfrak{a}(M/N)=\mathfrak{a}M/(N\cap \mathfrak{a}M)$.
 \end{proof}
 
-\begin{thm}[Hamilton-Cayley定理]
+\begin{thm}[Hamilton-Cayley定理]\label{Hamilton-Cayley}
 设$M$是一个有限生成$R$-模，他能被$n$个元素生成. 再设$\mathfrak{a}$是$R$的一个理想，$\varphi:M\to M$是一个自同态。如果$\varphi(M)\subset \mathfrak{a}M$，则存在首一多项式
 \[
 	p(x)=x^n+p_1x^{n-1}+\cdots+p_n,
 \]
-其中$p_i\in I$，使得$p(\varphi)=\varphi^n+p_1\varphi^{n-1}+\cdots+p_n$是一个零映射，即任取$m\in M$，有$p(\varphi)(m)=0$. 一般写作$p(\varphi)=0$.
+其中$p_i\in \mathfrak{a}$，使得$p(\varphi)=\varphi^n+p_1\varphi^{n-1}+\cdots+p_n$是一个零映射，即任取$m\in M$，有$p(\varphi)(m)=0$. 一般写作$p(\varphi)=0$.
 \end{thm}
 
 \begin{proof}
@@ -1000,7 +1014,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 
 下面一个命题给出了一定程度上的逆命题。
 
-\begin{lem}
+\begin{lem}\label{lem:3.5.28}
 	如果$M$是有限生成$R$-模，则$\supp(M)$由所有包含$\ann(M)$的素理想构成。
 \end{lem}
 

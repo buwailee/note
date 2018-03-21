@@ -2,4 +2,251 @@
 \ThisULCornerWallPaper{1}{../Pictures/3.png}
 \section{矢量空间与对偶空间}
 
+\section{张量代数}
+
+\section{本征值问题}
+
+模论的方法给了我们研究线性代数的新思路。考虑一个非零$k$-矢量空间$V$，以及一个线性映射$A:V\to V$. 那么，我们可以通过$x\cdot v=Av$定义$V$的一个$k[x]$-模结构。此时，研究线性映射$A$，也就归结到了研究作为$k[x]$-模的$V$，即研究$k[x]$-模的标量作用。
+
+此外，在有些命题中，$V$需要是一个有限维$k$-矢量空间，不难看到它此时是有限生成$k[x]$-模。反过来并不正确。所以有时候，条件可以放宽到有限生成$k[x]$-模，但有时候就只能放在有限维$k$-矢量空间上。
+
+在标量作用中，零因子（生成的理想）是比较简单和重要的研究对象，从准素分解那里可以看到，associated primes是一类研究比较深入的对象。而将associated primes放到$k[x]$-模$V$上，我们自然就遇到了本征值问题。
+
+\begin{para}[本征值与本征矢量]
+    设$A:V\to V$是一个线性映射，在其对应的$k[x]$-模$V$中，如果$\langle x-a\rangle\in \Ass_{k[x]}(V)$，则称$a$为$A$的一个本征值，而对应的$\ann(v)=\langle x-a\rangle$中的$v$被称为本征值$a$对应的本征矢量。
+\end{para}
+
+如果$v$是本征值$a$对应的本征矢量，则$(x-a)v=0$等价于$Av=av$. 这就是经典的本征方程。
+
+\begin{lem}
+    如果$V$是有限维$k$-矢量空间，则首一多项式$\det(xI-A)\in \ann_{k[x]}(V)$.
+\end{lem}
+
+\begin{proof}
+    参见Hamilton-Cayley定理Theorem \ref{Hamilton-Cayley}的证明。
+\end{proof}
+
+注意到，$k[x]$是PID，则$\ann_{k[x]}(V)$由某个多项式生成，我们将其中的那个首一多项式称为极小多项式，记作$p(V)$，而首一多项式$\det(xI-A)$称为本征多项式，不难看到，本征多项式的次数为$\dim V$.
+
+\begin{pro}
+    如果$k$是代数闭域，而$V$是$k$-矢量空间，$A:V\to V$是线性映射，如果对应的$\ann_{k[x]}(V)$是非零理想，则$A$存在本征值。特别地，如果$V$是有限维的，则任意线性映射$A:V\to V$都存在本征值。
+\end{pro}
+
+\begin{proof}
+    因为$k[x]$总是Noether环，所以associated prime一定存在，同时，因为所有的associated prime一定包含$\ann_{k[x]}(V)$，所以它们是非零素理想。因为$k$是代数闭的，所以只能具有形式$\langle x-a\rangle$，此时$a$就是一个本征值。后一论断结合上一个引理是直接的。
+\end{proof}
+
+当然，对于非代数闭域，associated primes可能就不是一次式生成的（尽管依然是主理想），所以就可能不存在本征值。此外，对于无限维的情况，此时$\ann(V)$可以为零，所以也可能不存在本征值。
+
+\begin{pro}
+    设有限生成$k[x]$-模$V$的极小多项式为$p(V)$，则由于$k[x]$是PID，所以$p(V)$可以唯一分解为一族不可约首一多项式$\{p_i\}$的乘积，即
+    \[
+        p(V)=p_1^{i_1}\cdots p_k^{i_k},
+    \]
+    则$A$具有本征值$a$，当且仅当$(x-a)\in \{p_i\}$.
+\end{pro}
+
+\begin{proof}
+    如果$A$具有本征值$a$，则$\langle x-a\rangle \in \Ass(V)$，其包含$\ann(V)=\langle p(V)\rangle$，因此$p(V)$的分解中必有因子$(x-a)$. 反过来，如果$p(V)$的分解中具有因子$(x-a)$，则$\langle x-a\rangle$是包含$\langle p(V)\rangle =\ann(V)$的一个极小素理想，由于$V$是有限生成的，Lemma \ref{lem:3.5.28}告诉我们$\supp(V)$由所有包含$\ann(V)$的素理想构成，继而Proposition \ref{pro:5.1.9}立刻告诉我们，$\langle x-a\rangle \in \Ass(V)$.
+\end{proof}
+
+\begin{pro}
+    如果$V$是有限维矢量空间，则$\deg(p(V))\leq \dim (V)$. 特别地，$A$的本征值数目不大于$V$的维数。
+\end{pro}
+
+\begin{proof}
+    依然是Hamilton-Cayley定理Theorem \ref{Hamilton-Cayley}，因为$V$可以由$\dim V$个元素生成，所以$\ann(V)=\langle p(V)\rangle$包含一个最高次数为$\dim V$的多项式，这就给出了$\deg(p(V))\leq \dim (V)$. 此外，上一个命题告诉我们，$A$的本征值数目不能超过$\deg(p(V))$.
+\end{proof}
+
+\begin{para}[根子空间]
+    设$p\in k[x]$是一个多项式，对$k[x]$-模$V$，考虑集合
+    \[
+        V(p)=\{v\in V\;:\; \text{存在自然数$n$使得$p(x)^nv=0$}\},
+    \]
+    不难检验，这是$V$的一个$k[x]$-子模（当然也是一个子空间），它被称为$V$的对应于多项式$p$的根子空间。
+\end{para}
+
+\begin{lem}\label{lem:6.3.9}
+    设$k[x]$-模$V$的极小多项式可以分解为$p(V)=p_1^{n_1}\cdots p_k^{n_m}$，则存在一个$v\in V(p_i)$使得$\ann(v)=\langle p_i^{n_i}\rangle$.
+\end{lem}
+
+\begin{proof}
+    实际上，我们可以找到一个$v\in V(p_i)$使得$p_i^{n_i-1}(x)v\neq 0$且$p_i^{n_i}(x)v=0$，此时自然有$\ann(v)=\langle p_i^{n_i}\rangle$. 现在，取$w\in V$，则
+    \[
+        v_w=\left(p_1^{n_1}\cdots p_{i-1}^{n_{i-1}}p_{i+1}^{n_{i+1}}\cdots p_{m}^{n_{m}}\right)(x)w,
+    \]
+    满足$p_i^{n_i}(x)v_w=0$. 但是，如果对所有的$w\in V$都有$p_i^{n_i-1}(x)v_w=0$，则多项式
+    \[
+        p_1^{n_1}\cdots p_{i-1}^{n_{i-1}}p_i^{n_i-1}p_{i+1}^{n_{i+1}}\cdots p_{m}^{n_{m}}
+    \]
+    作用在任意的$w\in V$都为零，所以它处于极小多项式生成的理想中，但他比极小多项式的次数严格小，矛盾。
+\end{proof}
+
+\begin{pro}\label{pro:6.3.6}
+    设$V$是有限生成$k[x]$-模且极小多项式$p(V)$非零，则存在$v\in V$使得$\ann(v)=\ann(V)$.
+\end{pro}
+
+\begin{proof}
+    设$p(V)$可以分解为$p(V)=p_1^{n_1}\cdots p_k^{n_m}$，首先，存在$v_i\in V(p_i)$且$\ann(v_i)=\langle p_i^{n_i}\rangle$. 此外，由于分解中的$p_i$都两两互素，所以任意两个$V(p_i)$都只相交于$\{0\}$. 因此，$\{v_i\}$是线性无关的，并且，由于每个$V(p_i)$都是$k[x]$-子模，所以任取$f\in k[x]$，则$\{f(x)v_i\}$中的非零矢量族是线性无关的。
+
+    最后，考虑$v=\sum_i v_i$. 任取$f\in k[x]$使得$\deg f<\deg (p(V))$，则总存在一个$v_i$使得$f(x)v_i\neq 0$，因此$f(x)v\neq 0$，或者说$f\not\in \ann(v)$. 由于$\ann(v)$包含$\ann(V)$非零，所以他由一个多项式$q\in k[x]$生成，如果$\ann(v)$真包含$\ann(V)$，则$\deg q< \deg (p(V))$，所以$q\not\in \ann(v)$，矛盾，所以$\ann(v)=\ann(V)$.
+\end{proof}
+
+\begin{pro}\label{pro:6.3.7}
+    设$k[x]$-模$V$是一个$n$-维$k$-矢量空间，$p(V)$为其极小多项式，$q(V)$为其本征多项式，则一下命题等价：
+    \begin{compactenum}
+        \item $\deg(p(V))=\dim V$;
+        \item $p(V)=q(V)$;
+        \item 存在$v\in V$使得$v$, $xv$, $\dots$, $x^{n-1}v$是线性无关的;
+        \item $V$是一个循环$k[x]$-模。
+    \end{compactenum}
+\end{pro}
+
+\begin{proof}
+    其中只有1和3的等价性没那么平凡。如果$\deg(p(V))=\dim V=n$，上一个命题告诉我们，存在一个$v\in V$使得任取$(n-1)$-次多项式$q\in k[x]$都有$q(x)v\neq 0$，而这又意味着$v$, $xv$, $\dots$, $x^{n-1}v$是线性无关的。反过来，如果$v\in V$使得$v$, $xv$, $\dots$, $x^{n-1}v$是线性无关的，考虑$\ann(v)=\langle q\rangle$，其中$\deg q\geq n$. 但同时，因为$\ann(v)$包含$\ann(V)=\langle p(V)\rangle$，所以$\deg q\leq \deg(p(V))$，所以
+    \[
+        \dim V=n\leq \deg q\leq \deg(p(V)),
+    \]
+    结合$\deg(p(V))\leq \dim V$，我们就得到了$\deg(p(V))=\dim V$.
+\end{proof}
+
+下面我们首先研究循环$k[x]$-模。
+
+\begin{pro}
+    设有限维$k$-矢量空间$V$是一个循环$k[x]$-模，极小多项式的分解为$p(V)=p_1^{n_1}\cdots p_m^{n_m}$，则我们有分解
+    \[
+       V=\bigoplus_i V(p_i),
+    \]
+    且$\dim_k V(p_i)=n_i\deg(p_i)$. 此外，$V(p_i)$的极小多项式$p(V(p_i))$就是$p_i^{n_i}$，所以$V(p_i)$是一个循环$k[x]$-模。
+\end{pro}
+
+\begin{proof}
+    从Lemma \ref{lem:6.3.9}可知$\langle p(V(p_i))\rangle=\ann (V(p_i))\subset \langle p_i^{n_i}\rangle$，所以$n_i\deg(p_i)=\deg (p_i^{n_i})\leq \deg (p(V(p_i)))$. 同时，$V(p_i)$作为$k[x]$-模，我们有$\deg (p(V(p_i))) \leq \dim V(p_i)$. 所以$n_i\deg(p_i)\leq \dim V(p_i)$. 
+    
+    另一方向，由于$V$是循环$k[x]$-模，所以$\deg p(V)=\dim V$，所以我们有
+    \[
+        \dim V=\sum_i n_i\deg(p_i)\leq \sum_i\dim V(p_i)\leq \dim V,
+    \]
+    其中最后一个不等号来自于$\{p_i\}$两两互素，直和$\bigoplus_i V(p_i)\subset \dim V$. 因此直和分解成立。此外，如果有一个$n_i\deg(p_i)$严格小于$\dim V(p_i)$，则这将违背$\dim V=\sum_i n_i$，所以$\dim V(p_i)=n_i\deg(p_i)$.
+
+    最后，因为
+    \[
+        \deg(p_i^{n_i})\leq \deg (\deg(p(V)))\leq \dim V(p_i),
+    \]
+    所以从$\dim V(p_i)=n_i\deg(p_i)$以及Proposition \ref{pro:6.3.7}立刻得到$V(p_i)$是一个循环$k[x]$-模。
+\end{proof}
+
+有趣的是，我们还可以通过中国剩余定理来直接看到这个命题。甚至，我们可以这个定理推广到PID上的循环模，因为PID上任意两个不同的素元也是互素的。
+
+依然是$R$是PID，而$M$是有限生成$R$-模，设$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_m}\rangle$，则$\langle p_i\rangle$是包含$\ann_R(M)$的极小素理想，设$\alpha_i:M\to M_{\langle p_i\rangle}$是局部化映射，则Proposition \ref{pro:5.2.13}告诉我们，$\ker \alpha_i$是一个$\langle p_i\rangle$-准素子模，且Theorem \ref{thm:5.2.17}告诉我们，
+
+\begin{para}[本征空间]
+    如果$a\in k$是线性映射$A:V\to V$的本征值，则所有以$a$为本征矢量的$v\in V$以及$0$构成了$V$的一个子空间，他被称为$A$的对应于本征值$a$的本征空间。
+
+    显然，如果$v$, $w$的本征值为$a$，则$rv+sw\neq 0$的本征值也为$a$，所以定义合理。并且，从定义，不难看到$V$的本征空间是$V$的一个$k[x]$-子模。
+\end{para}
+
+\section{主理想整环上的有限生成模}
+
+在这节中，设$R$是一个主理想整环，而$M$是一个有限生成模。我们首先利用中国剩余定理给出的一个循环$R$-模的刻画。
+
+\begin{pro}
+    设$R$是一个PID，$M$是一个循环$R$-模，且$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_m}\rangle$，其中$p_i$都是$R$中的素元（可以为零），此时，我们有$R$-模同构
+    \[
+        M\cong \bigoplus_i R/\langle p_i^{n_i}\rangle.
+    \]
+\end{pro}
+
+\begin{proof}
+    对循环$R$-模$M$，则模同态$R\to M$给出了$R$-模同构$M\cong R/\ann(M)$. 此外，由于$\{p_i\}$两两互素，所以中国剩余定理告诉我们，存在环同构
+    \[
+        R/\langle p_1^{n_1}\cdots p_k^{n_m}\rangle = R/\left(\bigcap_i \langle p_i^{n_i}\rangle\right)\cong \prod_i R/\langle p_i^{n_i}\rangle,
+    \]
+    这个环同构是商映射族$\pi_i:R\to R/\langle p_i^{n_i}\rangle$的积$\pi=\prod_i \pi_i:R\to \prod_j R/\langle p_i^{n_i}\rangle$的商。如果将两侧看成$R$-模，则作为环同态的$\pi$将给出一个$R$-模同态（正是$\pi_i$给出了$R/\langle p_i^{n_i}\rangle$的$R$-模结构），所以，我们有$R$-模同构
+    \[
+        M\cong \bigoplus_i R/\langle p_i^{n_i}\rangle
+    \]
+    此即所需。
+\end{proof}
+
+我们下面将准素分解那套理论应用到这里。
+
+\begin{pro}
+     设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则$\Ass_RM=\{\langle p_1\rangle ,\dots,\langle p_m\rangle \}$.
+\end{pro}
+
+\begin{proof}
+    显然，$\{\langle p_1\rangle ,\dots,\langle p_m\rangle \}\subset \Ass_RM$，因为每个$\langle p_i\rangle$都是包含$\ann_R(M)$的极小素理想，见Proposition \ref{pro:5.1.9}. 所以，我们只需证明不存在其他的associated primes. 如果$\ann(m)=\langle q\rangle$是一个素理想，由于$\ann(M)\subset \ann(m)$，所以$p_1^{n_1}\cdots p_m^{n_m}=qr$，其中$r\in R$. 根据唯一分解，$q$只能等于某个$p_i$.
+\end{proof}
+
+ \begin{pro}
+    设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，从而局部化映射$M\to M_{\langle p_i\rangle}$的核给出了$\langle p_i\rangle$-子模$M_i$，且$\bigcap_{i}M_i=\{0\}$.
+\end{pro}
+
+\begin{proof}
+    前一个论断就是Proposition \ref{pro:5.2.13}，我们只需证明$\bigcap_{i}M_i=\{0\}$. 取$m\in \bigcap_{i}M_i$，所以存在$r_i\not\in \langle p_i\rangle$使得$r_im=0$. 因为$\ann(M)\subset \ann(m)$，所以可设$\ann(m)=\langle p_1^{l_1}\cdots p_m^{l_m}\rangle$. 从$r_i\not\in \langle p_i\rangle$，立刻得到$l_i=0$，所以$\ann(m)=R$，继而$m=0$.
+\end{proof}
+
+\begin{para}[根子模]
+    设$r\in R$，对$R$-模$M$，局部化同态$\alpha_r:M\to M_r$的核$\ker \alpha_r$被称为$M$关于$r$的根子模，记作$M(r)$. 不难看到，
+    \[
+        M(r)=\{m\in V\;:\; \text{存在自然数$n$使得$r^nv=0$}\}.
+    \]
+\end{para}
+
+\begin{lem}
+    如果$r$和$s$互素，则$M(r)\cap M(s)=\{0\}$.
+\end{lem}
+
+\begin{proof}
+    取$m\in M(r)\cap M(s)$，所以存在一个足够大的$n$使得$r^nm=0=s^nm$. 如果$r$, $s$生成单位理想，则$r^{n}$和$s^{n}$也生成单位理想\footnote{以素谱的语言，我们知道：如果$\{D(f_i)\}$构成了$\operatorname{Spec} R$的一个开覆盖，当且仅当$\{f_i\}$生成了$R$. 同时，再注意到$D(f)=D(f^n)$对任意的正整数$n$都成立。}，因此存在$a$, $b\in R$使得$ar^{n}+bs^{n}=1$. 乘以$m$后立刻得到$m=0$.
+\end{proof}
+
+\begin{lem}
+    设$M$是一个$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则存在一个$m_i\in M(p_i)$使得$\ann(m_i)=\langle p_i^{n_i}\rangle$，
+\end{lem}
+
+\begin{proof}
+    我们可以找到一个$m_i\in M(p_i)$使得$p_i^{n_i-1}m_i\neq 0$且$p_i^{n_i}m_i=0$，此时自然有$\ann(m_i)=\langle p_i^{n_i}\rangle$. 实际上，此时，$p_i^{n_i}\in \ann(m_i)=\langle q_i\rangle$，所以$p_i^{n_i}=rq_i$，但是根据唯一分解，立刻得到$\langle q_i\rangle=\langle p_i^n\rangle$，其中$n\leq n_i$. 再从$p_i^{n_i-1}m_i\neq 0$，就有$\ann(m_i)=\langle q_i\rangle = \langle p_i^{n_i}\rangle$.
+    
+    现在，取$w\in M$，则
+    \[
+        m_w=\left(p_1^{n_1}\cdots p_{i-1}^{n_{i-1}}p_{i+1}^{n_{i+1}}\cdots p_{m}^{n_{m}}\right)w,
+    \]
+    满足$p_i^{n_i}m_w=0$. 但是，如果对所有的$m\in M$都有$p_i^{n_i-1}m_w=0$，则$R$中的元素
+    \[
+        p_1^{n_1}\cdots p_{i-1}^{n_{i-1}}p_i^{n_i-1}p_{i+1}^{n_{i+1}}\cdots p_{m}^{n_{m}}
+    \]
+    作用在任意的$m\in M$都为零，所以它处于极小多项式生成的理想中，这与唯一分解性质矛盾。
+\end{proof}
+
+\begin{pro}\label{pro:6.3.6}
+    设$R$-模$M$满足$\ann_R(M)$非零，则存在$m\in M$使得$\ann(m)=\ann(M)$.
+\end{pro}
+
+\begin{proof}
+    设$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_m}\rangle$，根据上一个引理，存在$m_i\in M(p_i)$且$\ann(m_i)=\langle p_i^{n_i}\rangle$. 此外，由于分解中的$p_i$都两两互素\footnote{因为主理想整环的非零素理想是极大理想，所以两个不同的素元互素。}，所以任意两个$M(p_i)$都只相交于$\{0\}$. 由于每个$M(p_i)$都是$k[x]$-子模，所以任取$r\in R$，则$rm_i$依然在$M(p_i)$中。
+
+    最后，考虑$m=\sum_i m_i$. 由于$\ann(M)\subset \ann(m)=\langle q\rangle$，所以$p_1^{n_1}\cdots p_k^{n_m}=qr$，其中$r\in R$，于是唯一分解告诉我们
+    \[
+        \ann(m)=\langle p_1^{l_1}\cdots p_k^{l_m}\rangle,
+    \]
+    其中$l_i\leq n_i$. 由于$\ann(m_i)=\langle p_i^{n_i}\rangle$，将$p_1^{l_1}\cdots p_k^{l_m}$作用到$m_i$上，除非$l_i=n_i$，否则不为零，因此，只有当$l_i=n_i$对所有的$i$都成立时，$p_1^{l_1}\cdots p_k^{l_m}$乘以$m$才为零，此即$\ann(m)=\ann(M)$.
+\end{proof}
+
+\begin{pro}
+    设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则
+    \[
+        M=M(p_1)\oplus \cdots  \oplus M(p_m).
+    \]
+\end{pro}
+
+\begin{proof}
+    取$m\in M$但$m\not\in M(p_1)\oplus \cdots  \oplus M(p_m)$. 由于$\ann_RM\subset \ann_R m=\langle q\rangle$，所以，可以设
+    \[
+        q=p_1^{l_1}\cdots p_m^{l_m},
+    \]
+    其中$l_i\leq n_i$.
+\end{proof}
+
 \section{矢量空间在线性算子下的分解}
