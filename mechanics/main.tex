@@ -1,4 +1,4 @@
-\documentclass[10pt]{book}
+\documentclass[11pt]{book}
 
 \usepackage[book]{noteheader}
 \usepackage[fontset = fandol]{ctex}
@@ -34,6 +34,7 @@
 \newtheorem{para}{}[chapter]
 \newtheorem{exa}[para]{Example}
 \renewcommand{\thepara}{\thechapter.\arabic{para}}
+\renewcommand{\proofname}{Proof}
 
 \theoremstyle{plain}
 \newtheorem{thm}[para]{Theorem}
@@ -60,6 +61,7 @@
 \tableofcontents
 \mainmatter
 	\input{1.tex}
+	\input{2.tex}
 \backmatter
  	% \input{references}
 \printindex

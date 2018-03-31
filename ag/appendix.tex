@@ -694,6 +694,30 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 
 在有限完备的情况下，第二点可以替换为存在任意纤维积与终对象。
 
+\begin{proof}
+我们只需证明$(2)\Rightarrow (1)$. 设$J$是一个小范畴，$D$是一个$J$-图。考虑积
+\[
+	P=\prod_{i\in J}D(i),\quad Q=\prod_{\alpha}D(\operatorname{cod}(\alpha)),
+\]
+其中$\alpha$跑遍$J$中所有的态射（注意$J$是小范畴，所以所有的态射也构成集合），而$\operatorname{cod}(\alpha)$是指$\alpha$的值域。$P$的典范投影我们记作$\pi$，而$Q$的记作$p$.
+
+所以，任取态射$\alpha$，我们都有两个态射：
+\[
+	\pi_{\operatorname{cod}(\alpha)}:P\to D(\operatorname{cod}(\alpha)),\quad D(\alpha)\pi_{\operatorname{dom}(\alpha)}:P\to D(\operatorname{cod}(\alpha)),
+\]
+其中$\operatorname{dom}(\alpha)$是$\alpha$的定义域。
+
+利用积的泛性质，我们知道，它们诱导了两个态射$\varphi$, $\psi:P\to Q$，满足
+\[
+	p_\alpha \varphi =\pi_{\operatorname{cod}(\alpha)},\quad p_\alpha\psi=D(\alpha)\pi_{\operatorname{dom}(\alpha)}.
+\]
+考虑它们的等值子$e:E\to P$. 任取$J$中的态射$\alpha:i\to j$，我们有
+\[
+	\pi_j e = \pi_{\operatorname{cod}(\alpha)}e=p_\alpha \varphi e=p_\alpha \psi e=D(\alpha)\pi_{\operatorname{dom}(\alpha)}e=D(\alpha)\pi_{i}e,
+\]
+所以$\{\pi_i e:E\to D(i)\}$是$D$上的一个锥形，不难检查，这个锥形就是我们希望构造的极限。
+\end{proof}
+
 \begin{para}
 对偶地，有限范畴的图的极限被称为有限余极限。如果一个范畴中任意（有限）余极限都存在，则称这个范畴是（有限）余完备的。
 \end{para}

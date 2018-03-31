@@ -1,0 +1,219 @@
+\chapter{Hamilton力学}
+\section{辛形式与Hamilton方程组}
+
+\begin{para}
+	设$Z$为实Banach空间，设$\Omega:Z\times Z\to \rr$是$Z$上的一个连续双线性型，如果任取$z_2\in Z$都有$\Omega(z_1,z_2)=0$可以推出$z_1=0$，则称$\Omega$为\textit{非退化形式}\index{非退化形式}或\textit{弱非退化形式}\index{非退化形式!弱非退化形式}。于是，$\Omega$将诱导一个连续线性映射$\Omega^\flat:Z\to Z^*$，满足
+	\[
+		\Omega^\flat(z_1)(z_2)=\Omega(z_1,z_2).
+	\]
+	很清楚，$\Omega$是非退化的等价于$\Omega^\flat$是单射。若$\Omega^\flat$还是一个满射，则开映射定理保证了$\Omega^\flat$是一个同胚。
+	\begin{quote}\it
+	开映射定理：如果$X$和$Y$是Banach空间，$A : X \to Y$是一个满的连续线性算子，那么$A$就是一个开映射。
+	\end{quote}
+	此时$\Omega^\flat$是一个同构，称$\Omega$为\textit{强非退化形式}\index{非退化形式!强非退化形式}。对有限维而言，弱非退化形式与强非退化形式等价，但一般而言，我们所谓的非退化形式是指弱非退化形式。
+
+	定义矢量空间$Z$上的一个\textit{辛形式}\index{辛形式}$\Omega$是一个非退化反对称双线性型，此时$(Z,\Omega)$被称为一个\textit{辛（矢量）空间}\index{辛空间}。
+\end{para}
+
+\begin{exa}
+	令$V$是一个矢量空间，再令$Z=V\times V^*$，定义$Z$上的\textit{正则辛形式}\index{辛形式!正则辛形式}$\Omega$为
+	\[
+	\Omega((v,f),(w,g))=g(v)-f(w),
+	\]
+	其中$v$, $w\in V$而$f$, $g\in V^*$.
+
+	对于有限维空间，由于$\Omega(z,w)=z^iw^j\Omega_{ij}$，所以给出辛形式等价于给出其矩阵$\Omega_{ij}$. 在我们的例子中，正则辛形式的矩阵写作
+	\[
+	(\Omega_{ij})=
+	\begin{pmatrix}
+	0&I\\
+	-I&0
+	\end{pmatrix}.
+	\]
+
+	更一般地，如果$V$和$W$中有一个非退化双线性型$D:V\times W\to \rr$. 则可以在$V\times W$上可以定义一个辛形式如下
+	\[
+	\Omega((v_1,w_1),(v_2,w_2))=D(v_2,w_1)-D(v_1,w_2).
+	\]
+	它也被称为正则辛形式。
+
+	另一个例子，考虑一个复Hilbert空间$\mathcal{H}$，上面有一个Hermit内积$\langle *,*\rangle:\mathcal{H}\times \mathcal{H}\to \cc$，按照物理上的习惯，第一个变量是反线性的，第二个变量是线性的，同时成立$\langle v,w\rangle=\overline{\langle w,v\rangle}$. 则$\Omega(\psi_1,\psi_2)=\,\mathrm{Im}\, \langle \psi_1,\psi_2\rangle$是一个$\mathcal{H}$上的（强）辛形式。
+\end{exa}
+
+\begin{para}
+	设$(Z_1,\Omega_1)$和$(Z_2,\Omega_2)$是两个辛空间，而$f:Z_1\to Z_2$是一个连续可微映射，$\dd f$是它的导数，在点$z$处表现为$\dd f(z):Z_1\to Z_2$，这里我们悄悄引入了赋范空间与它切空间的等同。
+
+	记号上，我们经常用$f_*$或者$f'$来代替$\dd f$，相应地，用$f_{*z}$和$f'(z)$来代替$\dd f(z)$.
+
+	如果对每一个$x$, $y$, $z\in Z_1$都有
+	\[
+		\Omega_2\left(\dd f(z)x,\dd f(z)y\right)=\Omega_1(x,y),
+	\]
+	则称$f$是一个\textit{辛变换}\index{辛变换}，或者叫\textit{正则变换}\index{正则变换}。辛空间连上辛变换自然构成了一个范畴。
+\end{para}
+
+\begin{para}
+	设$(Z,\Omega)$是一个辛空间，一个矢量场$X:Z\to Z$被称为Hamilton的，如果对每一个$z\in Z$以及某个$C^1$函数$H:Z\to R$使得
+	\[
+	\Omega^\flat (X(z))=\dd H(z).
+	\]
+	如果这样一个函数$H$存在，我们称之为Hamilton函数或者Hamiltonian，而$X$会相应记作$X_H$. 
+
+	如果系统是有限维的，则$\Omega^\flat$是同构，故而，给定一个函数$H$就可以定义出一个相应的矢量场
+	\[
+		X_H(z)=(\Omega^\flat)^{-1}\left(\dd H(z)\right).
+	\]
+
+	经常地，在处理无限维Banach空间时，$H$不必在$Z$上整体有定义，而只在一个稠密子空间上有定义，或者更小的空间上有定义。这点比如在处理不同的可微性时候会出现。以后我们不谈这种东西。
+
+	任取$w\in Z$，由Hamilton矢量场的定义，我们有
+	\[
+	\Omega(X(z),w)=\Omega^\flat (X(z))w=H_{*z}w=\dd H(z)w.
+	\]
+	如果已知一个Hamilton矢量场$X$，则可以通过
+	\[
+	H(z)-H(0)=\int_{0}^1 \dd t\,\frac{\dd H(tz)}{\dd t}=\int_{0}^1 \dd t\,\dd H(tz)z=\int_{0}^1 \dd t\,\Omega(X(tz),z)
+	\]
+	算出对应的Hamilton函数。
+\end{para}
+
+\begin{pro}
+	设$(Z,\Omega_Z)$和$(Y,\Omega_Y)$是辛空间，而$f:Z\to Y$是一个微分同胚，则$f$是一个辛变换当且仅当对$Y$上的所有Hamilton矢量场$X_H$成立，$f_*X_{H\circ f}=X_{H}$，即
+	\[
+		X_H(f(z))=f_{*z}X_{H\circ f}(z).
+	\]
+\end{pro}
+
+实际上，考虑
+\[
+	\Omega_Z(X_{H\circ f}(z),v)=(H\circ f)_{*z}v=H_{*f(z)}f_{*z}v=\Omega_Y(X_H(f(z)),f_{*z}v).
+\]
+由于$f$是微分同胚，$f_*$自然处处是线性同构，所以如果$f$是正则变换，则
+\[
+	\Omega_Y(f_{*z}X_{H\circ f}(z),f_{*z}v)=\Omega_Z(X_{H\circ f}(z),v)=\Omega_Y(X_H(f(z)),f_{*z}v),
+\]
+由$\Omega_Y$非退化，可知$X_H(f(z))=f_{*z}X_{H\circ f}(z)$. 反之亦然。
+
+\begin{para}
+	设$H$是一个Hamilton函数，而$X_H$是他的Hamilton矢量场，则决定$c:\rr \to Z$是否为$X_H$的积分曲线的微分方程
+	\[
+	\dot c(t)=X_H(c(t))
+	\]
+	被称为$H$的Hamilton方程组。
+
+	设$c$是$X_H$的一条积分曲线，则$H$在曲线$c(t)$上保持恒定。实际上，直接对$H\left(c(t)\right)$求导有
+	\[
+	\frac{\dd}{\dd t}H(c(t))=\dd H(c(t))\dot c(t)=\dd H(c(t))X_H\left(c(t)\right)=\Omega\left(X_H\left(c(t)\right),X_H\left(c(t)\right)\right)=0.
+	\]
+	Hamilton函数一般被认为是能量，则这个小命题即可认为是能量守恒。
+\end{para}
+
+\begin{thm}
+	设$X:Z\to Z$是一个矢量场，则$X$是一个Hamilton矢量场，当且仅当，对所有的$x$, $y\in Z$成立
+	\[
+	\Omega(Ax,y)+\Omega(x,Ay)=0,
+	\]
+	此时$H(z)$可以取作$\Omega(Az,z)/2$.
+\end{thm}
+
+\section{辛流形}
+
+\begin{para}
+	一个辛流形是一个对$(P,\Omega)$，其中$P$是一个流形（可以是Banach流形）而$\Omega$是$P$上的一个非退化的闭2-形式，所谓的非退化就是说，在每一点$p\in P$处，二项式$\Omega_p:T_pP\times T_p P\to \rr$是非退化的，如果这还是强非退化的，则称$(P,\Omega)$是一个强辛流形。
+
+	类似矢量空间的情况，我们可以定义$\Omega_p^\flat(z)=\Omega_p(z,*)$，于是这就得到了映射$\Omega^\flat : \Gamma(TP)\to \Gamma(T^*P)$. 
+\end{para}
+
+\begin{thm}
+	如果$(P,\Omega)$是强辛流形，则在每一点存在局部坐标系使得$\Omega$是一个常值。
+\end{thm}
+
+对于有限维的情况，任意辛流形都是强辛流形，他一定存在局部坐标系$\{q^i;p^i\}_{1\leq i \leq n}$使得
+\[
+	\Omega=\sum_{i=1}^n \dd q^i\wedge \dd p^i.
+\]
+这组坐标被称为辛流形上面的正则坐标。
+
+习惯上，对于$2n$维辛流形，会定义上面的体积形式为
+\[
+	\Lambda =\frac{(-1)^{n(n-1)/2}}{n!} \Omega\wedge\cdots \wedge \Omega,
+\]
+其中外积乘$n$次，在正则坐标下可以写成
+\[
+	\Lambda = \dd q^1\wedge \cdots \wedge \dd q^n\wedge p^1\wedge \cdots\wedge p^n.
+\]
+
+\begin{para}[辛变换]
+	设$(P_1,\Omega_1)$和$(P_2,\Omega_2)$是两个辛流形，而光滑映射$\varphi:P_1\to P_2$被称为一个辛或者正则映射，如果$\varphi$满足$\varphi^*\Omega_2=\Omega_1$.
+\end{para}
+
+有限维的情况，与体积形式的定义合起来，不难看出$\varphi^*\Gamma_2=\Gamma_1$. 这就是所谓的正则映射保体积。同时，也因为正则变换是保体积的，所以其处处非退化，继而保证了局部是微分同胚。
+
+\begin{para}[Hamilton矢量场]
+称辛流形$(P,\Omega)$上的一个矢量场$X$是Hamilton矢量场，如果存在一个光滑函数$H$使得$\Omega_z(X_z,*)=\dd H(z)$处处成立。这个光滑函数$H$被称为Hamilton矢量场$X$对应的Hamilton函数。
+\end{para}
+
+记$L_X$是沿着$X$的Lie导数，由Cartan公式
+\[
+	L_X=i_X\circ \dd+\dd\circ i_X,
+\]
+其中$i_X$是内积算符，
+\[
+	L_X\Omega=i_X\dd \Omega+\dd i_X \Omega=\dd i_X \Omega,
+\]
+我们称虎一个矢量场是局部Hamilton的，如果$i_X \Omega$是闭形式，利用上面的公式即$L_X\Omega=0$.
+
+设$\varphi_t^*$是一个局部Hamilton矢量场$X$对应的流，则
+\[
+	\frac{\dd}{\dd t}\varphi_t^* \Omega=\varphi_t^* L_X\Omega \Omega=0,
+\]
+所以$\varphi_t^* \Omega=\varphi_0^* \Omega=\Omega$，即$\varphi_t^*$是一个辛变换。
+
+\begin{para}[能量守恒]
+设$X_H$是一个Hamilton矢量场，它的Hamilton函数是$H$，对应的流为$\varphi_t$. 则我们有$H(\varphi(z))=H(z)$，即在Hamilton矢量场的积分曲线上，Hamilton函数为常数。
+
+证明是简单的，直接计算有
+\[
+	\frac{\dd}{\dd t}H(\varphi_t(z))=\dd H(\varphi_t(z))(X_{\varphi_t(z)})=\Omega(X_{\varphi_t(z)},X_{\varphi_t(z)})=0.
+\]
+\end{para}
+
+\begin{lem}
+	设$(P_1,\Omega_1)$和$(P_2,\Omega_2)$是两个辛流形，而$\varphi:P_1\to P_2$是一个光滑同胚，则对每一个Hamilton矢量场$X_H$都有
+	\[
+	\varphi^*(X_H)=X_{H\circ \varphi}.
+	\]
+\end{lem}
+
+\section{Possion括号}
+
+\begin{para}
+设$X_F$和$X_G$是Hamilton矢量场，定义Possion括号$\{F,G\}$为
+\[
+	\{F,G\}(z)=\Omega(X_F(z),X_G(z)).
+\]
+设$\varphi$是一个辛变换，作用$\varphi^*$后，我们就得到了
+\[
+	\{F,G\}\circ \varphi=\{F\circ \varphi,G\circ \varphi\}.
+\]
+
+类似地，有$\varphi_t^*\{F,G\}=\{\varphi_t^* F,\varphi_t^* G\}$，其中$\varphi_t$是局部Hamilton矢量场$X$的流，求个导就有
+\[
+	X(\{F,G\})=\{X(F),G\}+\{F,X(G)\}.
+\]
+此外，对Hamilton矢量场$X_H$，我们还有
+\[
+	\{F,H\}=\Omega(X_F,X_H)=\dd F(X_H)=X_H(F),
+\]
+结合两式，这就得出了Jacobi恒等式
+\[
+	\{\{F,G\},H\}=\{\{F,H\},G\}+\{F,\{G,H\}\}.
+\]
+从上面的推导可以看出，Jacobi恒等式是$\varphi_t$正则性的无穷小对应。
+\end{para}
+
+\begin{lem}
+从上述推导，可以得到等式$\{F,G\}=X_G(F)=-X_F(G)$. 我们将之总结为一个引理。
+\end{lem}
+
+并且，由Jacobi恒等式，我们有$[X_F,X_G]=-X_{\{F,G\}}$.

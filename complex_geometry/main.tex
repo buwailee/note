@@ -1,8 +1,8 @@
 % !TeX program = XeLaTeX
 % author: buwailee@nmhs
-\documentclass[10pt]{book}
+\documentclass{book}
 \usepackage[fontset = fandol]{ctex}
-\usepackage[book]{noteheader}
+\usepackage[book]{../noteheader}
 	% \CTEXoptions[today=old]
 	% \CTEXoptions[contentsname=Table of Contents]
 
@@ -32,16 +32,11 @@
 	\newcommand{\cc}{\mathbb{C}}
 	\DeclareMathOperator{\spec}{Spec}
 
-\newcommand{\ThisULCornerWallPaper}[2]{}
-
 \begin{document}
 \frontmatter
 \tableofcontents
 \mainmatter
-	\input{variety.tex}
-	\input{scheme.tex}
-	% \input{chap2.tex}
-	\input{appendix.tex}
+	\input{linear_algebra.tex}
 \backmatter
 	\printindex
 	% \input{references.tex}
