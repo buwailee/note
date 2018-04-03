@@ -1015,7 +1015,7 @@ $V(E)$满足闭集公理，所以$\spec(R)$以$V(E)$为闭集是一个拓扑空�
 设$\varphi:A'\to A$是一个环同态，对任意的$a\in A$，总存在$a'\in A'$和$A$中的可逆元$h$使得$\varphi(a')=ha$，那么$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。
 \end{lem}
 
-\begin{proof} 先对每一个$A$的子集$E$，证明总存在$A'$中的一个子集$E'$满足$V(E)=V(\varphi(E'))$即可。固定$E$，对每一个$a\in E$，取一个$a'\in A$和一个可逆元$h$使得$\varphi(a')=ha$，注意到此时$D(\varphi(a'))=D(a)$或者$V(\varphi(a'))=V(a)$，所以这些$a'$组成的集合$E'$就满足我们的需求。
+\begin{proof} 先对每一个$A$的子集$E$，我们证明总存在$A'$中的一个子集$E'$满足$V(E)=V(\varphi(E'))$即可。固定$E$，对每一个$a\in E$，取一个$a'\in A$和一个可逆元$h$使得$\varphi(a')=ha$，注意到此时$D(\varphi(a'))=D(a)$或者$V(\varphi(a'))=V(a)$，所以这些$a'$组成的集合$E'$就满足我们的需求。
 
 首先证明$^a\varphi$是一个单射。假设$^a\varphi(x)={}^a\varphi(y)$但$x\neq y$. 由$T_0$分离性，可以假设$y\not\in \overline{\{x\}}$，选择$V(E)=\overline{\{x\}}$，于是存在$E'$使得$x\in V(E)=V(\varphi(E'))$，所以${}^a\varphi(y)={}^a\varphi(x)\in V(E')$. 因为$y\not\in \overline{\{x\}}=V(E)=V(\varphi(E'))={}^a\varphi^{-1}(V(E'))$，所以${}^a\varphi(y)\not\in V(E')$，矛盾。因此$^a\varphi$是一个单射。设$\psi$是它在$\im (^a\varphi)$上的函数逆，下面我们证明这是一个连续映射。
 
@@ -1023,7 +1023,8 @@ $V(E)$满足闭集公理，所以$\spec(R)$以$V(E)$为闭集是一个拓扑空�
 \[
 	\psi^{-1}(V(E))={}^a\varphi(V(E))={}^a\varphi({}^a\varphi^{-1}(V(E')))=V(E'),
 \]
-任意闭集关于$\psi$的原像是闭集，故$\psi$连续。进而$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。\end{proof}
+任意闭集关于$\psi$的原像是闭集，故$\psi$连续。进而$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。
+\end{proof}
 
 如果$\varphi$是满射，按照上一个命题，$^a\varphi$是$\spec(A)$到$\im (^a\varphi)$的同胚。设$\mathfrak{a}$是$R$的一个理想，则商映射$\varphi:R\to R/\mathfrak{a}$诱导的连续映射$^a\varphi:\spec(R/\mathfrak{a})\to \spec(R)$给出了$\spec(R/\mathfrak{a})$与$\spec(R)$的闭子集$V(\mathfrak{a})$之间的同胚。特别地，$\spec(R/\sqrt{0})$和$\spec(R)$同胚。
 
@@ -1422,7 +1423,7 @@ f(g(\Psi))=\left({}^a\theta(\oo_X),\widetilde{\theta(\oo_X)}\right)
 如果概形间的态射只看连续映射是开（闭，单，满）映射，则称这是一个开（闭，单，满）态射。注意，这里的单射和满射不是指monomorphism和epimorphism，而是称injective morphism和surjective morphism，后文会避免直接称呼一个满射，而会用“态射是满的”来替代。设$\Psi=(\psi,\theta):X\to Y$是概形间态射，如果$\im\psi = Y$，则称态射$\Psi$是笼罩的(dominant)。
 \end{para}
 
-\begin{pro}
+\begin{pro}\label{pro:3.1.3}
 设$X$是一个概形，记$S=\Gamma(X,\oo_X)$，则存在一个典范同构
 \[
 	\Hom(X,\spec R)\cong \Hom(R,S),
@@ -1571,16 +1572,21 @@ $X_x$作为集合是所有包含$x$的开集的交，等价地，$X_x$中的点�
 
 此外，如果记$|X|$为概形$X$的底空间（或称支集），则由$|X|\times_{|S|}|Y|$的泛性质，我们得到了典范态射$|X\times_S Y|\to |X|\times_{|S|}|Y|$. 这个典范态射一般不是单射，但后面会证明，这是一个满射。当然，这个典范态射不是同胚的理由是不难猜的，因为不是所有连续映射$|X|\to |S|$都可以写成某个概形间态射$X\to S$的连续函数部分。实际上，对任意的域$k$，$|\spec k|$都是单点集。然后我们考虑$f:|\spec \mathbb{Q}|\to |\spec \rr|$，他将左侧唯一的点映成右侧唯一的点，自然是连续的。如果他可以写成概形间一个态射$\spec \mathbb{Q}\to \spec \rr$的连续函数部分，即$f={}^a\psi$，而$\psi:\rr\to \mathbb{Q}$是一个域同态。它是一个单射且$\psi(1)=1$，由环同态与环乘法的性质，我们有$\psi$还是满的，因此$\psi:\rr\to \mathbb{Q}$是一个同构，显然不可能，毕竟两边基数都不同。
 
-\begin{pro}
+\begin{pro}\label{pro:3.2.2}
 纤维积具有如下一些性质，它们并不依赖于概形范畴：
 \begin{compactenum}[~~~1.]
 \item 设$X$是一个$S$-概形，则存在典范等同$X\times_S S=X\times_S X=X$，这个等同是函子性。
 \item 设$X$, $S'$是一个$S$-概形，$S''$是一个$S'$概形，则可以典范等同$(X\times_S S')\times_{S'}S''=X\times_S S''$，这个等同是函子性。
 \item 存在典范等同$(X\times_S Y)\times_S Z=X\times_S (Y\times_S Z)$，这个等同是函子性的。
+\item 若$f:S'\to S$是一个单态射，而$X$, $Y$都是$S'$-概形，则通过$f$可将$X$, $Y$看成$S$-概形，则成立典范等同$X\times_{S'}Y=X\times_S Y$.
 \end{compactenum}
 \end{pro}
 
-都是范畴论里面的经典结论，不再证明。
+\begin{proof}
+前三点都是范畴论里面的标准结论，不再证明。至于第四点，我们来证明$X\times_{S'} Y$满足$X\times_S Y$的泛性质。
+
+设$X$和$Y$的典范态射为$\varphi:X\to S'$和$\psi:Y\to S'$，任取$u:T\to X$和$v:T\to Y$满足$f\varphi u=f\psi v$，由于$f$是单态射，所以$\varphi u =\psi v$，进而从$X\times_{S'} Y$的泛性质，存在唯一的态射$(u,v):T\to X\times_{S'} Y$使得$u=\pi_X (u,v)$以及$u=\pi_Y (u,v)$，其中$\pi_X$, $\pi_Y$是典范投影。此即所需。
+\end{proof}
 
 \begin{para}[基概形扩张]
 设$X$, $S'$都是$S$-概形，其中$S'$作为$S$-概形的定义态射为$\varphi:S'\to S$，则$X\times_S S'$在$\pi_2:X\times_S S'\to S'$下构成一个$S'$-概形。这个过程被称为基概形扩张，方便起见，我们又是会记$X\times_S S'$为$X_{(S')}$或者$X_{(\varphi)}$. 设$f:X\to Y$是$S$-概形态射，我们存在$f\times_S \id_{S'}:X\times_S S'\to Y\times_S S'$，这是一个$S'$-概形扩张。方便起见，我们记作$f_{(S')}$或者$f_{(\varphi)}$. 
@@ -1665,7 +1671,7 @@ $X_x$作为集合是所有包含$x$的开集的交，等价地，$X_x$中的点�
 % 由于$i_U$是单态射，所以也是左可消的，此即$f=q_Xh'$.
 % \end{proof}
 
-\begin{coro}
+\begin{coro}\label{coro:3.2.8}
 设存在纤维积$X\times_S Y$，再设$U$是$X$的开子概形而$V$是$Y$的开子概形，则$U\times_S V$就是$X\times_S Y$的开子概形$p_X^{-1}(U)\cap p_Y^{-1}(V)$. 因此，如果两个$S$-概形有纤维积，则它们的任意开子概形（当然都是$S$-概形）之间也存在纤维积。
 \end{coro}
 
@@ -1687,7 +1693,7 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 概形范畴存在纤维积。
 \end{thm}
 
-\begin{lem}
+\begin{lem}\label{lem:3.2.10}
 设$X$, $Y$都是$S$-概形，而$\{X_\alpha\}$是$X$的一个开覆盖，如果$X_\alpha\times_S Y$都存在，则$X\times_S Y$存在。
 \end{lem}
 
@@ -1699,24 +1705,28 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 所以我们通过等同$p_\alpha^{-1}(X_{\alpha\beta})$和$p_\beta^{-1}(X_{\alpha\beta})$可以将$X_\alpha\times_S Y$和$X_\beta\times_S Y$黏起来。更一般地，不难检查黏合条件（不同黏法黏出同一样东西）成立，这样将所有$\{X_\alpha\times_S Y\}$黏成的概形，可以检查就是$X\times_S Y$，典范态射是将所有$p_\alpha$黏合起来得到的。
 \end{proof}
 
-\begin{proof}[The proof of Theorem \ref{thm:1.5.9}]
-设$X$, $Y$都是$S$-概形，定义态射分别是$\varphi:X\to S$和$\psi:Y\to S$. 
+\begin{lem}\label{lem:3.2.11}
+设$\varphi:X\to S$, $\psi:Y\to S$都是$S$-概形，而$U$是$S$的一个开子集，则$\varphi^{-1}(U)\to U$和$\psi^{-1}(U)\to U$的纤维积$\varphi^{-1}(U)\times_U \psi^{-1}(U)$就是$\varphi^{-1}(U)\times_S Y$或$X\times_S \psi^{-1}(U)$.
+\end{lem}
 
-先设$S$, $Y$是仿射概形，找一个$X$的仿射开覆盖，由于两个仿射概形在仿射概形上的纤维积是存在的，所以上面引理告诉我们，此时$X\times_S Y$存在，即一个概形与一个仿射概形在仿射概形上的纤维积是存在的。现在回到$Y$是一般的概形，由于此时$X$与$Y$的任意仿射开集在$S$上的纤维积是存在的，再一次利用上面的引理，就得到了此时$X\times_S Y$存在。
-
-现在设$\{S_\alpha\}$是$S$的一个仿射开覆盖，则$\varphi^{-1}(S_\alpha)\to S_\alpha$和$\psi^{-1}(S_\alpha)\to S_\alpha$的纤维积$A_\alpha=\varphi^{-1}(S_\alpha)\times_{S_\alpha}\psi^{-1}(S_\alpha)$就是$\varphi^{-1}(S_\alpha)\times_S Y$. 实际上，我们只需要检查交换图
+\begin{proof}
+实际上，我们只需要检查交换图
 \[
 \begin{xy}
 	\xymatrix{
 		Z\ar@/_/[rdd]_{g}\ar@/^/[drrr]^{f}\ar@{-->}[dr]^h&&&\\
-		&A_\alpha\ar[rr]_-{i_{\psi^{-1}(S_\alpha)}p_2}\ar[d]^{p_1}&&Y\ar[d]^\psi\\
-		&\varphi^{-1}(S_\alpha)\ar[rr]^-{\varphi'}&&S
+		&A\ar[rr]_-{i_{\psi^{-1}(U)}p_2}\ar[d]^{p_1}&&Y\ar[d]^\psi\\
+		&\varphi^{-1}(U)\ar[rr]^-{\varphi'}&&S
 	}
 \end{xy}
 \]
-其中$\varphi'$满足唯一分解$\varphi=i_{\varphi^{-1}(S_\alpha)}\varphi'$. 由于$\psi f=\varphi' g$，所以$\im(\psi f)\subset S_\alpha$，或者$\im f\subset \psi^{-1}(S_\alpha)$，因此，我们可以唯一分解$f=i_{\psi^{-1}(S_\alpha)}f'$，其中$f':Z\to \psi^{-1}(S_\alpha)$. 现在考虑$A_\alpha=\varphi^{-1}(S_\alpha)\times_{S_\alpha}\psi^{-1}(S_\alpha)$的泛性质，存在唯一的态射$h:Z\to A_\alpha$，使得$g=p_1h$且$f'=p_2h$，所以$f=i_{\psi^{-1}(S_\alpha)}f'=i_{\psi^{-1}(S_\alpha)}p_2h$. 这就检验了上述交换图。
+其中$\varphi'$满足唯一分解$\varphi=i_{\varphi^{-1}(U)}\varphi'$. 由于$\psi f=\varphi' g$，所以$\im(\psi f)\subset U$，或者$\im f\subset \psi^{-1}(U)$，因此，我们可以唯一分解$f=i_{\psi^{-1}(U)}f'$，其中$f':Z\to \psi^{-1}(U)$. 现在考虑$A=\varphi^{-1}(U)\times_{U}\psi^{-1}(U)$的泛性质，存在唯一的态射$h:Z\to A$，使得$g=p_1h$且$f'=p_2h$，所以$f=i_{\psi^{-1}(U)}f'=i_{\psi^{-1}(U)}p_2h$. 这就检验了上述交换图。
+\end{proof}
 
-由于$S_\alpha$是仿射的，所以$A_\alpha=\varphi^{-1}(S_\alpha)\times_S Y$存在。由于$\bigcup_\alpha\varphi^{-1}(S_\alpha)=\varphi^{-1}\left(\bigcup_\alpha S_\alpha\right)=\varphi^{-1}(S)=X$，所以$\varphi^{-1}(S_\alpha)$是$X$的一个开覆盖，由上面的引理，$X\times_S Y$存在。
+\begin{proof}[The proof of Theorem \ref{thm:1.5.9}]
+设$X$, $Y$都是$S$-概形，定义态射分别是$\varphi:X\to S$和$\psi:Y\to S$. 先设$S$, $Y$是仿射概形，找一个$X$的仿射开覆盖，由于两个仿射概形在仿射概形上的纤维积是存在的，所以Lemma \ref{lem:3.2.10}告诉我们，此时$X\times_S Y$存在，即一个概形与一个仿射概形在仿射概形上的纤维积是存在的。现在回到$Y$是一般的概形，由于此时$X$与$Y$的任意仿射开集在$S$上的纤维积是存在的，再一次利用Lemma \ref{lem:3.2.10}，就得到了此时$X\times_S Y$存在。
+
+现在设$\{S_\alpha\}$是$S$的一个仿射开覆盖，Lemma \ref{lem:3.2.11}告诉我们，$\varphi^{-1}(S_\alpha)\to S_\alpha$和$\psi^{-1}(S_\alpha)\to S_\alpha$的纤维积$A_\alpha=\varphi^{-1}(S_\alpha)\times_{S_\alpha}\psi^{-1}(S_\alpha)$就是$\varphi^{-1}(S_\alpha)\times_S Y$. 由于$S_\alpha$是仿射的，所以$A_\alpha=\varphi^{-1}(S_\alpha)\times_S Y$存在。由于$\bigcup_\alpha\varphi^{-1}(S_\alpha)=\varphi^{-1}\left(\bigcup_\alpha S_\alpha\right)=\varphi^{-1}(S)=X$，所以$\varphi^{-1}(S_\alpha)$是$X$的一个开覆盖，由Lemma \ref{lem:3.2.10}，$X\times_S Y$存在。
 \end{proof}
 
 \begin{para}[纤维积下的几何点]
@@ -2107,7 +2117,7 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 必要性显然。充分性，条件将给出$\theta^\#:\psi^*\oo_X\to \oo_Y$是一个层同构。此外，$\psi$可以分解为$\psi=i\bar\psi$，其中$i$是开子概形$U$的典范含入而$\bar\psi:Y\to U$是一个同胚，所以$\psi^*\oo_X=\bar\psi^* i^*\oo_X=\bar\psi^*(\oo_X|_U)$，所层同构$\theta^\#:\bar\psi^*(\oo_X|_U)\to \oo_Y$将给出层同构$\oo_X|_U\to \bar\psi_*\oo_Y$，连同同胚$\bar\psi$这就给出了一个$Y$到$\oo_X|_U$的概形同构。
 \end{proof}
 
-\begin{pro}
+\begin{pro}\label{pro:3.4.11}
 态射$f=(\psi,\theta):Y\to X$是一个浸入（闭浸入）当且仅当$\psi$是$Y$到$X$的某个局部闭集（闭集）的同胚，且$\theta^\#_y:(\oo_X)_{\psi(y)}\to (\oo_Y)_y$对所有的$y\in Y$都是满同态。
 \end{pro}
 
@@ -2122,9 +2132,46 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 \[
 	f_V=ihg_U|_{\psi^{-1}(V)},
 \]
-其中$i$是一个子概形的典范含入，从浸入分解的唯一性，$i=j_V$，再利用一次浸入分解的唯一性，$j_V$或子概形$Z_V$由$j_U|_{Z'_V}$唯一确定。类似地，$g_V$由$g_U|_{\psi^{-1}(V)}$唯一确定，这些就是黏合条件。此时，将$Z_U$以及$g_U$黏合起来，我们有闭子概形$j:Z\hookrightarrow X$以及同构$g:Y\to Z$使得分解$f=jg$成立，所以$f$是一个闭浸入。
+其中$i$是一个子概形的典范含入，从浸入分解的唯一性，$i=j_V$，再利用一次浸入分解的唯一性，$j_V$或子概形$Z_V$由$j_U|_{Z'_V}$唯一确定。类似地，$g_V$也由$j_U|_{Z'_V}$唯一确定，这些就是黏合条件。此时，将$Z_U$以及$g_U$黏合起来，我们有闭子概形$j:Z\hookrightarrow X$以及同构$g:Y\to Z$使得分解$f=jg$成立，所以$f$是一个闭浸入。
 
 最后，回到特殊情况的证明。\notprove
+\end{proof}
+
+\begin{coro}\label{coro:3.4.12}
+设$f:X\to Y$是一个概形态射，$\{V_\lambda\}$是$Y$的一个开覆盖，则$f$是一个闭浸入的充分必要条件是，$f$在每一个开子概形$f^{-1}(V_\lambda)$上的限制都是到$V_\lambda$中的闭浸入。
+\end{coro}
+
+\begin{proof}
+层态射的局部条件此时是显然的，再注意到，闭集也是局部性质，所以命题直接得证。
+\end{proof}
+
+\begin{coro}
+设$f:X\to Y$是一个概形态射，$\{V_\lambda\}$是$f(X)$的一个开覆盖，则$f$是一个（开）浸入的充分必要条件是，$f$在每一个开子概形$f^{-1}(V_\lambda)$上的限制都是到$V_\lambda$中的（开）浸入。
+\end{coro}
+
+\begin{proof}
+层态射的局部条件依然是显然的，拓扑上，从局部到整体，我们可以得到$f(X)$在$\bigcup_\lambda V_\lambda$中是局部闭的（开的），进而在$Y$中也是局部闭的（开的）。
+\end{proof}
+
+\begin{pro}
+设$\alpha:X'\to X$和$\beta:Y'\to Y$都是$S$-概形态射，如果它们都是（开、闭）浸入，则$\alpha\times_S\beta$也是。特别地，如果$\alpha$, $\beta$都是子概形的典范含入，则$\alpha\times_S \beta$将拓扑空间$X'\times_S Y'$等同于$\pi_X^{-1}(X')\cap \pi_Y^{-1}(Y')$，这里$\pi_X$, $\pi_Y$是$X\times_S Y$的典范投影。
+\end{pro}
+
+由于恒同总是一个开、闭浸入，则上述命题告诉我们，如果$S$-概形态射$f:X\to Y$是一个（开、闭）浸入，则对任何基扩展$S'\to S$，$f_{(S')}$也是（开、闭）浸入。
+
+\begin{proof}
+从浸入的定义，我们可以考虑$\alpha$和$\beta$都是子概形典范含入的情况。此时，如果都是开子概形，则Corollary \ref{coro:3.2.8}立刻给出了结论。因为子概形都是开子概形的闭子概形，所以我们只需证明$X'$和$Y'$都是闭子概形的情况。
+
+利用浸入是单态射，浸入的局部检验，经过一些简单的检查，我们可以直接将问题约化到$X$, $Y$, $S$都是仿射概形的情况。设$X$, $Y$, $S$的环分别为$B$, $C$, $A$，由于$X'$和$Y'$都是闭子概形，设它们分别对应于$B$和$C$的商代数$B'$和$C'$，此时$\alpha=\widetilde{\rho}$, $\beta=\widetilde{\sigma}$，其中$\rho$, $\sigma$都是典范商同态。于是，$X\times_S Y=\spec(B\otimes_A C)$以及$X'\times_S Y'=\spec(B'\otimes_A C')$，而
+\[
+	\alpha\times_S\beta=\widetilde{\rho\otimes_A\sigma}.
+\]
+由于$\rho\otimes_A\sigma$是满的，所以$\alpha\times_S\beta$是一个闭浸入。此外，$\ker(\rho\otimes \sigma)=u(\ker \rho)+v(\ker \sigma)$，这里$u$, $v$分别是$B$, $C$到$B\otimes C$的典范同态，而对应的$\widetilde{u}$, $\widetilde{v}$就是典范投影。因此，我们有拓扑空间的等式
+\[
+	V(\ker(\rho\otimes \sigma))=V(u(\ker\rho))\cap V(v(\ker\sigma))=\widetilde{u}^{-1}\bigl(V(\ker\rho)\bigr)\cap \widetilde{v}^{-1}\bigl(V(\ker \sigma)\bigr),
+\]
+第一项是对应于闭浸入$\alpha\times_S \beta$的闭子概形，
+此即所证。
 \end{proof}
 
 \begin{pro}[子概形的原像]
@@ -2132,6 +2179,10 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 \end{pro}
 
 粗略地讲，子概形的原像也是子概形。特别地，考虑闭点$y\in Y$，它本身可以看成一个闭子概形$\spec (k(y))$，它关于$f$的原像正是我们在Proposition \ref{fiber}引入的纤维$f^{-1}(y)$，它可以看成$X$的一个闭子概形。     
+
+\begin{proof}
+如果把$X$和$X\times_Y Y$等同，不难看到$p_X=1_X\times_Y i$，则上一个命题直接给出了结论。
+\end{proof}
 
 \begin{para}[闭像与闭包]
 	设$f:X\to Y$是概形态射，$f$的闭像是$Y$的一个闭子概形$Z$，使得如果$f$能被$Y$的闭子概形$Z'\hookrightarrow Y$所遮盖，则$Z$是$Z'$的闭子概形。换句话说，能遮盖$f$的最小闭子概形。特别地，考虑子概形的典范含入$i:U\hookrightarrow Y$，则$i$的闭像被称为$U$的闭包。
@@ -2143,13 +2194,7 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 	设$f:X\to Y$是概形态射，如果$f_*\oo_X$是拟凝聚$\oo_Y$-模层，则$f$的闭像存在。
 \end{pro}
 
-\begin{pro}
-设$\alpha:X'\to X$和$\beta:Y'\to Y$都是$S$-概形态射，如果它们都是（开、闭）浸入，则$\alpha\times_S\beta$也是。
-\end{pro}
-
-由于恒同总是一个开、闭浸入，则上述命题告诉我们，如果$S$-概形态射$f:X\to Y$是一个（开、闭）浸入，则对任何基扩展$S'\to S$，$f_{(S')}$也是（开、闭）浸入。
-
-\section{约态概形与分离性}
+\section{约态概形}
 
 \begin{pro}
 	设$X$是一个概形，$\mathcal A$是一个拟凝聚$\oo_X$-代数层，则存在唯一一个拟凝聚$\oo_X$-模层$\mathcal N$使得任取$x\in X$，$\mathcal N_x$都是$\mathcal A_x$的幂零根。如果$X$是仿射概形，则$\mathcal A=\widetilde{A}$，其中$A$是一个$\Gamma(X)$-代数，此时$\mathcal N=\widetilde{N}$，其中$N$是$A$的幂零根。
@@ -2178,69 +2223,3 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 	\]
 	此时$(\psi,\omega^\flat):X_{\text{red}}\to Y_{\text{red}}$就是一个概形态射。我们将其记作$f_{\text{red}}$，称为$f$的伴随约态态射。显然，$(gf)_{\text{red}}=g_{\text{red}}f_{\text{red}}$，所以$X\mapsto X_{\text{red}}$连同$f\mapsto f_{\text{red}}$构成了一个协变函子。
 \end{para}
-
-\begin{para}[对角线]
-	设$X$是一个$S$-概形，则态射$(\id_X,\id_X):X\to X\times_S X$被称为对角线态射，记作$\Delta_{X|S}$，如果没有误解，则简单记作$\Delta_X$或$\Delta$.
-\end{para}
-
-\begin{lem}
-	对角线态射是一个浸入。
-\end{lem}
-
-进而，对角线态射对应的子概形也被称$X\times_S X$的对角线。
-
-\begin{para}[分离性]
-	设$f:X\to Y$是一个概形间态射，如果对角线$\Delta:X\to X\times_Y X$是一个闭浸入，则称$f$是一个分离态射，也称$X$是一个分离的$Y$-概形。如果$X$是分离的$\spec \zz$-概形，则简称$X$是分离的。
-\end{para}
-
-单态射是分离的。
-
-\begin{pro}
-	设$\{U_\alpha\}$是$Y$的一个开覆盖，则态射$f:X\to Y$分离当且仅当每个限制态射$f^{-1}(U_\alpha)\to U_\alpha$都分离。
-\end{pro}
-
-所以，分离性是一个局部条件。特别地，如果我们选取的是仿射开覆盖，则对分离性我们有如下刻画：
-
-\begin{pro}
-	设$Y$是一个仿射概形，而$X$是一个概形，$\{U_\alpha\}$是$X$的一个仿射开覆盖，则态射$f:X\to Y$分离当且仅当，对任意一组指标$(\alpha,\beta)$，$U_{\alpha\beta}:=U_\alpha\cap U_\beta$是仿射开集且环$\oo_X(U_{\alpha\beta})$可以由$\oo_X(U_{\alpha})|_{U_{\alpha\beta}}$和$\oo_X(U_{\beta})|_{U_{\alpha\beta}}$生成。
-\end{pro}
-
-作为推论，如果$X$是仿射概形，则$X$是分离概形。实际上，我们只要考察典范态射$X\to \spec \zz$的分离性，从上面的命题，$X$是分离的，所以$X$本身就是一个仿射开覆盖，而剩下的条件此时是平凡的。
-
-此外，如果$Y$是仿射概形，则$f:X\to Y$分离当且仅当$X$是一个分离概形。
-
-\section{有限性条件}
-
-\begin{para}[（局部）Noether概形]
-	如果概形$X$可以写成仿射开集的并，且每个放射开集的坐标环都是Noether环，则称$X$是一个局部Noehter概形。特别地，如果并还是有限的，则称$X$是一个Noether概形。
-\end{para}
-
-从定义，一个局部Noether概形是Noether的，当且仅当底空间拟紧。于是，对仿射概想而言，局部Noether与Noether等价。
-
-\begin{pro}
-	仿射概形$\spec R$是Noether的，当且仅当$R$是Noether的。
-\end{pro}
-
-\begin{para}[有限型态射]
-	设$f:X\to Y$是一个概形间态射，如果存在$Y$的一个仿射开覆盖$\{Y_\alpha\}_\alpha$使得每一个$f^{-1}(Y_\alpha)$可以写成有限个仿射开集$\{U_{\alpha\beta}\}_\beta$的并，且环$A(U_{\alpha\beta})$是有限生成$A(Y_\alpha)$-代数，其中$A(U_{\alpha\beta})$和$A(Y_\alpha)$分别是仿射开集$U_{\alpha\beta}$和$Y_\alpha$对应的坐标环。有时候，如果略去态射的记号，会称$X$是一个有限型$Y$-概形。
-\end{para}
-
-\begin{pro}
-	如果$f:X\to Y$是一个有限型态射，则取$Y$的仿射开集$V$，$f^{-1}(V)$可以写成有限个仿射开集$\{U_{\alpha}\}$的并，且环$A(U_{\alpha})$是有限生成$A(V)$-代数。
-\end{pro}
-
-换而言之，如果$f$是有限型的，则定义中的“存在$Y$的一个仿射开覆盖”可以改为“任取$Y$的一个仿射开覆盖”。
-
-\begin{proof}
-	方便起见，如果$Y$的仿射开集$V$成立“$f^{-1}(V)$可以写成有限个仿射开集$\{U_{\alpha}\}$的并，且环$A(U_{\alpha})$是有限生成$A(V)$-代数”，则我们称作$V$具有性质$P$. 此外，回忆一下，如果$f\in R$，则$R_{f}$是一个有限生成$R$-代数，因为它可以看成$R[x]/\langle fx-1\rangle$.
-
-	首先设$U\subset Y$是一个仿射开集，具有性质$P$，则任取开集$D(g)\subset U$都具有性质$P$. 实际上，如果$f^{-1}(U)$可以写作$X$的有限仿射开集族$\{Z_i\}$的并，其中每个$A(Z_i)$就是有限生成$A(U)$-代数。考虑$f$在$Z_i$上的限制$f_i$，其对应了环同态$\varphi_i:A(U)\to A(Z_i)$. 所以，$f^{-1}(D(g))\cap Z_i=D(g_i)$，其坐标环$A(D(g_i))=A(Z_i)_{g_i}$是一个有限生成$A(Z_i)$-代数，继而是一个有限生成$A(U)$-代数，当然也是有限生成$A(D(g))=A(U)_g$-代数。综上，$f^{-1}(D(g))$可以写作$D(g_i)$的并，其中$A(D(g_i))$是有限生成$A(D(g))$-代数，因此$D(g)$满足性质$P$.
-
-	现在，回到一般情况。假设$f:X\to Y$是一个有限型态射，则存在$Y$的一个仿射开覆盖$\{Y_\alpha\}_\alpha$使得每一个$Y_\alpha$都具有性质$P$. 任取$Y$的仿射开集$V$，由于他是拟紧的，所以可以找其有限仿射开覆盖$\{D(g_i)\}$，其中每个开集$D(g_i)$包含于某个$Y_{\alpha(i)}$. 所以，每个$D(g_i)$具有性质$P$. 下面我们说明$V$具有性质$P$.
-	
-	由于$D(g_i)\subset V$是拟紧的，所以可以写成有限个$D(h_{ij})$的并，其中$h_{ij}\in A(V)$. 取$\varphi$为$D(g_i)\hookrightarrow V$对应的环同态，则$D(h_{ij})=D(\varphi(h_{ij}))$，其中$\varphi(h_{ij})\in A(D(g_i))$. 由$D(g_i)$的性质$P$，$D(h_{ij})$也具有性质$P$，即每个$f^{-1}(D(h_{ij}))$都具有有限仿射开覆盖$\{U_{ijk}\}_k$使得每一个$A(U_{ijk})$都是有限生成$A(D(h_{ij}))=A(V)_{h_{ij}}$-代数，自然也是有限生成$A(V)$-代数。此时，所有仿射开集$\{U_{ijk}\}_{i,j,k}$就使得$V$满足性质$P$.
-\end{proof}
-
-\begin{lem}
-	$\spec R$是一个有限型$\spec S$-概形，当且仅当$S$是一个有限生成$R$-代数。
-\end{lem}
