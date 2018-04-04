@@ -22,24 +22,46 @@
 以及$\widetilde{\psi}$是同胚，所以$\im \widetilde{\varphi}=\im \widetilde{\pi}=V(\ker \varphi)$是一个闭集。
 \end{proof}
 
-\begin{pro}
+\begin{pro}\label{pro:4.1.3}
 以下命题成立：
 \begin{compactenum}
 \item 设$X$, $Y$是两个$S$-概形，如果我们典范等同$(X\times Y)\times (X\times Y)$和$(X\times X)\times (Y\times Y)$，则态射$\Delta_{X\times Y}$等同于$\Delta_X\times \Delta_Y$.	
 \item 对于任意的基概形扩张$S\to S'$，我们有$\Delta_{X_{(S')}}=(\Delta_{X})_{(S')}$.
 \item 态射$f:X\to Y$是单态射，当且仅当$\Delta_{X|Y}:X\to X\times_Y X$是一个同构。
+\item 设有$S$-概形$f:X\to S$, $g:Y\to S$，以及态射$\varphi:S\to T$，它使得$X$, $Y$都变成了$T$-概形。记$p$, $q$为$X\times_S Y$的投影，此时，我们有交换图
+\[
+	\begin{xy}
+	\xymatrix{
+	X\times_S Y\ar[rr]^{p\times_T q}\ar[d]_{\pi}&&X\times_T Y\ar[d]^{f\times_T g}\\
+	S\ar[rr]^{\Delta_{S|T}}&&S\times_TS
+	}
+	\end{xy}
+\]
+其中$\pi=fp=gq$. 同时，$X\times_S Y$就是$S\times_T S$-概形$X\times_T Y$和$S$的乘积，而$\pi$和$p\times_T q$是两个典范投影。
 \end{compactenum}	
 \end{pro}
 
 \begin{proof}
-这些都是在任意（纤维积存在的）范畴成立的东西，这里就不检验了。这里的第二点直接来自于第一点，来自于典范等同$(X\times_S X)_{(S')}=X_{(S')}\times_{S'}X_{(S')}$.
+这些都是在任意（纤维积存在的）范畴成立的东西，这里就不那么细致检验了。这里的第二点直接来自于第一点，来自于典范等同$(X\times_S X)_{(S')}=X_{(S')}\times_{S'}X_{(S')}$.
+
+第四点的交换图这里不检验，至于$X\times_S Y$就是$S\times_T S$-概形$X\times_T Y$和$S$的乘积这点，我们可以直接检查泛性质。设$\alpha:A\to X \times_T Y$, $\beta:A\to S$满足交换图，即$\Delta\beta=(f\times_T g)\alpha$. 设$p_T$, $q_T$是对应$X\times_T Y$的投影，则我们有$p_T\alpha:A\to X$, $q_T\alpha:A\to Y$. 在$\Delta\beta=(f\times_T g)\alpha$两边作用$S\times_T S$的投影后立刻得到
+\[
+	fp_T\alpha=\beta=gq_T\alpha:A\to S.
+\]
+于是$X\times_S Y$告诉我们存在唯一的$h:A\to X\times_S Y$使得$p_T\alpha=ph$以及$q_T\alpha=qh$成立，此时
+\[
+	\pi h=fph=fp_T\alpha=\beta, \quad (p\times_T q)h=(p_T\alpha)\times_T (q_T\alpha)=\alpha,
+\]
+此即乘积所需的泛性质。
 \end{proof}
 
-\begin{lem}
+利用Proposition \ref{pro:3.2.2}，第四点告诉我们，此时$p\times_T q$可以典范等同于$\id_{X\times_T Y}\times_{P}\Delta_{S|T}$，其中$P=S\times_T S$. 
+
+\begin{lem}\label{lem:4.1.4}
 	对角线态射是一个浸入。
 \end{lem}
 
-进而，对角线态射对应的子概形也被称$X\times_S X$的对角线。
+对角线态射对应的子概形也被称$X\times_S X$的对角线。
 
 \begin{proof}
 设$f:X\to S$是一个$S$-概形，$\pi_1$, $\pi_2$是$X\times_S X$到$X$的两个典范投影。给一个$S$的仿射开覆盖$\{S_\alpha\}_\alpha$，对每一个开集$f^{-1}(S_\alpha)$，我们都可以找相应的仿射开覆盖$\{X_{\alpha\beta}\}_\beta$. 由于$f(X_{\alpha\beta})\subset S_{\alpha}$，所以将其限制在$X_{\alpha\beta}$，我们就给出了$X_{\alpha\beta}$的$S_\alpha$概形结构，同时Propostition \ref{pro:3.2.2}告诉我们，
@@ -64,15 +86,34 @@ p\in \pi_1^{-1}(X_{\alpha\beta})\cap \pi_2^{-1}(X_{\alpha\beta})=X_{\alpha\beta}
 中的闭浸入，进而是到$X\times_S X$中的浸入。
 \end{proof}
 
+作为推论，回顾Proposition \ref{pro:4.1.3}的第四点，如果$S$是一个$T$-概形，则典范态射$X\times_S Y\to X\times_T Y$是两个浸入的复合，所以也是一个浸入。特别地，如果$\Delta_{S|T}$是闭浸入，则它也是闭浸入。
+
 \begin{para}[分离性]
 	设$f:X\to Y$是一个概形间态射，如果对角线$\Delta:X\to X\times_Y X$是一个闭浸入，则称$f$是一个分离态射，也称$X$是一个分离的$Y$-概形。如果$X$是分离的$\spec \zz$-概形，则简称$X$是分离的。
 \end{para}
 
 从上一个引理，我们只需$\im \Delta$是$X\times_Y X$中的闭集，就可以知道$f$是分离的。
 
-从Lemma \ref{lem:4.1.2}，所有仿射概形之间的态射都是分离的。
+从Lemma \ref{lem:4.1.2}，所有仿射概形之间的态射都是分离的。所以仿射概形是分离概形。
 
 此外，由于同构是闭浸入，所以单态射是分离的。
+
+\begin{pro}
+两个分离态射的复合还是分离的。
+\end{pro}
+
+\begin{proof}
+设$f:X\to Y$, $g:Y\to Z$是分离态射，此时不难看到交换图成立
+\[
+\begin{xy}
+\xymatrix{
+	X \ar[rr]^{\Delta_{X|Z}}\ar[dr]_{\Delta_{X|Y}}&&X\times_Z X\\
+	&X\times_Y X \ar[ur]_j&
+	}
+\end{xy}
+\]
+其中$j$来自于$X\times_Z X$的泛性质，使得$\pi_i=p_ij$，这里$\pi_i$, $p_i$分别是$X\times_Y X$和$X\times_Z X$的投影，$i$可以取$1$和$2$. 由于$\Delta_{X|Y}$是闭浸入，我们只需说明$j$是闭浸入，见Lemma \ref{lem:4.1.4}下面的推论。
+\end{proof}
 
 \begin{pro}
 	设$\{V_\alpha\}$是$Y$的一个开覆盖，则态射$f:X\to Y$分离当且仅当每个限制态射$f_\alpha:f^{-1}(V_\alpha)\to V_\alpha$都分离。
@@ -109,7 +150,7 @@ p\in \pi_1^{-1}(X_{\alpha\beta})\cap \pi_2^{-1}(X_{\alpha\beta})=X_{\alpha\beta}
 \end{proof}
 
 \begin{pro}
-	设$Y=\spec R$是一个仿射概形，而$X$是一个概形，$\{U_\alpha\}$是$X$的一个仿射开覆盖，则态射$f:X\to Y$分离当且仅当，对任意一组指标$(\alpha,\beta)$，$U_{\alpha\beta}:=U_\alpha\cap U_\beta$是仿射开集且$\oo_X(U_{\alpha})|_{U_{\alpha\beta}}$和$\oo_X(U_{\beta})|_{U_{\alpha\beta}}$可以生成环$\oo_X(U_{\alpha\beta})$.
+	设$Y=\spec R$是一个仿射概形，而$X$是一个概形，$\{U_\alpha\}$是$X$的一个仿射开覆盖，则态射$f:X\to Y$分离当且仅当，对任意一组指标$(\alpha,\beta)$，$U_{\alpha\beta}:=U_\alpha\cap U_\beta$是仿射开集且$\oo_X(U_{\alpha})|_{U_{\alpha\beta}}$和$\oo_X(U_{\beta})|_{U_{\alpha\beta}}$可以生成$R$-代数$\oo_X(U_{\alpha\beta})$.
 \end{pro}
 
 \begin{proof}
@@ -131,12 +172,19 @@ p\in \pi_1^{-1}(X_{\alpha\beta})\cap \pi_2^{-1}(X_{\alpha\beta})=X_{\alpha\beta}
 
 由于$U_\alpha\times_Y U_\beta$是仿射概形，其坐标环为$A(U_\alpha\times_Y U_\beta)=\oo_X(U_\alpha)\otimes_{R}\oo_X(U_\beta)$.
 而$\Delta_{\alpha\beta}$对应的环同态即从$A(U_\alpha\times_Y U_\beta)$到$\oo_X(U_{\alpha\beta})$的映射$\varphi:a\otimes b\mapsto ab$. 
-所以，上个引理告诉我们$\Delta_{\alpha\beta}$是闭浸入等价于$U_{\alpha\beta}$是仿射的且$\varphi$是满的，而这就又等价于命题中的条件。
+所以，上个引理告诉我们$\Delta_{\alpha\beta}$是闭浸入等价于$U_{\alpha\beta}$是仿射的且$\varphi$是满的。
+
+最后，$\varphi$是满的，当且仅当，任取$c\in \oo_X(U_{\alpha\beta})$都可以写成一个有限和$c=\sum_{i}r_ia_ib_i$，
+其中$a_i\in \oo_X(U_\alpha)|_{U_{\alpha\beta}}$, $b_i\in \oo_X(U_\beta)|_{U_{\alpha\beta}}$而$r_i\in R$，也当且仅当命题中的条件成立。
 \end{proof}
 
-作为推论，如果$X$是仿射概形，则$X$是分离概形。实际上，我们只要考察典范态射$X\to \spec \zz$的分离性，从上面的命题，$X$是分离的，所以$X$本身就是一个仿射开覆盖，而剩下的条件此时是平凡的。
+\begin{coro}
+如果$Y$是仿射概形，则$f:X\to Y$分离当且仅当$X$是一个分离概形。
+\end{coro}
 
-此外，如果$Y$是仿射概形，则$f:X\to Y$分离当且仅当$X$是一个分离概形。
+\begin{proof}
+首先假设$f$是分离的，由于$Y$是仿射概形，则典范态射$Y\to \spec \zz$是分离的，进而$X\to\spec \zz$作为两个分离态射的复合，依然是分离的。反过来，回忆，如果$A$, $B$可以生成$\zz$-代数$C$，则也可以生成作为$R$-代数的$C$，所以上一个命题告诉我们，如果$X$是一个分离概形，则$f$是分离的。
+\end{proof}
 
 \section{有限性条件}
 
