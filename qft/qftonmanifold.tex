@@ -1,8 +1,17 @@
-\documentclass[14pt]{extarticle}
-\usepackage{noteheader}
+\documentclass[12pt]{extarticle}
+\usepackage{../noteheader}
 \input{defs}
 
+\theoremstyle{definition}
+	\newtheorem{para}{}[part]
+		\renewcommand{\thepara}{\arabic{para}}
+\theoremstyle{plain}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+	\newtheorem{lem}[para]{Lemma}
+
 \title{Quantum Mechanics on Manifold}
+\author{hhh}
 
 \begin{document}
 
@@ -14,7 +23,7 @@ In this article, we will give a method to generalize the symmetry method in quan
 
 \section{Background}
 
-Suppose the spacetime is a semi-Riemannian manifold $M$ whose dimension is $4$, $\mathcal H$ is a Hilbert space to describe our quantum system. As we all konw, there's a Levi-Civita connection on $M$ which is denoted by $\nabla$.
+Suppose the spacetime is a semi-Riemannian manifold $M$ with dimension $N$, $\mathcal H$ is a Hilbert space to describe our quantum system. As we all konw, there's a Levi-Civita connection on $M$ which is denoted by $\nabla$.
 
 In special relativity, the choose of the origin of coordinates does not bother us because we could remove this trouble by considering the action of Poincar\'e group. However, on the general spacetime $M$, transitions may depend on the choosen origin and path. Thus, it is convenient to denote  the origin of coordinates on each state vector or the whole Hilbert space $\mathcal H$, or formally, we will consider the a vector bundle $\pi:\mathsf H\to M$ whose fibers are $\mathcal H_x:=\pi^{-1}(x)\cong \mathcal H$. The construction of $\pi:\mathsf H\to M$ is not clear now.
 
@@ -36,7 +45,7 @@ Thus the infinitesimal translation is
 \]
 where $\Gamma^n_m$ is the connection $1$-form. If we introduce a new operator $\Gamma(v)$ on $\mathcal H$ whose matrix is $\Gamma_{m}^n(\dot\gamma(0))$ such that
 \[
-	\Gamma(v)\Psi_m=\Gamma_{m}^n(v)\Psi_n,
+	\Gamma(v)\Psi_m:=\Gamma_{m}^n(v)\Psi_n,
 \]
 we could get the infinitesimal translation of state vector $\Psi$ that
 \[
@@ -56,50 +65,124 @@ it relates to $\Gamma(v)$ by $\widetilde\Gamma(v)=\psi_x^{-1}\Gamma(v)\psi_x$. T
 	\left. \frac{\mathrm d}{\mathrm dt}\right|_{t=0}\psi_{\gamma(t)}\Psi(\gamma(t))=- \psi_{x}\widetilde\Gamma(v)\Psi(x).
 \]
 
-\section{Construction of the bundle and connection}
+\begin{pro}\label{pro:1}
+	The infinitesimal translation is constant on a geodesic if and only if 1-forms $\Gamma^n_m$ satisfy the Killing equation.
+\end{pro}
 
-Suppose $(U,\varphi)$ is a chart on $M$ containing $x$, if $\varphi$ is an isomorphism to an open subset of Minkowski space $(\mathbb R^{4},\eta_{ij})$, we could guess that the fiber $\mathcal H_y$ near $x$ should be same Hilbert space $\mathcal H$. Generally, if there's another chart $(U,\varphi')$, where $\varphi'$ is a diffeomorphism from $U$ to an open subset of $\mathbb R^{4}$, then we have a map from $\varphi(x)\in \mathbb R^4$ to $\varphi'(x)\in \mathbb R^4$, which induces a map $U_x(\varphi'\varphi^{-1}):\mathcal H\to \mathcal H$. 
+\begin{proof}
+For geodesic $\gamma(t)$, we have
+\[
+	0=\frac{\mathrm d}{\mathrm dt}\Gamma(\dot\gamma(t))=\Gamma_{i;j}\dot\gamma^i\dot\gamma^j+\Gamma_{i}\ddot\gamma_{j}^i=\Gamma_{i;j}\dot\gamma^i\dot\gamma^j.
+\]
+The above equation is valid for all $\gamma(t)$, then $\Gamma_{i;j}+\Gamma_{j;i}=0$. This is just the Killing equation.
+\end{proof}
 
-The map $U_x(\varphi'\varphi^{-1})$ should not affect the physics because of the principle of relativity. Especially, probability from this quantum system would be invariant under the map $U_x(\varphi'\varphi^{-1})$, i.e. for any state vectors $\Phi$, $\Psi\in \mathcal H$, 
+Define the momentum operator $P_\mu=i\hbar \widetilde{\Gamma}(\partial_\mu)$, then
 \[
-	|(\Phi,\Psi)|^2=\bigl|\bigl(U_x(\varphi'\varphi^{-1})\Phi,U_x(\varphi'\varphi^{-1})\Psi\bigr)\bigr|^2.
+	\hbar^2 R_D(\partial_\mu,\partial_\nu)^m_n=([P_\mu,P_\nu])^m_n+\hbar^2(\partial_\mu\Gamma_\nu - \partial_\mu\Gamma_\nu)^m_n,
 \]
-Thus, the well-known Wigner theorem tells us that $U_x(\varphi'\varphi^{-1})$ is linear (anti-linear) and unitary (anti-unitary). It's convenient but not necessary to assume that 
+or
+\begin{equation}
+	\hbar^2 R_D(\partial_\mu,\partial_\nu)^m_n=([P_\mu,P_\nu])^m_n-\hbar^2(\Gamma_{\mu;\nu} - \Gamma_{\nu;\mu})^m_n.
+\end{equation}
+
+Equation (\theequation) suggests us that
 \[
-	U_x(\varphi''\varphi'^{-1})U_x(\varphi'\varphi^{-1})=U_x(\varphi''\varphi^{-1}),
-\] 
-because there should be one phase factor in the exact relation, just like the flat case. This additional phase factor may be vary important in physics, but let's forget it at first. It's also convenient (but not necessary) to assume $U_x(\varphi'\varphi^{-1})$ is linear and unitary in our disscussion. By the Wigner theorem, we could define
-\[
-	(\Psi_x,\Phi_x)_x:=\left(\psi_x\Psi_x,\psi_x\Phi_x\right)_{\mathcal H}.
+	\Gamma_{\mu;\nu}=\Gamma_{\nu;\mu}.
 \]
-For locally contant sections $\widetilde \Psi:x\to \psi_x^{-1}\Psi$ and $\widetilde \Phi:x\to \psi_x^{-1}\Phi$, the definition above tells us that
+What's more, if we want $P_\mu(\gamma(t))$ is constant along $\gamma(t)$, Proposition \ref{pro:1} suggests us that
+\[
+	\Gamma_{\mu;\nu}+\Gamma_{\nu;\mu}=0.
+\]
+With these two equation, we should assume that $\Gamma_{\mu;\nu}=0$, and then
+\[
+	[P_\mu,P_\nu]=\hbar^2 R_D(\partial_\mu,\partial_\nu)
+\]
+is the commutator between momentum operators, where $R_D$ depends on the connection $D$. We want to derive $R_D$ from the Riemannian curvature $R_\nabla$ of the Levi-Civita connection of the spacetime $M$ by using quantumization. In this case, if the curvature of spacetime is non-zero, so is $[P_\mu,P_\nu]$.
+
+Suppose $S$ is a section of $\mathsf{H}^*\otimes \mathsf{H}$ and $D_\mu(S)=0$ for some $\mu$, then
+\[
+	0=D_\mu S= \partial_\mu S+[\widetilde{\Gamma}(\partial_\mu),S]
+\]
+or
+\[
+	\partial_\mu S=\frac{i}{\hbar}[P_\mu,S],
+\]
+it is the Heisenberg equation of motion. From now on, we will set $\hbar=1$.
+
+The above observation suggests us that the right equation of evolution of a operator $S\in \Gamma (\mathsf{H}^*\otimes \mathsf{H})$ is $D_{\dot\gamma(t)}S=0$, where $\gamma(t)$ is a geodesic.
+
+% For fixed $A:\mathbb R^N\to\mathbb R^N$, suppose $U_x(A)$ satisfies the equation of motion $D_{\dot\gamma(t)}U_{\gamma(t)}(A)$ for all geodesic $\gamma$. Then the equation
+% \[
+% 	\partial_\mu U_{x}(A)=-[\widetilde{\Gamma}_\mu,U_{x}(A)]
+% \]
+% holds for all $\mu$. 
+
+% Now suppose the transition map $g_x=\varphi'_{*x}\varphi_{*x}^{-1}$ is independent of $x$, then that
+% \begin{align*}
+% 	U_x(g_x)\widetilde{\Gamma}_\mu&=\partial_\mu U_x(g_x)+\widetilde{\Gamma'}_\mu U_x(g_x)\\
+% 	&=-[\widetilde{\Gamma}_\mu,U_{x}(g_x)]+\widetilde{\Gamma'}_\mu U_x(g_x)\\
+% 	&=U_x(g_x)\widetilde{\Gamma}_\mu+(\widetilde{\Gamma'}_\mu-\widetilde{\Gamma}_\mu)U_x(g_x)
+% \end{align*}
+% tells us that $\widetilde{\Gamma'}_\mu=\widetilde{\Gamma}_\mu$ for this change!
+
+\section{Gauge}
+
+Suppose $\psi$ and $\psi'$ are trivialization near $x$ and then induce two linear map $\psi_x$, $\psi'_x:\mathcal H_x\to \mathcal H$. The different trivialization should not affect the physics because of the principle of relativity. Especially, probability from this quantum system would be invariant under the map $\psi'_x\psi^{-1}_x:\mathcal H\to \mathcal H$, i.e. for any state vectors $\Phi$, $\Psi\in \mathcal H$,
+\[
+	|(\Phi,\Psi)|^2=\bigl|\bigl(\psi'_x\psi^{-1}_x\Phi,\psi'_x\psi^{-1}_x\Psi\bigr)\bigr|^2.
+\]
+Thus, the well-known Wigner theorem tells us that $\psi'_x\psi^{-1}_x:\mathcal H\to \mathcal H$ is linear (anti-linear) and unitary (anti-unitary). 
+
+For this reason, now we can define an `metric' on $\mathcal H_x$ by
+\[
+	(\Psi_x,\Phi_x)_x:=\left(\psi_x\Psi_x,\psi_x\Phi_x\right)_{\mathcal H},
+\]
+where $\psi$ is a trivialization, and it's not changed by taking another trivialization $\psi'$ because $\psi'_x\psi^{-1}_x$ is unitary. For locally contant sections $\widetilde \Psi:x\to \psi_x^{-1}\Psi$ and $\widetilde \Phi:x\to \psi_x^{-1}\Phi$, the definition above tells us that
 \[
 	(\widetilde \Psi_x,\widetilde \Phi_x)_x=(\Psi,\Phi)
 \]
 is independent of $x$.
 
-The above discussion is quite general since we don't need any detail about the bundle. If we want to relate the bundle trivialization $\psi:\pi^{-1}(V)\to V\times \mathcal H$ and the chart $(V,\varphi)$ on $M$, it's straightforward and naive to define a `function' between $\varphi(x)$ and $\psi_x:\mathcal H_x\to \mathcal H$ such that $\psi_x=U[\varphi(x)]:\mathcal H_x\to \mathcal H$. However, there exist two different charts $\varphi$ and $\varphi'$ such that $\varphi(x)=\varphi'(x)\in \mathbb R^4$, so the desired `function' should also depend on another imformation of $\varphi'$. Therefore, one could assume that $\psi_x$ is a function of $\varphi(x)$ and $\varphi_{*x}$, or more formally, the 1-jet of $\varphi$. We will use $[\varphi](x)$ or $[\varphi]_x$ to denote the pair $(\varphi(x),\varphi_{*x})$.
+Suppose $(V,\varphi)$ is a chart on $M$ containing $x$, where $\varphi$ is an isomorphism to an open subset of $\mathbb R^{N}$. If there's another chart $(V,\varphi')$, where $\varphi'$ is a diffeomorphism from $V$ to an open subset of $\mathbb R^{N}$, then we have a map from $\varphi(x)\in \mathbb R^N$ to $\varphi'(x)\in \mathbb R^N$, which induces a map $U_x(\varphi'\varphi^{-1}):\mathcal H_x\to \mathcal H_x$. It's from two different ways to view the same quantum system.
 
-Suppose $(V,\varphi)$ is a chart on $M$, we will define a bundle trivialization $U([\varphi]):\pi^{-1}(V)\to V\times \mathcal H$ by 
+The map $U_x(\varphi'\varphi^{-1}):\mathcal H_x\to \mathcal H_x$ should not affect the physics because of the principle of relativity. Therefore, the Wigner theorem tells us that $U_x(\varphi'\varphi^{-1}):\mathcal H_x\to \mathcal H_x$ is linear (anti-linear) and unitary (anti-unitary). It's convenient but not necessary to assume that 
 \[
-	U([\varphi]):\Psi\mapsto (x,U_x(\varphi(x),\varphi_{*x})\Psi_x)=(x,U_x([\varphi])\Psi_x),
-\]
-where $x=\pi(\Psi)$ and $U$ is a unknown function determined by our quantum system. In this case, the whole structure of the bundle $\mathsf H$ is given by $U$, just like the tangent bundle, and 
+	U_x(\varphi''\varphi'^{-1})U_x(\varphi'\varphi^{-1})=U_x(\varphi''\varphi^{-1}),
+\] 
+because there should be one phase factor in the exact relation, just like the flat case. This additional phase factor may be vary important in physics, but let's forget it at first. It's also convenient (but not necessary) to assume $U_x(\varphi'\varphi^{-1})$ is linear in our disscussion.
+
+It's natural to guess that $U_x(\varphi'\varphi^{-1})$ should only depend on the local imformation of $\varphi'\varphi^{-1}$ at $\varphi(x)\in \mathbb R^N$, so let's assume $U_x$ only dependent $a=\varphi'(x)-\varphi(x)$ and $\Lambda=(\varphi'\varphi^{-1})_{*\varphi(x)}$.
+
+\section{Construction}
+
+The above discussion is quite general since we don't need any detail about the bundle. If we want to relate the bundle trivialization $\psi:\pi^{-1}(V)\to V\times \mathcal H$ and the chart $(V,\varphi)$ on $M$, it's straightforward and naive to define a `function' between $\varphi(x)$ and $\psi_x:\mathcal H_x\to \mathcal H$ such that $\psi_x=T[\varphi(x)]:\mathcal H_x\to \mathcal H$. However, there exist two different charts $\varphi$ and $\varphi'$ such that $\varphi(x)=\varphi'(x)\in \mathbb R^N$, so the desired `function' should also depend on another imformation of $\varphi'$. 
+From experience, one could guess that $\psi_x$ is a function of $\varphi(x)$ and $\varphi_{*x}$, or more formally, the 1-jet of $\varphi$. We will use $[\varphi](x)$ or $[\varphi]_x$ to denote the pair $(\varphi(x),\varphi_{*x})$.
+
+Suppose $(V,\varphi)$ is a chart on $M$, we will define a bundle trivialization $T([\varphi]):\pi^{-1}(V)\to V\times \mathcal H$ by 
 \[
-	U_x(\varphi'\varphi^{-1})=U_{x}([\varphi'])U_{x}([\varphi])^{-1}.
+	T([\varphi]):\Psi\mapsto (x,T_x(\varphi(x),\varphi_{*x})\Psi_x)=(x,T_x([\varphi])\Psi_x),
 \]
+where $x=\pi(\Psi)$ and $T$ is a unknown function determined by our quantum system. In this case, the whole structure of the bundle $\mathsf H$ is given by $T$, just like the tangent bundle, and one could guess the linear map
+\begin{equation}
+	U_x(\varphi'\varphi^{-1})=T_{x}([\varphi'])^{-1}T_{x}([\varphi]):\mathcal H_x\to \mathcal H_x
+\end{equation}
+and the unitary map
+\[
+	\psi_x U_x(\varphi'\varphi^{-1})\psi_x^{-1}=T_{x}([\varphi])T_{x}([\varphi'])^{-1}:\mathcal H\to \mathcal H.
+\]
+% $U_x$ only depends on $[\varphi'\varphi^{-1}]$ now, it's a translation plus a linear map, and then naturally written as $U_x(\Lambda,a)$. 
+
+% Suppose $A:\mathbb R^N\to \mathbb R^N$ is a inversable function, then as a local section of $\mathsf H^*\otimes\mathsf H$,
+% \[
+% 	D_v(U_x(A))=\langle \dd U_x(A),v\rangle+[\widetilde{\Gamma}_x(v),U_x(A)]
+% \]
 
 One usually want his connection compatible with the `metric', i.e.
 \[
 	X(\Psi,\Phi)=(D_X\Psi,\Phi)+(\Psi,D_X\Phi),
 \]
 where $X$ is a vector field on $M$ and $D$ is our connection.
-
-What's more, if the infinitesimal translation is constant on a geodesic, then for geodesic $\gamma(t)$, we have
-\[
-	0=\frac{\mathrm d}{\mathrm dt}\Gamma(\dot\gamma(t))=\Gamma_{i;j}\dot\gamma^i\dot\gamma^j+\Gamma_{i}\ddot\gamma_{j}^i=\Gamma_{i;j}\dot\gamma^i\dot\gamma^j.
-\]
-The above equation is valid for all $\gamma(t)$, then $\Gamma_{i;j}+\Gamma_{j;i}=0$. This is just the Killing equation.
 
 Suppose $\psi'$ is another local trivialization near $p$, then we will get
 \[
@@ -111,13 +194,13 @@ where $G_x=\psi'_x\psi^{-1}_x$, or
 \]
 If we want to construct a connection on $\mathsf H$, we could constant it locally to meet the relation above.
 
-Now we will consider a theory that $U$
-
-Recall that if $\psi_x=U([\varphi]_x)$ and $\psi'_x=U([\varphi']_x)$ and $U$ is a representation, then the above equation can be written as
+Recall that if $\psi_x=T([\varphi]_x)$ and $\psi'_x=T([\varphi']_x)$, then the above equation can be written as
 \[
 	\Gamma_i(x)=U(g_x)^{-1}\partial_iU(g_x)+U(g_x)^{-1}\Gamma'_iU(g_x)=U(g_x^{-1}\partial_ig_x)+U(g_x)^{-1}\Gamma'_i(x)U(g_x),
 \]
-where $g_x=\varphi'_{*x}\varphi_{*x}^{-1}$ is the transition map of tangent bundle $TM$. So if there's a `connection quantumization' method to construct connection from $\Gamma'_i$ from the Levi-Civita connection from $\Gamma^L$, i.e. $\Gamma'_i=U(\Gamma^L)$, then the relation of Levi-Civita connection that
+where $g_x=\varphi'_{*x}\varphi_{*x}^{-1}$ is the transition map of tangent bundle $TM$ and $U$ is defined by equation (\theequation).
+
+So if there's a `connection quantumization' method to construct connection from $\Gamma'_i$ from the Levi-Civita connection from $\Gamma^L$, i.e. $\Gamma'_i=U(\Gamma^L)$, then the relation of Levi-Civita connection that
 \[
 	\Gamma^L_i(x)=g_x^{-1}\partial_ig_x+g_x^{-1}{\Gamma'}^L_ig_x
 \]
@@ -127,5 +210,52 @@ reduce that
 \]
 as we want.
 
-Note that $U$ is a representation of $\operatorname{GL}(\mathbb R^4)$.
+\section{something}
+
+Suppose $\hat p^\mu$ is momentum operators on $\mathcal H$, then we can define $\hat p^\mu_x:=\psi_x^{-1}\hat p^\mu\psi_x:\mathcal H_x\to \mathcal H_x$. Let $\Psi_{p}$ is a eigenstate of $\hat p^\mu_x$ with eigenvalue $p^\mu$, i.e.
+\[
+	\hat p^\mu_x\Psi_{p}=p^\mu\Psi_{p}.
+\]
+Given a geodesic $\gamma(\tau)$, $p^\mu(\tau):=m\dot\gamma^\mu(\gamma(\tau))$ satisfies
+\[
+	\dot p^\mu(\tau)+\frac{1}{m}A^\mu_{\alpha\beta}(\gamma(\tau))p^\alpha(\tau)p^\beta(\tau)=0,
+\]
+where $m$ is the mass and $A$ is the connection form of Levi-Civita connection. Then for a short `time' $\tau$,
+\[
+	p^\mu(\tau)=p^\mu-\frac{\tau}{m}A^\mu_{\alpha\beta}(x)p^\alpha p^\beta +O(t^2),
+\]
+where $x=\gamma(0)$ and $p^\mu=p^\mu(0)$.
+
+Suppose $\Psi_{p}(\tau)$ is the state coming from the parallel transporting of $\Psi_{p}$ along the $\gamma(\tau)$, it should has the momentum $p^\mu(\tau)$, i.e.
+\[
+	\hat p^\mu_{\gamma(\tau)}\Psi_p(\gamma(\tau))=p^\mu(\tau)\Psi_p(\gamma(\tau)).
+\]
+For small $\tau$, we have that
+\[
+	\hat p^\mu
+	\left(
+		\psi_{x}\Psi_p-\frac \tau m p^\nu\Gamma_{\nu}\psi_{x}\Psi_p
+	\right)
+	=p^\mu(\tau)
+	\left(
+		\psi_{x}\Psi_p-\frac \tau m p^\nu\Gamma_{\nu}\psi_{x}\Psi_p
+	\right)
+	+O(\tau^2)
+\]
+and
+\[
+	\frac \tau m (\hat p^\mu-p^\mu )p^\nu\Gamma_{\nu}\psi_{x}\Psi_p=(p^\mu(\tau)-p^\mu )\psi_{x}\Psi_p+O(\tau^2),
+\]
+thus
+\[
+	(\hat p^\mu-p^\mu )p^\nu\Gamma_{\nu}\psi_{x}\Psi_p=-A^\mu_{\alpha\beta}(x)p^\alpha p^\beta \psi_{x}\Psi_p,
+\]
+or in another form that
+\[
+	[\hat p^\mu_x,\widetilde{\Gamma}_{\nu}]\hat p^\nu_x\Psi_p=-A^\mu_{\alpha\beta}(x)\hat p_x^\alpha \hat p_x^\beta \Psi_p.
+\]
+Then it's natural to guess that
+\[
+	[\widetilde{\Gamma}_{\nu},\hat p^\mu_x]=A^\mu_{\rho\nu}(x)\hat p_x^\rho.
+\]
 \end{document}
