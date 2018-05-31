@@ -207,24 +207,6 @@ PID上的自由模当然是无挠的。
 这里$M_{\mathrm{free}}$是一个自由模，其秩只依赖于$M$.
 \end{pro}
 
-我们下面将准素分解那套理论应用到这里。
-
-\begin{pro}
-     设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则$\Ass_RM=\{\langle p_1\rangle ,\dots,\langle p_m\rangle \}$.
-\end{pro}
-
-\begin{proof}
-    显然，$\{\langle p_1\rangle ,\dots,\langle p_m\rangle \}\subset \Ass_RM$，因为每个$\langle p_i\rangle$都是包含$\ann_R(M)$的极小素理想，见Proposition \ref{pro:5.1.9}. 所以，我们只需证明不存在其他的associated primes. 如果$\ann(m)=\langle q\rangle$是一个素理想，由于$\ann(M)\subset \ann(m)$，所以$p_1^{n_1}\cdots p_m^{n_m}=qr$，其中$r\in R$. 根据唯一分解，$q$只能等于某个$p_i$.
-\end{proof}
-
- \begin{pro}
-    设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，从而局部化映射$M\to M_{\langle p_i\rangle}$的核给出了$\langle p_i\rangle$-子模$M_i$，且$\bigcap_{i}M_i=\{0\}$.
-\end{pro}
-
-\begin{proof}
-    前一个论断就是Proposition \ref{pro:5.2.13}，我们只需证明$\bigcap_{i}M_i=\{0\}$. 取$m\in \bigcap_{i}M_i$，所以存在$r_i\not\in \langle p_i\rangle$使得$r_im=0$. 因为$\ann(M)\subset \ann(m)$，所以可设$\ann(m)=\langle p_1^{l_1}\cdots p_m^{l_m}\rangle$. 从$r_i\not\in \langle p_i\rangle$，立刻得到$l_i=0$，所以$\ann(m)=R$，继而$m=0$.
-\end{proof}
-
 \begin{para}[根子模]
     设$r\in R$，对$R$-模$M$，局部化同态$\alpha_r:M\to M_r$的核$\ker \alpha_r$被称为$M$关于$r$的根子模，记作$M(r)$. 不难看到，
     \[
@@ -241,7 +223,7 @@ PID上的自由模当然是无挠的。
 \end{proof}
 
 \begin{lem}
-    设$M$是一个$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则存在一个$m_i\in M(p_i)$使得$\ann(m_i)=\langle p_i^{n_i}\rangle$，
+    设$M$是一个$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则存在一个$m_i\in M(p_i)$使得$\ann(m_i)=\langle p_i^{n_i}\rangle$，因此$\ann(M(p_i))=\langle p_i^{n_i}\rangle$.
 \end{lem}
 
 \begin{proof}
@@ -256,10 +238,14 @@ PID上的自由模当然是无挠的。
         p_1^{n_1}\cdots p_{i-1}^{n_{i-1}}p_i^{n_i-1}p_{i+1}^{n_{i+1}}\cdots p_{m}^{n_{m}}
     \]
     作用在任意的$m\in M$都为零，所以它处于极小多项式生成的理想中，这与唯一分解性质矛盾。
+
+    最后，欲证$\ann(M(p_i))=\langle p_i^{n_i}\rangle$，现在只需说明任取$m\in M(p_i)$，我们都有$p_i^{n_i}m=0$. 这从零因子的分解是显然的。
 \end{proof}
 
+作为推论，我们有$\Ass(M(p_i))=\{\langle p_i\rangle\}$，如果存在$M$的一个子模$N$使得$M/N\cong M(p_i)$，此时$N$就是一个$\langle p_i\rangle$-准素子模，后面我们会具体构造出这个子模$N$.
+
 \begin{pro}\label{pro:6.3.6}
-    设$R$-模$M$满足$\ann_R(M)$非零，则存在$m\in M$使得$\ann(m)=\ann(M)$.
+    设$R$-模$M$是一个挠模，存在$m\in M$使得$\ann(m)=\ann(M)$.
 \end{pro}
 
 \begin{proof}
@@ -273,18 +259,90 @@ PID上的自由模当然是无挠的。
 \end{proof}
 
 \begin{pro}
-    设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则
+    设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_k}\rangle \neq 0$，则
     \[
-        M=M(p_1)\oplus \cdots  \oplus M(p_m).
+        M=M(p_1)\oplus \cdots  \oplus M(p_k).
     \]
 \end{pro}
 
 \begin{proof}
-    取$m\in M$但$m\not\in M(p_1)\oplus \cdots  \oplus M(p_m)$. 由于$\ann_RM\subset \ann_R m=\langle q\rangle$，所以，可以设
+    任取$m\in M$，由于$\ann_RM\subset \ann_R m=\langle q\rangle$，所以，可以设
     \[
-        q=p_1^{l_1}\cdots p_m^{l_m},
+        q=p_1^{l_1}\cdots p_k^{l_k},
     \]
-    其中$l_i\leq n_i$.
+    其中$l_i\leq n_i$. 现在，构造
+    \[
+    	q_i=p_1^{l_1}\cdots \widehat{p_i^{l_i}}\cdots p_k^{l_k},
+    \]
+    我们下面证明存在$r_i$使得$\sum_i r_iq_i=1$. 实际上，逐级下降即可，降到$k=2$的时候是平凡的，因为$\{p_i^{l_i}\}$两两互素。比方说，从$k$开始，此时存在$r$, $s$使得$rp_{k}^{l_{k}}+sp_i^{l_i}=1$，所以从
+    \[
+    q_i=p_1^{l_1}\cdots \widehat{p_i^{l_i}}\cdots p_k^{l_k} \quad\text{和}\quad q_{k}=p_1^{l_1}\cdots p_{k-1}^{l_{k-1}}
+    \]
+    可以构造出
+    \[
+    p_1^{l_1}\cdots \widehat{p_i^{l_i}}\cdots p_{k-1}^{l_{k-1}}=rq_i+sq_{k}.
+    \]
+
+    最后，注意到$m_i=q_im\in M(p_i)$，所以
+    \[
+    m=\sum_i r_iq_im=\sum_i r_im_i\in M(p_1)\oplus \cdots  \oplus M(p_k),
+    \]
+    此即所证。
 \end{proof}
+
+现在，我们来考察有限生成挠模$M$的准素子模。
+
+\begin{pro}
+    设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，则$\Ass_RM=\{\langle p_1\rangle ,\dots,\langle p_m\rangle \}$.
+\end{pro}
+
+\begin{proof}
+    显然，$\{\langle p_1\rangle ,\dots,\langle p_m\rangle \}\subset \Ass_RM$，因为每个$\langle p_i\rangle$都是包含$\ann_R(M)$的极小素理想，见Proposition \ref{pro:5.1.9}. 所以，我们只需证明不存在其他的associated primes. 如果$\ann(m)=\langle q\rangle$是一个素理想，由于$\ann(M)\subset \ann(m)$，所以$p_1^{n_1}\cdots p_m^{n_m}=qr$，其中$r\in R$. 根据唯一分解，$q$只能等于某个$p_i$.
+\end{proof}
+
+ \begin{pro}
+    设$M$是一个有限生成$R$-模且$\ann_R(M)=\langle p_1^{n_1}\cdots p_m^{n_m}\rangle \neq 0$，从而局部化映射$M\to M_{\langle p_i\rangle}$的核给出了$\langle p_i\rangle$-准素子模$M_i$，且$\bigcap_{i}M_i=\{0\}$.
+\end{pro}
+
+\begin{proof}
+    前一个论断就是Proposition \ref{pro:5.2.13}，我们只需证明$\bigcap_{i}M_i=\{0\}$. 取$m\in \bigcap_{i}M_i$，所以存在$r_i\not\in \langle p_i\rangle$使得$r_im=0$. 因为$\ann(M)\subset \ann(m)$，所以可设$\ann(m)=\langle p_1^{l_1}\cdots p_m^{l_m}\rangle$. 从$r_i\not\in \langle p_i\rangle$，立刻得到$l_i=0$，所以$\ann(m)=R$，继而$m=0$.
+\end{proof}
+
+此时，可以看到$\bigcap_i M_i=\{0\}$就是$\{0\}$的极小分解了，从而利用Theorem \ref{thm:5.2.17}给出了如下推论。
+
+\begin{coro}
+设$M$是一个有限生成$R$-挠模，且$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_k}\rangle \neq 0$，则$N_i=M(p_1)\oplus \cdots \oplus \widehat{M(p_i)}\oplus \cdots  \oplus M(p_k)$是$M$的一个$\langle p_i\rangle$-准素子模，且$N_i=\ker(\alpha_i)$，这里$\alpha_i:M\to M_{\langle p_i\rangle}$是典范的局部化同态。
+\end{coro}
+
+\begin{proof}
+    只需注意到$\Ass(M/N_i)=\Ass(M(p_i))=\{\langle p_i\rangle\}$以及$\bigcap_i N_i=\{0\}$即可。
+\end{proof}
+
+但这并没有给出所有的$\langle p_i\rangle$-准素子模。如果$M(p_i)$存在直和分解$M(p_i)=M'\oplus M''$，则我们有$\Ass(M')=\Ass(M'')=\Ass(M(p_i))$，此时
+\[
+    N_i\oplus M'\quad \text{和}\quad  N_i\oplus M'',
+\]
+都是$\langle p_i\rangle$-准素子模。但是，从某种角度而言，我们给出了“极小的”准素子模们。
+
+\begin{para}
+迄今为止，给定一个有限生成$R$-模，则我们有分解
+\[
+    M=M_{\mathrm{free}}\oplus M_{\mathrm{tor}},
+\]
+并且对挠模$M_{\mathrm{tor}}$，如果$\ann(M_{\mathrm{tor}})=\langle p_1^{n_1}\cdots p_k^{n_k}\rangle$，我们有分解
+\[
+    M_{\mathrm{tor}}=M(p_1)\oplus \cdots  \oplus M(p_k),
+\]
+所以我们有分解
+\[
+    M=M_{\mathrm{free}}\oplus M(p_1)\oplus \cdots  \oplus M(p_k).
+\]
+\end{para}
+
+最后，我们来分解$M(p_i)$，注意到$\ann(M(p_i))=\langle p_i^{n_i}\rangle$，而$p_i$是一个素元。
+
+\begin{pro}
+设$M$是一个$R$-挠模且$\ann(M)=\langle p^n\rangle$，其中$p\in R$是一个素元，则$M$可以写成几个循环$R$-模的直和。
+\end{pro}
 
 \section{矢量空间在线性算子下的分解}
