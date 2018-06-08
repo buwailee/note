@@ -1,0 +1,32 @@
+% !TeX root = ./main.tex
+\chapter{Derived Categories}
+
+\section{Complexes}
+
+\begin{definition}
+    A complex $K^\bullet$ over an Abelian category $\mathcal C$ 
+    is a line of morphisms $\{d^i:K^i\to K^{i+1}\,:\, i\in \zz\}$ 
+    such that $d^{i+1}d^i=0$. If $\ker d^{i+1}=\im d^i$, $K^\bullet$
+    is called an exact complex.
+\end{definition}
+
+Usually, we will omit the index of $d^i$ if there's no confusion, so
+the exactness condition will be written as $d^2=0$.
+
+\begin{definition}[morphism of complexes]
+    Suppose $K^\bullet$ and $L^\bullet$ are two complexes over the
+    category $\mathcal C$, $f=\{f^i:K^i\to L^i\,:\,i\in \zz\}$ is a 
+    set of morphisms in the category $\mathcal C$. If the following
+    diagram is communtative,
+    \[
+        \xymatrix{
+        \cdots \ar[r]&K^{i-1}\ar[r]^{d_K}\ar[d]^{f^{i-1}}
+        &K^{i}\ar[r]^{d_K}\ar[d]^{f^{i}}&K^{i+1}\ar[r]
+        \ar[d]^{f^{i+1}}&\cdots\\
+        \cdots \ar[r]&L^{i-1}\ar[r]^{d_L}&L^{i}\ar[r]^{d_L}&
+        L^{i+1}\ar[r]&\cdots
+        }
+    \]
+    i.e. $f^{i+}d_K=d_Lf^i$, then we call $f$ a morphism between
+    complexes $K^\bullet$ and $L^\bullet$.
+\end{definition}

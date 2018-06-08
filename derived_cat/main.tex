@@ -1,29 +1,23 @@
-% !TeX program = XeLaTeX
-% author: buwailee@nmhs
-\documentclass{book}
-\usepackage[fontset = fandol]{ctex}
+\documentclass[12pt]{book}
 \usepackage[book]{../noteheader}
-	% \CTEXoptions[today=old]
-	% \CTEXoptions[contentsname=Table of Contents]
 
-% \usepackage[chapter]{../egastyle}
 \theoremstyle{definition}
 	\newtheorem{para}{}[section]
 		\renewcommand{\thepara}{\thesection.\arabic{para}}
-	\newtheorem{exa}[para]{Example}
+	\newtheorem{definition}[para]{Definition}
 \theoremstyle{plain}
 	\newtheorem{lem}[para]{Lemma}
-	\newtheorem{theo}[para]{Theorem}
 	\newtheorem{thm}[para]{Theorem}
 	\newtheorem{pro}[para]{Proposition}
 	\newtheorem{coro}[para]{Corollary}
 \renewcommand*{\proofname}{Proof}
 
-\usepackage{titletoc,makeidx,paralist}
-	\makeindex
+\usepackage{titletoc,paralist}
+% \usepackage{makeidx}
+% 	\makeindex
 	% \renewcommand{\indexname}{Index}
-\usepackage[titletoc,title]{appendix}
-	\renewcommand{\appendixname}{Appendix}
+% \usepackage[titletoc,title]{appendix}
+% 	\renewcommand{\appendixname}{Appendix}
 
 \usepackage{hyperref}
 	\hypersetup{bookmarksnumbered=true}
@@ -36,8 +30,8 @@
 \frontmatter
 \tableofcontents
 \mainmatter
-	\input{linear_algebra.tex}
+	\input{derived_cat.tex}
 \backmatter
-	\printindex
+	% \printindex
 	% \input{references.tex}
 \end{document}
