@@ -52,21 +52,22 @@
     由于$\ker \gamma=\{0\}$，所以线性代数基本定理告诉我们$\dim \im\gamma=\dim T_xX$. 依然是线性代数基本定理，$\dim T_yY=\dim \ker \pi_{*y}+\dim \im \pi_{*y}=\dim V_yY+\dim T_xX$，所以$\dim T_yY=\dim V_yY+\dim \im\gamma$. 这就告诉我们$T_yY=\im\gamma\oplus V_yY$.
 \end{proof}
 
-局部地，如果我们选定了$X$的坐标$x^\mu$和$Y$的纤维坐标$y^A$，这里$\mu$和$A$都是指标，则我们可以得到$T_{\pi(y)}X$和$T_yY$的坐标，进而是$J^1Y$的纤维坐标$v^{A}_\mu$. 事实上，每一个线性映射$\gamma:T_{\pi(y)}X\to T_yY$作用在$\partial_\mu$上都可以唯一写成
+局部地，如果我们选定了$X$的坐标$x^\mu$和$Y$的纤维坐标$y^A$，这里$\mu$和$A$都是指标，则我们可以得到$T_{\pi(y)}X$和$T_yY$的坐标，进而是$J^1Y$的纤维坐标$v^{A}_\mu$. 事实上，每一个满足$\pi_*\gamma=\id$的
+线性映射$\gamma:T_{\pi(y)}X\to T_yY$作用在$\partial_\mu$上都可以唯一写成
 \[
     \gamma(\partial_\mu)=\partial_\mu+\gamma^A_{\mu}\partial_A.
 \]
-所以我们只要将$v^{A}_\mu$取作$v^A_\mu(\gamma)=\gamma^A_{\mu}$即可表示$J^1_y Y$的坐标。此外，注意到等式
+所以，我们可将
 \begin{equation}
-    v^A_\mu(\gamma)=\dd y^A(\gamma(\partial_\mu))    
+	\gamma^A_{\mu}=\dd y^A(\gamma(\partial_\mu))
 \end{equation}
-是有益的。
+用作$J^1_y Y$的坐标，坐标函数记作$v^A_\mu(\gamma)=\gamma^A_{\mu}$. 
 
 我们还可以将$J^1Y$看成$X$上的一个丛，此时若$\phi:X\to Y$是纤维丛$\pi:Y\to X$的一个截面，则$\phi_{*x}\in J^1_{\phi(x)}Y$，于是$x\mapsto \phi_{*x}$是$J^1Y$的一个截面，当然，更形式的记法应该是$\phi^*J^1Y$的一个截面，我们将其记作$j^1\phi$. 局部地，我们可以将$j^1\phi$写作
 \[
     x^\mu \mapsto \left (x^\mu,\phi^A(x^\mu),\partial_\nu \phi^A(x^\mu)\right ),
 \]
-这里，$\phi^A=y^A\circ \phi$. 如果从$J^Y\to X$的截面可以写成$j^1\phi$的形式，则称这个截面是完整的（holonomic）。
+这里，$\phi^A=y^A\circ \phi$. 如果从$J^1Y\to X$的截面可以写成$j^1\phi$的形式，则称这个截面是完整的（holonomic）。
 
 % \begin{para}[Ehresmann联络]
 %     设$\pi:Y\to X$是一个纤维丛，$J^1Y$丛在$Y$上的（局部）截面被称为$Y$的一个（局部）Ehresmann联络。
@@ -80,7 +81,7 @@
 
 局部地，$J^1Y^*$的纤维坐标是$(p,p_A^\mu)$，它对应着仿射映射
 \[
-    v^A_\mu\mapsto \left (p+p_A^\mu v^A_\mu \right )\dd^n x,
+    \gamma^A_\mu\mapsto \left (p+p_A^\mu \gamma^A_\mu \right )\dd^n x,
 \]
 这里
 \[
@@ -113,9 +114,9 @@
 这就回到了我们前面的局部刻画。$\Phi$的逆同样不难构造，因此$Z$和$J^1Y^*$同构。
 
 \begin{para}[正则形式]
-   考虑矢量丛$\tau:\Lambda^n Y\to Y$，任取$z\in \Lambda^n Y$，我们还可以将其看成$\tau(z)\in Y$上的$n$-形式，于是可以定义一个$\Lambda^n Y$上的$n$-形式$\Theta_\Lambda$，其在点$z$的值为$(\Theta_\Lambda)_z=\tau^*z$. 这被称为$\Lambda^n Y$上的正则$n$-形式。定义$\Omega_\Lambda=-\dd \Theta_\Lambda$，这被称为$\Lambda^n Y$上的正则$(n+1)$-形式。
+   考虑矢量丛$\tau:\Lambda^n Y\to Y$，任取$z\in \Lambda^n Y$，其为$\tau(z)\in Y$上的$n$-形式，于是可以定义一个$\Lambda^n Y$上的$n$-形式$\Theta_\Lambda$，其在点$z$的值为$(\Theta_\Lambda)_z=\tau^*z$. 这被称为$\Lambda^n Y$上的正则$n$-形式。定义$\Omega_\Lambda=-\dd \Theta_\Lambda$，这被称为$\Lambda^n Y$上的正则$(n+1)$-形式。
 
-    如果把$J^1Y^*$看成$\tau:\Lambda^n Y\to Y$的子丛（即前面的$Z$），含入为$i:J^1Y^*\to \Lambda^n Y$，则我们就可以定义$J^1Y^*$上的正则$n$和$(n+1)$-形式，
+    如果把$J^1Y^*$看成$\tau:\Lambda^n Y\to Y$的子丛（即前面的$Z$），含入为$i:J^1Y^*\hookrightarrow \Lambda^n Y$，则我们就可以定义$J^1Y^*$上的正则$n$和$(n+1)$-形式，
     \[
         \Theta=i^*\Theta_\Lambda,\quad \Omega=i^*\Omega_\Lambda,
     \]
@@ -135,9 +136,9 @@
 \begin{para}[点粒子的例子]
     考虑一个粒子，描述它的运动我们需要时间$X=\rr$以及丛$Y=M\times \rr$，其中$M$是其可以运动的空间，此时，局部地
     \[
-        \theta = p_A\dd y^A+p\dd t,
+        \Theta = p_A\dd y^A+p\dd t,
     \]
-    这里$p$就代表能量，而$p_A$代表的是对应坐标$y^A$的动量，进而
+    这里$p$就代表（负）能量，而$p_A$代表的是对应坐标$y^A$的动量，进而
     \[
         \Omega=\dd y^A\wedge\dd p_A-\dd p\wedge\dd t.
     \]
@@ -185,7 +186,7 @@
 回到纤维丛$\pi:Y\to X$的截面$\phi:X\to Y$的情况，前面已经看到，他确定了一个截面$j^1 \phi:x\mapsto \phi_{*x}$. 这里，考虑一个保持纤维的丛映射$\alpha:Y\to Y'$，则我们有两个新的截面$\alpha\phi:X\to Y'$和$j^1(\alpha\phi):X\to J^1Y'$，我们有如下命题。
 
 \begin{lem}
-    记号同上，$j^1(\alpha\circ \phi)=j^1\alpha \circ j^1\phi$.
+    记号同上，$j^1(\alpha\phi)=j^1\alpha \circ j^1\phi$.
 \end{lem}
 
 \begin{proof}
@@ -207,15 +208,15 @@
 
     任取$J^1Y$上的函数$f$，我们要计算
     \[
-        (j^1V)f=\left.\frac{\dd}{\dd \lambda}\right|_{\lambda=0}f((\sigma^V_\lambda)_{*}\gamma).
+        (j^1V)f=\left.\frac{\dd}{\dd \lambda}\right|_{\lambda=0}f\left((\sigma^V_\lambda)_{*}\gamma\right).
     \]
     取$f=x^\mu\pi\tau$，其中$\pi:Y\to X$, $\tau:J^1Y\to Y$都是丛映射，则
     \[
-        x^\mu\pi\tau((\sigma^V_\lambda)_{*}\gamma)=x^\mu\pi(\sigma^V_\lambda(y))=x^\mu\pi(y)=x^\mu,
+        x^\mu\pi\tau\left((\sigma^V_\lambda)_{*}\gamma\right)=x^\mu\pi\left(\sigma^V_\lambda(y)\right)=x^\mu\pi(y)=x^\mu,
     \]
     所以这是常函数，进而$(j^1V)(x^\mu\pi\tau)=0$，即不存在$\partial_{\mu}$分量。接着取$f=y^A\tau$，则
     \[
-        y^A\tau((\sigma^V_\lambda)_{*}\gamma)=y^A(\sigma^V_\lambda(y)),
+        y^A\tau\left((\sigma^V_\lambda)_{*}\gamma\right)=y^A\left(\sigma^V_\lambda(y)\right),
     \]
     所以它的导数就是$V^A$，所以$\partial_A$分量的系数为$V^A$. 最后取$f=v^A_\mu$，利用式(\theequation)，我们有
     \[
@@ -223,9 +224,9 @@
     \]
     所以它的导数就是
     \[
-        \mathscr L_V\dd y^A(\gamma_\mu^B\partial_B+\partial_\mu)=\dd V^A(\gamma_\mu^B\partial_B+\partial_\mu)=\partial_\mu V^A+\gamma^B_\mu \partial_B V^A.
+        \mathscr L_V\dd y^A(\gamma_\mu^B\partial_B+\partial_\mu)=\dd V^A(\gamma_\mu^B\partial_B+\partial_\mu)=\partial_\mu V^A+\gamma^B_\mu \partial_B V^A,
     \]
-    综上，我们有
+    其中$\mathscr L_V$是Lie导数。综上，我们有
     \[
         j^1V=\left(0,V^A,\partial_\mu V^A+\gamma^B_\mu \partial_B V^A\right).
     \]
@@ -233,24 +234,24 @@
 
 \section{Lagrange方程}
 
-现在开始，我们将默认$X$是$n+1$维的，其坐标为$x^0$, $\dots$, $x^n$，当$n=0$时，就回到了质点力学。注意，这里我们还不需要$X$和$Y$上有什么附加结构。
+现在开始，在纤维丛$\pi:Y\to X$中我们将默认$X$是$D=n+1$维的，其坐标为$x^0$, $\dots$, $x^n$，当$n=0$时，就回到了质点力学。注意，这里我们还不需要$X$和$Y$上有什么附加结构。
 
 \begin{para}[Lagrange密度]
     Lagrange密度$\mathcal L$是一个丛映射$\mathcal L:J^1Y\to \Lambda^{n+1}X$，换而言之，成立交换图
     \[
         \xymatrix{
             J^1Y\ar[d]\ar[r]^-{\mathcal L}&\Lambda^{n+1}X\ar[d]\\
-            Y\ar[r]^\pi&X
+            Y\ar[r]&X
         }
     \]
-    其中略去标记的箭头都是丛中典范的态射。
+    其中略去标记的箭头都是丛的典范投影。
 \end{para}
 
 对点$\gamma\in J^1Y$，其中$\gamma:T_xX\to T_yY$是一个线性映射，而$x=\pi(y)$. 此时，局部地，我们可以将Lagrange密度$\mathcal{L}(\gamma)$写作
 \[
     \mathcal{L}(\gamma)=L\left(x^\mu,y^A,\gamma^A_\mu\right)\dd^{n+1}x,
 \]
-其中$\gamma^A_\mu=v^A_\mu\circ \gamma$.
+其中$\gamma^A_\mu=v^A_\mu(\gamma)$.
 
 \begin{para}[Legendre变换]
     Legendre变换是一个保持纤维的丛映射$F_{\mathcal L}:J^1Y\to J^1Y^*$，即满足交换图
@@ -273,11 +274,12 @@
 \]
 所以其对应的仿射变换$\sigma^A_\mu\mapsto (p(\gamma)+p_A^\mu(\gamma) \sigma^A_\mu)\dd^{n+1}x$立即给出
 \[
-    p=L-\frac{\partial L}{\partial v^A_\mu}v^A_\mu,\quad p^\mu_A=\frac{\partial L}{\partial v^A_\mu}.
+    p=L-\frac{\partial L}{\partial v^A_\mu}v^A_\mu,\quad p^\mu_A=\frac{\partial L}{\partial v^A_\mu},
 \]
+此即经典的Legendre变换。
 
 \begin{para}[Cartan形式]
-    已知$J^1Y^*$上的正则$n$-形式$\Theta$，于是，利用Legendre变换$F_{\mathcal L}:J^1Y\to J^1Y^*$可以得到一个$J^1Y$上的$n+1$-形式
+    已知$J^1Y^*$上的正则$D$-形式$\Theta$，于是，利用Legendre变换$F_{\mathcal L}:J^1Y\to J^1Y^*$可以得到一个$J^1Y$上的$D$-形式
     \[
         \Theta_{\mathcal L}=F_{\mathcal L}^*\Theta,
     \]
@@ -286,7 +288,7 @@
 
 局部地，Cartan形式写作
 \[
-    \Theta_{\mathcal L}=\frac{\partial L}{\partial v^A_\mu}\dd y^A\wedge \dd^{n}x_\mu + \left(L-\frac{\partial L}{\partial v^A_\mu}v^A_\mu\right)\dd^{n+1} x.
+    \Theta_{\mathcal L}=\frac{\partial L}{\partial v^A_\mu}\dd y^A\wedge \dd^{D-1}x_\mu + \left(L-\frac{\partial L}{\partial v^A_\mu}v^A_\mu\right)\dd^{D} x.
 \]
 
 \begin{pro}\label{pro:1.17}
@@ -300,15 +302,15 @@
 \begin{proof}
     局部地，我们有
     \[
-        (j^1\phi)^*\Theta_{\mathcal L}=\frac{\partial L}{\partial v^A_\mu}(j^1\phi)\dd \phi^A\wedge \dd^{n}x_\mu + \left(L(j^1\phi)-\frac{\partial L}{\partial v^A_\mu}(j^1\phi)\partial_\mu \phi^A\right)\dd^{n+1} x,
+        (j^1\phi)^*\Theta_{\mathcal L}=\frac{\partial L}{\partial v^A_\mu}(j^1\phi)\dd \phi^A\wedge \dd^{D-1}x_\mu + \left(L(j^1\phi)-\frac{\partial L}{\partial v^A_\mu}(j^1\phi)\partial_\mu \phi^A\right)\dd^{D} x,
     \]
     这里我们应用了$v_\mu^A(j^1\phi)=\partial_\mu\phi^A$，进而，通过
     \[
-        \dd \phi^A\wedge \dd^{n}x_\mu=\partial_\mu \phi^A\dd^{n+1} x,
+        \dd \phi^A\wedge \dd^{D-1}x_\mu=\partial_\mu \phi^A\dd^{D} x,
     \]
     我们立刻得到
     \[
-        (j^1\phi)^*\Theta_{\mathcal L}=L(j^1\phi)\dd^{n+1} x=\mathcal L(j^1\phi),
+        (j^1\phi)^*\Theta_{\mathcal L}=L(j^1\phi)\dd^{D} x=\mathcal L(j^1\phi),
     \]
     此即所需。
 \end{proof}
@@ -368,60 +370,108 @@
 
 几乎任何（经典）物理系统都遵循这条原理。
 
-\section{协变动量映射}
+\section{正则变换与荷}
 
-在本节中，$Z$都是指$\Lambda^{n+1}Y$的那个同构于$J^1Y^*$的子丛。
+在本节中，$Z$都是指$\Lambda^{D}Y$的那个同构于$J^1Y^*$的子丛。
 
-\begin{para}[协变正则变换]
-    设同胚$\eta_Z:Z\to Z$, $\eta_Y:Y\to Y$, $\eta_X:X\to X$构成丛映射，此时，如果$\eta_Z^*\Omega=\Omega$，则称$\eta_Z$是一个协变正则变换，如果$\eta_Z^*\Theta=\Theta$，则称$\eta_Z$是一个特殊协变正则变换。
+\begin{para}[纤维丛的自同构]
+设$Y\to X$是一个纤维丛，则它的一个自同构$\eta$由两个同胚$\eta_Y$和$\eta_X$构成，且满足交换图
+\[
+    \xymatrix{
+        Y \ar[r] \ar[d]^{\eta_Y} &X\ar[d]^{\eta_X}\\
+        Y \ar[r] &X
+    }
+\]
 \end{para}
 
-方便起见，在不产生歧义的地方，我们将略去“协变”二字。
+现在，显然我们有两个纤维丛$Z\to Y$和$Y\to X$，它们复合得到了纤维丛$Z\to X$. 
+设已有一个$Y\to X$的自同构$(\eta_Y,\eta_X)$，如果$Z\to X$的自同构$(\eta_Z,\eta_X)$使得如下交换图成立
+\[
+    \xymatrix{
+        Z \ar[r] \ar[d]^{\eta_Z} &Y\ar[r]\ar[d]^{\eta_Y}&X\ar[d]^{\eta_X}\\
+        Z \ar[r] &Y\ar[r]&X
+    }
+\]
+即$(\eta_Z,\eta_Y)$构成了$Z\to Y$的自同构，此时称$(\eta_Z,\eta_X)$是$(\eta_Y,\eta_X)$的一个提升。方便起见，若没有歧义，则简称为$\eta_Z$是$\eta_Y$的一个提升。
 
-\begin{para}
-    设同胚$\eta_Y:Y\to Y$, $\eta_X:X\to X$构成丛映射，则我们可以定义
+\begin{para}[正则提升]
+    设同胚$\eta_Y:Y\to Y$, $\eta_X:X\to X$构成丛映射，则我们可以通过
     \[
-        (\eta_Y)^\#(z)=(\eta_Y^{-1})^*z
+        \eta_Z (z)=(\eta_Y^{-1})^*z
     \]
-    来定义一个映射$(\eta_Y)^\#:Z\to Z$. 事实上，任取$z\in Z$以及$v$, $w\in V_yY$，我们都有
+    来定义一个提升$\eta_Z :Z\to Z$. 事实上，任取$z\in Z$以及$v$, $w\in V_yY$，我们都有
     \[
         \iota(v)\iota(w)(\eta_Y^{-1})^*z=(\eta_Y^{-1})^*\left[\iota((\eta_Y^{-1})_*v)\iota((\eta_Y^{-1})_*w)z\right],
     \]
-    注意到
+    注意到$(\eta_Y^{-1})_*v)$也在$V_y$中，这是因为
     \[
-        \pi_*(\eta_Y^{-1})_*v=\pi_*v=0,
+        \pi_*(\eta_Y^{-1})_*v=(\eta_X^{-1})_*\pi_*v=0,
     \]
-    所以立刻可以得到$(\eta_Y^{-1})^*z\in Z$. 这被称为一个提升。
+    所以立刻可以得到$(\eta_Y^{-1})^*z\in Z$. 这被称为一个正则提升，且这显然是函子性的。
 \end{para}
 
+此外，在$J^1Y^*$上，我们也可以通过
+\[
+	\langle \eta_{J^1Y^*}(z),\gamma\rangle=(\eta_{X}^{-1})^*\langle z,(j^1\eta_Y)^{-1}(\gamma)\rangle
+\]
+来定义$J^1Y^*$上的一个同胚，这里$\langle *,*\rangle$是对偶空间中的自然配对。而同构$\Phi:Z\to J^1Y^*$给出了
+$\eta_{J^1Y^*}$和$\eta_Z$的关系。
+
+\begin{lem}
+$\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
+\end{lem}
+
+\begin{proof}
+证明是直接的：
+\begin{align*}
+	\langle \eta_{J^1Y^*}\Phi (z),\gamma\rangle&=(\eta_{X}^{-1})^*\langle \Phi(z),(j^1\eta_Y)^{-1}(\gamma)\rangle\\
+	&=(\eta_{X}^{-1})^*\langle \Phi(z),(\eta_Y)_*^{-1}\gamma(\eta_X)_*\rangle\\
+	&=(\eta_{X}^{-1})^*\left((\eta_Y)_*^{-1}\gamma(\eta_X)_*\right)^*z\\
+	&=\left((\eta_Y)_*^{-1}\gamma\right)^*z\\
+	&=\gamma^*\left(\eta_Z(z)\right)\\
+	&=\langle \Phi\eta_Z(z),\gamma\rangle.\qedhere
+\end{align*}
+\end{proof}
+
+所以，我们可以进一步通过$\Phi$来等同$Z$和$J^1Y^*$，上一个引理告诉我们，这个等同在同胚的提升意义上也是成立的，且成立
+\[
+	(\eta_{X})^*\langle \eta_{J^1Y^*}(z),\eta_{J^1Y}(\gamma)\rangle=\langle z,\gamma\rangle,
+\]
+这里$\eta_{J^1Y}:=j^1\eta_Y$.
+
+\begin{para}[协变正则变换]
+    设$(\eta_Z,\eta_X)$是$Z\to X$的一个自同构，如果$\eta_Z^*\Omega=\Omega$，则称$\eta_Z$是一个协变正则变换，如果$\eta_Z^*\Theta=\Theta$，则称$\eta_Z$是一个特殊协变正则变换。
+\end{para}
+
+% 这里，$\eta_Z^*\Theta=\Theta$应当理解作$\eta_Z^*\Theta_{\eta_Z(z)}=\Theta_{z}$. 
+方便起见，在不产生歧义的地方，我们将略去“协变”二字。
+
 \begin{pro}
-    丛映射$\eta_Y$的提升$(\eta_Y)^\#$是一个特殊正则变换。
+    丛自同构$\eta_Y$的正则提升$\eta_{Z}$是一个特殊正则变换。
 \end{pro}
 
 \begin{proof}
-    首先，回顾$(\Theta_\Lambda)_z=\tau^*z$，这里$\tau:\Lambda^{n+1}Y\to Y$是典范映射，而$\Theta=i^*\Theta_\Lambda$. 按照定义，考虑
+    首先，回顾$(\Theta_\Lambda)_z=\tau^*z$，这里$\tau:\Lambda^{n+1}Y\to Y$是典范映射，以及$\Theta=i^*\Theta_\Lambda$. 按照定义，考虑
     \begin{align*}
-        (((\eta_Y)^\#)^*i^*\Theta_\Lambda)_z(u_1,\dots,u_N)&=(\Theta_\Lambda)_{(\eta_Y)^\#z}((\eta_Y)^\#_{*}u_1,\dots,(\eta_Y)^\#_{*}u_N)\\
-        &=\tau^* (\eta_Y)^\# z((\eta_Y)^\#_{*}u_1,\dots,(\eta_Y)^\#_{*}u_N)\\ 
-        &=\tau^*(\eta_Y^{-1})^*z((\eta_Y)^\#_{*}u_1,\dots,(\eta_Y)^\#_{*}u_N)\\ 
-        &=\left(\eta_Y^{-1}\tau(\eta_Y)^\#\right)^*z(u_1,\dots,u_N)
+        (\eta_{Z}^*i^*\Theta_\Lambda)_z(u_1,\dots,u_N)&=(\Theta_\Lambda)_{\eta_{Z}(z)}((\eta_{Z})_{*}u_1,\dots,(\eta_{Z})_{*}u_N)\\
+        &=(\tau^* (\eta_{Z}(z)))_{\eta_{Z}(z)}((\eta_{Z})_{*}u_1,\dots,(\eta_{Z})_{*}u_N)\\ 
+        &=\eta_{Z}(z)_{\tau\eta_{Z}(z)}((\tau\eta_{Z})_{*}u_1,\dots,(\tau\eta_{Z})_{*}u_N)
     \end{align*}
-    注意到
-    \[
-        \eta_Y^{-1}\tau(\eta_Y)^\#(z) = \eta_Y^{-1}\tau(\eta_Y^{-1})^*(z) = \eta_Y^{-1}\eta_Y\tau(z)=\tau(z),
-    \]
-    这是因为$\eta_Y^{-1}$将$\tau(z)$处的形式拉回到了$\eta_Y\tau(z)$处的形式，所以，限制在$Z$上，我们有$\eta_Y^{-1}\tau(\eta_Y)^\#=\tau$，故
-    \[
-        \left(((\eta_Y)^\#)^*\Theta\right)_z=\tau^*z,
-    \]
-    另一方面，
-    \[
-        \Theta_z=(i^*\Theta_\Lambda)_z=\tau^*z,
-    \]
-    于是$((\eta_Y)^\#)^*\Theta=\Theta$. 此即所需。
+    注意到，因为$\eta_Z$是$\eta_Y$的提升，所以$\tau\eta_Z=\eta_Y \tau$，故
+    \begin{align*}
+        ((\eta_{Z})^*i^*\Theta_\Lambda)_z(u_1,\dots,u_N)&=
+        \eta_{Z}(z)_{\eta_{Y}\tau(z)}((\eta_{Y}\tau)_{*}u_1,\dots,(\eta_{Y}\tau)_{*}u_N)\\
+        &=((\eta_Y^{-1})^*z)_{\eta_{Y}\tau(z)}((\eta_{Y}\tau)_{*}u_1,\dots,(\eta_{Y}\tau)_{*}u_N)\\
+        &=z_{\tau(z)}((\tau)_{*}u_1,\dots,(\tau)_{*}u_N)\\
+        &=(\tau^*z)_z(u_1,\dots,u_N)\\
+        &=(i^*\Omega_\Lambda)_z(u_1,\dots,u_N)\\
+        &=\Omega_z(u_1,\dots,u_N),
+    \end{align*}
+    于是$(\eta_{Z})^*\Theta=\Theta$. 此即所需。
 \end{proof}
 
-现在，记$\eta_X$, $\eta_Y$和$\eta_Z$对应的矢量场（无穷小生成元）分别为$\xi_X$, $\xi_Y$和$\xi_Z$. 如果$\eta_Z$是一个正则变换，则
+现在，设有一个Lie群$G$，任取群元$g$，它在$X$, $Y$, $Z$上的作用$g_X$, $g_Y$和$g_Z$构成了$Z\to Y\to Z$的一个同构。若$g=\exp(t\xi)$，当$t$趋向于零时，上述作用给出了
+三个矢量场$\xi_X$, $\xi_Y$和$\xi_Z$. 特别地，如果任取$g\in G$，$g_Z$总是一个正则变换，则
 \[
     \mathscr L_{\xi_Z}\Omega=0,
 \]
@@ -430,15 +480,88 @@
     \mathscr L_{\xi_Z}\Theta=0.
 \]
 
-\begin{para}[协变动量映射]
-    设所有正则变换构成了一个作用在$Z$上的Lie群$G$，其Lie代数记作$\mathfrak g$. 则
-    
-    则我们可以定义一个协变动量映射
+\begin{para}[荷]
+    设所有正则变换构成了一个作用在$Z$上的Lie群$G$，其Lie代数记作$\mathfrak g$. 如果映射
     \[
         J:Z\to \mathfrak g^*\otimes \Lambda^n Z,
     \]
-    值域也可以看成所有$\mathfrak g$到$\Lambda^n Z$的线性变换构成的空间
+    对任意的$\xi\in \mathfrak g$都成立
+    \[
+    \dd (J(\xi))=\iota(\xi_Z)\Omega,
+    \]
+    则我们将$J$称之为一个荷。在对称性分析中，它的Legendre变换将担当经典的守恒荷的作用。
+    注意到，如果将$\Omega$类比为辛形式，则上式就是在说$J(\xi)$的“Hamilton矢量场”
+    为$\xi_Z$. 这个类比会在下面定义Possion括号时候再次用到。
 \end{para}
+
+如果$\eta_Z$都是特殊正则映射，则此时$J(\xi)=\iota(\xi_Z)\Theta$就定义了一个荷$J$. 实际上，此时
+\[
+	\dd (J(\xi))=\dd \iota(\xi_Z)\Theta=\mathscr L_{\xi_Z}\Theta-\iota(\xi_Z)\dd \Theta=\iota(\xi_Z)\Omega.
+\]
+这样定义的荷被称为特殊荷。
+
+\begin{pro}
+若$G$在$Z$上的作用是$G$在$Y$上的自同构的正则提升，则此时特殊荷可以血写作
+\[
+	J(\xi)(z)=p^*\iota(\xi_Y)z,
+\]
+其中$p:Z\to Y$为丛的典范投影。
+\end{pro}
+
+\begin{proof}
+从定义，$\Theta_z=p^*z$，所以
+\[
+	J(\xi)(z)=\iota(\xi_Z)\Theta_z=\iota(\xi_Z)p^*z=p^*\iota(p_*\xi_Z)z,
+\]
+此外，任取$y=p(z)\in Y$以及$Y$上的光滑函数$f$，我们有
+\[
+	(p_*\xi_Z)_{p(z)} f=(\xi_Z)_p (f\circ p)=\lim_{t\to 0}\frac{f(p\exp(t\xi)_Z(z))-f(p(z))}{t}=\lim_{t\to 0}\frac{f(\exp(t\xi)_Y(y))-f(y)}{t}=(\xi_Y)_yf,
+\]
+其中我们应用了$p\exp(t\xi)_Z=\exp(t\xi)_Yp$，所以矢量场的关系$p_*\xi_Z=\xi_Y$立刻给出了结论。
+\end{proof}
+
+局部地，如果$\xi_Y$具有分量$(\xi^\mu,\xi^A)$，而$z$具有分量$(p,p_A^\mu)$，则
+\[
+	J(\xi)(z)=(p_A^\mu \xi^A+p\xi^\mu)\dd^{D-1}x_\mu-p_A^\mu \xi_\nu \dd y^A
+	\wedge \dd^{D-2}x_{\mu\nu},
+\]
+其中
+\[
+	\dd^{D-2}x_{\mu\nu}=\iota(\partial_\nu)\iota(\partial_\mu)\dd^{D}x.
+\]
+
+\begin{pro}
+对特殊荷，成立$J(\operatorname{Ad}_g^{-1}\xi)=g_Z^*J(\xi)$.
+\end{pro}
+
+\begin{proof}
+首先，任取$\xi\in \mathfrak g$以及$Z$上的光滑函数$f$
+\begin{align*}
+((g_Z)_*\xi_Z)_{z} f=(\xi_Z)_{g_Z^{-1}(z)} (f\circ g_Z)&=\lim_{t\to 0}\frac{f(g_Z\exp(t\xi)_Zg_Z^{-1}(z))-f(z)}{t}\\
+&=\lim_{t\to 0}\frac{f((g\exp(t\xi)g^{-1})_Z(z))-f(z)}{t}\\
+&=(\operatorname{Ad}_g(\xi)_Z)_zf,
+\end{align*}
+即$(g_Z)_*\xi_Z=\operatorname{Ad}_g(\xi)_Z$. 现在，考虑特殊荷
+\[
+	J(\operatorname{Ad}^{-1}_g(\xi))=\iota(\operatorname{Ad}_g^{-1}(\xi)_Z)\Theta
+	=g_Z^*(g^{-1}_Z)^*\iota\left((g^{-1}_Z)_*\xi_Z\right)\Theta=g_Z^*\iota(\xi_Z)(g^{-1}_Z)^*\Theta,
+\]
+注意到此时$g^{-1}_Z$是特殊正则变换，所以$(g^{-1}_Z)^*\Theta=\Theta$，这就给出了结论。
+\end{proof}
+
+在上面命题的式子中取$g=\exp(t\zeta)$，然后对$t$在$t=0$处求导，我们立刻得到了
+\[
+	J([\xi,\zeta])=\mathscr L_{\zeta_Z}J(\xi)=\dd \iota(\zeta_Z)J(\xi)+\iota(\zeta_Z)\dd J(\xi)=\dd \iota(\zeta_Z)J(\xi)+\iota(\zeta_Z)\iota(\xi_Z) \Omega,
+\]
+定义Possion括号
+\[
+	\{J(\xi),J(\zeta)\}=\iota(\zeta_Z)\iota(\xi_Z) \Omega,
+\]
+则我们就得到了
+\[
+	\{J(\xi),J(\zeta)\}=J([\xi,\zeta])-\dd \iota({\zeta_Z})J(\xi)=J([\xi,\zeta])+\dd \left(\iota({\zeta_Z})\iota({\xi_Z})\Theta\right).
+\]
+不难看到，Possion括号是反对称的。
 
 \section{对称性与Noether定理}
 

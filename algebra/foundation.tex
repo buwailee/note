@@ -170,7 +170,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 设$k$是一个域，则他没有非平凡理想：考虑$k$的一个非零理想$\mathfrak{a}$，他包含一个$a\neq 0$，所以$(a)\subset k\mathfrak{a} \subset k$，但是由于$a$可逆，所以$(a)=k\subset k\mathfrak{a} \subset k$，这也就推出了$k\mathfrak{a}=k$，然后由理想的定义$k\mathfrak{a}\subset \mathfrak{a}$就推出了$\mathfrak{a}=k$.
 
-\section{同态与同构基本定理}
+\section{同态与商构造}
 
 \begin{para}
 设$G$和$H$是两个群，若映射$f:G\to H$满足
@@ -342,187 +342,6 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \para 设$G$和$G'$是两个群，$f:G\to G'$是一个群同态，设$H'\subset G'$是一个子群，则$f^{-1}(H')$是一个$G$的子群。事实上，任取$g$, $h\in f^{-1}(H')$，于是$f(gh)=f(g)f(h)\in H'$也就推出了$gh\in f^{-1}(H')$. 
 
 类似地，设$M$和$M'$都是$R$-模，而$f:M\to M'$是一个$R$-模同态，考虑一个子模$N'\subset M'$，则$f^{-1}(N')$是$M$的一个子模。事实上，加法群结构来自于群的结论，任取$r\in R$以及$x\in f^{-1}(N')$，于是$f(rx)=rf(x)\in N'$推出了$rx\in f^{-1}(N')$. 
-
-\section{理想}
-
-\para[理想] 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$或者$\langle S\rangle$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1$, $\cdots$, $f_n)$或者$\langle f_1$, $\cdots$, $f_n\rangle$. 如果指标需要用一个指标集表示，那么就通常写作$\langle f_i\rangle_{i\in I}$或者$\langle f_i\,:\,i\in I\rangle$. 一个理想生成的理想自然就是他本身。\endpara
-
-\para[理想的运算] 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
-\[
-\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
-\]
-是一个理想。由于$\mathfrak{a}$, $\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$，所以$\mathfrak{a}\cup\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$. 一般而言，两个理想的并不是理想，但是两个理想的并生成的理想实际上就是两个理想的和。
-
-两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。由于$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}$以及$\mathfrak{a}\mathfrak{b}\subset \mathfrak{b}$，所以有包含关系$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}\cap \mathfrak{b}$.
-
-设$(a)$和$(b)$是环$R$的两个主理想，则$(a)(b)=(ab)$. 实际上，左手边的元素由所有$(ra)(sb)=rs(ab)$生成，其中$r$, $s$走遍$R$. 所以$(a)(b)\subset (ab)$. 反过来，因为$ab\in (a)(b)$，所以$(ab)\subset (a)(b)$.
-
-最后，给定$R$的两个理想$\mathfrak{a}$和$\mathfrak{b}$，定义$(\mathfrak{a}:\mathfrak{b})$为$\{r\in R\,:\, r\mathfrak{b}\subset \mathfrak{a}\}$，这是一个理想，因为若$x\in (\mathfrak{a}:\mathfrak{b})$，由于$\mathfrak{a}$是一个理想，则$yx\mathfrak{b}\subset y\mathfrak{a}\subset \mathfrak{a}$或者$xy\in (\mathfrak{a}:\mathfrak{b})$. 当$\mathfrak{a}=(a)$是一个主理想的时候，通常会略去主理想的括号，写作$(a:\mathfrak{b})$，同样，如果$\mathfrak{b}=(b)$是主理想，会写做$(\mathfrak{a}:b)$. $(\mathfrak{a}:\mathfrak{b})$被称为理想$\mathfrak{a}$关于理想$\mathfrak{b}$的商，比如在整数环内，$(6:2)=(3)$.
-\endpara
-
-\para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。\endpara
-
-\begin{lem}
-	设$f:R\to S$是一个单同态，如果$S$是一个整环，则$R$也是一个整环。
-\end{lem}
-
-作为推论，整环的子环也一定是整环。
-
-\begin{proof}
-	考虑到$ab=0$等价于$f(ab)=f(a)f(b)=0$，由于$S$是整环，所以$f(a)=0$或者$f(b)=0$，再由单同态就得到了结论。
-\end{proof}
-
-如果读者熟悉多项式环，这里可以看到另一大类例子，整环上的多项式环也是整环：设多项式$f$以及$g$都不为零，则它们的首项系数$a$与$b$不为零，因此$fg$的首项系数$ab$不为零，也就是说$fg\neq 0$.
-
-\para[素理想与极大理想] 设$\mathfrak{p}$, $\mathfrak{m}$是环$R$的理想，如果$R/\mathfrak{p}$是一个整环，则称$\mathfrak{p}$是$R$的一个素理想。如果$R/\mathfrak{m}$是一个域，则称理想$\mathfrak{m}$是$R$的极大理想。\endpara
-
-由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
-
-\para[理想集的偏序] 设$R$是一个环，$I(R)$是$R$所有理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$. 设$\mathcal{F}$是$I(R)$的一个子集，记$\mathcal{F}^c=I(R)-\mathcal{F}$.\endpara
-
-极大理想的命名就来自于这个偏序，他是所有真理想构成的集合中的极大元素。
-
-\begin{pro}
-	极大理想是所有真理想构成的集合中的极大元素。
-\end{pro}
-
-\begin{proof}
-	对于任意的真理想链，他们的并所生成的理想是真理想。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
-
-	反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
-\end{proof}
-
-从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
-
-\para \label{oka}我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
-
-给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{\url{http://www.bowdoin.edu/~reyes/oka1.pdf}}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
-
-对于单位理想$(1)$，由于任取$a\in R$都有$a+(1)=(1)$以及$(1:a)=(1)$，所以对任意的Ako理想族或者Oka理想族$\mathcal{F}$，$\mathcal{F}$都包含单位理想。
-
-\begin{pro} 如果$\mathcal{F}$是Oka理想族或者Ako理想族，那么$\mathcal{F}^c$中极大的理想是素理想。
-\end{pro}
-
-\begin{proof}
-	假设$\pp$是$\mathcal{F}^c$中极大的理想，但不是素理想。因为$\pp$不是单位理想，所以存在$a$, $b\not\in \pp$但$ab\in\pp$. 此时$(\pp:a)$和$\pp+(b)$都比$\pp$严格大，因为他们都包含$b$，同样$\pp+(a)$严格比$\pp$大，所以他们都属于$\mathcal{F}$. 但此时$\pp=\pp+(ab)\in \mathcal{F}^c$或者$\pp=\pp+(ab)\not\in \mathcal{F}$，所以$\mathcal{F}$既不是Ako理想族，也不是Oka理想族。矛盾。
-\end{proof}
-
-
-\begin{pro}
-如下理想族是Ako或者Oka理想族：
-\begin{compactenum}[~~~1.]
-\item 只有单位理想的理想族。
-\item $R$的所有有限生成理想构成的集合。
-\item $R$的所有主理想的理想构成的集合。
-\item 设$S\subset R$是一个对乘法封闭的子集，$R$中与$S$相交的理想构成的集合。
-\end{compactenum}
-\end{pro}
-
-\begin{proof}
-	1. 这是Ako理想族。如果$\mathfrak{a}+(a)=(1)$以及$\mathfrak{a}+(b)=(1)$，那么存在$x$, $y\in \mathfrak{a}$使得$x+a=1$以及$y+b=1$，于是$ab=(1-x)(1-y)$或者$(x+y-xy)+ab=1$，所以$\mathfrak{a}+(ab)=(1)$. 也是Oka理想族，如果$(\mathfrak{a}:a)=(1)$，那么$a\in \mathfrak{a}$，此时$\mathfrak{a}+(a)=\mathfrak{a}$. 因此$\mathfrak{a}+(a)=1$也推出了$\mathfrak{a}=(1)$.
-
-	2. 这是Oka理想族。如果$\mathfrak{a}+(a)$和$(\mathfrak{a}:a)$是有限生成理想。设$\mathfrak{a}+(a)=\langle x_i+r_ia \rangle_{i\in I}$以及$(\mathfrak{a}:a)=\langle y_j\rangle_{j\in J}$，其中$I$, $J$都是有限的指标集。任取$x\in \mathfrak{a}$，由于$x\in \mathfrak{a}+(a)$，所以
-	\[
-		x= \sum_{i\in I}s_i(x_i+r_ia)=\sum_{i\in I}s_ix_i+\sum_{i\in I}s_ir_ia,
-	\]
-	由于$a\sum_{i\in I}s_ir_i=x-\sum_{i\in I}s_ix_i\in \mathfrak{a}$，因此$\sum_{i\in I}s_ir_i\in (\mathfrak{a}:a)$，可以被$\{y_j\}_{j\in J}$生成。所以$\mathfrak{a}$被$\{x_i$, $y_ja\}_{i\in I,j\in J}$生成。
-
-	3. 这是Oka理想族。如果$\mathfrak{a}+(a)=(b)$是主理想且$(\mathfrak{a}:a)=(c)$也是主理想，如果$a\in \mathfrak{a}$，则$\mathfrak{a}=(b)$是主理想。假设$a\not\in\mathfrak{a}$，存在$x\in \mathfrak{a}$使得$x+a=b$，所以$bc=xc+ac\in \mathfrak{a}$，或者$(bc)\subset \mathfrak{a}$. 反过来，任取$x\in \mathfrak{a}$,由于$\mathfrak{a}+a=\mathfrak{b}$，所以存在$r$, $s\in R$使得$x=rb$以及$a=sb$. 因此$ra=rsb=sx\in\mathfrak{a}$给出了$r\in (\mathfrak{a}:a)=(c)$，于是$y=rb\in (c)(b)=(bc)$.
-
-	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$对乘法封闭，$xy\in S$，所以$(\pp+(ab))\cap S\neq \varnothing$.
-\end{proof}
-
-所以上述命题告诉我们：在保证存在性的前提下，
-\begin{compactenum}[~~~1.]
-\item 极大理想是素理想。
-\item 所有非有限生成的理想中极大的是素理想。
-\item 所有非主理想的理想中极大的是素理想。
-\item 所有与某乘性子集不交的理想中极大的是素理想。
-\end{compactenum}
-
-\begin{pro} \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
-\end{pro}
-
-\begin{proof}
-	如果$\mathfrak{b}=\bigcup_i \mathfrak{a}_i$，则由包含的命题可知，存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 反过来，$\mathfrak{a}_i\subset \bigcup_i \mathfrak{a}_i=\mathfrak{b}$. 等号的命题得证。
-
-	反证，如果$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$但不存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 适当重排顺序，可以假设前$n-2$个理想是素理想。我们采用有限归纳制造矛盾，素理想的假设将会自然地出现。为此，假设$\mathfrak{b}$不能包含于少于$n$个的$\mathfrak{a}_i$的并里面。这就是说，我们能找到$x_i\in \mathfrak{b}$使得$x_i\not\in \bigcup_{j\neq i}\mathfrak{a}_j$，由于$\mathfrak{b}\subset \bigcup_{i=1}^n \mathfrak{a}_i$，所以$x_i\in \mathfrak{a}_i$.
-
-	考虑$x_1+x_2\cdots x_n\in \mathfrak{b}$，如果$\mathfrak{a}_1$是素理想，则$x_2\cdots x_n\not\in \mathfrak{a}_1$，同时由于$x_1\not\in \mathfrak{a}_2$, $\cdots$, $\mathfrak{a}_n$，所以对于任意的$1\leq i \leq n$有$x_1+x_2\cdots x_n\not\in \mathfrak{a}_i$，或者说$x_1+x_2\cdots x_n\not\in \bigcup_{i=1}^n \mathfrak{a}_i$，这与$x_1+x_2\cdots x_n\in \mathfrak{b}$矛盾。
-
-	所以$\mathfrak{b}$必然处于更小的并里面，由反证假设$\mathfrak{b}\not\subset \mathfrak{a}_1$，所以$\mathfrak{b}\subset \bigcup_{i=2}^n \mathfrak{a}_i$. 重复上述论证，假设$\mathfrak{a}_2$是素理想，我们就可以推知$\mathfrak{b}\subset \bigcup_{i=3}^n \mathfrak{a}_i$直到$\mathfrak{b}\subset \mathfrak{a}_n$，这与反证假设矛盾，因此得证。 
-\end{proof}
-
-注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
-
-\begin{pro} \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
-\end{pro}
-
-\begin{proof}
-	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。
-\end{proof}
-
-% \para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
-% \begin{compactitem}
-% \item 如果一个代数集包含几个仿射簇的交，则在这些仿射簇中存在一个仿射簇包含于这个代数集中。
-% \item 如果一个仿射簇包含于几个代数集的并中，则在这些代数集中必然存在一个代数集包含这个仿射簇。
-% \end{compactitem}
-
-下面我们将考察理想在环同态下的表现。
-
-\begin{pro}
-设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
-\end{pro}
-
-\begin{proof}
-	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
-
-	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
-	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
-\end{proof}
-
-上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
-
-但是，对于商映射，情况会好很多。
-
-\begin{pro}
-设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
-\end{pro}
-
-\begin{proof}
-任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态$\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$. 注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，有同构$R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}$. 如果$\mathfrak p$是包含$\mathfrak a$的素理想，则$(R/\mathfrak{a})/\bar{\mathfrak{p}}$同构于$R/\mathfrak p$是一个整环，进而$\bar {\mathfrak p}$是$R/\mathfrak a$的素理想。
-\end{proof}
-
-同时，从上面的证明，我们还可以总结出下面这个简单的结论：
-\begin{lem}
-设$\mathfrak a$是$R$的一个理想，而$\mathfrak{b}$是$R/\mathfrak a$的一个理想，设典范同态$\pi:R\to R/\mathfrak a$，则我们可以典范等同环$R/(\mathfrak a+)$
-\end{lem}
-
-利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
-
-\begin{proof} 
-	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
-\end{proof}
-
-任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
-
-\begin{para}
-定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
-\[
-	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
-\]
-一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
-\end{para}
-
-\begin{pro}
-一个理想的根等于所有包含它的素理想的交。
-\end{pro}
-
-\begin{proof}
-设$A$是所有包含$\mathfrak{a}$的素理想的交，设$\pp$是任意一个包含$\mathfrak{a}$的素理想，如果$f^n\in \mathfrak{a}$，则$f^n\in \pp$，由于$\pp$是素理想，所以$f^n=f\cdot f^{n-1}$给出$f\in\pp$或者$f^{n-1}\in\pp$，通过归纳法就有$f\in \pp$. 这就给出了$\sqrt{\mathfrak{a}}\subset A$. 
-
-反过来，如果$f\not\in \sqrt{a}$，考虑所有与$\{1,f,f^2,\cdots\}$不交的，但包含$\mathfrak{a}$的所有理想中极大的那个理想$\pp$，这是一个素理想，存在性来自于Zorn引理，所以$f\not\in \pp$. 这就给出了$A\subset \sqrt{\mathfrak{a}}$.
-\end{proof}
 
 \section{范畴与函子}
 
@@ -1571,3 +1390,379 @@ Abel范畴中，一个态射是同构等价于它既是单态射又是满态射�
 \end{proof}
 
 上图中的$[\coker(a)]$或者$[\ker(b)]$，我们经常会记作$\ker(g)/\im(f)$.
+
+
+\section{正合列}
+
+首先回顾正合列的相关知识，我们很久以前已经介绍过了左$R$-模范畴中的正合列。现在由于我们对Abel范畴有了一定的了解，所以这里直接将正合列定义到一个Abel范畴中，在许多操作上，他并不比模范畴麻烦多少。
+
+\begin{para}
+若有一族态射$f_i:A_i\to A_{i+1}$满足$\im f_i\approx \ker f_{i+1}$，则列
+\[
+	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
+\]
+被称为正合的。
+\end{para}
+
+对正合列来说，成立$f_{i+1}f_i=0$. 如果$\im f_i\approx \ker f_{i+1}$，则$\coker \ker f_{i+1} \approx \coker \im f_i$，换而言之，存在同构$t$使得$\coker \ker f_{i+1}=t\coker \im f_i$. 因此
+\begin{align*}
+f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})(\coker \ker f_{i+1}) \im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})t(\coker \im f_i) \im(f_{i})\coim(f_{i})\\
+	&=\im(f_{i+1})t\bigl((\coker \im f_i) \im(f_{i})\bigr)\coim(f_{i})\\
+	&=\im(f_{i+1})t\,0\coim(f_{i})\\
+	&=0.
+\end{align*}
+
+\begin{para}[短正合列]
+考虑正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot.
+\]
+为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态射。对偶地，考虑正合列
+\[
+	\cdot\xrightarrow{f} X \to  0.
+\]
+为了满足正和性，我们需要$\im f \approx \ker 0$，两边作用一次$\coker$将得到
+\[
+	\coker f=\coker \ker \coker f=\coker \im f \approx \coker \ker 0.
+\]
+注意到，此时$\ker 0=\id_X$是一个满态射，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态射。
+
+现在，我们来到正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot \to 0,
+\]
+由上面可知$f$即是单态射又是满态射，在Abel范畴中这等价于说$f$是一个同构。
+
+最后，正合列
+\[
+	0\to \cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot\to 0,
+\]
+被称为\idx{短正合列}。它等价于说，$f$单$g$满且$\im f\approx \ker g$.
+\end{para}
+
+\begin{para}
+设$T:\mathcal{C}\to \mathcal{D}$是准加性范畴之间的函子，如果对$\mathcal{C}$中的态射$f$, $g$成立$T(f+g)=Tf+Tg$. 则称$T$是一个加性函子。更形式地说，
+\[
+	T:\mathcal{C}(X,Y)\to \mathcal{D}(TX,TY)
+\]
+是一个交换群同态。
+\end{para}
+
+从定义，不难看到对零态射$0$，成立$T0=0$. 如果$0$是$\mathcal{C}$中的零对象，则$T:\mathcal{C}(0,0)\to \mathcal{D}(T0,T0)$告诉我们$\mathcal{D}(T0,T0)$是一个单点集，所以Propositon \ref{zeroobj}告诉我们$T0$是$\mathcal{D}$中的零对象，即$T0=0$.
+
+\begin{pro}
+$T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可交换。所谓与双积可交换，就是把双积映成双积（包括其对应的相关态射）。
+\end{pro}
+
+\begin{proof}
+设$T$是一个加性函子，而$p_1$, $p_2$, $i_1$和$i_2$是双积的四个典范态射，于是
+\[
+	p_ai_a = \id \quad \Rightarrow \quad T(p_a)T(i_a) = \id,
+\]
+\[
+	p_ai_b = 0 \quad \Rightarrow \quad T(p_a)T(i_a) = T0=0,
+\]
+\[
+	i_1p_1+i_2p_2 = \id \quad \Rightarrow \quad T(i_1)T(p_1)+T(i_2)T(p_2) = \id,
+\]
+告诉我们$T$与双积可交换。$Tp_1$, $Tp_2$, $Ti_1$和$Ti_2$是新双积的四个典范态射。
+
+反过来，考虑态射$f$, $g:X\to Y$. 不难发现$f+g=c(f\oplus g)d$. 其中$d:X\to X\oplus X$满足唯一分解$p^X_1d=p^X_2d=\id_X$，这直接来自于积的泛性质，此外，$c:Y\oplus Y\to Y$满足唯一分解$ci^Y_1=ci^Y_2=\id_Y$，这直接来自于余积的泛性质。所以
+\[
+	c(f\oplus g)d=c(i_1^Y f p_1^X+i_2^Y g p_2^X)d=c i_1^Y f p_1^X d+ ci_2^Y g p_2^Xd=f+g.
+\]
+
+设$T$与双积可交换，双积的泛性质告诉我们$T(f\oplus g)=T(f)\oplus T(g)$. 于是，
+\[
+	T(f+g)=T(c(f\oplus g)d)=T(c)T(f\oplus g)T(d)=T(c)(T(f)\oplus T(g))T(d)=T(f)+T(g).
+\]
+所以$T$是加性函子。
+\end{proof}
+
+由于在Abel范畴中，双积等价于有限积等价于有限余积。所以只要函子与有限积或者有限余积与可交换，这就是加性函子。
+
+\begin{para}
+设$R:\mathcal{C}\to \mathcal{D}$与$L:\mathcal{D}\to \mathbb{C}$是一对伴随函子，其中$R$是右伴随函子，而$L$是左伴随函子。如果$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，由于右伴随函子与极限可交换、左伴随函子与余极限可交换，所以不管左伴随函子还是右伴随函子，它们都是加性函子。
+
+此外，由于核是一个极限，所以$R(\ker f)= \ker(Rf)$. 对偶地，$L(\coker g)= \coker(Lg)$.
+\end{para}
+
+\begin{lem}
+假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态射，则$Rf$是$\mathcal{D}$中的单态射。
+\end{lem}
+
+\begin{proof}
+已知$f$是一个单态射当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态射。
+\end{proof}
+
+在Abel范畴中，$f$是一个单态射等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态射，所以$Rf=\im(Rf)$，结合这两点就得到了
+\[
+	R(\im f)=Rf=\im(Rf).
+\]
+这意味着，对单态射而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态射，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态射。
+
+\begin{pro}
+如果$R$是一个从Abel范畴到Abel范畴的右伴随函子，则对正合列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$，他将诱导一个正合列
+\[
+	0\to R(X_1)\xrightarrow{R(f_1)} R(X_2)\xrightarrow{R(f_2)} R(X_3).
+\]
+\end{pro}
+
+由上一个引理和其推论立即可知。对偶地，可以知道：
+
+\begin{pro}
+如果$L$是一个从Abel范畴到Abel范畴的左伴随函子，则对正合列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3 \to 0$，他将诱导一个正合列
+\[
+	L(X_1)\xrightarrow{L(f_1)} L(X_2)\xrightarrow{L(f_2)} L(X_3) \to 0.
+\]
+\end{pro}
+
+将满足上面两个命题的加性函子抽象出来。
+
+\begin{para}
+设$T$是一个加性函子，如果他把正和列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$变成正合列
+\[
+	0\to T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3),
+\]
+则称$T$是一个左正和函子。对偶地，如果他把正和列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3\to 0$变成正合列
+\[
+	T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3)\to 0,
+\]
+则称$T$是一个右正和函子。
+
+如果把短正合列变成短正合列，则称$T$是一个正和函子。所以，正和性等价于左正和又右正和。
+\end{para}
+
+综上，我们已经证明了：
+
+\begin{thm}
+设函子从Abel范畴到Abel范畴，则左伴随函子右正合，而右伴随函子左正和。
+\end{thm}
+
+\begin{pro}
+设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\mathrm{op} \to \mathsf{Ab}$都是左正合函子。
+\end{pro}
+
+\begin{proof}
+	设
+	\[
+		0\to\cdot \xrightarrow{f}\cdot \xrightarrow{g}\cdot
+	\]
+	是一个正合列，我们要证明
+	\[
+	0\to \cdot \xrightarrow{f_*}\cdot \xrightarrow{g_*}\cdot
+	\]
+	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态射，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态射，所以$\ker g_* \subset \im f_*$.
+
+	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$是左正合函子。
+\end{proof}
+
+\section{追图}
+
+我们将在Abel范畴中谈论追图。
+
+\begin{lem}\label{zhuitu}
+设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态射$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态射$u$和$v$使得如下交换图成立，
+\[
+\xymatrix{
+	\cdot \ar[r]^u \ar[d]_v & \cdot\ar[d]^f\\
+	\cdot \ar[r]^g & \cdot
+}
+\]
+我们可以断言，$\sim$是一个等价关系，其中，自反性与对称性是显然的。
+\end{lem}
+
+为证明传递性，我们需要如下引理。
+
+\begin{lem}\label{mt}
+	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态射，则$p_Y$是满态射.
+\end{lem}
+
+\begin{proof}[Proof of Lemma \ref{mt}]
+	在Abel范畴中，我们已经知道积是存在的，即$X\times Y$存在，投影分别记作$\pi_X$和$\pi_Y$. 并且，核是存在的，则$X\times_Z Y$可以定义为$\ker(f\pi_X-g\pi_Y)$的定义域，而$p_X=\pi_X\ker(f\pi_X-g\pi_Y)$以及$p_Y=\pi_Y\ker(f\pi_X-g\pi_Y)$.
+
+	现在，设$f$是一个满态射，下面说明$f\pi_X-g\pi_Y$是满态射。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态射，所以$h=0$. 此即所证。
+
+	利用$f\pi_X-g\pi_Y$是满态射，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
+	\[
+	0=h\pi_Yi_X=k(f\pi_X-g\pi_Y)i_X=kf,
+	\]
+	由于$f$是满态射，所以$k=0$. 因此
+	\[
+	h=h\pi_Yi_Y=k(f\pi_X-g\pi_Y)i_Y=0.
+	\]
+	这就说明了$p_Y$是一个满态射。
+\end{proof}
+
+\begin{proof}[Proof of Lemma \ref{zhuitu}]
+	若$f\sim g$且$g\sim h$，考虑如下交换图
+	\[
+	\xymatrix{
+	&Z_1\ar[r]^a\ar[rd]_b&X\ar[rd]^f&\\
+	Z_1\times_{X'} Z_2\ar[ru]^{p_{Z_1}}\ar[rd]_{p_{Z_2}}&&X'\ar[r]^g&Y\\
+	&Z_2\ar[ru]^c\ar[r]_d&X''\ar[ru]_h&
+	}
+	\]
+	其中$a$, $b$, $c$, $d$都是满态射。由上一个引理，$c$是满态射给出$p_{Z_1}$是满态射，$d$是满态射给出$p_{Z_2}$是满态射。最后，满态射$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
+\end{proof}
+
+\begin{para}
+从Lemma \ref{zhuitu}，我们得到了指向$X$的态射的等价类，其中的元素称为对象$X$的伪元素，记作$[x]$，其中$x$是等价类中的代表元。而$[x]\in \mathcal{C}(-,X)/\sim$记作$[x]\in_m X$. 
+
+设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态射$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
+
+值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态射$u$, $v$使得$xu=0v=0$，再由$u$是一个满态射，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
+
+设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 注意到，如果$x\sim x'$，则$fx\sim fx'$，所以$f(x)=f(x')$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
+
+再设$g:Y\to Z$是另一个态射，则$gf(x)=[gfx]=g(f(x))$. 这就是复合规则，和映射的情况是一摸一样的。
+\end{para}
+
+一般来说，所有指向$X$的态射的全体都不能构成一个集合。但是，当我们考虑等价类的全体，它们确实是可能构成一个集合的。比如在模范畴中就是如此，为此，我们需要下面的引理。
+
+\begin{lem}
+在模范畴中，$f\sim g$当且仅当$\im f = \im g$.
+\end{lem}
+
+\begin{proof}
+如果$f\sim g$，则存在满态射$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态射，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
+
+反过来，设$f:X\to Z$而$g:Y\to Z$，考虑$X\times_Z Y=\{(x,y)\,:\,f(x)=g(y)\}$. 如果$\im f=\im g$，则$f(X)=g(Y)$. 所以任取$x_0\in X$都存在一个$y_0\in Y$使得$f(x_0)=g(y_0)$，此时$x_0=p_X(x_0,y_0)$，所以$p_X$是满同态。同理，$p_Y$是满同态。
+\end{proof}
+
+因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f x)=f(\im x)$. 这就还原了作为映射的$f$. 
+
+下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态射还是满态射可以应用模范畴中类似的手段来做。
+
+\begin{pro}[追图法]
+设$f:X\to Y$是一个态射，
+\begin{compactenum}[~~~(1)]
+\item $f$是单态射，当且仅当$f(x)=0$可以推出$x=0$.
+\item $f$是单态射，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
+\item $f$是满态射，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
+\item $f=0$当且仅当任取$[x]\in_m X$都有$f(x)=0$.
+\item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$[x]$使得$[y]=f(x)$.
+\item 如果$f(x)=f(x')$，则存在$[x'']\in_m X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
+\end{compactenum}
+\end{pro}
+
+最后一点看着奇怪，实际上$x''$是模范畴中$x-x'$的类比。追图法的存在让我们可以像处理模范畴一样来处理Abel范畴中的交换图。
+
+\begin{proof}
+依次证明如下。
+\begin{compactenum}[~~~(1)]
+\item 如果$f$是单态射，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态射。
+
+\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态射$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态射。
+
+\item 假设$f$是满态射。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态射，所以$p_{X'}:X\times_Y X'\to X'$是满态射。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
+
+反过来，设$f$不是满态射，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态射$u$, $v$使得$fxu=v$，由于$v$是满态射，所以$f$也必须是满态射，矛盾。
+
+\item 显然。
+
+\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态射可以得到$p_h$是一个满态射. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
+
+反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态射$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态射$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
+
+\item 如果$f(x)=f(x')$，则存在满态射$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
+\end{compactenum}
+\end{proof}
+
+作为追图法的直接应用，我们来证明非常实用的五引理。
+
+\begin{lem}[五引理]\label{5-lem}
+在Abel范畴$\mathcal{C}$中，如果存在如下交换图
+\[
+	\xymatrix{
+	A_1\ar[r]^{f_1}\ar[d]^{h_1}&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]^{f_4}\ar[d]^{h_4}&A_5\ar[d]^{h_5}\\
+	B_1\ar[r]^{g_1}&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]^{g_4}&B_5\\
+	}
+\]
+且横向的两行都是正合列。则，
+\begin{compactenum}[~~~(1)]
+\item 如果$h_2$, $h_4$是单态射，$h_1$是满态射，则$h_3$是单态射。
+\item 如果$h_2$, $h_4$是满态射，$h_5$是单态射，则$h_3$是满态射。
+\item 如果$h_2$, $h_4$是同构，$h_1$是满态射，$h_5$是单态射，则$h_3$是同构。
+\end{compactenum}
+\end{lem}
+
+\begin{proof}
+最后一点不过是前面两点的推论。第二点是第一点的对偶命题，所以我们只要证明第一点即可。
+
+取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态射，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态射，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
+\[
+	g_1(z)=g_1h_1(w)=h_2f_1(w),
+\]
+从$g_1(z)=h_2(y)$以及$h_2$是一个单态射，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
+\end{proof}
+
+五引理最常见的应用是短五引理，他将用在短正合列上面。
+
+\begin{lem}[短五引理]\label{short-5-lem}
+在五引理中，令$A_1=B_1=A_5=B_5=0$，那么$h_1=h_5=\id_0$是自然的同构，我们得到了如下交换图（略去了恒等$\id_0:0\to 0$当然还有显然的$f_1=g_1=f_4=g_4=0$）
+\[
+	\xymatrix{
+	0\ar[r]&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]\ar[d]^{h_4}&0\\
+	0\ar[r]&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]&0\\
+	}
+\]
+于是，
+\begin{compactenum}[~~~(1)]
+\item 如果$h_2$, $h_4$是单态射，则$h_3$是单态射。
+\item 如果$h_2$, $h_4$是满态射，则$h_3$是满态射。
+\item 如果$h_2$, $h_4$是同构，则$h_3$是同构。
+\end{compactenum}
+\end{lem}
+
+\begin{lem}[蛇引理]\label{snake-lemma}
+考虑如下交换图
+\[
+	\xymatrix{
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
+	0\ar[r]&\cdot \ar[r]^{f'}&\cdot \ar[r]^{g'}&\cdot \ar[r]&0\\
+	}
+\]
+其中两行是正合列。则我们可以拓展为交换图
+\[
+	\xymatrix{
+	&0\ar[d]&0\ar[d]&0\ar[d]&\\
+	0\ar@{-->}[r]&\cdot\ar@{-->}[r]^a\ar[d]^{\ker u}&\cdot\ar@{-->}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
+	0\ar[r]&\cdot \ar[r]^{f'}\ar[d]^{\coker u}&\cdot \ar[r]^{g'}\ar[d]^{\coker v}&\cdot \ar[r]\ar[d]^{\coker w}&0\\
+	&\cdot \ar@{-->}[r]_c\ar[d] &\cdot \ar@{-->}[r]_d\ar[d] &\cdot \ar@{-->}[r]\ar[d]& 0\\
+	&0&0&0&\\
+	}
+\]
+其中每行每列都是正合列，此外，还存在态射$\delta$使得如下正合列成立
+\[
+	0\to \ker u \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}\ker w \xrightarrow[~~~]{\delta}\coker u \xrightarrow[~~~]{c}\coker v \xrightarrow[~~~]{d}\coker w \to 0.
+\]
+\end{lem}
+
+\begin{proof}
+$a$, $b$, $c$, $d$的存在唯一性直接来自于$\ker$与$\coker$的泛性质，正和性也不难检验。最难的在于构造$\delta$. 考虑交换图
+\[
+	\xymatrix{
+	0\ar[r]&\cdot \ar[r]^-{\ker p_X}\ar@{.>}[d]^p&X\times_Z Y \ar[r]^-{p_X}\ar[d]^{p_Y}&X\ar[d]^{\ker w}\ar[r]&0\\
+	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&Y \ar[r]^{g}\ar[d]^{v}&Z \ar[d]^{w}\ar[r]&0\\
+	0\ar[r]&U \ar[r]^{f'}\ar[d]^{\coker u}&W \ar[r]^{g'}\ar[d]^{i_W}&\cdot \ar@{.>}[d]^q\ar[r]&0\\
+	0\ar[r]&V \ar[r]_-{i_V}&V\cup_U W \ar[r]_-{\coker i_V}&\cdot\ar[r]&0
+	}
+\]
+其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态射，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
+
+同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态射，所以由Lemma \ref{mt}，$p_X$是满态射。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态射。
+
+现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态射，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
+
+最后，正和性的检验是直接的，追图法将解决一切。
+\end{proof}
+
+利用蛇引理，短五引理是直接的。如果$u$和$w$是单态射，则我们在正合列中有
+\[
+	0\to 0 \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}0,
+\]
+所以$\ker v=0$，这就是说$v$也是单态射。满态射的命题也类似。

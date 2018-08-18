@@ -2,6 +2,188 @@
 \chapter{基本构造}
 \ThisULCornerWallPaper{1}{../Pictures/4.png}
 
+\section{理想}
+
+\para[理想] 理想是环$R$看成$R$-模时候的子模。一个理想被集合$S\subset R$生成是指在$R$-模意义上生成的子模，即$S$中元素的任意有限线性组合，我们将其记作$(S)$或者$\langle S\rangle$，当$S$是单元素集的时候，这就是主理想，当$S$是有限集的时候，时常就写成$(S)=(f_1$, $\cdots$, $f_n)$或者$\langle f_1$, $\cdots$, $f_n\rangle$. 如果指标需要用一个指标集表示，那么就通常写作$\langle f_i\rangle_{i\in I}$或者$\langle f_i\,:\,i\in I\rangle$. 一个理想生成的理想自然就是他本身。如果一个理想可以由有限集生成，则称这是一个有限生成理想。\endpara
+
+\para[理想的运算] 在不同的理想之间可以定义运算，设$\mathfrak{a}$和$\mathfrak{b}$是$R$的两个理想，则
+\[
+\mathfrak{a}+\mathfrak{b}=\{a+b\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}
+\]
+是一个理想。由于$\mathfrak{a}$, $\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$，所以$\mathfrak{a}\cup\mathfrak{b}\subset \mathfrak{a}+\mathfrak{b}$. 一般而言，两个理想的并不是理想，但是两个理想的并生成的理想实际上就是两个理想的和。
+
+两个理想的交显然还是一个理想（这可以类比两个子群的交还是子群），两个理想$\mathfrak{a}$和$\mathfrak{b}$的乘积$\mathfrak{a}\mathfrak{b}$被定义为集合$\{ab\,:\,a\in\mathfrak{a},\,b\in\mathfrak{b}\}$生成的理想。由于$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}$以及$\mathfrak{a}\mathfrak{b}\subset \mathfrak{b}$，所以有包含关系$\mathfrak{a}\mathfrak{b}\subset \mathfrak{a}\cap \mathfrak{b}$.
+
+设$(a)$和$(b)$是环$R$的两个主理想，则$(a)(b)=(ab)$. 实际上，左手边的元素由所有$(ra)(sb)=rs(ab)$生成，其中$r$, $s$走遍$R$. 所以$(a)(b)\subset (ab)$. 反过来，因为$ab\in (a)(b)$，所以$(ab)\subset (a)(b)$.
+
+最后，给定$R$的两个理想$\mathfrak{a}$和$\mathfrak{b}$，定义$(\mathfrak{a}:\mathfrak{b})$为$\{r\in R\,:\, r\mathfrak{b}\subset \mathfrak{a}\}$，这是一个理想，因为若$x\in (\mathfrak{a}:\mathfrak{b})$，由于$\mathfrak{a}$是一个理想，则$yx\mathfrak{b}\subset y\mathfrak{a}\subset \mathfrak{a}$或者$xy\in (\mathfrak{a}:\mathfrak{b})$. 当$\mathfrak{a}=(a)$是一个主理想的时候，通常会略去主理想的括号，写作$(a:\mathfrak{b})$，同样，如果$\mathfrak{b}=(b)$是主理想，会写做$(\mathfrak{a}:b)$. $(\mathfrak{a}:\mathfrak{b})$被称为理想$\mathfrak{a}$关于理想$\mathfrak{b}$的商，比如在整数环内，$(6:2)=(3)$.
+\endpara
+
+\para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。\endpara
+
+\begin{lem}
+	设$f:R\to S$是一个单同态，如果$S$是一个整环，则$R$也是一个整环。
+\end{lem}
+
+作为推论，整环的子环也一定是整环。
+
+\begin{proof}
+	考虑到$ab=0$等价于$f(ab)=f(a)f(b)=0$，由于$S$是整环，所以$f(a)=0$或者$f(b)=0$，再由单同态就得到了结论。
+\end{proof}
+
+如果读者熟悉多项式环，这里可以看到另一大类例子，整环上的多项式环也是整环：设多项式$f$以及$g$都不为零，则它们的首项系数$a$与$b$不为零，因此$fg$的首项系数$ab$不为零，也就是说$fg\neq 0$.
+
+\para[素理想与极大理想] 设$\mathfrak{p}$, $\mathfrak{m}$是环$R$的理想，如果$R/\mathfrak{p}$是一个整环，则称$\mathfrak{p}$是$R$的一个素理想。如果$R/\mathfrak{m}$是一个域，则称理想$\mathfrak{m}$是$R$的极大理想。\endpara
+
+由于域是整环，所以极大理想是素理想，反之不然。由于$R=R/(0)$，所以只有在整环里面，零理想才是素理想。
+
+\para[理想集的偏序] 设$R$是一个环，$I(R)$是$R$所有理想的集合，上面按照包含构成了一个偏序，即$\mathfrak{a}\leq \mathfrak{b}$当且仅当$\mathfrak{a}\subset \mathfrak{b}$. 设$\mathcal{F}$是$I(R)$的一个子集，记$\mathcal{F}^c=I(R)-\mathcal{F}$.\endpara
+
+极大理想的命名就来自于这个偏序，他是所有真理想构成的集合中的极大元素。
+
+\begin{pro}
+	极大理想是所有真理想构成的集合中的极大元素。
+\end{pro}
+
+\begin{proof}
+	对于任意的真理想链，他们的并所生成的理想是真理想。并且由于$R$肯定有一个理想$(0)$，所以由Zorn引理，$R$中存在在上述偏序下极大的理想，下面检验这就是上面说的极大理想。设$\mathfrak{m}$是这样一个理想，$a\notin \mathfrak{m}$，则$(a)+\mathfrak{m}$是一个严格比$\mathfrak{m}$大的理想，由于$\mathfrak{m}$的极大性，没有比他大的真理想了，所以$(a)+\mathfrak{m}=R$. 因此，$1$可以写成$ra+m=1$的形式，在$R/\mathfrak{m}$中即$\bar{r}\bar{a}=1$，所以$\bar{a}$有逆。又因为$a$是在$R-\mathfrak{m}$中任取的，所以$R/\mathfrak{m}$是一个域。
+
+	反过来，如果$R/\mathfrak{m}$是一个域，则不存在$\mathfrak{m}$更大的真理想。假设如果存在$\mathfrak{a}$比$\mathfrak{m}$严格大，则有自然的商同态$\pi:R/\mathfrak{m}\to R/\mathfrak{a}$，由于$R/\mathfrak{m}$是一个域且$\pi$是满射，则$\ker \pi$作为域的理想只能是零理想，这样也就推出了$\pi$是一个同构，这与$\mathfrak{a}$比$\mathfrak{m}$严格大矛盾。
+\end{proof}
+
+从可操作性来看，一开始的定义比这个极大理想的等价定义要方便不少。
+
+\para \label{oka}我们看到，极大理想是素理想。下面我们要推广这个结论。实际上，满足一些条件的极大的理想也会是素理想。而极大的存在性往往是其他条件保证的，比如Zorn引理，再比如极大性条件。
+
+给定一族理想$\mathcal{F}$，对$a\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $(\mathfrak{a}:a)\in \mathcal{F}$可以推出$\mathfrak{a}\in \mathcal{F}$，则称$\mathcal{F}$是Oka理想族\footnote{\url{http://www.bowdoin.edu/~reyes/oka1.pdf}}。对$a$, $b\in R$以及$R$的一个理想$\mathfrak{a}$，如果$\mathfrak{a}+(a)$, $\mathfrak{a}+(b)\in \mathcal{F}$可以推出$\mathfrak{a}+(ab)\in \mathcal{F}$，则称$\mathcal{F}$是Ako理想族。
+
+对于单位理想$(1)$，由于任取$a\in R$都有$a+(1)=(1)$以及$(1:a)=(1)$，所以对任意的Ako理想族或者Oka理想族$\mathcal{F}$，$\mathcal{F}$都包含单位理想。
+
+\begin{pro} 如果$\mathcal{F}$是Oka理想族或者Ako理想族，那么$\mathcal{F}^c$中极大的理想是素理想。
+\end{pro}
+
+\begin{proof}
+	假设$\pp$是$\mathcal{F}^c$中极大的理想，但不是素理想。因为$\pp$不是单位理想，所以存在$a$, $b\not\in \pp$但$ab\in\pp$. 此时$(\pp:a)$和$\pp+(b)$都比$\pp$严格大，因为他们都包含$b$，同样$\pp+(a)$严格比$\pp$大，所以他们都属于$\mathcal{F}$. 但此时$\pp=\pp+(ab)\in \mathcal{F}^c$或者$\pp=\pp+(ab)\not\in \mathcal{F}$，所以$\mathcal{F}$既不是Ako理想族，也不是Oka理想族。矛盾。
+\end{proof}
+
+
+\begin{pro}
+如下理想族是Ako或者Oka理想族：
+\begin{compactenum}[~~~1.]
+\item 只有单位理想的理想族。
+\item $R$的所有有限生成理想构成的集合。
+\item $R$的所有主理想的理想构成的集合。
+\item 设$S\subset R$是一个对乘法封闭的子集，$R$中与$S$相交的理想构成的集合。
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+	1. 这是Ako理想族。如果$\mathfrak{a}+(a)=(1)$以及$\mathfrak{a}+(b)=(1)$，那么存在$x$, $y\in \mathfrak{a}$使得$x+a=1$以及$y+b=1$，于是$ab=(1-x)(1-y)$或者$(x+y-xy)+ab=1$，所以$\mathfrak{a}+(ab)=(1)$. 也是Oka理想族，如果$(\mathfrak{a}:a)=(1)$，那么$a\in \mathfrak{a}$，此时$\mathfrak{a}+(a)=\mathfrak{a}$. 因此$\mathfrak{a}+(a)=1$也推出了$\mathfrak{a}=(1)$.
+
+	2. 这是Oka理想族。如果$\mathfrak{a}+(a)$和$(\mathfrak{a}:a)$是有限生成理想。设$\mathfrak{a}+(a)=\langle x_i+r_ia \rangle_{i\in I}$以及$(\mathfrak{a}:a)=\langle y_j\rangle_{j\in J}$，其中$I$, $J$都是有限的指标集。任取$x\in \mathfrak{a}$，由于$x\in \mathfrak{a}+(a)$，所以
+	\[
+		x= \sum_{i\in I}s_i(x_i+r_ia)=\sum_{i\in I}s_ix_i+\sum_{i\in I}s_ir_ia,
+	\]
+	由于$a\sum_{i\in I}s_ir_i=x-\sum_{i\in I}s_ix_i\in \mathfrak{a}$，因此$\sum_{i\in I}s_ir_i\in (\mathfrak{a}:a)$，可以被$\{y_j\}_{j\in J}$生成。所以$\mathfrak{a}$被$\{x_i$, $y_ja\}_{i\in I,j\in J}$生成。
+
+	3. 这是Oka理想族。如果$\mathfrak{a}+(a)=(b)$是主理想且$(\mathfrak{a}:a)=(c)$也是主理想，如果$a\in \mathfrak{a}$，则$\mathfrak{a}=(b)$是主理想。假设$a\not\in\mathfrak{a}$，存在$x\in \mathfrak{a}$使得$x+a=b$，所以$bc=xc+ac\in \mathfrak{a}$，或者$(bc)\subset \mathfrak{a}$. 反过来，任取$x\in \mathfrak{a}$,由于$\mathfrak{a}+a=\mathfrak{b}$，所以存在$r$, $s\in R$使得$x=rb$以及$a=sb$. 因此$ra=rsb=sx\in\mathfrak{a}$给出了$r\in (\mathfrak{a}:a)=(c)$，于是$y=rb\in (c)(b)=(bc)$.
+
+	4. 这是Ako理想族。设$\pp+(a)$与$S$交于$x$，$\pp+(b)$与$S$交于$y$，则$xy\in (\pp+(a))(\pp+(b))\subset \pp+(ab)$，但由于$S$对乘法封闭，$xy\in S$，所以$(\pp+(ab))\cap S\neq \varnothing$.
+\end{proof}
+
+所以上述命题告诉我们：在保证存在性的前提下，
+\begin{compactenum}[~~~1.]
+\item 极大理想是素理想。
+\item 所有非有限生成的理想中极大的是素理想。
+\item 所有非主理想的理想中极大的是素理想。
+\item 所有与某乘性子集不交的理想中极大的是素理想。
+\end{compactenum}
+
+\begin{pro} \label{primeav}设$R$是一个环，而$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$是一族理想，还有一个理想$\mathfrak{b}$满足$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$. 如果$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$中至多只有两个不是素理想，则存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 如果将包含改成等号，命题依然成立。
+\end{pro}
+
+\begin{proof}
+	如果$\mathfrak{b}=\bigcup_i \mathfrak{a}_i$，则由包含的命题可知，存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 反过来，$\mathfrak{a}_i\subset \bigcup_i \mathfrak{a}_i=\mathfrak{b}$. 等号的命题得证。
+
+	反证，如果$\mathfrak{b}\subset \bigcup_i \mathfrak{a}_i$但不存在一个$i$使得$\mathfrak{b}\subset \mathfrak{a}_i$. 适当重排顺序，可以假设前$n-2$个理想是素理想。我们采用有限归纳制造矛盾，素理想的假设将会自然地出现。为此，假设$\mathfrak{b}$不能包含于少于$n$个的$\mathfrak{a}_i$的并里面。这就是说，我们能找到$x_i\in \mathfrak{b}$使得$x_i\not\in \bigcup_{j\neq i}\mathfrak{a}_j$，由于$\mathfrak{b}\subset \bigcup_{i=1}^n \mathfrak{a}_i$，所以$x_i\in \mathfrak{a}_i$.
+
+	考虑$x_1+x_2\cdots x_n\in \mathfrak{b}$，如果$\mathfrak{a}_1$是素理想，则$x_2\cdots x_n\not\in \mathfrak{a}_1$，同时由于$x_1\not\in \mathfrak{a}_2$, $\cdots$, $\mathfrak{a}_n$，所以对于任意的$1\leq i \leq n$有$x_1+x_2\cdots x_n\not\in \mathfrak{a}_i$，或者说$x_1+x_2\cdots x_n\not\in \bigcup_{i=1}^n \mathfrak{a}_i$，这与$x_1+x_2\cdots x_n\in \mathfrak{b}$矛盾。
+
+	所以$\mathfrak{b}$必然处于更小的并里面，由反证假设$\mathfrak{b}\not\subset \mathfrak{a}_1$，所以$\mathfrak{b}\subset \bigcup_{i=2}^n \mathfrak{a}_i$. 重复上述论证，假设$\mathfrak{a}_2$是素理想，我们就可以推知$\mathfrak{b}\subset \bigcup_{i=3}^n \mathfrak{a}_i$直到$\mathfrak{b}\subset \mathfrak{a}_n$，这与反证假设矛盾，因此得证。 
+\end{proof}
+
+注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
+
+\begin{pro} \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
+\end{pro}
+
+\begin{proof}
+	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。
+\end{proof}
+
+% \para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
+% \begin{compactitem}
+% \item 如果一个代数集包含几个仿射簇的交，则在这些仿射簇中存在一个仿射簇包含于这个代数集中。
+% \item 如果一个仿射簇包含于几个代数集的并中，则在这些代数集中必然存在一个代数集包含这个仿射簇。
+% \end{compactitem}
+
+下面我们将考察理想在环同态下的表现。
+
+\begin{pro}
+设$f:R\to S$是一个环同态，如果$\mathfrak{p}$是$S$中的一个（素）理想，则$f^{-1}(\mathfrak{p})$是一个（素）理想。
+\end{pro}
+
+\begin{proof}
+	任取$a\in f^{-1}(\mathfrak{p})$以及$r\in R$，由于$f(a)\in \mathfrak{p}$，所以$f(r)f(a)=f(ra)\in \mathfrak{p}$，这也就推出了$ra\in f^{-1}(\mathfrak{p})$. 所以$f^{-1}(\mathfrak{p})$是一个理想。
+
+	设$\pi:S\to S/\mathfrak{p}$是商同态，我们考虑复合映射$\pi\circ f:R\to S/\mathfrak{p}$，由于$f^{-1}(\mathfrak{p})\subset \ker(\pi\circ f)$，所以由商环的泛性质，$\pi\circ f$诱导出了单同态\[R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p},\]
+	单性从这里看出：如果$f(r_1)-f(r_2)=\mathfrak{p}$，则$r_1-r_2\in f^{-1}(\mathfrak{p})$. 当$\mathfrak{p}$是一个素理想的时候，$S/\mathfrak{p}$是整环，单同态$R/f^{-1}(\mathfrak{p})\to S/\mathfrak{p}$告诉我们$R/f^{-1}(\mathfrak{p})$也是整环，所以$f^{-1}(\mathfrak{p})$也是素理想。
+\end{proof}
+
+上面看到了理想的原像一定是一个理想，反过来，一般来说，一个理想的像不一定是一个理想。比如含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+
+但是，对于商映射，情况会好很多。
+
+\begin{pro}
+设$\pi:R\to R/\mathfrak{a}$是一个商映射，而$\mathfrak{b}$是$R$中的一个理想，则$\bar{\mathfrak{b}}=\pi(\mathfrak{b})$是$R/\mathfrak{a}$中的一个理想。如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\bar{\mathfrak{p}}$也是一个素理想。
+\end{pro}
+
+\begin{proof}
+任取$a\in \mathfrak{b}$，以及$r \in R$，由于$ra\in \mathfrak{b}$，我们也就推出了$\bar{r}\bar{a}=\overline{ra}\in \bar{\mathfrak{b}}$. 所以我们可以考虑这样的商映射$\psi: R/\mathfrak{a}\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$，他与商映射$\pi$复合可以得到满同态$\psi\pi:R\to (R/\mathfrak{a})/\bar{\mathfrak{b}}$. 注意到$\psi\pi(r)=0$当且仅当$\bar{r}\in \bar{\mathfrak{b}}$，所以$\ker(\psi\pi)=\pi^{-1}(\bar{\mathfrak{b}})=\mathfrak{a}+\mathfrak{b}$. 由同构基本定理，有同构$R/(\mathfrak{a}+\mathfrak{b})\cong (R/\mathfrak{a})/\bar{\mathfrak{b}}$. 如果$\mathfrak p$是包含$\mathfrak a$的素理想，则$(R/\mathfrak{a})/\bar{\mathfrak{p}}$同构于$R/\mathfrak p$是一个整环，进而$\bar {\mathfrak p}$是$R/\mathfrak a$的素理想。
+\end{proof}
+
+同时，从上面的证明，我们还可以总结出下面这个简单的结论：
+\begin{lem}
+设$\mathfrak a$是$R$的一个理想，而$\mathfrak{b}$是$R/\mathfrak a$的一个理想，设典范同态$\pi:R\to R/\mathfrak a$，则我们可以典范等同环$R/(\mathfrak a+)$
+\end{lem}
+
+利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
+
+\begin{proof} 
+	由于$\pi$是一个满射，所以有等式$\pi(\pi^{-1}(\bar{\mathfrak{b}}))=\bar{\mathfrak{b}}$. 剩下我们要证明，如果$\mathfrak{b}\supset \mathfrak{a}$，则$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{b}$，而这来自于$\pi^{-1}(\pi(\mathfrak{b}))=\mathfrak{a}+\mathfrak{b}$. 如果$\mathfrak{p}$是包含$\mathfrak{a}$的素理想，则$\mathfrak{a}+\mathfrak{p}=\mathfrak{p}$，上述同构写成$R/\mathfrak{p}\cong (R/\mathfrak{a})/\bar{\mathfrak{p}}$，因此$\bar{\mathfrak{p}}$也是素理想。
+\end{proof}
+
+任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
+
+\begin{para}
+定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
+\[
+	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
+\]
+一个理想的根依然是一个理想，检查中困难的是加法，设$a^n\in \aaa$和$b^m\in \aaa$，则$(a+b)^{m+n}$在二项式展开后可以发现，每一项都属于$\aaa$，所以$a+b\in \sqrt{\aaa}$.
+\end{para}
+
+\begin{pro}
+一个理想的根等于所有包含它的素理想的交。
+\end{pro}
+
+\begin{proof}
+设$A$是所有包含$\mathfrak{a}$的素理想的交，设$\pp$是任意一个包含$\mathfrak{a}$的素理想，如果$f^n\in \mathfrak{a}$，则$f^n\in \pp$，由于$\pp$是素理想，所以$f^n=f\cdot f^{n-1}$给出$f\in\pp$或者$f^{n-1}\in\pp$，通过归纳法就有$f\in \pp$. 这就给出了$\sqrt{\mathfrak{a}}\subset A$. 
+
+反过来，如果$f\not\in \sqrt{a}$，考虑所有与$\{1,f,f^2,\cdots\}$不交的，但包含$\mathfrak{a}$的所有理想中极大的那个理想$\pp$，这是一个素理想，存在性来自于Zorn引理，所以$f\not\in \pp$. 这就给出了$A\subset \sqrt{\mathfrak{a}}$.
+\end{proof}
+
+
 \section{模范畴}
 
 设$M$是一个左$R$-模，通过$m\cdot n:=m+\cdots+m$可以定义出$M$的一个右$\zz$-模结构。同样，对右$R$-模，我们可以定义出一个左$\zz$-模结构。所以，在这里，我们考虑双边模范畴${}_R\mathsf{Mod}_S$，下面有时会简单称为模范畴。
@@ -20,7 +202,7 @@
 \end{lem}
 
 \begin{proof}
-一点一点对应来证明。     
+一点一点对应来证明。
 \begin{compactenum}[(1)]
 \item 那么任取$f\in {}_R\!\Hom(M,N)$以及$s\in S$，可以通过$(sf)(m)=f(ms)$定义出${}_R\!\Hom(M,N)$上的一个左$S$-模结构。实际上，
 \[
@@ -182,9 +364,9 @@
 
 \begin{para}[自由模的存在性]
 设$S$是集合，我们定义$R^S=\bigoplus_{i\in S}R$，不难检查，$R^S$是由$S$生成的自由模。从直和的构造，这个检查是直接的。
+\end{para}
 
 如果$I$是有限集，$n=|I|$，则我们通常将自由模$R^I$记作$R^n$. 记$1_i$为第$i$个指标的$R$中的$1$.
-\end{para}
 
 \begin{para}
 设$M$是一个$R$-模，$S$是他的一个子集，称呼$M$被$S$生成，就是说$M$中的元素可以写成$S$中元素的有限线性组合。即任取$m\in M$，存在一个系数集$\{a_s\in R\,:\, s\in S\}$，其中只有有限个系数非零，使得
@@ -192,9 +374,9 @@
 	m=\sum_{s\in S}a_s s.
 \]
 称呼一个$R$-模$M$是有限生成的，就是说存在一个$M$的有限子集生成他。
+\end{para}
 
 显然$R^I$由$\{1_i\,:\,i\in I\}$生成，其中$1_i$代表的是第$i$个指标的$R$中的$1$，所以$R^n$是有限生成模。
-\end{para}
 
 \begin{para}
 现在，给定一个集合$S$，我们定义$g(S)=R^S$. 给定一个集合之间的映射$u:S\to T$，我们通过$g(u)(s)=u(s)$定义出一个模同态$g(u):g(S)\to g(T)$. 所以，$g$就构成了一个从$\mathsf{Set}$到${}_R\mathsf{Mod}$的函子。

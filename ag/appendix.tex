@@ -4,7 +4,7 @@
 
 \chapter{拓扑空间的复习}
 
-\para 一个拓扑空间$X$被称为\idx{拟紧}的，如果对于他的任意开覆盖$\{U_\alpha\}_{\alpha\in I}$，都存在$I$的某个有限子集$J$使得$\{U_\alpha\}_{\alpha\in J}$也是$X$的开覆盖。或者说简单点，$X$是拟紧的，如果对于任意$X$的开覆盖都存在有限子覆盖。
+\para 一个拓扑空间$X$被称为\idx{拟紧}的，如果对于他的任意开覆盖$\{U_\alpha\}_{\alpha\in I}$，都存在$I$的某个有限子集$J$使得$\{U_\alpha\}_{\alpha\in J}$也是$X$的开覆盖。或者说简单点，$X$是拟紧的，如果对于任意$X$的开覆盖都存在有限子覆盖。\endpara
 
 % \para 任意集合$X$的幂集$P(X)$上可以用包含关系定义一个偏序：设$U$, $V\in P(X)$，$U\leq V$当且仅当$U\subset V$. 任意幂集的子集可以继承这个偏序。
 
@@ -18,11 +18,12 @@
 \end{compactenum}
 \end{pro}
 
-\begin{proof} (1)等价(2)因为交和并可以用补集联系，而(2)等价(3)因为他们是逆否命题。\end{proof}
+\begin{proof} (1)等价(2)因为交和并可以用补集联系，而(2)等价(3)因为他们是逆否命题。
+\end{proof}
 
-\para 利用第二点，可以知道拟紧空间的闭子集也是拟紧的。利用第三点，我们可以知道，如果$X$是拟紧的，则其中任意递减非空闭集构成的链中所有元素的交非空。
+利用第二点，可以知道拟紧空间的闭子集也是拟紧的。利用第三点，我们可以知道，如果$X$是拟紧的，则其中任意递减非空闭集构成的链中所有元素的交非空。
 
-\para 如果偏序集$E$的任意非空子集$S$都有极小元$x\in S$，则称$E$满足极小条件。
+\para 如果偏序集$E$的任意非空子集$S$都有极小元$x\in S$，则称$E$满足极小条件。\endpara
 
 偏序集的极小条件往往用所谓的d.c.c.条件来描述，即任意递减的链$I$总存在极小元$x\in I$. 两者的等价的难点在于从任意链到任意子集的那部分。我们假设有一个$T\subset E$并不包含他的极小元，那么任取一个$x\in T$，总可以找到一个元素$y\in T$使得$y<x$，否则$x$就是极小元，不断这么做下去，也就得到了一条没有极小元的链。逆否即证。
 
@@ -34,23 +35,39 @@
 
 \begin{proof} 考虑那些使得$P(x)$不成立的$x$构成的子集$F$，如果$F$非空，那么他存在一个极小元$a$，于是当$x< a$的时候$P(x)$均成立，所以$P(a)$也成立，矛盾。\end{proof}
 
-\para 一个拓扑空间被称为是Noetherian的，就是说闭集链满足d.c.c.，这其实也等价说，Noether拓扑空间的闭集族满足极小条件。再或者等价地，开集族满足极大条件。对于在模范畴里面，满足a.c.c.的才是Noetherian的，到拓扑空间反过来后面我们会看到这是自然的。如同模范畴里面那样，Noether性是一种有限性条件，如同上面的拟紧性一样。
+\para 一个拓扑空间被称为是Noetherian的，就是说闭集链满足d.c.c.，这其实也等价说，Noether拓扑空间的闭集族满足极小条件。再或者等价地，开集族满足极大条件。\endpara
+
+对于在模范畴里面，满足a.c.c.的才是Noetherian的，到拓扑空间反过来后面我们会看到这是自然的。如同模范畴里面那样，Noether性是一种有限性条件，如同上面的拟紧性一样。
 
 从定义可以很轻松看出，Noether拓扑空间的子空间也是Noether拓扑空间。反之，如果一个拓扑空间是有限个Noether拓扑空间的并，则其也是Noether拓扑空间。
 
-\para Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
+\begin{pro}
+Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
+\end{pro}
 
+\begin{proof}
 设$\{U_\alpha\}_{\alpha\in I}$是$X$的一个开覆盖，以及$\mathscr{A}$是所有$I$的有限子集构成的族，偏序关系定义为：$J\leq K$当且仅当$U_J\subset U_K$，其中$U_J=\bigcup_{\alpha\in J}U_\alpha$. 由Noether拓扑空间开集族满足极大条件，则$\mathscr{A}$中存在一个极大元$J$，下面使用反证法证明$X=U_J$，而这就说明$J$是我们需要的有限子覆盖。
 
-如果存在某个$x\in X-U_J$，因为$\{U_\alpha\}_{\alpha\in I}$是$X$的开覆盖，所以存在$\beta \in I$使得$x\in U_\beta$，可以构造$K=J\cup \{\beta\}$也是$I$的有限子集，且$U_J\subsetneq U_K$，所以$J$就不是一个极大元。证毕。
+如果存在某个$x\in X-U_J$，因为$\{U_\alpha\}_{\alpha\in I}$是$X$的开覆盖，所以存在$\beta \in I$使得$x\in U_\beta$，可以构造$K=J\cup \{\beta\}$也是$I$的有限子集，且$U_J\subsetneq U_K$，所以$J$就不是一个极大元。
+\end{proof}
 
-\para 现在转而走进\idx{不可约}性，所谓不可约的拓扑空间，就是说该拓扑空间是非空的，且不能表示为两个真闭子集的并。这个定义可以转而描述为，他是非空的且其中任意非空开集的交非空，或者任意非空开集在其中稠密，或者任意开集都连通。从定义可以直接得出，不可约拓扑空间的非空开子集也是不可约的。
+\para 现在转而走进\idx{不可约}性，所谓不可约的拓扑空间，就是说该拓扑空间是非空的，且不能表示为两个真闭子集的并。这个定义可以转而描述为，他是非空的且其中任意非空开集的交非空，或者任意非空开集在其中稠密，或者任意开集都连通。\endpara
 
-\para 如果$X$的一个稠密子集$Y$是不可约的，则$X$是不可约的。事实上，假设$X$是可约的，那么存在$X$的两个非空闭子集，使得他们的并是$X$，这两个闭子集交上$Y$构成两个$Y$中的非空闭子集他们的并是$Y$，因此$Y$可约。逆否即证毕。
+从定义可以直接得出，不可约拓扑空间的非空开子集也是不可约的。
+
+\begin{pro}
+如果$X$的一个稠密子集$Y$是不可约的，则$X$是不可约的。
+\end{pro}
+
+\begin{proof}
+事实上，假设$X$是可约的，那么存在$X$的两个非空闭子集，使得他们的并是$X$，这两个闭子集交上$Y$构成两个$Y$中的非空闭子集他们的并是$Y$，因此$Y$可约。逆否即证毕。
+\end{proof}
 
 利用这个小命题，我们得出，一个拓扑空间$X$的子空间$Y$是不可约的，当且仅当$Y$的闭包$\bar{Y}$是不可约的。反方向并不困难。特别地，单点的闭包$\overline{\{x\}}$总是不可约的。
 
-\para 现设$X$是不可约的，而$x$是$X$中的一个点，如果$\overline{\{x\}}=X$，则$x$称为$X$的一个\idx{一般点}。如果$X$满足一些分离公理，比如$T_0$公理：对于$X$的任意两点$x$和$y$，总存在一个只包含其中一个点的开集，则一般点的存在是唯一的，因为任意开集都包含所有的一般点。
+\para 现设$X$是不可约的，而$x$是$X$中的一个点，如果$\overline{\{x\}}=X$，则$x$称为$X$的一个\idx{一般点}。\endpara
+
+如果$X$满足一些分离公理，比如$T_0$公理：对于$X$的任意两点$x$和$y$，总存在一个只包含其中一个点的开集，则一般点的存在是唯一的，因为任意开集都包含所有的一般点。
 
 因为任意开集都包含一般点，且不可约空间的开子集都是不可约的，所以那个一般点也是开子集的一般点。
 
@@ -110,7 +127,7 @@
 \]
 
 \para 从一个给定的范畴$\mathcal{C}$，可以构造出一个新的范畴$\mathcal{C}^{\mathrm{op}}$如下：对象不变，定义
-\[\mathcal{C}^{\mathrm{op}}(X,Y)=\mathcal{C}(Y,X),\]复合不变。他被称为给定范畴的对偶范畴。凡是纯范畴的命题与证明，将所有态射的箭头全部反过来，可以得到对应的命题与证明，这个原理被称为对偶原理。
+\[\mathcal{C}^{\mathrm{op}}(X,Y)=\mathcal{C}(Y,X),\]复合不变。他被称为给定范畴的对偶范畴。凡是纯范畴的命题与证明，将所有态射的箭头全部反过来，可以得到对应的命题与证明，这个原理被称为对偶原理。\endpara
 
 对偶范畴的一个实例就是偏序集,他将小于等于改成大于等于。设$(X,\leq)$是一个偏序集，那么$(X,\leq)^\text{op}$与$(X,\leq)$具有相同的对象，但有着相反的态射，即$(X,\leq)^\text{op}$中的偏序$x\leq_{\text{op}} y$当且仅当在$(X,\leq)$中成立$y\leq x$. 对于符号$\leq_{\text{op}}$，我们通常以$\geq$代之，因此，$(X,\leq)$的对偶范畴就是$(X,\geq)$. 如果以$X$代之$(X,\geq)$，则以$X^{\text{op}}$代之$(X,\geq)$.
 
@@ -450,12 +467,12 @@
 本节的最后，我们谈论单射和满射在范畴中的对应。
 
 \begin{para}
-一个态射被称为左可消的，或者叫\idx{单态}（\idx{monomorphism}），任取$g_1$和$g_2$，如果$fg_1=fg_2$，则$g_1=g_2$. 对偶地，称一个态射是右可消的，或者叫\idx{满态}（\idx{epimorphism}），任取$g_1$和$g_2$，如果$g_1f=g_2f$，则$g_1=g_2$. 显然，两个单态复合还是单态，两个满态复合还是满态。
+一个态射被称为左可消的，或者叫\idx{单态射}（\idx{monomorphism}），任取$g_1$和$g_2$，如果$fg_1=fg_2$，则$g_1=g_2$. 对偶地，称一个态射是右可消的，或者叫\idx{满态射}（\idx{epimorphism}），任取$g_1$和$g_2$，如果$g_1f=g_2f$，则$g_1=g_2$. 显然，两个单态射复合还是单态射，两个满态射复合还是满态射。
 \end{para}
 
-单态和满态是模范畴单同态以及满同态的推广，在模范畴中，可以看到这与单同态以及满同态是等价的概念。实际上，如果$f:M\to N$是单同态，则$fg_1(x)=fg_2(x)$可以推出$f(g_1(x)-g_2(x))=0$进而$g_1=g_2$. 反过来，如果$f$不是单同态，选$g_1:\ker f\hookrightarrow M$以及$g_2=0:\ker f\to M$，可以看到$fg_1=fg_2=0$成立，但是$g_1\neq g_2$. 类似地，在模范畴，$f$是满同态当且仅当他是满态。但是在一般的范畴中，这种等价是不一定成立的。
+单态射和满态射是模范畴单同态以及满同态的推广，在模范畴中，可以看到这与单同态以及满同态是等价的概念。实际上，如果$f:M\to N$是单同态，则$fg_1(x)=fg_2(x)$可以推出$f(g_1(x)-g_2(x))=0$进而$g_1=g_2$. 反过来，如果$f$不是单同态，选$g_1:\ker f\hookrightarrow M$以及$g_2=0:\ker f\to M$，可以看到$fg_1=fg_2=0$成立，但是$g_1\neq g_2$. 类似地，在模范畴，$f$是满同态当且仅当他是满态射。但是在一般的范畴中，这种等价是不一定成立的。
 
-这点比方考虑所有Hausdorff空间构成的范畴$\mathsf{Haus}$，其中的态射是连续映射。其中的单态都是单射，但是其中的满态是那些连续映射$f:X\to Y$满足$f(X)$在$Y$中稠密，所以并不需要是一个满射。
+这点比方考虑所有Hausdorff空间构成的范畴$\mathsf{Haus}$，其中的态射是连续映射。其中的单态射都是单射，但是其中的满态射是那些连续映射$f:X\to Y$满足$f(X)$在$Y$中稠密，所以并不需要是一个满射。
 
 \section{极限与余极限}
 
@@ -937,10 +954,10 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 显然$f$和$gf$的起点是相同的，且$gf\geq f$. 所以上面的命题告诉我们，$\ker f \leq \ker (gf)$. 同样，$g$和$gf$的终点是相同的，且$gf\leq g$，所以$\coker(g) \geq \coker(gf)$.
 \end{para}
 
-在准加性范畴中，核（余核）与单态（满态）联系密切。
+在准加性范畴中，核（余核）与单态射（满态射）联系密切。
 
 \begin{lem}
-设$\mathcal{C}$是一个准加性范畴，而$f:X\to Y$是其中的一个态射，如果$\ker f$存在，则它是一个单态。对偶地，如果$\coker f$存在，则它是一个满态。
+设$\mathcal{C}$是一个准加性范畴，而$f:X\to Y$是其中的一个态射，如果$\ker f$存在，则它是一个单态射。对偶地，如果$\coker f$存在，则它是一个满态射。
 \end{lem}
 
 \begin{proof}
@@ -948,11 +965,11 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 \end{proof}
 
 % \begin{lem}
-% 设$\mathcal{C}$是一个准加性范畴，且存在零对象$0$. 如果$0:X\to Y$是一个单态，则$X=0$. 如果$0:X\to Y$是一个满态，则$Y=0$.
+% 设$\mathcal{C}$是一个准加性范畴，且存在零对象$0$. 如果$0:X\to Y$是一个单态射，则$X=0$. 如果$0:X\to Y$是一个满态射，则$Y=0$.
 % \end{lem}
 
 % \begin{proof}
-% 由$0\id_X =00=0$，单态的左可消性保证了第一点。由$\id_Y 0=00=0$，满态的右可消性保证了第二点。
+% 由$0\id_X =00=0$，单态射的左可消性保证了第一点。由$\id_Y 0=00=0$，满态射的右可消性保证了第二点。
 % \end{proof}
 
 \begin{para}
@@ -966,13 +983,13 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 \begin{pro}
 设$\mathcal{C}$是一个准加性范畴，如果$\mathcal{C}$中含有零对象$0$，则
 \begin{compactenum}[~~~(1)]
-\item $f:X\to Y$是一个单态当且仅当$\ker f=0$.
-\item $f:X\to Y$是一个满态当且仅当$\coker f=0$.
+\item $f:X\to Y$是一个单态射当且仅当$\ker f=0$.
+\item $f:X\to Y$是一个满态射当且仅当$\coker f=0$.
 \end{compactenum}
 \end{pro}
 
 \begin{proof}
-只证第一个，第二个是类似的。如果$f:X\to Y$是一个单态，考虑任意的$fg=0$，由于$f$是单态，所以$fg=0=f0$给出了$g=0$. 由此，不难检验$0$满足核的泛性质。反过来，如果$\ker(f)=0$. 假设$fg_1=fg_2$或等价的$fh=f(g_1-g_2)=0$，其中$h=g_1-g_2$. 由于$\ker(f)=0$，由核的泛性质，存在唯一的态射$k$使得分解$h=0k$成立，于是$h=0$.
+只证第一个，第二个是类似的。如果$f:X\to Y$是一个单态射，考虑任意的$fg=0$，由于$f$是单态射，所以$fg=0=f0$给出了$g=0$. 由此，不难检验$0$满足核的泛性质。反过来，如果$\ker(f)=0$. 假设$fg_1=fg_2$或等价的$fh=f(g_1-g_2)=0$，其中$h=g_1-g_2$. 由于$\ker(f)=0$，由核的泛性质，存在唯一的态射$k$使得分解$h=0k$成立，于是$h=0$.
 \end{proof}
 
 \begin{pro}
@@ -1042,33 +1059,33 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 注意，终对象也是有限积，所以加性范畴存在零对象。由于准加性范畴中有限积就是有限余积，所以加性范畴中任意有限余积也存在。
 
 \begin{para}
-如果在一个加性范畴中，任意的核与余核存在，任意的单态是某个态射的核，任意的满态是某个态射的余核，则称这个范畴是一个Abel范畴。
+如果在一个加性范畴中，任意的核与余核存在，任意的单态射是某个态射的核，任意的满态射是某个态射的余核，则称这个范畴是一个Abel范畴。
 \end{para}
 
 注意，在准加性范畴中，如果任意的任意的核与余核存在，则任意的等值子与任意的余等值子存在。此外，加性范畴中存在任意的有限积与余有限积。结合这两点，从Theorem \ref{wanbei}和\ref{yuwanbei}可以知道，Abel范畴是有限完备且有限余完备的。
 
 \begin{lem}
-设$f$, $g:X\to Y$，如果等值子（看作态射）$\eq(f,g)$是满态，则$\eq(f,g)$是同构。
+设$f$, $g:X\to Y$，如果等值子（看作态射）$\eq(f,g)$是满态射，则$\eq(f,g)$是同构。
 \end{lem}
 
 \begin{proof}
-由于$f\eq(f,g)=g\eq(f,g)$，如果$\eq(f,g)$是满态（右可消），如果$f=g$. 此时不难检验$\id_X$是$f$, $f:X\to Y$的一个等值子，由等值子的泛性质，存在同构$\varphi$使得$\id_X=\eq(f,f)\varphi$. 最后，考虑$\eq(f,f)\varphi\eq(f,f)=\eq(f,f)$，由等值子的泛性质，分解的唯一性保证了$\varphi\eq(f,f)=\id_{\eq(f,f)}$. 因此$\eq(f,f)$是一个同构。
+由于$f\eq(f,g)=g\eq(f,g)$，如果$\eq(f,g)$是满态射（右可消），如果$f=g$. 此时不难检验$\id_X$是$f$, $f:X\to Y$的一个等值子，由等值子的泛性质，存在同构$\varphi$使得$\id_X=\eq(f,f)\varphi$. 最后，考虑$\eq(f,f)\varphi\eq(f,f)=\eq(f,f)$，由等值子的泛性质，分解的唯一性保证了$\varphi\eq(f,f)=\id_{\eq(f,f)}$. 因此$\eq(f,f)$是一个同构。
 \end{proof}
 
 \begin{pro}
-Abel范畴中，一个态射是同构等价于它既是单态又是满态。
+Abel范畴中，一个态射是同构等价于它既是单态射又是满态射。
 \end{pro}
 
 \begin{proof}
-设$\varphi$即是单态又是满态，因为是Abel范畴，所以存在$\psi$使得$\varphi=\ker(\psi)$. 从上一个引理，$\ker(\psi)$作为等值子如果是满态则必然是同构。
+设$\varphi$即是单态射又是满态射，因为是Abel范畴，所以存在$\psi$使得$\varphi=\ker(\psi)$. 从上一个引理，$\ker(\psi)$作为等值子如果是满态射则必然是同构。
 
-反过来，假设$\varphi$是同构。它的逆写作$\psi$，如果$\varphi f=\varphi g$，则$\psi\varphi f =\psi\varphi g$给出$f=g$，所以$\varphi$是单态。同理，放在右边可以给出满态。
+反过来，假设$\varphi$是同构。它的逆写作$\psi$，如果$\varphi f=\varphi g$，则$\psi\varphi f =\psi\varphi g$给出$f=g$，所以$\varphi$是单态射。同理，放在右边可以给出满态射。
 \end{proof}
 
 已经知道，在加性范畴中，如果$\ker$和$\coker$都存在，则$f$成立唯一分解$f=\im(f)q$. 事实上，由于$\coker(f)f=0$，由$\ker$的泛性质，我们就得到$f=\ker(\coker f)q$.
 
 \begin{lem}\label{lem1}
-在Abel范畴中，如果$f$存在分解$f=m'q'$，其中$m'$是一个核，那么存在唯一的单态$t$使得下面的交换图成立
+在Abel范畴中，如果$f$存在分解$f=m'q'$，其中$m'$是一个核，那么存在唯一的单态射$t$使得下面的交换图成立
 \[
 \begin{xy}
 	\xymatrix{
@@ -1077,27 +1094,27 @@ Abel范畴中，一个态射是同构等价于它既是单态又是满态。
 	}
 \end{xy}
 \]
-且$q$是一个满态。
+且$q$是一个满态射。
 \end{lem}
 
 \begin{proof}
 设$m'=\ker s$以及$p'=\coker m'$，由恒等式$\ker s=\ker \coker \ker s$（见式\eqref{kck}），因此$m'=\ker p'$. 同样，取$p=\coker \im f=\coker \ker \coker f=\coker f$. 
 
-由于$p'f=p'm'q'=\coker(m')m'q'=0$，由$p=\coker f$的泛性质，存在唯一分解$p'=wp$. 由$p'\im f=wp\im f=w (\coker f) \ker(\coker f)=0$以及$m'=\ker p'$的泛性质，存在唯一分解$\im f=m' t$. 此外，$m' q'=m'tq$，由于$m'=\ker p'$是单态，所以$q'=tq$. 因此，交换图成立。并且，由于$\im f=m't$，所以$t$是一个单态。
+由于$p'f=p'm'q'=\coker(m')m'q'=0$，由$p=\coker f$的泛性质，存在唯一分解$p'=wp$. 由$p'\im f=wp\im f=w (\coker f) \ker(\coker f)=0$以及$m'=\ker p'$的泛性质，存在唯一分解$\im f=m' t$. 此外，$m' q'=m'tq$，由于$m'=\ker p'$是单态射，所以$q'=tq$. 因此，交换图成立。并且，由于$\im f=m't$，所以$t$是一个单态射。
 
-下面证明$q$是一个满态。设$rq=0$，由$\ker r$的泛性质，存在唯一分解$q=\ker (r) q'$. 于是$f=\im(f)q=\im(f)\ker (r) q'=m'q'$，因为$m'=\im(f)\ker (r)$作为单态的复合是一个单态，在Abel范畴中是一个核，所以由上面的已知的结论，存在唯一的$t$使得$\im f=m't=\im(f)\ker (r) t$. 由于$\im f$是单态，所以$\id =\ker (r) t$. 由于$\id$是满态，所以$\ker (r)$是满态。实际上，如果$x\ker(r)=y\ker(r)$，则$x=x\ker (r) t=y\ker (r) t=y$. 此时，$r\ker r=0$给出$r=0$. 
+下面证明$q$是一个满态射。设$rq=0$，由$\ker r$的泛性质，存在唯一分解$q=\ker (r) q'$. 于是$f=\im(f)q=\im(f)\ker (r) q'=m'q'$，因为$m'=\im(f)\ker (r)$作为单态射的复合是一个单态射，在Abel范畴中是一个核，所以由上面的已知的结论，存在唯一的$t$使得$\im f=m't=\im(f)\ker (r) t$. 由于$\im f$是单态射，所以$\id =\ker (r) t$. 由于$\id$是满态射，所以$\ker (r)$是满态射。实际上，如果$x\ker(r)=y\ker(r)$，则$x=x\ker (r) t=y\ker (r) t=y$. 此时，$r\ker r=0$给出$r=0$. 
 
-综上，由$rq=0$可推出$r=0$，所以$q$是一个满态。
+综上，由$rq=0$可推出$r=0$，所以$q$是一个满态射。
 \end{proof}
 
 \begin{pro}\label{uni}
-在Abel范畴中，$f=\im(f)\coim(f)$. 而且，如果$f=gh$，其中$g$是单态而$h$是满态，则存在同构$t$使得$g=\im(f)t$以及$\coim(f)=th$.
+在Abel范畴中，$f=\im(f)\coim(f)$. 而且，如果$f=gh$，其中$g$是单态射而$h$是满态射，则存在同构$t$使得$g=\im(f)t$以及$\coim(f)=th$.
 \end{pro}
 
 \begin{proof}
-首先，$f$成立唯一分解$f=\im(f)q$. 所以，$ft=0$等价于$\im(f)qt=0$，由于$\im$是一个$\ker$所以是单态，$ft=0$又等价于$qt=0$. 因此$\ker f= \ker q$. 由于$q$是一个满态，所以是一个$\coker$，写成$q=\coker s$. 由恒等式$\coker s = \coker \ker \coker s$，所以$q=\coker \ker q=\coker \ker f=\coim f$. 
+首先，$f$成立唯一分解$f=\im(f)q$. 所以，$ft=0$等价于$\im(f)qt=0$，由于$\im$是一个$\ker$所以是单态射，$ft=0$又等价于$qt=0$. 因此$\ker f= \ker q$. 由于$q$是一个满态射，所以是一个$\coker$，写成$q=\coker s$. 由恒等式$\coker s = \coker \ker \coker s$，所以$q=\coker \ker q=\coker \ker f=\coim f$. 
 
-唯一性的部分命题直接来自于上面的引理。从上一个引理，我们知道存在这样的单态$t$. 由于$\coim(f)=th$，左侧是一个满态，所以$t$是一个满态。一个单态如果是满态，则必然是一个同构。
+唯一性的部分命题直接来自于上面的引理。从上一个引理，我们知道存在这样的单态射$t$. 由于$\coim(f)=th$，左侧是一个满态射，所以$t$是一个满态射。一个单态射如果是满态射，则必然是一个同构。
 \end{proof}
 
 \begin{pro}
@@ -1105,9 +1122,9 @@ Abel范畴中，一个态射是同构等价于它既是单态又是满态。
 \end{pro}
 
 \begin{proof}
-实际上，如果$\ker f=0$，即$f$是单态。此时$t=0$等价于$ft=0$等价于$\im (f) \coim(f)t=0$等价于$\coim(f)t=0$，所以$\coim(f)$是一个单态，也因此是一个同构。由于$\im$的定义本来就容许一个同构的存在，所以写成$f=\im f$也没什么。
+实际上，如果$\ker f=0$，即$f$是单态射。此时$t=0$等价于$ft=0$等价于$\im (f) \coim(f)t=0$等价于$\coim(f)t=0$，所以$\coim(f)$是一个单态射，也因此是一个同构。由于$\im$的定义本来就容许一个同构的存在，所以写成$f=\im f$也没什么。
 
-对偶地，如果$\coker f=0$，即$f$是一个满态。此时$t=0$等价于$tf=0$等价于$t\im (f) \coim(f)=0$等价于$t\im(f)=0$，所以$\im(f)$是一个满态，也因此是一个同构。由于$\coim$的定义本来就容许一个同构的存在，所以可以写成$f=\coim f$.
+对偶地，如果$\coker f=0$，即$f$是一个满态射。此时$t=0$等价于$tf=0$等价于$t\im (f) \coim(f)=0$等价于$t\im(f)=0$，所以$\im(f)$是一个满态射，也因此是一个同构。由于$\coim$的定义本来就容许一个同构的存在，所以可以写成$f=\coim f$.
 \end{proof}
 
 本节的最后，我们证明一个很有用的命题，他将用在上同调的定义中。
@@ -1127,17 +1144,17 @@ Abel范畴中，一个态射是同构等价于它既是单态又是满态。
 \end{pro}
 
 \begin{proof}
-首先，我们假设$f$是一个单态，而$g$是一个满态。令$\varphi=\coker (f) \ker (g)$，我们验证$a=\ker \varphi$和$b=\coker \varphi$，即验证它们满足泛性质。
+首先，我们假设$f$是一个单态射，而$g$是一个满态射。令$\varphi=\coker (f) \ker (g)$，我们验证$a=\ker \varphi$和$b=\coker \varphi$，即验证它们满足泛性质。
 
 设$\varphi \theta=\coker (f)\ker(g)\theta=0$，由核的泛性质，我们可以得到唯一分解
 \[
 	\ker(g)\theta=(\ker \coker f)\psi=\im(f)\psi=f\psi=\ker(g)a\psi,
 \]
-其中$\im(f)=f$来自于$f$是一个单态。由于$\ker(g)$是单态，所以$\theta=a\psi$. 此即泛性质，所以$a=\ker(\varphi)$. 同理，可以验证，$b=\coker \varphi$.
+其中$\im(f)=f$来自于$f$是一个单态射。由于$\ker(g)$是单态射，所以$\theta=a\psi$. 此即泛性质，所以$a=\ker(\varphi)$. 同理，可以验证，$b=\coker \varphi$.
 
 由于$\varphi=\im(\varphi)\coim(\varphi)=\coker(\ker \varphi)\ker(\coker \varphi)=\coker(a)\ker(b)$. 因此$[\coker(a)]=[\ker(b)]$. 实际上，如果我们选取同构的核（余核），则由$\varphi$分解的唯一性，即Proposition \ref{uni}，我们将得到$[\coker(a)]\cong [\ker(b)]$.
 
-现在我们考虑一般情形，因为$f=\ker(g)a$，其中$\ker(g)$是一个单态，由Lemma \ref{lem1}，存在唯一的态射$a'$使得$a=a'\coim(f)$以及$\im(f)=\ker(g)a'$. 即如下交换图成立
+现在我们考虑一般情形，因为$f=\ker(g)a$，其中$\ker(g)$是一个单态射，由Lemma \ref{lem1}，存在唯一的态射$a'$使得$a=a'\coim(f)$以及$\im(f)=\ker(g)a'$. 即如下交换图成立
 \[
 \begin{xy}
 	\xymatrix{
@@ -1158,7 +1175,7 @@ Abel范畴中，一个态射是同构等价于它既是单态又是满态。
 	}
 \end{xy}
 \]
-由于$\im f$是单态而$\coim g$是满态，所以按照之前证明的特殊情况的结论，$[\coker(a')]\cong [\ker(b')]$. 
+由于$\im f$是单态射而$\coim g$是满态射，所以按照之前证明的特殊情况的结论，$[\coker(a')]\cong [\ker(b')]$. 
 
 最后，由于$\coker(a)=\coker(a')$且$\ker(b')=\ker(b)$，所以我们就得到了$[\coker(a)]\cong [\ker(b)]$.
 \end{proof}
@@ -1192,7 +1209,7 @@ f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
 \[
 	0\to \cdot \xrightarrow{f} \cdot.
 \]
-为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态。对偶地，考虑正合列
+为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态射。对偶地，考虑正合列
 \[
 	\cdot\xrightarrow{f} X \to  0.
 \]
@@ -1200,13 +1217,13 @@ f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
 \[
 	\coker f=\coker \ker \coker f=\coker \im f \approx \coker \ker 0.
 \]
-注意到，此时$\ker 0=\id_X$是一个满态，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态。
+注意到，此时$\ker 0=\id_X$是一个满态射，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态射。
 
 现在，我们来到正合列
 \[
 	0\to \cdot \xrightarrow{f} \cdot \to 0,
 \]
-由上面可知$f$即是单态又是满态，在Abel范畴中这等价于说$f$是一个同构。
+由上面可知$f$即是单态射又是满态射，在Abel范畴中这等价于说$f$是一个同构。
 
 最后，正合列
 \[
@@ -1263,18 +1280,18 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \end{para}
 
 \begin{lem}
-假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态，则$Rf$是$\mathcal{D}$中的单态。
+假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态射，则$Rf$是$\mathcal{D}$中的单态射。
 \end{lem}
 
 \begin{proof}
-已知$f$是一个单态当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态。
+已知$f$是一个单态射当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态射。
 \end{proof}
 
-在Abel范畴中，$f$是一个单态等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态，所以$Rf=\im(Rf)$，结合这两点就得到了
+在Abel范畴中，$f$是一个单态射等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态射，所以$Rf=\im(Rf)$，结合这两点就得到了
 \[
 	R(\im f)=Rf=\im(Rf).
 \]
-这意味着，对单态而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态。
+这意味着，对单态射而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态射，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态射。
 
 \begin{pro}
 如果$R$是一个从Abel范畴到Abel范畴的右伴随函子，则对正合列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$，他将诱导一个正合列
@@ -1327,7 +1344,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 	\[
 	0\to \cdot \xrightarrow{f_*}\cdot \xrightarrow{g_*}\cdot
 	\]
-	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态，所以$\ker g_* \subset \im f_*$.
+	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态射，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态射，所以$\ker g_* \subset \im f_*$.
 
 	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$是左正合函子。
 \end{proof}
@@ -1337,7 +1354,7 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 我们将在Abel范畴中谈论追图。
 
 \begin{lem}\label{zhuitu}
-设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态$u$和$v$使得如下交换图成立，
+设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态射$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态射$u$和$v$使得如下交换图成立，
 \[
 \xymatrix{
 	\cdot \ar[r]^u \ar[d]_v & \cdot\ar[d]^f\\
@@ -1350,23 +1367,23 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 为证明传递性，我们需要如下引理。
 
 \begin{lem}\label{mt}
-	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态，则$p_Y$是满态.
+	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态射，则$p_Y$是满态射.
 \end{lem}
 
 \begin{proof}[Proof of Lemma \ref{mt}]
 	在Abel范畴中，我们已经知道积是存在的，即$X\times Y$存在，投影分别记作$\pi_X$和$\pi_Y$. 并且，核是存在的，则$X\times_Z Y$可以定义为$\ker(f\pi_X-g\pi_Y)$的定义域，而$p_X=\pi_X\ker(f\pi_X-g\pi_Y)$以及$p_Y=\pi_Y\ker(f\pi_X-g\pi_Y)$.
 
-	现在，设$f$是一个满态，下面说明$f\pi_X-g\pi_Y$是满态。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态，所以$h=0$. 此即所证。
+	现在，设$f$是一个满态射，下面说明$f\pi_X-g\pi_Y$是满态射。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态射，所以$h=0$. 此即所证。
 
-	利用$f\pi_X-g\pi_Y$是满态，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
+	利用$f\pi_X-g\pi_Y$是满态射，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
 	\[
 	0=h\pi_Yi_X=k(f\pi_X-g\pi_Y)i_X=kf,
 	\]
-	由于$f$是满态，所以$k=0$. 因此
+	由于$f$是满态射，所以$k=0$. 因此
 	\[
 	h=h\pi_Yi_Y=k(f\pi_X-g\pi_Y)i_Y=0.
 	\]
-	这就说明了$p_Y$是一个满态。
+	这就说明了$p_Y$是一个满态射。
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{zhuitu}]
@@ -1378,15 +1395,15 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 	&Z_2\ar[ru]^c\ar[r]_d&X''\ar[ru]_h&
 	}
 	\]
-	其中$a$, $b$, $c$, $d$都是满态。由上一个引理，$c$是满态给出$p_{Z_1}$是满态，$d$是满态给出$p_{Z_2}$是满态。最后，满态$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
+	其中$a$, $b$, $c$, $d$都是满态射。由上一个引理，$c$是满态射给出$p_{Z_1}$是满态射，$d$是满态射给出$p_{Z_2}$是满态射。最后，满态射$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
 \end{proof}
 
 \begin{para}
 从Lemma \ref{zhuitu}，我们得到了指向$X$的态射的等价类，其中的元素称为对象$X$的伪元素，记作$[x]$，其中$x$是等价类中的代表元。而$[x]\in \mathcal{C}(-,X)/\sim$记作$[x]\in_m X$. 
 
-设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
+设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态射$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
 
-值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态$u$, $v$使得$xu=0v=0$，再由$u$是一个满态，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
+值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态射$u$, $v$使得$xu=0v=0$，再由$u$是一个满态射，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
 
 设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 注意到，如果$x\sim x'$，则$fx\sim fx'$，所以$f(x)=f(x')$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
 
@@ -1400,21 +1417,21 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \end{lem}
 
 \begin{proof}
-如果$f\sim g$，则存在满态$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
+如果$f\sim g$，则存在满态射$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态射，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
 
 反过来，设$f:X\to Z$而$g:Y\to Z$，考虑$X\times_Z Y=\{(x,y)\,:\,f(x)=g(y)\}$. 如果$\im f=\im g$，则$f(X)=g(Y)$. 所以任取$x_0\in X$都存在一个$y_0\in Y$使得$f(x_0)=g(y_0)$，此时$x_0=p_X(x_0,y_0)$，所以$p_X$是满同态。同理，$p_Y$是满同态。
 \end{proof}
 
 因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f x)=f(\im x)$. 这就还原了作为映射的$f$. 
 
-下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态还是满态可以应用模范畴中类似的手段来做。
+下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态射还是满态射可以应用模范畴中类似的手段来做。
 
 \begin{pro}[追图法]
 设$f:X\to Y$是一个态射，
 \begin{compactenum}[~~~(1)]
-\item $f$是单态，当且仅当$f(x)=0$可以推出$x=0$.
-\item $f$是单态，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
-\item $f$是满态，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
+\item $f$是单态射，当且仅当$f(x)=0$可以推出$x=0$.
+\item $f$是单态射，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
+\item $f$是满态射，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
 \item $f=0$当且仅当任取$[x]\in_m X$都有$f(x)=0$.
 \item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$[x]$使得$[y]=f(x)$.
 \item 如果$f(x)=f(x')$，则存在$[x'']\in_m X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
@@ -1426,21 +1443,21 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \begin{proof}
 依次证明如下。
 \begin{compactenum}[~~~(1)]
-\item 如果$f$是单态，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态。
+\item 如果$f$是单态射，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态射。
 
-\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态。
+\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态射$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态射。
 
-\item 假设$f$是满态。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态，所以$p_{X'}:X\times_Y X'\to X'$是满态。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
+\item 假设$f$是满态射。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态射，所以$p_{X'}:X\times_Y X'\to X'$是满态射。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
 
-反过来，设$f$不是满态，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态$u$, $v$使得$fxu=v$，由于$v$是满态，所以$f$也必须是满态，矛盾。
+反过来，设$f$不是满态射，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态射$u$, $v$使得$fxu=v$，由于$v$是满态射，所以$f$也必须是满态射，矛盾。
 
 \item 显然。
 
-\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态可以得到$p_h$是一个满态. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
+\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态射可以得到$p_h$是一个满态射. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
 
-反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
+反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态射$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态射$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
 
-\item 如果$f(x)=f(x')$，则存在满态$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
+\item 如果$f(x)=f(x')$，则存在满态射$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
 \end{compactenum}
 \end{proof}
 
@@ -1456,20 +1473,20 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \]
 且横向的两行都是正合列。则，
 \begin{compactenum}[~~~(1)]
-\item 如果$h_2$, $h_4$是单态，$h_1$是满态，则$h_3$是单态。
-\item 如果$h_2$, $h_4$是满态，$h_5$是单态，则$h_3$是满态。
-\item 如果$h_2$, $h_4$是同构，$h_1$是满态，$h_5$是单态，则$h_3$是同构。
+\item 如果$h_2$, $h_4$是单态射，$h_1$是满态射，则$h_3$是单态射。
+\item 如果$h_2$, $h_4$是满态射，$h_5$是单态射，则$h_3$是满态射。
+\item 如果$h_2$, $h_4$是同构，$h_1$是满态射，$h_5$是单态射，则$h_3$是同构。
 \end{compactenum}
 \end{lem}
 
 \begin{proof}
 最后一点不过是前面两点的推论。第二点是第一点的对偶命题，所以我们只要证明第一点即可。
 
-取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
+取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态射，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态射，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
 \[
 	g_1(z)=g_1h_1(w)=h_2f_1(w),
 \]
-从$g_1(z)=h_2(y)$以及$h_2$是一个单态，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
+从$g_1(z)=h_2(y)$以及$h_2$是一个单态射，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
 \end{proof}
 
 五引理最常见的应用是短五引理，他将用在短正合列上面。
@@ -1484,8 +1501,8 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \]
 于是，
 \begin{compactenum}[~~~(1)]
-\item 如果$h_2$, $h_4$是单态，则$h_3$是单态。
-\item 如果$h_2$, $h_4$是满态，则$h_3$是满态。
+\item 如果$h_2$, $h_4$是单态射，则$h_3$是单态射。
+\item 如果$h_2$, $h_4$是满态射，则$h_3$是满态射。
 \item 如果$h_2$, $h_4$是同构，则$h_3$是同构。
 \end{compactenum}
 \end{lem}
@@ -1525,17 +1542,17 @@ $a$, $b$, $c$, $d$的存在唯一性直接来自于$\ker$与$\coker$的泛性质
 	0\ar[r]&V \ar[r]_-{i_V}&V\cup_U W \ar[r]_-{\coker i_V}&\cdot\ar[r]&0
 	}
 \]
-其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
+其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态射，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
 
-同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态，所以由Lemma \ref{mt}，$p_X$是满态。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态。
+同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态射，所以由Lemma \ref{mt}，$p_X$是满态射。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态射。
 
-现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
+现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态射，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
 
 最后，正和性的检验是直接的，追图法将解决一切。
 \end{proof}
 
-利用蛇引理，短五引理是直接的。如果$u$和$w$是单态，则我们在正合列中有
+利用蛇引理，短五引理是直接的。如果$u$和$w$是单态射，则我们在正合列中有
 \[
 	0\to 0 \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}0,
 \]
-所以$\ker v=0$，这就是说$v$也是单态。满态的命题也类似。
+所以$\ker v=0$，这就是说$v$也是单态射。满态射的命题也类似。

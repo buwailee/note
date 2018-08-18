@@ -3,381 +3,6 @@
 \chapter{模（一）}
 \ThisULCornerWallPaper{1}{../Pictures/7.png}
 
-\section{正合列}
-
-首先回顾正合列的相关知识，我们很久以前已经介绍过了左$R$-模范畴中的正合列。现在由于我们对Abel范畴有了一定的任意，所以这里直接将正合列定义到一个Abel范畴中，在许多操作上，他并不比模范畴麻烦多少。
-
-\begin{para}
-若有一族态射$f_i:A_i\to A_{i+1}$满足$\im f_i\approx \ker f_{i+1}$，则列
-\[
-	\cdots \xrightarrow{f_{i-1}}A_i \xrightarrow{f_i} A_{i+1} \xrightarrow{f_{i+1}} A_{i+1}\xrightarrow{f_{i+1}}\cdots
-\]
-被称为正合的。
-\end{para}
-
-对正合列来说，成立$f_{i+1}f_i=0$. 如果$\im f_i\approx \ker f_{i+1}$，则$\coker \ker f_{i+1} \approx \coker \im f_i$，换而言之，存在同构$t$使得$\coker \ker f_{i+1}=t\coker \im f_i$. 因此
-\begin{align*}
-f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
-	&=\im(f_{i+1})(\coker \ker f_{i+1}) \im(f_{i})\coim(f_{i})\\
-	&=\im(f_{i+1})t(\coker \im f_i) \im(f_{i})\coim(f_{i})\\
-	&=\im(f_{i+1})t\bigl((\coker \im f_i) \im(f_{i})\bigr)\coim(f_{i})\\
-	&=\im(f_{i+1})t\,0\coim(f_{i})\\
-	&=0.
-\end{align*}
-
-\begin{para}[短正合列]
-考虑正合列
-\[
-	0\to \cdot \xrightarrow{f} \cdot.
-\]
-为了满足正和性，我们需要$\ker f \approx \im 0=0$，即$\ker f = 0$，所以这个正合列无外乎是在说$f$是一个单态射。对偶地，考虑正合列
-\[
-	\cdot\xrightarrow{f} X \to  0.
-\]
-为了满足正和性，我们需要$\im f \approx \ker 0$，两边作用一次$\coker$将得到
-\[
-	\coker f=\coker \ker \coker f=\coker \im f \approx \coker \ker 0.
-\]
-注意到，此时$\ker 0=\id_X$是一个满态射，所以$\coker f \approx \coker(\ker 0)=0$，即$\coker f = 0$. 因此这个正合列无外乎是在说$f$是一个满态射。
-
-现在，我们来到正合列
-\[
-	0\to \cdot \xrightarrow{f} \cdot \to 0,
-\]
-由上面可知$f$即是单态射又是满态射，在Abel范畴中这等价于说$f$是一个同构。
-
-最后，正合列
-\[
-	0\to \cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot\to 0,
-\]
-被称为\idx{短正合列}。它等价于说，$f$单$g$满且$\im f\approx \ker g$.
-\end{para}
-
-\begin{para}
-设$T:\mathcal{C}\to \mathcal{D}$是准加性范畴之间的函子，如果对$\mathcal{C}$中的态射$f$, $g$成立$T(f+g)=Tf+Tg$. 则称$T$是一个加性函子。更形式地说，
-\[
-	T:\mathcal{C}(X,Y)\to \mathcal{D}(TX,TY)
-\]
-是一个交换群同态。
-\end{para}
-
-从定义，不难看到对零态射$0$，成立$T0=0$. 如果$0$是$\mathcal{C}$中的零对象，则$T:\mathcal{C}(0,0)\to \mathcal{D}(T0,T0)$告诉我们$\mathcal{D}(T0,T0)$是一个单点集，所以Propositon \ref{zeroobj}告诉我们$T0$是$\mathcal{D}$中的零对象，即$T0=0$.
-
-\begin{pro}
-$T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可交换。所谓与双积可交换，就是把双积映成双积（包括其对应的相关态射）。
-\end{pro}
-
-\begin{proof}
-设$T$是一个加性函子，而$p_1$, $p_2$, $i_1$和$i_2$是双积的四个典范态射，于是
-\[
-	p_ai_a = \id \quad \Rightarrow \quad T(p_a)T(i_a) = \id,
-\]
-\[
-	p_ai_b = 0 \quad \Rightarrow \quad T(p_a)T(i_a) = T0=0,
-\]
-\[
-	i_1p_1+i_2p_2 = \id \quad \Rightarrow \quad T(i_1)T(p_1)+T(i_2)T(p_2) = \id,
-\]
-告诉我们$T$与双积可交换。$Tp_1$, $Tp_2$, $Ti_1$和$Ti_2$是新双积的四个典范态射。
-
-反过来，考虑态射$f$, $g:X\to Y$. 不难发现$f+g=c(f\oplus g)d$. 其中$d:X\to X\oplus X$满足唯一分解$p^X_1d=p^X_2d=\id_X$，这直接来自于积的泛性质，此外，$c:Y\oplus Y\to Y$满足唯一分解$ci^Y_1=ci^Y_2=\id_Y$，这直接来自于余积的泛性质。所以
-\[
-	c(f\oplus g)d=c(i_1^Y f p_1^X+i_2^Y g p_2^X)d=c i_1^Y f p_1^X d+ ci_2^Y g p_2^Xd=f+g.
-\]
-
-设$T$与双积可交换，双积的泛性质告诉我们$T(f\oplus g)=T(f)\oplus T(g)$. 于是，
-\[
-	T(f+g)=T(c(f\oplus g)d)=T(c)T(f\oplus g)T(d)=T(c)(T(f)\oplus T(g))T(d)=T(f)+T(g).
-\]
-所以$T$是加性函子。
-\end{proof}
-
-由于在Abel范畴中，双积等价于有限积等价于有限余积。所以只要函子与有限积或者有限余积与可交换，这就是加性函子。
-
-\begin{para}
-设$R:\mathcal{C}\to \mathcal{D}$与$L:\mathcal{D}\to \mathbb{C}$是一对伴随函子，其中$R$是右伴随函子，而$L$是左伴随函子。如果$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，由于右伴随函子与极限可交换、左伴随函子与余极限可交换，所以不管左伴随函子还是右伴随函子，它们都是加性函子。
-
-此外，由于核是一个极限，所以$R(\ker f)= \ker(Rf)$. 对偶地，$L(\coker g)= \coker(Lg)$.
-\end{para}
-
-\begin{lem}
-假设$\mathcal{C}$与$\mathcal{D}$都是Abel范畴，$R:\mathcal{C}\to \mathcal{D}$是一个右伴随函子。如果$f$是$\mathcal{C}$中的单态射，则$Rf$是$\mathcal{D}$中的单态射。
-\end{lem}
-
-\begin{proof}
-已知$f$是一个单态射当且仅当$\ker f=0$. 由于右伴随函子与核可交换，所以$\ker(Rf)= R(\ker f)=0$，即$Rf$也是单态射。
-\end{proof}
-
-在Abel范畴中，$f$是一个单态射等价于$f=\im f$. 同时，由上面的引理，$Rf$也是单态射，所以$Rf=\im(Rf)$，结合这两点就得到了
-\[
-	R(\im f)=Rf=\im(Rf).
-\]
-这意味着，对单态射而言，$\im$与$R$也是可交换的。因此，如果$\im f\approx \ker g$，其中$f$是一个单态射，则$\im(Rf)\approx \ker(Rg)$，其中$Rf$是一个单态射。
-
-\begin{pro}
-如果$R$是一个从Abel范畴到Abel范畴的右伴随函子，则对正合列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$，他将诱导一个正合列
-\[
-	0\to R(X_1)\xrightarrow{R(f_1)} R(X_2)\xrightarrow{R(f_2)} R(X_3).
-\]
-\end{pro}
-
-由上一个引理和其推论立即可知。对偶地，可以知道：
-
-\begin{pro}
-如果$L$是一个从Abel范畴到Abel范畴的左伴随函子，则对正合列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3 \to 0$，他将诱导一个正合列
-\[
-	L(X_1)\xrightarrow{L(f_1)} L(X_2)\xrightarrow{L(f_2)} L(X_3) \to 0.
-\]
-\end{pro}
-
-将满足上面两个命题的加性函子抽象出来。
-
-\begin{para}
-设$T$是一个加性函子，如果他把正和列$0\to X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3$变成正合列
-\[
-	0\to T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3),
-\]
-则称$T$是一个左正和函子。对偶地，如果他把正和列$X_1\xrightarrow{f_1} X_2\xrightarrow{f_2} X_3\to 0$变成正合列
-\[
-	T(X_1)\xrightarrow{T(f_1)} T(X_2)\xrightarrow{T(f_2)} T(X_3)\to 0,
-\]
-则称$T$是一个右正和函子。
-
-如果把短正合列变成短正合列，则称$T$是一个正和函子。所以，正和性等价于左正和又右正和。
-\end{para}
-
-综上，我们已经证明了：
-
-\begin{thm}
-设函子从Abel范畴到Abel范畴，则左伴随函子右正合，而右伴随函子左正和。
-\end{thm}
-
-\begin{pro}
-设$\mathcal{C}$是一个Abel范畴，则函子$\mathcal{C}(X,-):\mathcal{C}\to \mathsf{Ab}$以及$\mathcal{C}(-,X):\mathcal{C}^\mathrm{op} \to \mathsf{Ab}$都是左正合函子。
-\end{pro}
-
-\begin{proof}
-	设
-	\[
-		0\to\cdot \xrightarrow{f}\cdot \xrightarrow{g}\cdot
-	\]
-	是一个正合列，我们要证明
-	\[
-	0\to \cdot \xrightarrow{f_*}\cdot \xrightarrow{g_*}\cdot
-	\]
-	也是一个正合列。首先，我们说明$\ker f_*=0$. 由于是在$\mathsf{Ab}$中，所以考虑$f_*(g)=fg=0$，由于$f$是单态射，所以$g=0$，因此$\ker f_*=f_*^{-1}(0)=0$. 然后，由于$g_*f_*=(gf)_*$，所以$\im f_*\subset \ker g_*$. 最后只要检验$\ker g_*\subset \im f_*$. 任取$h$使得$g_*(h)=gh=0$，由$\ker g$的泛性质，存在分解$h=\ker(g)k=\im(f)k=fk=f_*(k)$，其中$\im(f)=f$来自于$f$是一个单态射，所以$\ker g_* \subset \im f_*$.
-
-	完全类似地，可以证明$\mathcal{C}(-,X):\mathcal{C}^\text{op} \to \mathsf{Ab}$是左正合函子。
-\end{proof}
-
-\section{追图}
-
-我们将在Abel范畴中谈论追图。
-
-\begin{lem}\label{zhuitu}
-设$\mathcal{C}$是一个Abel范畴，而$X\in \mathcal{C}$是一个对象。考虑所有指向$X$的态射，在其中可以定义关系$\sim$如下：设$f:Y\to X$和$g:Z\to Y$，如果存在一个$W\in \mathcal{C}$以及两个满态射$u:W\to Y$以及$v:W\to Z$使得$fu=gv$，则记$f\sim g$. 以交换图记，就是说，$f\sim g$当且仅当存在满态射$u$和$v$使得如下交换图成立，
-\[
-\xymatrix{
-	\cdot \ar[r]^u \ar[d]_v & \cdot\ar[d]^f\\
-	\cdot \ar[r]^g & \cdot
-}
-\]
-我们可以断言，$\sim$是一个等价关系，其中，自反性与对称性是显然的。
-\end{lem}
-
-为证明传递性，我们需要如下引理。
-
-\begin{lem}\label{mt}
-	在Abel范畴中，设$f:X\to Z$和$g:Y\to Z$是两个态射，则存在纤维积$X\times_Z Y$，投影分别记作$p_X$和$p_Y$. 此外，如果$f$是满态射，则$p_Y$是满态射.
-\end{lem}
-
-\begin{proof}[Proof of Lemma \ref{mt}]
-	在Abel范畴中，我们已经知道积是存在的，即$X\times Y$存在，投影分别记作$\pi_X$和$\pi_Y$. 并且，核是存在的，则$X\times_Z Y$可以定义为$\ker(f\pi_X-g\pi_Y)$的定义域，而$p_X=\pi_X\ker(f\pi_X-g\pi_Y)$以及$p_Y=\pi_Y\ker(f\pi_X-g\pi_Y)$.
-
-	现在，设$f$是一个满态射，下面说明$f\pi_X-g\pi_Y$是满态射。由于在Abel范畴中$X\times Y$也是双积$X\oplus Y$，所以存在映射$i_X:X\to X\oplus Y=X\times Y$使得$\pi_Xi_X=\id_X$还有$\pi_Yi_X=0$. 设$h(f\pi_X-g\pi_Y)=0$，由于$0=h(f\pi_X-g\pi_Y)i_X=hf\id_X=hf$以及$f$是一个满态射，所以$h=0$. 此即所证。
-
-	利用$f\pi_X-g\pi_Y$是满态射，我们有$f\pi_X-g\pi_Y=\coim(f\pi_X-g\pi_Y)=\coker(\ker(f\pi_X-g\pi_Y))$. 最后，设$hp_Y=h\pi_Y\ker(f\pi_X-g\pi_Y)=0$，由$\coker$的泛性质，存在分解$h\pi_Y=k\coker(\ker(f\pi_X-g\pi_Y))=k(f\pi_X-g\pi_Y)$. 复合上$i_X$后，我们将得到
-	\[
-	0=h\pi_Yi_X=k(f\pi_X-g\pi_Y)i_X=kf,
-	\]
-	由于$f$是满态射，所以$k=0$. 因此
-	\[
-	h=h\pi_Yi_Y=k(f\pi_X-g\pi_Y)i_Y=0.
-	\]
-	这就说明了$p_Y$是一个满态射。
-\end{proof}
-
-\begin{proof}[Proof of Lemma \ref{zhuitu}]
-	若$f\sim g$且$g\sim h$，考虑如下交换图
-	\[
-	\xymatrix{
-	&Z_1\ar[r]^a\ar[rd]_b&X\ar[rd]^f&\\
-	Z_1\times_{X'} Z_2\ar[ru]^{p_{Z_1}}\ar[rd]_{p_{Z_2}}&&X'\ar[r]^g&Y\\
-	&Z_2\ar[ru]^c\ar[r]_d&X''\ar[ru]_h&
-	}
-	\]
-	其中$a$, $b$, $c$, $d$都是满态射。由上一个引理，$c$是满态射给出$p_{Z_1}$是满态射，$d$是满态射给出$p_{Z_2}$是满态射。最后，满态射$ap_{Z_1}$和$dp_{Z_2}$给出了$f\sim h$.
-\end{proof}
-
-\begin{para}
-从Lemma \ref{zhuitu}，我们得到了指向$X$的态射的等价类，其中的元素称为对象$X$的伪元素，记作$[x]$，其中$x$是等价类中的代表元。而$[x]\in \mathcal{C}(-,X)/\sim$记作$[x]\in_m X$. 
-
-设$[x]\in_m X$，我们记$-[x]=[-x]$，这是良定的，实际上，如果$x\sim x'$，则存在两个满态射$u$, $v$使得$xu=x'v$，所以$-xu=-x'v$，即$-x\sim -x'$. 
-
-值得注意的一点是，$[0]$中的元素都是$0$，即，如果$[x]=[0]$或$x\sim 0$，则$x=0$. 实际上，$x\sim 0$告诉我们存在满态射$u$, $v$使得$xu=0v=0$，再由$u$是一个满态射，所以$x=0$. 因此，$x\sim 0$等价于$x=0$. 为方便起见，我们将$[0]$也记作$0$.
-
-设$f:X\to Y$是一个态射，$[x]\in_m X$，记$f(x)=[fx]$. 注意到，如果$x\sim x'$，则$fx\sim fx'$，所以$f(x)=f(x')$. 特别地，$f(0)=0$，$f(x)=0$等价于$fx=0$.
-
-再设$g:Y\to Z$是另一个态射，则$gf(x)=[gfx]=g(f(x))$. 这就是复合规则，和映射的情况是一摸一样的。
-\end{para}
-
-一般来说，所有指向$X$的态射的全体都不能构成一个集合。但是，当我们考虑等价类的全体，它们确实是可能构成一个集合的。比如在模范畴中就是如此，为此，我们需要下面的引理。
-
-\begin{lem}
-在模范畴中，$f\sim g$当且仅当$\im f = \im g$.
-\end{lem}
-
-\begin{proof}
-如果$f\sim g$，则存在满态射$u$, $v$使得$fu=gv$. 两边求$\coker$将得到$\coker(fu)=\coker(gv)$，因为$u$, $v$是满态射，所以$\coker f=\coker(fu)=\coker(gv)=\coker g$. 求核之后就得到了$\im f=\im g$. 注意，这点在任意的Abel范畴中都成立。
-
-反过来，设$f:X\to Z$而$g:Y\to Z$，考虑$X\times_Z Y=\{(x,y)\,:\,f(x)=g(y)\}$. 如果$\im f=\im g$，则$f(X)=g(Y)$. 所以任取$x_0\in X$都存在一个$y_0\in Y$使得$f(x_0)=g(y_0)$，此时$x_0=p_X(x_0,y_0)$，所以$p_X$是满同态。同理，$p_Y$是满同态。
-\end{proof}
-
-因此，在模范畴，指向$M$的箭头的等价类一一对应于$M$的子模，这当然构成一个集合。特别地，在$M$的子模的全体中，存在以单元素生成的子模，换而言之，明确了这些子模，也就明确了$M$的所有元素。这就是Abel范畴中伪元素的含义。这点还可以体现在符号$f(x)$上，实际上，如果我们把$[x]$理解成子模$\im x$，则$f(x)=[fx]=\im(f x)=f(\im x)$. 这就还原了作为映射的$f$. 
-
-下面的追图法告诉我们，在Abel范畴中，我们判断一个态射是单态射还是满态射可以应用模范畴中类似的手段来做。
-
-\begin{pro}[追图法]
-设$f:X\to Y$是一个态射，
-\begin{compactenum}[~~~(1)]
-\item $f$是单态射，当且仅当$f(x)=0$可以推出$x=0$.
-\item $f$是单态射，当且仅当$f(x)=f(x')$可以推出$[x]=[x']$.
-\item $f$是满态射，当且仅当任取$[y]\in_m Y$，都存在$[x]\in_m X$使得$f(x)=[y]$.
-\item $f=0$当且仅当任取$[x]\in_m X$都有$f(x)=0$.
-\item $\cdot \xrightarrow{f} \cdot \xrightarrow{g}\cdot$是正和的，当且仅当$gf=0$且如果$g(y)=0$，则存在$[x]$使得$[y]=f(x)$.
-\item 如果$f(x)=f(x')$，则存在$[x'']\in_m X$使得$f(x'')=0$. 且对任意满足$g(x)=0$的态射$g$，我们都有$g(x'')=-g(x')$. 对任意满足$h(x')=0$的态射，我们都有$h(x'')=h(x)$.
-\end{compactenum}
-\end{pro}
-
-最后一点看着奇怪，实际上$x''$是模范畴中$x-x'$的类比。追图法的存在让我们可以像处理模范畴一样来处理Abel范畴中的交换图。
-
-\begin{proof}
-依次证明如下。
-\begin{compactenum}[~~~(1)]
-\item 如果$f$是单态射，于是$f(x)=0$等价于$fx=0$等价于$x=0$等价于$x\sim 0$. 反过来，$f\ker f=0$等价于$f(\ker f)=0$，所以$\ker f\sim 0$即$\ker f=0$即$f$是单态射。
-
-\item 如果$f(x)=f(y)$，则$fx\sim fy$，所以存在满态射$u$, $v$使得$fxu=fyv$，于是$xu=yu$给出了$x\sim y$. 反过来，如果$fx=0$，则$f(x)=0=f(0)$给出$x=0$. 所以$f$是一个单态射。
-
-\item 假设$f$是满态射。设$f:X\to Y$和$y:X'\to Y$，我们考虑纤维积$X\times_Y X'$，由于$f$是满态射，所以$p_{X'}:X\times_Y X'\to X'$是满态射。此外，由$fp_X=yp_{X'}$，我们得到$f(p_X)=[y]$. 
-
-反过来，设$f$不是满态射，那么任取$[x]\in_m X$，都有$f(x)\neq [\id_Y]$. 实际上，如果$f(x)=[\id_Y]$，则存在满态射$u$, $v$使得$fxu=v$，由于$v$是满态射，所以$f$也必须是满态射，矛盾。
-
-\item 显然。
-
-\item 考虑分解$f=\im(f)\coim(f)=\ker(g)\coim(f)$，因此$gf=0$是显然的。现在，如果$g(y)=0$，则$gy=0$. 由$\ker g$的泛性质，成立分解$y=\ker(g)h$. 考虑$h$和$\coim f$的纤维积，存在投影$p_h$和$p_{\coim(f)}$使得$hp_h=\coim(f)p_{\coim(f)}$，且从$\coim f$是一个满态射可以得到$p_h$是一个满态射. 所以$yp_h=\ker(g)hp_h=\ker(g)\coim(f)p_{\coim(f)}=fp_{\coim(f)}$给出了$f(p_{\coim(f)})=[y]$.
-
-反过来，$gf=0$或等价的式子$g\im(f)=0$给出了$\im f \leq \ker g$. 我们下面只要证明$\ker g \leq \im f$. 由于$g\ker g=0$，所以存在一个$x\in_m X$使得$f(x)=[\ker g]$，此即存在满态射$u$使得$\ker(g)u=fx$. 由Proposition \ref{uni}，可以断言$\ker(g)\approx \im(fx)$. 然后考虑分解$fx=\im(f)\coim(f)x$，由Lemma \ref{lem1}，存在唯一的单态射$t$使得$\im(fx)=\im(f)t$，因此$\im(fx)\leq \im(f)$. 结合$\ker(g)\approx \im(fx)$，这就给出了我们需要的$\ker g\leq \im f$.
-
-\item 如果$f(x)=f(x')$，则存在满态射$u$, $v$使得$fxu=fx'v$，此时考虑$[xu-x'v]\in_m X$，它就满足所有的要求。
-\end{compactenum}
-\end{proof}
-
-作为追图法的直接应用，我们来证明非常实用的五引理。
-
-\begin{lem}[五引理]\label{5-lem}
-在Abel范畴$\mathcal{C}$中，如果存在如下交换图
-\[
-	\xymatrix{
-	A_1\ar[r]^{f_1}\ar[d]^{h_1}&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]^{f_4}\ar[d]^{h_4}&A_5\ar[d]^{h_5}\\
-	B_1\ar[r]^{g_1}&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]^{g_4}&B_5\\
-	}
-\]
-且横向的两行都是正合列。则，
-\begin{compactenum}[~~~(1)]
-\item 如果$h_2$, $h_4$是单态射，$h_1$是满态射，则$h_3$是单态射。
-\item 如果$h_2$, $h_4$是满态射，$h_5$是单态射，则$h_3$是满态射。
-\item 如果$h_2$, $h_4$是同构，$h_1$是满态射，$h_5$是单态射，则$h_3$是同构。
-\end{compactenum}
-\end{lem}
-
-\begin{proof}
-最后一点不过是前面两点的推论。第二点是第一点的对偶命题，所以我们只要证明第一点即可。
-
-取$[x]\in_m A_3$，并且假设$h_3(x)=0$. 由于$h_4f_3(x)=g_3h_3(x)=0$，所以$h_4(f_3(x))=0$. 由于$h_4$是单态射，所以$f_3(x)=0$. 由正合列条件，存在$[y]\in_m A_2$使得$f_2(y)=[x]$. 由于$g_2(h_2(y))=g_2h_2(y)=h_3f_2(y)=h_3(x)=0$. 所以由下面那条正合列条件，我们有$[z]\in_m B_1$使得$g_1(z)=h_2(y)$. 由于$h_1$是满态射，所以存在$[w]\in_m A_1$使得$h_1(w)=[z]$. 利用第一个方块的交换性，我们有
-\[
-	g_1(z)=g_1h_1(w)=h_2f_1(w),
-\]
-从$g_1(z)=h_2(y)$以及$h_2$是一个单态射，所以$f_1(w)=[y]$. 最后，$[x]=f_2(y)=f_2f_1(w)=0$. 此即所证。
-\end{proof}
-
-五引理最常见的应用是短五引理，他将用在短正合列上面。
-
-\begin{lem}[短五引理]\label{short-5-lem}
-在五引理中，令$A_1=B_1=A_5=B_5=0$，那么$h_1=h_5=\id_0$是自然的同构，我们得到了如下交换图（略去了恒等$\id_0:0\to 0$当然还有显然的$f_1=g_1=f_4=g_4=0$）
-\[
-	\xymatrix{
-	0\ar[r]&A_2\ar[r]^{f_2}\ar[d]^{h_2}&A_3\ar[r]^{f_3}\ar[d]^{h_3}&A_4\ar[r]\ar[d]^{h_4}&0\\
-	0\ar[r]&B_2\ar[r]^{g_2}&B_3\ar[r]^{g_3}&B_4\ar[r]&0\\
-	}
-\]
-于是，
-\begin{compactenum}[~~~(1)]
-\item 如果$h_2$, $h_4$是单态射，则$h_3$是单态射。
-\item 如果$h_2$, $h_4$是满态射，则$h_3$是满态射。
-\item 如果$h_2$, $h_4$是同构，则$h_3$是同构。
-\end{compactenum}
-\end{lem}
-
-\begin{lem}[蛇引理]\label{snake-lemma}
-考虑如下交换图
-\[
-	\xymatrix{
-	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
-	0\ar[r]&\cdot \ar[r]^{f'}&\cdot \ar[r]^{g'}&\cdot \ar[r]&0\\
-	}
-\]
-其中两行是正合列。则我们可以拓展为交换图
-\[
-	\xymatrix{
-	&0\ar[d]&0\ar[d]&0\ar[d]&\\
-	0\ar@{-->}[r]&\cdot\ar@{-->}[r]^a\ar[d]^{\ker u}&\cdot\ar@{-->}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
-	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
-	0\ar[r]&\cdot \ar[r]^{f'}\ar[d]^{\coker u}&\cdot \ar[r]^{g'}\ar[d]^{\coker v}&\cdot \ar[r]\ar[d]^{\coker w}&0\\
-	&\cdot \ar@{-->}[r]_c\ar[d] &\cdot \ar@{-->}[r]_d\ar[d] &\cdot \ar@{-->}[r]\ar[d]& 0\\
-	&0&0&0&\\
-	}
-\]
-其中每行每列都是正合列，此外，还存在态射$\delta$使得如下正合列成立
-\[
-	0\to \ker u \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}\ker w \xrightarrow[~~~]{\delta}\coker u \xrightarrow[~~~]{c}\coker v \xrightarrow[~~~]{d}\coker w \to 0.
-\]
-\end{lem}
-
-\begin{proof}
-$a$, $b$, $c$, $d$的存在唯一性直接来自于$\ker$与$\coker$的泛性质，正和性也不难检验。最难的在于构造$\delta$. 考虑交换图
-\[
-	\xymatrix{
-	0\ar[r]&\cdot \ar[r]^-{\ker p_X}\ar@{.>}[d]^p&X\times_Z Y \ar[r]^-{p_X}\ar[d]^{p_Y}&X\ar[d]^{\ker w}\ar[r]&0\\
-	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&Y \ar[r]^{g}\ar[d]^{v}&Z \ar[d]^{w}\ar[r]&0\\
-	0\ar[r]&U \ar[r]^{f'}\ar[d]^{\coker u}&W \ar[r]^{g'}\ar[d]^{i_W}&\cdot \ar@{.>}[d]^q\ar[r]&0\\
-	0\ar[r]&V \ar[r]_-{i_V}&V\cup_U W \ar[r]_-{\coker i_V}&\cdot\ar[r]&0
-	}
-\]
-其中$X\times_Z Y$是$\ker w$和$g$的纤维积，而$V\cup_U W$是$f'$和$\coker u$的余纤维积。虚线的态射可以如下得到：由于$gp_Y \ker p_X=\ker(w)p_X\ker p_X=0$，所以由$\ker g$的泛性质，我们得到了分解$p_Y\ker p_X=\ker(g)p$. 由于$f$是一个单态射，所以$f=\im f=\ker g$，于是$p_Y\ker p_X=fp$. 类似地，可以得到$q$.
-
-同时，上述交换图每行都是正合列。实际上只要考虑第一行就行，最后一行靠对偶原理即可。由于$g$是满态射，所以由Lemma \ref{mt}，$p_X$是满态射。而$\im(\ker p_X)=\ker p_X$直接来自于$\ker p_X$是一个单态射。
-
-现在考虑$i_Wvp_Y\ker(p_X)=i_V\coker(u)up=0$. 由$\coker(\ker p_X)=p_X$的泛性质，我们有唯一的态射$j:X\to V\cup_U W$使得分解$i_Wvp_Y=jp_X$成立。考虑复合$\coker(i_V)jp_X=\coker(i_V)i_Wvp_Y=qw\ker(w)p_X=0$. 由于$p_X$是满态射，所以$\coker(i_V)j=0$. 再由$\ker(\coker i_V)=i_V$的泛性质，可以得到唯一的态射$\delta:X\to V$使得分解$j=i_V \delta$成立。
-
-最后，正和性的检验是直接的，追图法将解决一切。
-\end{proof}
-
-利用蛇引理，短五引理是直接的。如果$u$和$w$是单态射，则我们在正合列中有
-\[
-	0\to 0 \xrightarrow[~~~]{a}\ker v \xrightarrow[~~~]{b}0,
-\]
-所以$\ker v=0$，这就是说$v$也是单态射。满态射的命题也类似。
-
 \section{链条件}
 
 \para 设$P$是一个偏序集，如果他的任意非空子集都有极大元，则$P$称为满足极大条件。对偶地，还有极小条件。
@@ -1242,3 +867,154 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \para 结合上面两个命题，一个环$R$是Artin环等价于他是一个有限长$R$-模，也当且仅当他是Noether环且所有的素理想都是极大理想。因此，与模的情况不一样，到了环这里，Artin性就是一个远比Noether性强的一个性质。附带的，还断言了，Artin环的素理想（极大理想）有限。\endpara
 
 由于Artin环是一个有限长模，所以可以把有限长模的结构定理用到Artin环上，这里就不表了。
+
+
+\section{分次结构}
+
+这里我们只考虑交换环。
+
+\begin{para}[分次环]
+	设环$S$可以分解成一族$\zz$-模$\{S_i\,:\, i\in\zz\}$的直和，
+	即$S=\bigoplus_i S_i$，且乘法满足$S_iS_j\subset S_{i+j}$，
+	则称$S$是一个分次环。
+\end{para}
+
+分次环有如下几个简单例子：
+\begin{compactenum}
+\item 多项式环$R[x]$：我们记$A_i$
+为$x^i$为基张成的自由$R$-模，此时$R[x]=\bigoplus_i A_i$. 
+\item 平凡的分次环：设$R$是一个交换环，我们令$S_0=R$，而
+对其他的$i$，有$S_i=0$. 此时$S$就是一个分次环。
+\end{compactenum}
+
+\begin{para}[分次模]
+	设$S$是是一个分次环，而$M$是一个$S$-模，如果$M$可以分解为直和
+	$M=\bigoplus_i M_i$，且$S_iM_j\subset M_{i+j}$，则称$M$是一个分次$S$-模。
+\end{para}
+
+显然，一个分次环可以看成自己上面的一个分次模。所以，下面的一些定义，
+虽然是对分次模的，但是对分次环也同样适用。
+
+\begin{para}
+	设$M$是一个分次模，我们会将$M_i$称为对应分次模的$i$-次（齐次）部分，
+	其中（非零）元素被称为$i$-次齐次元。如果$m\in M$属于某个齐次部分，
+	则称其为齐次元，一般地，对于任意的$m\in M$，我们可以将其唯一分解为
+	$m=\sum_i m_i$，其中$m_i\in M_i$，此时我们称$m_i$是$m$的$i$-次
+	（齐次）分量。
+
+	一个分次模显然可以分成三个部分，$M=M_+\oplus M_0\oplus M_-$，其中
+	$M_+$是所有$M_i$的直和，其中$i>0$，而$M_-$同理。如果$S$是一个分次环，
+	显然，$S_0$是其一个子环。
+
+	在分次模中，下有界的分次模是有意思的，比方说，多项式环就是这样的
+	分次模。所谓下有界，就是说，存在一个$N$使得$n<N$时都有$M_0=0$. 同时，
+	设$n$是一个整数，通过$(M(n))_i=M_{n+i}$我们可以定义一个分次模$M(n)$.
+	所以，研究下有界的分次模，我们只需研究$M_-=0$的分次模，这被称为
+	具有正分次的分次模。
+
+	类似地，对上有界的分次模，我们可以定义新的分次为原分次的相反数得到一个
+	下有界的分次模。所以，我们只需考虑下有界的分次模。
+\end{para}
+
+\begin{lem}
+	设$S$是一个具有正分次的分次环，$E\subset S$是一个由齐次元构成的子集，
+	则$E$可以生成作为$S$-模的$S_+$，当且仅当，$E$可以生成作为$S_0$-代数的
+	$S$.
+\end{lem}
+
+\begin{proof}
+	显然。
+\end{proof}
+
+\begin{pro}
+	设$S$是一个具有正分次的分次环，则$S$是一个Noether环，当且仅当$S_0$是一个
+	Noether环且$S$是一个有限生成$S_0$-代数。
+\end{pro}
+
+\begin{proof}
+	从$S_+$是一个$S$的理想可知其有限生成，故上个引理给出
+	$S$是一个有限生成$S_0$-代数。此外，从$S_0=S/S_+$可知
+	$S_0$是一个Noether环。反过来是Hilbert基定理。
+\end{proof}
+
+\begin{para}[分次模同态]
+	设$S$是一个分次环，而$M$, $N$为分次$S$-模，如果$S$-模同态$f:M\to N$满足
+	$f(M_i)\subset N_i$，则称$f$是一个分次$S$-模同态。
+\end{para}
+
+一类特殊的分次模同态来自于分次模的分次子模。
+
+\begin{para}[分次子模]
+设$M$是一个分次$S$-模，而$N$是$M$的一个子模，
+如果$i:N\hookrightarrow M$是一个分次$S$-模同态，则称$N$是
+$M$的一个分次子模。
+\end{para}
+
+\begin{lem}
+设$M$是一个分次$S$-模，$N$是$M$的一个分次子模，则$N$的分次模结构由$N_i=N\cap M_i$给出。反过来，对$M$的子模$N$，如果$N=\bigoplus_i (N\cap M_i)$，则我们可以通过$N_i=N\cap M_i$给出$N$的一个分次$S$-模结构，进而成为$M$的一个分次子模。
+\end{lem}
+
+\begin{proof}
+首先，因为$i(N_i)\subset M_i$，所以$N_i\subset M_i$给出$N_i\subset N\cap M_i$. 
+现在，任取$n\in N\cap M_i$，我们将其分解为$n=\sum_j n_j$，其中$n_j\in N_j$. 
+这样，
+\[
+	i(n)=\sum_j i(n_j)\in M_i,
+\]
+根据直和的唯一分解，我们立刻有$i(n_i)=i(n)$. 再由$i$是一个单射，所以$n=n_i$，这就告诉我们$n\in N_i$.
+
+反过来的部分是直接的，因为此时$i(N_i)\subset M_i$，所以$S$-模同态
+$i:N\hookrightarrow M$现在是一个分次$S$-模同态。
+\end{proof}
+
+下面的命题是一个足够简单的分次子模判别法。
+
+\begin{pro}
+设$M$是一个分次$S$-模，$N$是$M$的一个子模，如果任取
+$n\in N$，其任意齐次分量也在$N$中，则$N$是$M$的一个分次子模。
+\end{pro}
+
+作为例子，在$R[x]$中，$\langle x^n\rangle$是分次理想，因为若$m\geq n$则
+$x^m\in \langle x^n\rangle$.
+
+\begin{proof}
+任取$n\in N$，我们可以将其唯一分解为$n=\sum_i n_i$，其中$n_i\in M_i$. 从
+条件，$n_i\in N\cap M_i$，故$N=\bigoplus_i (N\cap M_i)$.
+\end{proof}
+
+\begin{para}[分次素理想]
+对分次环$S$，如果$\pp$即是素理想又是分次理想，则称其为$S$的分次素理想。
+\end{para}
+
+\begin{pro}
+如果$S$是一个具有正分次的环，设$n_0$是一个给定正整数，如果对每个$n\geq n_0$，
+都有一个$S_n$的子群$\pp_n$，使得
+\begin{compactenum}[~~~(1)]
+\item 对任意的$m\geq 0$和$n\geq n_0$，总有$S_m\pp_n\subset \pp_{m+n}$,
+\item 对$m$, $n\geq n_0$以及$f\in S_m$, $g\in S_n$，$fg\in\pp_{m+n}$蕴含
+$f\in\pp_m$或者$g\in \pp_n$,
+\item 至少存在一个$n\geq n_0$使得$\pp_n\neq S_n$,
+\end{compactenum}
+则存在唯一的分次素理想$\pp$使得其大于$n_0$的齐次部分就是$\pp_n$们。
+\end{pro}
+
+\begin{proof}
+首先，因为至少存在一个$d\geq n_0$使得$\pp_{d} \neq S_{d}$，取
+$f\in S_{d}$且$f\not\in \pp_{d}$. 对$m<n$，我们令$\pp_m$由
+满足“除有限个$r>0$外，成立$f^rx\in \pp_{m+rd}$”的$x$构成的集合。
+下面只需检查$\pp=\bigoplus_{n=0}^\infty \pp_n$为分次素理想即可。
+此外，注意到，如果分次素理想存在，则任意$\pp_m$都可以从上面的性质
+确定，所以分次素理想是唯一的。此外，(2)也告诉我们，当$m>n$时，
+$p_m$可以如此确定。
+
+取$g\in S$，任取$x\in \pp$，我们要证明$gx\in \pp$. 我们可以假设
+$x\in \pp_m$，其中$m<n$，且$g\in S_l$. 如果$x$满足上面的那条性质，
+则至多只有有限的$r>0$使得$f^rgx=gf^rx\in \pp_{m+rd+l}$不成立，
+所以$gx\in \pp_{m+l}$，此即所需。
+
+最后，假设$x\in S_m$, $y\in S_n$满足$x\not\in \pp_m$, $y\not\in \pp_n$，
+我们要证明$xy\not\in \pp_{m+n}$. 如果这事不成立，当$r$足够大的时候，
+$f^r x f^r y\in \pp_{m+n+2rd}$，然后对所有的$r>0$，(2)告诉我们
+$f^ry\not\in \pp_{n+rd}$，则除了有限个$r>0$之外，
+总有$f^rx\in \pp_{m+rd}$，矛盾，故$xy\not\in \pp_{m+n}$.
+\end{proof}
