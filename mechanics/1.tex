@@ -317,7 +317,7 @@
 
 换而言之，我们可以通过Cartan形式来还原出Lagrange密度，这也给出了下面关于Lagrangian方程的不同刻画之一。
 
-\begin{thm}
+\begin{thm}\label{Lagrangeeq}
     设我们有Lagrange密度$\mathcal{L}=L\left(x^\mu,y^A,v^A_\mu\right)\dd^{n+1}x$，以及纤维丛$\pi:Y\to X$的截面$\phi$，则以下命题等价：
     \begin{compactenum}
         \item 任取$Y$上的垂直矢量场$V$，垂直指$V_y\in V_yY$，如果它在$X$中的支集紧，定义$\phi_\lambda=\sigma^\lambda_V\circ \phi$，其中$\sigma^\lambda_V$为$V$的流，则\[\left.\frac{\dd}{\dd \lambda}\right|_{\lambda=0}\int_X \mathcal L(j^1\phi_\lambda)=0.\]
@@ -370,7 +370,7 @@
 
 几乎任何（经典）物理系统都遵循这条原理。
 
-\section{正则变换与荷}
+\section{正则变换与流}
 
 在本节中，$Z$都是指$\Lambda^{D}Y$的那个同构于$J^1Y^*$的子丛。
 
@@ -411,9 +411,9 @@
 \end{para}
 
 此外，在$J^1Y^*$上，我们也可以通过
-\[
-	\langle \eta_{J^1Y^*}(z),\gamma\rangle=(\eta_{X}^{-1})^*\langle z,(j^1\eta_Y)^{-1}(\gamma)\rangle
-\]
+\begin{equation}\label{j1y*}
+\langle \eta_{J^1Y^*}(z),\gamma\rangle=(\eta_{X}^{-1})^*\langle z,(j^1\eta_Y)^{-1}(\gamma)\rangle
+\end{equation}
 来定义$J^1Y^*$上的一个同胚，这里$\langle *,*\rangle$是对偶空间中的自然配对。而同构$\Phi:Z\to J^1Y^*$给出了
 $\eta_{J^1Y^*}$和$\eta_Z$的关系。
 
@@ -480,7 +480,7 @@ $\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
     \mathscr L_{\xi_Z}\Theta=0.
 \]
 
-\begin{para}[荷]
+\begin{para}[流]
     设所有正则变换构成了一个作用在$Z$上的Lie群$G$，其Lie代数记作$\mathfrak g$. 如果映射
     \[
         J:Z\to \mathfrak g^*\otimes \Lambda^n Z,
@@ -489,19 +489,23 @@ $\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
     \[
     \dd (J(\xi))=\iota(\xi_Z)\Omega,
     \]
-    则我们将$J$称之为一个荷。在对称性分析中，它的Legendre变换将担当经典的守恒荷的作用。
+    则我们将$J$称之为一个流。在对称性分析中，它的Legendre变换将担当经典的守恒流的作用。
     注意到，如果将$\Omega$类比为辛形式，则上式就是在说$J(\xi)$的“Hamilton矢量场”
     为$\xi_Z$. 这个类比会在下面定义Possion括号时候再次用到。
 \end{para}
 
-如果$\eta_Z$都是特殊正则映射，则此时$J(\xi)=\iota(\xi_Z)\Theta$就定义了一个荷$J$. 实际上，此时
+如果$\eta_Z$都是特殊正则映射，则此时
+\[
+	J(\xi)=\iota(\xi_Z)\Theta
+\]
+就定义了一个流$J$. 实际上，此时
 \[
 	\dd (J(\xi))=\dd \iota(\xi_Z)\Theta=\mathscr L_{\xi_Z}\Theta-\iota(\xi_Z)\dd \Theta=\iota(\xi_Z)\Omega.
 \]
-这样定义的荷被称为特殊荷。
+这样定义的流被称为特殊流。
 
 \begin{pro}
-若$G$在$Z$上的作用是$G$在$Y$上的自同构的正则提升，则此时特殊荷可以血写作
+若$G$在$Z$上的作用是$G$在$Y$上的自同构的正则提升，则此时特殊流可以写作
 \[
 	J(\xi)(z)=p^*\iota(\xi_Y)z,
 \]
@@ -521,17 +525,17 @@ $\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
 \end{proof}
 
 局部地，如果$\xi_Y$具有分量$(\xi^\mu,\xi^A)$，而$z$具有分量$(p,p_A^\mu)$，则
-\[
-	J(\xi)(z)=(p_A^\mu \xi^A+p\xi^\mu)\dd^{D-1}x_\mu-p_A^\mu \xi_\nu \dd y^A
+\begin{equation}
+J(\xi)(z)=(p_A^\mu \xi^A+p\xi^\mu)\dd^{D-1}x_\mu-p_A^\mu \xi^\nu \dd y^A
 	\wedge \dd^{D-2}x_{\mu\nu},
-\]
+\end{equation}
 其中
 \[
 	\dd^{D-2}x_{\mu\nu}=\iota(\partial_\nu)\iota(\partial_\mu)\dd^{D}x.
 \]
 
 \begin{pro}
-对特殊荷，成立$J(\operatorname{Ad}_g^{-1}\xi)=g_Z^*J(\xi)$.
+对特殊流，成立$J(\operatorname{Ad}_g^{-1}\xi)=g_Z^*J(\xi)$.
 \end{pro}
 
 \begin{proof}
@@ -541,7 +545,7 @@ $\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
 &=\lim_{t\to 0}\frac{f((g\exp(t\xi)g^{-1})_Z(z))-f(z)}{t}\\
 &=(\operatorname{Ad}_g(\xi)_Z)_zf,
 \end{align*}
-即$(g_Z)_*\xi_Z=\operatorname{Ad}_g(\xi)_Z$. 现在，考虑特殊荷
+即$(g_Z)_*\xi_Z=\operatorname{Ad}_g(\xi)_Z$. 现在，考虑特殊流
 \[
 	J(\operatorname{Ad}^{-1}_g(\xi))=\iota(\operatorname{Ad}_g^{-1}(\xi)_Z)\Theta
 	=g_Z^*(g^{-1}_Z)^*\iota\left((g^{-1}_Z)_*\xi_Z\right)\Theta=g_Z^*\iota(\xi_Z)(g^{-1}_Z)^*\Theta,
@@ -563,9 +567,45 @@ $\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
 \]
 不难看到，Possion括号是反对称的。
 
+\begin{para}
+我们下面来考虑一个最简单的例子，矩阵Lie群$G$在标量场$y^A$上的线性作用$U^A_By^B$，现在设$U=\exp(\lambda t_a)$,
+其中$t_a\in \mathfrak{g}$，于是
+\[
+	(t_a)_Yf=\lim_{\lambda \to 0}\frac{f(\exp(\lambda (t_a)^A_B)y^B)-f(y^A)}{\lambda}=(t_a)^A_By^B\partial_Af,
+\]
+所以
+\[
+	(t_a)_Y=(t_a)^A_By^B\partial_A,
+\]
+而将其带入(\theequation)立刻得到
+\[
+	J(t_a)(z)=p_A^\mu (t_a)^A_By^B\dd^{D-1}x_\mu,
+\]
+其中$z=(p,p_A^\mu)$. 此外，考虑两个生成元$t_a$和$t_b$，这里可以直接看出$\iota({(t_a)}_Z)\iota({(t_b)}_Z)\Theta=0$，所以
+\[
+	\{J(t_a),J(t_b)\}=J([t_a,t_b]),
+\]
+于是$J$可以看成一个Lie代数同态。
+\end{para}
+
+% 将上例中的$J(t_a)(z)$用Legendre变换$F_{\mathcal L}$拉回后，我们立刻得到
+% \[
+% 	F_{\mathcal L}^*J(t_a)(z)=\frac{\partial L}{\partial v_\mu^A}(t_a)^A_By^B\dd^{D-1}x_\mu,
+% \]
+% 在具有$\operatorname{SO}(N)$对称性的标量场理论中
+% \[
+% 	L=\frac 12\partial_\mu \phi^A\partial^\mu \phi_A-\frac {m^2}2\phi^A\phi_A,
+% \]
+% 这里$\phi_A=\delta_{AB}\phi^B$. 在我们这里，将$y^A$取作$\phi^A$，则$v_\mu^A=\partial_\mu \phi^A$，故
+% \[
+% 	F_{\mathcal L}^*J(t_a)(z)=\frac{\partial L}{\partial (\partial_\mu \phi^A)}(t_a)^A_B\phi^B\dd^{D-1}x_\mu
+% 	=\partial^\mu \phi_A(t_a)^A_B\phi^B\dd^{D-1}x_\mu=j^\mu\dd^{D-1}x_\mu,
+% \]
+% 其中$j^\mu=\partial^\mu \phi_A(t_a)^A_B\phi^B$就是我们熟知的守恒流。
+
 \section{对称性与Noether定理}
 
-考虑一个群$G$，它作用于$X$和$Y$上，使得任取$g\in G$，其对应的同胚$g_X:X\to X$和$g_Y:Y\to Y$构成一个丛映射（实际是丛同构）。那么，我们可以将其提升到$J^1Y$上，记作$j^1g$. 
+考虑一个群$G$，它作用于$X$和$Y$上，使得任取$g\in G$，其对应的同胚$g_X:X\to X$和$g_Y:Y\to Y$构成一个丛映射（实际是丛同构）。那么，我们可以将其提升到$J^1Y$上，记作$j^1g$或$g_{J^1Y}$.
 
 \begin{para}[Lagrange密度的对称性]
     如果任取$g\in G$以及$\gamma\in J_y^1 Y$，Lagrange密度$\mathcal L$都成立
@@ -583,14 +623,60 @@ $\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
         \item 对Legendre变换$F_{\mathcal L}$，交换图
         \[
             \xymatrix{
-                J^1Y\ar[r]^-{F_{\mathcal L}}\ar[d]_{j^1g}&Z\ar[d]^{g_Z}\\ 
-                J^1Y\ar[r]^-{F_{\mathcal L}}&Z
+                J^1Y\ar[r]^-{F_{\mathcal L}}\ar[d]_{j^1g}&J^1Y^*\ar[d]^{g_{j^1Y^*}}\\ 
+                J^1Y\ar[r]^-{F_{\mathcal L}}&J^1Y^*
             }
         \]
         对所有$g\in G$都成立。
         \item 对Cartan形式$\Theta_{\mathcal L}$，$(j^1g)^*\Theta_{\mathcal L}=\Theta_{\mathcal L}$对所有$g\in G$都成立。
+        \item 对所有的$\xi \in \mathfrak{g}$，映射$J^\mathcal{L}(\xi):=F_{\mathcal L}^*J(\xi):J^1Y\to \Lambda^n(J^1Y)$满足
+        \[
+        \dd J^\mathcal{L}(\xi)=\iota(\xi_{J^1Y})\Omega_{\mathcal L},
+        \]
+        其中$\xi_{J^1Y}=j^1\xi_Y$是对应于无穷小生成元$\xi$的矢量场，此外
+        \[
+        J^\mathcal{L}(\xi)=\iota(\xi_{J^1Y})\Theta_{\mathcal L}.
+        \]
     \end{compactenum}
 \end{pro}
+
+\begin{proof}
+利用式\eqref{j1y*}，我们有
+\begin{align*}
+	\langle g_{J^1Y^*}(F_{\mathcal L}(\gamma)),\gamma'\rangle&=(g_{X}^{-1})^*\langle F_{\mathcal L}(\gamma),(j^1g)^{-1}(\gamma)\rangle\\
+&=(g_{X}^{-1})^*\left[
+\mathcal L(\gamma)+\left.\frac{\dd}{\dd \epsilon}\right|_{\epsilon=0}\mathcal L(\gamma+\epsilon(j^1g^{-1}(\gamma')-\gamma))
+\right]\\
+&=
+\mathcal L(j^1g(\gamma))+\left.\frac{\dd}{\dd \epsilon}\right|_{\epsilon=0}\mathcal L(j^1g(\gamma)+\epsilon(\gamma'-j^1g(\gamma)))\\
+&=\langle F_{\mathcal L}(j^1g(\gamma)),\gamma'\rangle
+\end{align*}
+所以$g_{J^1Y^*}F_{\mathcal L}=F_{\mathcal L}j^1g$，这就是第一点。
+
+对第二点，利用第一点和定义，我们有
+\[
+	(j^1g)^*\Theta_{\mathcal L}=(j^1g)^*F_{\mathcal L}^*\Theta=F_{\mathcal L}^*g_{J^1Y^*}^*\Theta,
+\]
+因为正则提升$g_{J^1Y^*}$是特殊正则变换，所以$g_{J^1Y^*}^*\Theta=\Theta$，这就给出了结论。
+
+对第三点，再一次利用第一点（的无穷小版本），令$g=\exp(t\xi)$后再让$t$趋于零，我们立刻得到
+\[
+	\xi_{J^1Y^*}=(F_{\mathcal L})_{*}\xi_{J^1Y},
+\]
+所以
+\[
+	F_{\mathcal L}^*\iota(\xi_{J^1Y^*})=F_{\mathcal L}^*\iota((F_{\mathcal L})_{*}\xi_{J^1Y})=\iota(\xi_{J^1Y})(F_{\mathcal L})^{*}
+\]
+以及
+\[
+	 \dd J^\mathcal{L}(\xi)=F_{\mathcal L}^*\dd J(\xi)=F_{\mathcal L}^*\iota(\xi_{J^1Y^*})\Omega=
+	 \iota(\xi_{J^1Y})\Omega_{\mathcal L},
+\]
+\[
+	 J^\mathcal{L}(\xi)=F_{\mathcal L}^*\iota(\xi_{J^1Y^*})\Theta=\iota(\xi_{J^1Y})\Theta_{\mathcal L}.
+\]
+此即所证。
+\end{proof}
 
 \begin{thm}[Noether定理]
     如果$\mathcal L$具有$G$-对称性，则对任意的$\xi\in \mathfrak g$，则
@@ -599,3 +685,23 @@ $\Phi\eta_Z=\eta_{J^1Y^*}\Phi$.
     \]
     对任意满足Lagrange方程的截面$\phi:X\to Y$都成立。
 \end{thm}
+
+\begin{proof}
+在Lagrange方程Theorem \ref{Lagrangeeq}
+\[
+	(j^1\phi)^*(\iota(W)\Omega_{\mathcal L})=0
+\]
+中，$W$是$J^1Y$上任意的矢量场。这里，我们取$W=\xi_{J^1Y}$，于是
+\[
+	0=(j^1\phi)^*(\iota(\xi_{J^1Y})\Omega_{\mathcal L})=(j^1\phi)^*\dd J^\mathcal{L}(\xi)= \dd \left[ (j^1\phi)^*J^{\mathcal L}(\xi)\right],
+\]
+此即所需。
+\end{proof}
+
+量$(j^1\phi)^*J^{\mathcal L}(\xi)$一般被称为Noether流，或者守恒流。局部地，可以看到
+\[
+	(j^1\phi)^*J^{\mathcal L}(\xi)=\left(
+\frac{\partial L}{\partial v^A_\mu}(j^1\phi)(\xi^A\circ \phi-\partial_\nu \phi^A\xi^\nu)
++L(j^1\phi)\xi^mu
+	\right)\dd^{D-1}x_\mu.
+\]

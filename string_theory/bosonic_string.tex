@@ -1,0 +1,365 @@
+\chapter{The Bosonic String}
+
+\section{action}
+
+The bosonic string is the simplest string theory which only
+describes bosons, so it is unrealistic since 
+there must be fermions in the real world. However, almost
+all the phenomena in more complex string theories will happen
+in the bosonic string theory, so it's a nice starting point.
+
+A bosonic string is an one-dimensional object moving through
+spacetime, or a two-dimension object embedded in 
+the spacetime. The spacetime here is assumed as a plain
+Minkowski space with metric $\eta_{\mu\nu}=\operatorname{diag}
+(-1,1,\dots,1)$, however, we do not need to fix the dimension of 
+spacetime now since it will determined by some physical conditions.
+
+It's also fine to consider objects with higher dimension moving 
+through spacetime, and think strings are the special cases. These 
+$p$-dimensional objects are called $p$-branes. When $p$ goes to 
+$0$, these will become the usual point particles in the spacetime.
+
+Now, after declaring the basic objects in our theory, it's time to
+give their dynamic. As we all know, all dynamic properties of 
+a point particle are contained in a functional whose name is 
+\textit{action}. For a massive free particle, its (relativistic) 
+action is
+\begin{equation}\label{free_particle_action}
+	S_0[\gamma]=-\alpha \int_\gamma ds,
+\end{equation}
+where $\gamma$ is the worldline of this particle, $\alpha$ is
+a universal parameter\footnote{
+	It can be determined by taking its classical limit, and
+	we will get that $\alpha$ is the mass of the particle.}
+of this particle and $ds$
+is the line element of the world line. Suppose 
+the line parameter is $\tau$, the worldline coordinate
+is $x^\mu$, then
+\[
+	ds=\sqrt{-\eta_{\mu\nu}\dot x^\mu \dot x^\nu}d\tau.
+\]
+The real
+worldline of this particle is given by the critical point
+(or the saddle point in the most cases) of action. This 
+is called the \textit{principle of action}.
+
+Usually, the form of the action is \textit{a priori}. If we
+allow another more fundamental principles, it can be gaussed
+or even determined. For example, the \textit{law of inertia}
+tells us that the worldline of a free particle in spacetime
+will be a line. Thus, the most natrual candidate of action 
+of a free particle is the length of its worldline which is 
+shown in the equation \eqref{free_particle_action} since
+for all curves connecting two fixed points in Minkowski space,
+line is the longest one. Besides, the action 
+\eqref{free_particle_action} does not introduce addtional
+symmetries (and then redundances) which are not contained in 
+this theory. However, it's more convenient to take action 
+and the principle of action as our starting point although
+there may be more fundamental principles beyond the cognition
+of all human beings living on the nowadays Earth.
+
+The generalization to the $p$-brand action is direct:
+\[
+	S_p=-T_p\int d\mu_p,
+\]
+here $T_p$ is called the $p$-brane tension and $d\mu_p$ is 
+the $(p+1)$-dimensional volume element given by
+\[
+	d\mu_p=\sqrt{-\det G_{\alpha\beta}}\,d^{p+1}\sigma,
+\]
+where the induced metric is given by
+\[
+	G_{\alpha\beta}=\eta_{\mu\nu}(x)\partial_\alpha x^\mu 
+	\partial_\beta x^\nu,\quad \alpha,\beta=0,\dots,p.
+\]
+For string ($1$-brand), the corrsponding object in spacetime 
+is usually called the \textit{world sheet}, and the the 
+string action, called the \textit{Nambu-Goto action}, takes
+the form
+\[
+	S_{\text{NG}}=-T\int d\sigma d\tau \sqrt{(\dot x\cdot x')^2-\dot x^2 (x')^2},
+\]
+where 
+\[
+	\dot x^\mu=\partial_\tau x^\mu,\quad (x')^\mu=\partial_\sigma x^\mu.
+\]
+
+However, it's difficult to quantization the Nambu-Goto action 
+because of the appearance of the square root. The same situation
+has happened in the case of point particle. In that case, we use the 
+following action
+\[
+	\tilde S_0=\frac{1}{2} \int d\tau\, (e^{-1}\dot x^2-m^2 e)
+\]
+to replace the old action, where $e(\tau)$ is an auxiliary field.
+The equation of motion of auxiliary field is 
+\[
+	\frac{\delta \tilde S_0}{\delta e(\tau)}=
+	-\frac{1}{2}(e^{-2}\dot x^2+m^2)=0,
+\]
+and we can solve the auxiliary field
+\[
+	e=m^{-1}\sqrt{-\dot x^2},
+\]
+then
+\[
+	\tilde S_0=\frac{1}{2} \int d\tau\, (e^{-1}\dot x^2-m^2 e)
+	=\frac{m}{2}\int d\tau\, (-\sqrt{-\dot x^2}-\sqrt{-\dot x^2})
+	=-m\int d\tau\, \sqrt{-\dot x^2}=S_0.
+\]
+Incidentally, this action even works well for massless particles.
+
+Similarily, for bosonic string, we can introduce a auxiliary metric 
+$g_{\alpha\beta}$ on the world sheet and rewrite the action as
+\[
+	S_\sigma=-\frac{T}{2} \int d^2\sigma \sqrt{-g}
+	g^{\alpha\beta}\partial_\alpha x\cdot \partial_\beta x.
+\]
+It's direct to check the equivalence of these two action
+at the level of equations of motion. The equation of motion of
+$g_{\alpha\beta}$ gives us that
+\begin{equation}\label{amme}
+	\partial_\alpha x\cdot \partial_\beta x
+	=\frac{1}{2}g_{\alpha\beta}g^{\gamma\delta}
+	\partial_\gamma x\cdot \partial_\delta x.
+\end{equation}
+This gives
+\[
+	\sqrt{-\det(\partial_\alpha x\cdot \partial_\beta x)}
+	=\frac{1}{2}\sqrt{-g}g^{\alpha\beta}
+	\partial_\alpha x\cdot \partial_\beta x.
+\]
+Note that $g_{\alpha\beta}=\partial_\alpha x\cdot \partial_\beta x$
+is a solution of equation \eqref{amme}.
+
+The new action introduced abobe is called 
+the \textit{string sigma model action}. However,
+at the level of symmetries, these two action is very different.
+For the string sigma model action, it is invariant under the 
+transformation 
+\[
+	g_{\alpha\beta}(\tau,\sigma)\longmapsto
+	\exp(2\phi(\sigma,\tau))g_{\alpha\beta}(\tau,\sigma),
+\]
+since for any $k$-dimensional matrix $A$, 
+$(\det A)^{1/k} A^{-1}$ is invariant under the rescaling 
+$A\mapsto \lambda A$. This new (local) symmetry is called 
+the \textit{Weyl symmetry}. Note that the equation 
+\eqref{amme} can not totally fix $g_{\alpha\beta}$ because
+if $g_{\alpha\beta}$ satisfies this equation, then after
+any Weyl scaling, $\exp(2\phi(\sigma,\tau))g_{\alpha\beta}$
+still satisfies it. So when considering the Lagrangian or
+Hamiltonian, one should fix the coordinate and the Weyl
+scaling.
+
+The variation of the action with respect to the metric
+defined the (Hilbert's) energy momentum tensor
+\[
+	T_{\alpha\beta}=-\frac{4\pi}{\sqrt{-g}}
+	\frac{\delta S_\sigma}{\delta g^{\alpha\beta}}=
+	-\frac{1}{\alpha'}\left(
+	\partial_\alpha x\cdot \partial_\beta x-
+	\frac 12 g_{\alpha\beta}g^{\gamma\delta}
+	\partial_\gamma x\cdot \partial_\delta x
+	\right),
+\]
+where $\alpha'=1/(2\pi T)$ or $T=1/(2\pi \alpha')$. 
+It's well-known that $\nabla_\alpha T^{\alpha \beta}=0$.
+
+The next lemma is a direct application of the Weyl invariance.
+Its proof does not need the equation of motion $T_{\alpha\beta}=0$.
+
+\begin{lem}
+	$T_{\alpha\beta}$ is traceless (off shell), i.e. $g^{\alpha\beta}T_{\alpha\beta}=0$.
+\end{lem}
+
+\begin{proof}
+	Since $S_\sigma[\lambda h]=S_\sigma[h]$, we should have that
+	\[
+		0=\left.\frac{\delta}{\delta \lambda}S_\sigma[\lambda h]
+		\right |_{\lambda=1}
+		=g^{\alpha\beta}\frac{\delta S_\sigma}{\delta g^{\alpha\beta}},
+	\]
+	and then $g^{\alpha\beta}T_{\alpha\beta}=0$.
+\end{proof}
+
+
+There're another terms which are independent of the choice
+of the coordinate. For example, one may think a cosmological
+term is possible,
+\[
+	S_1=\lambda \int d^2\sigma \sqrt{-g}.
+\]
+However, it doesn't have Weyl invariance, and then it 
+makes that
+\[
+	g^{\alpha\beta}\frac{1}{\sqrt{-g}}
+	\frac{\delta}{\delta g^{\alpha\beta}} (S_\sigma+S_1)=
+	-\frac{\lambda}{2}g^{\alpha\beta}g_{\alpha\beta}=-\lambda,
+\]
+so the equation of motion 
+$\delta (S_\sigma+S_1)/\delta g^{\alpha\beta}=0$ will never 
+be true. Anther possible term is 
+\[
+	S_2=\lambda \int d^\sigma \sqrt{-g} R(g),
+\]
+where $R$ is the scalar curvature of $h$. 
+If our world sheet is boundless, this term will be Weyl 
+invariant, since for $g\mapsto \exp(2\phi)g$, $\sqrt{-g}R$ 
+transforms like
+\[
+\sqrt{-g}R\longmapsto \sqrt{-g}(R-2\nabla^2 \phi),
+\]
+where $\nabla^2=g^{\alpha\beta}\nabla_\alpha\nabla_\beta$
+is the Laplace operator. Using the formula
+\[
+	\frac{1}{\sqrt{-g}}\partial_a (\sqrt{-g}v^a)=\nabla_a v^a,
+\]
+it's clear that the addtional term $\sqrt{-g}\nabla^2 \phi$
+is a total derivative. For two-dimensional manifold, the
+scalar curvature $R$ equal to twice the sectional curvature 
+$K$, so the famous formula thanks to Gauss and Bonnet 
+tells us that
+\[
+	\frac{1}{4\pi}\int_M d^2\sigma \sqrt{-g} R
+	=\frac{1}{2\pi}\int_M d^2\sigma \sqrt{-g} K=
+	\chi (M)
+\]
+is the Euler characteristic of $M$.
+
+If our world sheet is not boundless, Gauss-Bonnet formula
+tells us that 
+\[
+	\frac{1}{2\pi}\int_M d^2\sigma \sqrt{-g} K+
+	\frac{1}{2\pi}\int_{\partial M}ds \,k=\chi(M),
+\]
+where $ds$ is the line element along the boundary of $M$
+and $k$ is the geodesic curvature of $\partial M$. Now,
+it's natural to guess the following proposition.
+
+\begin{pro}
+\[
+\frac{1}{4\pi} \int_M d^2\sigma \sqrt{-g} R+
+\frac{1}{2\pi}\int_{\partial M}ds\, k.
+\]
+is Weyl invariant.
+\end{pro}
+
+\begin{proof}
+Let curve $c$ is a connected component of $\partial M$.
+We will use the length of curve to parametrize it such
+that $\dot c^2=-1$. Choose unit vectors $n(x)\in T_{x}M$ 
+such that $n\cdot \dot c=0$ for all $x\in c$, then the geodesic 
+curvature is defined by $k=(\nabla_{\dot c}\dot c)\cdot n$.
+
+Since under the transformation 
+$g_{\alpha\beta}\mapsto g'_{\alpha\beta}=\exp(2\phi)g_{\alpha\beta}$, 
+\[
+	\dot c \mapsto \dot c'=\exp(-\phi)\dot c,\quad 
+	n \mapsto n'=\exp(-\phi)n
+\]
+and
+\[
+	\Gamma^\alpha_{\beta\gamma}
+	\longmapsto (\Gamma')^\alpha_{\beta\gamma}=\Gamma^\alpha_{\beta\gamma}+
+	(\delta^\alpha_\beta \partial_\gamma \phi+
+	\delta^\alpha_\gamma \partial_\beta \phi-
+	g_{\beta\gamma}g^{\alpha\delta}\partial_\delta \phi,
+	)
+\]
+one should have that
+\begin{align*}
+	k'&=g'_{\alpha\beta}(\nabla'_{\dot c'}\dot c')^\alpha
+	(n')^\beta\\
+	&=g_{\alpha\beta}(\nabla'_{\dot c}\dot c')^\alpha n^\beta\\
+	&=g_{\alpha\beta}\dot c^\gamma 
+	(\nabla'_{\gamma}(e^{-\phi}\dot c))^\alpha n^\beta\\
+	&=e^{-\phi}g_{\alpha\beta}\dot c^\gamma
+	(\nabla'_{\gamma}\dot c)^\alpha n^\beta\\
+	&=e^{-\phi}g_{\alpha\beta}\dot c^\gamma
+(\partial_\gamma\dot c^\alpha
++(\Gamma')_{\delta\gamma}^\alpha \dot c^\delta)n^\beta\\
+&=e^{-\phi}k+e^{-\phi}g_{\alpha\beta}\dot c^\gamma
+(\delta^\alpha_\delta \partial_\gamma \phi+
+	\delta^\alpha_\gamma \partial_\delta \phi-
+	g_{\delta\gamma}g^{\alpha\rho}\partial_\rho \phi)
+	\dot c^\delta n^\beta\\
+&=e^{-\phi}(k+n^\alpha \partial_\alpha \phi)
+\end{align*}
+and
+\[
+	ds\longmapsto ds'=\exp(\phi)ds,
+\]
+so
+\[
+	\frac{1}{2\pi}\int_{\partial M}ds\, k\longmapsto
+	\frac{1}{2\pi}\int_{\partial M}ds \, k+
+	\frac{1}{2\pi}\int_{\partial M}ds \, n^\alpha 
+	\partial_\alpha\phi.
+\]
+
+Finally, we have calculated that
+\begin{align*}
+	-\frac{1}{2\pi}\int_Md^2\sigma \sqrt{-g}
+	\nabla_\alpha(g^{\alpha\beta}\nabla_\beta \phi)
+	&=-\frac{1}{2\pi}\int_Md^2\sigma
+	\partial_\alpha(\sqrt{-g} g^{\alpha\beta}\nabla_\beta \phi)\\
+	&=-\frac{1}{2\pi}\int_{\partial M}
+	(\iota({\partial_\alpha})d^2\sigma)
+\sqrt{-g} g^{\alpha\beta}\partial_\beta \phi\\
+&=-\frac{1}{2\pi}\int_{\partial M}
+	d\sigma^\gamma \sqrt{-g} g^{\alpha\beta}\epsilon_{\alpha\gamma}
+ \partial_\beta \phi\\
+&=-\frac{1}{2\pi}\int_{\partial M}
+ds \,\dot c^\gamma \sqrt{-g} g^{\alpha\beta}\epsilon_{\alpha\gamma}
+\partial_\beta \phi,
+\end{align*}
+where $\epsilon$ is the Levi-Civita symbol with 
+$\epsilon_{01}=-\epsilon_{10}=1$ and $\epsilon_{00}=\epsilon_{11}=0$. 
+Let $a^\beta=\dot c^\gamma \sqrt{-g} g^{\alpha\beta}\epsilon_{\alpha\gamma}$, then 
+\[
+	g_{\delta\beta}\dot c^\delta a^\beta=\sqrt{-g}\epsilon_{\alpha\gamma}\dot c^\gamma\dot c^\alpha=0,
+\]
+so $a$ and $c$ are orthogonal. What's more,
+\begin{align*}
+	a^2=g_{\beta\delta}a^\beta a^\delta &=
+	(-g)g_{\beta\delta}\dot c^\gamma \dot c^\xi  
+	g^{\alpha\beta}\epsilon_{\alpha\gamma}
+	g^{\zeta\delta}\epsilon_{\zeta\xi}\\
+	&=(-g)\dot c^\gamma \dot c^\xi  
+	g^{\alpha\beta}\epsilon_{\alpha\gamma}
+	\epsilon_{\beta\xi}\\
+	&=(-g)\dot c^\gamma \dot c^\xi
+	(g^{-1}g_{\gamma\xi})\\
+	&=-\dot c^\gamma \dot c^\xi g_{\gamma\xi}\\
+	&=1,
+\end{align*}
+so $a$ is just the normal vecter $n$ defined above. Therefore,
+\[
+	\frac{1}{4\pi} \int_M d^2\sigma \sqrt{-g} R
+	\longmapsto 
+	\frac{1}{4\pi} \int_M d^2\sigma \sqrt{-g} R
+	-\frac{1}{2\pi}\int_{\partial M}ds \, n^\alpha
+\partial_\alpha\phi
+\]
+and 
+\[
+	\frac{1}{4\pi} \int_M d^2\sigma \sqrt{-g} R+
+	\frac{1}{2\pi}\int_{\partial M}ds\, k.
+\]
+is Weyl invariant.
+\end{proof}
+
+According to this proposition, the most
+general action for bosonic string can be written as
+\begin{align*}
+	S&=S_\sigma+\lambda \chi\\
+&=-\frac{T}{2} \int_M d^2\sigma \sqrt{-g}
+g^{\alpha\beta}\partial_\alpha x\cdot \partial_\beta x
+-\frac{\lambda}{4\pi} \int_M d^2\sigma \sqrt{-g} R(g)-
+\frac{\lambda}{2\pi}\int_{\partial M}ds\, k,
+\end{align*}
+where $\chi$ is a pure topological term which can be 
+omitted when considering local properties.
