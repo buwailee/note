@@ -1,6 +1,6 @@
 \chapter{The Bosonic String}
 
-\section{action}
+\section{Action}
 
 The bosonic string is the simplest string theory which only
 describes bosons, so it is unrealistic since 
@@ -8,12 +8,34 @@ there must be fermions in the real world. However, almost
 all the phenomena in more complex string theories will happen
 in the bosonic string theory, so it's a nice starting point.
 
-A bosonic string is an one-dimensional object moving through
-spacetime, or a two-dimension object embedded in 
-the spacetime. The spacetime here is assumed as a plain
-Minkowski space with metric $\eta_{\mu\nu}=\operatorname{diag}
-(-1,1,\dots,1)$, however, we do not need to fix the dimension of 
+A bosonic string is an one-dimensional connected object moving 
+through spacetime, and its trajectory forms a two-dimension object, 
+called the worldsheet, embedded in the spacetime. 
+The spacetime here is assumed as a plain
+Minkowski space with metric
+\[
+	\eta_{\mu\nu}=\operatorname{diag}(-1,1,\dots,1),
+\]
+however, we do not need to fix the dimension of
 spacetime now since it will determined by some physical conditions.
+
+Comparing with old stories, 
+string is the analogue of point particle, 
+and worldsheet is the analogue of worldline. 
+However, there's a main difference
+between string and point particle. It's nice to think 
+point particles as points on the worldline, but this does not
+work for strings. Strings can only be seen as slicings of 
+the worldsheet. Thus, generally, we cannot talk about the 
+coordinate of a string in spacetime. This picture is fatal 
+in the disscussion of string interaction.
+
+Strings as one-dimensional connected objects, can divided 
+into two classes topologically ------ \textit{open strings} 
+and \textit{closed strings}. Thus, the 
+worldsheet of a open string is a band locally, and 
+the worldsheet of a closed string is a cylinder locally
+(and may be a torus globally).
 
 It's also fine to consider objects with higher dimension moving 
 through spacetime, and think strings are the special cases. These 
@@ -74,19 +96,20 @@ where the induced metric is given by
 	G_{\alpha\beta}=\eta_{\mu\nu}(x)\partial_\alpha x^\mu 
 	\partial_\beta x^\nu,\quad \alpha,\beta=0,\dots,p.
 \]
-For string ($1$-brand), the corrsponding object in spacetime 
-is usually called the \textit{world sheet}, and the the 
-string action, called the \textit{Nambu-Goto action}, takes
+For string ($1$-brand), the string action, 
+called the \textit{Nambu-Goto action}, takes
 the form
 \[
-	S_{\text{NG}}=-T\int d\sigma d\tau \sqrt{(\dot x\cdot x')^2-\dot x^2 (x')^2},
+	S_{\text{NG}}=-T\int d\sigma d\tau 
+	\sqrt{(\dot x\cdot x')^2-\dot x^2 (x')^2},
 \]
 where 
 \[
-	\dot x^\mu=\partial_\tau x^\mu,\quad (x')^\mu=\partial_\sigma x^\mu.
+	\dot x^\mu=\partial_\tau x^\mu,\quad (x')^\mu
+	=\partial_\sigma x^\mu.
 \]
 
-However, it's difficult to quantization the Nambu-Goto action 
+However, it's difficult to quantize the Nambu-Goto action 
 because of the appearance of the square root. The same situation
 has happened in the case of point particle. In that case, we use the 
 following action
@@ -112,7 +135,7 @@ then
 Incidentally, this action even works well for massless particles.
 
 Similarily, for bosonic string, we can introduce a auxiliary metric 
-$g_{\alpha\beta}$ on the world sheet and rewrite the action as
+$g_{\alpha\beta}$ on the worldsheet and rewrite the action as
 \[
 	S_\sigma=-\frac{T}{2} \int d^2\sigma \sqrt{-g}
 	g^{\alpha\beta}\partial_\alpha x\cdot \partial_\beta x.
@@ -141,7 +164,7 @@ For the string sigma model action, it is invariant under the
 transformation 
 \[
 	g_{\alpha\beta}(\tau,\sigma)\longmapsto
-	\exp(2\phi(\sigma,\tau))g_{\alpha\beta}(\tau,\sigma),
+	\exp(2\phi(\tau,\sigma))g_{\alpha\beta}(\tau,\sigma),
 \]
 since for any $k$-dimensional matrix $A$, 
 $(\det A)^{1/k} A^{-1}$ is invariant under the rescaling 
@@ -149,7 +172,7 @@ $A\mapsto \lambda A$. This new (local) symmetry is called
 the \textit{Weyl symmetry}. Note that the equation 
 \eqref{amme} can not totally fix $g_{\alpha\beta}$ because
 if $g_{\alpha\beta}$ satisfies this equation, then after
-any Weyl scaling, $\exp(2\phi(\sigma,\tau))g_{\alpha\beta}$
+any Weyl scaling, $\exp(2\phi(\tau,\sigma))g_{\alpha\beta}$
 still satisfies it. So when considering the Lagrangian or
 Hamiltonian, one should fix the coordinate and the Weyl
 scaling.
@@ -206,7 +229,7 @@ be true. Anther possible term is
 	S_2=\lambda \int d^\sigma \sqrt{-g} R(g),
 \]
 where $R$ is the scalar curvature of $h$. 
-If our world sheet is boundless, this term will be Weyl 
+If our worldsheet is boundless, this term will be Weyl 
 invariant, since for $g\mapsto \exp(2\phi)g$, $\sqrt{-g}R$ 
 transforms like
 \[
@@ -229,7 +252,7 @@ tells us that
 \]
 is the Euler characteristic of $M$.
 
-If our world sheet is not boundless, Gauss-Bonnet formula
+If our worldsheet is not boundless, Gauss-Bonnet formula
 tells us that 
 \[
 	\frac{1}{2\pi}\int_M d^2\sigma \sqrt{-g} K+
@@ -263,7 +286,8 @@ $g_{\alpha\beta}\mapsto g'_{\alpha\beta}=\exp(2\phi)g_{\alpha\beta}$,
 and
 \[
 	\Gamma^\alpha_{\beta\gamma}
-	\longmapsto (\Gamma')^\alpha_{\beta\gamma}=\Gamma^\alpha_{\beta\gamma}+
+	\longmapsto (\Gamma')^\alpha_{\beta\gamma}=
+	\Gamma^\alpha_{\beta\gamma}+
 	(\delta^\alpha_\beta \partial_\gamma \phi+
 	\delta^\alpha_\gamma \partial_\beta \phi-
 	g_{\beta\gamma}g^{\alpha\delta}\partial_\delta \phi,
@@ -310,17 +334,19 @@ Finally, we have calculated that
 	(\iota({\partial_\alpha})d^2\sigma)
 \sqrt{-g} g^{\alpha\beta}\partial_\beta \phi\\
 &=-\frac{1}{2\pi}\int_{\partial M}
-	d\sigma^\gamma \sqrt{-g} g^{\alpha\beta}\epsilon_{\alpha\gamma}
- \partial_\beta \phi\\
+	d\sigma^\gamma \sqrt{-g} g^{\alpha\beta}
+	\epsilon_{\alpha\gamma}\partial_\beta \phi\\
 &=-\frac{1}{2\pi}\int_{\partial M}
-ds \,\dot c^\gamma \sqrt{-g} g^{\alpha\beta}\epsilon_{\alpha\gamma}
-\partial_\beta \phi,
+ds \,\dot c^\gamma \sqrt{-g} g^{\alpha\beta}
+\epsilon_{\alpha\gamma}\partial_\beta \phi,
 \end{align*}
 where $\epsilon$ is the Levi-Civita symbol with 
 $\epsilon_{01}=-\epsilon_{10}=1$ and $\epsilon_{00}=\epsilon_{11}=0$. 
-Let $a^\beta=\dot c^\gamma \sqrt{-g} g^{\alpha\beta}\epsilon_{\alpha\gamma}$, then 
+Let $a^\beta=\dot c^\gamma \sqrt{-g} g^{\alpha\beta}
+\epsilon_{\alpha\gamma}$, then 
 \[
-	g_{\delta\beta}\dot c^\delta a^\beta=\sqrt{-g}\epsilon_{\alpha\gamma}\dot c^\gamma\dot c^\alpha=0,
+	g_{\delta\beta}\dot c^\delta a^\beta=\sqrt{-g}
+	\epsilon_{\alpha\gamma}\dot c^\gamma\dot c^\alpha=0,
 \]
 so $a$ and $c$ are orthogonal. What's more,
 \begin{align*}
@@ -363,3 +389,30 @@ g^{\alpha\beta}\partial_\alpha x\cdot \partial_\beta x
 \end{align*}
 where $\chi$ is a pure topological term which can be 
 omitted when considering local properties.
+
+\section{Quantization}
+
+There are two `standard' ways to quantize a theory where
+the action is given --- \textit{canonical quantization}
+and \textit{path integral quantization}. 
+Canonical quantization is useful to investigate the 
+specturm, but it's not useful to investigate the symmetries
+of the theory after quantization, and path integral
+quantization is the opposite. Here we will focus on the
+specturm, so let's use canonical quantization at first.
+
+% Let $\sigma^2=i\sigma^0$, this is a standard trick called
+% \textit{Wick rotation}. Then the path integral can be written
+% as 
+% \[
+% 	\int \frac{\mathcal D x \mathcal D g}
+% 	{\operatorname{Diff}\times \operatorname{Weyl}} \exp(-S),
+% \]
+% where the Euclidean action is $S=S_x+\lambda \chi$ with
+% \[
+% 	S_x=\frac{T}{2} \int_M d^2\sigma \sqrt{g}
+% g^{\alpha\beta}\partial_\alpha x\cdot \partial_\beta x,\quad
+% \chi=\frac{1}{4\pi} \int_M d^2\sigma \sqrt{g} R+
+% 	\frac{1}{2\pi}\int_{\partial M}ds\, k.
+% \]
+% Here $g$ is a Riemannian metric on $M$.
