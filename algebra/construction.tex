@@ -19,7 +19,14 @@
 最后，给定$R$的两个理想$\mathfrak{a}$和$\mathfrak{b}$，定义$(\mathfrak{a}:\mathfrak{b})$为$\{r\in R\,:\, r\mathfrak{b}\subset \mathfrak{a}\}$，这是一个理想，因为若$x\in (\mathfrak{a}:\mathfrak{b})$，由于$\mathfrak{a}$是一个理想，则$yx\mathfrak{b}\subset y\mathfrak{a}\subset \mathfrak{a}$或者$xy\in (\mathfrak{a}:\mathfrak{b})$. 当$\mathfrak{a}=(a)$是一个主理想的时候，通常会略去主理想的括号，写作$(a:\mathfrak{b})$，同样，如果$\mathfrak{b}=(b)$是主理想，会写做$(\mathfrak{a}:b)$. $(\mathfrak{a}:\mathfrak{b})$被称为理想$\mathfrak{a}$关于理想$\mathfrak{b}$的商，比如在整数环内，$(6:2)=(3)$.
 \endpara
 
-\para 称一个环$R$是一个整环，如果任取非零的$a$, $b\in R$，可以推出$ab\neq 0$. 一般而言，一个环不是整环。如果$ab=0$但$a$和$b$都不等于零，则这样的$a$或者$b$被称为一个零因子。零显然是一个零因子。而整环就是一个没有非零零因子的环。换而言之，在整环里面，消去律是成立的。\endpara
+\para[零因子与整环] 如果在环中存在$ab=0$，则这样的$a$或者$b$被称为一个零因子，如果不是交换环，则$a$被称为左零因子，而$b$被称为右零因子。
+零显然是一个零因子。而一般来说，环中会存在大量非零零因子，没有非零零因子的环被称为整环。\endpara
+
+在整环中，消去律市成立的：对非零的$a$，成立
+\[
+	ab=ac \quad \Rightarrow \quad b=c.
+\]
+实际上，由于$ab-ac=a(b-c)=0$，由于$a$非零且环是整环，没有非零零因子，所以此时只可能$b-c=0$或$b=c$.
 
 \begin{lem}
 	设$f:R\to S$是一个单同态，如果$S$是一个整环，则$R$也是一个整环。
@@ -114,11 +121,13 @@
 
 注意到，$x_{n-1}\not\in \mathfrak{a}_n$和$x_{n}\not\in \mathfrak{a}_{n-1}$就足以推出$x_{n-1}+x_{n}\not\in \mathfrak{a}_{n-1}\cup \mathfrak{a}_n$，并不需要素理想的假设，所以命题中才会有至多只有两个不是素理想。
 
-\begin{pro} \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$是一族理想，如果$\bigcap_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
+\begin{pro} \label{primeau}设$\mathfrak{p}$是环$R$的一个素理想，而$\mathfrak{a}_1$, $\dots$, $\mathfrak{a}_n$是一族理想，如果$\prod_i \mathfrak{a}_i\subset \pp$，则存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 如果将包含改成等号，命题依然成立。
 \end{pro}
 
+有时候命题中的$\prod_i \mathfrak{a}_i\subset \pp$会换成$\bigcap_i \mathfrak{a}_i\subset \pp$，但注意到$\prod_i \mathfrak{a}_i\subset \bigcap_i \mathfrak{a}_i$，所以这个命题只会变弱。
+
 \begin{proof}
-	如果$\mathfrak{p}=\bigcap_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\bigcap_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \bigcap_{i} \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 矛盾。
+	如果$\mathfrak{p}=\prod_i \mathfrak{a}_i$，由包含的命题，存在一个$i$使得$\mathfrak{a_i}\subset \mathfrak{p}$. 反过来，$\mathfrak{p}=\prod_i \mathfrak{a}_i\subset \mathfrak{a}_i$. 所以我们只要证明包含的命题。假设任取$i$都有$\mathfrak{a}_i\not\subset \mathfrak{p}$，因此存在$x_i\in\mathfrak{a}_i$但$x_i\not\in \mathfrak{p}$. 于是对$x_1\cdots x_n\in \prod_i \mathfrak{a}_i$，因为$\pp$是素理想，所以$x_1\cdots x_n\not\in \pp$. 但这与$x_1\cdots x_n\in \prod_i \mathfrak{a}_i$矛盾。
 \end{proof}
 
 % \para 如果对仿射簇理论（见Section \ref{variety}）有所了解，则可以将他们翻译成几何的语言：将理想改成代数集、素理想改成仿射簇、包含改成包含于、并改成交。于是有：
@@ -154,7 +163,7 @@
 
 同时，从上面的证明，我们还可以总结出下面这个简单的结论：
 \begin{lem}
-设$\mathfrak a$是$R$的一个理想，而$\mathfrak{b}$是$R/\mathfrak a$的一个理想，设典范同态$\pi:R\to R/\mathfrak a$，则我们可以典范等同环$R/(\mathfrak a+)$
+设$\mathfrak a$是$R$的一个理想，而$\mathfrak{b}$是$R/\mathfrak a$的一个理想，设典范同态$\pi:R\to R/\mathfrak a$，则我们可以典范等同环$R/(\mathfrak a+\pi^{-1}(\mathfrak b))$与$(R/\mathfrak a)/\mathfrak b$.
 \end{lem}
 
 利用上面这个观察，我们可以对商映射下的理想做出如下断言：$R/\mathfrak{a}$中的（素）理想一一对应着包含$\mathfrak{a}$的（素）理想，通过$\bar{\mathfrak{b}}\to \pi^{-1}(\bar{\mathfrak{b}})$.
@@ -165,7 +174,7 @@
 
 任取环同态$f:R\to S$，我们可以做出如下分解$f:R\to f(R)\hookrightarrow S$，其中满同态$R\to f(R)$的结构我们是清楚的，因为我们可以利用同构$f(R)\cong R/\ker(f)$将它变成商同态$R\to R/\ker(f)$的情况。所以一般而言，含入同态才是造成理想的像不是理想的障碍，正如前面我们举的例子，含入同态$\mathbb{Z}\hookrightarrow \mathbb{Q}$下，理想$(2)$的像不是理想。
 
-\begin{para}
+\begin{para}[理想的根]
 定义一个理想$\mathfrak{a}$的根$\sqrt{\mathfrak{a}}$如下：
 \[
 	\sqrt{\mathfrak{a}}=\{r\in R\,:\,\exists n\in \mathbb{Z}^+\text{ s.t. }r^n\in \mathfrak{a}\}.
@@ -700,7 +709,7 @@ $F/H$确实有一个自然的左$R$-模右$T$-模结构，实际上，我们任�
 自然同构是简单的。
 \end{proof}
 
-\para 从这里开始，以后讨论的张量积都是$R$-模范畴（交换环自然定义的双边$R$-模）的张量积，所以两个$R$-模的张量积依然是$R$-模，所有出现的同态都是$R$-模同态。并且，我们有双函子同构$-\otimes *\cong *\otimes -$.
+从这里开始，以后讨论的张量积都是$R$-模范畴（交换环自然定义的双边$R$-模）的张量积，所以两个$R$-模的张量积依然是$R$-模，所有出现的同态都是$R$-模同态。并且，我们有双函子同构$-\otimes *\cong *\otimes -$.
 
 \begin{pro}
 $(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的一个理想。
@@ -745,8 +754,8 @@ $(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的
 
 对于$\deg(f+g)$，我们有估计$\deg(f+g)\leq \max\{\deg(f),\deg(g)\}$，不等号是可以取严格的，同样比如在$\zz/4\zz$上的多项式$2x$，有$2x+2x=0$.
 
-\begin{thm}
-多项式除法算法：设$f$, $g\in R[x]$，而且$g$的首项系数可逆，则存在唯一的多项式$p$, $r\in R[x]$使得$f=pg+r$，且$\deg(r)<\deg(g)$.
+\begin{thm}[多项式除法算法]
+设$f$, $g\in R[x]$，而且$g$的首项系数可逆，则存在唯一的多项式$p$, $r\in R[x]$使得$f=pg+r$，且$\deg(r)<\deg(g)$.
 \end{thm}
 
 \begin{proof}
@@ -777,7 +786,7 @@ $(R/\mathfrak{a})\otimes M\cong M/\mathfrak{a}M$，其中$\mathfrak{a}$是$R$的
 \[
 	r(r_i)_{i\in I}=(rr_i)_{i\in I}
 \]
-也可以定义出$\prod_i R_i$上的$R$-代数结构。和以前类似，$\prod_{i=1}^2 R_i$也会记作$R_1\times R_2$. \endpara
+也可以定义出$\prod_i R_i$上的$R$-代数结构。和以前类似，$\prod_{i=1}^n R_i$也会记作$R_1\times R_2\times \cdots\times R_n$. \endpara
 
 如果$S$是零环，即$0=1$的环，则$R\times S$可以典范等同于$R$.
 

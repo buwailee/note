@@ -669,7 +669,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \begin{proof}
 	记$l(M)$是$M$所有的合成列中最短那条的长度。设$N$是$M$的一个真子模，我们先证明$l(N)<l(M)$.
 
-	给定一个合成列$0=M_0\subset M_1\subset \cdots\subset M_n=M$，记$N$的子模$N\cap M_i$为$N_i$，进而有$N$的子模链$0=N_0\subset N_1\subset \cdots\subset N_n=N$. 由同构\eqref{modiso1}
+	给定一个合成列$0=M_0\subset M_1\subset \cdots\subset M_n=M$，记$N$的子模$N\cap M_i$为$N_i$，进而有$N$的子模链$0=N_0\subset N_1\subset \cdots\subset N_n=N$. 由同构Proposition \ref{modiso1}
 	\[
 	N_i/N_{i-1}=(N\cap M_i)/(N\cap M_{i-1})\cong (M_{i-1}+N\cap M_i)/M_{i-1},
 	\]
@@ -710,7 +710,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 
 设$f:M\to N$是有限长模之间的一个满同态，我们有短正合列$0\to \ker(f)\to M\to N\to 0$，于是上面的命题给出了$l(M)=l(\ker f)+l(N)$. 如果$f:M\to N$不是满同态，那么可以构造出$f:M\to \im(f)$，这是一个满同态，于是$l(M)=l(\ker f)+l(\im f)$. 
 
-\para 域上的有限长模是最常用的一个有限长模。设$k$是一个域，定义$k$-矢量空间$V$的维度$\dim_k(V)$为$V$的长度。维度是线性代数理论中一个很重要的不变量，以后我们会看到维度的其他等价定义。
+\para[矢量空间维度] 域上的有限长模是最常用的一个有限长模。设$k$是一个域，定义$k$-矢量空间$V$的维度$\dim_k(V)$为$V$的长度。维度是线性代数理论中一个很重要的不变量，以后我们会看到维度的其他等价定义。
 
 设$M$是域$k$上的有限生成模，它是自由模，不妨直接写作$k^n$，一组自由生成元写作$\{1_1$, $\cdots$, $1_n\}$，那么对小于$n$的正整数$m$，$\{1_1$, $\cdots$, $1_m\}$自由生成了它的一个子模$k^m$. 于是我们有链
 \[
@@ -720,13 +720,17 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 
 由于自由模的自由生成元的个数与生成元的选取无关，所以有限维矢量空间的维度也就是自由生成元的个数。
 
+\begin{pro}
+	矢量空间是有限生成的当且仅当他是有限维的。
+\end{pro}
+
+\begin{proof}
 如果$k$-模$M$不是有限生成的，则$\dim_k(M)=\infty$. 实际上，给定一个$x_1\in M$，他生成的子模$\langle x_1\rangle=kx_1\cong k^1$，然后再从$M-\langle x_1\rangle$选出一个非零元$x_2$，得到$\langle x_1,x_2\rangle\cong k^2$，接着再从$M-\langle x_1,x_2\rangle$选出一个非零元$x_3$，如是进行下去，我们就得到了一个严格递增升链
 \[
 	0\subset k^1\subset k^2\subset \cdots \subset k^n\subset \cdots,
 \]
 按构造$k^m/k^{m-1}\cong k$，于是这是一个无限长合成列。
-
-所以，一个$k$-矢量空间是有限生成的当且仅当他是有限维的。
+\end{proof}
 
 \begin{pro}[线性代数基本定理]
 设$f:V\to W$是两个有限维$k$-矢量空间的同态，由于有限维$k$-矢量空间都是有限长$k$-模，则$l(M)=l(\ker f)+l(\im f)$给出维度的等式：
@@ -837,7 +841,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \begin{proof}
 	令$\mathfrak{p}$是$R$的一个素理想，则$R/\mathfrak{p}$是一个Artin整环。取非零$x\in R/\mathfrak{p}$，有降链$(x)\supset (x^2)\cdots$，由于是Artin整环，所以存在正整数$n$使得$(x^n)=(x^{n+1})$，因此$x^n=x^{n+1}y$，由整环的消去律得到$xy=1$. 所以$R/\mathfrak{p}$是一个域。
 
-	剩下我们考虑所有有限个极大理想的交构成的理想族，由极小条件，这个理想族有极小元$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$. 任取极大理想$\mathfrak{m}$，由于$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，因此极小性给出$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n=\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，故$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}$. 由Proposition \eqref{primeau}，存在$i$使得$\mathfrak{m}_i\subset \mathfrak{m}$，由于是极大理想，所以$\mathfrak{m}=\mathfrak{m}_i$.
+	剩下我们考虑所有有限个极大理想的交构成的理想族，由极小条件，这个理想族有极小元$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$. 任取极大理想$\mathfrak{m}$，由于$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，因此极小性给出$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n=\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，故$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}$. 由Proposition \ref{primeau}，存在$i$使得$\mathfrak{m}_i\subset \mathfrak{m}$，由于是极大理想，所以$\mathfrak{m}=\mathfrak{m}_i$.
 \end{proof}
 
 \begin{pro}

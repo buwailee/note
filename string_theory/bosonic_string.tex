@@ -396,10 +396,28 @@ There are two `standard' ways to quantize a theory where
 the action is given --- \textit{canonical quantization}
 and \textit{path integral quantization}. 
 Canonical quantization is useful to investigate the 
-specturm, but it's not useful to investigate the symmetries
-of the theory after quantization, and path integral
+specturm, but symmetries of the theory are not obvious
+after quantization, and path integral
 quantization is the opposite. Here we will focus on the
-specturm, so let's use canonical quantization at first.
+specturm, so let's use the canonical quantization at first.
+
+Open Strings and closed strings have very different specturm,
+so we should disscuss them separately.
+
+\subsection{Open String}
+
+As mentioned in the last section, if one want to write 
+down the Lagrangian or Hamiltonian of a bosonic string,
+he/she must fix the coordinate and the Weyl scaling. 
+For simplicity, we want to choose parameters such that
+\[
+	g=-1,\quad X^+=\sigma^0,\quad 
+	\partial_0(\sqrt{-g}g_{00})=0.
+\]
+The first two conditions are trival. For the third,
+it's helpful to note that $g_{00}\sqrt{-g}$
+is invariant under reparameterizations of $\sigma^0$
+where $\sigma$ is left fixed.
 
 % Let $\sigma^2=i\sigma^0$, this is a standard trick called
 % \textit{Wick rotation}. Then the path integral can be written
@@ -408,7 +426,7 @@ specturm, so let's use canonical quantization at first.
 % 	\int \frac{\mathcal D x \mathcal D g}
 % 	{\operatorname{Diff}\times \operatorname{Weyl}} \exp(-S),
 % \]
-% where the Euclidean action is $S=S_x+\lambda \chi$ with
+% where the Euclidean action is b$S=S_x+\lambda \chi$ with
 % \[
 % 	S_x=\frac{T}{2} \int_M d^2\sigma \sqrt{g}
 % g^{\alpha\beta}\partial_\alpha x\cdot \partial_\beta x,\quad
