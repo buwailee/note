@@ -755,7 +755,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	因此这也不是Artin模。逆否即得证。
 \end{proof}
 
-\begin{thm}
+\begin{thm}\label{finite_length_module}
 设$M$是一个有限长$R$-模，长度为$n$. 对于$M$的任意合成列$0=M_0\subset M_1\subset \cdots\subset M_n=M$，$M_i/M_{i-1}\cong R/\mathfrak{m}_i$都是域，$\mathfrak{m}_i$都是极大理想，但集合$I=\{\mathfrak{m}_i\,:\,1\leq i\leq n\}$与选取的合成列无关，并且有同构
 \[
 	M\cong \bigoplus_{\mathfrak{m}\in I} M_\mathfrak{m}.
@@ -793,7 +793,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	现在来看命题，有限长模$M$的一个极大理想$\mathfrak{m}$是否属于$I$，只取决于$M_\mathfrak{m}$是否为零，而与合成列的选取无关。现在只剩下那个同构了，设$i_\mathfrak{m}:M\to M_{\mathfrak{m}}$是局部化诱导的同态，进而定义$\alpha=\sum_{\mathfrak{m}\in I}i_{\mathfrak{m}}:M\to \bigoplus_{\mathfrak{m}\in I} M_{\mathfrak{m}}$. 这检验这是一个同构，只要对每一个极大理想$\mathfrak{n}$进行局部化即可，而这由已知的，对不同的两个极大理想$\mathfrak{m}$和$\mathfrak{n}$有$(M_\mathfrak{m})_\mathfrak{n}=0$，以及如果$\mathfrak{m}\not\in I$则$M_\mathfrak{m}=0$这两点是清楚的。
 \end{proof}
 
-\begin{pro}
+\begin{pro}\label{pro:3.4.11}
 设$M$是一个有限长模，而$\mathfrak{m}$是一个极大理想，则$M=M_{\mathfrak{m}}$当且仅当存在一个正整数$n$使得$\mathfrak{m}^nM=0$.
 \end{pro}
 
@@ -872,6 +872,53 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 
 由于Artin环是一个有限长模，所以可以把有限长模的结构定理用到Artin环上，这里就不表了。
 
+\begin{pro}
+	设$R$是一个Noether环，而$M$是一个有限生成$R$-模，则以下命题等价：
+	\begin{compactenum}[~~(1)]
+		\item $M$是有限长模。
+		\item 存在一族极大理想$\{\mathfrak m_i\}$满足$\prod_i \mathfrak m_i\subset \operatorname{ann}(M)$.
+		\item 包含$\ann(M)$的素理想都是极大理想。
+		\item $R/\operatorname{ann}(M)$是一个Artin环。
+	\end{compactenum}
+\end{pro}
+
+\begin{proof}
+	$(1)\Rightarrow (2)$来自于Theorem \ref{finite_length_module}和Proposition \ref{pro:3.4.11}.
+
+	$(2)\Rightarrow (3)$，如果$\pp$包含$\ann(M)$，则$\prod_i \mathfrak m_i\subset \pp$，从Proposition
+	\ref{primeau}，存在一个$i$使得$\mathfrak m_i\subset \pp$，又$\mathfrak m_i$极大，所以$\pp=\mathfrak m_i$也极大。
+
+	$(3)\Rightarrow (4)$，此时$R/\operatorname{ann}(M)$中所有素理想都是极大理想，利用上一个命题即可。
+
+	$(4)\Rightarrow (1)$，记$S=R/\operatorname{ann}(M)$，这是一个Artin环，作为$S$-模是有限长模，而$M$
+	是有限生成$S$-模，所以也是有限长模。
+\end{proof}
+
+\begin{pro}
+	设$R$是一个Noether环，而$M\neq 0$是一个有限生成$R$-模，$\pp$是一个包含$\ann(M)$的一个素理想，则
+	$R_\pp$-模$M_\pp$是一个非零有限长模当且仅当$\pp$是包含$\ann(M)$的极小素理想。
+\end{pro}
+
+\begin{proof}
+	如果$\pp$是包含$\ann(M)$的极小素理想，所以$\pp=\sqrt{\ann(M)}$，继而存在一个$n$使得$\pp^n\subset \ann(M)$. 此时上一个命题告诉我们，$M_\pp$是有限长模。
+
+	反过来，假设$M_\pp$在$R_\pp$上有限长，则$R_\pp/\ann(M)_\pp$的每个素理想都是极大理想（因为他是Artin环）。这样的素理想一一对应着$R$中满足$\ann(M)\subset \mathfrak q\subset \pp$的素理想$\mathfrak q$，
+	由极大性，我们得到$\mathfrak q=\pp$. 所以$\pp$满足极小性。
+\end{proof}
+
+将上面两个命题应用到$M=R/\mathfrak a$就有：
+\begin{pro}
+	设$\mathfrak a$是Noether环$R$的一个理想，则以下命题等价：
+	\begin{compactenum}[~~(1)]
+		\item $\pp$是包含$\mathfrak a$的极小素理想。
+		\item $R_\pp/I_\pp$是Artin环。
+		\item 存在一个$n$使得$(\pp_\pp)^n\subset \mathfrak a_{\mathfrak p}$.
+	\end{compactenum}
+\end{pro}
+
+\begin{proof}
+	注意到$\ann(R/\mathfrak a)=\mathfrak a$即可。
+\end{proof}
 
 \section{分次结构}
 
