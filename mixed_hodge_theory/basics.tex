@@ -1,0 +1,323 @@
+\chapter{Basics}
+
+\section{Homology of Complexes}
+
+In this section, we will recall some basic definitions in
+homological algebra.
+
+\begin{definition}
+	Suppose $A$ is an abelian category, a complex $K^\bullet$
+	is a series of objects $K^i\in A$ and morphisms $d^i_K:K^{i-1}\to K^i$ such that $d_K^{i+1}d_K^i=0$.
+\end{definition}
+
+It's natural to visualize a complex $K^\bullet$ by a diagram
+\[
+	\cdots  \xrightarrow{d_K^{i-2}} K^{i-1} \xrightarrow{d_K^{i-1}}K^i \xrightarrow{d_K^{i}}
+	K^{i+1}\xrightarrow{d^{i+1}}\cdots.
+\]
+If the label of $d_K^{i}$ is manifest in the context, 
+we will write it as $d$ for short. For example, $d^2=0$ is the 
+shorthand of $d_K^{i+1}d_K^i=0$.
+
+\begin{definition}
+	Suppose $K^\bullet$, $L^\bullet$ are two complexes in $A$, then
+	$f=\{f^i:K^i\to L^i\}_i$ is called a morphism between 
+	$K^\bullet$ and $L^\bullet$ if $f^{i+1}d^i_K=d^i_Lf^i$ for all $i$.
+\end{definition}
+
+The morphism $f$ between two complexes $K^\bullet$ and $L^\bullet$  
+is usually written as $f:K^\bullet\to L^\bullet$.
+It can be visualized by the following commutative diagram
+\[
+	\xymatrix{
+		\cdots \ar[r]& K^{i-1}\ar[r]^{d^{i-1}_K}\ar[d]^{f^{i-1}}&K^i\ar[r]^{d^{i}_K}\ar[d]^{f^{i}}&K^{i+1}\ar[r]^{d^{i+1}_K}\ar[d]^{f^{i+1}}&\cdots\\
+		\cdots \ar[r]& L^{i-1}\ar[r]^{d^{i-1}_L}&L^i\ar[r]^{d^{i}_L}&L^{i+1}\ar[r]^{d^{i+1}_L}&\cdots
+	}
+\]
+
+Complexes on an abelian category $A$ 
+and morphisms of complexes form a category. Let's denote it by 
+$\operatorname{Kom}(A)$. In applications, it's often useful to consider
+complexes with various finitness conditions. In particular, let 
+\[
+\begin{aligned}
+	&\operatorname{Kom}^+(A):K^i=0\quad \text{for}\quad i< i_0(K^\bullet),\\
+	&\operatorname{Kom}^-(A):K^i=0\quad \text{for}\quad i> i_0(K^\bullet),\\
+	&\operatorname{Kom}^b(A)=\operatorname{Kom}^+(A)\cap \operatorname{Kom}^-(A),\\
+\end{aligned}
+\]
+where $i_0(K^\bullet)$ is a integer. $\operatorname{Kom}^+(A)$, 
+$\operatorname{Kom}^-(A)$ and $\operatorname{Kom}^b(A)$ are clearly
+subcategories of $\operatorname{Kom}(A)$.
+
+\begin{definition}
+	Suppose $K^\bullet \in \operatorname{Kom}(A)$ is a complex, then 
+	the shifted complex $K[n]^\bullet$ by a integer $n$
+	is defined by
+	\[
+		(K[n])^i=K^{n+i},\quad d_{K[n]}^i=(-1)^n d_K^{n+i}.
+	\]
+	It's also natural to define $f[n]:K[n]\to L[n]$ by 
+	$(f[n])^i=f^{n+i}$.
+\end{definition}
+
+There 
+\[
+	T^n:K^\bullet \mapsto K[n]^\bullet, \quad 
+	T^n:f\mapsto f[n]
+\]
+is a functor $T^n:\operatorname{Kom}(A)\to \operatorname{Kom}(A)$, which
+is clearly a equivalence. Because of this equivalence, one can set 
+$i_0(K^\bullet)=0$ for a single $K^\bullet \in \operatorname{Kom}^+(A)$.
+
+\begin{definition}
+Suppose $K^\bullet$ is a complex in an abelian category $A$, then for 
+$K^{i-1}\xrightarrow{d^{i-1}}K^i\xrightarrow{d^i}K^{i+1}$, there exist
+morphisms $a$ and $b$ such that the following diagram is commutative
+\[
+	\begin{xy}
+		\xymatrix{
+			&&\cdot \ar[rrd]^-{b}&&\\
+			K^{i-1} \ar[rr]^-{d^{i-1}} \ar[rrd]_{a}&& K^i \ar[rr]^-{d^i}\ar[u]^-{\coker d^{i-1}}&&K^{i+1}\\
+			&&\cdot \ar[u]_-{\ker d^i}&&
+		}
+	\end{xy}
+\]
+Then we could define the homology object by 
+$H^i(K^\bullet):=\coker(a)=\ker(b)$.
+\end{definition}
+
+In fact, since $d^id^{i-1}=0$ and the universal property of kernal of $d^i$,
+there exists a morphism $a$ such that $d^{i-1}=\ker (d^i)a$. The existance
+of $b$ is similarly form the universal property of cokernal of $d^{i-1}$.
+The most non-trivial part in the above definition is that objects
+$\coker(a)$ and $\ker(b)$ are the same (or more formally, they are natrually
+isomorphism). To prove it, one can consider the following diagram firstly
+\[
+	\begin{xy}
+		\xymatrix{
+		&&\cdot \ar[rrd]^-{b'}&&\\
+		\im(d^{i-1}) \ar[rr]^-{d^{i-1}} \ar[rrd]_-{a'}&& K^i \ar[rr]^-{d^i}\ar[u]^-{\coker d^{i-1}}&&\operatorname{coim}(d^{i}) \\
+		&&\cdot \ar[u]_-{\ker d^i}&&
+		}
+	\end{xy}
+\]
+and then prove that 
+\[
+	\ker b'=\ker b= \im (\coker d^{i-1}\ker d^i),\quad  \coker a'=\coker a
+	=\operatorname{coim} (\coker d^{i-1}\ker d^i).
+\]
+It's an easy exercise so that we omit it.
+
+If $A$ is the category of modules, then
+\[
+	H^i(K^\bullet)=\ker d^i/\im d^{i-1},
+\]
+it's the classical definition.
+
+\begin{pro}
+	Suppose $f:K^\bullet \to L^\bullet$ is a morphism between complexes,
+	then it induces morphisms $\hat f$, $\bar f$ and $H^\bullet(f)$ 
+	such that the following diagrams are commutative
+	\[
+		\xymatrix{
+			\ker d_K^i\ar[r]\ar@{-->}[d]^{\hat{f}^i}&K^i\ar[r]
+			\ar[d]^{f^i}&\coker d^{i-1}_K\ar@{-->}[d]^{\bar{f}^i}
+			\\
+			\ker d_L^i\ar[r]&L^i\ar[r]&\coker d^{i-1}_L
+		}
+		\quad 
+		\xymatrix{
+			\ker d_K^i\ar[rr]^{\coim \varphi^i_K}\ar@{-->}[d]^{\hat{f}^i}&&H^i(K^\bullet)\ar[r]^{\im\varphi^i_K}
+			\ar[d]^{H^i(f)}&\coker d^{i-1}_K\ar@{-->}[d]^{\bar{f}^i}\\
+			\ker d_L^i\ar[rr]^{\coim \varphi^i_L}&&H^i(L^\bullet)\ar[r]^{\im\varphi^i_L}&\coker d^{i-1}_L
+		}
+	\]
+	where $\varphi^i=\coker d^{i-1}\ker d^i$.
+\end{pro}
+
+\begin{proof}
+	It's an easy exercise about universal properties. Since that
+	$f^{i+1}d_K^i=d_L^if^i$, then $d_L^if^i\ker d_K^i=0$, and by
+	the universal properties of $\ker d_L^i$, there exists a 
+	morphism $\hat{f}^i$ such that 
+	\[
+		f^i\ker d_K^i=\ker d_L^i\hat{f}^i.
+	\]
+	The same method works for the existance of $\bar f^i$. 
+	For the second diagram, since that
+	\[
+	\begin{aligned}
+		\coker \varphi^i_L \bar f^i \varphi^i_K
+		&= \coker \varphi^i_L \bar f^i \varphi^i_K\\
+		&= \coker \varphi^i_L \varphi^i_L \hat f^i \\
+		&= 0,
+	\end{aligned}
+	\]
+	$\coker \varphi^i_L \bar f^i \im \varphi^i_K$ also vanishes. In fact,
+	\[
+		\coker \varphi^i_L \bar f^i \im \varphi^i_K\operatorname{coim}\varphi^i_K=\coker \varphi^i_L \bar f^i \varphi^i_K=0
+	\]
+	and $\operatorname{coim}\varphi^i_K$ is an epimorphism.
+	Therefore, the universal property of 
+	$\ker \coker \varphi_K^i=\im \varphi_K^i$ gives a
+	morphism $H^i(f)$ such that
+	\[
+		\bar f^i \im \varphi^i_K=\im \varphi_L^i H^i(f).
+	\]
+	It remains to show that $\coim \varphi_L^i\hat f^i= H^i(f)\coim \varphi_K^i$, which follows from that
+	\[
+		\im \varphi_L^i\coim \varphi_L^i\hat f^i=\varphi^i_L\hat f^i=\bar f^i \varphi^i_K=
+		\im \varphi_L^i H^i(f)\coim \varphi^i_K
+	\]
+	and $\im \varphi_L^i$ is a monomorphism.
+\end{proof}
+
+In the the category of modules, suppose $[a]\in H^i(K)$, then $H^i(f)$ is
+defined by $H^i(f)[a]=[f^i(a)]\in H^i(L)$.
+
+Now we have defined 
+\[
+	H^n :K^\bullet\mapsto H^n(K^\bullet)\quad \text{and}\quad
+	H^n :f\mapsto H^n(f),
+\]
+it's really easy to check that $H^n$ is a functor for any $n$, 
+which is called the homology functor.
+
+\begin{definition}
+	Suppose $f$, $g:K^\bullet\to L^\bullet$ are morphisms of two complexes,
+	if there exists a series morphisms $s^i:K^i\to L^{i-1}$ such that
+	\[
+		f^i-g^i=s^{i+1}d_K^i+d_L^{i-1}s^i,
+	\]
+	then $f$ and $g$ are said to be homotopic and written as $f\sim g$.
+\end{definition}
+
+It's easy to see that $f\sim g$ is equivalent to $f-g\sim 0$.
+
+\begin{lem}
+	Suppose $f$, $g:K^\bullet\to L^\bullet$ are morphisms of two complexes.
+	If $f\sim g$, then $H^\bullet(f)=H^\bullet(g)$.
+\end{lem}
+
+\begin{proof}
+	It's fine to reduce to the case that $g=0$ and then $H^\bullet(g)=0$. We will
+	prove that
+	\[
+		\bar f^i \varphi_K^i = \im \varphi_L^i H^i(f) \operatorname{coim} \varphi_K^i=0.
+	\]
+	In fact,
+	\[
+		\begin{aligned}
+		\bar f^i \varphi_K^i=\bar f^i \coker d_K^{i-1}\ker d_{K}^i 
+		&=\coker d_L^{i-1} f^i\ker d_{K}^i\\
+		&=\coker d_L^{i-1}(s^{i+1}d_K^i+d_L^{i-1}s^i)\ker d_{K}^i\\
+		&=\coker d_L^{i-1}s^{i+1}d_K^i\ker d_{K}^i+\coker d_L^{i-1}d_L^{i-1}s^i\ker d_{K}^i\\
+		&=0.
+		\end{aligned}
+	\]
+	Therefore, $H^i(f) = 0$ because $\im \varphi_L^i$ is a monomorphism
+	and $\operatorname{coim} \varphi_K^i$ is an epimorphism.
+\end{proof}
+
+\begin{definition}
+	A morphism $f:K^\bullet\to L^\bullet$ of complexes in an abelian
+	category is said to be a quasi-isomorphism if the corresponding 
+	homology morphism $H^n(f):H^n(K^\bullet)\to H^n(L^\bullet)$
+	is an isomorphism for any $n$.
+\end{definition}
+
+\begin{pro}
+	A short exact sequence of complexes $0\to K^\bullet\xrightarrow{f}L^\bullet\xrightarrow{g}M^\bullet\to 0$ induce a exact sequence 
+	of homology
+	\[
+		\cdots\to H^n(K^\bullet)\xrightarrow{H^n(f)}H^n(L^\bullet)\xrightarrow{H^n(g)}H^n(M^\bullet)\xrightarrow{\partial^n}H^{n+1}(K^\bullet)\xrightarrow{H^{n+1}(f)}H^{n+1}(L^\bullet)\to\cdots.
+	\]
+\end{pro}
+
+In the category of modules, $\partial^n:H^n(M^\bullet)\to H^{n+1}(K^\bullet)$ can be calculated by
+\[
+	\partial^n([c])=\left[(f^{n+1})^{-1}\left(\dd^n_L\left((g^n)^{-1}(c)\right)\right)\right].
+\]
+
+\begin{proof}
+	According to the snake lemma, there's a exact sequence
+	\[
+		0\to \ker d_K^n\xrightarrow{\hat f^n} \ker d_L^n
+		\xrightarrow{\hat g^n}
+		\ker d_M^n \xrightarrow{\delta^n}
+		\coker d_K^n\xrightarrow{\bar f^{n+1}} \coker d_L^n\xrightarrow{\bar g^{n+1}} \coker d_M^n \to 0
+	\]
+	for any $n$. The left part of this proof is an easy exercise.
+	One could use the Mitchell embedding theorem to prove it in the category
+	of modules only.
+\end{proof}
+
+% \[
+% 	\xymatrix{
+% 	&0\ar[d]&0\ar[d]&0\ar[d]&\\
+% 	\cdots\ar[r]&K^{n-1}\ar[r]^{\dd_K^{n-1}}\ar[d]^{f^{n-1}}&K^n\ar[r]^{\dd_K^n}\ar[d]^{f^{n}}&K^{n+1}\ar[r]\ar[d]^{f^{n+1}}&\cdots\\
+% 	\cdots\ar[r]&L^{n-1}\ar[r]^{\dd_L^{n-1}}\ar[d]^{g^{n-1}}&L^n\ar[r]^{\dd_L^n}\ar[d]^{g^{n}}&L^{n+1}\ar[r]\ar[d]^{g^{n+1}}&\cdots\\
+% 	\cdots\ar[r]&M^{n-1}\ar[r]^{\dd_L^{n-1}}\ar[d]&M^n\ar[r]^{\dd_L^n}\ar[d]\ar[ruu]&M^{n+1}\ar[r]\ar[d]&\cdots\\
+% 	&0&0&0&
+% 	}
+% \]
+
+
+\section{Derived Category and Derived Functor}
+
+\begin{definition}
+	Let $A$ be an abelian category, $\operatorname{Kom}(A)$ the 
+	category of complexes over $A$. There exists a category 
+	$D(A)$ and a functor $Q:\operatorname{Kom}(A)\to D(A)$
+	with the following properties:
+	\begin{enumerate}
+		\item $Q(f)$ is an isomorphism for any quasi-isomorphism $f$.
+		\item Any functor $F:\operatorname{Kom}(A)\to C$ transforming
+			quasi-isomorphisms into isomorphisms can be uniquely
+			factorized through $D(A)$, i.e. there exists a unique 
+			functor $G:D(A)\to C$ such that $F=GQ$.
+	\end{enumerate}
+	The category $D(A)$ is called the derived category of the abelian
+	category $A$.
+\end{definition}
+
+The existance of derived category can be carried out by introducing 
+the formal inverses of the equivalence class of quasi-isomorphisms 
+(modulo homotopy equivalence), which is called the 
+localization of a category. We will not go into details of this proof.
+
+We can similarly define the derived category $D^+(A)$, $D^-(A)$ and 
+$D^b(A)$, they are subcategories of $D(A)$.
+
+\begin{para}[cyclic complexes]
+	A complex $K^\bullet$ is cyclic if $d_K^n=0$ for any $n$. 
+	Cyclic complexes form a subcategory $\operatorname{Kom}_0(A)
+	\subset \operatorname{Kom}(A)$. Now let's consider the 
+	homology functor
+	\[
+		h:\operatorname{Kom}(A)\to \operatorname{Kom}_0(A)
+	\]
+	defined by 
+	\[
+		h((K^\bullet,d_K))=(H^\bullet(K),0),\quad 
+		h(f)=H^\bullet(f).
+	\]
+	It transforms quasi-isomorphisms to isomorphisms. Therefore,
+	there exists a functor 
+	\[
+		k:D(A)\to \operatorname{Kom}_0(A).
+	\]
+\end{para}
+
+\begin{pro}
+	Suppose $A$ is an abelian category, then 
+	the functor $D(A)\to \operatorname{Kom}_0(A)$ defined above is 
+	an equivalence iff $A$ is semisimple, i.e. any exact triple 
+	in $A$ splits.
+\end{pro}
+
+\begin{thm}
+	Suppose $A$ is an abelian category, its derived category $D(A)$
+	is an additive category.
+\end{thm}

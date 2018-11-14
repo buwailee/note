@@ -1,0 +1,43 @@
+\documentclass[12pt]{book}
+\usepackage{../noteheader}
+\usepackage{titletoc,paralist}
+
+\usepackage{ccfonts}
+\usepackage[T1]{fontenc}
+\renewcommand{\baselinestretch}{1.1}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[chapter]
+		\renewcommand{\thepara}{\thechapter.\arabic{para}}
+	\newtheorem{definition}[para]{Definition}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+	\newtheorem{coro}[para]{Corollary}
+\renewcommand*{\proofname}{Proof}
+
+\usepackage{hyperref}
+	\hypersetup{bookmarksnumbered=true}
+
+\input{../defs.tex}
+	\newcommand{\cc}{\mathbb{C}}
+	\DeclareMathOperator{\spec}{Spec}
+
+\title{A Note on Mixed Hodge Theory}
+\author{Buwai Lee @ NJU}
+\date{\today}
+
+\begin{document}
+\begin{titlepage}
+	\maketitle
+\end{titlepage}
+
+\frontmatter
+\tableofcontents
+\mainmatter
+	\input{basics.tex}
+\backmatter
+	% \printindex
+	% \input{references.tex}
+\end{document}
