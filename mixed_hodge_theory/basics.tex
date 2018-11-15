@@ -91,7 +91,7 @@ In fact, since $d^id^{i-1}=0$ and the universal property of kernal of $d^i$,
 there exists a morphism $a$ such that $d^{i-1}=\ker (d^i)a$. The existance
 of $b$ is similarly form the universal property of cokernal of $d^{i-1}$.
 The most non-trivial part in the above definition is that objects
-$\coker(a)$ and $\ker(b)$ are the same (or more formally, they are natrually
+$\coker(a)$ and $\ker(b)$ are the same (or more formally, they are naturally
 isomorphism). To prove it, one can consider the following diagram firstly
 \[
 	\begin{xy}
@@ -262,6 +262,137 @@ In the category of modules, $\partial^n:H^n(M^\bullet)\to H^{n+1}(K^\bullet)$ ca
 % 	&0&0&0&
 % 	}
 % \]
+
+\begin{definition}
+Let $f:K^\bullet\to L^\bullet$ be a morphism of complexes,
+the cone of $f$ is the following complex $\operatorname{Cone}(f)^\bullet$:
+\[
+	\operatorname{Cone}(f)^i=K[1]^i\oplus L^i=K^{i+1}\oplus L^i,\quad
+	d_{\operatorname{Cone}(f)}=\begin{pmatrix}
+		d_{K[1]}&0\\
+		f[1]&d_L
+	\end{pmatrix}.
+\]
+\end{definition}
+One easily verifies that
+\[
+	d_{\operatorname{Cone}(f)}^2=\begin{pmatrix}
+		d_{K[1]}&0\\
+		f[1]&d_L
+	\end{pmatrix}\begin{pmatrix}
+		d_{K[1]}&0\\
+		f[1]&d_L
+	\end{pmatrix}
+	=\begin{pmatrix}
+		0&0\\
+		f[1]d_{K[1]}+d_Lf[1]&0
+	\end{pmatrix}
+	=0,
+\]
+because that
+\[
+	(f[1]d_{K[1]}+d_Lf[1])^i =
+	-f^{i+2}d_K^{i+1}+d_L^{i+1} f^{i+1}=0.
+\]
+
+The cone of a morphism has a geometric background: 
+the complex of singular chains of the topological cone is homotopy equivalent to the cone of the induced map of singular chains, i.e. for a continuous map $\varphi:X\to Y$
+\[
+	\operatorname{Complex}(\operatorname{cone}(\varphi))^\bullet 
+	\sim \operatorname{Cone}(\varphi_*)^\bullet,
+\]
+where $\operatorname{cone}(\varphi)$ the topological cone and 
+$\operatorname{Complex}(*)^\bullet$ is the complex of singular chains of a topological space.
+
+% There's a natural morphism between $K[1]^\bullet$ and
+% $\operatorname{Cone}(f)^\bullet$
+% \[
+% 	\eta^i:K[1]^i\to \operatorname{Cone}(f)^i=K[1]^i\oplus L^i
+% \]
+% defined by the natural morphism of coproduct.
+
+\begin{definition}
+	Let $f:K^\bullet\to L^\bullet$ be a morphism of complexes,
+	the cyclinder of $f$ is cone of the natural morphism of biproduct
+	\[
+		\eta:\operatorname{Cone}(f)[-1]^\bullet \to K^\bullet
+	\]
+	i.e. it's the following complex $\operatorname{Cyl}(f)^\bullet$:
+	\[
+		\operatorname{Cyl}(f)^i=\operatorname{Cone}(f)^i\oplus K^{i} ,\quad
+		d_{\operatorname{Cyl}(f)}=\begin{pmatrix}
+			d_{\operatorname{Cone}(f)}&0\\
+			\eta[1] & d_{K}
+		\end{pmatrix}.
+	\]
+\end{definition}
+
+In algebraic topology, the mapping cyclinder $\operatorname{cyl}(\varphi)$ of
+a continuous map $\varphi:X\to Y$ is the colimit of the diagram
+\[
+	X\times [0,1] \xleftarrow{i} X \xrightarrow{\varphi} Y,
+\]
+where $i:X\hookrightarrow X\times [0,1]$ is the inclusion defined by $x\mapsto (x,0)$. 
+The universal universal of mapping cylinder:
+for any space $Z$ and mapping $g_1:X\times [0,1]\to Z$, $g_2:Y\to Z$ such that 
+$g_1(x,0)=g_2(f(x))$ for all $x\in X$, there is a unique $k:\operatorname{cyl}(\varphi)\to Z$,
+such that the following diagram is commutative
+\[
+	\xymatrix{
+		Z &  & \\
+		  & \operatorname{cyl}(\varphi)\ar@{-->}[ul]_k & Y\ar[l]\ar@/_/[llu]_{g_2}\\
+		  & X\times [0,1]\ar[u]\ar@/^/[luu]^{g_1} & X\ar[u]\ar[l]
+	}
+\]
+It's very natural to consider the space $X\times [0,1]$ because of the definition
+of homotopy\footnote{A homotopy between $f$, $g:X\to Y$ is a map $F:X\times [0,1]\to Y$
+such that $F(x,0)=f(x)$ and $F(x,1)=g(x)$ for any $x\in X$.}. 
+% Suppose $F$ is a homological
+% between $f$ and $g$, then the universal property of $\operatorname{cyl}(f)$
+% \[
+% 	\xymatrix{
+% 		Y &  & \\
+% 		  & \operatorname{cyl}(f)\ar@{-->}[ul]_{h} & Y\ar[l]\ar@/_/[llu]_{\id_Y}\\
+% 		  & X\times [0,1]\ar[u]\ar@/^/[luu]^{F} & X\ar[u]_f\ar[l]
+% 	}
+% \]
+% gives us a map $h:\operatorname{cyl}(f)\to Y$.
+One of the most important properties of mapping cyclinder is the homotopy equivalence between $Y$
+and $\operatorname{cyl}(\varphi)$ induced by the natural map $Y\to \operatorname{cyl}(\varphi)$.
+In fact its homotopy inverse can be chosen a deformation retraction. In particular every continuous function factors as a map into its mapping cylinder followed by a deformation retraction.
+
+In the abstract theory of complexes, we will see the same properties of a cyclinder of a morphism.
+In fact, we could find a object $I$ in any abelian category like an closed interval $[0,1]$ in the 
+category of topological spaces, then the cyclinder of a morphism $f:K^\bullet \to L^\bullet$ 
+is just the colimit of the following diagram 
+\[
+	K^\bullet\otimes I^\bullet \xleftarrow{i}K^\bullet \xrightarrow{f}L^\bullet.
+\]
+
+\begin{pro}
+	For any morphism $f:K^\bullet \to L^\bullet$ there exists the following commutative
+	diagram with exact rows:
+	\[
+		\xymatrix{
+			& 0\ar[r] & L^\bullet \ar[r]^{\bar\pi}\ar[d]^\alpha & \operatorname{Conf}(f)^\bullet \ar[r]^\delta\ar@{=}[d]
+			& K[1]^\bullet \ar[r] & 0\\
+			0 \ar[r] & K^\bullet \ar[r]^{\bar f}\ar@{=}[d] & \operatorname{Cyl}(f) \ar[r]^\pi\ar[d]^\beta 
+			&\operatorname{Conf}(f)^\bullet \ar[r] & 0 & \\
+			& K^\bullet \ar[r]^f & L^\bullet & & &
+		}
+	\]
+	where
+	\[
+		\begin{aligned}
+		&\bar f = (0,0,\id_{K^i}),\quad\bar\pi^i=(0,\id_{L^i}),\quad \pi^i=(p^i_{K[1]},p^i_{L})\\
+		&\alpha^i = (0,\id_{L^i},0),\quad \beta^i= p^i_{L} + f^i p^i_K,
+		\end{aligned}
+	\]
+	and $p_{K[1]}$, $p_{L}$ and $p_{K}$ is the canonical morphism of the product 
+	$\operatorname{Cyl}(f)^\bullet=K[1]^\bullet\oplus L^\bullet\oplus K^\bullet$,
+	then $\beta\alpha=\id_L$ and $\alpha\beta\sim \id_{\operatorname{Cyl}(f)}$.
+	Therefore, $\alpha$ and $\beta$ are quasi-isomorphisms between $L^\circ$ and $\operatorname{Cyl}(f)^\bullet$.
+\end{pro}
 
 
 \section{Derived Category and Derived Functor}
