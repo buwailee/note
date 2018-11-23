@@ -207,19 +207,17 @@
 \begin{para}[单位分解]\label{POUdef}
 设$\{U_\alpha\}_{\alpha\in I}$是$M$的一个开覆盖，如果存在至多可数个光滑函数$g_i\in \cal(M)$满足：
 
-\no{1} 对于任意的$x\in M$和$i\in I$，都有$0\leq g_i(x)\leq 1$.
-
-\no{2} 对每个$g_i$，都存在一个${\alpha_i}$使得$\supp(g_i)\subset U_{\alpha_i}$.
-
-\no{3} 集族$\{\supp(g_i)\}$局部有限，即任取$p\in M$，存在$p$的邻域$U$使得$U$只和集族$\{\supp(g_i)\}$中的有限个集合相交非空。
-
-\no{4} 因为上一个性质，所以在一点累加$g_i$时，只有有限项非零。我们最后的要求就是$\sum_i g_i=1$.
-
+\begin{compactenum}[\quad (1)]
+\item 对于任意的$x\in M$和$i\in I$，都有$0\leq g_i(x)\leq 1$.
+\item 对每个$g_i$，都存在一个${\alpha_i}$使得$\supp(g_i)\subset U_{\alpha_i}$.
+\item 集族$\{\supp(g_i)\}$局部有限，即任取$p\in M$，存在$p$的邻域$U$使得$U$只和集族$\{\supp(g_i)\}$中的有限个集合相交非空。
+\item 因为上一个性质，所以在一点累加$g_i$时，只有有限项非零。我们最后的要求就是$\sum_i g_i=1$.
+\end{compactenum}
 则称$\{g_i\}$是从属于开覆盖$\{U_\alpha\}_{\alpha\in I}$的一个单位分解。
 \end{para}
 
-\begin{lem}
-\label{POU}流形$M$上的每一个开覆盖都存在从属于他的单位分解。
+\begin{lem}\label{POU}
+流形$M$上的每一个开覆盖都存在从属于他的单位分解。
 \end{lem}
 
 \begin{pro}[$\rr$上的截断函数]
@@ -231,8 +229,9 @@
 		1,&|x|\leq 1/2.
 		\end{cases}
 \]
-他的图像大概就是在$0$附件鼓起来一块，然后其他地方全都为零，所以有时候也叫他鼓包函数。单位分解中的任意一个函数都长得和他差不多。
 \end{pro}
+
+他的图像大概就是在$0$附件鼓起来一块，然后其他地方全都为零，所以有时候也叫他鼓包函数。单位分解中的任意一个函数都长得和他差不多。
 
 \begin{proof}
 构造这样的函数，我们可以只构造$x<0$的部分，然后将其偶函数拓展到$\rr$上，因为在$0$附近是常值函数，所以这样构造出的函数是$\rr$上的光滑函数。剩下的关键在于找一个$\rr$上的光滑函数，他在一段区间上可以光滑连接两个阶梯$0$和$1$。
@@ -269,6 +268,8 @@
 设$M$是一个局部紧的第二可数空间，则存在一列开集$\{G_i\}$，使得每个$\overline{G}_i$都是紧集，$\overline{G}_i\subset G_{i+1}$，且$\bigcup_iG_i=M$. 这样的一列开集被称为$M$上的一个穷竭。
 \end{lem}
 
+一个穷竭可以理解一个成无穷远点的可数邻域族。
+
 \begin{proof}
 任取$x\in M$，由于$M$是局部紧的，所以我们可以找一个邻域$V_x$使得$\overline{V}_x$是紧集。由于$M$第二可数，有可数基，所以我们可以找至多可数个$x$使得$V_x$构成$M$的一个开覆盖，由于至多可数，所以我们可以利用正数将其编号。随便选定一个编号就好，我们令$G_1=V_1$，然后假设在$0<i<n$的时候$G_i$都已经定义，那么考虑紧集$\bigcup_{i<n}\overline{G}_i$，开覆盖$\{V_j\}$中可以找到一个有限子覆盖，对应着有限指标集$I$，使得$\bigcup_{j\in I}V_j$也是$\bigcup_{i<n}\overline{G}_i$的开覆盖，取$k=\sup(I)$，则
 \[
@@ -282,9 +283,9 @@
 \begin{proof}
 设$\{U_{\alpha}\}$是流形$M$的一个开覆盖。在$M$上找一个穷竭$\{G_i:i>0\}$，并令$G_0=\varnothing$，现在取$A_i=\overline{G}_i-G_{i-1}$，则显然$\{A_i:i>1\}$是一组闭集，而流形Hausdorff性告诉我们，因为$A_i$是紧集$\overline{G}_i$的闭子集，所以他也是紧的。
 
-此外，$\{A_i:i>1\}$是$M$的一个覆盖。这是因为，如果集合$U\cap A_i=\varnothing$，则$U\subset G_{i-1}\cup (M-\overline{G}_{i})$。如果对每一个$i$都成立的话，则$U$属于$\{G_{i-1}\cup (M-\overline{G}_{i})\}_i$的交，但按照穷竭的定义，这是一个空集。
+此外，$\{A_i:i>1\}$是$M$的一个覆盖。这是因为，如果集合$U\cap A_i=\varnothing$，则$U\subset G_{i-1}\cup (M-\overline{G}_{i})$. 如果对每一个$i$都成立的话，则$U$属于$\{G_{i-1}\cup (M-\overline{G}_{i})\}_i$的交，但按照穷竭的定义，这是一个空集。
 
-固定一个$A_i$，取$x\in A_i$，找一个坐标卡$(U_x,\varphi_x)$，使得$\varphi_x(U_x)$是欧式空间中半径为$2$的开球，$U_x$位于某个开覆盖$U_{\alpha(x)}$之中，且$U_x\cap A_j=\varnothing$当$|j-i|>1$。
+固定一个$A_i$，取$x\in A_i$，找一个坐标卡$(U_x,\varphi_x)$，使得$\varphi_x(U_x)$是欧式空间中半径为$2$的开球，$U_x$位于某个开覆盖$U_{\alpha(x)}$之中，且$U_x\cap A_j=\varnothing$当$|j-i|>1$.
 
 前面两点是显然的，关于第三点，由于处理$A_i\cap A_{i-1}= \overline{G}_{i-1}-G_{i-1}$以及平凡的$A_i\cap A_i=A_i$，其他的$A_i\cap A_j=\varnothing$，所以对于$|j-i|>1$的$A_j$，我们有$A_i\subset M-A_j$，而$M-A_j$是一个开集，所以只要把$U_x$选得足够小，使得$U_x\subset M-A_j$，我们就有$U_x\cap A_j=\varnothing$当$|j-i|>1$成立。或者稍微弱一点的说法，$U_x$只与有限个$A_j$相交。
 
@@ -319,8 +320,12 @@
 \]
 如果再令$h_{\alpha}=0$当$\alpha\notin \Gamma$，则$\{h_{\alpha}\}$是$M$上的光滑函数族，$0\leq h_\alpha\leq 1$，$\sum_{\alpha}h_\alpha=1$且$\supp(h_\alpha)\subset U_{\alpha}$. 当然，前面$\supp(h_{ij})$还是紧的，这里$\supp(h_\alpha)$就不一定是紧的了。
 
+% \begin{para}[拓扑维数]
+% 	设$X$是一个拓扑空间 $X$，如果对 $X$ 任意的一个开覆盖 $\{U_i\}$，都存在其一个开加细 $\{V_i\}$，使得对于其中任意$n+1$个不同的指标$\{a_{i}\,:\,0\leq i\leq n\}$，都有$\bigcap_{i=0}^n V_{a_i}=\varnothing$，则定义$X$的拓扑维数为$n$.
+% \end{para}
+
 \begin{lem}
-设$A\subset U$，其中$U$是$M$中的开集，而$A$是闭集。再设$f:M\to V$是一个连续映射，其中$V$是一个$\rr^n$中的开集，并且$f|_{U}$是光滑的，那么对任意$M$上的正连续函数$\epsilon(x)$，则存在光滑函数$g:M\to W$使得$f|_A=g|_A$且$\|f(x)-g(x)\|\leq \epsilon(x)$.
+设$A\subset U$，其中$U$是流形$M$中的开集，而$A$是闭集。再设$f:M\to V$是一个连续映射，其中$V$是一个$\rr^n$中的开集，并且$f|_{U}$是光滑的，那么对任意$M$上的正连续函数$\epsilon(x)$，则存在光滑函数$g:M\to V$使得$f|_A=g|_A$且$\|f(x)-g(x)\|\leq \epsilon(x)$.
 \end{lem}
 
 \begin{proof}
