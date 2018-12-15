@@ -1,0 +1,73 @@
+\section*{Outline}
+\addcontentsline{toc}{section}{Outline}
+\begin{itemize}
+
+\item Lie群：具有微分流形结构的群。
+
+因此左右平移是微分同胚，所以局部性质由单位元附近的那些元素决定。对于连通Lie群，则单位元附近的元素可以生成整个群的元素（即任意的群元都可以通过单位元附近的元素相乘组合得到）。
+
+\item Lie群的Lie代数：Lie群单位元附近的局部线性化。
+
+从前面的分析知道，Lie群的大部分性质由单位元附近的元素决定。由分析学的基本思想，在性质不算差的点，线性化后得到的切空间，将几乎完全能够（即两者之间存在微分同胚）反应那点附近的流形的结构。所以Lie代数能够确定Lie群的大部分性质。不过近似总归是近似，从Lie群到Lie代数，我们还是丢掉了不少东西，比如Lie群的拓扑结构。在半单Lie群的假设下，Lie代数和基本群能完全确定一个Lie群。
+
+\item 为什么我们要研究Lie代数？
+
+研究Lie代数的可行性来自于上述的Lie代数能够反应Lie群的许多性质。而研究Lie代数的动机很大程度在于Lie代数的代数结构比Lie群多，使得他比Lie群更方便研究。许多Lie群的性质（非代数的性质）在Lie代数中都表现为一些代数性质，这使得我们更方便操作。
+
+\item 群表示：一个线性空间$V$，上面的可逆变换按复合构成一个群$\operatorname{GL}(V)$。而所谓的群表示，既是将已知的一个群$G$的元素看成某个空间$V$上的可逆的线性变换，并将群乘法变成线性变换的复合。换而言之，就是一个$G\to \operatorname{GL}(V)$群同态。
+
+由于两个微分流形之间的光滑映射将诱导出切空间之间的映射，所以两个Lie群之间的光滑同态，将诱导出Lie代数的同态。而这就得到了Lie代数的表示的定义。
+
+\item 为什么我们需要表示？
+
+举个例子，狭义相对论的背景时空具有保持Minkowski内积的对称性，这个对称性对应的群是Poincar\'e群，如果不包含平移，则是Lorentz群$G$. 取$\Lambda \in G$，动量在$\Lambda$下进行如下变换
+\[
+	p^\mu \to \Lambda^\mu_{\phantom{\mu}\nu}p^\nu,
+\]
+在态矢量所处的空间来看，第一个惯性参考系来看的态矢量为$|p^\mu\rangle$，第二个惯性参考系来看的态矢量为$|\Lambda^\mu_{\phantom{\mu}\nu}p^\nu\rangle$，由于概率不依赖于参考系选取，两者之间应该靠某个线性幺正算符联系\footnote{这被称为Wigner定理：保持概率守恒的变换都将诱导出Hilbert空间上的一个幺正线性变换。}，他依赖于$\Lambda$，记作$U(\Lambda)$，此时
+\[
+	U(\Lambda)|p^\mu\rangle = |\Lambda^\mu_{\phantom{\mu}\nu}p^\nu\rangle.
+\]
+现在再加上另一个$\bar\Lambda$，他应该将动量为$\Lambda^\mu_{\phantom{\mu}\nu}p^\nu$态的变成动量为$\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}p^\xi$的态，所以
+\[
+	U(\bar\Lambda)U(\Lambda)|p^\mu\rangle = U(\bar\Lambda)|\Lambda^\mu_{\phantom{\mu}\nu}p^\nu\rangle = \exp(i\theta(\Lambda,\bar\Lambda))|\bar{\Lambda}^\mu_{\phantom{\mu}\nu}\Lambda^\nu_{\phantom{\nu}\xi}p^\xi\rangle = \exp(i\theta(\Lambda,\bar\Lambda))U(\bar\Lambda \Lambda)|p^\mu\rangle,
+\]
+因此，
+\[
+	U(\bar\Lambda)U(\Lambda)= \exp(i\theta(\Lambda,\bar\Lambda)) U(\bar\Lambda \Lambda).
+\]
+有个相位是因为，相位不影响态。尽管这个相位在物理上是等价的，在数学上我们不能直接无视其存在。还好，如果群的性质不太差，或者我们选个性质更好的群来代替他，则关于任意的两个变换，这个相位我们可以全部搞成1。所以我们可以得到
+\[
+	U(\bar\Lambda)U(\Lambda) = U(\bar\Lambda \Lambda),
+\]
+此时$U$就是一个表示。因此，背景时空对称性能够诱导出态矢量上的对称性，利用的手段就是群表示。
+
+那么，有了这个群表示，我们就有Lie代数的表示，Poincar\'e群的Lie代数，现在就变成了一些态矢量所处的Hilbert空间上的算符，而这些就是动力学算符。这就是说：对称性诱导出了动力学算符，而动力学量的不可约表示完成了单粒子分类。
+
+\item 从Lie代数到Lie群：Ado定理，所有实Lie代数都同构于$\mathfrak{gl}(n,\rr)$的子代数。所以每一个实Lie代数都可以实现为某个Lie群的Lie代数的子代数。同时，对于任意的连通Lie群，他一定存在一个万有覆叠空间（单连通的覆叠空间），他有着Lie群结构，且和原来的Lie群有着相同的Lie代数。
+
+从这里可以看到，Lie代数并不在意Lie群很细致的拓扑结构，这就是他丢失的东西。拓扑结构（作为整体结构）有时候很重要，比如对于无质量粒子，他的自旋（或者此时应该叫helicity）只能取整数或者半整数就来自于表征对称性的群的拓扑结构。
+
+\item 从Lie代数同态到Lie群同态：如果$h$是$\lag_1\to \lag_2$之间的Lie代数同态，且$\lag_1$是一个单连通Lie群$G_1$的Lie代数，$\lag_2$是一个连通Lie群$G_2$的Lie代数，则存在唯一的Lie群同态$\bar{h}:G_1\to G_2$，使得$\bar{h}$诱导的Lie代数同态即$h$.
+
+将其应用到表示，则有Lie代数的表示唯一确定单连通Lie群的表示。
+
+\item 为什么要复表示？
+
+其一，物理上的态所处的Hilbert空间是在复数域上面的，所以我们需要复表示。其二，比如最简单的$U(1)$群，他的非平凡表示，对于实数域上来说，是$2$维的，即$\mathrm{SO}(2)$，而在复数域上是一维的，即他本身。其三，复数域是代数闭的。
+
+\item 为什么要研究半单复Lie代数？
+
+半单性是紧性在代数上的合理推广。对于半单复Lie代数$\lag$，我们可以找到一个紧Lie群的Lie代数$\mathfrak{k}$（这样的Lie代数称为紧Lie代数），使得$\lag\cong \mathfrak{k}\otimes \cc$. 反过来，任意的紧Lie群的Lie代数$\mathfrak{k}$，他的复化$\mathfrak{k}_{\cc}:=\mathfrak{k}\otimes \cc$是一个半单复Lie代数。所以我们一旦完全分类了半单复Lie代数，也就完全分类了紧Lie代数。
+
+前面说了，半单性是紧性在代数上的合理推广。这点的表现比如，对于半单复Lie代数来说，他的任意有限维表示都是完全分解的，即可以分解为不可约表示的直和。代数上，这被称为Weyl定理，整个半单复Lie代数以及半单实Lie代数的分类就是由Weyl完成的。
+
+\item 如何分类半单复Lie代数呢？
+
+靠表示论，Lie代数在自己身上有一个自然的表示，被称为伴随表示。Lie代数极大交换子代数的元素在伴随表示的时候作为线性算符的本征值将完全决定Lie代数的结构。
+
+\item 如何分类半单复Lie代数的有限维复表示？
+
+首先依靠于完全分解性，我们可以只关注不可约表示。对于不可约表示，我们只需要给出那些可以同时测量的量子数，即极大交换子代数中元素的所有本征值，这样的本征值我们称作权，所以我们只需要确定所有的权就可以了。在权之中，我们可以挑出一个最大的权，他确定了其他所有的权。举个例子，对于自旋的表示，他的极大交换子代数由$J^3$生成，对应一个量子数$j$，他的权为$\{-j,-j+1,\dots,j-1,j\}$，而最大权就是$j$.
+
+\end{itemize}

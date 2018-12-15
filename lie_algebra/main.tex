@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,ctex}
+\usepackage{tocloft}
+\usepackage[a4paper, top=16mm, text={170mm, 248mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\def\pgfsysdriver{pgfsys-dvipdfm.def}
+\usepackage{multido, pstricks,tikz} 
+\usepackage[noautoscale]{youngtab} % for root/weight system and Young tableaux
+\usepackage{amsthm}
+\usepackage{hyperref}
+	\hypersetup{
+		pdftoolbar=true,  
+		pdfmenubar=true,
+		bookmarksnumbered=true,
+	}
+
+% \setCJKmainfont[
+% 	ItalicFont = Adobe Kaiti Std ,
+% 	BoldFont = SourceHanSerifSC-Bold ,
+% 	]{Source Han Serif SC}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+\pagestyle{plain}
+
+\title{Lie Algebra}
+\author{buwailee}
+% \date{}
+
+\input{../defs.tex}
+	\newcommand{\cc}{\mathbb{C}}
+	\newcommand{\lag}{{\mathfrak{g}}}
+	\DeclareMathOperator{\ad}{ad}
+	\DeclareMathOperator{\Int}{int}
+	\DeclareMathOperator{\sgn}{sgn}
+	\DeclareMathOperator{\sym}{Sym}
+	\DeclareMathOperator{\mult}{mult}
+	\DeclareMathOperator{\lie}{Lie}
+
+\begin{document}
+	\maketitle
+	\clearpage
+	\tableofcontents
+	\clearpage
+	
+	\input{intro.tex}
+	\input{sec.tex}
+	\input{app.tex}
+\end{document}
