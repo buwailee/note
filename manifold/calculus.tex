@@ -2,19 +2,64 @@
 % author: buwailee@nmhs
 \chapter{微积分}
 
-\section{分布}
+\section{分布与余切矢量场}
 
-\section{余切矢量场}
+在\ref{1.3.22}中，我们已经谈到，
+如果我们的研究主要对象是积分曲面（积分子流形），那么其实重要的不是切矢量场的选取，而似乎是切矢量场张成的空间。在这节中，
+我们就研究这样的子空间，以及相应的 Frobenius 定理。
+
+\begin{para}[分布]
+	设$M$是一个流形，$M$上的一个（光滑）分布$D$是切丛$TM$的
+	（光滑）子丛，即（光滑地）对每一点$p$给出
+	$T_p M$的一个子空间$D_p$. 若矢量场$X$处处满足
+	$X_p\in D_p$，则称$X$属于$D$，记作$X\in D$.
+\end{para}
+
+显然，对于连通流形，若分布是连续的，则$\dim D_p$处处相同，
+我们将其称为分布的秩。下面，我们只研究$\dim D_p$处处相同
+的分布（即使流形不连通）。利用切丛的局部平凡化，我们可以在局部如下刻画一个分布$D$.
+
+
+\begin{lem}
+	若$D$是$M$上一个秩为$k$的分布，任取$p\in M$，都存在一个
+	开集$U$，以及$U$上的$k$个切矢量场$X_1$, $\dots$, $X_k$
+	使得$(X_1)_p$, $\dots$, $(X_k)_p$是$D_p$的一组基。
+	如果$D$是光滑地，则$X_1$, $\dots$, $X_k$也可以取成光滑的。
+\end{lem}
+
+由于这个引理，我们可以反过来通过它来定义什么叫光滑分布。
+以后，我们只考虑光滑分布，所以下面将略去光滑二字。
+下面我们用分布的语言改写一下 Frobenius 定理。首先引入两个
+概念，第一点来自于 Frobenius 定理的条件，第二点是
+积分曲面概念的推广。
+
+\begin{para}[对合分布]
+	若任取$X$, $Y\in D$均有$[X,Y]\in D$，则称$D$是一个对合分布。
+\end{para}
+
+\begin{para}[积分流形]
+	设$i:N\to M$是一个单浸入，$D$是一个分布，如果任取$p\in N$，都有$i_{*p}(T_p N)=D_{i(p)}$，则称$(N,i)$是分布 
+	$D$的积分流形。若积分流形$(N,i)$并不真包含于另一
+	积分流形中，则称这是一个极大积分流形。
+\end{para}
+
+此时，Theorem \ref{frobenius}定理可以改写为：
+
+\begin{thm}[局部Frobenius定理]
+	设$M$是光滑流形，$D$是一个光滑对合分布，则任取$p\in M$，局部总存在一个子流形$(S,\tau)$使得$(S,\tau)$是
+	$D$的积分流形。
+\end{thm}
 
 \begin{para}
 设$f$是$U$上的光滑函数，显然$\dd f$是一个$U$上的光滑余切矢量场。记$U$上的光滑函数的集合为$\Omega^0(U)$，记$U$上的光滑余切矢量场的集合为$\Omega^1(U)$，则$\dd: \Omega^0(U)\to \Omega^1(U)$.
 \end{para}
 
-下面我们要把Frobenius定理改写成余切矢量场的形式，这就变成了经典的Pfaff方程，正是当年关于Pfaff方程的研究，Cartran第一次提出了（高阶）外微分和微分形式的概念（我们现在只谈了一阶的情况），在他那里，1-形式之间的乘法被定义成反对称的。从前一节谈论Frobenius定理来看，Pfaff方程是一个关于积分曲面的问题，所以从这个角度来看，反对称的来由归根结底是为了积分。
+下面我们要把Frobenius定理改写成余切矢量场的形式，这就变成了经典的Pfaff方程，正是当年关于Pfaff方程的研究，Cartran第一次提出了（高阶）外微分和微分形式的概念（我们现在只谈了一阶的情况），在他那里，$1$-形式之间的乘法被定义成反对称的。从前一节谈论Frobenius定理来看，Pfaff方程是一个关于积分曲面的问题，所以从这个角度来看，反对称的来由归根结底是为了积分。
 
-\para 称一个1-形式$\omega$是完全可积的，如果存在两个光滑函数$f$和$g$使得$\omega=f\dd g$，此时$f$被称为$\omega$的积分因子。
+\begin{para}[完全可积] 称一个$1$-形式$\omega$是完全可积的，如果存在两个光滑函数$f$和$g$使得$\omega=f\dd g$，此时$f$被称为$\omega$的积分因子。
+\end{para}
 
-1-形式的完全可积性联系着所谓的首次积分问题。设$f$是一个光滑函数且$\dd_p f$处处不为零，则$f(p)=a$（如果解存在）决定了$M$中的一个正则子流形$N_a$（有时候叫做一个曲面）。再设$X$是$M$内的光滑矢量场，则$\dd f(X)=0$恒成立当且仅当处处成立$X_p\in T_pN_{f(p)}$。
+$1$-形式的完全可积性联系着所谓的首次积分问题。设$f$是一个光滑函数且$\dd_p f$处处不为零，则$f(p)=a$（如果解存在）决定了$M$中的一个正则子流形$N_a$（有时候叫做一个曲面）。再设$X$是$M$内的光滑矢量场，则$\dd f(X)=0$恒成立当且仅当处处成立$X_p\in T_pN_{f(p)}$.
 
 实际上，任取一点$p\in M$，只要检验$X_p(f)=0$即可，选一条$N_{f(p)}$上的一条光滑曲线$c$，使得$c(0)=p$且$c'(0)=X_p\in T_pN_{f(p)}$，由于$f(c(t))=f(p)$恒成立，对其在$t=0$处求导就得到了$\dd_pf(X_p)=X_p(f)=0$.反过来，如果在一点处$X_p\notin T_pN_{f(p)}$，则$X_p(f)\neq 0$。
 
@@ -70,7 +115,20 @@
 
 从这个角度来看，正因为有Frobenius定理，或者更本质一点，我们需要把积分曲线拼成积分曲面，我们需要考察两个矢量场$X$和$Y$的Lie括号$[X,Y]$，而这个Lie括号的反对称性来自于我们比较两条路径。现在，这种反对称性反应在了1-形式之间的楔积，使得他构成了一个（吃掉两个矢量场的）反对称函数。所以，从Cartan这里，反对称性的来源应该是为了处理积分曲面的存在性，而由$[X,Y]$自然诱导出来的。
 
-\para 外代数的复习在附录，对于矢量空间$V$的$k$-次外代数记做$\Omega^k(V)$。在流形上的一点$p$处，记$\Omega_p^k=\Omega^k(T_pM)$，则$\Omega_p^1=T_p^*M$.类似切丛和余切丛，我们可以使用$\Omega_p^k$拼出一个$k$-形式丛$\Omega^k$。
+\begin{pro}\label{dd=0}
+	$D(\dd f)=0$.
+\end{pro}
+	
+\begin{proof}
+从\eqref{eq:1.3}
+\[
+	D(\dd f)(X,Y)=X(Y(f))-Y(X(f))-[X,Y](f)=[X,Y](f)-[X,Y](f)=0,
+\]
+对任意的矢量场$X$, $Y$都成立。
+\end{proof}
+	
+
+\para 外代数的复习在附录，对于矢量空间$V$的$k$-次外代数记做$\Omega^k(V)$。在流形上的一点$p$处，记$\Omega_p^k=\Omega^k(T_pM)$，则$\Omega_p^1=T_p^*M$.类似切丛和余切丛，我们可以使用$\Omega_p^k$拼出一个$k$-形式丛$\Omega^k$.
 
 在$U$上的一个光滑$k$-形式被定义为$\Omega^k$在$U$上的一个光滑截面。所有$U$上的光滑$k$-形式的集合记做$\Gamma(\Omega^k,U)$.显然，$U$上的光滑函数可以看成一个光滑$0$-形式，一个光滑余切矢量场是一个光滑1-形式。如果$\omega$是一个光滑$1$-形式，则$D(\omega)$是一个光滑$2$-形式。下面我们所称的形式都是光滑的，我们将省略光滑二字。
 
@@ -95,18 +153,6 @@
 对每一个$i$都成立。
 
 特别地，设分布$L=\ker(\omega)$，则局部积分曲面存在的充分必要条件是$D(\omega)=\psi\wedge \omega$，再或者$D(\omega)\wedge \omega=0$.则也就是$\omega$完全可积的充分必要条件。
-
-\begin{pro}\label{dd=0}
-$D(\dd f)=0$.
-\end{pro}
-
-\begin{proof}
-从\eqref{eq:1.3}
-\[
-	D(\dd f)(X,Y)=X(Y(f))-Y(X(f))-[X,Y](f)=[X,Y](f)-[X,Y](f)=0,
-\]
-对任意的矢量场$X$, $Y$都成立。
-\end{proof}
 
 \section{外微分}
 
@@ -149,17 +195,22 @@ $D(\dd f)=0$.
 
 \para \label{localform}先假设$\dd$在$U$上是存在的。若$\omega$是$V\subset U$上的$k$-形式，设$W$是$U$的一个开子集且$V$真包含$\overline{W}$.那么正如\ref{unit}说的，可以找一个单位分解$h$，使得$h|_{\overline{W}}=1$以及$h|_{U-W}=0$，利用他就可以定义一个$U$上的光滑$k$-形式$h\omega$（他在$V$外为零，在$W$内等同于$\omega|_W$）。
 
-\para \label{regular}设$U$是流形$M$上的开集且$V\subset U$，则存在$V$的一个开覆盖$\{W_\alpha\}_{\alpha\in I}$使得对每个$\alpha$成立$\overline{W_\alpha}\subset V$.
+\begin{lem}\label{regular}设$U$是流形$M$上的开集且$V\subset U$，则存在$V$的一个开覆盖$\{W_\alpha\}_{\alpha\in I}$使得对每个$\alpha$成立$\overline{W_\alpha}\subset V$.
+\end{lem}
 
 实际上这就是分离公理之一，正则性的直接推论。流形$M$是局部紧的Hausdorff空间，所以他是正则的。而对于正则空间内的每一个点$p$，已知邻域$V$，我们可以找到一个邻域$W_p\subset V$使得$\overline{W_p}\subset V$.然后遍历$p$，就找到了开覆盖$\{W_p\}_{p\in V}$.
 
-\para \label{localpro}设$V\subset U$，如果$\omega|_V=0$，则$(\dd \omega)|_V=0$，即$\dd$是一个局部算符。
+\begin{lem}\label{localpro}
+	设$V\subset U$，如果$\omega|_V=0$，则$(\dd \omega)|_V=0$，即$\dd$是一个局部算符。
+\end{lem}
 
+\begin{proof}
 利用\ref{regular}找一个$V$的开覆盖，我们只要证明对开覆盖中的一个开集$W$，$(\dd \omega)|_{W}=0$即可。同\ref{localform}利用单位分解找一个光滑函数$h$，则$h\omega$在$U$上恒为零，所以
 \[
 	0=\dd (h\omega)=\dd h \wedge \omega +h\dd \omega
 \]
 限制在$W$上，$h|_{W}=1$且$(\dd h)|_{W}=0$（利用$\dd h$是一个微分这一个事实），所以$(\dd \omega)|_{W}=0$.
+\end{proof}
 
 \begin{pro}
 \label{localdef}利用\ref{localpro}，设$V\subset U$，如果$U$上存在外微分形式$\dd$，则他诱导出了$V$上的一个外微分形式$\dd_V$。并且，再设$W\subset W$，则$\dd$在$W$上诱导的$\dd_W$和$\dd_V$在$W$诱导的$\dd_{VW}$是相同的。此外$(\dd_V \omega)|_W=\dd_W (\omega|_W)$对任意的$V$上的$k$-形式$\omega$成立。

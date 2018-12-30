@@ -6,17 +6,30 @@
 \usepackage{ctex}
 	% \CTEXoptions[today=old]
 	% \CTEXoptions[contentsname=Table of Contents]
-\usepackage[chapter]{../egastyle}
+% \usepackage[chapter]{../egastyle}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{theo}[para]{Theorem}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+	\newtheorem{coro}[para]{Corollary}
+\renewcommand*{\proofname}{Proof}
+
 \usepackage{titletoc, makeidx}
 	\makeindex
 	% \renewcommand{\indexname}{Index}
 \usepackage[titletoc,title]{appendix}
 	% \renewcommand{\appendixname}{Appendix}
 
-\usepackage{hyperref}
+\usepackage{hyperref,paralist}
 	\hypersetup{bookmarksnumbered=true}
 
-\input{../defs.tex}
+\input{defs.tex}
 	\newcommand{\cc}{\mathbb{C}}
 	\DeclareMathOperator{\spec}{Spec}
 
@@ -58,8 +71,10 @@
 \tableofcontents
 \mainmatter
 \pagestyle{headings}
-	\input{chap1.tex}
-	% \input{chap2.tex}
+	\input{variety.tex}
+	\input{scheme.tex}
+	\input{morphism.tex}
+	\input{proj_scheme.tex}
 	\input{appendix.tex}
 \backmatter
 	\ThisULCornerWallPaper{1}{../Pictures/0.png}
