@@ -736,7 +736,7 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 最后我们证明(c)到(d). 由于$\ker f$不稠密，则存在$X$的一个开集$U$，使得$U\cap \ker f=\varnothing$，取$U$中的一个形如$x+V$的开集，其中$V$是一个均衡邻域，则$f(V)$也是标量域$k$中的均衡子集。如果$f(V)$无界，则$f(V)=k$，因此存在$y\in V$使得$f(x+y)=f(x)+f(y)=0$，所以$x+y\in \ker f$，与$(x+V)\cap \ker f=\varnothing$矛盾，故$f(V)$有界。
 \end{proof}
 
-\begin{para}
+\begin{para}[对偶空间]
 	一个矢量空间$X$的对偶空间$X^*$一般定义为$\Hom_k(X,k)$，因为这里引入了$X$的拓扑，所以$X^*$转而定义为所有连续线性函数的集合，容易看到$X^*$依然有一个自然的矢量空间结构。这里暂时不考虑$X^*$上的拓扑，但指出一点，$X^*$可能非常小。
 
 	比如，对$0<p<1$，设$\mathsf{L}^p$中的元素是$[0,1]$上所有Lebesgue可测函数$f$，像通常一样，几乎处处相同的函数看作是相同的，然后定义
@@ -770,7 +770,7 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 
 作为应用，考虑一个非零矢量$v$张成的子空间$\langle v\rangle$，取$x_n=nv$，而$a_n=1/n$，则$a_nx_n=v$，因此$\langle v\rangle$并不有界。因为有界子集的子集也有界，所以$X$的任意非零子空间都不可能有界。因为紧集总是有界的，所以非零子空间也不可能紧。
 
-\begin{para}
+\begin{para}[有界线性映射]
 	如果线性映射$f:X\to Y$将有界子集映成有界子集，则称$f$是有界的。注意，这里有界并不是说$f$的值域是有界的，因为如果$f$非零，则$f$的值域作为非零子空间总不会是有界的。
 
 	连续线性映射是一类有界线性映射。实际上，任取$X$中的有界集$E$，以及$Y$中原点处的邻域$W$，由于$f$的连续性，存在$V$使得$f(V)\subset W$. 由于$E$有界，所以对于足够大的$t$都有$E\subset tV$，因此$f(E)\subset f(tV)=tf(V)\subset tW$. 所以$f$是有界的。
@@ -862,7 +862,7 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 
 \section{半范数}
 
-\begin{para}
+\begin{para}[半范数]
 矢量空间$X$上的\textit{半范数}\index{半范数}是一个$X$上的实值函数$p$，使得对于$X$中任意$x$, $y$以及任意标量$\alpha$成立
 \begin{compactenum}
 \item 次可加性：$p(x+y)\leq p(x)+p(x)$;
@@ -1010,8 +1010,10 @@ Hausdorff空间的假设在许多材料里这个条件不是必须的，但是�
 % 	\end{vmatrix}
 % \]
 
-\begin{para}
-半范数的重要实例是被称为Minkowski泛函的函数。设$A$是$X$的吸收集，定义Minkowski泛函$\mu_A$如下：
+\begin{para}[Minkowski泛函]
+半范数的重要实例是被称为Minkowski泛函的函数。
+
+设$A$是$X$的吸收集，定义Minkowski泛函$\mu_A$如下：
 \[
 	\mu_A(x)=\inf\{t>0\,:\,t^{-1}x\in A\},
 \]
@@ -1387,7 +1389,7 @@ Banach-Steinhaus 定理的条件可以适当改写：如果所有使得轨道$\G
 \item $\mathscr{F}$是$X$上的可分点线性函数族。
 \item 设$\mathscr{G}$是$X$上的可分点半范数族，族
 \[
-	\mathscr{F}=\{f_x(y):y\mapsto f(x-y)\,:\,(f,x)\in (\mathscr{G},X)\}.
+	\mathscr{F}=\{f_x(y):y\mapsto f(x-y)\,|\,(f,x)\in (\mathscr{G},X)\}.
 \]
 \end{compactenum}
 则$X$装配上$\mathscr{F}$-拓扑后成为一个局部凸拓扑矢量空间。

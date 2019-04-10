@@ -1,0 +1,97 @@
+\chapter{Basics}
+
+\section{Conformal symmetry}
+
+% Consider a $D$-dimensional manifold $M$ with Riemannian (Lorentzian) metic
+% $g_{\mub}$. 
+
+\begin{definition}
+	Suppose $(M,g)$ and $(N,h)$ are $D$-dimensional connected manifolds
+	with Riemannian (Lorentzian) metrics.
+	A conformal transformation between these two manifolds
+	is a transformation $\Lambda:M\to N$ such that
+	$\Lambda^*h=\lambda\cdot g$, where $\lambda$ is a positive function on $M$.
+ 	Or more precisely,
+	\[
+		h_{\Lambda(x)}(\Lambda_{*x}v,\Lambda_{*x}w)=\lambda(x)g_x(v,w),
+	\]
+	for any $v$, $w\in T_x M$.
+\end{definition}
+
+Locally, this condition can be rewritten as 
+\[
+	(\Lambda_{*x})^c_{a}(\Lambda_{*x})^d_{b}h_{cd}(\Lambda(x))=\lambda(x)g_{ab}(x),
+\]
+then 
+\[
+	\det(\Lambda_{*x}^{\mathsf{T}}h_x\Lambda_{*x})
+	=\det(\lambda(x) g_x)=\lambda(x)^D \det(g_x)\neq 0,
+\]
+so that the Jacobian $J_x(\Lambda)=\det(\Lambda_{*x})\neq 0$ everywhere,
+which is equivalent to say that $\Lambda$ is locally diffeomorphic.
+
+Suppose $h=\lambda g$ and $g$ are two metrics on a 
+$D$-dimensional connected manifold $M$, then $\id_M$ is a conformal
+transformation between $(M,h)$ and $(M,g)$.
+We can assume that $\lambda = \exp(2\varphi)$ is 
+the exponential of a smooth function $\varphi$ on $M$, then
+under the transformation $g_{ij}\to \exp(2\varphi)g_{ij}$,
+\[
+\begin{cases}
+	g^{ij}\to \exp(-2\varphi)g^{ij},\\
+	\Gamma_{ab}^{c}\to \Gamma_{ab}^{c}+\left(\delta _{b}^{c}\partial _{a}\phi +\delta _{a}^{c}\partial _{b}\phi -{g}_{ab}\partial ^{c}\phi \right),\\
+	{R}_{ij}\to R_{ij}-(D-2)\left[\nabla _{i}\partial _{j}\varphi -(\partial _{i}\varphi )(\partial _{j}\varphi )\right]+\left(\Delta \varphi -(D-2)|\nabla \varphi |^{2}\right)g_{ij},\\
+	R\to e^{-2\varphi }\left(R+2(D-1)\Delta \varphi -(D-2)(D-1)|\nabla \varphi |^{2}\right),
+\end{cases}
+\]
+where $\Delta$ is minus the trace of the Hessian on functions, $\Delta f=-\nabla^i\partial_i f$. Especially, when $D=2$,
+\[
+	R_{ij}\to R_{ij}+\Delta \varphi \,g_{ij},
+\]
+one can always choose $\varphi$ near a point $p$ such that $R_{ij}$ vanish
+on a neighborhood $U$ of $p$, and therefore $(M,\exp(2\varphi)g)$ is 
+locally flat near $p$. This property is usually refered as conformally flatness, and so every $2$-dimensional pseudo-Riemannian manifold is conformally flat.
+
+Now, we are going to consider all conformal transformations between $\rr^D$ and itself, so we need the following theorems.
+
+\begin{thm}[Hadamard's global inverse function theorem]
+Let $M$, $N$ be smooth and connected oriented $D$-dimensional
+manifolds. Suppose $f:M\to N$ is a smooth function such that
+\begin{compactenum}[\quad (1).]
+	\item $f$ is proper,
+	\item $f$ is locally diffeomorphic,
+	\item $N$ is simple connected,
+\end{compactenum}
+then $f$ is a diffeomorphism.
+\end{thm}
+
+\begin{proof}
+	Conditions (1) and (2) tell us that $f$ is covering map, and
+	(3) tell us that $f$ is diffeomorphism.
+\end{proof}
+
+Rewrite the properness in the case of maps between $\rr^D$, we will get
+the following proposition, which is just the original Hadamard theorem.
+
+\begin{pro}
+	Suppose $f:\rr^D\to \rr^D$ is a locally diffeomorphic 
+	smooth function such that $|f(x)|\to \infty$ when $|x|\to \infty$,
+	then $f$ is a diffeomorphism.
+\end{pro}
+
+Now let's consider an infinitesimal conformal transformation 
+\[
+	\Lambda:x\mapsto x+\epsilon(x),
+\]
+then
+\[
+	g_{ij}\mapsto (\Lambda^{-1}_{*x})^\rho_i(\Lambda^{-1}_{*x})^\sigma_j g_{\rho\sigma}=g_{ij}-(\partial_i \epsilon_j+\partial_j \epsilon_i)+O(\epsilon^2).
+\]
+Since we want $\Lambda$ to be conformal, then
+\[
+	\partial_i \epsilon_j+\partial_j \epsilon_i=f(x)g_{ij}
+\]
+so that $g_{ij}\mapsto (1+f)g_{ij}+O(\epsilon^2)$. Then, the trace of $f(x)g_{ij}$ will give us that
+\[
+	f(x)=\frac{2}{D}\partial^i\epsilon_i.
+\]

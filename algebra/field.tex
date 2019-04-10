@@ -1,5 +1,64 @@
+% !TEX root = main.tex
 \chapter{域与Galois理论}
 \ThisULCornerWallPaper{1}{../Pictures/17.png}
+
+\section{域扩张}
+
+我们已经在上一章定义过域扩张、有限扩张、超越扩张、代数扩张等概念。这节，我们将进一步定义一些其他的域扩张的概念。
+
+\begin{para}[分裂域]
+    设$K/k$是一个域扩张，$f\in k[x]$是一个多项式，如果$f$在$K[x]$可以分解为线性因子的乘积$f=a\prod_{i=1}^n (x-\alpha_i)$，则称$f$在域$K$上分裂。若$S$是一族非常值的$k[x]$中的多项式，若任取$f$，它们都在$K$上分裂，且此时$K=k(X)$，其中$X$是$S$中元素在$K$中所有的根构成的集合，则称$K$是$S$的一个分裂域。换而言之，$S$的分裂域是最小使得$S$中多项式都分裂的域扩张。
+\end{para}
+
+由代数闭域的存在性，分裂域的存在是清楚的。反过来，$k[x]$中所有非常值多项式族的分裂域就是$k$的代数闭域。由于域嵌入方式的不同，所以显然可以存在很多分裂域，下面一个命题告诉我们如何去联系这些分裂域。
+
+\begin{pro}
+    若$\sigma:k\to k'$是一个域同构，$S$是一族非常值多项式，$K$是$S$的一个分裂域，而$K'$是$\sigma(S)$的一个分裂域，则存在一个同构$\tau:K\to K'$，使得如下交换图成立
+    \[
+        \xymatrix{
+        K \ar@{->}[rr]^{\tau} &  & K' \\
+        k \ar@{^{(}->}[u]^i \ar@{->}[rr]^{\sigma} &  & k' \ar@{^{(}->}[u]^{i'}
+        }
+    \]
+\end{pro}
+
+若$S=\{f\}$是一个单元素集，$f$是一个不可约多项式，则$\tau$是可以直接如下构造的：若$\alpha$是$f$的一个根，而$\alpha'$是$\sigma(f)$的一个根，注意到，我们有$k$-代数同构$k[x]/(f)\cong k(\alpha)$，当然，也有$k'$-代数同构$k'[x]/(\sigma(f))\cong k(\alpha')$. 同时，还有$\sigma$诱导的同构$k[x]/(f)\cong k'[x]/(\sigma(f)$，它们（以及其逆）三个适当复合就得到了我们想要的同构$\tau$，且还可以做到$\tau(\alpha)=\alpha'$.
+
+\begin{proof}
+    显然，若同态$\tau:K\to K'$存在且使得交换图成立，则像$\tau(K)\subset K'$必然是$\sigma(S)$的分裂域。但由于$K'$已经是$\sigma(S)$的分裂域了，此时$\tau(K)= K'$.所以我们只要说明$\tau$的存在性即可。
+    
+    考虑偶对$(L,\varphi)$的集合$A$，其中$L$是$K$的子域，而$\varphi:L\to K'$是一个同态使得交换图成立，即$\varphi i=i'\sigma$. 显然集合非空，因为$(k,i'\sigma)$在其中。定义，$(L,\varphi)\leq (L',\varphi')$当且仅当$L\subset L'$且$\varphi'|_L=\varphi$，这使得$A$是一个偏序集。对$A$的任意升链$\{(L_i,\varphi_i)\}$，$(L=\bigcup_i L_i,\varphi)$显然是一个上界，其中$\varphi(a_i)=\varphi_i(a_i)$若$a_i\in L_i$. 于是，由Zorn引理，$A$中存在一个极大元$(M,\tau)$.
+
+    下面我们证明，$M=K$，于是$\tau:K\to K'$就是所求之同态。若$M\neq K$，则存在一个$f\in S$使得$f$在$M$上不分裂，此时，我们可以进一步对$M$做代数扩张，得到一个在$A$中比$M$大的元素，这与$M$极大性矛盾。
+\end{proof}
+
+作为推论，如果$k=k'$，则上面的命题告诉我们，给定非常值多项式族$S\subset k[x]$，任意两个$S$的分裂域作为$k$-代数都是同构的。
+
+\begin{para}[正规扩张]
+    设$K/k$是一个域扩张，若$K$是$k[x]$中某族多项式的分裂域，则称呼$K/k$是一个正规扩张。 
+\end{para}
+
+\begin{para}[可分扩张]
+    若$k$是一个域，称不可约多项式$f\in k[x]$是可分的，若$f$没有重根。对任意多项式$g$，其可以分解为一族不可约多项式的乘积，若其中每个不可约多项式都是可分的，则称$g$是可分的。若$K/k$是一个扩张，元$\alpha\in K$被称为在$k$上可分当且仅当其极小多项式在$k$上可分，若$K$中元素都在$k$上可分，则称$K/k$是一个可分扩张。
+\end{para}
+
+回忆，$f$有重根当且仅当$f$和其导数$f'$有公因子。
+
+\begin{para}[交换环的特征]
+    每个非零交换环$R$都有一个典范同态$\zz\to R$，其核必然是$\zz$的一个理想，由$0$或某个正素数$p$生成，此时，我们定义交换环的特征$\operatorname{char}(R)$为这个数。
+\end{para}
+
+若特征为$p$，则在交换环$R$中，$p=0$.
+
+\begin{lem}
+    若域$k$的特征为$0$，则其中任意不可约多项式$f$都是可分的。若域$k$的特征为$p>0$，则其中不可约多项式$f$是可分的当且仅当$f'\neq 0$.
+\end{lem}
+
+\begin{proof}
+    因为$f$不可约，$f$和$f'$此时的公因子要么为$1$，要么为$f$. 因为域$k$的特征为$0$，所以$\deg f'=\deg f-1$，故$f'\neq 0$，对于非零特征的域，我们假设了这点。所以$f$和$f'$公因子只有可逆元，这意味着$f$没有重根。
+\end{proof}
+
+若域$k$中存在一个$a$使得其不能写作$b^p$的形式，则此时$x^p-a$是不可约的，但它是不可分的。
 
 \section{域的自同构与Galois群}
 
@@ -13,20 +72,21 @@
 
 \para 反过来，设$S$是$\mathrm{Aut}(K)$的一个子集，考虑集合
 \[
-    \mathcal{F}(S)=\{a\in K\,:\, \forall \tau\in S\,\text{s.t. }\tau(a)=a\}.
+    \mathcal{F}(S)=\{a\in K\,:\, \forall \tau\in S\,\text{ s.t. }\tau(a)=a\}.
 \]
 不难看出这是一个域，只要考虑有逆元就行了。由$\tau(1)\tau(1)=\tau(1)$，以及域的消去律可以推出$\tau(1)=1$，所以$1\in \mathcal{F}(S)$.
 任取$a\in \mathcal{F}(S)$，由于$1=\tau(1)=\tau(a^{-1})\tau(a)=\tau(a^{-1})a$，所以$\tau(a^{-1})=a^{-1}$，因此$a^{-1}\in \mathcal{F}(S)$.
+\endpara
 
-$\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$\tau^2\neq \tau$，此时我可以知道$\mathcal{F}(\{\tau,\tau^2\})=\mathcal{F}(\{\tau\})$.
+$\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$\tau^2\neq \tau$，此时我们可以知道$\mathcal{F}(\{\tau,\tau^2\})=\mathcal{F}(\{\tau\})$.
 
-\para 在$K$的子域间使用包含关系引入一个偏序，即$k_1\leq k_2$当且仅当$k_1\subset k_2$. 很容易看到如果$k_1\leq k_2$，则$\Gal(K/k_2)\subset \Gal(K/k_1)$.
+\para 在$K$的子域间使用包含关系引入一个偏序，即$k_1\leq k_2$当且仅当$k_1\subset k_2$. 容易看到，若$k_1\leq k_2$，则$\Gal(K/k_2)\subset \Gal(K/k_1)$.
 
 同样可以在$\mathrm{Aut}(K)$使用包含关系引入一个偏序，即$S\leq T$当且仅当$S\subset T$. 则$\mathcal{F}$是一个$\mathrm{Aut}(K)$到$K$子域的集合的映射，并且，如果$S\leq T$，则$\mathcal{F}(T)\leq \mathcal{F}(S)$.
 
-以及在前面二者之间，我们有显然的包含关系
+在前面二者之间，我们有显然的包含关系
 \[
-    k\subset \mathcal{F}(\Gal(K/k))\text{ and } S\subset \Gal(K/\mathcal{F}(S)).
+    k\subset \mathcal{F}(\Gal(K/k))\quad \text{ and }\quad S\subset \Gal(K/\mathcal{F}(S)).
 \]
 于是这构成了一个Galois联络（见附录），因此所有形如$\mathcal{F}(S)$的域和所有形如$\Gal(K/k)$的子群之间，有一个一一映射。
 
@@ -56,7 +116,12 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
     设$G$是$\mathrm{Aut}(K)$的一个有限子群，则$|G|=[K:\mathcal{F}(G)]$以及$G=\Gal(K/\mathcal{F}(G))$.
 \end{pro}
 
-\para 一个代数扩张$K/k$是Galois扩张，如果$\calf(\Gal(K/k))=k$.
+\para[Galois扩张] 一个代数扩张$K/k$是Galois扩张，如果$\calf(\Gal(K/k))=k$.
+\endpara
+
+\begin{pro}
+    代数扩张$K/k$是Galois扩张，当且仅当其是可分、正规扩张。
+\end{pro}
 
 \begin{pro}
     一个有限扩张$K/k$是Galois扩张，当且仅当$|\Gal(K/k)|=[K:k]$.

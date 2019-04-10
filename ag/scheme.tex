@@ -133,9 +133,7 @@
 \begin{para}[顺像]\label{sx}
 设$f:X\to Y$是拓扑空间之间的连续映射，而$\calf$是$X$上的一个预层，则通过$f_*\calf(U)=\calf(f^{-1}(U))$我们可以定义出$Y$上的一个预层$f_*\calf$，他被称为$\calf$关于$f$的\idx{顺像}。 由于原象是保持包含关系的，即如果$V\subset U$，则$f^{-1}(V)\subset f^{-1}(U)$，所以$f_*\calf$上的限制映射就很自然地写作$(f_*\rho)^U_V=\rho^{f^{-1}(U)}_{f^{-1}(V)}$. 不难检验，当$\calf$是$X$上的一个层的时候，$f_*\calf$是$Y$上的一个层。
 
-设$\varphi:\calf\to\calg$是$X$上两个预层之间的态射，那么，很自然，$f$诱导了一个新的态射$f_*\varphi:f_*\calf\to f_*\calg$，具体写出来就是$(f_*\varphi)(U)=\varphi(f^{-1}(U))$，通过自然变换$\varphi$可以验证$f_*\varphi$是一个自然变换。
-
-考虑两个连续映射的复合，很自然地可以验证$(f\circ g)_*=f_*\circ g_*$，这来自于关于原象的等式$(f\circ g)^{-1}(U)=g^{-1}(f^{-1}(U))$. 
+设$\varphi:\calf\to\calg$是$X$上两个预层之间的态射，那么，很自然，$f$诱导了一个新的态射$f_*\varphi:f_*\calf\to f_*\calg$，具体写出来就是$(f_*\varphi)(U)=\varphi(f^{-1}(U))$，通过自然变换$\varphi$可以验证$f_*\varphi$是一个自然变换。考虑两个连续映射的复合，很自然地可以验证$(f g)_*=f_* g_*$，这来自于关于原象的等式$(fg)^{-1}(U)=g^{-1}(f^{-1}(U))$. 
 
 设$u:\mathcal{F}\to\mathcal{G}$是一个$X$上预层间的态射，则$f_*u(U)=u(f^{-1}(U))$就是一个$f_*\mathcal{F}\to f_*\mathcal{G}$之间的态射。并且，设$v:\mathcal{G}\to\mathcal{H}$是令一个$X$上预层间的态射，成立$f_*(v\circ u)=f_*v\circ f_* u$. 于是$f_*$就构成了一个$X$上预层范畴到$Y$上预层范畴之间的协变函子。并且，由于$f_*$将层变成层，所以$f_*$也诱导了一个$X$上层范畴到$Y$上层范畴之间的协变函子。
 \end{para}
@@ -247,42 +245,42 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 % \]
 % \end{proof}
 
-\begin{pro}
-\label{pro:1}对于一些特殊情况，逆像层总是存在的。考虑一个内含映射的例子，设$U$是$X$的开子集，相应的内含映射为$i:U\hookrightarrow X$. 对于$X$上的$K$-层$\calf$，$\calf|_U$即其在$U$上的逆像层$i^*\calf$.
-\end{pro}
+% \begin{pro}
+% \label{pro:1}对于一些特殊情况，逆像层总是存在的。考虑一个内含映射的例子，设$U$是$X$的开子集，相应的内含映射为$i:U\hookrightarrow X$. 对于$X$上的$K$-层$\calf$，$\calf|_U$即其在$U$上的逆像层$i^*\calf$.
+% \end{pro}
 
-\begin{proof}
-检查泛性质即可。现在还缺一个典范态射$\calf\to i_*i^*\calf$，由于我们假设了$i^*\calf=\calf|_U$，所以
-\[
-	i_*i^*\calf(V)=i^*\calf(i^{-1}(V))=\calf|_U(U\cap V)=\calf(U\cap V).
-\]
-那么限制映射族$\rho^V_{U\cap V}:\calf(V)\to \calf(U\cap V)$可以构成层之间的态射$\calf\to i_*i^*\calf$，我们将其记做$i^\flat$，我们希望这就是典范态射。剩下的不过是检查$(\calf|_U,i^\flat)$所需要满足的泛性质，即任取$u:\calf\to i_*\calg$，都有唯一的态射$u^\#:i^*\calf\to \calg$使得分解$u:\calf\xrightarrow{i^\flat} i_*i^*\calf \xrightarrow{i_*u^\#} i_*\calg$成立。
+% \begin{proof}
+% 检查泛性质即可。现在还缺一个典范态射$\calf\to i_*i^*\calf$，由于我们假设了$i^*\calf=\calf|_U$，所以
+% \[
+% 	i_*i^*\calf(V)=i^*\calf(i^{-1}(V))=\calf|_U(U\cap V)=\calf(U\cap V).
+% \]
+% 那么限制映射族$\rho^V_{U\cap V}:\calf(V)\to \calf(U\cap V)$可以构成层之间的态射$\calf\to i_*i^*\calf$，我们将其记做$i^\flat$，我们希望这就是典范态射。剩下的不过是检查$(\calf|_U,i^\flat)$所需要满足的泛性质，即任取$u:\calf\to i_*\calg$，都有唯一的态射$u^\#:i^*\calf\to \calg$使得分解$u:\calf\xrightarrow{i^\flat} i_*i^*\calf \xrightarrow{i_*u^\#} i_*\calg$成立。
 
-首先，我们来证明分解的唯一性。假设存在$v$, $w:i^*\calf\to \calg$使得分解$u=(i_*v)i^\flat=(i_*w)i^\flat$成立。设$V$是$U$的开子集，此时$i^\flat(V)=\id_{\calf(V)}$，所以$(i_*v)(V)=(i_*w)(V)$. 同时再注意到，$u(V)=u(i^{-1}(V))=i_*u(V)$和$v(V)=v(i^{-1}(V))=i_*v(V)$，所以我们有$v(V)=u(V)$成立，由于$u$, $v$都是$U$上的层之间的态射，而$V$可以取遍$U$任意的开子集，所以$v=u$成立。
+% 首先，我们来证明分解的唯一性。假设存在$v$, $w:i^*\calf\to \calg$使得分解$u=(i_*v)i^\flat=(i_*w)i^\flat$成立。设$V$是$U$的开子集，此时$i^\flat(V)=\id_{\calf(V)}$，所以$(i_*v)(V)=(i_*w)(V)$. 同时再注意到，$u(V)=u(i^{-1}(V))=i_*u(V)$和$v(V)=v(i^{-1}(V))=i_*v(V)$，所以我们有$v(V)=u(V)$成立，由于$u$, $v$都是$U$上的层之间的态射，而$V$可以取遍$U$任意的开子集，所以$v=u$成立。
 
-然后证明存在性，对于任意的态射$u:\calf\to i_*\calg$，他具有形式$u(V):\calf(V)\to i_*\calg(V)=\calg(U\cap V)$. 遍历$U$中的开集$V$，我们定义$u^\#(V)=u(V):\calf(V)\to \calg(U\cap V)=\calg(V)$，此时由于$i^*\calf(V)=\calf|_U(V)=\calf(V)$，所以我们定义出了一族态射$u^\#(V):i^*\calf(V)=\calf(V)\to \calg(V)$，自然也得到了态射$u^\#:i^*\calf\to \calg$. 现在，需要检查分解$u:\calf\xrightarrow{i^\flat} i_*i^*\calf \xrightarrow{i_*u^\#} i_*\calg$成立，这个分解其实说白了就是，已知如下交换图（图中的限制映射都略去了）成立，
-\[
-	\xymatrix{
-		\calf(V)\ar[r]^-{u(V)} \ar[d]&\calg(U\cap V) \ar[d]\\
-		\calf(W)\ar[r]^-{u(W)}&\calg(U\cap W)
-	}
-\]
-其中$W\subset V$是$X$中的开集，要验证定出来的$u^\#$使得如下交换图成立。
-\[
-	\xymatrix{
-		\calf(V)\ar[r] \ar[d]&\ar[rr]^{u^\#(U\cap V)}\calf(U\cap V) \ar[d]&&\calg(U\cap V) \ar[d]\\
-		\calf(W)\ar[r]&\ar[rr]^{u^\#(U\cap W)}\calf(U\cap W)&&\calg(U\cap W)
-	}
-\]
-这个并不困难，左边一个矩形的交换性来自于限制映射的复合，这是自然的，右边一个矩形的交换性来自于$u^\#$的定义和上面一个交换图，所以最后要检验的不过是横向的那个分解，即对于任意的开集$V$，分解$u(V):\calf(V)\to \calf(U\cap V) \xrightarrow{u^\#(U\cap V)} \calg(U\cap V)$成立。现考虑如下交换图，
-\[
-	\xymatrix{
-		\calf(V)\ar[rr]^-{u(V)} \ar[d]&&\calg(U\cap V) \ar@{=}[d]\\
-		\calf(U\cap V)\ar[rr]^{u(U\cap V)}&&\calg(U\cap V)
-	}
-\]
-这就得出了$u(V)=u(U\cap V)\rho^V_{U\cap V}$，而$u^\#(U\cap V)=u(U\cap V)$，所以$u(V)=u^\#(U\cap V)\rho^V_{U\cap V}$，即交换图横向的分解成立。
-\end{proof}
+% 然后证明存在性，对于任意的态射$u:\calf\to i_*\calg$，他具有形式$u(V):\calf(V)\to i_*\calg(V)=\calg(U\cap V)$. 遍历$U$中的开集$V$，我们定义$u^\#(V)=u(V):\calf(V)\to \calg(U\cap V)=\calg(V)$，此时由于$i^*\calf(V)=\calf|_U(V)=\calf(V)$，所以我们定义出了一族态射$u^\#(V):i^*\calf(V)=\calf(V)\to \calg(V)$，自然也得到了态射$u^\#:i^*\calf\to \calg$. 现在，需要检查分解$u:\calf\xrightarrow{i^\flat} i_*i^*\calf \xrightarrow{i_*u^\#} i_*\calg$成立，这个分解其实说白了就是，已知如下交换图（图中的限制映射都略去了）成立，
+% \[
+% 	\xymatrix{
+% 		\calf(V)\ar[r]^-{u(V)} \ar[d]&\calg(U\cap V) \ar[d]\\
+% 		\calf(W)\ar[r]^-{u(W)}&\calg(U\cap W)
+% 	}
+% \]
+% 其中$W\subset V$是$X$中的开集，要验证定出来的$u^\#$使得如下交换图成立。
+% \[
+% 	\xymatrix{
+% 		\calf(V)\ar[r] \ar[d]&\ar[rr]^{u^\#(U\cap V)}\calf(U\cap V) \ar[d]&&\calg(U\cap V) \ar[d]\\
+% 		\calf(W)\ar[r]&\ar[rr]^{u^\#(U\cap W)}\calf(U\cap W)&&\calg(U\cap W)
+% 	}
+% \]
+% 这个并不困难，左边一个矩形的交换性来自于限制映射的复合，这是自然的，右边一个矩形的交换性来自于$u^\#$的定义和上面一个交换图，所以最后要检验的不过是横向的那个分解，即对于任意的开集$V$，分解$u(V):\calf(V)\to \calf(U\cap V) \xrightarrow{u^\#(U\cap V)} \calg(U\cap V)$成立。现考虑如下交换图，
+% \[
+% 	\xymatrix{
+% 		\calf(V)\ar[rr]^-{u(V)} \ar[d]&&\calg(U\cap V) \ar@{=}[d]\\
+% 		\calf(U\cap V)\ar[rr]^{u(U\cap V)}&&\calg(U\cap V)
+% 	}
+% \]
+% 这就得出了$u(V)=u(U\cap V)\rho^V_{U\cap V}$，而$u^\#(U\cap V)=u(U\cap V)$，所以$u(V)=u^\#(U\cap V)\rho^V_{U\cap V}$，即交换图横向的分解成立。
+% \end{proof}
 
 \begin{para}[伴随层]
 设$1_X:X\to X$是恒同映射，对于$X$上的预层$\calf$，如果层$1_X^*\calf$存在，则他称为$\calf$的\idx{伴随层}，有时候也被记做$\calf^+$. 对于任意的层$\calf'$和态射$u:\calf\to\calf'$，总有唯一分解$u:\calf\xrightarrow{(1_X)^\flat_\calf} \calf^+ \xrightarrow{v} \calf'$成立。
@@ -301,14 +299,15 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 	\]
 	所以这确实是一个预层，暂时记作$\mathcal{H}$.
 
-	现在设$\mathscr{U}$是$U$的一个开覆盖，若存在一个对象$A$使得下列交换图成立
-	\[
-	\xymatrix{
-		A\ar[r]^{\varphi_{\alpha}}\ar[d]_{\varphi_{\beta}}&\mathcal{H}(U_\beta)\ar[d]\\
-		\mathcal{H}(U_\alpha)\ar[r]&\mathcal{H}(U_{\alpha}\cap U_{\beta})
-	}
-	\]
-	则我们只需证明存在唯一的态射$\varphi:A\to \mathcal{H}(U)$使得下图交换的时候，
+	现在设$\mathscr{U}$是$U$的一个开覆盖，对下列交换图，我们要证明存在唯一的态射$\varphi:A\to \mathcal{H}(U)$
+	% 若存在一个对象$A$使得下列交换图成立
+	% \[
+	% \xymatrix{
+	% 	A\ar[r]^{\varphi_{\alpha}}\ar[d]_{\varphi_{\beta}}&\mathcal{H}(U_\beta)\ar[d]\\
+	% 	\mathcal{H}(U_\alpha)\ar[r]&\mathcal{H}(U_{\alpha}\cap U_{\beta})
+	% }
+	% \]
+	% 则我们只需证明存在唯一的态射$\varphi:A\to \mathcal{H}(U)$使得下图交换的时候，
 	\[
 		\xymatrix{
 			A\ar@/_/[ddr]_{\varphi_{\alpha}}\ar@/^/[drr]^{\varphi_{\beta}}\ar@{-->}[dr]|{\varphi}&& \\
@@ -318,10 +317,7 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 	\]
 	由极限$\mathcal{H}(U)=\varprojlim_{V\supset f(U)} \mathcal{F}^+(V)$的泛性质，实际上只需要知道一族态射$A\to \mathcal{F}^+(V)$即可，其中$V\supset f(U)$. 而这直接来自于$\mathcal{F}^+$是一个层以及上面的交换图。
 
-	任取$u:f^*\mathcal{F}\to\calg$，任取$Y$中的开集$V$，考虑开集$U=f^{-1}(V)$. 由于$f(U)=f(f^{-1}(V))=V$就是一个开集，所有包含$f(U)$的开集拥有极小元$V$，因此
-	\[
-	f^*\mathcal{F}(f^{-1}(V))=\mathcal{F}^+(V).
-	\]
+	任取$u:f^*\mathcal{F}\to\calg$，任取$Y$中的开集$V$，考虑开集$U=f^{-1}(V)$. 由于$f(U)=f(f^{-1}(V))=V$就是一个开集，所有包含$f(U)$的开集拥有极小元$V$，因此$f^*\mathcal{F}(f^{-1}(V))=\mathcal{F}^+(V)$.
 	那么
 	\[
 	u(f^{-1}(V)):\mathcal{F}^+(V)\to \calg(f^{-1}(V)),
@@ -332,25 +328,28 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 	\[
 		f^*f_*\calg(U)=\varprojlim_{V\supset f(U)} (f_*\calg)^+(V)=\varprojlim_{V\supset f(U)} f_*\calg(V)=\varprojlim_{V\supset f(U)} \calg(f^{-1}(V))
 	\]
-	也是一个层。由于
-	\[
-	f^{-1}(V)\supset f^{-1}(f(U))\supset U,
-	\]
-	所以我们有一族限制态射$\mathcal{G}(f^{-1}(V))\to \mathcal{G}(U)$. 于是有映射
+	也是一个层。由于包含关系$U\subset f^{-1}(f(U))\subset f^{-1}(V)$，
+	我们有一族限制态射$\mathcal{G}(f^{-1}(V))\to \mathcal{G}(U)$. 于是有映射
 	\[
 	\varprojlim_{V\supset f(U)} \calg(f^{-1}(V))\to \calg(f^{-1}(W))\to \mathcal{G}(U),
 	\]
-	其中$W$是任意的开集$W\supset f(U)$. 由限制映射的相容性，我们可以得知，这个映射的定义与$W$的选取无关。因此，我们就得到了态射$f^\#_\calg:f^*f_*\calg\to \mathcal{G}$.
-
-	任取$v:\mathcal{F}\to f_*\mathcal{G}$，我们有$f^*(v):f^*\mathcal{F}\to f^*f_*\mathcal{G}$（这直接来自极限的泛性质），然后复合上面的态射$f^\#_\calg$，就得到了$v^\#=f^\#_\calg\circ f^*(v):f^*\mathcal{F}\to \mathcal{G}$.
+	其中$W$是任意的开集$W\supset f(U)$. 由限制映射的相容性，我们可以得知，这个映射的定义与$W$的选取无关。因此，我们就得到了态射$f^\#_\calg:f^*f_*\calg\to \mathcal{G}$. 任取$v:\mathcal{F}\to f_*\mathcal{G}$，我们有$f^*(v):f^*\mathcal{F}\to f^*f_*\mathcal{G}$（这直接来自极限的泛性质），然后复合上面的态射$f^\#_\calg$，就得到了$v^\#=f^\#_\calg\circ f^*(v):f^*\mathcal{F}\to \mathcal{G}$.
 
 	最后，无外乎检查一些泛性质。由构造，这是直接的。
 \end{proof}
 
-从这个引理，Proposition \ref{pro:1}就是显然的了。事实上，由于包含$i(V)=U\cap V$的任意开集中有极小元$U\cap V$，所以极限$\varprojlim_W \mathcal{F}^+(W)$总存在且就等于$\mathcal{F}^+(U\cap V)$. 并且，由于$\mathcal{F}$是一个层，所以$\mathcal{F}^+=\mathcal{F}$也存在。
+% 从这个引理，Proposition \ref{pro:1} 就是显然的了。事实上，由于包含$i(V)=U\cap V$的任意开集中有极小元$U\cap V$，所以极限$\varprojlim_W \mathcal{F}^+(W)$总存在且就等于$\mathcal{F}^+(U\cap V)$. 并且，由于$\mathcal{F}$是一个层，所以$\mathcal{F}^+=\mathcal{F}$也存在。
 
-\begin{para}
-将层的限制的知识应用到赋环空间，我们就有了一个赋环空间的态射$(i,i^\flat):(U,\mathcal{O}_U)\to (X,\mathcal{O}_X)$，其中$\mathcal{O}_U=\mathcal{O}_X|_U$，他被称为赋环空间的典范含入态射。赋环空间$(U,\oo_U)$时常被称为赋环空间$(X,\oo_X)$的开子赋环空间。
+\begin{coro}
+	设$U$是$X$的开子集，相应的内含映射为$i:U\hookrightarrow X$. 对于$X$上的$K$-层$\calf$，$\calf|_U$即其在$U$上的逆像层$i^*\calf$. 
+\end{coro}
+
+\begin{proof}
+	事实上，由于包含$i(V)=U\cap V$的任意开集中有极小元$U\cap V$，所以极限$\varprojlim_W \mathcal{F}^+(W)$总存在且就等于$\mathcal{F}^+(U\cap V)$. 并且，由于$\mathcal{F}$是一个层，所以$\mathcal{F}^+=\mathcal{F}$也存在。
+\end{proof}
+
+\begin{para}[赋环空间的典范含入态射]
+将层的限制的知识应用到赋环空间，我们就有了赋环空间的态射$(i,i^\flat):(U,\mathcal{O}_U)\to (X,\mathcal{O}_X)$，其中$\mathcal{O}_U=\mathcal{O}_X|_U$，他被称为赋环空间的典范含入态射。赋环空间$(U,\oo_U)$时常被称为赋环空间$(X,\oo_X)$的开子赋环空间。
 
 设$\Phi:(X,\mathcal{O}_X)\to (Y,\mathcal{O}_Y)$是一个态射，他在$U\subset X$上的限制记做$\Phi|_U:=\Phi\circ (i,i^\flat)$，如果$\Phi=(\psi,\theta)$，则$\Phi|_U=\bigl(\psi|_U, \psi_*(i^\flat) \circ \theta\bigr):(U,\mathcal{O}_U)\to (Y,\mathcal{O}_Y)$，层之间的态射具体写出来即
 \[
@@ -369,7 +368,7 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 \end{para}
 
 \begin{pro}\label{pro:1.20}
-设$(\psi,\theta):(X,\oo_X)\to (Y,\oo_Y)$是一个赋环空间态射，如果存在一个$Y$的开子集$U$使得$\psi(X)\subset U$，则存在唯一的态射$\Phi:(X,\oo_X)\to (U,\oo_U)$使得分解$(\psi,\theta)=(i,i^\flat)\Phi$成立，其中$(i,i^\flat):(U,\oo_U)\to (Y,\oo_Y)$是典范含入。
+设$(\psi,\theta):(X,\oo_X)\to (Y,\oo_Y)$是一个赋环空间态射，如果存在一个$Y$的开子集$U$使得$\psi(X)\subset U$，则存在唯一的态射$\Phi:(X,\oo_X)\to (U,\oo_U)$使得分解$(\psi,\theta)=(i,i^\flat)\Phi$成立，其中$(i,i^\flat):(U,\oo_U)\hookrightarrow (Y,\oo_Y)$是典范含入。
 \end{pro}
 
 \begin{proof}
@@ -416,6 +415,8 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 将$\{X_\alpha\}$利用同构$\{\varphi_{\alpha\beta}\}$沿着$\{U_{\alpha\beta}\}$黏成一个拓扑空间$X$，此时$X_\alpha$可以等同于$X$的开子集$X'_\alpha$，而$U_{\alpha\beta}$等同于$X'_\alpha\cap X'_\beta$. 于是，利用层的黏合，存在一个赋环空间$(X,\oo)$还有一族同构$\varphi_\alpha:(X|_{U'_\alpha},\oo|_{U'_\alpha})\to (X_\alpha,\oo_\alpha)$.
 \end{pro}
 
+最后我们给一个比较一般情况的逆像的存在性的证明。
+
 \begin{thm}\label{proinverse}
 设$\psi:X\to Y$是一个连续映射，$\calf$是$X$上的一个$K$-层，而$\calg$是$Y$上的一个$K$-预层。如果范畴$K$是交换群范畴，则$\calg$关于$\psi$的逆像层$\psi^*\calg$存在。
 \end{thm}
@@ -429,7 +430,6 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 
 		\item 对任意的$x\in U$，总存在$\psi(x)$的一个开邻域$V$，$x$的一个邻域$W\subset \psi^{-1}(V)\cap U$和一个元素$t\in \calg(V)$，使得当$p\in W$的时候总有$s(p)=t_{\psi(p)}$.
 	\end{itemize}
-
 	$\psi^*\calg(U)$上的加法直接定义为$(s+t)(x)=s(x)+t(x)$，因此$\psi^*\calg(U)$是一个交换群。如果$V$是$U$的开子集，那么函数限制$i^U_V:\psi^*\calg(U)\to \psi^*\calg(V)$就是所需要的预层的限制映射，记$i^U_V(s)=s|_V$，因此$\psi^*\calg$是一个预层。令$\{U_i\}$是$U$的一个开覆盖，且$s_i\in \psi^*\calg(U_i)$是局部截面。如果$s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}$，那么我们能定义一个函数$s:U\to \bigoplus_{x\in U}\calf_p$通过$s|_{U_i}=s_i$，函数完全由其值确定，所以唯一性也得证。因此$\psi^*\calg$是一个层。
 
 	此外，成立典范同构$(\psi^*\calg)_x\cong \calg_{\psi(x)}$. 实际上，$s\mapsto s(x)$给出了态射$\psi^*\calg(U)\to \calg_{\psi(x)}$，他与限制映射相容，所以由余极限的泛性质，存在唯一的态射$\theta:(\psi^*\calg)_x\to \calg_{\psi(x)}$满足$\theta(s_x)=s(x)$. 它显然是单射，因为如果$s_x=t_x$，那么存在一个领域$U$使得$s|_U=t|_U$，所以$s(x)=s|_U(x)=t|_U(x)=t(x)$. 同时，它也是满射，任取$t_{\psi(x)}=(V,t)\in \calg_{\psi(x)}$，其中$V$是$\psi(x)$的一个邻域，则取$x$附近的一个邻域$U$使得$\psi(U)\subset V$，在$\psi^*\calg(U)$上，我们定义$s:p\mapsto t_{\psi(p)}$. 于是$t_{\psi(x)}=s(x)$. 因此，我们一般会通过$s_x=s(x)$来等同$(\psi^*\calg)_x$和$\calg_{\psi(x)}$. 下面我们默认这种等同。
@@ -524,7 +524,7 @@ f_p:(f_*\calf)_{f(p)}\to \calf_p,
 \end{proof}
 
 \begin{pro}[逆像函子的复合]
-考虑两个连续映射$f:X\to Y$, $g:Y\to Z$，则Theorem \ref{proinverse}构造的逆像函子满足$(gf)^*=f^*g^*$.
+考虑两个连续映射$f:X\to Y$, $g:Y\to Z$，则Theorem \ref{proinverse} 构造的逆像函子满足$(gf)^*=f^*g^*$.
 \end{pro}
 
 \begin{proof}
@@ -1306,7 +1306,7 @@ $\spec R$不可约当且仅当$\sqrt{0}$是一个素理想。$\spec(R)$的不可
 \end{para}
 
 \begin{para}
-回忆层之间的顺像在茎上的表现（见\ref{sx}），设$x\in \spec R$，存在一个典范同态
+回忆层之间的顺像在茎上的表现（见 \ref{sx}），设$x\in \spec R$，存在一个典范同态
 \[
 	{}^a\varphi_x:({}^a\varphi_*\oo_R)_{{}^a\varphi(x)}\to (\oo_R)_{x}.
 \]
@@ -1348,7 +1348,7 @@ $\spec R$不可约当且仅当$\sqrt{0}$是一个素理想。$\spec(R)$的不可
 \[
 	\varphi=\theta(\spec S):\oo_S(\spec S)=S\to \psi_*\oo_R(\spec S)=R.
 \]
-由于$\theta_x^\#:(\oo_S)_{\psi(x)}\to (\oo_R)_x$是局部同态，所以它诱导了域的单同态$\theta^x:k(\psi(x))\to k(x)$，取整体截面$\langle \spec S,f\rangle$以及$f(\psi(x))\in k(\psi(x))$，如下等式成立（可参考Proposition \ref{pro:3.8}前面的推导）
+由于$\theta_x^\#:(\oo_S)_{\psi(x)}\to (\oo_R)_x$是局部同态，所以它诱导了域的单同态$\theta^x:k(\psi(x))\to k(x)$，取整体截面$\langle \spec S,f\rangle$以及$f(\psi(x))\in k(\psi(x))$，如下等式成立（可参考Proposition \ref{pro:3.8} 前面的推导）
 \[
 	\theta^x(f(\psi(x)))=\theta_x^\#(\langle \spec S,f\rangle)\,\, \text{mod}\,\, \mm_x=\langle \spec R,\varphi(f)\rangle \,\, \text{mod}\,\, \mm_x = \varphi(f)(x).
 \]
@@ -1440,7 +1440,7 @@ f(g(\Psi))=\left({}^a\theta(\oo_X),\widetilde{\theta(\oo_X)}\right)
 	\[
 	\left\{\Psi_\alpha:\spec\Gamma(U_\alpha,\oo_X)\to \spec R\right\},
 	\]
-	由于$U_\alpha$都是仿射开集，则$\spec\Gamma(U_\alpha,\oo_X)$可以典范等同于$U_\alpha$. 因此，我们给出了一族赋环空间之间的局部态射$\left\{\Psi_\alpha: U_\alpha \to \spec R\right\}$. 它们符合相容条件，所以Proposition \ref{rsnh}告诉我们可以粘成唯一一个$\Psi:X\to \spec R$. 他是局部态射，所以也就是概形同态。由唯一性，上述两个态射的构造是互逆的。
+	由于$U_\alpha$都是仿射开集，则$\spec\Gamma(U_\alpha,\oo_X)$可以典范等同于$U_\alpha$. 因此，我们给出了一族赋环空间之间的局部态射$\left\{\Psi_\alpha: U_\alpha \to \spec R\right\}$. 它们符合相容条件，所以Proposition \ref{rsnh} 告诉我们可以粘成唯一一个$\Psi:X\to \spec R$. 他是局部态射，所以也就是概形同态。由唯一性，上述两个态射的构造是互逆的。
 \end{proof}
 
 由于任意的环都有唯一到$\zz$的同态，所以，任取概形$X$，我们都有唯一的概形态射$X\to \spec \zz$. 因此，$\spec \zz$是概形范畴的终对象。
@@ -1462,7 +1462,7 @@ f(g(\Psi))=\left({}^a\theta(\oo_X),\widetilde{\theta(\oo_X)}\right)
 \[
 	x=\psi(\psi^{-1}(x))\in \psi\left(\overline{\{a\}}\right)\subset \overline{\{\psi(a)\}}.
 \]
-所以$\im \psi\subset S_x$. 更进一步，我们其实还有$\im \psi=S_x$. 由于$S_x$包含于任意一个$x$的仿射开邻域中，所以可以假设概形$X=\spec R$，而这时$\psi={}^a i$，其中$i:R\to R_x$是典范同态，此时$\im({}^a i)$即$\spec R$中满足$\pp_y\subset \pp_x$的$y$构成的子集（见Lemma \ref{lem:3.9}的推论），由于$\pp_y\subset \pp_x$等价于$x\in \overline{\{y\}}$，所以$\im({}^a i)$即$S_x$. Lemma \ref{lem:3.9}同时还告诉我们，$\psi$是从$X_x$到$\im\psi$的一个同胚。并且，由于$X$中所有不可约闭子集都具有形式$\overline{\{y\}}$，因此$X_x$中的点与$X$中所有包含$x$的不可约闭子集之间有一个一一对应。
+所以$\im \psi\subset S_x$. 更进一步，我们其实还有$\im \psi=S_x$. 由于$S_x$包含于任意一个$x$的仿射开邻域中，所以可以假设概形$X=\spec R$，而这时$\psi={}^a i$，其中$i:R\to R_x$是典范同态，此时$\im({}^a i)$即$\spec R$中满足$\pp_y\subset \pp_x$的$y$构成的子集（见Lemma \ref{lem:3.9} 的推论），由于$\pp_y\subset \pp_x$等价于$x\in \overline{\{y\}}$，所以$\im({}^a i)$即$S_x$. Lemma \ref{lem:3.9} 同时还告诉我们，$\psi$是从$X_x$到$\im\psi$的一个同胚。并且，由于$X$中所有不可约闭子集都具有形式$\overline{\{y\}}$，因此$X_x$中的点与$X$中所有包含$x$的不可约闭子集之间有一个一一对应。
 
 最后，取$z=\psi(y)$，则$\theta_y^\#:(\oo_X)_z\to ((\oo_X)_x)_y$是一个同构。实际上，只需考虑$X=\spec R$, $\theta=\widetilde{i}$的情况，此时上面的同态即$i_y:R_z\to (R_x)_y$. 这个是显然的同构。
 \end{para}
@@ -1723,10 +1723,10 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 其中$\varphi'$满足唯一分解$\varphi=i_{\varphi^{-1}(U)}\varphi'$. 由于$\psi f=\varphi' g$，所以$\im(\psi f)\subset U$，或者$\im f\subset \psi^{-1}(U)$，因此，我们可以唯一分解$f=i_{\psi^{-1}(U)}f'$，其中$f':Z\to \psi^{-1}(U)$. 现在考虑$A=\varphi^{-1}(U)\times_{U}\psi^{-1}(U)$的泛性质，存在唯一的态射$h:Z\to A$，使得$g=p_1h$且$f'=p_2h$，所以$f=i_{\psi^{-1}(U)}f'=i_{\psi^{-1}(U)}p_2h$. 这就检验了上述交换图。
 \end{proof}
 
-\begin{proof}[The proof of Theorem \ref{thm:1.5.9}]
-设$X$, $Y$都是$S$-概形，定义态射分别是$\varphi:X\to S$和$\psi:Y\to S$. 先设$S$, $Y$是仿射概形，找一个$X$的仿射开覆盖，由于两个仿射概形在仿射概形上的纤维积是存在的，所以Lemma \ref{lem:3.2.10}告诉我们，此时$X\times_S Y$存在，即一个概形与一个仿射概形在仿射概形上的纤维积是存在的。现在回到$Y$是一般的概形，由于此时$X$与$Y$的任意仿射开集在$S$上的纤维积是存在的，再一次利用Lemma \ref{lem:3.2.10}，就得到了此时$X\times_S Y$存在。
+\begin{proof}[The proof of Theorem \ref{thm:1.5.9} ]
+设$X$, $Y$都是$S$-概形，定义态射分别是$\varphi:X\to S$和$\psi:Y\to S$. 先设$S$, $Y$是仿射概形，找一个$X$的仿射开覆盖，由于两个仿射概形在仿射概形上的纤维积是存在的，所以Lemma \ref{lem:3.2.10} 告诉我们，此时$X\times_S Y$存在，即一个概形与一个仿射概形在仿射概形上的纤维积是存在的。现在回到$Y$是一般的概形，由于此时$X$与$Y$的任意仿射开集在$S$上的纤维积是存在的，再一次利用Lemma \ref{lem:3.2.10}，就得到了此时$X\times_S Y$存在。
 
-现在设$\{S_\alpha\}$是$S$的一个仿射开覆盖，Lemma \ref{lem:3.2.11}告诉我们，$\varphi^{-1}(S_\alpha)\to S_\alpha$和$\psi^{-1}(S_\alpha)\to S_\alpha$的纤维积$A_\alpha=\varphi^{-1}(S_\alpha)\times_{S_\alpha}\psi^{-1}(S_\alpha)$就是$\varphi^{-1}(S_\alpha)\times_S Y$. 由于$S_\alpha$是仿射的，所以$A_\alpha=\varphi^{-1}(S_\alpha)\times_S Y$存在。由于$\bigcup_\alpha\varphi^{-1}(S_\alpha)=\varphi^{-1}\left(\bigcup_\alpha S_\alpha\right)=\varphi^{-1}(S)=X$，所以$\varphi^{-1}(S_\alpha)$是$X$的一个开覆盖，由Lemma \ref{lem:3.2.10}，$X\times_S Y$存在。
+现在设$\{S_\alpha\}$是$S$的一个仿射开覆盖，Lemma \ref{lem:3.2.11} 告诉我们，$\varphi^{-1}(S_\alpha)\to S_\alpha$和$\psi^{-1}(S_\alpha)\to S_\alpha$的纤维积$A_\alpha=\varphi^{-1}(S_\alpha)\times_{S_\alpha}\psi^{-1}(S_\alpha)$就是$\varphi^{-1}(S_\alpha)\times_S Y$. 由于$S_\alpha$是仿射的，所以$A_\alpha=\varphi^{-1}(S_\alpha)\times_S Y$存在。由于$\bigcup_\alpha\varphi^{-1}(S_\alpha)=\varphi^{-1}\left(\bigcup_\alpha S_\alpha\right)=\varphi^{-1}(S)=X$，所以$\varphi^{-1}(S_\alpha)$是$X$的一个开覆盖，由Lemma \ref{lem:3.2.10}，$X\times_S Y$存在。
 \end{proof}
 
 \begin{para}[纤维积下的几何点]
@@ -1817,7 +1817,7 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 \[
 	(f\times_S g)_*:(X\times_S W)(k)\to (Y\times_S Z)(k)
 \]
-也总是单的。这是因为，由前面已证明的部分，$f\times_S g$是单的，结合$1$总是单的，Proposition \ref{pro.2.13}就给出了结论。
+也总是单的。这是因为，由前面已证明的部分，$f\times_S g$是单的，结合$1$总是单的，Proposition \ref{pro.2.13} 就给出了结论。
 
 现在，注意到
 \[
@@ -1868,7 +1868,7 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 
 \section{子概型}
 
-对仿射概形$\spec R$，每一个$R$的理想$I$都可以定义一个$\spec R$上的$\oo_R$的理想层$\widetilde{I}$，这是一个拟凝聚理想层。反过来，任取$\spec R$的一个拟凝聚理想层，由Proposition \ref{niningju}可知，它必然是$\widetilde{I}$的形式。因为这个原因，我们后面对概形也将主要关注拟凝聚理想层。但是，注意到，即使是仿射概形$\spec R$，并不是所有理想层都是拟凝聚的。
+对仿射概形$\spec R$，每一个$R$的理想$I$都可以定义一个$\spec R$上的$\oo_R$的理想层$\widetilde{I}$，这是一个拟凝聚理想层。反过来，任取$\spec R$的一个拟凝聚理想层，由Proposition \ref{niningju} 可知，它必然是$\widetilde{I}$的形式。因为这个原因，我们后面对概形也将主要关注拟凝聚理想层。但是，注意到，即使是仿射概形$\spec R$，并不是所有理想层都是拟凝聚的。
 
 拟凝聚是局部的性质，所以利用Proposition \ref{niningju}，我们给出概形$X$上模层$\calf$拟凝聚的如下定义：存在$X$的一个仿射开覆盖$\{U_\alpha\}$，使得在每一个$U_\alpha$上，都存在一个$\oo_X(U_\alpha)$-模$M_\alpha$使得$\calf|_{U_\alpha}=\widetilde{M_\alpha}$.
 
@@ -1921,7 +1921,7 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 \[
 	\Gamma(U,\psi_*\oo_Y)=\Gamma(\psi^{-1}(U),\oo_Y)=\Gamma(U\cap Y,\oo_Y)=\Gamma(U,\oo_X/\mathscr I),
 \]
-所以$\psi_*\oo_Y=\oo_X/\mathscr I$. 再回忆\ref{qsheaf}，$\oo_X/\mathscr I$是典范含入$i(U):\mathscr I(U)\hookrightarrow \oo_X(U)$的余核，所以有典范态射$\pi:\oo_X\to \oo_X/\mathscr I$，此即所需。
+所以$\psi_*\oo_Y=\oo_X/\mathscr I$. 再回忆 \ref{qsheaf}，$\oo_X/\mathscr I$是典范含入$i(U):\mathscr I(U)\hookrightarrow \oo_X(U)$的余核，所以有典范态射$\pi:\oo_X\to \oo_X/\mathscr I$，此即所需。
 
 所以，我们定义$(\psi,\pi):Y\to X$为闭子概形$Y$到$X$的典范含入。我们下面想要说明$(\psi,\pi)$是一个单态射，取$(\varphi_1,\theta_1)$, $(\varphi_2,\theta_2):Z\to Y$都是从概形$Z$到$Y$的一个态射，且$(\psi,\pi)(\varphi_1,\theta_1)=(\psi,\pi)(\varphi_1,\theta_1)$，换而言之，
 \[
@@ -1968,7 +1968,7 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 	反过来，假设$Y$是$X$的一个子概形，设$U$是那些以$Y$为闭子集的开集中最大的那个，则$Y$可以由$U$上的一个拟凝聚理想层$\mathscr I$定义。取$Y$的一个开覆盖$\{U_\alpha\}$，如果每个$U_\alpha$都是$U$的开子集，则此时$U_\alpha\cap Y$是$U_\alpha$中的闭子集，当然也是$Y$的开子集。作为$Y$的开子概形，$U_\alpha\cap Y$由$\mathscr I|_{U_\alpha}$定义，因此它也就是$U_\alpha$的一个闭子概形。
 \end{proof}
 
-我们下面要推广Proposition \ref{pro:1.20}到子概形的典范含入上。Proposition \ref{pro:1.20}告诉我们，如果$Y$是$X$的开子概形，且$Z\to X$拓扑空间的像在$Y$中，则存在分解$Z\to Y\to X$. %因此，从某种角度上来说，我们要定义概形态射的像。
+我们下面要推广Proposition \ref{pro:1.20} 到子概形的典范含入上。Proposition \ref{pro:1.20} 告诉我们，如果$Y$是$X$的开子概形，且$Z\to X$拓扑空间的像在$Y$中，则存在分解$Z\to Y\to X$. %因此，从某种角度上来说，我们要定义概形态射的像。
 
 \begin{para}
 设$Y$是$X$的一个子概形，$f:Z\to X$是一个概形间态射，如果存在分解
@@ -2058,7 +2058,7 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 \[
 	(ij)|_{U_\alpha\cap Z}:U_\alpha\cap Z\xrightarrow{g_\alpha} Z'_\alpha \hookrightarrow U_\alpha,
 \]
-我们可以将概形$Z'_\alpha$黏成一个$|Z|$上的概形$Z'$，这是因为$Z'_\alpha$由$(ij)|_{U_\alpha\cap Z}$唯一确定。此时，上一引理给出，$Z'\cap U_\alpha=Z'_\alpha$是$U_\alpha$的闭子概形，Proposition \ref{pro:3.3.8}给出$Z'$是$\bigcup_\alpha U_\alpha$的闭子概形，进而是$X$的子概形。类似地，那些同构则黏合成同构$g:Z\to Z'$使得分解$ij:Z\xrightarrow{g}Z'\hookrightarrow X$成立。
+我们可以将概形$Z'_\alpha$黏成一个$|Z|$上的概形$Z'$，这是因为$Z'_\alpha$由$(ij)|_{U_\alpha\cap Z}$唯一确定。此时，上一引理给出，$Z'\cap U_\alpha=Z'_\alpha$是$U_\alpha$的闭子概形，Proposition \ref{pro:3.3.8} 给出$Z'$是$\bigcup_\alpha U_\alpha$的闭子概形，进而是$X$的子概形。类似地，那些同构则黏合成同构$g:Z\to Z'$使得分解$ij:Z\xrightarrow{g}Z'\hookrightarrow X$成立。
 \end{proof}
 
 如果通过上面命题证明中的同构$g$，将闭子概形的闭子概形典范等同于一个闭子概形，这就使得子概形的子概形是一个子概形，从而补救了原本子概形概念的不足。但下面我们不采用这种方式。
@@ -2104,10 +2104,10 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 \end{lem}
 
 \begin{proof}
-从Proposition \ref{pro:3.3.11}显然。
+从Proposition \ref{pro:3.3.11} 显然。
 \end{proof}
 
-本节的最后，我们可以（开、闭）浸入的局部刻画。其中，开浸入的比较简单，而（闭）浸入的刻画则复杂得多，但很神奇的是，它几乎就是Lemma \ref{lem:3.4.1}的条件。
+本节的最后，我们可以（开、闭）浸入的局部刻画。其中，开浸入的比较简单，而（闭）浸入的刻画则复杂得多，但很神奇的是，它几乎就是Lemma \ref{lem:3.4.1} 的条件。
 
 \begin{pro}
 态射$f=(\psi,\theta):Y\to X$是一个开浸入当且仅当$\psi$是$Y$到$X$的某个开集的同胚，且$\theta^\#_y:(\oo_X)_{\psi(y)}\to (\oo_Y)_y$对所有的$y\in Y$都是同构。
@@ -2160,7 +2160,7 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 由于恒同总是一个开、闭浸入，则上述命题告诉我们，如果$S$-概形态射$f:X\to Y$是一个（开、闭）浸入，则对任何基扩展$S'\to S$，$f_{(S')}$也是（开、闭）浸入。
 
 \begin{proof}
-从浸入的定义，我们可以考虑$\alpha$和$\beta$都是子概形典范含入的情况。此时，如果都是开子概形，则Corollary \ref{coro:3.2.8}立刻给出了结论。因为子概形都是开子概形的闭子概形，所以我们只需证明$X'$和$Y'$都是闭子概形的情况。
+从浸入的定义，我们可以考虑$\alpha$和$\beta$都是子概形典范含入的情况。此时，如果都是开子概形，则Corollary \ref{coro:3.2.8} 立刻给出了结论。因为子概形都是开子概形的闭子概形，所以我们只需证明$X'$和$Y'$都是闭子概形的情况。
 
 利用浸入是单态射，浸入的局部检验，经过一些简单的检查，我们可以直接将问题约化到$X$, $Y$, $S$都是仿射概形的情况。设$X$, $Y$, $S$的环分别为$B$, $C$, $A$，由于$X'$和$Y'$都是闭子概形，设它们分别对应于$B$和$C$的商代数$B'$和$C'$，此时$\alpha=\widetilde{\rho}$, $\beta=\widetilde{\sigma}$，其中$\rho$, $\sigma$都是典范商同态。于是，$X\times_S Y=\spec(B\otimes_A C)$以及$X'\times_S Y'=\spec(B'\otimes_A C')$，而
 \[
@@ -2178,7 +2178,7 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 设$f:X\to Y$是一个概形间态射，$i:Y'\hookrightarrow Y$的（闭、开）子概形，则投影$p_X:X\times_Y Y'\to X$是一个（闭、开）浸入，它唯一确定了$X$的一个（闭、开）典范子概形$X'$，$X'$作为拓扑空间同胚于$f^{-1}(Y')$.
 \end{pro}
 
-粗略地讲，子概形的原像也是子概形。特别地，考虑闭点$y\in Y$，它本身可以看成一个闭子概形$\spec (k(y))$，它关于$f$的原像正是我们在Proposition \ref{fiber}引入的纤维$f^{-1}(y)$，它可以看成$X$的一个闭子概形。     
+粗略地讲，子概形的原像也是子概形。特别地，考虑闭点$y\in Y$，它本身可以看成一个闭子概形$\spec (k(y))$，它关于$f$的原像正是我们在Proposition \ref{fiber} 引入的纤维$f^{-1}(y)$，它可以看成$X$的一个闭子概形。     
 
 \begin{proof}
 如果把$X$和$X\times_Y Y$等同，不难看到$p_X=1_X\times_Y i$，则上一个命题直接给出了结论。

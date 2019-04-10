@@ -195,7 +195,7 @@ which is called the homology functor.
 
 It's easy to see that $f\sim g$ is equivalent to $f-g\sim 0$.
 
-\begin{lem}
+\begin{lem}\label{lem:1.7}
 	Suppose $f$, $g:K^\bullet\to L^\bullet$ are morphisms of two complexes.
 	If $f\sim g$, then $H^\bullet(f)=H^\bullet(g)$.
 \end{lem}
@@ -227,7 +227,7 @@ It's easy to see that $f\sim g$ is equivalent to $f-g\sim 0$.
 	is an isomorphism for any $n$.
 \end{definition}
 
-\begin{pro}
+\begin{pro}\label{pro:1.9}
 	A short exact sequence of complexes $0\to K^\bullet\xrightarrow{f}L^\bullet\xrightarrow{g}M^\bullet\to 0$ induce a exact sequence 
 	of homology
 	\[
@@ -263,9 +263,9 @@ In the category of modules, $\partial^n:H^n(M^\bullet)\to H^{n+1}(K^\bullet)$ ca
 % 	}
 % \]
 
-\begin{definition}
+\begin{definition}[Cone]
 Let $f:K^\bullet\to L^\bullet$ be a morphism of complexes,
-the cone of $f$ is the following complex $\operatorname{Cone}(f)^\bullet$:
+the cone of $f$ is the following complex $\operatorname{Cone}(f)$:
 \[
 	\operatorname{Cone}(f)^i=K[1]^i\oplus L^i=K^{i+1}\oplus L^i,\quad
 	d_{\operatorname{Cone}(f)}=\begin{pmatrix}
@@ -298,11 +298,11 @@ because that
 The cone of a morphism has a geometric background: 
 the complex of singular chains of the topological cone is homotopy equivalent to the cone of the induced map of singular chains, i.e. for a continuous map $\varphi:X\to Y$
 \[
-	\operatorname{Complex}(\operatorname{cone}(\varphi))^\bullet 
-	\sim \operatorname{Cone}(\varphi_*)^\bullet,
+	\operatorname{Complex}(\operatorname{cone}(\varphi)) 
+	\sim \operatorname{Cone}(\varphi_*),
 \]
 where $\operatorname{cone}(\varphi)$ the topological cone and 
-$\operatorname{Complex}(*)^\bullet$ is the complex of singular chains of a topological space.
+$\operatorname{Complex}(*)$ is the complex of singular chains of a topological space.
 
 % There's a natural morphism between $K[1]^\bullet$ and
 % $\operatorname{Cone}(f)^\bullet$
@@ -311,18 +311,18 @@ $\operatorname{Complex}(*)^\bullet$ is the complex of singular chains of a topol
 % \]
 % defined by the natural morphism of coproduct.
 
-\begin{definition}
+\begin{definition}[Cyclinder]
 	Let $f:K^\bullet\to L^\bullet$ be a morphism of complexes,
 	the cyclinder of $f$ is cone of the natural morphism of biproduct
 	\[
-		\eta:\operatorname{Cone}(f)[-1]^\bullet \to K^\bullet
+		\delta(f)[-1]:\operatorname{Cone}(f)[-1] \to K^\bullet
 	\]
-	i.e. it's the following complex $\operatorname{Cyl}(f)^\bullet$:
+	i.e. it's the following complex $\operatorname{Cyl}(f)$:
 	\[
 		\operatorname{Cyl}(f)^i=\operatorname{Cone}(f)^i\oplus K^{i} ,\quad
 		d_{\operatorname{Cyl}(f)}=\begin{pmatrix}
 			d_{\operatorname{Cone}(f)}&0\\
-			\eta[1] & d_{K}
+			\delta(f) & d_{K}
 		\end{pmatrix}.
 	\]
 \end{definition}
@@ -369,31 +369,169 @@ is just the colimit of the following diagram
 	K^\bullet\otimes I^\bullet \xleftarrow{i}K^\bullet \xrightarrow{f}L^\bullet.
 \]
 
-\begin{pro}
+\begin{pro}\label{pro:1.12}
 	For any morphism $f:K^\bullet \to L^\bullet$ there exists the following commutative
 	diagram with exact rows:
-	\[
+	\begin{equation}\label{tri}
 		\xymatrix{
-			& 0\ar[r] & L^\bullet \ar[r]^{\bar\pi}\ar[d]^\alpha & \operatorname{Conf}(f)^\bullet \ar[r]^\delta\ar@{=}[d]
+			& 0\ar[r] & L^\bullet \ar[r]^-{\bar\pi}\ar[d]^\alpha & \Cone(f) \ar[r]^-{\delta(f)}\ar@{=}[d]
 			& K[1]^\bullet \ar[r] & 0\\
-			0 \ar[r] & K^\bullet \ar[r]^{\bar f}\ar@{=}[d] & \operatorname{Cyl}(f) \ar[r]^\pi\ar[d]^\beta 
-			&\operatorname{Conf}(f)^\bullet \ar[r] & 0 & \\
+			0 \ar[r] & K^\bullet \ar[r]^-{\bar f}\ar@{=}[d] & \operatorname{Cyl}(f) \ar[r]^-\pi\ar[d]^\beta 
+			&\Cone(f) \ar[r] & 0 & \\
 			& K^\bullet \ar[r]^f & L^\bullet & & &
 		}
-	\]
+	\end{equation}
 	where
 	\[
 		\begin{aligned}
 		&\bar f = (0,0,\id_{K^i}),\quad\bar\pi^i=(0,\id_{L^i}),\quad \pi^i=(p^i_{K[1]},p^i_{L})\\
-		&\alpha^i = (0,\id_{L^i},0),\quad \beta^i= p^i_{L} + f^i p^i_K,
+		&\alpha^i = (0,\id_{L^i},0),\quad \beta^i= p^i_{L} + f^i p^i_K,\quad \delta(f)=q_{K[1]}
 		\end{aligned}
 	\]
 	and $p_{K[1]}$, $p_{L}$ and $p_{K}$ is the canonical morphism of the product 
-	$\operatorname{Cyl}(f)^\bullet=K[1]^\bullet\oplus L^\bullet\oplus K^\bullet$,
+	$\operatorname{Cyl}(f)=K[1]^\bullet\oplus L^\bullet\oplus K^\bullet$,
+	$q_{K[1]}$ and $q_L$ is the canonical morphism of the product of $\Cone(f)=K[1]^\bullet\oplus L^\bullet$,
 	then $\beta\alpha=\id_L$ and $\alpha\beta\sim \id_{\operatorname{Cyl}(f)}$.
-	Therefore, $\alpha$ and $\beta$ are quasi-isomorphisms between $L^\circ$ and $\operatorname{Cyl}(f)^\bullet$.
+	Therefore, $\alpha$ and $\beta$ are quasi-isomorphisms between $L^\bullet$ and $\operatorname{Cyl}(f)$.
 \end{pro}
 
+\begin{proof}
+	It's direct.
+\end{proof}
+
+\begin{lem}\label{lem:1.13}
+	Suppose $f:K^\bullet\to L^\bullet$ is a morphism, then $f\delta(f)[-1]\sim 0$.
+\end{lem}
+
+\begin{proof}
+	Suppose that 
+	\[
+		p^i:(\Cone(f)[-1])^i=K^i\oplus L^{i-1}\to L^{i-1}
+	\]
+	is the canonical projection of the product. Now we can check that 
+	\[
+		\begin{aligned}
+			p^{i+1}d^i_{\Cone(f)[-1]}+d^{i-1}_{L}p^i
+			&=-p^{i+1}d^{i-1}_{\Cone(l)}+d^{i-1}_{L}p^i\\
+			&=-p^{i+1}\begin{pmatrix}
+				-d^{i}_{K}&0\\
+				f^i&d_{L}^{i-1}
+			\end{pmatrix}+d^{i-1}_{L}p^i\\
+			&=-f^i\delta(f)^{i-1}-d_{L}^{i-1}p^i+d^{i-1}_{L}p^i\\
+			&=-f^i\delta(f)^{i-1},
+		\end{aligned}
+	\]
+	which imples that $f\delta(f)[-1] \sim 0$.
+\end{proof}
+
+\begin{pro}\label{pro:1.13}
+	Suppose $0\to K^\bullet \xrightarrow{f}L^\bullet \xrightarrow{g}M^\bullet\to 0$ is a short exact sequence of complexes, then it is quasi-isomorphic to the middle row of eq.\eqref{tri}, i.e. there exists morphisms $\alpha$, $\beta$, $\gamma$ such that the following diagram
+	is commutative,
+	\[
+		\xymatrix{
+		0 \ar@{->}[r] & K^\bullet \ar@{->}[r]^{f} & L^\bullet \ar@{->}[r]^{g} & M^\bullet \ar@{->}[r] & 0 \\
+		0 \ar@{->}[r] & K^\bullet \ar@{->}[r]^{\bar f} \ar@{->}[u]_{\alpha} & \operatorname{Cyl}(f) \ar@{->}[r]^{\pi} \ar@{->}[u]_{\beta} & \operatorname{Cone}(f) \ar@{->}[r] \ar@{->}[u]_{\gamma} & 0
+		}
+	\]
+	where $\bar f$ and $\pi$ is defined in Proposition \ref{pro:1.12}.
+\end{pro}
+
+\begin{proof}
+	We use the same notation in the Proposition \ref{pro:1.12}. Define that
+	\[
+		\alpha=\id,\quad \beta^i= p^i_{L} + f^i p^i_K,\quad \gamma^i=gq_L^i.
+	\]
+	It's easy to show that $\gamma$ is a morphism. Since that 
+	\[
+		\gamma\pi=gq_L\pi=gp_L,\quad g\beta=gp_L+gfp_K=gp_L,
+	\]
+	the diagram is commutative.
+
+	As has showed in the Proposition \ref{pro:1.12}, $\beta$ is a quasi-isomorphism, so we only need to show that $\gamma$ is a quasi-isomorphism. Firstly, notice that $\gamma=gq_L$ is a epimorphism since $g$ and $q_L$ are both epimorphic. Consider the short exact sequence
+	\[
+		0\to \ker \gamma\to \Cone(f)\xrightarrow{f} M^\bullet\to 0,
+	\]
+	it imples the long exact sequence of homology
+	\[
+		H^n(\ker \gamma)\to H^n(\Cone(f))\xrightarrow{H^n(\gamma)}H^n(M)\to H^{n+1}(\ker \gamma),
+	\]
+	we need to prove that $H^i(\ker \gamma)=0$ for all $i$. It's clear that $\ker \gamma$ is the following complex:
+	\[
+		K[1]^\bullet \oplus \ker g=K[1]^\bullet \oplus \im f,
+	\]
+	and 
+	\[
+		d=(d_{K[1]}p_{K[1]},K[1]+d_{K}p_K).
+	\]
+	It's not hard to check that $\chi d+d \chi =\id$ for $\chi^i:K^{i+1}\oplus K^i\to K^i\oplus K^{i-1}$ defined by $\chi=(p_K,0)$. Therefore $H^i(\ker \gamma)=0$ for all $i$ by Lemma \ref{lem:1.7}.
+\end{proof}
+
+Therefore, all homological information of $0\to K^\bullet \xrightarrow{f}L^\bullet \xrightarrow{g}M^\bullet\to 0$ is contained in another short exact sequence $0\to K^\bullet \xrightarrow{\bar f}\operatorname{Cyl}(f) \xrightarrow{\pi}\Cone(f)\to 0$. For induced long exact sequence of homology, we can say even more.
+
+\begin{lem}\label{lem:1.14}
+	In eq.\eqref{tri}, the short exact in the middle row induce a long exact sequence
+	\[
+		\cdots\to H^n(K^\bullet)\xrightarrow{H^n(\bar f)}H^n(\Cyl(f))\xrightarrow{H^n(\pi)}H^n(\Cone(f))\xrightarrow{\partial^n}H^{n+1}(K^\bullet)\to\cdots,
+	\]
+	then $\partial^n=H^n(\delta(f))$.
+\end{lem}
+
+\begin{proof}
+	It's direct.
+\end{proof}
+
+\begin{coro}
+	$\Cone(f)$ is acyclic (i.e. exact) iff that $f$ is a quasi-isomorphism.
+\end{coro}
+
+\begin{proof}
+	If $H^n(\Cone(f))=0$ for all $n$, then the long exact sequence above tells us that $H^n(\bar f)$ is an isomorphism for all $n$. Thus, $H^n(f)=H^n(\beta)H^n(\bar f)$ is an isomorphism for all $n$ because $\beta$ is a quasi-isomorphism.
+
+	Conversely, since $f$ is a quasi-isomorphism, $H^n(\bar f)=(H^n(\beta))^{-1}H^n(f)$ is an isomorphism for all $n$. Therefore, 
+	\[
+		\ker H^n(\pi)=\im H^n(\bar f)=H^n(\Cyl(f)),\quad 
+		\im H^{n-1}(\delta)=\ker H^n(\bar f)=0,
+	\]
+	and then $H^n(\pi)=0=H^{n}(\delta)$ for all $n$. Thus 
+	\[
+		H^n(\Cone(f))=\ker H^n(\delta)=\im H^n(\pi)=0
+	\]
+	for all $n$.
+\end{proof}
+
+\begin{definition}
+	A triangle is a diagram of the form
+	\[
+		K^\bullet \xrightarrow{u}L^\bullet\xrightarrow{v}M^\bullet 
+		\xrightarrow{w}K[1]^\bullet.
+	\]
+	A morphism of triangles is a commutative diagram of the form
+	\[
+		\xymatrix{
+		K^\bullet \ar@{->}[r]^{u} \ar@{->}[d]^{f} & L^\bullet \ar@{->}[r]^{v} \ar@{->}[d]^{g} & M^\bullet \ar@{->}[r]^{w} \ar@{->}[d]^{h} & K[1]^\bullet \ar@{->}[d]^{{f[1]}} \\
+		K_1^\bullet \ar@{->}[r]^{u_1} & L_1^\bullet \ar@{->}[r]^{v_1} & M_1^\bullet \ar@{->}[r]^{w_1} & K_1[1]^\bullet
+		}
+	\]
+	A triangle is said to be \textit{distinguished} if it is isomorphic to the middle row 
+	\[
+		K^\bullet \xrightarrow{\bar f}\operatorname{Cyl}(f) \xrightarrow{\pi}\Cone(f)\xrightarrow{\delta(f)}K[1]^\bullet
+	\]
+	of some diagram of the form eq.\eqref{tri}.
+\end{definition}
+
+\begin{pro}
+	A distinguished triangle $K^\bullet \xrightarrow{u}L^\bullet\xrightarrow{v}M^\bullet 
+	\xrightarrow{w}K[1]^\bullet$ induces a long exact sequence
+	\[
+		\cdots\to H^n(K^\bullet)\xrightarrow{H^n(u)}H^n(L^\bullet)\xrightarrow{H^n(v)}H^n(M^\bullet)\xrightarrow{H^n(w)}H^{n+1}(K^\bullet)\xrightarrow{H^{n+1}(u)}H^{n+1}(L^\bullet)\to\cdots.
+	\]
+\end{pro}
+
+\begin{proof}
+	It's the tautology of Lemma \ref{lem:1.14}.
+\end{proof}
+
+Notice that a distinguished triangle does not need to come from a short exact sequence of complexes like in the Proposition \ref{pro:1.13}, so the last proposition is a generalization of Proposition \ref{pro:1.9}.
 
 \section{Derived Category and Derived Functor}
 
@@ -410,18 +548,114 @@ is just the colimit of the following diagram
 			functor $G:D(A)\to C$ such that $F=GQ$.
 	\end{enumerate}
 	The category $D(A)$ is called the derived category of the abelian
-	category $A$.
+	category $A$. We can similarly define the derived category $D^+(A)$, $D^-(A)$ and 
+	$D^b(A)$, they are subcategories of $D(A)$.
 \end{definition}
 
 The existance of derived category can be carried out by introducing 
 the formal inverses of the equivalence class of quasi-isomorphisms 
 (modulo homotopy equivalence), which is called the 
 localization of a category. We will not go into details of this proof.
+Instead, we will describe the category $D(A)$ directly.
 
-We can similarly define the derived category $D^+(A)$, $D^-(A)$ and 
-$D^b(A)$, they are subcategories of $D(A)$.
+\begin{definition}[Homotopy Category]
+	Suppose $A$ be an abelian category. The homotopy category $K(A)$ is defined as follows:
+	\[
+		\begin{aligned}
+			\text{Obj $K(A)$} &= \text{Obj $\operatorname{Kom}(A)$}\\
+			\text{Mor $K(A)$} &= \text{Mor $\operatorname{Kom}(A)$ modulo homotopy equivalence}
+		\end{aligned}
+	\]
+	By $K^+(A)$, $K^-(A)$, $K^b(A)$ we denote full subcategories of $K(A)$ formed by complexes satisfying the corresponding boundness conditions.
+\end{definition}
 
-\begin{para}[cyclic complexes]
+\begin{lem}\label{lem:1.21}
+	Suppose $f:K^\bullet \to L^\bullet$ is a quasi-isomorphism in $K(A)$ and $g:M^\bullet \to L^\bullet$ is a morphism, then there exist a complex $N^\bullet$, morphism $h:N^\bullet\to K^\bullet$ and a quasi-isomorphism $k:N^\bullet \to M^\bullet$ such that $gk=fh$, i.e. the following diagram is commutative.
+	\[
+		\xymatrix{
+		N^\bullet \ar@{-->}[rr]^{k} \ar@{-->}[d]_{h} &  & M^\bullet \ar@{->}[d]^{g} \\
+		K^\bullet \ar@{->}[rr]^{f} &  & L^\bullet
+		}
+	\]
+\end{lem}
+
+\begin{lem}\label{lem:1.22}
+	Suppose $f$, $g$ are morphisms from $K^\bullet$ to $L^\bullet$, then existence of quasi-isomorphism $s$ with $sf\sim sg$ is equivalent to the existance of quasi-isomorphism $t$ with $ft\sim gt$.
+\end{lem}
+
+\begin{proof}
+	We can assume without loss of generality that $g=0$. Suppose $\{h^i:K^i\to M^{i-1}\}$ is a homotopy between $sf$ and $0$. Now consider the following diagram in $K(A)$
+	\[
+		\xymatrix{
+\Cone(l)[-1] \ar@{->}[rr]^-{\delta(l)[-1]}\ar[d]^0 && K^\bullet \ar@{->}[d]^{f} \ar@{->}[lld]_{l} &  \\
+\Cone(s)[-1] \ar@{->}[rr]^-{{\delta(s)[-1]}} && L^\bullet \ar@{->}[r]^{s} & M^\bullet
+}
+	\]
+	where $l:K^\bullet \to \Cone(s)[-1]=L^\bullet \oplus M^\bullet[-1]$ is defined by $l^i=(f^i,-h^i)$. It's clear that $l$ is a morphism, and $f=\delta(s)[-1]l$ is clear from definitions. Now $l\delta(l)[-1]\sim 0$ (from Lemma \ref{lem:1.13}) imples that $l\delta(l)[-1] = 0$ in $K(A)$ and the commutativitiy of the diagram above. Finally, we know that 
+	\[
+		\Cone(\delta(l)[-1])=\Cyl(l) \sim \Cone(s)[-1]
+	\]
+	from Proposition \ref{pro:1.12}, and $\Cone(s)[-1]$ is exact from Lemma \ref{lem:1.14} and the fact that $s$ is a quasi-isomorphism, so $\delta(l)[-1]$ is a quasi-isomorphism from Lemma \ref{lem:1.14} again. Since $f\delta(l)[-1]=0$, it is the wanted quasi-isomorphism. In the same way we can prove that $ft\sim 0$ imples the existance of a quasi-isomorphism $s$ such that $sf\sim 0$.
+\end{proof}
+
+\begin{para}[A Realization of Derived Category]
+	Suppose $A$ is an abelian category, $K(A)$ is its homology category. Objects of derived category $D(A)$ are objects of $K(A)$. 
+	\begin{compactenum}[\quad (1)]
+		\item A morphism $X\to Y$ in $D(A)$ is the equivalence class of ``roofs'', i.e. a diagram $(s,f)$ in $K(A)$ of the form $X\xleftarrow{s}X'\xrightarrow{f}Y$, where $s$ is a quasi-isomorphism and $f$ is a morphism.
+		Two roofs are equivalent, $(s,f)\sim (t,g)$, iff there exists a third roof forming a commutative diagram of the form
+		\[
+			\xymatrix{
+				&  & X''' \ar@{->}[rd]^{h} \ar@{->}[ld]_{r} &  &  \\
+				& X' \ar@{->}[ld]_{s} \ar@{->}[rrrd]^{f} &  & X'' \ar@{->}[rd]^{g} \ar@{->}[llld]_{t} &  \\
+				X &  &  &  & Y
+			}
+		\]
+		\item The composition of morphisms represented by the roofs $(s,f)$ and $(t,g)$ is the class of the roof $(st',gf')$ obtained using Lemma \ref{lem:1.21}:
+		\[
+			\xymatrix{
+			 &  & X'' \ar@{-->}[ld]_{t'} \ar@{-->}[rd]^{f'} &  &  \\
+			 & X' \ar@{->}[ld]_{s} \ar@{->}[rd]^{f} &  & Y' \ar@{->}[ld]_{t} \ar@{->}[rd]^{g} &  \\
+			X &  & Y &  & Z
+			}
+		\]
+		One can check that the composition is well defined, and the identity morphism $\id:X\to X$ is a class of the roof $(\id_X,\id_X)$.
+		\item $D(A)$ is a additive category. Suppose $\varphi$, $\varphi':X\to Y$ are morphisms in $D(A)$, they are represented by roofs $(s,f)$ and $(s',f')$: 
+		\[
+			\xymatrix{
+				& Z \ar@{->}[ld]_{s} \ar@{->}[rd]^{f} &  \\
+				X &  & Y
+				}
+			\quad
+			\xymatrix{
+				& Z' \ar@{->}[ld]_{s'} \ar@{->}[rd]^{f'} &  \\
+				X &  & Y
+			}
+		\]
+		Then we can use Lemma \ref{lem:1.21} to find a commutative diagram
+		\[
+			\xymatrix{
+				U \ar@{-->}[rr]^{r} \ar@{-->}[d]_{r} &  & Z' \ar@{->}[d]^{s'} \\
+				Z \ar@{->}[rr]^{s} &  & X
+				}
+		\]
+		where $r$, $r'$, $s$ and $s'$ are quasi-isomorphisms, and get two new roofs 
+		\[
+			\xymatrix{
+				& U \ar@{->}[ld]_{t} \ar@{->}[rd]^{fr} &  \\
+				X &  & Y
+				}
+			\quad 
+			\xymatrix{
+				& U \ar@{->}[ld]_{t} \ar@{->}[rd]^{f'r'} &  \\
+				X &  & Y
+				}
+		\]
+		to represent $\varphi$ and $\varphi'$, where $t=sr=s'r'$. Finally, we define that $\varphi+\varphi'$ is the morphism represented by the roof $(t,fr+f'r')$. 
+	\item We can embed a morphism $f$ in $K(A)$ into $D(A)$ by setting the corresponding morphism is represented by the roof $(\id,f)$. Therefore, a morphism $f$ in $K(A)$ is zero morphism in $D(A)$ iff there exists quasi-isomorphism $s$ or $t$ such that $sf=0$ or $ft=0$ in $K(A)$. (They are equivalent because Lemma \ref{lem:1.22}.)
+	\end{compactenum}
+\end{para}
+
+\begin{para}[Cyclic Complex]
 	A complex $K^\bullet$ is cyclic if $d_K^n=0$ for any $n$. 
 	Cyclic complexes form a subcategory $\operatorname{Kom}_0(A)
 	\subset \operatorname{Kom}(A)$. Now let's consider the 
@@ -447,8 +681,3 @@ $D^b(A)$, they are subcategories of $D(A)$.
 	an equivalence iff $A$ is semisimple, i.e. any exact triple 
 	in $A$ splits.
 \end{pro}
-
-\begin{thm}
-	Suppose $A$ is an abelian category, its derived category $D(A)$
-	is an additive category.
-\end{thm}
