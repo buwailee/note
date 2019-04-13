@@ -1,0 +1,142 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{ctex}
+\usepackage{bm}
+
+\begin{document}
+
+\noindent 
+1.试求
+$$\int_0^1 \frac{x}{e^x+e^{1-x}}\, \mathrm{d}x$$
+\indent 提示：换元$t=1-x$试试。
+\\
+
+\noindent 2.
+$\mathbb{R}^{+}$ $\left(x\neq 0\right)$上存在一个函数
+$\Gamma\left(x\right)$（第二类欧拉积分），其定义为，
+\[
+\Gamma\left(x\right)=
+\int^{\infty}_{0}e^{-t}t^{x-1}\,\mathrm{d}t.
+\]
+\indent (1).求证：
+$$\Gamma\left(n+1\right)=n!.$$
+\indent 提示:可以先证明$\Gamma\left(1\right)=1$再证明
+$\Gamma\left(x+1\right)=x\Gamma\left(x\right)$.
+
+(2).求证:
+\[
+\int_0^{\infty } e^{-x^2} \,\mathrm{d}x=\frac{\sqrt{\pi }}{2}
+\]
+\indent 然后证明：
+\[
+\Gamma\left(\frac{1}{2}\right)=
+\sqrt{\pi }
+\]
+\indent 提示：设$\text{I}=\int_0^{\infty } e^{-x^2} \, dx$,\ $\text{I}^2=\iint e^{-(x^2+y^2)} \,\mathrm{d}x\mathrm{d}y$，又有$\mathrm{d}x\mathrm{d}y=r\mathrm{d}r\mathrm{d}\theta$和$r^2=x^2+y^2$可以求得（即所谓“直角坐标”转换为“极坐标”，注意全平面上$r\in[0,\infty]$,\ $\theta\in[0,2\pi]$）。\\
+\indent (3).定义第一类欧拉积分为\[
+\mathrm{B}(x,y)= \int_0^1t^{x-1}(1-t)^{y-1}\,\mathrm{d}t
+\]
+\indent 求证：
+\[
+\mathrm{B}(x,y)=\frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
+\]
+\indent 提示：先计算$\Gamma(x)\Gamma(y)$，方法同第二小题。
+\newpage
+解答：\\
+1.$$\text{A}=\int_0^1 \frac{x}{e^x+e^{1-x}}\, \mathrm{d}x
+$$
+换元$t=1-x$，于是
+$$\text{A}=-\int_1^0 \frac{1-t}{e^t+e^{1-t}}\, \mathrm{d}t
+=\int_0^1 \frac{1-x}{e^x+e^{1-x}}\, \mathrm{d}x
+$$
+所以，
+$$2\text{A}=
+\int_0^1 \frac{1}{e^x+e^{1-x}}\, \mathrm{d}x
+$$
+换元$\sqrt{e}u=e^x$并且$\mathrm{d}u=u\mathrm{d}x$。所以，
+$$2\text{A}=
+\frac{1}{\sqrt{e}}\int_{1/\sqrt{e}}^{\sqrt{e}} \frac{1}{u^2+1}\, \mathrm{d}u
+=\frac{1}{\sqrt{e}}\arctan{u}\bigg|_{1/\sqrt{e}}^{\sqrt{e}}
+\approx 0.291366
+$$
+所以$A\approx 0.145683$
+\\
+\\
+2.\\
+(1).\[
+\Gamma\left(1\right)=
+\int^{\infty}_{0}e^{-t}\,\mathrm{d}t=-e^{-t}\bigg|^{\infty}_{0}=1
+\]
+
+\[
+\Gamma\left(x+1\right)=
+\int^{\infty}_{0}e^{-t}t^{x}\,\mathrm{d}t
+=-\int^{\infty}_{0}t^{x}\,\mathrm{d}e^{-t}
+=\left[\frac{-t^x}{\mathrm{e}^t}\right]_0^\infty + x \int_0^\infty \mathrm{e}^{-t} t ^{x - 1} {\rm{d}} t
+\]
+前面的一部分在$t=0$时显然为零，在$t\rightarrow \infty$时连续运用洛必达法则，
+\[
+\lim_{t \rightarrow \infty} \frac{-t^n}{\mathrm{e}^t} = \lim_{t \rightarrow \infty} \frac{-n! \cdot 0}{\mathrm{e}^t} = 0
+\]
+于是，
+\[
+\Gamma\left(x+1\right)=
+\int^{\infty}_{0}e^{-t}t^{x}\,\mathrm{d}t
+=x \int_0^\infty \mathrm{e}^{-t} t ^{x - 1} {\rm{d}} t
+=x\Gamma\left(x\right)
+\]
+当$x$为整数的时候，运用数学归纳法即可得证。\\
+(2).
+设$\text{I}=\int_0^{\infty } e^{-x^2} \, \mathrm{d}x$（这货叫泊松积分，证明方法貌似很多很多）,则
+$$\text{I}^2=\iint_{\text{第一象限}} e^{-(x^2+y^2)} \,\mathrm{d}x\mathrm{d}y$$
+又$\mathrm{d}x\mathrm{d}y=r\mathrm{d}r\mathrm{d}\theta$和$r^2=x^2+y^2$
+可以求得（即所谓“直角坐标”转换为“极坐标”，注意第一象限上$r\in[0,\infty]$,\ $\theta\in[0,\pi/2]$）,
+$$
+\text{I}^2
+=\int^{\pi/2}_0 \int^{\infty}_0 r e^{-r^2} \,\mathrm{d}r\mathrm{d}\theta
+=\frac{\pi}{4} \int^{\infty}_0 e^{-r^2} \,\mathrm{d}r^2=\frac{\pi}{4} 
+$$
+所以
+$$\int_0^{\infty } e^{-x^2} \, dx=\frac{\sqrt{\pi}}{2}$$
+又
+\[
+\Gamma\left(\frac{1}{2}\right)=
+\int^{\infty}_{0}e^{-t}t^{-1/2}\,\mathrm{d}t
+\]
+令$t=x^2$，并且$\mathrm{d}t=2x\mathrm{d}x$，所以
+\[
+\Gamma\left(\frac{1}{2}\right)=
+2\int^{\infty}_{0}e^{-x^2}\,\mathrm{d}x=\sqrt{\pi}
+\]
+(3).和第二小题一样，可以把第二类欧拉积分改写一下，
+\[
+\Gamma\left(p\right)=
+2\int^{\infty}_{0}e^{-x^2}x^{2p-1}\,\mathrm{d}x
+\]
+注意到$x=r\cos\theta,\ y=r\sin\theta$，则，
+\[
+\begin{split}
+\Gamma\left(p\right)\Gamma\left(q\right)=&
+4\int^{\infty}_{0}e^{-y^2}y^{2p-1}\int^{\infty}_{0}e^{-x^2}x^{2q-1}\,\mathrm{d}x\mathrm{d}y \\
+=& 4\iint_{\text{第一象限}} e^{-(x^2+y^2)}y^{2p-1}x^{2q-1}\,\mathrm{d}x\mathrm{d}y\\
+=& 4\iint_{\text{第一象限}} re^{-r^2}y^{2p-1}x^{2q-1}\,\mathrm{d}r\mathrm{d}\theta\\
+=& 4\iint_{\text{第一象限}} e^{-r^2}r^{2p+2q-1}\sin^{2p-1}\theta\cos^{2q-1}\theta \,\mathrm{d}r\mathrm{d}\theta\\
+=& 2\left(2\int_{0}^{\infty} e^{-r^2}r^{2p+2q-1}\,\mathrm{d}r\right)\int_{0}^{\pi/2}\sin^{2p-1}\theta\cos^{2q-1}\theta \,\mathrm{d}\theta\\
+=& 2\Gamma\left(p+q\right)\int_{0}^{\pi/2}\sin^{2p-1}\theta\cos^{2q-1}\theta \,\mathrm{d}\theta\\
+\end{split}
+\]
+令$t=\sin^2\theta$，$\mathrm{d}t=2\cos\theta\sin\theta\mathrm{d}\theta$，则
+\[
+\begin{split}
+\Gamma\left(p\right)\Gamma\left(q\right)
+=& 2\Gamma\left(p+q\right)\int_{0}^{\pi/2}\sin^{2p-1}\theta\cos^{2q-1}\theta \,\mathrm{d}\theta\\
+=& \Gamma\left(p+q\right)
+\int_{0}^{1}\sin^{2p-2}\theta\cos^{2q-2}\theta \,\mathrm{d}t\\
+=& \Gamma\left(p+q\right)
+\int_{0}^{1}t^{p-1}(1-t)^{q-1}\,\mathrm{d}t\\
+=& \Gamma\left(p+q\right) \mathrm{B}(p,q)
+\end{split}
+\]
+\end{document}

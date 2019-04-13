@@ -1,0 +1,159 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{ctex}
+\usepackage{bm}
+
+\begin{document}
+
+1.有一个伟大的公式，我们叫他欧拉公式：
+\[
+e^{it}=\cos t+i\sin t
+\]
+试证明：
+\[
+1+\frac{\cos x}{1!}+\cdots+
+\frac{\cos nx}{n!}+\cdots
+=e^{\cos x}\cos{(\sin{x})}
+\]
+\[
+\frac{\sin x}{1!}+\cdots+
+\frac{\sin nx}{n!}+\cdots
+=e^{\cos x}\sin{(\sin{x})}
+\]
+\\
+2.为了体现出$\Gamma$函数（见9/22）实际在应用上已经很和初等函数地位类似了。所以，尽可能习惯起来$\Gamma$函数比较好。\\
+\\
+(1).假设一维势能函数为$U(x)$.试着根据能量守恒推出周期$T$和总能量$E$的关系。特别当$U(x)=A|x|^n$，试求$T(E)$.\\（提示，动能和势能和为定值$E$，当势能等于总能量的大小时，他必然处于边界，由于只能在两个边界中移动，所以从一个边界到另一个边界的时间的两倍就是周期）\\
+\\
+(2).如果$n$维球是指$\{(x_1,x_2,\dots,x_n)|x_1^2+x_2^2+\dots+x_n^2 \leq r^2\}$，且$n$维球的体积元为$\mathrm{d}V=\mathrm{d}x_1 \mathrm{d}x_2 \cdots \mathrm{d}x_n$.试求半径为$r$的$n$维球的体积公式。（假设我们已知$n$维球的体积与$r^n$成正比）
+\newpage
+解答：
+这题恐怕是我发过最水的了。\\
+1.\\
+因为$\cos{(\sin x)}+i\sin{(\sin x)}=e^{i\sin x}$，又因为
+\[
+e^{\cos x}e^{i\sin x}=e^{\cos x+i\sin x}=e^{e^{ix}}
+\]
+又因为$e^x$的幂级数展开为，
+\[
+e^x=\sum_{k=0}^\infty \frac{x^k}{k!}
+\]
+所以，
+\[
+e^{e^{ix}}
+=\sum_{k=0}^\infty \frac{e^{ikx}}{k!}
+=\left(1+\frac{\cos x}{1!}+\cdots+
+\frac{\cos nx}{n!}+\cdots\right)
++i\left(\frac{\sin x}{1!}+\cdots+
+\frac{\sin nx}{n!}+\cdots\right)
+\]
+而，
+\[
+e^{\cos x}\cos{(\sin x)}+ie^{\cos x}\sin{(\sin x)}=e^{\cos x}e^{i\sin x}
+=e^{e^{ix}}
+\]
+联系上面两个式子就可得证。
+\\
+\\
+2.\\
+(1).第一小题得到了一个有关力学一般结论，用他可以推导出开普勒三定律。\\
+首先能量守恒，
+\[
+\frac{1}{2}m\dot{x}^2+U(x)=E
+\]
+然后分离变量，
+\[
+\frac{\mathrm{d}x}{\mathrm{d}t}
+=\sqrt{\frac{2}{m}(E-U(x))}
+\]
+积分可得，
+\[t=\sqrt{\frac{m}{2}}\int
+\frac{\mathrm{d}x}{\sqrt{E-U(x)}}
+\]
+\indent 积分限的确定，其物理意义也就是运动的界的确定。由于在势能等于总能量的时候，动能等于$0$，此时的位置则必然就是运动的边界。所以运动的边界由$U(x)=E$这个方程确定的，方程可能有多解，具体的形式需要具体分析。这里我们就在方程有两解$x_1 (E)$和$x_2 (E)$（即最远和最近）的情况下讨论。根据提示，容易得到，
+\[
+T(E)=\sqrt{2m}\int^{x_2 (E)}_{x_1 (E)}\frac{\mathrm{d}x}{\sqrt{E-U(x)}}
+\]
+这是一般解，题目给出了势能的具体形式$U(x)=A|x|^n$，注意到势能关于原点对称，代入积分，
+\[
+T(E)=\sqrt{2m}\int^{x_2 (E)}_{x_1 (E)}\frac{\mathrm{d}x}{\sqrt{E-A|x|^n}}
+=2\sqrt{2m}\int^{(E/A)^{1/n}}_{0}\frac{\mathrm{d}x}{\sqrt{E-Ax^n}}\]
+换元，令$E-Ax^n=1-u$，所以
+\[
+T(E)=\frac{2\sqrt{2m}E^{1/n-1/2}}{nA^{1/n}}\int u^{(1-n)/n}(1-u)^{-1/2}\mathrm{d}u
+=\frac{2\sqrt{2m}E^{1/n-1/2}}{nA^{1/n}}\text{B}\left(\frac{1}{2},\frac{1}{n}\right)
+\]
+(2).\\ \indent 由提示，设$V_k (r)=a_k r^k $，设$n$维球为$S_n$.\\同时，
+\[V_k=
+\int_{S_k} 
+\mathrm{d}x_1 \mathrm{d}x_2 \cdots \mathrm{d}x_k
+\]
+由于$k$维球是$\{(x_1,x_2,\dots,x_k)|x_1^2+x_2^2+\dots+x_k^2 \leq r^2\}$，不妨单独分离出一个$x_1$，注意此时的半径$r'=\sqrt{r^2-x_1^2}$.
+\[
+\begin{split}
+V_k=&
+\int^r_{-r} \left[\int_{S_{k-1}} 
+\mathrm{d}x_2 \cdots \mathrm{d}x_k \right]\mathrm{d}x_1\\
+=&\int^r_{-r} \left[V_{k-1}\left(\sqrt{r^2-x^2_1}\right)\right]\mathrm{d}x_1\\
+=&\int^r_{-r} \left[a_{k-1}\left(\sqrt{r^2-x^2_1}\right)^{k-1}\right]\mathrm{d}x_1\\
+=&a_{k-1}r^k \text{B}\left(\frac{1}{2},\frac{k+1}{2} \right)
+\end{split}
+\]
+于是可以得到递推式，
+\[
+\begin{split}
+a_k=a_{k-1}\text{B}\left(\frac{1}{2},\frac{k+1}{2} \right)
+&=\sqrt{\pi}a_{k-1}\frac{\Gamma((k+1)/2)}{\Gamma(1+k/2)}\\
+&=\pi a_{k-2}
+\frac{\Gamma((k+1)/2)}{\Gamma(1+k/2)}
+\frac{\Gamma(k/2)}{\Gamma((k+1)/2)}\\
+&=\pi a_{k-2}
+\frac{\Gamma(k/2)}{\Gamma(1+k/2)}
+=\frac{2\pi}{k} a_{k-2}
+\end{split}
+\]
+根据$a_1=2$,$a_2=\pi$，所以，当$k=2p$的时候，
+\[
+a_k
+=\frac{\pi}{p} a_{2p-2}
+=\frac{\pi^{p}}{p!}
+\]
+因为$\Gamma(p+1)=p!$，所以该公式为，
+\[
+a_k
+=\frac{\pi^{p}}{\Gamma(p+1)}
+=\frac{\pi^{k/2}}{\Gamma(k/2+1)}
+\]
+当$k=2p-1$的时候，
+\[
+a_k
+=\frac{2\pi}{2p-1} a_{2p-3}
+=\frac{2^{p} \pi^{p-1}}{(2p-1)!!}
+\]
+根据9/22证明的结论，有
+$\displaystyle{\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}}$和$\displaystyle{\Gamma\left(x+1\right)=x\Gamma\left(x\right)}$，所以很容易证明，
+\[
+\Gamma\left(\frac{k}{2}+1\right)
+=\Gamma\left(p+\frac{1}{2}\right)=\frac{(2p-1)!!}{2^p}\Gamma\left(\frac{1}{2}\right)
+=\frac{(2p-1)!!}{2^{p}}\sqrt{\pi}
+\]
+将上面两个式子直接相乘可以得到，
+\[
+a_k\Gamma\left(\frac{k}{2}+1\right)
+=\pi^{p-\frac{1}{2}}
+=\pi^{k/2}
+\]
+所以，再一次得到了公式
+\[
+a_k
+=\frac{\pi^{k/2}}{\Gamma(k/2+1)}
+\]
+因此公式的形式和$k$的奇偶是没有关系的。\\
+\indent 综上，$n$维球体积的一般公式为，
+\[
+V_n
+=\frac{\pi^{n/2}r^n }{\Gamma(n/2+1)}
+\]
+\end{document}

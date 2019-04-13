@@ -1,0 +1,149 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{ctex}
+\usepackage{bm}
+
+\begin{document}
+上次积分不太接地气，所以换几道看起来比较接地气的题目，\\
+1.试求：
+\[
+\int_{0}^{1}\frac{\ln (1+x)}{1+x^2}\,\mathrm{d}x.
+\]
+2.一个$\pi$的近似公式。\\
+(1).首先规定（$k$为整数）
+$$(2k)!!=2\cdot4\cdot6\cdots\cdot(2k-2)\cdot(2k),
+$$
+$$(2k-1)!!=1\cdot3\cdot5\cdots\cdot(2k-3)\cdot(2k-1).
+$$
+求证（$n$为整数）:
+$$ 
+\int_0^{\pi/2}\sin^n x\,\mathrm{d}x
+=
+\left\{
+\begin{array}{rcl}
+&((n-1)!!/n!!)(\pi/2) &n\text{为偶数,}\\
+&(n-1)!!/n!! &n\text{为奇数.}\\
+\end{array}
+\right .
+$$
+(2).当$x\in(0,\pi/2)$时，显然有，
+\[
+\sin^{2n+1}x < \sin^{2n}x <\sin^{2n-1}x.
+\]
+试用以上关系推导出，
+\[
+\frac{\pi}{2}=\lim_{n\rightarrow\infty}\left[\frac{2n!!}{(2n-1)!!}\right]^2
+\frac{1}{2n+1}
+.\]
+
+\newpage
+解答：\\
+1.我错了，这题超恶心，花了我一节微积分课 ，原谅我这个大弱 = =
+\[
+J=\int^1_0 \frac{\ln(1+x)}{1+x^2}\,\mathrm{d}x
+\]
+换元$x=\tan t$，则，
+\[
+J=\int^{\pi/4}_0 \ln(1+\tan t)\,\mathrm{d}t
+\]
+由于这个恒等式成立，
+\[
+1+\tan t=\sqrt{2}\sin(\frac{\pi}{4}+t)/\cos t
+\]
+所以，
+\[
+J=\int^{\pi/4}_0 
+\ln\sqrt{2}
+\,\mathrm{d}t
++
+\int^{\pi/4}_0 
+\ln(\sin(\frac{\pi}{4}+t))
+\,\mathrm{d}t
+-
+\int^{\pi/4}_0 
+\ln(\cos t)
+\,\mathrm{d}t
+\]
+分项积分，第一项有，
+\[
+\int^{\pi/4}_0 
+\ln\sqrt{2}
+\,\mathrm{d}t
+=\frac{\pi \ln \sqrt{2}}{4}
+\]
+令$u=\pi/4-t$，则第二项为，
+\[
+-\int^{0}_{-\pi/4}
+\ln(\sin(\frac{\pi}{2}-u))
+\,\mathrm{d}u
+=
+\int^{\pi/4}_{0}
+\ln(\cos u)
+\,\mathrm{d}u
+\]
+所以第二项和第三项相等，之差为0.故而，
+\[
+J
+=\frac{\pi \ln \sqrt{2}}{4}
+=\frac{\pi \ln 2}{8}
+\]
+2.\\
+(1).先用分部积分推导递推式：
+\[
+\int^{\pi/2}_{0}\sin^{n}x\,\mathrm{d}x
+=\int^{\pi/2}_{0}\cos x\,\mathrm{d}\sin^{n-1}x
+=(n-1)\int^{\pi/2}_{0}(\sin^{n-2}x-\sin^n x)\,\mathrm{d}x
+\]
+所以可以解出递推关系，
+\[
+\int^{\pi/2}_{0}\sin^{n}x\,\mathrm{d}x
+=\frac{n-1}{n}\int^{\pi/2}_{0}
+\sin^{n-2}x\,\mathrm{d}x
+\]
+其余步骤略。\\
+(2).对不等式积分，
+\[
+\int^{\pi/2}_{0} \sin^{2n+1}x\,\mathrm{d}x <\int^{\pi/2}_{0} \sin^{2n}x \,\mathrm{d}x<\int^{\pi/2}_{0} \sin^{2n-1}x\,\mathrm{d}x
+\]
+\[
+\frac{(2n)!!}{(2n+1)!!}
+<
+\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2}
+<
+\frac{(2n-2)!!}{(2n-1)!!}
+\]
+等价于
+\[
+\left[\frac{(2n)!!}{(2n-1)!!}
+\right]^2\frac{1}{2n+1}
+<
+\frac{\pi}{2}
+<
+\left[\frac{(2n)!!}{(2n-1)!!}
+\right]^2\frac{1}{2n}
+\]
+最左边和最右边的差为，
+\[
+\frac{1}{2n(2n+1)}
+\left[\frac{(2n)!!}{(2n-1)!!}
+\right]^2
+<
+\frac{1}{2n}\frac{\pi}{2}
+\]
+所以当$n\rightarrow\infty$的时候，不等式左右两边的差趋向于零，所以说左右两边有着相同的极限，根据夹逼，这个极限是$\displaystyle{\frac{\pi}{2}}$.于是，
+\[
+\lim_{n\rightarrow\infty}\left[\frac{(2n)!!}{(2n-1)!!}
+\right]^2\frac{1}{2n+1}
+=\frac{\pi}{2}
+\]
+此即所求。\\
+附：经过计算机的计算，当$n=500$时，
+\[
+2\left[\frac{1000!!}{999!!}\right]^2
+\frac{1}{1001}
+\approx 3.14002
+\]
+可见收敛速度相当慢。
+\end{document}

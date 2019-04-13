@@ -1,0 +1,500 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amsthm,paralist,graphicx}
+\usepackage[a4paper, top=16mm, text={170mm, 248mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\usepackage{ccfonts}
+\usepackage[T1]{fontenc}
+
+\newcommand{\zz}{\mathbb{Z}}
+\DeclareMathOperator{\sgn}{sgn}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[part]
+		\renewcommand{\thepara}{\arabic{para}}
+	\newtheorem{conj}[para]{Conjecture}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+
+\begin{document}
+
+\section{6.27}
+
+\begin{thm}[Haag-Lapuszanski-Sohnius Theorem]
+Sypersymmetry algebra is the only graded lie algebra of symmetries of the
+$S$-matrix consistent with relativistic QFT.
+\end{thm}
+
+\begin{thm}[Coleman-Mandula Theorem]~
+\begin{compactenum}
+\item the $S$-matrix is based on a local relativistic QFT in $4$-D.
+\item There are only a finite number of different particles associated 
+with one-particle states of a given mass.
+\item There is a energy gap between the vacumm and one particle ststes.
+\end{compactenum}
+The most general Lie algebra of symmetries of the $S$-matrix contains
+the energy-momentum operator $P_m$, the Lorentz rotation operator
+$M_{mn}$, and a finite number of Lorentz scalar operators $B_l$.
+\end{thm}
+
+Witten's understanding: The additional space-time symmetries beyond
+energy, momentum and angular momentum would, in a relativistic convariant
+theory, overconstrain the elastic scattering amplitudes, and allow the 
+non-zero scattering amplitudes only for discrete scattering angles. 
+The assumption of analyticity therefore rules out such symmetries.
+
+\vspace{2ex}
+
+$\zz_2$-graded algebra: $\{Q,Q'\}=X$, $[X,X']=X''$, $[Q,X']=Q''$
+
+\[
+	Q=\sum Q_{\alpha_1,\cdots \alpha_a,\dot\alpha_1,\cdots,\dot\alpha_b}
+\]
+The spin of $Q_{\alpha_1,\cdots \alpha_a,\dot\alpha_1,\cdots,\dot\alpha_b}$
+is $a/2+b/2=(a+b)/2$, where $a+b$ is a odd number.
+
+\vspace{2ex}
+
+Assumptions are
+\begin{compactenum}[(1)]
+\item The operator $Q$ act in a Hilbert space with positive definite metric.
+\item Both $Q$ and its Hermitian conjugate $\bar Q$ belong to the algebra.
+\end{compactenum}
+
+The element
+\[
+	P_{**}=\left\{Q_{\alpha_1,\cdots \alpha_a,\dot\alpha_1,\cdots,\dot\alpha_b},
+	\bar Q_{\dot\beta_1,\cdots \dot\beta_a,\beta_1,\cdots,\beta_b}
+	\right\}
+\]
+is in the algebra with the weight $((a+b))/2,(a+b))/2)$, so 
+the Coleman-Mandula theorem tells us that $P_{**}\propto P_{m}$, 
+so $a+b=1$ and the weight is $(1/2,1/2)$. So
+\[
+	\{Q_\alpha^L,\bar{Q}_{\dot \alpha M}\}=P_{\alpha\dot\alpha}C^L_M
+\]
+where $P_{\alpha\dot\alpha}=\sigma_{\alpha\dot\alpha}^mP_m$, $C^L_M$ is 
+Hermitian. We could redefine $Q$ and $\bar Q$ (Use the first 
+assumption?) such that
+\[
+	\{Q_\alpha^L,\bar{Q}_{\dot \alpha M}\}=2P_{\alpha\dot\alpha}\delta^L_M,
+\]
+where $1\leq L,M \leq N$ and $N\geq 1$.
+
+Since $\{Q_\alpha^L,Q_\beta^M\}$ belongs to $(1/2,0)\otimes (1/2,0)
+=(0,0)\oplus (1,0)$, so we have
+\[
+	\{Q_\alpha^L,Q_\beta^M\}=\epsilon_{\alpha\beta}X^{LM}+M_{\alpha\beta}
+	Y^{LM},
+\]
+where $X$ and $Y$ are anti-symmtric. 
+
+\begin{lem}
+$[P_m,Q_\alpha^L]=0$.
+\end{lem}
+
+\begin{proof}
+Since 
+\[
+	[P_{\alpha\dot\alpha},Q_\gamma^L]=Z^L_M \epsilon_{\alpha\gamma}
+	\bar Q_{\dot\alpha}^M.
+\]
+Jacobi identity gives that
+\[
+	[P_{\beta\dot\beta},[P_{\alpha\dot\alpha},Q_\gamma^L]]+\cdots=0,
+\]
+so $Z^L_M=0$ and $[P_m,Q_\alpha]$.
+\end{proof}
+
+\[
+	\{Q_\alpha^L,Q_\beta^M\}=\epsilon_{\alpha\beta}a^{l,LM}B_l.
+\]
+
+Supersymmetry algebra:
+
+\[
+	\{Q_\alpha^L,\bar{Q}_{\dot \alpha M}\}=2P_{\alpha\dot\alpha}\delta^L_M,
+\]
+\[
+	[P_m,Q_\alpha^L]=[P_m,\bar Q_{\dot\beta M}]=0,
+\]
+\[
+	\{Q_\alpha^L,Q_\beta^M\}=\epsilon_{\alpha\beta}a^{l,LM}B_l=
+	\epsilon_{\alpha\beta}X^{LM},
+\]
+\[
+	\{\bar Q_{\dot\alpha L},\bar Q_{\dot\beta M}\}
+	=\epsilon_{\dot\alpha\dot\beta}a^*_{l,LM}B^l=
+	\epsilon_{\alpha\beta}X^\dagger_{LM},
+\]
+\[
+	[Q_\alpha^L,B_l]=(S_l)^L_M Q_\alpha^M,
+\]
+\[
+	[B^l, \bar Q_{\dot\alpha L}]=(S^{l*})_L^M \bar Q_{\dot\alpha M},
+\]
+\[
+	[B_l,B_m]=i C_{lm}^k B_k,
+\]
+\[
+	[Q_\alpha^L,M_{mn}]=\frac 12 (\sigma_{mn})_\alpha^\beta Q_{\beta}^L,
+\]
+\[
+	[Q_{\dot\alpha L},M_{mn}]=-\frac 12 \bar Q_{L\dot\beta}(\bar\sigma_{mn})_{\dot \alpha}^{\dot\beta} 
+\]
+
+\begin{pro}[Jacobi identity]
+\[
+	\{A,\{B,C]]\pm \{B,\{C,A]]\pm \{C,\{A,B]]=0.
+\]
+\end{pro}
+
+For example,
+\[
+	[B_l,\{Q_\alpha^L,\bar Q_{\dot \beta M}\}]+\{Q_\alpha^L,[\bar Q_{\dot \beta M}\},B_l]\}-\{\bar Q_{\dot \beta M},[B_l,Q_\alpha^L]\}=0.
+\]
+And it tells us that
+\[
+	2P_{\alpha\dot\beta}\left((S^{l*})_M^L-(S_l)_M^L\right)=0,
+\]
+so $(S^{l*})_M^L=(S_l)_M^L$.
+
+\begin{lem}
+$\{X^{LM}\}$ form an invariant subalgebra.
+\end{lem}
+
+\begin{proof}
+Check the Jacobi identity of $B_l$, $Q_\alpha^L$ and $Q_{\beta}^M$, it 
+gives that
+\[
+	\epsilon_{\alpha\beta}\left(
+	[B_l,X^{LM}]+(S_l)^M_K X^{LK}-(S_l)^{L}_K X^{MK}
+	\right)=0.
+\]
+The first term is $[B_l,a^{m,LM}B_m]=ia^{m,LM}C_{lm}^k B_k=0$, and so
+\[
+	(S_l)^M_K X^{LK}-(S_l)^{L}_K X^{MK}=0.
+\]
+
+Similarily, check the Jacobi identity of $Q$, $Q$ and $\bar Q$, it 
+will be
+\[
+	\epsilon_{\alpha\beta}[\bar Q_{\dot\gamma K},X^{LM}]=0.
+\]
+And we have that 
+\[
+	[X^{KN},X^{LM}]=\frac 12 \epsilon^{\beta\alpha}[\{Q_{\alpha}^K,Q_\beta^N\},X^{LM}]=0,
+\]
+so
+\[
+	S_{lK}^Ma^{k,LK}-(S_l)_{K}^La^{a,MK}=0
+\]
+or
+\[
+	S_{lK}^Ma^{k,LK}=-(S^{l*})_{K}^La^{a,MK}
+\]
+\end{proof}
+
+\begin{compactenum}[(1)]
+\item $S=0$.
+\item $S_l=-S_l^*$.
+\item $\{Q_\alpha^L,Q_\beta^M\}=\epsilon_{\alpha\beta}\epsilon^{LM}(C_1Z_1+iC_2Z_2)$.
+\end{compactenum}
+
+\vspace{2ex}
+
+Casimir Operators
+
+\begin{compactenum}[(1)]
+\item $C_1=P^\mu P_\mu=P^2$, since $[P^2,Q]=0$.
+
+\[
+	m_F^2|F\rangle =P^2|F\rangle=P^2Q|B\rangle
+	=QP^2|B\rangle=m_B^2Q|B\rangle=m_B^2|F\rangle,
+\]
+so $m_F=m_B$.
+\item $W^2=W^\mu W_\mu$ is not a Casimir operator now because
+$[W^2,Q_\alpha]\neq 0$. However, define
+\[
+	B_\mu=W_\mu +\frac 18 \bar Q_M \gamma_\mu \gamma_5 Q_M
+\]
+and
+\[
+	C_{\mu\nu}=B_\mu P_\nu-B_\nu P_\mu,
+\]
+where 
+\[
+	Q_M:=\begin{pmatrix}
+	Q_\alpha\\\bar Q^{\dot\alpha}
+	\end{pmatrix}
+\]	
+Now we will have $C^2$ is supersymmetry Casimir operator.
+\end{compactenum}
+
+$C^2=2m^4J_\mu J^\mu$, where 
+\[
+	J_\mu=S_\mu-\frac 1{4m}(\bar Q\sigma_\mu Q).
+\]
+Then
+\[
+	[J_\mu,J_\nu]=i\epsilon_{\mu\nu\rho}J_\rho.
+\]
+
+Representation of the Supersymmetry algebra
+\[
+	Q_\alpha=\int d^3x J_\alpha^0,
+\]
+and $\partial_mJ^m_\alpha=0$.
+
+A fermion number operator 
+\[
+	(-)^{N_F}:=\begin{cases}
+	1&\text{bosonic states}\\
+	-1&\text{fermionic states}
+	\end{cases}
+\]
+then
+\begin{align*}
+\operatorname{Tr}\left((-)^{N_F}\{Q_\alpha^A,\bar Q_{\dot \beta B}\}\right)&=\operatorname{Tr}\left((-)^{N_F}Q_\alpha^A\bar Q_{\dot \beta B}+(-)^{N_F}\bar Q_{\dot \beta B}Q_\alpha^A\right)\\
+&=\operatorname{Tr}\left(-Q_\alpha^A(-)^{N_F}\bar Q_{\dot \beta B}+(-)^{N_F}\bar Q_{\dot \beta B}Q_\alpha^A\right)\\
+&=0.
+\end{align*}
+Using that 
+\[
+	\{Q_\alpha^A,\bar Q_{\dot \beta B}\}=2\sigma^m_{\alpha\dot\alpha}P_m \delta^A_B,
+\]
+we have that
+\[
+	\operatorname{Tr}\left((-)^{N_F}P_m\right)=0.
+\]
+Since the spectrum of $P_0$ is all positive, so we also have that $\operatorname{Tr}\left((-)^{N_F}\right)=0$.
+
+For massless particle, let $P_\mu=(E,0,0,E)$ and 
+\[
+	W_0=L\cdot P,
+\]
+where $L=(M_{23},M_{31},M_{12})$. One-particle states will be denoted
+as $|E,\lambda\rangle$, where $\lambda$ is the helicity of particle. 
+Then 
+\[
+	W_u|E,\lambda\rangle =\lambda P_\mu |E,\lambda\rangle.
+\]
+
+dd
+\[
+	W_0Q_\alpha|E,\lambda\rangle=Q_\alpha W_0|E,\lambda\rangle+[W_0,Q_\alpha]|E,\lambda\rangle=E\left(\lambda I-\frac 12 \sigma^3\right)^{\beta}_\alpha Q_\beta |E,\lambda\rangle,
+\]
+where we have used that $[W_0,Q]=[L\cdot P,Q]=-\frac 12(\sigma\cdot P) Q$.
+So
+\[
+	\begin{cases}
+	Q_{1L}& -1/2\\
+	Q_{2L}& +1/2
+	\end{cases}
+	\quad 
+	\begin{cases}
+	\bar Q_{\dot 1L}& +1/2\\
+	\bar Q_{\dot 2L}& -1/2
+	\end{cases}
+\]
+
+Since $\{Q_1^L,\bar Q_{\dot 1 M}=4\delta^L_M E\}$, define
+\[
+	a^A=\frac{1}{2\sqrt E}Q_1^A,\quad a^\dagger_A=
+	\frac{1}{2\sqrt E}\bar Q_{\dot 1}^A=(a^A)^\dagger,
+\]
+for $|E,\lambda_0\rangle$, $a^A|E,\lambda_0\rangle=0$, then
+\[
+	a^{\dagger A}|E,\lambda_0\rangle=|E,\lambda_0+1/2\rangle
+\]
+and
+\[
+a^{\dagger i_1}\cdots a^{\dagger i_k}|E,\lambda_0\rangle=
+|E,\lambda_0+k/2\rangle,
+\]
+so the number of states with helicity $\lambda_0+k/2$ is $\binom{N}{k}$. 
+The total number is 
+\[
+	\sum_{k=0}^N \binom{N}{k}=(1+1)^N=2^N,
+\]
+and since $(1-1)^N=0$, we also have that
+\[
+	\sum_{k=0}^{N/2} \binom{N}{2k}-\sum_{k=0}^{N/2} \binom{N}{2k+1}=0.
+\]
+
+If the theory has the CPT invariance, we should have $-|\lambda_0|-|\lambda_0|+N/2=0$, or $N/4=|\lambda_0|$. There're two important theory,
+\begin{compactenum}[(1)]
+\item $N=4$ Yang-Mills theory with $\lambda_0=-1$,
+\[
+\begin{matrix}
+\text{helicity}& -1 & -1/2 & 0 & 1/2 & 1\\
+\text{states}& 1 & 4 & 6 & 4 & 1
+\end{matrix}
+\]
+SYM $N=4$, Renormalizability. $4$-D $N=4$ $\Rightarrow$ $10$-D $N=1$.
+
+\item $N=8$ Supergravity theory with $\lambda_0=-2$,
+\[
+\begin{matrix}
+\text{helicity}&-2 & -3/2 & -1 & -1/2 & 0 & 1/2 & 1 & 3/2 & 2\\
+\text{states}& 1 & 8 & 28 & 56 & 70 & 56 & 28 & 8 & 1
+\end{matrix}
+\]
+Supergravity $N=8$, Consistent coupling to gravity. 
+$4$-D $N=8$ $\Rightarrow$ $11$-D $N=1$.
+\end{compactenum}
+
+For massive particle with mass $M$, let $P_m=(-M,0,0,0)$. Let
+\[
+	a_\alpha^A=\frac{1}{2M}Q_\alpha^A,\quad (a_\alpha^A)^\dag=\frac{1}{2M}\bar Q_{\dot \alpha}^A,
+\]
+since
+\[
+	\{Q_\alpha^A,\bar Q_{\dot\beta B}\}=2M \delta_{\alpha\dot \beta}\delta^A_B,
+\]
+and $\{Q,Q\}=0=\{\bar Q,\bar Q\}$, then
+\[
+	\{a_\alpha^A,(a_{\beta}^B)^\dagger \}=\delta_{\alpha\beta}\delta^{AB}.
+\]
+
+Suppose $|\Omega\rangle$ is the highest-weight state, i.e. $a_\alpha^A|\Omega\rangle =0$ for all $\alpha$ and $A$. Then the states are
+\[
+	(a^{A_1}_{\alpha_1})^\dagger \cdots (a^{A_n}_{\alpha_n})^\dagger |\Omega\rangle.
+\]
+The number is $\binom{2N}{n}$,
+so the total number is $2^{2N}$. So there're $2^{2N-1}$ fermionic and 
+bosonic states.
+
+Here's an example: Spin $\Omega_{1/2}$, $N=1$
+\[
+	\begin{matrix}
+	0& a_{\dot 2}^\dagger\Omega\\
+	1/2 & \Omega, a_{\dot 1}^\dagger a_{\dot 2}^\dagger\Omega\\
+	1 & a_{\dot 1}^\dagger\Omega
+	\end{matrix}
+\]
+
+Spin $\Omega_0$, $N=2$, here is the pic!!!!!
+
+***************
+
+$\operatorname{SO}(4N)$
+\begin{align*}
+	\Gamma^l&=\frac{1}{\sqrt 2}(a_1^l+(a_1^l)^\dagger)\\
+	\Gamma^{N+l}&=\frac{1}{\sqrt 2}(a_2^l+(a_2^l)^\dagger)\\
+	\Gamma^{2N+l}&=\frac{1}{\sqrt 2}(a_1^l-(a_1^l)^\dagger)\\
+	\Gamma^{3N+l}&=\frac{1}{\sqrt 2}(a_2^l-(a_2^l)^\dagger)
+\end{align*}
+Then $[\Gamma^r,\Gamma^s]=\delta^{rs}$.
+
+$\operatorname{SU}(2)\times \operatorname{USp}(2N)$, the letter one
+is R symmetry.
+\[
+	\begin{cases}
+	q_\alpha^l=a_\alpha^l\\
+	q_\alpha^{N+l}=\sum_{\beta=1}^2\epsilon_{\alpha\beta}(a_\beta^l)^\dagger
+	\end{cases}
+\]
+
+\[
+	(q_\alpha^l)^\dagger =(a_\alpha^l)^\dagger = \epsilon^{\alpha\beta}q_\beta^{N+l}
+\]
+\[
+	(q_\alpha^{N+l})^\dagger = - \epsilon^{\alpha\beta}a_\beta^l
+	= - \epsilon^{\alpha\beta}q_{\beta}^l
+\]
+\[
+	(q_\alpha^r)^\dagger =\epsilon^{\alpha\beta}\Lambda^{rt}q^t_\beta
+\]
+where 
+\[
+	\Lambda = \begin{pmatrix}
+		0&1\\-1&0
+	\end{pmatrix}
+\]
+\[
+	\{q_\alpha^r,q_\beta^t\}=-\epsilon_{\alpha\beta}\Lambda^{rt}.
+\]
+
+With cneter charge. 
+\[
+	\{Q_\alpha^A,\bar Q_{\dot\beta B}\}=2M \delta_{\alpha\dot \beta}\delta^A_B,
+\]
+\[
+	\{Q_\alpha^L,Q_\beta^M\}=\epsilon_{\alpha\beta}Z^{LM}
+\]
+\[
+	\{(Q_\alpha^L)^\dagger,(Q_\beta^M)^\dagger\}=\epsilon^{\alpha\beta}Z^*_{LM}
+\]
+where $Z^{LM}=-Z^{ML}$.
+
+$\tilde Z^{LM}=U^L_K U^M_N Z^{KN}$, where for even $N$
+\[
+	\tilde Z=\epsilon \otimes D
+\]
+for odd $N$
+\[
+	\tilde Z=\begin{pmatrix}
+	\epsilon \otimes D&0\\
+	0&0
+	\end{pmatrix}
+\]
+where 
+\[
+	\epsilon=\begin{pmatrix}
+	0&1\\
+	-1&0
+	\end{pmatrix},\quad
+	D=\operatorname{diag}(a,b,c,d)
+\]
+
+pic here !!!!!!!
+
+**********
+
+$|Z_n|\leq 2M$
+
+**********
+
+From now on, we only consider $N=1$ SUSY.
+
+Component fields 
+
+Anti-commuting parameters $\xi^\alpha$, $\bar \xi_{\dot \alpha}$,
+\[
+	\{\xi^\alpha,\xi^\beta\}=\{\xi^\alpha,Q_\alpha=0\}
+\]
+then
+\[
+	[\xi Q,\bar \xi \bar Q]=2\xi \bar\sigma^m\bar \xi P_m
+\]
+\[
+	[\xi Q,\xi Q]=[\bar \xi \bar Q,\bar \xi \bar Q]=0
+\]
+\[
+	[P^m,\xi Q]=[P^m,\bar \xi \bar Q]=0.
+\]
+where 
+\[
+	\xi Q=\xi^\alpha Q_\alpha,\quad \bar \xi \bar Q=\bar \xi_{\dot \alpha}\bar Q^{\dot \alpha}.
+\]
+
+Define
+\[
+	\delta_\xi A=(\xi Q+\bar \xi \bar Q)A,\quad \delta_\xi \psi
+	=(\xi Q+\bar \xi \bar Q)\psi,
+\]
+then
+\begin{align*}
+	[\delta_\eta,\delta_\xi]A&=2(\eta\sigma^m \bar \xi -\xi\sigma^m \bar \eta)
+	P_m A\\
+	&=-2i(\eta\sigma^m \bar \xi-\xi \sigma^m\bar\eta)\partial_m A
+\end{align*}
+so
+\[
+	\delta_\xi A=\sqrt 2 \xi \psi,\quad \delta_\xi \psi=i\sqrt 2 \sigma^m \bar \xi \partial_m A+\sqrt{2}\xi F
+\]
+pic here !!!!!!
+
+******
+\end{document}

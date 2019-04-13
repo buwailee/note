@@ -1,0 +1,101 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb,amsfonts,
+amsmath,ctex,bm}
+
+\begin{document}
+由于微积分课老师一直在那读证明。导致我觉得微积分课和数分课差不多了 = =！\\
+1.如果$x_1,x_2 \in E \subset \mathbb{R}$，以及$f:E \rightarrow \mathbb{R}$，定义$\displaystyle{\omega(\delta) =\sup_{|x_1-x_2|<\delta}|f(x_1)-f(x_2)|}$，其中$x_1,x_2$取遍所有可能的点对。试证明：\\
+(1).下列极限存在：
+\[\lim_{\delta\rightarrow +0}\omega(\delta)\]
+(2).若$E$是闭区间或开区间或半开区间（换而言之就是中间没断开的实数集的子集），则对于
+$f$满足：
+\[
+\omega(\delta_1+\delta_2)
+\leq \omega(\delta_1)+\omega(\delta_2)
+\]
+2.若$P_n(x)$为$n$阶多项式。定义多项式于有界函数$f$的偏差为，
+\[
+\Delta(P_n)=\sup_{x\in [a,b]}|f(x)-P_n(x)|
+\]
+试证明：当$P_n$是固定的多项式的时候，且$\lambda$为任意实数，那么对于多项式$Q_\lambda=\lambda P_n$，则存在实数$\lambda_0$，使得下式成立，
+\[
+\Delta(Q_{\lambda_0})=\min_{\lambda}\Delta(Q_{\lambda})
+\]
+\newpage
+\noindent
+不知道有木有说过，如果木有说过，那我就说一遍。这些答案都是我自己做的，当然会有不好或者不对的。若是您可以给出您的正确的漂亮的解答，欢迎和我探讨。\\ 
+1.
+\\(1).显然$\omega(\delta)$关于$\delta$单调递增。构造单调递减序列$\{\delta_n\}$，他的极限为0，则序列$\omega(\delta_n)$单调递减。$\omega(\delta_n)$显然有下界0，所以$\omega(\delta_n)$有极限。所以，
+\[
+\lim_{n\rightarrow +\infty}
+\omega(\delta_n)=
+\lim_{\delta\rightarrow +0}\omega(\delta)
+\]
+(2).对于$|x_1-x_2|<\delta_1+\delta_2$，不妨假设$x_1<x_2$，则从$[x_2-\delta_2,x_1+\delta_1]$可以挑出$x$（且这样的$x$是存在的），同时满足，
+\[
+\begin{split}
+&x-x_1<\delta_1\\
+&x_2-x<\delta_2
+\end{split}
+\]
+那么，则
+\[
+|f(x_1)-f(x)|+|f(x_2)-f(x)|\geq |f(x_1)+f(x_2)|
+\]
+对两边同时取两次sup，则
+\[
+\sup_{|x_1-x|<\delta_1}|f(x_1)-f(x)|
++
+\sup_{|x_2-x|<\delta_2}|f(x_2)-f(x)|
+\geq \sup_{
+\substack{x_2-x<\delta_2 
+\\ 
+x-x_1<\delta_1}}
+|f(x_1)-f(x_2)|
+\]
+由于，
+\[
+\sup_{|x_2-x_1|<\delta_1+\delta_2}|f(x_1)-f(x_2)|=\sup_{
+\substack{x_2-x<\delta_2 
+\\ 
+x-x_1<\delta_1}}
+|f(x_1)-f(x_2)|
+\]
+所以，
+\[
+\omega(\delta_1+\delta_2)
+\leq \omega(\delta_1)+\omega(\delta_2)
+\]
+2.
+由于$\Delta$现在只和$\lambda$有关，所以不妨记作$\Delta(\lambda)$，这是一个从$\mathbb{R}$到非负实数集的映射。首先我们证明他是连续的。\\
+由于，
+\[
+|f(x)-(\lambda+\delta)P_n(x)|
+\leq |f(x)-\lambda P_n(x)|+|\delta P_n(x)|
+\]
+在两边同时取sup，则
+\[
+\sup |f(x)-(\lambda+\delta)P_n(x)|
+\leq \sup |f(x)-\lambda P_n(x)|+\sup |\delta P_n(x)|
+\]
+即，
+\[
+\Delta(\lambda+\delta)
+-\Delta(\lambda)
+\leq
+\sup|\delta P_n(x)|
+\]
+设$|P_n(x)|$在$[a,b]$上的最大值为$M$，取$\varepsilon=\delta/M$，则
+\[
+\Delta(\lambda+\delta)
+-\Delta(\lambda)
+\leq
+\varepsilon
+\]
+所以这是一个连续函数。但是连续函数的条件不能说明他一定有最小值，即使他有下界。所以还需要考察下面一步。\\
+\indent 写出$\Delta(\lambda)$的具体表达式，
+\[
+\Delta(\lambda)=\sup |f(x)-\lambda P_n(x)|
+\]
+发现如果$|\lambda| \rightarrow +\infty$，则$\Delta(\lambda)$可以大于任意给定的实数，那么自然可以在$|\lambda|>m$的时候，$\Delta(\lambda)>\Delta(0)$。那么考虑$\Delta(\lambda)$的最小值，自然只要考虑$\lambda \in [-m,m]$的情况。在闭区间内，连续函数必然可以取到最小值。于是命题得证。
+\end{document}

@@ -1,0 +1,11 @@
+\documentclass[11pt,a4paper,openany]{article} \usepackage{amssymb,amsfonts, amsmath,ctex,bm}
+\begin{document}
+\noindent 1.证明紧度量空间$K$是可分的。\\
+2.证明对任意的度量空间$X$，若他的每个无限子集都有极限点，证明$X$是紧的。这就是一般度量空间下的Heine-Borel定理。（先证明$X$的每个开覆盖一定有可数子覆盖，然后证明这是有限的）
+\\
+\\
+解答:\\
+1.由于$K$是紧的，所以可以在任意的开覆盖中选出有限开覆盖。那么考虑半径为$1/n$的领域的开覆盖，则一定有有限开覆盖。那么如同10/22的第二题一样。就可以证明$K$是可分的。\\
+2.由10/22的第二题，可以得到度量空间$X$是可分的，根据10/22的第一题，则他一定有可数基$\{V_\alpha\}$。对于$X$的一个开覆盖$\{G\}$，根据基的定义，对任意的点$p \in X$存在$V_\alpha$使得$p\in V_\alpha \subset G $.对于同一个$V_\alpha$，把所有满足条件的$G$只留下一个。那么留下的$\{G\}$的子组的就和$\{V_\alpha\}$之间有了双射，所以这个子组是可数的。显然所有的$p\in X$也都在这个子组的元素里面，故而这也是开覆盖。因此$X$的每个开覆盖一定有可数子覆盖$\{G_n\}$ $(n=1,2,3\cdots)$.\\\indent 如果没有$\{G_n\}$的有限子组可以覆盖$X$，那么$G_1\cup \cdots \cup G_n$在$X$中的补集$F_n$不空，且$F_1\supset F_2 \supset F_3 \cdots $.与此同时，又有$\bigcap_n^\infty F_n$是空集。\\
+\indent 从每个$F_n$中挑出一个点，那么这样的一个$X$的无限子集$\{x_n\}$有极限点$x\in X$。由于没有$\{G_n\}$的有限子组可以覆盖$X$，所以对于$n$和一个子组$G_1\cup \cdots \cup G_n$，若是$x \notin F_n$，即$x\in G_1\cup \cdots \cup G_n=Y$.由于开集的任意并还是开集，那么$Y$是开集。所以$x$就是$Y$的一个内点，故存在一个$x$的邻域$V$，有$V\subset Y$。由于$x$是$\{x_n\}$的极限点，则在$V$中除了有限个点之外都在$V$里面，这就是说存在无数个$k>n$使得$x_k \in V \subset Y$，即$x_k \notin F_n$.而显然$x_k\in F_k\subset F_n$，这就产生了矛盾。那么，对于任意的$n$，$x\in F_n$都是成立的。但是这样的话，$\bigcap_n^\infty F_n={x}$就不是空集。\\\indent 所以$\{G_n\}$一定有有限子组，即$X$的每个开覆盖有有限子组，即$X$是紧集。
+\end{document}

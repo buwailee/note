@@ -1,0 +1,63 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{ctex}
+\usepackage{bm}
+
+\begin{document}
+\noindent 1.刘寸土同学很勤奋。今天他又问了我一个问题。我以为难度不高，但很亲民接地气，所以用来缓解一下前几天太难的气氛。\\
+试证明，对一切实数$a$有，
+\[
+\lim_{n\rightarrow \infty}
+\frac{a^n}{n!}=0
+\]
+
+\noindent 2.
+如果$|q|<1$，\\
+(1).试用极限定义证明
+\[
+\lim_{n\rightarrow\infty} n^2 q^n=0
+\]
+(2).不用定义，换一种方法证明上式。
+\newpage
+解答：\\
+1.很简单，设$\displaystyle{x_n=\frac{a^n}{n!}}$，然后\\
+\[
+|x_{n+1}|
+=\frac{|a|}{n+1}|x_n|
+\]
+当$n$足够大的时候，即对一切$n>N$，满足$|a|<n+1$，所以在$n>N$的时候，数列$|x_n|$单调递减。因为$|x_n|$下有界且在有限项后单调递减，所以这个数列是有极限的。用极限的乘法法则，可以得到：
+\[
+A=\lim_{n\rightarrow \infty}
+|x_{n+1}|=
+\lim_{n\rightarrow \infty}
+\frac{|a|}{n+1}|x_n|
+=\lim_{n\rightarrow \infty}
+\frac{|a|}{n+1}\lim_{n\rightarrow \infty}|x_n|=0 \cdot A=0
+\]
+如果数列的绝对值收敛到0，那么他自然也收敛到0.得证。\\
+\\
+2.定义证明难度不低。但如果从这开始，也可以通过对比看出不用定义证明十分简单和易懂。\\
+证：(1).设$x_n=n^2 q^n$，令$\displaystyle{a_n=\frac{x_{n+1}}{x_n}=\left(1+\frac{1}{n}\right)^2 q}$，取$q<t<1$.\\
+可见
+\[
+\left(1+\frac{1}{M}\right)^2 q<1
+\Leftrightarrow
+M>\frac{\sqrt{q}}{\sqrt{t}-\sqrt{q}}
+\]
+固定$M$，根据$a_n$的定义，对任意的$n>M$有
+\[
+x_{n+1}=x_M(a_{M+1}\cdots a_n)<x_M t^{n-M}
+\]
+于是
+\[
+\begin{split}
+&
+\forall \varepsilon >0 \exists N>\left(\frac{\ln \varepsilon-\ln x_M}{\ln t}-M\right) \forall n>N \left(0<x_{n+1}<x_M t^{n-M}<x_M t^{N-M}<\varepsilon \right)\\
+&\Rightarrow
+\lim_{n\rightarrow \infty}n^2 q^n=0
+\end{split}
+\]
+(2).这个证明非常像第一题。可以证明，对足够大的$n$，$x_n$是单调递减的，所以他有极限，可以使用极限的乘法法则。于是解一个一元一次方程可得其极限为0.
+\end{document}

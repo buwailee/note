@@ -1,0 +1,41 @@
+\documentclass[11pt,a4paper,openany]{article} \usepackage{amssymb,amsfonts, amsmath,ctex,bm}
+
+\begin{document}
+\noindent 1.$X$的一组开子集$\{V_\alpha\}$叫做$X$的一个基，如果以下事实成立：对于每一个$x\in X$和$X$的每个含有$x$的开集$G$，总有某个$\alpha$使得$x\in V_\alpha \subset G$。换而言之，$X$的每个开集必是$\{V_\alpha\}$中的某些集的并。试证明：\\
+(1).有可数基（基的个数是可数的）的度量空间为可分度量空间。\\
+(2).每个可分度量空间有可数基。（提示:取一切中心在$X$的某个可数稠密子集内，而半径是有理数的邻域）\\
+2.令$X$是个度量空间，其中每个无限子集都有极限点。试证明：$X$是可分的。（提示，固定$\delta>0$，再取$x_1 \in X$.如果$x_1,x_2,\cdots,x_j\in X$都已经选定，如果可以，那就再选$x_{j+1}\in X$，使得$d(x_i,x_{j+1})\geq \delta$ $(i=1,2,\cdots,j)$.证明这种手续只能进行有限次。这就是说$X$能被有限多个半径为$\delta$的邻域覆盖。然后令$\displaystyle{\delta=\frac{1}{n}}$ $(n=1,2,3,\cdots)$，并考虑相应的邻域的中心）
+\newpage
+\noindent 解答\\1.\\
+(1).对一个可数基$\{V_n\}$，在每一个$V_n$中挑一个$x_n$，构成一个序列$\{x_n\}$。那么对不在$\{x_n\}$中的$x\in X$，他的邻域为$U$。根据基的定义，则一定存在一个$k$，使得$x\in V_k \subset U$，所以因为$V_k$中一定有一点$x_k$不同于$x$，所以他的每一个邻域中一定有一个不同于他的点。故而$x$是$\{x_n\}$的一个极限点。所以$\{x_n\}$是$X$的可数稠密子集。这就是说$X$是可分的。\\
+(2).令$Y$为$X$的一个可数稠密子集，$G$是一个开集，$x$是$X$中的一个点。\\
+\indent 首先，显然，提示里面的集合是可数的（可数集的可数并是可数的）。如果他是基，那么就证明完成了。\\
+\indent 若$x\in Y \wedge x\in G $，则$\exists N \subset G$。所以这是满足可数基的定义。\\
+\indent 若$x\notin Y \wedge x\in G $，因为$x$是$G$的内点，所以
+\[
+\exists n_1\left( N_1=\left\lbrace p\bigg|d(x,p)<\frac{1}{n_1} \right\rbrace  \subset G \right ).\]
+且$Y$有稠密性，可得$x$是一个极限点，则按极限点定义，
+\[
+\exists q\in N_2=\left\lbrace q\bigg|d(x,q)<\frac{1}{4n_1} \right\rbrace  \subset G 
+.\]
+然后取一个$q$，令
+\[
+N_3=\left\lbrace r\bigg|d(r,q)<\frac{1}{2n_1} \right\rbrace.
+\]
+于是
+\[
+d(x,r)\le d(x,q)+d(q,r)<\frac{1}{4}\frac{1}{n_1}+\frac{1}{2}\frac{1}{n_1}=\frac{3}{4}\frac{1}{n_1}<\frac{1}{n_1}.
+\]
+所以$N_3\subset N_1 \subset G$，而$d(x,q)<\frac{1}{4n_1}<\frac{1}{2n_1}$，则$x\in N_3$。命题证毕。\\
+2.按提示中说的那样，假设我可以无限做下去，一定有一点$x$是这个数列$\{x_i\}$的极限点，则在$x$的半径为$\delta/2$的邻域$N$中有无数个$\{x_i\}$中的点。假设有一个点$x_n\in N$，我们要证明的是，其他所有的点都不在$N$中，这样就产生了矛盾。\\
+\indent 显然
+\[
+d(x_i,x_n)\le d(x_i,x)+d(x,x_n)
+\]
+按照构造法则有，
+\[
+d(x_i,x)\ge d(x_i,x_n)-d(x,x_n)
+>\delta-\frac{\delta}{2}=\frac{\delta}{2}
+\]
+所以$X$能被有限多个半径为$\delta$的邻域覆盖。\\\indent 当$\delta=1/n$的时候，那么任取一个$x\in X$，他一定在某个中心为$x_{k}$的邻域$V_{k}$（$1\le k \le i_n$其中$i_n\ge n$）中，那么这时候以他为中心，做一个半径为$\varepsilon$ $(\varepsilon>1/n)$的邻域，则其中有$x_k$与它相异。而对任意的正数$\varepsilon$（就是说任意邻域），总可以挑出$n$使得上面的关系成立（实数的阿基米德性，$n$总可以大于$1/\varepsilon$），其中一定有一点相异于$x$，那么$x$就是$X$的一个极限点。同时$\{V_k\}$是可数的，所以$\{V_k\}$是$X$的一个可数稠密子集，故而$X$可分。
+\end{document}

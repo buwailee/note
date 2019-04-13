@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb,amsfonts,
+amsmath,ctex,bm}
+
+\begin{document}
+\noindent 1.如果$k$是自然数，且
+$S_k(n)=1^k+2^k+\cdots+n^k$\\
+试证明：\\
+(1).
+\[
+S_k(n)=a_{k+1}n^{k+1}+\cdots+a_1 n+a_0
+\]
+(2).
+\[
+\lim_{n\rightarrow\infty}
+\frac{S_k(n)}{n^{k+1}}
+=\frac{1}{k+1}
+\]
+\\
+\noindent 2.
+函数
+\[R(x)=\left\{
+\begin{array}{ll}
+\frac{1}{n}&\text{若}x=\frac{m}{n}\in \mathbb{Q}(\frac{m}{n}\text{是既约分数})\\
+0&\text{若}x \text{为无理数}
+\end{array}
+\right .
+\]
+试证明：$R(x)$在所有无理点连续.
+\newpage
+解答：\\
+1.注意到，
+\[
+i^{k}-(i-1)^{k+1}
+=\sum_{j=0}^{k}{k \choose j}(i-1)^{j}
+\]
+那么，
+\[
+\begin{split}
+n^{k+1}=\sum^{n}_{i=1}\left(i^{k+1}-(i-1)^{k+1}\right)
+=&\sum^{n}_{i=1}\sum_{j=0}^{k}{k +1\choose j}(i-1)^{j}\\
+=&\sum_{j=0}^{k}{k+1 \choose j}\sum^{n}_{i=1}(i-1)^{j}\\
+=&\sum_{j=0}^{k-1}{k+1 \choose j}\sum^{n}_{i=1}(i-1)^j
++(k+1)\sum^{n}_{i=1}(i-1)^{k}
+\end{split}
+\]
+这就是说，
+\[
+\begin{split}
+\sum^{n}_{i=1}(i-1)^{k}&=1^k+2^k
++\cdots+(n-1)^k\\
+&=
+\frac{1}{k+1}\left(n^{k+1}+\sum_{j=0}^{k-1}{k+1 \choose j}\sum^{n}_{i=1}(i-1)^j\right)
+\end{split}
+\]
+后面系数不必写出具体形式，再将左右各加上$n^k$，则有，
+\[
+S_k(n)=\frac{n^{k+1}}{k+1}+k\text{次多项式}
+\]
+那么极限就是显然的了。
+\\
+2.对于任何点$a$，他的有界邻域内，以及无论怎么的有理数$N$，在邻域中都仅有有限个有理数$\displaystyle{\frac{m}{n}}$使得$n<N$.\\
+\indent 因此，只要缩小领域，就可以认为位于其中的一切有理数的分母都比$N$大（可能除去$a$）。这样一来，在邻域内的任意点$x$处，$\displaystyle{|R(x)|<\frac{1}{N}}$\\
+\indent 这样就证明了，在任意点$a$处，
+\[
+\lim_{x\rightarrow a}R(x)=0
+\]
+于是，黎曼函数在所有无理点连续。
+\end{document}

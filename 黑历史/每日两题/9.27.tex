@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{ctex}
+\usepackage{bm}
+
+\begin{document}
+\indent 这是一个有趣的命题，重新回到集合论上的一些结论，有关于集合的势的概念，可以看9/25。\\
+1.若一个集合$X$是可数的，当且仅当$\text{card}X=\text{card}\mathbb{N}$.且已知有限个或者可数个可数集的并是可数的。\\
+(1).若一个集合中的元素可以排成一个数列，试证明这个集合是可数的。\\
+(2).试证明：整数集$\mathbb{Z}$是可数的。\\
+(3).若$a\in A$和$b\in B$，$A$和$B$的笛卡尔积$A\times B$被定义为所有二元有序组的集合$\{(a,b)|a\in A\wedge b\in B \}$，并且简记为$A\times A=A^2$.\\
+试证明：$\mathbb{N}^2$是可数的。
+\\
+\\
+2.若一系列$\mathbb{R}$上的闭区间$I_n$满足，
+\[
+I_1\supset I_2 \supset \cdots
+\supset I_n \supset \cdots
+\]
+(1).试证明：
+存在一点$x\in \mathbb{R}$，属于这些闭区间中的每一个。\\
+(2).试证明：$\text{card}\mathbb{N}<\text{card}\mathbb{R}$（或者说实数集不可数）
+\newpage
+解答：\\
+(1).根据数列的定义$f:\mathbb{N}\rightarrow X$，这里的$f$是一个双射。所以显然，这个集合$X$是可数的。\\
+(2).定义集合$\mathbb{N}-i$，就是说$\mathbb{N}$中的每个元素都减去$i$。形式化的定义就是，
+\[
+\mathbb{N}-i:=
+\{x|x=n-i\wedge n\in \mathbb{N}\}
+\]
+所以这个集合可数。那么显然，集合$\mathbb{Z}$就满足，\\
+\[
+\mathbb{Z}=\bigcup_{i=1}^{\infty}
+\left(\mathbb{N}-i\right)
+\]
+根据给出的定理，可数集的可数并是可数的，于是$\mathbb{Z}$是可数的。\\
+(3).对于$(a,b)$，固定$a$，那么$(a,b)$和$\mathbb{N}$之间有自然的一对一映射，因而是可数的。然后所有的$(a,b)$构成的集合为
+\[
+\bigcup_{b=1}^{\infty}(a,b)
+\]
+根据可数集的可数并是可数的，可以得到他是可数的。于是$\mathbb{N}^2$可数。
+\\
+\indent 并且，很容易证明$\mathbb{Z}^2$也是可数的。由于任何一个有理数$a/b$可以表示成一个有序组$(a,b)$的形式（会有不同的有序组对应同一个有理数，比如$a'=ka\bigwedge b'=kb$），所以有理数集$\mathbb{Q}$是$\mathbb{Z}^2$的子集。因为$\mathbb{Z}^2$可数，所以$\mathbb{Q}$或者有限或者可数，因为它是无限的，所以有理数集也是可数的。
+\\
+\\
+2.
+(1).假设$I_n=[a_n,b_n]$，根据条件，一定满足
+\[
+a_1 \leqslant \cdots \leqslant a_n \leqslant \cdots
+\leqslant b_n \leqslant \cdots \leqslant b_1
+\]
+由于实数集是稠密的，换而言之，一定存在$x$ 满足对任意的$a_ n\leqslant b_n$有$a_ n\leqslant x\leqslant b_n$成立，所以有，
+\[
+a_1 \leqslant \cdots \leqslant a_n \leqslant \cdots \leqslant x  \leqslant \cdots
+\leqslant b_n \leqslant \cdots \leqslant b_1
+\]
+于是这个x在所有的$I_n$中。\\
+(2).
+因为$A=[0,1]$和$\mathbb{R}$之间存在一一映射，所以只要证明
+$\text{card}\mathbb{N}<\text{card} A$就可以了。
+假设$A$中的点可以排成一个数列$\{x_n\}$.在闭区间$A=I_0$上，取定一闭区间$I_1$，使得$I_1$长度不为零，且$I_1$不含$x_1$，这样不断做下去。那么，从A中可以截取长度不为0的$I_n$，使得$x_n$不在$I_n$内。显然，$I_1\supset I_2 \supset \cdots
+\supset I_n \supset \cdots$，根据第一小题，存在一点$x$，他属于所有的$I_n$，但是根据上面$I_n$的构造法，$x$不能是点列$\{x_n\}$中的任何一点，于是矛盾。所以$A$不可数，所以$\mathbb{R}$不可数。
+\end{document}

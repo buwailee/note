@@ -1,0 +1,17 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb,amsfonts,
+amsmath,ctex,bm}
+
+\begin{document}
+解答：\\
+1.$f(x)$显然单调不减，所以若$f(x)<x$，则
+\[
+f^n(x)\le f^{n-1}(x) \le f(x)<x
+\]
+同理，若$f(x)>x$，则，
+\[
+f^n(x)\ge f^{n-1}(x) \ge f(x)>x
+\]
+若$f(x)\neq x$，则上面两个式子告诉我们，$f^n(x)\neq x$。所以一旦有一个$n$使得$f^n(x)=x$，则$f(x)\equiv x$\\
+2.显然$n=1$成立。$[0,1]$上的连续函数存在的最大值$f(a)$，使得$f(a)\ge f(a+1/n)$，以及$f(a-1/n)\ge f(a)$，所以在$[a-1/n,a]$（我们称为区间1）中存在使得$f(x)= f(x+1/n)$的$x$，同理对$f(x-1/n)$和$f(x)$也做类似讨论，则在$[a,a+1/n]$（我们称为区间2）中也存在。若$0<a<1/n$，则使用区间1，若$1-1/n<a<1$，则使用区间2，其余两者皆可。总之，可以挑出长度为$1/n$的水平线段，这就是说，存在$x$满足，$f(x)= f(x+1/n)$。而第二问的反例也比较简单，取$f(x)=\sin{2\pi x}$，则$[0,1]$上取不到使得$f(x+2/3)=f(x)$成立的$x$.
+\end{document}

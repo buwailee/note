@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper,openany]{article}
+\usepackage{amssymb,amsfonts,
+amsmath,ctex,bm}
+
+\begin{document}
+\noindent 1.继续上次的问题。\\
+若$P_n(x)$为$n$阶多项式。我们用多项式来逼近有界函数$f:[a,b]\rightarrow \mathbb{R}$。设，
+\[
+\Delta(P_n)=\sup_{x\in [a,b]}|f(x)-P_n(x)|
+\text{以及}
+E_n(f)=\inf{P_n}\Delta(P_n)
+\]
+其中下界取遍一切可能的$n$阶多项式。如果$\displaystyle{E_n(f)=\inf_{P_n}\Delta(P_n)}$，则多项式$P_n$叫做函数$f$的 {\kaishu 最佳逼近多项式}。
+试证明：\\
+(1).存在0阶最佳逼近多项式，并且尝试写出来。\\
+(2).如果$n$阶最佳逼近多项式存在，则$n+1$阶也存在。\\
+(3).对任意的$n$，最佳逼近多项式总是存在的。\\
+2.引进切比雪夫多项式。\\
+在$x\in [-1,1]$上定义切比雪夫多项式，
+\[
+T_n(x)=\arccos{(\cos{(x)})}
+\]
+(1).证明$T_n$为n阶多项式，且$x^n$项为1。\\
+(2).证明对于任意的$x^n$项为1的多项式$P_n(x)$，一定满足，
+\[
+\max_{x\in[-1,1]}|P_n(x)|\geq 1
+\]
+\newpage
+\noindent 1.\\
+(1).如果$f(x)$在$[a,b]$上的最大值是$M$，最小值是$m$，则其零阶最佳逼近多项式为
+\[
+P_0=\frac{M+m}{2}
+\]
+(2).
+不妨令，
+\[
+\Delta(P_{n+1})
+=\Delta(P_n,\lambda)
+=\sup_{x\in [a,b]}|f(x)-P_n(x)-\lambda x^n|
+\]
+像10/11里面的证明一样，可以证明，对确定的$P_n$存在使得$\Delta(P_n,\lambda)$达到最小值的$\lambda$。同时，
+\[
+E_{n+1}(f)=\inf_{P_{n+1}}\Delta(P_{n+1})
+=\min_{\lambda}\inf_{P_n}\Delta(P_n,\lambda)
+\]
+根据假设，$\inf\Delta(P_n)$也存在。所以可以看到，如果$n$阶最佳逼近多项式存在，则$n+1$阶也存在。\\
+(3).数学归纳法\\
+2.这题我题目写错了，2阶以上的$T_n$首项都不是1.所以第二小题应该改成首项为$2^{n-1}$的多项式。\\
+(1).令$t=\arccos x$，则显然$\cos t=x$且
+\[
+\frac{\sin{(nt)}}{\sin t}
+=\sum_{k=0}^{n-1}\cos((n-1-k)t)\cos^k t
+\]
+这个式子证明用数学归纳法就可以了，略。所以，
+\[
+\sin{(nt)}\sin t
+=(1-\cos^2 t)\sum_{k=0}^{n-1}\cos((n-1-k)t)\cos^k t
+\]
+假设$k$从1到$n$，$cos(kt)$为$k$次多项式，则$\sin{(nt)}\sin t$必然是$n+1$次多项式，那么
+\[
+\cos((n+1)t)=\cos{(nt)} \cos t-\sin{(nt)} \sin t
+\]
+显然也是$n+1$次多项式，根据数学归纳法，可知命题成立。\\
+(2).这个很简单说穿了很简答$\max |T_n|=1$，显然，所以只要和$T_n$比就可以了。如果$|P_n|$在每个点都比1小，那么$P_n-T_n$是一个$n-1$次多项式。因为$|T_n|$会有$n+1$个最大值点，所以$P_n-T_n$有$n$个零点。但是$n-1$阶多项式为0最多有$n-1$个根，相悖。所以$\max |P_n|\geq 1$.
+\end{document}

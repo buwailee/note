@@ -1,0 +1,22 @@
+\documentclass[11pt,a4paper,openany]{article} \usepackage{amssymb,amsfonts, amsmath,ctex,bm}
+
+\begin{document}
+\noindent 1.先把$\mathbb{R}^k$中Heine-Borel定理补充完整。试证明以下三个条件在$\mathbb{R}^k$中是等价的，\\
+$(a)$.$E$是有界闭集。\\
+$(b)$.$E$是紧集。\\
+$(c)$.$E$中的每个无限子集在$E$内有极限点。\\
+2.假设$E\subset X$，如果$X$的每个点要么是$E$的极限点，要么是$E$的点，或者两者都是。则称$E$在$X$中是稠密。如果一个度量空间有可数稠密子集，则这个度量空间是可分的，称为可分度量空间。试证明：$\mathbb{R}^k$是可分空间。
+\newpage
+解答：\\
+1.我们按照$(a)\Rightarrow (b)\Rightarrow (c)\Rightarrow (a)$的顺序进行证明。因为$(a)\Rightarrow (b)$已经由10/17的第二题给出了，所以下面先证明$(b)\Rightarrow (c)$.\\
+\indent 这里不限定在$\mathbb{R}^k$中，而是可以放在任意紧集$E$里面。假设$F$是他的一个无限子集。如果$E$里面没有$F$的极限点，那么每一个$q\in E$将有一个邻域$V_q$，他最多含有$E$的一个点（如果$q\in E$，那么这个点就是$q$）.显然，没有$\{V_q\}$的有限子组可以覆盖$F$。因为$F\subset E$，所以对于$E$也一样，没有$\{V_q\}$的有限子组可以覆盖$E$。但这与E是个紧集矛盾，所以$(b)\Rightarrow (c)$成立。\\
+\indent 最后证明$(c)\Rightarrow (a)$。如果$E$不是有界的，那么挑出这样的一个子列$|\bm{x}_n|>n$，构成了一个无界无限子集。显然在$\mathbb{R}^k$中没有极限点。所以$E$是有界的。\\
+\indent 如果$E$不是闭集，那么存在一点$\bm{x}_0 \in \mathbb{R}^k$，他是$E$的极限点，但是却不在$E$里面。对于$n=1,2,3,\cdots,$存在点$\bm{x}_n \in E$，使得$|\bm{x}_n-\bm{x}_0|<1/n$。令$S$就是这些点构成的集合，显然这是$E$的无限子集。如果$y \in \mathbb{R}^k$，且是一个不同于$\bm{x}_0$的$S$的极限点。那么总可以挑出$|\bm{x}_0-y|>2/n$，则
+\[
+|\bm{x}_n-y|\geq |\bm{x}_0-y|-|\bm{x}_n-\bm{x}_0|\geq |\bm{x}_0-y|-\frac{1}{n}\geq \frac{1}{2}|\bm{x}_0-y|
+\]
+那么$\bm y$就不可能是$S$的一个极限点。因此$S$在$E$里面没有极限点。\\
+\indent 所以上面证明了，如果$E$不是闭集，则存在一个无限子集在$E$中没有极限点。其逆否命题就是，如果每一个$E$中的无限子集都在$E$中都有极限点，那么$E$就是闭集。$(c)\Rightarrow (a)$证毕。\\
+\indent 命题证毕。这就给出了$\mathbb{R}^k$中的Heine-Borel定理的完整形式。（可以看到$(b)\Rightarrow (c)$并不依托于$\mathbb{R}^k$的结构，可以适用于任何度量空间。但是$(a)\Rightarrow (b)$却用了$\mathbb{R}^k$的结构。那么似乎提示了我们，在一般的度量空间中，$(a)$是推不出$(b)$的。事实正是如此。而对于$(b)$和$(c)$，则可以证明他们是等价的。可见$(a)$是其中最弱的条件。）\\
+2.考虑坐标都是有理数的点构成的集合。
+\end{document}
