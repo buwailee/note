@@ -96,7 +96,7 @@ What's more, if we want $P_\mu(\gamma(t))$ is constant along $\gamma(t)$, Propos
 \[
 	\Gamma_{\mu;\nu}+\Gamma_{\nu;\mu}=0.
 \]
-With these two equation, we should assume that $\Gamma_{\mu;\nu}=0$, and then
+With these two equation, we should assume that $\Gamma_{\mu;\nu}=0$ or $\partial_\mu P_\nu=A_{\mu\nu}^\rho P_\rho$, where $A$ is a connection form of $g^{\mu\nu}$, and then
 \[
 	[P_\mu,P_\nu]=\hbar^2 R_D(\partial_\mu,\partial_\nu)
 \]
@@ -110,9 +110,27 @@ or
 \[
 	\partial_\mu S=\frac{i}{\hbar}[P_\mu,S],
 \]
-it is the Heisenberg equation of motion. From now on, we will set $\hbar=1$.
+it is the Heisenberg equation of motion. From now on, we will set $\hbar=1$. Especially, $\partial_\mu (R_D)_{\rho\sigma}=i[P_\mu,(R_D)_{\rho\sigma}]$.
 
 The above observation suggests us that the right equation of evolution of a operator $S\in \Gamma (\mathsf{H}^*\otimes \mathsf{H})$ is $D_{\dot\gamma(t)}S=0$, where $\gamma(t)$ is a geodesic.
+
+\begin{pro}
+		$[(R_D)_{\mu\nu},(R_D)_{\rho\sigma}]=0$.
+\end{pro}
+
+\begin{proof}
+	\begin{align*}
+		[(R_D)_{\mu\nu},(R_D)_{\rho\sigma}]&=[P_\mu P_\nu,(R_D)_{\rho\sigma}]-(\mu\leftrightarrow \nu)\\
+		&=P_\mu [P_\nu,(R_D)_{\rho\sigma}]+[P_\mu,(R_D)_{\rho\sigma}]P_\nu-(\mu\leftrightarrow \nu)\\
+		&=-i(P_\mu \partial_\nu (R_D)_{\rho\sigma}+\partial_\mu (R_D)_{\rho\sigma} P_\nu)-(\mu\leftrightarrow \nu)\\
+		&=-i(P_\mu \partial_\nu (R_D)_{\rho\sigma}+\partial_\mu ((R_D)_{\rho\sigma} P_\nu)-(R_D)_{\rho\sigma}A_{\mu\nu}^\alpha P_\alpha)-(\mu\leftrightarrow \nu)\\
+		&=-i(P_\mu \partial_\nu (R_D)_{\rho\sigma}+\partial_\mu ([(R_D)_{\rho\sigma},P_\nu])+\partial_\mu (P_\nu (R_D)_{\rho\sigma}))-(\mu\leftrightarrow \nu)\\
+		&=-i(P_\mu \partial_\nu (R_D)_{\rho\sigma}+i\partial_\mu\partial_\nu (R_D)_{\rho\sigma}+\partial_\mu (P_\nu (R_D)_{\rho\sigma}))-(\mu\leftrightarrow \nu)\\
+		&=-i(P_\mu \partial_\nu (R_D)_{\rho\sigma}+\partial_\mu P_\nu (R_D)_{\rho\sigma} +P_\nu \partial_\mu (R_D)_{\rho\sigma})-(\mu\leftrightarrow \nu)\\
+		&=-i(A_{\mu\nu}^\alpha P_{\alpha}(R_D)_{\rho\sigma})-(\mu\leftrightarrow \nu)\\
+		&=0.\qedhere
+	\end{align*}
+\end{proof}
 
 % For fixed $A:\mathbb R^N\to\mathbb R^N$, suppose $U_x(A)$ satisfies the equation of motion $D_{\dot\gamma(t)}U_{\gamma(t)}(A)$ for all geodesic $\gamma$. Then the equation
 % \[

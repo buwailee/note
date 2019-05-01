@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{../noteheader}
+\usepackage{ctex}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{coro}[para]{Corollary}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+\begin{document}
+	
+为什么自旋对应的群是$\mathrm{SU}(2)$而不是$\mathrm{SO}(3)$？
+
+这是一个被广泛讨论的问题，相关讨论实际也很完备，但这些讨论往往见于一些很“数学”的材料，或是一些被认为“很艰深”的场论教材（比如 Weinberg）中，而本文即打算填补这一“空缺”，以后有人问起来甩网址大概就行了。
+
+\section{对称性与表示}
+
+设想，我们有一个量子力学系统，在给定的一个惯性参考系$L_0$中，其由态矢量$|\Psi\rangle$所描述。此时，若我们选择另一个惯性参考系$L_1$，$L_0$和$L_1$只差一个三维旋转$R\in\mathrm{SO}(3)$，则描述系统的态矢量不一定是相同的，我们将其记作$|U(R,\Psi)\rangle$. 但是，相对性原理告诉我们，选取不同的惯性参考系我们应该得到相同的物理，特别地，概率应该相同，即：
+\[
+	|\langle U(R,\Psi)|U(R,\Phi)\rangle|^2=|\langle \Psi | \Phi\rangle|^2
+\]
+对任意的归一化态矢量$\Psi$, $\Phi$都应该成立。一般地，$U(R,\Psi)$不一定是归一化的，但是我们可以将其归一化，因为这并不影响物理。
+
+下面的Wigner定理告诉我们，存在$U(R)$使得$|U(R,\Psi)\rangle=U(R)|\Psi\rangle$对任意的态矢量$\Psi$都成立。在Wigner定理的证明中，我们采用数学家常用的记号，以免出现太多Dirac记号。
+
+\begin{thm}[Wigner定理]
+	若$H$是一个复Hilbert空间，而映射$T:H\to H$是一个映射使得$|(Tv,Tw)|=|(v,w)|$对任意的矢量$v$, $w$都成立，则存在一个幺正线性（或反幺正反线性）算符$U$还有一个相因子$\varphi:H\to \mathrm{U}(1)\hookrightarrow \mathbb{C}$使得$T=\varphi\cdot U$.
+\end{thm}
+
+这个证明来自于MáTé Győry. 
+
+\begin{proof}
+	我们可以首先假设$T$是齐次的，即对任意的$\lambda\in \mathbb C$，都有$T(\lambda x)=\lambda T(x)$. 否则，在每条轨道$\mathbb{C}\cdot x$中挑一个元素$\hat x$. 此时$x=\lambda_x \hat x$，其中$\lambda_x$是一个常数，定义$T'(x)=\lambda_x T(\hat x)$，可以看到$T'$是齐次的。从条件，可以看到$|T'(x)|=|\lambda_x||T\hat x|=|\lambda_x \hat x|=|x|=|T(x)|$，即它们等长，同时还可以看到它们同向，因为
+	\[
+		|(T'(x),T(x))|=|(\lambda_x T(\hat x),Tx)|=|\lambda_x||(\hat x,x)|=|\lambda_x|^2|x|^2=|\lambda_x T(\hat x)||Tx|=|T'(x)||Tx|,
+	\]
+	所以存在一个相位因子$\varphi:H\to \mathrm{U}(1)\hookrightarrow \mathbb{C}$使得$T'(x)=\varphi(x)T(x)$. 注意到，如果$T'$满足题意，则立刻我们可知$T$也满足题意，所以我们可以假设$T$是齐次的。
+
+	我们首先挑一组标准正交基$\{v_i\}$，不难发现$\{Tv_i\}$也是一组标准正交基地。下面，我们首先对实系数的矢量进行证明，即所有形如$\sum_i c_iv_i$的矢量，其中$c_i$都是实数，然后推到整个$H$上。
+
+	考虑Hilbert空间中的单位球，取其中的一半，即
+\end{proof}
+
+\begin{proof}
+	设$\{|k\rangle\}$是态矢量空间的一族完备正交基，即$\langle i|j\rangle=\delta_{ij}$. 从条件，我们立刻得到
+	\[
+		\langle U(R,i)|U(R,j)\rangle=\delta_{ij}.
+	\]
+	于是$\{|U(R,k)\rangle\}$也是一族完备正交基。此外，注意到$U(R,\Phi)$的定义本身就允许差一个相位，这里，给定基矢量后，我们可以选取适当相位使得对所有的态$|v_i\rangle=|(0\rangle+|i\rangle)/\sqrt 2$，都有
+	\[
+		|U(R,v_i)\rangle = \frac{1}{\sqrt{2}}|U(R,0)\rangle+\frac{1}{\sqrt{2}}|U(R,i)\rangle.
+	\]
+	于是，我们定义
+	\[
+		U(R)|v_i\rangle = |U(R,v_i)\rangle,\quad U(R)|0\rangle =|U(R,0)\rangle\quad  \text{and}\quad 
+		U(R)|i\rangle = |U(R,i)\rangle,
+	\]
+
+	现在，考虑一个态$|\Psi\rangle$，则我们有分解
+	\[
+		|\Psi\rangle=\sum_i c_i |i\rangle,\quad |U(R,\Psi)\rangle=\sum_i c'_i U(R)|i\rangle,
+	\]
+	由条件$|c_i|^2=|c'_i|^2$. 此外，两边分别内积上$|v_i\rangle$和$U(R)|v_i\rangle$后，我们有$|c_i+c_0|^2=|c'_i+c'_0|^2$. 这两个条件告诉我们，
+	\[
+		c'_i/c'_0=c_i/c_0\quad \text{or}\quad c'_i/c'_0=(c_i/c_0)^*.
+	\]
+	此外，如果态$|\Psi\rangle$的分解中所有的$c_i$都是实的，则$c'_i/c'_0=c_i/c_0$对所有$i$都成立。此时，$|U(R,\Psi)\rangle=(c'_0/c_0)\alpha\sum_i c_i|U(R,i)\rangle=\alpha\sum_i c_iU(R)|i\rangle$. 定义$|v_{ij}\rangle = (|0\rangle+|i\rangle+|j\rangle)/\sqrt{3}$，则我们得到了
+	\[
+		|U(R,v_{ij})\rangle=\alpha (U(R)|0\rangle+U(R)|i\rangle+U(R)|j\rangle)/\sqrt{3},
+	\]
+	其中$|\alpha|=1$. 将$\Psi\rangle$和$|U(R,\Psi)\rangle$分别内积上$|v_{ij}\rangle$和$|U(R,v_{ij})\rangle$，我们立刻得到
+	\[
+		\left|1+\frac{c'_i}{c'_0}+\frac{c'_j}{c'_0}\right|^2=\left|1+\frac{c_i}{c_0}+\frac{c_j}{c_0}\right|^2,
+	\]
+	这就限制了对所有的$i$，或者是$c'_i/c'_0=c_i/c_0$或者是$c'_i/c'_0=(c_i/c_0)^*$，并不能相混。所以，
+	\[
+		|U(R,\Psi)\rangle=(c'_0/c_0)\sum_i c_i U(R)|i\rangle\quad \text{or}\quad |U(R,\Psi)\rangle=(c'_0/c^*_0)\sum_i c^*_i U(R)|i\rangle,
+	\]
+	类似地，我们可以重定义$|U(R,\Psi)\rangle$来消去这个相因子$(c'_0/c_0)$或$(c'_0/c^*_0)$，再定义$U(R)|\Psi\rangle=|U(R,\Psi)\rangle$，立刻有
+	\[
+		U(R)|\Psi\rangle=\sum_i c_i U(R)|i\rangle\quad \text{or}\quad U(R)|\Psi\rangle=\sum_i c^*_i U(R)|i\rangle.
+	\]
+	现在，即使对非归一化矢量$|\Psi\rangle$，我们可以通过$U(R)|\Psi\rangle:=|\Psi|(U(R)(|\Psi\rangle/|\Psi|))$来定义$U(R)$在上面的作用。下面我们来看，这两种选取对不同的态是否会不同。
+
+	假设，对态$|\Psi\rangle =\sum_i c_i |i\rangle$，其中至少有一个$c_i$是实的但并不全是实的，有$U(R)|\Psi\rangle=\sum_i c_i U(R)|i\rangle$，对态$\Phi=\alpha\Psi=\sum_i \alpha c_i|i\rangle$，有$U(R)|\Phi\rangle=\sum_i \alpha^* c^*_i U(R)|i\rangle$，其中$|\alpha|=1$. 于是$1=|\langle \Psi|\alpha\Psi\rangle|^2=|\langle U(R,\Psi)|U(R,\alpha\Psi)\rangle|^2$给出
+	\[
+		0=\sum_{i,j} \bigl((c_ic_j^*)^2-(c_ic_j)(c_ic_j)^*\bigr)=\frac{1}{2}\sum_{i,j}|c_ic_j^*-c_jc_i^*|^2,
+	\]
+	所以$c_ic_j^*-c_jc_i^*=0$对所有$i$, $j$都成立，于是存在一个相因子$\beta$使得$c_i\beta$都是实数，进而其实所有$c_i$都是实的，矛盾。
+
+	更一般地，若态$\Psi=\sum_i c_i |i\rangle$中$c_i$的相位有两个不同，则对任意的$\alpha$，$U(R)$在$\alpha|\Psi\rangle$的作用，或者都是线性的，或者都是反线性的。
+	
+\end{proof}
+
+\end{document}
