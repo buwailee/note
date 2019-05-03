@@ -2,6 +2,56 @@
 \chapter{模（二）}
 \ThisULCornerWallPaper{1}{../Pictures/5.png}
 
+\section{投射模、内射模、平坦模}
+
+从Proposition \ref{homleftexact}，我们已经知道，对给定的$R$-模$M$，$\Hom(M,-)$与$\Hom(-,M)$都是左正和函子。关注它们什么时候正和是同调代数的基本问题之一。
+
+\begin{para}[投射对象]
+	设$\mathcal C$是一个Abel范畴，$M$是一个对象，如果$\Hom(M,-)$是正和函子，则称$M$是一个投射对象。
+\end{para}
+
+具体地，因为已经知道这是左正和的了，所以$Z$投射等价于，对任何满态射$f:X\to Y$，以及态射$g:Z\to Y$，都存在（不一定唯一）$h:Z\to X$使得如下图交换
+\[
+	\xymatrix{
+Z \ar@{->}[rd]^g \ar@{-->}[d]^h &  &  \\
+X \ar@{->}[r]^f & Y \ar@{->}[r] & 0
+}
+\]
+等价是直接的，因为此时$\Hom(Z,X)\to \Hom(Z,Y)$是满的。
+
+\begin{para}[内射对象]
+	设$\mathcal C$是一个Abel范畴，$M$是一个对象，如果$\Hom(-,M)$是正和函子，则称$M$是一个内射对象。
+\end{para}
+
+具体地，$Z$内射等价于，对任何单态射$f:X\to Y$，以及态射$g:X\to Z$，都存在（不一定唯一）$h:Y\to Z$使得如下图交换
+\[
+	\xymatrix{
+ &  Z & \\
+0 \ar@{->}[r] & X \ar@{->}[r]^f \ar[u]^g & Y \ar@{-->}[ul]_h
+}
+\]
+等价是直接的，因为此时$\Hom(Y,Z)\to \Hom(X,Z)$是满的。
+
+\begin{pro}
+	一个模是投射模，当且仅当，它是一个自由模的直和项。
+\end{pro}
+
+\begin{para}[平坦模]
+	设$M$是一个$R$-模，若$-\otimes_R M$是正和的，则称$M$是一个平坦$R$-模。
+\end{para}
+
+由于张量积是左伴随函子，所以其是右正和的，所以平坦就只是加上了如下新的条件：任取单同态$f:N'\to N$，诱导的同态$N'\otimes M \to N\otimes M$也是单的。
+
+\begin{pro}
+	$R$-模$M$是平坦的当且仅当，任取$R$的理想$\mathfrak a$，典范同态$\mathfrak a\otimes M\to \mathfrak aM$是同构。
+\end{pro}
+
+作为推论，如果$R$是一个主理想整环，且对任意的$m\in M$，$am=0$都可以推出$a=0$，此时$M$是平坦的。
+
+\begin{pro}
+	局部环上的有限生成平坦模是自由模。
+\end{pro}
+
 \section{准素分解}
 
 这节在某种角度来说，我们要开始研究$R$-模$M$的结构中的标量乘法。标量乘法并不总像$k$在$k[x]$上的作用那么简单，比方说，对$m\in M$，可能存在一个$r\in R$使得$rm=0$. 我们这里就是要考虑这样的问题。
