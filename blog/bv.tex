@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage{../noteheader}
+\usepackage{ctex}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{defi}[para]{Definition}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{coro}[para]{Corollary}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+\begin{document}
+
+Batalin-Vilkovisky量子化科普
+
+\section{分次结构}
+
+分次结构的出现在物理中是自然的，其中最自然的可能是来自于粒子统计% https://www.doubilee.com/particle\_statistics/
+，其告诉我们，粒子分为两类，其一是玻色子，其二是费米子，分别描述它们的经典理论是两类非常不同的代数，在前者中，两个量$a$和$b$的乘法满足$ab=ba$，在后者中，乘法则满足$ab=-ba$. 历史上，数学家和物理学家就定义了一系列具有$\mathbb{Z}_2$-分次的对象，他们通常以 super 为名，如 supermanifold 等。
+
+同时，从自旋统计定理，自旋为半整数的粒子是费米子，自旋为整数的粒子是玻色子。所以，从这种角度来看，$\mathbb{Z}_2$-分次并不是最自然的，$\mathbb{Z}$-分次应当会更自然些，它可以告诉我们相应粒子（场）的自旋到底是什么。所以我们从$\mathbb{Z}$-分次的矢量空间开始。
+
+\begin{defi}
+    设$V$是一个$k$-矢量空间，可以写成直和$V=\bigoplus_{i\in\mathbb Z} V_i$，其中$V_i$中的元素被称为$i$-次元，这样一个矢量空间被称为分次矢量空间。如果$v\in V$处于某个$V_i$中，则称其为齐次的，此时若$v\neq 0$是$i$-次元，定义$\deg(v)=i$. 如果对两个分次$k$-矢量空间，$k$-同态$f:V\to W$满足$f(V_i)\subset W_i$，则称$f$是一个分次$k$-矢量空间同态。
+\end{defi}
+
+然后是分次代数。
+
+\begin{defi}
+    若分次$k$-矢量空间$V$上有一个乘法使得$V_iV_j\subset V_{i+j}$，则称其为一个分次$k$-代数。一般来说，我们要求这个乘法是有单位元的，且其为零次的，此时我们有自然的含入$k\subset V_0$. 对两个齐次元$v$, $w\in V$，若
+\[
+    vw=(-1)^{\deg(w)\deg(v)}wv\quad \Leftrightarrow \quad 
+    [v,w]=vw-(-1)^{\deg(w)\deg(v)-1}wv=0,
+\]
+则称他们是可交换的（对易的）。若任意齐次元之间是可交换的，则称这是一个交换$k$-代数。
+\end{defi}
+
+这里$[*,*]$可以线性地延拓到整个$V$上，他是对玻色子括号$[*,*]$和费米子$\{*,*\}$括号的推广。所以，可以看到，经典的对易和反对易，在这里都是对易的。注意，因为全同粒子假设，玻色子和费米子之间是可以区分的，所以在物理构造中，玻色算符和费米算符的对易关系是可以任意给定的，而这里，偶数次元和任意元素都可以对易。
+
+数学上，这样的交换分次代数也不少见，其中非常常见的是流形的de Rham complex，流形$M$上的余切丛的截面的反对称化$\Gamma(\Lambda^*M)$. 但是de Rham complex上还有一个非常重要的构造，外微分算子。这样对象的推广被称为\textit{微分分次代数} (differential graded algebra)，简记为 dga. 
+
+\begin{defi}
+    若$V$是一个交换分次$k$-代数，如果有一个$k$-代数映射$d:V\to V$满足：$dV_i\subset V_{i+1}$, $d^2=0$和 Leibniz 法则，即对齐次元$a$满足
+    \[
+        d(ab)=(da)b+(-1)^{\deg(a)}a(db).
+    \]
+    则称$(V,d)$是一个微分分次代数。一个dga同态$f$不仅是一个交换$k$-分次代数同态，还需满足$df=fd$，即de Rham complex间拉回的推广。
+\end{defi}
+
+对每个分次交换代数$V$，$(V,0)$就是一个平凡的 dga. 
+显然，对每个 dga，都有对应的上同调群$H^i(V,d)=\ker d/\operatorname{im} d$，且 dga 同态会诱导相应的上同调群同态。
+
+\begin{para}[对称化]
+    设$V$是一个分次$k$-矢量空间，我们可以定义一个其生成的最大的交换分次代数$\operatorname{Sym}(V)$. 以范畴论的语言，即相应的自由对象 (free object). 回忆，在交换$k$-代数范畴，这样的自由对象是多项式代数。
+
+    $\operatorname{Sym}(V)$的构造是直接的，我们考虑多项式环$k[V]$，上面可以定义自然的分次：对齐次元$a$和$b$，定义形式乘法$ab$的分次为$\deg(a)+\deg(b)$. 所以，$ab$和$ba$具有相同分次。这时候考虑所有$[a,b]=vw-(-1)^{\deg(w)\deg(v)-1}wv$生成的理想$I$，则
+    \[
+        \operatorname{Sym}(V)=k[V]/I.
+    \]
+    显然，任何$V$生成的交换分次代数都可以经由$\operatorname{Sym}(V)$分解。
+
+    我们来看一个非常简单的例子，$V=V_0\oplus V_1=k\oplus V_1$，这个分次矢量空间只有两个分次。此时$\operatorname{Sym}(V)$就是外代数$\Lambda^*(V_1)$，其中$\Lambda^0(V_1)=k$. 类似地，如果$V$只有$0$-分次，则$\operatorname{Sym}(V)$就是普通的$\operatorname{Sym}(V)$.
+\end{para}
+
+\begin{para}[分次代数的谱]
+    设$V$是一个分次交换$k$-代数，我们可以定义出$V$-模，特别地，$V$的理想。设$W\subset V$是$V$的一个$k$-子模，且任取$a\in V$都有$aW\subset W$，则称$W$是一个左理想，同理可以定义右理想。此外，如果（左、右）理想可以由齐次元生成，则称其为（左、右）齐次理想。
+
+    我们断言，此时左齐次理想等价于右齐次理想。实际上，如果$W$是右理想，则任取齐次元$a$，都有$Wa\subset W$，因为如果$ba\in W$，则$-ba\in W$，所以$aW\subset W$.
+\end{para}
+
+\begin{para}[分次对偶空间和谱]
+    设$V$是一个分次矢量空间，$V^*$是其对偶空间，则我们可以将其分解为$V^*=\bigoplus_{i\in\mathbb Z}V_i^*$. 由于$V_i^*$中的元素将$i$-次齐次元变成$0$-次的，所以我们赋予分次$-i$，即$(V^*)_i=V_{-i}^*$.
+
+    大家都知道，在代数几何中，一个有限维矢量空间$V$可以看成概形$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点的集合。这是因为，设$\{e_i\}$是$V$的一组基，$\{e^i\}$是$V^*$的对偶基，则$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点一一对应极大理想$\langle e^i-a_i\rangle_i$，其中$a_i\in k$，而这也自然对应着$a=\sum_i a_ie_i\in V$，因为通过赋值映射，自然就有$e^i(a)=a_i$.
+
+    这里，对分次$k$-矢量空间$V$，类似地可以定义出$\operatorname{Spec}(\operatorname{Sym}(V^*))$.
+\end{para}
+
+\end{document}
