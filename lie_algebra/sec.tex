@@ -368,12 +368,7 @@ Cartan子代数的维度称为半单Lie代数的秩。
 \end{align*}
 \end{proof}
 
-考虑$\mu=\exp(t\ad(Z))$，我们有
-\[
-	(X,Y)_K=(\exp(t\ad(Z))X,\exp(t\ad(Z))Y)_K,
-\]
-在$t=0$处做微分即得到了$(\ad(Z)X,Y)_K+(X,\ad(Z)Y)_K=0$，或者$([Z,X],Y)_K+(X,[Z,Y])_K=0$. 换句话说Killing形式是双不变的。
-
+考虑$\mu=\mathrm{Ad}(g)$，根据引理, $\mu$保持 Lie 代数$\lag$上的 Killing 形式不变. 回到 Lie 群$G$上, 由于$G$上的所有左不变向量场构成了切丛$TG$的一组基, 我们可以利用左移作用将$\lag$上的 Killing 形式推至整个$TG$上, 从而构造了$G$上的一个双不变度量.
 但是Killing形式却不一定是非退化的，如果$\lag$上的Killing形式是非退化的，则我们称呼这样的$\lag$是半单的。
 
 {\pro 一个Lie代数是半单，则他没有非平凡交换理想。特别地，如果$[h,\lag]=0$则$h=0$.\endpro}
