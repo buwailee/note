@@ -421,92 +421,54 @@
 就是$\id_f$.
 \end{para}
 
-\begin{para}
-现在回到任意的范畴，如果对$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$存在自然变换$\varphi:gf\to \id_{\mathcal{C}}$以及$\psi:\id_{\mathcal{D}}\to fg$使得自然变换的分解
-\[
-	\id_g:g\xrightarrow{g \psi}gfg\xrightarrow{\varphi g}g
-\]
-和
-\[
-	\id_f:f\xrightarrow{\psi f}fgf\xrightarrow{f \varphi}f
-\]
-成立。则$(g,f)$被称为一对伴随函子，$g$是左伴随函子，而$f$是右伴随函子。
-\end{para}
+% \begin{para}
+% 现在回到任意的范畴，如果对$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$存在自然变换$\varphi:gf\to \id_{\mathcal{C}}$以及$\psi:\id_{\mathcal{D}}\to fg$使得自然变换的分解
+% \[
+% 	\id_g:g\xrightarrow{g \psi}gfg\xrightarrow{\varphi g}g
+% \]
+% 和
+% \[
+% 	\id_f:f\xrightarrow{\psi f}fgf\xrightarrow{f \varphi}f
+% \]
+% 成立。则$(g,f)$被称为一对伴随函子，$g$是左伴随函子，而$f$是右伴随函子。
+% \end{para}
 
-因此，从集合生成自由模的函子是模范畴到集合范畴的遗忘函子是一个伴随函子，前者是左伴随，后者是右伴随。一般地，遗忘函子的左伴随函子被称为自由函子。自由函子的像被称为一个自由对象，即如果$g$是自由函子，则形如$g(S)$的对象是自由对象。
+% 因此，从集合生成自由模的函子是模范畴到集合范畴的遗忘函子是一个伴随函子，前者是左伴随，后者是右伴随。一般地，遗忘函子的左伴随函子被称为自由函子。自由函子的像被称为一个自由对象，即如果$g$是自由函子，则形如$g(S)$的对象是自由对象。
 
-上面这个伴随函子的定义并不是最常用的，一般而言，我们会使用下面这个定义。
+% 上面这个伴随函子的定义并不是最常用的，一般而言，我们会使用下面这个定义。
 
-\begin{para}
-设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果对任意的$T\in\mathcal{C}$和$Y\in\mathcal{D}$存在自然同构
-\[
-	\alpha(T,Y):\mathcal{C}(T,g(Y))\to \mathcal{D}(f(T),Y),
-\]
-则$(f,g)$被称为一对\idx{伴随函子}（\idx{adjoint functor})。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
-\end{para}
+% \begin{para}
+% 设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果对任意的$T\in\mathcal{C}$和$Y\in\mathcal{D}$存在自然同构
+% \[
+% 	\alpha(T,Y):\mathcal{C}(T,g(Y))\to \mathcal{D}(f(T),Y),
+% \]
+% 则$(f,g)$被称为一对\idx{伴随函子}（\idx{adjoint functor})。$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
+% \end{para}
 
-从模的遗忘函子和其左伴随的函子来看，这个同构应该是清楚的，这是自由生成的“极大性”保证的。这里就不检验了。
+% 从模的遗忘函子和其左伴随的函子来看，这个同构应该是清楚的，这是自由生成的“极大性”保证的。这里就不检验了。
 
-在定义中，固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个右伴随函子。所以实际上，双函子同构可以减弱为对$T$的。下面我们证明这一点。
+% 在定义中，固定$Y$，对$T$的那个自然同构说明$g(Y)$是反变函子$\mathcal{D}(f(\star),Y)$的表示对象。反过来其实也对，如果对每一个$Y$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则我们可以构造出他的一个右伴随函子。所以实际上，双函子同构可以减弱为对$T$的。下面我们证明这一点。
 
-\begin{proof} 
-	设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$g(Y)$所表示，于是就有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
-	\[
-	\begin{xy}
-		\xymatrix{
-			h_{g(Y)}(T)\ar[rr]^-{\alpha(Y,T)} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
-			h_{g(Y)}(S)\ar[rr]^-{\alpha(Y,S)}&&{\mathcal{D}}(f(S),Y)
-		}
-	\end{xy}
-	\]
-	其中$\alpha(Y,T)$用来简记$\alpha(Y)(T)$. 任取$u:T\to {g(Y)}$，有$\alpha(Y,S)(u\psi)=\alpha(Y,T)(u)f(\psi)$. 特别地，当$T=g(Y)$时，取$u=\id_{g(Y)}$，记$\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y$，则$\alpha(Y,S)(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to g(Y)$.
+% \begin{proof} 
+% 	设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子。对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，被$g(Y)$所表示，于是就有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$：给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+% 	\[
+% 	\begin{xy}
+% 		\xymatrix{
+% 			h_{g(Y)}(T)\ar[rr]^-{\alpha(Y,T)} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
+% 			h_{g(Y)}(S)\ar[rr]^-{\alpha(Y,S)}&&{\mathcal{D}}(f(S),Y)
+% 		}
+% 	\end{xy}
+% 	\]
+% 	其中$\alpha(Y,T)$用来简记$\alpha(Y)(T)$. 任取$u:T\to {g(Y)}$，有$\alpha(Y,S)(u\psi)=\alpha(Y,T)(u)f(\psi)$. 特别地，当$T=g(Y)$时，取$u=\id_{g(Y)}$，记$\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y$，则$\alpha(Y,S)(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to g(Y)$.
 
-	改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}{Y}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha(Y,T)$，对每一个$T$，$\beta_T$将给出了函子同构
-	\[
-		\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
-	\]
-	自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
-\end{proof}
+% 	改变$Y$，即给出一个态射$v:Y\to Y'$，$g(v)=\alpha^{-1}{Y}\left(v\sigma_Y\right):g(Y)\to g(Y')$是一个态射。于是$g:Y\mapsto g(Y)$，以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha(Y,T)$，对每一个$T$，$\beta_T$将给出了函子同构
+% 	\[
+% 		\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
+% 	\]
+% 	自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
+% \end{proof}
 
-\begin{pro}
-伴随函子的两种定义是等价的。
-\end{pro}
-
-\begin{pro}
-设$L:\mathcal{C}\to \mathcal{D}$是一个左伴随函子，而$R:\mathcal{D}\to \mathcal{C}$是一个右伴随函子。设有一个$\mathcal{C}$中的$I$-图$X:I\to \mathcal{C}$以及一个$\mathcal{D}$中的$J$-图$Y:J\to \mathcal{D}$，于是，$LX$是$\mathcal{D}$中的$I$-图，$RY$是$\mathcal{C}$中的一个$J$图，并且存在同构
-\[
-	L{\varinjlim}_{i\in I} X_i\cong {\varinjlim}_{i\in I} (LX_i),\quad
-	R{\varprojlim}_{j\in J} Y_j\cong {\varprojlim}_{j\in J} (RY_j).
-\]
-\end{pro}
-
-粗略来说，就是左伴随函子与余极限可交换，而右伴随函子与极限可交换。
-
-\begin{proof}
-	命题的证明是利用Yoneda引理，他有协变和反变两个版本：协变的是，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 反变的是，如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$.
-
-	由Proposition \ref{homlimit}，我们知道如下函子同构
-	\[
-	\mathcal{C}\left(-,{\varprojlim}\, RX_i\right)\cong \,{\varprojlim}\, \mathcal{C}(-,RX_i),
-	\]
-	连同伴随函子的函子同构，有如下同构链
-	\[
-	\mathcal{C}\left(-,{\varprojlim}\, RX_i\right)\cong {\varprojlim}\, \mathcal{C}(-,RX_i)\cong {\varprojlim}\, \mathcal{D}(L-,X_i)\cong \mathcal{D}\left(L-,{\varprojlim}\,X_i\right)\cong \mathcal{C}\left(-,R\,{\varprojlim}\, X_i\right),
-	\]
-	所以${\varprojlim}\, RX_i\cong R\,{\varprojlim}\, X_i$.
-
-	同样由Proposition \ref{homlimit}，有如下函子同构
-	\[
-	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-),
-	\]
-	连同伴随函子的函子同构，有如下同构链
-	\[
-	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-)\cong {\varprojlim} \mathcal{C}(X_i,R-)\cong \mathcal{C}\left({\varinjlim} X_i,R-\right)\cong \mathcal{D}\left(L{\varinjlim} X_i,-\right),
-	\]
-	所以${\varinjlim} LX_i\cong L{\varinjlim} X_i$.
-\end{proof}
-
-下面我们给出一些对应的遗忘函子的自由对象。
+于是，一句话来概括自由对象，它是遗忘函子的左伴随函子的像，遗忘函子的左伴随函子称为自由函子，所以自由对象是自由函子作用在一个对象上得到的。下面我们来看一些遗忘函子对应的自由对象。
 
 \begin{para}
 设$U$是一个集合，上面有乘法运算，满足结合律，这样的代数结构被称为\idx{半群}（\idx{semigroup}）. 如果半群含有乘法单位元，则称他为\idx{幺半群}（\idx{monoid}）. 群是特殊的幺半群，一个环除去加法结构也是一个幺半群。半群之间的同态依然定义为满足$f(ab)=f(a)f(b)$的映射$f$. 所以所有半群构成一个范畴，所有幺半群也构成一个范畴。

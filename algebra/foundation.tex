@@ -520,7 +520,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 \para[对角函子] \label{digf}有了二元积范畴，类似地，可以定义多元（有限）积范畴。类似于对角函数，可以定义对角函子：设$\mathcal{C}$是一个范畴，而$\mathcal{C}\times \cdots \times \mathcal{C}$是积范畴。那么可以定义函子$\Delta:\mathcal{C}\to \mathcal{C}\times \cdots \times \mathcal{C}$，对于对象$X$，定义$\Delta:X\mapsto (X$, $\cdots$, $X)$，对于态射$\varphi\in \mathcal{C}(X,Y)$，定义$\Delta: \varphi \mapsto (\varphi$, $\cdots$, $\varphi)$.\endpara
 
-甚至是考虑关于一个集合的积范畴（即指标构成一个集合的情况），积范畴依然可以定义。但是如果比如考虑指标并不是一个集合，有些东西就会可能会出现问题。这个问题有相当深刻的背景，涉及了现代数学的逻辑基础，即公理化体系（主要是ZFC公理体系）上面。众所周知，在朴素的集合论里面有Russell悖论，这就限制了一些集合的构造，比如所有集合构成的一个整体并不是集合。到了范畴论里面，我们自然也会面临集合论的问题，比如在我们的定义中，两个对象之间态射的全体需要构成一个集合。如果我们考虑了一族（不能构成集合）的范畴的积范畴，那么这个积范畴的态射集是否就会出问题？
+甚至当考虑关于一个集合的积范畴（即指标构成一个集合的情况），积范畴依然可以定义。但是如果比如考虑指标并不是一个集合，有些东西就会可能会出现问题。这个问题有相当深刻的背景，涉及了现代数学的逻辑基础，即公理化体系（主要是ZFC公理体系）上面。众所周知，在朴素的集合论里面有Russell悖论，这就限制了一些集合的构造，比如所有集合构成的一个整体并不是集合。到了范畴论里面，我们自然也会面临集合论的问题，比如在我们的定义中，两个对象之间态射的全体需要构成一个集合。如果我们考虑了一族（不能构成集合）的范畴的积范畴，那么这个积范畴的态射集是否就会出问题？
 
 为了避免谈及ZFC公理体系的问题，Grothendieck引入了一个新的假设，即Grothendieck universe的存在。简单来说，就是给出了一个足够大的集合$\mathscr{U}$，而我们在具体问题中谈论的集合，都是$\mathscr{U}$的子集与元素。并且在$\mathscr{U}$内，他的元素与子集在ZFC体系下进行运算都会落入$\mathscr{U}$内。于是在Grothendieck universe内，我们就模拟了一个集合论公理体系，在这里面讨论，就可以避免许多集合论的问题。而所有可能的问题都会集中到Grothendieck universe的存在上。
 
@@ -610,7 +610,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 可表函子的出现是频繁的，因为实际上，在范畴论中，我们时常想要构造一个与其他对象“有着某某性质的态射”的对象，而这些“某某性质的态射”往往是事先已知的（比如从一个已知函子和已知范畴映过来的）. 比方说，我们已经有了一个函子$f:\mathcal{C}^\text{op}\to\mathsf{Set}$，它用来描述那些事先给定了的“某某性质的态射”，如果$f$是可表的，则$f\cong h_X$，则这些事先给定的态射就是$h_X(Y)=\mathcal{C}(Y,X)$，而这里的表示对象$X$就是我们试图构造的对象。
 
-这里给一个直接的例子，设$\mathcal{C}$, $\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子，对给定的$Y$，$\mathcal{D}(f(-),Y)$就是一个从$\mathcal{C}$到$\mathsf{Set}$的反变函子。它描述了所有形如$f(X)$的对象与$Y$之间的态射，如果它可表，表示对象为$g(Y)$，则我们就有同构$\mathcal{C}(-,g(Y))\cong \mathcal{D}(f(-),Y)$. 这也就意味着，我们只需要研究所有形如$X\to g(Y)$的态射即可。
+这里给一个直接的例子，设$\mathcal{C}$, $\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$是一个函子，对给定的$Y$，$\mathcal{D}(f(-),Y)$就是一个从$\mathcal{C}$到$\mathsf{Set}$的反变函子。它描述了所有形如$f(X)$的对象与$Y$之间的态射，如果它可表，表示对象为$g(Y)$，则我们就有同构$\mathcal{C}(-,g(Y))\cong \mathcal{D}(f(-),Y)$. 这也就意味着，我们只需要研究所有形如$X\to g(Y)$的态射即可。这个例子以后将被称为伴随函子。
 
 对偶地，如果$f$是一个$\mathcal{C}$到$\mathsf{Set}$的函子，如果它同构于$h^X$，则我们称$f$是可表的，而$X$被称为$f$的表示对象。
 
@@ -650,9 +650,7 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 
 % 如果有一个自然变换$\varphi:f\to g$，他将诱导出态射$\varphi(X):f(X)\to g(X)$，以及态射$\varphi_*: {\hat{\mathcal{C}}}(h_X,f)\to {\hat{\mathcal{C}}}(h_X,g)$.
 
-上面的引理中，我们发现，固定$X$，${\hat{\mathcal{C}}}(h_X,\star)$是一个函子。固定$f$，${\hat{\mathcal{C}}}(h_\star,f)$也是一个函子。实际上，${\hat{\mathcal{C}}}(h_-,\star)$是一个双函子。
-
-为了检查${\hat{\mathcal{C}}}(h_-,\star)$是一个双函子，必须检查图
+上面的引理中，我们发现，固定$X$，${\hat{\mathcal{C}}}(h_X,\star)$是一个函子。固定$f$，${\hat{\mathcal{C}}}(h_\star,f)$也是一个函子。实际上，${\hat{\mathcal{C}}}(h_-,\star)$是一个双函子。为此，必须检查图
 \[
 \begin{xy}
 	\xymatrix{
@@ -766,6 +764,71 @@ $a$的反元素通常记作$a^{-1}$.此外如果不产生歧义，我们可以�
 \]
 从$g(\psi)$的定义，可以看到上图交换，所以$p$确实是一个自然变换。类似地，$p^{-1}$也是一个自然变换，它们分别给出了函子同构$fg\cong \id_\mathcal{D}$以及$gf\cong \id_\mathcal{C}$.
 \end{proof}
+
+下面，我们定义所谓的伴随函子，他是函子的可表问题中最常见的一种情况。
+
+\begin{para}[伴随函子]
+	设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是一对函子，如果对任意的$T\in\mathcal{C}$和$Y\in\mathcal{D}$存在自然同构
+	\[
+		\alpha(T,Y):\mathcal{C}(T,g(Y))\to \mathcal{D}(f(T),Y),
+	\]
+	则$(f,g)$被称为一对\idx{伴随函子}（\idx{adjoint functor}). 此时，$f$被称为$g$的左伴随函子，$g$被称为$f$的右伴随函子。
+\end{para}
+
+从定义，函子$\mathcal{D}(f(-),Y)$是可表的，表示对象是$g(Y)$. 神奇的是，这就已经是伴随函子存在的充要条件了。
+
+\begin{pro}
+	设$f:\mathcal{C}\to \mathcal{D}$是一个函子，如果任取$Y\in \mathcal D$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$都是可表的，则存在函子$g:\mathcal D\to \mathcal C$使得$(f,g)$是一对伴随函子，其中$g$将$Y$变为$T\mapsto {\mathcal{D}}(f(T),Y)$的表示对象。
+\end{pro}
+
+\begin{proof} 
+	对于给定的$Y\in\mathcal{D}$，反变函子$T\mapsto {\mathcal{D}}(f(T),Y)$属于$\hat{\mathcal{C}}$. 如果他是可表函子，为$g(Y)$所表，则有函子同构$\alpha(Y):h_{g(Y)}\to {\mathcal{D}}(f(\star),Y)$. 给出$S$, $T\in \mathcal{C}$以及同态$\psi:S\to T$，有交换图
+	\[
+	\begin{xy}
+		\xymatrix{
+			h_{g(Y)}(T)=\mathcal{C}(T,g(Y))\ar[rr]^-{\alpha(Y,T)} \ar[d]_{\psi^*}&&{\mathcal{D}}(f(T),Y) \ar[d]^{f(\psi)^*}\\
+			h_{g(Y)}(S)=\mathcal{C}(S,g(Y))\ar[rr]^-{\alpha(Y,S)}&&{\mathcal{D}}(f(S),Y)
+		}
+	\end{xy}
+	\]
+	其中$\alpha(Y,T)$用来简记$\alpha(Y)(T)$. 任取$u\in h_{g(Y)}(T)=\mathcal{C}(T,g(Y))$，有
+	\[
+		\alpha(Y,S)(\psi_{*}(u)) =\alpha(Y,T)(u)f(\psi)\in {\mathcal{D}}(f(S),Y)
+	\]
+	特别地，当$u=\id_{g(Y)}$，记$\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y$，则$\alpha(Y,S)(\psi)=\sigma_Y f(\psi)$，其中$\psi:S\to g(Y)$.
+
+	可以验证$g:Y\mapsto g(Y)$以及$g:v\mapsto \alpha^{-1}_{g(Y)}\left(v\sigma_Y\right)$就构成了一个函子$g:\mathcal{D}\to \mathcal{C}$. 再记$\beta_T(Y)=\alpha(Y,T)$，对每一个$T$，$\beta_T$将给出了函子同构
+	\[
+		\beta_T:\mathcal{C}(T,g(\star))\to \mathcal{D}(f(T),\star).
+	\]
+	自然变换的检验是直接的。于是$\alpha(Y,T)$就是一个双函子同构。
+\end{proof}
+
+从上一个命题的证明中可以看到，映射$\sigma_Y:f(g(Y))\to Y$非常重要，它的定义为
+\[
+	\alpha(Y,g(Y))\bigl(\id_{g(Y)}\bigr)=\sigma_Y:f(g(Y))\to Y.
+\]
+改变$Y$后，映射$\sigma_Y$们就构成了一个自然变换$\sigma:fg\to \id_{\mathcal D}$. 类似地，如果我们从函子$\mathcal C(T,g(-))$出发，则有自然变换$\tau:\id_{\mathcal C}\to gf$，其定义为
+\[
+	\alpha(f(X),X)^{-1}(\id_{f(X)})=\tau_X:X\to g(f(X)).
+\]
+这两个自然变换被称为adjunction. 给定adjunction也可以还原出伴随函子，所以这就导致了伴随函子的另一定义。
+
+\begin{para}[伴随函子]
+	如果对$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$存在自然变换$\sigma:fg\to \id_{\mathcal{D}}$以及$\tau:\id_{\mathcal{C}}\to gf$使得自然变换的分解
+	\[
+		\id_f:f\xrightarrow{f \tau}fgf\xrightarrow{\sigma f}f
+		\quad \text{和}\quad 
+		\id_g:g\xrightarrow{\tau g}gfg\xrightarrow{g \sigma}g
+	\]
+	成立。则$(f,g)$被称为一对伴随函子，$f$是左伴随函子，而$g$是右伴随函子。
+\end{para}
+
+具体来说，给一个$X\in \mathcal C$，则有分解
+\[
+	\id_{f(X)}:f(X)\xrightarrow{f(\tau_X)}f(g(f(X)))\xrightarrow{\sigma_{f(X)}} f(X),
+\]
+第二条也类似。任取$\varphi:X\to g(Y)$，我们可以用adjunction定义出态射$\sigma_Y f(\varphi):f(X)\to Y$，而这就可以给出函子同构$\alpha$.
 
 本节的最后，我们谈论单射和满射在范畴中的对应。
 
@@ -1049,6 +1112,42 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 \item $\mathcal{C}$中的（有限）余积与余等值子总存在。
 \end{compactenum}
 \end{thm}
+
+最后，我们来看极限与伴随函子之间的关系。
+
+\begin{pro}
+	设$L:\mathcal{C}\to \mathcal{D}$是一个左伴随函子，而$R:\mathcal{D}\to \mathcal{C}$是一个右伴随函子。设有一个$\mathcal{C}$中的$I$-图$X:I\to \mathcal{C}$以及一个$\mathcal{D}$中的$J$-图$Y:J\to \mathcal{D}$，于是，$LX$是$\mathcal{D}$中的$I$-图，$RY$是$\mathcal{C}$中的一个$J$图，并且存在同构
+	\[
+		L{\varinjlim}_{i\in I} X_i\cong {\varinjlim}_{i\in I} (LX_i),\quad
+		R{\varprojlim}_{j\in J} Y_j\cong {\varprojlim}_{j\in J} (RY_j).
+	\]
+\end{pro}
+	
+	粗略来说，就是左伴随函子与余极限可交换，而右伴随函子与极限可交换。
+	
+\begin{proof}
+	命题的证明是利用Yoneda引理，他有协变和反变两个版本：协变的是，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 反变的是，如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$.
+	
+	由Proposition \ref{homlimit}，我们知道如下函子同构
+	\[
+	\mathcal{C}\left(-,{\varprojlim}\, RX_i\right)\cong \,{\varprojlim}\, \mathcal{C}(-,RX_i),
+	\]
+	连同伴随函子的函子同构，有如下同构链
+	\[
+	\mathcal{C}\left(-,{\varprojlim}\, RX_i\right)\cong {\varprojlim}\, \mathcal{C}(-,RX_i)\cong {\varprojlim}\, \mathcal{D}(L-,X_i)\cong \mathcal{D}\left(L-,{\varprojlim}\,X_i\right)\cong \mathcal{C}\left(-,R\,{\varprojlim}\, X_i\right),
+	\]
+	所以${\varprojlim}\, RX_i\cong R\,{\varprojlim}\, X_i$.
+	
+	同样由Proposition \ref{homlimit}，有如下函子同构
+	\[
+	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-),
+	\]
+	连同伴随函子的函子同构，有如下同构链
+	\[
+	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-)\cong {\varprojlim} \mathcal{C}(X_i,R-)\cong \mathcal{C}\left({\varinjlim} X_i,R-\right)\cong \mathcal{D}\left(L{\varinjlim} X_i,-\right),
+	\]
+	所以${\varinjlim} LX_i\cong L{\varinjlim} X_i$.
+\end{proof}
 
 \section{准加性范畴}
 

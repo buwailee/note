@@ -1,4 +1,5 @@
-\documentclass[12pt]{article}
+% !TEX program = xelatex
+\documentclass[10pt]{article}
 \usepackage{../noteheader}
 \usepackage{ctex}
 
@@ -79,5 +80,60 @@ Batalin-Vilkovisky量子化科普
 
     这里，对分次$k$-矢量空间$V$，类似地可以定义出$\operatorname{Spec}(\operatorname{Sym}(V^*))$.
 \end{para}
+
+\section{例子}
+
+方便起见，我们考虑一个$k$-矢量空间$V$，函数空间$\mathscr O(V)=\operatorname{Sym}(V^*)$，以及Lie 群$G$在$V$上的作用。回忆，$V$可以自然等同于$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点的集合。同时，通过
+\[
+g\cdot\psi(v)=\psi(g^{-1}\cdot v),
+\]
+我们立刻可以将$G$作用定义到$\mathscr O(V)$上。
+
+现在，我们考虑“路径积分”
+\[
+\int_{V} \exp(-S),
+\]
+其中我们要求$S$是$G$-不变函数。为使路径积分有意义，实际上我们考虑的积分应该具有形状
+\[
+\int_{V/G}\exp(-S),
+\]
+因为我们是对$V$中的$G$-轨道积分。
+
+现在，让我们先忘掉积分，首先考虑$V/G$的结构，等价地，考虑其上所有可能的函数，再等价地，就是那些$\mathscr O(V)$上的$G$-不变函数，或者说$\mathfrak{g}$-不变函数。同时，如果我们不仅只考虑这些函数，还考虑更“高阶”的“不变量”，则我们还可以得到更多有趣的信息。
+
+回忆，设$M$是一个$\mathfrak g$-模，可以定义其不变子模$M^{\mathfrak g}:=\{g \in \mathfrak g\,:\, gM=0\}$，此时$M\to M^{\mathfrak g}$是一个左正和函子，进而我们可以考虑其右导出函子，其刻画了“不变性的障碍”。为计算导出函子，我们需要找一个resolution，最常见的是Chevalley–Eilenberg complex $C^\bullet(\mathfrak g,M):=\operatorname{Hom}(\Lambda^\bullet \mathfrak g,M)=M\otimes \Lambda^\bullet \mathfrak g^*$，上面的微分算符$\delta:\operatorname{Hom}(\Lambda^k \mathfrak g,M)\to \operatorname{Hom}(\Lambda^{k+1} \mathfrak g,M)$定义为
+\[
+    \delta\omega(g_1,\dots,g_{k+1})=\sum_{j=1}^{k+1} (-1)^{j}g_j\omega(\dots,\hat{g}_j,\dots)+\sum_{i<j}^{k+1} (-1)^{i+j-1}\omega([g_i,g_j],\dots,\hat{g}_i,\dots,\hat{g}_j,\dots),
+\]继而可以计算这个complex的cohomology group，其中$H^0=M^{\mathfrak g}$.
+
+现在将$M$换成我们的函数空间，即考虑如下complex
+\[
+C^\bullet(\mathfrak g,\mathcal O(V))=\operatorname{Sym}(V^*)\otimes \Lambda^\bullet \mathfrak g^*
+=\operatorname{Sym}(V^*\oplus (\mathfrak g[1])^*),
+\]这里，为了将对称化和反对称化统一，即“超对称化”，我们移动了$\mathfrak g$的分次，使之变为负一次，即$(\mathfrak g[1])^{-1}=\mathfrak g$. 此时，Chevalley–Eilenberg complex上自然的微分算符$d$诱导了$\operatorname{Sym}(V^*\oplus (\mathfrak g[1])^*)$上的$1$-次微分算符$\delta$，而所有上同调群$H^k$中的元素刻画了“不变量”，它们应当满足$d\omega=0$. 方便起见，我们下面列出一些可能需要用到的计算结果。首先，取$f\in M$，则
+\[
+    \delta f=-(g_if)g^i.
+\]
+记$\{g_i\}$是$\mathfrak g$的基地，而$\{g^i\}$是$\{g_i\}$的对偶基，则
+\[
+    \delta g^i(g_j,g_k)=g_k\delta^i_j-g_j\delta^i_{k}+g^i([g_j,g_k])=g_k\delta^i_j-g_j\delta^i_{k}+f^i_{jk},
+\]
+其中$f$是结构常数，一般来说，$g_i$作用在常数上为零，所以
+\[
+    \delta g^i=\frac 12 f^i_{jk}g^j\wedge g^k.
+\]
+
+对于我们的空间而言，$\delta S=0$是“规范不变”性，同时，经典运动方程是由$dS=0$给出的。所以，同时将这两者结合起来，是一个自然的想法。我们考虑如下空间
+\[
+    \mathfrak g[1]\oplus V\oplus V^*[-1]\oplus \mathfrak g^*[-2]
+\]
+
+现在回到积分，回忆最原始的 Faddeev-Popov 量子化，我们可以通过一个规范固定函数$F:V\to \mathbb R$来指定$V$中每条$G$-轨道中的一个点，即$V/G$中的一个点。这是容易的，只要保证超曲面$F^{-1}(0)$与每条轨道相交且只相交一次即可。但是，由于相交横截的角度不同，所以需要配上相应的Jacobian. 具体一些，若我们可以解掉$v_n=f(v_1,\dots,v_{n-1})$，使得局部超曲面$F^{-1}(0)$可以用$v_1$, $\dots$, $v_{n-1}$表示，则我们应该考虑的积分其实是
+\[
+    \int_{V} \exp(-S)\delta(F)=\int_{F^{-1}(0)\cong V/G} \exp(-S)\left|\frac{1}{\partial_nF(v_1,\dots,v_{n-1};f(v_1,\dots,v_{n-1}))}\right|.
+\]
+但这有诸多不便，比方说这样的规范固定函数可能不存在。注意到，在规范固定中，超曲面才是主位重要的，而其方程是次要的，所以，我们可以适当放宽给出超曲面的方程。比如，找一个$1$-形式$\omega$，将超曲面定义为其零点集，同时，我们要求其是“可积的”，即$d\omega\wedge \omega=0$，这样可以保证有一个超曲面。易见，所有$\omega\in H^1$都可以保证这点，同时若$\omega=dF$，则回到我们之前的情况。
+
+现在，给定$V\oplus \mathfrak g[1]$上的一个函数$f$满足$df=0$，我们来刻画所有使得$df=0$的点。
 
 \end{document}

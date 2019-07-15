@@ -36,11 +36,46 @@ X \ar@{->}[r]^f & Y \ar@{->}[r] & 0
 	一个模是投射模，当且仅当，它是一个自由模的直和项。
 \end{pro}
 
-\begin{para}[平坦模]
-	设$M$是一个$R$-模，若$-\otimes_R M$是正和的，则称$M$是一个平坦$R$-模。
+\begin{para}[关系]
+	考虑一个$R$-模$X$，一组$X$中的元素$x_1$, $\dots$, $x_n$，以及一组标量$r_1$, $\dots$, $r_n$使得$\sum_{i}r_ix_i=0$. 这样的一个等式被称为$X$上的一个关系。特别地，如果$X$是有限生成的，则其为一个自由模$R^n$的商模，而商掉的自然就是所有关系构成的子模。用关系（即商模）是表示某些模的最自然的方式。
+
+	现在，考虑另一个$R$-模$Y$，考虑$X\otimes Y$上的关系$\sum_i x_i\otimes y_i=0$. 显然，原本$X$上的一族关系$\sum_i r_i^{j}x_i=0$，其中$j$是关系的指标，都可以诱导出$X\otimes Y$上的关系如下：
+	\[
+		y_i=\sum_{j}r^j_i y^j,
+	\]
+	其中$y^j\in Y$是任意的关系。现在，反过来，我们问什么时候$X\otimes Y$上的关系都是这样来自于$X$上的关系呢？这自然要对$Y$有一些要求，而这要求正是下面要定义的平坦性。
+	
+	略微粗糙地说，一个平坦模在张量积的时候不会引入新的关系。这是非常重要的性质，比方说，在代数几何中，我们将任意的态射$f:X\to Y$看成参数空间$Y$上的概形族，对每一个$y$，纤维$f^{-1}(y)$就是参数为$y$时的概形。如果$X$会引入新的关系，则极限行为就往往不是我们想要的极限行为了，即极限行为应该仅依赖于参数。具体一些，当考虑$Y$中的一个极限$b\to a$时，我们会希望$f^{-1}(b)\to f^{-1}(a)$，即我们要求一种“连续性”。
+	
+	设$f:X\to Y$是一个给定的概形族，因为要考虑极限行为，所以与其考虑纤维$f^{-1}(a)=X\times_Y \operatorname{Spec}(k(a))$，我们可以转而考虑一下“无穷小邻域”$X\times_Y \operatorname{Spec}(\mathcal O_{Y,a})$. 进一步假设$X$和$Y$都是仿射的，$X=\operatorname{Spec} A$, $Y=\operatorname{Spec} B$，则我们等价于考虑张量积$A\otimes_B B_{a}$. 为满足我们希求的极限行为，我们会要求$A$不要再引入任何极限行为中额外的关系，于是，我们会要求$A$作为$B$-模是平坦的。
+	更一般地，概形间的态射$f:X\to Y$是平坦的，如果其诱导的局部环态射$f^\#_{x}:\mathcal O_{Y,f(x)}\to \mathcal O_{X,x}$是平坦的，即$\mathcal O_{X,x}$作为$\mathcal O_{Y,f(x)}$-模是平坦的。
+
+	某种角度来看，概形的平坦族是纤维丛的类似物，其在每个局部都近似为平凡丛。在概形的平坦族这里，在每个局部，所有的极限行为都由$Y$来控制，$X$并不会引入新的“扭曲”，是为“平坦”。
+\end{para}
+
+\begin{para}[平坦性]
+	设$M$是一个$R$-模，若$-\otimes_R M$是正和的，则称$M$是一个平坦$R$-模。一个$R$-代数$S$如果看成$R$-模是平坦的，则称其为平坦的，同时，也称定义同态$R\to S$被称为平坦的。
 \end{para}
 
 由于张量积是左伴随函子，所以其是右正和的，所以平坦就只是加上了如下新的条件：任取单同态$f:N'\to N$，诱导的同态$N'\otimes M \to N\otimes M$也是单的。
+
+回忆Proposition \ref{flat_loc}，任取乘性子集$S$，$S^{-1}R$是平坦$R$-模。
+
+\begin{pro}
+	平坦性是局部性条件，即$R$-模$M$平坦等价于任取极大理想$\mathfrak m$，$M_{\mathfrak m}$都平坦。
+\end{pro}
+
+\begin{proof}
+	从局部化，已经知道$S^{-1}R$是平坦$R$-模，假设$M$是平坦$R$-模，则$S^{-1}M$也是。反之，设$f:N\to N'$是一个$R$-模的单同态，记$L$为诱导的同态的$N\otimes M\to N'\otimes M$的核。任取极大理想$\mathfrak m$，因为$R_{\mathfrak m}$平坦，所以我们有正和列
+	\[
+		0\to L\otimes R_{\mathfrak m}\to (N\otimes M)\otimes R_{\mathfrak m}\to (N'\otimes M)\otimes R_{\mathfrak m},
+	\]
+	或等价地
+	\[
+		0\to L_{\mathfrak m}\to N_{\mathfrak m}\otimes M_{\mathfrak m}\to N'_{\mathfrak m}\otimes M_{\mathfrak m},
+	\]
+	由于$M_{\mathfrak m}$平坦，所以$L_{\mathfrak m}=0$. 遍历极大理想$\mathfrak m$，立刻得知$L=0$.
+\end{proof}
 
 \begin{pro}
 	$R$-模$M$是平坦的当且仅当，任取$R$的理想$\mathfrak a$，典范同态$\mathfrak a\otimes M\to \mathfrak aM$是同构。
@@ -51,6 +86,7 @@ X \ar@{->}[r]^f & Y \ar@{->}[r] & 0
 \begin{pro}
 	局部环上的有限生成平坦模是自由模。
 \end{pro}
+
 
 \section{准素分解}
 
