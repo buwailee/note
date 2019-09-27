@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage{../noteheader}
+\usepackage{ctex}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{defi}[para]{Definition}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{coro}[para]{Corollary}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+\begin{document}
+
+闲谈2D-CFT的中心荷
+
+一般来说，2D-CFT中，中心荷$c$可能会出现在这些地方：
+
+\begin{itemize}
+    \item 能动张量与自身的OPE：
+    \[
+        T(z)T(w)\sim \frac{c/2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w}.
+    \]
+    \item Casimir能量：
+    \[
+        \langle T(w)\rangle = -\frac{ac}{L^2},
+    \]
+    其中$L$是系统的尺度，$a$是一个常数。
+    \item 迹反常：若空间不平坦，则
+    \[
+        \langle T^\mu_\mu(x)\rangle=\frac{c}{24\pi}R(x),
+    \]
+    其中$R(x)$是$x$处的标量曲率。
+\end{itemize}
+能动张量与自身的OPE一般是最方便计算中心荷的方式，也常常作为定义，而后两者都引入了一个全局的“量”，前者是系统的尺度，而后者是全局的度量，它们告诉我们凡是有这种全局的量存在，中心荷$c$都有可能出现。然而，我们却不能把中心荷直接与这种全局的“量”联系起来。一方面，我们考虑的是CFT，而不管是Casimir能量还是迹反常都不是共形不变的，而中心荷$c$是共形不变的，它仅仅依赖于我们所考虑的CFT. 数学一些说，这是一个Casimir算符，它的本征值（这里也就是常数c）是用来标记这类CFT的。另一方面，从能动张量与自身的OPE可以看到，中心荷$c$也不需要知道全局的信息，因为能动张量与自身的OPE仅仅依赖于场局部的表现。所以我们直接将其理解为比如Casimir能量显然是荒谬的，它仅仅与$c$成正比而已，$c$应当是个更广泛的东西。
+
+所以，$c$到底是什么？为回答这个问题，我们先回到能动张量的定义，以标量场为例，能动张量定义为
+\[
+    T(z)=-\frac{1}{\alpha'}:\partial X\partial X:(z),
+\]
+其中$:O:$是求$O$的normal ordering，可以形式地写作
+\[
+    :O:=\exp\left(\frac{\alpha'}{4}\int d^2z_1d^2z_2 \log |z_1-z_2|^2 \frac{\delta}{\delta X(z_1,\bar z_1)}\frac{\delta}{\delta X(z_2,\bar z_2)}
+        \right)O,
+\]
+引入normal ordering是为了消去真空无穷大的真空期望，在这里我们有
+\[
+    :A(z)B(w):=A(z)B(w)-\langle A(z)B(w)\rangle.
+\]
+对于标量场，它满足
+\[
+    :X(z,\bar z)X(w,\bar w):=X(z,\bar z)X(w,\bar w)+\frac{\alpha'}{2}\log |z-w|^2,
+\]
+于是
+\[
+    \partial_z\bar\partial_z :X(z,\bar z)X(w,\bar w):=0.
+\]
+现在，让我们来看“裸”能动张量，为使得其不直接发散，我们考虑
+\[
+    T(z,w)=-\frac{1}{\alpha'}\partial X(z)\partial X(w),
+\]
+从上面，我们立刻知道$T(z,w)$在$z\to w$时候发散，且发散形如
+\[
+    \langle T(z,w)\rangle =\frac12\partial_z\partial_w \log |z-w|^2=\frac 1{2 (z - w)^2},
+\]
+回忆，$T(z)$告诉我们系统在点$z$处的“能量密度”，所以$T(z,w)$在$z\to w$之发散我们也不陌生，即场论里常见的能量零点问题。所以，我们可以从$T(z,w)$中减去这个发散的能量密度来得到我们“相对的”能动张量$G(z,w)$，在这里，正是$G(z,w)=:T(z,w):$. 但是，注意到，我们减去之能量密度在不同的坐标处是不同的，我们并不是均匀地减去了一个常量，这就体现在
+\[
+    G(z,w)G(z',w')=\frac{1}{4(z-w)^2(z'-w')^2}
+\]
+
+若
+
+
+
+\end{document}

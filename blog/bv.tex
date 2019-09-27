@@ -1,5 +1,5 @@
 % !TEX program = xelatex
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 \usepackage{../noteheader}
 \usepackage{ctex}
 
@@ -23,10 +23,14 @@ Batalin-Vilkovisky量子化科普
 分次结构的出现在物理中是自然的，其中最自然的可能是来自于粒子统计% https://www.doubilee.com/particle\_statistics/
 ，其告诉我们，粒子分为两类，其一是玻色子，其二是费米子，分别描述它们的经典理论是两类非常不同的代数，在前者中，两个量$a$和$b$的乘法满足$ab=ba$，在后者中，乘法则满足$ab=-ba$. 历史上，数学家和物理学家就定义了一系列具有$\mathbb{Z}_2$-分次的对象，他们通常以 super 为名，如 supermanifold 等。
 
-同时，从自旋统计定理，自旋为半整数的粒子是费米子，自旋为整数的粒子是玻色子。所以，从这种角度来看，$\mathbb{Z}_2$-分次并不是最自然的，$\mathbb{Z}$-分次应当会更自然些，它可以告诉我们相应粒子（场）的自旋到底是什么。所以我们从$\mathbb{Z}$-分次的矢量空间开始。
+同时，从自旋统计定理，自旋为半整数的粒子是费米子，自旋为整数的粒子是玻色子。所以，从这种角度来看，$\mathbb{Z}_2$-分次并不是最自然的，$\mathbb{Z}$-分次应当会更自然些，它可以告诉我们相应粒子（场）的自旋到底是什么。同时，可以看到，从$\mathbb Z$-分次很容易回到$\mathbb Z_2$-分次，所以我们从$\mathbb{Z}$-分次的矢量空间开始。
 
 \begin{defi}
-    设$V$是一个$k$-矢量空间，可以写成直和$V=\bigoplus_{i\in\mathbb Z} V_i$，其中$V_i$中的元素被称为$i$-次元，这样一个矢量空间被称为分次矢量空间。如果$v\in V$处于某个$V_i$中，则称其为齐次的，此时若$v\neq 0$是$i$-次元，定义$\deg(v)=i$. 如果对两个分次$k$-矢量空间，$k$-同态$f:V\to W$满足$f(V_i)\subset W_i$，则称$f$是一个分次$k$-矢量空间同态。
+    设$V$是一个$k$-矢量空间，可以写成直和$V=\bigoplus_{i\in\mathbb Z} V_i$，其中$V_i$中的元素被称为$i$-次元，这样一个矢量空间被称为分次矢量空间。如果$v\in V$处于某个$V_i$中，则称其为齐次的，此时若$v\neq 0$是$i$-次元，定义$\deg(v)=i$. 
+\end{defi}
+
+\begin{defi}
+    设有两个分次$k$-矢量空间$V$和$W$，$k$-同态$f:V\to W$满足$f(V_i)\subset W_{i+a}$，则称$f$是一个$a$-次同态。特别地，$0$-次同态简称为同态。
 \end{defi}
 
 然后是分次代数。
@@ -45,7 +49,7 @@ Batalin-Vilkovisky量子化科普
 数学上，这样的交换分次代数也不少见，其中非常常见的是流形的de Rham complex，流形$M$上的余切丛的截面的反对称化$\Gamma(\Lambda^*M)$. 但是de Rham complex上还有一个非常重要的构造，外微分算子。这样对象的推广被称为\textit{微分分次代数} (differential graded algebra)，简记为 dga. 
 
 \begin{defi}
-    若$V$是一个交换分次$k$-代数，如果有一个$k$-代数映射$d:V\to V$满足：$dV_i\subset V_{i+1}$, $d^2=0$和 Leibniz 法则，即对齐次元$a$满足
+    若$V$是一个交换分次$k$-代数，如果有一个$1$-次$k$-代数同态$d:V\to V$满足：$dV_i\subset V_{i+1}$, $d^2=0$和 Leibniz 法则，即对齐次元$a$满足
     \[
         d(ab)=(da)b+(-1)^{\deg(a)}a(db).
     \]
@@ -63,9 +67,9 @@ Batalin-Vilkovisky量子化科普
         \operatorname{Sym}(V)=k[V]/I.
     \]
     显然，任何$V$生成的交换分次代数都可以经由$\operatorname{Sym}(V)$分解。
-
-    我们来看一个非常简单的例子，$V=V_0\oplus V_1=k\oplus V_1$，这个分次矢量空间只有两个分次。此时$\operatorname{Sym}(V)$就是外代数$\Lambda^*(V_1)$，其中$\Lambda^0(V_1)=k$. 类似地，如果$V$只有$0$-分次，则$\operatorname{Sym}(V)$就是普通的$\operatorname{Sym}(V)$.
 \end{para}
+
+我们来看一个非常简单的例子，$V=V_0\oplus V_1=k\oplus V_1$，这个分次矢量空间只有两个分次。此时$\operatorname{Sym}(V)$就是外代数$\Lambda^*(V_1)$，其中$\Lambda^0(V_1)=k$. 类似地，如果$V$只有$0$-分次，则$\operatorname{Sym}(V)$就是普通的$\operatorname{Sym}(V)$.
 
 \begin{para}[分次代数的谱]
     设$V$是一个分次交换$k$-代数，我们可以定义出$V$-模，特别地，$V$的理想。设$W\subset V$是$V$的一个$k$-子模，且任取$a\in V$都有$aW\subset W$，则称$W$是一个左理想，同理可以定义右理想。此外，如果（左、右）理想可以由齐次元生成，则称其为（左、右）齐次理想。
@@ -81,9 +85,9 @@ Batalin-Vilkovisky量子化科普
     这里，对分次$k$-矢量空间$V$，类似地可以定义出$\operatorname{Spec}(\operatorname{Sym}(V^*))$.
 \end{para}
 
-\section{例子}
+\section{正文}
 
-方便起见，我们考虑一个$k$-矢量空间$V$，函数空间$\mathscr O(V)=\operatorname{Sym}(V^*)$，以及Lie 群$G$在$V$上的作用。回忆，$V$可以自然等同于$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点的集合。同时，通过
+方便起见，我们考虑一个有限维的$k$-矢量空间$V$，函数空间$\mathscr O(V)=\operatorname{Sym}(V^*)$，以及Lie 群$G$在$V$上的作用。回忆，$V$可以自然等同于$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点的集合。同时，通过
 \[
 g\cdot\psi(v)=\psi(g^{-1}\cdot v),
 \]
@@ -93,11 +97,19 @@ g\cdot\psi(v)=\psi(g^{-1}\cdot v),
 \[
 \int_{V} \exp(-S),
 \]
-其中我们要求$S$是$G$-不变函数。为使路径积分有意义，实际上我们考虑的积分应该具有形状
+其中我们要求$S$是$G$-不变函数。在物理上，$G$-等价的点被认为是相同的，所以实际考虑的路径积分应该是
 \[
 \int_{V/G}\exp(-S),
 \]
-因为我们是对$V$中的$G$-轨道积分。
+即我们是对$V$中的$G$-轨道积分。为使得这个积分有意义，我们还需要定义$V/G$上的体积元。物理上，我们通常是在原空间$V$上取一些“规范固定”函数来定义$V/G$，即选择一族函数$f_1$, $\dots$, $f_{\dim G}:V\to \mathbb R$，使得子流形$W=\bigcap_i f_i^{-1}(0)$与$G$-轨道们横截相交（方便起见，假设只交一次），此时，我们就可以典范等同$W$与$V/G$，我们将此记作映射
+\[
+    i:V/G\to W\hookrightarrow V.
+\]
+于是，若$V$上的体积元为$\Omega$，则$V/G$上的体积元就是拉回$i^*\Omega$. 这就是Faddeev-Popov 量子化最开始所作的事情。然而，从上述过程中可以看到，“规范固定”的选取使得我们很难重新还原$G$-作用的影响，因为我们只在每条轨道中选了一个点，所以我们希望可以找到一种更“不变”的方式来定义这个积分。
+
+为解决这个问题，注意到，在上面构造中，子流形是比规范固定函数更加基本的东西。而在所有与$G$-轨道横截相交的子流形，最“正则”的子流形是与$G$-轨道“垂直”的那些。考虑一个从$x$出发的单参群作用给出的轨道$\gamma(t)=g(t)\cdot x$，若$f$是一个$G$-不变函数，则$\partial_t f(\gamma(t))=0$，在$x$点处也即$\langle df,\dot{\gamma}(0)\rangle(x)=0$. 于是$\dot \gamma(0)$给出$G$-轨道，而与其垂直的方向由$df=0$给出。
+
+举个例子，在$\mathbb R^2$中，如果$G$的作用是$x$-方向的平移，$y$是$G$-不变函数，而$dy=0$将给出我们想要的子流形$x=c$.
 
 现在，让我们先忘掉积分，首先考虑$V/G$的结构，等价地，考虑其上所有可能的函数，再等价地，就是那些$\mathscr O(V)$上的$G$-不变函数，或者说$\mathfrak{g}$-不变函数。同时，如果我们不仅只考虑这些函数，还考虑更“高阶”的“不变量”，则我们还可以得到更多有趣的信息。
 
