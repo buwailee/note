@@ -1,0 +1,91 @@
+% author: buwailee@nmhs
+\documentclass[11pt]{article}
+\usepackage{../noteheader}
+
+% \usepackage[chapter]{../egastyle}
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{theo}[para]{Theorem}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+	\newtheorem{coro}[para]{Corollary}
+\renewcommand*{\proofname}{Proof}
+
+\usepackage{titletoc,makeidx,paralist}
+	\makeindex
+	% \renewcommand{\indexname}{Index}
+\usepackage[titletoc,title]{appendix}
+	\renewcommand{\appendixname}{Appendix}
+
+\usepackage{hyperref}
+	\hypersetup{bookmarksnumbered=true}
+
+\input{../defs.tex}
+	\newcommand{\cc}{\mathbb{C}}
+	\DeclareMathOperator{\spec}{Spec}
+
+\begin{document}
+
+\section{One}
+
+\begin{para}[Simplicial set]
+    Suppose $\Delta$ is the category of totally ordered finite sets and order-preserving morphisms. Simplicial sets are just set-valued presheaive on $\Delta$, {\it i.e.} functors $\Delta^{\text{op}}\to \mathsf{Set}$.
+\end{para}
+
+Usually, we only care about the skeleton $\{[n]\,:\, n\in\mathbb N\}$ of $\Delta$, where $[n]=0<1<\cdots<n$. 
+
+\begin{exa}
+    A classical example of simplicial set is $\Delta^n$. It can be seen as the subset 
+    \[
+        \{(x_0,\dots,x_n)\in [0,1]^{n+1}\,:\, x_0+\cdots+x_n=1\}
+    \]
+    of $\mathbb R^{n+1}$. Now suppose $A=n_0<n_1<\cdots<n_k$ is a subset of $[n]$, we associate it a face 
+    \[
+        F_A=\{x\in \Delta^n\,:\, x_i=0\text{ when $i\not\in A$}\}.
+    \]
+\end{exa}
+
+One important example of simplicial sets is the nerve of a small category.
+
+\begin{para}[Nerve of a small category]
+    Every partially ordered set $P$ could be seen as a small category $i(P)$ in a natural way, where morphisms are order relations between objects. We thus obtain a functor $i$ from $\Delta$ to the category of small categories. We can now describe the nerve of the category $C$ as the functor
+    \[
+        N(C): P \mapsto \operatorname{Fun}(i(P),C),
+    \]
+    where $\operatorname{Fun}(A,B)$ are set of all functors between small categories $A$ and $B$.
+\end{para}
+
+We can describe the nerve on each level $k$ in another way. Let's consider the category of totally ordered finite sets with length $k+1$, denoted by $\Delta_k$, and the similar functor $N(C)_k: P \mapsto \operatorname{Fun}(i(P),C)$. $N(C)_k$ can be described as a set, whose elements are $k$-tuples of composable morphisms
+\[
+    P_0\to P_1\to P_2\to \cdots \to P_{k-1}\to P_k
+\]
+of $C$. Elements of $N(C)_k$ are usually called $k$-cycles, especially, $0$-cycles are objects of $C$, $1$-cycles are morphisms of $C$. 
+
+Suppose $\eta:P\to Q$ is a morphism, then the morphism under the functor $N(C)_k$ is given by
+\[
+    \xymatrix{
+        P_0\ar[r]\ar[d]_{\eta_0} & P_1\ar[r]\ar[d]_{\eta_1} & P_2\ar[r]\ar[d]_{\eta_2} & \cdots \ar[r] & P_{k-1}\ar[r]\ar[d]_{\eta_{k-1}} & P_k\ar[d]_{\eta_k}\\
+        Q_0\ar[r] & Q_1\ar[r] & Q_2\ar[r] & \cdots \ar[r] & Q_{k-1}\ar[r] & Q_k
+    }
+\]
+Now let's consider the face and degeneracy maps (functors), they can be used to connect different $k$. The face maps 
+\[
+     d_{i}\colon N(C)_{k}\to N(C)_{k-1}
+\]
+are given by composition of morphisms at the $i$-th object (or removing the $i$-th object from the sequence, when $i$ is $0$ or $k$). This means that $d_i$ sends the $k$-tuple 
+\[P_{0}\to \cdots \to P_{i-1}\xrightarrow{f_{i-1}} P_{i}\xrightarrow{f_{i}} P_{i+1}\to \cdots \to P_{k}\]
+to the $(k-1)$-tuple 
+\[P_{0}\to \cdots \to P_{i-1}\xrightarrow{f_if_{i-1}} P_{i+1}\to \cdots \to P_{k}.\]
+Similarly, the degeneracy maps 
+\[s_{i}:N(C)_{k}\to N(C)_{k+1}\] 
+are given by inserting an identity morphism at the object $P_i$. 
+
+\begin{pro}[HTT 1.1.2.2]
+    Suppose $K$ is a simplicial set, then $K\cong N(C)$ for a small category $C$ if and only if for each $0<i<n$ and each morphism $\Lambda_i^n\to K$ can be lifted to an unique morphism $\Delta^n \to K$.
+\end{pro}
+
+\end{document}
