@@ -1,0 +1,87 @@
+\documentclass[10pt]{article}
+\usepackage[zh]{./noteheader}
+% \usepackage{amssymb, amsfonts, amsmath, amsthm, bm, mathrsfs}
+% \usepackage[a4paper, top=10mm, text={144mm, 208mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\usepackage{listings,xypic}
+\usepackage{tikz,ctex}
+
+\lstset{
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\ttfamily},
+    numbers=none
+}
+
+\title{Haskell中的函子}
+\author{}
+\begin{document}
+
+范畴和函子是数学家幼儿园就知道的东西，但是Haskell的教科书普遍说得无比繁琐，这里总结一下函子相关的概念。同时，遵循任何范畴论使用者的习惯，范畴、函子会采用一些集合论里的符号，比如$\in$, $\to$等，它们的含义都是清楚的。
+
+Haskell里最大的范畴$\mathsf{Hask}$是所有类型(type)和其他一些东西的范畴，其中的object可以是对象，也可以比如是小一些的范畴，类型间的态射就构成通常意义下的（计算机）函数。一般来说，一个函数的声明形如
+\begin{lstlisting}
+    f :: a -> b,
+\end{lstlisting}
+其中{\tt a}和{\tt b}都是对象。此外，范畴$\mathsf{Hask}$是有限完备的（？），故我们可以通过有限乘积定义多参数函数，它们的声明一般形如
+\begin{lstlisting}
+    f :: a1 -> ... -> an -> b,
+\end{lstlisting}
+这里{\tt f}是从$\tt a_1\times \cdots \times a_n$到{\tt b}的morphism. 同时，根据有限积的泛性质，我们可以随意加括号，比如此时{\tt f}可以看作
+\begin{center}
+    \tt f :: a1 -> (a2 -> ...~-> an -> b)\quad {\rm or} \quad  f :: (a1 -> a2 -> ...~-> an ) -> b
+\end{center}
+前者非常常用，因为Haskell是从左开始作用的。特别地，如果$\tt f$是两个集合间的函数，则任取$a\in {\tt a_1}$，我们定义${\tt g}= {\tt f}\, a$就得到了一个新的函数，它的声明写作
+\begin{lstlisting}
+    g :: a2 -> ... -> an -> b,
+\end{lstlisting}
+
+现在我们来到函子，函子是这样一个类
+\begin{lstlisting}
+    class Functor f where
+        fmap :: (a -> b) -> f a -> f b
+\end{lstlisting}
+对这样的类里的每个实例，我们都要定义一个叫{\tt fmap}的东西，它最正则的看法应该是{\tt a -> b}到{\tt f a -> f b}的一个函数，但也不妨碍我们以其他加括号的方式来看它，比如说一个二元函数或一个三元函数。这两点就对应着数值的函子定义中的两点，首先是要讲对象{\tt a}变成{\tt f a}，然后要将所有可能的{\tt a}到{\tt b}的morphism变成{\tt f a}到{\tt f b}的morphism. 
+
+这里我们举一个例子。现在假设有一个范畴$\mathsf C$，他是集合范畴的子范畴，我们考虑范畴$\mathsf [C]$，后者中的object形如{\tt [a]}，其中{\tt a}是$\mathsf C$中的对象，而{\tt [a]}是所有可能的定长列表（长度为$n$）构成的集合，其中的列表元都属于{\tt a}. 则我们可以构造一个典范的函子{$\tt List : a \mapsto \text{\tt [a]}$}如下：对任取的函数{\tt f~::~a -> b}，将其$\tt f$挨个作用到{\tt [a]}. 故可见，此时的{\tt fmap}就是熟知的{\tt map}，这就是{\tt fmap}得名的原因之一。
+
+有了函子，自然变换就是非常自然的概念，如果范畴很小，则它们也被叫做函子间态射，是函子范畴的态射，所以是一个“更高阶”的存在。若$f$和$g$是两个给定范畴间的函子，则给出一个自然变换$\varphi$等价于给出所有的态射$\varphi(a)$，并且需要对任意的态射$\eta:a\to b$满足如下交换图
+\[
+\begin{xy}
+	\xymatrix{
+		f(a)\ar[rr]^{\varphi(a)} \ar[d]_{f(\eta)}&&g(a) \ar[d]^{g(\eta)}\\
+		f(b)\ar[rr]^{\varphi(b)}&&g(b)
+	}
+\end{xy}
+\]
+我们先将从函子{\tt f}到函子{\tt g}的一个自然变换{\tt nt}的声明写作
+\begin{lstlisting}
+    nt :: (Functor f, Functor g) => f a -> g a,
+\end{lstlisting}
+于是，上图的交换条件就写成 $\tt (fmap~\eta).nt = nt.(fmap~\eta)$. 
+
+下面我们考虑一个近似的概念，名为Lens，中文名叫透镜组。比起计算机学家的Lens，我们定义地再广一些，任取两个函子{\tt f}, {\tt g}，考虑如下声明
+\begin{lstlisting}
+    lens :: (Functor f, Functor g) => (a -> b) -> (f a -> g a) -> f b -> g b,
+\end{lstlisting}
+这里，{\tt lens}吃掉一个morphism {\tt$\eta$~::~a -> b}，得到一个新的函数{\tt (f a -> g a) -> f b -> g b}，通常这里我们一般会要求复合得到的{\tt f a -> f b}与{\tt g a -> g b}在相应的{\tt fmap}下都等于{\tt fmap $\eta$}. 于是，这样一个Lens用图来表示即，
+\[ 
+\begin{xy}
+	\xymatrix{
+		f(a)\ar[rr]^{\varphi(a)} \ar[d]_{f(\eta)}&&g(a) \ar[d]^{g(\eta)}\ar@{-->}[lld]_\tau \\
+		f(b)\ar[rr]^{\varphi(b)}&&g(b)
+	}
+\end{xy}
+\]
+其中上下两个三角都是交换的，进而$\varphi$就是一个自然变换。于是，对给定的两个函子$f$, $g: \mathsf{C}\to \mathsf{D}$，一个Lens就是一个$f\to g$的自然变换以及一个相应的分解（图中的虚线）。特别地，如果$\eta$就是$\operatorname{id}_a$，则$\tau$就是$\varphi(a)$的逆，于是，我们只可能得到$f\cong g$，即两个函子同构。
+
+特别地，我们回到计算机学家的Lens，考虑函子$\tt f:\mathsf{Hask}\to \mathsf{Hask}$以及恒等函子，我们立刻有Lens的声明
+\begin{lstlisting}
+    lens :: (Functor f) => (a -> f a) -> b -> f b,
+\end{lstlisting}
+此时我们去掉了前面的多余的{\tt (a -> b)}. 上面的论断告诉我们，此时函子{\tt f}是一个范畴等价，即一个完全忠实函子，即{\tt fmap}即是单射也是满射，即所有 {\tt a -> b} 都可以一一对应到相应的 {\tt f a -> f b}. 当然，我们可以继续推广，破坏上面的条件，使得{\tt f}不需要是一个完全忠实函子，这可以通过拆掉上面交换图中的两条竖线完成。
+
+在应用中，我们尤其会考虑
+
+
+
+\end{document}
