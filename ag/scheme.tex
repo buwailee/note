@@ -16,27 +16,27 @@
 	\end{cases}
 \]
 
-现在，任取$X$的一个开覆盖$\mathscr{U}=\{U_i\,:\, i\in I\}$，为后续的方便起见，我们记$\overline{\mathscr{U}}$为在$\mathscr{U}$中添入所有形如$U_i\cap U_j$的交集后得到的新的开覆盖。显然，通过
+现在，任取$X$的一个开覆盖$\mathscr{U}=\{U_i\,:\, i\in I\}$，为后续的方便起见，我们记$\overline{\mathscr{U}}$为在$\mathscr{U}$中添入所有$\mathscr{U}$中元素的有限交后得到的新的开覆盖。显然，依然通过
 \[
-	\overline{\mathscr{U}}(U_i,U_j)=\begin{cases}
-	\bigl\{i_{U_jU_i}:U_i\hookrightarrow U_j\bigr\}&\text{, if }U_i\subset U_j\text{;}\\
+	\overline{\mathscr{U}}(U,V)=\begin{cases}
+	\bigl\{i_{VU}:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
 	\varnothing&\text{, otherwise}.
 	\end{cases}
 \]
-也可以认为$\overline{\mathscr{U}}$是一个范畴。
+$\overline{\mathscr{U}}$也是一个范畴。再方便起见，我们可以假设开覆盖是有限交封闭的。
 \end{para}
 
 \begin{para}
 对于任意的范畴$K$，一个拓扑空间$X$，我们称呼一个取值在$K$中的\idx{预层}$\calf$（简称为$K$-预层）是一个$X\to K$的反变函子。特别地，设$V\subset U$是两个开集，记态射$\calf(i_{UV}):\calf(U)\to \calf(V)$为$\rho^U_{V}$，称为限制态射。如果$K$是集合范畴的子范畴，则$\calf(U)$中的元素$s$被称为$U$上的一个\idx{截面}，而$s|_V:=\rho^U_V(s)$被称为截面$s$在$V$上的限制。
 
-设$\calf$是一个$X$上的$K$-预层，任取一个开集$U$以及一个$U$的开覆盖$\mathscr{U}$. 显然，将$\calf$限制在$\overline{\mathscr{U}}$上也将得到一个反变函子$\calf_\mathscr{U}:\overline{\mathscr{U}}\to K$. 如果$\calf_\mathscr{U}$-图的极限是$\calf(U)$，即
+设$\calf$是一个$X$上的$K$-预层，任取一个开集$U$以及一个$U$的（有限交封闭的）开覆盖$\mathscr{U}$. 显然，将$\calf$限制在$\mathscr{U}$上也将得到一个反变函子$\calf_\mathscr{U}:\mathscr{U}\to K$. 如果$\calf_\mathscr{U}$-图的极限是$\calf(U)$，即
 \[
-	{\varprojlim}_{U_\alpha\in \overline{\mathscr{U}}}\calf(U_\alpha)=\calf(U),
+	{\varprojlim}_{V\in \mathscr{U}}\calf(V)=\calf(U),
 \]
 则称预层$\calf$为一个\idx{层}。上面这个条件被称为层公理。如果需要明确取值的范畴是$K$，则称为$K$-层。
 \end{para}
 
-层公理可以用泛性质写出来，这无外乎就是极限的泛性质。设$A\in K$是范畴$K$里面的一个对象，而$\calf$是$X$上的一个预层，$U$是$X$的任意开子集, 而$\{U_\alpha\}_{\alpha\in I}$是$U$的任意开覆盖，如果存在态射族$\{\varphi_\alpha:A\to \calf(U_\alpha)\}_{\alpha\in I}$使得下图交换（画图的时候省去了限制映射）
+层公理可以用极限的泛性质写出来。设$A\in K$是范畴$K$里面的一个对象，而$\calf$是$X$上的一个预层，$U$是$X$的任意开子集, 而$\{U_\alpha\}_{\alpha\in I}$是$U$的任意开覆盖，如果存在态射族$\{\varphi_\alpha:A\to \calf(U_\alpha)\}_{\alpha\in I}$使得下图交换（画图的时候省去了限制映射）
 \[
 	\xymatrix{
 		A\ar[r]^{\varphi_{\alpha}}\ar[d]_{\varphi_{\beta}}&\calf(U_\beta)\ar[d]\\

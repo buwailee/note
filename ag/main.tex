@@ -1,4 +1,3 @@
-% !TeX program = XeLaTeX
 % author: buwailee@nmhs
 \documentclass[11pt]{book}
 \usepackage[fontset = fandol]{ctex}
@@ -17,7 +16,7 @@
 	\newtheorem{thm}[para]{Theorem}
 	\newtheorem{pro}[para]{Proposition}
 	\newtheorem{coro}[para]{Corollary}
-\renewcommand*{\proofname}{Proof}
+\renewcommand{\proofname}{Proof}
 
 \usepackage{titletoc,makeidx,paralist}
 	\makeindex
@@ -38,7 +37,7 @@
 \frontmatter
 \tableofcontents
 \mainmatter
-	\input{variety.tex}
+	%\input{variety.tex}
 	\input{scheme.tex}
 	\input{morphism.tex}
 	\input{proj_scheme.tex}

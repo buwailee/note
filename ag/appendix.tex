@@ -159,11 +159,11 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \[
 \begin{xy}
 	\xymatrix{
-		A\ar@{.>}[r]^{f}&B
+		A\ar@{-->}[r]^{f}&B
 	}
 \end{xy}
 \]
-的图，这就意味着，存在唯一的态射$f:A\to B$使得交换图成立。
+的图，这就意味着，存在（大部分时候还会是唯一的）态射$f:A\to B$使得交换图成立。
 
 \para 设$\varphi:X\to Y$和$\psi:Y\to X$，如果$\varphi\psi=\id_Y$和$\psi\varphi=\id_X$，则称对象$X$和$Y$是同构的，$\varphi$或者$\psi$被称为同构（态射）。当然，现在由于暂时不能谈一个态射是单射还是满射，即使可以，也不一定能像模/群/环范畴那样有命题“既单又满的态射是同构”。$X$和$Y$同构记作$X\cong Y$. 集合范畴的同构即双射。
 
@@ -197,10 +197,11 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 	\mathcal{C}(f,A)=f^*: g\mapsto g\circ f
 \]
 得到了态射$\mathcal{C}(f,A):\mathcal{C}(C,A)\to \mathcal{C}(B,A)$. 经常，我们将$\mathcal{C}(\star,A)$简单记$h_A$，而且有时候会将$h_A(B)$就写做$A(B)$.
+\endpara
 
-\para 由于经常一个构造会涉及两个对象或多个对象，而分别改变对象就会产生不同的函子，为了抽象这个过程，就产生了下面积范畴的概念，正如讨论多元函数引入了集合的直积一样。
+由于经常一个构造会涉及两个对象或多个对象，而分别改变对象就会产生不同的函子，为了抽象这个过程，就产生了下面积范畴的概念，正如讨论多元函数引入了集合的直积一样。
 
-设$\mathcal{C}$和$\mathcal{D}$是范畴，他们的积范畴记作$\mathcal{C}\times\mathcal{D}$：对象是这样的二元组$(X,Y)$或$X\times Y$，其中$X\in \mathcal{C}$, $Y\in\mathcal{D}$. 而态射定义为$(\varphi,\psi)$或$\varphi\times \psi$，其中$\varphi$是$\mathcal{C}$中的态射，而$\psi$是$\mathcal{D}$中的态射，这样就建立了集合的等同
+\para 设$\mathcal{C}$和$\mathcal{D}$是范畴，他们的积范畴记作$\mathcal{C}\times\mathcal{D}$：对象是这样的二元组$(X,Y)$或$X\times Y$，其中$X\in \mathcal{C}$, $Y\in\mathcal{D}$. 而态射定义为$(\varphi,\psi)$或$\varphi\times \psi$，其中$\varphi$是$\mathcal{C}$中的态射，而$\psi$是$\mathcal{D}$中的态射，这样就建立了集合的等同
 \[
 	{\mathcal{C}}(X,X')\times {\mathcal{D}}(Y,Y')=(\mathcal{C}\times \mathcal{D})(X\times Y,X'\times Y').
 \]
@@ -219,7 +220,8 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \]
 如果这个图交换，那么从左上到右下的映射，即复合$f(X,\psi)f(\varphi,Y)$将定义出一个态射$f(\varphi,\psi)$，此时$f$构成一个双函子。具体的检验交由读者。
 
-\para \label{digf}有了二元积范畴，类似地，可以定义多元（有限）积范畴。类似于对角函数，可以定义对角函子：设$\mathcal{C}$是一个范畴，而$\mathcal{C}\times \cdots \times \mathcal{C}$是积范畴。那么可以定义函子$\Delta:\mathcal{C}\to \mathcal{C}\times \cdots \times \mathcal{C}$，对于对象$X$，定义$\Delta:X\mapsto (X$, $\cdots$, $X)$，对于态射$\varphi\in \mathcal{C}(X,Y)$，定义$\Delta: \varphi \mapsto (\varphi$, $\cdots$, $\varphi)$.
+\para \label{digf} 有了二元积范畴，类似地，可以定义多元（有限）积范畴。类似于对角函数，可以定义对角函子：设$\mathcal{C}$是一个范畴，而$\mathcal{C}\times \cdots \times \mathcal{C}$是积范畴。那么可以定义函子$\Delta:\mathcal{C}\to \mathcal{C}\times \cdots \times \mathcal{C}$，对于对象$X$，定义$\Delta:X\mapsto (X$, $\dots$, $X)$，对于态射$\varphi\in \mathcal{C}(X,Y)$，定义$\Delta: \varphi \mapsto (\varphi$, $\dots$, $\varphi)$.
+\endpara
 
 甚至是考虑关于一个集合的积范畴（即指标构成一个集合的情况），积范畴依然可以定义。但是如果比如考虑指标并不是一个集合，有些东西就会可能会出现问题。这个问题有相当深刻的背景，涉及了现代数学的逻辑基础，即公理化体系（主要是ZFC公理体系）上面。众所周知，在朴素的集合论里面有Russell悖论，这就限制了一些集合的构造，比如所有集合构成的一个整体并不是集合。到了范畴论里面，我们自然也会面临集合论的问题，比如在我们的定义中，两个对象之间态射的全体需要构成一个集合。如果我们考虑了一族（不能构成集合）的范畴的积范畴，那么这个积范畴的态射集是否就会出问题？
 
@@ -313,9 +315,11 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 
 对偶地，如果$f$是一个$\mathcal{C}$到$\mathsf{Set}$的函子，我们称$f$是可表的，如果它同构于$h^X$，此时$X$被称为$f$的表示对象。
 
-\begin{lem}
+\begin{lem}[Yoneda引理]
 对任意的$X\in \mathcal{C}$以及$f\in \hat{\mathcal{C}}$，存在同构$i_{X,f}:\Gamma(X,f)=f(X)\to {\hat{\mathcal{C}}}(h_X,f)$.
 \end{lem}
+
+特别地，如果$f=h_Y$，则$\mathcal{C}(X,Y)\cong \hat{\mathcal{C}}(h_X,h_Y)$. 所以，描述所有$X\to Y$的态射和描述所有$h_X\to h_Y$的自然变换基本是等价的。所以，如果$h_X\to h_Y$是一个同构，则$X$和$Y$同构。类似地，还有协变的版本，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(Y,-)$同构，则$X\cong Y$. 往往这两点被单独拎出来称为Yoneda引理。
 
 \begin{proof}
 	固定$f$，任取自然变换$\varphi\in {\hat{\mathcal{C}}}(h_X,f)$，对象$Y\in\mathcal{C}$以及态射$g:Y\to X$，有交换图
@@ -349,7 +353,11 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 
 % 如果有一个自然变换$\varphi:f\to g$，他将诱导出态射$\varphi(X):f(X)\to g(X)$，以及态射$\varphi_*: {\hat{\mathcal{C}}}(h_X,f)\to {\hat{\mathcal{C}}}(h_X,g)$.
 
-\para 固定$X$，${\hat{\mathcal{C}}}(h_X,\star)$是一个函子。固定$f$，${\hat{\mathcal{C}}}(h_\star,f)$也是一个函子。为了检查${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子，必须检查图
+\begin{pro}[Yoneda引理]
+上面的引理可以加强到双函子同构：$i_{-,\star}:\Gamma(-,\star)\to {\hat{\mathcal{C}}}(h_-,\star)$.
+\end{pro}
+
+固定$X$，${\hat{\mathcal{C}}}(h_X,\star)$是一个函子。固定$f$，${\hat{\mathcal{C}}}(h_\star,f)$也是一个函子。为了检查${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子，必须检查图
 \[
 \begin{xy}
 	\xymatrix{
@@ -359,10 +367,6 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \end{xy}
 \]
 其中$\varphi:X'\to X$是一个态射，而$\psi:f\to f'$是一个自然变换。任取$\pi\in \hat{\mathcal{C}}(h_{X},f)$，则先右再下得到$\psi_*(\varphi^*(\pi))=\psi\pi\varphi$. 先下再右得到$\varphi_*(\psi^*(\pi))=\psi\pi\varphi$. 所以图交换，因此${\hat{\mathcal{C}}}(h_\star,\star)$是一个双函子。
-
-\begin{pro}
-上面的引理可以加强到双函子同构：$i_{-,\star}:\Gamma(-,\star)\to {\hat{\mathcal{C}}}(h_-,\star)$，这被称为Yoneda引理。
-\end{pro}
 
 \begin{proof}
 	由于同构已经有了构造，所以只要检验是不是自然变换。而这点只要分别固定$X$和$f$去证明即可。
@@ -399,13 +403,11 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 	所以得证，其他的检查也类似。
 \end{proof}
 
-\begin{pro}
+\begin{pro}[Yoneda引理]
 对偶地，存在双函子同构$i_{-,\star}:\Gamma(-,\star)\to [\mathcal{C},\mathsf{Set}](h^-,\star)$，这也被称为Yoneda引理。
 \end{pro}
 
-在Yoneda引理的证明中，已经看到，最不平凡的地方在于：如果函子$\mathcal{C}(-,X)$与函子$\mathcal{C}(-,X')$同构，则$X\cong X'$. 类似地，还有协变的版本，如果函子$\mathcal{C}(X,-)$与函子$\mathcal{C}(X',-)$同构，则$X\cong X'$. 所以，往往这两点被单独拎出来称为Yoneda引理。
-
-\para 特别地，当$f=h_Y$，则$h_Y\cong {\hat{\mathcal{C}}}(h_\star,h_Y)$. 作用到$X$上得到$h_Y(X)={\mathcal{C}}(X,Y)\cong {\hat{\mathcal{C}}}(h_X,h_Y)$. 所以，$X\cong Y$当且仅当$h_X\cong h_Y$. 如果$f$是可表函子，$X$和$Y$同时表示了函子$f$，则同构$h_X\cong f \cong h_Y$诱导了同构$X\cong Y$，因此可表函子的表示对象确定到一个同构。 
+\para 作为直接的应用，如果$f$是可表函子，$X$和$Y$同时表示了函子$f$，则同构$h_X\cong f \cong h_Y$诱导了同构$X\cong Y$，因此可表函子的表示对象确定到一个同构。 
 
 \para 设$\mathcal{C}$是一个范畴，则$\id_\mathcal{C}:\mathcal{C}\to \mathcal{C}$是恒等函子，他使得$\id_\mathcal{C}(X)=X$，以及$\id_\mathcal{C}(\varphi)=\varphi$. 如果一个函子$f:\mathcal{C}\to\mathcal{C}$与恒等函子同构，即有如下交换图成立
 \[
@@ -420,14 +422,14 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 
 设$\mathcal{C}$和$\mathcal{D}$是两个范畴，而$f:\mathcal{C}\to \mathcal{D}$以及$g:\mathcal{D}\to \mathcal{C}$是两个函子，那么如果$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$，则称这两个范畴等价。
 
-这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子/完全函子，如果$f:\mathcal{C}(X,Y)\to \mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射/满射。
+这个定义并不好用，不过他有另一种表述。但是需要引入两个新的定义：称呼函子$f:\mathcal{C}\to \mathcal{D}$是忠实函子（完全函子），如果$f:\mathcal{C}(X,Y)\to \mathcal{D}\bigl(f(X),f(Y)\bigr)$是集合间的单射（满射）。
 
 \begin{pro}\label{equivcat}
 两个范畴$\mathcal{C}$和$\mathcal{D}$是等价范畴，当且仅当存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$f(X)$与$Y$同构。
 \end{pro}
 
 \begin{proof}
-假设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{C}\to \mathcal{D}$是范畴之间的等价函子，即满足$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$. 所以，任取$Y$，我们都可以找到$g(Y)\in\mathcal{C}$使得$f(g(Y))$同构于$Y$.
+假设$f:\mathcal{C}\to \mathcal{D}$和$g:\mathcal{D}\to \mathcal{C}$是范畴之间的等价函子，即满足$gf\cong \id_\mathcal{C}$以及$fg\cong \id_\mathcal{D}$. 所以，任取$Y$，我们都可以找到$g(Y)\in\mathcal{C}$使得$f(g(Y))$同构于$Y$.
 
 现在对映射$\varphi\in \mathcal{C}(X,X')$，我们考虑映射
 \[
@@ -444,7 +446,7 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \]
 即$\varphi=q(X') \circ g(f(\varphi))\circ p(X)$. 所以$\varphi\mapsto f(\varphi)$是一个从$\mathcal{C}(X,X')$到$\mathcal{D}(f(X),f(X'))$的单射，所以$f$是一个忠实函子。
 
-同时，$f(\varphi) \mapsto g(f(\varphi)) \mapsto \varphi$是一个满射，由于$g(f(\varphi)) \mapsto \varphi$是一一的，所以我们得到了$\mathcal{D}(f(X),f(X'))$到$\mathcal{C}(g(f(X)),g(f(X'))$的满射。现在任取$Y$和$Y'$，从上可知，我们能找到与之同构的$f(X)$和$f(X')$，所以我们也就得到了$\mathcal{D}(Y,Y')$到$\mathcal{C}(g(Y),g(Y'))$的满射。因此$g$是一个完全函子。类似地考察$fg\cong \id_\mathcal{D}$，我们可以知道$f$是一个完全函子，而$g$是一个忠实函子。
+同时，$f(\varphi) \mapsto g(f(\varphi)) \mapsto \varphi$是一个满射，由于$g(f(\varphi)) \mapsto \varphi$是一一的，则$f(\varphi) \mapsto g(f(\varphi))$是$\mathcal{D}(f(X),f(X'))$到$\mathcal{C}(g(f(X)),g(f(X'))$的满射。现在任取$Y$和$Y'$，从上可知，我们能找到与之同构的$f(X)$和$f(X')$，所以我们也就得到了$\mathcal{D}(Y,Y')$到$\mathcal{C}(g(Y),g(Y'))$的满射。因此$g$是一个完全函子。类似地考察$fg\cong \id_\mathcal{D}$，我们可以知道$f$是一个完全函子，而$g$是一个忠实函子。
 
 反过来，设存在一个即忠实又完全的函子$f:\mathcal{C}\to \mathcal{D}$使得任取$Y\in\mathcal{D}$都有一个$X\in \mathcal{C}$使得$f(X)$与$Y$同构。于是，对每一个$Y\in \mathcal{D}$，找一个$X_Y$使得$f(X_Y)$与$Y$同构，同构映射为$p(Y):f(X_Y)\to Y$. 现在，我们定义一个函子$g:\mathcal{D}\to \mathcal{C}$，通过令$g(Y)=X_Y$，对态射$\psi:Y\to Y'$，令
 \[
@@ -518,7 +520,7 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \[
 	\xymatrix{
 		&&D(i)\ar[dd]^{D(\alpha_{ij})}\\
-		X\ar@{.>}[r]|-{f}\ar@/^/[rru]^-{\mu(i)}\ar@/_/[rrd]_{\mu(j)}&{\varprojlim}_{i\in I} D(i)\ar[ru]\ar[rd]&\\
+		X\ar@{-->}[r]|-{f}\ar@/^/[rru]^-{\mu(i)}\ar@/_/[rrd]_{\mu(j)}&{\varprojlim}_{i\in I} D(i)\ar[ru]\ar[rd]&\\
 		&&D(j)
 	}
 \]
@@ -548,7 +550,7 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \begin{pro}\label{homlimit}
 设$\mathcal{C}$是一个范畴，而$I$是一个小范畴，再设$X:i\mapsto X_i$是一个$I$-图，如果极限与余极限存在，则有自然同构
 \[
-	{\varprojlim} \mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,{\varprojlim} X_i\right),\quad {\varprojlim} \mathcal{C}(X_i,-)\cong  \mathcal{C}\left({\varinjlim} X_i,-\right)
+	{\varprojlim}\,\mathcal{C}(-,X_i)\cong \mathcal{C}\left(-,{\varprojlim} X_i\right),\quad {\varprojlim}\,\mathcal{C}(X_i,-)\cong  \mathcal{C}\left({\varinjlim} X_i,-\right)
 \]
 其中极限与余极限都是对$I$-图进行的。
 \end{pro}
@@ -624,7 +626,7 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \begin{xy}
 	\xymatrix{
 		\eq(f,g)\ar[r]^-{i}&X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\\
-		A\ar@{.>}[u]^-{h}\ar[ur]_-{p}
+		A\ar@{-->}[u]^-{h}\ar[ur]_-{p}
 	}
 \end{xy}
 \]
@@ -635,7 +637,7 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \[
 \begin{xy}
 	\xymatrix{
-		X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\ar[r]^-{\pi}\ar[dr]_-{q}&\mathrm{coeq}(f,g)\ar@{.>}[d]^-{h}\\
+		X\ar@<0.3ex>[r]^-{f} \ar@<-0.3ex>[r]_-{g}&Y\ar[r]^-{\pi}\ar[dr]_-{q}&\mathrm{coeq}(f,g)\ar@{-->}[d]^-{h}\\
 		&&A
 	}
 \end{xy}
@@ -648,7 +650,7 @@ Noether拓扑空间是拟紧的，进而他的任意子空间也是拟紧的。
 \[
 \begin{xy}
 	\xymatrix{
-		A\ar@/_/[rdd]\ar@/^/[drr]\ar@{.>}[dr]&&\\
+		A\ar@/_/[rdd]\ar@/^/[drr]\ar@{-->}[dr]&&\\
 		&X\times_Z Y\ar[d]_{\pi_2}\ar[r]_{\pi_1}&X\ar[d]^f\\
 		&Y\ar[r]_g&Z
 	}
@@ -781,8 +783,8 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 \begin{pro}
 设$L:\mathcal{C}\to \mathcal{D}$是一个左伴随函子，而$R:\mathcal{D}\to \mathcal{C}$是一个右伴随函子。设有一个$\mathcal{C}$中的$I$-图$X:I\to \mathcal{C}$以及一个$\mathcal{D}$中的$J$-图$Y:J\to \mathcal{D}$，于是，$LX$是$\mathcal{D}$中的$I$-图，$RY$是$\mathcal{C}$中的一个$J$图，并且存在同构
 \[
-	L{\varinjlim}_{i\in I} X_i\cong {\varinjlim}_{i\in I} (LX_i),\quad
-	R{\varprojlim}_{j\in J} Y_j\cong {\varprojlim}_{j\in J} (RY_j).
+	L\,{\varinjlim}_{i\in I} X_i\cong {\varinjlim}_{i\in I} (LX_i),\quad
+	R\,{\varprojlim}_{j\in J} Y_j\cong {\varprojlim}_{j\in J} (RY_j).
 \]
 \end{pro}
 
@@ -793,23 +795,23 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 
 	由Proposition \ref{homlimit}，我们知道如下函子同构
 	\[
-	\mathcal{C}\left(-,{\varprojlim} RX_i\right)\cong {\varprojlim} \mathcal{C}(-,RX_i),
+	\mathcal{C}\left(-,{\varprojlim} RX_i\right)\cong {\,\varprojlim\,} \mathcal{C}(-,RX_i),
 	\]
 	连同伴随函子的函子同构，有如下同构链
 	\[
-	\mathcal{C}\left(-,{\varprojlim} RX_i\right)\cong {\varprojlim} \mathcal{C}(-,RX_i)\cong {\varprojlim} \mathcal{D}(L-,X_i)\cong \mathcal{D}\left(L-,{\varprojlim} X_i\right)\cong \mathcal{C}\left(-,R{\varprojlim} X_i\right),
+	\mathcal{C}\left(-,{\,\varprojlim\,} RX_i\right)\cong {\,\varprojlim\,} \mathcal{C}(-,RX_i)\cong {\,\varprojlim\,} \mathcal{D}(L-,X_i)\cong \mathcal{D}\left(L-,{\,\varprojlim\,} X_i\right)\cong \mathcal{C}\left(-,R{\,\varprojlim\,} X_i\right),
 	\]
-	所以${\varprojlim} RX_i\cong R{\varprojlim} X_i$.
+	所以${\,\varprojlim\,} RX_i\cong R{\,\varprojlim\,} X_i$.
 
 	同样由Proposition \ref{homlimit}，有如下函子同构
 	\[
-	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-),
+	\mathcal{D}\left({\,\varinjlim\,} LX_i,-\right)\cong {\,\varprojlim\,} \mathcal{D}(LX_i,-),
 	\]
 	连同伴随函子的函子同构，有如下同构链
 	\[
-	\mathcal{D}\left({\varinjlim} LX_i,-\right)\cong {\varprojlim} \mathcal{D}(LX_i,-)\cong {\varprojlim} \mathcal{C}(X_i,R-)\cong \mathcal{C}\left({\varinjlim} X_i,R-\right)\cong \mathcal{D}\left(L{\varinjlim} X_i,-\right),
+	\mathcal{D}\left({\,\varinjlim\,} LX_i,-\right)\cong {\,\varprojlim\,} \mathcal{D}(LX_i,-)\cong {\,\varprojlim\,} \mathcal{C}(X_i,R-)\cong \mathcal{C}\left({\,\varinjlim\,} X_i,R-\right)\cong \mathcal{D}\left(L{\,\varinjlim\,} X_i,-\right),
 	\]
-	所以${\varinjlim} LX_i\cong L{\varinjlim} X_i$.
+	所以${\,\varinjlim\,} LX_i\cong L{\,\varinjlim\,} X_i$.
 \end{proof}
 
 \section{准加性范畴}
@@ -939,7 +941,7 @@ $X\times_{X\times X} Y$即我们所求的等值子。实际上，
 \begin{xy}
 	\xymatrix{
 	\cdot \ar[rr]^-{\ker \coker f}&&\cdot \ar@<0.3ex>[r]^-{\coker f} \ar@<-0.3ex>[r]_-{0}&\cdot \\
-	\cdot \ar@{.>}[u]\ar[urr]_f
+	\cdot \ar@{-->}[u]\ar[urr]_f
 	}
 \end{xy}
 \]
@@ -1089,7 +1091,7 @@ Abel范畴中，一个态射是同构等价于它既是单态射又是满态射�
 \[
 \begin{xy}
 	\xymatrix{
-	\cdot \ar[r]^q\ar[d]_{q'}& \cdot \ar[d]^{\im f}\ar@{.>}[dl]^t\\
+	\cdot \ar[r]^q\ar[d]_{q'}& \cdot \ar[d]^{\im f}\ar@{-->}[dl]^t\\
 	\cdot \ar[r]_{m'}& \cdot 
 	}
 \end{xy}
@@ -1519,10 +1521,10 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 \[
 	\xymatrix{
 	&0\ar[d]&0\ar[d]&0\ar[d]&\\
-	0\ar@{.>}[r]&\cdot\ar@{.>}[r]^a\ar[d]^{\ker u}&\cdot\ar@{.>}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
+	0\ar@{-->}[r]&\cdot\ar@{-->}[r]^a\ar[d]^{\ker u}&\cdot\ar@{-->}[r]^b\ar[d]^{\ker v}&\cdot\ar[d]^{\ker w}&\\
 	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&\cdot \ar[r]^{g}\ar[d]^{v}&\cdot \ar[r]\ar[d]^{w}&0\\
 	0\ar[r]&\cdot \ar[r]^{f'}\ar[d]^{\coker u}&\cdot \ar[r]^{g'}\ar[d]^{\coker v}&\cdot \ar[r]\ar[d]^{\coker w}&0\\
-	&\cdot \ar@{.>}[r]_c\ar[d] &\cdot \ar@{.>}[r]_d\ar[d] &\cdot \ar@{.>}[r]\ar[d]& 0\\
+	&\cdot \ar@{-->}[r]_c\ar[d] &\cdot \ar@{-->}[r]_d\ar[d] &\cdot \ar@{-->}[r]\ar[d]& 0\\
 	&0&0&0&\\
 	}
 \]
@@ -1536,9 +1538,9 @@ $T:\mathcal{C}\to \mathcal{D}$是一个加性函子当且仅当$T$与双积可�
 $a$, $b$, $c$, $d$的存在唯一性直接来自于$\ker$与$\coker$的泛性质，正和性也不难检验。最难的在于构造$\delta$. 考虑交换图
 \[
 	\xymatrix{
-	0\ar[r]&\cdot \ar[r]^-{\ker p_X}\ar@{.>}[d]^p&X\times_Z Y \ar[r]^-{p_X}\ar[d]^{p_Y}&X\ar[d]^{\ker w}\ar[r]&0\\
+	0\ar[r]&\cdot \ar[r]^-{\ker p_X}\ar@{-->}[d]^p&X\times_Z Y \ar[r]^-{p_X}\ar[d]^{p_Y}&X\ar[d]^{\ker w}\ar[r]&0\\
 	0\ar[r]&\cdot \ar[r]^{f}\ar[d]^{u}&Y \ar[r]^{g}\ar[d]^{v}&Z \ar[d]^{w}\ar[r]&0\\
-	0\ar[r]&U \ar[r]^{f'}\ar[d]^{\coker u}&W \ar[r]^{g'}\ar[d]^{i_W}&\cdot \ar@{.>}[d]^q\ar[r]&0\\
+	0\ar[r]&U \ar[r]^{f'}\ar[d]^{\coker u}&W \ar[r]^{g'}\ar[d]^{i_W}&\cdot \ar@{-->}[d]^q\ar[r]&0\\
 	0\ar[r]&V \ar[r]_-{i_V}&V\cup_U W \ar[r]_-{\coker i_V}&\cdot\ar[r]&0
 	}
 \]
