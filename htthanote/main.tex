@@ -1,6 +1,6 @@
 % author: buwailee@nmhs
-\documentclass[11pt]{article}
-\usepackage{../noteheader}
+\documentclass[12pt]{article}
+\usepackage[b5paper]{../noteheader}
 
 % \usepackage[chapter]{../egastyle}
 \theoremstyle{definition}
@@ -12,8 +12,8 @@
 	\newtheorem{theo}[para]{Theorem}
 	\newtheorem{thm}[para]{Theorem}
 	\newtheorem{pro}[para]{Proposition}
-	\newtheorem{coro}[para]{Corollary}
-\renewcommand*{\proofname}{Proof}
+    \newtheorem{coro}[para]{Corollary}
+\renewcommand{\proofname}{Proof}
 
 \usepackage{titletoc,makeidx,paralist}
 	\makeindex
@@ -30,48 +30,43 @@
 
 \begin{document}
 
-\section{One}
+\section{Simplicial Set}
 
 \begin{para}[Simplicial set]
-    Suppose $\Delta$ is the category of totally ordered finite sets and order-preserving morphisms. Simplicial sets are just set-valued presheaive on $\Delta$, {\it i.e.} functors $\Delta^{\text{op}}\to \mathsf{Set}$.
+    Suppose $\mathsf{TOFS}$ is the category of totally ordered finite sets and order-preserving morphisms. Simplicial sets are just set-valued presheaive on $\mathsf{TOFS}$, {\it i.e.} functors $\mathsf{TOFS}^{\text{op}}\to \mathsf{Set}$. The category of simplicial sets is denoted by $\mathsf{sSet}$.
 \end{para}
 
-Usually, we only care about the skeleton $\{[n]\,:\, n\in\mathbb N\}$ of $\Delta$, where $[n]=0<1<\cdots<n$. 
+Let $[n]=0<1<\cdots<n$, the natural presheaf $\operatorname{Mor}_{\mathsf{TOFS}}(-,[n])$ is the standard $n$-simplex, denoted by $\Delta^n$. Therefore, the Yoneda lemma tells us that
+\[
+    K([n])\cong\operatorname{Mor}_{\mathsf{sSet}}(\Delta^n,K) 
+\]
+for any simplicial set $K$.
 
-\begin{exa}
-    A classical example of simplicial set is $\Delta^n$. It can be seen as the subset 
-    \[
-        \{(x_0,\dots,x_n)\in [0,1]^{n+1}\,:\, x_0+\cdots+x_n=1\}
-    \]
-    of $\mathbb R^{n+1}$. Now suppose $A=n_0<n_1<\cdots<n_k$ is a subset of $[n]$, we associate it a face 
-    \[
-        F_A=\{x\in \Delta^n\,:\, x_i=0\text{ when $i\not\in A$}\}.
-    \]
-\end{exa}
+% Usually, we only care about the skeleton $\{[n]\,:\, n\in\mathbb N\}$ of $\mathsf{TOFS}$, where $[n]=0<1<\cdots<n$. 
 
 One important example of simplicial sets is the nerve of a small category.
 
 \begin{para}[Nerve of a small category]
-    Every partially ordered set $P$ could be seen as a small category $i(P)$ in a natural way, where morphisms are order relations between objects. We thus obtain a functor $i$ from $\Delta$ to the category of small categories. We can now describe the nerve of the category $C$ as the functor
+    Every partially ordered set $P$ could be seen as a small category $i(P)$ in a natural way, where morphisms are order relations between objects. We thus obtain a functor $i$ from $\mathsf{TOFS}$ to the category of small categories. We can now describe the nerve of the category $C$ as the functor
     \[
         N(C): P \mapsto \operatorname{Fun}(i(P),C),
     \]
-    where $\operatorname{Fun}(A,B)$ are set of all functors between small categories $A$ and $B$.
+    where $\operatorname{Fun}(A,B)$ are set of functors between small categories $A$ and $B$.
 \end{para}
 
-We can describe the nerve on each level $k$ in another way. Let's consider the category of totally ordered finite sets with length $k+1$, denoted by $\Delta_k$, and the similar functor $N(C)_k: P \mapsto \operatorname{Fun}(i(P),C)$. $N(C)_k$ can be described as a set, whose elements are $k$-tuples of composable morphisms
+Usually $N(C)_k:=N(C)([k])$ is described as a set, whose elements are $k$-tuples of composable morphisms
 \[
     P_0\to P_1\to P_2\to \cdots \to P_{k-1}\to P_k
 \]
 of $C$. Elements of $N(C)_k$ are usually called $k$-cycles, especially, $0$-cycles are objects of $C$, $1$-cycles are morphisms of $C$. 
 
-Suppose $\eta:P\to Q$ is a morphism, then the morphism under the functor $N(C)_k$ is given by
-\[
-    \xymatrix{
-        P_0\ar[r]\ar[d]_{\eta_0} & P_1\ar[r]\ar[d]_{\eta_1} & P_2\ar[r]\ar[d]_{\eta_2} & \cdots \ar[r] & P_{k-1}\ar[r]\ar[d]_{\eta_{k-1}} & P_k\ar[d]_{\eta_k}\\
-        Q_0\ar[r] & Q_1\ar[r] & Q_2\ar[r] & \cdots \ar[r] & Q_{k-1}\ar[r] & Q_k
-    }
-\]
+% Suppose $\eta:P\to Q$ is a morphism, then the morphism under the functor $N(C)_k$ is given by
+% \[
+%     \xymatrix{
+%         P_0\ar[r]\ar[d]_{\eta_0} & P_1\ar[r]\ar[d]_{\eta_1} & P_2\ar[r]\ar[d]_{\eta_2} & \cdots \ar[r] & P_{k-1}\ar[r]\ar[d]_{\eta_{k-1}} & P_k\ar[d]_{\eta_k}\\
+%         Q_0\ar[r] & Q_1\ar[r] & Q_2\ar[r] & \cdots \ar[r] & Q_{k-1}\ar[r] & Q_k
+%     }
+% \]
 Now let's consider the face and degeneracy maps (functors), they can be used to connect different $k$. The face maps 
 \[
      d_{i}\colon N(C)_{k}\to N(C)_{k-1}
@@ -82,10 +77,69 @@ to the $(k-1)$-tuple
 \[P_{0}\to \cdots \to P_{i-1}\xrightarrow{f_if_{i-1}} P_{i+1}\to \cdots \to P_{k}.\]
 Similarly, the degeneracy maps 
 \[s_{i}:N(C)_{k}\to N(C)_{k+1}\] 
-are given by inserting an identity morphism at the object $P_i$. 
+are given by inserting an identity morphism at the object $P_i$. It's not hard to see that any order-preserving morphism is a composition of $d$ and $s$.
+
+\begin{para}
+    Every simplicial set $K$ can be seen as a colimit,
+    \[
+        K = \varinjlim_{\Delta^n\to K}\Delta^n.
+    \]
+    It's very easy to check.
+\end{para}
+
+\begin{exa}[Geometric relazation of the standard $n$-simplex]
+    By definition, $C([n]) = \Delta^n$, {\it i.e.} the standard $n$-simplex $\Delta^n$ is the nerve of $[n]$. Generally, suppose $J$ is a linearly order set, denote $\Delta^J$ as the nerve of $J$.
+    
+    We can realize $\Delta^n$ geometrically as the subset 
+    \[
+        |\Delta^n|=\{(x_0,\dots,x_n)\in [0,1]^{n+1}\,:\, x_0+\cdots+x_n=1\}
+    \]
+    of $\mathbb R^{n+1}$, and for each $J=n_0<n_1<\cdots<n_k$, we associate it a $k$-face (cycle)
+    \[
+        |\Delta^J|=\{x\in \Delta^n\,:\, x_i=0\text{ when $i\not\in J$}\},
+    \]
+    which corrsponds to a (strict) order-preserving morphism $n_*:[k] \to [n]$. In this case, $d_i$ makes $x_{n_i}=0$ in $|\Delta^J|$.
+
+    Now consider the $i$-th horn of $\Delta^n$, denoted by $\Lambda_i^n$, it's obtained by deleting the interior and the face opposite the $i$-th vertex of $|\Delta^n|$. In other words, 
+    \[
+        |\Lambda_i^n| = \{x\in\Delta^n\,:\, x_i\neq 0 \text{ and  $x_j=0$ for a $j\neq i$}\}
+    \]
+    whose faces (cycles) are proper subsets of $[n]$ containing $i$. It's a simplicial set again.
+\end{exa}
+
+\begin{para}[Geometric relazation of simplicial sets]
+    % From now on, denote
+    % \[
+    %     |\Delta^n| = \{(x_0,\dots,x_n)\in [0,1]^{n+1}\,:\, x_0+\cdots+x_n=1\}.
+    % \]
+    % It's the geometric relazation of a standard $n$-simplex. Any morphism $f:[m]\to [n]$ defines a linear map $|\Delta|(f):|\Delta^m|\to |\Delta^n|$ mapping vertice $e_i$ to $e_{f(i)}$.
+    
+    % Now consider a simplicial set $K$, we associate it a topological space 
+    % \[
+    %     |K|=\coprod_{n=0}^\infty |\Delta^n|\times K([n])/\sim,
+    % \]
+    % where $\sim$ is the weakest equivalence relation such that $(t,y)\sim (s,x)$ if there exists a morphism $f:[m]\to [n]$ such that
+    % \[
+    %     y = K(f)x,\quad s=|\Delta|(f)t.
+    % \]
+    % The topology on $|K|$ is the weakest one for which the factorization by $\sim$ is continuous. 
+
+    The geometric relazation of a simplicial set $K$ is given by the colimit
+    \[
+        |K| = \varinjlim_{\Delta^n\to K}|\Delta^n|.
+    \]
+\end{para}
 
 \begin{pro}[HTT 1.1.2.2]
     Suppose $K$ is a simplicial set, then $K\cong N(C)$ for a small category $C$ if and only if for each $0<i<n$ and each morphism $\Lambda_i^n\to K$ can be lifted to an unique morphism $\Delta^n \to K$.
 \end{pro}
+
+\begin{para}[Kan complex]
+    Let $K$ is a simplicial set, we say that $K$ is a Kan complex if for any $0\leq i\leq n$ any morphism $\Lambda_i^n\to K$ can be lifted to an unique morphism $\Delta^n \to K$.
+\end{para}
+
+\begin{para}[$\infty$-category]
+    A simplicial set $K$ is an $\infty$-category if for any $0< i< n$ any morphism $\Lambda_i^n\to K$ can be lifted to a morphism $\Delta^n \to K$.
+\end{para}
 
 \end{document}
