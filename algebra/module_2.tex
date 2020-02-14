@@ -62,6 +62,20 @@ X \ar@{->}[r]^f & Y \ar@{->}[r] & 0
 回忆Proposition \ref{flat_loc}，任取乘性子集$S$，$S^{-1}R$是平坦$R$-模。
 
 \begin{pro}
+	设$A$是一个环，我们有：
+	\begin{compactenum}
+		\item 自由$A$-模平坦；
+		\item 设$M$, $N$都是平坦$A$-模，则$M\otimes_A N$也是平坦$A$-模；
+		\item 设$B$是一个$A$-代数，如果$M$是平坦$A$-模，则$M\otimes_A B$是平坦$B$-模； 
+		\item 如果$B$是平坦$A$-代数，则任何$B$-模都是平坦$A$-模。
+	\end{compactenum}
+\end{pro}
+
+\begin{proof}
+	都是显然的。
+\end{proof}
+
+\begin{pro}
 	平坦性是局部性条件，即$R$-模$M$平坦等价于任取极大理想$\mathfrak m$，$M_{\mathfrak m}$都平坦。
 \end{pro}
 
@@ -81,12 +95,33 @@ X \ar@{->}[r]^f & Y \ar@{->}[r] & 0
 	$R$-模$M$是平坦的当且仅当，任取$R$的理想$\mathfrak a$，典范同态$\mathfrak a\otimes M\to \mathfrak aM$是同构。
 \end{pro}
 
+从这个命题也可以再次看到，乘法基本并不会引入新的关系，如同张量积一般。
+
+\begin{proof}
+	从$M$平坦到同构是直接的。\notprove
+\end{proof}
+
 作为推论，如果$R$是一个主理想整环，且对任意的$m\in M$，$am=0$都可以推出$a=0$，此时$M$是平坦的。
+
+\begin{pro}
+	设$R$是一个环，而$0\to M'\to M\to M''\to 0$是一个$A$-模的正和列，现在设$M''$是平坦的，在对任何$A$-模$N$，$0\to M'\otimes N \to M\otimes N\to M''\otimes N\to 0$也是正和列。
+\end{pro}
+
+\begin{proof}
+	我们只要真美国$M'\otimes N\to M\otimes N$是单的。设$N$可以写成自由模$L$模去$K$，则我们有如下交换图
+	\[
+		\xymatrix{
+			& M'\otimes K \ar[r]\ar[d]& M\otimes K \ar[r]\ar[d]& M''\otimes K\ar[d]_{\alpha}\\
+		0\ar[r]& M'\otimes L\ar[r]\ar[d]_\beta& M\otimes L\ar[r]\ar[d] & M''\otimes L\\
+		& M'\otimes N \ar[r] & M\otimes N
+		}
+	\]
+	其中$\alpha$是单的（因为$M''$是平坦的），$\beta$是满的。然后不难通过追图得到结论。
+\end{proof}
 
 \begin{pro}
 	局部环上的有限生成平坦模是自由模。
 \end{pro}
-
 
 \section{准素分解}
 
