@@ -23,7 +23,7 @@
 \end{lem}
 
 \begin{proof}
-    参见Hamilton-Cayley定理Theorem \ref{Hamilton-Cayley}的证明。
+    参见Hamilton-Cayley定理Theorem \ref{Hamilton-Cayley} 的证明。
 \end{proof}
 
 注意到，$k[x]$是PID，则$\ann_{k[x]}(V)$由某个多项式生成，我们将其中的那个首一多项式称为极小多项式，记作$p(V)$，而首一多项式$\det(xI-A)$称为本征多项式，不难看到，本征多项式的次数为$\dim V$.
@@ -47,7 +47,7 @@
 \end{pro}
 
 \begin{proof}
-    如果$A$具有本征值$a$，则$\langle x-a\rangle \in \Ass(V)$，其包含$\ann(V)=\langle p(V)\rangle$，因此$p(V)$的分解中必有因子$(x-a)$. 反过来，如果$p(V)$的分解中具有因子$(x-a)$，则$\langle x-a\rangle$是包含$\langle p(V)\rangle =\ann(V)$的一个极小素理想，由于$V$是有限生成的，Lemma \ref{lem:3.5.28}告诉我们$\supp(V)$由所有包含$\ann(V)$的素理想构成，继而Proposition \ref{pro:5.1.9}立刻告诉我们，$\langle x-a\rangle \in \Ass(V)$.
+    如果$A$具有本征值$a$，则$\langle x-a\rangle \in \Ass(V)$，其包含$\ann(V)=\langle p(V)\rangle$，因此$p(V)$的分解中必有因子$(x-a)$. 反过来，如果$p(V)$的分解中具有因子$(x-a)$，则$\langle x-a\rangle$是包含$\langle p(V)\rangle =\ann(V)$的一个极小素理想，由于$V$是有限生成的，Lemma \ref{lem:3.5.28} 告诉我们$\supp(V)$由所有包含$\ann(V)$的素理想构成，继而Proposition \ref{pro:5.1.9} 立刻告诉我们，$\langle x-a\rangle \in \Ass(V)$.
 \end{proof}
 
 \begin{pro}
@@ -93,7 +93,7 @@
 \end{proof}
 
 \begin{pro}\label{pro:6.3.7}
-    设$k[x]$-模$V$是一个$n$-维$k$-矢量空间，$p(V)$为其极小多项式，$q(V)$为其本征多项式，则一下命题等价：
+    设$k[x]$-模$V$是一个$n$-维$k$-矢量空间，$p(V)$为其极小多项式，$q(V)$为其本征多项式，则以下命题等价：
     \begin{compactenum}
         \item $\deg(p(V))=\dim V$;
         \item $p(V)=q(V)$;
@@ -112,7 +112,7 @@
 
 下面我们首先研究循环$k[x]$-模。
 
-\begin{pro}
+\begin{pro}\label{pro:6.3.10}
     设有限维$k$-矢量空间$V$是一个循环$k[x]$-模，极小多项式的分解为$p(V)=p_1^{n_1}\cdots p_m^{n_m}$，则我们有分解
     \[
        V=\bigoplus_i V(p_i),
@@ -121,9 +121,11 @@
 \end{pro}
 
 \begin{proof}
-    从Lemma \ref{lem:6.3.9}可知$\langle p(V(p_i))\rangle=\ann (V(p_i))\subset \langle p_i^{n_i}\rangle$，所以$n_i\deg(p_i)=\deg (p_i^{n_i})\leq \deg (p(V(p_i)))$. 同时，$V(p_i)$作为$k[x]$-模，我们有$\deg (p(V(p_i))) \leq \dim V(p_i)$. 所以$n_i\deg(p_i)\leq \dim V(p_i)$. 
+    从Lemma \ref{lem:6.3.9} 可知$\langle p(V(p_i))\rangle=\ann (V(p_i))\subset \langle p_i^{n_i}\rangle$，所以
+    \[n_i\deg(p_i)=\deg (p_i^{n_i})\leq \deg (p(V(p_i))).\]
+    同时，$V(p_i)$作为$k[x]$-模，我们有$\deg (p(V(p_i))) \leq \dim V(p_i)$. 所以$n_i\deg(p_i)\leq \dim V(p_i)$. 
     
-    另一方向，由于$V$是循环$k[x]$-模，所以$\deg p(V)=\dim V$，所以我们有
+    另一方向，由于$V$是循环$k[x]$-模，所以$\deg p(V)=\dim V$，故
     \[
         \dim V=\sum_i n_i\deg(p_i)\leq \sum_i\dim V(p_i)\leq \dim V,
     \]
@@ -131,14 +133,10 @@
 
     最后，因为
     \[
-        \deg(p_i^{n_i})\leq \deg (\deg(p(V)))\leq \dim V(p_i),
+        \deg(p_i^{n_i})\leq \deg (p(V(p_i)))\leq \dim V(p_i),
     \]
-    所以从$\dim V(p_i)=n_i\deg(p_i)$以及Proposition \ref{pro:6.3.7}立刻得到$V(p_i)$是一个循环$k[x]$-模。
+    所以从$\dim V(p_i)=n_i\deg(p_i)$以及Proposition \ref{pro:6.3.7} 立刻得到$V(p_i)$是一个循环$k[x]$-模。
 \end{proof}
-
-有趣的是，我们还可以通过中国剩余定理来直接看到这个命题。甚至，我们可以这个定理推广到PID上的循环模，因为PID上任意两个不同的素元也是互素的。
-
-依然是$R$是PID，而$M$是有限生成$R$-模，设$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_m}\rangle$，则$\langle p_i\rangle$是包含$\ann_R(M)$的极小素理想，设$\alpha_i:M\to M_{\langle p_i\rangle}$是局部化映射，则Proposition \ref{pro:5.2.13}告诉我们，$\ker \alpha_i$是一个$\langle p_i\rangle$-准素子模，且Theorem \ref{thm:5.2.17}告诉我们，
 
 \begin{para}[本征空间]
     如果$a\in k$是线性映射$A:V\to V$的本征值，则所有以$a$为本征矢量的$v\in V$以及$0$构成了$V$的一个子空间，他被称为$A$的对应于本征值$a$的本征空间。
@@ -148,7 +146,7 @@
 
 \section{主理想整环上的有限生成模}
 
-在这节中，设$R$是一个主理想整环，而$M$是一个有限生成模。我们首先利用中国剩余定理给出的一个循环$R$-模的刻画。
+在这节中，设$R$是一个主理想整环，而$M$是一个有限生成模。我们首先利用中国剩余定理给出的一个循环$R$-模的刻画。某种角度来看，他是Proposition \ref{pro:6.3.10} 的推广。
 
 \begin{pro}
     设$R$是一个PID，$M$是一个循环$R$-模，且$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_m}\rangle$，其中$p_i$都是$R$中的素元（可以为零），此时，我们有$R$-模同构
@@ -178,7 +176,7 @@
 \begin{proof}
 	首先，可以设$M=R^n$. 然后对子模的$\rank$做归纳。对于$\rank(M)=1$的情况，此时$M$可以看成$R$，则$M$的子模对应于$R$的理想$\langle a\rangle$，同时由于$\ann_R (a)=0$，所以是一个自由模。
 
-	现在假设命题对于$k<n$的情况都正确，那么任取$R^n$的子模$S$，考虑$S_1$是所有形如$(s_1,\dots,s_{n-1},0)$的元素的集合，以及$S_2$是所有形如$(0,\dots,0,s_n)$的元素的集合与$S$的交。显然，$S_1$同构于$R^{n-1}$的一个子模，归纳假设告诉我们这是自由的，所以设$\{\alpha_1,\dots,\alpha_k\}$是$S_1$的一组自由基。类似地，$S_2$同构于$R$的一个理想，如果$S_2$平凡，则$S=S_1$自由，否则$\rank S_2=1$，设基为$\{\beta=(0,\dots,0,t_n)\}$，这里$(t_1,\dots,t_n)\in S$. 
+	现在假设命题对于$k<n$的情况都正确。任取$R^n$的子模$S$，设 $S_1$是所有形如$(s_1,\dots,s_{n-1},0)$的元素的集合，以及$S_2$是所有形如$(0,\dots,0,s_n)$的元素的集合与$S$的交。显然，$S_1$同构于$R^{n-1}$的一个子模，归纳假设告诉我们这是自由的，所以设$\{\alpha_1,\dots,\alpha_k\}$是$S_1$的一组自由基。类似地，$S_2$同构于$R$的一个理想，如果$S_2$平凡，则$S=S_1$自由，否则$\rank S_2=1$，设基为$\{\beta=(0,\dots,0,t_n)\}$，这里$(t_1,\dots,t_n)\in S$. 
 
 	最后，我们检查$\{\alpha_1,\dots,\alpha_k,\beta\}$是$S$的基。从最后一个坐标来看，$\beta$与$\{\alpha_1,\dots,\alpha_k\}$线性无关，同时$\{\alpha_1,\dots,\alpha_k\}$作为自由基本身也是线性无关的。然后，任取$\alpha=(s_1,\dots,s_n)\in S$，则存在$r\in R$使得$s_n=rt_n$，所以$\alpha-r\beta\in S_1$，同时$\{\alpha_1,\dots,\alpha_k,\beta\}$生成$S_1$，于是$\{\alpha_1,\dots,\alpha_k,\beta\}$生成$S$.
 \end{proof}
@@ -308,7 +306,7 @@ PID上的自由模当然是无挠的。
     前一个论断就是Proposition \ref{pro:5.2.13}，我们只需证明$\bigcap_{i}M_i=\{0\}$. 取$m\in \bigcap_{i}M_i$，所以存在$r_i\not\in \langle p_i\rangle$使得$r_im=0$. 因为$\ann(M)\subset \ann(m)$，所以可设$\ann(m)=\langle p_1^{l_1}\cdots p_m^{l_m}\rangle$. 从$r_i\not\in \langle p_i\rangle$，立刻得到$l_i=0$，所以$\ann(m)=R$，继而$m=0$.
 \end{proof}
 
-此时，可以看到$\bigcap_i M_i=\{0\}$就是$\{0\}$的极小分解了，从而利用Theorem \ref{thm:5.2.17}给出了如下推论。
+此时，可以看到$\bigcap_i M_i=\{0\}$就是$\{0\}$的极小分解了，从而利用Theorem \ref{thm:5.2.17} 给出了如下推论。
 
 \begin{coro}
 设$M$是一个有限生成$R$-挠模，且$\ann_R(M)=\langle p_1^{n_1}\cdots p_k^{n_k}\rangle \neq 0$，则$N_i=M(p_1)\oplus \cdots \oplus \widehat{M(p_i)}\oplus \cdots  \oplus M(p_k)$是$M$的一个$\langle p_i\rangle$-准素子模，且$N_i=\ker(\alpha_i)$，这里$\alpha_i:M\to M_{\langle p_i\rangle}$是典范的局部化同态。

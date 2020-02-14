@@ -251,3 +251,5 @@ pip-log.txt
 #fonts
 *.otf
 *.ttf
+*.xdv
+*.ind

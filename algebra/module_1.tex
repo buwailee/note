@@ -162,7 +162,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \end{thm}
 
 \begin{proof}
-	设$\{m_1$, $\cdots$, $m_n\}$是$M$的生成元。考虑$\varphi(m_i)\in M$，因为$M$是有限生成的，所以
+	设$\{m_1,\dots,m_n\}$是$M$的生成元。考虑$\varphi(m_i)\in M$，因为$M$是有限生成的，所以
 	\[
 	\varphi(m_i)=\sum_{j}r_{ij}m_j,
 	\]
@@ -189,7 +189,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 	其中$q\in R[x]$. 或者写作，$1-q(\varphi)\varphi=0$. 因此$q(\varphi)$是$\varphi$的一个逆，进而$\varphi$是一个同构。
 \end{proof}
 
-\para 设$M$是一个模，一组元素$\{x_1$, $\dots$, $x_n$, $\dots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1}$, $\dots$, $x_{i_k}\in M$，以及对任意的$r_{i_1}$, $\dots$, $r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1$, $\dots$, $x_n$, $\dots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。\endpara
+\para 设$M$是一个模，一组元素$\{x_1,\dots, x_n, \dots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1},\dots,x_{i_k}\in M$，以及对任意的$r_{i_1},\dots,r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1,\dots,x_n,\dots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。\endpara
 
 将上一个命题应用到自由模。
 
@@ -210,11 +210,11 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \end{pro}
 
 \begin{proof}
-	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1$, $\dots$, $x_{n+1}\}$，如果这组生成元是自由生成元，则没什么要证的，如果不是，则存在一组系数$a_1$, $\dots$, $a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
+	归纳法。如果$M$由一个非零元素$x$生成，由于$\ann(x)=(0)$，所以$M=kx$是自由模。设由$n$个元素生成的$k$-模是自由模，此时考虑由$n+1$个元素生成的$k$-模。设这$n+1$个非零元素为$\{x_1,\dots,x_{n+1}\}$，如果这组生成元是自由生成元，则没什么要证的，如果不是，则存在一组系数$a_1,\dots,a_{n+1}$使得等式$a_1x_1+\cdots+a_{n+1}x_{n+1}=0$成立，系数中至少有一个不是零，不妨设为$a_{n+1}$，于是
 	\[
 	a_{n+1}x_{n+1}=-a_1x_1-\cdots-a_nx_n,
 	\]
-	两边除以$a_{n+1}$得出$x_{n+1}$可以由$\{x_1$, $\cdots$, $x_{n}\}$生成，于是$M$也可以由$\{x_1$, $\cdots$, $x_{n}\}$生成，由归纳假设，$M$是一个自由模。
+	两边除以$a_{n+1}$得出$x_{n+1}$可以由$\{x_1,\cdots,x_{n}\}$生成，于是$M$也可以由$\{x_1,\cdots,x_{n}\}$生成，由归纳假设，$M$是一个自由模。
 \end{proof}
 
 利用选择公理，实际上，域上的模（矢量空间）都是自由模，但是这里暂时用不到这点。
@@ -224,7 +224,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 \end{thm}
 
 \begin{proof}
-	在Hamilton-Cayley定理中，取$\varphi=\id_M$，因此，存在$a_1$, $\cdots$, $a_n\in \mathfrak{a}$使得$x=1+a_1+\cdots+a_n=1-a$左乘在$M$上是一个零映射，于是$(1-a)m=0$或者$am=m$对任意的$m\in M$都成立。
+	在Hamilton-Cayley定理中，取$\varphi=\id_M$，因此，存在$a_1,\dots,a_n\in \mathfrak{a}$使得$x=1+a_1+\cdots+a_n=1-a$左乘在$M$上是一个零映射，于是$(1-a)m=0$或者$am=m$对任意的$m\in M$都成立。
 \end{proof}
 
 特别地，当$\mathfrak{a}$包含于$R$任意的极大理想中时，$1-a$不处于任意的极大理想中，所以必然是可逆，因此$(1-a)m=0$推出了$m=0$. 因此Nakayama引理在局部环（只有一个极大理想的环）上会特别有用，因为此时包含于每一个极大理想中就变成了一个平凡的条件。
@@ -232,7 +232,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 作为推论，令$M$是一个有限生成$R$-模，而$N$是$M$的一个子模，而$\mathfrak{a}$是包含于每一个极大理想中的一个理想，那么$M=\mathfrak{a}M+N$可以推出$M=N$. 实际上，将Nakayama引理应用到$M/N$上，注意到$\mathfrak{a}(M/N)=(\mathfrak{a}M+N)/N$即可。
 
 \begin{pro}
-将上面的推论稍微推广一下。设$M$是一个有限生成$R$-模，而$\mathfrak{a}$还是包含于每一个极大理想中的一个理想，设$\varphi:M\to M/\mathfrak{a}M$是商同态。如果$M$中的一组元素$\{m_1$, $\cdots$, $m_n\}$使得$\{\varphi(m_1)$, $\cdots$, $\varphi(m_n)\}$生成$M/\mathfrak{a}M$，则$\{m_1$, $\cdots$, $m_n\}$生成$M$.
+将上面的推论稍微推广一下。设$M$是一个有限生成$R$-模，而$\mathfrak{a}$还是包含于每一个极大理想中的一个理想，设$\varphi:M\to M/\mathfrak{a}M$是商同态。如果$M$中的一组元素$\{m_1,\dots,m_n\}$使得$\{\varphi(m_1),\dots,\varphi(m_n)\}$生成$M/\mathfrak{a}M$，则$\{m_1,\dots,m_n\}$生成$M$.
 \end{pro}
 
 证明只需要将上面的推论应用到$N=\sum_{i=1}^n Rm_i$即可。
@@ -845,7 +845,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 	剩下我们考虑所有有限个极大理想的交构成的理想族，由极小条件，这个理想族有极小元$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$. 任取极大理想$\mathfrak{m}$，由于$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，因此极小性给出$\mathfrak{m}\cap\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n=\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n$，故$\mathfrak{m}_1\cap \cdots \cap \mathfrak{m}_n\subset \mathfrak{m}$. 由Proposition \ref{primeau}，存在$i$使得$\mathfrak{m}_i\subset \mathfrak{m}$，由于是极大理想，所以$\mathfrak{m}=\mathfrak{m}_i$.
 \end{proof}
 
-\begin{pro}
+\begin{pro}\label{pro:3.4.16}
 一个环$R$是Artin环，当且仅当，$R$是一个Noether环且所有素理想都是极大理想。
 \end{pro}
 
@@ -1070,3 +1070,79 @@ $f^r x f^r y\in \pp_{m+n+2rd}$，然后对所有的$r>0$，(2)告诉我们
 $f^ry\not\in \pp_{n+rd}$，则除了有限个$r>0$之外，
 总有$f^rx\in \pp_{m+rd}$，矛盾，故$xy\not\in \pp_{m+n}$.
 \end{proof}
+
+\begin{para}[Rees代数]
+设$R$是一个交换环，$\mathfrak a$是其一个理想，我们定义一个分次环
+$R[\mathfrak a]=\oplus_{d\geq 0}\mathfrak a^d$，
+这里$\mathfrak a^0=R$.
+它可以被看成$R[t]$的一个子环$\sum_{d\geq 0}\mathfrak a^d t^d$.
+同时，其也有$R$-模结构，所以也是个$R$-代数，其被称为理想
+$\mathfrak a$的Rees代数。
+
+如果$\mathfrak a$是有限生成的，则其Rees代数也是有限生成的。实际上，
+如果$\mathfrak a$是被$\{r_1,\dots,r_n\}$生成，则由$t_i\mapsto r_i$
+定义的环同态$R[t_1,\dots,t_n]\to \tilde R$是满的。特别地，如果此时
+$R$是Noether环，则$R[\mathfrak a]$也是Noether环。
+\end{para}
+
+\begin{para}[滤子]
+设$\mathfrak a$是$R$的一个理想，再设$M$是一个$R$-模，若一个子模的
+滤子$(M_n)$满足$\mathfrak a M_n\subset M_{n+1}$，则称为$M$的一个
+$\mathfrak a$-滤子（filtration）。若其是稳定的，则存在一个
+整数$n_0$使得$n\geq n_0$时$M_{n+1}=\mathfrak aM_n$.
+对一个$\mathfrak a$-滤子，我们可以定义一个分次模
+$\tilde M:=\oplus_{n\geq 0} M_n$. 显然这是一个分次
+$R[\mathfrak a]$-模。
+\end{para}
+
+\begin{lem}
+令$R$是一个Noether环，$M$是一个有限生成$R$-模，而$(M_n)$是一个
+$\mathfrak a$-滤子，则$(M_n)$稳定等价于
+$\tilde M:=\oplus_{n\geq 0} M_n$是一个有限生成$R[\mathfrak a]$-模。
+\end{lem}
+
+\begin{proof}
+构造
+\[
+	P_n=\biggl(\bigoplus_{i\leq n}M_i\biggr)\oplus \biggl(
+	\bigoplus_{j\geq 1}\mathfrak a^jM_n	
+	\biggr)\subset \tilde M.
+\]
+这是个$\tilde M$的子模升链，它们的并为$\tilde M$. 
+首先假设$\tilde M$是有限生成的，则其为Noether模，进而
+存在$n_0$使得$n\geq n_0$有$P_{n+1}=P_n$，这等价于
+$M_{n+1}=\mathfrak aM_n$.
+
+反过来，假设$(M_n)$稳定，则存在$n_0$使得$n\geq n_0$有
+$P_{n+1}=P_n=\tilde M$，我们只需证明$P_n$是有限生成的。
+在$P_n$的定义中，第一个直和项显然是有限生成$R$-模，故也是
+有限生成$R[\mathfrak a]$-模，我们证明第二项也是即可。在
+$(\oplus_{j\geq 1}\mathfrak a^j)M_n$中，由于$M_n$是一个
+有限生成$R$-模，故其为有限生成$R[\mathfrak a]$-模。
+\end{proof}
+
+\begin{pro}
+令$R$是一个Noether环，$\mathfrak a$是一个理想，$M$是一个有限生成
+$R$-模，而$\mathfrak a$-滤子$(M_n)$稳定，则对$M$的任意子模$N$，
+$N$的$\mathfrak a$-滤子$(M_n\cap N)$也稳定。
+\end{pro}
+
+\begin{proof}
+利用上面的引理，只需证明$\tilde{N}=\oplus_{n\geq 0}(M_n\cap N)=
+(\oplus_{n\geq 0}M_n)\cap N$是一个
+有限生成$R[\mathfrak a]$-模，而这来自$\tilde N$是
+Noether $R[\mathfrak a]$-模$\tilde M$的子模。
+\end{proof}
+
+特别地，取$M_n=\mathfrak a^n M$，从定义直接知道其稳定，于是我们
+就得到了：
+
+\begin{pro}[Artin-Rees引理]\label{artin-rees}
+令$R$是一个Noether环，$\mathfrak a$是一个理想，$M$是一个有限生成
+$R$-模，而$N$是$M$的一个子模。则存在一个$n_0$使得对$n\geq n_0$
+成立
+\[
+	(\mathfrak a^{n+1})\cap N=\mathfrak a
+	((\mathfrak a^n M)\cap N).
+\]
+\end{pro}
