@@ -747,30 +747,22 @@ $R$可以写作$k[x_1,\dots,x_n]/\mathfrak a$. 我们对$n$进行归纳，对$n=
 注意到$\dim R=0$等价于$R$的任意素理想都是极大理想，于是这是Proposition \ref{pro:3.4.16} 的直接应用。
 \end{proof}
 
-
-\begin{lem}[Krull]
-令$R$是一个Noether环，$\mathfrak a$是一个理想，而$M$是一个有限生成$R$-模，则$\bigcap_{n\geq 0}\mathfrak a^nM$就是$M$中满足$(1+a)x=0$的所有$x$的几何，其中$a\in \mathfrak a$.
-\end{lem}
-
-\begin{proof}
-如果$(1+a)x=0$，则$x=-ax$，所以$x\in \mathfrak a^n M$对任何$n\geq 0$都成立。反过来，如果$x \in \bigcap_{n\geq 0}\mathfrak a^nM$，我们对$\langle x\rangle$应用Proposition \ref{artin-rees}，则对足够大的$n$都有$\mathfrak a^n M\cap \langle x\rangle \subset \mathfrak a \langle x\rangle$. 于是$x\in \mathfrak a \langle x\rangle=x\mathfrak a$，此即所需。
-\end{proof}
-
 \begin{thm}[Krull主理想定理]
 令$R$是一个Noether环，而$r\in R$不可逆，再令$\mathfrak p$为包含$r$的素理想集中的一个极小元，则$\operatorname{ht}(\mathfrak p)\leq 1$.
 \end{thm}
 
 \begin{proof}
-我们可以局部化之，此时$\mathfrak p$是极大理想。如有必要，还可以模去一个极小素理想，此时，我们还可以假设$R$是整环，于是我们要证明，素理想$\mathfrak q$如果真包含在$\mathfrak p$中，则$\mathfrak q = 0$.
+我们可以局部化之，此时$\mathfrak p$是极大理想。如有必要，还可以模去一个极小素理想，此时，我们还可以假设$R$是整环，于是我们要证明，素理想$\mathfrak q$如果真包含在$\mathfrak p$中，则$\mathfrak q = 0$. 首先，注意到$\mathfrak q$不包含$r$. 
+其次，由于$R$是整环，所以典范态射$R\to R_r$是一个单射，下面我们将$R$自然等同于$R_r$的一个子环。
 
-首先，从假设，可以看到$\dim R/\langle r\rangle=0$，所以这是一个Artin环。考虑降链$\{\mathfrak q_n:=\mathfrak q^n R_r\cap R\}$，它在$R/\langle r\rangle$中的像稳定，所以对于足够大的$n$有
+首先，从假设，可以看到$\dim R/\langle r\rangle=0$，所以这是一个Artin环。考虑降链$\{\mathfrak q_n:=\mathfrak q^n R_r\cap R\}$，
+首先要注意到这是$R$的理想的降链，其次可以看到$\mathfrak q_n$基本就是$\mathfrak q^n$
+除以$r$. 所以一个重要的性质是，如果$rx\in \mathfrak q_n$且$x\in R$，则$x\in \mathfrak q_n$.
+这条降链在$R/\langle r\rangle$中的像稳定，所以对于足够大的$n$有
 $\mathfrak q_n\subset \mathfrak q_{n+1}+\langle r\rangle$. 
 对足够大的$n$，令$x\in \mathfrak q_n$，则存在一个$y\in R$使得$x-ry\in \mathfrak q_{n+1}\subset \mathfrak q_n$. 于是$ry\in \mathfrak q_n$，进而$y \in \mathfrak q_n$.
-所以，$\mathfrak q_n\subset \mathfrak q_{n+1}+f\mathfrak{q_n}\subset \mathfrak q_{n+1}+\mathfrak p \mathfrak q_n$. 于是，Nakayama引理告诉我们，$\mathfrak q_n=\mathfrak q_{n+1}$. 因为$\mathfrak q_n R_r=\mathfrak q^n R_r$，于是我们有
-\[
-	\mathfrak q^n R_r=\bigcap_{k\geq n}\mathfrak q^n R_r=0,
-\]
-利用上面的Krull引理，我们立刻得到$\mathfrak q=0$.
+所以，$\mathfrak q_n\subset \mathfrak q_{n+1}+r\mathfrak{q_n}\subset \mathfrak q_{n+1}+\mathfrak p \mathfrak q_n$. 于是，Nakayama引理告诉我们，$\mathfrak q_n=\mathfrak q_{n+1}$. 
+因为$\mathfrak q_n R_{r}=\mathfrak q^n R_{r}$，所以$\mathfrak q^{n+1}R_r=\mathfrak q^{n}R_r$，于是$\mathfrak q^{n+1}=\mathfrak q^n$. 应用Nakayama引理，立刻可知$\mathfrak q^n=0$，进而$\mathfrak q=0$.
 \end{proof}
 
 \section{Jacobson环}

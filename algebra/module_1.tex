@@ -1146,3 +1146,11 @@ $R$-模，而$N$是$M$的一个子模。则存在一个$n_0$使得对$n\geq n_0$
 	((\mathfrak a^n M)\cap N).
 \]
 \end{pro}
+
+\begin{lem}[Krull]
+	令$R$是一个Noether环，$\mathfrak a$是一个理想，而$M$是一个有限生成$R$-模，则$\bigcap_{n\geq 0}\mathfrak a^nM$就是$M$中满足$(1+a)x=0$的所有$x$的集合，其中$a\in \mathfrak a$.
+	\end{lem}
+	
+	\begin{proof}
+		如果$(1+a)x=0$，则$x=-ax$，所以$x\in \mathfrak a^n M$对任何$n\geq 0$都成立。反过来，如果$x \in \bigcap_{n\geq 0}\mathfrak a^nM$，我们对$\langle x\rangle$应用Proposition \ref{artin-rees}，则对足够大的$n$都有$\mathfrak a^n M\cap \langle x\rangle \subset \mathfrak a \langle x\rangle$. 于是$x\in \mathfrak a \langle x\rangle=x\mathfrak a$，此即所需。
+	\end{proof}
