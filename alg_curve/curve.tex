@@ -5,7 +5,7 @@
 The cartier divisor is related with the meromorphic function.
 
 \begin{defi}
-Let $X$ be a locally Noether scheme, and let
+Let $X$ be a locally Noetherian scheme, and let
 \[
 	\Ass(\mathcal O_X) := \{ x\in X\,:\,
 		\mathfrak m_x\in \Ass_{\mathscr O_{X,x}}(\mathscr O_{X,x})
@@ -18,5 +18,199 @@ The generic points of $X$ are associated points of $X$, associated points other 
 generic points are call the \textit{embedded points} of $X$.
 \end{defi} 
 
+%Suppose $\mathfrak p_x=\operatorname{ann}(r_x)$ is a prime ideal of $R$, 
+%then $x$ is an embedded point of $\spec R$. For any prime ideal 
+%$\mathfrak p_x\setminus \mathfrak p_y\neq \varnothing$, then 
+%there exists $f\in \mathfrak p_x$ such that $f\not\in \mathfrak p_y$ and $r_xf=0$
+%in $R_{y}$, so that $r_x=0 \in k(y)$. 
+
+\begin{lem}
+Let $X$ be a locally Noetherian scheme, $U$ an open subset of $X$, and 
+$i:U\to X$ the canonical inclusion. Then the canonical homomorphism 
+$\mathcal O_X\to i_*\mathcal O_U$ is injective iff $\Ass(\mathcal O_X)\subset U$.
+\end{lem}
+
+\begin{proof}
+It's a local lemma, so we assume that $X=\spec R$, and then wo only need prove 
+that $R\to \mathcal O_X(U)$ is injective iff $\Ass(R)\subset U$.
+First we suppose that $\Ass(R)\subset U$. Let $r\in R$ s.t. $r|_U=0$. If $r\neq 0$,
+there exists a $\mathfrak p=\operatorname{ann}(rs)\in \ss(\langle r\rangle)
+\subset \Ass(R)\subset U$
+because $\langle r\rangle$ is a nonzero $R$-module. Since $r=0 \in R_{\mathfrak p}$,
+there exists $t\not\in \mathfrak p$ s.t. $rt=0\in R$. However, it means that
+$t\in \operatorname{ann}(rs)=\mathfrak p$. Therefore, $r=0\in R$.
+
+Conversely, suppose that $R\to \mathcal O_X(U)$ is injective and there exists a 
+prime ideal $\mathfrak p_y = \operatorname{ann}(r)\not\in U$. For any point $x\in U$,
+$\mathfrak p_x\not\in \overline{\{y\}}=V(\mathfrak p_y)$, i.e. 
+$\mathfrak p_y \not\subset \mathfrak p_x$, so there exists a $s\in \mathfrak p_y$ 
+such that $s_x$ is a unit of $R_x\subset \mathcal O_{X,x}$. Now $r_x=0$ from 
+$(sr)_x=s_xr_x=0$. Therefore, $r|_U=0$.
+\end{proof}
+
+\begin{defi}
+Suppose $R$ is a ring, $r\in R$ is regular if it's not a zero-divisor, 
+or equivalently $\operatorname{ann}(r)=0$. Let's denote $\operatorname{Reg}(R)$
+the set of regular elements of $R$ and define $\operatorname{Frac}(R)$ by
+$(\operatorname{Reg}(R))^{-1}R$.
+\end{defi}
+
+Now we can construct two new presheaives $\mathcal R_X$ and $\mathcal K_X$ for a 
+scheme $X$ by 
+\[
+	\mathcal R_X(U)=\{a\in \mathcal O_X(U)\,:\, a_x\in 
+	\operatorname{Reg}(\mathcal O_{X,x})\text{ for all $x\in U$}\},
+	\quad \mathcal{PK}_X(U)= (\mathcal R_X(U))^{-1}\mathcal O_X(U)
+\]
+It's clear that $\mathcal R_X$ is a sheaf and 
+$\mathcal R_X(U)=\operatorname{Reg}(\mathcal O_X(U))$ for an affine open set $U$.
+Generally, 
+$\mathcal R_{X,x} \subset \operatorname{Reg}(\mathcal O_{X,x})$ for any $x$ and 
+$\mathcal R_X(U)\subset \operatorname{Reg}(\mathcal O_X(U))$
+for open set $U$.
+However, $\mathcal{PK}_X$ does not need to be a sheaf, let's denote its 
+associated sheaf by $\mathcal K_X$.
+
+%\begin{lem}
+%$\mathcal R_X$ is a sheaf.  
+%\end{lem}
+
+%\begin{proof}
+%We should prove that $\operatorname{Reg}$ is compatible with restriction map, 
+%i.e.\vspace{1ex}
+%\begin{compactenum}[\quad (1)]
+%\item Suppose $V\subset U$ are two open affine subsets and 
+	%$r\in \mathcal R_X(U)$, then $r|_V\subset \mathcal R_X(V)$.
+%\item Suppose $\{U_i\}$ is an open affine covering of an affine open set $U$ and 
+	%$r\in \mathcal O_X(U)$. If $r|_{U_i}\in \mathcal R_X(U_i)$ for any $i$, 
+	%then $r\in \mathcal R_X(U)$.
+%\end{compactenum}\vspace{1ex}
+%First note that (1) and (2) are trivial if $V=D(f)$ and $\{U_i=D(f_i)\}$ 
+%are principle open sets, then for general (1) and (2), 
+%we can use the weak version of (1) to refine the covering to a new open covering 
+%$\{U_{ij}=D(f_{ij})\}$ and use the weak version of (2) to get (1) and (2). Therefore,
+%the sheaf axioms are valid for the basis of all affine open sets of $X$, so 
+%$\mathcal R_X$ is a sheaf on $X$.
+%\end{proof}
 
 
+%In fact, we can go back to affine scheme
+%$X=\spec R$ where $R$ is not Noetherian. For example, 
+%\[
+	%R=k[x_1,x_2,\dots]/\bigcap_{n=1}^\infty\langle x_1x_2\cdots x_n\rangle,
+%\]
+%where $k$ is a nice field. $\langle x_1\rangle$ is a prime ideal because 
+%$k[x_1,x_2,\dots]/\langle x_1\rangle = k[x_2,x_3,\dots]$ is a domain. 
+%Let's denote $k[x_1,x_2,\dots]$ by $S$. 
+%Since any element not in $\langle x_1\rangle$ is invertible in $S_{\langle x\rangle}$,
+%so 
+%\[
+	%R_{\langle x_1\rangle}=S_{\langle x_1\rangle}/
+	%\bigcap_{n=1}^\infty\langle x_1x_2\cdots x_n\rangle S_{\langle x_1\rangle}
+	%=S_{\langle x_1\rangle}/\langle x_1\rangle S_{\langle x_1\rangle}
+	%=\operatorname{Frac}(k[x_2,x_3,\dots]),
+%\]
+%so $\operatorname{Reg}(R_{\langle x_1\rangle})=R_{\langle x_1\rangle}=
+%\operatorname{Frac}(k[x_2,x_3,\dots])$.
+%For $\mathcal R_{X,x}$, the image of $(X,x_1x_2)$.
+
+%we can take open sets $\{D(x_i)\,:\, i\geq 2\}$ 
+%and their all possible finite intersections and calculate the colimit
+%\begin{align*}
+	%\mathcal R_{X,x} &= \varinjlim_n \operatorname{Reg}(R_{x_2x_3\cdots x_n})\\
+			 %&= \varinjlim_n \operatorname{Reg}\biggl(
+	%k[x_1,x_2,1/x_2,\dots,x_n,1/x_n,x_{n+1},\dots]/
+%\bigcap_{m=n+1}^\infty \langle x_1x_{n+1}\cdots x_m\rangle\biggr)\\
+			 %&= \varinjlim_n \{f\in
+	%k[x_1,x_2,1/x_2,\dots,x_n,1/x_n,x_{n+1},\dots]\,:\, 
+	%f|_{x_m=0}\neq 0 \text{ for all $m\geq n+1$}\}
+%\end{align*}
+
+
+\begin{lem}
+Let $X$ be a locally Noetherian scheme, then 
+$\mathcal R_{X,x}=\operatorname{Reg}(\mathcal O_{X,x})$ 
+for any $x\in X$. Therefore, $\mathcal K_{X,x}=\operatorname{Frac}(\mathcal O_{X,x})$.
+\end{lem}
+
+\begin{proof}
+	See [Qing Liu, Lemma 7.1.12].
+\end{proof}
+
+\begin{pro}
+Let $X$ be a locally Noetherian scheme, $U$ an open subset of $X$ such that 
+$\Ass(\mathcal O_X)\subset U$ and 
+$i:U\to X$ the canonical inclusion. Then the canonical homomorphism 
+$\mathcal K_X\to i_*\mathcal K_U$ is an isomorphism.
+\end{pro}
+
+\begin{proof}
+	See [Qing Liu, Proposition 7.1.15].
+\end{proof}
+
+\begin{defi}
+Let $X$ be a scheme, we denote the group $H^0(X,\mathcal K^*_X/
+\mathcal O_X^*)$ by $\Div(X)$ whose elements are called Cartier divisors
+on $X$, where $A^*$ is the set of invertible elements of a ring $A$.
+The image of $f\in H^0(X,\mathcal K^*)$ in $\Div(X)$ is called a \emph{principle
+Cartier divisor} and is denoted by $\operatorname{div}(f)$. Moreover, a divisor
+$D$ is called \emph{effective} if it's in the image of 
+$H^0(X,\mathcal O_X\cap \mathcal K^*)\to \Div(X)$, denoted by $D\geq 0$
+and the image is denoted by $\Div_+(X)$.
+\end{defi}
+
+By definition, we can represent a Cartier divisor $D$ by a system $\{(U_i,f_i)\}_i$, 
+where $\{U_i\}$ is an open covering of $X$ and $\{f_i\}$ are compatible sections of 
+$\mathcal K^*_X$. We can further require that $f_i$ is the quotient of two regular 
+elements of $\mathcal O_X(U_i)$, and the compatible condition is 
+$f_i|_{U_i\cap U_j}\in f_j|_{U_i\cap U_j}\mathcal O_X(U_i\cap U_j)^*$.
+Two such system $\{U_i,f_i\}$ and $\{V_j,g_j\}$ are equivalent if 
+$f_i$ and $g_j$ differ by a multiplicative factor in $\mathcal O_X(U_i\cap V_j)^*$.
+$D\geq 0$ iff it's represented by $\{(U_i,f_i)\}$ where $f_i\in \mathcal O_X(U_i)$.
+Suppose that $D_1=\{(U_i,f_i)\}_i$ and $D_2=\{(V_j,g_j)\}_j$, then the group 
+structure of $\Div(X)$ is represented by 
+\[
+	D_1+D_2=\{(U_i\cap V_j,f_ig_j)\}_{i,j}.
+\]
+A Cartier divisor can be related to a invertible sheaf on $X$: for a Cartier divisor 
+$D=\{(U_i,f_i)\}_i$, we associate a subsheaf $\mathcal O_X(D)\subset \mathcal K_X$ 
+defined by $\mathcal O_X(D)|_{U_i}=f_i^{-1}\mathcal O_X|_{U_i}$
+
+\begin{lem}
+Suppose $R$ is a Noetherian local ring of dimension $1$, and let $f$, $g$ are regular
+elements, then $R/\langle f\rangle$ is of finite length, and 
+\[
+	\operatorname{length}(R/\langle fg\rangle) =
+	\operatorname{length}(R/\langle f\rangle) +
+	\operatorname{length}(R/\langle g\rangle).
+\]
+\end{lem}
+
+\begin{proof}
+Since $f$ is regular, there's no minimal prime $\mathfrak p$ of $R$ containing it,
+and then $R/\langle f\rangle$ is of dimension $0$, or it's Artinian and of finite
+length. Now, consider the short exact sequence
+\[
+	0\to \langle g\rangle /\langle fg\rangle \to 
+	R/\langle fg\rangle\to R/\langle g\rangle \to 0,
+\]
+and note that the $R$-module morphism 
+\[
+	R/\langle f\rangle \to\langle g\rangle/\langle fg\rangle
+\]
+given by $r\mapsto gr$ is an isomorphism because $g$ is regular, then we get the proof.
+\end{proof}
+
+We can extend $f\mapsto \operatorname{length}(R/\langle f\rangle)$ to a group 
+homomorphism $\operatorname{Frac}(R)^*/R^*\to \mathbb Z$ by the above lemma, 
+denoted by $\operatorname{mult}_R$. Note that $\operatorname{mult}_R(f/g)
+=\operatorname{mult}_R(f)-\operatorname{mult}_R(g)$ for two regular elements $f$ and 
+$g$.
+
+Let $X$ be a locally Noetherian scheme, and $D\in \Div(X)$ is a Cartier divisor.
+For any point $x\in X$ of codimenison $1$, \textit{i.e.} $\dim \mathcal O_{X,x}=1$,
+the stalk of $D$ at $x$ belongs to $(\mathcal K^*_X/\mathcal O_X^*)_x=
+\operatorname{Frac} (\mathcal O_{X,x})^*/\mathcal O_{X,x}^*$, and then we define
+\[
+	\operatorname{mult}_x(D):= \operatorname{mult}_{\mathcal O_{X,x}}(D_x).
+\]
