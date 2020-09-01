@@ -2,7 +2,7 @@
 
 \section{Cartier Divisor}
 
-The cartier divisor is related with the meromorphic function.
+The Cartier divisor is related with the meromorphic function.
 
 \begin{defi}
 Let $X$ be a locally Noetherian scheme, and let
@@ -11,11 +11,13 @@ Let $X$ be a locally Noetherian scheme, and let
 		\mathfrak m_x\in \Ass_{\mathscr O_{X,x}}(\mathscr O_{X,x})
 	\}.
 \]
-The points of $\Ass(\mathcal O_X)$ are called the \textit{associated points} 
+The points of $\Ass(\mathcal O_X)$ are called the \textbf{associated points} 
 of $X$. For any open subset $U\subset X$, $\Ass(\mathcal O_U)=U\cap \Ass(\mathcal O_X)$.
 If $X=\spec R$ is an affine scheme, $\Ass(O_X)=\Ass(R)$.
-The generic points of $X$ are associated points of $X$, associated points other than
-generic points are call the \textit{embedded points} of $X$.
+The generic points of $X$ (\emph{i.e.} generic points of its irreducible components, or 
+point $x\in X$ such that if $x\in \overline{\{y\}}$, then $y=x$) 
+are associated points of $X$, associated points other than
+generic points are call the \textbf{embedded points} of $X$.
 \end{defi} 
 
 %Suppose $\mathfrak p_x=\operatorname{ann}(r_x)$ is a prime ideal of $R$, 
@@ -24,17 +26,58 @@ generic points are call the \textit{embedded points} of $X$.
 %there exists $f\in \mathfrak p_x$ such that $f\not\in \mathfrak p_y$ and $r_xf=0$
 %in $R_{y}$, so that $r_x=0 \in k(y)$. 
 
+
+\begin{supply}[primary decomposition]
+Here we review some facts on primary decomposition. Suppose $\mathfrak p$ is a prime
+ideal of a ring $R$, a ideal $\mathfrak q$ is called a $\mathfrak p$-primary 
+if $\sqrt{\mathfrak q}=\mathfrak p$ and for any $f$, $g\in R$ with $fg\in \mathfrak q$
+but $f\not\in \mathfrak p$, we have $g\in \mathfrak q$, \textit{i.e.}
+localization map $R/\mathfrak q\to (R/\mathfrak q)_{\mathfrak p}$ is monomorphism.
+
+Any ideal of a Noetherian ring has primary decompositions. Suppose $\mathfrak a$ is a 
+proper ideal of $R$, it can be written as an intersection $\mathfrak a=\cap_{i=1}^n 
+\mathfrak q_i$, where $\mathfrak q_i$ is $\mathfrak p_i$-primary ideal. Let 
+$P=\{\mathfrak p_i\}$, then 
+\begin{compactenum}
+\item $\Ass(R/\mathfrak a)\subset P$.
+\item If the decomposition is minimal, \emph{i.e.} $n$ is minimal, then 
+	$\mathfrak p_i\neq \mathfrak p_j$ iff $i\neq j$ and $\Ass(R/\mathfrak a)=P$. 
+	Moreover, if $\mathfrak p_i$ is the minimal prime ideal containing $\mathfrak a$,
+	then $\mathfrak q_i=\alpha_i^{-1}(\mathfrak a_{\mathfrak p_i})$, where 
+	$\alpha_i:R\to R_{\mathfrak p_i}$ is the localization map, so it's unique.
+\end{compactenum}
+A prime ideal $\mathfrak p$ can occur in $P$ if and only if the length of the largest 
+ideal of finite length in the ring $R_{\mathfrak p}/\mathfrak a_{\mathfrak p}$ (called
+multiplicity of $\mathfrak p$ in $R/\mathfrak a$) is nonzero.
+In particular, $R_{\mathfrak p}/\mathfrak a_{\mathfrak p}$ is Artinian iff $\mathfrak p$
+is a minimal prime ideal containing $\mathfrak a$.
+
+Geometrically, for a Noetherian affine scheme $\spec R$, each closed subscheme 
+$V(\mathfrak a)$ has primary decompositions, it can be viewed as a union of 
+primary closed subschemes $V(\mathfrak q_i)$. As topological spaces,
+$|V(\mathfrak q_i)|=|V(\mathfrak p_i)|$, so the set-theoretically maximal 
+components are unique, called \textbf{isolated components}, corresponding to
+the minimal prime ideals containing $\mathfrak a$ (so they are in $\Ass(R/\mathfrak a)$).
+The other components are called \textbf{embedded components}. If we apply this definition
+to local scheme $\spec \mathscr O_{X,x}$, we'll get above terminologies.
+\end{supply}
+
+
 \begin{lem}
 Let $X$ be a locally Noetherian scheme, $U$ an open subset of $X$, and 
 $i:U\to X$ the canonical inclusion. Then the canonical homomorphism 
 $\mathcal O_X\to i_*\mathcal O_U$ is injective iff $\Ass(\mathcal O_X)\subset U$.
 \end{lem}
 
+If $\Ass(\mathcal O_X)\subset U$, then $\overline U=X$, \textit{i.e.} $U$ is dense 
+in $X$.  Conversely, if there's no embedded point in $\Ass(\mathcal O_X)$, 
+$\overline U=X$ means that $\Ass(\mathcal O_X)\subset U$.
+
 \begin{proof}
 It's a local lemma, so we assume that $X=\spec R$, and then wo only need prove 
 that $R\to \mathcal O_X(U)$ is injective iff $\Ass(R)\subset U$.
 First we suppose that $\Ass(R)\subset U$. Let $r\in R$ s.t. $r|_U=0$. If $r\neq 0$,
-there exists a $\mathfrak p=\operatorname{ann}(rs)\in \ss(\langle r\rangle)
+there exists a nonzero $\mathfrak p=\operatorname{ann}(rs)\in \Ass(\langle r\rangle)
 \subset \Ass(R)\subset U$
 because $\langle r\rangle$ is a nonzero $R$-module. Since $r=0 \in R_{\mathfrak p}$,
 there exists $t\not\in \mathfrak p$ s.t. $rt=0\in R$. However, it means that
@@ -62,79 +105,37 @@ scheme $X$ by
 	\operatorname{Reg}(\mathcal O_{X,x})\text{ for all $x\in U$}\},
 	\quad \mathcal{PK}_X(U)= (\mathcal R_X(U))^{-1}\mathcal O_X(U)
 \]
-It's clear that $\mathcal R_X$ is a sheaf and 
-$\mathcal R_X(U)=\operatorname{Reg}(\mathcal O_X(U))$ for an affine open set $U$.
-Generally, 
-$\mathcal R_{X,x} \subset \operatorname{Reg}(\mathcal O_{X,x})$ for any $x$ and 
-$\mathcal R_X(U)\subset \operatorname{Reg}(\mathcal O_X(U))$
-for open set $U$.
+It's clear that $\mathcal R_X$ is a sheaf,  
+$\mathcal R_X(U)\subset \operatorname{Reg}(\mathcal O_X(U))$ for open set $U$, 
+and then $\mathcal R_{X,x} \subset \operatorname{Reg}(\mathcal O_{X,x})$ for any $x$.
+In fact, if a section $s\not\in \operatorname{Reg}(\mathcal O_X(U))$, then there exists 
+a non-zero section $t\in \mathcal O_X(U)$ such that $st=0$, and a point $x_0\in U$ 
+such that $t_{x_0}\neq 0$, so that $s_{x_0}t_{x_0}=0$ means that $s_{x_{0}}\not\in 
+\operatorname{Reg}(\mathcal O_{X,x_0})$ and then $s\not\in \mathcal R_X(U)$. Moreover,
+$\mathcal R_X(U)=\operatorname{Reg}(\mathcal O_X(U))$ for an affine open set $U$ since
+$s_{\mathfrak p}$ is regular in $R_{\mathfrak p}$ if $s$ in regular in $R$.
 However, $\mathcal{PK}_X$ does not need to be a sheaf, let's denote its 
 associated sheaf by $\mathcal K_X$.
-
-%\begin{lem}
-%$\mathcal R_X$ is a sheaf.  
-%\end{lem}
-
-%\begin{proof}
-%We should prove that $\operatorname{Reg}$ is compatible with restriction map, 
-%i.e.\vspace{1ex}
-%\begin{compactenum}[\quad (1)]
-%\item Suppose $V\subset U$ are two open affine subsets and 
-	%$r\in \mathcal R_X(U)$, then $r|_V\subset \mathcal R_X(V)$.
-%\item Suppose $\{U_i\}$ is an open affine covering of an affine open set $U$ and 
-	%$r\in \mathcal O_X(U)$. If $r|_{U_i}\in \mathcal R_X(U_i)$ for any $i$, 
-	%then $r\in \mathcal R_X(U)$.
-%\end{compactenum}\vspace{1ex}
-%First note that (1) and (2) are trivial if $V=D(f)$ and $\{U_i=D(f_i)\}$ 
-%are principle open sets, then for general (1) and (2), 
-%we can use the weak version of (1) to refine the covering to a new open covering 
-%$\{U_{ij}=D(f_{ij})\}$ and use the weak version of (2) to get (1) and (2). Therefore,
-%the sheaf axioms are valid for the basis of all affine open sets of $X$, so 
-%$\mathcal R_X$ is a sheaf on $X$.
-%\end{proof}
-
-
-%In fact, we can go back to affine scheme
-%$X=\spec R$ where $R$ is not Noetherian. For example, 
-%\[
-	%R=k[x_1,x_2,\dots]/\bigcap_{n=1}^\infty\langle x_1x_2\cdots x_n\rangle,
-%\]
-%where $k$ is a nice field. $\langle x_1\rangle$ is a prime ideal because 
-%$k[x_1,x_2,\dots]/\langle x_1\rangle = k[x_2,x_3,\dots]$ is a domain. 
-%Let's denote $k[x_1,x_2,\dots]$ by $S$. 
-%Since any element not in $\langle x_1\rangle$ is invertible in $S_{\langle x\rangle}$,
-%so 
-%\[
-	%R_{\langle x_1\rangle}=S_{\langle x_1\rangle}/
-	%\bigcap_{n=1}^\infty\langle x_1x_2\cdots x_n\rangle S_{\langle x_1\rangle}
-	%=S_{\langle x_1\rangle}/\langle x_1\rangle S_{\langle x_1\rangle}
-	%=\operatorname{Frac}(k[x_2,x_3,\dots]),
-%\]
-%so $\operatorname{Reg}(R_{\langle x_1\rangle})=R_{\langle x_1\rangle}=
-%\operatorname{Frac}(k[x_2,x_3,\dots])$.
-%For $\mathcal R_{X,x}$, the image of $(X,x_1x_2)$.
-
-%we can take open sets $\{D(x_i)\,:\, i\geq 2\}$ 
-%and their all possible finite intersections and calculate the colimit
-%\begin{align*}
-	%\mathcal R_{X,x} &= \varinjlim_n \operatorname{Reg}(R_{x_2x_3\cdots x_n})\\
-			 %&= \varinjlim_n \operatorname{Reg}\biggl(
-	%k[x_1,x_2,1/x_2,\dots,x_n,1/x_n,x_{n+1},\dots]/
-%\bigcap_{m=n+1}^\infty \langle x_1x_{n+1}\cdots x_m\rangle\biggr)\\
-			 %&= \varinjlim_n \{f\in
-	%k[x_1,x_2,1/x_2,\dots,x_n,1/x_n,x_{n+1},\dots]\,:\, 
-	%f|_{x_m=0}\neq 0 \text{ for all $m\geq n+1$}\}
-%\end{align*}
-
 
 \begin{lem}
 Let $X$ be a locally Noetherian scheme, then 
 $\mathcal R_{X,x}=\operatorname{Reg}(\mathcal O_{X,x})$ 
-for any $x\in X$. Therefore, $\mathcal K_{X,x}=\operatorname{Frac}(\mathcal O_{X,x})$.
+for any $x\in X$. Therefore, $\mathcal K_{X,x}=\mathcal R_{X,x}^{-1}\mathcal O_{X,x}
+=\operatorname{Frac}(\mathcal O_{X,x})$.
 \end{lem}
 
 \begin{proof}
-	See [Qing Liu, Lemma 7.1.12].
+Let $a_x=(a,U)$ is a stalk in $\operatorname{Reg}(\mathcal O_{X,x})$ with
+$U$ affine and $\mathcal O_X(U)$ Noetherian. 
+Since $\mathcal O_X(U)$ is Noetherian, $\operatorname{ann}(a)$
+is finitely gengerated whose generators are denoted by $\{a_i\,:\,0\leq i\leq n\}$.
+Since $a_x\in \operatorname{Reg}(\mathcal O_{X,x})$, 
+$\operatorname{ann}(a)\mathcal O_{X,x}=0$ or $(a_i)_x\mathcal O_{X,x}=0$. There exists
+affine open subset $V_i$ such that $a_i|_{V_i}\mathcal O_X(V_i)=0$ for each $i$, so on
+$V=\cap_{i=1}^n V_i$, $\operatorname{ann}(a|_V)\mathcal O_X(V)=0$. Hence 
+$\operatorname{ann}(a|_V)=0$ or 
+$a|_V\in R(\mathcal O_X(V))=\mathcal R_X(V)$, and then $a_x\in \mathcal R_{X,x}$,
+which completes the proof.
 \end{proof}
 
 \begin{pro}
@@ -150,11 +151,11 @@ $\mathcal K_X\to i_*\mathcal K_U$ is an isomorphism.
 
 \begin{defi}
 Let $X$ be a scheme, we denote the group $H^0(X,\mathcal K^*_X/
-\mathcal O_X^*)$ by $\Div(X)$ whose elements are called Cartier divisors
+\mathcal O_X^*)$ by $\Div(X)$ whose elements are called \textbf{Cartier divisors}
 on $X$, where $A^*$ is the set of invertible elements of a ring $A$.
-The image of $f\in H^0(X,\mathcal K^*)$ in $\Div(X)$ is called a \emph{principle
-Cartier divisor} and is denoted by $\operatorname{div}(f)$. Moreover, a divisor
-$D$ is called \emph{effective} if it's in the image of 
+The image of $f\in H^0(X,\mathcal K^*)$ in $\Div(X)$ is called a \textbf{principle}
+Cartier divisor and is denoted by $\operatorname{div}(f)$. Moreover, a divisor
+$D$ is called \textbf{effective} if it's in the image of 
 $H^0(X,\mathcal O_X\cap \mathcal K^*)\to \Div(X)$, denoted by $D\geq 0$
 and the image is denoted by $\Div_+(X)$.
 \end{defi}
