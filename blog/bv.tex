@@ -1,5 +1,5 @@
 % !TEX program = xelatex
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage{../noteheader}
 \usepackage{ctex}
 
@@ -48,7 +48,7 @@ Batalin-Vilkovisky量子化科普
 
 数学上，这样的交换分次代数也不少见，其中非常常见的是流形的de Rham complex，流形$M$上的余切丛的截面的反对称化$\Gamma(\Lambda^*M)$. 但是de Rham complex上还有一个非常重要的构造，外微分算子。这样对象的推广被称为\textit{微分分次代数} (differential graded algebra)，简记为 dga. 
 
-\begin{defi}
+\begin{defi}[微分分次代数]
     若$V$是一个交换分次$k$-代数，如果有一个$1$-次$k$-代数同态$d:V\to V$满足：$dV_i\subset V_{i+1}$, $d^2=0$和 Leibniz 法则，即对齐次元$a$满足
     \[
         d(ab)=(da)b+(-1)^{\deg(a)}a(db).
@@ -85,27 +85,129 @@ Batalin-Vilkovisky量子化科普
     这里，对分次$k$-矢量空间$V$，类似地可以定义出$\operatorname{Spec}(\operatorname{Sym}(V^*))$.
 \end{para}
 
+\begin{para}[超流形]
+一个$(n|m)$-超流形$\mathcal M$，是一个$n$-维的流形$M$上的层$\mathcal O_{\mathcal M}$，局部同构于一超代数$C^\infty(U)\otimes \Lambda^* V^*$，其中$V$是一个给定的$m$-维矢量空间。
+\end{para}
+
+\begin{para}[分裂超流形]
+设$E$是一个$n$-维流形$M$上秩为$m$的矢量丛，则我们有一个自然的$(n|m)$-超流形$\Pi E$，其结构层即$\Lambda^* E^*$的结构层。
+\end{para}
+
+\section{Gauss积分}
+
+\begin{para}[Gauss积分]
+    设$Q$是一个正定二次型，则
+    \[
+        \int_{\mathbb R^n}d^nx \exp(-Q(x,x))=\pi^{n/2}(\det Q)^{-1/2}.
+    \]
+\end{para}
+
+\begin{para}[Fresnel积分]
+    设$Q$是一个非退化二次型，则
+    \[
+        \int_{\mathbb R^n}d^nx \exp(iQ(x,x))=\pi^{n/2}\exp\biggl(\frac{\pi i}{4} \operatorname{sign}(Q)\biggr)|\det Q|^{-1/2},
+    \]
+    其中$\operatorname{sign}(Q)$是二次型的特征，即正本征值的数量减去负本征值的数量。
+\end{para}
+
+\begin{para}[费米Gauss积分]
+    设$V$是一个分次$k$-交换代数，$\{\eta_i\}_{i=1,\dots n}$是某个奇次分次$V_i$的一组线性无关矢量，设$Q$是一个反对称$n\times n$矩阵，则
+    \[
+        \int D\eta_n\cdots D\eta_1 \exp\left(\frac{1}{2}Q(\eta,\eta)\right)=\operatorname{Pf}(Q),
+    \]
+    其中$Q(\eta,\eta)=\sum_{i,j}Q_{ij}\eta_i\eta_j$.
+    这里$\int D\eta_n\cdots D\eta_1$即提取$\eta_1\cdots \eta_n$之前的系数。不难证明，设$\eta'_i=\sum_jA_{ij}\eta_j$，则
+    \[
+        \int D\eta'_n\cdots D\eta'_1=\det(A)^{-1}\int D\eta_n\cdots D\eta_1,
+    \]
+    这与玻色情况的测度变化刚好相反。
+\end{para}
+
+\begin{para}
+    设$V$是一个分次$k$-交换代数，$\{\eta_i\}_{i=1,\dots n}$是某个奇次分次$V_i$的一组线性无关矢量，而$\{\bar \eta_i\}_{i=1,\dots n}$是另外某个奇次分次$V_j$的一组线性无关矢量，设$Q$是任意的$n\times n$矩阵，则
+    \[
+        \int (D\eta_nD\bar\eta_n)\cdots (D\eta_1D\bar\eta_1) \exp\left(Q(\bar\eta,\eta)\right)=\det(Q),
+    \]
+    其中$Q(\bar\eta,\eta)=\sum_{i,j}Q_{ij}\bar\eta_i\eta_j$.
+\end{para}
+
+实际上，只有$\exp$展开中的第$n$阶才贡献，
+\[
+    \frac{1}{n!}\sum Q_{i_1j_1}\cdots Q_{i_nj_n}\int (D\eta_nD\bar\eta_n)\cdots (D\eta_1D\bar\eta_1) (\bar\eta_{i_1}\eta_{j_1})\cdots (\bar\eta_{i_n}\eta_{j_n}),
+\]
+由于每一对$\bar\eta\eta$都交换都没有符号，所以可以把$i_1,\dots,i_n$固定成$1,\dots,n$，此时所有对这些$i$的求和把$1/n!$消掉，然后可以把所有的$\bar\eta$积掉得到
+\[
+    \sum_{j\in S_n} Q_{1j_1}\cdots Q_{nj_n}\int D\eta_n\cdots D\eta_1 \eta_{j_1}\cdots \eta_{j_n}，
+\]
+后面的积分即一个反对称因子，继而得到了行列式。
+
+\section{Faddeev-Popov构造}
+
+方便起见，我们考虑一个有限维流形$X$，以及Lie 群$G$在$V$上的作用，$G$的李代数为$\mathfrak g$. 现在，我们考虑“路径积分”
+\[
+\int_{X} \mu \exp(iS),
+\]
+其中我们要求$S$是$G$-不变函数，$\mu$是一个$G$-不变测度。在物理上，$G$-等价的点被认为是相同的，所以实际考虑的路径积分应该是
+\[
+I=\int_{X/G}\tilde \mu\exp(iS),
+\]
+即我们是对$X$中的$G$-轨道积分，$\tilde \mu$是$X/G$的测度。
+
+设$\dim G=m$，$\dim X=n$，$\mu$是$X$的$G$-不变测度，$\pi:X\to X/G$是商映射。再设$\{v_1,\dots,v_{m}\}$是$\mathfrak g$的一组基$\{t_1,\dots,t_{m}\}$对应的基本矢量场，即$(v_i)_p\in T_p X$是单参曲线$\exp(\lambda t_i)\cdot p$在$\lambda=0$处的切矢量。于是，$\pi_* v_i=0$，这来自于任何$G$-不变函数$f$都有$\frac{d}{dt}f(\exp(\lambda t_i)\cdot p)=0$. 进而，我们构造$X/G$的测度$\tilde \mu$如下：
+\[
+    \iota_{v_m}\cdots \iota_{v_1}\mu=\pi^*\tilde \mu.
+\]
+容易从左边是$G$-不变和再作用任意的$\iota_{v_k}$都为零可知这一定是一个商映射的拉回，所以用来定义$\tilde \mu$合理。
+
+在实际操作中，我们通常是在原空间$X$上取一些“规范固定”函数来给出$X/G$，即选择一族函数$f=(f_1, \dots, f_{\dim G}):X\to \mathfrak g$，使得子流形$W=f^{-1}(0)\xrightarrow{i} X$与$G$-轨道们横截相交（方便起见，假设只交一次），此时，我们考虑的不是$X/G$上的积分，而是$W$上的积分。为此，首先将$\tilde \mu$通过$\pi i$拉回到$W$上，得到$W$上的体积形式
+\[
+    i^*\pi^*\tilde \mu=i^*(\iota_{v_m}\cdots \iota_{v_1}\mu)
+\]
+所有$W$上的矢量场$w$都满足$df_i(w)=0$. 我们想求任意$n-m$个$W$上的矢量场$\{w_i\}$上的值$i^*(\iota_{v_m}\cdots \iota_{v_1}\mu)(w_1,\dots,w_{n-m})$. 但是，考虑这个$i^*\pi^*\tilde \mu$并不方便，实际上，不如考虑$X$上的体积形式
+\[
+    \alpha=df_1\wedge \cdots \wedge df_m\wedge (\iota_{v_m}\cdots \iota_{v_1}\mu),
+\]
+容易看到
+\[
+    \iota_{w_{n-m}}\cdots \iota_{w_1}\alpha=(-1)^{m}(\iota_{w_{n-m}}\cdots \iota_{w_1} \pi^*\tilde \mu)\, df_1\wedge \cdots \wedge df_m
+\]
+中$df_1\wedge \cdots \wedge df_m$的系数即所求之值，因此$W$上的体积形式可以形式地写作
+\[
+    i^*\pi^*\tilde \mu=\int \delta(f)\alpha.
+\]
+现在我们来求$\alpha$，不妨设$\mu=df_1\wedge \cdots \wedge df_m\wedge\beta$，其中$\beta$是$\bigcap_i\ker \iota_{v_i}\subset T^*X$的基外积而成的形式，于是
+\[
+    \iota_{v_m}\cdots \iota_{v_1}\mu=df_1\wedge \cdots \wedge df_m(v_1,\dots,v_m)\,\beta=\det(df_i(v_j))\,\beta,
+\]
+两边外积上$df_1\wedge \cdots \wedge df_m$即得到$\alpha=\det(df_i(v_j))\mu$. 所以，最后我们的积分可以写作
+\[
+    I=\int_{X}\delta(f)\exp(iS)\det(df_i(v_j))\mu.
+\]
+其中$df_i(v_j)$可以更内蕴地理解为一个$\mathfrak g\to \mathfrak g$的线性映射$\mathsf{FP}_f(x)$.
+
+Faddeev-Popov构造的最后一步是将$\delta(f)$和$\det(\mathsf{FP}_f(x))$重写为积分，引入如下玻色和费米积分
+\begin{align*}
+    \delta(f(x))&=\frac{1}{(2\pi)^m}\int_{\mathfrak{g}^*}d^m\lambda \,\exp(i\langle \lambda,f(x)\rangle),\\
+    \det(\mathsf{FP}_f(x))&=(-i)^m\int_{\prod \mathfrak{g}\oplus \mathfrak{g}^*} \prod_{i=1}^m (Dc_iD\bar c_i) \exp\left(i\langle\bar c,\mathsf{FP}_f(x)c\rangle\right),
+\end{align*}
+我们就得到了
+\[
+    I=\frac{1}{(2\pi i)^m}\int_{X}\mu\int_{\prod \mathfrak{g}\oplus \mathfrak{g}^*} \prod_{i=1}^m (Dc_iD\bar c_i)\int_{\mathfrak{g}^*}d^m\lambda \,\exp(iS+i\langle \lambda,f(x)\rangle+i\langle\bar c,\mathsf{FP}_f(x)c\rangle).
+\]
+
+记
+\[
+    S_{\text{FP}}=S+\langle \lambda,f(x)\rangle+\langle\bar c,\mathsf{FP}_f(x)c\rangle,
+\]
+我们首先来研究其极值点（即运动方程）：
+\[
+    c=\bar c=0,\quad f(x)=0,\quad \partial_i S(x)+\langle \lambda,\partial_i f\rangle=0.
+\]
+同时，由于$S$是$G$-不变的，所以$S$的极值轨道与规范固定$f=0$是横截相交的，这就说明，$S$在$p\in W$处给出的条件极值（$dS(T_pW)=0$）其实也是$S$的真正极值（$dS(T_pX)=0$），换而言之，最后一个条件极值方程中的$\lambda$也为零。于是，$S_{\text{FP}}$的极值点形如$(p,c=\bar c=\lambda=0)$，其中$p$是$S$的某条极值轨道与规范固定子流形之交。此外，也正是$\lambda$这些乘子的引入，导致了$S_{\text{FP}}$在极值点处的Hessian也不再退化，继而我们可以用其去写出传播子，这里就不展开了。
+
 \section{正文}
 
-方便起见，我们考虑一个有限维的$k$-矢量空间$V$，函数空间$\mathscr O(V)=\operatorname{Sym}(V^*)$，以及Lie 群$G$在$V$上的作用。回忆，$V$可以自然等同于$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点的集合。同时，通过
-\[
-g\cdot\psi(v)=\psi(g^{-1}\cdot v),
-\]
-我们立刻可以将$G$作用定义到$\mathscr O(V)$上。
-
-现在，我们考虑“路径积分”
-\[
-\int_{V} \exp(-S),
-\]
-其中我们要求$S$是$G$-不变函数。在物理上，$G$-等价的点被认为是相同的，所以实际考虑的路径积分应该是
-\[
-\int_{V/G}\exp(-S),
-\]
-即我们是对$V$中的$G$-轨道积分。为使得这个积分有意义，我们还需要定义$V/G$上的体积元。物理上，我们通常是在原空间$V$上取一些“规范固定”函数来定义$V/G$，即选择一族函数$f_1$, $\dots$, $f_{\dim G}:V\to \mathbb R$，使得子流形$W=\bigcap_i f_i^{-1}(0)$与$G$-轨道们横截相交（方便起见，假设只交一次），此时，我们就可以典范等同$W$与$V/G$，我们将此记作映射
-\[
-    i:V/G\to W\hookrightarrow V.
-\]
-于是，若$V$上的体积元为$\Omega$，则$V/G$上的体积元就是拉回$i^*\Omega$. 这就是Faddeev-Popov 量子化最开始所作的事情。然而，从上述过程中可以看到，“规范固定”的选取使得我们很难重新还原$G$-作用的影响，因为我们只在每条轨道中选了一个点，所以我们希望可以找到一种更“不变”的方式来定义这个积分。
+这就是Faddeev-Popov 量子化最开始所作的事情。然而，从上述过程中可以看到，“规范固定”的选取使得我们很难重新还原$G$-作用的影响，因为我们只在每条轨道中选了一个点，所以我们希望可以找到一种更“不变”的方式来定义这个积分。
 
 为解决这个问题，注意到，在上面构造中，子流形是比规范固定函数更加基本的东西。而在所有与$G$-轨道横截相交的子流形，最“正则”的子流形是与$G$-轨道“垂直”的那些。考虑一个从$x$出发的单参群作用给出的轨道$\gamma(t)=g(t)\cdot x$，若$f$是一个$G$-不变函数，则$\partial_t f(\gamma(t))=0$，在$x$点处也即$\langle df,\dot{\gamma}(0)\rangle(x)=0$. 于是$\dot \gamma(0)$给出$G$-轨道，而与其垂直的方向由$df=0$给出。
 

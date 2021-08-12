@@ -1,0 +1,55 @@
+\documentclass[10pt]{article}
+\usepackage[zh]{../noteheader}
+\usepackage{titletoc}%使用目录
+
+\usepackage{hyperref}
+	\hypersetup %一些选项
+	{
+		bookmarksnumbered=true,%书签中章节编号
+		colorlinks=true,  % 彩色链接 false:边框链接 ; true: 彩色链接
+	}
+
+\input{../defs}
+\newcommand{\cc}{\mathbb{C}}
+
+\title{$\mathcal N=4$ SYM 超对称振幅与超对称Wilson loop对偶}
+\author{Buwai Lee}
+\date{\today}
+
+\begin{document}
+
+\maketitle %标题
+
+\section{（假装）熟知的事实，非超对称的情况}
+
+从弦论和AdS/CFT，我们已经知道$\mathcal N=4$ SYM与在$AdS_5\times S^5$上的type IIB 超弦之间有着一个看上去证据极强的“对偶”存在。在振幅层次，历史上首先知道的是胶子振幅与$AdS_5\times S^5$种的开弦散射之间的关系。即使$\mathcal N=4$ SYM是紫外有限的，但在处理具体问题的时候，难免会看到红外发散，即使最终这种发散被抵消了，我们也需要一种手段去做正规化。在弦论侧，我们可以做如下的事情。
+
+首先写下$AdS_5$的度规
+\[
+    ds^2=R^2\frac{dx_{3+1}^2+dz^2}{z^2},
+\]
+然后在$z=z_{\text{IR}}\sim \infty$附近垂直地放一排$N$个D3-膜，我们考虑的渐进态都来自于端点在这些D3-膜上的开弦的散射。对于端点位于两个平行放置位置为$z_1$和$z_2$的D3-膜的开弦来说，膜间距将赋予它一个正比于$|z_1-z_2|/\alpha$的经典质量。在这些膜非常靠近和低能的两种极限（故只考虑无质量的激发）下，他们将在$x_{3+1}$-空间中给出一个具有$SU(N)$规范群（$SU(N)$指标来自于开弦端点所处的膜的指标，即所谓的Chan-Paton因子）的无质量规范理论。同时，由于我们要考虑弦微扰，我们会考虑大$N$极限下，即弱耦合的情况，
+则这些开弦的微扰振幅似乎就会对应胶子的振幅。在$AdS_5$中的动量为
+\[
+    k_{AdS_5}=\frac{k z_{\text{IR}}}{R},
+\]
+其中$k$是平直$x_{3+1}$-空间中的（类光）四动量，在将截断$z_{\text{IR}}$推向无穷时可以理解为是固定的。
+
+现在我们做T-对偶，原$x$变量变成了
+\[
+	\partial_\alpha y^\mu = \sqrt{-1}w^2(z)\epsilon_{\alpha\beta}\partial_\beta x^\mu
+\]
+原度规
+\[
+	ds^2=w^2(z)dx_\mu dx^\mu+\cdots
+\]
+在重定义$r=R^2/z$之后，$AdS_5$的度规则变成了同种形式
+\[
+	ds^2=R^2\frac{dy^2_{3+1}+dr^2}{r^2},
+\]
+而原本的$z_{\text{IR}}$则变到了边界$r\sim 0$附近。而插入顶点算子的边界条件给出了限制
+\[
+	\Delta y^\mu=2\pi k^\mu.
+\]
+
+\end{document}
