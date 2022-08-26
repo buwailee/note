@@ -1454,7 +1454,7 @@ Abel范畴中，一个态射是同构等价于它既是单态射又是满态射�
 唯一性的部分命题直接来自于上面的引理。从上一个引理，我们知道存在这样的单态射$t$. 由于$\coim(f)=th$，左侧是一个满态射，所以$t$是一个满态射。一个单态射如果是满态射，则必然是一个同构。
 \end{proof}
 
-\begin{pro}
+\begin{pro}\label{pro:1.5.21}
 在Abel范畴中，$\ker f=0$当且仅当$f=\im f$. 对偶地，$\coker f=0$当且仅当$f=\coim f$. 
 \end{pro}
 
@@ -1569,6 +1569,59 @@ f_{i+1}f_i&=\im(f_{i+1})\coim(f_{i+1})\im(f_{i})\coim(f_{i})\\
 \]
 被称为\idx{短正合列}。它等价于说，$f$单$g$满且$\im f\approx \ker g$.
 \end{para}
+
+\begin{para}[分裂正和序列]
+对
+\[
+	0\to A\xrightarrow{f}B
+\]
+如果存在$g:B\to A$使得$gf=\id_A$，则称呼此正和列分裂。这个条件也可以等价地写作，任取$l:A\to C$，都存在扩张$l':B\to C$使得分解$l=l'f$成立。实际上，如果存在左逆，则我们可以构造$l'=lg$. 反之，我们可以扩张$\id_A$使得$\id_A=(\id_A)'f$，于是$(\id_A)'$是$f$的左逆。
+
+类似地，如果对
+\[
+	B\xrightarrow{h}C\to 0
+\]
+存在$i:C\to B$使得$hi=\id_C$，则称此正和列分裂。类似地，我们可以将其等价地表述为，任取$p:D\to C$，都存在$p':D\to B$使得分解$p=hp'$成立。
+
+对短正和列，
+\[
+	0\to A\xrightarrow{f}B\xrightarrow{h}C\to 0,
+\]
+结合上述两个分裂条件，非常容易检验，此时$B$是$A$和$C$的双积，此时我们称这个短正和列分裂。而实际上，对于短正和列，我们只需要任意一端的分裂条件，即可推出另一端的分裂条件，于是可以推出短正和列的分裂。
+\end{para}
+
+
+\begin{pro}
+在准加性范畴中，如果$f:X\to Y$有右逆$g:Y\to X$（即$fg=1$）和核$\ker(f):Z\to X$，则$Z\xrightarrow{\ker f}X\xleftarrow{g}Y$是一个余积，即$X=Y\oplus Z$.
+\end{pro}
+
+\begin{proof}
+注意到$f(\id_X-gf)=f-f=0$，所以根据$\ker f$的泛性质，存在唯一的$i:X\to Z$使得分解$\id_X-gf=\ker (f)i$成立。我们检查以下几个双积典范态射需要满足的等式：
+\[
+	fg=\id_Y,\quad i\ker(f)=\id_{Z},\quad gf+\ker (f)i=\id_X,\quad f\ker(f)=0,\quad 
+	ig=0,
+\]
+其中只需要检查第二个和最后一个。我们首先证明$ig=0$，在第三个式子右边复合$g$立刻给出
+\[
+	\ker(f)ig=g-gfg=0,
+\]
+由于$\ker(f)$单，所以$ig=0$. 对$i\ker(f)=\id_{Z}$，在第三个式子右边复合$\ker(f)$给出$\ker(f)i\ker(f)=\ker(f)$，通过$\ker(f)$单，立刻给出$i\ker(f)=\id_{Z}$.
+\end{proof}
+
+那么，在短正和列
+\[
+	0\to A\xrightarrow{f}B\xrightarrow{h}C\to 0
+\]
+如果右侧是分裂的，则$h$有右逆$i$，利用上面的命题，容易看到
+\[
+	\ker h\xrightarrow{\ker h}B\xleftarrow{i}C
+\]
+是一个双积。由于$\ker h = \im f=f$，后者我们利用了Proposition \ref{pro:1.5.21}，单态射$f$等于其$\im f$，于是
+\[
+	A\xrightarrow{f}B\xleftarrow{i}C
+\]
+是一个双积。对偶地，如果短正和列左侧分裂，我们也可以推出双积。
+
 
 \begin{para}
 设$T:\mathcal{C}\to \mathcal{D}$是准加性范畴之间的函子，如果对$\mathcal{C}$中的态射$f$, $g$成立$T(f+g)=Tf+Tg$. 则称$T$是一个加性函子。更形式地说，

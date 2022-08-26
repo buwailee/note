@@ -703,68 +703,6 @@ $X$是有限集的情况是类似的，可以定义出多重赋值同态
 	因此令$\mm$是包含$\mathfrak{a}$的极大理想，然后令$k_1=k[\Sigma]/\mm$，这是一个$k$的一个扩张，并且每个$f\in \Sigma$都在$k_1$中都有一个根，故$k[x]$中的任意多项式都在$k_1$中有根。对$k_1$同样进行构造得到$k_2$，不断继续下去得到$k_3$, $k_4$等等。令$K=\bigcup_{n=1}^\infty k_n$, 显然$K$是一个域，并且每一个$f\in \Sigma$都可以完全分裂成线性因子。然后令$\bar{k}$是$K$中在$k$上代数的元素构成的集合，从 \ref{iope}，它们构成一个环，进而是一个域。这就是我们需要的代数闭域。
 \end{proof}
 
-\section{Noether正规化与维数}
-
-这节讲Noether正规化，几何来看，Noether正规化告诉我们一个仿射簇基本是一个仿射空间的“覆叠”。进而，仿射簇的维数应该与这个仿射空间相同。
-
-\begin{pro}[Noether正规化引理]
-设$R$是一个有限生成$k$-代数，则存在一个整数$d\geq 0$和一个$k$-代数单同态$k[t_1,\dots,t_d]\hookrightarrow R$使得$R$是有限生成$k[t_1,\dots,t_d]$-模。
-\end{pro}
-
-注意到，此时$R$在$k[t_1,\dots,t_d]$上整，因为任取$r\in R$，都有$k[t_1,\dots,t_d][r]$是有限生成的$k[t_1,\dots,t_d]$-模，作为Noether $k[t_1,\dots,t_d]$-模$R$的子模。
-
-\begin{proof}
-$R$可以写作$k[x_1,\dots,x_n]/\mathfrak a$. 我们对$n$进行归纳，对$n=0$或者$\mathfrak a=0$是平凡的。我们下面假设$n>0$且$\mathfrak a\neq 0$. 取一个非零的$f\in \mathfrak a$，写作
-\[
-	f=\sum_{\nu \in \mathbb N^n}\alpha_\nu x^\nu,
-\]
-我们可以通过适当重定义$x_i\mapsto x_i-x_n^{m_i}$，其中$i\neq n$且$m_i$是自然数，使得$f$作为$x_n$的多项式，$x_n$的最高次系数属于$k$. 注意，重定义并不会使得$k[x_1,\dots,x_n]$变化，即$k[x_1-x_n^{m_1},\dots,x_{n-1}-x_n^{m_{n-1}},x_n]=k[x_1,\dots,x_n]$. 这是一个纯粹的几何问题，每项非零的$\alpha_\nu x^\nu$都会产生一项$\alpha_\nu x_n^{(m,\nu)}$，这里的$(m,\nu)$是$(m_1,\dots,m_{n-1},1)$和$(\nu_1,\dots,\nu_n)$的内积。所以只要$m$保证一个严格极大值的存在即可，这样的$m$显然存在，因为非零的$\alpha_\nu$有限。
-
-现在，考虑$R$的子代数$S=k[x_1,\dots,x_{n-1}]/(\mathfrak a\cap k[x_1,\dots,x_{n-1}])$，则$R$是一个有限生成$S$-模。实际上，唯一可能造成不有限生成的$x_n$满足一个$k[x_1,\dots,x_{n-1}]$系数多项式方程$f(x_n)=0$. 进而，从归纳假设，存在一个$k$-代数单同态$k[t_1,\dots,t_d]\hookrightarrow S$. 于是，复合$k[t_1,\dots,t_d]\hookrightarrow S\hookrightarrow R$就是想要的$k$-代数单同态。
-\end{proof}
-
-下面我们再给一个Zariksi引理的证明。
-
-\begin{coro}[Zariski引理]
-一个有限生成$k$-代数如果是域，则其为有限维$k$-矢量空间。
-\end{coro}
-
-\begin{proof}
-我们只要证明$d=0$. 若$d>0$，则$t_1$的像$r_1$的逆$1/r_1$满足一个首一多项式方程$r_1^{-n}+r_1^{-n+1}p_1(r)+\cdots=0$，两边乘以$r_1^{n-1}$，就得到$1/r_1\in k[r_1,\dots]$，这与$k[r_1,\dots]$是多项式环矛盾。
-\end{proof}
-
-几何上，Noether正规化引理告诉了我们如何对有限生成$k$-代数定义其维度。考虑最简单的多项式环$k[x_1,\dots,x_n]$，这里要求$k$是代数闭域，则我们注意到，$k[x_1,\dots,x_n]$的极大理想一一对应着$k^n$中的每一个点（详见后面的章节），进而，对$k[x_1,\dots,x_n]$，我们定义其维度为$n$. Noether正规化引理告诉我们，每一个有限生成$k$-代数都包含了一个多项式环$k[x_1,\dots,x_d]$，并且在这个多项式环上，是一个有限生成模，于是我们可以定义这个有限生成$k$-代数的维度为$d$. 但对于不是有限生成$k$-代数的交换环，它们的维数如何定义呢？
-
-\begin{para}[维数]
-设$R$是一个环，素理想链$\mathfrak p_0\subset \mathfrak p_1\subset \cdots \subset \mathfrak p_k$的长度我们定义为$k$. 则$R$的维数（Krull维数）定义为$R$中素理想链的长度的上确界，若上确界不存在则定义为是无限维。对每个素理想$\mathfrak p$，$R_{\mathfrak p}$的维数被称为$\mathfrak p$的高度，记作$\operatorname{ht}(\mathfrak p)$. 等价地，$\operatorname{ht}(\mathfrak p)$即包含在$\mathfrak p$中素理想链的长度的上确界。
-\end{para}
-
-\begin{pro}
-设$R$是一个Noether环，则$\dim R=0$当且仅当$R$是一个Artin环。
-\end{pro}
-
-\begin{proof}
-注意到$\dim R=0$等价于$R$的任意素理想都是极大理想，于是这是Proposition \ref{pro:3.4.16} 的直接应用。
-\end{proof}
-
-\begin{thm}[Krull主理想定理]
-令$R$是一个Noether环，而$r\in R$不可逆，再令$\mathfrak p$为包含$r$的素理想集中的一个极小元，则$\operatorname{ht}(\mathfrak p)\leq 1$.
-\end{thm}
-
-\begin{proof}
-我们可以局部化之，此时$\mathfrak p$是极大理想。如有必要，还可以模去一个极小素理想，此时，我们还可以假设$R$是整环，于是我们要证明，素理想$\mathfrak q$如果真包含在$\mathfrak p$中，则$\mathfrak q = 0$. 首先，注意到$\mathfrak q$不包含$r$. 
-其次，由于$R$是整环，所以典范态射$R\to R_r$是一个单射，下面我们将$R$自然等同于$R_r$的一个子环。
-
-首先，从假设，可以看到$\dim R/\langle r\rangle=0$，所以这是一个Artin环。考虑降链$\{\mathfrak q_n:=\mathfrak q^n R_r\cap R\}$，
-首先要注意到这是$R$的理想的降链，其次可以看到$\mathfrak q_n$基本就是$\mathfrak q^n$
-除以$r$. 所以一个重要的性质是，如果$rx\in \mathfrak q_n$且$x\in R$，则$x\in \mathfrak q_n$.
-这条降链在$R/\langle r\rangle$中的像稳定，所以对于足够大的$n$有
-$\mathfrak q_n\subset \mathfrak q_{n+1}+\langle r\rangle$. 
-对足够大的$n$，令$x\in \mathfrak q_n$，则存在一个$y\in R$使得$x-ry\in \mathfrak q_{n+1}\subset \mathfrak q_n$. 于是$ry\in \mathfrak q_n$，进而$y \in \mathfrak q_n$.
-所以，$\mathfrak q_n\subset \mathfrak q_{n+1}+r\mathfrak{q_n}\subset \mathfrak q_{n+1}+\mathfrak p \mathfrak q_n$. 于是，Nakayama引理告诉我们，$\mathfrak q_n=\mathfrak q_{n+1}$. 
-因为$\mathfrak q_n R_{r}=\mathfrak q^n R_{r}$，所以$\mathfrak q^{n+1}R_r=\mathfrak q^{n}R_r$，于是$\mathfrak q^{n+1}=\mathfrak q^n$. 应用Nakayama引理，立刻可知$\mathfrak q^n=0$，进而$\mathfrak q=0$.
-\end{proof}
-
 \section{Jacobson环}
 
 \begin{para}[Jacobson环]

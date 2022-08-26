@@ -237,7 +237,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 
 证明只需要将上面的推论应用到$N=\sum_{i=1}^n Rm_i$即可。
 
-\para 作为Nakayama引理的一个应用，我们谈谈余切空间。将在流形$M$上一点$p$的某个邻域$U$光滑的函数$f$记作一个偶对$(f,U)$，并在两个偶对上定义如下等价关系：$(f,U)\sim (g,V)$，如果存在一个开集$W\subset U\cap V$使得$f|_W=g|_V$. 这样，所有等价类构成了一个环$\mathcal{F}_p$，这是一个局部环，唯一的极大理想由那些在点$p$上为零的光滑函数构成，因为如果$f$不在点$p$为零，由连续性，在足够小的一个邻域上，$f$存在逆。将$\mathcal{F}_p$的极大理想记作$\mathfrak{m}$. 流形上点$p$处的余切空间$T_p^*M$定义为$\mathfrak{m}/\mathfrak{m}^2$，这是一个$\mathcal{F}_p/\mathfrak{m}$-矢量空间。而商同态$d:\mathfrak{m}\to \mathfrak{m}/\mathfrak{m}^2$正是微分算子，或者说从$0$-阶到$1$-阶的外微分算子。为方便起见，设流形为$\mathbb{R}^n$，点$p$是原点$0$.
+\para \label{3.2.14} 作为Nakayama引理的一个应用，我们谈谈余切空间。将在流形$M$上一点$p$的某个邻域$U$光滑的函数$f$记作一个偶对$(f,U)$，并在两个偶对上定义如下等价关系：$(f,U)\sim (g,V)$，如果存在一个开集$W\subset U\cap V$使得$f|_W=g|_V$. 这样，所有等价类构成了一个环$\mathcal{F}_p$，这是一个局部环，唯一的极大理想由那些在点$p$上为零的光滑函数构成，因为如果$f$不在点$p$为零，由连续性，在足够小的一个邻域上，$f$存在逆。将$\mathcal{F}_p$的极大理想记作$\mathfrak{m}$. 流形上点$p$处的余切空间$T_p^*M$定义为$\mathfrak{m}/\mathfrak{m}^2$，这是一个$\mathcal{F}_p/\mathfrak{m}$-矢量空间。而商同态$d:\mathfrak{m}\to \mathfrak{m}/\mathfrak{m}^2$正是微分算子，或者说从$0$-阶到$1$-阶的外微分算子。为方便起见，设流形为$\mathbb{R}^n$，点$p$是原点$0$.
 
 $\mathfrak{m}$是一个清楚的有限生成$\mathcal{F}_p$-模，生成元为$\{x_1$, $\cdots$, $x_n\}$. 现在设一族元素$\{f_1$, $\cdots$, $f_n\}$，使得$\{df_1$, $\cdots$, $df_n\}$生成了作为$\mathcal{F}_p/\mathfrak{m}=\mathbb{R}$-模的余切空间$\mathfrak{m}/\mathfrak{m}^2$.
 
@@ -811,7 +811,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \para 由于$R$本身就是一个$R$-模，如果$R$是有限长$R$-模，已经知道，在$R$的任何合成列中出现的极大理想不依赖于合成列的选取，个数不大于$R$的长度。记这些极大理想的集合为$I$，作为$R$-模成立同构$R\cong\bigoplus_{\mathfrak{m}\in I}R_\mathfrak{m}$.
 
 \begin{lem}
-回忆\ref{oka}里面的定义，$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$组成的理想族是Oka理想族。
+回忆 \ref{oka} 里面的定义，$R$中所有使得$R/\mathfrak{a}$是有限长$R$-模的理想$\mathfrak{a}$组成的理想族是Oka理想族。
 \end{lem}
 
 \begin{proof} 
@@ -908,11 +908,11 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \end{proof}
 
 将上面两个命题应用到$M=R/\mathfrak a$就有：
-\begin{pro}
+\begin{pro}\label{pro:3.4.20}
 	设$\mathfrak a$是Noether环$R$的一个理想，则以下命题等价：
 	\begin{compactenum}[~~(1)]
 		\item $\pp$是包含$\mathfrak a$的极小素理想。
-		\item $R_\pp/I_\pp$是Artin环。
+		\item $R_\pp/{\mathfrak a}_\pp$是Artin环。
 		\item 存在一个$n$使得$(\pp_\pp)^n\subset \mathfrak a_{\mathfrak p}$.
 	\end{compactenum}
 \end{pro}
