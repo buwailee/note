@@ -1,7 +1,7 @@
-% !TEX program = xelatex
+% !TEX program = aplatex
 \documentclass[11pt]{article}
-\usepackage{../noteheader}
 \usepackage{ctex}
+\usepackage{../noteheader}
 
 \theoremstyle{definition}
 	\newtheorem{para}{}[section]
@@ -16,7 +16,7 @@
 
 \begin{document}
 
-Batalin-Vilkovisky量子化科普
+Batalin-Vilkovisky量子化
 
 \section{分次结构}
 
@@ -28,6 +28,8 @@ Batalin-Vilkovisky量子化科普
 \begin{defi}
     设$V$是一个$k$-矢量空间，可以写成直和$V=\bigoplus_{i\in\mathbb Z} V_i$，其中$V_i$中的元素被称为$i$-次元，这样一个矢量空间被称为分次矢量空间。如果$v\in V$处于某个$V_i$中，则称其为齐次的，此时若$v\neq 0$是$i$-次元，定义$\deg(v)=i$. 
 \end{defi}
+
+有时候平移分次是有用的，给定$V$，我们定义$V[k]=\bigoplus_{i\in\mathbb Z} (V[k])_i$，其中的分次为$(V[k])_i=V_{k+i}$. 
 
 \begin{defi}
     设有两个分次$k$-矢量空间$V$和$W$，$k$-同态$f:V\to W$满足$f(V_i)\subset W_{i+a}$，则称$f$是一个$a$-次同态。特别地，$0$-次同态简称为同态。
@@ -91,6 +93,34 @@ Batalin-Vilkovisky量子化科普
 
 \begin{para}[分裂超流形]
 设$E$是一个$n$-维流形$M$上秩为$m$的矢量丛，则我们有一个自然的$(n|m)$-超流形$\Pi E$，其结构层即$\Lambda^* E^*$的结构层。
+\end{para}
+
+\begin{para}[$\mathbb Z$-分次超流形]
+给定一个超流形$\mathcal M$，如果局部地，开集$U$通过坐标卡同胚于一个分次矢量空间$W$，其只有偶数分次，且
+$V$是只有奇数分次的分次矢量空间，则局部坐标可以视为分次矢量空间$W^*$中的元素，他们诱导了$C^\infty(U)\otimes \Lambda^* V^*$的子代数$\operatorname{Sym}(W^*)\otimes \Lambda^* V^*$上的一个$\mathbb Z$-分次。如果这个分次相容于坐标变换，则我们称$\mathcal M$是一个$\mathbb Z$-分次超流形。
+\end{para}
+
+局部地，我们可以选取坐标$\{x_i\}$使得其中每个坐标都是齐次元，此时如果坐标$x^i$是$W_{2k}$线性函数，则分次为$-2k$，若为$V_{2k+1}$上的线性函数，则分次为$-(2k+1)$.
+
+\begin{para}[超流形上的分次矢量场]
+    $\mathcal M$上的$k$-次矢量场为$k$-次导子$v:\mathcal O_{\mathcal M}\to \mathcal O_{\mathcal M}$，即满足$\deg (v(f))=k+\deg(f)$以及
+    \[
+        v(fg)=v(f)g+(-1)^{k\deg(f)}fv(g),
+    \]
+    其中$f$是齐次元。记号上，我们记$k$为$\deg(v)$.
+\end{para}
+
+一个典型的分次矢量场为Euler矢量场$E$，它是零次矢量场，满足$Ef=\deg(f)f$，其中$f$为任意齐次元，局部地，如果坐标为$\{x^i\}$，则他可以写作
+\[
+    E=\sum_i \deg(x^i)x^i\partial_{x^i}.
+\]
+对任意的分次矢量场$v$，我们可以知道$[E,v]=\deg(v)v$. 实际上，任取齐次元$f$，我们有
+\[
+    [E,v]f=Evf-(-1)^{\deg(E) \deg(v)}vEf=\deg(vf)vf-\deg(f)vf=\deg(v)vf.
+\]
+
+\begin{para}[${T[1]M}$ 与 ${T^*[-1]M}$]
+设$M$是一个流形，局部地，局部坐标$x^i$的分次定义为0，而切向量的局部坐标$\partial_{x^i}$的分次定义为$-1$，或者说对偶坐标$dx^i$的分次定义为$1$. 则切丛$TM$构成了一个超流形，记作$T[1]M$. 这里分次平移$[1]$的意思是，即切向量的局部坐标$\partial_{x^i}$在$TM$中对应$0$次。类似地，可以定义${T^*[-1]M}$，其中对偶坐标$\partial_{x^i}$的分次定义为$-1$.
 \end{para}
 
 \section{Gauss积分}
@@ -159,19 +189,26 @@ I=\int_{X/G}\tilde \mu\exp(iS),
 \]
 容易从左边是$G$-不变和再作用任意的$\iota_{v_k}$都为零可知这一定是一个商映射的拉回，所以用来定义$\tilde \mu$合理。
 
-在实际操作中，我们通常是在原空间$X$上取一些“规范固定”函数来给出$X/G$，即选择一族函数$f=(f_1, \dots, f_{\dim G}):X\to \mathfrak g$，使得子流形$W=f^{-1}(0)\xrightarrow{i} X$与$G$-轨道们横截相交（方便起见，假设只交一次），此时，我们考虑的不是$X/G$上的积分，而是$W$上的积分。为此，首先将$\tilde \mu$通过$\pi i$拉回到$W$上，得到$W$上的体积形式
+在实际操作中，我们通常是在原空间$X$上取一些“规范固定”函数来给出$X/G$，即选择一族函数$f=(f_1, \dots, f_{\dim G}):X\to \mathfrak g$，使得子流形$W=f^{-1}(0)\xrightarrow{i} X$与$G$-轨道们横截相交（方便起见，假设只交一次），此时，我们考虑的不是$X/G$上的积分，而是$W$上的积分。
+为此，首先将$\tilde \mu$通过$\pi i$拉回到$W$上，得到$W$上的体积形式
 \[
-    i^*\pi^*\tilde \mu=i^*(\iota_{v_m}\cdots \iota_{v_1}\mu)
+    i^*\pi^*\tilde \mu=i^*(\iota_{v_m}\cdots \iota_{v_1}\mu).
 \]
-所有$W$上的矢量场$w$都满足$df_i(w)=0$. 我们想求任意$n-m$个$W$上的矢量场$\{w_i\}$上的值$i^*(\iota_{v_m}\cdots \iota_{v_1}\mu)(w_1,\dots,w_{n-m})$. 但是，考虑这个$i^*\pi^*\tilde \mu$并不方便，实际上，不如考虑$X$上的体积形式
+
+% 为进一步计算这个体积形式，我们考虑其在任意$n-m$个$W$上的矢量场
+% $\{w_i\}$上的值$i^*(\iota_{v_m}\cdots \iota_{v_1}\mu)(w_1,\dots,w_{n-m})$. 
+
+% 我们想求
+
+但是，在实际计算中，这个$i^*\pi^*\tilde \mu$并不方便，实际上，不如考虑$X$上的体积形式
 \[
     \alpha=df_1\wedge \cdots \wedge df_m\wedge (\iota_{v_m}\cdots \iota_{v_1}\mu),
 \]
-容易看到
+容易看到，任取$n-m$个$W$上的矢量场$\{w_i\}$，利用所有$W$上的矢量场$w$都满足$df_i(w)=0$，则
 \[
     \iota_{w_{n-m}}\cdots \iota_{w_1}\alpha=(-1)^{m}(\iota_{w_{n-m}}\cdots \iota_{w_1} \pi^*\tilde \mu)\, df_1\wedge \cdots \wedge df_m
 \]
-中$df_1\wedge \cdots \wedge df_m$的系数即所求之值，因此$W$上的体积形式可以形式地写作
+中$df_1\wedge \cdots \wedge df_m$的系数即$i^*\pi^*\tilde \mu$在任意$\{w_i\,:\,i=1,\dots,n-m\}$上的取值，因此$W$上的体积形式可以形式地写作
 \[
     i^*\pi^*\tilde \mu=\int \delta(f)\alpha.
 \]
@@ -194,16 +231,16 @@ Faddeev-Popov构造的最后一步是将$\delta(f)$和$\det(\mathsf{FP}_f(x))$�
 \[
     I=\frac{1}{(2\pi i)^m}\int_{X}\mu\int_{\prod \mathfrak{g}\oplus \mathfrak{g}^*} \prod_{i=1}^m (Dc_iD\bar c_i)\int_{\mathfrak{g}^*}d^m\lambda \,\exp(iS+i\langle \lambda,f(x)\rangle+i\langle\bar c,\mathsf{FP}_f(x)c\rangle).
 \]
-
-记
+于是，我们可以引入新的作用量
 \[
-    S_{\text{FP}}=S+\langle \lambda,f(x)\rangle+\langle\bar c,\mathsf{FP}_f(x)c\rangle,
+    S_{\text{FP}}=S+\langle \lambda,f(x)\rangle+\langle\bar c,\mathsf{FP}_f(x)c\rangle.
 \]
-我们首先来研究其极值点（即运动方程）：
+
+对上述的作用量，我们首先来研究其极值点（即运动方程）：
 \[
     c=\bar c=0,\quad f(x)=0,\quad \partial_i S(x)+\langle \lambda,\partial_i f\rangle=0.
 \]
-同时，由于$S$是$G$-不变的，所以$S$的极值轨道与规范固定$f=0$是横截相交的，这就说明，$S$在$p\in W$处给出的条件极值（$dS(T_pW)=0$）其实也是$S$的真正极值（$dS(T_pX)=0$），换而言之，最后一个条件极值方程中的$\lambda$也为零。于是，$S_{\text{FP}}$的极值点形如$(p,c=\bar c=\lambda=0)$，其中$p$是$S$的某条极值轨道与规范固定子流形之交。此外，也正是$\lambda$这些乘子的引入，导致了$S_{\text{FP}}$在极值点处的Hessian也不再退化，继而我们可以用其去写出传播子，这里就不展开了。
+由于$S$是$G$-不变的，所以$S$的极值轨道与规范固定$f=0$是横截相交的，这就说明，$S$在$p\in W$处给出的条件极值（$dS(T_pW)=0$）其实也是$S$的真正极值（$dS(T_pX)=0$），换而言之，最后一个条件极值方程中的$\lambda$也为零。于是，$S_{\text{FP}}$的极值点形如$(p,c=\bar c=\lambda=0)$，其中$p$是$S$的某条极值轨道与规范固定子流形之交。此外，也正是$\lambda$这些乘子的引入，导致了$S_{\text{FP}}$在极值点处的Hessian也不再退化，继而我们可以用其去写出传播子，这里就不展开了。
 
 \section{正文}
 
