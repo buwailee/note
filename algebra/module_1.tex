@@ -189,7 +189,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 	其中$q\in R[x]$. 或者写作，$1-q(\varphi)\varphi=0$. 因此$q(\varphi)$是$\varphi$的一个逆，进而$\varphi$是一个同构。
 \end{proof}
 
-\para 设$M$是一个模，一组元素$\{x_1,\dots, x_n, \dots\}$被称为线性无关的，如果任取其中有限个元素$x_{i_1},\dots,x_{i_k}\in M$，以及对任意的$r_{i_1},\dots,r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$\{x_1,\dots,x_n,\dots\}$自由生成的，这组元素被称为自由生成元，或者叫做一组基。\endpara
+\para 设$M$是一个模，其子集$X$被称为线性无关的，如果任取其中有限个元素$x_{i_1},\dots,x_{i_k}\in X$，以及对任意的$r_{i_1},\dots,r_{i_k}\in R$，使得如果$r_{i_1}x_{i_1}+\cdots+r_{i_k}x_{i_k}=0$可以推出$r_{i_1}=\cdots=r_{i_k}=0$. 如果有一组线性无关的元素可以生成$M$，则$M$同构于那族元素生成的自由模，此时$M$称为被$X$自由生成的，这组元素被称为自由生成元，或者叫做一组基。\endpara
 
 将上一个命题应用到自由模。
 
@@ -214,7 +214,7 @@ Noether模远比Artin模应用广泛，比如我们后面会断言Artin环一定
 	\[
 	a_{n+1}x_{n+1}=-a_1x_1-\cdots-a_nx_n,
 	\]
-	两边除以$a_{n+1}$得出$x_{n+1}$可以由$\{x_1,\cdots,x_{n}\}$生成，于是$M$也可以由$\{x_1,\cdots,x_{n}\}$生成，由归纳假设，$M$是一个自由模。
+	两边除以$a_{n+1}$得出$x_{n+1}$可以由$\{x_1,\dots,x_{n}\}$生成，于是$M$也可以由$\{x_1,\dots,x_{n}\}$生成，由归纳假设，$M$是一个自由模。
 \end{proof}
 
 利用选择公理，实际上，域上的模（矢量空间）都是自由模，但是这里暂时用不到这点。
@@ -649,7 +649,7 @@ $\ann(M/N)\cap S=\varnothing$这个条件可以写成：任取$s\in S$以及$m\i
 \end{proof} 
 
 
-\section{有限长模}
+\section{有限长模与Artin环}
 
 \para 设$M$是一个$R$-模，如果$M$没有非平凡子模，则称$M$是一个单模。任取非零元$x\in M$，考虑子模$Rx\subset M$，如果$M$是单模，我们只有两个可能，$Rx=\{0\}$或者$Rx=M$. 但是由于$x=1x\in Rx$非零，所以$Rx=M$. 于是任意的一个单模都是由一个元素生成的。反过来，单元素生成的模是不是单模？答案是不一定的。
 
@@ -1149,8 +1149,8 @@ $R$-模，而$N$是$M$的一个子模。则存在一个$n_0$使得对$n\geq n_0$
 
 \begin{lem}[Krull]
 	令$R$是一个Noether环，$\mathfrak a$是一个理想，而$M$是一个有限生成$R$-模，则$\bigcap_{n\geq 0}\mathfrak a^nM$就是$M$中满足$(1+a)x=0$的所有$x$的集合，其中$a\in \mathfrak a$.
-	\end{lem}
+\end{lem}
 	
-	\begin{proof}
-		如果$(1+a)x=0$，则$x=-ax$，所以$x\in \mathfrak a^n M$对任何$n\geq 0$都成立。反过来，如果$x \in \bigcap_{n\geq 0}\mathfrak a^nM$，我们对$\langle x\rangle$应用Proposition \ref{artin-rees}，则对足够大的$n$都有$\mathfrak a^n M\cap \langle x\rangle \subset \mathfrak a \langle x\rangle$. 于是$x\in \mathfrak a \langle x\rangle=x\mathfrak a$，此即所需。
-	\end{proof}
+\begin{proof}
+	如果$(1+a)x=0$，则$x=-ax$，所以$x\in \mathfrak a^n M$对任何$n\geq 0$都成立。反过来，如果$x \in \bigcap_{n\geq 0}\mathfrak a^nM$，我们对$\langle x\rangle$应用Proposition \ref{artin-rees}，则对足够大的$n$都有$\mathfrak a^n M\cap \langle x\rangle \subset \mathfrak a \langle x\rangle$. 于是$x\in \mathfrak a \langle x\rangle=x\mathfrak a$，此即所需。
+\end{proof}

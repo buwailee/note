@@ -800,9 +800,13 @@ $\mathfrak q_n\subset \mathfrak q_{n+1}+\langle r\rangle$.
 \begin{proof}
 	首先，我们断言$\mathfrak m^n\neq \mathfrak m^{n+1}$对所有$n\geq 0$都对，否则$\mathfrak m^n=\mathfrak m^{n+1}$和Nakayama引理告诉我们$\mathfrak m^n=0$，此时$R$就是Artin环，但我们的局部环是一维的。其次，任取非零理想$\mathfrak a$，则存在一个正整数$n$使得$\mathfrak m^n\subset \mathfrak a$. \notprove
 
-	从1到2是因为赋值环都整闭。2到3如下，令$a\in \mathfrak m$非零，则存在一个正整数$n$使得$\mathfrak{m}^n\subset (a)$但$\mathfrak m^{n-1}\not\subset (a)$. 选$b\in \mathfrak m^{n-1}$但$b\not\in (a)$，再令$x=a/b\in k$，$k$为$R$的分式域。我们有$x^{-1}\not\in R$（因为$b\not\in (a)$），因为$x^{-1}$在$R$上不整，我们有$x^{-1}\mathfrak m\not\subset \mathfrak m$，否则，从$x^{-1}\mathfrak m\subset \mathfrak m$可知$\mathfrak m$是一个忠实$R[x^{-1}]$-模，其作为$R$-模也有限生成。但是从$x$的构造知道$x^{-1}\mathfrak m\subset R$，于是$x^{-1}\mathfrak m=R$，继而$\mathfrak m=(x)$.
+	1到2是因为赋值环都整闭。
+	
+	2到3如下，令$a\in \mathfrak m$非零，则存在一个正整数$n$使得$\mathfrak{m}^n\subset (a)$但$\mathfrak m^{n-1}\not\subset (a)$. 选$b\in \mathfrak m^{n-1}$但$b\not\in (a)$，再令$x=a/b\in k$，$k$为$R$的分式域。我们有$x^{-1}\not\in R$（因为$b\not\in (a)$），因为$x^{-1}$在$R$上不整，我们有$x^{-1}\mathfrak m\not\subset \mathfrak m$，否则，从$x^{-1}\mathfrak m\subset \mathfrak m$可知$\mathfrak m$是一个忠实$R[x^{-1}]$-模，其作为$R$-模也有限生成。但是从$x$的构造知道$x^{-1}\mathfrak m\subset R$，于是$x^{-1}\mathfrak m=R$，继而$\mathfrak m=(x)$.
 
-	从3到4是显然的，只要注意到$\mathfrak m\neq \mathfrak m^2$，于是$\mathfrak m/\mathfrak m^2\neq 0$. 4到5如下：任取非零真理想$\mathfrak a$，则存在$n$使得$\mathfrak m^n\subset \mathfrak a$，\notprove
+	3到4是显然的，只要注意到$\mathfrak m\neq \mathfrak m^2$，于是$\mathfrak m/\mathfrak m^2\neq 0$. 
+	
+	4到5如下：任取非零真理想$\mathfrak a$，则存在$n$使得$\mathfrak m^n\subset \mathfrak a$，\notprove
 
 	5到6可以如下得到：由于$\mathfrak m\neq \mathfrak m^2$，所以存在$x\in \mathfrak m$但其不在$\mathfrak m^2$中，但是，从假设$(x)=\mathfrak m^k$，于是$k$只能等于$1$，即$(x)=\mathfrak m$，且$(x^k)=\mathfrak m^k$.
 

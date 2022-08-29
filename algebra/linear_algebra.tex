@@ -1,8 +1,32 @@
 \chapter{线性代数}
 \ThisULCornerWallPaper{1}{../Pictures/3.png}
-\section{矢量空间与对偶空间}
+\section{矢量空间与张量代数}
 
-\section{张量代数}
+\begin{para}[矢量空间]
+   若$k$是一个域，则称$k$-模为$k$-矢量空间。
+\end{para}
+
+如果一个$k$-矢量空间是有限生成的，则我们已经知道他一定是有限长模，其长度就被定义为其维度，但一般来说，我们通常采用基的预言来刻画维度。
+
+\begin{pro}
+    设$V$是一个$k$-矢量空间，$X$是其子集，如果存在有限个$\{x_i\}\subset X$以及$k_i\in k$使得$\sum_i k_ix_i=0$，则称$X$是线性相关的，否则则是线性无关的，则以下命题等价：
+    \begin{compactenum}
+        \item $X$是极大线性无关子集；
+        \item $X$是$V$的一个极小生成集；
+        \item $V$中任意元素都可以表为有限和$\sum_{x\in X}k_x x$，其中只有有限个$k_x$非零。
+    \end{compactenum}
+    所以满足这些性质的子集被我们称为$V$的一组基，里面的元素叫做基矢量；并且不难看到，一旦给定一个基$X$，则$V\cong \oplus_{x\in X}k$. 所以，$\dim V=|X|$.
+\end{pro}
+
+这个命题的证明是标准的。并且，给定一个线性无关子集，考虑所有包含其的线性无关子集，他们的并也是线性无关的，于是利用Zorn引理，我们可以断言线性无关子集一定包含于一组基中，特别地，基存在。已经看到，对于有限维的矢量空间，每个基的元素个数都是相同的，因为他们都等于维度。下面我们给一个独立的证明。
+
+\begin{pro}
+设$X$和$Y$都是$V$的基，且都有限，对于$y\in Y-X$，则存在$x\in X-Y$使得$(Y-\{y\})\cup \{x\}$是一组基。特别地，每个基的元素个数都相等。
+\end{pro}
+
+\begin{proof}
+对于每个$x\in X$，他们都可以用$Y$中的元素线性展开，由于$Y$是基，则一定存在一个$x$的展开式中$y$的系数不为零，这个$x$就是我们要的那个，检查是直接的。现在，假设$X$, $Y$都是基，且我们选得使得$|Y|>|X|$且$|Y-X|$尽可能小。由于$|Y-X|\neq 0$，所以可以选$y\in Y-X$和$x\in X-Y$使得$Y'=(Y-\{y\})\cup \{x\}$也是一组基，且$|Y'|=|Y|>|X|$，但$|Y'-X|<|Y-X|$，这和我们的选取矛盾。
+\end{proof}
 
 \section{本征值问题}
 
@@ -17,6 +41,12 @@
 \end{para}
 
 如果$v$是本征值$a$对应的本征矢量，则$(x-a)v=0$等价于$Av=av$. 这就是经典的本征方程。
+
+\begin{para}[本征空间]
+    如果$a\in k$是线性映射$A:V\to V$的本征值，则所有以$a$为本征矢量的$v\in V$以及$0$构成了$V$的一个子空间，他被称为$A$的对应于本征值$a$的本征空间。
+
+    显然，如果$v$, $w$的本征值为$a$，则$rv+sw\neq 0$的本征值也为$a$，所以定义合理。并且，从定义，不难看到$V$的本征空间是$V$的一个$k[x]$-子模。
+\end{para}
 
 \begin{lem}
     如果$V$是有限维$k$-矢量空间，则首一多项式$\det(xI-A)\in \ann_{k[x]}(V)$.
@@ -98,7 +128,7 @@
         \item $\deg(p(V))=\dim V$;
         \item $p(V)=q(V)$;
         \item 存在$v\in V$使得$v$, $xv$, $\dots$, $x^{n-1}v$是线性无关的;
-        \item $V$是一个循环$k[x]$-模。
+        \item $V$是一个循环$k[x]$-模，即$V$作为$k[x]$-模可以由单个元素生成。
     \end{compactenum}
 \end{pro}
 
@@ -137,12 +167,6 @@
     \]
     所以从$\dim V(p_i)=n_i\deg(p_i)$以及Proposition \ref{pro:6.3.7} 立刻得到$V(p_i)$是一个循环$k[x]$-模。
 \end{proof}
-
-\begin{para}[本征空间]
-    如果$a\in k$是线性映射$A:V\to V$的本征值，则所有以$a$为本征矢量的$v\in V$以及$0$构成了$V$的一个子空间，他被称为$A$的对应于本征值$a$的本征空间。
-
-    显然，如果$v$, $w$的本征值为$a$，则$rv+sw\neq 0$的本征值也为$a$，所以定义合理。并且，从定义，不难看到$V$的本征空间是$V$的一个$k[x]$-子模。
-\end{para}
 
 \section{主理想整环上的有限生成模}
 
@@ -185,25 +209,23 @@
 	设$M$是一个$R$-模，如果对$m\in M$有$\ann(m)\neq 0$，则$m$被称为一个挠元。如果$M$中每个元素都是挠元，则$M$被称为一个挠模。如果对非零的$m\in M$都有$\ann(m)=0$，则称$M$是一个无挠模。
 \end{para}
 
-对$M$来说，其所有挠元构成的集合是它的一个子模，这被称为$M$的挠子模，记作$M_{\text{tor}}$. 显然，$M$无挠当且仅当$M_{\text{tor}}=0$. 所以，$M/M_{\text{tor}}$总是无挠的。
+对$M$来说，其所有挠元构成的集合是它的一个子模，这被称为$M$的挠子模，记作$M_{\text{tor}}$. 显然，$M$无挠当且仅当$M_{\text{tor}}=0$. 所以，$M/M_{\text{tor}}$总是无挠的。此外，由于模同态$\varphi:M\to N$将挠元映射为挠元，所以他自然诱导了映射$M/M_{\text{tor}}\to N/N_{\text{tor}}$，这体现了$M/M_{\text{tor}}$的函子性。实际上，若$N$是无挠模，则$\operatorname{Hom}_{R}(M/M_{\text{tor}},N)\cong \operatorname{Hom}_{R}(M,N)$，所以这是将无挠性遗忘的遗忘函子的左伴随。
 
-\begin{lem}
-	设$R$是一个PID，$M$是一个有限生成无挠模，则$M$是一个自由模。
-\end{lem}
+\begin{pro}
+	设$R$是一个PID，$M$是一个有限生成无挠模，则$M$是一个自由模。一般地，如果$M$是一个有限生成模，则成立分解
+    \[
+        M=M_{\mathrm{tor}}\oplus M_{\mathrm{free}}
+    \]
+    这里$M_{\mathrm{free}}$是一个自由模，其秩只依赖于$M$.
+\end{pro}
 
 PID上的自由模当然是无挠的。
 
 \begin{proof}
-	以后再证明。
-\end{proof}
+	我们先考虑无挠的情况，我们选$M$的一个有限生成集合$X$，然后取其中的极大线性无关子集$Y$. 虽然我们未必可以将$x\in X-Y$表为$Y$的线性组合，但是由于$Y\cup \{x\}$线性相关，则存在$r_x\in R$使得$r_xx$可以由$Y$线性组合而成. 令$r=\prod_{x\in X-Y}r_x$，则$m\mapsto rm$给出的映射$M\to \bigoplus_{y\in Y}R$是单射，那么作为自由模的子模，$M$依然是自由模。
 
-\begin{pro}
-设$R$是一个PID，$M$是一个有限生成模，则成立分解
-\[
-	M=M_{\mathrm{tor}}\oplus M_{\mathrm{free}}
-\]
-这里$M_{\mathrm{free}}$是一个自由模，其秩只依赖于$M$.
-\end{pro}
+    现在，来到一般的模。由于$M/M_{\mathrm{tor}}$是有限生成无挠模，所以是自由的。我们可以选一组基，然后找$M$中的原像，然后给出其生成的子模，容易验证这是一个自由子模，且与$M_{\mathrm{tor}}$无交。
+\end{proof}
 
 \begin{para}[根子模]
     设$r\in R$，对$R$-模$M$，局部化同态$\alpha_r:M\to M_r$的核$\ker \alpha_r$被称为$M$关于$r$的根子模，记作$M(r)$. 不难看到，
@@ -343,4 +365,60 @@ PID上的自由模当然是无挠的。
 设$M$是一个$R$-挠模且$\ann(M)=\langle p^n\rangle$，其中$p\in R$是一个素元，则$M$可以写成几个循环$R$-模的直和。
 \end{pro}
 
-\section{矢量空间在线性算子下的分解}
+显然，这些循环模$M_i$都有$\ann(M_i):=p^{n_i}$，其中$n_i\leq n$，于是他们同构于$R/\langle p^{n_i}\rangle$.
+
+\begin{proof}
+我们用归纳法，对$M$的极小生成集的元素个数归纳。首先，如果$M$的极小生成集的个数为$1$，则已经是循环模了。现在假设小于$r$的时候都对，设$M$的极小生成集为$\{x_1,\dots,x_r\}$，再记$\ann(x_i)=\langle p^{n_i}\rangle$且满足$n_1\geq n_2\geq \cdots\geq n_r$，我们还需要选取使得$n_r$在不同的极小生成集的选取中是极小的。取$\{x_1,\dots,x_{r-1}\}$生成的子模$N$，由归纳假设，它可以由某个极小生成集$\{y_1,\dots,y_{l}\}$自由生成，由于极小性，必然有$l\leq r-1$. 但是，由于$\{y_1,\dots,y_{l},x_r\}$生成了$M$，所以再由极小性，$l=r-1$. 我们下面将$x_i$取做$y_i$，其中$1\leq i\leq r-1$.
+
+下面我们证明$M=N\oplus Rx_r$，即证明$N\cap Rx_r=\{0\}$. 为此，考虑商模$M/N$，$\bar x_r$为$x_r$的像，此时有$\ann(\bar x_r)=\langle p^k\rangle$，我们只需证明$k=n_r$. 实际上，如果这是对的，则任取$z\in N\cap Rx_r$，都有$d\in R$使得$z=dx_r$，从而$d\in \ann(\bar x_r)=\langle p^k\rangle=\langle p^{n_r}\rangle$，于是$z=dx_r=0$. 
+
+由于$n_r\geq k$，我们只要排除严格大于的情况。此时，由于$p^k x_r\in N$，所以存在直和分解$p^k x_r=\sum_{i=1}^{r-1} a_i x_i$. 乘以$p^{n_r-k}$之后，可以得到$p^{n_r}x=\sum_i a_ip^{n_r-k} x_i=0$，进而$a_ip^{n_r-k}x_i=0$对每个$1\leq i\leq r-1$都对。于是，$a_ip^{n_r-k}\in \langle p^{n_i}\rangle$，因为$n_r$的极小性，$a_i\in \langle p^k\rangle$，所以可以记$a_i=p^kb_i$. 最后令$x_r'=x_r-\sum_{i=1}^{r-1} b_ix_i$，可以看到$p^kx_{r}'=0$，这与$n_r$的极小性矛盾。
+\end{proof}
+
+于是，对任意的有限生成模$M$，如果$\ann(M_{\mathrm{tor}})=\langle p_1^{n_1}\cdots p_k^{n_k}\rangle$，则其可以分解为
+\[
+    M\cong R^r\oplus \bigoplus_{i=1}^k\bigoplus_{j=1}^{n_i} (R/\langle p_i^{j}\rangle)^{m_{ij}}.
+\]
+为了计算$m_{ij}$，我们只需在域$R/\langle p_i\rangle$上计算所有的$\dim (p_i^kM/p_i^{k+1}M)$即可。实际上，我们先计算$R/\langle p_1\rangle$上的$\dim (M/p_1M)$，注意到对$p_i\neq p_1$，我们都有
+\[
+    \dim_{R/\langle p_1\rangle}R/\langle p_i^{j}\rangle/\langle p_1\rangle=0,
+\]
+这是因为互素，$p_i$在$R/\langle p_1\rangle$中的像可逆，导致模掉$p_i$就模光了。同时
+\[
+    \dim_{R/\langle p_1\rangle}R/\langle p_1^{j}\rangle/\langle p_1\rangle=\dim_{R/\langle p_1\rangle}R/\langle p_1\rangle=1,
+\]
+所以
+\[
+    \dim_{R/\langle p_1\rangle}(M/p_1M)=r+\sum_{j=1}^{n_1}m_{1j}.
+\]
+同样的理由，可以计算得到
+\[
+    \dim_{R/\langle p_1\rangle}(p_1^2M/p_1M)=r+\sum_{j=1}^{n_1-1}m_{1j}.
+\]
+于是我们可以一路得到所有的$m_{1j}$和$r$，其他的$m_{ij}$也同理。这就说明了上面的分解的唯一性。
+
+\begin{thm}
+    主理想整环$R$上的有限生成模$M$都同构如
+    \[
+        M\cong R^r\oplus\bigoplus_{i=1}^n R/\mathfrak{a}_i,
+    \]
+    其中$0\neq \mathfrak{a}_n\subset \mathfrak{a}_{n-1}\subset \cdots\subset\mathfrak{a}_1\neq R$，且此真理想链由$M$的同构类唯一确定，称为$M$的初等因子。
+\end{thm}
+
+\begin{proof}
+    如果$\ann(M_{\mathrm{tor}})=\langle p_1^{n_1}\cdots p_k^{n_k}\rangle$，且在上述分解中我们已经得到了$m_{ij}$，即我们有$m_{ij}$个$p_i^j$. 现在，对每个$i$，取最大的$p_i^j$，并相应修改我们的$m_{ij}$，然后考虑其乘积，他生成的理想记作$\mathfrak{a}_n$. 我们只需对新的$m_{ij}$持续做下去，就得到了所需的全部的理想。并且，不难看到$n=\max_i(\sum_j m_{ij})$.
+\end{proof}
+
+作为一个直接的应用，我们考虑域的乘法群的有限子群，他们只能是循环群。
+
+\begin{pro}
+    设$k$是域，乘法群$k^\times = k-\{0\}$的任何有限子群都是循环群。特别地，如果$k$是有限域，则$k^\times$是循环群。
+\end{pro}
+
+\begin{proof}
+    如果$A\subset k^\times$是有限群，则作为交换群，即$\mathbb Z$-模，利用PID上的有限生成模的分解定理，有
+    \[
+        A\cong \bigoplus_{i=1}^n \mathbb Z/\langle d_i\rangle,
+    \]
+    其中$d_1|d_2|\cdots|d_n$，注意到这里没有自由模，否则不有限。于是，可以看到任取$\{a\in A\,:\, a^{d_n}=1\}$共有$\prod_i d_i$个元素。然而多项式$x^{d_n}-1$在$k$中至多只有$d_n$个根，于是只可能$n=1$，所以$A$是一个循环群。
+\end{proof}
