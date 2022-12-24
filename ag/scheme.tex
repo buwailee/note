@@ -396,19 +396,19 @@ $\overline{\mathscr{U}}$也是一个范畴。再方便起见，我们可以假�
 
 \begin{proof} 连续函数在开覆盖上的黏合是显然的，对于层的态射那部分，用的技术无外乎层上截面的黏合，这是很琐碎的检验，这里略去了。\end{proof}
 
-% 下面一个命题是类似的，但我们给一个证明。
+下面一个命题是类似的，但我们给一个证明。
 
-% \begin{pro}\label{rsnh}
-% 设$(X,\mathcal{O}_X)$是一个赋环空间，$\mathfrak{B}$是$X$的一个拓扑基。如果任取$U_\alpha\in \mathfrak{B}$都给一个态射$\Phi_\alpha:(U_{\alpha},\mathcal{O}_{U_{\alpha}})\to (Y,\mathcal{O}_Y)$，且任取两个指标$(\alpha,\beta)$，存在一个指标$\gamma$使得$U_\gamma\subset U_\alpha\cap U_\beta$且$\Phi_\alpha|_{U_\gamma}=\Phi_\beta|_{U_\gamma}$，则存在唯一的态射$\Phi:(X,\mathcal{O}_{X})\to (Y,\mathcal{O}_Y)$使得$\Phi|_{U_{\alpha}}=\Phi_\alpha$.
-% \end{pro}
+\begin{pro}\label{rsnh}
+设$(X,\mathcal{O}_X)$是一个赋环空间，$\mathfrak{B}$是$X$的一个拓扑基。如果任取$U_\alpha\in \mathfrak{B}$都给一个态射$\Phi_\alpha:(U_{\alpha},\mathcal{O}_{U_{\alpha}})\to (Y,\mathcal{O}_Y)$，且任取两个指标$(\alpha,\beta)$，存在一个指标$\gamma$使得$U_\gamma\subset U_\alpha\cap U_\beta$且$\Phi_\alpha|_{U_\gamma}=\Phi_\beta|_{U_\gamma}$，则存在唯一的态射$\Phi:(X,\mathcal{O}_{X})\to (Y,\mathcal{O}_Y)$使得$\Phi|_{U_{\alpha}}=\Phi_\alpha$.
+\end{pro}
 
-% \begin{proof}
-% 设$\Phi_\alpha=(\psi_\alpha,\theta_a)$，这里的$\psi_\alpha$的黏合是显然的，得到$\psi$. 现在我们考虑$\theta_\alpha:\oo_Y\to (\psi_\alpha)_*\oo_{U_\alpha}$. 任取$V\subset Y$，我们有
-% \[
-% 	\theta_\alpha(V):\oo_Y(V)\to (\psi_\alpha)_*\oo_{U_\alpha}(V)=\Gamma(\psi_\alpha^{-1}(V),\oo_{U_\alpha})=\Gamma(U_\alpha\cap\psi^{-1}(V),\oo_{X}),
-% \]
-% 任取$s\in \oo_Y(V)$，我们得到了一族截面$t_\alpha=\theta_\alpha(V)(s)\in\Gamma(U_\alpha\cap\psi^{-1}(V),\oo_{X})$. 黏合条件告诉我们，任取两个指标$(\alpha,\beta)$，存在一个指标$\gamma$使得$U_\gamma\subset U_\alpha\cap U_\beta$且$t_\alpha|_{U_\gamma}=t_\beta|_{U_\gamma}$. 于是，层公理（见Proposition \ref{psgl}）告诉我们存在$t\in\Gamma(\psi^{-1}(V),\oo_{X})$使得$t|_{U_\alpha}=t_\alpha$. 于是$s\mapsto t$就给出了态射$\theta(V):\oo_Y(V)\to \Gamma(\psi^{-1}(V),\oo_{X})=\psi_*\oo_X(V)$. 此即所证。
-% \end{proof}
+\begin{proof}
+设$\Phi_\alpha=(\psi_\alpha,\theta_a)$，这里的$\psi_\alpha$的黏合是显然的，得到$\psi$. 现在我们考虑$\theta_\alpha:\oo_Y\to (\psi_\alpha)_*\oo_{U_\alpha}$. 任取$V\subset Y$，我们有
+\[
+	\theta_\alpha(V):\oo_Y(V)\to (\psi_\alpha)_*\oo_{U_\alpha}(V)=\Gamma(\psi_\alpha^{-1}(V),\oo_{U_\alpha})=\Gamma(U_\alpha\cap\psi^{-1}(V),\oo_{X}),
+\]
+任取$s\in \oo_Y(V)$，我们得到了一族截面$t_\alpha=\theta_\alpha(V)(s)\in\Gamma(U_\alpha\cap\psi^{-1}(V),\oo_{X})$. 黏合条件告诉我们，任取两个指标$(\alpha,\beta)$，存在一个指标$\gamma$使得$U_\gamma\subset U_\alpha\cap U_\beta$且$t_\alpha|_{U_\gamma}=t_\beta|_{U_\gamma}$. 于是，层公理（见Proposition \ref{psgl}）告诉我们存在$t\in\Gamma(\psi^{-1}(V),\oo_{X})$使得$t|_{U_\alpha}=t_\alpha$. 于是$s\mapsto t$就给出了态射$\theta(V):\oo_Y(V)\to \Gamma(\psi^{-1}(V),\oo_{X})=\psi_*\oo_X(V)$. 此即所证。
+\end{proof}
 
 \begin{pro}[赋环空间的黏合]\label{rsn}
 设$(X_\alpha,\oo_\alpha)$是一族赋环空间，并且给定任意一个二元组$(\alpha,\beta)$，都有一个$X_\alpha$的开集$U_{\alpha\beta}$，$X_\beta$的开集$U_{\beta\alpha}$，以及赋环空间同构$\varphi_{\alpha\beta}:(U_{\alpha\beta},\oo_\alpha|_{U_{\alpha\beta}})\to (U_{\beta\alpha},\oo_\beta|_{U_{\beta\alpha}})$，满足：
@@ -1036,6 +1036,7 @@ $V(E)$满足闭集公理，所以$\spec(R)$以$V(E)$为闭集是一个拓扑空�
 \begin{compactenum}
 \item $D(f)$是开集，且它们构成了$\spec(R)$的一个拓扑基。
 \item 环的素谱满足$T_0$分离公理。
+\item 环的素谱是紧的。
 \end{compactenum}
 \end{pro}
 
@@ -1049,6 +1050,9 @@ $V(E)$满足闭集公理，所以$\spec(R)$以$V(E)$为闭集是一个拓扑空�
 所以$U=\bigcup_{f\in E}D(f)$.
 
 接着，实际上，设$\pp_x$和$\pp_y$分别是两个素理想，则或者有$\pp_x\not\subset \pp_y$或者有$\pp_y\not\subset \pp_x$，因此有$y\not\in \overline{\{x\}}$或者$x\not\in \overline{\{y\}}$. 用开集描述就是，$y\in \spec(A)-\overline{\{x\}}$或者$x\in \spec(A)-\overline{\{y\}}$，这就使得$T_0$分离公理成立。
+
+结合第一点，设$\{D(f_\alpha)\,:\, \alpha\in A\}$是$\spec R$的一个开覆盖，这里$A$是一个指标集。我们需要证明
+存在一个有限子集$B$，使得$\{D(f_\alpha)\,:\, \alpha\in B\}$也是一个开覆盖。考虑$\bigcap_{\alpha\in A}V(f_\alpha)=V(\{f_\alpha\}_{\alpha\in A})=\varnothing$，于是$\{f_\alpha\}_{\alpha\in A}$生成了整个环$R$，特别地，生成了$1$，于是存在有限个$f$可以线性组合出$1$，即$\sum_{\alpha\in B} r_\alpha f_\alpha=1$，这样我们也就找到了这个有限子集。
 \end{proof}
 
 作为推论，如果$\overline{\{x\}}=\overline{\{y\}}$，则$x=y$.
@@ -1878,6 +1882,40 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 作为推论，我们可以断言，典范连续映射$|X\times_S Y|\to |X|\times_{|S|}|Y|$是满的。但是，一般而言，这并不是单的，换而言之，$X\times_S Y$中可能存在不同的点但是有着相同的投影！比方说，我们考虑两个域扩张$k\to k_1$和$k\to k_2$，则$\spec(k_1)\times_{\spec k} \spec(k_2)=\spec(k_1\otimes_k k_2)$. 此时$k_1\otimes_k k_2$一般来说并不是一个域，它可能具有多个素理想，但是它们的投影必然是唯一的，即$|\spec(k_1)|\times_{|\spec k|} |\spec(k_2)|=|\spec(k_1)|\times |\spec(k_2)|$只有一个点。
 
 同时，这也说明了，不是所有$X\times_S Y$中的点都可以写成$(x,y)$的形式。
+
+\begin{pro}
+	设$f:\spec A\to \spec B$是一个仿射概形间的态射，再令$p\in \spec B$为像$f(\spec A)$的Zariksi闭包
+	中的一个点，则存在$q\in f(\spec A)$使得$p\in \overline{\{q\}}$.
+\end{pro}
+
+一般来说，任取$\spec R$中的子集$X$，他的闭包中的点$p$并不可以找到$q\in X$使得$p\in \overline{\{q\}}$.
+
+\begin{proof}
+用$f(\spec A)$的Zariski闭包替代$\spec B$，我们可以假设$f(\spec A)$稠密。
+此时，任取$p\in \spec B$，我们找包含于$p$的一个极小素理想
+$q\subset p$，可以看到$p\in \overline{\{q\}}$. 从Zorn引理，
+我们知道这样的极小素理想存在，因为此时素理想递减链的交集也是素的。下面验证$q\in f(\spec A)$，
+即找到$q'\in \spec A$使得$f(q')=q$.
+
+我们的主要思路是考虑如下的交换图，
+\[
+\xymatrix{
+	B\ar[r]\ar[d]& B_q\ar[d]\\
+	A\ar[r]&A\otimes_B B_{q}
+}
+\]
+如果沿着$B\to B_q\to A\otimes_B B_{q}$，我们可以找到$A\otimes_B B_{q}$中的某个素理想$p'$一路原像
+回到$B$的时候是$q$，则$p'$在另一条路径中$A$的原像就是我们要找的$q'$. 这里很重要的一点是，我们需要说明
+$A\otimes_B B_{q}\neq 0$，就是他至少存在一个素理想。为此，我们首先看到$h:B\to A$是个单射，这是因为
+$f(\spec A)$稠密，而他又包含于$V(\ker h)$，所以后者等于整个$\spec B$，继而$h:B\to A$是一个单射。
+由于局部化把保持单射，所以$B_q\to A\otimes_B B_{q}$是一个单射。
+
+现在注意到，$B_q$只有一个素理想，就是$q$的局部化，他当然在局部化下的原像就是$q$.
+最后对于$B_{q}\to A\otimes_B B_q$，任取$A\otimes_B B_q$中的素理想$p'$，他在域$B_q$中的原像作为素理想
+只能是$q$的局部化。
+\end{proof}
+
+从证明过程来说，我们找了一个点$q$，以及乘积$X=\spec A\times_{B}(\spec B)_q$，存在$q'\in f^{-1}(p)$使得$(q',0)\in X$.
 
 \begin{pro}\label{pro.2.13}
 考虑如下两个命题：

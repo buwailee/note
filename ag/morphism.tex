@@ -4,6 +4,11 @@
 
 \section{分离性}
 
+回忆，在拓扑空间范畴中，一个拓扑空间$X$是Hausdorff的，当且仅当对角线
+$\Delta_X:=\{(x,x)|x\in X\}\subset X\times X$在乘积空间$X\times X$的
+一个闭子集。对于概形来说，他的拓扑空间几乎不会是Hausdorff的，但是
+我们可以将上面的刻画直接挪到概形上，它具有相似的效果，被称为分离性。
+
 \begin{para}[对角线]
 	设$X$是一个$S$-概形，则态射$\id_X\times_S\id_X:X\to X\times_S X$
 	被称为对角线态射，记作$\Delta_{X|S}$，如果没有误解，则简单记作
@@ -294,6 +299,8 @@ $b_i\in \oo_X(U_\beta)|_{U_{\alpha\beta}}$而$r_i\in R$，
 所以上一个命题告诉我们，如果$X$是一个分离概形，则$f$是分离的。
 \end{proof}
 
+
+
 \section{有限性条件}
 
 \begin{para}[（局部）Noether概形]
@@ -504,3 +511,23 @@ $X'=X_{(S')}$是一个$S'$-仿射概形。
 \begin{proof}
 \notprove
 \end{proof}
+
+
+\section{全景闭性}
+
+还是回忆拓扑空间中的性质，
+\begin{compactenum}
+\item Hausdorff空间的紧集是闭的。
+\item 连续映射$f:X\to Y$，如果$X$是紧的而$Y$是Hausdorff的，则$f$是一个闭映射。
+\item 一个拓扑空间$X$是紧的，当且仅当对任何的拓扑空间$Y$，投影
+	$X\times Y\to Y$都是闭映射。
+\end{compactenum}
+对于概形而言，拓扑空间的紧性并没有拓扑空间中那么有用，我们需要
+一些其他更合适的紧性刻画。而上面的第三点几乎是最好的刻画。
+
+\begin{para}[全景闭性]
+	一个概形间态射$f:X\to Y$被称为是全景闭的，即对任何态射
+	$g:Z\to Y$，典范投影$X\times_Y Z\to Z$作为拓扑空间间
+	的连续映射都是闭的。类似其他性质，如果$X\to \spec \zz$是全景闭的，
+	则称$X$是全景闭的。
+\end{para}
