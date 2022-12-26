@@ -1,0 +1,90 @@
+\chapter{环簇}
+
+\para[环面] 如果一个仿射簇同构于$(\cc^*)^n=(\cc-\{0\})^n=(\spec\cc[x,x^{-1}])^n$，且通过结构给出了
+上面的一个乘法结构（$(\cc^*)^n$上的乘法为$(a_1,\dots,a_n)(b_1,\dots,b_n)=(a_1b_1,\dots,a_n b_n)$），
+则称这个仿射簇为一个环面。
+
+\para[特征] 设$T$是一个环面，同态$\chi:T\to \cc^*$若还是一个群同态，则称其为一个特征。实际上，
+众所周知，任何一个$(\cc^*)^n\to \cc^*$的特征都形如
+\[
+    \chi^a(t_1,\dots,t_n)=t_1^{a_1}\cdots t_n^{a_n},
+\]
+其中$\{a_i\}$都是整数。于是，所有特征构成的群就同构于加法群$\mathbb Z^n$. 对任意环面$T$，其特征构成的群
+也应该是一个自由交换群$M$，他的秩与$T$的维数相同。
+
+\para[单参子群] 对环面$T$，同态$\lambda:\cc^*\to T$若还是一个群同态，则称其为一个单参子群。
+任何一个$(\cc^*)^n$上的单参子群同样由一个$\mathbb Z^n$中的向量给出，即
+\[
+    \lambda^b(t)=(t^{b_1},\dots,t^{b_n}).
+\]
+实际上，对每个分类，$\cc^*$上的一个特征。对任意环面$T$，其单参子群构成的群
+也应该是一个自由交换群$N$，他的秩与$T$的维数相同。
+
+如果环面$T$的单参子群构成的群为$N$，我们通常会用$T_N$来标记$T$.
+
+\para 给定环面$T$，其特征构成群$M$，而单参子群又构成群$N$，那么他们之间在一个自然的配对
+$\langle ,\rangle:M\times N\to \mathbb{Z}$. 他是这样定义的：任取特征$\chi^a$和单参子群$\lambda^b$，
+那么复合$\chi^a\circ\lambda^b:\cc^*\to \cc^*$就是$\cc^*$上的一个特征，由$t\to t^l$给出，此时定义
+$\langle a,b\rangle=l$. 如果应用到环面$(\cc^*)^n$上，很容易看到，
+$\langle a,b\rangle=\sum_{i}a_ib_i$就是寻常的内积。
+
+\para[格与仿射半群] 这里的格被定义为有限秩的自由交换群，显然环面$T_N$有两个自然的格，一个是$N$，一个是特征
+构成的$M$. 一个半群如果是交换、有限生成且可以被嵌入到一个格中，则称其为仿射半群。给定一个
+交换半群$S$，我们可以定义相应的交换半群代数
+\[
+    \cc[S]=\biggl\{\sum_{s\in S}c_s \chi^s\biggr\},
+\]
+其中非零$c_s\in \cc$有限，乘法定义为$\chi^s\chi^t=\chi^{s+t}$.
+
+不难看到，则$\cc[S]$是一个整环，且作为$\cc$-代数有限生成。容易检查，
+$\cc[\mathbb N^n]=\cc[x_1,\dots,x_n]$, $\cc[\mathbb Z^n]=\cc[x_1,x_1^{-1},\dots,x_n,x_n^{-1}]$. 
+后者就是环面的坐标环。一般地，给定一个格$M$，$\spec \cc[M]$将是一个环面。
+
+\para[仿射环面] 令$S\subset M$是一个交换半群，其中$M$是一个格，格$\mathbb ZS$的秩为$s$，则$\spec \cc[S]$被称为一个仿射环面，
+其包含一个环面$\spec \cc[S]\cap (\cc^*)^s$作为其Zariski开子集，且这个环的特征格为$\mathbb ZS\subset M$.
+
+假设$S$由一组基$\mathscr A=\{m_1,\dots,m_s\}$生成，那么我们有同态
+\[
+    \varphi:\cc[x_1,\dots,x_s]\to \cc[M]
+\]
+这里的$x_i$被映射为$\chi^{m_i}$，于是这给出了概型同态
+\[
+    \Phi_{\mathscr A}:T_N\to \cc^s,
+\]
+其具体到点上的行为为
+\[
+    \Phi_{\mathscr A}(t)=(\chi^{m_1}(t),\dots,\chi^{m_s}(t))\in \cc^s.
+\]
+
+现在，我们研究$\Phi_{\mathscr A}$的像，他的闭包是由那些满足$f(\chi^{m_1},\dots,\chi^{m_s})=0$
+的多项式$f\in \cc[x_1,\dots,x_s]$定义的，即他的闭包对应的理想是$\ker\varphi$. 同时，我们也注意到
+$\varphi$的像就是$\cc[S]$，所以
+\[
+    \cc[S]\cong \cc[x_1,\dots,x_s]/\ker \varphi
+\]
+告诉我们$\spec \cc[S]$就是$\Phi_{\mathscr A}$的像的Zariski闭包。下面我们来刻画这个理想$\ker\varphi$.
+这当然是一个素理想，因为$\cc[S]$是一个整环。
+
+从格的角度出发，虽然$\mathscr A$的元素个数为$s$，但是$\mathbb Z\mathscr A$的秩不一定为$s$，
+这是因为可能存在$\mathbb Z^s$的子格$L$，其中的元素$(l_1,\dots,l_s)$满足$\sum_i l_im_i=0$. 换言之，
+即满足短正和列$0\to L\to Z^s\to M$. 将任意的$l\in L$分成正部和负部，即$l=l_+-l_-$，其中$l_+$, $l_-\in \mathbb N^s$，而
+\[
+    l_+=\sum_{l_i>0}l_ie_i,\quad l_-=-\sum_{l_i<0}l_ie_i.
+\]
+则上面说的理想$\ker \varphi$可以写作
+\[
+    \ker\varphi=\langle x^{l_+}-x^{l_-}\,:\, l\in L\rangle=
+    \langle x^{a}-x^{b}\,:\, a,b\in \mathbb N^s,\, a-b\in L\rangle.
+\]
+第二个等号的正确性来自于，如果$a-b=l$，其中$a,b\in \mathbb N^s$，则存在唯一的$c\in \mathbb N^s$
+使得$a=c+l_+$, $b=c+l_-$. 此外，
+$\langle x^{l_+}-x^{l_-}\,:\, l\in L\rangle\subset \ker\varphi$也是直接的，因为
+\[
+    \chi^{\sum_{l_i>0} m_il_i}-\chi^{-\sum_{l_i<0} m_il_i}=
+    \chi^{\sum_{l_i>0} m_il_i}-\chi^{\sum_{l_i>0} m_il_i}=0.
+\]
+这里不证明反过来的包含，见教科书。
+
+最后，我们给出可能是最“粗糙”的刻画：仿射环面$V$是一个仿射包含一个环面$T$作为其Zariski开子集的仿射簇，
+且要求上面的群作用可以延拓到整个$V$上，即群作用$T\times T\to T$可以延拓到$T\times V\to V$.
+
