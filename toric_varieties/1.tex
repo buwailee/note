@@ -1,5 +1,7 @@
 \chapter{环簇}
 
+\section{仿射环簇}
+
 \para[环面] 如果一个仿射簇同构于$(\cc^*)^n=(\cc-\{0\})^n=(\spec\cc[x,x^{-1}])^n$，且通过结构给出了
 上面的一个乘法结构（$(\cc^*)^n$上的乘法为$(a_1,\dots,a_n)(b_1,\dots,b_n)=(a_1b_1,\dots,a_n b_n)$），
 则称这个仿射簇为一个环面。
@@ -85,6 +87,97 @@ $\langle x^{l_+}-x^{l_-}\,:\, l\in L\rangle\subset \ker\varphi$也是直接的�
 \]
 这里不证明反过来的包含，见教科书。
 
-最后，我们给出可能是最“粗糙”的刻画：仿射环面$V$是一个仿射包含一个环面$T$作为其Zariski开子集的仿射簇，
-且要求上面的群作用可以延拓到整个$V$上，即群作用$T\times T\to T$可以延拓到$T\times V\to V$.
+最后，我们给出可能是最“粗糙”的刻画：仿射环面$V$是一个仿射包含一个环面$T_N$作为其Zariski开子集的仿射簇，
+且要求上面的群作用可以延拓到整个$V$上，即群作用$T_N\times T_N\to T_N$可以延拓到$T_N\times V\to V$.
 
+实际上，令$M$为$T_N$的特征格，包含$T_N\subset V$给出了坐标环间的单同态
+$\cc[V]\to \cc[M]$，因为$T_N$在$V$里面稠密。现在考虑群作用$T_N\times V\to V$，
+任取$t\in T_N$以及$f\in \cc[V]$，则$p\mapsto f(t^{-1}\cdot p)$依然是$V$上的一个
+函数，记作$t\cdot f$，还是在坐标环$\cc[V]$中。我们断言，
+\[
+    \cc[V]=\bigoplus_{\chi^m\in \cc[V]}\cc\cdot\chi^m.
+\]
+为证明这点，首先注意到右边（记作$A$）肯定包含于$\cc[V]$中。现在取$f\in \cc[V]$，
+由于$f\in \cc[M]$，所以可以写成
+\[
+    f=\sum_{m\in\mathscr A}c_m \chi^m,
+\]
+其中$\mathscr A$是一个有限集。现在，容易看到环面的特征作为函数，在群作用下就变成
+简单的相乘$t\cdot \chi^m=\chi^{m}(t^{-1})\chi^m$，所以向量空间
+$B:=\operatorname{span}(\{\chi^m\,:\, m\in \mathscr A\})\cap \cc[V]$是在
+$T_N$作用下稳定的，超不出去。
+而且由于$B$是有限维的，且$T_N$是交换的，所以$T_N$的作用可以同时对角化，且$B$被
+他们的共同特征向量张成。由于他们也在$\cc[M]$中，这些特征向量就是$T_N$的特征，
+于是$B$由特征张成。于是，从$f\in B$说明了对每个$m\in \mathscr A$都有
+$\chi^m\in \cc[V]$，故$f\in A$.
+
+于是，$\cc[V]=\cc[S]$，其中$S=\{m\in M\,:\, \chi^m\in \cc[V]\}$是一个半群。由于
+$\cc[V]$是有限生成的，而上面任意的函数也都可以展开为特征，所以可以由特征有限
+生成，这说明$S$是仿射半群。
+
+\begin{pro}
+    设$V=\spec(\cc[S])$为一个仿射环簇，$S$是一个仿射半群，则$V$的每个闭点和
+    $S\to \cc$的半群同态一一对应，这里将$\cc$看成按复数乘法构成的半群。
+\end{pro}
+
+\begin{proof}
+    任取闭点$p\in V$，我们通过$m\mapsto \chi^m(p)$定义$S\to \cc$. 反过来，令$\gamma$
+    是一个半群同态，那么其可以诱导一个线性映射$\cc[S]\to \cc$. 这也是一个
+    $\cc$-代数满同态，他的核是个极大理想给出了$V$中的闭点。
+\end{proof}
+
+由于$\spec(\cc[S])$的闭点也完全决定了整个仿射概形，所以可以认为$S\to \cc$的半群
+同态决定了整个$\spec(\cc[S])$. 
+
+利用这种刻画，我们也很方便可以描述环面在仿射环簇上的作用。设$p\in \spec(\cc[S])$
+为一个闭点，对应于半群同态$\gamma:m\mapsto \gamma(m)$. 那么，作用后的点
+$t\cdot p$，就对应于半群同态$m\mapsto \chi^m(t)\gamma(m)$.
+
+\section{锥}
+
+\para[锥] 在$\rr$-向量空间$N_\rr$中的一个凸多面锥由一个有限点集$S\subset N_\rr$
+给出
+\[
+    \operatorname{Cone}(S)=\biggl\{\sum_{u\in S}\lambda_u u\,:\,
+    \lambda_u\geq 0\biggr\},
+\]
+以及设$\operatorname{Cone}(\varnothing)=\{0\}$. 一个锥可以理解为一族穿过原点的
+半平面的交，而这些半平面中的平面将是这个锥的面，不同面的交也是面，这样我们就有了
+不同维度的面。这些都是非常直观的。
+
+\para[对偶锥] 我们还是用$M_\rr$来表示$N_\rr$的对偶空间，配对为$\langle,\rangle$，
+记$\sigma$为$N_\rr$中的一个锥，则
+\[
+    \sigma^{\vee}=\{m\in M_\rr\,:\,\langle m,u\rangle\geq 0\text{ for all $u\in \sigma$}\}.
+\]
+以及设$\operatorname{Cone}(\varnothing)=\{0\}$. 这是对偶空间中的锥。
+
+\para[强凸性] 所谓强凸性，即不包含任何的正维数子空间。对于锥$\sigma$而言，
+就是为了保证我们考虑的不是二维的半平面，他有很多等价的表述，如
+$\sigma\cap(-\sigma)=\{0\}$为$\sigma$的一个面，再如$\dim \sigma^\vee=n$.
+
+\para[有理锥] 如果说一个$N_\rr$中锥是有理的，就是说他可以写成
+$\operatorname{Cone}(S)$，其中$S\subset N$.
+
+\para 一个强凸的有理锥$\sigma$可以由其边（一维的面）上的向量生成，
+这被称为其极小生成集。此时，如果极小生成集构成了$N$的一组$\mathbb Z$-基，
+则称$\sigma$是光滑（或正则的）；如果极小生成元在$\mathbb R$-上线性独立，则称
+$\sigma$是单纯的。
+
+\para 给定有理锥$\sigma\subset N_\rr$，对偶锥的格点
+$S_\sigma=\sigma^\vee\cap M\subset M$将是一个半群，进一步地，
+这还是一个仿射半群（Gordan引理）。
+
+\begin{pro}
+令有理锥$\sigma\subset N_\rr$的半群为$S_\sigma$，则
+\[
+    U=\spec(\cc[S_\sigma])
+\]
+是一个仿射环簇，且$\dim U_\sigma=n$当且仅当$\sigma$是强凸的当且仅当
+$T_N=N\otimes_\zz\cc^*$.
+\end{pro}
+
+证明的关键是考虑$U$的环簇的特征格，即$\mathbb ZS_\sigma$. 利用对偶锥的凸性，
+我们可以证明，如果$km\in \mathbb ZS_\sigma$，则$m\in \mathbb ZS_\sigma$，其中$k$
+为任意的正整数，所以$M/\zz S_\sigma$无挠。因此，$\mathbb ZS_\sigma$满秩当且仅当
+他就是$M$，当且仅当$U$的环面就是$T_N$.
