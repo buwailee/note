@@ -1,0 +1,47 @@
+\documentclass[10pt]{book}
+\usepackage{ctex}
+\usepackage{../noteheader}
+% \usepackage[fontset = fandol]{ctex}
+\usepackage{hyperref}
+	\hypersetup{
+		pdftoolbar=true,  
+		pdfmenubar=true,  
+	}
+\usepackage{paralist}
+
+\input{../defs}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\cc}{\mathbb{C}}
+\DeclareMathOperator{\res}{res}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[chapter]
+		\renewcommand{\thepara}{\thechapter.\arabic{para}}
+\theoremstyle{plain}
+    \newtheorem{defi}[para]{Definition}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+	\newtheorem{lem}[para]{Lemma}
+
+\renewcommand*{\proofname}{Proof}
+
+\begin{document}
+\begin{titlepage}
+\setcounter{page}{-1}
+\thispagestyle{empty}
+	\begin{flushright}
+	{\Huge\bfseries 复代数几何}\\[\baselineskip]
+	% {{\scshape In\:}\Large {\itshape a simple} {\scshape Way}} \par
+	{by Buwai Lee@Shanghai Nanyang Model High School}\par
+	\today
+	\end{flushright}
+	\vfill
+	{\Large\itshape Just for fun}
+\end{titlepage}
+\clearpage
+
+\frontmatter
+	\tableofcontents
+\mainmatter
+	\input{complex_analysis}
+\end{document}
