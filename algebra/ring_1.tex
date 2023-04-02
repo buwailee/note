@@ -218,25 +218,12 @@ $\mathsf{Ring}$和$\mathsf{CRing}$是完备与余完备的，即任意的极限�
 	而$\operatorname{Content}(f)\operatorname{Content}(g)=\langle \{a_Ib_J\}_{I,J}\rangle$
 	告诉我们第一个包含是显然的。
 
-	方便起见，对每个多重指标$(i_1,\dots,i_n)$，我们都可以用字典序（先比$i_n$再比$i_{n-1}$如此继续下去）给出一个全序，再记$I^\text{m}=(i^\text{m}_1,\dots,i^\text{m}_n)$, $J^\text{m}=(j^\text{m}_1,\dots,j^\text{m}_n)$，为$\{I\}$, $\{J\}$中最大的那个指标。
-
-	现在考虑一个包含$\operatorname{Content}(fg)$的素理想$\pp$，这就意味着所有$c_K$都在$\pp$中。我们首先考虑$K^\text{m}=I^\text{m}+J^\text{m}$，这当然只有一项
-	\[
-		c_{K^\text{m}}=a_{I^\text{m}}b_{J^\text{m}}\in \pp.
-	\]
-	然后考虑次高的那个$K_1$, 即
-	\[
-		K_{1}=(i^\text{m}_1+j^\text{m}_1-1,i^\text{m}_2+j^\text{m}_2,\dots,
-		i^\text{m}_n+j^\text{m}_n),
-	\]
-	则
-	\[
-		c_{K_{1}}=a_{(i^\text{m}_1-1,i^\text{m}_2,\dots,
-		i^\text{m}_n)}b_{J^\text{m}}+a_{I^\text{m}}b_{(j^\text{m}_1-1,j^\text{m}_2,\dots,j^\text{m}_n)}\in \pp,
-	\]
-	由于$a_{I^\text{m}}b_{J^\text{m}}\in \pp$，所以$a_{I^\text{m}}$, $b_{J^\text{m}}$中至少有一个属于$\pp$，故$c_{K_{1}}$
-	中也至少有一项属于$\pp$，而$c_{K_{1}}\in \pp$告诉我们另一项也在$\pp$中。类似的事情可以一直做下去，这样，所有的$a_Ib_J$都在$\pp$中，这就意味着$\operatorname{Content}(f)\operatorname{Content}(g)\subset\pp$.
-	而这样的包含$\operatorname{Content}(fg)$的素理想$\pp$是任意的，考虑这些所有素理想的交，立刻得到了第二个包含，因为根就是素理想的交。
+	接着，任取包含$\operatorname{Content}(fg)$的素理想$\pp$，我们要证明
+	$\operatorname{Content}(f)\operatorname{Content}(g)\subset \pp$，即所有
+	$a_Ib_J\in \pp$. 我们可以将系数放到整环$S=R/\pp$中，由于整环上的多项式环
+	也是整环。所以如果$fg=0$，则$f=0$或$g=0$. 这就告诉我们，如果所有$c_K\in \pp$，
+	所有的$a_Ib_J$也都在$\pp$中，此即所需。于是
+	考虑所有这样的素理想$\pp$的交，立刻得到了第二个包含，因为根就是素理想的交。
 \end{proof}
 
 \begin{para}[本原多项式]
@@ -266,7 +253,7 @@ $\mathsf{Ring}$和$\mathsf{CRing}$是完备与余完备的，即任意的极限�
 	\[
 		\operatorname{Content}(f)\operatorname{Content}(g)\subset \sqrt{\operatorname{Content}(fg)}\subset \sqrt{\langle a\rangle}=\langle a\rangle,
 	\]
-	因为$\langle a\rangle$是素理想，利用Proposition \ref{primeau}立刻有
+	因为$\langle a\rangle$是素理想，利用Proposition \ref{primeau} 立刻有
 	\[
 	\operatorname{Content}(f)\subset \langle a\rangle\quad \text{or}\quad \operatorname{Content}(g)\subset \langle a\rangle,
 	\]

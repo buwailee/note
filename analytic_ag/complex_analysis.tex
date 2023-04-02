@@ -7,8 +7,15 @@
 这一章主要参考的是沙巴特的《复分析导论（第一卷）》，基本上都可以在上面找到证明。
 基本可以看成其笔记，所以不是自补自足的，相当简略。我在这里尝试的是去理顺主线，虽然这条主线书上本来就有。
 
+记号上，我们记
+\[
+    \partial f=\frac{\partial f}{\partial z}dz,\quad 
+    \bar\partial f=\frac{\partial f}{\partial \bar z}d\bar z,
+\]
+所以$d=\partial+\bar\partial$.
+
 在单变量下，我们称开集$U\subset \cc$上的光滑函数$f\in C^\infty(U)$是全纯的，如果他在$U$上满足
-Cauchy-Riemann方程$\partial f/\partial \bar z=0$.
+Cauchy-Riemann方程$\partial f/\partial \bar z=0$或者说$\bar\partial f=0$.
 
 \begin{pro}
 考虑全纯函数$f(z)=(z-z_0)^n$，然后以$z_0$为圆心，做半径为$r$的圆$\gamma$（逆时针方向为正方向），
@@ -65,7 +72,6 @@ Cauchy-Riemann方程$\partial f/\partial \bar z=0$.
 	\]
 \end{thm}
 
-这个只要缩小小圆的半径，然后靠$f(z)$的连续性和$1/(\zeta -z)$的积分为$2\pi i$就可以得证。
 
 \begin{thm}[Cauchy积分定理]
 	如果函数$f \in \mathcal{O}(D)$，就是说$f$在D内全纯，那么对D内的任意任意两条同伦的道路$\gamma_1$和$\gamma_2$，
@@ -83,21 +89,51 @@ Cauchy积分定理有一个很简单的推论：当回路同伦于0，则积分�
 	如果函数$f $在区域$D$上连续，且沿着区域$D$内的任意三角形（他的闭包要求是$D$的紧子集）积分都为$0$，
     那么的$f \in \mathcal{O}(D)$.
 \end{thm}
-考虑一个单联通区域满足上面要求，但区域内有一个奇点。我们使用Cauchy积分定理，以奇点为圆心做一个小圆，
-那么在这个圆外但区域内是全纯的，那么这个小圆和区域的边界是同伦的，代表着绕着这两个回路的积分是相同的，
-小圆的半径不是本质的，无论多小，他和边界都是同伦的。
+%考虑一个单联通区域满足上面要求，但区域内有一个奇点。我们使用Cauchy积分定理，以奇点为圆心做一个小圆，
+%那么在这个圆外但区域内是全纯的，那么这个小圆和区域的边界是同伦的，代表着绕着这两个回路的积分是相同的，
+%小圆的半径不是本质的，无论多小，他和边界都是同伦的。
 
-\begin{thm}[Taylor级数]
+\begin{lem}[一元$\bar \partial$-Poincar\'e 引理]
+给定$g\in C^\infty(\bar \Delta)$，则
+\[
+    f(z)=\frac{1}{2 \pi i} \int_{\Delta} \frac{g(w)}{w-z} d w \wedge d \bar{w}
+\]
+在$\Delta$上光滑，且满足$\partial f/\partial \bar z=g$.
+\end{lem}
+
+与全纯紧密联系的另一个概念叫做解析：$f$是解析的，意味着他在每一个点$z_0$附近都有一个级数展开
+\[
+    f(z)=\sum_{n=0}^\infty c_n(z-z_0)^n,
+\]
+其中求和需要一致且绝对收敛。我们下面说明，对于复变函数，解析性等价于全纯性。
+
+首先，解析到全纯是容易的，如果局部有一致且绝对收敛的级数展开，则
+$\partial/\partial \bar z$可以与积分交换，于是自然可知$f$全纯。
+
+\begin{pro}
     如果函数$f \in \mathcal{O}(D)$，就是说$f$在D内全纯，那么对D内的任意一点$z_0$我们可以在$z_0$的圆盘邻域
-    $U=\{|z-z_0|<r\}\subset D$中该函数都可以表示为收敛幂级数和的形式：
+    $\Delta=\{|z-z_0|<r\}\subset D$中该函数都可以表示为收敛幂级数和的形式：
 	\[
 		f(z)=\sum_{n=0}^\infty c_n(z-z_0)^n,
 	\]
-其中
+    其中
 	\[
-		c_n=\frac{1}{2\pi i}\int_{\gamma_r}\frac{f(\zeta)}{(\zeta -z_0)^{n+1}}\mathrm{d}\zeta
+		c_n=\frac{1}{2\pi i}\int_{\partial \Delta}\frac{f(\zeta)}{(\zeta -z_0)^{n+1}}\mathrm{d}\zeta.
 	\]
-\end{thm}
+\end{pro}
+
+\begin{proof}
+给定$z_0$，我们找一个小圆盘$\Delta$包含他，对于在圆盘内的$z$，利用Cauchy积分公式，可以写作
+\[
+    \begin{aligned}
+        f(z) & =\frac{1}{2 \pi i} \int_{\partial \Delta} \frac{f(w) d w}{w-z} \\
+        & =\frac{1}{2 \pi i} \int_{\partial \Delta} \frac{f(w) d w}{\left(w-z_0\right)-\left(z-z_0\right)} \\
+        & =\frac{1}{2 \pi i} \int_{\partial \Delta} \frac{f(w) d w}{\left(w-z_0\right)\left(1-\frac{z-z_0}{w-z_0}\right)} \\
+        & =\sum_{n=0}^{\infty}\left(\frac{1}{2 \pi i} \int_{\partial \Delta} \frac{f(w) d w}{\left(w-z_0\right)^{n+1}}\right)\left(z-z_0\right)^n ;
+    \end{aligned}
+\]
+其中几何级数展开收敛性当然很好，于是可以交换积分和级数。
+\end{proof}
 
 \begin{pro}[Cauchy不等式]
     设$f$在闭圆盘$\bar{U}=\{|z-z_0|\leq r\}$中全纯，且他的模在圆$\partial U$上不超过$M$，
