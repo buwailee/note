@@ -3,7 +3,7 @@
 \chapter{层与仿射概形}
 \ThisULCornerWallPaper{1}{../Pictures/7.png}
 
-我们假设本文所出现的环都是含幺交换环，即有一个乘法单位元的交换环，并且，我们所谓的环同态，他将单位元映到单位元。特别地，我们约定，零环即$R=\{0\}$，其中乘法单位元和加法单位元相等，即$0=1$。在环（即我们这里所谓的环）范畴中，零环的地位大致相当于集合范畴中的空集。所以下面我们在提到环的时候，经常是默认该环不是零环。此外，我们下面谈及的模也都是含幺交换环上的模，所以不分左右双边。
+我们假设本文所出现的环都是含幺交换环，即有一个乘法单位元的交换环，并且，我们所谓的环同态，他将单位元映到单位元。特别地，我们约定，零环即$R=\{0\}$，其中乘法单位元和加法单位元相等，即$0=1$。在环（即我们这里所谓的环）范畴中，零环的地位大致相当于集合范畴中的空集。所以下面我们在提到环的时候，通常默认该环不是零环。此外，我们下面谈及的模也都是含幺交换环上的模，所以不分左右双边。
 
 \section{层与赋环空间}
 
@@ -16,27 +16,18 @@
 	\end{cases}
 \]
 
-现在，任取$X$的一个开覆盖$\mathscr{U}=\{U_i\,:\, i\in I\}$，为后续的方便起见，我们记$\overline{\mathscr{U}}$为在$\mathscr{U}$中添入所有$\mathscr{U}$中元素的有限交后得到的新的开覆盖，这使得开覆盖是有限交封闭的。显然，依然通过
-\[
-	\overline{\mathscr{U}}(U,V)=\begin{cases}
-	\bigl\{i_{VU}:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
-	\varnothing&\text{, otherwise}.
-	\end{cases}
-\]
-$\overline{\mathscr{U}}$也是一个范畴。再方便起见，我们可以假设开覆盖是有限交封闭的。
-\end{para}
+% 现在，任取$X$的一个开覆盖$\mathscr{U}=\{U_i\,:\, i\in I\}$，为后续的方便起见，我们记$\overline{\mathscr{U}}$为在$\mathscr{U}$中添入所有$\mathscr{U}$中元素的有限交后得到的新的开覆盖，这使得开覆盖是有限交封闭的。显然，依然通过
+% \[
+% 	\overline{\mathscr{U}}(U,V)=\begin{cases}
+% 	\bigl\{i_{VU}:U\hookrightarrow V\bigr\}&\text{, if }U\subset V\text{;}\\
+% 	\varnothing&\text{, otherwise}.
+% 	\end{cases}
+% \]
+% $\overline{\mathscr{U}}$也是一个范畴。再方便起见，我们可以假设开覆盖是有限交封闭的。
 
-\begin{para}
 对于任意的范畴$K$，一个拓扑空间$X$，我们称呼一个取值在$K$中的\idx{预层}$\calf$（简称为$K$-预层）是一个$X\to K$的反变函子。特别地，设$V\subset U$是两个开集，记态射$\calf(i_{UV}):\calf(U)\to \calf(V)$为$\rho^U_{V}$，称为限制态射。如果$K$是集合范畴的子范畴，则$\calf(U)$中的元素$s$被称为$U$上的一个\idx{截面}，而$s|_V:=\rho^U_V(s)$被称为截面$s$在$V$上的限制。
 
-设$\calf$是一个$X$上的$K$-预层，任取一个开集$U$以及一个$U$的（有限交封闭的）开覆盖$\mathscr{U}$. 显然，将$\calf$限制在$\mathscr{U}$上也将得到一个反变函子$\calf_\mathscr{U}:\mathscr{U}\to K$. 如果$\calf_\mathscr{U}$-图的极限是$\calf(U)$，即
-\[
-	{\varprojlim}_{V\in \mathscr{U}}\calf(V)=\calf(U),
-\]
-则称预层$\calf$为一个\idx{层}。上面这个条件被称为层公理。如果需要明确取值的范畴是$K$，则称为$K$-层。
-\end{para}
-
-层公理可以用极限的泛性质写出来。设$A\in K$是范畴$K$里面的一个对象，而$\calf$是$X$上的一个预层，$U$是$X$的任意开子集, 而$\{U_\alpha\}_{\alpha\in I}$是$U$的任意开覆盖，如果存在态射族$\{\varphi_\alpha:A\to \calf(U_\alpha)\}_{\alpha\in I}$使得下图交换（画图时省去了限制映射）
+设$\calf$是一个$X$上的$K$-预层，$A\in K$是范畴$K$里面的一个对象，而$\calf$是$X$上的一个预层，$U$是$X$的任意开子集, 而$\mathscr{U}=\{U_\alpha\}_{\alpha\in I}$是$U$的任意开覆盖，如果存在态射族$\{\varphi_\alpha:A\to \calf(U_\alpha)\}_{\alpha\in I}$使得下图交换（画图时省去了限制映射）
 \[
 	\xymatrix{
 		A\ar[r]^{\varphi_{\beta}}\ar[d]_{\varphi_{\alpha}}&\calf(U_\beta)\ar[d]\\
@@ -51,11 +42,17 @@ $\overline{\mathscr{U}}$也是一个范畴。再方便起见，我们可以假�
 		&\calf(U_\alpha)\ar[r]&\calf(U_{\alpha}\cap U_{\beta})
 	}
 \]
+则称预层$\calf$为一个\idx{层}。如果需要明确取值的范畴是$K$，则称为$K$-层。这个条件被称为层公理，他告诉我们，$\mathcal F(U)$是一类开覆盖上特殊的图$U_\alpha \supset U_\alpha\cap U_\beta \subset U_\beta$的极限，进一步地，我们可以断言
+\[
+	{\varprojlim}_{V\subset U}\calf(V)=\calf(U).
+\]
+这里图更多的了，但我们可以先利用$\calf(U)$是特殊的图的极限，然后验证其他的态射也满足。
 
 如果$K$是集合范畴或者交换群范畴，则它可以容纳任意的积，很容易发现上面关于层的定义和我们熟知的层的定义是等价的，即局部相容的截面可以唯一地拼成一个整体的截面\footnote{具体来说，就是给定$U$的一个开覆盖$\{U_\alpha\}$，如果存在一族$\{s_\alpha\in U_\alpha\}$使得$s_\alpha|_{U_\alpha\cap U_\beta}=s_\beta|_{U_\alpha\cap U_\beta}$，则存在唯一的$s\in \calf(U)$使得$s|_{U_\alpha}=s_\alpha$.}. 这点只要将$A$取作$\prod_{\alpha\in I}\calf(U_\alpha)$即可。
+\end{para}
 
 \begin{para}
-两个层的例子，流形$M$上，每一个开集$U$上的光滑函数的全体构成一个环，记作$\calf(U)$，则这是一个预层，$U$上的截面就是$U$上的光滑函数。这显然是一个层，因为光滑性是局部概念，如果两个光滑函数限制在同一个开集上是相同的，那么我们自然可以拼成一个唯一的更大的光滑函数，一族也是类似的。
+两个层的例子：流形$M$上，每一个开集$U$上的光滑函数的全体构成一个环，记作$\calf(U)$，则这是一个预层，$U$上的截面就是$U$上的光滑函数。这显然是一个层，因为光滑性是局部概念，如果两个光滑函数限制在同一个开集上是相同的，那么我们自然可以拼成一个唯一的更大的光滑函数，一族也是类似的。
 
 另一个例子来自代数簇，设$X$是一个代数簇，他的每一个开集$U$都是一个子代数簇，自然有相应的正则函数环$\calf(U)$，则这是一个预层，$U$上的截面就是$U$上的正则函数。这依然是一个层，因为正则性还是局部概念，可以拼接的理由同上。
 \end{para}
@@ -76,9 +73,9 @@ $\overline{\mathscr{U}}$也是一个范畴。再方便起见，我们可以假�
 \end{para}
 
 \begin{para}[茎]
-设$\calf$是$X$上的一个预层，如果范畴$K$能容纳余极限，那么定义$\calf$在$p\in X$处的\idx{茎}$\calf_p$为$\varinjlim \calf(U)$，其中$U$跑遍所有$p$的邻域，这些领域通过包含构成一个显然的direct system. 
+设$\calf$是$X$上的一个预层，如果范畴$K$能容纳余极限，那么定义$\calf$在$p\in X$处的\idx{茎}$\calf_p$为$\varinjlim \calf(U)$，其中$U$跑遍所有$p$的邻域。
 
-如果$K$是集合范畴的子范畴，$s\in \calf(U)$是一个界面，而$p\in U$，记$s$在典范态射$\calf(U)\to \calf_p$下的像为$s_p$. 它被称为界面$s$在$p$处的\idx{芽}。
+如果$K$是集合范畴的子范畴，$s\in \calf(U)$是一个截面，而$p\in U$，记$s$在典范态射$\calf(U)\to \calf_p$下的像为$s_p$. 它被称为截面$s$在$p$处的\idx{芽}。
 
 对于交换群范畴（我们知道这是余完备的），直接写出芽的具体构造是比较方便的，$\calf_p$中的元素（芽）是这样的等价类$\langle U,f\rangle$的全体，其中$f$是$U$上的截面，而$U$是$p$的邻域。等价关系定义为$\langle U,f\rangle\sim \langle V,g\rangle$，当且仅当存在一个$p$的邻域$W\subset U\cap V$使得$f|_W=g|_W$. 
 
@@ -809,6 +806,8 @@ $X$上的交换群层构成一个范畴，态射就是层之间的态射。并�
 \[
 	\mathcal{O}_X^{(I)}|_U\to \mathcal{O}_X^{(J)}|_U\to \calf|_U\to 0.
 \]
+这里的$I$和$J$可以依赖于点。
+
 考虑显然的正和列$0\to \mathcal{O}_X^{(I)}\to \mathcal{O}_X^{(I)} \to 0$，所以$\mathcal{O}_X^{(I)}$本身就是拟凝聚$\mathcal{O}_X$-模层。
 \end{para}
 
@@ -1200,10 +1199,10 @@ $\spec R$不可约当且仅当$\sqrt{0}$是一个素理想。$\spec(R)$的不可
 所以$\rho^{D(f)}_{D(g)}$是一个环同态。
 
 \begin{lem}\label{lem:3.12}
-给定环$R$以及一个环元$f\in R$. 设$\{f_i\}_{i\in I}$是$R$的一族元素，则$\{D(f_i)\}_{i\in I}$是$D(f)$的一个开覆盖当且仅当$\{f_i/1\}$生成了$R_f$. 此外，$D(f)$是预紧拓扑空间。
+给定环$R$以及一个环元$f\in R$. 设$\{f_i\}_{i\in I}$是$R$的一族元素，则$\{D(f_i)\}_{i\in I}$是$D(f)$的一个开覆盖当且仅当$\{f_i/1\}$生成了$R_f$. 此外，$D(f)$是拟紧拓扑空间。
 \end{lem}
 
-特别地，如果$f=1$，则$\{D(f_i)\}_{i\in I}$是$D(1)=\spec R$的一个开覆盖当且仅当$\{f_i\}_{i\in I}$生成了单位理想。此外，我们还得到$D(1)=\spec R$是预紧的。
+特别地，如果$f=1$，则$\{D(f_i)\}_{i\in I}$是$D(1)=\spec R$的一个开覆盖当且仅当$\{f_i\}_{i\in I}$生成了单位理想。此外，我们还得到$D(1)=\spec R$是拟紧的。
 
 \begin{proof}
 任取$x\in D(f)$即$f(x)\neq 0$，由于$\{D(f_i)\}_{i\in I}$是$D(f)$的一个开覆盖，存在一个$i$使得$x\in D(f_i)$即$f_i(x)\neq 0$. 所以，如果存在一个素理想$\pp_x$使得$f_i(x)=0$对$i\in I$都成立，则$x\not\in D(f)$或等价地$x\in V(f)$. 或者说，对素理想$\pp$，$f_i\in \pp$对所有$i\in I$都成立可以推出$f\in \pp$.
@@ -1561,6 +1560,44 @@ f(g(\Psi))=\left({}^a\theta(\oo_X),\widetilde{\theta(\oo_X)}\right)
 概形的黏合就是赋环空间的黏合，见Proposition \ref{rsn}，当然，由于仿射开集构成了概形的拓扑基，所以概形黏合起来得到的还是概形。在这意义上，我们可以说，每一个概形都是由仿射概形黏合起来得到的。
 \end{para}
 
+著名的反例之一就是具有双重原点的直线，将两个直线$\spec(k[x])$挖掉零点的部分粘合起来，这样依然可以得到一个概形，但是他并不是仿射概形。
+
+\begin{para}[射影空间]
+考虑$R$是一个环，我们可以定义$n$-维射影空间$\mathbb P_R^n$如下：他由$n+1$个仿射空间$\mathbb A_R^n$粘合而成，记作
+\[
+	U_i=\spec R\biggl[\frac{x_0}{x_i},\dots,\frac{x_n}{x_i}\biggr],
+\]
+其中我们略去了$x_i/x_i$. 我们可以将上面$\spec$中的环看作
+\[
+	R[x_0,x_0^{-1},x_1,x_1^{-1},\dots,x_n,x_n^{-1}]
+\]
+的子环。子环$U_i$可以看作$x_i\neq 0$定义的开集，粘合就可以看作如下典范的等同：
+\[
+	U_i\cap U_j=\spec R\biggl[\frac{x_0}{x_i},\dots,\frac{x_n}{x_i}\biggr]_{x_j/x_i} = \spec R\biggl[\frac{x_0}{x_j},\dots,\frac{x_n}{x_j}\biggr]_{x_i/x_j}=U_j\cap U_i.
+\]
+
+不难看到，对$k\geq 1$，我们都有$\Gamma(\bigcup_{i=0}^k U_i,\mathcal O_{\mathbb P_R^n})=R$. 实际上，
+我们只需对$U_0\cup U_1$证明即可。设$s$是一个$U_0\cup U_1$上的截面，他在$U_0$上的限制
+可以写成一个多项式$s_0(x_1/x_0,\dots,x_n/x_0)$，而在$U_1$上的限制可以写成一个多项式
+$s_1(x_0/x_1,\dots,x_n/x_1)$，由于$s_0$和$s_1$在$U_0\cap U_1$上的限制相同，
+所以
+\[
+	s_0(x_1/x_0,\dots,x_n/x_0)=s_1(x_0/x_1,\dots,x_n/x_1)\in R[x_0,x_0^{-1},x_1,x_1^{-1},\dots,x_n,x_n^{-1}],
+\]
+此时，
+\[
+	s_0=\sum_a c_a(x_1/x_0)x_0^{-\sum_ia_i}\prod_{i>1} x_i^{a_i},\quad 
+	s_1=\sum_a d_a(x_0/x_1)x_1^{-\sum_ia_i}\prod_{i>1} x_i^{a_i},
+\]
+其中$c_a$和$d_b$都是一元多项式，比较系数，立马得到
+\[
+	c_a(x_1/x_0)(x_1/x_0)^{\sum_ia_i}=d_a(x_0/x_1),
+\]
+再次比较系数，只可能$\sum_i a_i=0$且$c_a=d_a$是一个常数，即$s\in R$. 特别地，我们有
+$\Gamma(\mathbb P_R^n,\mathcal O_{\mathbb P_R^n})=R$.
+
+\end{para}
+
 \begin{para}[局部概形]
 所谓的局部概形就是局部环的谱。设$R$是一个局部环，则$\spec R$只有一个闭点$a$（闭点对应$R$的极大理想），任取其他点$b$，我们都有$a\in\overline{\{b\}}$.
 
@@ -1585,7 +1622,7 @@ f(g(\Psi))=\left({}^a\theta(\oo_X),\widetilde{\theta(\oo_X)}\right)
 $X_x$作为集合是所有包含$x$的开集的交，等价地，$X_x$中的点由所有包含$x$的不可约闭子集的一般点构成，因此$X_x$中的点一一对应于$X$中所有包含$x$的不可约闭子集。此外，典范态射$X_x\to X$是一个概形范畴的单态射。
 \end{pro}
 
-如果$x$是一般点，则$X_x$只有一个点即$x$，即$(\oo_X)_x$只有一个素理想，当然也只有一个极大理想。反之亦然。
+如果$x$是一个不可约分支的一般点，则$X_x$只有一个点即$x$，即$(\oo_X)_x$只有一个素理想，当然也只有一个极大理想。反之亦然。
 
 顺带一提，一般来说$X_x$不是$X$的子概形，因为他可能不是局部闭的，但如果$x$是闭点，则$X_x$是闭子概形。具体定义见子概形章节。
 
@@ -1594,10 +1631,12 @@ $X_x$作为集合是所有包含$x$的开集的交，等价地，$X_x$中的点�
 \end{pro}
 
 \begin{proof}
-任取$b\in \spec A$，总是有$b\in\overline{\{a\}}$，所以$\psi(b)\in \overline{\{\psi(a)\}}$. 换言之，我们有$\im \psi\subset S_{\psi(a)}$. 由于$S_{\psi(a)}$包含于$\psi(a)$的任意开邻域中，所以也包含于$\psi(a)$的任意仿射开邻域中。所以不妨假设$X=\spec B$，从而$u=({}^a\varphi,\widetilde{\varphi})$，而$\varphi:B\to A$是一个环同态。
+任取$b\in \spec A$，总是有$a\in\overline{\{b\}}$，所以$\psi(a)\in \overline{\{\psi(b)\}}$. 换言之，我们有$\im \psi\subset S_{\psi(a)}$. 由于$S_{\psi(a)}$包含于$\psi(a)$的任意开邻域中，所以也包含于$\psi(a)$的任意仿射开邻域中。所以不妨假设$X=\spec B$，从而$u=({}^a\varphi,\widetilde{\varphi})$，而$\varphi:B\to A$是一个环同态。
 
 由于$\varphi^{-1}(\pp_a)=\pp_{\psi(a)}$，所以$B-\pp_{\psi(a)}$的任意元素在$\varphi$下的像总是局部环$A$中的可逆元，所以由分式环的泛性质，存在唯一的环同态$\sigma:(B-\pp_{\psi(a)})^{-1}B=B_{\psi(a)}\to A$使得分解$\varphi=\sigma i$成立，其中$i:B\to B_{\psi(a)}$是分式环的典范同态。由于交换环范畴的对偶范畴与仿射概形范畴是等价范畴，所以在仿射概形范畴范畴，我们也有唯一分解$u=i_{\psi(a)}v$，其中$u$对应环同态$\varphi$，$i_{\psi(a)}$对应环同态$i$，而$v$对应环同态$\sigma$.
 \end{proof}
+
+现在设$x\in \overline{\{y\}}$（或$\overline{\{x\}}\subset \overline{\{y\}}$），换言之，$y\in S_x$，故所有包含$x$的开子集也都包含$y$，故$S_y\subset S_x$.  此时，取一个仿射开邻域包含$S_x$，我们可以假设$X=\spec R$，且$\pp_y\subset \pp_x$，则$X_x=\spec R_x$和$X_y=\spec R_y$. 由于乘性子集的包含关系$(R-\pp_x) \subset (R-\pp_y)$，同态$R\to R_{y}$将所有的$(R-\pp_x)$的元素都变成可逆的，进而分式环的泛性质给出了分解$R\to R_x\to R_y$，所以我们给出了概形间态射$X_y\to X_x\to X$. 他们之间连续映射在$X$中即单射$S_y\hookrightarrow S_x$. 进一步，认识到$(R_{x})_y=R_y$，这就告诉我们$(X_x)_y=X_y$. 所以，粗略来说，$\overline{\{x\}}$越大，$X_x$越小。
 
 \begin{para}[$S$-概形]
 设$S$是一个概形，而$X$是另一个概形，一个$S$-概形是一个二元组$(X,\psi)$，其中$\psi:X\to S$是一个概形态射。在仿射概形的情况下，一个$\spec S$-概形$\spec R$不过是在说$S$是一个$R$-代数（因为箭头是反向的）。所以类似于称呼$R$-代数，我们在称呼$S$-概形的时候，经常也略去定义态射$\psi$. 特别地，当我们讨论$\spec A$-范畴的时候，我们也称为一个$A$-范畴。
@@ -1885,37 +1924,43 @@ $p_X^{-1}(U)\cap p_Y^{-1}(V)$是$p_X^{-1}(U)$的开子概形，当然也就是$X
 
 \begin{pro}
 	设$f:\spec A\to \spec B$是一个仿射概形间的态射，再令$p\in \spec B$为像$f(\spec A)$的Zariksi闭包
-	中的一个点，则存在$q\in f(\spec A)$使得$p\in \overline{\{q\}}$.
+	中的一个点，则存在$q\in f(\spec A)$使得$p\in \overline{\{q\}}$（叫做$p$是$q$的特化，或$q$是$p$的一般化）。
 \end{pro}
+
+这个命题也可以翻译到纤维积上：任取$p\in \overline{f(\spec A)}$，他的局部概形$(\spec B)_p$与$\spec A$的纤维积
+$\spec A\times_B (\spec B)_p$非空。注意到，连续函数部分就是说$S_p \cap f(\spec A)$非空，而
+$S_p=\{q\in \spec B\,:\,p\in \overline{\{q\}}\}$.
 
 一般来说，任取$\spec R$中的子集$X$，他的闭包中的点$p$并不可以找到$q\in X$使得$p\in \overline{\{q\}}$.
 
 \begin{proof}
 用$f(\spec A)$的Zariski闭包替代$\spec B$，我们可以假设$f(\spec A)$稠密。
 此时，任取$p\in \spec B$，我们找包含于$p$的一个极小素理想
-$q\subset p$，可以看到$p\in \overline{\{q\}}$. 从Zorn引理，
-我们知道这样的极小素理想存在，因为此时素理想递减链的交集也是素的。下面验证$q\in f(\spec A)$，
-即找到$q'\in \spec A$使得$f(q')=q$.
+$q\subset p$，可以看到$p\in \overline{\{q\}}$. 几何角度来说，就是找了个$p$所在的不可约分支，$q$是其一般点。
+从Zorn引理，我们知道这样的极小素理想存在，因为此时素理想递减链的交集也是素的。
+下面验证$q\in f(\spec A)$，即找到$q'\in \spec A$使得$f(q')=q$.
 
 我们的主要思路是考虑如下的交换图，
 \[
 \xymatrix{
 	B\ar[r]\ar[d]& B_q\ar[d]\\
 	A\ar[r]&A\otimes_B B_{q}
+}\qquad 
+\xymatrix{
+	\spec B& \spec B_q\ar[l]\\
+	\spec A\ar[u]&\spec A\times_B \spec B_{q}\ar[u]\ar[l]
 }
 \]
 如果沿着$B\to B_q\to A\otimes_B B_{q}$，我们可以找到$A\otimes_B B_{q}$中的某个素理想$p'$一路原像
 回到$B$的时候是$q$，则$p'$在另一条路径中$A$的原像就是我们要找的$q'$. 这里很重要的一点是，我们需要说明
 $A\otimes_B B_{q}\neq 0$，就是他至少存在一个素理想。为此，我们首先看到$h:B\to A$是个单射，这是因为
-$f(\spec A)$稠密，而他又包含于$V(\ker h)$，所以后者等于整个$\spec B$，继而$h:B\to A$是一个单射。
-由于局部化把保持单射，所以$B_q\to A\otimes_B B_{q}$是一个单射。
+$f(\spec A)$稠密，而他又包含于$V(\ker h)$，所以后者等于整个$\spec B$.
+由于局部化保持单射，所以$B_q\to A\otimes_B B_{q}$是一个单射。
 
 现在注意到，$B_q$只有一个素理想，就是$q$的局部化，他当然在局部化下的原像就是$q$.
 最后对于$B_{q}\to A\otimes_B B_q$，任取$A\otimes_B B_q$中的素理想$p'$，他在域$B_q$中的原像作为素理想
 只能是$q$的局部化。
 \end{proof}
-
-从证明过程来说，我们找了一个点$q$，以及乘积$X=\spec A\times_{B}(\spec B)_q$，存在$q'\in f^{-1}(p)$使得$(q',0)\in X$.
 
 \begin{pro}\label{pro.2.13}
 考虑如下两个命题：
@@ -2160,7 +2205,7 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 \end{lem}
 
 \begin{proof}
-	令$(\psi_1,\eta_1)$, $(\psi_2,\eta_2):Z\to X$为两个赋环空间之间的态射，且$(\varphi,\theta)(\psi_1,\eta_1)=(\varphi,\theta)(\psi_2,\eta_2)$. 由于$\varphi$是单的，所以$\psi_1=\psi_2=\psi$. 此外，由Proposition \ref{pro:morcom}，层之间的态射满足$(\eta_1)^\#_z\theta^\#_{\psi(z)}=(\eta_2)^\#_z\theta^\#_{\psi(z)}$，所以$(\eta_1)^\#_z=(\eta_2)^\#_z$对任意的$z\in Z$都成立，即$(\eta_1)^\#=(\eta_1)^\#$，故$\eta_1=\eta_2$. 
+	令$(\psi_1,\eta_1)$, $(\psi_2,\eta_2):Z\to X$为两个赋环空间之间的态射，且$(\varphi,\theta)(\psi_1,\eta_1)=(\varphi,\theta)(\psi_2,\eta_2)$. 由于$\varphi$是单的，所以$\psi_1=\psi_2=\psi$. 此外，由Proposition \ref{pro:morcom}，层之间的态射满足$(\eta_1)^\#_z\theta^\#_{\psi(z)}=(\eta_2)^\#_z\theta^\#_{\psi(z)}$，所以$(\eta_1)^\#_z=(\eta_2)^\#_z$对任意的$z\in Z$都成立，即$(\eta_1)^\#=(\eta_2)^\#$，故$\eta_1=\eta_2$. 
 \end{proof}
 
 上一节中定义的子概形从某种角度来说并不算一个特别好的概念，因为子概形的子概形不能简单地看作原概形的子概形。虽然，其可能确实同构于原概形的一个子概形。
@@ -2280,9 +2325,9 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 \]
 其中$i$是一个子概形的典范含入，从浸入分解的唯一性，$i=j_V$，再利用一次浸入分解的唯一性，$j_V$或子概形$Z_V$由$j_U|_{Z'_V}$唯一确定。类似地，$g_V$也由$j_U|_{Z'_V}$唯一确定，这些就是黏合条件。此时，将$Z_U$以及$g_U$黏合起来，我们有闭子概形$j:Z\hookrightarrow X$以及同构$g:Y\to Z$使得分解$f=jg$成立，所以$f$是一个闭浸入。
 
-最后，回到特殊情况的证明。首先，$X$是仿射概形而$Z=\psi(Y)$在$X$中是闭的。注意$\psi$是到一个$Y$到$X$中闭集$Z$的同胚，所以$(\psi_*^{\oo_Y})_{\psi(x)}:(\psi_*\oo_Y)_{\psi(y)}\to (\oo_Y)_y$对任意的$y\in Y$都是同构，但对$x\not\in \bar Z=Z$，有$(\psi_*\oo_Y)_{x}=\{0\}$. 实际上，取$x$的一个邻域$U$域$Z$不交，则$\psi_*\oo_Y(U)=\oo_Y(\psi^{-1}(U))=\oo_Y(\varnothing)=\{0\}$. 所以，$\psi_* \oo_Y$的支集就是$Z$，我们下面证明$\psi_*\oo_Y$是一个拟凝聚$\oo_X$-模层，于是$Z$上就有一个$\psi_*\oo_Y$定义的闭子概形结构，而他通过$f$与$Y$同构，这就完成了证明。
+最后，回到特殊情况的证明。首先，$X$是仿射概形而$Z=\psi(Y)$在$X$中是闭的。注意$\psi$是到一个$Y$到$X$中闭集$Z$的同胚，所以$(\psi_*^{\oo_Y})_{\psi(x)}:(\psi_*\oo_Y)_{\psi(y)}\to (\oo_Y)_y$对任意的$y\in Y$都是同构，但对$x\not\in \bar Z=Z$，有$(\psi_*\oo_Y)_{x}=\{0\}$. 实际上，取$x$的一个邻域$U$与$Z$不交，则$\psi_*\oo_Y(U)=\oo_Y(\psi^{-1}(U))=\oo_Y(\varnothing)=\{0\}$. 所以，$\psi_* \oo_Y$的支集就是$Z$，我们下面证明$\psi_*\oo_Y$是一个拟凝聚$\oo_X$-模层，于是$Z$上就有一个$\psi_*\oo_Y$定义的闭子概形结构，而他通过$f$与$Y$同构，这就完成了证明。
 
-取$x\in Z$，记$y=\psi^{-1}(x)$. 设$V$是$y$在$Y$中的一个仿射开邻域，$\psi(V)$在$Z$中也是开的，故存在$X$的开集$U$使得$\psi(V)=U\cap Z$，且使得$(\psi_*\oo_Y)|_U=((\psi|_V)_*(\oo_Y|_V))|_U$. 现在$f$在$(V,\oo_Y|_V)$上的限制是一个仿射概形到仿射概形$X$的态射，必然具有形式$({}^a\varphi,\tilde\varphi)$，其中$\varphi:\Gamma(X,\oo_X)\to \Gamma(V,\oo_Y)$是一个环同态，所以$(\psi|_V)_*(\oo_Y|_V)$是一个拟凝聚$\oo_X$-模层。\notprove
+取$x\in Z$，记$y=\psi^{-1}(x)$. 设$V$是$y$在$Y$中的一个仿射开邻域，$\psi(V)$在$Z$中也是开的，故存在$X$的开集$U$使得$\psi(V)=U\cap Z$，且使得$(\psi_*\oo_Y)|_U=((\psi|_V)_*(\oo_Y|_V))|_U$. 现在$f$在$(V,\oo_Y|_V)$上的限制是一个仿射概形到仿射概形$X$的态射，必然具有形式$({}^a\varphi,\tilde\varphi)$，其中$\varphi:\Gamma(X,\oo_X)\to \Gamma(V,\oo_Y)$是一个环同态，所以$(\psi|_V)_*(\oo_Y|_V)$是一个拟凝聚$\oo_X$-模层。而拟凝聚性是局部的，所以$\psi_*\oo_Y$是一个拟凝聚$\oo_X$-模层。同时，由于$\theta^\#_y$是满的，所以我们也知道$\mathcal O_X\to f_*(\mathcal O_Y)$是满的。再$X=\spec R$是仿射概形，所以$f_*(\mathcal O_Y)$同构于$\mathcal O_X/\mathcal I$，其中$\mathcal I$是$R$的一个理想$I$给出的，所以$\theta$是由这个同构复合上典范的商同态给出的。
 \end{proof}
 
 \begin{coro}\label{coro:3.4.12}
@@ -2366,11 +2411,27 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 
 \begin{para}[约态概形]
 	设$X$是一个概形，如果任取$x$，$(\oo_X)_x$都是约态环，即幂零根为零，则称$X$是一个约态概形。
+	如果还是不可约的，则称其为一个整概形。
 \end{para}
 
 显然，约态概形是一个局部概念，所以我们只需考察仿射概形的情况。设$X=\spec R$，则所有的$R_x$都是约态的当且仅当$R$是约态的，所以仿射概形约态当且仅当其坐标环是约态环。
 
 对每一个概形$X$，幂零根层$\mathcal N_X$是拟凝聚理想层，对应一个$X$的闭子概形$X_{\text{red}}$，从定义，不难看到$X_{\text{red}}$是一个约态概形，他被称为概形$X$的伴随约态概形。此外，$X_{\text{red}}$的底空间还是$X$，这是因为非零环模掉幂零根后不为零。再从幂零根是所有素理想的交这个刻画，不难看到$X_{\text{red}}$是所有以$X$为底空间的$X$的子概形中最小的那个。
+
+\begin{pro}
+	一个非空概形$X$是约态的（整的）当且仅当任取开集$U$，环$\Gamma(U,\oo_X)$都是约态的（整的）。
+	对整概形$X$，任取$x$，$(\oo_X)_x$都是整环。
+\end{pro}
+
+但是，如果从$(\oo_X)_x$都是整环推出$X$是整概形，这个方向是不对的。
+
+\begin{proof}
+	任取$f\in (\oo_X)_x$，如果他是幂零的，则取其一个代表元，$(U,\bar f)$，显然，适当缩小$U$，
+	可以看到$\bar f$也是幂零的。反过来，如果$f\in \Gamma(U,\oo_X)$是幂零的，则其局部化后依然是幂零的。注意到任何不可约空间的开子集也是不可约的，所以对整的命题，只需证明$\Gamma(X,\oo_X)$是一个整环。设$f$, $g\in \Gamma(X,\oo_X)$，如果$fg=0$，则$X$为两个闭集$V(f)$和$V(g)$的并。由不可约性，我们可以假设$X=V(f)$. 我们要证明$f=0$，这是局部的，所以可以假设$X$是仿射概形。由于$f$在所有的素理想中，也即$\sqrt{0}$中，但从约态性，$\sqrt{0}=\{0\}$，所以$f=0$. 反之，
+	我们要证明如果环$\Gamma(U,\oo_X)$都是整的，则$X$是不可约的。考虑两个非空开集$U_1$,$U_2\subset X$，如果他们相交为空（他们的补就构成了交为整个开集的两个非空闭集），则$\Gamma(U_1\cup U_2,\oo_X)=\Gamma(U_1,\oo_X)\times \Gamma(U_2,\oo_X)$. 右边显然具有非零零因子，比如$(0,a)(b,0)=0$，所以矛盾。
+\end{proof}
+
+一个仿射概形是整的当且仅当其坐标环是整环。
 
 \begin{para}[态射的约态化、函子性]
 	设$f=(\psi,\theta):X\to Y$是一个概形态射，则$\theta^\#_x:(\oo_Y)_{f(x)}\to (\oo_X)_x$是一个局部同态。此外，由于环同态将幂零元映成幂零元，所以$\theta^\#_x$自然诱导了一个环同态$\omega_x:(\oo_Y)_{f(x)}/(\mathcal N_Y)_{f(x)}\to (\oo_X)_{x}/(\mathcal N_X)_{x}$，不难检验这还是一个局部同态，继而给出态射

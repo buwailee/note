@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage{ctex}
 \usepackage{../noteheader}
 
@@ -54,23 +54,21 @@
 
 \subsection{维数正规化与Mellin变换}
 
-取$D=n+2k$，$k$还是正整数，则圈积分可以分解为$l=l_1+l_2$，其中$l_1$处于$n$维动量空间，而$l_2$处于与其正交的$k$维动量空间，并且，Lorentz度规完全由$l_1$实现，则$l_2$的度规是欧几里得度规。此时由于所有外动量都处于$l_1$的$n$维动量空间中，所以被积分函数关于$l_2$的依赖只可能是$\gamma:=l_2^2$. 则
+取$D=n+2k$，$n$还是正整数，则圈积分可以分解为$l=l_1+l_2$，其中$l_1$处于$n$维动量空间，而$l_2$处于与其正交的$2k$维动量空间，并且，Lorentz度规完全由$l_1$实现，则$l_2$的度规是欧几里得度规。此时由于所有外动量都处于$l_1$的$n$维动量空间中，所以被积分函数关于$l_2$的依赖只可能是$\gamma:=l_2^2$. 则
 \[
 	\int \frac{d^{D} l}{i \pi^{\frac{D}{2}}}=\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int \frac{d^{2k} l_2}{\pi^{k}}=\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty \frac{d |l_2|}{\pi^{k}} |l_2|^{2k-1} \Omega_{2k-1}=\frac{1}{2k \pi^k}\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty d\gamma^k \Omega_{2k},
 \]
-其中$\Omega_{2k}$是$2k$维空间中$2k-1$维单位球面的面积，
-\[
-	\Omega_{2k}=\frac{2\pi^k}{\Gamma(k)},
-\]
-则
+其中$\Omega_{2k}$是$2k$维空间中$2k-1$维单位球面的面积$\Omega_{2k}=2\pi^k/\Gamma(k)$，于是
 \[
 	\int \frac{d^{D} l}{i \pi^{\frac{D}{2}}}=\frac{1}{k\Gamma(k)}\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty d\gamma^k=\frac{1}{\Gamma(k)}\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty d\gamma\, \gamma^{k-1}.
 \]
-此时，我们可以将$k$取做任意实数（解析延拓），而积分变换$\int_0^\infty d\gamma\, \gamma^{k-1}$实际即是Mellin变换！以一圈积分为例，容易看到在费曼参数化之后，分母写作
+此时，我们可以将$k$取做任意实数（解析延拓），而积分变换$\int_0^\infty d\gamma\, \gamma^{k-1}$实际即是Mellin变换！
+
+以一圈积分为例，容易看到在费曼参数化之后，分母写作
 \[
 	\sum_{i=1}^n a_iA_i= -(l-l_0)^2+U+\gamma.
 \]
-我们对其做Mellin变换，会遇到如下积分
+对其做Mellin变换时，会遇到如下积分
 \[
 	\frac{1}{\Gamma(k)}\int_0^\infty d\gamma \, \gamma^{k-1}\, \frac{1}{(A+B\gamma)^n}=\frac{\Gamma(n-k)}{\Gamma(n)}\frac{1}{A^{n-k}B^k},
 \]
@@ -80,12 +78,9 @@
 \]
 然后再做圈积分，得到
 \[
-	\frac{\Gamma\left(v-k-\frac{n}{2}\right)}{\Gamma(v)}\frac{1}{U^{v-k-\frac{n}{2}}}.
+	\frac{\Gamma\left(v-k-\frac{n}{2}\right)}{\Gamma(v)}\frac{1}{U^{v-k-\frac{n}{2}}}=\frac{\Gamma\left(v-\frac{D}{2}\right)}{\Gamma(v)} \frac{1}{U^{v-\frac{D}{2}}},
 \]
-不难看到，这就是直接将$D$取做$n+2k$的积分结果
-\[
-	\frac{\Gamma\left(v-\frac{D}{2}\right)}{\Gamma(v)} \frac{1}{U^{v-\frac{D}{2}}}.
-\]
+就得到了我们之前$D=n+2k$的结果。
 
 于是，在一些例子中，我们可以调换积分顺序，先计算圈积分，
 \[
@@ -96,19 +91,47 @@
 	\int \frac{d^{n} l}{i \pi^{\frac{n}{2}}} \frac{1}{(-(l-l_0)^2+U+\gamma)^v}
 	=\frac{\Gamma\left(v-\frac{n}{2}\right)}{\Gamma(v)} \frac{1}{(U+\gamma)^{v-\frac{n}{2}}}
 \]
-新的费曼参数积分可能会变得相对容易计算，比如对于$n=4$，$(U+\gamma)^{v-\frac{n}{2}}=(U+\gamma)^{v-2}$将是费曼参数的多项式。从另一种角度来看，维数正规化变成了某种“质量”正规化，我们叫做$\gamma$-正规化。
+新的费曼参数积分可能会变得相对容易计算，比如对于$n=4$，$(U+\gamma)^{v-\frac{n}{2}}=(U+\gamma)^{v-2}$将是费曼参数的多项式。从另一种角度来看，维数正规化变成了某种“质量”正规化，这里我们叫做$\gamma$-正规化。
+
+我们可以进一步考虑更高圈的（标量）积分，以两圈为例，两个圈的$2k$-维积分可以写作
+\[
+	\frac{1}{\Gamma(k)^2}\int_0^\infty d\gamma_1
+	\int_0^\infty d\gamma_2 (\gamma_1\gamma_2)^{k-1}.
+\]
+注意到，对含$l_1$的传播子多一个$\gamma_1$，对含有$l_2$的传播子多一个$\gamma_2$，
+利用费曼参数化，我们即要考虑如下积分
+\[
+	I=\frac{1}{\Gamma(k)^2}\int_0^\infty d\gamma_1
+	\int_0^\infty d\gamma_2 (\gamma_1\gamma_2)^{k-1}
+	\frac{1}{(A+B\gamma_1+C\gamma_2)^n},
+\]
+积掉$\gamma_1$和$\gamma_2$，我们得到
+\[
+	I=\frac{\Gamma(n-k)}{\Gamma(n)}\frac{\Gamma(n-2k)}{\Gamma(n-k)}
+	\frac{1}{A^{n-2k}B^kC^k}=\frac{\Gamma(n-2k)}{\Gamma(n)}
+	\frac{1}{A^{n-2k}(BC)^k}=\frac{\Gamma(n-2k)}{\Gamma(n)}
+	\frac{1}{A^{n-k}(BC/A)^{k}},
+\]
+我们可以重写为另一个$\gamma$的积分
+\[
+	I=\frac{\Gamma(n-2k)}{\Gamma(n-k)\Gamma(k)}\int_0^\infty d\gamma\,\gamma^{k-1}
+	\frac{A^n}{(A^2+BC\gamma)^n},
+\]
+这里我们保持了被积函数是有理的，代价就是$\Gamma$函数系数变复杂了。
+此外，处理多圈积分时候，容易遇见我们可以先做掉几个圈保证不发散，此时
+只需要对剩余的圈积分引入相应的$\gamma$即可。
 
 现在我们来考虑Mellin变换，即
 \[
 	\mathcal M[f](k):=\int_0^\infty d\gamma\, \gamma^{k-1} f(\gamma).
 \]
-著名的Mellin反变换定理如下，如果$\psi(k)$在$a<\operatorname{Re}(k)<b$内解析，且在这个区域内在$\operatorname{Im}(k)\to \pm \infty$时一致收敛于$0$，且积分（$c$为一个满足$a<c<b$的实数）
+Mellin逆变换定理说，如果$\psi(k)$在$a<\operatorname{Re}(k)<b$内解析，且在这个区域内在$\operatorname{Im}(k)\to \pm \infty$时一致收敛于$0$，且积分（$c$为一个满足$a<c<b$的实数）
 \[
 	\mathcal M^{-1}[\psi](\gamma):=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\gamma^{-k}\psi(k)dk
 \]
 绝对收敛时，则$\mathcal M^{-1}[\psi]$的Mellin变换为$\psi$，即$\mathcal M[\mathcal M^{-1}[\psi]]=\psi$. 特别地，如果$\psi$是某个函数$f$的Mellin变换，$f$在正实轴上连续，且Mellin变换的积分在$a<\operatorname{Re}(k)<b$中绝对收敛，则$f=M^{-1}[\psi]$.
 
-将其应用到我们的积分，则我们需要考虑
+将其应用到我们的积分，对一圈来说，则我们需要考虑
 \[
 	\mathcal M^{-1}[\Gamma(k)I(k)](\gamma)=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\gamma^{-k}\Gamma(k)I(k)dk,
 \]
@@ -120,7 +143,7 @@
 \[
 	\exp (\gamma_{\mathrm{E}} \epsilon)I(-\epsilon)=\sum_{i=-N}^0 I_i \epsilon^i+O(\epsilon).
 \]
-从物理上，我们可以知道，$I(k)$在有限处的极点只会出现在整数处，而$\Gamma(k)$只会出现在非负整数处，我们考虑解析的区间$0<\operatorname{Re}(k)<1$，然后将$c$取得接近$0$，再考虑左无穷大半圆围道，这部分围道上的贡献由$\gamma^{-k}\Gamma(k)I(k)$的极限行为控制，这里假设收敛地够快使其为零，则上述Mellin反变换的结果是这样的围到中$\gamma^{-k}\Gamma(k)I(k)$的留数之和。特别地，对于负整数$k=-N$，留数会正比于$\gamma^N$，所以，如果我们只关心具体$O(\gamma)$的积分结果，则其完全由$k=0$处的留数给出，即由$\gamma^{-k}\Gamma(k)I(k)$的$\gamma^{-1}$系数确定。比如说，若$N=2$，则
+从物理上，我们可以知道，$I(k)$在有限处的极点只会出现在整数处，而$\Gamma(k)$只会出现在非负整数处，我们考虑解析的区间$0<\operatorname{Re}(k)<1$，然后将$c$取得接近$0$，再考虑左无穷大半圆围道，这部分围道上的贡献由$\gamma^{-k}\Gamma(k)I(k)$的极限行为控制，这里假设收敛地够快使其为零，则上述Mellin反变换的结果是这样的围道中$\gamma^{-k}\Gamma(k)I(k)$的留数之和。特别地，对于负整数$k=-N$，留数会正比于$\gamma^N$，所以，如果我们只关心具体$O(\gamma)$的积分结果，则其完全由$k=0$处的留数给出，即由$\gamma^{-k}\Gamma(k)I(k)$的$k^{-1}$系数确定。比如说，若$N=2$，则
 \[
 	\mathcal M^{-1}[\Gamma(k)I(k)](\gamma)=I_0+\frac{\zeta_2}{2}I_{-2}+I_{-1}\log(\gamma)+\frac{1}{2}I_{-2}\log(\gamma)^2 + O(\gamma).
 \]
@@ -131,6 +154,15 @@
 这里$\exp (-\gamma_{\mathrm{E}} k)$已经用来吃掉了所有$I(k)$展开中的$\gamma_{\mathrm{E}}$. 所以，至少可以看到，如果$I(k)$具有$k^{-N}$次发散，则$\mathcal M^{-1}[\Gamma(k)I(k)](\gamma)$至多具有$\log(\gamma)^N$次发散。于是，在一些情况下，我们只需计算$\mathcal M^{-1}[\Gamma(k)I(k)](\gamma)$的$\log(\gamma)$展开就可以反过来推出费曼参数化下的$I(k)$的展开。
 
 \subsection{$\gamma$-正规化下费曼积分的计算}
+
+现在的问题是怎么算$\gamma$-正规化下的费曼积分，当然也不一定是$\gamma$-正规化，比如
+可以是小质量正规化下的积分，他们统统都可以写作如下形式
+\[
+	\int_{\mathbb R_+^n}\frac{dx_1}{x_1}\cdots \frac{dx_n}{x_n}f(x;\gamma),
+\]
+其中$f$是一个有理函数，$x$是费曼参数，而$\gamma$是一个小的正参数。这个积分在$\gamma\to 0$的时候至多
+具有$\log(\gamma)$的幂次的发散，来自于$f(x;0)$在边界上不为零。所以实际上也可以看到
+$\log(\gamma)$的幂次最高是$n$.
 
 下面我们考虑一个例子，四维的2-mass easy的一圈四边形，
 \[
@@ -162,57 +194,66 @@
 \]
 可以看到，若$\gamma=0$，则$a_2\sim a_3\sim 0$处或$a_2\sim a_3\sim \infty$会发散。为计算这个积分，我们引入如下技术。
 
-
-
 \begin{pro}
-设一个光滑函数$f$具有如下极限行为
+考虑一个由非负向量族$\{v_i\}$给出的凸锥$C\subset \mathbb R_+^n$，即
 \[
-f(x_1t,\dots,x_nt;\epsilon t)\xrightarrow{t\sim 0^+}\frac{1}{t^n}f_0(x_1,\dots,x_n;\epsilon)+O(t^{-n+1}),
+	C=\{v=\sum_{i}\lambda_iv_i\,:\,\lambda_i\geq 0\},
 \]
-其中自然数$k\leq n$. 则积分
+此时若光滑函数$f(x_1,\dots,x_n;0)$在$x\to 0$的时候非零，则积分
 \[
-\int_{\mathbb R_+^n} f(\mathbf{x};\epsilon)\,d^nx-\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} f(\mathbf{x};0)\,d^nx
+	\int_C d\log x\,f(x_1,\dots,x_n;\epsilon)
 \]
-在$\epsilon\to 0^+$时候有限，其中为球心位于原点的半径为$\lambda \epsilon$的球与$\mathbb R_+^n$的交$B_+(\lambda \epsilon):=\{|\mathbf x|<\lambda \epsilon\}\cap \mathbb R_+^n$，而$\lambda$为任意正数。并且，上述积分的有限差值可以表示为$I_1+I_2$，其中
+可能会发散，其中$d\log x:=\prod_{i=1}^n\frac{dx_i}{x_i}$. 假若$f$具有如下极限行为
 \[
-	I_1=\int_{B_+(\lambda)}f_0(\mathbf{x};1)\,d^nx,\quad I_2=\int_{\mathbb R_+^n - B_+(\lambda)} (f_0(\mathbf x;1)-f_0(\mathbf x;0))\,d^nx
+f(x_1t^{\alpha_1},\dots,x_nt^{\alpha_n};\epsilon t)\xrightarrow{t\sim 0^+}f_0(x_1,\dots,x_n;\epsilon)+O(t),
 \]
-为$f_0$的积分。
+其中向量$(\alpha_1,\dots,\alpha_n)\in C$，则积分
+\[
+I=\int_{C} d\log x\,f(\mathbf{x};\epsilon)-\int_{C-C_\beta(\lambda\epsilon)} d\log x\,f(\mathbf{x};0)
+\]
+在$\epsilon\to 0^+$时候有限，其中$\lambda$为任意正数且$C_\beta(\lambda)$为半空间$H_\beta^-(\lambda):=\{\sum_i\beta_ix_i<\lambda\}$与$C$的交，
+也即超平面$H_\beta(\lambda):\sum_i\beta_ix_i=\lambda$与凸锥$C$切出来的一个角，于是，这也要求$v_i\cdot \beta\geq 0$对任意的$i$都成立。并且，$I$等于如下两个积分之和
+\[
+	I_1=\int_{C_\beta(\lambda\mu)}\prod_{i=1}^n \frac{dx_i}{x_i} f_0(\mathbf{x};\mu),\quad I_2=\int_{C-C_\beta(\lambda\mu)}\prod_{i=1}^n \frac{dx_i}{x_i} (f_0(\mathbf x;\mu)-f_0(\mathbf x;0))\,d^nx,
+\]
+其中$\mu$为另一个任意正数。
 \end{pro}
 
-我们可以用其他区域来替换$B_+(\lambda \epsilon)$，比方说，取边长为$\epsilon$的正方体$[0,\epsilon]^n:=\{ 0<x_i<\epsilon \text{ for }1\leq i\leq n\}$. 这是因为存在$\lambda_1$和$\lambda_2$使得$B_+(\lambda_1\epsilon)\subset [0,\epsilon]^n\subset B_+(\lambda_2\epsilon)$对任意的$\epsilon$都成立。
+% 我们可以用其他区域来替换$B_+(\lambda \epsilon)$，比方说，取边长为$\epsilon$的正方体$[0,\epsilon]^n:=\{ 0<x_i<\epsilon \text{ for }1\leq i\leq n\}$. 这是因为存在$\lambda_1$和$\lambda_2$使得$B_+(\lambda_1\epsilon)\subset [0,\epsilon]^n\subset B_+(\lambda_2\epsilon)$对任意的$\epsilon$都成立。
 
 \begin{proof}
-我们首先将$\int_{\mathbb R_+^n} f(\mathbf{x};\epsilon)\,d^nx$分解为
+在适当做变量替换$x_i=y_i^{\alpha_i}$之后，我们可以假设$\alpha=(1,1,\dots,1)\in C$，并且我们还是用$x$
+作为变量。我们首先分解积分
 \[
-\int_{\mathbb R_+^n} f(\mathbf{x};\epsilon)\,d^nx=\int_{B_+(\lambda \epsilon)} f(\mathbf{x};\epsilon)\,d^nx+\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} (f(\mathbf{x};\epsilon)-f(\mathbf{x};0))d^nx + \int_{\mathbb R_+^n - B_+(\lambda \epsilon)} f(\mathbf{x};0)d^nx
+	\int_C d\log x\,f(x;\epsilon)=\int_{C_\beta(\lambda\epsilon)} d\log x\,f(x;\epsilon)+\int_{C - C_\beta(\lambda\epsilon)}  d\log x\,(f(x;\epsilon)-f(x;0)) + \int_{C - C_\beta(\lambda\epsilon)}  d\log x\,f(x;0)
 \]
 我们需要算中间两项在$\epsilon\to 0$时候的极限行为，记
 \[
-I_1=\int_{B_+(\lambda \epsilon)} f(\mathbf{x};\epsilon)\,d^nx
+I_1=\int_{C_\beta(\lambda\epsilon)}  d\log x\,f(x;\epsilon)
 \quad \text{and} \quad
-I_2=\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} (f(\mathbf{x};\epsilon)-f(\mathbf{x};0))d^nx.
+I_2=\int_{C - C_\beta(\lambda\epsilon)}d\log x\,(f(x;\epsilon)-f(x;0)).
 \]
-对$I_1$，我们坐标变换$\mathbf{x}\to \mathbf{x}\epsilon$
+对$I_1$，我们坐标变换$x\to x\epsilon/\mu$，利用$f$在$\epsilon/\mu\to 0^+$时候的极限行为，有
 \[
-I_1=\epsilon^n\int_{B_+(\lambda)} f(\mathbf{x}\epsilon;\epsilon)\,d^nx
-\to \int_{B_+(\lambda)} f_0(\mathbf{x};1)\,d^nx,
+I_1=\int_{C_\beta(\lambda\mu)}d\log x\, f(x\epsilon/\mu;\mu(\epsilon/\mu))
+\to \int_{C_\beta(\lambda\mu)}d\log x\, f_0(x;\mu)\,d^nx,
 \]
-另一方面，$I_2$只可能在$B_+(\lambda \epsilon)$附近发散，此时我们在附近考虑积分，注意到$|x|$也很小，所以，在坐标变换$\mathbf{x}\to \mathbf{x}\epsilon$下，其极限行为为
+% 另一方面，$I_2$只可能在$H_\beta(\mu\lambda)$附近发散，此时我们在附近考虑积分，注意到$|x|$也很小，所以，在坐标变换$x\to x\epsilon$下，其极限行为为
+% \[
+% \begin{aligned}
+% \int_{x\sim H_\beta(\lambda\epsilon)} (f(x;\epsilon)-f(x;0))d^nx &\sim \int_{|x|\sim \lambda \mu} \left(f_0(x;\mu)-f_0(x/|x|;0)\right)\,d^n x
+% \end{aligned}
+% \]
+% 由于其下界不为零，第二项并不会导致发散。同时，
+对$I_2$，给定一个有限截断$C_\beta(\Lambda)$，我们将积分分解为
 \[
-\begin{aligned}
-\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} (f(\mathbf{x};\epsilon)-f(\mathbf{x};0))d^nx &\sim \int_{|x|\sim \lambda } \left(f_0(\mathbf{x};1)-\frac{1}{|x|^n}f_0(\mathbf{x}/|x|;0)\right)\,d^n x
-\end{aligned}
+	\int_{C-C_\beta(\lambda\epsilon)}=\int_{C - C_\beta(\Lambda)}+\int_{C_\beta(\Lambda) -C_\beta(\lambda\epsilon)},
 \]
-由于其下界不为零，第二项并不会导致发散。同时，给定一个有限截断$B_+(\Lambda)$，我们将积分分解为
+在第一个积分中，我们可以安全地Taylor展开$f(\mathbf{x};\epsilon)-f(\mathbf{x};0)$，可以知道他是$O(\epsilon)$的，对于第二个积分，然后替换$x\to x\epsilon/\mu$，接着应用极限行为，可得到
 \[
-	\int_{\mathbb R_+^n - B_+(\lambda \epsilon)}=\int_{\mathbb R_+^n - B_+(\Lambda)}+\int_{B_+(\Lambda) - B_+(\lambda \epsilon)},
+	\int_{C_\beta(\Lambda\mu/\epsilon) - C_\beta(\lambda\mu)}(f_0(\mathbf{x};\mu)-f_0(\mathbf{x};0))d^nx
 \]
-在第一个区间里，我们可以安全地Taylor展开$f(\mathbf{x};\epsilon)-f(\mathbf{x};0)$，可以知道他是$O(\epsilon)$的，对于第二个积分，然后替换$\mathbf{x}\to \epsilon \mathbf{x}$，接着应用极限行为，可得到
-\[
-	\int_{B_+(\Lambda/\epsilon) - B_+(\lambda)}(f_0(\mathbf{x};1)-f_0(\mathbf{x};0))d^nx
-\]
-令$\epsilon\to 0$，其积分区域就变成了$\mathbb{R}_+^n-B_+(\lambda)$.
+令$\epsilon\to 0$，其积分区域就变成了$C-C_\beta(\lambda\mu)$.
 \end{proof}
 
 一般来说，在积分中，因为费曼参数在边界的行为并不会那么简单，他可能在许多边界处产生发散。对积分

@@ -1,0 +1,113 @@
+\chapter{向量丛}
+
+\section{向量丛和局部自由模}
+
+在流形语境中，向量丛是局部向量空间的黏合，这章中，我们将讨论概形中的类似物。
+这里，很自然的，需要将局部向量空间换成相应的代数对象的谱。我们先复习一下
+张量代数和对称代数。
+
+\para[对称代数]
+从一个$R$-模$M$出发，不难直接构成出张量代数
+\[
+    T(M):=\bigoplus_{n\geq 0}M^{\otimes n},
+\]
+其中乘法取成张量积，这是一个分次$R$-代数。而对称代数即是模去由$m\otimes m'-
+m'\otimes m$张成的理想构成的代数，记作$\operatorname{Sym}(M)$，此时乘法都是
+交换的。$\operatorname{Sym}(M)$依然是分次的，其中$M$是其中的一次分量。
+$\operatorname{Sym}(M)$是$R$-代数范畴的自由对象，他伴随于忘掉$R$-代数结构
+只记得$R$-模结构的遗忘函子，即存在自然同构
+\[
+    \Hom_{R\text{-}\mathsf{Alg}}(\operatorname{Sym}(M),A)\cong
+    \Hom_{R\text{-}\mathsf{Mod}}(M,A).
+\]
+换言之，只要给出所有的$M\to A$的$R$-模同态，就能唯一确定一个$R$-代数同态
+$\operatorname{Sym}(M)\to A$. 若$R\to S$是一个环同态，那么自然有同构
+\[
+    \operatorname{Sym}_R(M)\otimes_R S\cong \operatorname{Sym}_S(M\otimes_R S).
+\]
+此外，对$M\oplus M'$，我们有自然同构
+\[
+    \operatorname{Sym}(M\oplus M')\cong \operatorname{Sym}(M)\otimes_R
+    \operatorname{Sym}(M').
+\]
+于是，多项式代数是自由模的对称代数。
+
+现在整体化上述构造，考虑一个环层空间$X$以及一个$\oo_X$-模层$\mathscr E$，
+可以定义预层
+\[
+    U\mapsto
+    \operatorname{Sym}_{\mathscr{O}_X(U)}(\mathscr E(U))
+\]
+伴随的层为$\operatorname{Sym}(\mathscr E)$，称为$\mathscr E$的对称代数。他依然
+左伴随于忘掉$\oo_X$-代数结构只记得$\oo_X$-模结构的遗忘函子，即存在自然同构
+\[
+    \Hom_{\oo_X\text{-}\mathsf{Alg}}(\operatorname{Sym}(\mathscr E),\mathscr A)\cong
+    \Hom_{\oo_X\text{-}\mathsf{Mod}}(\mathscr E,\mathscr A).
+\]
+局部地，在仿射概形$\spec R$上，我们令$\mathscr E$为一个$R$-模$M$对应的模层
+$\tilde M$，则不难看到
+\[
+    \operatorname{Sym}(\tilde M)=\widetilde{\operatorname{Sym}(M)}.
+\]
+于是，在概形上，任意的拟凝聚层$\mathscr E$的对称代数层$\operatorname{Sym}(\mathscr E)$
+都是拟凝聚的。且对于概形间态射$f$，我们有自然同构
+\[
+    f^*\operatorname{Sym}(\mathscr E)\cong \operatorname{Sym}(f^*\mathscr E).
+\]
+
+\para[整体$\spec$] 令$A$是一个$R$-代数，而任意的$R$-概形$X$都有自然同构
+\[
+    \Hom_{\spec R}(X,\spec A)\cong \Hom_{R\text{-}\mathsf{Alg}}(A,\Gamma(X,\oo_X)),
+\]
+换言之，$R$-概形$X$是函子$\Hom_{R\text{-}\mathsf{Alg}}(-,\Gamma(X,\oo_X))$的表示对象。
+
+现在令$X$是一个概形，$\mathscr A$是一个拟凝聚代数层，对任意的$X$-概形态射
+$f:Y\to X$，函子
+\[
+    F(T):=\Hom_{\oo_X\text{-}\mathsf{Mod}}(\mathscr A,f_*\oo_Y)
+\]
+可表，即存在一个$X$-概形$\spec \mathscr A$使得
+\[
+    \Hom_{X\text{-}\mathsf{Sch}}(Y,\spec \mathscr A)\cong
+    \Hom_{\oo_X\text{-}\mathsf{Mod}}(\mathscr A,f_*\oo_Y).
+\]
+实际上，由于$f^*$和$\Hom$都是左正和的，且$F$满足层公理，所以只要局部检查就好了，
+而局部就是上面的情况。这个表示对象就被叫做拟凝聚代数层$\spec \mathscr A$的谱。
+局部地，如果$U$是$X$的仿射开集，$U$关于结构态射$h:\spec\mathscr A\to X$的原像即
+仿射概形$\spec(\mathscr A(U))$. 
+
+这个构造当然是函子性的，取拟凝聚代数层态射$\mathscr A\to \mathscr B$，则自然给出了
+态射$\spec \mathscr B\to \spec \mathscr A$，即存在自然同构
+\[
+    \Hom_{\oo_X\text{-}\mathsf{Mod}}(\mathscr A,\mathscr B)\cong
+    \Hom_{X\text{-}\mathsf{Sch}}(\spec \mathscr B,\spec \mathscr A).
+\]
+类似于将代数看成相应的模，$h$的直像将$\mathcal O_{\spec \mathscr A}$变成了$\mathscr A$，
+即$h_*\mathcal O_{\spec \mathscr A}=\mathscr A$.
+
+\para 对给定的拟凝聚模层$\mathscr E$，定义相应的
+\[
+    \mathbb V(\mathscr E):=\spec \operatorname{Sym}(\mathscr E).
+\]
+给定态射$\mathscr E\to \mathscr F$，则自然有态射$\mathbb V(\mathscr F)\to \mathbb V(\mathscr E)$，
+这个对应是单的，但不是满的，我们将$\Hom(\mathbb V(\mathscr F),\mathbb V(\mathscr E))$
+中这个给出的态射叫做\textit{线性}的。任何$X$-概形态射
+$f:\mathbb V(\mathscr F)\to \mathbb V(\mathscr E)$诱导了分次代数同态
+$\varphi:\operatorname{Sym}(\mathscr F)\to \operatorname{Sym}(\mathscr E)$，则
+$f$是线性的当且仅当$\varphi$作为分次代数同态保持分次。那么，
+自然$\varphi=\operatorname{Sym}(\varphi^1)$.
+
+\para[向量丛] 秩$n$的向量丛的定义和流形上的一样，即是一个概形$X$上，存在一族
+开覆盖，每个开集$U_\alpha$上有同构$c_\alpha:U_\alpha\to \mathbb A_{U_\alpha}^n$，
+并且存在相容性条件，在$U_\alpha\cap U_\beta$，$c_\alpha c_\beta^{-1}$是线性同构。
+类似地，不同的坐标册可以给出一样的向量丛构造，所以必要的话可以在定义中模去等价类。
+向量丛的态射也是类似的，即是概形态射使得局部上是线性映射。
+
+
+\begin{pro}
+函子$\mathscr E\to \mathbb V(\mathscr E)$是一个反变函子，他给出了秩为$n$的
+局部自由层$\mathscr E$和秩为$n$的向量丛$\mathbb V(\mathscr E)$之间的范畴等价。
+\end{pro}
+
+证明是直接的，从一个向量丛出发，考虑其截面层，他有一个自然的局部自由
+$\mathscr O_X$-模层结构。

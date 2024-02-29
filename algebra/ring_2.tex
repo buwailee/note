@@ -533,7 +533,25 @@ $\bar{R}$作为拓扑群的完备化当然是加法群，而上面乘法的定�
 
 \section{赋值环}
 
-考虑一个给定的域$k$，对其局部子环$R,R'\subset k$，如果$R\subset R'$，且含入同态$i:R\hookrightarrow R'$还是局部环同态（即$R'$的唯一极大理想$\mathfrak m'$再交上$R$给出$R$唯一的极大理想$\mathfrak m=\mathfrak m'\cap R$），则称$R'$笼罩$R$. 给定$k$，按照笼罩关系，极大的那些局部环（注意，给定$k$，极大的不一定唯一）具有特殊的地位，被称为赋值环。我们下面先直接给出其刻画。
+考虑概形$\spec R$中点$x$（我们也记相应的素理想为$x$），他的闭包$\overline{\{x\}}$由所有包含$x$的素理想构成。
+在环这里，整环$R/x$的理想一一对应于包含$x$的理想，即$\spec(R/x)$集合意义上就是闭包$\overline{\{x\}}$.
+我们在这个闭子概形中考虑局部环$(R/x)_y$，其中$y\in \overline{\{x\}}$，容易看到，他们都可以看成分式域
+$Q(R/x)=(R/x)_{(0)}$的子环，并且他们的分式域也都是$Q(R/x)$. 用交换图来表示即
+\[
+	\xymatrix{
+		\spec((R/x)_y)\ar[r] & \spec(R)\\
+		\spec(Q(R/x))\ar[u]\ar[ru]&
+	}
+\]
+
+一般地，考虑一个给定的域$k$，对其局部子环$R,R'\subset k$，如果$R\subset R'$，且含入同态$i:R\hookrightarrow R'$还是局部环同态（即$R'$的唯一极大理想$\mathfrak m'$再交上$R$给出$R$唯一的极大理想$\mathfrak m=\mathfrak m'\cap R$），则称$R'$笼罩$R$. 给定$k$，按照笼罩关系，极大的那些局部环（注意，极大不一定唯一）具有特殊的地位，被称为赋值环。回到几何，赋值环即对应
+闭包$\overline{\{x\}}$中的那些“极小”的点$y\in \overline{\{x\}}$. 
+
+% \begin{pro}
+% 	令$f:\spec R\to \spec S$为仿射概形间态射，任取$p\in \overline{f(\spec R)}$，存在一个$q\in f(\spec R)$使得$p\in \overline{\{q\}}$.	
+% \end{pro}
+
+我们下面先直接给出其刻画。
 
 \begin{para}[赋值环]
 令$R$是一个整环，$k$是它的分式域。称$R$是$k$的一个赋值环，如果任取非零$x\in k$，有$x$和$x^{-1}$中至少有一个属于$R$。此外，如果$R$还是一个Noether环，则$R$被称为一个离散赋值环，有时候会简单记作DVR. 在后面我们会解释离散赋值环名字的由来。
@@ -564,7 +582,7 @@ $k$自然是$k$的一个赋值环，这样的赋值环我们称为平凡赋值�
 	\]
 	其中$r_i\in R$. 如果$x\in R$，自然无需证明，否则$x^{-1}\in R$，于是
 	\[
-		x=-(b_1+b_2x^{-1}+\cdots+b_n x^{1-n})\in R.\qedhere
+		x=-(r_1+r_2x^{-1}+\cdots+r_n x^{1-n})\in R.\qedhere
 	\]
 \end{proof}
 

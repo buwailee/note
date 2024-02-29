@@ -9,10 +9,23 @@ $\Delta_X:=\{(x,x)|x\in X\}\subset X\times X$在乘积空间$X\times X$的
 一个闭子集。对于概形来说，他的拓扑空间几乎不会是Hausdorff的，但是
 我们可以将上面的刻画直接挪到概形上，它具有相似的效果，被称为分离性。
 
-\begin{para}[对角线]
+\begin{para}[对角线、图像、等值子]
 	设$X$是一个$S$-概形，则态射$\id_X\times_S\id_X:X\to X\times_S X$
 	被称为对角线态射，记作$\Delta_{X|S}$，如果没有误解，则简单记作
-	$\Delta_X$或$\Delta$.
+	$\Delta_X$或$\Delta$. 任取$f:X\to Y$为一个态射，则
+	$\Gamma_f:=\id_X\times_S f:X\to X\times_S Y$被称为$f$的图像。
+	令$f$, $g:X\to Y$为两个$S$-概形态射，则态射$i: K\to X$被称为
+	等值子，如果其对任意的$S$-概形$T$诱导了双射
+	\[
+		K_S(T)\xrightarrow{\sim} \{x\in X_S(T)\,:\, f(T)(x)=g(T)(x)\}.
+	\]
+	我们记$K$为$\operatorname{Eq}(f,g)_S$，或者如果没有误解，写作
+	$\operatorname{Eq}(f,g)$.
+
+	所有构造都是纯范畴的，即只依赖于纤维积的泛性质。利用Yoneda引理，
+	不难证明以下命题，
+	$i:\operatorname{Eq}(f,g)_S\to X$是$\Gamma_f:X\to X\times_S Y$
+	和$\Gamma_g:X\to X\times_S Y$的纤维积。
 \end{para}
 
 仿射情况是值得标记的：若$X=\spec B$，$S=\spec A$，则
@@ -93,12 +106,14 @@ $p_T\alpha=ph$以及$q_T\alpha=qh$成立，此时
 其中$P=S\times_T S$. 
 
 \begin{lem}\label{lem:4.1.4}
-	对角线态射是一个浸入。
+	对角线、图像、等值子态射在概形范畴都是浸入。
 \end{lem}
 
 对角线态射对应的子概形也被称$X\times_S X$的对角线。
 
 \begin{proof}
+由于后两者都可以通过对对角线态射基变换得到，而浸入的基变换还是浸入，
+所以只需证明对角线态射是浸入即可。
 设$f:X\to S$是一个$S$-概形，$\pi_1$, $\pi_2$是$X\times_S X$到$X$的
 两个典范投影。给一个$S$的仿射开覆盖$\{S_\alpha\}_\alpha$，
 对每一个开集$f^{-1}(S_\alpha)$，我们都可以找相应的仿射开覆盖
@@ -145,14 +160,16 @@ X_{\alpha\beta})=X_{\alpha\beta}$上的限制
 设$f:X\to Y$是一个概形间态射，如果对角线$\Delta:X\to X\times_Y X$
 是一个闭浸入，则称$f$是一个分离态射，也称$X$是一个分离的$Y$-概形。
 如果$X$是分离的$\spec \zz$-概形，则简称$X$是分离的。
+
+利用闭浸入在基变换下不变，还可以将分离性定义为，任取两个$f,g:Z\to X$，
+等值子$\operatorname{Eq}(f,g)_Y\to Z$是一个闭浸入；或者，任取态射
+$f:Z\to X$，图像$\Gamma_f$是一个闭浸入。
 \end{para}
 
 从上一个引理，我们只需$\im \Delta$是$X\times_Y X$中的闭集，
 就可以知道$f$是分离的。
-
 从Lemma \ref{lem:4.1.2}，所有仿射概形之间的态射都是分离的。
 所以仿射概形是分离概形。
-
 此外，由于同构是闭浸入，所以单态射是分离的。
 
 \begin{pro}
@@ -172,8 +189,10 @@ X_{\alpha\beta})=X_{\alpha\beta}$上的限制
 其中$j$来自于$X\times_Z X$的泛性质，使得$\pi_i=p_ij$，
 这里$\pi_i$, $p_i$分别是$X\times_Y X$和$X\times_Z X$的投影，
 $i$可以取$1$和$2$. 由于$\Delta_{X|Y}$是闭浸入，我们只需说明$j$是闭浸入，
-见Lemma \ref{lem:4.1.4}下面的推论。
+见Lemma \ref{lem:4.1.4}~下面的推论。
 \end{proof}
+
+所以比如分离概形的子概形是分离的。
 
 \begin{pro}
 	设$\{V_\alpha\}$是$Y$的一个开覆盖，则态射$f:X\to Y$分离当且仅当
@@ -288,6 +307,14 @@ $b_i\in \oo_X(U_\beta)|_{U_{\alpha\beta}}$而$r_i\in R$，
 \end{proof}
 
 \begin{coro}
+	如果概形$X$是分离的，则任意$X$的两个仿射开集的交是仿射的。
+\end{coro}
+
+\begin{proof}
+	在上个命题中，取$Y=\spec \zz$，并将$X$取做这两个仿射开集的并。
+\end{proof}
+
+\begin{coro}
 如果$Y$是仿射概形，则$f:X\to Y$分离当且仅当$X$是一个分离概形。
 \end{coro}
 
@@ -304,17 +331,40 @@ $b_i\in \oo_X(U_\beta)|_{U_{\alpha\beta}}$而$r_i\in R$，
 \section{有限性条件}
 
 \begin{para}[（局部）Noether概形]
-	如果概形$X$可以写成仿射开集的并，且每个放射开集的坐标环都是Noether环，
+	如果概形$X$可以写成仿射开集的并，且每个仿射开集的坐标环都是Noether环，
 	则称$X$是一个局部Noehter概形。特别地，如果并还是有限的，
 	则称$X$是一个Noether概形。
 \end{para}
 
-从定义，一个局部Noether概形是Noether的，当且仅当底空间拟紧。于是，
-对仿射概想而言，局部Noether与Noether等价。
+一个局部Noether概形是Noether的，当且仅当底空间拟紧。于是，
+对仿射概形而言，局部Noether与Noether等价。
+
+一个拓扑空间被称为是Noether的，如果其闭子集的严格降链是稳定的。
+这又当且仅当其任何开子集（实际上是任何子空间）都拟紧。并且可以看到Noether
+空间具有的不可约分支的个数有限。
+
+任何Nother概形对应的仿射概形都是Noether的，因为其任何的闭集都可以翻译到理想，
+故而闭子集的严格降链条件就变成了理想的升链条件。如果一个空间
+可以写成Nother开子集的有限并，其显然也必须是Nother的。
+所以Noether概形显然是一个Noether拓扑空间。
+
+局部Noether概形的开子概形也显然是局部Noether概形。由于Noether概形的开子概形
+还必须是拟紧的，加上其是局部Noether概形所以也是Noether概形。
 
 \begin{pro}
-	仿射概形$\spec R$是Noether的，当且仅当$R$是Noether的。
+	仿射概形$\spec R$是Noether的当且仅当$R$是Noether的。
 \end{pro}
+
+\begin{proof}
+一个方向是显然的。我们假设$\spec R$是Noether的，令$I$是$R$的一个理想，
+我们证明其是有限生成的。考虑$\spec R$的一个开覆盖$\{D(f_i)\}_i$，由于
+$\spec R$是Noether的，我们还可以将其取成有限的。进而，$I_{f_i}$
+是有限生成$R_{f_i}$-模。现在，$I_{f_i}$可以由$\{m_{ij}/f_i^{n_{ij}}\}_j$
+生成，我们将这些有限的$\{m_{ij}\}_{i,j}$生成的$R$-模记作$N$. 于是我们有
+$N_{f_i}=I_{f_i}$对任意的$i$都成立。再取局部化到每个素理想，我们有
+$N_{x}=I_x$，于是$I=N$是有限生成的。
+\end{proof}
+
 
 \begin{para}[有限型态射]
 设$f:X\to Y$是一个概形间态射，如果存在$Y$的一个仿射开覆盖

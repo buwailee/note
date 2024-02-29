@@ -1,0 +1,797 @@
+\chapter{上同调}
+
+\section{同调代数}
+
+在这节中，我们将回忆一些同调代数的基本概念。同调代数的历史，可以追溯到
+Hilbert对多项式系数的线性齐次方程组的求解上。他考虑了如下方程组
+\[
+    \sum_{j=1}^ma_{ij}x_j=0,\quad i=1,\dots,n,\quad 
+    a_{ij}\in k[t_1,\dots,t_r],
+\]
+其中$k$是一个域，这可以理解为求一个$k[t_1,\dots,t_r]$-模的同态
+\[
+    \epsilon:E\to 0
+\]
+的核$\ker \epsilon$. 
+于是有限生成$k[t_1,\dots,t_r]$-模也不一定是自由的，所以即使找到了一组
+$\ker \epsilon$的生成元，他们之间也是存在关系的。找到一组生成元可以理解为，
+找到了一个自由$k[t_1,\dots,t_r]$-模$F^0$，以及一个满同态
+\[
+    d^{-1}:F^0\to \ker \epsilon,
+\]
+我们可以进一步将其嵌入到$E$里，即写作$d^{-1}:F^0\to E$.
+而理解生成元的关系，就是要计算$\ker(d^{-1})$. 为了计算这个核，还是找一组
+生成元，然后去理解他的关系，于是，我们可以写出序列
+\[
+    \cdots\xrightarrow{d^{-n-2}}F^{-n}\xrightarrow{d^{-n-1}}\cdots \xrightarrow{d^{-3}}F^{-1}\xrightarrow{d^{-2}}F^0\xrightarrow{d^{-1}}E\xrightarrow{d^0:=\epsilon} 0,
+\]
+不难检查$d^{-k}d^{-k-1}=0$. 这就构成了所谓的一组链复形。Hilbert证明了，
+对特定的环，这样的链复形会终止，即存在一个$n$使得，$F^{k}=0$
+对所有的$k<-n$. 对$k[t_1,\dots,t_r]$，$n$最大是$r$，特别地，如果环
+是一个域，则$F^{-1}=0$，这就回到了线性代数中熟悉的情况。
+
+Hilbert的这个想法，一方面诱导了链复形的定义，另一方面也展现了利用一个链复形
+来研究某个对象或态射的思路。在上面中，我们看到所有的$F^{n}$都是自由摸，
+这样的链复形
+\[
+    \cdots\xrightarrow{d^{-n-2}}F^{-n}\xrightarrow{d^{-n-1}}\cdots \xrightarrow{d^{-3}}F^{-1}\xrightarrow{d^{-2}}F^0\xrightarrow{d^{-1}}E
+\]
+被称为$E$的一个自由消解。类似地，还可以定义所谓的投射、内射消解，
+而同调代数的基本工具之一，就是用消解来获取一些对象或态射的基本信息。
+
+
+
+\subsection{链复形}
+
+\begin{para}[链复形]
+	设 $A$ 是一个Abel范畴，链复形 $K^\bullet$ 是一族 $K^i\in A$ 以及同态 
+    $d^i_K:K^{i-1}\to K^i$ 使得 $d_K^{i+1}d_K^i=0$.
+\end{para}
+
+链复形常被简称为复形。我们可以将复形$K^\bullet$用图
+\[
+	\cdots  \xrightarrow{d_K^{i-2}} K^{i-1} \xrightarrow{d_K^{i-1}}K^i \xrightarrow{d_K^{i}}
+	K^{i+1}\xrightarrow{d^{i+1}}\cdots
+\]
+来表示。当$d_K^{i}$的指标自明时，我们可以简写为$d$. 比方说，$d^2=0$
+是$d_K^{i+1}d_K^i=0$的简写。
+
+\begin{para}[链复形的态射]
+	设$K^\bullet$, $L^\bullet$是两个Abel范畴$A$中的复形，态射族
+    $f=\{f^i:K^i\to L^i\}_i$被称为链复形$K^\bullet$和$L^\bullet$间的态射，
+    如果对任意的$i$都有$f^{i+1}d^i_K=d^i_Lf^i$.
+\end{para}
+
+态射$f$常被写作$f:K^\bullet\to L^\bullet$，且可以用交换图表示
+\[
+	\xymatrix{
+		\cdots \ar[r]& K^{i-1}\ar[r]^{d^{i-1}_K}\ar[d]^{f^{i-1}}&K^i\ar[r]^{d^{i}_K}\ar[d]^{f^{i}}&K^{i+1}\ar[r]^{d^{i+1}_K}\ar[d]^{f^{i+1}}&\cdots\\
+		\cdots \ar[r]& L^{i-1}\ar[r]^{d^{i-1}_L}&L^i\ar[r]^{d^{i}_L}&L^{i+1}\ar[r]^{d^{i+1}_L}&\cdots
+	}
+\]
+
+Abel范畴$A$上的复形和态射构成了一个范畴，我们将其记作$\operatorname{Kom}(A)$.
+在实际应用中，我们经常考虑带有各种有限性条件的复形。比如，我们可以定义
+\[
+\begin{aligned}
+	&\operatorname{Kom}^+(A):K^i=0\quad \text{for}\quad i< i_0(K^\bullet),\\
+	&\operatorname{Kom}^-(A):K^i=0\quad \text{for}\quad i> i_0(K^\bullet),\\
+	&\operatorname{Kom}^b(A)=\operatorname{Kom}^+(A)\cap \operatorname{Kom}^-(A),\\
+\end{aligned}
+\]
+其中$i_0(K^\bullet)$是一个整数。显然，$\operatorname{Kom}^+(A)$, 
+$\operatorname{Kom}^-(A)$和$\operatorname{Kom}^b(A)$ 都是 
+$\operatorname{Kom}(A)$ 的子范畴。
+
+\begin{para}[平移]
+	设$K^\bullet \in \operatorname{Kom}(A)$是一个复形，则将其平移$n$
+    位的复形$K[n]^\bullet$定义为
+	\[
+		(K[n])^i=K^{n+i},\quad d_{K[n]}^i=(-1)^n d_K^{n+i}.
+	\]
+	同样，可以自然定义 $f[n]:K[n]\to L[n]$ 通过 
+	$(f[n])^i=f^{n+i}$.
+\end{para}
+
+于是，
+\[
+	T^n:K^\bullet \mapsto K[n]^\bullet, \quad 
+	T^n:f\mapsto f[n]
+\]
+构成了一个函子$T^n:\operatorname{Kom}(A)\to \operatorname{Kom}(A)$，
+并且显然是一个范畴等价。由于这种等价，我们常可以对单个
+$K^\bullet \in \operatorname{Kom}^+(A)$ 设 $i_0(K^\bullet)=0$.
+
+\begin{para}[双重链复形]
+双重链复形$K^{\bullet,\bullet}$是有两个指标的链复形，他有两个微分算符
+$d:K^{m,n}\to K^{m+1,n}$和$\delta:K^{m,n}\to K^{m,n+1}$，满足
+$d^2=0$, $\delta^2=0$ 以及 $d\delta+\delta d=0$. 对一个双重链复形$K^{\bullet,\bullet}$，
+我们可以定义一个链复形$|K|^\bullet$，
+\[
+    |K|^p=\bigoplus_{m+n=p}K^{m,n},\quad d=d+\delta,
+\]
+不难看到$d^2=(d+\delta)^2=d^2+d\delta+\delta d+\delta^2=0$. $|K|^\bullet$常被
+称为双重链复形$K^{\bullet,\bullet}$的整体化。
+\end{para}
+
+\begin{para}[映射锥]
+    设$f:K^\bullet\to L^\bullet$是一个态射，我们可以定义一个双重链复形
+    $C(f)^{\bullet,\bullet}$：
+    \[
+        C(f)^{i,-1}=K^i,\quad C(f)^{i,0}=L^i,\quad 
+        C(f)^{i,j}=0\,\,\text{for $j>0$},\quad 
+        \delta^i=(-1)^i f_i:C(f)^{i,-1}\to C(f)^{i,0},
+    \]
+    不难看到$d\delta +\delta d=0$在这里即态射定义中的$fd_K=d_Lf$.
+    他的整体化$|C(f)|^\bullet$被称为$f$的映射锥，记作$\operatorname{Cone}(f)$.
+\end{para}
+
+映射锥的名字来自于拓扑，并不指这里的$f$是一个映射。
+我们也可以直接写出映射锥$\operatorname{Cone}(f)$的定义：
+\[
+    (\operatorname{Cone}(f))^i=K[1]^i\oplus L^i=K^{i+1}\oplus L^i,\quad
+    d_{\operatorname{Cone}(f)}=\begin{pmatrix}
+        d_{K[1]}&0\\
+        f[1]&d_L
+    \end{pmatrix}.
+\]
+容易验证
+\[
+	d_{\operatorname{Cone}(f)}^2=\begin{pmatrix}
+		d_{K[1]}&0\\
+		f[1]&d_L
+	\end{pmatrix}\begin{pmatrix}
+		d_{K[1]}&0\\
+		f[1]&d_L
+	\end{pmatrix}
+	=\begin{pmatrix}
+		0&0\\
+		f[1]d_{K[1]}+d_Lf[1]&0
+	\end{pmatrix}
+	=0,
+\]
+因为
+\[
+	(f[1]d_{K[1]}+d_Lf[1])^i =
+	-f^{i+2}d_K^{i+1}+d_L^{i+1} f^{i+1}=0.
+\]
+利用Abel范畴的双积，我们不难看到，存在$K[1]^\bullet$, $L^\bullet$和
+$\operatorname{Cone}(f)^\bullet$之间的典范态射。特别地，我们有一个
+短正和列
+\[
+    0\to L^\bullet\to \operatorname{Cone}(f)^\bullet\to K[1]^\bullet \to 0,
+\]
+其中的态射都由双积给出。
+
+\begin{para}[映射柱]
+	令$f:K^\bullet\to L^\bullet$为一个态射，$f$的态射柱即双积的态射
+	\[
+		\delta(f)[-1]:\operatorname{Cone}(f)[-1]^\bullet \to K^\bullet
+	\]
+    的映射锥，换言之，即如下复形$\operatorname{Cyl}(f)$:
+	\[
+		\operatorname{Cyl}(f)^i=\operatorname{Cone}(f)^i\oplus K^{i} ,\quad
+		d_{\operatorname{Cyl}(f)}=\begin{pmatrix}
+			d_{\operatorname{Cone}(f)}&0\\
+			\delta(f) & d_{K}
+		\end{pmatrix}.
+	\]
+\end{para}
+
+% 在代数拓扑中，一个连续映射$\varphi:X\to Y$的映射柱 $\operatorname{cyl}(\varphi)$ 
+% 是如下图的余极限
+% \[
+% 	X\times [0,1] \xleftarrow{i} X \xrightarrow{\varphi} Y,
+% \]
+% 其中$i:X\hookrightarrow X\times [0,1]$是典范含入$x\mapsto (x,0)$. 
+% 则映射柱的泛性质为，对任意的空间$Z$和连续映射$g_1:X\times [0,1]\to Z$, $g_2:Y\to Z$，
+% 若$g_1(x,0)=g_2(f(x))$对任意的$x$都成立，则存在唯一的$k:\operatorname{cyl}(\varphi)\to Z$,
+% 使得如下图是交换的
+% \[
+% 	\xymatrix{
+% 		Z &  & \\
+% 		  & \operatorname{cyl}(\varphi)\ar@{-->}[ul]_k & Y\ar[l]\ar@/_/[llu]_{g_2}\\
+% 		  & X\times [0,1]\ar[u]\ar@/^/[luu]^{g_1} & X\ar[u]\ar[l]
+% 	}
+% \]
+% 这里考虑$X\times [0,1]$是自然的，这就来自于同伦的定义。这里，
+% 典范映射$Y\to \operatorname{cyl}(\varphi)$还将给出$Y$和$\operatorname{cyl}(\varphi)$
+% 之间的同伦等价。特别地，任何连续映射可以通过这个映射分解为其与一个形变收缩的复合。
+% %every continuous function factors as a map into its mapping cylinder followed by a deformation retraction.
+
+% 在同调代数中，我们也将看到映射锥有类似的性质。实际上，我们可以在任何的Abel范畴中，
+% 找到一个类似于拓扑空间范畴中闭区间$[0,1]$的对象$I$，使得
+% 态射$f:K^\bullet \to L^\bullet$ 的映射锥即如下图的余极限
+% \[
+% 	K^\bullet\otimes I^\bullet \xleftarrow{i}K^\bullet \xrightarrow{f}L^\bullet.
+% \]
+
+
+\begin{para}[上同调]
+设$K^\bullet$是一个复形，则对
+$K^{i-1}\xrightarrow{d^{i-1}}K^i\xrightarrow{d^i}K^{i+1}$存在态射$a$ 和 $b$
+使得如下图是交换的，
+\[
+	\begin{xy}
+		\xymatrix{
+			&&\cdot \ar[rrd]^-{b}&&\\
+			K^{i-1} \ar[rr]^-{d^{i-1}} \ar[rrd]_{a}&& K^i \ar[rr]^-{d^i}\ar[u]^-{\coker d^{i-1}}&&K^{i+1}\\
+			&&\cdot \ar[u]_-{\ker d^i}&&
+		}
+	\end{xy}
+\]
+且在$\coker(a):\cdot\to P$和$\ker(b):r\to \cdot Q$中$P$和$Q$自然同构
+（当然也可以取成一样的），于是我们定义$H^i(K^\bullet):=P$.
+\end{para}
+
+定义的自洽性不过是简单的范畴论验证。如果$A$是模范畴，则回归到经典的定义：
+\[
+	H^i(K^\bullet)=\ker d^i/\im d^{i-1}.
+\]
+
+\begin{pro}
+	设 $f:K^\bullet \to L^\bullet$ 是一个链复形态射，则其诱导了
+    态射$\hat f$, $\bar f$ 以及 $H^\bullet(f)$ 使得如下图交换
+	\[
+		\xymatrix{
+			\ker d_K^i\ar[r]\ar@{-->}[d]^{\hat{f}^i}&K^i\ar[r]
+			\ar[d]^{f^i}&\coker d^{i-1}_K\ar@{-->}[d]^{\bar{f}^i}
+			\\
+			\ker d_L^i\ar[r]&L^i\ar[r]&\coker d^{i-1}_L
+		}
+		\quad 
+		\xymatrix{
+			\ker d_K^i\ar[rr]^{\coim \varphi^i_K}\ar@{-->}[d]^{\hat{f}^i}&&H^i(K^\bullet)\ar[r]^{\im\varphi^i_K}
+			\ar[d]^{H^i(f)}&\coker d^{i-1}_K\ar@{-->}[d]^{\bar{f}^i}\\
+			\ker d_L^i\ar[rr]^{\coim \varphi^i_L}&&H^i(L^\bullet)\ar[r]^{\im\varphi^i_L}&\coker d^{i-1}_L
+		}
+	\]
+	其中 $\varphi^i=\coker d^{i-1}\ker d^i$.
+\end{pro}
+
+\begin{proof}
+	还是一个泛性质的简单练习。由于
+	$f^{i+1}d_K^i=d_L^if^i$, 则 $d_L^if^i\ker d_K^i=0$, 再从 
+    $\ker d_L^i$的泛性质，存在态射 $\hat{f}^i$ 使得
+	\[
+		f^i\ker d_K^i=\ker d_L^i\hat{f}^i.
+	\]
+	类似可以得到 $\bar f^i$ 的存在性。 对第二幅图，由于
+	\[
+	\begin{aligned}
+		\coker \varphi^i_L \bar f^i \varphi^i_K
+		&= \coker \varphi^i_L \bar f^i \varphi^i_K\\
+		&= \coker \varphi^i_L \varphi^i_L \hat f^i \\
+		&= 0,
+	\end{aligned}
+	\]
+	$\coker \varphi^i_L \bar f^i \im \varphi^i_K$ 也为零。
+    实际上，
+	\[
+		\coker \varphi^i_L \bar f^i \im \varphi^i_K\operatorname{coim}\varphi^i_K=\coker \varphi^i_L \bar f^i \varphi^i_K=0
+	\]
+	以及 $\operatorname{coim}\varphi^i_K$ 是一个满态射。
+    因此，泛性质
+	$\ker \coker \varphi_K^i=\im \varphi_K^i$ 给出态射 $H^i(f)$ 使得
+	\[
+		\bar f^i \im \varphi^i_K=\im \varphi_L^i H^i(f).
+	\]
+	最后还需说明 $\coim \varphi_L^i\hat f^i= H^i(f)\coim \varphi_K^i$，
+    这来自于
+	\[
+		\im \varphi_L^i\coim \varphi_L^i\hat f^i=\varphi^i_L\hat f^i=\bar f^i \varphi^i_K=
+		\im \varphi_L^i H^i(f)\coim \varphi^i_K
+	\]
+	以及 $\im \varphi_L^i$ 是单态射。
+\end{proof}
+
+如今我们已经定义了，
+\[
+	H^n :K^\bullet\mapsto H^n(K^\bullet)\quad \text{and}\quad
+	H^n :f\mapsto H^n(f),
+\]
+不难看到 $H^n$ 对任意的$n$都构成了一个函子，被称为上同调函子。
+
+\begin{para}[链同伦]
+	若 $f$, $g:K^\bullet\to L^\bullet$是两个态射，如果存在
+	一系列态射 $s^i:K^i\to L^{i-1}$ 使得
+	\[
+		f^i-g^i=s^{i+1}d_K^i+d_L^{i-1}s^i,
+	\]
+	则$f$和$g$被称为（链）同伦的，记作 $f\sim g$.
+\end{para}
+
+不难看到，$f\sim g$等价于$f-g\sim 0$.
+
+\begin{lem}\label{lem:1.7}
+	若$f$, $g:K^\bullet\to L^\bullet$是同伦的，则
+	$H^\bullet(f)=H^\bullet(g)$.
+\end{lem}
+
+\begin{proof}
+	不妨设$g=0$以及$H^\bullet(g)=0$. 我们将证明
+	\[
+		\bar f^i \varphi_K^i = \im \varphi_L^i H^i(f) \operatorname{coim} \varphi_K^i=0.
+	\]
+	实际上，
+	\[
+		\begin{aligned}
+		\bar f^i \varphi_K^i=\bar f^i \coker d_K^{i-1}\ker d_{K}^i 
+		&=\coker d_L^{i-1} f^i\ker d_{K}^i\\
+		&=\coker d_L^{i-1}(s^{i+1}d_K^i+d_L^{i-1}s^i)\ker d_{K}^i\\
+		&=\coker d_L^{i-1}s^{i+1}d_K^i\ker d_{K}^i+\coker d_L^{i-1}d_L^{i-1}s^i\ker d_{K}^i\\
+		&=0.
+		\end{aligned}
+	\]
+	因为 $\im \varphi_L^i$ 是单的，而
+	$\operatorname{coim} \varphi_K^i$ 是满的，故$H^i(f) = 0$.
+\end{proof}
+
+\begin{para}[拟同构]
+	态射$f:K^\bullet\to L^\bullet$ 被称为拟同构的，如果存在
+     $H^n(f):H^n(K^\bullet)\to H^n(L^\bullet)$ 对任意$n$都是同构。
+\end{para}
+
+\begin{pro}\label{pro:1.9}
+	链复形的短正合列 $0\to K^\bullet\xrightarrow{f}L^\bullet\xrightarrow{g}M^\bullet\to 0$ 
+    诱导了一个上同调的正合列
+	\[
+		\cdots\to H^n(K^\bullet)\xrightarrow{H^n(f)}H^n(L^\bullet)\xrightarrow{H^n(g)}H^n(M^\bullet)\xrightarrow{\partial^n}H^{n+1}(K^\bullet)\xrightarrow{H^{n+1}(f)}H^{n+1}(L^\bullet)\to\cdots.
+	\]
+\end{pro}
+
+在模范畴， $\partial^n:H^n(M^\bullet)\to H^{n+1}(K^\bullet)$ 可以如下计算
+\[
+	\partial^n([c])=\left[(f^{n+1})^{-1}\left(\dd^n_L\left((g^n)^{-1}(c)\right)\right)\right].
+\]
+
+\begin{proof}
+	从蛇引理，对任意的$n$，存在正合列
+	\[
+		0\to \ker d_K^n\xrightarrow{\hat f^n} \ker d_L^n
+		\xrightarrow{\hat g^n}
+		\ker d_M^n \xrightarrow{\delta^n}
+		\coker d_K^n\xrightarrow{\bar f^{n+1}} \coker d_L^n\xrightarrow{\bar g^{n+1}} \coker d_M^n \to 0.
+	\]
+	剩下部分是容易的。
+\end{proof}
+
+% \[
+% 	\xymatrix{
+% 	&0\ar[d]&0\ar[d]&0\ar[d]&\\
+% 	\cdots\ar[r]&K^{n-1}\ar[r]^{\dd_K^{n-1}}\ar[d]^{f^{n-1}}&K^n\ar[r]^{\dd_K^n}\ar[d]^{f^{n}}&K^{n+1}\ar[r]\ar[d]^{f^{n+1}}&\cdots\\
+% 	\cdots\ar[r]&L^{n-1}\ar[r]^{\dd_L^{n-1}}\ar[d]^{g^{n-1}}&L^n\ar[r]^{\dd_L^n}\ar[d]^{g^{n}}&L^{n+1}\ar[r]\ar[d]^{g^{n+1}}&\cdots\\
+% 	\cdots\ar[r]&M^{n-1}\ar[r]^{\dd_L^{n-1}}\ar[d]&M^n\ar[r]^{\dd_L^n}\ar[d]\ar[ruu]&M^{n+1}\ar[r]\ar[d]&\cdots\\
+% 	&0&0&0&
+% 	}
+% \]
+
+
+\begin{pro}\label{pro:1.12}
+	对态射$f:K^\bullet \to L^\bullet$，存在如下的交换图，其行是正和的：
+	\begin{equation}\label{tri}
+		\xymatrix{
+			& 0\ar[r] & L^\bullet \ar[r]^-{\bar\pi}\ar[d]^\alpha & \Cone(f)^\bullet \ar[r]^-{\delta(f)}\ar@{=}[d]
+			& K[1]^\bullet \ar[r] & 0\\
+			0 \ar[r] & K^\bullet \ar[r]^-{\bar f}\ar@{=}[d] & \operatorname{Cyl}(f)^\bullet \ar[r]^-\pi\ar[d]^\beta 
+			&\Cone(f)^\bullet \ar[r] & 0 & \\
+			& K^\bullet \ar[r]^f & L^\bullet & & &
+		}
+	\end{equation}
+	其中
+	\[
+		\begin{aligned}
+		&\bar f = (0,0,\id_{K^i}),\quad\bar\pi^i=(0,\id_{L^i}),\quad \pi^i=(p^i_{K[1]},p^i_{L})\\
+		&\alpha^i = (0,\id_{L^i},0),\quad \beta^i= p^i_{L} + f^i p^i_K,\quad \delta(f)=q_{K[1]}
+		\end{aligned}
+	\]
+	以及$p_{K[1]}$, $p_{L}$, $p_{K}$, $q_{K[1]}$和$q_L$都是双积给出的典范态射，
+    于是$\beta\alpha=\id_L$以及$\alpha\beta\sim \id_{\operatorname{Cyl}(f)}$.
+	因此，$\alpha$和$\beta$是$L^\bullet$和$\operatorname{Cyl}(f)^\bullet$之间的拟同构。
+\end{pro}
+
+在代数拓扑中，$f:X\to Y$的映射锥和$Y$同伦等价。
+
+\begin{proof}
+	证明是直接的。
+\end{proof}
+
+\begin{lem}\label{lem:1.13}
+	设$f:K^\bullet\to L^\bullet$是一个态射，则$f\delta(f)[-1]\sim 0$.
+\end{lem}
+
+\begin{proof}
+	设
+	\[
+		p^i:(\Cone(f)[-1])^i=K^i\oplus L^{i-1}\to L^{i-1}
+	\]
+	是积的典范态射，现在我们有
+	\[
+		\begin{aligned}
+			p^{i+1}d^i_{\Cone(f)[-1]}+d^{i-1}_{L}p^i
+			&=-p^{i+1}d^{i-1}_{\Cone(l)}+d^{i-1}_{L}p^i\\
+			&=-p^{i+1}\begin{pmatrix}
+				-d^{i}_{K}&0\\
+				f^i&d_{L}^{i-1}
+			\end{pmatrix}+d^{i-1}_{L}p^i\\
+			&=-f^i\delta(f)^{i-1}-d_{L}^{i-1}p^i+d^{i-1}_{L}p^i\\
+			&=-f^i\delta(f)^{i-1},
+		\end{aligned}
+	\]
+	于是$f\delta(f)[-1] \sim 0$.
+\end{proof}
+
+\begin{pro}\label{pro:1.13}
+	设$0\to K^\bullet \xrightarrow{f}L^\bullet \xrightarrow{g}M^\bullet\to 0$
+    是一个短正合列，则其拟同构于\eqref{tri}式中的中间那行，即存在态射
+    $\alpha$, $\beta$, $\gamma$ 使得如下图交换
+	\[
+		\xymatrix{
+		0 \ar@{->}[r] & K^\bullet \ar@{->}[r]^{f} & L^\bullet \ar@{->}[r]^{g} & M^\bullet \ar@{->}[r] & 0 \\
+		0 \ar@{->}[r] & K^\bullet \ar@{->}[r]^{\bar f} \ar@{->}[u]_{\alpha} & \operatorname{Cyl}(f) \ar@{->}[r]^{\pi} \ar@{->}[u]_{\beta} & \operatorname{Cone}(f) \ar@{->}[r] \ar@{->}[u]_{\gamma} & 0
+		}
+	\]
+	其中$\bar f$ 和 $\pi$ 定义于 Proposition \ref{pro:1.12}.
+\end{pro}
+
+\begin{proof}
+	我们还是使用 Proposition \ref{pro:1.12} 的记号。取
+	\[
+		\alpha=\id,\quad \beta^i= p^i_{L} + f^i p^i_K,\quad \gamma^i=gq_L^i.
+	\]
+	容易看到$\gamma$是一个态射，且 
+	\[
+		\gamma\pi=gq_L\pi=gp_L,\quad g\beta=gp_L+gfp_K=gp_L,
+	\]
+	故上图交换。
+
+	如 Proposition \ref{pro:1.12} 所示, $\beta$ 是拟同构，我们只需要
+    证明$\gamma$是拟同构。首先，注意到$\gamma=gq_L$
+    是满的，因为$g$和$q_L$都是满的。考虑短正和列
+	\[
+		0\to \ker \gamma\to \Cone(f)\xrightarrow{f} M^\bullet\to 0,
+	\]
+	他诱导了长正和列
+	\[
+		H^n(\ker \gamma)\to H^n(\Cone(f))\xrightarrow{H^n(\gamma)}H^n(M)\to H^{n+1}(\ker \gamma),
+	\]
+	我需要证明$H^i(\ker \gamma)=0$对任何$i$都对。
+    容易看到，$\ker \gamma$就是如下复形
+	\[
+		K[1]^\bullet \oplus \ker g=K[1]^\bullet \oplus \im f,
+	\]
+	以及
+	\[
+		d=(d_{K[1]}p_{K[1]},K[1]+d_{K}p_K).
+	\]
+	所以不难检查由$\chi=(p_K,0)$定义的$\chi^i:K^{i+1}\oplus K^i\to K^i\oplus K^{i-1}$
+    满足$\chi d+d \chi =\id$，这是一个链同伦。因此，对任何的$i$都有$H^i(\ker \gamma)=0$.
+\end{proof}
+
+因此，所有$0\to K^\bullet \xrightarrow{f}L^\bullet \xrightarrow{g}M^\bullet\to 0$的
+同伦信息都可以从另一个短正合列$0\to K^\bullet \xrightarrow{\bar f}\operatorname{Cyl}(f) \xrightarrow{\pi}\Cone(f)\to 0$得到。对其诱导的长正和列，我们可以说更多。
+
+\begin{lem}\label{lem:1.14}
+	我们有长正和列
+	\[
+		\cdots\to H^n(K^\bullet)\xrightarrow{H^n(\bar f)}H^n(\Cyl(f))\xrightarrow{H^n(\pi)}H^n(\Cone(f))\xrightarrow{\partial^n}H^{n+1}(K^\bullet)\to\cdots,
+	\]
+	其中$\partial^n=H^n(\delta(f))$.
+\end{lem}
+
+\begin{proof}
+	直接的。
+\end{proof}
+
+\begin{coro}
+	链复形$\Cone(f)^\bullet$是正和的当且仅当$f$是拟同构。
+\end{coro}
+
+\begin{proof}
+	如果 $H^n(\Cone(f)^\bullet)=0$，则上面的长正和列给出$H^n(\bar f)$是同构，
+    因此$H^n(f)=H^n(\beta)H^n(\bar f)$也是同构，因为
+    $\beta$是拟同构。
+
+	反过来，如果$f$是拟同构，则$H^n(\bar f)=(H^n(\beta))^{-1}H^n(f)$是同构。
+    因此，
+	\[
+		\ker H^n(\pi)=\im H^n(\bar f)=H^n(\Cyl(f)),\quad 
+		\im H^{n-1}(\delta)=\ker H^n(\bar f)=0,
+	\]
+	故$H^n(\pi)=0=H^{n}(\delta)$，以及 
+	\[
+		H^n(\Cone(f))=\ker H^n(\delta)=\im H^n(\pi)=0.\qedhere
+	\]
+\end{proof}
+
+\begin{para}[三角]
+	一个三角是指如下的一幅图
+	\[
+		K^\bullet \xrightarrow{u}L^\bullet\xrightarrow{v}M^\bullet 
+		\xrightarrow{w}K[1]^\bullet,
+	\]
+	他们之间的态射被定义为如下的交换图
+	\[
+		\xymatrix{
+		K^\bullet \ar@{->}[r]^{u} \ar@{->}[d]^{f} & L^\bullet \ar@{->}[r]^{v} \ar@{->}[d]^{g} & M^\bullet \ar@{->}[r]^{w} \ar@{->}[d]^{h} & K[1]^\bullet \ar@{->}[d]^{{f[1]}} \\
+		K_1^\bullet \ar@{->}[r]^{u_1} & L_1^\bullet \ar@{->}[r]^{v_1} & M_1^\bullet \ar@{->}[r]^{w_1} & K_1[1]^\bullet
+		}
+	\]
+	一个三角被称为是可分的，如果他同构于某个
+	\[
+		K^\bullet \xrightarrow{\bar f}\operatorname{Cyl}(f)^\bullet \xrightarrow{\pi}\Cone(f)^\bullet\xrightarrow{\delta(f)}K[1]^\bullet.
+	\]
+\end{para}
+
+\begin{pro}
+	可分三角$K^\bullet \xrightarrow{u}L^\bullet\xrightarrow{v}M^\bullet 
+	\xrightarrow{w}K[1]^\bullet$诱导了长正和列
+    \[
+		\cdots\to H^n(K^\bullet)\xrightarrow{H^n(u)}H^n(L^\bullet)\xrightarrow{H^n(v)}H^n(M^\bullet)\xrightarrow{H^n(w)}H^{n+1}(K^\bullet)\xrightarrow{H^{n+1}(u)}H^{n+1}(L^\bullet)\to\cdots.
+	\]
+\end{pro}
+
+\subsection{导出范畴和导出函子}
+
+\begin{para}
+    令$A$是一个Abel范畴，$\operatorname{Kom}(A)$是$A$上的链复形范畴。
+    则存在一个范畴$D(A)$以及函子$Q:\operatorname{Kom}(A)\to D(A)$
+	使得
+	\begin{enumerate}
+		\item 对任何拟同构$f$，$Q(f)$都是同构；
+		\item 任何将拟同构变成同构的函子$F:\operatorname{Kom}(A)\to C$
+            可以唯一地经由$D(A)$分解，即存在唯一的函子$G:D(A)\to C$
+            使得$F=GQ$.
+	\end{enumerate}
+	范畴$D(A)$被称为$A$的导出范畴。我们可以类似地定义适当的有限性链复形范畴
+    的相应导出范畴$D^+(A)$, $D^-(A)$以及$D^b(A)$，他们都是$D(A)$的完全子范畴。
+\end{para}
+
+导出范畴的存在性可以通过引入拟同构的等价类（模同伦等价的意义上）的形式逆来证明。
+这个构造被称为范畴的局部化。我们这里不会给出这个构造的细节，而是直接描述导出范畴。
+
+\begin{para}[同伦范畴]
+	同伦范畴$K(A)$由如下的资料定义：
+	\[
+		\begin{aligned}
+			\text{Obj $K(A)$} &= \text{Obj $\operatorname{Kom}(A)$}\\
+			\text{Mor $K(A)$} &= \text{Mor $\operatorname{Kom}(A)$ 模去同伦等价}
+		\end{aligned}
+	\]
+	类似地，我们可以定义子范畴$K^+(A)$, $K^-(A)$, $K^b(A)$.
+\end{para}
+
+\begin{lem}
+    如果$f,g:K^\bullet\to L^\bullet$是同伦的，则在导出范畴$D(A)$中有$Q(f)=Q(g)$.
+\end{lem}
+
+\begin{lem}\label{lem:1.21}
+	若$f:K^\bullet \to L^\bullet$是$K(A)$中的一个拟同构，而$g:M^\bullet \to L^\bullet$
+    是一个态射，则存在一个复形$N^\bullet$，态射$h:N^\bullet\to K^\bullet$和拟同构
+    $k:N^\bullet \to M^\bullet$使得$gk=fh$，即使得如下图交换
+	\[
+		\xymatrix{
+		N^\bullet \ar@{-->}[rr]^{k} \ar@{-->}[d]_{h} &  & M^\bullet \ar@{->}[d]^{g} \\
+		K^\bullet \ar@{->}[rr]^{f} &  & L^\bullet
+		}
+	\]
+\end{lem}
+
+\begin{lem}\label{lem:1.22}
+    假如$f$, $g$都是$K^\bullet$ to $L^\bullet$的态射，则存在拟同构$s$使得$sf\sim sg$当且仅当存在拟同构$t$使得$ft\sim gt$.
+\end{lem}
+
+\begin{proof}
+	不失一般性，我们可以假设$g=0$. 假设$\{h^i:K^i\to M^{i-1}\}$是$sf$和$0$之间的同伦。
+    考虑$K(A)$中的如下图
+	\[
+		\xymatrix{
+\Cone(l)[-1]^\bullet \ar@{->}[rr]^-{\delta(l)[-1]}\ar[d]^0 && K^\bullet \ar@{->}[d]^{f} \ar@{->}[lld]_{l} &  \\
+\Cone(s)[-1]^\bullet \ar@{->}[rr]^-{{\delta(s)[-1]}} && L^\bullet \ar@{->}[r]^{s} & M^\bullet
+}
+	\]
+	其中$l:K^\bullet \to \Cone(s)[-1]^\bullet=L^\bullet \oplus M[-1]^\bullet$由$l^i=(f^i,-h^i)$
+    所定义。显然， $l$是一个态射，而从定义，$f=\delta(s)[-1]l$. 现在 $l\delta(l)[-1]\sim 0$ 
+    告诉我们在$K(A)$中有$l\delta(l)[-1] = 0$以及上图是交换的。最后，我们从
+    Proposition \ref{pro:1.12} 知道
+	\[
+		\Cone(\delta(l)[-1])^\bullet=\Cyl(l)^\bullet \sim \Cone(s)[-1]^\bullet,
+	\]
+	以及  Lemma \ref{lem:1.14} 告诉我们 $\Cone(s)[-1]$ 是正和的，
+    由于 $s$ 是拟同构，则 $\delta(l)[-1]$ 也是拟同构。因为 $f\delta(l)[-1]=0$,
+    这就是想要的拟同构$t$. 另一个方向也是类似的。
+\end{proof}
+
+\begin{para}[导出范畴的一种实现]
+	若$A$是一个Abel范畴，而$K(A)$是同伦范畴。导出范畴$D(A)$的对象即$K(A)$的对象。
+	\begin{compactenum}[\quad (1)]
+		\item $D(A)$的态射$X\to Y$为“根图”的等价类，所谓“根图”
+        为$K(A)$中的图$(s,f)$形如$X\xleftarrow{s}X'\xrightarrow{f}Y$，其中$s$
+        是一个拟同构，而$f$是一个同构。我们可以将其理解为$f/s$. 两个
+		根图是等价的，$(s,f)\sim (t,g)$，当且仅当存在第三个根图使得如下图交换
+		\[
+			\xymatrix{
+				&  & X''' \ar@{->}[rd]^{h} \ar@{->}[ld]_{r} &  &  \\
+				& X' \ar@{->}[ld]_{s} \ar@{->}[rrrd]^{f} &  & X'' \ar@{->}[rd]^{g} \ar@{->}[llld]_{t} &  \\
+				X &  &  &  & Y
+			}
+		\]
+        我们可以将其理解为$f/s=g/t$当且仅当他们可以通分为$fr/sr=gh/th$.
+		\item 两个根图$(s,f)$和$(t,g)$的复合通过“通分”得到的，利用Lemma \ref{lem:1.21}
+		我们可以构造出如下图
+		\[
+			\xymatrix{
+			 &  & X'' \ar@{-->}[ld]_{t'} \ar@{-->}[rd]^{f'} &  &  \\
+			 & X' \ar@{->}[ld]_{s} \ar@{->}[rd]^{f} &  & Y' \ar@{->}[ld]_{t} \ar@{->}[rd]^{g} &  \\
+			X &  & Y &  & Z
+			}
+		\]
+        而$(st',gf')$对应的等价类就是$(s,f)$和$(t,g)$的复合。不难检查这是良定的。
+        以及$D(A)$的恒等态射$\id:X\to X$为根图$(\id_X,\id_X)$的等价类。
+		\item $D(A)$是加性范畴。假设$\varphi$, $\varphi':X\to Y$为$D(A)$中的态射，
+        他们由根图$(s,f)$和$(s',f')$所表示：
+		\[
+			\xymatrix{
+				& Z \ar@{->}[ld]_{s} \ar@{->}[rd]^{f} &  \\
+				X &  & Y
+				}
+			\quad
+			\xymatrix{
+				& Z' \ar@{->}[ld]_{s'} \ar@{->}[rd]^{f'} &  \\
+				X &  & Y
+			}
+		\]
+		于是，利用 Lemma \ref{lem:1.21} 可以找到交换图
+		\[
+			\xymatrix{
+				U \ar@{-->}[rr]^{r'} \ar@{-->}[d]_{r} &  & Z' \ar@{->}[d]^{s'} \\
+				Z \ar@{->}[rr]^{s} &  & X
+				}
+		\]
+		其中 $r$, $r'$, $s$ 和 $s'$ 是拟同构，进而我们可以得到两个新的根图
+		\[
+			\xymatrix{
+				& U \ar@{->}[ld]_{t} \ar@{->}[rd]^{fr} &  \\
+				X &  & Y
+				}
+			\quad 
+			\xymatrix{
+				& U \ar@{->}[ld]_{t} \ar@{->}[rd]^{f'r'} &  \\
+				X &  & Y
+				}
+		\]
+		来表示$\varphi$ 和 $\varphi'$，其中 $t=sr=s'r'$. 最后，我们定义 $\varphi+\varphi'$ 
+        为根图 $(t,fr+f'r')$ 所表示的态射。
+	\item 我们可以将$K(A)$的态射$f$嵌入到$D(A)$中，通过将其表示为根图$(\id,f)$. 
+    因此，$K(A)$中的态射$f$到$D(A)$中是一个零态射当且仅当存在拟同构 $s$ 或 $t$ 
+    使得$sf=0$ 或 $ft=0$. (由 Lemma \ref{lem:1.22}，这俩是等价的。)
+	\end{compactenum}
+\end{para}
+
+% \begin{para}[Cyclic Complex]
+% 	A complex $K^\bullet$ is cyclic if $d_K^n=0$ for any $n$. 
+% 	Cyclic complexes form a subcategory $\operatorname{Kom}_0(A)
+% 	\subset \operatorname{Kom}(A)$. Now let's consider the 
+% 	homology functor
+% 	\[
+% 		h:\operatorname{Kom}(A)\to \operatorname{Kom}_0(A)
+% 	\]
+% 	defined by 
+% 	\[
+% 		h((K^\bullet,d_K))=(H^\bullet(K),0),\quad 
+% 		h(f)=H^\bullet(f).
+% 	\]
+% 	It transforms quasi-isomorphisms to isomorphisms. Therefore,
+% 	there exists a functor 
+% 	\[
+% 		k:D(A)\to \operatorname{Kom}_0(A).
+% 	\]
+% \end{para}
+
+% \begin{pro}
+% 	Suppose $A$ is an abelian category, then 
+% 	the functor $D(A)\to \operatorname{Kom}_0(A)$ defined above is 
+% 	an equivalence iff $A$ is semisimple, i.e. any exact triple 
+% 	in $A$ splits.
+% \end{pro}
+
+下面我们将讨论将对象嵌入到某个复形中。
+
+\begin{para}
+我们称Abel范畴$A$上的$0$-复形是指形如$\cdots \to 0\to X\to 0\to \cdots$
+的复形，即只有一个非零的$X$位于$0$的位置。我们记这个复形为$X[0]$.
+类似地，我们可以定义$i$-复形，即只有一个非零的$X$位于$i$的位置，记作
+$X[-i]$.
+
+我们称Abel范畴$A$上的复形$K^\bullet$是一个$H^0$-复形，如果$H^i(K^\bullet)=0$
+对任何$i\neq 0$都成立。不难看到$H^0$-复形是$0$-复形的推广。
+可以证明，$H^0$-复形构成了一个范畴，他是一个$D(A)$的一个完全子范畴，
+并且实际上等价于$A$. 我们当然可以类似地定义$H^i$-复形，这不过就是平移，
+所以也等价于$A$.
+\end{para}
+
+\begin{para}[$\operatorname{Ext}$群]
+    $\operatorname{Ext}_A^i(X,Y):=\Hom_{D(A)}(X[0],Y[i])$. 由于$D(A)$
+    是加性范畴，所以这是一个Abel群。
+\end{para}
+
+通过适当平移，我们容易看到$\operatorname{Ext}_A^i(X,Y)=\Hom_{D(A)}(X[k],Y[k+i])$
+对任意的整数$k$都成立。于是$\operatorname{Ext}_A^i(X,Y)$与$\operatorname{Ext}_A^j(Y,Z)$
+之间的复合，就是$\Hom_{D(A)}(X[k],Y[k+i])$和$\Hom_{D(A)}(Y[k+i],Y[k+i+j])$之间的
+复合，即$\Hom_{D(A)}(X[k],Z[k+i+j])$，即
+\[
+    \operatorname{Ext}_A^i(X,Y)\times  \operatorname{Ext}_A^j(Y,Z)
+    \to \operatorname{Ext}_A^{i+j}(X,Z).
+\]
+
+\begin{para}[内射消解]
+    一个对象$X$的内射嵌入是一个正和列$0\to X\to I$，也即一个单射$X\to I$，其中$I$是一个
+    内射对象。如果$A$中的每一个对象都有一个内射嵌入，则称$A$有足够多的内射对象。
+
+    设$X$是一个对象，正和列
+    \[
+        0\to X\to I^0\to I^1\to I^2\to \cdots
+    \]
+    被称为$X$的一个内射消解，如果其中$I^i$都是内射对象。
+    不难用内射对象的泛性质得到，同一个$X$的不同内射消解都是同伦的。
+
+    如果$A$有足够多的内射对象，则对任意的$X$，他都存在内射消解。
+    实际上，我们从正和列$0\to X\xrightarrow{\epsilon} I^0$
+    开始，考虑态射$\coker\epsilon:I^0\to Y$，由于$Y$也有内射嵌入，所以取
+    $0\to Y\to I^1$，取$d^0$为复合$I^0\to Y\to I^1$，因为$Y\to I^1$是单的，所以
+    $\ker d^0=\ker \coker \epsilon=\im \epsilon$，这样我们得到了正和列
+    \[
+        0\to X\xrightarrow{\epsilon} I^0\xrightarrow{d^0} I^0,
+    \]
+    对$d^0$重复上面的操作，我们可以得到一个正和列
+    \[
+        0\to X\to I^0\to I^1\to I^2\to \cdots.
+    \]
+\end{para}
+
+\begin{thm}
+令$I$为Abel范畴$A$中所有的内射对象所构成的完全子范畴，则同伦范畴$K^+(I)$
+到导出范畴$D^+(A)$的自然函子$K^+(I)\to D^+(A)$给出了$K^+(I)$与$D^+(A)$的一个
+完全子范畴的等价。同事，如果$A$有足够多的内射对象，则上述函子给出了
+$K^+(I)$与$D^+(A)$等价。
+\end{thm}
+
+\begin{para}[导出函子]
+设$F:A\to B$是一个加性的左正和函子，则其导出函子是函子
+$RF:D^+(A)\to D^+(B)$及一个自然变换$\epsilon_F:Q_B\circ K^+(F)
+\to RF\circ Q_A$，
+\[
+    \xymatrix{
+        K^+(A) \ar[r]^{K^+(F)} \ar[d]_{Q_A} & K^+(B) \ar[d]^{Q_B}
+        \ar@{=>}[ld] \\
+        D^+(A) \ar[r]_{RF} & D^+(B)
+    }
+\]
+满足以下泛性质：对任意的函子$G:D^+(A)\to D^+(B)$及自然变换
+$\epsilon:Q_B\circ K^+(F)\to G\circ Q_A$，都存在唯一的自然变换
+$\eta:RF\to G$使得如下图交换
+\[
+    \xymatrix{
+        & Q_B\circ K^+(F) \ar[ld]_{\epsilon_F} \ar[rd]^{\epsilon} & \\
+        RF\circ Q_A \ar[rr]_{\eta \circ Q_A} & & G\circ Q_A
+    }
+\]
+类似地，我们可以对右正和函子给出相应的定义。
+\end{para}
+
+导出函子是可以复合的，即如果$F:A\to B$和$G:B\to C$都是左正和函子，
+那个$GF$也是左正和的，且有同构$E:R(GF)\to R(G)R(F)$. 描述这个同构
+往往是复杂的，为此我们需要一个新的工具，叫做谱序列。
+
+\begin{para}[谱序列]
+令$A$为一个Abel范畴，则$A$中的一个谱序列是资料$E=(E_r^{p,q},E^n)$以及
+微分算符
+\[
+	d_r^{p,q}:E_r^{p,q}\to E_r^{p+r,q-r+1},
+\]
+其中$r\geq 1$，而其他指标都是整数。微分算符当然需要满足$d_r^2=0$，
+即$d_r^{p+r,q-r+1}d_r^{p,q}=0$. 于是，对给定的$r$，$E_r$构成了一个
+复形，于是我们可以定义$H^{p,q}(E_r):=\ker d_r^{p,q}/\im d_r^{p+r,q-r+1}$.
+此外，我们还有同构$\alpha_r^{p,q}:H^{p,q}(E_r)\to E_{r+1}^{p,q}$，即
+而$E_{r+1}$是$E_r$的（上）同调。
+\end{para}
