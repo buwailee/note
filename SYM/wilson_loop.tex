@@ -20,36 +20,145 @@
 
 \maketitle %标题
 
-\section{（假装）熟知的事实，非超对称的情况}
+\section{一些（假装）熟知的事实}
 
-从弦论和AdS/CFT，我们已经知道$\mathcal N=4$ SYM与在$AdS_5\times S^5$上的type IIB 超弦之间有着一个看上去证据极强的“对偶”存在。在振幅层次，历史上首先知道的是胶子振幅与$AdS_5\times S^5$种的开弦散射之间的关系。即使$\mathcal N=4$ SYM是紫外有限的，但在处理具体问题的时候，难免会看到红外发散，即使最终这种发散被抵消了，我们也需要一种手段去做正规化。在弦论侧，我们可以做如下的事情。
+从弦论和AdS/CFT，我们已经知道$\mathcal N=4$ SYM与在$\text{AdS}_5\times S^5$上的type IIB 超弦之间有着一个看上去证据极强的“对偶”存在。在振幅层次，历史上首先知道的是胶子振幅与$\text{AdS}_5\times S^5$种的开弦散射之间的关系。即使$\mathcal N=4$ SYM是紫外有限的，但作为无质量理论，难免会看到红外发散，即使最终这种发散被合适地抵消了，我们也往往需要一种手段去做正规化，我们会看到这将带来相当多问题。
 
-首先写下$AdS_5$的度规
+首先在弦论侧，我们在Poincar\'e坐标卡里写下$\text{AdS}_5$的度规
 \[
-    ds^2=R^2\frac{dx_{3+1}^2+dz^2}{z^2},
+	ds^2=R^2\frac{dx_{3+1}^2+dz^2}{z^2},
 \]
-然后在$z=z_{\text{IR}}\sim \infty$附近垂直地放一排$N$个D3-膜，我们考虑的渐进态都来自于端点在这些D3-膜上的开弦的散射。对于端点位于两个平行放置位置为$z_1$和$z_2$的D3-膜的开弦来说，膜间距将赋予它一个正比于$|z_1-z_2|/\alpha$的经典质量。在这些膜非常靠近和低能的两种极限（故只考虑无质量的激发）下，他们将在$x_{3+1}$-空间中给出一个具有$SU(N)$规范群（$SU(N)$指标来自于开弦端点所处的膜的指标，即所谓的Chan-Paton因子）的无质量规范理论。同时，由于我们要考虑弦微扰，我们会考虑大$N$极限下，即弱耦合的情况，
-则这些开弦的微扰振幅似乎就会对应胶子的振幅。在$AdS_5$中的动量为
-\[
-    k_{AdS_5}=\frac{k z_{\text{IR}}}{R},
-\]
-其中$k$是平直$x_{3+1}$-空间中的（类光）四动量，在将截断$z_{\text{IR}}$推向无穷时可以理解为是固定的。
+其中$R$是$\text{AdS}_5$的半径，在这个坐标下，整个$\text{AdS}_5$其可以看成$z>0$给出的半空间，而$z=0$是边界，在靠近边界的时候，共形等价于一个$3+1$
+的Minkowski时空，所以可以说$\text{AdS}_5$边界是一个平坦时空。
+然后我们在$z=z_{\text{IR}}>\!\!> 0$附近垂直地放一排$N$个D3-膜，我们考虑的渐进态都来自于端点在这些D3-膜上的开弦的散射。对于端点位于两个平行放置位置为$z_1$和$z_2$的D3-膜的开弦来说，膜间距将赋予它一个正比于$|z_1-z_2|/\alpha'$的经典质量。在这些膜非常靠近（合并为一）和低能的两种极限（故只考虑无质量的激发）下，他们将在$x_{3+1}$-时空中给出一个具有$\text{SU}(N)$规范群（$\text{SU}(N)$指标来自于开弦端点所处的膜的指标，即所谓的Chan-Paton因子）的无质量规范理论。同时，由于我们要考虑弦微扰，我们会考虑大$N$极限下，即弱耦合的情况，
+则这些开弦的微扰振幅就会对应胶子的振幅。
 
-现在我们做T-对偶，原$x$变量变成了
+为考虑弦论的散射振幅，我们需要在D3-膜上插入顶点算符来表示渐进态然后计算相应的路径积分。但是，D3-膜上的
+动量并不完全是在$\text{AdS}_5$边界上的动量。考虑一个没有$z$方向的动量$p$，那么为了动量的平方$g_{\mu\nu}p^\mu p^\nu=R^2\eta_{\mu\nu} p^\mu p^\nu/z^2$是一个不变量，那么位于$z=z_{\text{IR}}$处的
+D3-膜上的渐进态的动量形如
 \[
-	\partial_\alpha y^\mu = \sqrt{-1}w^2(z)\epsilon_{\alpha\beta}\partial_\beta x^\mu
+	p=\frac{z_{\text{IR}}}{R}k,
 \]
-原度规
+在$z_{\text{IR}}\to 0$的时候，可以看到$k$是边界处真正平直$x_{3+1}$-时空中的（类光）四动量，他并不随着$z_{\text{IR}}$变动而改变。此时，在红外极限$z_{\text{IR}}\to \infty$时，$p$会变得足够大，此时插入的顶点算符$V\propto \exp(ip\cdot y)$会使得路径积分主要由极值点处的贡献主导，即
 \[
-	ds^2=w^2(z)dx_\mu dx^\mu+\cdots
+	A\propto \exp(iS),
 \]
-在重定义$r=R^2/z$之后，$AdS_5$的度规则变成了同种形式
+其中$S$为极值点处的经典世界面作用量。但是，在$\text{AdS}_5$中计算这个经典作用量并不容易，
+所幸，我们可以通过T-对偶将$z_{\text{IR}}\to \infty$变到另一个$\text{AdS}_5$中的边界附近，
+进而，我们可以跑到一个平直时空中去考虑这个问题。
+
+% 众所周知，T-对偶保持左行坐标$x^\mu_L(\tau+\sigma)$不变，
+% 而将右行坐标$x^\mu_R(\tau-\sigma)$变成$-x^\mu_R(\tau-\sigma)$. 
+% 将变换后的坐标叫做$y^\mu$，我们需要有
+% \[
+% 	(\partial_\tau+\partial_\sigma)(y^\mu-x^\mu)=0,\quad 
+% 	(\partial_\tau-\partial_\sigma)(y^\mu+x^\mu)=0,
+% \]
+% 换言之
+% \[
+% 	\partial_\tau y^\mu=\partial_\sigma x^\mu,\quad \partial_\sigma y^\mu=\partial_\tau x^\mu,
+% \]
+% 或者$\partial_\alpha y^\mu=\epsilon_{\alpha\beta}\partial_\beta x^\mu$.
+% 我们也可以
+% 在$\sigma$-模型下考虑这个问题，考虑世界面上的作用量（这里我们略去时空指标）
+% \[
+% 	\int\left(\frac{1}{2} v^\alpha v_\alpha-\epsilon^{\alpha \beta} x \partial_\beta v_\alpha\right) d^2 \sigma,
+% \]
+% 乘子$x$对应的运动方程写作$\epsilon^{\alpha\beta}\partial_\beta v_\alpha=0$，此时他的解形如
+% $v_\alpha=\partial_\alpha \tilde x$，此外，对$v$变分还有运动方程
+% \[
+% 	v_\alpha=-\sigma_{\alpha\beta}\partial^\beta x,
+% \]
+% 这就有$\partial_\alpha \tilde x=-\epsilon_{\alpha\beta}\partial_\beta x$，在
+% $x$和$\tilde x$坐标下，作用量写作
+% \[
+% 	\frac{1}{2} \int \partial^\alpha \tilde{x} \partial_\alpha \tilde{x} d^2 \sigma
+% 	=
+% 	\frac{1}{2} \int \partial^\alpha x \partial_\alpha x d^2 \sigma.
+% \]
+这里我们考虑T-对偶
+\[
+	\partial_\alpha y^\mu = \sqrt{-1}w(z)^2\epsilon_{\alpha\beta}\partial_\beta x^\mu,
+\]
+在世界面的光锥坐标系下，在差一个相乘因子下，他保持一个方向不变，而将另一个方向变号。
+原度规形如
+\[
+	ds^2=w(z)^2dx_\mu dx^\mu+\cdots,
+\]
+在重定义$r=R^2/z$之后，我们得到了另一个$\text{AdS}_5$的度规
 \[
 	ds^2=R^2\frac{dy^2_{3+1}+dr^2}{r^2},
 \]
-而原本的$z_{\text{IR}}$则变到了边界$r\sim 0$附近。而插入顶点算子的边界条件给出了限制
+而原本的$z_{\text{IR}}$则变到了这个$\text{AdS}_5$的边界$r\sim 0$附近。在T-对偶
+$\partial_\alpha y^\mu = \sqrt{-1}w(z)^2\epsilon_{\alpha\beta}\partial_\beta x^\mu$
+两边对$d\sigma$积分，右侧的动量变成了开弦两点之差（即环绕数），形如
 \[
 	\Delta y^\mu=2\pi k^\mu.
 \]
+这个类光多边形当$z_{\text{IR}}\to \infty$时处于$r=0$处，散射的计算此时也就等价于这样的Wilson圈在强耦合的期望值。在这个区域中，弦作用量的鞍点就是止于对偶空间种的$k_1,\dots,k_n$的世界面的极小面积$A_{\text{min}}(k_1,\dots,k_n)$，因此，类光Wilson圈和振幅的领头阶都可以写作
+\[
+    \widehat A_{n;0}\sim \exp\bigl(-\frac{\sqrt{\lambda}}{2\pi}A_{\text{min}}(k_1,\dots,k_n)\bigr).
+\]
+
+% 原则上，振幅的弱耦合将$T$-对偶到Wilson圈的强耦合，但是振幅-Wilson圈对偶的故事中，弱耦合的Wilson圈也占有一席之地。Wilson圈被定义为
+% \[
+%     W(\mathcal{C})=\frac{1}{N}\left\langle 0\left|\operatorname{Tr} \mathcal{P} \mathrm{e}^{i g \oint_{\mathcal{C}} A_{\mu} \mathrm{d} x^{\mu}}\right| 0\right\rangle,
+% \]
+% 它的微扰展开写作
+% \[
+%     W(\mathcal{C}) \sim 1+i g \oint_{\mathcal{C}} A_{\mu} \mathrm{d} x^{\mu}+(i g)^{2} \oint_{\mathcal{C}} \mathrm{d} x^{\mu} \int_{x_{j}>x_{i}} \mathrm{~d} x^{\nu} A_{\mu}\left(x_{i}\right) A_{\nu}\left(x_{j}\right)+\cdots.
+% \]
+
+\section{超对称的情况}
+
+在引入超对称后，我们应考虑相应的超对称振幅和超对称Wilson圈。对$\mathcal N=4$ SYM
+来说，在壳的态可以通过超对称组织成一个超态，其包含了gluon, gluino以及标量粒子。不同helicity的态
+通过一族Grassmann变量$\eta_i^A$打包在一起，其中$A=1,2,3,4$，即
+\[
+	\Omega=g^{+}+\eta_A \lambda^A+\frac{1}{2 !} \eta_A \eta_B \phi^{A B}+\frac{1}{3 !} \eta_A \eta_B \eta_C \lambda^{A B C}+\eta_1 \eta_2 \eta_3 \eta_4 g^{-},
+\]
+进而所有的振幅可以打包为一个超振幅$A$，具有展开
+\[
+	A_n=A_{n;0}+A_{n;1}+\cdots+A_{n;n-4}
+\]
+分别对应$\text{N}^k\text{MHV}$的振幅，并且，我们可以通过除掉MHV振幅来剔除
+动量和超荷守恒必然有的$\delta$函数，记
+\[
+	A_{n;k}=\frac{\delta^{(4)}(p^{\dot{\alpha} \alpha}) \delta^{(8)}(q_\alpha^A)}{\langle 12\rangle\langle 23\rangle \ldots\langle n 1\rangle} \widehat{A}_{n ; k}(p, \eta ; a),
+\]
+其中$a$是耦合常数，相乘因子即MHV树图振幅，故对MHV振幅而言，对耦合常数展开我们有$A_{n;0}=1+O(a)$.
+
+
+类似地，$n$-点超Wilson圈（先不管其如何定义）可以在对偶空间按照超对称的分量去展开，其展开应具有形式
+\[
+	W_n=\sum_{k=0}^n W_{n;k}(x_i,\theta_i^A,a),
+\]
+其中$x_i$是对偶坐标，而$\theta_i^A$是对偶超超坐标，满足
+\[
+p_i^{\dot{\alpha} \alpha}=\widetilde{\lambda}_i^{\dot{\alpha}} \lambda_i^\alpha=\left(x_i-x_{i+1}\right)^{\dot{\alpha} \alpha}, \quad q_i^{\alpha A}=\lambda_i^\alpha \eta_i^A=\left(\theta_i-\theta_{i+1}\right)^{\alpha A}.
+\]
+从$R$-对称性，$W_{n;k}(x_i,\theta_i^A,a)$应当是一个
+$\chi_i^A=\langle \lambda_i\theta_i^A\rangle$的一个$4k$-次齐次不变多项式，
+每个$k$对应着$\text{N}^k\text{MHV}$.
+
+超振幅与超Wilson圈的对偶源于
+\[
+	W_{n;k}(x,\theta;a)=a^k \widehat A_{n,k}(p,\eta;a),
+\]
+右侧的$a^k$是因为$W_{n;k}$在弱耦合按耦合常数展开时是从$a^k$开始的。于是，
+对完整的超对称Wilson圈带入上面的对偶并在弱耦合展开后，我们有
+\[
+	\sum_{L=0}^\infty W_n^{(L)}a^L=\sum_{L=0}^\infty\sum_{k=0}^n a^{k+L}\widehat A_{n,k}^{(L)}(p,\eta),
+\]
+于是
+\[
+	W_n^{(L)}=\sum_{k=0}^{\min(n,L)} A_{n,k}^{(L-k)}(p,\eta).
+\]
+可以看到，给定圈数的Wilson圈包含了更低圈的振幅。
+
+但目前而言，所有超Wilson圈的构造使得这个对偶在圈图层次是有反常的。
+
+
+
 
 \end{document}
