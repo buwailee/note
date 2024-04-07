@@ -21,9 +21,9 @@ Batalin-Vilkovisky量子化
 \section{分次结构}
 
 分次结构的出现在物理中是自然的，其中最自然的可能是来自于粒子统计% https://www.doubilee.com/particle\_statistics/
-，其告诉我们，粒子分为两类，其一是玻色子，其二是费米子，分别描述它们的经典理论是两类非常不同的代数，在前者中，两个量$a$和$b$的乘法满足$ab=ba$，在后者中，乘法则满足$ab=-ba$. 历史上，数学家和物理学家就定义了一系列具有$\mathbb{Z}_2$-分次的对象，他们通常以 super 为名，如 supermanifold 等。
+，其告诉我们，粒子分为两类，其一是玻色子，其二是费米子，分别描述它们的经典理论是两类非常不同的代数，在前者中，两个量$a$和$b$的乘法满足$ab=ba$，在后者中，乘法则满足$ab=-ba$. 摆在一起，这就构成了一个$\mathbb Z_2$-代数，其中玻色子对应0分量，而费米子对应1分量。
 
-同时，从自旋统计定理，自旋为半整数的粒子是费米子，自旋为整数的粒子是玻色子。所以，从这种角度来看，$\mathbb{Z}_2$-分次并不是最自然的，$\mathbb{Z}$-分次应当会更自然些，它可以告诉我们相应粒子（场）的自旋到底是什么。同时，可以看到，从$\mathbb Z$-分次很容易回到$\mathbb Z_2$-分次，所以我们从$\mathbb{Z}$-分次的矢量空间开始。
+根据自旋统计定理，自旋为半整数的粒子是费米子，自旋为整数的粒子是玻色子。$\mathbb{Z}_2$-分次还是丢掉了具体自旋数的信息，相比起来$\mathbb{Z}$-分次应当会更自然些。同时，从$\mathbb Z$-分次很容易回到$\mathbb Z_2$-分次，所以我们从$\mathbb{Z}$-分次的矢量空间开始。
 
 \begin{defi}
     设$V$是一个$k$-矢量空间，可以写成直和$V=\bigoplus_{i\in\mathbb Z} V_i$，其中$V_i$中的元素被称为$i$-次元，这样一个矢量空间被称为分次矢量空间。如果$v\in V$处于某个$V_i$中，则称其为齐次的，此时若$v\neq 0$是$i$-次元，定义$\deg(v)=i$. 
@@ -46,16 +46,16 @@ Batalin-Vilkovisky量子化
 则称他们是可交换的（对易的）。若任意齐次元之间是可交换的，则称这是一个交换$k$-代数。
 \end{defi}
 
-这里$[*,*]$可以线性地延拓到整个$V$上，他是对玻色子括号$[*,*]$和费米子$\{*,*\}$括号的推广。所以，可以看到，经典的对易和反对易，在这里都是对易的。注意，因为全同粒子假设，玻色子和费米子之间是可以区分的，所以在物理构造中，玻色算符和费米算符的对易关系是可以任意给定的，而这里，偶数次元和任意元素都可以对易。
+这里$[*,*]$可以线性地延拓到整个$V$上，他是对玻色子括号$[*,*]$和费米子$\{*,*\}$括号的推广。所以，经典的对易和反对易，在这里都是对易的。注意，因为全同粒子假设，玻色子和费米子之间是可以区分的，所以在物理构造中，玻色算符和费米算符的对易关系是可以任意给定的，而这里，我们可以要求，偶数次元和任意元素都可以对易。
 
-数学上，这样的交换分次代数也不少见，其中非常常见的是流形的de Rham complex，流形$M$上的余切丛的截面的反对称化$\Gamma(\Lambda^*M)$. 但是de Rham complex上还有一个非常重要的构造，外微分算子。这样对象的推广被称为\textit{微分分次代数} (differential graded algebra)，简记为 dga. 
+数学上，这样的交换分次代数也不少见，其中非常常见的是流形的de Rham 复形，流形$M$上的余切丛的截面的反对称化$\Gamma(\Lambda^*M)$. 但是de Rham 复形上还有一个非常重要的构造，外微分算子。这样对象的推广被称为\textit{微分分次代数} (differential graded algebra)，简记为 dga. 
 
 \begin{defi}[微分分次代数]
     若$V$是一个交换分次$k$-代数，如果有一个$1$-次$k$-代数同态$d:V\to V$满足：$dV_i\subset V_{i+1}$, $d^2=0$和 Leibniz 法则，即对齐次元$a$满足
     \[
         d(ab)=(da)b+(-1)^{\deg(a)}a(db).
     \]
-    则称$(V,d)$是一个微分分次代数。一个dga同态$f$不仅是一个交换$k$-分次代数同态，还需满足$df=fd$，即de Rham complex间拉回的推广。
+    则称$(V,d)$是一个微分分次代数。一个dga同态$f$不仅是一个交换$k$-分次代数同态，还需满足$df=fd$，即de Rham 复形间拉回的推广。
 \end{defi}
 
 对每个分次交换代数$V$，$(V,0)$就是一个平凡的 dga. 
@@ -76,14 +76,13 @@ Batalin-Vilkovisky量子化
 \begin{para}[分次代数的谱]
     设$V$是一个分次交换$k$-代数，我们可以定义出$V$-模，特别地，$V$的理想。设$W\subset V$是$V$的一个$k$-子模，且任取$a\in V$都有$aW\subset W$，则称$W$是一个左理想，同理可以定义右理想。此外，如果（左、右）理想可以由齐次元生成，则称其为（左、右）齐次理想。
 
-    我们断言，此时左齐次理想等价于右齐次理想。实际上，如果$W$是右理想，则任取齐次元$a$，都有$Wa\subset W$，因为如果$ba\in W$，则$-ba\in W$，所以$aW\subset W$.
+    我们断言，此时左齐次理想等价于右齐次理想。实际上，如果$W$是右理想，则任取齐次元$a$，都有$Wa\subset W$，因为如果$ba\in W$，则$ba=\pm ab\in W$，所以$aW\subset W$.
 \end{para}
 
 \begin{para}[分次对偶空间和谱]
     设$V$是一个分次矢量空间，$V^*$是其对偶空间，则我们可以将其分解为$V^*=\bigoplus_{i\in\mathbb Z}V_i^*$. 由于$V_i^*$中的元素将$i$-次齐次元变成$0$-次的，所以我们赋予分次$-i$，即$(V^*)_i=V_{-i}^*$.
 
-    大家都知道，在代数几何中，一个有限维矢量空间$V$可以看成概形$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点的集合。这是因为，设$\{e_i\}$是$V$的一组基，$\{e^i\}$是$V^*$的对偶基，则$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点一一对应极大理想$\langle e^i-a_i\rangle_i$，其中$a_i\in k$，而这也自然对应着$a=\sum_i a_ie_i\in V$，因为通过赋值映射，自然就有$e^i(a)=a_i$.
-
+    大家都知道，一个有限维矢量空间$V$可以看成概形$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点的集合。这是因为，设$\{e_i\}$是$V$的一组基，$\{e^i\}$是$V^*$的对偶基，则$\operatorname{Spec}(\operatorname{Sym}(V^*))$的$k$-值点一一对应极大理想$\langle e^i-a_i\rangle_i$，其中$a_i\in k$，而这也自然对应着$a=\sum_i a_ie_i\in V$，因为通过赋值映射，自然就有$e^i(a)=a_i$.
     这里，对分次$k$-矢量空间$V$，类似地可以定义出$\operatorname{Spec}(\operatorname{Sym}(V^*))$.
 \end{para}
 
@@ -120,7 +119,7 @@ $V$是只有奇数分次的分次矢量空间，则局部坐标可以视为分�
 \]
 
 \begin{para}[${T[1]M}$ 与 ${T^*[-1]M}$]
-设$M$是一个流形，局部地，局部坐标$x^i$的分次定义为0，而切向量的局部坐标$\partial_{x^i}$的分次定义为$-1$，或者说对偶坐标$dx^i$的分次定义为$1$. 则切丛$TM$构成了一个超流形，记作$T[1]M$. 这里分次平移$[1]$的意思是，即切向量的局部坐标$\partial_{x^i}$在$TM$中对应$0$次。类似地，可以定义${T^*[-1]M}$，其中对偶坐标$\partial_{x^i}$的分次定义为$-1$.
+设$M$是一个流形，局部地，局部坐标$x^i$的分次定义为0，而切矢量的局部坐标$\partial_{x^i}$的分次定义为$-1$，或者说对偶坐标$dx^i$的分次定义为$1$. 则切丛$TM$构成了一个超流形，记作$T[1]M$. 这里分次平移$[1]$的意思是，即切矢量的局部坐标$\partial_{x^i}$在$TM$中对应$0$次。类似地，可以定义${T^*[-1]M}$，其中对偶坐标$\partial_{x^i}$的分次定义为$-1$.
 \end{para}
 
 \section{Gauss积分}
@@ -252,16 +251,16 @@ Faddeev-Popov构造的最后一步是将$\delta(f)$和$\det(\mathsf{FP}_f(x))$�
 
 现在，让我们先忘掉积分，首先考虑$V/G$的结构，等价地，考虑其上所有可能的函数，再等价地，就是那些$\mathscr O(V)$上的$G$-不变函数，或者说$\mathfrak{g}$-不变函数。同时，如果我们不仅只考虑这些函数，还考虑更“高阶”的“不变量”，则我们还可以得到更多有趣的信息。
 
-回忆，设$M$是一个$\mathfrak g$-模，可以定义其不变子模$M^{\mathfrak g}:=\{g \in \mathfrak g\,:\, gM=0\}$，此时$M\to M^{\mathfrak g}$是一个左正和函子，进而我们可以考虑其右导出函子，其刻画了“不变性的障碍”。为计算导出函子，我们需要找一个resolution，最常见的是Chevalley–Eilenberg complex $C^\bullet(\mathfrak g,M):=\operatorname{Hom}(\Lambda^\bullet \mathfrak g,M)=M\otimes \Lambda^\bullet \mathfrak g^*$，上面的微分算符$\delta:\operatorname{Hom}(\Lambda^k \mathfrak g,M)\to \operatorname{Hom}(\Lambda^{k+1} \mathfrak g,M)$定义为
+回忆，设$M$是一个$\mathfrak g$-模，可以定义其不变子模$M^{\mathfrak g}:=\{g \in \mathfrak g\,:\, gM=0\}$，此时$M\to M^{\mathfrak g}$是一个左正和函子，进而我们可以考虑其右导出函子，其刻画了“不变性的障碍”。为计算导出函子，我们需要找一个resolution，最常见的是Chevalley-Eilenberg 复形 $C^\bullet(\mathfrak g,M):=\operatorname{Hom}(\Lambda^\bullet \mathfrak g,M)=M\otimes \Lambda^\bullet \mathfrak g^*$，上面的微分算符$\delta:\operatorname{Hom}(\Lambda^k \mathfrak g,M)\to \operatorname{Hom}(\Lambda^{k+1} \mathfrak g,M)$定义为
 \[
     \delta\omega(g_1,\dots,g_{k+1})=\sum_{j=1}^{k+1} (-1)^{j}g_j\omega(\dots,\hat{g}_j,\dots)+\sum_{i<j}^{k+1} (-1)^{i+j-1}\omega([g_i,g_j],\dots,\hat{g}_i,\dots,\hat{g}_j,\dots),
-\]继而可以计算这个complex的cohomology group，其中$H^0=M^{\mathfrak g}$.
+\]继而可以计算这个复形的上同调群，其中$H^0=M^{\mathfrak g}$.
 
-现在将$M$换成我们的函数空间，即考虑如下complex
+现在将$M$换成我们的函数空间，即考虑如下复形
 \[
 C^\bullet(\mathfrak g,\mathcal O(V))=\operatorname{Sym}(V^*)\otimes \Lambda^\bullet \mathfrak g^*
 =\operatorname{Sym}(V^*\oplus (\mathfrak g[1])^*),
-\]这里，为了将对称化和反对称化统一，即“超对称化”，我们移动了$\mathfrak g$的分次，使之变为负一次，即$(\mathfrak g[1])^{-1}=\mathfrak g$. 此时，Chevalley–Eilenberg complex上自然的微分算符$d$诱导了$\operatorname{Sym}(V^*\oplus (\mathfrak g[1])^*)$上的$1$-次微分算符$\delta$，而所有上同调群$H^k$中的元素刻画了“不变量”，它们应当满足$d\omega=0$. 方便起见，我们下面列出一些可能需要用到的计算结果。首先，取$f\in M$，则
+\]这里，为了将对称化和反对称化统一，即“超对称化”，我们移动了$\mathfrak g$的分次，使之变为负一次，即$(\mathfrak g[1])^{-1}=\mathfrak g$. 此时，Chevalley-Eilenberg 复形上自然的微分算符$d$诱导了$\operatorname{Sym}(V^*\oplus (\mathfrak g[1])^*)$上的$1$-次微分算符$\delta$，而所有上同调群$H^k$中的元素刻画了“不变量”，它们应当满足$d\omega=0$. 方便起见，我们下面列出一些可能需要用到的计算结果。首先，取$f\in M$，则
 \[
     \delta f=-(g_if)g^i.
 \]

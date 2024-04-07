@@ -166,6 +166,31 @@ X_{\alpha\beta})=X_{\alpha\beta}$上的限制
 $f:Z\to X$，图像$\Gamma_f$是一个闭浸入。
 \end{para}
 
+\begin{pro}
+	设$X$为$S$-概形而$Y$-是分离$S$-概形，令$U\subset X$为一个稠密开子概形，
+	若$f,g:X\to Y$为两个态射，如果$f|_U=g|_U$，则
+	$f|_{X_{\operatorname{red}}}=g|_{X_{\operatorname{red}}}$.
+\end{pro}
+
+\begin{proof}
+	由于$Y$是分离的，所以$\operatorname{Eq}(f,g)$是$X$的闭子概形，而$U$
+	包含于$\operatorname{Eq}(f,g)$中，$U$又是稠密的，所以从拓扑空间上，
+	$\operatorname{Eq}(f,g)$只能是整个$X$，进而
+	$X_{\operatorname{red}}\subset\operatorname{Eq}(f,g)$.
+\end{proof}
+
+\begin{pro}
+	设概形态射的性质$P$在复合和基变换下稳定，且任何闭浸入都满足$P$. 此时，若
+	$f:X\to Y$是态射，$g:Y\to Z$是分离态射，如果$gf:X\to Z$是具有性质$P$，
+	则$f$也具有性质$P$.
+\end{pro}
+
+\begin{proof}
+	考虑$f$的分解$f=(gf)_{(Y)}\Gamma_f$，其中$\Gamma_f:X\to X\times_Z Y$为$f$
+	的图像，由于$g$是分离的，所以$\Gamma_f$是闭浸入进而满足$P$，而
+	$(gf)_{(Y)}:X\times_Z Y\to Y$也满足$P$，所以复合$f$也满足$P$.
+\end{proof}
+
 从上一个引理，我们只需$\im \Delta$是$X\times_Y X$中的闭集，
 就可以知道$f$是分离的。
 从Lemma \ref{lem:4.1.2}，所有仿射概形之间的态射都是分离的。
@@ -327,29 +352,104 @@ $b_i\in \oo_X(U_\beta)|_{U_{\alpha\beta}}$而$r_i\in R$，
 \end{proof}
 
 
-
 \section{有限性条件}
 
-\begin{para}[（局部）Noether概形]
+\begin{para}[拟紧态射]
+设$f:X\to Y$是一个概形间态射，如果存在一个$Y$的仿射开覆盖$\{V_\alpha\}$使得
+$f^{-1}(V_\alpha)$都是拟紧的，则称$f$是拟紧态射。
+\end{para}
+
+\begin{pro}
+	设$f:X\to Y$是一个概形间态射，则$f$是拟紧的当且仅当，
+	对任意的拟紧开集$V\subset Y$，$f^{-1}(V)$都是拟紧的。
+\end{pro}
+
+\begin{proof}
+	一个方向是显然的。显然设$f$是拟紧的，所以存在一个$Y$的仿射开覆盖
+	$\{V_\alpha\}$使得$f^{-1}(V_\alpha)$都是拟紧的。现在，对每个
+	$f^{-1}(V_\alpha)$找仿射开覆盖，从拟紧性，可以找到有限覆盖。于是，
+	$f^{-1}(V_i)=\sum_{j=1}^{n_i}U_{ij}$. 现在，取$V_i$截面中的元素$s$，
+	他在$U_{ij}$中的像为$t_j$. 于是，
+	$f^{-1}(D_{V_i}(s))=\bigcup_{j=1}^{n_i}D_{U_{ij}}(t_j)$是拟紧开集的有限并，
+	故而是拟紧的。而任意$Y$的拟紧开子集$V$都可以由这样的$D_{V_i}(s)$所有限覆盖，
+	故而$f^{-1}(V)$是拟紧的。
+\end{proof}
+
+容易看到，若$Y$是仿射概形，则$f:X\to Y$是拟紧当且仅当$X$拟紧，特别是$Y=\spec Z$
+的情况。此外，拟紧态射的复合是拟紧的，且闭浸入也是拟紧的，因为拟紧空间的闭子集
+是拟紧的。
+
+\begin{pro}
+态射的拟紧性在基变换下稳定，即对拟紧态射$f:X\to S$，任何的基变换$S'\to S$给出的
+态射$f_{(S')}:X_{S'}\to S'$也是拟紧的。
+\end{pro}
+
+\begin{proof}
+由于拟紧性在目标概形上是局部的，我们可以取$S$为一个仿射概形，此时$X$是拟紧的。
+现在任取$S'$的仿射开集$V'$，他在$X\times_S S'$中的原像为$X\times_S U'$，我们用
+有限的仿射开集$\{U_i\}$覆盖$X$，则$\{U_i\times_S U'\}$是一个有限开覆盖，故而
+$X\times_S U'$是拟紧的。这样，我们就验证了$f_{(S')}$是拟紧的。
+\end{proof}
+
+\begin{para}[拟可分态射]
+	设$f:X\to Y$是一个概形间态射，如果对角线态射$X\to X\times_YX$是拟紧的，
+	则称$f$是拟可分态射。等价地，$f$是拟可分的，当且仅当任取$Y$的仿射开集$V$，
+	则以及仿射开集$U_1,U_2\in f^{-1}(V)$，$U_1\cap U_2$是拟紧的。
+\end{para}
+
+因为闭浸入是拟紧的，所以可分态射当然是拟可分的。等价性来自于，
+$U_1\cap U_2=U_1\times_V U_2$可以覆盖$X\times_Y X$，所以只需简单翻译对角线态射
+的拟紧性即可。
+
+拟可分性在复合和基变换下稳定，这是显然的。
+
+\begin{pro}
+若$f:X\to Y$是拟紧且分离的，且$\mathcal F$是一个拟凝聚$\oo_X$-模层，则
+$f_*\mathcal F$是一个拟凝聚$\oo_Y$-模层。
+\end{pro}
+
+\begin{para}[局部Noether概形]
 	如果概形$X$可以写成仿射开集的并，且每个仿射开集的坐标环都是Noether环，
-	则称$X$是一个局部Noehter概形。特别地，如果并还是有限的，
+	则称$X$是一个局部Noether概形。特别地，如果并还是有限的，
 	则称$X$是一个Noether概形。
 \end{para}
 
-一个局部Noether概形是Noether的，当且仅当底空间拟紧。于是，
-对仿射概形而言，局部Noether与Noether等价。
+一个局部Noether概形是Noether的，当且仅当底空间拟紧。于是对仿射概形而言，
+局部Noether与Noether等价。
 
+局部Noether概形的开子概形也显然是局部Noether概形。由于Noether概形的开子概形
+还必须是拟紧的，加上其是局部Noether概形所以也是Noether概形。
+
+\begin{pro}
+	$X$是局部Noether概形当且仅当其任何仿射开子集都是局部Noether概形。
+\end{pro}
+
+\begin{proof}
+一个方向是显然的。现在任取$X$的仿射开子集$U$，由于仿射概形是拟紧的，
+所以从$X$的仿射Noether开覆盖上可以找到覆盖$U$的有限子覆盖，
+而有限个Noether环的谱的并还是Noether的。
+\end{proof}
+
+\begin{para}[Noether拓扑空间]
 一个拓扑空间被称为是Noether的，如果其闭子集的严格降链是稳定的。
 这又当且仅当其任何开子集（实际上是任何子空间）都拟紧。并且可以看到Noether
 空间具有的不可约分支的个数有限。
 
-任何Nother概形对应的仿射概形都是Noether的，因为其任何的闭集都可以翻译到理想，
+任何Noether仿射概形的底空间都是Noether的，因为其任何的闭集都可以翻译到理想，
 故而闭子集的严格降链条件就变成了理想的升链条件。如果一个空间
-可以写成Nother开子集的有限并，其显然也必须是Nother的。
+可以写成Noether开子集的有限并，其显然也必须是Noether的。
 所以Noether概形显然是一个Noether拓扑空间。
+\end{para}
 
-局部Noether概形的开子概形也显然是局部Noether概形。由于Noether概形的开子概形
-还必须是拟紧的，加上其是局部Noether概形所以也是Noether概形。
+\begin{pro}
+	若$X$是局部Noether概形，则$f:X\to Y$是拟可分的。若$X$是Noether概形，
+	则$f:X\to Y$是拟紧的。
+\end{pro}
+
+\begin{proof}
+	第一点是因为局部Noether概形的仿射开集都是拟紧的，第二点是因为
+	Noether空间的任何开子集都拟紧。
+\end{proof}
 
 \begin{pro}
 	仿射概形$\spec R$是Noether的当且仅当$R$是Noether的。
@@ -366,6 +466,7 @@ $N_{x}=I_x$，于是$I=N$是有限生成的。
 \end{proof}
 
 
+
 \begin{para}[有限型态射]
 设$f:X\to Y$是一个概形间态射，如果存在$Y$的一个仿射开覆盖
 $\{Y_\alpha\}_\alpha$使得每一个$f^{-1}(Y_\alpha)$可以写成有限个仿射开集
@@ -375,8 +476,10 @@ $U_{\alpha\beta}$和$Y_\alpha$对应的坐标环。有时候，如果略去态�
 会称$X$是一个有限型$Y$-概形。
 \end{para}
 
+有限型态射是拟紧的，因为仿射开集都是拟紧的，进而有限个仿射开集的并是拟紧。
+
 \begin{pro}
-	如果$f:X\to Y$是一个有限型态射，则取$Y$的仿射开集$V$，
+	如果$f:X\to Y$是一个有限型态射，则任取$Y$的仿射开集$V$，
 	$f^{-1}(V)$可以写成有限个仿射开集$\{U_{\alpha}\}$的并，
 	且环$A(U_{\alpha})$是有限生成$A(V)$-代数。
 \end{pro}
@@ -435,145 +538,37 @@ $V_i$的坐标环$A(V_i)$都是Noether环。从$f$是有限型的，则$f^{-1}(V
 $A(V_i)$-代数，所以也是Noether环。
 \end{proof}
 
-\section{仿射态射}
+\begin{para}[有限（整）态射]
+	我们称一个$R$-代数是有限的，是指这个$R$-代数作为$R$-模也是有限生成的。
+	一个$R$-代数$S$在$R$上整，是指$S$中的元素都是以$R[x]$中的某个首一
+	多项式的根。注意到，一个$S$是有限-$R$代数当且仅当$S$在$R$上整且$S$是有限生成
+	$R$-代数。
 
-仿射态射简而言之就是仿射概形的整体推广，即，态射$X\to \spec \zz$是仿射的，当且仅当$X$是仿射概形。
-
-\begin{para}[仿射态射]
-设$f:X\to S$是一个概形态射，如果存在一个$S$的仿射开覆盖$\{S_\alpha\}$
-使得每个$f^{-1}(S_\alpha)$都是仿射开集，则称$f$是一个仿射态射。此时，
-也称$S$-概形$X$是$S$-仿射的。
+	一个概形间态射$f:X\to Y$是有限/整的，是指存在$Y$的一个仿射开覆盖$\{V_i\}$，
+	使得对每个$i$，$f^{-1}(V_i)$是仿射开集，且环同态
+	$\Gamma(V_i,\mathcal O_Y)\to\Gamma(f^{-1}(V_i),\mathcal O_X)$
+	是有限/整的。类似地，一个概形间态射是有限的等价于说他是有限型且整的。
 \end{para}
 
-当然，$X$是$S$-仿射的不一定能推出$X$是仿射概形。比方说，
-取$S$是一个非仿射概形，再取$X=S$.
+类似于有限型，我们可以将存在一个开覆盖，直接改成任意的开覆盖，即仿射开集的
+原像也是仿射的，且相应的环同态是有限/整的。为此，只需注意到，若
+$\spec R=\bigcup_i D(f_i)$，则$M$是有限生成$R$-模当且仅当$M_{f_i}$是
+有限生成$R_{f_i}$-模。
 
-\begin{lem}
-如果$f:X\to S$是一个仿射态射，则$f$是一个分离态射。
-\end{lem}
-
-\begin{proof}
-这直接来自于仿射概形间的态射是分离的，以及分离性的局部判别法。
-\end{proof}
-
-正如我们希望从一个环构造一个仿射概形一样，下面我们希望从一个$\oo_S$-模层，
-这里$S$是一个概形，构造一个$S$-仿射的概形。不难看到，
-每一个概形$X$伴随着一个典范的$\oo_\zz:=\oo_{\spec \zz}$-代数层，
-因为我们总有唯一的态射$(\varphi,\theta):X\to \spec \zz$，其中层态射写作
-\[
-	\theta:\oo_\zz \to \varphi_*X,
-\]
-此时$\varphi_* X$就是一个$\oo_\zz$-代数层。
-下面我们将这个概念写得更细一些。
-
-\begin{para}[$S$-概形伴随的$\oo_S$-代数层]
-	设$S$是一个概形，而$X$是一个$S$-概形，结构态射为$f:X\to S$. 
-	由于结构态射诱导了$S$上的层之间的态射$\oo_S\to f_*\oo_X$，
-	此时$f_*\oo_X$就是一个$\oo_S$-代数层，我们将其记作
-	$\mathcal A(X)$. 于是，$\Gamma(U,\mathcal A(X))=\Gamma(
-	f^{-1}(U),X)$. 类似地，考虑一个$\oo_X$-模层$\mathcal F$，
-	我们用$\mathcal A(\mathcal F)$来记作为$\mathcal A(X)$-模层
-	的$f_*\mathcal F$，进而还是一个$\oo_S$-模层。
-
-	现在，考虑$S$-概形态射$h:X\to Y$，其中结构态射为$f:X\to S$, 
-	$g:Y\to S$，满足$f=gh$. 概形态射$h$给出了层映射$\oo_Y\to
-	h_*\oo_X$，然后取$g$的顺像后，给出了层映射
-	\[
-		g_*\oo_Y\to g_*h_*\oo_X=f_*\oo_X,
-	\]
-	这是一个$\oo_S$-代数层同态，即$\mathcal A(Y)\to \mathcal A(X)$,
-	这个映射我们记作$\mathcal A(h)$. 不难看到，$\mathcal A$此时是
-	一个反变函子。
-
-	类似地，如果$\mathcal F$是一个$\oo_X$-模层，而$\mathcal G$是一个
-	$\oo_Y$-模层，$u:\mathcal G\to h_*\mathcal F$是一个$\oo_Y$-模层
-	同态，那么
-	\[
-		g_*u:g_*\mathcal G\to g_*h_*\mathcal F=f_*\mathcal F
-	\]
-	是一个$\oo_S$-模层同态$\mathcal A(\mathcal G)\to \mathcal A
-	(\mathcal F)$，我们记作$\mathcal A(u)$. 
-\end{para}
+容易检查这些有限性条件都在复合和基变换下稳定。
 
 \begin{pro}
-设$X$, $Y$都是$S$-概形，则$h\mapsto \mathcal A(h)$是一个从$\Hom_S(Y,X)$
-到$\Hom_{\oo_S}(\mathcal A(X),\mathcal A(Y))$的一个典范双射。
+	有限型/整/有限性在复合和基变换下稳定。
 \end{pro}
-
-这个命题大概是双射$\Hom(\spec R,\spec S)\cong \Hom(S,R)$的整体对应。
-
-\begin{proof}
-设$f:X\to S$和$g:Y\to S$是结构态射。\notprove
-\end{proof}
-
-\begin{thm}\label{thm:4.3.5}
-设$S$是一个概形，而$\mathcal B$是一个拟凝聚$\oo_S$-代数层，则存在
-一个$S$-仿射概形$X$使得$\mathcal A(X)=\mathcal B$，而满足这个性质的
-概形$X$至多只差一个$S$-概形同构。
-\end{thm}
-
-\begin{proof}
-唯一性用上面的命题即可，只需说明存在性。对任意仿射开集$U\subset S$，
-设$X_U=\spec(\Gamma(U,\mathcal B))$，将这些$X_U$黏起来，我们就得到了
-想要的概形。\notprove
-\end{proof}
-
-\begin{para}[整体谱]
-设$S$是一个概形，而$\mathcal B$是一个拟凝聚$\oo_S$-代数层，则上面定理
-确定的概形我们记作$\spec (\mathcal B)$，且对仿射开集$U\subset S$有
-$\Gamma(U,\spec \mathcal B)=\spec (\Gamma(U,\mathcal B))$. 
-\end{para}
-
-从Theorem \ref{thm:4.3.5}，我们立刻得到了
-\[
-	\Hom_{\oo_S}(\mathcal B,\mathcal C)\cong 
-	\Hom_S(\spec\mathcal B,\spec\mathcal C),
-\]
-这里左边的$\mathcal B$, $\mathcal C$是拟凝聚$\oo_S$-代数层。
-
-\begin{lem}
-设$f:X\to S$仿射，$\mathcal F$是一个拟凝聚$\oo_X$-模层，则$f_*\mathcal F$
-是一个拟凝聚$\oo_S$-模层。
-\end{lem}
-
-\begin{proof}
-\notprove
-\end{proof}
 
 \begin{pro}
-设$f:X\to S$仿射，则任取仿射开集$U$，$f^{-1}(U)$是一个仿射概形。
-特别地，如果$S$是仿射概形，则$f:X\to S$仿射当且仅当$X$是仿射概形。
+	整态射是闭态射，其将闭集映射为闭集，且保持维数。即对整态射$f:X\to Y$，
+	若$Z$是$X$的闭子集，则$f(Z)$是闭的，且$\dim Z=\dim f(Z)$.
 \end{pro}
 
-\begin{proof}
-从引理，可以知道此时$\mathcal A(X)$是一个拟凝聚$\oo_S$-模层，
-而且$X$满足Theorem \ref{thm:4.3.5}中对$\mathcal A(X)$的整体谱的
-要求，从唯一性以及Theorem \ref{thm:4.3.5}证明中的构造，立即可得结论。
-\end{proof}
-
-作为推论，$f:X\to S$仿射当且仅当，任取仿射开集$U\subset S$，$f^{-1}(U)$也是仿射开集。将这个等价定义应用到两个仿射态射的复合上，立刻可得，仿射态射复合依然是仿射的。
-
-\begin{pro}
-设$X$是一个$S$-仿射概形，$g:S'\to S$是一个概形态射，则基扩张
-$X'=X_{(S')}$是一个$S'$-仿射概形。
-\end{pro}
-
-\begin{proof}
-\notprove
-\end{proof}
-
-
-\section{全景闭性}
-
-还是回忆拓扑空间中的性质，
-\begin{compactenum}
-\item Hausdorff空间的紧集是闭的。
-\item 连续映射$f:X\to Y$，如果$X$是紧的而$Y$是Hausdorff的，则$f$是一个闭映射。
-\item 一个拓扑空间$X$是紧的，当且仅当对任何的拓扑空间$Y$，投影
-	$X\times Y\to Y$都是闭映射。
-\end{compactenum}
-对于概形而言，拓扑空间的紧性并没有拓扑空间中那么有用，我们需要
-一些其他更合适的紧性刻画。而上面的第三点几乎是最好的刻画。
+这个命题是局部的，所以只要回到仿射的情况。对于仿射的情况，我们知道若$R\subset S$
+是一个整扩张，则任取$R$的素理想$\mathfrak p$，都存在$S$的素理想$\mathfrak q$
+使得$\mathfrak p=\mathfrak q\cap R$. 这就保证了整态射保持了维数。
 
 \begin{para}[全景闭性]
 	一个概形间态射$f:X\to Y$被称为是全景闭的，即对任何态射
@@ -581,3 +576,198 @@ $X'=X_{(S')}$是一个$S'$-仿射概形。
 	的连续映射都是闭的。类似其他性质，如果$X\to \spec \zz$是全景闭的，
 	则称$X$是全景闭的。
 \end{para}
+
+整态射是可分且全景闭的，这是因为整态射是闭态射，且在基变换下稳定。
+
+全景闭性在拓扑空间范畴是紧性的体现，具体来说，一个拓扑空间$X$是紧的，
+当且仅当对任何的拓扑空间$Y$，投影$X\times Y\to Y$都是闭映射。
+回忆，一个连续映射$f:X\to Y$是逆紧的，如果任何紧集的原像都是紧的。如果
+$X$是Hausdorff的，且$Y$是局部紧Hausdorff，逆紧等价于说$f$是全景闭的。
+如果如果适当加上一定的可分条件，在概形范畴即可分性，则我们可以定义出逆紧
+态射的类似物。
+
+\begin{para}[紧合性]
+	一个概形间态射$f:X\to Y$被称为是紧合的，如果他是有限型、可分和全景闭的。
+\end{para}
+
+我们不再称逆紧，是因为这里不再可以解释为“紧集的原像是紧的”。
+容易看到，有限态射是紧合的，而紧合的另一大类例子是闭浸入。
+
+\begin{thm}[赋值判别法]
+	设$f:X\to Y$是一个概形间态射，则$f$是可分（全景闭、紧合）的当且仅当，
+	$f$是拟可分（拟紧、拟可分且有限型）的，且对任何的赋值环$R$，其分式域记作$K$，
+	任意一对与$f$相容的$K$-值点$u:\spec K\to X$和$R$-值点$v:\spec R\to Y$，
+	即满足交换图
+	\[
+		\xymatrix{
+			\spec K\ar[r]^-u\ar[d] & X\ar[d]^f\\
+			\spec R\ar[r]^-{v} & Y
+		}
+	\]
+	存在至多一个（至少一个、唯一）的$w:\spec R\to X$使得下图交换
+	\[
+		\xymatrix{
+			\spec K\ar[r]^-u\ar[d] & X\ar[d]^f\\
+			\spec R\ar[ru]^w\ar[r]^-{v} & Y
+		}
+	\]
+\end{thm}
+
+注意，至多一个也可以不存在。若我们进一步将$Y$取成$\spec \mathbb Z$，
+且假设$X$是拟可分（拟紧、拟可分且有限型）的，则赋值判别法是在说，
+任取$X$的任意$K$-值点，$X$是是可分（全景闭、紧合）的，当且仅当，
+对$K$的任意赋值环$R$，都存在至多一个（至少一个、唯一）分解
+$\spec K\to \spec R\to X$. 注意到，我们之前证明过，如果$K$-值点位于$x$，
+则$\overline{\{x\}}$中的每一个点都对应存在$K$的一个赋值环$R$使得分解
+$\spec K\to \spec R\to X$成立，但是这样的分解的存在性和唯一性不是对$K$的
+每个赋值环都有的，赋值判别法告诉我们，这需要一定的条件。
+
+如果$X$是局部Noether的，则$f$自动是拟可分的，而Noether赋值环都是离散赋值环，
+同时为了避免出现非有限扩张，所以还需要加入有限型条件，这样我们有以下较弱的命题：
+
+\begin{thm}[赋值判别法]
+	设$X$是局部Noether概形，$f:X\to Y$是一个概形间的有限型态射，
+	则$f$是可分（紧合）的当且仅当，对任何的离散赋值环$R$，其分式域记作$K$，
+	任意一对与$f$相容的$K$-值点$u:\spec K\to X$和$R$-值点$v:\spec R\to Y$，
+	即满足交换图
+	\[
+		\xymatrix{
+			\spec K\ar[r]^-u\ar[d] & X\ar[d]^f\\
+			\spec R\ar[r]^-{v} & Y
+		}
+	\]
+	存在至多一个（唯一）的$w:\spec R\to X$使得下图交换
+	\[
+		\xymatrix{
+			\spec K\ar[r]^-u\ar[d] & X\ar[d]^f\\
+			\spec R\ar[ru]^w\ar[r]^-{v} & Y
+		}
+	\]
+\end{thm}
+
+% \section{仿射态射}
+
+% 仿射态射简而言之就是仿射概形的整体推广，即，态射$X\to \spec \zz$是仿射的，当且仅当$X$是仿射概形。
+
+% \begin{para}[仿射态射]
+% 设$f:X\to S$是一个概形态射，如果存在一个$S$的仿射开覆盖$\{S_\alpha\}$
+% 使得每个$f^{-1}(S_\alpha)$都是仿射开集，则称$f$是一个仿射态射。此时，
+% 也称$S$-概形$X$是$S$-仿射的。
+% \end{para}
+
+% 当然，$X$是$S$-仿射的不一定能推出$X$是仿射概形。比方说，
+% 取$S$是一个非仿射概形，再取$X=S$.
+
+% \begin{lem}
+% 如果$f:X\to S$是一个仿射态射，则$f$是一个分离态射。
+% \end{lem}
+
+% \begin{proof}
+% 这直接来自于仿射概形间的态射是分离的，以及分离性的局部判别法。
+% \end{proof}
+
+% 正如我们希望从一个环构造一个仿射概形一样，下面我们希望从一个$\oo_S$-模层，
+% 这里$S$是一个概形，构造一个$S$-仿射的概形。不难看到，
+% 每一个概形$X$伴随着一个典范的$\oo_\zz:=\oo_{\spec \zz}$-代数层，
+% 因为我们总有唯一的态射$(\varphi,\theta):X\to \spec \zz$，其中层态射写作
+% \[
+% 	\theta:\oo_\zz \to \varphi_*X,
+% \]
+% 此时$\varphi_* X$就是一个$\oo_\zz$-代数层。
+% 下面我们将这个概念写得更细一些。
+
+% \begin{para}[$S$-概形伴随的$\oo_S$-代数层]
+% 	设$S$是一个概形，而$X$是一个$S$-概形，结构态射为$f:X\to S$. 
+% 	由于结构态射诱导了$S$上的层之间的态射$\oo_S\to f_*\oo_X$，
+% 	此时$f_*\oo_X$就是一个$\oo_S$-代数层，我们将其记作
+% 	$\mathcal A(X)$. 于是，$\Gamma(U,\mathcal A(X))=\Gamma(
+% 	f^{-1}(U),X)$. 类似地，考虑一个$\oo_X$-模层$\mathcal F$，
+% 	我们用$\mathcal A(\mathcal F)$来记作为$\mathcal A(X)$-模层
+% 	的$f_*\mathcal F$，进而还是一个$\oo_S$-模层。
+
+% 	现在，考虑$S$-概形态射$h:X\to Y$，其中结构态射为$f:X\to S$, 
+% 	$g:Y\to S$，满足$f=gh$. 概形态射$h$给出了层映射$\oo_Y\to
+% 	h_*\oo_X$，然后取$g$的顺像后，给出了层映射
+% 	\[
+% 		g_*\oo_Y\to g_*h_*\oo_X=f_*\oo_X,
+% 	\]
+% 	这是一个$\oo_S$-代数层同态，即$\mathcal A(Y)\to \mathcal A(X)$,
+% 	这个映射我们记作$\mathcal A(h)$. 不难看到，$\mathcal A$此时是
+% 	一个反变函子。
+
+% 	类似地，如果$\mathcal F$是一个$\oo_X$-模层，而$\mathcal G$是一个
+% 	$\oo_Y$-模层，$u:\mathcal G\to h_*\mathcal F$是一个$\oo_Y$-模层
+% 	同态，那么
+% 	\[
+% 		g_*u:g_*\mathcal G\to g_*h_*\mathcal F=f_*\mathcal F
+% 	\]
+% 	是一个$\oo_S$-模层同态$\mathcal A(\mathcal G)\to \mathcal A
+% 	(\mathcal F)$，我们记作$\mathcal A(u)$. 
+% \end{para}
+
+% \begin{pro}
+% 设$X$, $Y$都是$S$-概形，则$h\mapsto \mathcal A(h)$是一个从$\Hom_S(Y,X)$
+% 到$\Hom_{\oo_S}(\mathcal A(X),\mathcal A(Y))$的一个典范双射。
+% \end{pro}
+
+% 这个命题大概是双射$\Hom(\spec R,\spec S)\cong \Hom(S,R)$的整体对应。
+
+% \begin{proof}
+% 设$f:X\to S$和$g:Y\to S$是结构态射。\notprove
+% \end{proof}
+
+% \begin{thm}\label{thm:4.3.5}
+% 设$S$是一个概形，而$\mathcal B$是一个拟凝聚$\oo_S$-代数层，则存在
+% 一个$S$-仿射概形$X$使得$\mathcal A(X)=\mathcal B$，而满足这个性质的
+% 概形$X$至多只差一个$S$-概形同构。
+% \end{thm}
+
+% \begin{proof}
+% 唯一性用上面的命题即可，只需说明存在性。对任意仿射开集$U\subset S$，
+% 设$X_U=\spec(\Gamma(U,\mathcal B))$，将这些$X_U$黏起来，我们就得到了
+% 想要的概形。\notprove
+% \end{proof}
+
+% \begin{para}[整体谱]
+% 设$S$是一个概形，而$\mathcal B$是一个拟凝聚$\oo_S$-代数层，则上面定理
+% 确定的概形我们记作$\spec (\mathcal B)$，且对仿射开集$U\subset S$有
+% $\Gamma(U,\spec \mathcal B)=\spec (\Gamma(U,\mathcal B))$. 
+% \end{para}
+
+% 从Theorem \ref{thm:4.3.5}，我们立刻得到了
+% \[
+% 	\Hom_{\oo_S}(\mathcal B,\mathcal C)\cong 
+% 	\Hom_S(\spec\mathcal B,\spec\mathcal C),
+% \]
+% 这里左边的$\mathcal B$, $\mathcal C$是拟凝聚$\oo_S$-代数层。
+
+% \begin{lem}
+% 设$f:X\to S$仿射，$\mathcal F$是一个拟凝聚$\oo_X$-模层，则$f_*\mathcal F$
+% 是一个拟凝聚$\oo_S$-模层。
+% \end{lem}
+
+% \begin{proof}
+% \notprove
+% \end{proof}
+
+% \begin{pro}
+% 设$f:X\to S$仿射，则任取仿射开集$U$，$f^{-1}(U)$是一个仿射概形。
+% 特别地，如果$S$是仿射概形，则$f:X\to S$仿射当且仅当$X$是仿射概形。
+% \end{pro}
+
+% \begin{proof}
+% 从引理，可以知道此时$\mathcal A(X)$是一个拟凝聚$\oo_S$-模层，
+% 而且$X$满足Theorem \ref{thm:4.3.5}中对$\mathcal A(X)$的整体谱的
+% 要求，从唯一性以及Theorem \ref{thm:4.3.5}证明中的构造，立即可得结论。
+% \end{proof}
+
+% 作为推论，$f:X\to S$仿射当且仅当，任取仿射开集$U\subset S$，$f^{-1}(U)$也是仿射开集。将这个等价定义应用到两个仿射态射的复合上，立刻可得，仿射态射复合依然是仿射的。
+
+% \begin{pro}
+% 设$X$是一个$S$-仿射概形，$g:S'\to S$是一个概形态射，则基扩张
+% $X'=X_{(S')}$是一个$S'$-仿射概形。
+% \end{pro}
+
+% \begin{proof}
+% \notprove
+% \end{proof}

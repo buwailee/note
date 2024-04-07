@@ -103,19 +103,19 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 \begin{proof}
     由于\[
-        k(X)=\bigcup_{\{a_1\text{, $\cdots$, }a_n\}\in I} k(a_1\text{, $\cdots$, }a_n).
+        k(X)=\bigcup_{\{a_1,\dots,a_n\}\in I} k(a_1,\dots,a_n).
     \]
-    或者说$k(X)$中的任意一个元素$\alpha$都可以找到有限个$X$中的元素$\{a_1$, $\cdots$, $a_n\}$使得$\alpha\in k(a_1$, $\cdots$, $a_n)$，即
+    或者说$k(X)$中的任意一个元素$\alpha$都可以找到有限个$X$中的元素$\{a_1$, $\dots$, $a_n\}$使得$\alpha\in k(a_1$, $\dots$, $a_n)$，即
     \[
-        \alpha=\frac{f(a_1\text{, $\cdots$, }a_n)}{g(a_1\text{, $\cdots$, }a_n)},
+        \alpha=\frac{f(a_1,\dots,a_n)}{g(a_1,\dots,a_n)},
     \]
     所以
     \[
-        \tau(\alpha)=\frac{f(\tau(a_1)\text{, $\cdots$, }\tau(a_n))}{g(\tau(a_1)\text{, $\cdots$, }\tau(a_n))}=\frac{f(\sigma(a_1)\text{, $\cdots$, }\sigma(a_n))}{g(\sigma(a_1)\text{, $\cdots$, }\sigma(a_n))}=\sigma(\alpha).
+        \tau(\alpha)=\frac{f(\tau(a_1),\dots,\tau(a_n))}{g(\tau(a_1),\dots,\tau(a_n))}=\frac{f(\sigma(a_1),\dots,\sigma(a_n))}{g(\sigma(a_1),\dots,\sigma(a_n))}=\sigma(\alpha).
     \]
 \end{proof}
 
-考虑有限扩张的情况，由于有限扩张就是有限次单代数扩张$k(a_1$, $\cdots$, $a_n)$. 对每一个$a_i$，都有极小多项式$f_i$. 由于$\Gal(k(a_1$, $\cdots$, $a_n)/k)$里面的元素的作用就是将$a_i$变成$f_i$在$k(a_1$, $\cdots$, $a_n)$中的其他的根，所以如果每一个$f_i$的根的数目是有限的，则$\Gal(k(a_1$, $\cdots$, $a_n)/k)$限制在$\{a_1$, $\cdots$, $a_n\}$上的结果是有限的，进而上面证明的内容保证了$\Gal(k(a_1$, $\cdots$, $a_n)/k)$是一个有限群。
+考虑有限扩张的情况，由于有限扩张就是有限次单代数扩张$k(a_1$, $\dots$, $a_n)$. 对每一个$a_i$，都有极小多项式$f_i$. 由于$\Gal(k(a_1$, $\dots$, $a_n)/k)$里面的元素的作用就是将$a_i$变成$f_i$在$k(a_1$, $\dots$, $a_n)$中的其他的根，所以如果每一个$f_i$的根的数目是有限的，则$\Gal(k(a_1$, $\dots$, $a_n)/k)$限制在$\{a_1$, $\dots$, $a_n\}$上的结果是有限的，进而上面证明的内容保证了$\Gal(k(a_1$, $\dots$, $a_n)/k)$是一个有限群。
 
 \begin{pro}
     设$G$是$\mathrm{Aut}(K)$的一个有限子群，则$|G|=[K:\mathcal{F}(G)]$以及$G=\Gal(K/\mathcal{F}(G))$.
@@ -141,9 +141,9 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
 
 代数簇粗略来说是一族多项式的零点集，他是古典代数几何的主要研究对象。有了它就可以谈论一些代数构造的几何直观。
 
-\para 假设有一个域$k$，他的代数闭包为$\bar{k}$，定义$n$元有序组$\bba^n_k=\bar{k}\times \cdots \times \bar{k}$为（$\bar{k}$上的）$n$维仿射空间，其中的元素被称为点，对一个点$p=(a_1,\cdots ,a_n)$中的$a_i$被称为$p$的坐标。如果不是必须写出域$k$，则$n$维仿射空间通常直接写作$\bba^n$.
+\para 假设有一个域$k$，他的代数闭包为$\bar{k}$，定义$n$元有序组$\bba^n_k=\bar{k}\times \cdots \times \bar{k}$为（$\bar{k}$上的）$n$维仿射空间，其中的元素被称为点，对一个点$p=(a_1,\dots ,a_n)$中的$a_i$被称为$p$的坐标。如果不是必须写出域$k$，则$n$维仿射空间通常直接写作$\bba^n$.
 
-考虑域$k$上的多项式环$A=k[x_1,\cdots ,x_n]$，其中的元素都是函数$f:\bba^n\to k$，于是可以定义他的零点集：对于$A$中的一众元素，即一个集合$T$，定义$Z(T)$为$T$的共同零点集，即那些使集合$T$里面元素都为$0$的点。注意到集合$T$可以生成一个多项式环的理想，这个理想的共同零点集和$Z(T)$是一样的。如果$T$是单点集，即只包含一个多项式$f$，此时我们会用$Z(f)$来简记$Z(\{f\})$.
+考虑域$k$上的多项式环$A=k[x_1,\dots ,x_n]$，其中的元素都是函数$f:\bba^n\to k$，于是可以定义他的零点集：对于$A$中的一众元素，即一个集合$T$，定义$Z(T)$为$T$的共同零点集，即那些使集合$T$里面元素都为$0$的点。注意到集合$T$可以生成一个多项式环的理想，这个理想的共同零点集和$Z(T)$是一样的。如果$T$是单点集，即只包含一个多项式$f$，此时我们会用$Z(f)$来简记$Z(\{f\})$.
 
 由于$k$是一个域，所以多项式环$A$是Noether环，他的每个理想都是有限生成的，所以任意的$Z(T)$都可以表示为有限个多项式的共同零点。
 
@@ -168,7 +168,7 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
     第一第二第六点从定义显然。第三点，由于$Y_\alpha\subset \bigcup_{\alpha\in I} Y_\alpha$，所以由(2)可知$I\left(\bigcup_{\alpha\in I} Y_\alpha\right)\subset\bigcap_{\alpha\in I} I(Y_\alpha)$. 反过来，任取$f\in \bigcap_{\alpha\in I} I(Y_\alpha)$，由于$f\in I(Y_\alpha)$，所以他在每个$Y_\alpha$上为零，故而在$\bigcup_{\alpha\in I} Y_\alpha$上为零。第四点的证明也类似。第五点，对于多项式$f$和$g$有显然的$Z(fg)=Z(f)\cup Z(g)$，然后从第四点得证。
 \end{proof}
 
-上面命题的第四第五点验证了代数集满足闭集公理，所以这也就赋予了$\bba^n_k$一个拓扑，称为Zariski拓扑。在这个拓扑下，闭集就是代数集。这个拓扑不一定是Hausdorff的，比如考虑$\bba^1_k$的情况，他的单点集不一定是闭集。但在$k=\bar{k}$的时候，考虑$P=(a_1,\cdots ,a_n)$，那么存在理想$(x_1-a_1,\dots,x_n-a_n)$在$P$上为零，所以此时单点集是闭集。
+上面命题的第四第五点验证了代数集满足闭集公理，所以这也就赋予了$\bba^n_k$一个拓扑，称为Zariski拓扑。在这个拓扑下，闭集就是代数集。这个拓扑不一定是Hausdorff的，比如考虑$\bba^1_k$的情况，他的单点集不一定是闭集。但在$k=\bar{k}$的时候，考虑$P=(a_1,\dots ,a_n)$，那么存在理想$(x_1-a_1,\dots,x_n-a_n)$在$P$上为零，所以此时单点集是闭集。
 
 结合上面命题的第一第二第六点，$A$的理想集和$\bba^n$的子集之间建立了一个Galois联络。而研究这个Galois联络下具体的对应，就是Hilbert's Nullstellensatz的内容，我们下面会慢慢阐述。首先指出一半的内容。
 
@@ -190,11 +190,13 @@ $\mathcal{F}$不一定是一个单射，比如$S=\{\tau\}$是单点集，但是$
     对任意$A=k[x_1,\dots,x_n]$中的极大理想$\mm$，$Z(\mm)\neq\varnothing$.
 \end{lem}
 
-\begin{proof} 由于$\mm$极大，那么$k[x_1,\dots,x_n]/\mm=k[\bar{x}_1,\dots,\bar{x}_n]$就是一个域，由Zariski引理，他是$k$的一个有限扩张。设$\bar{x}_i$是$x_i$在$k[x_1,\dots,x_n]/\mm$里面的像，由于是代数扩张，所以$\bar{x}_i\in \bar{k}$. 此时$\mm$上的多项式至少有公共零点$(\bar{x}_1,\dots,\bar{x}_n)\in \bba^n$，因为对任意$f\in \mm$都成立
+\begin{proof} 
+    由于$\mm$极大，那么$k[x_1,\dots,x_n]/\mm=k[\bar{x}_1,\dots,\bar{x}_n]$就是一个域，由Zariski引理，他是$k$的一个有限扩张。设$\bar{x}_i$是$x_i$在$k[x_1,\dots,x_n]/\mm$里面的像，由于是代数扩张，所以$\bar{x}_i\in \bar{k}$. 此时$\mm$上的多项式至少有公共零点$(\bar{x}_1,\dots,\bar{x}_n)\in \bba^n$，因为对任意$f\in \mm$都成立
     \[
         f(\bar{x}_1,\dots,\bar{x}_n)=\sum a_{i_1\cdots i_n} {\bar{x}}_1^{i_1}\cdots {\bar{x}}_n^{i_n}=\overline{\sum a_{i_1\cdots i_n} x_1^{i_1}\cdots x_n^{i_n}}=\bar{f}=0.
     \]
-    所以这就推出了$Z(\mm)\neq\varnothing$.\end{proof}
+    所以这就推出了$Z(\mm)\neq\varnothing$.
+\end{proof}
 
 从引理，我们已经知道$P=(\bar{x}_1,\dots,\bar{x}_n)\in \bba^n_k$是$\mm$的一个公共零点。如果$(\bar{y}_1,\dots,\bar{y}_n)$也是$\mm$的一个公共零点，通过$\sigma_{\bar{y}}(\bar{x}_i)=\bar{y}_i$且如果$a\in k$则$\sigma_{\bar{y}}(a)=a$可以定义环同态
 \[

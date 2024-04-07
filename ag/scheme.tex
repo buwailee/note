@@ -169,7 +169,7 @@
 赋环空间之间的态射如下定义：设有赋环空间$(X,\mathcal{O}_X)$和$(Y,\mathcal{O}_Y)$，以及连续映射$\psi:X\to Y$和$Y$上的交换环层态射$\theta:\mathcal{O}_Y\to \psi_*\mathcal{O}_X$，这样的一个二元组$\Psi=(\psi,\theta)$构成了赋环空间范畴的态射，记做$\Psi:(X,\mathcal{O}_X)\to (Y,\mathcal{O}_Y)$.
 \end{para}
 
-要确切地理解是一个态射，则需要验证复合，假设$\Phi=(\psi',\theta'):(Y,\mathcal{O}_Y)\to (Z,\mathcal{O}_Z)$是另一个态射，在$\Phi\circ \Psi$中，连续映射的复合不用多说，对于层的复合，则如图所示
+要确切地理解这是一个态射，则需要验证复合，假设$\Phi=(\psi',\theta'):(Y,\mathcal{O}_Y)\to (Z,\mathcal{O}_Z)$是另一个态射，在$\Phi\circ \Psi$中，连续映射的复合不用多说，对于层的复合，则如图所示
 \[
 	\mathcal{O}_Z\xrightarrow{\theta'} \psi'_*\mathcal{O}_Y \xrightarrow{\psi'_*\theta} \psi'_*\psi_*\mathcal{O}_X,
 \]
@@ -426,31 +426,33 @@
 由于交换群作为$\zz$-模，对任意族都一定存在极限. 所以从上面的引理，逆像的存在性就归结到了伴随层的存在性上面。不过下面我们还是直接证明这个命题。
 
 \begin{proof} 
-	证明是直接的构造。交换群范畴，我们知道预层的茎总是存在的。所以我们这样定义$\psi^*\calg$：对$X$中的开集$U$, 令$\psi^*\calg(U)$是函数$s:U\to \bigoplus_{x\in U}\calg_{\psi(x)}$的集合（若只是集合范畴，考虑不交并即可），这些函数需要满足
+	在交换群范畴，我们知道预层的茎总是存在的。所以我们如下构造$\psi^*\calg$：对$X$中的开集$U$, 令$\psi^*\calg(U)$是函数$s:U\to \bigoplus_{x\in U}\calg_{\psi(x)}$的集合（若只是集合范畴，考虑不交并即可），这些函数需要满足
 	\begin{itemize}
 		\item 对任意的$x\in U$, $s(x)\in \calg_{\psi(x)}$，以及
 
 		\item 对任意的$x\in U$，总存在$\psi(x)$的一个开邻域$V$，$x$的一个邻域$W\subset \psi^{-1}(V)\cap U$和一个元素$t\in \calg(V)$，使得当$p\in W$的时候总有$s(p)=t_{\psi(p)}$.
 	\end{itemize}
-	$\psi^*\calg(U)$上的加法直接定义为$(s+t)(x)=s(x)+t(x)$，因此$\psi^*\calg(U)$是一个交换群。如果$V$是$U$的开子集，那么函数限制$i^U_V:\psi^*\calg(U)\to \psi^*\calg(V)$就是所需要的预层的限制映射，记$i^U_V(s)=s|_V$，因此$\psi^*\calg$是一个预层。同时$\psi^*\calg$也是一个层，这直接来自于函数的粘合。
+	$\psi^*\calg(U)$上的加法直接定义为$(s+t)(x)=s(x)+t(x)$，因此$\psi^*\calg(U)$是一个交换群。如果$V$是$U$的开子集，那么函数限制$i^U_V:\psi^*\calg(U)\to \psi^*\calg(V)$就是所需要的预层的限制映射，记$i^U_V(s)=s|_V$，因此$\psi^*\calg$是一个预层。同时$\psi^*\calg$也是一个层，这直接来自于函数可以粘合。
 
-	此外，成立典范同构$(\psi^*\calg)_x\cong \calg_{\psi(x)}$. 实际上，$s\mapsto s(x)$给出了态射$\psi^*\calg(U)\to \calg_{\psi(x)}$，他与限制映射相容，所以由余极限的泛性质，存在唯一的态射$\theta:(\psi^*\calg)_x\to \calg_{\psi(x)}$满足$\theta(s_x)=s(x)$. 它显然是单射，因为如果$s_x=t_x$，那么存在一个领域$U$使得$s|_U=t|_U$，所以$s(x)=s|_U(x)=t|_U(x)=t(x)$. 同时，它也是满射，任取$t_{\psi(x)}=(V,t)\in \calg_{\psi(x)}$，其中$V$是$\psi(x)$的一个邻域，则取$x$附近的一个邻域$U$使得$\psi(U)\subset V$，在$\psi^*\calg(U)$上，我们定义$s:p\mapsto t_{\psi(p)}$. 于是$t_{\psi(x)}=s(x)$. 因此，我们一般会通过$s_x=s(x)$来等同$(\psi^*\calg)_x$和$\calg_{\psi(x)}$. 下面我们默认这种等同。
+	此外，成立典范同构$(\psi^*\calg)_x\cong \calg_{\psi(x)}$. 实际上，$s\mapsto s(x)$给出了态射$\psi^*\calg(U)\to \calg_{\psi(x)}$，他与限制映射相容，所以由余极限的泛性质，存在唯一的态射$\theta:(\psi^*\calg)_x\to \calg_{\psi(x)}$满足$\theta(s_x)=s(x)$. 它显然是单射，因为如果$s_x=t_x$，那么存在一个领域$U$使得$s|_U=t|_U$，所以$s(x)=s|_U(x)=t|_U(x)=t(x)$. 同时，它也是满射，任取$t_{\psi(x)}=(V,t)\in \calg_{\psi(x)}$，其中$V$是$\psi(x)$的一个邻域，则取$x$附近的一个邻域$U$使得$U\subset \psi^{-1}(V)$，在$\psi^*\calg(U)$上，我们定义$s:p\mapsto t_{\psi(p)}$. 于是$t_{\psi(x)}=s(x)$. 因此，我们一般会通过$s_x=s(x)$来等同$(\psi^*\calg)_x$和$\calg_{\psi(x)}$. 下面我们默认这种等同。
 
 	现在设$U$是$Y$的一个开集，对于$s\in \calg(U)$, 通过$s^+(x)=s_{\psi(x)}$可以定义一个截面
 	\[
 		s^+\in \psi^*\calg(\psi^{-1}(U))=\psi_*\psi^*\calg(U),
 	\]
-	其中$x\in \psi^{-1}(U)$. 于是，$\psi^*_{\calg}(U):s\mapsto s^+$定义了态射$\psi^*_{\calg}(U):\calg(U)\to \psi_*\psi^*\calg(U)$. 下面我们检验$\psi^*_{\calg}$是一个预层之间的态射，即一个自然变换。
+	其中$x\in \psi^{-1}(U)$. 于是，$\psi^*_{\calg}(U):s\mapsto s^+$定义了态射$\psi^*_{\calg}(U):\calg(U)\to \psi_*\psi^*\calg(U)$. 容易检查，$\psi^*_{\calg}$是一个预层之间的态射，即一个自然变换。即，任取$s\in \calg(U)$，都有
+	\[(\psi_* i)^U_V\bigl(\psi^*_{\calg}(U)(s)\bigr)=(s|_V)^+=\psi^*_{\calg}(V)\bigl(\rho^U_V(s)\bigr).
+	\]
 
-	对任意的$s\in \calg(U)$，因为
-	\[
-		(\psi_* i)^U_V\bigl(\psi^*_{\calg}(U)(s)\bigr)=i^{\psi^{-1}(U)}_{\psi^{-1}(V)}\left(\{x\mapsto s_{\psi(x)}\,:\, x\in \psi^{-1}(U)\}\right)=\{x\mapsto s_{\psi(x)}\,:\, x\in \psi^{-1}(V)\}=(s|_V)^+,
-	\]
-	以及
-	\[
-		\psi^*_{\calg}(V)\bigl(\rho^U_V(s)\bigr)=\psi^*_{\calg}(V)(s|_V)=(s|_V)^+.
-	\]
-	所以$\psi^*_{\calg}$是一个预层之间的态射。
+	% 对任意的$s\in \calg(U)$，因为
+	% \[
+	% 	(\psi_* i)^U_V\bigl(\psi^*_{\calg}(U)(s)\bigr)=i^{\psi^{-1}(U)}_{\psi^{-1}(V)}\left(\{x\mapsto s_{\psi(x)}\,:\, x\in \psi^{-1}(U)\}\right)=\{x\mapsto s_{\psi(x)}\,:\, x\in \psi^{-1}(V)\}=(s|_V)^+,
+	% \]
+	% 以及
+	% \[
+	% 	\psi^*_{\calg}(V)\bigl(\rho^U_V(s)\bigr)=\psi^*_{\calg}(V)(s|_V)=(s|_V)^+.
+	% \]
+	% 所以$\psi^*_{\calg}$是一个预层之间的态射。
 
 	最后就是要检验泛性质，即对于任意的态射$u:\calg \to \psi_*\calf$，都可以找到唯一的态射$u^\#:\psi^*\calg \to \calf$成立分解
 	\[
@@ -486,7 +488,7 @@
 \[
 	(\psi_*^{\psi^*\calg})_x(\psi^*_{\calg})_{\psi(x)}:\calg_{\psi(x)}\to (\psi^*\calg)_{x},
 \]
-按照我们之前的论断，$\calg_{\psi(x)}$和$(\psi^*\calg)_{x}$之间存在典范同构，实际上，它就是$(\psi_*^{\psi^*\calg})_x(\psi^*_{\calg})_{\psi(x)}$. 为说明这点，只需说明在前面默认的等同下这个态射是恒等即可。任取$r_{\psi(x)}=(V,r)\in \calg_{\psi(x)}$，其中$V$是$\psi(x)$的一个邻域，我们有
+而我们在证明中等同了$\calg_{\psi(x)}$和$(\psi^*\calg)_{x}$，此时，$(\psi_*^{\psi^*\calg})_x(\psi^*_{\calg})_{\psi(x)}$就是恒等。任取$r_{\psi(x)}=(V,r)\in \calg_{\psi(x)}$，其中$V$是$\psi(x)$的一个邻域，我们有
 \[
 	(\psi^*_{\calg})_{\psi(x)}r_{\psi(x)}=(\psi^*_{\calg}(V)(r))_{\psi(x)}=(r^+)_{\psi(x)},
 \]
@@ -503,7 +505,7 @@
 就是典范态射$(f^\calf_*)_x:(f_*\calf)_{f(x)}\to \calf_x$.
 
 \begin{pro}
-设$f:\calf\to\calg$是两个$Y$上的交换群层之间的态射，而$\psi:X\to Y$是一个连续映射。于是，局部地，态射$\psi^*f:\psi^*\calf\to \psi^*\calg$写作$(\psi^* f)_x=f_{\psi(x)}$.
+设$f:\calf\to\calg$是两个$Y$上的交换群层之间的态射，而$\psi:X\to Y$是一个连续映射，则，局部地，态射$\psi^*f:\psi^*\calf\to \psi^*\calg$写作$(\psi^* f)_x=f_{\psi(x)}$.
 \end{pro}
 
 \begin{proof}
@@ -560,7 +562,7 @@
 \]
 是相同的。特别地，考虑$\id_{(gf)_*\calf}\in \Hom_Z((gf)_*\calf,(gf)_*\calf)$，则应该有
 \[
-	(gf)^*_{\calf} = f_{\calf}^* f^*(g_{f_*\calf}^*).
+	(gf)^*_{\calf} = f_{\calf}^* g_{f_*\calf}^*.
 \]
 
 \begin{para}
@@ -574,26 +576,26 @@
 	\]
 	来得到$f^*g^*\oo_Z\to \oo_X$的态射，所以上一个命题的推论告诉我们$((g_*\varphi)\psi)^\#=\varphi^\#(f^*\psi^\#)$. 
 
-	当然，我们也可以没那么聪明地，考虑典范分解
-	\[
-		((g_*\varphi)\psi)^\#=(gf)^*_{\oo_X} (gf)^*((g_*\varphi)\psi)=(gf)^*_{\oo_X} (f^*g^*g_*\varphi)((gf)^*\psi).
-	\]
-	首先，注意到$(gf)^*_{\oo_X}$可以由上一个命题的推论分解为两个态射$(gf)^*_{\oo_X}=f_{\oo_X}^* f^*(g_{f_*\oo_X}^*)$，所以
-	\[
-		((g_*\varphi)\psi)^\#=f_{\oo_X}^* f^* \left(g_{f_*\oo_X}^* g^*g_*\varphi\right)((gf)^*\psi)=f_{\oo_X}^* f^* \left(g_{f_*\oo_X}^* g^*g_*\varphi g^*\psi\right).
-	\]
-	接着，考虑交换图
-	\[
-		\xymatrix{
-			g^*g_*\oo_Y \ar[d]_{g^*g_*\varphi}\ar[rr]^-{g_{\oo_Y}^*}&&\oo_Y\ar[d]^\varphi\\
-			g^*g_*f_*\oo_X\ar[rr]^-{g_{f_*\oo_X}^*}&&f_*\oo_X
-		}
-	\]
-	即$\varphi g_{\oo_Y}^*=g_{f_*\oo_X}^*(g^*g_*\varphi)$给出了
-	\[
-		((g_*\varphi)\psi)^\#=f_{\oo_X}^* f^* \left(\varphi g_{\oo_Y}^* g^*\psi\right)=f_{\oo_X}^* f^* \left(\varphi \psi^\#\right)=f_{\oo_X}^* f^* \varphi f^*(\psi^\#)=\varphi^\# f^*(\psi^\#).
-	\]
-	这就是我们相当笨重但是却很扎实的证明。
+	% 当然，我们也可以没那么聪明地，考虑典范分解
+	% \[
+	% 	((g_*\varphi)\psi)^\#=(gf)^*_{\oo_X} (gf)^*((g_*\varphi)\psi)=(gf)^*_{\oo_X} (f^*g^*g_*\varphi)((gf)^*\psi).
+	% \]
+	% 首先，注意到$(gf)^*_{\oo_X}$可以由上一个命题的推论分解为两个态射$(gf)^*_{\oo_X}=f_{\oo_X}^* f^*(g_{f_*\oo_X}^*)$，所以
+	% \[
+	% 	((g_*\varphi)\psi)^\#=f_{\oo_X}^* f^* \left(g_{f_*\oo_X}^* g^*g_*\varphi\right)((gf)^*\psi)=f_{\oo_X}^* f^* \left(g_{f_*\oo_X}^* g^*g_*\varphi g^*\psi\right).
+	% \]
+	% 接着，考虑交换图
+	% \[
+	% 	\xymatrix{
+	% 		g^*g_*\oo_Y \ar[d]_{g^*g_*\varphi}\ar[rr]^-{g_{\oo_Y}^*}&&\oo_Y\ar[d]^\varphi\\
+	% 		g^*g_*f_*\oo_X\ar[rr]^-{g_{f_*\oo_X}^*}&&f_*\oo_X
+	% 	}
+	% \]
+	% 即$\varphi g_{\oo_Y}^*=g_{f_*\oo_X}^*(g^*g_*\varphi)$给出了
+	% \[
+	% 	((g_*\varphi)\psi)^\#=f_{\oo_X}^* f^* \left(\varphi g_{\oo_Y}^* g^*\psi\right)=f_{\oo_X}^* f^* \left(\varphi \psi^\#\right)=f_{\oo_X}^* f^* \varphi f^*(\psi^\#)=\varphi^\# f^*(\psi^\#).
+	% \]
+	% 这就是我们相当笨重但是却很扎实的证明。
 \end{para}
 
 将其应用到茎上，我们立即得到
@@ -634,19 +636,17 @@
 			(f_*^{f^*\calg})_x(f^*_{\calg})_{f(x)}:\calg_{f(x)}\to (f^*\calg)_{x}.
 		\]
 		\item 设$u:\calf\to \calg$而$v:\calg\to f_*\mathcal H$是层同态，则$(vu)^\# = u^\# f^*u$.
-		\item 两个连续映射的复合下，有
-		\[
-			(gf)^*_{\calf} = f_{\calf}^* f^*(g_{f_*\calf}^*).
-		\]
+		\item 两个连续映射的复合下，有$(gf)^*=f^*g^*$.
+		% \[
+		% 	(gf)^*_{\calf} = f_{\calf}^* f^*(g_{f_*\calf}^*).
+		% \]
 		\item 设有两个赋环空间的态射$(f,\varphi):X\to Y$和$(g,\psi):Y\to Z$，他们的复合的态射的层部分为$\theta = g_*\varphi \psi$，则提升$\theta^\#_x:(\oo_Z)_{g(f(x))}\to (\oo_X)_x$局部可以分解为$\theta^\#_x=\varphi^\#_x\psi^\#_{f(x)}$.
 	\end{compactenum}
 \end{para}
 
 \begin{para}[交换群层范畴]
 $X$上的交换群层构成一个范畴，态射就是层之间的态射。并且，这是一个准加性范畴，常值层$0$（即任取开集$U$，$0(U)=0$）是它的零对象。
-
 由于极限与极限是可以交换的，所以一族交换群层的极限依然是一个层。特别地，我们可以断言，任意有限极限是存在的。所以$X$上的交换群层构成一个加性范畴。
-
 特别地，由于核是一个极限，所以对
 态射$u:\calf\to\calg$，预层$U\mapsto \ker(u(U))$是一个层，我们记作$\ker u$. 结合典范含入
 \[
@@ -919,21 +919,16 @@ $(\mathcal{F}\otimes\mathcal{G})_x=\mathcal{F}_x\otimes\mathcal{G}_x$.
 \begin{para}[张量积的逆像]
 考虑两个$\oo_Y$-模层$\calf$和$\calg$，以及态射$\Psi=(\psi,\theta):(X,\oo_X)\to (Y,\oo_Y)$. 由于$\psi^*\calf$和$\psi^*\calg$都具有$\psi^*\oo_Y$-模层结构，所以存在$\psi^*\calf\otimes_{\psi^*\oo_Y}\psi^*\calg$.
 
-固定$X$的子集$U$，我们可以给出一个映射
+固定$X$的子集$U$，我们可以通过$\varphi(U)(s,t)(p)=s(p)\otimes t(p)$
+给出一个映射
 \[
-	\varphi(U):\psi^*\calf(U)\times \psi^*\calg(U) \to \psi^*(\calf\otimes \calg)(U)
-\]
-通过
-\[
-	\varphi(U)(s,t)(p)=s(p)\otimes t(p).
+	\varphi(U):\psi^*\calf(U)\times \psi^*\calg(U) \to \psi^*(\calf\otimes \calg)(U).
 \]
 这当然是一个双线性映射，且与限制映射相容。于是，张量积泛性质给出了一个典范态射
 \[
 	\psi^*\calf\otimes_{\psi^*\oo_Y} \psi^*\calg \to \psi^*(\calf\otimes_{\oo_Y} \calg).
 \]
-这是一个同构，因为在每条茎上它都是同构。
-
-与$(\oo_X)_{[\theta]}$取张量积，我们就得到了典范同构
+这是一个同构，因为在每条茎上它都是同构。进一步与$(\oo_X)_{[\theta]}$取张量积，我们就得到了典范同构
 \[
 	\Psi^*\calf\otimes_{\oo_X} \Psi^*\calg \to \Psi^*(\calf\otimes_{\oo_Y} \calg)
 \]
@@ -1035,7 +1030,7 @@ $V(E)$满足闭集公理，所以$\spec(R)$以$V(E)$为闭集是一个拓扑空�
 \begin{compactenum}
 \item $D(f)$是开集，且它们构成了$\spec(R)$的一个拓扑基。
 \item 环的素谱满足$T_0$分离公理。
-\item 环的素谱是紧的。
+\item 环的素谱是拟紧的。
 \end{compactenum}
 \end{pro}
 
@@ -1449,7 +1444,7 @@ $\spec R$不可约当且仅当$\sqrt{0}$是一个素理想。$\spec(R)$的不可
 \end{para}
 
 \begin{pro}
-设赋环空间$(X,\oo_X)$, $(Y,\oo_Y)$是仿射概形，则赋环空间态射$\Psi=(\psi,\theta):(X,\oo_X)\to (Y,\oo_Y)$是仿射概形态射，当且仅当，任取$x\in X$，$\theta_x^\#:(\oo_Y)_{\psi(x)}\to (\oo_X)_x$是一个局部同态，即将$(\oo_Y)_{\psi(x)}$的极大理想映入$(\oo_X)_x$的极大理想中。
+若赋环空间$(X,\oo_X)$, $(Y,\oo_Y)$是仿射概形，则态射$\Psi=(\psi,\theta):(X,\oo_X)\to (Y,\oo_Y)$是仿射概形态射当且仅当，任取$x\in X$，$\theta_x^\#:(\oo_Y)_{\psi(x)}\to (\oo_X)_x$是一个局部同态，即将$(\oo_Y)_{\psi(x)}$的极大理想映入$(\oo_X)_x$的极大理想中。
 \end{pro}
 
 \begin{proof}
@@ -1529,9 +1524,7 @@ f(g(\Psi))=\left({}^a\theta(\oo_X),\widetilde{\theta(\oo_X)}\right)
 \]
 故$Y\subset \overline{\{x\}}$. 反过来，由于$x\in Y$，所以$\overline{\{x\}}\subset Y$. 综上，$Y$存在一般点$x$，且由于概形是$T_0$空间，所以也唯一。
 
-如果概形只看拓扑空间是不可约的，则称概形是不可约的。如果只看拓扑空间是连通的，则称概形是连通的。
-
-如果概形间的态射只看连续映射是开（闭，单，满）映射，则称这是一个开（闭，单，满）态射。注意，这里的单射和满射不是指monomorphism和epimorphism，而是称injective morphism和surjective morphism，后文会避免直接称呼一个满射，而会用“态射是满的”来替代。设$\Psi=(\psi,\theta):X\to Y$是概形间态射，如果$\im\psi = Y$，则称态射$\Psi$是笼罩的(dominant)。
+如果概形只看拓扑空间是不可约（连通，拟紧）的，则称概形是不可约（连通，拟紧）的。如果概形间的态射只看连续映射是开（闭，单，满）映射，则称这是一个开（闭，单，满）态射。注意，这里的单射和满射不是指monomorphism和epimorphism，而是称injective morphism和surjective morphism，后文会避免直接称呼一个满射，而会用“态射是满的”来替代。设$\Psi=(\psi,\theta):X\to Y$是概形间态射，如果$\im\psi = Y$，则称态射$\Psi$是笼罩的(dominant)。
 \end{para}
 
 \begin{pro}\label{pro:3.1.3}
@@ -1696,6 +1689,37 @@ $X_x$作为集合是所有包含$x$的开集的交，等价地，$X_x$中的点�
 \]
 所以$p_iu_i(a)=p_ju_j(a)$. 
 \end{proof}
+
+\begin{pro}
+	设$K$是一个域，如果$f:\spec K\to X$是一个位于$x$的$K$-值点，
+	而$y\in \overline{\{x\}}$是$\{x\}$的闭包中与$x$不同的点，
+	则存在$K$的一个赋值环$R\subset K$和位于$y$上的$R$-值点$g:\spec R\to X$使得
+	分解$f:\spec K\to \spec R\xrightarrow{g} X$成立。
+\end{pro}
+	
+注意到，$g$将$\spec R$的闭点映射到$y$，而将$\spec R$的一般点（对应零理想）映射到$x$，
+因为分解中的第一个映射将$\spec K$的闭点（对应零理想）映射到了$\spec R$的一般点
+（对应零理想）。
+	
+\begin{proof}
+	如果存在这样的分解，那么$g$还可以进一步分解为
+	\[
+		g:\spec R\to X_y=\spec (\mathcal O_X)_y\to X,
+	\]
+	由于$X_y$拓扑上是$S_y=\left\{z\in X\,:\, y\in \overline{\{z\}}\right\}$，
+	所以$x\in X_y$. 我们可以进一步在$(\mathcal O_X)_y$中模掉$x$对应的素理想，
+	对应的局部整环记作$A$. 此时，我们可以用$\spec A$来代替$X$，此时$x$是其一般点
+	而$y$是其闭点。这样，问题就变成了一个交换代数问题，即，若$A$是一个局部整环
+	而$K$是一个包含他的域，则存在$K$的一个赋值环$R$，使得$A\subset R\subset K$，
+	且$R$笼罩$A$，即对$R$和$A$的极大理想$\mathfrak m_R$, $\mathfrak m_A$成立
+	$\mathfrak m_A=A\cap \mathfrak m_R$. 若$K$恰好是$A$的分式域，则命题是显然的，
+	因为赋值环是局部整环按照笼罩关系构成的极大元，所以只要找个包含$A$的链中的
+	极大元，那就是想要的赋值环。更一般的情况的证明可见 Ulrich \& Torsten 
+	的Proposition 15.6和15.7.
+\end{proof}
+
+利用这个命题，容易看到，$\overline{\{x\}}$中的每个点都对应于$k(x)$的一个赋值环。
+
 
 \section{概形的纤维积}
 
@@ -2386,14 +2410,38 @@ $Y$是$X$的子概形，当且仅当以下两条成立：
 \end{proof}
 
 \begin{para}[闭像与闭包]
-	设$f:X\to Y$是概形态射，$f$的闭像是$Y$的一个闭子概形$Z$，使得如果$f$能被$Y$的闭子概形$Z'\hookrightarrow Y$所遮盖，则$Z$是$Z'$的闭子概形。换句话说，能遮盖$f$的最小闭子概形。特别地，考虑子概形的典范含入$i:U\hookrightarrow Y$，则$i$的闭像被称为$U$的闭包。
+	设$f:X\to Y$是概形态射，$f$的闭像（也叫概形学式的像）是$Y$的一个闭子概形$Z$，使得如果$f$能被$Y$的闭子概形$Z'\hookrightarrow Y$所遮盖，则$Z$是$Z'$的闭子概形。换句话说，能遮盖$f$的最小闭子概形，我们将其记作$\im(f)$. 特别地，考虑子概形的典范含入$i:U\hookrightarrow Y$，则$i$的闭像被称为$U$的闭包（也叫概形学式的闭包）。
 \end{para}
 
-闭像一般来说不一定存在，但下面命题告诉我们，在一定情况下，闭像是存在的。
+\begin{pro}
+	概形态射$f:X\to Y$的闭像是存在且唯一。
+\end{pro}
+
+\begin{proof}
+	唯一性显然。现在，考虑能将$f$遮盖的$Y$的所有闭子概形$Z\hookrightarrow Y$对应的拟凝聚理想层的和$\mathscr I_f=\sum_Z \mathscr I_Z$，这显然是一个拟凝聚理想层，因为拟凝聚层的直和和商都是拟凝聚的，这个拟凝聚理想层对应的闭子概形就是$f$的闭像。
+\end{proof}
+
+容易看到$\im(f)$的底空间包含$f(X)$的Zariksi闭包，但一般来说，它们不相等。
 
 \begin{pro}
-	设$f:X\to Y$是概形态射，如果$f_*\oo_X$是拟凝聚$\oo_Y$-模层，则$f$的闭像存在。
+若$f:X\to Y$是拟紧态射，则$f^\flat:\mathcal O_Y\to f_*\mathcal O_X$的核是一个拟凝聚理想层，它定义了$f$的闭像，且$\im(f)$的底空间等于$f(X)$的Zariksi闭包。
 \end{pro}
+
+\begin{proof}
+	拟紧态射的定义见下一章。由于是局部的，所以我们可以设$Y$是仿射概形，
+	进而$X$是拟紧的，所以我们可以选一个有限仿射开覆盖$X=\bigcup_{i=1}^n U_i$.
+	此时，存在嵌入$\mathcal O_X\hookrightarrow \bigoplus_i(i_{U_i})_*\mathcal O_{U_i}$,
+	复合上$f_*$给出
+	$f_*\mathcal O_X\hookrightarrow \bigoplus_i(fi_{U_i})_*\mathcal O_{U_i}$，
+	由于$fi_{U_i}$是仿射概形间态射，所以$(fi_{U_i})_*\mathcal O_{U_i}$是拟凝聚的，
+	进而$\bigoplus_i(fi_{U_i})_*\mathcal O_{U_i}$也是，所以
+	$\ker f^\flat$是拟凝聚$\mathcal O_Y$-模态射$\mathcal O_Y\to \bigoplus_i(fi_{U_i})_*\mathcal O_{U_i}$的核，也是拟凝聚的。
+
+	容易看到，$\ker f^\flat$已经是最大的拟凝聚理想层了，所以给出了最小的闭子概形。
+	而且从支集的定义可知，$\operatorname{Supp}(\mathcal O_Y/\ker f^\flat)=\overline{f(X)}$，
+	故$\im(f)$的底空间就是$\overline{f(X)}$.
+\end{proof}
+
 
 \section{约态概形}
 
