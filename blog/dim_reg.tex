@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 \usepackage{ctex}
 \usepackage{../noteheader}
 
@@ -58,7 +58,11 @@
 \[
 	\int \frac{d^{D} l}{i \pi^{\frac{D}{2}}}=\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int \frac{d^{2k} l_2}{\pi^{k}}=\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty \frac{d |l_2|}{\pi^{k}} |l_2|^{2k-1} \Omega_{2k-1}=\frac{1}{2k \pi^k}\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty d\gamma^k \Omega_{2k},
 \]
-其中$\Omega_{2k}$是$2k$维空间中$2k-1$维单位球面的面积$\Omega_{2k}=2\pi^k/\Gamma(k)$，于是
+其中$\Omega_{2k}$是$2k$维空间中$2k-1$维单位球面的面积，
+\[
+	\Omega_{2k}=\frac{2\pi^k}{\Gamma(k)},
+\]
+则
 \[
 	\int \frac{d^{D} l}{i \pi^{\frac{D}{2}}}=\frac{1}{k\Gamma(k)}\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty d\gamma^k=\frac{1}{\Gamma(k)}\int \frac{d^{n} l_1}{i \pi^{\frac{n}{2}}}\int_0^\infty d\gamma\, \gamma^{k-1}.
 \]
@@ -91,7 +95,7 @@
 	\int \frac{d^{n} l}{i \pi^{\frac{n}{2}}} \frac{1}{(-(l-l_0)^2+U+\gamma)^v}
 	=\frac{\Gamma\left(v-\frac{n}{2}\right)}{\Gamma(v)} \frac{1}{(U+\gamma)^{v-\frac{n}{2}}}
 \]
-新的费曼参数积分可能会变得相对容易计算，比如对于$n=4$，$(U+\gamma)^{v-\frac{n}{2}}=(U+\gamma)^{v-2}$将是费曼参数的多项式。从另一种角度来看，维数正规化变成了某种“质量”正规化，这里我们叫做$\gamma$-正规化。
+新的费曼参数积分可能会变得相对容易计算，比如对于$n=4$，$(U+\gamma)^{v-\frac{n}{2}}=(U+\gamma)^{v-2}$将是费曼参数的多项式。从另一种角度来看，维数正规化变成了某种“质量”正规化，我们叫做$\gamma$-正规化。
 
 我们可以进一步考虑更高圈的（标量）积分，以两圈为例，两个圈的$2k$-维积分可以写作
 \[
@@ -194,66 +198,57 @@ $\log(\gamma)$的幂次最高是$n$.
 \]
 可以看到，若$\gamma=0$，则$a_2\sim a_3\sim 0$处或$a_2\sim a_3\sim \infty$会发散。为计算这个积分，我们引入如下技术。
 
+
+
 \begin{pro}
-考虑一个由非负向量族$\{v_i\}$给出的凸锥$C\subset \mathbb R_+^n$，即
+设一个光滑函数$f$具有如下极限行为
 \[
-	C=\{v=\sum_{i}\lambda_iv_i\,:\,\lambda_i\geq 0\},
+f(x_1t,\dots,x_nt;\epsilon t)\xrightarrow{t\sim 0^+}\frac{1}{t^n}f_0(x_1,\dots,x_n;\epsilon)+O(t^{-n+1}),
 \]
-此时若光滑函数$f(x_1,\dots,x_n;0)$在$x\to 0$的时候非零，则积分
+其中自然数$k\leq n$. 则积分
 \[
-	\int_C d\log x\,f(x_1,\dots,x_n;\epsilon)
+\int_{\mathbb R_+^n} f(\mathbf{x};\epsilon)\,d^nx-\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} f(\mathbf{x};0)\,d^nx
 \]
-可能会发散，其中$d\log x:=\prod_{i=1}^n\frac{dx_i}{x_i}$. 假若$f$具有如下极限行为
+在$\epsilon\to 0^+$时候有限，其中为球心位于原点的半径为$\lambda \epsilon$的球与$\mathbb R_+^n$的交$B_+(\lambda \epsilon):=\{|\mathbf x|<\lambda \epsilon\}\cap \mathbb R_+^n$，而$\lambda$为任意正数。并且，上述积分的有限差值可以表示为$I_1+I_2$，其中
 \[
-f(x_1t^{\alpha_1},\dots,x_nt^{\alpha_n};\epsilon t)\xrightarrow{t\sim 0^+}f_0(x_1,\dots,x_n;\epsilon)+O(t),
+	I_1=\int_{B_+(\lambda\mu)}f_0(\mathbf{x};\mu)\,d^nx,\quad I_2=\int_{\mathbb R_+^n - B_+(\lambda\mu)} (f_0(\mathbf x;\mu)-f_0(\mathbf x;0))\,d^nx
 \]
-其中向量$(\alpha_1,\dots,\alpha_n)\in C$，则积分
-\[
-I=\int_{C} d\log x\,f(\mathbf{x};\epsilon)-\int_{C-C_\beta(\lambda\epsilon)} d\log x\,f(\mathbf{x};0)
-\]
-在$\epsilon\to 0^+$时候有限，其中$\lambda$为任意正数且$C_\beta(\lambda)$为半空间$H_\beta^-(\lambda):=\{\sum_i\beta_ix_i<\lambda\}$与$C$的交，
-也即超平面$H_\beta(\lambda):\sum_i\beta_ix_i=\lambda$与凸锥$C$切出来的一个角，于是，这也要求$v_i\cdot \beta\geq 0$对任意的$i$都成立。并且，$I$等于如下两个积分之和
-\[
-	I_1=\int_{C_\beta(\lambda\mu)}\prod_{i=1}^n \frac{dx_i}{x_i} f_0(\mathbf{x};\mu),\quad I_2=\int_{C-C_\beta(\lambda\mu)}\prod_{i=1}^n \frac{dx_i}{x_i} (f_0(\mathbf x;\mu)-f_0(\mathbf x;0))\,d^nx,
-\]
-其中$\mu$为另一个任意正数。
+为$f_0$的积分，其中$\mu$为另一个任意正数。
 \end{pro}
 
-% 我们可以用其他区域来替换$B_+(\lambda \epsilon)$，比方说，取边长为$\epsilon$的正方体$[0,\epsilon]^n:=\{ 0<x_i<\epsilon \text{ for }1\leq i\leq n\}$. 这是因为存在$\lambda_1$和$\lambda_2$使得$B_+(\lambda_1\epsilon)\subset [0,\epsilon]^n\subset B_+(\lambda_2\epsilon)$对任意的$\epsilon$都成立。
+我们可以用其他区域来替换$B_+(\lambda \epsilon)$，比方说，取边长为$\epsilon$的正方体$[0,\epsilon]^n:=\{ 0<x_i<\epsilon \text{ for }1\leq i\leq n\}$. 这是因为存在$\lambda_1$和$\lambda_2$使得$B_+(\lambda_1\epsilon)\subset [0,\epsilon]^n\subset B_+(\lambda_2\epsilon)$对任意的$\epsilon$都成立。
 
 \begin{proof}
-在适当做变量替换$x_i=y_i^{\alpha_i}$之后，我们可以假设$\alpha=(1,1,\dots,1)\in C$，并且我们还是用$x$
-作为变量。我们首先分解积分
+不妨设$\mu=1$. 我们首先将$\int_{\mathbb R_+^n} f(\mathbf{x};\epsilon)\,d^nx$分解为
 \[
-	\int_C d\log x\,f(x;\epsilon)=\int_{C_\beta(\lambda\epsilon)} d\log x\,f(x;\epsilon)+\int_{C - C_\beta(\lambda\epsilon)}  d\log x\,(f(x;\epsilon)-f(x;0)) + \int_{C - C_\beta(\lambda\epsilon)}  d\log x\,f(x;0)
+\int_{\mathbb R_+^n} f(\mathbf{x};\epsilon)\,d^nx=\int_{B_+(\lambda \epsilon)} f(\mathbf{x};\epsilon)\,d^nx+\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} (f(\mathbf{x};\epsilon)-f(\mathbf{x};0))d^nx + \int_{\mathbb R_+^n - B_+(\lambda \epsilon)} f(\mathbf{x};0)d^nx
 \]
 我们需要算中间两项在$\epsilon\to 0$时候的极限行为，记
 \[
-I_1=\int_{C_\beta(\lambda\epsilon)}  d\log x\,f(x;\epsilon)
+I_1=\int_{B_+(\lambda \epsilon)} f(\mathbf{x};\epsilon)\,d^nx
 \quad \text{and} \quad
-I_2=\int_{C - C_\beta(\lambda\epsilon)}d\log x\,(f(x;\epsilon)-f(x;0)).
+I_2=\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} (f(\mathbf{x};\epsilon)-f(\mathbf{x};0))d^nx.
 \]
-对$I_1$，我们坐标变换$x\to x\epsilon/\mu$，利用$f$在$\epsilon/\mu\to 0^+$时候的极限行为，有
+对$I_1$，我们坐标变换$\mathbf{x}\to \mathbf{x}\epsilon$
 \[
-I_1=\int_{C_\beta(\lambda\mu)}d\log x\, f(x\epsilon/\mu;\mu(\epsilon/\mu))
-\to \int_{C_\beta(\lambda\mu)}d\log x\, f_0(x;\mu)\,d^nx,
+I_1=\epsilon^n\int_{B_+(\lambda)} f(\mathbf{x}\epsilon;\epsilon)\,d^nx
+\to \int_{B_+(\lambda)} f_0(\mathbf{x};1)\,d^nx,
 \]
-% 另一方面，$I_2$只可能在$H_\beta(\mu\lambda)$附近发散，此时我们在附近考虑积分，注意到$|x|$也很小，所以，在坐标变换$x\to x\epsilon$下，其极限行为为
-% \[
-% \begin{aligned}
-% \int_{x\sim H_\beta(\lambda\epsilon)} (f(x;\epsilon)-f(x;0))d^nx &\sim \int_{|x|\sim \lambda \mu} \left(f_0(x;\mu)-f_0(x/|x|;0)\right)\,d^n x
-% \end{aligned}
-% \]
-% 由于其下界不为零，第二项并不会导致发散。同时，
-对$I_2$，给定一个有限截断$C_\beta(\Lambda)$，我们将积分分解为
+另一方面，$I_2$只可能在$B_+(\lambda \epsilon)$附近发散，此时我们在附近考虑积分，注意到$|x|$也很小，所以，在坐标变换$\mathbf{x}\to \mathbf{x}\epsilon$下，其极限行为为
 \[
-	\int_{C-C_\beta(\lambda\epsilon)}=\int_{C - C_\beta(\Lambda)}+\int_{C_\beta(\Lambda) -C_\beta(\lambda\epsilon)},
+\begin{aligned}
+\int_{\mathbb R_+^n - B_+(\lambda \epsilon)} (f(\mathbf{x};\epsilon)-f(\mathbf{x};0))d^nx &\sim \int_{|x|\sim \lambda } \left(f_0(\mathbf{x};1)-\frac{1}{|x|^n}f_0(\mathbf{x}/|x|;0)\right)\,d^n x
+\end{aligned}
 \]
-在第一个积分中，我们可以安全地Taylor展开$f(\mathbf{x};\epsilon)-f(\mathbf{x};0)$，可以知道他是$O(\epsilon)$的，对于第二个积分，然后替换$x\to x\epsilon/\mu$，接着应用极限行为，可得到
+由于其下界不为零，第二项并不会导致发散。同时，给定一个有限截断$B_+(\Lambda)$，我们将积分分解为
 \[
-	\int_{C_\beta(\Lambda\mu/\epsilon) - C_\beta(\lambda\mu)}(f_0(\mathbf{x};\mu)-f_0(\mathbf{x};0))d^nx
+	\int_{\mathbb R_+^n - B_+(\lambda \epsilon)}=\int_{\mathbb R_+^n - B_+(\Lambda)}+\int_{B_+(\Lambda) - B_+(\lambda \epsilon)},
 \]
-令$\epsilon\to 0$，其积分区域就变成了$C-C_\beta(\lambda\mu)$.
+在第一个区间里，我们可以安全地Taylor展开$f(\mathbf{x};\epsilon)-f(\mathbf{x};0)$，可以知道他是$O(\epsilon)$的，对于第二个积分，然后替换$\mathbf{x}\to \epsilon \mathbf{x}$，接着应用极限行为，可得到
+\[
+	\int_{B_+(\Lambda/\epsilon) - B_+(\lambda)}(f_0(\mathbf{x};1)-f_0(\mathbf{x};0))d^nx
+\]
+令$\epsilon\to 0$，其积分区域就变成了$\mathbb{R}_+^n-B_+(\lambda)$.
 \end{proof}
 
 一般来说，在积分中，因为费曼参数在边界的行为并不会那么简单，他可能在许多边界处产生发散。对积分
