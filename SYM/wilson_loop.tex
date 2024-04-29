@@ -133,7 +133,7 @@ $\partial_\alpha y^\mu = \sqrt{-1}w(z)^2\epsilon_{\alpha\beta}\partial_\beta x^\
 \[
 	W_n=\sum_{k=0}^n W_{n;k}(x_i,\theta_i^A,a),
 \]
-其中$x_i$是对偶坐标，而$\theta_i^A$是对偶超超坐标，满足
+其中$x_i$是对偶坐标，而$\theta_i^A$是对偶超坐标，满足
 \[
 p_i^{\dot{\alpha} \alpha}=\widetilde{\lambda}_i^{\dot{\alpha}} \lambda_i^\alpha=\left(x_i-x_{i+1}\right)^{\dot{\alpha} \alpha}, \quad q_i^{\alpha A}=\lambda_i^\alpha \eta_i^A=\left(\theta_i-\theta_{i+1}\right)^{\alpha A}.
 \]
@@ -141,23 +141,20 @@ p_i^{\dot{\alpha} \alpha}=\widetilde{\lambda}_i^{\dot{\alpha}} \lambda_i^\alpha=
 $\chi_i^A=\langle \lambda_i\theta_i^A\rangle$的一个$4k$-次齐次不变多项式，
 每个$k$对应着$\text{N}^k\text{MHV}$.
 
-超振幅与超Wilson圈的对偶源于
+超振幅与超Wilson圈的对偶写作
 \[
 	W_{n;k}(x,\theta;a)=a^k \widehat A_{n,k}(p,\eta;a),
 \]
 右侧的$a^k$是因为$W_{n;k}$在弱耦合按耦合常数展开时是从$a^k$开始的。于是，
-对完整的超对称Wilson圈带入上面的对偶并在弱耦合展开后，我们有
+对完整的超对称Wilson圈代入上面的对偶并在弱耦合展开后，我们有
 \[
 	\sum_{L=0}^\infty W_n^{(L)}a^L=\sum_{L=0}^\infty\sum_{k=0}^n a^{k+L}\widehat A_{n,k}^{(L)}(p,\eta),
 \]
 于是
 \[
-	W_n^{(L)}=\sum_{k=0}^{\min(n,L)} A_{n,k}^{(L-k)}(p,\eta).
+	W_n^{(L)}=\sum_{k=0}^{\min(n,L)} \widehat A_{n,k}^{(L-k)}(p,\eta).
 \]
 可以看到，给定圈数的Wilson圈包含了更低圈的振幅。
-
-但目前而言，所有超Wilson圈的构造使得这个对偶在圈图层次是有反常的。
-
 
 
 

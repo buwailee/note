@@ -1,0 +1,53 @@
+\documentclass[12pt]{book}
+\usepackage{../noteheader}
+\usepackage{titletoc,paralist}
+
+\usepackage{fontspec}
+\setmainfont{Muli-Light}
+\renewcommand{\baselinestretch}{1.05}
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[chapter]
+		\renewcommand{\thepara}{\thechapter.\arabic{para}}
+	\newtheorem{defi}[para]{Definition}
+	\newtheorem*{supply}{Supply Material}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+	\newtheorem{coro}[para]{Corollary}
+\renewcommand*{\proofname}{Proof}
+
+\usepackage{hyperref}
+	\hypersetup{bookmarksnumbered=true}
+
+\input{../defs.tex}
+	\newcommand{\cc}{\mathbb{C}}
+	\DeclareMathOperator{\spec}{Spec}
+	\DeclareMathOperator{\Div}{Div}
+	\DeclareMathOperator{\Ass}{Ass}
+
+%\definecolor{shadecolor}{RGB}{32,32,32}
+%\definecolor{textcolor}{RGB}{204,204,255}
+%\definecolor{textcolor}{RGB}{224,224,224}
+%\definecolor{textcolor}{RGB}{204,255,204}
+%\pagecolor{shadecolor}
+%\color{textcolor}
+
+\title{A Note on Algebraic Curve}
+\author{Buwai Lee @ NJU}
+\date{\today}
+
+\begin{document}
+\begin{titlepage}
+	\maketitle
+\end{titlepage}
+
+\frontmatter
+\tableofcontents
+\mainmatter
+	\input{curve.tex}
+\backmatter
+	% \printindex
+	% \input{references.tex}
+\end{document}

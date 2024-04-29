@@ -179,6 +179,33 @@ $f:Z\to X$，图像$\Gamma_f$是一个闭浸入。
 	$X_{\operatorname{red}}\subset\operatorname{Eq}(f,g)$.
 \end{proof}
 
+但是，这不能说明$f=g$，这是因为包含$U$的闭子概形可能不止一个。
+比如，考虑域$k$和两个$k$-代数
+$k[t]$和$k[x,y]/(xy,y^2)$，由于仿射概形间态射都是分离的，所以他们都是
+分离$k$-概形。现在我们考虑$t\mapsto 0$和$t\mapsto y$给出的两个
+$k$-代数同态$k[t]\to k[x,y]/(xy,y^2)$，以及他们对应的
+\[
+	f,g:\spec k[x,y]/(xy,y^2)\to \spec k[t].
+\]
+如果我们将$\spec k[x,y]/(xy,y^2)$看出$\spec k[x,y]$中的闭子集$V(xy,y^2)$. 
+注意到准素分解$(y^2,xy)=(y)\cap (x,y)^2$，所以我们大致可以说这是直线$y=0$
+（或者说$x$-轴）与原点处的二重点的并。
+
+进一步考虑$\spec k[x,y]/(xy,y^2)$的基本开集$D(x)$，在这上面$x$是可逆的，
+此时$xy=0$给出$y=0$蕴含了$y^2=0$，故$D(x)$就是仿射概形
+$\spec k[x]_x=\spec k[x,x^{-1}]$. 几何上，这就是仿射平面扣掉原点的$x$-轴，
+这当然是$V(xy,y^2)$的稠密开集。在这个稠密开集上，我们考虑上面给出的两个
+$k$-代数同态，换言之，我们复合上局部化同态
+\[
+	k[t]\to k[x,y]/(xy,y^2)\to k[x,x^{-1}],
+\]
+最后的局部化同态将$y$映射到$0$，所以两个$k$-代数同态复合上局部化同态后相等。
+所以我们有在稠密开集$D(x)$上$f|_{D(x)}=g|_{D(x)}$，但是$f\neq g$.
+
+最后，考虑$(\spec k[x,y]/(xy,y^2))_{\text{red}}$，由于此时$y$是
+幂零元，所以我们需要模掉$y$，这也使得两个态射$f$, $g$在
+$(\spec k[x,y]/(xy,y^2))_{\text{red}}$是相同的。
+
 \begin{pro}
 	设概形态射的性质$P$在复合和基变换下稳定，且任何闭浸入都满足$P$. 此时，若
 	$f:X\to Y$是态射，$g:Y\to Z$是分离态射，如果$gf:X\to Z$是具有性质$P$，
@@ -771,3 +798,144 @@ $\spec K\to \spec R\to X$成立，但是这样的分解的存在性和唯一性�
 % \begin{proof}
 % \notprove
 % \end{proof}
+
+\section{有理映射和函数域}
+
+\para[概形式稠密]
+令$X$是一个概形，开子概形$U$被称为概形式稠密的，即指对任意的开子概形$V$，
+则$V$中包含$U\cap V$的最小的闭子概形为$V$. 
+\endpara
+
+\begin{pro}
+设$X$是一个$S$-概形，$U$是他的一个开集，而$i:U\hookrightarrow X$是典范含入，则
+以下命题等价：
+\begin{compactenum}[(1)]
+	\item $U$是概形式稠密的；
+	\item $\mathcal O_X\to i_*\mathcal O_U$是单的；
+	\item 设$V$是$X$的一个开子概形，
+	对任意的分离$S$-概形$Y$和两个$S$-概形态射$f,g:V\to Y$，
+	如果他们的限制$U\cap V\to Y$是相同的，则$f=g$. 
+\end{compactenum}
+\end{pro}
+
+\begin{proof}
+(1)到(2)：令$V$是一个开子概形，而$Z$是$V$的包含$U\cap V$的闭子概形，
+其由拟凝聚理想层$\mathcal I$所定义。单的$\mathcal O_X\to i_*\mathcal O_U$
+限制到$V$上$\mathcal O_V\to i_*\mathcal O_{U\cap V}$也是单的，
+因为$Z$包含$U\cap V$，所以可以经由
+$\mathcal O_V\to \mathcal O_V/\mathcal I$分解，进而他也是单的，则$\mathcal I=0$. 
+
+
+(1)到(3)：如果$U$是概形式稠密的，则闭子概形$\operatorname{Eq}(f,g)$
+包含$U\cap V$，所以只能是$V$. 
+
+(3)到(2)：我们可以将截面看成$\mathbb A_S^1$-值函数的集合，即
+$\Hom_S(W,\mathbb A_S^1)=\Gamma(W,\mathcal O_X)$对任何$X$的
+开子概形$W$都成立。取$Y=\mathbb A_S^1$，则(3)告诉我们此时
+$\Hom_S(U,\mathbb A_S^1)=\Hom_S(X,\mathbb A_S^1)$，进而
+$\mathcal O_X\to i_*\mathcal O_U$是单的。
+\end{proof}
+
+既约概形的稠密开子概形是概形式稠密的，因为此时$X=X_{\text{red}}$，然后利用
+分离性的判别法。两个概形式稠密开集的交也依然是概形式稠密的，复合当然也是，
+即概形式稠密开子集的概形式稠密的开子集是概形式稠密的。此外，概形式稠密是局部的，
+即考虑一个开覆盖，则概形式稠密当且仅当在每个覆盖的元素中是概形式稠密的。
+
+\begin{para}[associate prime]
+对概形$X$，我们定义$\operatorname{Ass}(X)$是$x\in X$使得$\mathfrak m_x$
+是$\mathcal O_{X,x}$的associate prime的集合，
+即他一定是某个元素$m\in \mathcal O_{X,x}$的
+$\mathfrak m_x=\operatorname{ann}(m)$. 如果$X=\spec R$是仿射的，则 
+$\operatorname{Ass}(X)=\operatorname{Ass}(R)$是我们在交换代数中熟知的。
+同时，任取一个开覆盖$\{U_i\}$，容易看到
+\[
+	\operatorname{Ass}(X)=\bigcup_i \operatorname{Ass}(U_i).
+\]
+\end{para}
+
+\begin{pro}
+	若$X$是一个局部Noether概形，而$U\subset X$是一个开子集，则$U$是概形式稠密的，
+	当且仅当$U$包含了$\operatorname{Ass}(X)$. 
+\end{pro}
+
+这是完全局部的，所以我们可以只考虑Noether仿射概形的情况。
+
+\begin{lem}
+令$X=\spec R$是一个仿射概形，而$\mathfrak a\subset A$是一个理想，
+$U=X-V(\mathfrak a)$是一个开集，则以下命题从强到弱排列：
+\begin{compactenum}[\quad (1)]
+	\item 存在一个非零因子$t$使得$D(t)\subset U$，或者说$\mathfrak a$包含一个
+	非零因子；
+	\item $U$是概形式稠密的；
+	\item $\operatorname{ann}(\mathfrak a)=0$;
+	\item $U$包含$\operatorname{Ass}(R)$.
+\end{compactenum}
+如果$R$进一步是Noether环，则(4)蕴含(1)，故以上命题等价。
+\end{lem}
+
+\begin{proof}
+(1)到(2)只需说明$D(t)$是概形式稠密的。令$V$是$X$的一个开子集，而$s$是上面的一个
+截面使得$s|_{V\cap D(t)}=0$，则对$V$的任何仿射开子集$W$都存在一个正整数$n$
+使得$t^n s|_W=0$故$s|_W=0$，进而$s=0$.
+
+(2)到(3)，令$s=\operatorname{ann}(\mathfrak a)$且$x\in U$. 由于$\mathfrak p_x 
+\not \in V(\mathfrak a)$，所以$\mathfrak p_x$不包含$\mathfrak a$，则存在一个
+$a\in \mathfrak a$但$a\not\in \mathfrak p_x$. 进而$a$在$\mathcal O_{X,x}$中
+可逆，此时$sa=0$给出$s_x=0$. 由于$x$跑遍$U$，故$s|_U=0$，但是$U$是概形式稠密的，
+所以$s=0$.
+
+(2)到(4)，如果$\operatorname{Ass}(R)\cap V(\mathfrak a)\neq \varnothing$，则
+存在素理想$\ann(r)\in \operatorname{Ass}(R)$且包含$\mathfrak a$，此时
+$r\in \operatorname{ann}(\mathfrak a)$.
+
+假设$R$是Noether环，我们证明(4)到(1)的逆否：对给定的环$R$，
+所有形如$\operatorname{ann}(r)$的理想按照包含构成偏序集，其中的极大元是素理想。
+由于$R$是Noether环，所以这样的极大元一定存在，他们都在$\operatorname{Ass}(R)$
+中。由于每个零因子一定处于某个极大的$\operatorname{ann}(r)$中，所以他也在某个
+$\operatorname{Ass}(R)$的元素中。此外，由于$R$是Noether环，所以
+$\operatorname{Ass}(R)$是有限集合。此时，假设(1)不对，$\mathfrak a$的元素全是
+零因子，则$\mathfrak a$包含于$\operatorname{Ass}(R)$中所有素理想的有限并中，
+根据素理想互相排斥，所以$\mathfrak a$一定包含于某个
+$\operatorname{ann}(r)\in \operatorname{Ass}(R)$，故
+$V(\mathfrak a)$与$\operatorname{Ass}(R)$交非空，即(4)不对。
+\end{proof}
+
+\begin{para}[有理映射]
+设$X$, $Y$是$S$-概形，所谓的从$X$到$Y$的有理映射集$R_S(X,Y)$是指一个偶对的集合
+$\{(U,f)\}$模掉下面说的等价关系，其中$U$是一个概形式稠密开子集，
+而$f:U\to Y$是一个$S$-概形态射。两个偶对$(U,f)$和$(V,g)$是等价的，
+是指存在一个概形式稠密子集$W\subset U\cap V$使得$f|_W=g|_W$. 而$R_S(X,Y)$中的
+一个等价类叫做从$X$到$Y$的有理映射。如果$S$无需强调，我们则简单将$R_S(X,Y)$
+记作$R(X,Y)$.
+
+对一个有理$S$-映射$f\in R_S(X,Y)$，我们令$\operatorname{dom}_S(f)$为所有如下$x$
+的集合，我们需要这个$x$包含于某个$f$的代表元$(U,f)$的$U$中，换言之也可以选成
+所有代表元的开集部分之并，他被称为$f$的定义域。显然这也是一个概形式稠密的开子集。
+\end{para}
+
+\begin{pro}
+	设$X$, $Y$是$S$-概形，$Y$进一步是分离的，则对有理映射$f\in R_S(X,Y)$，存在
+	$S$-概形态射$f_0:\operatorname{dom}_S(f)\to Y$使得
+	$f=(\operatorname{dom}_S(f),f_0)$，且这是最大的表示元，即不能再扩张到更大的
+	概形式稠密开子集上了。
+\end{pro}
+
+\begin{proof}
+	任取代表元$(U,f)$和$(V,g)$，我们知道存在一个概形式稠密开子集
+	$W\subset U\cap V$使得$f|_W=g|_W$，由于$Y$是分离的，所以
+	$f|_{U\cap V}=g|_{U\cap V}$. 于是我们可以将不同代表元上的态射拼起来得到
+	$\operatorname{dom}_S(f)$上的一个态射。
+\end{proof}
+
+\begin{para}[有理函数]
+	设$X$是$S$-概形，$X$上的有理函数是$R_S(X,\mathbb A_{S}^1)$中的有理映射，
+	有理函数的集合记作$R_S(X)$.
+\end{para}
+
+注意到，选一个代表元$(U,f)$，由于
+$\Hom(U,\mathbb A_{S}^1)=\Gamma(U,\mathcal O_X)$，所以有理函数也可以看到
+某个概形式稠密开子集上的一个截面，而 
+\[
+	R(X)=\varinjlim_{U\subset X} \Gamma(U,\mathcal O_X),
+\]
+其中$U$跑遍所有$X$的概形式稠密开子集。

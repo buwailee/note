@@ -111,3 +111,346 @@ $f$是线性的当且仅当$\varphi$作为分次代数同态保持分次。那�
 
 证明是直接的，从一个向量丛出发，考虑其截面层，他有一个自然的局部自由
 $\mathscr O_X$-模层结构。
+
+
+\begin{para}[Serre扭层]
+    对一个分次$R$-模$M$，我们可以定义一个新的分次$R$-模$M(n)$为$M(n)_d=M_{n+d}$.
+    设$R$是一个分次环，并设$X=\proj R$. 我们定义
+    $\mathcal O_X(n):=\widetilde{R(n)}$，称为Serre扭层。
+
+    令$f\in R_d$，则对任意的$d$的倍数$n=kd$，在仿射开集$D_+(f)$上，则乘以$f^k$
+    给出了同构
+    \[
+        R_{(f)}=(R_f)_0\to R(n)_{(f)}=(R_f)_n.
+    \] 
+    特别地，对于我们最关心的情况，$R$是由其一次分量生成的，
+    即$R$作为$R_0$-代数是由$\{f_i\in R_1\}$生成的，则$X$是由
+    $\{D_+(f_i)\}$所覆盖，而在$D_+(f_i)$上，乘以$f_i^{-n}$给出了同构
+    \[
+        \mathcal O_X(n)|_{D_+(f_i)}\cong \mathcal O_X|_{D_+(f_i)},
+    \]
+    所以$\mathcal O_X(n)$是秩为$1$的局部自由模层，或者我们称为一个可逆模层。
+    当然，局部自由层就是向量丛，所以使用向量丛的视角，$\mathcal O_X(n)$
+    在$D_+(f_i)$上的，是由$f_i^n$生成的$\mathcal O_X|_{D_+(f_i)}$-自由模，
+    这是因为任取$n$-次元$a\in R_n$，$a/f_i^n$都是零次的，于是在
+    $\mathcal O_X|_{D_+(f_i)}$中。任取$i,j$，在$D_+(f_i)\cap D_+(f_j)$上，
+    我们有转移函数$(f_j/f_i)^n$将两个截面联系起来。反过来，如果一族局部截面
+    可以通过转移函数粘起来，则他构成了一个整体截面。
+
+    借用向量丛视角，不难看到有同构
+    \[
+        \mathcal O_X(m)\otimes_{\mathcal O_X}\mathcal O_X(n)
+        \to \mathcal O_X(m+n).
+    \]
+    所以$\mathcal O_X(-n)$就是$\mathcal O_X(n)$的逆。
+\end{para}
+
+\section{除子}
+
+\para[正规截面] 设$M$是一个$R$-模，如果对$m\in M$，非零的$a\in R$都有$am\neq 0$，
+或者说$\operatorname{ann}_R(m)=\{0\}$，则称$m$是一个正规元。用同态来表示的话，
+这就是说$a\mapsto am$是单的。任取概形$X$和上面的拟凝聚层$\mathcal F$，我们可以
+类似谈论一个截面$s\in \mathcal F(U)$是否正规。容易看到，截面$s$是正规的，当且
+仅当$s_x$对每个$x$都是正规的，也当且仅当，任取仿射开集$U$，$s|_U$是正规的，还
+当且仅当由乘以$s$给出的同态$\mathcal O_X\to \mathcal F$是单的。
+\endpara
+
+给定一个环$R$，作为$R$-模的正规元等价于$R$的非零因子，此时我们定义
+$\operatorname{Frac}(R)=S_R^{-1}R$，其中$S_R$是$R$的非零因子构成的集合。
+
+\para[亚纯函数层]
+在概形$X$上，我们定义$S_U$为$U$上所有正规截面的集合，这当然是一个乘性子集，
+进而我们定义亚纯函数层$\mathcal K_X$为预层
+\[
+    U\mapsto S_U^{-1}\Gamma(U,\mathcal O_X)
+\]
+所伴随的层。一般来说，上面的这个预层不是层。如果$X$是整概形，则$X$有一个
+唯一的一般点$\eta$，我们定义域$K(X)=\mathcal O_{X,\eta}$. 不难检查，此时
+$\mathcal K_X$就是常值层$U\mapsto K(X)$，这是因为每个$\Gamma(U,\mathcal O_X)$
+都是整环，放到仿射覆盖上，$\eta$对应到整环的零点，在零点处的局部化给出这个
+整环的分式域，而整环的正规元就是所有的非零元，故而
+$S_U^{-1}\Gamma(U,\mathcal O_X)$也就是该整环的分式域。
+\endpara
+
+由于$S_U$都是$\Gamma(U,\mathcal O_X)$中的非零因子，所以$\mathcal O_{X,x}$
+到$\mathcal K_{X,x}$显然是个单射，进而$\mathcal O_{X}\to \mathcal K_{X}$
+也是单的，所以我们可以将$\mathcal O_{X}$看成$\mathcal K_{X}$的子层。令
+$f=\Gamma(X,\mathcal K_{X})$，我们定义
+\[
+    \operatorname{dom}(f):=\{x\,:\,f_x\in \mathcal O_{X,x}
+    \subset \mathcal K_{X,x}\}.
+\]
+
+\begin{lem}
+    $\operatorname{dom}(f)$是概形式稠密开子集
+\end{lem}
+
+\begin{proof}
+首先如果
+$f_x\in \mathcal O_{X,x}$，则$f_x$可以被某个$(U,f)$表示，于是在$y\in U$上都有
+$f_y\in \mathcal O_{X,x}$，所以$\operatorname{dom}(f)$是开集。现在任取
+$x\in \operatorname{dom}(f)$以及某个$f_x=(U,f)\in K_{X,x}$，这里我们将代表元
+中的$U$选成一个仿射开子集，于是存在一个非零因子$g$（即正规元）使得$gf \in 
+\Gamma(U,\mathcal O_X)$. 由于$g$是非零因子，则$D(g)$在$U$中概形式稠密，且
+$D(g)\subset \operatorname{dom}(f)\cap U$，进而$\operatorname{dom}(f)\cap U$
+在$U$中概形式稠密，进而$\operatorname{dom}(f)$是概形式稠密的。
+\end{proof}
+
+\para[有理函数层]
+    在概形$X$上，我们定义层$U\mapsto R(U)$为有理函数层，这里$R(U)$是$U$上
+    有理函数构成的环。
+
+    为看到这是一个层，取$U$的一个开覆盖$\{U_i\}$，如果一族截面$s_i\in R(U_i)$
+    有$s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}$，我们需要证明存在一个$s\in R(U)$
+    使得$s_i=s|_{U_i}$. 事实上，选每个$s_i\in R(U_i)$的代表元$(V_i,t_i)$，
+    其中$V_i$是$U_i$的概形式稠密开子集，而$t_i$是$\mathcal O_X$在$V_i$
+    上的截面。我们只需证明$t_i|_{V_i\cap V_j}=t_j|_{V_i\cap V_j}$，进而
+    可以在$V=\bigcup_i V_i$上粘出来一个截面$t$，则$(V,t)\in R(U)$就是我们想要的
+    代表元。由于
+    $s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}$，所以存在一个概形式稠密开子集
+    $W\subset U_i\cap U_j$使得代表元在上面相同，与$V_i\cap V_j$再交一交，
+    我们可知$t_i$和$t_j$在$V_i\cap V_j$的某个概形式稠密开子集上相同，继而
+    在$V_i\cap V_j$上相同。
+\endpara
+
+给定一个亚纯函数$f\in \Gamma(X,\mathcal K_X)$，我们可以定义一个有理函数，
+其代表元为$(\operatorname{dom}(f),f|_{\operatorname{dom}(f)})$. 类似地，
+这定义了同态$\alpha_U:\Gamma(U,\mathcal K_X)\to R(U)$，而且是单同态，因为
+概形式稠密，于是这给出了层单态射
+\[
+    \alpha:\mathcal K_X\to \mathcal R_X.
+\]
+当$X$是整概形的时候，这个当然是个同构。
+
+\begin{pro}
+    如果$X$是局部Noether概形，则
+    $\mathcal K_X(U)=S_U^{-1}\Gamma(U,\mathcal O_X)$，且
+    $\alpha:\mathcal K_X\to \mathcal R_X$是一个同构，
+    即亚纯函数层和有理函数层相同。
+\end{pro}
+
+\begin{proof}
+    记预层$U\mapsto S_U^{-1}\Gamma(U,\mathcal O_X)$为$\mathcal K'_X$，复合上
+    层化和$\alpha$，我们有环同态$\mathcal K'_X(U)\to R(U)$. 现在找一个仿射
+    开覆盖，每个仿射开集当然都是Noether环的谱，此时
+    \[
+        \mathcal K'_X(U)=\varinjlim_{t} \Gamma(D(t),\mathcal O_X),\quad 
+        R(U)=\varinjlim_{V} \Gamma(V,\mathcal O_X),
+    \]
+    其中$t$跑遍$\Gamma(U,\mathcal O_X)$中的正规元（非零因子），
+    $V$跑遍$U$中的概形式稠密开子集。
+    由于$D(t)$是概形式稠密的，且对于Noether环的谱，$U$中某个概形式稠密开子集
+    都包含一个非零因子$t$的$D(t)$. 所以两个余极限相同，$\mathcal K'_X(U)=R(U)$.
+    进而$\mathcal R_X=\mathcal K'_X=\mathcal K_X$.
+\end{proof}
+
+\begin{para}[Cartier除子]
+    设$X$是一个概形，$\mathcal K_X^\times /\mathcal O_X^\times$的一个整体截面
+    被称为一个Cartier除子，其中$\mathcal K_X^\times$是$\mathcal K_X$的可逆截面
+    构成的层，$\mathcal O_X^\times$也类似，我们记
+    \[
+        \operatorname{Div}(X)=
+        \Gamma(X,\mathcal K_X^\times /\mathcal O_X^\times).
+    \]
+    这是一个交换群，来自于可逆元的乘法，但是我们后面记作加法。
+    显然存在一个典范同态
+    \[
+        \operatorname{div}:\Gamma(X,\mathcal K_X^\times)\to 
+        \operatorname{Div}(X).
+    \]
+    这个同态的像中的除子都被称为主除子。如果两个除子之差为\textit{主}除子，即
+    $D_1-D_2=\operatorname{div}(f)$，则称$D_1$和$D_2$\textit{线性等价}。
+    最后，我们定义
+    \[
+        \operatorname{Div}_+(X)=
+        \Gamma(X,(\mathcal K_X^\times \cap \mathcal O_X) /\mathcal O_X^\times).
+    \]
+    注意到$\mathcal K_X^\times \cap \mathcal O_X\neq \mathcal O_X^\times$是因为
+    前者有正规元（非零因子），后者只有可逆元。$\operatorname{Div}_+(X)$中的除子
+    被称为\textit{有效}除子。如果$D_1-D_2\in \operatorname{Div}_+(X)$，则记
+    $D_1\geq D_2$（或者$D_2\leq D_1$）.
+\end{para}
+
+\begin{para}[Cartier除子与线丛]
+    给一个除子$D\in \operatorname{Div}(X)$，等价于说个开覆盖$\{U_i\}$，并
+    在每个$U_i$上有一个可逆亚纯函数$f_i\in \Gamma(U_i,\mathcal K_X^\times)$，
+    使得在$U_i\cap U_j$上，
+    转移函数$f_if_j^{-1}\in \Gamma(U_i\cap U_j,\mathcal O_X^\times)$.
+    于是，这定义了一个$\mathcal K_X$的秩为$1$的局部自由
+    $\mathcal O_X$-子模层$\mathcal L(D)$，他在$U_i$上的
+    $\Gamma(U_i,\mathcal O_X)$-模是由$f_i$生成的模。
+
+    反过来，给定一个$\mathcal K_X$的秩为$1$的局部自由$\mathcal O_X$-子模层
+    $\mathcal L$，在点$x\in X$，$\mathcal L_x$的生成元记作$f$. 由于
+    $f\in \mathcal K_{X,x}$，所以存在一个非零因子$g\in \mathcal O_{X,x}$
+    使得$fg\in \mathcal O_{X,x}$. 由于这是自由模，
+    $f$乘以$\mathcal O_{X,x}$中的任意非零元都不为零，$fg$也是，故$fg$是一个
+    非零因子，他在$\mathcal K_{X,x}$中可逆，故$f\in \mathcal K_{X,x}^\times$.
+    对于任意的开集上的截面，我们也不难粘合出一个逆，所以找一个开覆盖$\{U_i\}$，
+    以及$\mathcal L$在每个开集$U_i$上的生成元$f_i$，
+    我们有$f_i\in \Gamma(U_i,\mathcal K_{X,x}^\times)$，并且在$U_i\cap U_j$上
+    转移函数$f_if_j^{-1}\in \Gamma(U_i\cap U_j,\mathcal O_X^\times)$. 这样，
+    我们就给出了一个除子。
+
+    现在，给定一个除子$D=\{(U_i,f_i)\}$，我们定义一个与之相关的线丛
+    \[
+        \mathcal O_X(D)|_{U_i}=f_i^{-1}\mathcal O_X|_{U_i},
+    \]
+    注意我们这里有个逆。容易看到
+    \[
+        D_1\leq D_2\quad \Leftrightarrow \quad \mathcal O_X(D_1)\subset \mathcal O_X(D_2),
+    \]
+    以及
+    \begin{equation}
+        \mathcal O_X(D_1+D_2)=\mathcal O_X(D_1)\mathcal O_X(D_2)\cong 
+        \mathcal O_X(D_1)\otimes_{\mathcal O_X} \mathcal O_X(D_2),
+    \end{equation}
+    这里第一个乘法是在$\mathcal K_X$上的。除子的加法单位元是$0$，它对应于
+    一个$\mathcal O_X^\times$的截面，比如常值截面$1$，此时容易看到
+    \[
+        \mathcal O_X(0)=\mathcal O_X.
+    \]
+    所以，一个有效除子$D\geq 0$就是说$\mathcal O_X(-D)\subset \mathcal O_X$
+    是一个理想层，他定义了一个闭子概形$Z$，这将在一些情况中回到所谓的Weyl除子。
+\end{para}
+
+式(\theequation)告诉我们$D\mapsto \mathcal O_X(D)$构成了一个交换群同态。
+
+\begin{lem}
+    除子$D$是主除子当且仅当$\mathcal O_X(D)\cong \mathcal O_X=\mathcal O_X(0)$.
+    于是，$D_1$和$D_2$线性等价当且仅当$\mathcal O_X(D_1)\cong \mathcal O_X(D_2)$.
+\end{lem}
+
+\begin{proof}
+    如果$D$是主除子，即$D=\operatorname{div}(f)$，则
+    $\mathcal O_X(D)=f^{-1}\mathcal O_X\cong \mathcal O_X$.
+    反过来，如果$\mathcal O_X\cong \mathcal O_X(D)$，则左侧常值截面$1$
+    在右侧的像给出一个截面$f\in \Gamma(X,\mathcal K_X^\times)$，
+    于是$D=\operatorname{div}(f^{-1})$. 第二个命题直接来自于
+    $\mathcal O_X(D+\operatorname{div}(f))\cong 
+    \mathcal O_X(D)\otimes_{\mathcal O_X} \mathcal O_X\cong \mathcal O_X(D)$.
+\end{proof}
+
+考虑层的短正和列
+\[
+    1\to \mathcal O_X^\times \to \mathcal K_X^\times \to
+    \mathcal K_X^\times/\mathcal O_X^\times \to 1,
+\]
+作用上左正和函子$\Gamma(X,*)$，我们有正和列
+\[
+    1\to \Gamma(X,\mathcal O_X^\times) \to \Gamma(X,\mathcal K_X^\times) \to
+    \operatorname{Div}(X).
+\]
+如果我们考虑更高阶的上同调（$\Gamma$看成$H^0$），则我们可以进一步推广到长正和列
+\[
+    1\to \Gamma(X,\mathcal O_X^\times) \to \Gamma(X,\mathcal K_X^\times) \to
+    \operatorname{Div}(X)\xrightarrow{\delta} H^1(X,\mathcal O_X^\times)
+    \to \cdots,
+\]
+这里的$\delta$实际上就是$D\mapsto \mathcal O_X(D)$，容易看到$\ker \delta$
+就是所有的主除子。这里的$H^1(X,\mathcal O_X^\times)$就是所谓的Picard群，记作
+$\operatorname{Pic}(X)$，利用\v{C}ech上同调，$\operatorname{Pic}(X)$也可以是
+所有$X$上可逆$\mathcal O_X$-模层模掉同构类给出的交换群，乘法是张量积。
+同时，由于$\delta$一般不是满的，则$\operatorname{Pic}(X)$一般不等于
+$\operatorname{Div}(X)/\Gamma(X,\mathcal K_X^\times)$，后者是除子模掉主除子
+构成的交换群。
+
+\begin{para}[支集]
+    给定一个除子$D$，我们定义他的支集为
+    \[
+        \supp(D)=\{x\in X\,:\,D_x \neq 1\}.
+    \]
+    这里的$1$对应的是乘法的单位元，在除子上我们是看成加法群的“零”，
+    所以支集是“非零”的$D_x$的$x$的集合，和其他支集的定义完全类似。
+    $\supp(D)$显然是个闭集，因为如果$D_x=1$，则在$x$附近，$D=1$，这就说明
+    $\supp(D)$的补集是开的。
+\end{para}
+
+\begin{para}[Weyl除子]
+令$X$为一个Noether概形，令$C$为他的一个整闭子概形，一般点为$\eta$，我们记
+局部环$\mathcal O_{X,C}:=\mathcal O_{X,\eta}$，则此时余维数
+$\codim_X C=\dim \mathcal O_{X,C}$. 更一般地，任取$X$的闭子集$Z$，
+他的余维数满足$\codim_X Z=\inf_{C\subset Z} \codim_X C$，
+这里的$C$跑遍$Z$的不可约分支。
+我们记$Z^k(X)$为$X$余维数为$k$的整闭子概形生成的自由群，特别地将$Z^1(X)$中的
+元素称为Weyl除子，单个的余一维的整闭子概形叫做素除子，而非负系数的线性组合
+叫做有效Weyl除子，我们记$Z^1_+(X)$为所有有效Weyl除子构成的子集。
+\end{para}
+
+\begin{lem}
+    设$R$是一个一维Noether局部环，而$f$, $g$都不是零因子，则
+    $R/\langle f\rangle$是有限长的，且我们有长度的等式
+    \[
+        \operatorname{length}(R/\langle fg\rangle) =
+        \operatorname{length}(R/\langle f\rangle) +
+        \operatorname{length}(R/\langle g\rangle).
+    \]
+\end{lem}
+    
+通过这个引理，我们可以延拓$f\mapsto \operatorname{length}(R/\langle f\rangle)$
+到群同态 $\operatorname{Frac}(R)^\times /R^\times \to \mathbb Z$，记作
+$\operatorname{mult}_R$. 注意到，如果$f$和$g$都不是零因子，则
+$\operatorname{mult}_R(f/g)=\operatorname{mult}_R(f)-\operatorname{mult}_R(g)$.
+
+\begin{proof}
+    因为$f$不是零因子，所以不存在$R$的极小素理想$\mathfrak p$包含他。
+    这是因为，$R$的极小素理想都在$\operatorname{Ass}(R)$中，而他们形如
+    $\operatorname{ann}(r)$. 于是，$R/\langle f\rangle$是零维的，
+    是一个Artin环，所以是有限长的。
+    
+    现在，考虑短正和列
+    \[
+        0\to \langle g\rangle /\langle fg\rangle \to 
+        R/\langle fg\rangle\to R/\langle g\rangle \to 0,
+    \]
+    并注意到因为$g$不是零因子，由$r\mapsto gr$给出的$R$-模同态
+    \[
+        R/\langle f\rangle \to\langle g\rangle/\langle fg\rangle
+    \]
+    是一个同构，于是我们就得到了结论。
+\end{proof}
+
+令$X$是一个局部Noether概形，而$D\in \operatorname{Div}(X)$是一个Cartier除子。
+对于任意的余一维的整闭子概形$C$，则$\mathcal O_{X,C}$是一个一维Noether局部环，
+而$D$在$C$的一般点$\eta$处属于
+$(\mathcal K^\times_X/\mathcal O_X^\times)_\eta=
+\operatorname{Frac} (\mathcal O_{X,C})^\times/\mathcal O_{X,C}^\times$，
+于是我们定义
+\[
+    \operatorname{mult}_C(D):= \operatorname{mult}_{\mathcal O_{X,C}}(D_x).
+\]
+
+\begin{lem}
+若$X$是一个局部Noether概形，而$D\in \operatorname{Div}(X)$是一个Cartier除子，
+则$\supp(D)$的余维数大于等于一，即$\codim_X(\supp(D))\geq 1$，或者说，
+任取$x\in \supp(D)$，$\dim(\mathcal O_{X,x})\geq 1$.
+\end{lem}
+
+\begin{proof}
+令$x\in X$有$\dim(\mathcal O_{X,x})=0$. 此时$\mathcal O_{X,x}$是Artin环，
+于是所有$\mathcal O_{X,x}$中的非零因子都是可逆的，所以
+$\mathcal O_{X,x}=\mathcal K_{X,x}$，那么$D_x=1$，推出$x\not\in \supp(D)$.
+\end{proof}
+
+\begin{lem}
+给定Noether概形$X$上的Cartier除子$D$，则使得$\operatorname{mult}_C(D)\neq 0$的
+余一维的整闭子概形$C$的数目是有限的。
+\end{lem}
+
+\begin{proof}
+由于$\supp(D)$是闭集，所以$C$不包含于$\supp(D)$，则$C$的一般点$\eta$不属于
+$\supp(D)$，此时$D_\eta=1$，进而$\operatorname{mult}_C(D)=0$. 现在，如果
+$C$包含于$\supp(D)$，由于$X$是Noether空间，则$\supp(D)$也是，只有有限个
+不可约分支。由于$C$是不可约的，所以$C$必然包含于$\supp(D)$的某个不可约分支$Z$中，
+如果$C\neq Z$，且$Z$的余维数大于等于一，所以存在$X$的不可约闭子集$Z'$，使得
+$C\subsetneq Z\subsetneq Z'$，这就告诉我们$\codim_X C\geq 2$，这是不可能的，
+所以$C$就是$\supp(D)$的某个不可约分支，进而有限。
+\end{proof}
+
+\begin{para}[Cartier除子与Weyl除子]
+    给定一个Cartier除子$D$，我们定义一个Weyl除子$\operatorname{cyc}(D)$为
+    \[
+        \operatorname{cyc}(D)=\sum_C \operatorname{mult}_C(D) [C],
+    \]
+    这个求和根据上面的引理是有限的。
+\end{para}
